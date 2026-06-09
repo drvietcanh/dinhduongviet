@@ -95,18 +95,60 @@ const jsonPayload = JSON.stringify(dataPayload);
     return text.indexOf(q) !== -1;
   }
 
+  function fieldScore(value, q, rawQ) {
+    var raw = String(value || '').toLowerCase();
+    var text = normalize(raw);
+    if (!text || !q) return 0;
+    if (text === q || raw === rawQ) return 120;
+    if (text.indexOf(q + ' ') === 0 || raw.indexOf(rawQ) === 0) return 90;
+    if ((' ' + text + ' ').indexOf(' ' + q + ' ') !== -1) return 70;
+    if (text.indexOf(q) !== -1) return 35;
+    return 0;
+  }
+
+  function aliasIntentBonus(rawText, q, rawQ) {
+    var raw = String(rawText || '').toLowerCase();
+    if (q === 'ngo' && rawQ.indexOf('ngò') !== -1) return raw.indexOf('ngò') !== -1 ? 32 : (raw.indexOf('ngô') !== -1 ? -35 : 0);
+    if (q === 'ngo') return raw.indexOf('ngô') !== -1 ? 32 : (raw.indexOf('ngò') !== -1 ? -35 : 0);
+    if (q === 'bap') return raw.indexOf('bắp cải') !== -1 || raw.indexOf('đậu bắp') !== -1 ? -20 : (raw.indexOf('bắp') !== -1 || raw.indexOf('ngô') !== -1 ? 24 : 0);
+    if (q === 'lon') return raw.indexOf('lợn') !== -1 ? 36 : (raw.indexOf('lòng') !== -1 || raw.indexOf('lộn') !== -1 ? -45 : 0);
+    if (q === 'lac') return raw.indexOf('lạc') !== -1 || raw.indexOf('đậu phộng') !== -1 ? 32 : (raw.indexOf('lắc') !== -1 ? -35 : 0);
+    if (q === 'ca phe') return raw.indexOf('cà phê') !== -1 || raw.indexOf('cafe') !== -1 ? 32 : 0;
+    if (q === 'tom su') return raw.indexOf('tôm sú') !== -1 ? 32 : 0;
+    if (q === 'gao lat' || q === 'gao lut' || q === 'com gao lut') return raw.indexOf('gạo lứt') !== -1 || raw.indexOf('gạo lật') !== -1 ? 24 : 0;
+    return 0;
+  }
+
+  function searchScore(item, q, rawQ) {
+    if (!q) return 1;
+    var fields = [item.n, item.s].concat(item.a || []);
+    var best = 0;
+    for (var i = 0; i < fields.length; i++) {
+      best = Math.max(best, fieldScore(fields[i], q, rawQ));
+    }
+    var rawText = fields.join(' ');
+    best += aliasIntentBonus(rawText, q, rawQ);
+    if (item.t === 'thực phẩm') best += 3;
+    return best;
+  }
+
   function filterItems(q) {
     var lower = normalize(q);
+    var rawQ = String(q || '').toLowerCase().trim();
     var results = [];
     for (var i = 0; i < PAYLOAD.length; i++) {
       var item = PAYLOAD[i];
       var haystack = normalize([item.n, item.s].concat(item.a || []).join(' '));
-      if (matchesSearchText(haystack, lower)) {
-        results.push(item);
-        if (results.length >= 8) break;
+      var score = searchScore(item, lower, rawQ);
+      if (score > 0 && (matchesSearchText(haystack, lower) || score >= 70)) {
+        results.push({ item: item, score: score });
       }
     }
-    return results;
+    results.sort(function(a, b) {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.item.n.localeCompare(b.item.n, 'vi');
+    });
+    return results.slice(0, 8).map(function(row) { return row.item; });
   }
 
   function showDropdown(results) {

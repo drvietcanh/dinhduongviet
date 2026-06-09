@@ -29,6 +29,14 @@ async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
 }
 
+async function readCompatAliases() {
+  const source = await readFile(path.join(root, "src/lib/food-slug-aliases.ts"), "utf8");
+  return [...source.matchAll(/"([^"]+)":\s*"([^"]+)"/g)].map((match) => ({
+    from: match[1],
+    to: match[2],
+  }));
+}
+
 function groupBy(items, keyFn) {
   const map = new Map();
   for (const item of items) {
@@ -138,9 +146,11 @@ const slim = await readJson("public/api/foods-slim.json");
 const fullRows = await readJson("public/api/foods-full.json");
 const searchIndex = await readJson("public/api/search-index.json");
 const sourceFoods = await readJson("dist/api-foods.json");
+const compatAliases = await readCompatAliases();
 const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
 const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
+const slimBySlug = new Map(slim.map((item) => [item.slug, item]));
 
 const duplicateSlugs = groupBy(slim, (item) => item.slug).map(([slug, entries]) => ({
   severity: duplicateSeverity(classifyDuplicate(entries)),
@@ -209,6 +219,42 @@ const aliasWarningsByType = aliasWarnings.reduce((totals, item) => {
   totals[item.type] = (totals[item.type] || 0) + 1;
   return totals;
 }, {});
+const compatAliasStatus = compatAliases.map(({ from, to }) => issue("info", {
+  from,
+  to,
+  sourceExists: slimBySlug.has(from),
+  targetExists: slimBySlug.has(to),
+  action: "static_route_redirect_to_canonical",
+}));
+const cookedHighEnergyReview = sourceFoods
+  .filter((food) => food.state === "cooked" && Number(food.nutrients?.energyKcal) > 180)
+  .map((food) => issue("info", {
+    slug: food.slug,
+    name: food.name,
+    kcal: food.nutrients.energyKcal,
+    basis: food.basis,
+    source: food.sourceId || food.source,
+    confidence: food.confidence,
+    suggestion: "review_cooked_basis_or_source",
+  }));
+const riceSourceReview = ["com-nep", "com-gao-lut-do", "com-gao-lut-den"]
+  .map((slug) => sourceBySlug.get(slug))
+  .filter(Boolean)
+  .map((food) => issue("info", {
+    slug: food.slug,
+    id: food.id,
+    name: food.name,
+    state: food.state,
+    basis: food.basis,
+    kcal: food.nutrients?.energyKcal,
+    protein: food.nutrients?.proteinG,
+    lipid: food.nutrients?.fatG,
+    glucid: food.nutrients?.carbG,
+    source: food.sourceId || food.source,
+    confidence: food.confidence,
+    note: food.note,
+    suggestion: food.sourceId === "recipe-estimate-v1" || food.source === "recipe-estimate-v1" ? "needs_source_review" : "source_present",
+  }));
 
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
 const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.find((item) => item.slug === slug) || { slug, count: 0, action: "not_found_as_duplicate" });
@@ -229,6 +275,9 @@ const allIssues = [
   ...rawCookedAmbiguity,
   ...missingCoreNutrients,
   ...aliasWarnings,
+  ...compatAliasStatus,
+  ...cookedHighEnergyReview,
+  ...riceSourceReview,
 ];
 const issuesBySeverity = allIssues.reduce((totals, item) => {
   totals[item.severity] = (totals[item.severity] || 0) + 1;
@@ -247,15 +296,21 @@ const report = {
     rawCookedAmbiguity: rawCookedAmbiguity.length,
     missingCoreNutrients: missingCoreNutrients.length,
     aliasWarnings: aliasWarnings.length,
+    compatAliases: compatAliasStatus.length,
+    cookedHighEnergyReview: cookedHighEnergyReview.length,
+    riceSourceReview: riceSourceReview.length,
   },
   aliasWarningsByType,
   issuesBySeverity,
   sourceNotes,
   watchedDuplicateStatus,
+  compatAliasStatus,
   duplicateSlugs,
   duplicateDisplayNames,
   suspiciousSlugs,
   rawCookedAmbiguity,
+  cookedHighEnergyReview,
+  riceSourceReview,
   missingCoreNutrients,
   aliasWarnings: aliasWarnings.slice(0, 200),
 };
