@@ -1,175 +1,363 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  WATER_ACUTE_SAFETY_NOTE,
+  WATER_GLOBAL_SAFETY_NOTE,
+  WATER_WEIGHT_MAX_KG,
+  WATER_WEIGHT_MIN_KG,
+} from "../../lib/water-intake-calculator";
+
+const title = "Tính nhu cầu nước uống";
+const desc = "Ước tính ban đầu nhu cầu nước cho người trưởng thành tương đối khỏe mạnh, kèm safety gate cho nhóm cần cá thể hóa.";
 ---
 
-<BaseLayout title="Tính nhu cầu nước uống - Dinh Dưỡng Việt">
-  <section>
-    <span class="badge">📊 Công cụ</span>
-    <h1>Tính nhu cầu nước uống</h1>
-    <p class="lead">
-      Nước chiếm ~60% trọng lượng cơ thể. Nhu cầu nước thay đổi theo cân nặng, vận động, thời tiết.
-      Công thức tính đơn giản giúp bạn biết cần uống bao nhiêu nước mỗi ngày.
-    </p>
-  </section>
+<BaseLayout title={`${title} - Dinh Dưỡng Việt`} description={desc} canonical="/cong-cu/nuoc-uong">
+  <main class="water-page">
+    <header class="page-header">
+      <p class="eyebrow">Công cụ dinh dưỡng</p>
+      <h1>Tính nhu cầu nước uống</h1>
+      <p class="page-desc">{desc}</p>
+    </header>
 
-  <div class="disclaimer">
-    ⚠️ <strong>Cảnh báo y khoa:</strong> Người suy thận, suy tim, xơ gan có thể bị hạn chế nước. Trong trường hợp ra mồ hôi nhiều (sốt, tiêu chảy, nôn), nhu cầu nước tăng cao hơn.
-  </div>
+    <aside class="safety-banner">
+      <strong>Cảnh báo an toàn</strong>
+      <span>{WATER_GLOBAL_SAFETY_NOTE} {WATER_ACUTE_SAFETY_NOTE}</span>
+    </aside>
 
-  <section class="section card">
-    <h2>Thông số</h2>
-    <form id="water-form">
-      <div class="grid two" style="margin-bottom: 16px;">
-        <div>
-          <label>Cân nặng (kg)</label>
-          <input type="number" id="weight" min="10" max="300" step="0.1" value="65" required />
+    <section class="tool-shell" aria-label="Tính nhu cầu nước uống">
+      <div class="form-card">
+        <div class="section-label"><span>1</span> Thông tin đầu vào</div>
+        <div class="form-grid">
+          <label class="form-row" for="weight">
+            <span>Cân nặng hiện tại</span>
+            <div class="input-wrap">
+              <input id="weight" type="number" value="60" min={WATER_WEIGHT_MIN_KG} max={WATER_WEIGHT_MAX_KG} step="0.1" inputmode="decimal" />
+              <span class="input-suffix">kg</span>
+            </div>
+          </label>
+
+          <label class="form-row" for="activity">
+            <span>Mức vận động</span>
+            <div class="input-wrap select-wrap">
+              <select id="activity">
+                <option value="low">Ít: sinh hoạt nhẹ, ngồi nhiều</option>
+                <option value="moderate" selected>Vừa: vận động thường ngày</option>
+                <option value="high">Nhiều: tập/làm việc ra mồ hôi</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="form-row" for="heat-sweat">
+            <span>Thời tiết / mồ hôi</span>
+            <div class="input-wrap select-wrap">
+              <select id="heat-sweat">
+                <option value="normal" selected>Bình thường</option>
+                <option value="hot">Nóng</option>
+                <option value="heavy_sweat">Ra mồ hôi nhiều</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="form-row" for="pregnancy-lactation">
+            <span>Thai kỳ / cho con bú</span>
+            <div class="input-wrap select-wrap">
+              <select id="pregnancy-lactation">
+                <option value="none" selected>Không</option>
+                <option value="pregnancy">Đang mang thai</option>
+                <option value="lactation">Đang cho con bú</option>
+              </select>
+            </div>
+          </label>
         </div>
-        <div>
-          <label>Mức vận động</label>
-          <select id="activity">
-            <option value="1.0">Ít: ngồi nhiều, không tập</option>
-            <option value="1.2" selected>Trung bình: 30-60 phút/ngày</option>
-            <option value="1.4">Nhiều: &gt;60 phút/ngày hoặc lao động nặng</option>
-          </select>
-        </div>
-        <div>
-          <label>Thời tiết</label>
-          <select id="weather">
-            <option value="1.0">Mát mẻ (&lt;25°C)</option>
-            <option value="1.1" selected>Ấm (25-30°C)</option>
-            <option value="1.2">Nóng (&gt;30°C)</option>
-          </select>
-        </div>
-        <div>
-          <label>Cho con bú?</label>
-          <select id="breastfeeding">
-            <option value="0" selected>Không</option>
-            <option value="0.7">Có (thêm 700ml/ngày)</option>
-          </select>
-        </div>
-      </div>
-      <button type="submit" class="btn">Tính nhu cầu nước</button>
-    </form>
-  </section>
 
-  <section id="result" class="section card" style="display:none;">
-    <h2>💧 Kết quả</h2>
-    <div class="grid two">
-      <div class="stat">
-        <span class="muted">Nhu cầu nước cơ bản</span>
-        <strong id="base-water">—</strong>
-        <span class="muted">lít/ngày</span>
-      </div>
-      <div class="stat">
-        <span class="muted">Nhu cầu điều chỉnh</span>
-        <strong id="adjusted-water">—</strong>
-        <span class="muted">lít/ngày</span>
-      </div>
-      <div class="stat">
-        <span class="muted">Tương đương ly ~200ml</span>
-        <strong id="cups">—</strong>
-        <span class="muted">ly</span>
-      </div>
-      <div class="stat">
-        <span class="muted">Trong đó từ ăn uống</span>
-        <strong id="from-food">—</strong>
-        <span class="muted">lít (thức ăn ~20%)</span>
-      </div>
-    </div>
+        <fieldset class="red-flags">
+          <legend>Nhóm cần hỏi bác sĩ hoặc cá thể hóa</legend>
+          <label><input type="checkbox" id="heartFailure" /> Suy tim</label>
+          <label><input type="checkbox" id="chronicKidneyDisease" /> Bệnh thận mạn</label>
+          <label><input type="checkbox" id="dialysis" /> Đang lọc máu</label>
+          <label><input type="checkbox" id="cirrhosisAscites" /> Xơ gan/cổ trướng</label>
+          <label><input type="checkbox" id="edema" /> Phù hoặc tăng cân nhanh do giữ dịch</label>
+          <label><input type="checkbox" id="hyponatremia" /> Hạ natri máu</label>
+          <label><input type="checkbox" id="fluidRestriction" /> Đang được dặn hạn chế dịch</label>
+          <label><input type="checkbox" id="diuretics" /> Đang dùng lợi tiểu</label>
+          <label><input type="checkbox" id="child" /> Trẻ em</label>
+          <label><input type="checkbox" id="frailElderly" /> Người rất cao tuổi/yếu</label>
+          <label><input type="checkbox" id="acuteIllness" /> Sốt cao/nôn/tiêu chảy nhiều/mất nước cấp</label>
+        </fieldset>
 
-    <div style="margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--bg-info); border: 1px solid var(--brand-light);">
-      <h3 style="margin-bottom: 6px;">⏰ Nhắc nhở uống nước</h3>
-      <ul style="line-height: 1.8;">
-        <li>Một ly ngay sau khi thức dậy</li>
-        <li>Một ly trước mỗi bữa ăn 30 phút</li>
-        <li>Một ly trong/vào cuối buổi tập</li>
-        <li>Không uống quá nhiều một lúc — chia đều trong ngày</li>
-        <li>Màu nước tiểu vàng nhạt = đủ nước; vàng đậm = thiếu nước</li>
-      </ul>
-    </div>
-  </section>
+        <div id="input-error" class="input-error" role="alert" hidden></div>
+        <button class="btn-calc" type="button" id="calculate-btn">Ước tính nhu cầu nước</button>
+      </div>
 
-  <section class="section card">
-    <h2>📊 Bảng tham khảo nhanh</h2>
-    <table class="table" style="margin-top: 10px;">
-      <thead>
-        <tr><th>Cân nặng</th><th>Ít vận động</th><th>TB vận động</th><th>Nhiều vận động</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>40 kg</td><td>1.2 L</td><td>1.5 L</td><td>1.7 L</td></tr>
-        <tr><td>50 kg</td><td>1.5 L</td><td>1.8 L</td><td>2.1 L</td></tr>
-        <tr><td>60 kg</td><td>1.8 L</td><td>2.2 L</td><td>2.5 L</td></tr>
-        <tr><td>70 kg</td><td>2.1 L</td><td>2.5 L</td><td>2.9 L</td></tr>
-        <tr><td>80 kg</td><td>2.4 L</td><td>2.9 L</td><td>3.4 L</td></tr>
-        <tr><td>90 kg</td><td>2.7 L</td><td>3.2 L</td><td>3.8 L</td></tr>
-        <tr><td>100 kg</td><td>3.0 L</td><td>3.6 L</td><td>4.2 L</td></tr>
-      </tbody>
-    </table>
-    <p class="muted" style="margin-top: 8px;">⚠️ Công thức: 30-35 ml/kg/ngày (cơ bản) x hệ số vận động x hệ số thời tiết + thêm cho con bú.</p>
-  </section>
+      <section id="result" class="result-stack" aria-live="polite">
+        <div class="section-label"><span>2</span> Kết quả</div>
+        <div class="result-card" id="result-card">
+          <div id="mode-badge" class="mode-badge">Ước tính</div>
+          <div id="result-main" class="result-main"></div>
+          <div id="result-note" class="result-note"></div>
+        </div>
+
+        <div id="detail-card" class="info-card">
+          <div class="section-label compact"><span>3</span> Diễn giải</div>
+          <div class="detail-grid">
+            <div>
+              <span class="detail-label">Nước uống/đồ uống ước tính</span>
+              <strong id="drinking-water">—</strong>
+              <span class="detail-note">không tính như chỉ định bắt buộc</span>
+            </div>
+            <div>
+              <span class="detail-label">Quy đổi ly 200 ml</span>
+              <strong id="cups">—</strong>
+              <span class="detail-note">chỉ để dễ hình dung</span>
+            </div>
+          </div>
+          <p id="food-water-note" class="muted-note"></p>
+        </div>
+
+        <div id="warning-card" class="info-card warning-card" hidden>
+          <div class="section-label compact"><span>4</span> Lưu ý</div>
+          <div id="warnings"></div>
+        </div>
+
+        <div class="info-card">
+          <div class="section-label compact"><span>5</span> Nguồn và phạm vi</div>
+          <dl class="source-list">
+            <div>
+              <dt>Nguồn/logic</dt>
+              <dd id="source-label"></dd>
+            </div>
+            <div>
+              <dt>Áp dụng khi</dt>
+              <dd id="applies-to"></dd>
+            </div>
+            <div>
+              <dt>Không áp dụng khi</dt>
+              <dd id="not-for"></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <style>
+    .water-page { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+    .page-header { text-align: center; margin-bottom: 24px; }
+    .eyebrow { margin: 0 0 6px; color: var(--brand); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+    .page-header h1 { margin: 0 0 10px; font-size: 1.85rem; line-height: 1.18; }
+    .page-desc { max-width: 640px; margin: 0 auto; color: var(--ink-secondary); font-size: 0.95rem; line-height: 1.6; }
+    .safety-banner,
+    .form-card,
+    .result-card,
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .safety-banner { display: grid; gap: 6px; margin-bottom: 18px; background: var(--bg-soft); color: var(--ink-secondary); line-height: 1.6; font-size: 0.88rem; }
+    .safety-banner strong { color: var(--ink); }
+    .tool-shell { display: grid; gap: 18px; }
+    .form-card { border-width: 2px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+    .form-card:focus-within { border-color: var(--brand); }
+    .section-label { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-weight: 800; color: var(--ink); }
+    .section-label span { width: 28px; height: 28px; border-radius: 50%; background: var(--brand-light); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; flex-shrink: 0; }
+    .section-label.compact { margin-bottom: 12px; font-size: 0.92rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+    .form-row { display: grid; gap: 6px; font-size: 0.84rem; font-weight: 700; color: var(--ink-secondary); }
+    .input-wrap { display: flex; align-items: center; min-height: 46px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .input-wrap:focus-within { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(46,125,50,0.1); }
+    .input-wrap input,
+    .input-wrap select { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.94rem; font-weight: 600; }
+    .input-wrap select { cursor: pointer; }
+    .input-suffix { padding-right: 12px; color: var(--ink-tertiary); font-size: 0.8rem; }
+    .red-flags { margin: 18px 0 0; padding: 14px; border: 1px solid var(--line); border-radius: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
+    .red-flags legend { padding: 0 6px; color: var(--ink-secondary); font-size: 0.84rem; font-weight: 800; }
+    .red-flags label { display: flex; align-items: flex-start; gap: 8px; min-height: 36px; color: var(--ink-secondary); font-size: 0.88rem; line-height: 1.35; }
+    .red-flags input { width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0; accent-color: var(--brand); }
+    .input-error { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: #fff3e0; border: 1px solid #ffcc80; color: #8a4b00; font-size: 0.88rem; }
+    .btn-calc { width: 100%; min-height: 48px; margin-top: 18px; border: 0; border-radius: 10px; background: var(--brand); color: #fff; font: inherit; font-size: 1rem; font-weight: 800; cursor: pointer; }
+    .btn-calc:hover { background: var(--brand-dark); }
+    .result-stack { display: grid; gap: 10px; }
+    .result-card { text-align: center; border-top: 5px solid var(--brand); }
+    .result-card.caution { border-top-color: #f59e0b; }
+    .result-card.clinical { border-top-color: #dc2626; }
+    .mode-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: 0.78rem; font-weight: 800; }
+    .mode-badge.caution { background: #fff7ed; color: #b45309; }
+    .mode-badge.clinical { background: #fef2f2; color: #b91c1c; }
+    .result-main { margin-top: 12px; }
+    .result-main .amount { display: block; color: var(--brand); font-size: 2.5rem; font-weight: 900; line-height: 1.1; }
+    .result-main .clinical-title { display: block; color: #b91c1c; font-size: 1.18rem; font-weight: 900; line-height: 1.35; }
+    .result-main .subline { display: block; margin-top: 6px; color: var(--ink-secondary); font-size: 0.9rem; font-weight: 700; }
+    .result-note { max-width: 680px; margin: 12px auto 0; color: var(--ink-secondary); line-height: 1.6; font-size: 0.9rem; }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .detail-grid div { padding: 12px; border: 1px solid var(--line-light); border-radius: 10px; background: var(--bg-soft); text-align: center; }
+    .detail-label,
+    .detail-note { display: block; color: var(--ink-secondary); font-size: 0.78rem; line-height: 1.45; }
+    .detail-grid strong { display: block; margin: 4px 0; color: var(--brand); font-size: 1.3rem; }
+    .muted-note { margin: 12px 0 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.55; }
+    .warning-card { background: #fff7ed; border-color: #fed7aa; }
+    .warning-card #warnings { display: grid; gap: 7px; color: #8a4b00; font-size: 0.88rem; line-height: 1.5; }
+    .source-list { display: grid; gap: 10px; margin: 0; }
+    .source-list div { display: grid; gap: 3px; }
+    .source-list dt { color: var(--ink-secondary); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .source-list dd { margin: 0; color: var(--ink); font-size: 0.9rem; line-height: 1.55; }
+    @media (max-width: 720px) {
+      .water-page { padding: 22px 14px; }
+      .page-header h1 { font-size: 1.45rem; }
+      .form-grid,
+      .red-flags,
+      .detail-grid { grid-template-columns: 1fr; }
+      .result-main .amount { font-size: 2rem; }
+    }
+  </style>
+
+  <script>
+    import {
+      calculateWaterIntake,
+      WATER_WEIGHT_MIN_KG,
+      WATER_WEIGHT_MAX_KG,
+      WATER_GLOBAL_SAFETY_NOTE,
+      WATER_ACUTE_SAFETY_NOTE,
+    } from "../../lib/water-intake-calculator";
+
+    const redFlagIds = [
+      "heartFailure",
+      "chronicKidneyDisease",
+      "dialysis",
+      "cirrhosisAscites",
+      "edema",
+      "hyponatremia",
+      "fluidRestriction",
+      "diuretics",
+      "child",
+      "frailElderly",
+      "acuteIllness",
+    ];
+
+    const weightEl = document.getElementById("weight");
+    const activityEl = document.getElementById("activity");
+    const heatSweatEl = document.getElementById("heat-sweat");
+    const pregnancyLactationEl = document.getElementById("pregnancy-lactation");
+    const inputError = document.getElementById("input-error");
+    const resultEl = document.getElementById("result");
+    const resultCard = document.getElementById("result-card");
+    const modeBadge = document.getElementById("mode-badge");
+    const resultMain = document.getElementById("result-main");
+    const resultNote = document.getElementById("result-note");
+    const detailCard = document.getElementById("detail-card");
+    const drinkingWater = document.getElementById("drinking-water");
+    const cups = document.getElementById("cups");
+    const foodWaterNote = document.getElementById("food-water-note");
+    const warningCard = document.getElementById("warning-card");
+    const warningsEl = document.getElementById("warnings");
+    const sourceLabel = document.getElementById("source-label");
+    const appliesTo = document.getElementById("applies-to");
+    const notFor = document.getElementById("not-for");
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function formatLiters(value) {
+      if (value == null || !Number.isFinite(value)) return "-";
+      return value.toFixed(2).replace(/0$/, "").replace(/\.0$/, "");
+    }
+
+    function rangeText(min, max, unit) {
+      if (min == null || max == null) return "—";
+      return `${formatLiters(min)}–${formatLiters(max)} ${unit}`;
+    }
+
+    function modeLabel(mode) {
+      if (mode === "auto") return "Tự động tính";
+      if (mode === "caution") return "Tham khảo có cảnh báo";
+      return "Cần cá thể hóa lâm sàng";
+    }
+
+    function setModeClass(mode) {
+      resultCard.className = "result-card";
+      modeBadge.className = "mode-badge";
+      if (mode === "caution") {
+        resultCard.classList.add("caution");
+        modeBadge.classList.add("caution");
+      }
+      if (mode === "clinical_no_auto") {
+        resultCard.classList.add("clinical");
+        modeBadge.classList.add("clinical");
+      }
+    }
+
+    function collectRedFlags() {
+      return redFlagIds.reduce((acc, id) => {
+        acc[id] = Boolean(document.getElementById(id)?.checked);
+        return acc;
+      }, {});
+    }
+
+    function renderWarnings(warnings) {
+      if (!warnings.length) {
+        warningCard.hidden = true;
+        warningsEl.innerHTML = "";
+        return;
+      }
+      warningCard.hidden = false;
+      warningsEl.innerHTML = warnings.map((warning) => `<div>${escapeHtml(warning)}</div>`).join("");
+    }
+
+    function calculate() {
+      const result = calculateWaterIntake({
+        weightKg: Number(weightEl.value),
+        activity: activityEl.value,
+        heatSweat: heatSweatEl.value,
+        pregnancyLactation: pregnancyLactationEl.value,
+        redFlags: collectRedFlags(),
+      });
+
+      inputError.hidden = true;
+      inputError.textContent = "";
+
+      if (!result.ok) {
+        inputError.textContent = result.error || `Vui lòng nhập cân nặng từ ${WATER_WEIGHT_MIN_KG} đến ${WATER_WEIGHT_MAX_KG} kg.`;
+        inputError.hidden = false;
+        resultEl.style.display = "none";
+        return;
+      }
+
+      setModeClass(result.mode);
+      modeBadge.textContent = modeLabel(result.mode);
+      sourceLabel.textContent = result.sourceLabel;
+      appliesTo.textContent = result.appliesTo;
+      notFor.textContent = `${result.notFor} ${WATER_GLOBAL_SAFETY_NOTE} ${WATER_ACUTE_SAFETY_NOTE}`;
+      foodWaterNote.textContent = result.foodWaterNote;
+      renderWarnings(result.warnings);
+
+      if (!result.isPersonalTarget) {
+        detailCard.hidden = true;
+        resultMain.innerHTML = '<span class="clinical-title">Không tự động tính mức nước cá nhân</span><span class="subline">Hãy theo chỉ định bác sĩ hoặc đơn vị điều trị.</span>';
+        resultNote.textContent = result.safetyMessage;
+      } else {
+        detailCard.hidden = false;
+        resultMain.innerHTML = `<span class="amount">${rangeText(result.totalWaterMinLiters, result.totalWaterMaxLiters, "L/ngày")}</span><span class="subline">total water ước tính theo ${Number(weightEl.value)} kg</span>`;
+        resultNote.textContent = result.safetyMessage;
+        drinkingWater.textContent = rangeText(result.estimatedDrinkingWaterMinLiters, result.estimatedDrinkingWaterMaxLiters, "L/ngày");
+        cups.textContent = `${result.cups200mlMin}–${result.cups200mlMax} ly`;
+      }
+
+      resultEl.style.display = "grid";
+    }
+
+    document.getElementById("calculate-btn")?.addEventListener("click", calculate);
+    [weightEl, activityEl, heatSweatEl, pregnancyLactationEl].forEach((el) => {
+      el?.addEventListener("input", calculate);
+      el?.addEventListener("change", calculate);
+    });
+    redFlagIds.forEach((id) => document.getElementById(id)?.addEventListener("change", calculate));
+
+    calculate();
+  </script>
 </BaseLayout>
-
-<style>
-  label { display: block; font-weight: 600; margin-bottom: 4px; }
-  input, select {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    font-size: 1rem;
-    background: white;
-    box-sizing: border-box;
-  }
-  .btn {
-    padding: 12px 28px;
-    background: var(--brand);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .btn:hover { background: var(--brand-dark); }
-  .stat { margin-bottom: 8px; }
-  .stat strong { font-size: 1.8rem; display: block; }
-</style>
-
-<script>
-  function calcWater() {
-    
-
-    const weight = parseFloat(document.getElementById("weight").value);
-    const activity = parseFloat(document.getElementById("activity").value);
-    const weather = parseFloat(document.getElementById("weather").value);
-    const bf = parseFloat(document.getElementById("breastfeeding").value);
-
-    if (!weight || weight < 10) {
-      alert("Vui lòng nhập cân nặng hợp lệ.");
-      return;
-    }
-
-    const base = weight * 0.033; // 33 ml/kg
-    const adjusted = base * activity * weather + bf;
-
-    document.getElementById("base-water").textContent = base.toFixed(1);
-    document.getElementById("adjusted-water").textContent = adjusted.toFixed(1);
-    document.getElementById("cups").textContent = adjusted > 0 ? Math.round(adjusted / 0.2) + " ly" : "—";
-    document.getElementById("from-food").textContent = (adjusted * 0.2).toFixed(1);
-
-    document.getElementById("result").style.display = "block";
-    window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
-  }
-
-  // Auto-calculate on every change
-  ["weight","activity","weather","breastfeeding"].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) {
-      el.addEventListener("change", calcWater);
-      el.addEventListener("input", calcWater);
-    }
-  });
-
-  // Calc on load
-  window.addEventListener("DOMContentLoaded", calcWater);
-</script>
