@@ -8,6 +8,7 @@
     "prebuild": "C:\\Python313\\python.exe scripts/export_vietnam_json.py",
     "build": "npm run prebuild && astro build",
     "qa": "node scripts/qa.mjs",
+    "qa:food-data": "node scripts/check-food-data.mjs",
     "preview": "astro preview --host 0.0.0.0"
   },
   "dependencies": {

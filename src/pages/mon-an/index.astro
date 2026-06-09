@@ -220,8 +220,8 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   }
   .filter-row select,
   .filter-row input {
-    min-height: 38px;
-    padding: 0 10px;
+    min-height: 44px;
+    padding: 0 12px;
   }
   .numeric-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .recipe-card {
@@ -251,5 +251,6 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   @media (max-width: 600px) {
     .recipe-grid { grid-template-columns: 1fr; gap: 10px; }
     .recipe-card { padding: 12px; }
+    #recipe-reset { min-height: 44px; }
   }
 </style>

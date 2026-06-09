@@ -119,8 +119,8 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   }
   .filter-row select,
   .filter-row input {
-    min-height: 38px;
-    padding: 0 10px;
+    min-height: 44px;
+    padding: 0 12px;
   }
   .numeric-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
@@ -134,7 +134,7 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   @media (max-width: 600px) {
     .food-grid { grid-template-columns: 1fr; gap: 10px; }
     .food-card { padding: 12px; }
-    .filter-btn { padding: 6px 12px; font-size: 0.8rem; min-height: 36px; }
+    .filter-btn { padding: 8px 12px; font-size: 0.8rem; min-height: 44px; }
   }
 </style>
 

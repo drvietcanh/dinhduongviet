@@ -447,9 +447,9 @@ const query = Astro.url.searchParams.get("q") ?? "";
 .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; pointer-events: none; }
 .search-clear {
   position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--brand-light);
+  width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--brand-light);
   cursor: pointer; font-size: 0.85rem; display: none; color: var(--ink-tertiary);
-  line-height: 28px; text-align: center; transition: all 0.1s;
+  line-height: 36px; text-align: center; transition: all 0.1s;
 }
 .search-clear:hover { background: var(--line); color: var(--ink); }
 
@@ -470,7 +470,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
 .sug-tag { margin-left: auto; font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; background: var(--brand-light); color: var(--ink-tertiary); flex-shrink: 0; }
 
 .filter-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
-.chip { padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--brand-light); color: var(--ink-secondary); font-size: 0.82rem; cursor: pointer; transition: all 0.1s; font-weight: 500; }
+.chip { padding: 8px 14px; min-height: 40px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--brand-light); color: var(--ink-secondary); font-size: 0.82rem; cursor: pointer; transition: all 0.1s; font-weight: 500; }
 .chip:hover { border-color: var(--brand); color: var(--brand); }
 .chip.active { background: var(--brand); border-color: var(--brand); color: white; }
 .result-count { text-align: center; color: var(--ink-tertiary); font-size: 0.85rem; margin-top: 10px; }
@@ -512,8 +512,8 @@ const query = Astro.url.searchParams.get("q") ?? "";
 @media (max-width: 600px) {
   .result-item { gap: 10px; }
   .result-emoji { font-size: 1.2rem; width: 32px; }
-  .filter-row { gap: 4px; }
-  .chip { font-size: 0.78rem; padding: 5px 10px; }
+  .filter-row { gap: 6px; }
+  .chip { font-size: 0.78rem; padding: 8px 12px; min-height: 44px; }
 }
 
   @media (max-width: 600px) {
@@ -521,7 +521,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
     .result-card { padding: 12px; }
     .result-card h3 { font-size: 0.9rem; }
     .result-card p { font-size: 0.82rem; }
-    .chip { padding: 6px 12px; font-size: 0.78rem; margin: 3px; }
+    .chip { padding: 8px 12px; font-size: 0.78rem; margin: 3px; min-height: 44px; }
     .search-box { padding: 8px 12px; font-size: 0.9rem; }
     .search-wrapper { padding: 0 10px; }
   }

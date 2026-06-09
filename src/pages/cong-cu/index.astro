@@ -3,46 +3,112 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const siteTitle = "Công cụ dinh dưỡng | Dinh Dưỡng Việt";
 const siteDesc = "Công cụ dinh dưỡng đơn giản cho người Việt: tính BMI, nước uống, đường, muối, đĩa ăn lành mạnh.";
 
-const featured = [
-  { icon: "🔥", name: "Calo tiêu thụ khi tập", href: "/cong-cu/tinh-calo-tieu-thu", desc: "Tính calo đốt cháy khi đi bộ, chạy, bơi, xe đạp, tập gym. 26 môn tập, kèm calo tương đương thực phẩm." },
-  { icon: "📏", name: "Tỷ lệ mỡ cơ thể & WHR", href: "/cong-cu/ti-le-mo-co-the", desc: "Ước tính % mỡ cơ thể (US Navy), chỉ số eo/mông (WHR), BMI. Có mức độ mỡ nội tạng." },
-  { icon: "🥩", name: "Tính nhu cầu đạm", href: "/cong-cu/tinh-nhu-cau-dam", desc: "Lượng đạm theo cân nặng & bệnh lý: suy thận, gout, tăng cơ, giảm cân, ăn chay. 13 nhóm đối tượng." },
-  { icon: "💊", name: "Tương tác thuốc – thực phẩm", href: "/cong-cu/tuong-tac-thuoc-thuc-pham", desc: "Tra thực phẩm cần tránh khi dùng 15 loại thuốc thường gặp: metformin, warfarin, statin, lợi tiểu..." },
-  { icon: "🩸", name: "Theo dõi đường huyết", href: "/cong-cu/theo-doi-duong-huyet", desc: "Ghi nhật ký đường huyết đói/sau ăn, xem biểu đồ 7 ngày, đánh giá kiểm soát tiểu đường." },
-  { icon: "🍽️", name: "Đĩa ăn lành mạnh", href: "/cong-cu/dia-an-lanh-manh", desc: "Chia đĩa theo bệnh: 1/2 rau, 1/4 tinh bột, 1/4 đạm. Có chọn bệnh để tuỳ chỉnh." },
-  { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Tính nhu cầu năng lượng, đạm, canxi, sắt, kẽm cho trẻ 0–14 tuổi. Kèm hướng dẫn ăn dặm." },
-  { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhu cầu calo, sắt, canxi, DHA, folate cho mẹ bầu. Tuỳ chỉnh theo tam cá nguyệt, BMI trước mang thai." },
-  { icon: "🌾", name: "Chỉ số GI thực phẩm Việt", href: "/cong-cu/chi-so-gi", desc: "Tra GI của cơm, bún, phở, bánh mì, trái cây Việt. Phân loại thấp/vừa/cao, kèm gợi ý thay thế." },
-  { icon: "⚖️", name: "Tính GL từ bữa ăn (mới)", href: "/cong-cu/tinh-gl-bua-an", desc: "Ghép nhiều thực phẩm tính tổng GL bữa ăn. Biết ngay bữa này có an toàn cho đường huyết." },
-  { icon: "🔢", name: "Tính carb trong bữa ăn", href: "/cong-cu/tinh-carb", desc: "Tính nhanh lượng carb thực tế trong cơm, bún, phở, trái cây. Hữu ích cho người tiểu đường type 1 & 2." },
-  { icon: "⚖️", name: "Tính BMI & Vòng eo", href: "/cong-cu/bmi", desc: "BMI ngưỡng châu Á. Kết hợp vòng eo & WHR phát hiện béo bụng, mỡ nội tạng." },
-  { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Tính nước theo cân nặng, vận động, thời tiết. Cảnh báo mất nước khi nóng." },
-  { icon: "🧋", name: "Đường trong đồ uống", href: "/cong-cu/duong-do-uong", desc: "1 ly trà sữa, nước ngọt, cà phê sữa, nước tăng lực — bao nhiêu đường? Khuyến nghị WHO." },
-  { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Tra nhanh lượng muối ẩn trong phở, bún, bánh mì, nước chấm. Biết kiêng sớm." },
-  { icon: "✅", name: "Checklist ăn uống hôm nay", href: "/cong-cu/checklist-an-uong", desc: "7 câu hỏi nhanh: rau, đạm, nước, đường, muối — bạn đã đủ chưa?" },
-  { icon: "🧮", name: "Nhật ký ăn uống", href: "/cong-cu/nhat-ky", desc: "Ghi chép & phân tích dinh dưỡng bữa ăn hàng ngày, so sánh với mục tiêu." },
-  { icon: "📋", name: "Kế hoạch bữa ăn", href: "/cong-cu/ke-hoach-bua-an", desc: "Cá nhân hóa thực đơn theo bệnh lý: tiểu đường, thận, gout, tăng huyết áp." },
-  { icon: "🎯", name: "Mục tiêu cân nặng", href: "/cong-cu/muc-tieu-can-nang", desc: "Tính BMR, TDEE, lộ trình giảm/tăng cân 1-6 tháng. Cơ bản cho mọi kế hoạch." },
-  { icon: "📊", name: "Theo dõi sức khỏe", href: "/cong-cu/theo-doi-suc-khoe", desc: "Tổng hợp huyết áp, đường huyết, mỡ máu, cân nặng. Cảnh báo nguy cơ." },
-  { icon: "🔬", name: "Khẩu phần Clinical", href: "/cong-cu/khau-phan-viet-clinical", desc: "Bảng điểm toàn diện bữa ăn: 18 chỉ số dinh dưỡng đối chiếu khuyến nghị." },
+const toolGroups = [
+  {
+    title: "Chỉ số cơ thể",
+    items: [
+      { icon: "⚖️", name: "Tính BMI & Vòng eo", href: "/cong-cu/bmi", desc: "BMI ngưỡng châu Á, vòng eo và nguy cơ béo bụng." },
+      { icon: "📏", name: "Tỷ lệ mỡ cơ thể & WHR", href: "/cong-cu/ti-le-mo-co-the", desc: "Ước tính % mỡ cơ thể, eo/mông và phân tầng nguy cơ." },
+      { icon: "🎯", name: "Mục tiêu cân nặng", href: "/cong-cu/muc-tieu-can-nang", desc: "Tính BMR, TDEE và lộ trình tăng/giảm cân." },
+      { icon: "📊", name: "Theo dõi sức khỏe", href: "/cong-cu/theo-doi-suc-khoe", desc: "Tổng hợp cân nặng, huyết áp, đường huyết và mỡ máu." },
+      { icon: "🏆", name: "Bảng xếp hạng thực phẩm", href: "/cong-cu/bang-xep-hang", desc: "Xem nhóm thực phẩm theo calo, đạm, xơ, natri." },
+    ],
+  },
+  {
+    title: "Năng lượng và khẩu phần",
+    items: [
+      { icon: "🔥", name: "Calo tiêu thụ khi tập", href: "/cong-cu/tinh-calo-tieu-thu", desc: "Ước tính calo đốt cháy theo hoạt động và cân nặng." },
+      { icon: "🥩", name: "Tính nhu cầu đạm", href: "/cong-cu/tinh-nhu-cau-dam", desc: "Lượng đạm theo cân nặng, bệnh lý và mục tiêu." },
+      { icon: "🥣", name: "Khẩu phần đơn giản", href: "/cong-cu/khau-phan-don-gian", desc: "Quy đổi khẩu phần bằng đơn vị quen thuộc." },
+      { icon: "🔬", name: "Khẩu phần Việt Clinical", href: "/cong-cu/khau-phan-viet-clinical", desc: "Đối chiếu bữa ăn với nhiều chỉ số dinh dưỡng." },
+      { icon: "🔁", name: "Đổi đơn vị", href: "/cong-cu/doi-don-vi", desc: "Đổi gram, muỗng, khẩu phần và đơn vị bếp." },
+    ],
+  },
+  {
+    title: "Carb, đường huyết, GI/GL",
+    items: [
+      { icon: "🌾", name: "Chỉ số GI thực phẩm Việt", href: "/cong-cu/chi-so-gi", desc: "Tra GI của cơm, bún, phở, bánh mì và trái cây." },
+      { icon: "⚖️", name: "Tính GL từ bữa ăn", href: "/cong-cu/tinh-gl-bua-an", desc: "Ghép nhiều thực phẩm để tính tải đường huyết." },
+      { icon: "🔢", name: "Tính carb trong bữa ăn", href: "/cong-cu/tinh-carb", desc: "Tính carb thực tế trong món và khẩu phần Việt." },
+      { icon: "🧋", name: "Đường trong đồ uống", href: "/cong-cu/duong-do-uong", desc: "Ước tính đường trong trà sữa, nước ngọt, cà phê sữa." },
+      { icon: "🩸", name: "Theo dõi đường huyết", href: "/cong-cu/theo-doi-duong-huyet", desc: "Ghi nhật ký đường huyết đói/sau ăn và xem xu hướng." },
+    ],
+  },
+  {
+    title: "Muối, nước, bệnh mạn",
+    items: [
+      { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Tính nước theo cân nặng, vận động và thời tiết." },
+      { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Ước tính muối ẩn trong món Việt và nước chấm." },
+      { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhu cầu calo, sắt, canxi, DHA, folate cho mẹ bầu." },
+      { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Nhu cầu năng lượng và vi chất theo tuổi." },
+      { icon: "💊", name: "Tương tác thuốc - thực phẩm", href: "/cong-cu/tuong-tac-thuoc-thuc-pham", desc: "Tra thực phẩm cần tránh khi dùng thuốc thường gặp." },
+      { icon: "💊", name: "Tương tác thuốc", href: "/cong-cu/tuong-tac-thuoc", desc: "Tra cứu nhanh tương tác thuốc trong bối cảnh dinh dưỡng." },
+    ],
+  },
+  {
+    title: "Thực đơn, đi chợ, nhật ký",
+    items: [
+      { icon: "✅", name: "Checklist ăn uống hôm nay", href: "/cong-cu/checklist-an-uong", desc: "Kiểm nhanh rau, đạm, nước, đường và muối." },
+      { icon: "🍽️", name: "Đĩa ăn lành mạnh", href: "/cong-cu/dia-an-lanh-manh", desc: "Chia đĩa theo bệnh và mục tiêu ăn uống." },
+      { icon: "📋", name: "Kế hoạch bữa ăn", href: "/cong-cu/ke-hoach-bua-an", desc: "Gợi ý bữa ăn theo bệnh lý và mục tiêu." },
+      { icon: "🗓️", name: "Lập thực đơn tuần", href: "/cong-cu/lap-thuc-don-tuan", desc: "Sắp xếp thực đơn nhiều ngày từ món Việt." },
+      { icon: "🛒", name: "Danh sách đi chợ", href: "/cong-cu/danh-sach-di-cho", desc: "Tạo danh sách mua nguyên liệu theo bữa ăn." },
+      { icon: "🧮", name: "Nhật ký ăn uống", href: "/cong-cu/nhat-ky", desc: "Ghi chép và phân tích dinh dưỡng hằng ngày." },
+      { icon: "🍳", name: "Tìm món từ nguyên liệu", href: "/cong-cu/tim-mon-tu-nguyen-lieu", desc: "Gợi ý món ăn từ nguyên liệu đang có." },
+    ],
+  },
+  {
+    title: "Tra cứu và so sánh thực phẩm",
+    items: [
+      { icon: "🇻🇳", name: "Tra cứu thực phẩm Việt", href: "/cong-cu/tra-cuu-thuc-pham-viet", desc: "Tra dữ liệu thực phẩm Việt Nam và vi chất." },
+      { icon: "🔎", name: "Lọc thực phẩm", href: "/cong-cu/loc-thuc-pham", desc: "Lọc theo năng lượng, đạm, natri, kali, tag bệnh." },
+      { icon: "⚖️", name: "So sánh thực phẩm", href: "/cong-cu/so-sanh-thuc-pham", desc: "Đặt hai thực phẩm cạnh nhau để so calo và chất chính." },
+      { icon: "🍱", name: "So sánh bữa ăn", href: "/cong-cu/so-sanh-bua-an", desc: "So nhiều lựa chọn bữa ăn theo năng lượng và macro." },
+      { icon: "📦", name: "Thêm thực phẩm đóng gói", href: "/cong-cu/them-thuc-pham-dong-goi", desc: "Nhập nhãn dinh dưỡng từ thực phẩm đóng gói." },
+    ],
+  },
+  {
+    title: "Công cụ đang hoàn thiện",
+    draft: true,
+    items: [
+      { icon: "🧪", name: "Đánh giá bữa ăn", href: "/cong-cu/danh-gia-bua-an", desc: "Bản nháp, đang chuyển sang công cụ so sánh bữa ăn.", status: "Đang hoàn thiện" },
+      { icon: "🎯", name: "Mục tiêu dinh dưỡng", href: "/cong-cu/muc-tieu-dinh-duong", desc: "Bản nháp, đang hợp nhất với kế hoạch bữa ăn.", status: "Đang hoàn thiện" },
+      { icon: "⚖️", name: "So sánh", href: "/cong-cu/so-sanh", desc: "Bản nháp, đang chuyển sang so sánh thực phẩm.", status: "Bản nháp" },
+      { icon: "🥗", name: "Tính macro", href: "/cong-cu/tinh-macro", desc: "Bản nháp, chưa trình bày như công cụ hoàn chỉnh.", status: "Bản nháp" },
+      { icon: "🔥", name: "Tính năng lượng", href: "/cong-cu/tinh-nang-luong", desc: "Bản nháp, chưa trình bày như công cụ hoàn chỉnh.", status: "Bản nháp" },
+    ],
+  },
 ];
+const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0);
 ---
 
 <BaseLayout title={siteTitle} description={siteDesc}>
   <style is:global>
-    .cctools { max-width: 800px; margin: 0 auto; padding: 24px 0; }
+    .cctools { max-width: 980px; margin: 0 auto; padding: 24px 0; }
     .cctools h1 { font-size: 1.6rem; margin-bottom: 6px; }
-    .cctools .lead { color: var(--ink-secondary); font-size: 0.95rem; margin-bottom: 28px; }
-    .cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .cc-card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .cctools .lead { color: var(--ink-secondary); font-size: 0.95rem; margin-bottom: 18px; }
+    .cc-summary { color: var(--ink-secondary); font-size: 0.88rem; margin-bottom: 24px; }
+    .cc-group { margin-top: 28px; }
+    .cc-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .cc-group-head h2 { margin: 0; font-size: 1.15rem; }
+    .cc-count { color: var(--ink-tertiary); font-size: 0.82rem; white-space: nowrap; }
+    .cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cc-card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; text-decoration: none; color: inherit; transition: all 0.2s; }
     .cc-card:hover { border-color: var(--brand); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
-    .cc-icon { font-size: 2rem; margin-bottom: 8px; }
-    .cc-card h3 { margin: 0 0 4px; font-size: 1rem; font-weight: 700; }
+    .cc-card.is-draft { border-style: dashed; background: var(--bg-soft); }
+    .cc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .cc-icon { font-size: 1.35rem; line-height: 1; }
+    .cc-card h3 { margin: 0; font-size: 1rem; font-weight: 700; flex: 1; }
     .cc-card h3 span { color: var(--brand); }
     .cc-card p { margin: 0; font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.5; }
-    .cc-note { margin-top: 24px; padding: 14px 16px; background: var(--brand-dim); border-radius: 10px; font-size: 0.85rem; color: var(--ink-secondary); }
+    .cc-status { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 9px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .cc-note { margin-top: 24px; padding: 14px 16px; background: var(--brand-light); border-radius: 10px; font-size: 0.85rem; color: var(--ink-secondary); }
     .cc-note strong { color: var(--ink); }
-    @media(max-width:600px) { .cc-grid { grid-template-columns: 1fr; } }
+    @media(max-width:700px) {
+      .cc-grid { grid-template-columns: 1fr; }
+      .cc-card { min-height: 44px; padding: 16px; }
+      .cc-group-head { align-items: flex-start; flex-direction: column; gap: 2px; }
+    }
     @media (max-width: 600px) {
     .tool-grid { grid-template-columns: 1fr; gap: 10px; }
     .tool-card { padding: 14px; }
@@ -55,19 +121,31 @@ const featured = [
   <div class="cctools">
     <h1>🛠️ Công cụ</h1>
     <p class="lead">{siteDesc}</p>
+    <p class="cc-summary">Hiện có {totalTools} công cụ, chia theo nhu cầu sử dụng. Các mục bản nháp được tách riêng để không bị hiểu nhầm là công cụ hoàn chỉnh.</p>
 
-    <div class="cc-grid">
-      {featured.map(t => (
-        <a href={t.href} class="cc-card">
-          <div class="cc-icon">{t.icon}</div>
-          <h3>{t.name} <span>→</span></h3>
-          <p>{t.desc}</p>
-        </a>
+    {toolGroups.map(group => (
+      <section class="cc-group" aria-labelledby={`group-${group.title.replace(/\s+/g, "-").toLowerCase()}`}>
+        <div class="cc-group-head">
+          <h2 id={`group-${group.title.replace(/\s+/g, "-").toLowerCase()}`}>{group.title}</h2>
+          <span class="cc-count">{group.items.length} công cụ</span>
+        </div>
+        <div class="cc-grid">
+          {group.items.map(t => (
+            <a href={t.href} class:list={["cc-card", group.draft && "is-draft"]}>
+              <div class="cc-top">
+                <span class="cc-icon">{t.icon}</span>
+                <h3>{t.name} <span>→</span></h3>
+                {t.status && <span class="cc-status">{t.status}</span>}
+              </div>
+              <p>{t.desc}</p>
+            </a>
+          ))}
+        </div>
+      </section>
       ))}
-    </div>
 
     <div class="cc-note">
-      <strong>📌 Còn nhiều công cụ hơn?</strong> Ngoài 15 cái trên, web còn có tra thực phẩm, món ăn, lập thực đơn tuần, danh sách đi chợ, so sánh món ăn… Xem thêm ở thanh menu bên trên. Tất cả đều miễn phí, không cần đăng ký.
+      <strong>📌 Gợi ý:</strong> Nếu cần bắt đầu nhanh, hãy dùng BMI, tính carb, theo dõi đường huyết, tra cứu thực phẩm Việt và kế hoạch bữa ăn trước.
     </div>
   </div>
 </BaseLayout>
