@@ -189,7 +189,8 @@ const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.fi
 const sourceNotes = [
   "public/api/foods-slim.json is consumed by scripts/build-search-index.py.",
   "scripts/build-foods-slim.mjs reads dist/api-foods.json and writes public/api/foods-slim.json.",
-  "scripts/build-foods-full.py reads dist/api/foods-slim.json and writes public/api/foods-full.json.",
+  "scripts/build-foods-full.py reads dist/api-foods.json and writes public/api/foods-full.json.",
+  "scripts/build-data-all.mjs runs an Astro build before food API generation, then runs a final Astro build to copy regenerated public API files into dist.",
   "src/pages/api-foods.json.ts exports full food data from src/data/nutrition.ts at build time.",
   "No nutrition values or source data were changed by this QA script.",
 ];
