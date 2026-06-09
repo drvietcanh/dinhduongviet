@@ -12,7 +12,7 @@ export const extraRecipes4: Recipe[] = [
     items: [
       { foodId: "bot-gao", amountG: 60, note: "Bột gạo pha loãng" },
       { foodId: "trung-cun", amountG: 20, note: "Trứng cút" },
-      { foodId: "tom-sudo", amountG: 20, note: "Tôm băm" },
+      { foodId: "tom-su", amountG: 20, note: "Tôm băm" },
       { foodId: "hanh-la", amountG: 5, note: "Mỡ hành" },
       { foodId: "dau-an", amountG: 5, note: "Dầu" }
     ]
@@ -40,7 +40,7 @@ export const extraRecipes4: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
     items: [
       { foodId: "mien-dong", amountG: 100, note: "Hủ tiếu (proxy mì)" },
-      { foodId: "tom-sudo", amountG: 25, note: "Tôm" },
+      { foodId: "tom-su", amountG: 25, note: "Tôm" },
       { foodId: "thit-heo-quay", amountG: 30, note: "Thịt heo" },
       { foodId: "gia-do", amountG: 40, note: "Giá trụng" },
       { foodId: "hanh-tim", amountG: 10, note: "Hành phi" },
@@ -299,7 +299,7 @@ export const extraRecipes4: Recipe[] = [
     portionNote: "Cà phê phin pha sữa đặc, uống đá.",
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
     items: [
-      { foodId: "ca-pha", amountG: 10, note: "Cà phê pha (proxy)" },
+      { foodId: "ca-phe-den", amountG: 10, note: "Cà phê pha (proxy)" },
       { foodId: "sua-dac", amountG: 20, note: "Sữa đặc" }
     ]
   },
@@ -420,7 +420,7 @@ export const extraRecipes4: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
     items: [
       { foodId: "com-trang", amountG: 200, note: "Cơm nguội" },
-      { foodId: "tom-sudo", amountG: 30, note: "Tôm" },
+      { foodId: "tom-su", amountG: 30, note: "Tôm" },
       { foodId: "thit-heo-xay", amountG: 30, note: "Thịt băm" },
       { foodId: "trung-ga", amountG: 25, note: "Trứng" },
       { foodId: "ca-rot", amountG: 20, note: "Cà rốt" },

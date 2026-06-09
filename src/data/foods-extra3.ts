@@ -91,7 +91,7 @@ export const extraFoods3: Food[] = [
 
   // ── ĐỒ UỐNG ──
   {
-    id: "ca-pha-sua-da", slug: "ca-pha-sua-da", name: "Cà phê sữa đá", aliases: ["cà phê sữa", "coffee with condensed milk"],
+    id: "ca-phe-sua-da-100ml", slug: "ca-phe-sua-da-100ml", name: "Cà phê sữa đá", aliases: ["cà phê sữa", "coffee with condensed milk", "ca phe sua da", "ca-pha-sua-da"],
     category: "Đồ uống", state: "processed", basis: "100ml pha", edibleNote: "Cà phê phin + sữa đặc + đá pha loãng.",
     nutrients: { energyKcal: 52, proteinG: 1.5, carbG: 8.5, fatG: 1.5, sugarG: 8.5, calciumMg: 40, sodiumMg: 25, potassiumMg: 70 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP; 1 ly ~200ml đá."

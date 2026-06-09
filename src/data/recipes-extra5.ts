@@ -332,7 +332,7 @@ export const extraRecipes5: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Cà phê phin pha sữa đặc và đá.",
     items: [
-      { foodId: "ca-pha", amountG: 20, note: "Cà phê đen" },
+      { foodId: "ca-phe-den", amountG: 20, note: "Cà phê đen" },
       { foodId: "sua-dac", amountG: 30, note: "Sữa đặc" },
       { foodId: "dua", amountG: 80, note: "Đá viên" }
     ]

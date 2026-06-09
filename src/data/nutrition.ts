@@ -728,10 +728,10 @@ export const foods: Food[] = [
     note: "Ước tính MVP."
   },
   {
-    id: "ca-pha",
-    slug: "ca-pha",
+    id: "ca-phe-den",
+    slug: "ca-phe-den",
     name: "Cà phê đen",
-    aliases: ["cà phê", "coffee black", "ca phe den"],
+    aliases: ["cà phê", "coffee black", "ca phe den", "ca pha"],
     category: "Đồ uống",
     state: "processed",
     basis: "100ml",
@@ -1775,7 +1775,28 @@ recipes.push(
   }
 );
 
-foods.push(...extraFoods1, ...extraFoods2, ...extraFoods3, ...extraFoods4, ...extraFoods5, ...extraFoods6, ...extraFoods7, ...extraFoods8, ...bulkFoods);
+function uniqueFoodAdditionsBySlug(additions: Food[]) {
+  const seen = new Set(foods.map((food) => food.slug));
+  return additions.filter((food) => {
+    if (seen.has(food.slug)) return false;
+    seen.add(food.slug);
+    return true;
+  });
+}
+
+foods.push(
+  ...uniqueFoodAdditionsBySlug([
+    ...extraFoods1,
+    ...extraFoods2,
+    ...extraFoods3,
+    ...extraFoods4,
+    ...extraFoods5,
+    ...extraFoods6,
+    ...extraFoods7,
+    ...extraFoods8,
+    ...bulkFoods
+  ])
+);
 recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipes4, ...extraRecipes5, ...extraRecipes6, ...bulkRecipes);
 
 const leafyVegetablePattern = /^(Rau|Cải|Bắp cải|Súp lơ|Mồng tơi|Mướp|Đậu que|Đậu bắp|Măng tây|Ngò|Ớt chuông|Cà tím|Bí xanh|Hẹ)/i;
@@ -1820,4 +1841,3 @@ export const nutrientLabels: Record<keyof NutrientValues, { label: string; unit:
 export function computeGlycemicLoad(gi: number, carbG: number): number {
   return (gi * carbG) / 100;
 }
-

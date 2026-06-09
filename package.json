@@ -9,6 +9,7 @@
     "build": "npm run prebuild && astro build",
     "qa": "node scripts/qa.mjs",
     "qa:food-data": "node scripts/check-food-data.mjs",
+    "data:foods-slim": "node scripts/build-foods-slim.mjs",
     "preview": "astro preview --host 0.0.0.0"
   },
   "dependencies": {

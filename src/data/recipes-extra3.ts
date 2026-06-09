@@ -263,7 +263,7 @@ export const extraRecipes3: Recipe[] = [
     note: "Ước tính MVP; bánh tráng proxy vỏ.",
     items: [
       { foodId: "banh-trang", amountG: 15, note: "Bánh tráng cuộn" },
-      { foodId: "tom-sudo", amountG: 25, note: "Tôm băm" },
+      { foodId: "tom-su", amountG: 25, note: "Tôm băm" },
       { foodId: "muc-tuoi", amountG: 25, note: "Mực băm" },
       { foodId: "thit-heo-xay", amountG: 30, note: "Thịt heo xay" },
       { foodId: "gia-do", amountG: 30, note: "Giá đỗ" },
@@ -281,7 +281,7 @@ export const extraRecipes3: Recipe[] = [
     items: [
       { foodId: "banh-trang", amountG: 15, note: "Vỏ nem" },
       { foodId: "ca-vien", amountG: 30, note: "Cá thác lác giã" },
-      { foodId: "tom-sudo", amountG: 20, note: "Tôm" },
+      { foodId: "tom-su", amountG: 20, note: "Tôm" },
       { foodId: "thit-heo-xay", amountG: 30, note: "Thịt heo" },
       { foodId: "nam-mo", amountG: 20, note: "Nấm mèo" },
       { foodId: "mien-dong", amountG: 5, note: "Miến cắt ngắn" },
@@ -424,7 +424,7 @@ export const extraRecipes3: Recipe[] = [
     note: "Ước tính MVP.",
     items: [
       { foodId: "mi-trung-tuoi", amountG: 80, note: "Mì trứng" },
-      { foodId: "tom-sudo", amountG: 30, note: "Tôm" },
+      { foodId: "tom-su", amountG: 30, note: "Tôm" },
       { foodId: "muc-tuoi", amountG: 30, note: "Mực" },
       { foodId: "bong-cai-xanh", amountG: 30, note: "Bông cải" },
       { foodId: "ca-rot", amountG: 20, note: "Cà rốt" },

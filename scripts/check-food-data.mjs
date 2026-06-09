@@ -52,6 +52,10 @@ function fullToFood(row) {
   };
 }
 
+function issue(severity, payload) {
+  return { severity, ...payload };
+}
+
 function classifyDuplicate(entries) {
   const names = new Set(entries.map((item) => normalize(item.name)));
   const categories = new Set(entries.map((item) => item.category));
@@ -63,6 +67,12 @@ function classifyDuplicate(entries) {
     return "slug_collision_needs_descriptor";
   }
   return "uncertain_report_only";
+}
+
+function duplicateSeverity(action) {
+  if (action === "same_food_keep_one_log_merged") return "info";
+  if (action === "slug_collision_needs_descriptor") return "error";
+  return "warning";
 }
 
 function findAliasWarnings(foods, searchFoods) {
@@ -115,6 +125,7 @@ const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
 
 const duplicateSlugs = groupBy(slim, (item) => item.slug).map(([slug, entries]) => ({
+  severity: duplicateSeverity(classifyDuplicate(entries)),
   slug,
   count: entries.length,
   action: classifyDuplicate(entries),
@@ -122,6 +133,7 @@ const duplicateSlugs = groupBy(slim, (item) => item.slug).map(([slug, entries]) 
 }));
 
 const duplicateDisplayNames = groupBy(slim, (item) => normalize(item.name)).map(([key, entries]) => ({
+  severity: "info",
   key,
   displayName: entries[0].name,
   count: entries.length,
@@ -135,29 +147,31 @@ const suspiciousSlugRules = [
 ];
 
 const suspiciousSlugs = [];
+const rawCookedAmbiguity = [];
 for (const rule of suspiciousSlugRules) {
   const item = slim.find((food) => food.slug === rule.slug);
-  if (item) suspiciousSlugs.push({ ...rule, name: item.name, category: item.category, suggestion: "report_only_until_source_is_confirmed" });
+  if (item) suspiciousSlugs.push(issue("warning", { ...rule, name: item.name, category: item.category, suggestion: "canonical_slug_or_alias_redirect" }));
 }
 for (const food of fullFoods) {
-  const nameNorm = normalize(food.name);
+  const name = String(food.name || "");
+  const nameNorm = normalize(name);
   if (nameNorm.startsWith("gao ") && Number(food.kcal) > 0 && Number(food.kcal) < 250) {
-    suspiciousSlugs.push({
+    rawCookedAmbiguity.push(issue("warning", {
       slug: food.slug,
       name: food.name,
       reason: "Tên là gạo nhưng năng lượng thấp hơn gạo sống thông thường; cần xác nhận sống/chín trong tên/basis.",
       kcal: food.kcal,
       suggestion: "clarify_raw_or_cooked",
-    });
+    }));
   }
-  if (nameNorm.startsWith("com ") && Number(food.kcal) > 250) {
-    suspiciousSlugs.push({
+  if (/^Cơm\s/i.test(name) && !/^Cơm\s+(cháy|dừa)/i.test(name) && Number(food.kcal) > 250) {
+    rawCookedAmbiguity.push(issue("warning", {
       slug: food.slug,
       name: food.name,
       reason: "Tên là cơm nhưng năng lượng cao; cần xác nhận sống/chín hoặc khẩu phần.",
       kcal: food.kcal,
       suggestion: "clarify_raw_or_cooked",
-    });
+    }));
   }
 }
 
@@ -165,19 +179,33 @@ const mainFoodCategories = new Set(["Tinh bột", "Rau xanh", "Củ quả", "Tr�
 const missingCoreNutrients = fullFoods
   .filter((food) => mainFoodCategories.has(food.category))
   .filter((food) => [food.kcal, food.protein, food.lipid, food.glucid].some((value) => value === null || value === undefined || value === ""))
-  .map((food) => ({ slug: food.slug, name: food.name, category: food.category, kcal: food.kcal, protein: food.protein, lipid: food.lipid, glucid: food.glucid }));
+  .map((food) => issue("error", { slug: food.slug, name: food.name, category: food.category, kcal: food.kcal, protein: food.protein, lipid: food.lipid, glucid: food.glucid }));
 
-const aliasWarnings = findAliasWarnings(fullFoods, searchFoods);
+const aliasWarnings = findAliasWarnings(fullFoods, searchFoods).map((warning) => issue("info", warning));
 
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
 const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.find((item) => item.slug === slug) || { slug, count: 0, action: "not_found_as_duplicate" });
 
 const sourceNotes = [
   "public/api/foods-slim.json is consumed by scripts/build-search-index.py.",
+  "scripts/build-foods-slim.mjs reads dist/api-foods.json and writes public/api/foods-slim.json.",
   "scripts/build-foods-full.py reads dist/api/foods-slim.json and writes public/api/foods-full.json.",
   "src/pages/api-foods.json.ts exports full food data from src/data/nutrition.ts at build time.",
   "No nutrition values or source data were changed by this QA script.",
 ];
+
+const allIssues = [
+  ...duplicateSlugs,
+  ...duplicateDisplayNames,
+  ...suspiciousSlugs,
+  ...rawCookedAmbiguity,
+  ...missingCoreNutrients,
+  ...aliasWarnings,
+];
+const issuesBySeverity = allIssues.reduce((totals, item) => {
+  totals[item.severity] = (totals[item.severity] || 0) + 1;
+  return totals;
+}, {});
 
 const report = {
   generatedAt: new Date().toISOString(),
@@ -188,14 +216,17 @@ const report = {
     duplicateSlugs: duplicateSlugs.length,
     duplicateDisplayNames: duplicateDisplayNames.length,
     suspiciousSlugs: suspiciousSlugs.length,
+    rawCookedAmbiguity: rawCookedAmbiguity.length,
     missingCoreNutrients: missingCoreNutrients.length,
     aliasWarnings: aliasWarnings.length,
   },
+  issuesBySeverity,
   sourceNotes,
   watchedDuplicateStatus,
   duplicateSlugs,
   duplicateDisplayNames,
   suspiciousSlugs,
+  rawCookedAmbiguity,
   missingCoreNutrients,
   aliasWarnings: aliasWarnings.slice(0, 200),
 };

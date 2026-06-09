@@ -102,7 +102,7 @@ for item in food_slim:
         'type': 'food',
         'slug': slug,
         'name': item['name'],
-        'aliases': xref.get(slug, {}).get('aliases', []),
+        'aliases': item.get('aliases', []) + xref.get(slug, {}).get('aliases', []),
         'category': item['category'],
         'kcal': item['kcal'],
     }

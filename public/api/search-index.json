@@ -1544,6 +1544,30 @@
     "category": "Bai viet"
   },
   {
+    "type": "article",
+    "slug": "dung-tin-ngay-trung-gay-benh-tim",
+    "name": "Ăn trứng gây bệnh tim? Trứng không đáng sợ như bạn nghĩ",
+    "aliases": [],
+    "description": "Trứng giàu cholesterol nhưng không làm tăng nguy cơ tim mạch ở người khỏe mạnh. Hàng thập kỷ nghiên cứu đã bác bỏ hiểu lầm này.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dung-tin-ngay-sua-dau-nanh-ung-thu",
+    "name": "Sữa đậu nành gây ung thư vú? Isoflavone không đáng sợ, còn có lợi",
+    "aliases": [],
+    "description": "Isoflavone trong đậu nành từng bị nghi ngờ gây ung thư vú. Nghiên cứu hiện tại cho thấy nó an toàn và có thể có lợi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dung-tin-ngay-bo-bua-sang",
+    "name": "Bỏ bữa sáng để giảm cân? Hiệu quả ảo, hại thật",
+    "aliases": [],
+    "description": "Nhịn bữa sáng có thể giảm cân ngắn hạn nhưng gây rối loạn đường huyết, mất cơ, tăng cân trở lại.",
+    "category": "Bai viet"
+  },
+  {
     "type": "recipe",
     "slug": "cha-o",
     "name": "Cháo ếch",
@@ -3809,7 +3833,11 @@
     "type": "food",
     "slug": "com-trang",
     "name": "Cơm trắng",
-    "aliases": [],
+    "aliases": [
+      "cơm",
+      "cơm tẻ",
+      "com trang"
+    ],
     "category": "Tinh bột",
     "kcal": 130
   },
@@ -3817,7 +3845,11 @@
     "type": "food",
     "slug": "banh-pho-chin",
     "name": "Bánh phở chín",
-    "aliases": [],
+    "aliases": [
+      "bánh phở",
+      "pho noodle",
+      "banh pho"
+    ],
     "category": "Tinh bột",
     "kcal": 110
   },
@@ -3825,7 +3857,12 @@
     "type": "food",
     "slug": "thit-bo-nac",
     "name": "Thịt bò nạc",
-    "aliases": [],
+    "aliases": [
+      "bò nạc",
+      "thịt bò",
+      "beef lean",
+      "thit bo"
+    ],
     "category": "Thịt",
     "kcal": 118
   },
@@ -3833,7 +3870,11 @@
     "type": "food",
     "slug": "thit-bo-chin",
     "name": "Thịt bò chín",
-    "aliases": [],
+    "aliases": [
+      "bò chín",
+      "thịt bò luộc",
+      "beef cooked"
+    ],
     "category": "Thịt",
     "kcal": 170
   },
@@ -3841,7 +3882,11 @@
     "type": "food",
     "slug": "uc-ga",
     "name": "Ức gà",
-    "aliases": [],
+    "aliases": [
+      "thịt ức gà",
+      "chicken breast",
+      "uc ga"
+    ],
     "category": "Thịt",
     "kcal": 120
   },
@@ -3849,7 +3894,11 @@
     "type": "food",
     "slug": "trung-ga",
     "name": "Trứng gà",
-    "aliases": [],
+    "aliases": [
+      "trứng",
+      "egg",
+      "trung ga"
+    ],
     "category": "Trứng sữa",
     "kcal": 166
   },
@@ -3857,7 +3906,11 @@
     "type": "food",
     "slug": "dau-phu",
     "name": "Đậu phụ",
-    "aliases": [],
+    "aliases": [
+      "đậu hũ",
+      "tofu",
+      "dau phu"
+    ],
     "category": "Đậu",
     "kcal": 76
   },
@@ -3865,7 +3918,10 @@
     "type": "food",
     "slug": "rau-muong",
     "name": "Rau muống",
-    "aliases": [],
+    "aliases": [
+      "water spinach",
+      "rau muong"
+    ],
     "category": "Rau xanh",
     "kcal": 30
   },
@@ -3873,7 +3929,10 @@
     "type": "food",
     "slug": "chuoi",
     "name": "Chuối",
-    "aliases": [],
+    "aliases": [
+      "banana",
+      "chuoi"
+    ],
     "category": "Trái cây",
     "kcal": 89
   },
@@ -3881,7 +3940,11 @@
     "type": "food",
     "slug": "nuoc-dung-bo",
     "name": "Nước dùng bò",
-    "aliases": [],
+    "aliases": [
+      "nước phở",
+      "beef broth",
+      "nuoc dung bo"
+    ],
     "category": "Nước dùng",
     "kcal": 12
   },
@@ -3889,7 +3952,11 @@
     "type": "food",
     "slug": "rau-thom-hanh",
     "name": "Rau thơm và hành",
-    "aliases": [],
+    "aliases": [
+      "hành ngò",
+      "rau phở",
+      "rau thom hanh"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -3897,7 +3964,11 @@
     "type": "food",
     "slug": "bun-tuoi",
     "name": "Bún tươi",
-    "aliases": [],
+    "aliases": [
+      "bún",
+      "rice vermicelli",
+      "bun tuoi"
+    ],
     "category": "Tinh bột",
     "kcal": 110
   },
@@ -3905,7 +3976,11 @@
     "type": "food",
     "slug": "banh-mi",
     "name": "Bánh mì",
-    "aliases": [],
+    "aliases": [
+      "ổ bánh mì",
+      "baguette",
+      "banh mi"
+    ],
     "category": "Tinh bột",
     "kcal": 265
   },
@@ -3913,7 +3988,10 @@
     "type": "food",
     "slug": "khoai-lang",
     "name": "Khoai lang",
-    "aliases": [],
+    "aliases": [
+      "sweet potato",
+      "khoai lang"
+    ],
     "category": "Tinh bột",
     "kcal": 86
   },
@@ -3921,7 +3999,11 @@
     "type": "food",
     "slug": "thit-heo-nac",
     "name": "Thịt heo nạc",
-    "aliases": [],
+    "aliases": [
+      "thịt lợn nạc",
+      "pork lean",
+      "thit heo nac"
+    ],
     "category": "Thịt",
     "kcal": 143
   },
@@ -3929,7 +4011,11 @@
     "type": "food",
     "slug": "suon-heo-nuong",
     "name": "Sườn heo nướng",
-    "aliases": [],
+    "aliases": [
+      "sườn nướng",
+      "pork chop grilled",
+      "suon heo nuong"
+    ],
     "category": "Thịt",
     "kcal": 260
   },
@@ -3937,7 +4023,11 @@
     "type": "food",
     "slug": "ba-chi-heo",
     "name": "Ba chỉ heo",
-    "aliases": [],
+    "aliases": [
+      "thịt ba rọi",
+      "pork belly",
+      "ba chi"
+    ],
     "category": "Thịt",
     "kcal": 518
   },
@@ -3945,7 +4035,10 @@
     "type": "food",
     "slug": "tom-tuoi",
     "name": "Tôm tươi",
-    "aliases": [],
+    "aliases": [
+      "shrimp",
+      "tom tuoi"
+    ],
     "category": "Hải sản",
     "kcal": 99
   },
@@ -3953,7 +4046,10 @@
     "type": "food",
     "slug": "ca-thu",
     "name": "Cá thu",
-    "aliases": [],
+    "aliases": [
+      "mackerel",
+      "ca thu"
+    ],
     "category": "Cá",
     "kcal": 205
   },
@@ -3961,7 +4057,10 @@
     "type": "food",
     "slug": "ca-basa",
     "name": "Cá basa",
-    "aliases": [],
+    "aliases": [
+      "basa fish",
+      "ca basa"
+    ],
     "category": "Cá",
     "kcal": 123
   },
@@ -3969,7 +4068,11 @@
     "type": "food",
     "slug": "sua-tuoi",
     "name": "Sữa tươi",
-    "aliases": [],
+    "aliases": [
+      "sữa bò",
+      "milk",
+      "sua tuoi"
+    ],
     "category": "Trứng sữa",
     "kcal": 61
   },
@@ -3977,7 +4080,10 @@
     "type": "food",
     "slug": "ca-rot",
     "name": "Cà rốt",
-    "aliases": [],
+    "aliases": [
+      "carrot",
+      "ca rot"
+    ],
     "category": "Củ quả",
     "kcal": 41
   },
@@ -3985,7 +4091,10 @@
     "type": "food",
     "slug": "ca-chua",
     "name": "Cà chua",
-    "aliases": [],
+    "aliases": [
+      "tomato",
+      "ca chua"
+    ],
     "category": "Củ quả",
     "kcal": 18
   },
@@ -3993,7 +4102,11 @@
     "type": "food",
     "slug": "dua-leo",
     "name": "Dưa leo",
-    "aliases": [],
+    "aliases": [
+      "dưa chuột",
+      "cucumber",
+      "dua leo"
+    ],
     "category": "Củ quả",
     "kcal": 15
   },
@@ -4001,7 +4114,10 @@
     "type": "food",
     "slug": "bap-cai",
     "name": "Bắp cải",
-    "aliases": [],
+    "aliases": [
+      "cabbage",
+      "bap cai"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -4009,7 +4125,10 @@
     "type": "food",
     "slug": "cam",
     "name": "Cam",
-    "aliases": [],
+    "aliases": [
+      "orange",
+      "cam tuoi"
+    ],
     "category": "Trái cây",
     "kcal": 47
   },
@@ -4017,7 +4136,10 @@
     "type": "food",
     "slug": "tao",
     "name": "Táo",
-    "aliases": [],
+    "aliases": [
+      "apple",
+      "tao"
+    ],
     "category": "Trái cây",
     "kcal": 52
   },
@@ -4025,7 +4147,10 @@
     "type": "food",
     "slug": "xoai",
     "name": "Xoài",
-    "aliases": [],
+    "aliases": [
+      "mango",
+      "xoai"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -4033,7 +4158,10 @@
     "type": "food",
     "slug": "du-du",
     "name": "Đu đủ",
-    "aliases": [],
+    "aliases": [
+      "papaya",
+      "du du"
+    ],
     "category": "Trái cây",
     "kcal": 43
   },
@@ -4041,7 +4169,11 @@
     "type": "food",
     "slug": "dau-an",
     "name": "Dầu ăn",
-    "aliases": [],
+    "aliases": [
+      "dầu thực vật",
+      "cooking oil",
+      "dau an"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -4049,7 +4181,10 @@
     "type": "food",
     "slug": "nuoc-mam",
     "name": "Nước mắm",
-    "aliases": [],
+    "aliases": [
+      "fish sauce",
+      "nuoc mam"
+    ],
     "category": "Gia vị",
     "kcal": 35
   },
@@ -4057,7 +4192,11 @@
     "type": "food",
     "slug": "duong-trang",
     "name": "Đường trắng",
-    "aliases": [],
+    "aliases": [
+      "đường",
+      "sugar",
+      "duong trang"
+    ],
     "category": "Gia vị",
     "kcal": 387
   },
@@ -4065,7 +4204,11 @@
     "type": "food",
     "slug": "sua-dac",
     "name": "Sữa đặc",
-    "aliases": [],
+    "aliases": [
+      "sữa đặc có đường",
+      "condensed milk",
+      "sua dac"
+    ],
     "category": "Trứng sữa",
     "kcal": 321
   },
@@ -4073,7 +4216,10 @@
     "type": "food",
     "slug": "thit-bo-bam",
     "name": "Thịt bò băm",
-    "aliases": [],
+    "aliases": [
+      "beef minced",
+      "thit bo bam"
+    ],
     "category": "Thịt",
     "kcal": 152
   },
@@ -4081,7 +4227,10 @@
     "type": "food",
     "slug": "tom-kho",
     "name": "Tôm khô",
-    "aliases": [],
+    "aliases": [
+      "dried shrimp",
+      "tom kho"
+    ],
     "category": "Hải sản",
     "kcal": 299
   },
@@ -4089,7 +4238,10 @@
     "type": "food",
     "slug": "nam-huong",
     "name": "Nấm hương khô",
-    "aliases": [],
+    "aliases": [
+      "shiitake",
+      "nam huong kho"
+    ],
     "category": "Nấm",
     "kcal": 296
   },
@@ -4097,7 +4249,11 @@
     "type": "food",
     "slug": "moc-nhi",
     "name": "Mộc nhĩ",
-    "aliases": [],
+    "aliases": [
+      "nấm mèo",
+      "wood ear",
+      "moc nhi"
+    ],
     "category": "Nấm",
     "kcal": 263
   },
@@ -4105,7 +4261,10 @@
     "type": "food",
     "slug": "hung-que",
     "name": "Húng quế",
-    "aliases": [],
+    "aliases": [
+      "thai basil",
+      "hung que"
+    ],
     "category": "Rau gia vị",
     "kcal": 44
   },
@@ -4113,7 +4272,11 @@
     "type": "food",
     "slug": "xa-lach",
     "name": "Xà lách",
-    "aliases": [],
+    "aliases": [
+      "lettuce",
+      "salad",
+      "xa lach"
+    ],
     "category": "Củ quả",
     "kcal": 15
   },
@@ -4121,7 +4284,11 @@
     "type": "food",
     "slug": "hat-tieu",
     "name": "Hạt tiêu",
-    "aliases": [],
+    "aliases": [
+      "pepper",
+      "tieu",
+      "hat tieu"
+    ],
     "category": "Gia vị",
     "kcal": 251
   },
@@ -4129,15 +4296,24 @@
     "type": "food",
     "slug": "sua-dau-nanh",
     "name": "Sữa đậu nành",
-    "aliases": [],
+    "aliases": [
+      "sữa đậu nành",
+      "soy milk",
+      "sua dau nanh"
+    ],
     "category": "Đồ uống",
     "kcal": 33
   },
   {
     "type": "food",
-    "slug": "ca-pha",
+    "slug": "ca-phe-den",
     "name": "Cà phê đen",
-    "aliases": [],
+    "aliases": [
+      "cà phê",
+      "coffee black",
+      "ca phe den",
+      "ca pha"
+    ],
     "category": "Đồ uống",
     "kcal": 2
   },
@@ -4145,7 +4321,11 @@
     "type": "food",
     "slug": "tra-xanh",
     "name": "Trà xanh",
-    "aliases": [],
+    "aliases": [
+      "green tea",
+      "che xanh",
+      "tra xanh"
+    ],
     "category": "Đồ uống",
     "kcal": 1
   },
@@ -4153,7 +4333,10 @@
     "type": "food",
     "slug": "bia",
     "name": "Bia",
-    "aliases": [],
+    "aliases": [
+      "beer",
+      "bia hơi"
+    ],
     "category": "Đồ uống",
     "kcal": 43
   },
@@ -4161,7 +4344,12 @@
     "type": "food",
     "slug": "ruou",
     "name": "Rượu trắng",
-    "aliases": [],
+    "aliases": [
+      "rượu đế",
+      "rượu nếp",
+      "ruou de",
+      "rice liquor"
+    ],
     "category": "Đồ uống",
     "kcal": 250
   },
@@ -4169,7 +4357,11 @@
     "type": "food",
     "slug": "tra-sua",
     "name": "Trà sữa trân châu",
-    "aliases": [],
+    "aliases": [
+      "bubble tea",
+      "tra sua",
+      "trà sữa"
+    ],
     "category": "Đồ uống",
     "kcal": 78
   },
@@ -4177,7 +4369,11 @@
     "type": "food",
     "slug": "mi-goi",
     "name": "Mì gói",
-    "aliases": [],
+    "aliases": [
+      "mì ăn liền",
+      "instant noodles",
+      "mi goi"
+    ],
     "category": "Tinh bột",
     "kcal": 472
   },
@@ -4185,7 +4381,11 @@
     "type": "food",
     "slug": "mien-dong",
     "name": "Miến dong",
-    "aliases": [],
+    "aliases": [
+      "miến",
+      "glass noodles",
+      "mien dong"
+    ],
     "category": "Tinh bột",
     "kcal": 332
   },
@@ -4193,7 +4393,10 @@
     "type": "food",
     "slug": "khoai-tay",
     "name": "Khoai tây",
-    "aliases": [],
+    "aliases": [
+      "potato",
+      "khoai tay"
+    ],
     "category": "Tinh bột",
     "kcal": 77
   },
@@ -4201,7 +4404,11 @@
     "type": "food",
     "slug": "thit-ga-dui",
     "name": "Đùi gà",
-    "aliases": [],
+    "aliases": [
+      "thịt đùi gà",
+      "chicken thigh",
+      "dui ga"
+    ],
     "category": "Thịt",
     "kcal": 177
   },
@@ -4209,7 +4416,10 @@
     "type": "food",
     "slug": "thit-vit",
     "name": "Thịt vịt",
-    "aliases": [],
+    "aliases": [
+      "duck meat",
+      "thit vit"
+    ],
     "category": "Thịt",
     "kcal": 337
   },
@@ -4217,7 +4427,11 @@
     "type": "food",
     "slug": "cha-lua",
     "name": "Chả lụa",
-    "aliases": [],
+    "aliases": [
+      "giò lụa",
+      "vietnamese pork sausage",
+      "cha lua"
+    ],
     "category": "Thịt chế biến",
     "kcal": 230
   },
@@ -4225,7 +4439,10 @@
     "type": "food",
     "slug": "ca-ro-phi",
     "name": "Cá rô phi",
-    "aliases": [],
+    "aliases": [
+      "tilapia",
+      "ca ro phi"
+    ],
     "category": "Cá",
     "kcal": 96
   },
@@ -4233,7 +4450,10 @@
     "type": "food",
     "slug": "muc-tuoi",
     "name": "Mực tươi",
-    "aliases": [],
+    "aliases": [
+      "squid",
+      "muc tuoi"
+    ],
     "category": "Hải sản",
     "kcal": 92
   },
@@ -4241,7 +4461,10 @@
     "type": "food",
     "slug": "cai-xanh",
     "name": "Cải xanh",
-    "aliases": [],
+    "aliases": [
+      "mustard greens",
+      "cai xanh"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -4249,7 +4472,10 @@
     "type": "food",
     "slug": "cai-thia",
     "name": "Cải thìa",
-    "aliases": [],
+    "aliases": [
+      "bok choy",
+      "cai thia"
+    ],
     "category": "Rau xanh",
     "kcal": 13
   },
@@ -4257,7 +4483,11 @@
     "type": "food",
     "slug": "bi-do",
     "name": "Bí đỏ",
-    "aliases": [],
+    "aliases": [
+      "bí ngô",
+      "pumpkin",
+      "bi do"
+    ],
     "category": "Củ quả",
     "kcal": 26
   },
@@ -4265,7 +4495,10 @@
     "type": "food",
     "slug": "nam-rom",
     "name": "Nấm rơm",
-    "aliases": [],
+    "aliases": [
+      "straw mushroom",
+      "nam rom"
+    ],
     "category": "Nấm",
     "kcal": 32
   },
@@ -4273,7 +4506,10 @@
     "type": "food",
     "slug": "dua-hau",
     "name": "Dưa hấu",
-    "aliases": [],
+    "aliases": [
+      "watermelon",
+      "dua hau"
+    ],
     "category": "Trái cây",
     "kcal": 30
   },
@@ -4281,7 +4517,10 @@
     "type": "food",
     "slug": "bo-trai",
     "name": "Bơ",
-    "aliases": [],
+    "aliases": [
+      "avocado",
+      "bo trai"
+    ],
     "category": "Trái cây",
     "kcal": 160
   },
@@ -4289,7 +4528,10 @@
     "type": "food",
     "slug": "sua-chua",
     "name": "Sữa chua",
-    "aliases": [],
+    "aliases": [
+      "yogurt",
+      "sua chua"
+    ],
     "category": "Trứng sữa",
     "kcal": 95
   },
@@ -4297,7 +4539,11 @@
     "type": "food",
     "slug": "lac-rang",
     "name": "Lạc rang",
-    "aliases": [],
+    "aliases": [
+      "đậu phộng rang",
+      "peanut",
+      "lac rang"
+    ],
     "category": "Đậu",
     "kcal": 585
   },
@@ -4305,7 +4551,10 @@
     "type": "food",
     "slug": "dau-xanh",
     "name": "Đậu xanh",
-    "aliases": [],
+    "aliases": [
+      "mung bean",
+      "dau xanh"
+    ],
     "category": "Đậu",
     "kcal": 347
   },
@@ -4313,7 +4562,11 @@
     "type": "food",
     "slug": "gao-te",
     "name": "Gạo tẻ",
-    "aliases": [],
+    "aliases": [
+      "gạo trắng",
+      "white rice raw",
+      "gao te"
+    ],
     "category": "Tinh bột",
     "kcal": 365
   },
@@ -4321,7 +4574,10 @@
     "type": "food",
     "slug": "trung-vit",
     "name": "Trứng vịt",
-    "aliases": [],
+    "aliases": [
+      "duck egg",
+      "trung vit"
+    ],
     "category": "Trứng sữa",
     "kcal": 185
   },
@@ -4329,7 +4585,11 @@
     "type": "food",
     "slug": "gan-heo",
     "name": "Gan heo",
-    "aliases": [],
+    "aliases": [
+      "pork liver",
+      "gan lon",
+      "gan heo"
+    ],
     "category": "Thịt",
     "kcal": 134
   },
@@ -4337,7 +4597,10 @@
     "type": "food",
     "slug": "cua-dong",
     "name": "Cua đồng",
-    "aliases": [],
+    "aliases": [
+      "field crab",
+      "cua dong"
+    ],
     "category": "Hải sản",
     "kcal": 89
   },
@@ -4345,7 +4608,10 @@
     "type": "food",
     "slug": "ca-nuc",
     "name": "Cá nục",
-    "aliases": [],
+    "aliases": [
+      "scad fish",
+      "ca nuc"
+    ],
     "category": "Cá",
     "kcal": 120
   },
@@ -4353,7 +4619,10 @@
     "type": "food",
     "slug": "rau-ngot",
     "name": "Rau ngót",
-    "aliases": [],
+    "aliases": [
+      "katuk",
+      "rau ngot"
+    ],
     "category": "Rau xanh",
     "kcal": 35
   },
@@ -4361,7 +4630,10 @@
     "type": "food",
     "slug": "mong-toi",
     "name": "Mồng tơi",
-    "aliases": [],
+    "aliases": [
+      "malabar spinach",
+      "mong toi"
+    ],
     "category": "Rau xanh",
     "kcal": 19
   },
@@ -4369,7 +4641,11 @@
     "type": "food",
     "slug": "gia-do",
     "name": "Giá đỗ",
-    "aliases": [],
+    "aliases": [
+      "giá đậu",
+      "bean sprouts",
+      "gia do"
+    ],
     "category": "Củ quả",
     "kcal": 30
   },
@@ -4377,7 +4653,10 @@
     "type": "food",
     "slug": "hanh-tay",
     "name": "Hành tây",
-    "aliases": [],
+    "aliases": [
+      "onion",
+      "hanh tay"
+    ],
     "category": "Củ quả",
     "kcal": 40
   },
@@ -4385,7 +4664,10 @@
     "type": "food",
     "slug": "toi",
     "name": "Tỏi",
-    "aliases": [],
+    "aliases": [
+      "garlic",
+      "toi"
+    ],
     "category": "Gia vị",
     "kcal": 149
   },
@@ -4393,7 +4675,10 @@
     "type": "food",
     "slug": "rau-dan",
     "name": "Rau dền",
-    "aliases": [],
+    "aliases": [
+      "amaranth",
+      "rau den"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -4401,7 +4686,10 @@
     "type": "food",
     "slug": "rau-ma",
     "name": "Rau má",
-    "aliases": [],
+    "aliases": [
+      "gotu kola",
+      "rau ma"
+    ],
     "category": "Rau xanh",
     "kcal": 21
   },
@@ -4409,7 +4697,10 @@
     "type": "food",
     "slug": "rau-day",
     "name": "Rau đay",
-    "aliases": [],
+    "aliases": [
+      "jute mallow",
+      "rau day"
+    ],
     "category": "Rau xanh",
     "kcal": 26
   },
@@ -4417,7 +4708,10 @@
     "type": "food",
     "slug": "muop-huong",
     "name": "Mướp hương",
-    "aliases": [],
+    "aliases": [
+      "luffa",
+      "muop huong"
+    ],
     "category": "Rau xanh",
     "kcal": 18
   },
@@ -4425,7 +4719,10 @@
     "type": "food",
     "slug": "bi-xanh",
     "name": "Bí xanh",
-    "aliases": [],
+    "aliases": [
+      "zucchini",
+      "bi xanh"
+    ],
     "category": "Rau xanh",
     "kcal": 17
   },
@@ -4433,7 +4730,11 @@
     "type": "food",
     "slug": "dau-que",
     "name": "Đậu que",
-    "aliases": [],
+    "aliases": [
+      "đậu cô ve",
+      "green beans",
+      "dau que"
+    ],
     "category": "Rau xanh",
     "kcal": 31
   },
@@ -4441,7 +4742,10 @@
     "type": "food",
     "slug": "dau-bap",
     "name": "Đậu bắp",
-    "aliases": [],
+    "aliases": [
+      "okra",
+      "dau bap"
+    ],
     "category": "Rau xanh",
     "kcal": 33
   },
@@ -4449,7 +4753,10 @@
     "type": "food",
     "slug": "dua-cai",
     "name": "Dưa cải muối",
-    "aliases": [],
+    "aliases": [
+      "kim chi Việt",
+      "dua cai"
+    ],
     "category": "Củ quả",
     "kcal": 15
   },
@@ -4457,7 +4764,11 @@
     "type": "food",
     "slug": "sup-lo",
     "name": "Súp lơ xanh",
-    "aliases": [],
+    "aliases": [
+      "broccoli",
+      "bông cải xanh",
+      "sup lo xanh"
+    ],
     "category": "Rau xanh",
     "kcal": 34
   },
@@ -4465,7 +4776,10 @@
     "type": "food",
     "slug": "sup-lo-trang",
     "name": "Súp lơ trắng",
-    "aliases": [],
+    "aliases": [
+      "cauliflower",
+      "bông cải trắng"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -4473,7 +4787,11 @@
     "type": "food",
     "slug": "hanh-la",
     "name": "Hành lá",
-    "aliases": [],
+    "aliases": [
+      "spring onion",
+      "scallion",
+      "hanh la"
+    ],
     "category": "Rau gia vị",
     "kcal": 32
   },
@@ -4481,7 +4799,10 @@
     "type": "food",
     "slug": "rau-thom-tia-to",
     "name": "Tía tô",
-    "aliases": [],
+    "aliases": [
+      "perilla",
+      "tia to"
+    ],
     "category": "Rau gia vị",
     "kcal": 35
   },
@@ -4489,7 +4810,10 @@
     "type": "food",
     "slug": "rau-thom-kinh-gioi",
     "name": "Kinh giới",
-    "aliases": [],
+    "aliases": [
+      "Vietnamese balm",
+      "kinh gioi"
+    ],
     "category": "Rau gia vị",
     "kcal": 30
   },
@@ -4497,7 +4821,11 @@
     "type": "food",
     "slug": "ngo-que",
     "name": "Ngò gai",
-    "aliases": [],
+    "aliases": [
+      "ngò tàu",
+      "culantro",
+      "ngo gai"
+    ],
     "category": "Rau gia vị",
     "kcal": 25
   },
@@ -4505,7 +4833,11 @@
     "type": "food",
     "slug": "ngo-om",
     "name": "Ngò ôm",
-    "aliases": [],
+    "aliases": [
+      "rau ôm",
+      "rice paddy herb",
+      "ngo om"
+    ],
     "category": "Rau gia vị",
     "kcal": 22
   },
@@ -4513,7 +4845,10 @@
     "type": "food",
     "slug": "nam-kim-cham",
     "name": "Nấm kim châm",
-    "aliases": [],
+    "aliases": [
+      "enoki mushroom",
+      "nam kim cham"
+    ],
     "category": "Nấm",
     "kcal": 37
   },
@@ -4521,7 +4856,10 @@
     "type": "food",
     "slug": "nam-dong-co",
     "name": "Nấm đông cô tươi",
-    "aliases": [],
+    "aliases": [
+      "shiitake fresh",
+      "nam dong co"
+    ],
     "category": "Nấm",
     "kcal": 34
   },
@@ -4529,7 +4867,10 @@
     "type": "food",
     "slug": "nam-bach-trang",
     "name": "Nấm bạch tuyết",
-    "aliases": [],
+    "aliases": [
+      "white mushroom",
+      "nam bach tuyen"
+    ],
     "category": "Nấm",
     "kcal": 22
   },
@@ -4537,7 +4878,10 @@
     "type": "food",
     "slug": "mang-tay",
     "name": "Măng tây",
-    "aliases": [],
+    "aliases": [
+      "asparagus",
+      "mang tay"
+    ],
     "category": "Rau xanh",
     "kcal": 20
   },
@@ -4545,7 +4889,10 @@
     "type": "food",
     "slug": "man-chua",
     "name": "Măng chua",
-    "aliases": [],
+    "aliases": [
+      "sour bamboo shoot",
+      "mang chua"
+    ],
     "category": "Củ quả",
     "kcal": 27
   },
@@ -4553,7 +4900,11 @@
     "type": "food",
     "slug": "ngu-sac",
     "name": "Ngũ sắc",
-    "aliases": [],
+    "aliases": [
+      "ngô nếp",
+      "sweet corn",
+      "ngo nep"
+    ],
     "category": "Tinh bột",
     "kcal": 112
   },
@@ -4561,7 +4912,11 @@
     "type": "food",
     "slug": "khoai-mi",
     "name": "Khoai mì",
-    "aliases": [],
+    "aliases": [
+      "sắn",
+      "cassava",
+      "khoai mi"
+    ],
     "category": "Tinh bột",
     "kcal": 160
   },
@@ -4569,7 +4924,10 @@
     "type": "food",
     "slug": "khoai-mon",
     "name": "Khoai môn",
-    "aliases": [],
+    "aliases": [
+      "taro",
+      "khoai mon"
+    ],
     "category": "Tinh bột",
     "kcal": 112
   },
@@ -4577,7 +4935,10 @@
     "type": "food",
     "slug": "khoai-tu",
     "name": "Khoai từ",
-    "aliases": [],
+    "aliases": [
+      "yam",
+      "khoai tu"
+    ],
     "category": "Tinh bột",
     "kcal": 118
   },
@@ -4585,7 +4946,10 @@
     "type": "food",
     "slug": "hat-sen-tuoi",
     "name": "Hạt sen tươi",
-    "aliases": [],
+    "aliases": [
+      "lotus seeds",
+      "hat sen tuoi"
+    ],
     "category": "Hạt",
     "kcal": 89
   },
@@ -4593,7 +4957,10 @@
     "type": "food",
     "slug": "hat-sen-kho",
     "name": "Hạt sen khô",
-    "aliases": [],
+    "aliases": [
+      "dried lotus seeds",
+      "hat sen kho"
+    ],
     "category": "Hạt",
     "kcal": 350
   },
@@ -4601,7 +4968,11 @@
     "type": "food",
     "slug": "com-gao-lut",
     "name": "Cơm gạo lứt",
-    "aliases": [],
+    "aliases": [
+      "brown rice",
+      "gao lut",
+      "com gao lut"
+    ],
     "category": "Tinh bột",
     "kcal": 111
   },
@@ -4609,7 +4980,11 @@
     "type": "food",
     "slug": "bap-cai-thao",
     "name": "Bắp cải thảo",
-    "aliases": [],
+    "aliases": [
+      "napa cabbage",
+      "cải thảo",
+      "bap cai thao"
+    ],
     "category": "Rau xanh",
     "kcal": 12
   },
@@ -4617,7 +4992,10 @@
     "type": "food",
     "slug": "cai-bong",
     "name": "Cải bẹ xanh",
-    "aliases": [],
+    "aliases": [
+      "mustard greens",
+      "cai be xanh"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -4625,7 +5003,10 @@
     "type": "food",
     "slug": "cu-den",
     "name": "Củ dền",
-    "aliases": [],
+    "aliases": [
+      "beetroot",
+      "cu den"
+    ],
     "category": "Củ quả",
     "kcal": 43
   },
@@ -4633,7 +5014,11 @@
     "type": "food",
     "slug": "cu-cai-trang",
     "name": "Củ cải trắng",
-    "aliases": [],
+    "aliases": [
+      "white radish",
+      "daikon",
+      "cu cai trang"
+    ],
     "category": "Củ quả",
     "kcal": 18
   },
@@ -4641,7 +5026,11 @@
     "type": "food",
     "slug": "ca-tim",
     "name": "Cà tím",
-    "aliases": [],
+    "aliases": [
+      "eggplant",
+      "aubergine",
+      "ca tim"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -4649,7 +5038,10 @@
     "type": "food",
     "slug": "ot-chuong",
     "name": "Ớt chuông",
-    "aliases": [],
+    "aliases": [
+      "bell pepper",
+      "ot chuong"
+    ],
     "category": "Rau xanh",
     "kcal": 26
   },
@@ -4657,7 +5049,10 @@
     "type": "food",
     "slug": "ngo-tay",
     "name": "Ngò tây",
-    "aliases": [],
+    "aliases": [
+      "parsley",
+      "ngo tay"
+    ],
     "category": "Rau gia vị",
     "kcal": 36
   },
@@ -4665,7 +5060,10 @@
     "type": "food",
     "slug": "rau-diep-ca",
     "name": "Rau diếp cá",
-    "aliases": [],
+    "aliases": [
+      "fish mint",
+      "rau diep ca"
+    ],
     "category": "Rau gia vị",
     "kcal": 20
   },
@@ -4673,7 +5071,9 @@
     "type": "food",
     "slug": "sau-rieng",
     "name": "Sầu riêng",
-    "aliases": [],
+    "aliases": [
+      "durian"
+    ],
     "category": "Trái cây",
     "kcal": 147
   },
@@ -4681,7 +5081,10 @@
     "type": "food",
     "slug": "mit",
     "name": "Mít",
-    "aliases": [],
+    "aliases": [
+      "jackfruit",
+      "mit"
+    ],
     "category": "Trái cây",
     "kcal": 95
   },
@@ -4689,7 +5092,10 @@
     "type": "food",
     "slug": "mit-sa",
     "name": "Mít sấy",
-    "aliases": [],
+    "aliases": [
+      "dried jackfruit",
+      "mit say"
+    ],
     "category": "Trái cây",
     "kcal": 350
   },
@@ -4697,7 +5103,9 @@
     "type": "food",
     "slug": "thanh-long",
     "name": "Thanh long",
-    "aliases": [],
+    "aliases": [
+      "dragon fruit"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -4705,7 +5113,9 @@
     "type": "food",
     "slug": "mang-cut",
     "name": "Măng cụt",
-    "aliases": [],
+    "aliases": [
+      "mangosteen"
+    ],
     "category": "Trái cây",
     "kcal": 73
   },
@@ -4713,7 +5123,9 @@
     "type": "food",
     "slug": "chom-chom",
     "name": "Chôm chôm",
-    "aliases": [],
+    "aliases": [
+      "rambutan"
+    ],
     "category": "Trái cây",
     "kcal": 82
   },
@@ -4721,7 +5133,10 @@
     "type": "food",
     "slug": "vai",
     "name": "Vải",
-    "aliases": [],
+    "aliases": [
+      "lychee",
+      "vai thieu"
+    ],
     "category": "Trái cây",
     "kcal": 66
   },
@@ -4729,7 +5144,9 @@
     "type": "food",
     "slug": "nhan",
     "name": "Nhãn",
-    "aliases": [],
+    "aliases": [
+      "longan"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -4737,7 +5154,9 @@
     "type": "food",
     "slug": "dau-tay",
     "name": "Dâu tây",
-    "aliases": [],
+    "aliases": [
+      "strawberry"
+    ],
     "category": "Trái cây",
     "kcal": 32
   },
@@ -4745,7 +5164,10 @@
     "type": "food",
     "slug": "buoi",
     "name": "Bưởi",
-    "aliases": [],
+    "aliases": [
+      "pomelo",
+      "grapefruit"
+    ],
     "category": "Trái cây",
     "kcal": 38
   },
@@ -4753,7 +5175,10 @@
     "type": "food",
     "slug": "bo-giay",
     "name": "Bơ sáp",
-    "aliases": [],
+    "aliases": [
+      "butter avocado",
+      "bo sap"
+    ],
     "category": "Trái cây",
     "kcal": 180
   },
@@ -4761,7 +5186,9 @@
     "type": "food",
     "slug": "me",
     "name": "Me",
-    "aliases": [],
+    "aliases": [
+      "tamarind"
+    ],
     "category": "Trái cây",
     "kcal": 239
   },
@@ -4769,7 +5196,10 @@
     "type": "food",
     "slug": "dua",
     "name": "Dừa",
-    "aliases": [],
+    "aliases": [
+      "coconut",
+      "cơm dừa"
+    ],
     "category": "Trái cây",
     "kcal": 354
   },
@@ -4777,7 +5207,9 @@
     "type": "food",
     "slug": "nuoc-dua",
     "name": "Nước dừa",
-    "aliases": [],
+    "aliases": [
+      "coconut water"
+    ],
     "category": "Đồ uống",
     "kcal": 19
   },
@@ -4785,7 +5217,9 @@
     "type": "food",
     "slug": "chanh-day",
     "name": "Chanh dây",
-    "aliases": [],
+    "aliases": [
+      "passion fruit"
+    ],
     "category": "Trái cây",
     "kcal": 97
   },
@@ -4793,7 +5227,10 @@
     "type": "food",
     "slug": "oi-ruot-trang",
     "name": "Ổi ruột trắng",
-    "aliases": [],
+    "aliases": [
+      "guava",
+      "oi ruot trang"
+    ],
     "category": "Trái cây",
     "kcal": 68
   },
@@ -4801,7 +5238,9 @@
     "type": "food",
     "slug": "dua-gang",
     "name": "Đu đủ xanh",
-    "aliases": [],
+    "aliases": [
+      "green papaya"
+    ],
     "category": "Củ quả",
     "kcal": 26
   },
@@ -4809,7 +5248,11 @@
     "type": "food",
     "slug": "khom",
     "name": "Khóm",
-    "aliases": [],
+    "aliases": [
+      "dứa",
+      "thơm",
+      "pineapple"
+    ],
     "category": "Trái cây",
     "kcal": 50
   },
@@ -4817,7 +5260,9 @@
     "type": "food",
     "slug": "nho",
     "name": "Nho",
-    "aliases": [],
+    "aliases": [
+      "grapes"
+    ],
     "category": "Trái cây",
     "kcal": 69
   },
@@ -4825,7 +5270,10 @@
     "type": "food",
     "slug": "thit-ga-rui",
     "name": "Thịt gà ri",
-    "aliases": [],
+    "aliases": [
+      "gà thả vườn",
+      "ga ri"
+    ],
     "category": "Thịt",
     "kcal": 140
   },
@@ -4833,7 +5281,10 @@
     "type": "food",
     "slug": "thit-cam",
     "name": "Thịt cầm",
-    "aliases": [],
+    "aliases": [
+      "thịt chim bồ câu",
+      "pigeon"
+    ],
     "category": "Thịt",
     "kcal": 142
   },
@@ -4841,7 +5292,10 @@
     "type": "food",
     "slug": "thit-cut",
     "name": "Thịt cút",
-    "aliases": [],
+    "aliases": [
+      "thịt chim cút",
+      "quail"
+    ],
     "category": "Thịt",
     "kcal": 134
   },
@@ -4849,7 +5303,9 @@
     "type": "food",
     "slug": "thit-ngua",
     "name": "Thịt ngựa",
-    "aliases": [],
+    "aliases": [
+      "horse meat"
+    ],
     "category": "Thịt",
     "kcal": 133
   },
@@ -4857,7 +5313,10 @@
     "type": "food",
     "slug": "thit-ech",
     "name": "Thịt ếch",
-    "aliases": [],
+    "aliases": [
+      "frog meat",
+      "thit ech"
+    ],
     "category": "Thịt",
     "kcal": 73
   },
@@ -4865,7 +5324,11 @@
     "type": "food",
     "slug": "ca-loc",
     "name": "Cá lóc",
-    "aliases": [],
+    "aliases": [
+      "cá quả",
+      "snakehead",
+      "ca loc"
+    ],
     "category": "Cá",
     "kcal": 82
   },
@@ -4873,7 +5336,10 @@
     "type": "food",
     "slug": "ca-chep",
     "name": "Cá chép",
-    "aliases": [],
+    "aliases": [
+      "carp",
+      "ca chep"
+    ],
     "category": "Cá",
     "kcal": 127
   },
@@ -4881,7 +5347,10 @@
     "type": "food",
     "slug": "ca-ngu",
     "name": "Cá ngừ",
-    "aliases": [],
+    "aliases": [
+      "tuna",
+      "ca ngu"
+    ],
     "category": "Cá",
     "kcal": 144
   },
@@ -4889,7 +5358,10 @@
     "type": "food",
     "slug": "ca-moi",
     "name": "Cá mòi",
-    "aliases": [],
+    "aliases": [
+      "sardine",
+      "ca moi"
+    ],
     "category": "Cá",
     "kcal": 208
   },
@@ -4897,7 +5369,10 @@
     "type": "food",
     "slug": "ca-hoi",
     "name": "Cá hồi",
-    "aliases": [],
+    "aliases": [
+      "salmon",
+      "ca hoi"
+    ],
     "category": "Cá",
     "kcal": 208
   },
@@ -4905,15 +5380,24 @@
     "type": "food",
     "slug": "ca-keo",
     "name": "Cá kèo",
-    "aliases": [],
+    "aliases": [
+      "goby",
+      "ca keo"
+    ],
     "category": "Cá",
     "kcal": 100
   },
   {
     "type": "food",
-    "slug": "tom-sudo",
+    "slug": "tom-su",
     "name": "Tôm sú",
-    "aliases": [],
+    "aliases": [
+      "tôm sắt",
+      "tôm biển",
+      "prawn",
+      "tom su",
+      "tom-sudo"
+    ],
     "category": "Hải sản",
     "kcal": 105
   },
@@ -4921,7 +5405,9 @@
     "type": "food",
     "slug": "cua-bien",
     "name": "Cua biển",
-    "aliases": [],
+    "aliases": [
+      "sea crab"
+    ],
     "category": "Hải sản",
     "kcal": 87
   },
@@ -4929,7 +5415,10 @@
     "type": "food",
     "slug": "ngheu",
     "name": "Nghêu",
-    "aliases": [],
+    "aliases": [
+      "clams",
+      "ngheu"
+    ],
     "category": "Hải sản",
     "kcal": 74
   },
@@ -4937,7 +5426,9 @@
     "type": "food",
     "slug": "so-huyet",
     "name": "Sò huyết",
-    "aliases": [],
+    "aliases": [
+      "blood cockle"
+    ],
     "category": "Hải sản",
     "kcal": 79
   },
@@ -4945,7 +5436,10 @@
     "type": "food",
     "slug": "oc-buou",
     "name": "Ốc bươu",
-    "aliases": [],
+    "aliases": [
+      "snail",
+      "oc buou"
+    ],
     "category": "Hải sản",
     "kcal": 90
   },
@@ -4953,7 +5447,9 @@
     "type": "food",
     "slug": "oc-huong",
     "name": "Ốc hương",
-    "aliases": [],
+    "aliases": [
+      "spiral shell"
+    ],
     "category": "Hải sản",
     "kcal": 125
   },
@@ -4961,7 +5457,10 @@
     "type": "food",
     "slug": "dau-nanh",
     "name": "Đậu nành",
-    "aliases": [],
+    "aliases": [
+      "soybean",
+      "đỗ tương"
+    ],
     "category": "Đậu",
     "kcal": 446
   },
@@ -4969,7 +5468,10 @@
     "type": "food",
     "slug": "dau-den",
     "name": "Đậu đen",
-    "aliases": [],
+    "aliases": [
+      "black bean",
+      "dau den"
+    ],
     "category": "Đậu",
     "kcal": 341
   },
@@ -4977,7 +5479,10 @@
     "type": "food",
     "slug": "dau-do",
     "name": "Đậu đỏ",
-    "aliases": [],
+    "aliases": [
+      "red bean",
+      "dau do"
+    ],
     "category": "Đậu",
     "kcal": 337
   },
@@ -4985,7 +5490,11 @@
     "type": "food",
     "slug": "me-vung",
     "name": "Mè/vừng",
-    "aliases": [],
+    "aliases": [
+      "vừng",
+      "sesame",
+      "me"
+    ],
     "category": "Hạt",
     "kcal": 573
   },
@@ -4993,7 +5502,9 @@
     "type": "food",
     "slug": "hat-bi",
     "name": "Hạt bí",
-    "aliases": [],
+    "aliases": [
+      "pumpkin seeds"
+    ],
     "category": "Hạt",
     "kcal": 559
   },
@@ -5001,7 +5512,9 @@
     "type": "food",
     "slug": "hat-huong-duong",
     "name": "Hạt hướng dương",
-    "aliases": [],
+    "aliases": [
+      "sunflower seeds"
+    ],
     "category": "Hạt",
     "kcal": 584
   },
@@ -5009,7 +5522,10 @@
     "type": "food",
     "slug": "dau-ha-lan",
     "name": "Đậu Hà Lan",
-    "aliases": [],
+    "aliases": [
+      "green pea",
+      "dau ha lan"
+    ],
     "category": "Đậu",
     "kcal": 352
   },
@@ -5017,7 +5533,11 @@
     "type": "food",
     "slug": "dau-phap",
     "name": "Đậu phộng",
-    "aliases": [],
+    "aliases": [
+      "lạc",
+      "peanut",
+      "dau phong"
+    ],
     "category": "Đậu",
     "kcal": 567
   },
@@ -5025,7 +5545,9 @@
     "type": "food",
     "slug": "xuc-xich",
     "name": "Xúc xích",
-    "aliases": [],
+    "aliases": [
+      "sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 310
   },
@@ -5033,7 +5555,12 @@
     "type": "food",
     "slug": "thit-nguoi-kho",
     "name": "Thịt nguội",
-    "aliases": [],
+    "aliases": [
+      "ham",
+      "jambon",
+      "dăm bông",
+      "thit nguoi"
+    ],
     "category": "Thịt chế biến",
     "kcal": 150
   },
@@ -5041,7 +5568,11 @@
     "type": "food",
     "slug": "cha-bong",
     "name": "Chà bông",
-    "aliases": [],
+    "aliases": [
+      "ruốc",
+      "pork floss",
+      "cha bong"
+    ],
     "category": "Thịt chế biến",
     "kcal": 390
   },
@@ -5049,7 +5580,10 @@
     "type": "food",
     "slug": "lap-xuong",
     "name": "Lạp xưởng",
-    "aliases": [],
+    "aliases": [
+      "Chinese sausage",
+      "lap xuong"
+    ],
     "category": "Thịt chế biến",
     "kcal": 498
   },
@@ -5057,7 +5591,9 @@
     "type": "food",
     "slug": "gio-thu",
     "name": "Giò thủ",
-    "aliases": [],
+    "aliases": [
+      "head cheese"
+    ],
     "category": "Thịt chế biến",
     "kcal": 250
   },
@@ -5065,7 +5601,9 @@
     "type": "food",
     "slug": "nem-chua",
     "name": "Nem chua",
-    "aliases": [],
+    "aliases": [
+      "fermented pork roll"
+    ],
     "category": "Thịt chế biến",
     "kcal": 150
   },
@@ -5073,7 +5611,10 @@
     "type": "food",
     "slug": "bot-loc",
     "name": "Bột lọc",
-    "aliases": [],
+    "aliases": [
+      "tapioca starch",
+      "bot loc"
+    ],
     "category": "Tinh bột",
     "kcal": 358
   },
@@ -5081,7 +5622,9 @@
     "type": "food",
     "slug": "bot-gao",
     "name": "Bột gạo",
-    "aliases": [],
+    "aliases": [
+      "rice flour"
+    ],
     "category": "Tinh bột",
     "kcal": 366
   },
@@ -5089,7 +5632,9 @@
     "type": "food",
     "slug": "bot-mi-da",
     "name": "Bột mì đa dụng",
-    "aliases": [],
+    "aliases": [
+      "wheat flour"
+    ],
     "category": "Tinh bột",
     "kcal": 364
   },
@@ -5097,7 +5642,10 @@
     "type": "food",
     "slug": "tuong-den",
     "name": "Tương đen",
-    "aliases": [],
+    "aliases": [
+      "hoisin sauce",
+      "tuong den"
+    ],
     "category": "Gia vị",
     "kcal": 220
   },
@@ -5105,7 +5653,9 @@
     "type": "food",
     "slug": "tuong-ot",
     "name": "Tương ớt",
-    "aliases": [],
+    "aliases": [
+      "chili sauce"
+    ],
     "category": "Gia vị",
     "kcal": 90
   },
@@ -5113,7 +5663,9 @@
     "type": "food",
     "slug": "sot-mayonnaise",
     "name": "Sốt mayonnaise",
-    "aliases": [],
+    "aliases": [
+      "mayonnaise"
+    ],
     "category": "Gia vị",
     "kcal": 700
   },
@@ -5121,7 +5673,9 @@
     "type": "food",
     "slug": "sot-ca-chua",
     "name": "Sốt cà chua",
-    "aliases": [],
+    "aliases": [
+      "ketchup"
+    ],
     "category": "Gia vị",
     "kcal": 101
   },
@@ -5129,15 +5683,23 @@
     "type": "food",
     "slug": "gac",
     "name": "Gấc",
-    "aliases": [],
+    "aliases": [
+      "gac fruit",
+      "trai gac"
+    ],
     "category": "Trái cây",
     "kcal": 120
   },
   {
     "type": "food",
-    "slug": "ca-pha-sua-da",
+    "slug": "ca-phe-sua-da-100ml",
     "name": "Cà phê sữa đá",
-    "aliases": [],
+    "aliases": [
+      "cà phê sữa",
+      "coffee with condensed milk",
+      "ca phe sua da",
+      "ca-pha-sua-da"
+    ],
     "category": "Đồ uống",
     "kcal": 52
   },
@@ -5145,7 +5707,9 @@
     "type": "food",
     "slug": "sinh-to-bo",
     "name": "Sinh tố bơ",
-    "aliases": [],
+    "aliases": [
+      "avocado smoothie"
+    ],
     "category": "Đồ uống",
     "kcal": 90
   },
@@ -5153,7 +5717,9 @@
     "type": "food",
     "slug": "nuoc-cam",
     "name": "Nước cam",
-    "aliases": [],
+    "aliases": [
+      "orange juice"
+    ],
     "category": "Đồ uống",
     "kcal": 45
   },
@@ -5161,7 +5727,9 @@
     "type": "food",
     "slug": "nuoc-chanh",
     "name": "Nước chanh",
-    "aliases": [],
+    "aliases": [
+      "lemonade"
+    ],
     "category": "Đồ uống",
     "kcal": 35
   },
@@ -5169,7 +5737,9 @@
     "type": "food",
     "slug": "tra-da",
     "name": "Trà đá",
-    "aliases": [],
+    "aliases": [
+      "iced tea unsweetened"
+    ],
     "category": "Đồ uống",
     "kcal": 1
   },
@@ -5177,7 +5747,9 @@
     "type": "food",
     "slug": "nuoc-suoi",
     "name": "Nước suối",
-    "aliases": [],
+    "aliases": [
+      "water"
+    ],
     "category": "Đồ uống",
     "kcal": 0
   },
@@ -5185,7 +5757,11 @@
     "type": "food",
     "slug": "nuoc-ngot-coca",
     "name": "Nước ngọt có ga",
-    "aliases": [],
+    "aliases": [
+      "coca cola",
+      "soda",
+      "nuoc ngot"
+    ],
     "category": "Đồ uống",
     "kcal": 42
   },
@@ -5193,7 +5769,10 @@
     "type": "food",
     "slug": "banh-quy",
     "name": "Bánh quy bơ",
-    "aliases": [],
+    "aliases": [
+      "butter cookie",
+      "shortbread"
+    ],
     "category": "Bánh kẹo",
     "kcal": 500
   },
@@ -5201,7 +5780,10 @@
     "type": "food",
     "slug": "banh-mi-ngot",
     "name": "Bánh mì ngọt",
-    "aliases": [],
+    "aliases": [
+      "sweet bread",
+      "banh mi ngot"
+    ],
     "category": "Tinh bột",
     "kcal": 330
   },
@@ -5209,7 +5791,9 @@
     "type": "food",
     "slug": "banh-trung-thu",
     "name": "Bánh trung thu",
-    "aliases": [],
+    "aliases": [
+      "mooncake"
+    ],
     "category": "Bánh kẹo",
     "kcal": 450
   },
@@ -5217,7 +5801,9 @@
     "type": "food",
     "slug": "keo-lac",
     "name": "Kẹo lạc",
-    "aliases": [],
+    "aliases": [
+      "peanut candy"
+    ],
     "category": "Bánh kẹo",
     "kcal": 450
   },
@@ -5225,7 +5811,9 @@
     "type": "food",
     "slug": "banh-phong-tom",
     "name": "Bánh phồng tôm",
-    "aliases": [],
+    "aliases": [
+      "shrimp cracker"
+    ],
     "category": "Bánh kẹo",
     "kcal": 480
   },
@@ -5233,7 +5821,9 @@
     "type": "food",
     "slug": "banh-dau-xanh",
     "name": "Bánh đậu xanh",
-    "aliases": [],
+    "aliases": [
+      "mung bean cake"
+    ],
     "category": "Bánh kẹo",
     "kcal": 380
   },
@@ -5241,7 +5831,9 @@
     "type": "food",
     "slug": "banh-trang",
     "name": "Bánh tráng",
-    "aliases": [],
+    "aliases": [
+      "rice paper"
+    ],
     "category": "Tinh bột",
     "kcal": 340
   },
@@ -5249,7 +5841,10 @@
     "type": "food",
     "slug": "oi",
     "name": "Ổi",
-    "aliases": [],
+    "aliases": [
+      "guava",
+      "oi"
+    ],
     "category": "Trái cây",
     "kcal": 68
   },
@@ -5257,7 +5852,10 @@
     "type": "food",
     "slug": "nam",
     "name": "Nấm (hỗn hợp)",
-    "aliases": [],
+    "aliases": [
+      "mushroom",
+      "nam các loại"
+    ],
     "category": "Củ quả",
     "kcal": 22
   },
@@ -5265,7 +5863,9 @@
     "type": "food",
     "slug": "dau-o-liu",
     "name": "Dầu ô liu",
-    "aliases": [],
+    "aliases": [
+      "dau o liu"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -5273,7 +5873,9 @@
     "type": "food",
     "slug": "dau-me",
     "name": "Dầu mè",
-    "aliases": [],
+    "aliases": [
+      "dau me"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -5281,7 +5883,9 @@
     "type": "food",
     "slug": "dau-dau-nanh",
     "name": "Dầu đậu nành",
-    "aliases": [],
+    "aliases": [
+      "dau dau nanh"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -5289,7 +5893,9 @@
     "type": "food",
     "slug": "dau-huong-duong",
     "name": "Dầu hướng dương",
-    "aliases": [],
+    "aliases": [
+      "dau huong duong"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -5297,7 +5903,9 @@
     "type": "food",
     "slug": "dau-hat-cai",
     "name": "Dầu hạt cải",
-    "aliases": [],
+    "aliases": [
+      "dau hat cai"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -5305,7 +5913,9 @@
     "type": "food",
     "slug": "mo-heo",
     "name": "Mỡ heo",
-    "aliases": [],
+    "aliases": [
+      "mo heo"
+    ],
     "category": "Dầu mỡ",
     "kcal": 902
   },
@@ -5313,7 +5923,9 @@
     "type": "food",
     "slug": "bo-lat",
     "name": "Bơ lạt",
-    "aliases": [],
+    "aliases": [
+      "bo lat"
+    ],
     "category": "Dầu mỡ",
     "kcal": 717
   },
@@ -5321,7 +5933,9 @@
     "type": "food",
     "slug": "bo-thuc-vat",
     "name": "Bơ thực vật",
-    "aliases": [],
+    "aliases": [
+      "bo thuc vat"
+    ],
     "category": "Dầu mỡ",
     "kcal": 720
   },
@@ -5329,7 +5943,9 @@
     "type": "food",
     "slug": "nuoc-cot-dua-dac",
     "name": "Nước cốt dừa đặc",
-    "aliases": [],
+    "aliases": [
+      "nuoc cot dua dac"
+    ],
     "category": "Dầu mỡ",
     "kcal": 230
   },
@@ -5337,7 +5953,9 @@
     "type": "food",
     "slug": "kem-beo-thuc-vat",
     "name": "Kem béo thực vật",
-    "aliases": [],
+    "aliases": [
+      "kem beo thuc vat"
+    ],
     "category": "Dầu mỡ",
     "kcal": 310
   },
@@ -5345,7 +5963,9 @@
     "type": "food",
     "slug": "nuoc-ham-xuong-heo",
     "name": "Nước hầm xương heo",
-    "aliases": [],
+    "aliases": [
+      "nuoc ham xuong heo"
+    ],
     "category": "Nước dùng",
     "kcal": 28
   },
@@ -5353,7 +5973,9 @@
     "type": "food",
     "slug": "nuoc-ham-xuong-bo",
     "name": "Nước hầm xương bò",
-    "aliases": [],
+    "aliases": [
+      "nuoc ham xuong bo"
+    ],
     "category": "Nước dùng",
     "kcal": 32
   },
@@ -5361,7 +5983,9 @@
     "type": "food",
     "slug": "nuoc-dung-ga",
     "name": "Nước dùng gà",
-    "aliases": [],
+    "aliases": [
+      "nuoc dung ga"
+    ],
     "category": "Nước dùng",
     "kcal": 24
   },
@@ -5369,7 +5993,9 @@
     "type": "food",
     "slug": "nuoc-luoc-rau",
     "name": "Nước luộc rau",
-    "aliases": [],
+    "aliases": [
+      "nuoc luoc rau"
+    ],
     "category": "Nước dùng",
     "kcal": 8
   },
@@ -5377,7 +6003,9 @@
     "type": "food",
     "slug": "nuoc-dung-nam",
     "name": "Nước dùng nấm",
-    "aliases": [],
+    "aliases": [
+      "nuoc dung nam"
+    ],
     "category": "Nước dùng",
     "kcal": 12
   },
@@ -5385,7 +6013,9 @@
     "type": "food",
     "slug": "nuoc-dashi-ca-bao",
     "name": "Nước dashi cá bào",
-    "aliases": [],
+    "aliases": [
+      "nuoc dashi ca bao"
+    ],
     "category": "Nước dùng",
     "kcal": 10
   },
@@ -5393,7 +6023,9 @@
     "type": "food",
     "slug": "nuoc-lau-thai",
     "name": "Nước lẩu thái",
-    "aliases": [],
+    "aliases": [
+      "nuoc lau thai"
+    ],
     "category": "Nước dùng",
     "kcal": 42
   },
@@ -5401,7 +6033,9 @@
     "type": "food",
     "slug": "nuoc-lau-mam",
     "name": "Nước lẩu mắm",
-    "aliases": [],
+    "aliases": [
+      "nuoc lau mam"
+    ],
     "category": "Nước dùng",
     "kcal": 55
   },
@@ -5409,7 +6043,9 @@
     "type": "food",
     "slug": "nam-hau-thu",
     "name": "Nấm hầu thủ",
-    "aliases": [],
+    "aliases": [
+      "nam hau thu"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5417,7 +6053,9 @@
     "type": "food",
     "slug": "nam-bao-ngu",
     "name": "Nấm bào ngư",
-    "aliases": [],
+    "aliases": [
+      "nam bao ngu"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5425,7 +6063,9 @@
     "type": "food",
     "slug": "nam-mo",
     "name": "Nấm mỡ",
-    "aliases": [],
+    "aliases": [
+      "nam mo"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5433,7 +6073,9 @@
     "type": "food",
     "slug": "nam-linh-chi-nau",
     "name": "Nấm linh chi nâu",
-    "aliases": [],
+    "aliases": [
+      "nam linh chi nau"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5441,7 +6083,9 @@
     "type": "food",
     "slug": "nam-dui-ga",
     "name": "Nấm đùi gà",
-    "aliases": [],
+    "aliases": [
+      "nam dui ga"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5449,7 +6093,9 @@
     "type": "food",
     "slug": "nam-thai-duong",
     "name": "Nấm thái dương",
-    "aliases": [],
+    "aliases": [
+      "nam thai duong"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5457,7 +6103,9 @@
     "type": "food",
     "slug": "nam-tuyet",
     "name": "Nấm tuyết",
-    "aliases": [],
+    "aliases": [
+      "nam tuyet"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5465,7 +6113,9 @@
     "type": "food",
     "slug": "nam-moi",
     "name": "Nấm mối",
-    "aliases": [],
+    "aliases": [
+      "nam moi"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5473,7 +6123,9 @@
     "type": "food",
     "slug": "nam-tram",
     "name": "Nấm tràm",
-    "aliases": [],
+    "aliases": [
+      "nam tram"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5481,7 +6133,9 @@
     "type": "food",
     "slug": "nam-hai-san",
     "name": "Nấm hải sản",
-    "aliases": [],
+    "aliases": [
+      "nam hai san"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5489,7 +6143,9 @@
     "type": "food",
     "slug": "nam-so",
     "name": "Nấm sò",
-    "aliases": [],
+    "aliases": [
+      "nam so"
+    ],
     "category": "Nấm",
     "kcal": 30
   },
@@ -5497,7 +6153,9 @@
     "type": "food",
     "slug": "moc-nhi-kho",
     "name": "Mộc nhĩ khô",
-    "aliases": [],
+    "aliases": [
+      "moc nhi kho"
+    ],
     "category": "Nấm",
     "kcal": 280
   },
@@ -5505,7 +6163,9 @@
     "type": "food",
     "slug": "trung-vit-lon",
     "name": "Trứng vịt lộn",
-    "aliases": [],
+    "aliases": [
+      "trung vit lon"
+    ],
     "category": "Trứng sữa",
     "kcal": 182
   },
@@ -5513,7 +6173,9 @@
     "type": "food",
     "slug": "trung-cut",
     "name": "Trứng cút",
-    "aliases": [],
+    "aliases": [
+      "trung cut"
+    ],
     "category": "Trứng sữa",
     "kcal": 158
   },
@@ -5521,7 +6183,9 @@
     "type": "food",
     "slug": "long-trang-trung",
     "name": "Lòng trắng trứng",
-    "aliases": [],
+    "aliases": [
+      "long trang trung"
+    ],
     "category": "Trứng sữa",
     "kcal": 52
   },
@@ -5529,7 +6193,9 @@
     "type": "food",
     "slug": "long-do-trung",
     "name": "Lòng đỏ trứng",
-    "aliases": [],
+    "aliases": [
+      "long do trung"
+    ],
     "category": "Trứng sữa",
     "kcal": 322
   },
@@ -5537,7 +6203,9 @@
     "type": "food",
     "slug": "sua-tuoi-khong-duong",
     "name": "Sữa tươi không đường",
-    "aliases": [],
+    "aliases": [
+      "sua tuoi khong duong"
+    ],
     "category": "Trứng sữa",
     "kcal": 62
   },
@@ -5545,7 +6213,9 @@
     "type": "food",
     "slug": "sua-tuoi-tach-beo",
     "name": "Sữa tươi tách béo",
-    "aliases": [],
+    "aliases": [
+      "sua tuoi tach beo"
+    ],
     "category": "Trứng sữa",
     "kcal": 35
   },
@@ -5553,7 +6223,9 @@
     "type": "food",
     "slug": "sua-dac-co-duong",
     "name": "Sữa đặc có đường",
-    "aliases": [],
+    "aliases": [
+      "sua dac co duong"
+    ],
     "category": "Trứng sữa",
     "kcal": 321
   },
@@ -5561,7 +6233,9 @@
     "type": "food",
     "slug": "pho-mai-cheddar",
     "name": "Phô mai cheddar",
-    "aliases": [],
+    "aliases": [
+      "pho mai cheddar"
+    ],
     "category": "Trứng sữa",
     "kcal": 403
   },
@@ -5569,7 +6243,9 @@
     "type": "food",
     "slug": "pho-mai-tuoi",
     "name": "Phô mai tươi",
-    "aliases": [],
+    "aliases": [
+      "pho mai tuoi"
+    ],
     "category": "Trứng sữa",
     "kcal": 98
   },
@@ -5577,7 +6253,9 @@
     "type": "food",
     "slug": "vang-sua",
     "name": "Váng sữa",
-    "aliases": [],
+    "aliases": [
+      "vang sua"
+    ],
     "category": "Trứng sữa",
     "kcal": 190
   },
@@ -5585,7 +6263,9 @@
     "type": "food",
     "slug": "kem-sua",
     "name": "Kem sữa",
-    "aliases": [],
+    "aliases": [
+      "kem sua"
+    ],
     "category": "Trứng sữa",
     "kcal": 207
   },
@@ -5593,7 +6273,9 @@
     "type": "food",
     "slug": "sua-bot-nguyen-kem",
     "name": "Sữa bột nguyên kem",
-    "aliases": [],
+    "aliases": [
+      "sua bot nguyen kem"
+    ],
     "category": "Trứng sữa",
     "kcal": 496
   },
@@ -5601,7 +6283,9 @@
     "type": "food",
     "slug": "banh-pia",
     "name": "Bánh pía",
-    "aliases": [],
+    "aliases": [
+      "banh pia"
+    ],
     "category": "Bánh kẹo",
     "kcal": 410
   },
@@ -5609,7 +6293,9 @@
     "type": "food",
     "slug": "banh-bo",
     "name": "Bánh bò",
-    "aliases": [],
+    "aliases": [
+      "banh bo"
+    ],
     "category": "Bánh kẹo",
     "kcal": 260
   },
@@ -5617,7 +6303,9 @@
     "type": "food",
     "slug": "banh-da-lon",
     "name": "Bánh da lợn",
-    "aliases": [],
+    "aliases": [
+      "banh da lon"
+    ],
     "category": "Bánh kẹo",
     "kcal": 295
   },
@@ -5625,7 +6313,9 @@
     "type": "food",
     "slug": "banh-chuoi-hap",
     "name": "Bánh chuối hấp",
-    "aliases": [],
+    "aliases": [
+      "banh chuoi hap"
+    ],
     "category": "Bánh kẹo",
     "kcal": 210
   },
@@ -5633,7 +6323,9 @@
     "type": "food",
     "slug": "banh-flan",
     "name": "Bánh flan",
-    "aliases": [],
+    "aliases": [
+      "banh flan"
+    ],
     "category": "Bánh kẹo",
     "kcal": 145
   },
@@ -5641,7 +6333,9 @@
     "type": "food",
     "slug": "che-khuc-bach",
     "name": "Chè khúc bạch",
-    "aliases": [],
+    "aliases": [
+      "che khuc bach"
+    ],
     "category": "Bánh kẹo",
     "kcal": 165
   },
@@ -5649,7 +6343,9 @@
     "type": "food",
     "slug": "keo-dua",
     "name": "Kẹo dừa",
-    "aliases": [],
+    "aliases": [
+      "keo dua"
+    ],
     "category": "Bánh kẹo",
     "kcal": 390
   },
@@ -5657,7 +6353,9 @@
     "type": "food",
     "slug": "keo-me-xung",
     "name": "Kẹo mè xửng",
-    "aliases": [],
+    "aliases": [
+      "keo me xung"
+    ],
     "category": "Bánh kẹo",
     "kcal": 420
   },
@@ -5665,7 +6363,9 @@
     "type": "food",
     "slug": "banh-gai",
     "name": "Bánh gai",
-    "aliases": [],
+    "aliases": [
+      "banh gai"
+    ],
     "category": "Bánh kẹo",
     "kcal": 300
   },
@@ -5673,7 +6373,9 @@
     "type": "food",
     "slug": "banh-com",
     "name": "Bánh cốm",
-    "aliases": [],
+    "aliases": [
+      "banh com"
+    ],
     "category": "Bánh kẹo",
     "kcal": 330
   },
@@ -5681,7 +6383,9 @@
     "type": "food",
     "slug": "banh-in",
     "name": "Bánh in",
-    "aliases": [],
+    "aliases": [
+      "banh in"
+    ],
     "category": "Bánh kẹo",
     "kcal": 390
   },
@@ -5689,7 +6393,9 @@
     "type": "food",
     "slug": "banh-khao",
     "name": "Bánh khảo",
-    "aliases": [],
+    "aliases": [
+      "banh khao"
+    ],
     "category": "Bánh kẹo",
     "kcal": 375
   },
@@ -5697,7 +6403,9 @@
     "type": "food",
     "slug": "banh-da-cua-kho",
     "name": "Bánh đa cua khô",
-    "aliases": [],
+    "aliases": [
+      "banh da cua kho"
+    ],
     "category": "Tinh bột",
     "kcal": 335
   },
@@ -5705,7 +6413,9 @@
     "type": "food",
     "slug": "mien-dong-lang-so",
     "name": "Miến dong làng So",
-    "aliases": [],
+    "aliases": [
+      "mien dong lang so"
+    ],
     "category": "Tinh bột",
     "kcal": 332
   },
@@ -5713,7 +6423,9 @@
     "type": "food",
     "slug": "com-lang-vong",
     "name": "Cốm làng Vòng",
-    "aliases": [],
+    "aliases": [
+      "com lang vong"
+    ],
     "category": "Tinh bột",
     "kcal": 350
   },
@@ -5721,7 +6433,9 @@
     "type": "food",
     "slug": "thit-trau-gac-bep",
     "name": "Thịt trâu gác bếp",
-    "aliases": [],
+    "aliases": [
+      "thit trau gac bep"
+    ],
     "category": "Thịt chế biến",
     "kcal": 260
   },
@@ -5729,7 +6443,9 @@
     "type": "food",
     "slug": "lap-suon-tay-bac",
     "name": "Lạp sườn Tây Bắc",
-    "aliases": [],
+    "aliases": [
+      "lap suon tay bac"
+    ],
     "category": "Thịt chế biến",
     "kcal": 420
   },
@@ -5737,7 +6453,9 @@
     "type": "food",
     "slug": "ca-suoi-nuong",
     "name": "Cá suối nướng",
-    "aliases": [],
+    "aliases": [
+      "ca suoi nuong"
+    ],
     "category": "Cá",
     "kcal": 155
   },
@@ -5745,7 +6463,9 @@
     "type": "food",
     "slug": "ruoi",
     "name": "Rươi",
-    "aliases": [],
+    "aliases": [
+      "ruoi"
+    ],
     "category": "Hải sản",
     "kcal": 92
   },
@@ -5753,7 +6473,9 @@
     "type": "food",
     "slug": "cua-be-hai-phong",
     "name": "Cua bể Hải Phòng",
-    "aliases": [],
+    "aliases": [
+      "cua be hai phong"
+    ],
     "category": "Hải sản",
     "kcal": 97
   },
@@ -5761,7 +6483,9 @@
     "type": "food",
     "slug": "cha-muc-ha-long",
     "name": "Chả mực Hạ Long",
-    "aliases": [],
+    "aliases": [
+      "cha muc ha long"
+    ],
     "category": "Thịt chế biến",
     "kcal": 260
   },
@@ -5769,7 +6493,9 @@
     "type": "food",
     "slug": "tom-chua-hue",
     "name": "Tôm chua Huế",
-    "aliases": [],
+    "aliases": [
+      "tom chua hue"
+    ],
     "category": "Hải sản",
     "kcal": 115
   },
@@ -5777,7 +6503,9 @@
     "type": "food",
     "slug": "mam-ruoc-hue",
     "name": "Mắm ruốc Huế",
-    "aliases": [],
+    "aliases": [
+      "mam ruoc hue"
+    ],
     "category": "Gia vị",
     "kcal": 90
   },
@@ -5785,7 +6513,9 @@
     "type": "food",
     "slug": "mam-nem",
     "name": "Mắm nêm",
-    "aliases": [],
+    "aliases": [
+      "mam nem"
+    ],
     "category": "Gia vị",
     "kcal": 95
   },
@@ -5793,7 +6523,9 @@
     "type": "food",
     "slug": "tre-binh-dinh",
     "name": "Tré Bình Định",
-    "aliases": [],
+    "aliases": [
+      "tre binh dinh"
+    ],
     "category": "Thịt chế biến",
     "kcal": 250
   },
@@ -5801,7 +6533,9 @@
     "type": "food",
     "slug": "cha-bo-da-nang",
     "name": "Chả bò Đà Nẵng",
-    "aliases": [],
+    "aliases": [
+      "cha bo da nang"
+    ],
     "category": "Thịt chế biến",
     "kcal": 210
   },
@@ -5809,7 +6543,9 @@
     "type": "food",
     "slug": "nem-lui",
     "name": "Nem lụi",
-    "aliases": [],
+    "aliases": [
+      "nem lui"
+    ],
     "category": "Thịt chế biến",
     "kcal": 285
   },
@@ -5817,7 +6553,9 @@
     "type": "food",
     "slug": "banh-trang-dai-loc",
     "name": "Bánh tráng Đại Lộc",
-    "aliases": [],
+    "aliases": [
+      "banh trang dai loc"
+    ],
     "category": "Tinh bột",
     "kcal": 345
   },
@@ -5825,7 +6563,9 @@
     "type": "food",
     "slug": "bun-song-than",
     "name": "Bún song thằn",
-    "aliases": [],
+    "aliases": [
+      "bun song than"
+    ],
     "category": "Tinh bột",
     "kcal": 338
   },
@@ -5833,7 +6573,9 @@
     "type": "food",
     "slug": "ca-dia",
     "name": "Cá dìa",
-    "aliases": [],
+    "aliases": [
+      "ca dia"
+    ],
     "category": "Cá",
     "kcal": 118
   },
@@ -5841,7 +6583,9 @@
     "type": "food",
     "slug": "ca-bong-song-tra",
     "name": "Cá bống sông Trà",
-    "aliases": [],
+    "aliases": [
+      "ca bong song tra"
+    ],
     "category": "Cá",
     "kcal": 105
   },
@@ -5849,7 +6593,9 @@
     "type": "food",
     "slug": "rau-dang",
     "name": "Rau đắng",
-    "aliases": [],
+    "aliases": [
+      "rau dang"
+    ],
     "category": "Rau xanh",
     "kcal": 24
   },
@@ -5857,7 +6603,9 @@
     "type": "food",
     "slug": "bong-sung",
     "name": "Bông súng",
-    "aliases": [],
+    "aliases": [
+      "bong sung"
+    ],
     "category": "Rau xanh",
     "kcal": 20
   },
@@ -5865,7 +6613,9 @@
     "type": "food",
     "slug": "bon-bon",
     "name": "Bồn bồn",
-    "aliases": [],
+    "aliases": [
+      "bon bon"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -5873,7 +6623,9 @@
     "type": "food",
     "slug": "dot-choai",
     "name": "Đọt choại",
-    "aliases": [],
+    "aliases": [
+      "dot choai"
+    ],
     "category": "Rau xanh",
     "kcal": 31
   },
@@ -5881,7 +6633,9 @@
     "type": "food",
     "slug": "mam-ca-linh",
     "name": "Mắm cá linh",
-    "aliases": [],
+    "aliases": [
+      "mam ca linh"
+    ],
     "category": "Gia vị",
     "kcal": 135
   },
@@ -5889,7 +6643,9 @@
     "type": "food",
     "slug": "mam-ca-sac",
     "name": "Mắm cá sặc",
-    "aliases": [],
+    "aliases": [
+      "mam ca sac"
+    ],
     "category": "Gia vị",
     "kcal": 145
   },
@@ -5897,7 +6653,9 @@
     "type": "food",
     "slug": "kho-ca-loc",
     "name": "Khô cá lóc",
-    "aliases": [],
+    "aliases": [
+      "kho ca loc"
+    ],
     "category": "Cá",
     "kcal": 290
   },
@@ -5905,7 +6663,9 @@
     "type": "food",
     "slug": "tep-kho",
     "name": "Tép khô",
-    "aliases": [],
+    "aliases": [
+      "tep kho"
+    ],
     "category": "Hải sản",
     "kcal": 250
   },
@@ -5913,7 +6673,9 @@
     "type": "food",
     "slug": "banh-phong-tom-sa-dec",
     "name": "Bánh phồng tôm Sa Đéc",
-    "aliases": [],
+    "aliases": [
+      "banh phong tom sa dec"
+    ],
     "category": "Bánh kẹo",
     "kcal": 350
   },
@@ -5921,7 +6683,9 @@
     "type": "food",
     "slug": "com-dua-nao",
     "name": "Cơm dừa nạo",
-    "aliases": [],
+    "aliases": [
+      "com dua nao"
+    ],
     "category": "Trái cây",
     "kcal": 354
   },
@@ -5929,7 +6693,9 @@
     "type": "food",
     "slug": "nuoc-mau-dua",
     "name": "Nước màu dừa",
-    "aliases": [],
+    "aliases": [
+      "nuoc mau dua"
+    ],
     "category": "Gia vị",
     "kcal": 290
   },
@@ -5937,7 +6703,9 @@
     "type": "food",
     "slug": "duong-thot-not",
     "name": "Đường thốt nốt",
-    "aliases": [],
+    "aliases": [
+      "duong thot not"
+    ],
     "category": "Gia vị",
     "kcal": 383
   },
@@ -5945,7 +6713,9 @@
     "type": "food",
     "slug": "banh-tet-la-cam",
     "name": "Bánh tét lá cẩm",
-    "aliases": [],
+    "aliases": [
+      "banh tet la cam"
+    ],
     "category": "Tinh bột",
     "kcal": 280
   },
@@ -5953,7 +6723,9 @@
     "type": "food",
     "slug": "com-chay-ninh-binh",
     "name": "Cơm cháy Ninh Bình",
-    "aliases": [],
+    "aliases": [
+      "com chay ninh binh"
+    ],
     "category": "Tinh bột",
     "kcal": 430
   },
@@ -5961,7 +6733,9 @@
     "type": "food",
     "slug": "dua-mon",
     "name": "Dưa món",
-    "aliases": [],
+    "aliases": [
+      "dua mon"
+    ],
     "category": "Củ quả",
     "kcal": 70
   },
@@ -5969,7 +6743,11 @@
     "type": "food",
     "slug": "xa-lach-xoong",
     "name": "Xà lách xoong",
-    "aliases": [],
+    "aliases": [
+      "cress",
+      "watercress",
+      "xa lach xoong"
+    ],
     "category": "Rau xanh",
     "kcal": 11
   },
@@ -5977,7 +6755,11 @@
     "type": "food",
     "slug": "can-nuoc",
     "name": "Cần nước",
-    "aliases": [],
+    "aliases": [
+      "cần ta",
+      "water celery",
+      "can nuoc"
+    ],
     "category": "Rau xanh",
     "kcal": 16
   },
@@ -5985,7 +6767,10 @@
     "type": "food",
     "slug": "ngai-cuu",
     "name": "Ngải cứu",
-    "aliases": [],
+    "aliases": [
+      "mugwort",
+      "ngai cuu"
+    ],
     "category": "Rau xanh",
     "kcal": 32
   },
@@ -5993,7 +6778,10 @@
     "type": "food",
     "slug": "rau-diep",
     "name": "Rau diếp",
-    "aliases": [],
+    "aliases": [
+      "lettuce",
+      "rau diep"
+    ],
     "category": "Rau xanh",
     "kcal": 15
   },
@@ -6001,7 +6789,10 @@
     "type": "food",
     "slug": "bac-ha",
     "name": "Bạc hà rau",
-    "aliases": [],
+    "aliases": [
+      "rau bạc hà",
+      "bac ha"
+    ],
     "category": "Rau xanh",
     "kcal": 18
   },
@@ -6009,7 +6800,10 @@
     "type": "food",
     "slug": "doc-mung",
     "name": "Dọc mùng",
-    "aliases": [],
+    "aliases": [
+      "môn bạc hà",
+      "doc mung"
+    ],
     "category": "Rau xanh",
     "kcal": 12
   },
@@ -6017,7 +6811,11 @@
     "type": "food",
     "slug": "thi-la-kho",
     "name": "Thì là",
-    "aliases": [],
+    "aliases": [
+      "thìa là",
+      "dill",
+      "thi la"
+    ],
     "category": "Rau gia vị",
     "kcal": 43
   },
@@ -6025,7 +6823,10 @@
     "type": "food",
     "slug": "atiso",
     "name": "Atisô",
-    "aliases": [],
+    "aliases": [
+      "artichoke",
+      "ati so"
+    ],
     "category": "Củ quả",
     "kcal": 47
   },
@@ -6033,7 +6834,10 @@
     "type": "food",
     "slug": "man",
     "name": "Mận",
-    "aliases": [],
+    "aliases": [
+      "plum",
+      "mận hậu"
+    ],
     "category": "Trái cây",
     "kcal": 46
   },
@@ -6041,7 +6845,10 @@
     "type": "food",
     "slug": "mo-trai",
     "name": "Mơ",
-    "aliases": [],
+    "aliases": [
+      "apricot",
+      "mo"
+    ],
     "category": "Trái cây",
     "kcal": 48
   },
@@ -6049,7 +6856,11 @@
     "type": "food",
     "slug": "tac-quat",
     "name": "Tắc (quất)",
-    "aliases": [],
+    "aliases": [
+      "kumquat",
+      "tac",
+      "quat"
+    ],
     "category": "Trái cây",
     "kcal": 71
   },
@@ -6057,7 +6868,10 @@
     "type": "food",
     "slug": "son-ri",
     "name": "Sơn ri (xoài non)",
-    "aliases": [],
+    "aliases": [
+      "hạt điều non",
+      "son ri"
+    ],
     "category": "Trái cây",
     "kcal": 30
   },
@@ -6065,7 +6879,9 @@
     "type": "food",
     "slug": "ca-na-trai",
     "name": "Cà na",
-    "aliases": [],
+    "aliases": [
+      "ca na"
+    ],
     "category": "Trái cây",
     "kcal": 55
   },
@@ -6073,7 +6889,11 @@
     "type": "food",
     "slug": "sa",
     "name": "Sả",
-    "aliases": [],
+    "aliases": [
+      "lemongrass",
+      "xa",
+      "cây sả"
+    ],
     "category": "Rau gia vị",
     "kcal": 99
   },
@@ -6081,7 +6901,11 @@
     "type": "food",
     "slug": "bot-nghe",
     "name": "Bột nghệ",
-    "aliases": [],
+    "aliases": [
+      "turmeric powder",
+      "bot nghe",
+      "nghệ bột"
+    ],
     "category": "Gia vị",
     "kcal": 354
   },
@@ -6089,7 +6913,10 @@
     "type": "food",
     "slug": "mat-ong",
     "name": "Mật ong",
-    "aliases": [],
+    "aliases": [
+      "honey",
+      "mat ong"
+    ],
     "category": "Gia vị",
     "kcal": 304
   },
@@ -6097,7 +6924,10 @@
     "type": "food",
     "slug": "muoi-tieu",
     "name": "Muối tiêu",
-    "aliases": [],
+    "aliases": [
+      "muối tiêu chanh",
+      "salt pepper"
+    ],
     "category": "Gia vị",
     "kcal": 20
   },
@@ -6105,7 +6935,11 @@
     "type": "food",
     "slug": "gia-tuoi",
     "name": "Giá tươi",
-    "aliases": [],
+    "aliases": [
+      "giá đỗ",
+      "bean sprouts",
+      "gia do"
+    ],
     "category": "Rau xanh",
     "kcal": 33
   },
@@ -6113,7 +6947,11 @@
     "type": "food",
     "slug": "hat-nem",
     "name": "Hạt nêm",
-    "aliases": [],
+    "aliases": [
+      "seasoning powder",
+      "bot ngot",
+      "hat nem"
+    ],
     "category": "Gia vị",
     "kcal": 220
   },
@@ -6121,7 +6959,11 @@
     "type": "food",
     "slug": "chao",
     "name": "Chao",
-    "aliases": [],
+    "aliases": [
+      "fermented tofu",
+      "chao trang",
+      "chao do"
+    ],
     "category": "Gia vị",
     "kcal": 120
   },
@@ -6129,7 +6971,12 @@
     "type": "food",
     "slug": "thit-ba-roi",
     "name": "Thịt ba rọi heo",
-    "aliases": [],
+    "aliases": [
+      "thit ba chi",
+      "pork belly",
+      "ba rọi",
+      "ba chỉ"
+    ],
     "category": "Thịt",
     "kcal": 396
   },
@@ -6137,23 +6984,23 @@
     "type": "food",
     "slug": "thit-heo-quay",
     "name": "Thịt heo quay",
-    "aliases": [],
+    "aliases": [
+      "roasted pork",
+      "heo quay",
+      "thit quay"
+    ],
     "category": "Thịt chế biến",
     "kcal": 310
   },
   {
     "type": "food",
-    "slug": "thit-nguoi",
-    "name": "Thịt nguội",
-    "aliases": [],
-    "category": "Thịt chế biến",
-    "kcal": 150
-  },
-  {
-    "type": "food",
     "slug": "thit-bo-kho",
     "name": "Thịt bò khô",
-    "aliases": [],
+    "aliases": [
+      "beef jerky",
+      "bò khô",
+      "thit bo kho"
+    ],
     "category": "Thịt chế biến",
     "kcal": 310
   },
@@ -6161,7 +7008,12 @@
     "type": "food",
     "slug": "thit-bo-xay",
     "name": "Thịt bò xay",
-    "aliases": [],
+    "aliases": [
+      "beef mince",
+      "bò băm",
+      "thit bo bam",
+      "thit bo xay"
+    ],
     "category": "Thịt",
     "kcal": 220
   },
@@ -6169,7 +7021,11 @@
     "type": "food",
     "slug": "thit-ga-xay",
     "name": "Thịt gà xay",
-    "aliases": [],
+    "aliases": [
+      "chicken mince",
+      "gà băm",
+      "thit ga xay"
+    ],
     "category": "Thịt",
     "kcal": 158
   },
@@ -6177,7 +7033,10 @@
     "type": "food",
     "slug": "ca-tam",
     "name": "Cá tầm",
-    "aliases": [],
+    "aliases": [
+      "sturgeon",
+      "ca tam"
+    ],
     "category": "Cá",
     "kcal": 120
   },
@@ -6185,7 +7044,9 @@
     "type": "food",
     "slug": "ca-pheo",
     "name": "Cá phèo",
-    "aliases": [],
+    "aliases": [
+      "ca pheo"
+    ],
     "category": "Cá",
     "kcal": 105
   },
@@ -6193,7 +7054,10 @@
     "type": "food",
     "slug": "trung-cun",
     "name": "Trứng cút (thường)",
-    "aliases": [],
+    "aliases": [
+      "quail egg",
+      "trung cut"
+    ],
     "category": "Trứng sữa",
     "kcal": 158
   },
@@ -6201,7 +7065,10 @@
     "type": "food",
     "slug": "ba-khia",
     "name": "Ba khía",
-    "aliases": [],
+    "aliases": [
+      "ba khia",
+      "sesarmid crab"
+    ],
     "category": "Hải sản",
     "kcal": 75
   },
@@ -6209,7 +7076,11 @@
     "type": "food",
     "slug": "muoi-ba-khia",
     "name": "Muối ba khía",
-    "aliases": [],
+    "aliases": [
+      "ba khía muối",
+      "muoi ba khia",
+      "crab paste"
+    ],
     "category": "Hải sản",
     "kcal": 60
   },
@@ -6217,7 +7088,11 @@
     "type": "food",
     "slug": "rong-bien",
     "name": "Rong biển khô",
-    "aliases": [],
+    "aliases": [
+      "seaweed",
+      "rong bien",
+      "tảo bẹ"
+    ],
     "category": "Rau xanh",
     "kcal": 43
   },
@@ -6225,7 +7100,9 @@
     "type": "food",
     "slug": "banh-duc",
     "name": "Bánh đúc",
-    "aliases": [],
+    "aliases": [
+      "banh duc"
+    ],
     "category": "Tinh bột",
     "kcal": 110
   },
@@ -6233,7 +7110,9 @@
     "type": "food",
     "slug": "banh-can",
     "name": "Bánh căn",
-    "aliases": [],
+    "aliases": [
+      "banh can"
+    ],
     "category": "Tinh bột",
     "kcal": 170
   },
@@ -6241,7 +7120,9 @@
     "type": "food",
     "slug": "banh-tieu",
     "name": "Bánh tiêu",
-    "aliases": [],
+    "aliases": [
+      "banh tieu"
+    ],
     "category": "Tinh bột",
     "kcal": 380
   },
@@ -6249,15 +7130,21 @@
     "type": "food",
     "slug": "banh-da-tom",
     "name": "Bánh đa tôm",
-    "aliases": [],
+    "aliases": [
+      "bánh đa",
+      "banh da tom"
+    ],
     "category": "Bánh kẹo",
     "kcal": 420
   },
   {
     "type": "food",
-    "slug": "nam-bao-ngu",
+    "slug": "nam-bao-ngu-trang",
     "name": "Nấm bào ngư trắng",
-    "aliases": [],
+    "aliases": [
+      "oyster mushroom",
+      "nam bao ngu trang"
+    ],
     "category": "Nấm",
     "kcal": 33
   },
@@ -6265,7 +7152,10 @@
     "type": "food",
     "slug": "top-mo",
     "name": "Tóp mỡ",
-    "aliases": [],
+    "aliases": [
+      "crackling",
+      "top mo heo"
+    ],
     "category": "Thịt chế biến",
     "kcal": 480
   },
@@ -6273,7 +7163,11 @@
     "type": "food",
     "slug": "doi-truong",
     "name": "Dồi trường",
-    "aliases": [],
+    "aliases": [
+      "sausage casing",
+      "long heo non",
+      "doi truong"
+    ],
     "category": "Thịt chế biến",
     "kcal": 220
   },
@@ -6281,7 +7175,11 @@
     "type": "food",
     "slug": "ca-tim-dep",
     "name": "Cà tím dẹp",
-    "aliases": [],
+    "aliases": [
+      "ca tim dep",
+      "cà pháo dẹp",
+      "ca bong"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -6289,7 +7187,10 @@
     "type": "food",
     "slug": "ca-phao",
     "name": "Cà pháo",
-    "aliases": [],
+    "aliases": [
+      "ca phao",
+      "eggplant round"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -6297,7 +7198,10 @@
     "type": "food",
     "slug": "hat-dieu-rang",
     "name": "Hạt điều rang",
-    "aliases": [],
+    "aliases": [
+      "cashew nut roasted",
+      "hat dieu rang"
+    ],
     "category": "Hạt",
     "kcal": 553
   },
@@ -6305,7 +7209,9 @@
     "type": "food",
     "slug": "ca-lang",
     "name": "Cá lăng",
-    "aliases": [],
+    "aliases": [
+      "ca lang"
+    ],
     "category": "Cá",
     "kcal": 130
   },
@@ -6313,7 +7219,10 @@
     "type": "food",
     "slug": "ca-that-lat",
     "name": "Cá thát lát",
-    "aliases": [],
+    "aliases": [
+      "ca that lat",
+      "ca sa bo"
+    ],
     "category": "Cá",
     "kcal": 105
   },
@@ -6321,7 +7230,10 @@
     "type": "food",
     "slug": "ca-leo",
     "name": "Cá leo",
-    "aliases": [],
+    "aliases": [
+      "ca leo",
+      "cá dê"
+    ],
     "category": "Cá",
     "kcal": 140
   },
@@ -6329,7 +7241,10 @@
     "type": "food",
     "slug": "ca-bong-tuong",
     "name": "Cá bống tượng",
-    "aliases": [],
+    "aliases": [
+      "ca bong tuong",
+      "ca tai tuong"
+    ],
     "category": "Cá",
     "kcal": 115
   },
@@ -6337,7 +7252,10 @@
     "type": "food",
     "slug": "ca-nien",
     "name": "Cá niên",
-    "aliases": [],
+    "aliases": [
+      "ca chinh vang",
+      "ca nien"
+    ],
     "category": "Cá",
     "kcal": 108
   },
@@ -6345,7 +7263,9 @@
     "type": "food",
     "slug": "ca-ho",
     "name": "Cá hô",
-    "aliases": [],
+    "aliases": [
+      "ca ho"
+    ],
     "category": "Cá",
     "kcal": 125
   },
@@ -6353,7 +7273,11 @@
     "type": "food",
     "slug": "be-be",
     "name": "Bề bề",
-    "aliases": [],
+    "aliases": [
+      "tom huyet",
+      "mantis shrimp",
+      "be be"
+    ],
     "category": "Hải sản",
     "kcal": 95
   },
@@ -6361,15 +7285,20 @@
     "type": "food",
     "slug": "oc-nhoi",
     "name": "Ốc nhồi",
-    "aliases": [],
+    "aliases": [
+      "oc buou nuoc ngot",
+      "oc nhoi"
+    ],
     "category": "Hải sản",
     "kcal": 80
   },
   {
     "type": "food",
     "slug": "so-lo",
-    "name": "Sò lông",
-    "aliases": [],
+    "name": "Sò lông nhỏ",
+    "aliases": [
+      "so lo"
+    ],
     "category": "Hải sản",
     "kcal": 75
   },
@@ -6377,7 +7306,10 @@
     "type": "food",
     "slug": "gach-cua",
     "name": "Gạch cua",
-    "aliases": [],
+    "aliases": [
+      "gach cua dong",
+      "gach cua bien"
+    ],
     "category": "Hải sản",
     "kcal": 320
   },
@@ -6385,7 +7317,10 @@
     "type": "food",
     "slug": "su-hao",
     "name": "Su hào",
-    "aliases": [],
+    "aliases": [
+      "kohlrabi",
+      "su hao"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -6393,7 +7328,10 @@
     "type": "food",
     "slug": "mang-bo",
     "name": "Măng bò",
-    "aliases": [],
+    "aliases": [
+      "mang cay leo",
+      "mang bo"
+    ],
     "category": "Rau xanh",
     "kcal": 15
   },
@@ -6401,15 +7339,21 @@
     "type": "food",
     "slug": "bong-cai-xanh",
     "name": "Bông cải xanh",
-    "aliases": [],
+    "aliases": [
+      "súp lơ xanh",
+      "broccoli",
+      "bong cai xanh"
+    ],
     "category": "Rau xanh",
     "kcal": 34
   },
   {
     "type": "food",
     "slug": "ngo-sen-tuoi",
-    "name": "Ngó sen",
-    "aliases": [],
+    "name": "Ngó sen tươi",
+    "aliases": [
+      "ngo sen"
+    ],
     "category": "Rau xanh",
     "kcal": 20
   },
@@ -6417,7 +7361,10 @@
     "type": "food",
     "slug": "trang-tu-bap",
     "name": "Trái bắp non baby",
-    "aliases": [],
+    "aliases": [
+      "bap non",
+      "baby corn"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -6425,7 +7372,11 @@
     "type": "food",
     "slug": "thit-heo-bam",
     "name": "Thịt heo băm",
-    "aliases": [],
+    "aliases": [
+      "thit heo xay",
+      "thit heo bam",
+      "pork mince"
+    ],
     "category": "Thịt",
     "kcal": 250
   },
@@ -6433,7 +7384,10 @@
     "type": "food",
     "slug": "thit-bo-luc-lac",
     "name": "Thịt bò lúc lắc",
-    "aliases": [],
+    "aliases": [
+      "bo luc lac",
+      "bo la lot"
+    ],
     "category": "Thịt",
     "kcal": 198
   },
@@ -6441,7 +7395,11 @@
     "type": "food",
     "slug": "thit-vit-xiem",
     "name": "Thịt vịt xiêm",
-    "aliases": [],
+    "aliases": [
+      "vit xiem",
+      "vit bau",
+      "duck"
+    ],
     "category": "Thịt",
     "kcal": 200
   },
@@ -6449,7 +7407,10 @@
     "type": "food",
     "slug": "heo-rung",
     "name": "Thịt heo rừng",
-    "aliases": [],
+    "aliases": [
+      "heo rung",
+      "wild boar"
+    ],
     "category": "Thịt",
     "kcal": 145
   },
@@ -6457,7 +7418,10 @@
     "type": "food",
     "slug": "thit-nai",
     "name": "Thịt nai",
-    "aliases": [],
+    "aliases": [
+      "thit nai",
+      "venison"
+    ],
     "category": "Thịt",
     "kcal": 135
   },
@@ -6465,7 +7429,10 @@
     "type": "food",
     "slug": "dua-luoi",
     "name": "Dưa lưới",
-    "aliases": [],
+    "aliases": [
+      "melon",
+      "dua luoi"
+    ],
     "category": "Trái cây",
     "kcal": 36
   },
@@ -6473,23 +7440,21 @@
     "type": "food",
     "slug": "xoai-xanh",
     "name": "Xoài xanh",
-    "aliases": [],
+    "aliases": [
+      "xoai non",
+      "green mango",
+      "xoai xanh"
+    ],
     "category": "Trái cây",
     "kcal": 40
   },
   {
     "type": "food",
-    "slug": "vu-sua",
-    "name": "Vú sữa",
-    "aliases": [],
-    "category": "Trái cây",
-    "kcal": 65
-  },
-  {
-    "type": "food",
     "slug": "banh-chung",
     "name": "Bánh chưng",
-    "aliases": [],
+    "aliases": [
+      "banh chung tet"
+    ],
     "category": "Tinh bột",
     "kcal": 230
   },
@@ -6497,7 +7462,9 @@
     "type": "food",
     "slug": "banh-troi",
     "name": "Bánh trôi",
-    "aliases": [],
+    "aliases": [
+      "banh troi nuoc"
+    ],
     "category": "Tinh bột",
     "kcal": 200
   },
@@ -6505,7 +7472,9 @@
     "type": "food",
     "slug": "banh-chay",
     "name": "Bánh chay",
-    "aliases": [],
+    "aliases": [
+      "banh chay nuong"
+    ],
     "category": "Bánh kẹo",
     "kcal": 210
   },
@@ -6513,7 +7482,10 @@
     "type": "food",
     "slug": "banh-phu-the",
     "name": "Bánh phu thê",
-    "aliases": [],
+    "aliases": [
+      "banh fu the",
+      "banh xuan the"
+    ],
     "category": "Bánh kẹo",
     "kcal": 350
   },
@@ -6521,7 +7493,10 @@
     "type": "food",
     "slug": "banh-tong",
     "name": "Bánh tổ",
-    "aliases": [],
+    "aliases": [
+      "banh tong",
+      "banh to hoian"
+    ],
     "category": "Bánh kẹo",
     "kcal": 370
   },
@@ -6529,7 +7504,9 @@
     "type": "food",
     "slug": "banh-ong",
     "name": "Bánh ống",
-    "aliases": [],
+    "aliases": [
+      "banh ong"
+    ],
     "category": "Bánh kẹo",
     "kcal": 350
   },
@@ -6537,7 +7514,9 @@
     "type": "food",
     "slug": "banh-da-ke",
     "name": "Bánh đa kê",
-    "aliases": [],
+    "aliases": [
+      "banh da ke me"
+    ],
     "category": "Bánh kẹo",
     "kcal": 380
   },
@@ -6545,7 +7524,9 @@
     "type": "food",
     "slug": "che-lam",
     "name": "Chè lam",
-    "aliases": [],
+    "aliases": [
+      "che lam"
+    ],
     "category": "Bánh kẹo",
     "kcal": 360
   },
@@ -6553,7 +7534,11 @@
     "type": "food",
     "slug": "dau-dua",
     "name": "Đậu đũa",
-    "aliases": [],
+    "aliases": [
+      "dau dua",
+      "dau co ve leo",
+      "yardlong bean"
+    ],
     "category": "Đậu",
     "kcal": 47
   },
@@ -6561,23 +7546,22 @@
     "type": "food",
     "slug": "dau-rong",
     "name": "Đậu rồng",
-    "aliases": [],
+    "aliases": [
+      "dau rong",
+      "winged bean"
+    ],
     "category": "Đậu",
     "kcal": 49
   },
   {
     "type": "food",
-    "slug": "nam-linh-chi-nau",
-    "name": "Nấm linh chi nâu",
-    "aliases": [],
-    "category": "Nấm",
-    "kcal": 35
-  },
-  {
-    "type": "food",
     "slug": "hanh-cu",
     "name": "Hành củ tươi",
-    "aliases": [],
+    "aliases": [
+      "hanh cu",
+      "hanh huong",
+      "shallot"
+    ],
     "category": "Rau gia vị",
     "kcal": 40
   },
@@ -6585,7 +7569,12 @@
     "type": "food",
     "slug": "ho-tieu",
     "name": "Hồ tiêu đen",
-    "aliases": [],
+    "aliases": [
+      "tieu",
+      "tieu den",
+      "black pepper",
+      "ho tieu"
+    ],
     "category": "Gia vị",
     "kcal": 255
   },
@@ -6593,7 +7582,10 @@
     "type": "food",
     "slug": "sa-te-tom",
     "name": "Sa tế tôm",
-    "aliases": [],
+    "aliases": [
+      "sa te tom",
+      "sa te"
+    ],
     "category": "Gia vị",
     "kcal": 380
   },
@@ -6601,7 +7593,10 @@
     "type": "food",
     "slug": "dau-hao",
     "name": "Dầu hào",
-    "aliases": [],
+    "aliases": [
+      "oyster sauce",
+      "dau hao"
+    ],
     "category": "Gia vị",
     "kcal": 60
   },
@@ -6609,7 +7604,10 @@
     "type": "food",
     "slug": "ngo-vi-huong",
     "name": "Ngũ vị hương",
-    "aliases": [],
+    "aliases": [
+      "five spice",
+      "ngo vi huong"
+    ],
     "category": "Gia vị",
     "kcal": 270
   },
@@ -6617,7 +7615,10 @@
     "type": "food",
     "slug": "giam-gao",
     "name": "Giấm gạo",
-    "aliases": [],
+    "aliases": [
+      "rice vinegar",
+      "giam gao"
+    ],
     "category": "Gia vị",
     "kcal": 18
   },
@@ -6625,7 +7626,11 @@
     "type": "food",
     "slug": "thi-la-kho-x",
     "name": "Thì là (rau)",
-    "aliases": [],
+    "aliases": [
+      "thia la",
+      "dill herb",
+      "thi la"
+    ],
     "category": "Rau gia vị",
     "kcal": 43
   },
@@ -6633,23 +7638,20 @@
     "type": "food",
     "slug": "banh-trung-thu-nhan-thap-cam",
     "name": "Bánh trung thu thập cẩm",
-    "aliases": [],
+    "aliases": [
+      "mooncake assortment"
+    ],
     "category": "Bánh kẹo",
     "kcal": 420
   },
   {
     "type": "food",
-    "slug": "banh-da-lon-x",
-    "name": "Bánh da lợn",
-    "aliases": [],
-    "category": "Bánh kẹo",
-    "kcal": 295
-  },
-  {
-    "type": "food",
     "slug": "ot-tuoi",
     "name": "Ớt tươi",
-    "aliases": [],
+    "aliases": [
+      "chili pepper",
+      "ot"
+    ],
     "category": "Rau gia vị",
     "kcal": 40
   },
@@ -6657,7 +7659,10 @@
     "type": "food",
     "slug": "xuong-heo",
     "name": "Xương heo",
-    "aliases": [],
+    "aliases": [
+      "xuong heo",
+      "pork bone"
+    ],
     "category": "Thịt",
     "kcal": 200
   },
@@ -6665,7 +7670,10 @@
     "type": "food",
     "slug": "xuong-bo",
     "name": "Xương bò",
-    "aliases": [],
+    "aliases": [
+      "xuong bo",
+      "beef bone"
+    ],
     "category": "Thịt",
     "kcal": 220
   },
@@ -6673,7 +7681,11 @@
     "type": "food",
     "slug": "thit-ba-chi",
     "name": "Thịt ba chỉ heo (rút gọn)",
-    "aliases": [],
+    "aliases": [
+      "ba chi",
+      "thit ba rọi",
+      "pork belly"
+    ],
     "category": "Thịt",
     "kcal": 396
   },
@@ -6681,23 +7693,20 @@
     "type": "food",
     "slug": "long-heo",
     "name": "Lòng heo",
-    "aliases": [],
+    "aliases": [
+      "long heo",
+      "pork tripe"
+    ],
     "category": "Thịt",
     "kcal": 85
   },
   {
     "type": "food",
-    "slug": "bo-vien",
-    "name": "Bò viên",
-    "aliases": [],
-    "category": "Thịt chế biến",
-    "kcal": 180
-  },
-  {
-    "type": "food",
     "slug": "banh-gio",
     "name": "Bánh giò",
-    "aliases": [],
+    "aliases": [
+      "banh gio"
+    ],
     "category": "Tinh bột",
     "kcal": 195
   },
@@ -6705,7 +7714,9 @@
     "type": "food",
     "slug": "banh-mi-op-la",
     "name": "Bánh mì ốp la",
-    "aliases": [],
+    "aliases": [
+      "banh mi op la"
+    ],
     "category": "Tinh bột",
     "kcal": 180
   },
@@ -6713,7 +7724,9 @@
     "type": "food",
     "slug": "banh-mi-pate",
     "name": "Bánh mì pate",
-    "aliases": [],
+    "aliases": [
+      "banh mi pate"
+    ],
     "category": "Tinh bột",
     "kcal": 220
   },
@@ -6721,7 +7734,10 @@
     "type": "food",
     "slug": "banh-mi-cha-ca",
     "name": "Bánh mì chả cá",
-    "aliases": [],
+    "aliases": [
+      "banh mi cha ca",
+      "banh mi cha ca da nang"
+    ],
     "category": "Tinh bột",
     "kcal": 200
   },
@@ -6729,7 +7745,9 @@
     "type": "food",
     "slug": "banh-mi-cha-lua",
     "name": "Bánh mì chả lụa",
-    "aliases": [],
+    "aliases": [
+      "banh mi cha lua"
+    ],
     "category": "Tinh bột",
     "kcal": 190
   },
@@ -6737,7 +7755,10 @@
     "type": "food",
     "slug": "banh-cuon-nong",
     "name": "Bánh cuốn nóng",
-    "aliases": [],
+    "aliases": [
+      "banh cuon",
+      "banh cuon nong"
+    ],
     "category": "Tinh bột",
     "kcal": 150
   },
@@ -6745,7 +7766,11 @@
     "type": "food",
     "slug": "nam-linh-chi",
     "name": "Nấm linh chi",
-    "aliases": [],
+    "aliases": [
+      "nam linh chi",
+      "reishi",
+      "lingzhi"
+    ],
     "category": "Nấm",
     "kcal": 280
   },
@@ -6753,47 +7778,34 @@
     "type": "food",
     "slug": "sa-te",
     "name": "Sa tế",
-    "aliases": [],
+    "aliases": [
+      "sa te",
+      "sate",
+      "chili oil"
+    ],
     "category": "Gia vị",
     "kcal": 520
   },
   {
     "type": "food",
-    "slug": "giam",
-    "name": "Giấm gạo",
-    "aliases": [],
-    "category": "Gia vị",
-    "kcal": 18
-  },
-  {
-    "type": "food",
     "slug": "hung-lui",
     "name": "Húng lủi",
-    "aliases": [],
+    "aliases": [
+      "hung lui",
+      "hung nhu",
+      "hung trong"
+    ],
     "category": "Rau gia vị",
     "kcal": 30
   },
   {
     "type": "food",
-    "slug": "kinh-gioi",
-    "name": "Kinh giới",
-    "aliases": [],
-    "category": "Rau gia vị",
-    "kcal": 35
-  },
-  {
-    "type": "food",
-    "slug": "tia-to",
-    "name": "Tía tô",
-    "aliases": [],
-    "category": "Rau gia vị",
-    "kcal": 35
-  },
-  {
-    "type": "food",
     "slug": "la-buoi",
     "name": "Lá bưởi",
-    "aliases": [],
+    "aliases": [
+      "la buoi",
+      "pomelo leaf"
+    ],
     "category": "Rau gia vị",
     "kcal": 25
   },
@@ -6801,47 +7813,34 @@
     "type": "food",
     "slug": "la-chanh",
     "name": "Lá chanh",
-    "aliases": [],
+    "aliases": [
+      "la chanh",
+      "kuffir lime leaf"
+    ],
     "category": "Rau gia vị",
     "kcal": 20
   },
   {
     "type": "food",
-    "slug": "ngo-gai",
-    "name": "Ngò gai",
-    "aliases": [],
-    "category": "Rau gia vị",
-    "kcal": 25
-  },
-  {
-    "type": "food",
     "slug": "muop-dang",
     "name": "Mướp đắng (khổ qua)",
-    "aliases": [],
+    "aliases": [
+      "muop dang",
+      "kho qua",
+      "bitter gourd"
+    ],
     "category": "Rau xanh",
     "kcal": 19
   },
   {
     "type": "food",
-    "slug": "bi-dao",
-    "name": "Bí đao",
-    "aliases": [],
-    "category": "Củ quả",
-    "kcal": 14
-  },
-  {
-    "type": "food",
-    "slug": "bot-san-day",
-    "name": "Bột sắn dây",
-    "aliases": [],
-    "category": "Tinh bột",
-    "kcal": 350
-  },
-  {
-    "type": "food",
     "slug": "da-heo",
     "name": "Da heo",
-    "aliases": [],
+    "aliases": [
+      "da heo",
+      "bì heo",
+      "pork skin"
+    ],
     "category": "Thịt",
     "kcal": 230
   },
@@ -6849,7 +7848,11 @@
     "type": "food",
     "slug": "gio-heo",
     "name": "Giò heo (móng giò)",
-    "aliases": [],
+    "aliases": [
+      "gio heo",
+      "mong gio",
+      "pork trotter"
+    ],
     "category": "Thịt",
     "kcal": 200
   },
@@ -6857,7 +7860,10 @@
     "type": "food",
     "slug": "muc-kho",
     "name": "Mực khô",
-    "aliases": [],
+    "aliases": [
+      "muc kho",
+      "dried squid"
+    ],
     "category": "Hải sản",
     "kcal": 278
   },
@@ -6865,7 +7871,11 @@
     "type": "food",
     "slug": "diep-bien",
     "name": "Điệp biển",
-    "aliases": [],
+    "aliases": [
+      "diep bien",
+      "scallop",
+      "sò điệp"
+    ],
     "category": "Hải sản",
     "kcal": 88
   },
@@ -6873,7 +7883,10 @@
     "type": "food",
     "slug": "cha-ca",
     "name": "Chả cá",
-    "aliases": [],
+    "aliases": [
+      "cha ca",
+      "fish cake"
+    ],
     "category": "Thịt chế biến",
     "kcal": 160
   },
@@ -6881,7 +7894,10 @@
     "type": "food",
     "slug": "nem-chao",
     "name": "Nem chạo",
-    "aliases": [],
+    "aliases": [
+      "nem chao",
+      "nem ran"
+    ],
     "category": "Thịt chế biến",
     "kcal": 180
   },
@@ -6889,7 +7905,10 @@
     "type": "food",
     "slug": "nem-nuong",
     "name": "Nem nướng",
-    "aliases": [],
+    "aliases": [
+      "nem nuong",
+      "grilled pork sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 200
   },
@@ -6897,7 +7916,10 @@
     "type": "food",
     "slug": "nuoc-xuong-heo",
     "name": "Nước xương heo",
-    "aliases": [],
+    "aliases": [
+      "nuoc xuong heo",
+      "pork bone broth"
+    ],
     "category": "Nước dùng",
     "kcal": 8
   },
@@ -6905,39 +7927,33 @@
     "type": "food",
     "slug": "nuoc-xuong-bo",
     "name": "Nước xương bò",
-    "aliases": [],
+    "aliases": [
+      "nuoc xuong bo",
+      "beef bone broth"
+    ],
     "category": "Nước dùng",
     "kcal": 10
   },
   {
     "type": "food",
-    "slug": "nuoc-dung-ga",
-    "name": "Nước dùng gà",
-    "aliases": [],
-    "category": "Nước dùng",
-    "kcal": 7
-  },
-  {
-    "type": "food",
     "slug": "nuoc-sup-bo",
     "name": "Nước súp bò (bouillon)",
-    "aliases": [],
+    "aliases": [
+      "nuoc sup bo",
+      "boiled beef broth",
+      "bouillon"
+    ],
     "category": "Nước dùng",
     "kcal": 5
   },
   {
     "type": "food",
-    "slug": "nuoc-dung-nam",
-    "name": "Nước dùng nấm",
-    "aliases": [],
-    "category": "Nước dùng",
-    "kcal": 6
-  },
-  {
-    "type": "food",
     "slug": "nuoc-dung-tom",
     "name": "Nước dùng tôm",
-    "aliases": [],
+    "aliases": [
+      "nuoc dung tom",
+      "shrimp broth"
+    ],
     "category": "Nước dùng",
     "kcal": 6
   },
@@ -6945,7 +7961,10 @@
     "type": "food",
     "slug": "nuoc-dung-ca",
     "name": "Nước dùng cá",
-    "aliases": [],
+    "aliases": [
+      "nuoc dung ca",
+      "fish broth"
+    ],
     "category": "Nước dùng",
     "kcal": 5
   },
@@ -6953,7 +7972,10 @@
     "type": "food",
     "slug": "nuoc-ham-xuong",
     "name": "Nước hầm xương tổng hợp",
-    "aliases": [],
+    "aliases": [
+      "nuoc ham xuong",
+      "mixed bone broth"
+    ],
     "category": "Nước dùng",
     "kcal": 9
   },
@@ -6961,7 +7983,10 @@
     "type": "food",
     "slug": "nuoc-dua-chua",
     "name": "Nước dưa chua",
-    "aliases": [],
+    "aliases": [
+      "nuoc dua chua",
+      "pickled brine"
+    ],
     "category": "Nước dùng",
     "kcal": 5
   },
@@ -6969,7 +7994,10 @@
     "type": "food",
     "slug": "dau-ca-huc",
     "name": "Dầu gấc",
-    "aliases": [],
+    "aliases": [
+      "dau gac",
+      "gac fruit oil"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -6977,7 +8005,10 @@
     "type": "food",
     "slug": "dau-day",
     "name": "Dầu đay (dầu hạt đay)",
-    "aliases": [],
+    "aliases": [
+      "dau day",
+      "jute seed oil"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -6985,7 +8016,10 @@
     "type": "food",
     "slug": "dau-hanh-phi",
     "name": "Dầu hành phi",
-    "aliases": [],
+    "aliases": [
+      "dau hanh phi",
+      "fried shallot oil"
+    ],
     "category": "Dầu mỡ",
     "kcal": 880
   },
@@ -6993,7 +8027,10 @@
     "type": "food",
     "slug": "dau-me-den",
     "name": "Dầu mè đen",
-    "aliases": [],
+    "aliases": [
+      "dau me den",
+      "black sesame oil"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -7001,7 +8038,10 @@
     "type": "food",
     "slug": "mo-ga",
     "name": "Mỡ gà",
-    "aliases": [],
+    "aliases": [
+      "mo ga",
+      "chicken fat"
+    ],
     "category": "Dầu mỡ",
     "kcal": 900
   },
@@ -7009,7 +8049,10 @@
     "type": "food",
     "slug": "mo-vit",
     "name": "Mỡ vịt",
-    "aliases": [],
+    "aliases": [
+      "mo vit",
+      "duck fat"
+    ],
     "category": "Dầu mỡ",
     "kcal": 902
   },
@@ -7017,7 +8060,10 @@
     "type": "food",
     "slug": "bo-dong-vat",
     "name": "Mỡ bò (tallow)",
-    "aliases": [],
+    "aliases": [
+      "beef tallow",
+      "mo bo"
+    ],
     "category": "Dầu mỡ",
     "kcal": 902
   },
@@ -7025,7 +8071,11 @@
     "type": "food",
     "slug": "dau-phong",
     "name": "Dầu phộng (dầu lạc)",
-    "aliases": [],
+    "aliases": [
+      "dau phong",
+      "dau lac",
+      "peanut oil"
+    ],
     "category": "Dầu mỡ",
     "kcal": 884
   },
@@ -7033,7 +8083,10 @@
     "type": "food",
     "slug": "nuoc-ep-dua-hau",
     "name": "Nước ép dưa hấu",
-    "aliases": [],
+    "aliases": [
+      "nuoc ep dua hau",
+      "watermelon juice"
+    ],
     "category": "Đồ uống",
     "kcal": 30
   },
@@ -7041,7 +8094,10 @@
     "type": "food",
     "slug": "nuoc-ep-cam",
     "name": "Nước ép cam",
-    "aliases": [],
+    "aliases": [
+      "nuoc ep cam",
+      "orange juice"
+    ],
     "category": "Đồ uống",
     "kcal": 45
   },
@@ -7049,7 +8105,10 @@
     "type": "food",
     "slug": "nuoc-ep-buoi",
     "name": "Nước ép bưởi",
-    "aliases": [],
+    "aliases": [
+      "nuoc ep buoi",
+      "grapefruit juice"
+    ],
     "category": "Đồ uống",
     "kcal": 38
   },
@@ -7057,7 +8116,10 @@
     "type": "food",
     "slug": "nuoc-ep-ca-rot",
     "name": "Nước ép cà rốt",
-    "aliases": [],
+    "aliases": [
+      "nuoc ep ca rot",
+      "carrot juice"
+    ],
     "category": "Đồ uống",
     "kcal": 39
   },
@@ -7065,7 +8127,10 @@
     "type": "food",
     "slug": "nuoc-ep-tao",
     "name": "Nước ép táo",
-    "aliases": [],
+    "aliases": [
+      "nuoc ep tao",
+      "apple juice"
+    ],
     "category": "Đồ uống",
     "kcal": 46
   },
@@ -7073,7 +8138,10 @@
     "type": "food",
     "slug": "sua-hat-hanh-nhan",
     "name": "Sữa hạt hạnh nhân",
-    "aliases": [],
+    "aliases": [
+      "sua hat hanh nhan",
+      "almond milk"
+    ],
     "category": "Đồ uống",
     "kcal": 17
   },
@@ -7081,7 +8149,10 @@
     "type": "food",
     "slug": "tra-xanh-nguyen-chat",
     "name": "Trà xanh (nguyên chất)",
-    "aliases": [],
+    "aliases": [
+      "tra xanh",
+      "green tea"
+    ],
     "category": "Đồ uống",
     "kcal": 1
   },
@@ -7089,7 +8160,10 @@
     "type": "food",
     "slug": "tra-mat",
     "name": "Trà mật ong",
-    "aliases": [],
+    "aliases": [
+      "tra mat ong",
+      "honey tea"
+    ],
     "category": "Đồ uống",
     "kcal": 16
   },
@@ -7097,23 +8171,21 @@
     "type": "food",
     "slug": "tra-thao-moc",
     "name": "Trà thảo mộc",
-    "aliases": [],
+    "aliases": [
+      "tra thao moc",
+      "herbal tea"
+    ],
     "category": "Đồ uống",
     "kcal": 1
   },
   {
     "type": "food",
-    "slug": "ca-phe-sua-da",
-    "name": "Cà phê sữa đá",
-    "aliases": [],
-    "category": "Đồ uống",
-    "kcal": 55
-  },
-  {
-    "type": "food",
     "slug": "ca-phe-den-da",
     "name": "Cà phê đen đá",
-    "aliases": [],
+    "aliases": [
+      "ca phe den da",
+      "iced black coffee"
+    ],
     "category": "Đồ uống",
     "kcal": 2
   },
@@ -7121,7 +8193,11 @@
     "type": "food",
     "slug": "ruou-nep-than",
     "name": "Rượu nếp",
-    "aliases": [],
+    "aliases": [
+      "ruou nep",
+      "ruou gao",
+      "rice wine"
+    ],
     "category": "Đồ uống",
     "kcal": 200
   },
@@ -7129,7 +8205,11 @@
     "type": "food",
     "slug": "nuoc-khoang-tinh-khiet",
     "name": "Nước khoáng tinh khiết",
-    "aliases": [],
+    "aliases": [
+      "nuoc khoang",
+      "nuoc tinh khiet",
+      "mineral water"
+    ],
     "category": "Đồ uống",
     "kcal": 0
   },
@@ -7137,7 +8217,10 @@
     "type": "food",
     "slug": "hat-dua",
     "name": "Hạt đu đủ",
-    "aliases": [],
+    "aliases": [
+      "hat du du",
+      "papaya seed"
+    ],
     "category": "Hạt",
     "kcal": 390
   },
@@ -7145,7 +8228,10 @@
     "type": "food",
     "slug": "hat-bi-rang",
     "name": "Hạt bí rang",
-    "aliases": [],
+    "aliases": [
+      "hat bi rang",
+      "roasted pumpkin seeds"
+    ],
     "category": "Hạt",
     "kcal": 560
   },
@@ -7153,7 +8239,10 @@
     "type": "food",
     "slug": "hat-huong-duong-rang",
     "name": "Hạt hướng dương rang",
-    "aliases": [],
+    "aliases": [
+      "hat huong duong rang",
+      "sunflower seeds roasted"
+    ],
     "category": "Hạt",
     "kcal": 585
   },
@@ -7161,7 +8250,10 @@
     "type": "food",
     "slug": "hat-de-rang",
     "name": "Hạt dẻ rang",
-    "aliases": [],
+    "aliases": [
+      "hat de rang",
+      "roasted chestnuts"
+    ],
     "category": "Hạt",
     "kcal": 245
   },
@@ -7169,7 +8261,10 @@
     "type": "food",
     "slug": "hat-ngu-coc",
     "name": "Hạt ngũ cốc dinh dưỡng",
-    "aliases": [],
+    "aliases": [
+      "hat ngu coc",
+      "mixed cereal grains"
+    ],
     "category": "Hạt",
     "kcal": 360
   },
@@ -7177,7 +8272,10 @@
     "type": "food",
     "slug": "hat-chum-ngay",
     "name": "Hạt chùm ngây",
-    "aliases": [],
+    "aliases": [
+      "hat chum ngay",
+      "moringa seeds"
+    ],
     "category": "Hạt",
     "kcal": 420
   },
@@ -7185,7 +8283,10 @@
     "type": "food",
     "slug": "hat-dau-xanh-kho",
     "name": "Hạt đậu xanh (khô)",
-    "aliases": [],
+    "aliases": [
+      "hat dau xanh kho",
+      "mung bean dry"
+    ],
     "category": "Hạt",
     "kcal": 347
   },
@@ -7193,7 +8294,10 @@
     "type": "food",
     "slug": "hat-dau-trang-kho",
     "name": "Hạt đậu trắng (khô)",
-    "aliases": [],
+    "aliases": [
+      "hat dau trang kho",
+      "white bean dry"
+    ],
     "category": "Hạt",
     "kcal": 337
   },
@@ -7201,7 +8305,10 @@
     "type": "food",
     "slug": "dau-den-hat",
     "name": "Đậu đen (hạt)",
-    "aliases": [],
+    "aliases": [
+      "dau den hat",
+      "black bean"
+    ],
     "category": "Đậu",
     "kcal": 341
   },
@@ -7209,7 +8316,10 @@
     "type": "food",
     "slug": "dau-xanh-hat",
     "name": "Đậu xanh (hạt)",
-    "aliases": [],
+    "aliases": [
+      "dau xanh hat",
+      "mung bean whole"
+    ],
     "category": "Đậu",
     "kcal": 347
   },
@@ -7217,7 +8327,10 @@
     "type": "food",
     "slug": "dau-trang-hat",
     "name": "Đậu trắng (hạt)",
-    "aliases": [],
+    "aliases": [
+      "dau trang hat",
+      "white bean"
+    ],
     "category": "Đậu",
     "kcal": 337
   },
@@ -7225,7 +8338,11 @@
     "type": "food",
     "slug": "dau-do-hat",
     "name": "Đậu đỏ (hạt)",
-    "aliases": [],
+    "aliases": [
+      "dau do hat",
+      "red bean",
+      "azuki bean"
+    ],
     "category": "Đậu",
     "kcal": 329
   },
@@ -7233,7 +8350,11 @@
     "type": "food",
     "slug": "dau-do-my",
     "name": "Đậu đỏ Mỹ (kidney bean)",
-    "aliases": [],
+    "aliases": [
+      "dau do my",
+      "kidney bean",
+      "dau tau"
+    ],
     "category": "Đậu",
     "kcal": 337
   },
@@ -7241,7 +8362,10 @@
     "type": "food",
     "slug": "tau-hu-sot-tuong",
     "name": "Tàu hũ sốt tương",
-    "aliases": [],
+    "aliases": [
+      "tau hu sot tuong",
+      "tofu in soy sauce"
+    ],
     "category": "Đậu",
     "kcal": 85
   },
@@ -7249,7 +8373,10 @@
     "type": "food",
     "slug": "tau-hu-dua",
     "name": "Tàu hũ dừa",
-    "aliases": [],
+    "aliases": [
+      "tau hu dua",
+      "tofu with coconut"
+    ],
     "category": "Đậu",
     "kcal": 110
   },
@@ -7257,7 +8384,10 @@
     "type": "food",
     "slug": "sua-bo-nguyen-chat",
     "name": "Sữa bò nguyên chất",
-    "aliases": [],
+    "aliases": [
+      "sua bo nguyen chat",
+      "whole milk"
+    ],
     "category": "Trứng sữa",
     "kcal": 61
   },
@@ -7265,7 +8395,10 @@
     "type": "food",
     "slug": "sua-bo-tach-beo",
     "name": "Sữa bò tách béo",
-    "aliases": [],
+    "aliases": [
+      "sua bo tach beo",
+      "skim milk"
+    ],
     "category": "Trứng sữa",
     "kcal": 34
   },
@@ -7273,7 +8406,11 @@
     "type": "food",
     "slug": "sua-ong-tho",
     "name": "Sữa đặc (ông Thọ)",
-    "aliases": [],
+    "aliases": [
+      "sua dac",
+      "sua ong tho",
+      "condensed milk"
+    ],
     "category": "Trứng sữa",
     "kcal": 321
   },
@@ -7281,7 +8418,10 @@
     "type": "food",
     "slug": "sua-chua-uong",
     "name": "Sữa chua uống",
-    "aliases": [],
+    "aliases": [
+      "sua chua uong",
+      "drinkable yogurt"
+    ],
     "category": "Trứng sữa",
     "kcal": 60
   },
@@ -7289,7 +8429,10 @@
     "type": "food",
     "slug": "sua-bo-len-men",
     "name": "Sữa bò lên men (kefir)",
-    "aliases": [],
+    "aliases": [
+      "sua bo len men",
+      "kefir"
+    ],
     "category": "Trứng sữa",
     "kcal": 50
   },
@@ -7297,7 +8440,11 @@
     "type": "food",
     "slug": "kem-tuoi",
     "name": "Kem tươi whipping",
-    "aliases": [],
+    "aliases": [
+      "kem tuoi",
+      "whipping cream",
+      "heavy cream"
+    ],
     "category": "Trứng sữa",
     "kcal": 340
   },
@@ -7305,7 +8452,10 @@
     "type": "food",
     "slug": "kem-chua",
     "name": "Kem chua (sour cream)",
-    "aliases": [],
+    "aliases": [
+      "kem chua",
+      "sour cream"
+    ],
     "category": "Trứng sữa",
     "kcal": 198
   },
@@ -7313,7 +8463,10 @@
     "type": "food",
     "slug": "trung-ga-luoc",
     "name": "Trứng gà luộc",
-    "aliases": [],
+    "aliases": [
+      "trung ga luoc",
+      "boiled egg"
+    ],
     "category": "Trứng sữa",
     "kcal": 78
   },
@@ -7321,7 +8474,10 @@
     "type": "food",
     "slug": "trung-ga-chien",
     "name": "Trứng gà chiên",
-    "aliases": [],
+    "aliases": [
+      "trung ga chien",
+      "fried egg"
+    ],
     "category": "Trứng sữa",
     "kcal": 110
   },
@@ -7329,7 +8485,10 @@
     "type": "food",
     "slug": "long-den-trung-ga",
     "name": "Lòng đỏ trứng gà",
-    "aliases": [],
+    "aliases": [
+      "long do trung ga",
+      "egg yolk"
+    ],
     "category": "Trứng sữa",
     "kcal": 322
   },
@@ -7337,23 +8496,21 @@
     "type": "food",
     "slug": "trung-ga-non",
     "name": "Trứng gà non (trứng tơ)",
-    "aliases": [],
+    "aliases": [
+      "trung ga non",
+      "young hen egg"
+    ],
     "category": "Trứng sữa",
     "kcal": 55
   },
   {
     "type": "food",
-    "slug": "nam-bao-ngu-trang",
-    "name": "Nấm bào ngư trắng",
-    "aliases": [],
-    "category": "Nấm",
-    "kcal": 33
-  },
-  {
-    "type": "food",
     "slug": "nam-dong-co-kho",
     "name": "Nấm đông cô khô",
-    "aliases": [],
+    "aliases": [
+      "nam dong co kho",
+      "dried shiitake mushroom"
+    ],
     "category": "Nấm",
     "kcal": 296
   },
@@ -7361,7 +8518,11 @@
     "type": "food",
     "slug": "nam-meo",
     "name": "Nấm mèo (mộc nhĩ)",
-    "aliases": [],
+    "aliases": [
+      "nam meo",
+      "moc nho",
+      "wood ear mushroom"
+    ],
     "category": "Nấm",
     "kcal": 285
   },
@@ -7369,23 +8530,22 @@
     "type": "food",
     "slug": "nam-rong",
     "name": "Nấm rơm (tươi)",
-    "aliases": [],
+    "aliases": [
+      "nam rom",
+      "straw mushroom"
+    ],
     "category": "Nấm",
     "kcal": 22
   },
   {
     "type": "food",
-    "slug": "nam-dong-co-tuoi",
-    "name": "Nấm đông cô tươi",
-    "aliases": [],
-    "category": "Nấm",
-    "kcal": 34
-  },
-  {
-    "type": "food",
     "slug": "gio-lua",
     "name": "Giò lụa (giò sống)",
-    "aliases": [],
+    "aliases": [
+      "gio lua",
+      "gio song",
+      "Vietnamese pork sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 160
   },
@@ -7393,7 +8553,10 @@
     "type": "food",
     "slug": "cha-que",
     "name": "Chả quế",
-    "aliases": [],
+    "aliases": [
+      "cha que",
+      "cha que thit lon"
+    ],
     "category": "Thịt chế biến",
     "kcal": 175
   },
@@ -7401,7 +8564,10 @@
     "type": "food",
     "slug": "gio-bo",
     "name": "Giò bò",
-    "aliases": [],
+    "aliases": [
+      "gio bo",
+      "beef sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 170
   },
@@ -7409,7 +8575,10 @@
     "type": "food",
     "slug": "gio-thit-dong",
     "name": "Giò thịt đông",
-    "aliases": [],
+    "aliases": [
+      "gio thit dong",
+      "pork jelly terrine"
+    ],
     "category": "Thịt chế biến",
     "kcal": 150
   },
@@ -7417,7 +8586,10 @@
     "type": "food",
     "slug": "lap-xuong-nuong",
     "name": "Lạp xưởng nướng",
-    "aliases": [],
+    "aliases": [
+      "lap xuong nuong",
+      "grilled Chinese sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 320
   },
@@ -7425,7 +8597,10 @@
     "type": "food",
     "slug": "thit-xong-khoi",
     "name": "Thịt hun khói",
-    "aliases": [],
+    "aliases": [
+      "thit xong khoi",
+      "smoked pork"
+    ],
     "category": "Thịt chế biến",
     "kcal": 390
   },
@@ -7433,7 +8608,10 @@
     "type": "food",
     "slug": "thit-bacon",
     "name": "Bacon",
-    "aliases": [],
+    "aliases": [
+      "bacon",
+      "thit ba chi hun khoi"
+    ],
     "category": "Thịt chế biến",
     "kcal": 541
   },
@@ -7441,7 +8619,10 @@
     "type": "food",
     "slug": "thit-bacon-chien",
     "name": "Bacon chiên",
-    "aliases": [],
+    "aliases": [
+      "bacon chien",
+      "fried bacon"
+    ],
     "category": "Thịt chế biến",
     "kcal": 500
   },
@@ -7449,7 +8630,11 @@
     "type": "food",
     "slug": "xuc-xich-duc",
     "name": "Xúc xích Đức (bratwurst)",
-    "aliases": [],
+    "aliases": [
+      "xuc xich duc",
+      "bratwurst",
+      "German sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 280
   },
@@ -7457,7 +8642,11 @@
     "type": "food",
     "slug": "xuc-xich-my",
     "name": "Xúc xích Mỹ (hot dog)",
-    "aliases": [],
+    "aliases": [
+      "xuc xich my",
+      "hot dog",
+      "frankfurter"
+    ],
     "category": "Thịt chế biến",
     "kcal": 290
   },
@@ -7465,7 +8654,10 @@
     "type": "food",
     "slug": "xuc-xich-bo",
     "name": "Xúc xích bò",
-    "aliases": [],
+    "aliases": [
+      "xuc xich bo",
+      "beef sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 260
   },
@@ -7473,7 +8665,10 @@
     "type": "food",
     "slug": "xuc-xich-ga",
     "name": "Xúc xích gà",
-    "aliases": [],
+    "aliases": [
+      "xuc xich ga",
+      "chicken sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 200
   },
@@ -7481,7 +8676,10 @@
     "type": "food",
     "slug": "xuc-xich-heo",
     "name": "Xúc xích heo",
-    "aliases": [],
+    "aliases": [
+      "xuc xich heo",
+      "pork sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 270
   },
@@ -7489,7 +8687,10 @@
     "type": "food",
     "slug": "pate-gan",
     "name": "Patê gan",
-    "aliases": [],
+    "aliases": [
+      "pate gan",
+      "pork liver pate"
+    ],
     "category": "Thịt chế biến",
     "kcal": 320
   },
@@ -7497,7 +8698,10 @@
     "type": "food",
     "slug": "pate-gan-nam",
     "name": "Patê gan nấm",
-    "aliases": [],
+    "aliases": [
+      "pate gan nam",
+      "mushroom liver pate"
+    ],
     "category": "Thịt chế biến",
     "kcal": 180
   },
@@ -7505,7 +8709,10 @@
     "type": "food",
     "slug": "cha-ga",
     "name": "Chả gà",
-    "aliases": [],
+    "aliases": [
+      "cha ga",
+      "chicken pate-style sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 160
   },
@@ -7513,7 +8720,11 @@
     "type": "food",
     "slug": "thit-nguoi-thuong",
     "name": "Thịt nguội (ham)",
-    "aliases": [],
+    "aliases": [
+      "thit nguoi",
+      "ham",
+      "jambon"
+    ],
     "category": "Thịt chế biến",
     "kcal": 145
   },
@@ -7521,15 +8732,599 @@
     "type": "food",
     "slug": "cha-vit",
     "name": "Chả vịt",
-    "aliases": [],
+    "aliases": [
+      "cha vit",
+      "duck pate sausage"
+    ],
     "category": "Thịt chế biến",
     "kcal": 180
   },
   {
     "type": "food",
+    "slug": "sua-tuoi-vinamilk",
+    "name": "Sữa tươi Vinamilk (hộp)",
+    "aliases": [
+      "vinamilk milk",
+      "sữa tươi vinamilk không đường"
+    ],
+    "category": "Sữa",
+    "kcal": 97
+  },
+  {
+    "type": "food",
+    "slug": "sua-tuoi-th",
+    "name": "Sữa tươi TH True Milk (hộp)",
+    "aliases": [
+      "th true milk",
+      "sữa th true milk"
+    ],
+    "category": "Sữa",
+    "kcal": 94
+  },
+  {
+    "type": "food",
+    "slug": "sua-dac-ong-tho",
+    "name": "Sữa đặc Ông Thọ",
+    "aliases": [
+      "ong tho condensed milk",
+      "sữa đặc có đường"
+    ],
+    "category": "Sữa",
+    "kcal": 320
+  },
+  {
+    "type": "food",
+    "slug": "sua-chua-vinamilk",
+    "name": "Sữa chua Vinamilk (hũ)",
+    "aliases": [
+      "vinamilk yogurt",
+      "sữa chua vinamilk có đường"
+    ],
+    "category": "Sữa",
+    "kcal": 90
+  },
+  {
+    "type": "food",
+    "slug": "sua-chua-uong-probiotic",
+    "name": "Sữa chua uống Probiotic",
+    "aliases": [
+      "probiotic yogurt drink",
+      "sữa chua uống vinamilk"
+    ],
+    "category": "Sữa",
+    "kcal": 115
+  },
+  {
+    "type": "food",
+    "slug": "sua-dau-nanh-fami",
+    "name": "Sữa đậu nành Fami",
+    "aliases": [
+      "fami soy milk",
+      "sữa đậu nành fami"
+    ],
+    "category": "Đồ uống",
+    "kcal": 80
+  },
+  {
+    "type": "food",
+    "slug": "sua-tieu-duong-glupro",
+    "name": "Sữa Glucerna (tiểu đường)",
+    "aliases": [
+      "glucerna",
+      "sữa cho người tiểu đường",
+      "ensure glucose control"
+    ],
+    "category": "Sữa",
+    "kcal": 220
+  },
+  {
+    "type": "food",
+    "slug": "sua-ensure",
+    "name": "Ensure (sữa dinh dưỡng)",
+    "aliases": [
+      "ensure original",
+      "sữa ensure"
+    ],
+    "category": "Sữa",
+    "kcal": 250
+  },
+  {
+    "type": "food",
+    "slug": "coca-cola",
+    "name": "Coca-Cola (lon)",
+    "aliases": [
+      "cola",
+      "coke",
+      "cocacola"
+    ],
+    "category": "Đồ uống",
+    "kcal": 140
+  },
+  {
+    "type": "food",
+    "slug": "pepsi",
+    "name": "Pepsi (lon)",
+    "aliases": [
+      "pepsi",
+      "pepsi cola"
+    ],
+    "category": "Đồ uống",
+    "kcal": 140
+  },
+  {
+    "type": "food",
+    "slug": "coca-zero",
+    "name": "Coca-Cola Zero (lon)",
+    "aliases": [
+      "coke zero",
+      "coca zero",
+      "cola không đường"
+    ],
+    "category": "Đồ uống",
+    "kcal": 1
+  },
+  {
+    "type": "food",
+    "slug": "pepsi-zero",
+    "name": "Pepsi Zero (lon)",
+    "aliases": [
+      "pepsi zero",
+      "pepsi không đường"
+    ],
+    "category": "Đồ uống",
+    "kcal": 1
+  },
+  {
+    "type": "food",
+    "slug": "sting",
+    "name": "Sting dâu (lon)",
+    "aliases": [
+      "sting",
+      "nước tăng lực sting"
+    ],
+    "category": "Đồ uống",
+    "kcal": 120
+  },
+  {
+    "type": "food",
+    "slug": "redbull",
+    "name": "Red Bull (lon)",
+    "aliases": [
+      "redbull",
+      "nước tăng lực redbull"
+    ],
+    "category": "Đồ uống",
+    "kcal": 111
+  },
+  {
+    "type": "food",
+    "slug": "number1",
+    "name": "Number 1 (chai)",
+    "aliases": [
+      "number 1",
+      "nước tăng lực number 1"
+    ],
+    "category": "Đồ uống",
+    "kcal": 130
+  },
+  {
+    "type": "food",
+    "slug": "mirinda-cam",
+    "name": "Mirinda cam (lon)",
+    "aliases": [
+      "mirinda",
+      "mirinda orange",
+      "nước ngọt cam"
+    ],
+    "category": "Đồ uống",
+    "kcal": 145
+  },
+  {
+    "type": "food",
+    "slug": "fanta-cam",
+    "name": "Fanta cam (lon)",
+    "aliases": [
+      "fanta",
+      "fanta orange"
+    ],
+    "category": "Đồ uống",
+    "kcal": 140
+  },
+  {
+    "type": "food",
+    "slug": "sprite",
+    "name": "Sprite (lon)",
+    "aliases": [
+      "sprite",
+      "nước soda"
+    ],
+    "category": "Đồ uống",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "seven-up",
+    "name": "7Up (lon)",
+    "aliases": [
+      "7up",
+      "seven up",
+      "soda chanh"
+    ],
+    "category": "Đồ uống",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "tra-xanh-0-do",
+    "name": "Trà xanh 0 độ C2",
+    "aliases": [
+      "c2 trà xanh",
+      "trà xanh c2",
+      "c2 0 do"
+    ],
+    "category": "Đồ uống",
+    "kcal": 110
+  },
+  {
+    "type": "food",
+    "slug": "tra-omac",
+    "name": "Trà O Long Maccoffee",
+    "aliases": [
+      "omac",
+      "trà o maccoffee",
+      "trà xanh mac",
+      "trà Ô ma"
+    ],
+    "category": "Đồ uống",
+    "kcal": 95
+  },
+  {
+    "type": "food",
+    "slug": "tra-dasani",
+    "name": "Trà Dasani (lạnh)",
+    "aliases": [
+      "dasani",
+      "dasani trà",
+      "trà dasani"
+    ],
+    "category": "Đồ uống",
+    "kcal": 90
+  },
+  {
+    "type": "food",
+    "slug": "tra-thanh-nhiet",
+    "name": "Trà thanh nhiệt Dr Thanh",
+    "aliases": [
+      "dr thanh",
+      "trà dr thanh",
+      "trà thanh nhiệt dr thanh"
+    ],
+    "category": "Đồ uống",
+    "kcal": 85
+  },
+  {
+    "type": "food",
+    "slug": "tra-vi-chanh",
+    "name": "Trà vị chanh TeaPlus",
+    "aliases": [
+      "teaplus",
+      "trà vị chanh teaplus"
+    ],
+    "category": "Đồ uống",
+    "kcal": 105
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-cam-ep-vf",
+    "name": "Nước cam ép Vfresh",
+    "aliases": [
+      "vfresh cam",
+      "nước cam vfresh",
+      "cam ép vfresh"
+    ],
+    "category": "Đồ uống",
+    "kcal": 140
+  },
+  {
+    "type": "food",
+    "slug": "tra-sua-tran-chau-extra8",
+    "name": "Trà sữa trân châu (ly)",
+    "aliases": [
+      "bubble tea",
+      "milk tea",
+      "trà sữa"
+    ],
+    "category": "Đồ uống",
+    "kcal": 370
+  },
+  {
+    "type": "food",
+    "slug": "bia-saigon",
+    "name": "Bia Sài Gòn (lon)",
+    "aliases": [
+      "saigon beer",
+      "bia saigon",
+      "sài gòn special"
+    ],
+    "category": "Đồ uống",
+    "kcal": 145
+  },
+  {
+    "type": "food",
+    "slug": "bia-tiger",
+    "name": "Tiger (lon)",
+    "aliases": [
+      "tiger beer",
+      "bia tiger"
+    ],
+    "category": "Đồ uống",
+    "kcal": 140
+  },
+  {
+    "type": "food",
+    "slug": "bia-heineken",
+    "name": "Heineken (lon)",
+    "aliases": [
+      "heineken",
+      "bia heineken"
+    ],
+    "category": "Đồ uống",
+    "kcal": 139
+  },
+  {
+    "type": "food",
+    "slug": "mi-hao-hao",
+    "name": "Mì Hảo Hảo (gói)",
+    "aliases": [
+      "hao hao",
+      "mì tôm hảo hảo",
+      "hao hao noodle"
+    ],
+    "category": "Mì gói",
+    "kcal": 350
+  },
+  {
+    "type": "food",
+    "slug": "mi-mi-tom-acecook",
+    "name": "Mì tôm chua cay (MiMi)",
+    "aliases": [
+      "mimi",
+      "mì mi tôm",
+      "acecook mi mi"
+    ],
+    "category": "Mì gói",
+    "kcal": 340
+  },
+  {
+    "type": "food",
+    "slug": "pho-an-lien-ga",
+    "name": "Phở gà ăn liền (ly)",
+    "aliases": [
+      "phở ly gà",
+      "phở ăn liền gà"
+    ],
+    "category": "Mì gói",
+    "kcal": 330
+  },
+  {
+    "type": "food",
+    "slug": "mi-bun-bo",
+    "name": "Mì bò (bún bò gói)",
+    "aliases": [
+      "mì bún bò",
+      "bún bò mi gói"
+    ],
+    "category": "Mì gói",
+    "kcal": 360
+  },
+  {
+    "type": "food",
+    "slug": "mi-ba-mien-bac",
+    "name": "Mì ba miền Bắc",
+    "aliases": [
+      "mì ba miền bắc",
+      "3 miền bắc"
+    ],
+    "category": "Mì gói",
+    "kcal": 370
+  },
+  {
+    "type": "food",
+    "slug": "banh-oreo",
+    "name": "Bánh Oreo (gói)",
+    "aliases": [
+      "oreo",
+      "bánh oreo"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 240
+  },
+  {
+    "type": "food",
+    "slug": "banh-cosy",
+    "name": "Bánh Cosy (gói)",
+    "aliases": [
+      "cosy",
+      "bánh cosy",
+      "bánh quy cosy"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 450
+  },
+  {
+    "type": "food",
+    "slug": "banh-kraft-tai",
+    "name": "Bánh Kraft Tai (gói)",
+    "aliases": [
+      "kraft tai",
+      "bánh kraft"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 380
+  },
+  {
+    "type": "food",
+    "slug": "banh-trang-mi-bien",
+    "name": "Bánh tráng mít biên hòa",
+    "aliases": [
+      "bánh tráng",
+      "bánh tráng muối",
+      "bánh tráng hàn quốc"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 420
+  },
+  {
+    "type": "food",
+    "slug": "snack-poca",
+    "name": "Snack Poca (gói)",
+    "aliases": [
+      "poca",
+      "snack poca",
+      "khoai tây poca"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 165
+  },
+  {
+    "type": "food",
+    "slug": "snack-lays",
+    "name": "Snack Lays (gói nhỏ)",
+    "aliases": [
+      "lays",
+      "lay's",
+      "khoai tây lays"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 165
+  },
+  {
+    "type": "food",
+    "slug": "snack-opa",
+    "name": "Snack O'Padi (gói)",
+    "aliases": [
+      "opadi",
+      "o'padi",
+      "bánh snack opadi"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 180
+  },
+  {
+    "type": "food",
+    "slug": "banh-gau",
+    "name": "Kẹo dẻo Gấu (1 viên)",
+    "aliases": [
+      "kẹo gấu",
+      "gummy bear",
+      "kẹo dẻo gấu"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "thit-kho-hop",
+    "name": "Thịt kho hộp (lon)",
+    "aliases": [
+      "thịt kho hộp",
+      "thịt hộp",
+      "luncheon meat",
+      "thịt heo đóng hộp"
+    ],
+    "category": "Đồ hộp",
+    "kcal": 280
+  },
+  {
+    "type": "food",
+    "slug": "ca-sardine-hop",
+    "name": "Cá sardine hộp (lon)",
+    "aliases": [
+      "sardine hộp",
+      "cá mòi hộp",
+      "sardine canned"
+    ],
+    "category": "Đồ hộp",
+    "kcal": 280
+  },
+  {
+    "type": "food",
+    "slug": "pathe-son",
+    "name": "Paté sông",
+    "aliases": [
+      "paté sông",
+      "paté đóng hộp",
+      "paté gan"
+    ],
+    "category": "Đồ hộp",
+    "kcal": 70
+  },
+  {
+    "type": "food",
+    "slug": "ruoc-chay",
+    "name": "Ruốc chay (chả chay)",
+    "aliases": [
+      "ruốc chay",
+      "chả chay",
+      "ruoc chay"
+    ],
+    "category": "Đồ hộp",
+    "kcal": 200
+  },
+  {
+    "type": "food",
+    "slug": "ca-phe-sua-da-extra8",
+    "name": "Cà phê sữa đá (ly)",
+    "aliases": [
+      "cà phê sữa",
+      "cafe sữa đá",
+      "cafe sữa"
+    ],
+    "category": "Đồ uống",
+    "kcal": 140
+  },
+  {
+    "type": "food",
+    "slug": "ca-phe-den-da-extra8",
+    "name": "Cà phê đen đá (ly)",
+    "aliases": [
+      "cafe đen",
+      "cafe đen đá",
+      "cà phê đen"
+    ],
+    "category": "Đồ uống",
+    "kcal": 5
+  },
+  {
+    "type": "food",
+    "slug": "ca-phe-hoa-tan-nescafe",
+    "name": "Cà phê hòa tan Nescafe",
+    "aliases": [
+      "nescafe",
+      "cà phê hòa tan",
+      "3in1"
+    ],
+    "category": "Đồ uống",
+    "kcal": 70
+  },
+  {
+    "type": "food",
+    "slug": "ca-phe-nau-da-nhua",
+    "name": "Cà phê nâu đá PLUS",
+    "aliases": [
+      "cafe plus",
+      "plus nâu đá"
+    ],
+    "category": "Đồ uống",
+    "kcal": 130
+  },
+  {
+    "type": "food",
     "slug": "rau-cai-xoong",
     "name": "Rau cải xoong",
-    "aliases": [],
+    "aliases": [
+      "rau cai xoong"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7537,7 +9332,9 @@
     "type": "food",
     "slug": "rau-cai-bo-xoi",
     "name": "Rau cải bó xôi",
-    "aliases": [],
+    "aliases": [
+      "rau cai bo xoi"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7545,7 +9342,9 @@
     "type": "food",
     "slug": "rau-cai-ngong",
     "name": "Rau cải ngồng",
-    "aliases": [],
+    "aliases": [
+      "rau cai ngong"
+    ],
     "category": "Rau xanh",
     "kcal": 24
   },
@@ -7553,7 +9352,9 @@
     "type": "food",
     "slug": "rau-cai-be-trang",
     "name": "Rau cải bẹ trắng",
-    "aliases": [],
+    "aliases": [
+      "rau cai be trang"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -7561,7 +9362,9 @@
     "type": "food",
     "slug": "rau-cai-thia-non",
     "name": "Rau cải thìa non",
-    "aliases": [],
+    "aliases": [
+      "rau cai thia non"
+    ],
     "category": "Rau xanh",
     "kcal": 26
   },
@@ -7569,7 +9372,9 @@
     "type": "food",
     "slug": "rau-cai-ngot",
     "name": "Rau cải ngọt",
-    "aliases": [],
+    "aliases": [
+      "rau cai ngot"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -7577,7 +9382,9 @@
     "type": "food",
     "slug": "rau-cai-xoan",
     "name": "Rau cải xoăn",
-    "aliases": [],
+    "aliases": [
+      "rau cai xoan"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -7585,7 +9392,9 @@
     "type": "food",
     "slug": "rau-xa-lach-lo-lo",
     "name": "Rau xà lách lô lô",
-    "aliases": [],
+    "aliases": [
+      "rau xa lach lo lo"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7593,7 +9402,9 @@
     "type": "food",
     "slug": "rau-xa-lach-romaine",
     "name": "Rau xà lách romaine",
-    "aliases": [],
+    "aliases": [
+      "rau xa lach romaine"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7601,7 +9412,9 @@
     "type": "food",
     "slug": "rau-cai-mam",
     "name": "Rau cải mầm",
-    "aliases": [],
+    "aliases": [
+      "rau cai mam"
+    ],
     "category": "Rau xanh",
     "kcal": 24
   },
@@ -7609,7 +9422,9 @@
     "type": "food",
     "slug": "rau-tan-o",
     "name": "Rau tần ô",
-    "aliases": [],
+    "aliases": [
+      "rau tan o"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -7617,7 +9432,9 @@
     "type": "food",
     "slug": "rau-can-ta",
     "name": "Rau cần ta",
-    "aliases": [],
+    "aliases": [
+      "rau can ta"
+    ],
     "category": "Rau xanh",
     "kcal": 26
   },
@@ -7625,7 +9442,9 @@
     "type": "food",
     "slug": "rau-can-tay",
     "name": "Rau cần tây",
-    "aliases": [],
+    "aliases": [
+      "rau can tay"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -7633,7 +9452,9 @@
     "type": "food",
     "slug": "rau-hung-lui",
     "name": "Rau húng lủi",
-    "aliases": [],
+    "aliases": [
+      "rau hung lui"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -7641,7 +9462,9 @@
     "type": "food",
     "slug": "rau-ram",
     "name": "Rau răm",
-    "aliases": [],
+    "aliases": [
+      "rau ram"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7649,7 +9472,9 @@
     "type": "food",
     "slug": "rau-mui-ta",
     "name": "Rau mùi ta",
-    "aliases": [],
+    "aliases": [
+      "rau mui ta"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7657,7 +9482,9 @@
     "type": "food",
     "slug": "rau-mui-tau",
     "name": "Rau mùi tàu",
-    "aliases": [],
+    "aliases": [
+      "rau mui tau"
+    ],
     "category": "Rau xanh",
     "kcal": 24
   },
@@ -7665,7 +9492,9 @@
     "type": "food",
     "slug": "rau-thi-la",
     "name": "Rau thì là",
-    "aliases": [],
+    "aliases": [
+      "rau thi la"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -7673,7 +9502,9 @@
     "type": "food",
     "slug": "rau-ngo",
     "name": "Rau ngổ",
-    "aliases": [],
+    "aliases": [
+      "rau ngo"
+    ],
     "category": "Rau xanh",
     "kcal": 26
   },
@@ -7681,7 +9512,9 @@
     "type": "food",
     "slug": "rau-sam",
     "name": "Rau sam",
-    "aliases": [],
+    "aliases": [
+      "rau sam"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -7689,7 +9522,9 @@
     "type": "food",
     "slug": "rau-lang",
     "name": "Rau lang",
-    "aliases": [],
+    "aliases": [
+      "rau lang"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -7697,7 +9532,9 @@
     "type": "food",
     "slug": "dot-bi",
     "name": "Đọt bí",
-    "aliases": [],
+    "aliases": [
+      "dot bi"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7705,7 +9542,9 @@
     "type": "food",
     "slug": "dot-su-su",
     "name": "Đọt su su",
-    "aliases": [],
+    "aliases": [
+      "dot su su"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7713,7 +9552,9 @@
     "type": "food",
     "slug": "bong-he",
     "name": "Bông hẹ",
-    "aliases": [],
+    "aliases": [
+      "bong he"
+    ],
     "category": "Rau xanh",
     "kcal": 24
   },
@@ -7721,7 +9562,9 @@
     "type": "food",
     "slug": "bong-thien-ly",
     "name": "Bông thiên lý",
-    "aliases": [],
+    "aliases": [
+      "bong thien ly"
+    ],
     "category": "Rau xanh",
     "kcal": 25
   },
@@ -7729,7 +9572,9 @@
     "type": "food",
     "slug": "bong-dien-dien",
     "name": "Bông điên điển",
-    "aliases": [],
+    "aliases": [
+      "bong dien dien"
+    ],
     "category": "Rau xanh",
     "kcal": 26
   },
@@ -7737,7 +9582,9 @@
     "type": "food",
     "slug": "bong-so-dua",
     "name": "Bông so đũa",
-    "aliases": [],
+    "aliases": [
+      "bong so dua"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -7745,7 +9592,9 @@
     "type": "food",
     "slug": "la-lot",
     "name": "Lá lốt",
-    "aliases": [],
+    "aliases": [
+      "la lot"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -7753,7 +9602,9 @@
     "type": "food",
     "slug": "la-giang",
     "name": "Lá giang",
-    "aliases": [],
+    "aliases": [
+      "la giang"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7761,7 +9612,9 @@
     "type": "food",
     "slug": "la-cach",
     "name": "Lá cách",
-    "aliases": [],
+    "aliases": [
+      "la cach"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7769,7 +9622,9 @@
     "type": "food",
     "slug": "la-mo",
     "name": "Lá mơ",
-    "aliases": [],
+    "aliases": [
+      "la mo"
+    ],
     "category": "Rau xanh",
     "kcal": 24
   },
@@ -7777,7 +9632,9 @@
     "type": "food",
     "slug": "mang-tuoi",
     "name": "Măng tươi",
-    "aliases": [],
+    "aliases": [
+      "mang tuoi"
+    ],
     "category": "Củ quả",
     "kcal": 42
   },
@@ -7785,7 +9642,9 @@
     "type": "food",
     "slug": "mang-kho",
     "name": "Măng khô",
-    "aliases": [],
+    "aliases": [
+      "mang kho"
+    ],
     "category": "Củ quả",
     "kcal": 44
   },
@@ -7793,7 +9652,9 @@
     "type": "food",
     "slug": "rau-cang-cua",
     "name": "Rau càng cua",
-    "aliases": [],
+    "aliases": [
+      "rau cang cua"
+    ],
     "category": "Rau xanh",
     "kcal": 27
   },
@@ -7801,7 +9662,9 @@
     "type": "food",
     "slug": "ngo-sen",
     "name": "Ngó sen",
-    "aliases": [],
+    "aliases": [
+      "ngo sen"
+    ],
     "category": "Củ quả",
     "kcal": 47
   },
@@ -7809,7 +9672,9 @@
     "type": "food",
     "slug": "cu-sen",
     "name": "Củ sen",
-    "aliases": [],
+    "aliases": [
+      "cu sen"
+    ],
     "category": "Củ quả",
     "kcal": 38
   },
@@ -7817,7 +9682,9 @@
     "type": "food",
     "slug": "cu-nang",
     "name": "Củ năng",
-    "aliases": [],
+    "aliases": [
+      "cu nang"
+    ],
     "category": "Củ quả",
     "kcal": 39
   },
@@ -7825,7 +9692,9 @@
     "type": "food",
     "slug": "cu-san",
     "name": "Củ sắn",
-    "aliases": [],
+    "aliases": [
+      "cu san"
+    ],
     "category": "Củ quả",
     "kcal": 41
   },
@@ -7833,7 +9702,9 @@
     "type": "food",
     "slug": "cu-hu-dua",
     "name": "Củ hũ dừa",
-    "aliases": [],
+    "aliases": [
+      "cu hu dua"
+    ],
     "category": "Củ quả",
     "kcal": 42
   },
@@ -7841,7 +9712,9 @@
     "type": "food",
     "slug": "cu-kieu",
     "name": "Củ kiệu",
-    "aliases": [],
+    "aliases": [
+      "cu kieu"
+    ],
     "category": "Củ quả",
     "kcal": 44
   },
@@ -7849,7 +9722,9 @@
     "type": "food",
     "slug": "cu-nen",
     "name": "Củ nén",
-    "aliases": [],
+    "aliases": [
+      "cu nen"
+    ],
     "category": "Gia vị",
     "kcal": 97
   },
@@ -7857,7 +9732,9 @@
     "type": "food",
     "slug": "gung-tuoi",
     "name": "Gừng tươi",
-    "aliases": [],
+    "aliases": [
+      "gung tuoi"
+    ],
     "category": "Gia vị",
     "kcal": 100
   },
@@ -7865,7 +9742,9 @@
     "type": "food",
     "slug": "nghe-tuoi",
     "name": "Nghệ tươi",
-    "aliases": [],
+    "aliases": [
+      "nghe tuoi"
+    ],
     "category": "Gia vị",
     "kcal": 81
   },
@@ -7873,7 +9752,9 @@
     "type": "food",
     "slug": "rieng",
     "name": "Riềng",
-    "aliases": [],
+    "aliases": [
+      "rieng"
+    ],
     "category": "Gia vị",
     "kcal": 84
   },
@@ -7881,7 +9762,9 @@
     "type": "food",
     "slug": "sa-cay",
     "name": "Sả cây",
-    "aliases": [],
+    "aliases": [
+      "sa cay"
+    ],
     "category": "Gia vị",
     "kcal": 87
   },
@@ -7889,7 +9772,9 @@
     "type": "food",
     "slug": "ot-hiem",
     "name": "Ớt hiểm",
-    "aliases": [],
+    "aliases": [
+      "ot hiem"
+    ],
     "category": "Gia vị",
     "kcal": 90
   },
@@ -7897,7 +9782,9 @@
     "type": "food",
     "slug": "ot-sung",
     "name": "Ớt sừng",
-    "aliases": [],
+    "aliases": [
+      "ot sung"
+    ],
     "category": "Gia vị",
     "kcal": 94
   },
@@ -7905,7 +9792,9 @@
     "type": "food",
     "slug": "hanh-tim",
     "name": "Hành tím",
-    "aliases": [],
+    "aliases": [
+      "hanh tim"
+    ],
     "category": "Gia vị",
     "kcal": 97
   },
@@ -7913,7 +9802,9 @@
     "type": "food",
     "slug": "he-la",
     "name": "Hẹ lá",
-    "aliases": [],
+    "aliases": [
+      "he la"
+    ],
     "category": "Rau xanh",
     "kcal": 28
   },
@@ -7921,7 +9812,9 @@
     "type": "food",
     "slug": "toi-tay",
     "name": "Tỏi tây",
-    "aliases": [],
+    "aliases": [
+      "toi tay"
+    ],
     "category": "Rau xanh",
     "kcal": 23
   },
@@ -7929,7 +9822,9 @@
     "type": "food",
     "slug": "bi-ngoi",
     "name": "Bí ngòi",
-    "aliases": [],
+    "aliases": [
+      "bi ngoi"
+    ],
     "category": "Củ quả",
     "kcal": 39
   },
@@ -7937,7 +9832,9 @@
     "type": "food",
     "slug": "bi-dao",
     "name": "Bí đao",
-    "aliases": [],
+    "aliases": [
+      "bi dao"
+    ],
     "category": "Củ quả",
     "kcal": 41
   },
@@ -7945,7 +9842,9 @@
     "type": "food",
     "slug": "bau",
     "name": "Bầu",
-    "aliases": [],
+    "aliases": [
+      "bau"
+    ],
     "category": "Củ quả",
     "kcal": 42
   },
@@ -7953,7 +9852,9 @@
     "type": "food",
     "slug": "su-su",
     "name": "Su su",
-    "aliases": [],
+    "aliases": [
+      "su su"
+    ],
     "category": "Củ quả",
     "kcal": 44
   },
@@ -7961,7 +9862,9 @@
     "type": "food",
     "slug": "kho-qua",
     "name": "Khổ qua",
-    "aliases": [],
+    "aliases": [
+      "kho qua"
+    ],
     "category": "Củ quả",
     "kcal": 45
   },
@@ -7969,7 +9872,9 @@
     "type": "food",
     "slug": "ca-phao-muoi",
     "name": "Cà pháo muối",
-    "aliases": [],
+    "aliases": [
+      "ca phao muoi"
+    ],
     "category": "Củ quả",
     "kcal": 47
   },
@@ -7977,7 +9882,9 @@
     "type": "food",
     "slug": "ca-bat",
     "name": "Cà bát",
-    "aliases": [],
+    "aliases": [
+      "ca bat"
+    ],
     "category": "Củ quả",
     "kcal": 38
   },
@@ -7985,7 +9892,9 @@
     "type": "food",
     "slug": "ca-chua-bi",
     "name": "Cà chua bi",
-    "aliases": [],
+    "aliases": [
+      "ca chua bi"
+    ],
     "category": "Củ quả",
     "kcal": 39
   },
@@ -7993,7 +9902,9 @@
     "type": "food",
     "slug": "dua-leo-baby",
     "name": "Dưa leo baby",
-    "aliases": [],
+    "aliases": [
+      "dua leo baby"
+    ],
     "category": "Củ quả",
     "kcal": 41
   },
@@ -8001,7 +9912,9 @@
     "type": "food",
     "slug": "dua-gang-non",
     "name": "Dưa gang non",
-    "aliases": [],
+    "aliases": [
+      "dua gang non"
+    ],
     "category": "Củ quả",
     "kcal": 42
   },
@@ -8009,7 +9922,9 @@
     "type": "food",
     "slug": "ot-chuong-do",
     "name": "Ớt chuông đỏ",
-    "aliases": [],
+    "aliases": [
+      "ot chuong do"
+    ],
     "category": "Củ quả",
     "kcal": 44
   },
@@ -8017,7 +9932,9 @@
     "type": "food",
     "slug": "ot-chuong-vang",
     "name": "Ớt chuông vàng",
-    "aliases": [],
+    "aliases": [
+      "ot chuong vang"
+    ],
     "category": "Củ quả",
     "kcal": 45
   },
@@ -8025,7 +9942,9 @@
     "type": "food",
     "slug": "bap-non",
     "name": "Bắp non",
-    "aliases": [],
+    "aliases": [
+      "bap non"
+    ],
     "category": "Củ quả",
     "kcal": 47
   },
@@ -8033,7 +9952,9 @@
     "type": "food",
     "slug": "cu-cai-do",
     "name": "Củ cải đỏ",
-    "aliases": [],
+    "aliases": [
+      "cu cai do"
+    ],
     "category": "Củ quả",
     "kcal": 38
   },
@@ -8041,7 +9962,9 @@
     "type": "food",
     "slug": "ca-rot-baby",
     "name": "Cà rốt baby",
-    "aliases": [],
+    "aliases": [
+      "ca rot baby"
+    ],
     "category": "Củ quả",
     "kcal": 39
   },
@@ -8049,7 +9972,9 @@
     "type": "food",
     "slug": "khoai-lang-tim",
     "name": "Khoai lang tím",
-    "aliases": [],
+    "aliases": [
+      "khoai lang tim"
+    ],
     "category": "Tinh bột",
     "kcal": 175
   },
@@ -8057,7 +9982,9 @@
     "type": "food",
     "slug": "khoai-lang-mat",
     "name": "Khoai lang mật",
-    "aliases": [],
+    "aliases": [
+      "khoai lang mat"
+    ],
     "category": "Tinh bột",
     "kcal": 181
   },
@@ -8065,7 +9992,9 @@
     "type": "food",
     "slug": "khoai-tay-bi",
     "name": "Khoai tây bi",
-    "aliases": [],
+    "aliases": [
+      "khoai tay bi"
+    ],
     "category": "Tinh bột",
     "kcal": 187
   },
@@ -8073,7 +10002,9 @@
     "type": "food",
     "slug": "khoai-mon-cao",
     "name": "Khoai môn cao",
-    "aliases": [],
+    "aliases": [
+      "khoai mon cao"
+    ],
     "category": "Tinh bột",
     "kcal": 194
   },
@@ -8081,7 +10012,9 @@
     "type": "food",
     "slug": "khoai-so",
     "name": "Khoai sọ",
-    "aliases": [],
+    "aliases": [
+      "khoai so"
+    ],
     "category": "Tinh bột",
     "kcal": 200
   },
@@ -8089,7 +10022,9 @@
     "type": "food",
     "slug": "khoai-mo",
     "name": "Khoai mỡ",
-    "aliases": [],
+    "aliases": [
+      "khoai mo"
+    ],
     "category": "Tinh bột",
     "kcal": 162
   },
@@ -8097,7 +10032,9 @@
     "type": "food",
     "slug": "khoai-tu-tim",
     "name": "Khoai từ tím",
-    "aliases": [],
+    "aliases": [
+      "khoai tu tim"
+    ],
     "category": "Tinh bột",
     "kcal": 168
   },
@@ -8105,7 +10042,9 @@
     "type": "food",
     "slug": "bap-nep-luoc",
     "name": "Bắp nếp luộc",
-    "aliases": [],
+    "aliases": [
+      "bap nep luoc"
+    ],
     "category": "Tinh bột",
     "kcal": 175
   },
@@ -8113,7 +10052,9 @@
     "type": "food",
     "slug": "bap-my-luoc",
     "name": "Bắp Mỹ luộc",
-    "aliases": [],
+    "aliases": [
+      "bap my luoc"
+    ],
     "category": "Tinh bột",
     "kcal": 181
   },
@@ -8121,7 +10062,9 @@
     "type": "food",
     "slug": "gao-nep",
     "name": "Gạo nếp",
-    "aliases": [],
+    "aliases": [
+      "gao nep"
+    ],
     "category": "Tinh bột",
     "kcal": 187
   },
@@ -8129,7 +10072,9 @@
     "type": "food",
     "slug": "gao-lut-do",
     "name": "Gạo lứt đỏ",
-    "aliases": [],
+    "aliases": [
+      "gao lut do"
+    ],
     "category": "Tinh bột",
     "kcal": 194
   },
@@ -8137,7 +10082,9 @@
     "type": "food",
     "slug": "gao-lut-den",
     "name": "Gạo lứt đen",
-    "aliases": [],
+    "aliases": [
+      "gao lut den"
+    ],
     "category": "Tinh bột",
     "kcal": 200
   },
@@ -8145,7 +10092,9 @@
     "type": "food",
     "slug": "bun-gao-kho",
     "name": "Bún gạo khô",
-    "aliases": [],
+    "aliases": [
+      "bun gao kho"
+    ],
     "category": "Tinh bột",
     "kcal": 162
   },
@@ -8153,7 +10102,9 @@
     "type": "food",
     "slug": "mien-dong-kho",
     "name": "Miến dong khô",
-    "aliases": [],
+    "aliases": [
+      "mien dong kho"
+    ],
     "category": "Tinh bột",
     "kcal": 168
   },
@@ -8161,7 +10112,9 @@
     "type": "food",
     "slug": "mi-trung-tuoi",
     "name": "Mì trứng tươi",
-    "aliases": [],
+    "aliases": [
+      "mi trung tuoi"
+    ],
     "category": "Tinh bột",
     "kcal": 175
   },
@@ -8169,7 +10122,9 @@
     "type": "food",
     "slug": "nui-kho",
     "name": "Nui khô",
-    "aliases": [],
+    "aliases": [
+      "nui kho"
+    ],
     "category": "Tinh bột",
     "kcal": 181
   },
@@ -8177,7 +10132,9 @@
     "type": "food",
     "slug": "hu-tieu-kho",
     "name": "Hủ tiếu khô",
-    "aliases": [],
+    "aliases": [
+      "hu tieu kho"
+    ],
     "category": "Tinh bột",
     "kcal": 187
   },
@@ -8185,7 +10142,9 @@
     "type": "food",
     "slug": "banh-hoi",
     "name": "Bánh hỏi",
-    "aliases": [],
+    "aliases": [
+      "banh hoi"
+    ],
     "category": "Tinh bột",
     "kcal": 194
   },
@@ -8193,7 +10152,9 @@
     "type": "food",
     "slug": "banh-uot",
     "name": "Bánh ướt",
-    "aliases": [],
+    "aliases": [
+      "banh uot"
+    ],
     "category": "Tinh bột",
     "kcal": 200
   },
@@ -8201,7 +10162,9 @@
     "type": "food",
     "slug": "banh-da-do",
     "name": "Bánh đa đỏ",
-    "aliases": [],
+    "aliases": [
+      "banh da do"
+    ],
     "category": "Tinh bột",
     "kcal": 162
   },
@@ -8209,7 +10172,9 @@
     "type": "food",
     "slug": "banh-trang-me",
     "name": "Bánh tráng mè",
-    "aliases": [],
+    "aliases": [
+      "banh trang me"
+    ],
     "category": "Tinh bột",
     "kcal": 168
   },
@@ -8217,7 +10182,9 @@
     "type": "food",
     "slug": "bot-bap",
     "name": "Bột bắp",
-    "aliases": [],
+    "aliases": [
+      "bot bap"
+    ],
     "category": "Tinh bột",
     "kcal": 175
   },
@@ -8225,7 +10192,9 @@
     "type": "food",
     "slug": "bot-san-day",
     "name": "Bột sắn dây",
-    "aliases": [],
+    "aliases": [
+      "bot san day"
+    ],
     "category": "Tinh bột",
     "kcal": 181
   },
@@ -8233,7 +10202,9 @@
     "type": "food",
     "slug": "bot-khoai-tay",
     "name": "Bột khoai tây",
-    "aliases": [],
+    "aliases": [
+      "bot khoai tay"
+    ],
     "category": "Tinh bột",
     "kcal": 187
   },
@@ -8241,7 +10212,9 @@
     "type": "food",
     "slug": "yen-mach-can",
     "name": "Yến mạch cán",
-    "aliases": [],
+    "aliases": [
+      "yen mach can"
+    ],
     "category": "Tinh bột",
     "kcal": 194
   },
@@ -8249,7 +10222,9 @@
     "type": "food",
     "slug": "ngu-coc-an-sang",
     "name": "Ngũ cốc ăn sáng",
-    "aliases": [],
+    "aliases": [
+      "ngu coc an sang"
+    ],
     "category": "Tinh bột",
     "kcal": 200
   },
@@ -8257,7 +10232,9 @@
     "type": "food",
     "slug": "tao-xanh",
     "name": "Táo xanh",
-    "aliases": [],
+    "aliases": [
+      "tao xanh"
+    ],
     "category": "Trái cây",
     "kcal": 52
   },
@@ -8265,7 +10242,9 @@
     "type": "food",
     "slug": "le",
     "name": "Lê",
-    "aliases": [],
+    "aliases": [
+      "le"
+    ],
     "category": "Trái cây",
     "kcal": 54
   },
@@ -8273,7 +10252,9 @@
     "type": "food",
     "slug": "dao",
     "name": "Đào",
-    "aliases": [],
+    "aliases": [
+      "dao"
+    ],
     "category": "Trái cây",
     "kcal": 56
   },
@@ -8281,7 +10262,9 @@
     "type": "food",
     "slug": "man-hau",
     "name": "Mận hậu",
-    "aliases": [],
+    "aliases": [
+      "man hau"
+    ],
     "category": "Trái cây",
     "kcal": 58
   },
@@ -8289,7 +10272,9 @@
     "type": "food",
     "slug": "man-com",
     "name": "Mận cơm",
-    "aliases": [],
+    "aliases": [
+      "man com"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -8297,7 +10282,9 @@
     "type": "food",
     "slug": "oi-ruot-do",
     "name": "Ổi ruột đỏ",
-    "aliases": [],
+    "aliases": [
+      "oi ruot do"
+    ],
     "category": "Trái cây",
     "kcal": 62
   },
@@ -8305,7 +10292,9 @@
     "type": "food",
     "slug": "cam-sanh",
     "name": "Cam sành",
-    "aliases": [],
+    "aliases": [
+      "cam sanh"
+    ],
     "category": "Trái cây",
     "kcal": 64
   },
@@ -8313,7 +10302,9 @@
     "type": "food",
     "slug": "quyt",
     "name": "Quýt",
-    "aliases": [],
+    "aliases": [
+      "quyt"
+    ],
     "category": "Trái cây",
     "kcal": 52
   },
@@ -8321,7 +10312,9 @@
     "type": "food",
     "slug": "chanh",
     "name": "Chanh",
-    "aliases": [],
+    "aliases": [
+      "chanh"
+    ],
     "category": "Trái cây",
     "kcal": 54
   },
@@ -8329,7 +10322,9 @@
     "type": "food",
     "slug": "chanh-day-tuoi",
     "name": "Chanh dây tươi",
-    "aliases": [],
+    "aliases": [
+      "chanh day tuoi"
+    ],
     "category": "Trái cây",
     "kcal": 56
   },
@@ -8337,7 +10332,9 @@
     "type": "food",
     "slug": "me-chin",
     "name": "Me chín",
-    "aliases": [],
+    "aliases": [
+      "me chin"
+    ],
     "category": "Trái cây",
     "kcal": 58
   },
@@ -8345,7 +10342,9 @@
     "type": "food",
     "slug": "hong-xiem",
     "name": "Hồng xiêm",
-    "aliases": [],
+    "aliases": [
+      "hong xiem"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -8353,7 +10352,9 @@
     "type": "food",
     "slug": "sapoche",
     "name": "Sapoche",
-    "aliases": [],
+    "aliases": [
+      "sapoche"
+    ],
     "category": "Trái cây",
     "kcal": 62
   },
@@ -8361,7 +10362,9 @@
     "type": "food",
     "slug": "na",
     "name": "Na",
-    "aliases": [],
+    "aliases": [
+      "na"
+    ],
     "category": "Trái cây",
     "kcal": 64
   },
@@ -8369,7 +10372,9 @@
     "type": "food",
     "slug": "mang-cau-xiem",
     "name": "Mãng cầu xiêm",
-    "aliases": [],
+    "aliases": [
+      "mang cau xiem"
+    ],
     "category": "Trái cây",
     "kcal": 52
   },
@@ -8377,7 +10382,9 @@
     "type": "food",
     "slug": "mang-cau-ta",
     "name": "Mãng cầu ta",
-    "aliases": [],
+    "aliases": [
+      "mang cau ta"
+    ],
     "category": "Trái cây",
     "kcal": 54
   },
@@ -8385,7 +10392,9 @@
     "type": "food",
     "slug": "vu-sua",
     "name": "Vú sữa",
-    "aliases": [],
+    "aliases": [
+      "vu sua"
+    ],
     "category": "Trái cây",
     "kcal": 56
   },
@@ -8393,7 +10402,9 @@
     "type": "food",
     "slug": "hong-gion",
     "name": "Hồng giòn",
-    "aliases": [],
+    "aliases": [
+      "hong gion"
+    ],
     "category": "Trái cây",
     "kcal": 58
   },
@@ -8401,7 +10412,9 @@
     "type": "food",
     "slug": "luu",
     "name": "Lựu",
-    "aliases": [],
+    "aliases": [
+      "luu"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -8409,7 +10422,9 @@
     "type": "food",
     "slug": "sung-my",
     "name": "Sung Mỹ",
-    "aliases": [],
+    "aliases": [
+      "sung my"
+    ],
     "category": "Trái cây",
     "kcal": 62
   },
@@ -8417,7 +10432,9 @@
     "type": "food",
     "slug": "mam-xoi-den",
     "name": "Mâm xôi đen",
-    "aliases": [],
+    "aliases": [
+      "mam xoi den"
+    ],
     "category": "Trái cây",
     "kcal": 64
   },
@@ -8425,7 +10442,9 @@
     "type": "food",
     "slug": "viet-quat",
     "name": "Việt quất",
-    "aliases": [],
+    "aliases": [
+      "viet quat"
+    ],
     "category": "Trái cây",
     "kcal": 52
   },
@@ -8433,7 +10452,9 @@
     "type": "food",
     "slug": "phuc-bon-tu",
     "name": "Phúc bồn tử",
-    "aliases": [],
+    "aliases": [
+      "phuc bon tu"
+    ],
     "category": "Trái cây",
     "kcal": 54
   },
@@ -8441,7 +10462,9 @@
     "type": "food",
     "slug": "kiwi-xanh",
     "name": "Kiwi xanh",
-    "aliases": [],
+    "aliases": [
+      "kiwi xanh"
+    ],
     "category": "Trái cây",
     "kcal": 56
   },
@@ -8449,7 +10472,9 @@
     "type": "food",
     "slug": "kiwi-vang",
     "name": "Kiwi vàng",
-    "aliases": [],
+    "aliases": [
+      "kiwi vang"
+    ],
     "category": "Trái cây",
     "kcal": 58
   },
@@ -8457,7 +10482,9 @@
     "type": "food",
     "slug": "chuoi-cau",
     "name": "Chuối cau",
-    "aliases": [],
+    "aliases": [
+      "chuoi cau"
+    ],
     "category": "Trái cây",
     "kcal": 60
   },
@@ -8465,7 +10492,9 @@
     "type": "food",
     "slug": "chuoi-su",
     "name": "Chuối sứ",
-    "aliases": [],
+    "aliases": [
+      "chuoi su"
+    ],
     "category": "Trái cây",
     "kcal": 62
   },
@@ -8473,7 +10502,9 @@
     "type": "food",
     "slug": "chuoi-tieu",
     "name": "Chuối tiêu",
-    "aliases": [],
+    "aliases": [
+      "chuoi tieu"
+    ],
     "category": "Trái cây",
     "kcal": 64
   },
@@ -8481,7 +10512,9 @@
     "type": "food",
     "slug": "dua-com-non",
     "name": "Dừa cơm non",
-    "aliases": [],
+    "aliases": [
+      "dua com non"
+    ],
     "category": "Trái cây",
     "kcal": 52
   },
@@ -8489,7 +10522,9 @@
     "type": "food",
     "slug": "dua-com-gia",
     "name": "Dừa cơm già",
-    "aliases": [],
+    "aliases": [
+      "dua com gia"
+    ],
     "category": "Trái cây",
     "kcal": 54
   },
@@ -8497,7 +10532,9 @@
     "type": "food",
     "slug": "thit-heo-vai",
     "name": "Thịt heo vai",
-    "aliases": [],
+    "aliases": [
+      "thit heo vai"
+    ],
     "category": "Thịt",
     "kcal": 184
   },
@@ -8505,7 +10542,9 @@
     "type": "food",
     "slug": "thit-heo-dui",
     "name": "Thịt heo đùi",
-    "aliases": [],
+    "aliases": [
+      "thit heo dui"
+    ],
     "category": "Thịt",
     "kcal": 191
   },
@@ -8513,7 +10552,9 @@
     "type": "food",
     "slug": "thit-heo-xay",
     "name": "Thịt heo xay",
-    "aliases": [],
+    "aliases": [
+      "thit heo xay"
+    ],
     "category": "Thịt",
     "kcal": 198
   },
@@ -8521,7 +10562,9 @@
     "type": "food",
     "slug": "thit-heo-ba-roi-luoc",
     "name": "Thịt heo ba rọi luộc",
-    "aliases": [],
+    "aliases": [
+      "thit heo ba roi luoc"
+    ],
     "category": "Thịt",
     "kcal": 204
   },
@@ -8529,7 +10572,9 @@
     "type": "food",
     "slug": "suon-non-heo",
     "name": "Sườn non heo",
-    "aliases": [],
+    "aliases": [
+      "suon non heo"
+    ],
     "category": "Thịt",
     "kcal": 211
   },
@@ -8537,7 +10582,9 @@
     "type": "food",
     "slug": "chan-gio-heo",
     "name": "Chân giò heo",
-    "aliases": [],
+    "aliases": [
+      "chan gio heo"
+    ],
     "category": "Thịt",
     "kcal": 171
   },
@@ -8545,7 +10592,9 @@
     "type": "food",
     "slug": "tai-heo",
     "name": "Tai heo",
-    "aliases": [],
+    "aliases": [
+      "tai heo"
+    ],
     "category": "Thịt",
     "kcal": 178
   },
@@ -8553,7 +10602,9 @@
     "type": "food",
     "slug": "luoi-heo",
     "name": "Lưỡi heo",
-    "aliases": [],
+    "aliases": [
+      "luoi heo"
+    ],
     "category": "Thịt",
     "kcal": 184
   },
@@ -8561,7 +10612,9 @@
     "type": "food",
     "slug": "tim-heo",
     "name": "Tim heo",
-    "aliases": [],
+    "aliases": [
+      "tim heo"
+    ],
     "category": "Thịt",
     "kcal": 191
   },
@@ -8569,7 +10622,9 @@
     "type": "food",
     "slug": "cat-heo",
     "name": "Cật heo",
-    "aliases": [],
+    "aliases": [
+      "cat heo"
+    ],
     "category": "Thịt",
     "kcal": 198
   },
@@ -8577,7 +10632,9 @@
     "type": "food",
     "slug": "da-day-heo",
     "name": "Dạ dày heo",
-    "aliases": [],
+    "aliases": [
+      "da day heo"
+    ],
     "category": "Thịt",
     "kcal": 204
   },
@@ -8585,7 +10642,9 @@
     "type": "food",
     "slug": "phoi-heo",
     "name": "Phổi heo",
-    "aliases": [],
+    "aliases": [
+      "phoi heo"
+    ],
     "category": "Thịt",
     "kcal": 211
   },
@@ -8593,7 +10652,9 @@
     "type": "food",
     "slug": "thit-bo-than",
     "name": "Thịt bò thăn",
-    "aliases": [],
+    "aliases": [
+      "thit bo than"
+    ],
     "category": "Thịt",
     "kcal": 171
   },
@@ -8601,7 +10662,9 @@
     "type": "food",
     "slug": "thit-bo-bap",
     "name": "Thịt bò bắp",
-    "aliases": [],
+    "aliases": [
+      "thit bo bap"
+    ],
     "category": "Thịt",
     "kcal": 178
   },
@@ -8609,7 +10672,9 @@
     "type": "food",
     "slug": "thit-bo-gau",
     "name": "Thịt bò gầu",
-    "aliases": [],
+    "aliases": [
+      "thit bo gau"
+    ],
     "category": "Thịt",
     "kcal": 184
   },
@@ -8617,7 +10682,9 @@
     "type": "food",
     "slug": "thit-bo-nam",
     "name": "Thịt bò nạm",
-    "aliases": [],
+    "aliases": [
+      "thit bo nam"
+    ],
     "category": "Thịt",
     "kcal": 191
   },
@@ -8625,7 +10692,9 @@
     "type": "food",
     "slug": "duoi-bo",
     "name": "Đuôi bò",
-    "aliases": [],
+    "aliases": [
+      "duoi bo"
+    ],
     "category": "Thịt",
     "kcal": 198
   },
@@ -8633,7 +10702,9 @@
     "type": "food",
     "slug": "gan-bo",
     "name": "Gân bò",
-    "aliases": [],
+    "aliases": [
+      "gan bo"
+    ],
     "category": "Thịt",
     "kcal": 204
   },
@@ -8641,7 +10712,9 @@
     "type": "food",
     "slug": "la-sach-bo",
     "name": "Lá sách bò",
-    "aliases": [],
+    "aliases": [
+      "la sach bo"
+    ],
     "category": "Thịt",
     "kcal": 211
   },
@@ -8649,7 +10722,9 @@
     "type": "food",
     "slug": "thit-de",
     "name": "Thịt dê",
-    "aliases": [],
+    "aliases": [
+      "thit de"
+    ],
     "category": "Thịt",
     "kcal": 171
   },
@@ -8657,7 +10732,9 @@
     "type": "food",
     "slug": "thit-cuu",
     "name": "Thịt cừu",
-    "aliases": [],
+    "aliases": [
+      "thit cuu"
+    ],
     "category": "Thịt",
     "kcal": 178
   },
@@ -8665,7 +10742,9 @@
     "type": "food",
     "slug": "thit-tho",
     "name": "Thịt thỏ",
-    "aliases": [],
+    "aliases": [
+      "thit tho"
+    ],
     "category": "Thịt",
     "kcal": 184
   },
@@ -8673,7 +10752,9 @@
     "type": "food",
     "slug": "uc-vit",
     "name": "Ức vịt",
-    "aliases": [],
+    "aliases": [
+      "uc vit"
+    ],
     "category": "Thịt",
     "kcal": 191
   },
@@ -8681,7 +10762,9 @@
     "type": "food",
     "slug": "dui-vit",
     "name": "Đùi vịt",
-    "aliases": [],
+    "aliases": [
+      "dui vit"
+    ],
     "category": "Thịt",
     "kcal": 198
   },
@@ -8689,7 +10772,9 @@
     "type": "food",
     "slug": "thit-ngan",
     "name": "Thịt ngan",
-    "aliases": [],
+    "aliases": [
+      "thit ngan"
+    ],
     "category": "Thịt",
     "kcal": 204
   },
@@ -8697,7 +10782,9 @@
     "type": "food",
     "slug": "thit-ngong",
     "name": "Thịt ngỗng",
-    "aliases": [],
+    "aliases": [
+      "thit ngong"
+    ],
     "category": "Thịt",
     "kcal": 211
   },
@@ -8705,7 +10792,9 @@
     "type": "food",
     "slug": "canh-ga",
     "name": "Cánh gà",
-    "aliases": [],
+    "aliases": [
+      "canh ga"
+    ],
     "category": "Thịt",
     "kcal": 171
   },
@@ -8713,7 +10802,9 @@
     "type": "food",
     "slug": "dui-ga-goc-tu",
     "name": "Đùi gà góc tư",
-    "aliases": [],
+    "aliases": [
+      "dui ga goc tu"
+    ],
     "category": "Thịt",
     "kcal": 178
   },
@@ -8721,7 +10812,9 @@
     "type": "food",
     "slug": "me-ga",
     "name": "Mề gà",
-    "aliases": [],
+    "aliases": [
+      "me ga"
+    ],
     "category": "Thịt",
     "kcal": 184
   },
@@ -8729,7 +10822,9 @@
     "type": "food",
     "slug": "gan-ga",
     "name": "Gan gà",
-    "aliases": [],
+    "aliases": [
+      "gan ga"
+    ],
     "category": "Thịt",
     "kcal": 191
   },
@@ -8737,7 +10832,9 @@
     "type": "food",
     "slug": "tim-ga",
     "name": "Tim gà",
-    "aliases": [],
+    "aliases": [
+      "tim ga"
+    ],
     "category": "Thịt",
     "kcal": 198
   },
@@ -8745,7 +10842,9 @@
     "type": "food",
     "slug": "ca-tram-co",
     "name": "Cá trắm cỏ",
-    "aliases": [],
+    "aliases": [
+      "ca tram co"
+    ],
     "category": "Cá",
     "kcal": 129
   },
@@ -8753,7 +10852,9 @@
     "type": "food",
     "slug": "ca-tram-den",
     "name": "Cá trắm đen",
-    "aliases": [],
+    "aliases": [
+      "ca tram den"
+    ],
     "category": "Cá",
     "kcal": 133
   },
@@ -8761,7 +10862,9 @@
     "type": "food",
     "slug": "ca-dieu-hong",
     "name": "Cá diêu hồng",
-    "aliases": [],
+    "aliases": [
+      "ca dieu hong"
+    ],
     "category": "Cá",
     "kcal": 108
   },
@@ -8769,7 +10872,9 @@
     "type": "food",
     "slug": "ca-chim-trang",
     "name": "Cá chim trắng",
-    "aliases": [],
+    "aliases": [
+      "ca chim trang"
+    ],
     "category": "Cá",
     "kcal": 112
   },
@@ -8777,7 +10882,9 @@
     "type": "food",
     "slug": "ca-chim-den",
     "name": "Cá chim đen",
-    "aliases": [],
+    "aliases": [
+      "ca chim den"
+    ],
     "category": "Cá",
     "kcal": 116
   },
@@ -8785,7 +10892,9 @@
     "type": "food",
     "slug": "ca-basa-phi-le",
     "name": "Cá basa phi lê",
-    "aliases": [],
+    "aliases": [
+      "ca basa phi le"
+    ],
     "category": "Cá",
     "kcal": 121
   },
@@ -8793,7 +10902,9 @@
     "type": "food",
     "slug": "ca-hu",
     "name": "Cá hú",
-    "aliases": [],
+    "aliases": [
+      "ca hu"
+    ],
     "category": "Cá",
     "kcal": 125
   },
@@ -8801,7 +10912,9 @@
     "type": "food",
     "slug": "ca-bong",
     "name": "Cá bống",
-    "aliases": [],
+    "aliases": [
+      "ca bong"
+    ],
     "category": "Cá",
     "kcal": 129
   },
@@ -8809,7 +10922,9 @@
     "type": "food",
     "slug": "ca-linh",
     "name": "Cá linh",
-    "aliases": [],
+    "aliases": [
+      "ca linh"
+    ],
     "category": "Cá",
     "kcal": 133
   },
@@ -8817,7 +10932,9 @@
     "type": "food",
     "slug": "ca-thac-lac",
     "name": "Cá thác lác",
-    "aliases": [],
+    "aliases": [
+      "ca thac lac"
+    ],
     "category": "Cá",
     "kcal": 108
   },
@@ -8825,7 +10942,9 @@
     "type": "food",
     "slug": "ca-chach",
     "name": "Cá chạch",
-    "aliases": [],
+    "aliases": [
+      "ca chach"
+    ],
     "category": "Cá",
     "kcal": 112
   },
@@ -8833,7 +10952,9 @@
     "type": "food",
     "slug": "ca-ro-dong",
     "name": "Cá rô đồng",
-    "aliases": [],
+    "aliases": [
+      "ca ro dong"
+    ],
     "category": "Cá",
     "kcal": 116
   },
@@ -8841,7 +10962,9 @@
     "type": "food",
     "slug": "ca-sac",
     "name": "Cá sặc",
-    "aliases": [],
+    "aliases": [
+      "ca sac"
+    ],
     "category": "Cá",
     "kcal": 121
   },
@@ -8849,7 +10972,9 @@
     "type": "food",
     "slug": "ca-com-tuoi",
     "name": "Cá cơm tươi",
-    "aliases": [],
+    "aliases": [
+      "ca com tuoi"
+    ],
     "category": "Cá",
     "kcal": 125
   },
@@ -8857,7 +10982,9 @@
     "type": "food",
     "slug": "ca-com-kho",
     "name": "Cá cơm khô",
-    "aliases": [],
+    "aliases": [
+      "ca com kho"
+    ],
     "category": "Cá",
     "kcal": 129
   },
@@ -8865,7 +10992,9 @@
     "type": "food",
     "slug": "ca-trich",
     "name": "Cá trích",
-    "aliases": [],
+    "aliases": [
+      "ca trich"
+    ],
     "category": "Cá",
     "kcal": 133
   },
@@ -8873,7 +11002,9 @@
     "type": "food",
     "slug": "ca-doi",
     "name": "Cá đối",
-    "aliases": [],
+    "aliases": [
+      "ca doi"
+    ],
     "category": "Cá",
     "kcal": 108
   },
@@ -8881,7 +11012,9 @@
     "type": "food",
     "slug": "ca-tuyet",
     "name": "Cá tuyết",
-    "aliases": [],
+    "aliases": [
+      "ca tuyet"
+    ],
     "category": "Cá",
     "kcal": 112
   },
@@ -8889,7 +11022,9 @@
     "type": "food",
     "slug": "ca-bon",
     "name": "Cá bơn",
-    "aliases": [],
+    "aliases": [
+      "ca bon"
+    ],
     "category": "Cá",
     "kcal": 116
   },
@@ -8897,7 +11032,9 @@
     "type": "food",
     "slug": "ca-duoi",
     "name": "Cá đuối",
-    "aliases": [],
+    "aliases": [
+      "ca duoi"
+    ],
     "category": "Cá",
     "kcal": 121
   },
@@ -8905,7 +11042,9 @@
     "type": "food",
     "slug": "ca-ngu-dai-duong",
     "name": "Cá ngừ đại dương",
-    "aliases": [],
+    "aliases": [
+      "ca ngu dai duong"
+    ],
     "category": "Cá",
     "kcal": 125
   },
@@ -8913,7 +11052,9 @@
     "type": "food",
     "slug": "ca-bac-ma",
     "name": "Cá bạc má",
-    "aliases": [],
+    "aliases": [
+      "ca bac ma"
+    ],
     "category": "Cá",
     "kcal": 129
   },
@@ -8921,7 +11062,9 @@
     "type": "food",
     "slug": "ca-thu-ao",
     "name": "Cá thu ảo",
-    "aliases": [],
+    "aliases": [
+      "ca thu ao"
+    ],
     "category": "Cá",
     "kcal": 133
   },
@@ -8929,7 +11072,9 @@
     "type": "food",
     "slug": "ca-ngat",
     "name": "Cá ngát",
-    "aliases": [],
+    "aliases": [
+      "ca ngat"
+    ],
     "category": "Cá",
     "kcal": 108
   },
@@ -8937,7 +11082,9 @@
     "type": "food",
     "slug": "tom-dat",
     "name": "Tôm đất",
-    "aliases": [],
+    "aliases": [
+      "tom dat"
+    ],
     "category": "Hải sản",
     "kcal": 89
   },
@@ -8945,7 +11092,9 @@
     "type": "food",
     "slug": "tom-cang-xanh",
     "name": "Tôm càng xanh",
-    "aliases": [],
+    "aliases": [
+      "tom cang xanh"
+    ],
     "category": "Hải sản",
     "kcal": 92
   },
@@ -8953,7 +11102,9 @@
     "type": "food",
     "slug": "tep-dong",
     "name": "Tép đồng",
-    "aliases": [],
+    "aliases": [
+      "tep dong"
+    ],
     "category": "Hải sản",
     "kcal": 95
   },
@@ -8961,7 +11112,9 @@
     "type": "food",
     "slug": "ruoc-bien",
     "name": "Ruốc biển",
-    "aliases": [],
+    "aliases": [
+      "ruoc bien"
+    ],
     "category": "Hải sản",
     "kcal": 99
   },
@@ -8969,7 +11122,9 @@
     "type": "food",
     "slug": "muc-ong",
     "name": "Mực ống",
-    "aliases": [],
+    "aliases": [
+      "muc ong"
+    ],
     "category": "Hải sản",
     "kcal": 102
   },
@@ -8977,7 +11132,9 @@
     "type": "food",
     "slug": "muc-la",
     "name": "Mực lá",
-    "aliases": [],
+    "aliases": [
+      "muc la"
+    ],
     "category": "Hải sản",
     "kcal": 105
   },
@@ -8985,7 +11142,9 @@
     "type": "food",
     "slug": "bach-tuoc",
     "name": "Bạch tuộc",
-    "aliases": [],
+    "aliases": [
+      "bach tuoc"
+    ],
     "category": "Hải sản",
     "kcal": 86
   },
@@ -8993,7 +11152,9 @@
     "type": "food",
     "slug": "hau-sua",
     "name": "Hàu sữa",
-    "aliases": [],
+    "aliases": [
+      "hau sua"
+    ],
     "category": "Hải sản",
     "kcal": 89
   },
@@ -9001,7 +11162,9 @@
     "type": "food",
     "slug": "hau-da",
     "name": "Hàu đá",
-    "aliases": [],
+    "aliases": [
+      "hau da"
+    ],
     "category": "Hải sản",
     "kcal": 92
   },
@@ -9009,7 +11172,9 @@
     "type": "food",
     "slug": "so-long",
     "name": "Sò lông",
-    "aliases": [],
+    "aliases": [
+      "so long"
+    ],
     "category": "Hải sản",
     "kcal": 95
   },
@@ -9017,7 +11182,9 @@
     "type": "food",
     "slug": "so-diep",
     "name": "Sò điệp",
-    "aliases": [],
+    "aliases": [
+      "so diep"
+    ],
     "category": "Hải sản",
     "kcal": 99
   },
@@ -9025,7 +11192,9 @@
     "type": "food",
     "slug": "so-mai",
     "name": "Sò mai",
-    "aliases": [],
+    "aliases": [
+      "so mai"
+    ],
     "category": "Hải sản",
     "kcal": 102
   },
@@ -9033,7 +11202,9 @@
     "type": "food",
     "slug": "oc-mong-tay",
     "name": "Ốc móng tay",
-    "aliases": [],
+    "aliases": [
+      "oc mong tay"
+    ],
     "category": "Hải sản",
     "kcal": 105
   },
@@ -9041,7 +11212,9 @@
     "type": "food",
     "slug": "oc-len",
     "name": "Ốc len",
-    "aliases": [],
+    "aliases": [
+      "oc len"
+    ],
     "category": "Hải sản",
     "kcal": 86
   },
@@ -9049,7 +11222,9 @@
     "type": "food",
     "slug": "oc-giac",
     "name": "Ốc giác",
-    "aliases": [],
+    "aliases": [
+      "oc giac"
+    ],
     "category": "Hải sản",
     "kcal": 89
   },
@@ -9057,7 +11232,9 @@
     "type": "food",
     "slug": "oc-mo",
     "name": "Ốc mỡ",
-    "aliases": [],
+    "aliases": [
+      "oc mo"
+    ],
     "category": "Hải sản",
     "kcal": 92
   },
@@ -9065,7 +11242,9 @@
     "type": "food",
     "slug": "ghe-xanh",
     "name": "Ghẹ xanh",
-    "aliases": [],
+    "aliases": [
+      "ghe xanh"
+    ],
     "category": "Hải sản",
     "kcal": 95
   },
@@ -9073,7 +11252,9 @@
     "type": "food",
     "slug": "cu-ky",
     "name": "Cù kỳ",
-    "aliases": [],
+    "aliases": [
+      "cu ky"
+    ],
     "category": "Hải sản",
     "kcal": 99
   },
@@ -9081,7 +11262,9 @@
     "type": "food",
     "slug": "tom-hum",
     "name": "Tôm hùm",
-    "aliases": [],
+    "aliases": [
+      "tom hum"
+    ],
     "category": "Hải sản",
     "kcal": 102
   },
@@ -9089,7 +11272,9 @@
     "type": "food",
     "slug": "ca-vien",
     "name": "Cá viên",
-    "aliases": [],
+    "aliases": [
+      "ca vien"
+    ],
     "category": "Thịt chế biến",
     "kcal": 266
   },
@@ -9097,7 +11282,9 @@
     "type": "food",
     "slug": "bo-vien",
     "name": "Bò viên",
-    "aliases": [],
+    "aliases": [
+      "bo vien"
+    ],
     "category": "Thịt chế biến",
     "kcal": 216
   },
@@ -9105,7 +11292,9 @@
     "type": "food",
     "slug": "tom-vien",
     "name": "Tôm viên",
-    "aliases": [],
+    "aliases": [
+      "tom vien"
+    ],
     "category": "Thịt chế biến",
     "kcal": 224
   },
@@ -9113,7 +11302,9 @@
     "type": "food",
     "slug": "dau-hu-non",
     "name": "Đậu hũ non",
-    "aliases": [],
+    "aliases": [
+      "dau hu non"
+    ],
     "category": "Đậu",
     "kcal": 146
   },
@@ -9121,7 +11312,9 @@
     "type": "food",
     "slug": "dau-hu-chien",
     "name": "Đậu hũ chiên",
-    "aliases": [],
+    "aliases": [
+      "dau hu chien"
+    ],
     "category": "Đậu",
     "kcal": 151
   },
@@ -9129,7 +11322,9 @@
     "type": "food",
     "slug": "tau-hu-ky",
     "name": "Tàu hũ ky",
-    "aliases": [],
+    "aliases": [
+      "tau hu ky"
+    ],
     "category": "Đậu",
     "kcal": 156
   },
@@ -9137,7 +11332,9 @@
     "type": "food",
     "slug": "tuong-hot",
     "name": "Tương hột",
-    "aliases": [],
+    "aliases": [
+      "tuong hot"
+    ],
     "category": "Đậu",
     "kcal": 161
   },
@@ -9145,7 +11342,9 @@
     "type": "food",
     "slug": "chao-trang",
     "name": "Chao trắng",
-    "aliases": [],
+    "aliases": [
+      "chao trang"
+    ],
     "category": "Đậu",
     "kcal": 167
   },
@@ -9153,7 +11352,9 @@
     "type": "food",
     "slug": "chao-do",
     "name": "Chao đỏ",
-    "aliases": [],
+    "aliases": [
+      "chao do"
+    ],
     "category": "Đậu",
     "kcal": 135
   },
@@ -9161,7 +11362,9 @@
     "type": "food",
     "slug": "dau-lang",
     "name": "Đậu lăng",
-    "aliases": [],
+    "aliases": [
+      "dau lang"
+    ],
     "category": "Đậu",
     "kcal": 140
   },
@@ -9169,7 +11372,9 @@
     "type": "food",
     "slug": "dau-co-ve-hat",
     "name": "Đậu cô ve hạt",
-    "aliases": [],
+    "aliases": [
+      "dau co ve hat"
+    ],
     "category": "Đậu",
     "kcal": 146
   },
@@ -9177,7 +11382,9 @@
     "type": "food",
     "slug": "dau-phong-song",
     "name": "Đậu phộng sống",
-    "aliases": [],
+    "aliases": [
+      "dau phong song"
+    ],
     "category": "Hạt",
     "kcal": 563
   },
@@ -9185,7 +11392,9 @@
     "type": "food",
     "slug": "hat-dieu",
     "name": "Hạt điều",
-    "aliases": [],
+    "aliases": [
+      "hat dieu"
+    ],
     "category": "Hạt",
     "kcal": 582
   },
@@ -9193,7 +11402,9 @@
     "type": "food",
     "slug": "hanh-nhan",
     "name": "Hạnh nhân",
-    "aliases": [],
+    "aliases": [
+      "hanh nhan"
+    ],
     "category": "Hạt",
     "kcal": 602
   },
@@ -9201,7 +11412,9 @@
     "type": "food",
     "slug": "oc-cho",
     "name": "Óc chó",
-    "aliases": [],
+    "aliases": [
+      "oc cho"
+    ],
     "category": "Hạt",
     "kcal": 622
   },
@@ -9209,7 +11422,9 @@
     "type": "food",
     "slug": "mac-ca",
     "name": "Mắc ca",
-    "aliases": [],
+    "aliases": [
+      "mac ca"
+    ],
     "category": "Hạt",
     "kcal": 504
   },
@@ -9217,7 +11432,9 @@
     "type": "food",
     "slug": "hat-chia",
     "name": "Hạt chia",
-    "aliases": [],
+    "aliases": [
+      "hat chia"
+    ],
     "category": "Hạt",
     "kcal": 524
   },
@@ -9225,7 +11442,9 @@
     "type": "food",
     "slug": "hat-lanh",
     "name": "Hạt lanh",
-    "aliases": [],
+    "aliases": [
+      "hat lanh"
+    ],
     "category": "Hạt",
     "kcal": 543
   },
@@ -9233,7 +11452,9 @@
     "type": "food",
     "slug": "me-trang",
     "name": "Mè trắng",
-    "aliases": [],
+    "aliases": [
+      "me trang"
+    ],
     "category": "Hạt",
     "kcal": 563
   },
@@ -9241,7 +11462,9 @@
     "type": "food",
     "slug": "me-den",
     "name": "Mè đen",
-    "aliases": [],
+    "aliases": [
+      "me den"
+    ],
     "category": "Hạt",
     "kcal": 582
   },
@@ -9249,7 +11472,9 @@
     "type": "food",
     "slug": "sua-chua-hy-lap",
     "name": "Sữa chua Hy Lạp",
-    "aliases": [],
+    "aliases": [
+      "sua chua hy lap"
+    ],
     "category": "Trứng sữa",
     "kcal": 124
   },
@@ -9257,7 +11482,9 @@
     "type": "food",
     "slug": "pho-mai-con-bo-cuoi",
     "name": "Phô mai con bò cười",
-    "aliases": [],
+    "aliases": [
+      "pho mai con bo cuoi"
+    ],
     "category": "Trứng sữa",
     "kcal": 128
   },
@@ -9265,7 +11492,9 @@
     "type": "food",
     "slug": "pho-mai-mozzarella",
     "name": "Phô mai mozzarella",
-    "aliases": [],
+    "aliases": [
+      "pho mai mozzarella"
+    ],
     "category": "Trứng sữa",
     "kcal": 104
   }

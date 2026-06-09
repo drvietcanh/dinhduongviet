@@ -12,13 +12,20 @@ import GlycemicLoad from "../../components/GlycemicLoad.astro";
 import VNHealthScore from "../../components/VNHealthScore.astro";
 import { foods } from "../../data/nutrition";
 import { confidenceLabel, foodBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
+import { foodSlugAliases } from "../../lib/food-slug-aliases";
 
 export function getStaticPaths() {
-  return foods.map((food) => ({ params: { slug: food.slug } }));
+  return [
+    ...foods.map((food) => ({ params: { slug: food.slug } })),
+    ...Object.keys(foodSlugAliases).map((slug) => ({ params: { slug } }))
+  ];
 }
 
-const food = foodBySlug(Astro.params.slug ?? "");
+const requestedSlug = Astro.params.slug ?? "";
+const canonicalSlug = foodSlugAliases[requestedSlug] ?? requestedSlug;
+const food = foodBySlug(canonicalSlug);
 if (!food) return Astro.redirect("/tim-kiem");
+if (requestedSlug !== canonicalSlug) return Astro.redirect(`/thuc-pham/${canonicalSlug}`);
 const source = sourceFor(food.sourceId);
 
 // JSON-LD Food structured data

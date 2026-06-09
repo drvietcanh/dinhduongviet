@@ -187,7 +187,7 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
   {
-    id: "tom-sudo", slug: "tom-sudo", name: "Tôm sú", aliases: ["tôm sắt", "tôm biển", "prawn", "tom su"],
+    id: "tom-su", slug: "tom-su", name: "Tôm sú", aliases: ["tôm sắt", "tôm biển", "prawn", "tom su", "tom-sudo"],
     category: "Thủy sản", state: "raw", basis: "100g phần ăn được", edibleNote: "Tôm sú bóc vỏ.",
     nutrients: { energyKcal: 105, proteinG: 20.9, carbG: 0.3, fatG: 1.7, calciumMg: 60, ironMg: 0.5, zincMg: 1.3, sodiumMg: 160, potassiumMg: 250 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
