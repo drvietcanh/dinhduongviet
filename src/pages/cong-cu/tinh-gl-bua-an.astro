@@ -508,7 +508,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       } else if (result.totalGLCategory === "medium") {
         noteEl.textContent = "Tổng GL đang ở nhóm trung bình theo phân loại giáo dục. Hãy xem cùng tổng carb, khẩu phần và kế hoạch cá nhân.";
       } else if (result.totalGLCategory === "high") {
-        noteEl.textContent = "Tổng GL đang ở nhóm cao theo phân loại giáo dục. Đây là tín hiệu để rà khẩu phần, không phải căn cứ tự chỉnh thuốc.";
+        noteEl.textContent = "Tổng GL đang ở nhóm cao theo phân loại giáo dục. Đây là tín hiệu để rà khẩu phần, không phải căn cứ tự thay đổi thuốc.";
       } else {
         noteEl.textContent = "Chưa đủ dữ liệu để phân loại GL.";
       }

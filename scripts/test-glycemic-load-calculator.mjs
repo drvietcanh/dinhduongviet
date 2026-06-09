@@ -102,6 +102,14 @@ assert.equal(result.items[0].gl, null);
 assert.ok(result.items[0].warningCodes.includes("invalid_grams"));
 assert.match(result.errors[0], /Khối lượng/);
 
+for (const badGrams of [0, Number.NaN, Infinity, Number("")]) {
+  result = calculateGlycemicLoadMeal([item({ grams: badGrams })]);
+  assert.equal(result.ok, false, `grams ${badGrams} should fail`);
+  assert.equal(result.items[0].gl, null);
+  assert.ok(result.items[0].warningCodes.includes("invalid_grams"));
+  assert.match(result.errors[0], /Khối lượng/);
+}
+
 result = calculateGlycemicLoadMeal([item({ grams: 33.3, carbPer100g: 28, gi: 53 })]);
 assert.equal(result.items[0].carbGrams, 9.3);
 assert.equal(result.items[0].gl, 4.9);
@@ -109,8 +117,8 @@ assert.equal(result.items[0].gl, 4.9);
 assert.ok(!/gl\s*\*\s*100\s*\/\s*gi|food\.gl\s*\*\s*100\s*\/\s*food\.gi/i.test(glSource), "engine must not infer carb backward from GL");
 
 const engineText = JSON.stringify(result) + GL_GLOBAL_SAFETY_NOTE;
-assert.ok(!/liều insulin|tăng insulin|giảm insulin|tăng thuốc|giảm thuốc|an toàn tuyệt đối/i.test(engineText), "engine output must not provide medication dosing advice");
-assert.match(GL_GLOBAL_SAFETY_NOTE, /Không tự chỉnh insulin/);
+assert.ok(!/chỉnh insulin|liều insulin|tăng insulin|giảm insulin|tăng thuốc|giảm thuốc|an toàn tuyệt đối|mục tiêu bắt buộc/i.test(engineText), "engine output must not provide medication dosing advice or overconfident goals");
+assert.match(GL_GLOBAL_SAFETY_NOTE, /Không tự thay đổi insulin/);
 assert.match(GL_GLOBAL_SAFETY_NOTE, /sulfonylurea/);
 
 console.log("Glycemic load calculator engine tests passed.");

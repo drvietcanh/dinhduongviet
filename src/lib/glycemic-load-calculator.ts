@@ -65,7 +65,7 @@ export const GL_TOTAL_CARB_NOTE =
   "V1 dùng tổng carbohydrate vì dữ liệu carb khả dụng/chất xơ chưa được khóa nhất quán cho từng món. Kết quả là ước tính giản lược, không phải dự đoán chắc chắn đường huyết cá nhân.";
 
 export const GL_GLOBAL_SAFETY_NOTE =
-  "GL chỉ là chỉ số giáo dục. Không tự chỉnh insulin, sulfonylurea hoặc thuốc hạ đường huyết dựa vào kết quả này. Đường huyết sau ăn còn phụ thuộc tổng carb, GI, chất xơ, chất béo, đạm, cách nấu, vận động, thời điểm ăn, thuốc và đáp ứng cá nhân.";
+  "GL chỉ là chỉ số giáo dục. Không tự thay đổi insulin, sulfonylurea hoặc thuốc hạ đường huyết dựa vào kết quả này. Đường huyết sau ăn còn phụ thuộc tổng carb, GI, chất xơ, chất béo, đạm, cách nấu, vận động, thời điểm ăn, thuốc và đáp ứng cá nhân.";
 
 export const GL_CLINICAL_CONTEXT_NOTE =
   "Thai kỳ, trẻ em, CKD, bệnh nặng, người hay hạ đường huyết hoặc đang dùng thuốc có nguy cơ hạ đường huyết cần kế hoạch cá thể hóa với bác sĩ/dinh dưỡng viên.";
