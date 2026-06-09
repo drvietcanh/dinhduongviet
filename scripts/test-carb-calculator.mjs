@@ -62,7 +62,21 @@ for (const badGrams of [0, -1, Number.NaN, Infinity, 2001]) {
   assert.match(result.errors[0], /Khối lượng/);
 }
 
-assert.ok(!/liều insulin|insulin dose|chỉnh liều/i.test(CARB_GLOBAL_SAFETY_NOTE), "engine safety text must not provide insulin dosing");
+const emptyGram = calculateCarbMeal([{ name: "Gram rỗng", grams: Number(""), carbPer100g: 20 }]);
+assert.equal(emptyGram.ok, false, "empty UI grams should fail after numeric coercion");
+assert.match(emptyGram.errors[0], /Khối lượng/);
+
+result = calculateCarbMeal([
+  { name: "Làm tròn carb", grams: 33.3, carbPer100g: 28 },
+  { name: "Làm tròn tỉ lệ", grams: 66.7, carbPer100g: 14 },
+]);
+assert.equal(result.items[0].carbGrams, 9.3, "carb should round to 1 decimal");
+assert.equal(result.items[1].carbGrams, 9.3, "carb should round to 1 decimal");
+assert.equal(result.totalCarbGrams, 18.6, "total should round to 1 decimal");
+assert.equal(result.items[0].contributionPercent, 50, "percent should stay readable");
+
+const engineText = JSON.stringify(result) + CARB_GLOBAL_SAFETY_NOTE;
+assert.ok(!/tăng insulin|giảm insulin|liều insulin|insulin dose|chỉnh thuốc|chỉnh liều/i.test(engineText), "engine output must not provide medication dosing advice");
 assert.match(CARB_GLOBAL_SAFETY_NOTE, /Không tự chỉnh insulin/);
 assert.match(CARB_GLOBAL_SAFETY_NOTE, /sulfonylurea/);
 

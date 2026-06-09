@@ -203,32 +203,32 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .chip:hover { border-color:var(--brand); }
     .chip.active { background:var(--brand-light); color:var(--brand); border-color:var(--brand-light2); font-weight:600; }
     .food-list { display:flex; flex-direction:column; gap:8px; }
-    .food-item { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:12px; padding:13px 16px; background:var(--card); border:1px solid var(--line); border-radius:12px; transition:all 0.15s; }
-    .food-item:hover { border-color:var(--brand-light2); }
-    .food-icon { font-size:1.45rem; }
-    .food-info { min-width:0; }
-    .food-name { font-weight:700; font-size:0.94rem; }
-    .food-detail { font-size:0.78rem; color:var(--ink-secondary); line-height:1.45; }
-    .food-meta { color:var(--ink-tertiary); }
-    .gram-wrap { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:10px; padding:0 9px; background:var(--bg); }
-    .gram-input { width:74px; min-height:38px; border:none; background:transparent; color:var(--ink); font-size:0.9rem; outline:none; text-align:right; }
-    .gram-unit { color:var(--ink-tertiary); font-size:0.8rem; }
-    .food-carb { min-width:78px; text-align:right; font-weight:800; font-size:0.98rem; color:var(--brand); }
-    .food-add { min-height:40px; padding:8px 14px; border:none; border-radius:10px; background:var(--brand); color:white; font-weight:700; font-size:0.84rem; cursor:pointer; transition:all 0.15s; white-space:nowrap; font-family:inherit; }
-    .food-add:hover { opacity:0.86; }
-    .empty-state { text-align:center; padding:22px; color:var(--ink-secondary); background:var(--card); border:1px solid var(--line); border-radius:12px; }
+    :global(.food-item) { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:12px; padding:13px 16px; background:var(--card); border:1px solid var(--line); border-radius:12px; transition:all 0.15s; }
+    :global(.food-item:hover) { border-color:var(--brand-light2); }
+    :global(.food-icon) { font-size:1.45rem; }
+    :global(.food-info) { min-width:0; }
+    :global(.food-name) { font-weight:700; font-size:0.94rem; }
+    :global(.food-detail) { font-size:0.78rem; color:var(--ink-secondary); line-height:1.45; }
+    :global(.food-meta) { color:var(--ink-tertiary); }
+    :global(.gram-wrap) { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:10px; padding:0 9px; background:var(--bg); }
+    :global(.gram-input) { width:74px; min-height:38px; border:none; background:transparent; color:var(--ink); font-size:0.9rem; outline:none; text-align:right; }
+    :global(.gram-unit) { color:var(--ink-tertiary); font-size:0.8rem; }
+    :global(.food-carb) { min-width:78px; text-align:right; font-weight:800; font-size:0.98rem; color:var(--brand); }
+    :global(.food-add) { min-height:40px; padding:8px 14px; border:none; border-radius:10px; background:var(--brand); color:white; font-weight:700; font-size:0.84rem; cursor:pointer; transition:all 0.15s; white-space:nowrap; font-family:inherit; }
+    :global(.food-add:hover) { opacity:0.86; }
+    :global(.empty-state) { text-align:center; padding:22px; color:var(--ink-secondary); background:var(--card); border:1px solid var(--line); border-radius:12px; }
     .meal-total { background:var(--card); border:2px solid var(--brand-light2); border-radius:16px; padding:20px; margin-bottom:20px; }
     .meal-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
     .meal-head h2 { font-size:1.08rem; margin:0; }
     .total-items { margin-bottom:14px; }
-    .total-item { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:8px; padding:8px 0; border-bottom:1px solid var(--line-light); font-size:0.9rem; }
-    .total-item:last-child { border-bottom:none; }
-    .ti-del { cursor:pointer; opacity:0.55; min-width:32px; min-height:32px; border:none; border-radius:8px; background:transparent; color:var(--ink-secondary); font-size:1rem; }
-    .ti-del:hover { opacity:1; background:var(--bg-soft); }
-    .ti-name { min-width:0; }
-    .ti-sub { display:block; font-size:0.76rem; color:var(--ink-tertiary); margin-top:2px; }
-    .ti-share { font-size:0.8rem; color:var(--ink-secondary); text-align:right; }
-    .ti-carb { font-weight:700; min-width:58px; text-align:right; }
+    :global(.total-item) { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:8px; padding:8px 0; border-bottom:1px solid var(--line-light); font-size:0.9rem; }
+    :global(.total-item:last-child) { border-bottom:none; }
+    :global(.ti-del) { cursor:pointer; opacity:0.55; min-width:32px; min-height:32px; border:none; border-radius:8px; background:transparent; color:var(--ink-secondary); font-size:1rem; }
+    :global(.ti-del:hover) { opacity:1; background:var(--bg-soft); }
+    :global(.ti-name) { min-width:0; }
+    :global(.ti-sub) { display:block; font-size:0.76rem; color:var(--ink-tertiary); margin-top:2px; }
+    :global(.ti-share) { font-size:0.8rem; color:var(--ink-secondary); text-align:right; }
+    :global(.ti-carb) { font-weight:700; min-width:58px; text-align:right; }
     .total-row { display:flex; justify-content:space-between; font-size:0.94rem; padding:5px 0; gap:16px; }
     .total-carb { font-size:1.25rem; font-weight:800; color:var(--brand); }
     .reference-band { position:relative; height:10px; background:var(--line); border-radius:6px; margin:12px 0 6px; overflow:hidden; }
@@ -253,12 +253,12 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       .content-page { padding:20px 14px; }
       .h-text { font-size:1.26rem; }
       .rec-box { grid-template-columns:1fr; }
-      .food-item { grid-template-columns:auto minmax(0,1fr); }
-      .gram-wrap, .food-carb, .food-add { grid-column:2; justify-self:stretch; }
-      .food-carb { text-align:left; }
-      .food-add { width:100%; }
-      .total-item { grid-template-columns:auto minmax(0,1fr) auto; }
-      .ti-share { grid-column:2 / span 2; text-align:left; }
+      :global(.food-item) { grid-template-columns:auto minmax(0,1fr); }
+      :global(.gram-wrap), :global(.food-carb), :global(.food-add) { grid-column:2; justify-self:stretch; }
+      :global(.food-carb) { text-align:left; }
+      :global(.food-add) { width:100%; }
+      :global(.total-item) { grid-template-columns:auto minmax(0,1fr) auto; }
+      :global(.ti-share) { grid-column:2 / span 2; text-align:left; }
     }
   </style>
 
@@ -299,6 +299,20 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     function estimateFoodCarb(food, grams) {
       const result = calculateCarbMeal([{ name: food.name, slug: food.slug, grams, carbPer100g: food.carbPer100g }]);
       return result.items[0]?.carbGrams ?? null;
+    }
+
+    function scoreFood(food, normalizedQuery) {
+      if (!normalizedQuery) return 0;
+      const names = [food.name, ...(food.aliases || [])].map(normalize).filter(Boolean);
+      const haystack = normalize([food.name, food.category, food.basis, food.edibleNote, ...(food.aliases || [])].join(" "));
+      const tokens = normalizedQuery.split(/\s+/).filter(Boolean);
+      if (!tokens.every((token) => haystack.includes(token))) return Number.POSITIVE_INFINITY;
+      if (names.some((name) => name === normalizedQuery)) return 0;
+      if (names.some((name) => name.startsWith(normalizedQuery))) return 1;
+      if (names.some((name) => name.split(/\s+/).some((token) => token === normalizedQuery))) return 2;
+      if (names.some((name) => tokens.every((token) => name.split(/\s+/).some((part) => part.startsWith(token))))) return 3;
+      if (names.some((name) => name.includes(normalizedQuery))) return 4;
+      return 5;
     }
 
     function renderFoods(list) {
@@ -423,12 +437,12 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
 
     function applyFilters() {
       const q = normalize(currentSearch.trim());
-      filteredFoods = foods.filter((food) => {
-        if (currentFilter !== "all" && food.group !== currentFilter) return false;
-        if (!q) return true;
-        const haystack = normalize([food.name, food.category, food.basis, food.edibleNote, ...(food.aliases || [])].join(" "));
-        return haystack.includes(q);
-      }).slice(0, 80);
+      filteredFoods = foods
+        .map((food, order) => ({ food, order, score: scoreFood(food, q) }))
+        .filter(({ food, score }) => (currentFilter === "all" || food.group === currentFilter) && Number.isFinite(score))
+        .sort((a, b) => a.score - b.score || a.food.name.localeCompare(b.food.name, "vi") || a.order - b.order)
+        .map(({ food }) => food)
+        .slice(0, 80);
       renderFoods(filteredFoods);
     }
 
