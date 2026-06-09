@@ -83,6 +83,12 @@ result = calculateWaterIntake({ weightKg: 65, redFlags: { diuretics: true, heart
 assert.equal(result.mode, "clinical_no_auto");
 assert.equal(result.isPersonalTarget, false);
 
+for (const pairedFlag of ["chronicKidneyDisease", "edema", "hyponatremia"]) {
+  result = calculateWaterIntake({ weightKg: 65, redFlags: { diuretics: true, [pairedFlag]: true } });
+  assert.equal(result.mode, "clinical_no_auto", `diuretics + ${pairedFlag} should be clinical`);
+  assert.equal(result.isPersonalTarget, false);
+}
+
 result = calculateWaterIntake({ weightKg: 60, pregnancyLactation: "pregnancy" });
 assert.equal(result.mode, "caution");
 assert.match(result.warnings.join(" "), /Thai kỳ/);

@@ -71,7 +71,7 @@ export const WATER_ACUTE_SAFETY_NOTE =
   "Không dùng công cụ này để xử trí cấp cứu mất nước, nôn ói, tiêu chảy nặng, rối loạn tri giác, khó thở hoặc phù tăng nhanh.";
 
 export const WATER_FOOD_NOTE =
-  "Total water gồm nước uống, đồ uống và một phần nước từ thức ăn. V1 ước tính khoảng 80% từ đồ uống và 20% từ thức ăn; tỷ lệ thực tế thay đổi theo khẩu phần.";
+  "Tổng nước (total water) gồm nước uống, đồ uống và một phần nước từ thức ăn. V1 ước tính khoảng 80% từ đồ uống và 20% từ thức ăn; tỷ lệ thực tế thay đổi theo khẩu phần.";
 
 export const WATER_RULES: Record<WaterMode, WaterRule> = {
   auto: {
