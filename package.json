@@ -16,6 +16,7 @@
     "qa:food-data": "node scripts/check-food-data.mjs",
     "qa:data-consistency": "node scripts/check-data-consistency.mjs",
     "test:protein": "node scripts/test-protein-requirement.mjs",
+    "test:carb": "node scripts/test-carb-calculator.mjs",
     "preview": "astro preview --host 0.0.0.0"
   },
   "dependencies": {
