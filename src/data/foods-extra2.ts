@@ -187,7 +187,7 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
   {
-    id: "tom-su", slug: "tom-su", name: "Tôm sú", aliases: ["tôm sắt", "tôm biển", "prawn", "tom su", "tom-sudo"],
+    id: "tom-su", slug: "tom-su", name: "Tôm sú", aliases: ["tôm sú", "tôm sắt", "tôm biển", "prawn", "tom su", "tom-sudo"],
     category: "Thủy sản", state: "raw", basis: "100g phần ăn được", edibleNote: "Tôm sú bóc vỏ.",
     nutrients: { energyKcal: 105, proteinG: 20.9, carbG: 0.3, fatG: 1.7, calciumMg: 60, ironMg: 0.5, zincMg: 1.3, sodiumMg: 160, potassiumMg: 250 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
@@ -267,7 +267,7 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
   {
-    id: "dau-phap", slug: "dau-phap", name: "Đậu phộng", aliases: ["lạc", "peanut", "dau phong"],
+    id: "dau-phap", slug: "dau-phap", name: "Đậu phộng", aliases: ["đậu phộng", "lạc", "lac", "lạc tươi", "peanut", "dau phong"],
     category: "Hạt và đậu", state: "raw", basis: "100g lạc tươi", edibleNote: "Lạc/đậu phộng tươi (không rang).",
     nutrients: { energyKcal: 567, proteinG: 25.8, carbG: 16.1, fatG: 49.2, fiberG: 8.5, calciumMg: 92, ironMg: 4.6, sodiumMg: 18, potassiumMg: 705 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."

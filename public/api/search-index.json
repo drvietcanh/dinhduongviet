@@ -4001,6 +4001,7 @@
     "name": "Thịt heo nạc",
     "aliases": [
       "thịt lợn nạc",
+      "thit lon nac",
       "pork lean",
       "thit heo nac"
     ],
@@ -4013,6 +4014,8 @@
     "name": "Sườn heo nướng",
     "aliases": [
       "sườn nướng",
+      "sườn lợn nướng",
+      "suon lon nuong",
       "pork chop grilled",
       "suon heo nuong"
     ],
@@ -4025,6 +4028,9 @@
     "name": "Ba chỉ heo",
     "aliases": [
       "thịt ba rọi",
+      "ba chỉ lợn",
+      "thịt ba rọi lợn",
+      "ba chi lon",
       "pork belly",
       "ba chi"
     ],
@@ -4310,8 +4316,12 @@
     "name": "Cà phê đen",
     "aliases": [
       "cà phê",
+      "cà phê đen",
       "coffee black",
+      "ca phe",
+      "cafe",
       "ca phe den",
+      "cafe den",
       "ca pha"
     ],
     "category": "Đồ uống",
@@ -4541,6 +4551,8 @@
     "name": "Lạc rang",
     "aliases": [
       "đậu phộng rang",
+      "dau phong rang",
+      "lạc rang",
       "peanut",
       "lac rang"
     ],
@@ -5392,6 +5404,7 @@
     "slug": "tom-su",
     "name": "Tôm sú",
     "aliases": [
+      "tôm sú",
       "tôm sắt",
       "tôm biển",
       "prawn",
@@ -5534,7 +5547,10 @@
     "slug": "dau-phap",
     "name": "Đậu phộng",
     "aliases": [
+      "đậu phộng",
       "lạc",
+      "lac",
+      "lạc tươi",
       "peanut",
       "dau phong"
     ],
@@ -7918,6 +7934,10 @@
     "name": "Nước xương heo",
     "aliases": [
       "nuoc xuong heo",
+      "nước xương lợn",
+      "nuoc xuong lon",
+      "nước hầm xương heo",
+      "nước hầm xương lợn",
       "pork bone broth"
     ],
     "category": "Nước dùng",
@@ -7929,6 +7949,8 @@
     "name": "Nước xương bò",
     "aliases": [
       "nuoc xuong bo",
+      "nước hầm xương bò",
+      "nuoc ham xuong bo",
       "beef bone broth"
     ],
     "category": "Nước dùng",
@@ -7952,6 +7974,8 @@
     "name": "Nước dùng tôm",
     "aliases": [
       "nuoc dung tom",
+      "nước hầm tôm",
+      "nuoc ham tom",
       "shrimp broth"
     ],
     "category": "Nước dùng",
@@ -7963,6 +7987,8 @@
     "name": "Nước dùng cá",
     "aliases": [
       "nuoc dung ca",
+      "nước hầm cá",
+      "nuoc ham ca",
       "fish broth"
     ],
     "category": "Nước dùng",
@@ -7974,6 +8000,8 @@
     "name": "Nước hầm xương tổng hợp",
     "aliases": [
       "nuoc ham xuong",
+      "nước dùng xương tổng hợp",
+      "nuoc dung xuong tong hop",
       "mixed bone broth"
     ],
     "category": "Nước dùng",
@@ -8073,6 +8101,7 @@
     "name": "Dầu phộng (dầu lạc)",
     "aliases": [
       "dau phong",
+      "dầu lạc",
       "dau lac",
       "peanut oil"
     ],
@@ -8183,7 +8212,11 @@
     "slug": "ca-phe-den-da",
     "name": "Cà phê đen đá",
     "aliases": [
+      "cà phê đen đá",
+      "ca phe",
+      "cafe",
       "ca phe den da",
+      "cafe den da",
       "iced black coffee"
     ],
     "category": "Đồ uống",
@@ -9943,7 +9976,9 @@
     "slug": "bap-non",
     "name": "Bắp non",
     "aliases": [
-      "bap non"
+      "bap non",
+      "ngô non",
+      "ngo non"
     ],
     "category": "Củ quả",
     "kcal": 47
@@ -10043,7 +10078,9 @@
     "slug": "bap-nep-luoc",
     "name": "Bắp nếp luộc",
     "aliases": [
-      "bap nep luoc"
+      "bap nep luoc",
+      "ngô nếp luộc",
+      "ngo nep luoc"
     ],
     "category": "Tinh bột",
     "kcal": 175
@@ -10053,37 +10090,57 @@
     "slug": "bap-my-luoc",
     "name": "Bắp Mỹ luộc",
     "aliases": [
-      "bap my luoc"
+      "bap my luoc",
+      "ngô Mỹ luộc",
+      "ngo my luoc"
     ],
     "category": "Tinh bột",
     "kcal": 181
   },
   {
     "type": "food",
-    "slug": "gao-nep",
-    "name": "Gạo nếp",
+    "slug": "com-nep",
+    "name": "Cơm nếp",
     "aliases": [
-      "gao nep"
+      "com nep",
+      "cơm nếp",
+      "gao-nep",
+      "gạo nếp đã nấu",
+      "gao nep da nau"
     ],
     "category": "Tinh bột",
     "kcal": 187
   },
   {
     "type": "food",
-    "slug": "gao-lut-do",
-    "name": "Gạo lứt đỏ",
+    "slug": "com-gao-lut-do",
+    "name": "Cơm gạo lứt đỏ",
     "aliases": [
-      "gao lut do"
+      "Cơm gạo lật đỏ",
+      "com gao lat do",
+      "com gao lut do",
+      "cơm gạo lứt đỏ",
+      "cơm gạo lật đỏ",
+      "gao-lut-do",
+      "gạo lứt đỏ đã nấu",
+      "gao lut do da nau"
     ],
     "category": "Tinh bột",
     "kcal": 194
   },
   {
     "type": "food",
-    "slug": "gao-lut-den",
-    "name": "Gạo lứt đen",
+    "slug": "com-gao-lut-den",
+    "name": "Cơm gạo lứt đen",
     "aliases": [
-      "gao lut den"
+      "Cơm gạo lật đen",
+      "com gao lat den",
+      "com gao lut den",
+      "cơm gạo lứt đen",
+      "cơm gạo lật đen",
+      "gao-lut-den",
+      "gạo lứt đen đã nấu",
+      "gao lut den da nau"
     ],
     "category": "Tinh bột",
     "kcal": 200
@@ -10183,7 +10240,9 @@
     "slug": "bot-bap",
     "name": "Bột bắp",
     "aliases": [
-      "bot bap"
+      "bot bap",
+      "Bột ngô",
+      "bot ngo"
     ],
     "category": "Tinh bột",
     "kcal": 175
@@ -10533,7 +10592,9 @@
     "slug": "thit-heo-vai",
     "name": "Thịt heo vai",
     "aliases": [
-      "thit heo vai"
+      "thit heo vai",
+      "Thịt lợn vai",
+      "thit lon vai"
     ],
     "category": "Thịt",
     "kcal": 184
@@ -10543,7 +10604,9 @@
     "slug": "thit-heo-dui",
     "name": "Thịt heo đùi",
     "aliases": [
-      "thit heo dui"
+      "thit heo dui",
+      "Thịt lợn đùi",
+      "thit lon dui"
     ],
     "category": "Thịt",
     "kcal": 191
@@ -10553,7 +10616,9 @@
     "slug": "thit-heo-xay",
     "name": "Thịt heo xay",
     "aliases": [
-      "thit heo xay"
+      "thit heo xay",
+      "Thịt lợn xay",
+      "thit lon xay"
     ],
     "category": "Thịt",
     "kcal": 198
@@ -10563,7 +10628,9 @@
     "slug": "thit-heo-ba-roi-luoc",
     "name": "Thịt heo ba rọi luộc",
     "aliases": [
-      "thit heo ba roi luoc"
+      "thit heo ba roi luoc",
+      "Thịt lợn ba rọi luộc",
+      "thit lon ba roi luoc"
     ],
     "category": "Thịt",
     "kcal": 204
@@ -10573,7 +10640,9 @@
     "slug": "suon-non-heo",
     "name": "Sườn non heo",
     "aliases": [
-      "suon non heo"
+      "suon non heo",
+      "Sườn non lợn",
+      "suon non lon"
     ],
     "category": "Thịt",
     "kcal": 211
@@ -10583,7 +10652,9 @@
     "slug": "chan-gio-heo",
     "name": "Chân giò heo",
     "aliases": [
-      "chan gio heo"
+      "chan gio heo",
+      "Chân giò lợn",
+      "chan gio lon"
     ],
     "category": "Thịt",
     "kcal": 171
@@ -10593,7 +10664,9 @@
     "slug": "tai-heo",
     "name": "Tai heo",
     "aliases": [
-      "tai heo"
+      "tai heo",
+      "Tai lợn",
+      "tai lon"
     ],
     "category": "Thịt",
     "kcal": 178
@@ -10603,7 +10676,9 @@
     "slug": "luoi-heo",
     "name": "Lưỡi heo",
     "aliases": [
-      "luoi heo"
+      "luoi heo",
+      "Lưỡi lợn",
+      "luoi lon"
     ],
     "category": "Thịt",
     "kcal": 184
@@ -10613,7 +10688,9 @@
     "slug": "tim-heo",
     "name": "Tim heo",
     "aliases": [
-      "tim heo"
+      "tim heo",
+      "Tim lợn",
+      "tim lon"
     ],
     "category": "Thịt",
     "kcal": 191
@@ -10623,7 +10700,9 @@
     "slug": "cat-heo",
     "name": "Cật heo",
     "aliases": [
-      "cat heo"
+      "cat heo",
+      "Cật lợn",
+      "cat lon"
     ],
     "category": "Thịt",
     "kcal": 198
@@ -10633,7 +10712,9 @@
     "slug": "da-day-heo",
     "name": "Dạ dày heo",
     "aliases": [
-      "da day heo"
+      "da day heo",
+      "Dạ dày lợn",
+      "da day lon"
     ],
     "category": "Thịt",
     "kcal": 204
@@ -10643,7 +10724,9 @@
     "slug": "phoi-heo",
     "name": "Phổi heo",
     "aliases": [
-      "phoi heo"
+      "phoi heo",
+      "Phổi lợn",
+      "phoi lon"
     ],
     "category": "Thịt",
     "kcal": 211
@@ -10663,7 +10746,9 @@
     "slug": "thit-bo-bap",
     "name": "Thịt bò bắp",
     "aliases": [
-      "thit bo bap"
+      "thit bo bap",
+      "Thịt bò ngô",
+      "thit bo ngo"
     ],
     "category": "Thịt",
     "kcal": 178
@@ -11383,7 +11468,9 @@
     "slug": "dau-phong-song",
     "name": "Đậu phộng sống",
     "aliases": [
-      "dau phong song"
+      "dau phong song",
+      "lạc sống",
+      "lac song"
     ],
     "category": "Hạt",
     "kcal": 563

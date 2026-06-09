@@ -3,7 +3,7 @@ export const extraFoods7 = [
   // ── NHÓM NƯỚC DÙNG ──
   {
     id: "nuoc-xuong-heo", slug: "nuoc-xuong-heo", name: "Nước xương heo",
-    aliases: ["nuoc xuong heo", "pork bone broth"],
+    aliases: ["nuoc xuong heo", "nước xương lợn", "nuoc xuong lon", "nước hầm xương heo", "nước hầm xương lợn", "pork bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương heo, dùng nấu phở, bún, canh.",
     nutrients: { energyKcal: 8, proteinG: 1.2, carbG: 0.5, fatG: 0.3, saturatedFatG: 0.1, sodiumMg: 180, potassiumMg: 60, calciumMg: 8, phosphorusMg: 15 },
@@ -11,7 +11,7 @@ export const extraFoods7 = [
   },
   {
     id: "nuoc-xuong-bo", slug: "nuoc-xuong-bo", name: "Nước xương bò",
-    aliases: ["nuoc xuong bo", "beef bone broth"],
+    aliases: ["nuoc xuong bo", "nước hầm xương bò", "nuoc ham xuong bo", "beef bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương bò, nấu phở bò, lẩu.",
     nutrients: { energyKcal: 10, proteinG: 1.5, carbG: 0.5, fatG: 0.4, saturatedFatG: 0.15, sodiumMg: 200, potassiumMg: 70, calciumMg: 8 },
@@ -27,7 +27,7 @@ export const extraFoods7 = [
   },
   {
     id: "nuoc-dung-tom", slug: "nuoc-dung-tom", name: "Nước dùng tôm",
-    aliases: ["nuoc dung tom", "shrimp broth"],
+    aliases: ["nuoc dung tom", "nước hầm tôm", "nuoc ham tom", "shrimp broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm vỏ tôm, nấu bún, canh chua.",
     nutrients: { energyKcal: 6, proteinG: 0.8, carbG: 0.3, fatG: 0.15, sodiumMg: 200, potassiumMg: 55, calciumMg: 10 },
@@ -35,7 +35,7 @@ export const extraFoods7 = [
   },
   {
     id: "nuoc-dung-ca", slug: "nuoc-dung-ca", name: "Nước dùng cá",
-    aliases: ["nuoc dung ca", "fish broth"],
+    aliases: ["nuoc dung ca", "nước hầm cá", "nuoc ham ca", "fish broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương cá, nấu lẩu cá, canh chua.",
     nutrients: { energyKcal: 5, proteinG: 0.7, carbG: 0.3, fatG: 0.1, sodiumMg: 180, potassiumMg: 50, calciumMg: 8 },
@@ -43,7 +43,7 @@ export const extraFoods7 = [
   },
   {
     id: "nuoc-ham-xuong", slug: "nuoc-ham-xuong", name: "Nước hầm xương tổng hợp",
-    aliases: ["nuoc ham xuong", "mixed bone broth"],
+    aliases: ["nuoc ham xuong", "nước dùng xương tổng hợp", "nuoc dung xuong tong hop", "mixed bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương heo và bò, dùng nấu lẩu, canh.",
     nutrients: { energyKcal: 9, proteinG: 1.3, carbG: 0.5, fatG: 0.35, saturatedFatG: 0.12, sodiumMg: 190, potassiumMg: 65, calciumMg: 9 },
@@ -116,7 +116,7 @@ export const extraFoods7 = [
   },
   {
     id: "dau-phong", slug: "dau-phong", name: "Dầu phộng (dầu lạc)",
-    aliases: ["dau phong", "dau lac", "peanut oil"],
+    aliases: ["dau phong", "dầu lạc", "dau lac", "peanut oil"],
     category: "Dầu mỡ", state: "processed", basis: "100ml",
     edibleNote: "Dầu ép từ lạc, dùng chiên xào phổ biến.",
     nutrients: { energyKcal: 884, proteinG: 0, carbG: 0, fatG: 100, saturatedFatG: 17, polyunsaturatedFatG: 32, monounsaturatedFatG: 46, vitaminEMg: 15 },
@@ -198,7 +198,7 @@ export const extraFoods7 = [
   
   {
     id: "ca-phe-den-da", slug: "ca-phe-den-da", name: "Cà phê đen đá",
-    aliases: ["ca phe den da", "iced black coffee"],
+    aliases: ["cà phê đen đá", "ca phe", "cafe", "ca phe den da", "cafe den da", "iced black coffee"],
     category: "Đồ uống", state: "cooked", basis: "100ml",
     edibleNote: "Cà phê phin không đường, không sữa, thêm đá.",
     nutrients: { energyKcal: 2, proteinG: 0.1, carbG: 0.3, fatG: 0, caffeineMg: 80, sodiumMg: 2, potassiumMg: 50 },

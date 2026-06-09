@@ -19,6 +19,12 @@ function hasVietnameseMarks(value) {
   return /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(String(value || ""));
 }
 
+function hasPhrase(haystack, phrase) {
+  const normalizedHaystack = ` ${normalize(haystack)} `;
+  const normalizedPhrase = normalize(phrase).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(` ${normalizedPhrase} `).test(normalizedHaystack);
+}
+
 async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
 }
@@ -78,12 +84,14 @@ function duplicateSeverity(action) {
 function findAliasWarnings(foods, searchFoods) {
   const bySlug = new Map(searchFoods.map((item) => [item.slug, item]));
   const synonymPairs = [
-    ["bắp", "ngô"],
-    ["heo", "lợn"],
-    ["đậu phộng", "lạc"],
-    ["gạo lứt", "gạo lật"],
-    ["tôm sú", "tom su"],
-    ["cà phê", "ca phe"],
+    { left: "bắp", right: "ngô", group: "regional-name" },
+    { left: "heo", right: "lợn", group: "regional-name" },
+    { left: "đậu phộng", right: "lạc", group: "regional-name" },
+    { left: "gạo lứt", right: "gạo lật", group: "regional-name" },
+    { left: "nước dùng", right: "nước hầm", group: "missing-common-alias" },
+    { left: "phô mai", right: "pho mai", group: "diacritic" },
+    { left: "tôm sú", right: "tom su", group: "spelling" },
+    { left: "cà phê", right: "ca phe", group: "spelling" },
   ];
 
   const warnings = [];
@@ -97,32 +105,42 @@ function findAliasWarnings(foods, searchFoods) {
 
     if (hasVietnameseMarks(food.name) && nameNorm !== slugNorm && !aliasNorms.has(nameNorm)) {
       warnings.push({
-        type: "missing_unaccented_alias",
+        type: "diacritic",
+        subtype: "missing_unaccented_alias",
         slug: food.slug,
         name: food.name,
         suggestedAlias: nameNorm,
       });
     }
 
-    for (const [left, right] of synonymPairs) {
-      const leftNorm = normalize(left);
-      const rightNorm = normalize(right);
-      if (haystack.includes(leftNorm) && !haystack.includes(rightNorm)) {
-        warnings.push({ type: "missing_synonym_alias", slug: food.slug, name: food.name, present: left, suggestedAlias: right });
+    for (const { left, right, group } of synonymPairs) {
+      if (hasPhrase(haystack, left) && !hasPhrase(haystack, right)) {
+        warnings.push({ type: group, subtype: "missing_common_alias", slug: food.slug, name: food.name, present: left, suggestedAlias: right });
       }
-      if (haystack.includes(rightNorm) && !haystack.includes(leftNorm)) {
-        warnings.push({ type: "missing_synonym_alias", slug: food.slug, name: food.name, present: right, suggestedAlias: left });
+      if (hasPhrase(haystack, right) && !hasPhrase(haystack, left)) {
+        warnings.push({ type: group, subtype: "missing_common_alias", slug: food.slug, name: food.name, present: right, suggestedAlias: left });
       }
     }
   }
   return warnings;
 }
 
+function isRawCookedClear(sourceFood) {
+  if (!sourceFood) return false;
+  const text = normalize([sourceFood.name, sourceFood.slug, sourceFood.state, sourceFood.basis, sourceFood.edibleNote, sourceFood.note].join(" "));
+  const hasState = sourceFood.state === "raw" || sourceFood.state === "cooked";
+  const hasRawDescriptor = hasPhrase(text, "khô") || hasPhrase(text, "chưa nấu") || hasPhrase(text, "hạt khô") || hasPhrase(text, "raw");
+  const hasCookedDescriptor = hasPhrase(text, "cơm") || hasPhrase(text, "đã nấu") || hasPhrase(text, "nấu chín") || hasPhrase(text, "cooked");
+  return hasState && (hasRawDescriptor || hasCookedDescriptor);
+}
+
 const slim = await readJson("public/api/foods-slim.json");
 const fullRows = await readJson("public/api/foods-full.json");
 const searchIndex = await readJson("public/api/search-index.json");
+const sourceFoods = await readJson("dist/api-foods.json");
 const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
+const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
 
 const duplicateSlugs = groupBy(slim, (item) => item.slug).map(([slug, entries]) => ({
   severity: duplicateSeverity(classifyDuplicate(entries)),
@@ -155,21 +173,26 @@ for (const rule of suspiciousSlugRules) {
 for (const food of fullFoods) {
   const name = String(food.name || "");
   const nameNorm = normalize(name);
-  if (nameNorm.startsWith("gao ") && Number(food.kcal) > 0 && Number(food.kcal) < 250) {
+  const sourceFood = sourceBySlug.get(food.slug);
+  if (nameNorm.startsWith("gao ") && Number(food.kcal) > 0 && Number(food.kcal) < 250 && !isRawCookedClear(sourceFood)) {
     rawCookedAmbiguity.push(issue("warning", {
       slug: food.slug,
       name: food.name,
       reason: "Tên là gạo nhưng năng lượng thấp hơn gạo sống thông thường; cần xác nhận sống/chín trong tên/basis.",
       kcal: food.kcal,
+      state: sourceFood?.state,
+      basis: sourceFood?.basis,
       suggestion: "clarify_raw_or_cooked",
     }));
   }
-  if (/^Cơm\s/i.test(name) && !/^Cơm\s+(cháy|dừa)/i.test(name) && Number(food.kcal) > 250) {
+  if (/^Cơm\s/i.test(name) && !/^Cơm\s+(cháy|dừa)/i.test(name) && Number(food.kcal) > 250 && !isRawCookedClear(sourceFood)) {
     rawCookedAmbiguity.push(issue("warning", {
       slug: food.slug,
       name: food.name,
       reason: "Tên là cơm nhưng năng lượng cao; cần xác nhận sống/chín hoặc khẩu phần.",
       kcal: food.kcal,
+      state: sourceFood?.state,
+      basis: sourceFood?.basis,
       suggestion: "clarify_raw_or_cooked",
     }));
   }
@@ -182,6 +205,10 @@ const missingCoreNutrients = fullFoods
   .map((food) => issue("error", { slug: food.slug, name: food.name, category: food.category, kcal: food.kcal, protein: food.protein, lipid: food.lipid, glucid: food.glucid }));
 
 const aliasWarnings = findAliasWarnings(fullFoods, searchFoods).map((warning) => issue("info", warning));
+const aliasWarningsByType = aliasWarnings.reduce((totals, item) => {
+  totals[item.type] = (totals[item.type] || 0) + 1;
+  return totals;
+}, {});
 
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
 const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.find((item) => item.slug === slug) || { slug, count: 0, action: "not_found_as_duplicate" });
@@ -221,6 +248,7 @@ const report = {
     missingCoreNutrients: missingCoreNutrients.length,
     aliasWarnings: aliasWarnings.length,
   },
+  aliasWarningsByType,
   issuesBySeverity,
   sourceNotes,
   watchedDuplicateStatus,

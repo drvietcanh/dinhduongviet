@@ -50,7 +50,17 @@ const query = Astro.url.searchParams.get("q") ?? "";
     function normalize(v) {
       return String(v || '').toLowerCase()
         .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .replace(/đ/g, 'd').trim();
+        .replace(/đ/g, 'd')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+
+    function matchesSearchText(text, q) {
+      if (!q) return true;
+      if (q.length <= 3 || q.indexOf(' ') !== -1) {
+        return (' ' + text + ' ').indexOf(' ' + q + ' ') !== -1;
+      }
+      return text.indexOf(q) !== -1;
     }
 
     // Fuzzy match: ký tự trong q phải xuất hiện theo đúng thứ tự trong text
@@ -138,7 +148,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
 
       var top = items.filter(function(item) {
         var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
-        return searchText.indexOf(qn) !== -1;
+        return matchesSearchText(searchText, qn);
       }).slice(0, 6);
 
       // Fuzzy suggestions if no exact match
@@ -188,7 +198,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
 
       var matches = items.filter(function(item) {
         var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
-        var textMatch = !q || searchText.indexOf(q) !== -1;
+        var textMatch = matchesSearchText(searchText, q);
         return textMatch && matchesFilter(item);
       });
 

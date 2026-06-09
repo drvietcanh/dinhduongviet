@@ -470,6 +470,55 @@ function slugify(value: string) {
   return normalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
+function unique(values: string[]) {
+  return [...new Set(values.map((value) => value.trim()).filter(Boolean))];
+}
+
+function commonAliasesFor(name: string) {
+  const lower = name.toLowerCase();
+  const normalized = normalize(name);
+  const aliases: string[] = [];
+
+  if (/\bbắp\b/i.test(lower) && !/\bbắp cải\b/i.test(lower) && !/\bđậu bắp\b/i.test(lower)) {
+    aliases.push(name.replace(/bắp/gi, "ngô"), normalize(name.replace(/bắp/gi, "ngô")));
+  }
+  if (/\bngô\b/i.test(lower)) {
+    aliases.push(name.replace(/ngô/gi, "bắp"), normalize(name.replace(/ngô/gi, "bắp")));
+  }
+  if (/\bheo\b/i.test(lower)) {
+    aliases.push(name.replace(/heo/gi, "lợn"), normalize(name.replace(/heo/gi, "lợn")));
+  }
+  if (/\blợn\b/i.test(lower)) {
+    aliases.push(name.replace(/lợn/gi, "heo"), normalize(name.replace(/lợn/gi, "heo")));
+  }
+  if (lower.includes("đậu phộng")) {
+    aliases.push(name.replace(/đậu phộng/gi, "lạc"), normalize(name.replace(/đậu phộng/gi, "lạc")));
+  }
+  if (/\blạc\b/i.test(lower)) {
+    aliases.push(name.replace(/lạc/gi, "đậu phộng"), normalize(name.replace(/lạc/gi, "đậu phộng")));
+  }
+  if (lower.includes("cà phê")) {
+    aliases.push(normalized.replace(/ca phe/g, "cafe"));
+  }
+  if (lower.includes("tôm sú")) {
+    aliases.push("tom su");
+  }
+  if (lower.includes("gạo lứt")) {
+    aliases.push(name.replace(/gạo lứt/gi, "gạo lật"), normalize(name.replace(/gạo lứt/gi, "gạo lật")));
+  }
+  if (lower.includes("nước dùng")) {
+    aliases.push(name.replace(/nước dùng/gi, "nước hầm"), normalize(name.replace(/nước dùng/gi, "nước hầm")));
+  }
+  if (lower.includes("nước hầm")) {
+    aliases.push(name.replace(/nước hầm/gi, "nước dùng"), normalize(name.replace(/nước hầm/gi, "nước dùng")));
+  }
+  if (lower.includes("phô mai")) {
+    aliases.push(normalized.replace(/pho mai/g, "pho mai"));
+  }
+
+  return aliases;
+}
+
 function vary(nutrients: NutrientValues, index: number): NutrientValues {
   const factor = 0.9 + (index % 7) * 0.035;
   const varied: Partial<NutrientValues> = {};
@@ -485,23 +534,57 @@ const foodSeeds = foodSeedText.trim().split("\n").map((line) => {
   return { name: name.trim(), category: category.trim() };
 });
 
+const foodOverrides: Record<string, Partial<Food>> = {
+  "gao-nep": {
+    slug: "com-nep",
+    name: "Cơm nếp",
+    aliases: ["com nep", "cơm nếp", "gao-nep", "gạo nếp đã nấu", "gao nep da nau"],
+    state: "cooked",
+    basis: "100g cơm đã nấu chín",
+    edibleNote: "Cơm nếp đã nấu chín; không dùng thay cho 100g gạo nếp khô/chưa nấu.",
+    note: "Dữ liệu bổ sung ước tính MVP; năng lượng thấp cho thấy mục này phù hợp cơm nếp đã nấu hơn là hạt gạo nếp khô. Không sửa số liệu dinh dưỡng trong vòng này."
+  },
+  "gao-lut-do": {
+    slug: "com-gao-lut-do",
+    name: "Cơm gạo lứt đỏ",
+    aliases: ["com gao lut do", "cơm gạo lứt đỏ", "com gao lat do", "cơm gạo lật đỏ", "gao-lut-do", "gạo lứt đỏ đã nấu", "gao lut do da nau"],
+    state: "cooked",
+    basis: "100g cơm đã nấu chín",
+    edibleNote: "Cơm gạo lứt đỏ đã nấu chín; không dùng thay cho 100g gạo lứt đỏ khô/chưa nấu.",
+    note: "Dữ liệu bổ sung ước tính MVP; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đỏ đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
+  },
+  "gao-lut-den": {
+    slug: "com-gao-lut-den",
+    name: "Cơm gạo lứt đen",
+    aliases: ["com gao lut den", "cơm gạo lứt đen", "com gao lat den", "cơm gạo lật đen", "gao-lut-den", "gạo lứt đen đã nấu", "gao lut den da nau"],
+    state: "cooked",
+    basis: "100g cơm đã nấu chín",
+    edibleNote: "Cơm gạo lứt đen đã nấu chín; không dùng thay cho 100g gạo lứt đen khô/chưa nấu.",
+    note: "Dữ liệu bổ sung ước tính MVP; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đen đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
+  },
+};
+
 export const bulkFoods: Food[] = foodSeeds.slice(0, FOOD_TARGET).map((seed, index) => {
   const profile = profiles[seed.category] ?? profiles["Rau"];
-  const slug = slugify(seed.name);
+  const seedSlug = slugify(seed.name);
+  const override = foodOverrides[seedSlug] ?? {};
+  const aliases = override.aliases
+    ? unique([...commonAliasesFor(override.name ?? seed.name), ...override.aliases])
+    : unique([normalize(seed.name), ...commonAliasesFor(seed.name)]);
   return {
-    id: slug,
-    slug,
-    name: seed.name,
-    aliases: [normalize(seed.name)],
-    category: profile.category,
-    state: profile.state,
-    basis: profile.basis,
-    edibleNote: profile.edibleNote,
+    id: seedSlug,
+    slug: override.slug ?? seedSlug,
+    name: override.name ?? seed.name,
+    aliases,
+    category: override.category ?? profile.category,
+    state: override.state ?? profile.state,
+    basis: override.basis ?? profile.basis,
+    edibleNote: override.edibleNote ?? profile.edibleNote,
     tags: profile.tags,
     nutrients: vary(profile.nutrients, index),
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Dữ liệu bổ sung ước tính để mở rộng tra cứu MVP; cần đối chiếu bảng thành phần thực phẩm hoặc nguồn chính thức trước khi dùng tư vấn cá thể."
+    note: override.note ?? "Dữ liệu bổ sung ước tính để mở rộng tra cứu MVP; cần đối chiếu bảng thành phần thực phẩm hoặc nguồn chính thức trước khi dùng tư vấn cá thể."
   };
 });
 

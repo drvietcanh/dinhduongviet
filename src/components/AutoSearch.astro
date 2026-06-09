@@ -80,7 +80,19 @@ const jsonPayload = JSON.stringify(dataPayload);
   var dropdown = el.querySelector('.ac-dropdown');
 
   function normalize(str) {
-    return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function matchesSearchText(text, q) {
+    if (!q) return true;
+    if (q.length <= 3 || q.indexOf(' ') !== -1) {
+      return (' ' + text + ' ').indexOf(' ' + q + ' ') !== -1;
+    }
+    return text.indexOf(q) !== -1;
   }
 
   function filterItems(q) {
@@ -89,7 +101,7 @@ const jsonPayload = JSON.stringify(dataPayload);
     for (var i = 0; i < PAYLOAD.length; i++) {
       var item = PAYLOAD[i];
       var haystack = normalize([item.n, item.s].concat(item.a || []).join(' '));
-      if (haystack.indexOf(lower) !== -1) {
+      if (matchesSearchText(haystack, lower)) {
         results.push(item);
         if (results.length >= 8) break;
       }
