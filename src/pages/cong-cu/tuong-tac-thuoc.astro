@@ -1,0 +1,240 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const toolTitle = "Tương tác Thuốc & Thực phẩm";
+const toolDesc = "Tra cứu tương tác giữa thuốc thường dùng và thực phẩm — giúp người bệnh dùng thuốc an toàn, đúng cách.";
+---
+<BaseLayout title={`${toolTitle} | Dinh Dưỡng Việt`} description={toolDesc}>
+  <div id="di-root" style="max-width:700px;margin:0 auto;padding:0 0 40px;">
+    <div style="margin-bottom:20px"><h1>💊🔬 {toolTitle}</h1><p style="color:var(--ink-secondary);">Tra cứu nhanh các tương tác quan trọng giữa thuốc và thực phẩm. ⚠️ Tham khảo, không thay thế tư vấn bác sĩ hoặc dược sĩ.</p></div>
+
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;margin-bottom:16px;">
+      <label style="font-size:0.9rem;font-weight:600;display:block;margin-bottom:8px;">🔍 Tra thuốc</label>
+      <input type="text" id="di-search" class="di-search" placeholder="Gõ tên thuốc - VD: warfarin, metformin, aspirin..." oninput="DI.search(this.value)" autocomplete="off" />
+      <div id="di-results" style="margin-top:8px;"><div class="di-hint">Gõ tên thuốc để tra cứu...</div></div>
+    </div>
+
+    <div id="di-detail" style="display:none;"></div>
+
+    <details style="margin-top:16px;">
+      <summary style="cursor:pointer;color:var(--ink-tertiary);font-size:0.88rem;">📋 Danh sách đầy đủ các tương tác</summary>
+      <div id="di-full-list" style="margin-top:8px;"></div>
+    </details>
+
+    <div class="di-note">
+      ⚕️ <strong>Lưu ý:</strong> Dữ liệu dựa trên các hướng dẫn lâm sàng phổ biến (FDA, Dược thư Quốc gia Việt Nam). Mỗi người bệnh có thể có phản ứng khác nhau — luôn hỏi bác sĩ hoặc dược sĩ trước khi thay đổi chế độ ăn khi đang dùng thuốc.
+    </div>
+  </div>
+
+<script is:inline>
+(function() {
+  // Database of drug-food interactions (clinically significant)
+  // Sources: FDA, Dược thư QG VN, UpToDate, Medscape
+  var drugs = [
+    {
+      name: "Warfarin",
+      aliases: ["warfarin","coumadin","nicoumalone","sintrom","acenocoumarol","thuốc chống đông","chống đông máu"],
+      icon: "🩸",
+      category: "Chống đông máu",
+      interactions: [
+        { severity: "cao", food: "Rau xanh lá đậm (cải xoăn, rau bina, cải thìa, cần tây)", mechanism: "Vitamin K trong rau đối kháng tác dụng của warfarin. Ăn đột ngột nhiều rau xanh làm giảm INR → nguy cơ tắc mạch.", action: "Duy trì lượng rau xanh ổn định hàng ngày. Không được bỏ hoặc tăng đột ngột. Theo dõi INR định kỳ." },
+        { severity: "cao", food: "Nước ép nam việt quất (cranberry juice)", mechanism: "Làm tăng INR → nguy cơ chảy máu.", action: "Tránh uống nước ép nam việt quất. Một lượng nhỏ quả tươi có thể chấp nhận được." },
+        { severity: "cao", food: "Nước bưởi ép (grapefruit juice)", mechanism: "Ức chế CYP3A4 → tăng nồng độ warfarin → nguy cơ chảy máu.", action: "Tránh hoàn toàn nước bưởi và quả bưởi khi dùng warfarin." },
+        { severity: "vừa", food: "Mướp đắng (khổ qua)", mechanism: "Có thể làm tăng INR.", action: "Hạn chế ăn mướp đắng thường xuyên." },
+        { severity: "vừa", food: "Gừng, tỏi, bạch quả (Ginkgo)", mechanism: "Ức chế tiểu cầu → tăng nguy cơ chảy máu khi kết hợp warfarin.", action: "Dùng lượng nhỏ trong nấu ăn không sao. Tránh dùng dạng chiết xuất/viên." },
+        { severity: "vừa", food: "Đu đủ xanh, xoài xanh", mechanism: "Có thể tăng INR nhẹ.", action: "Ăn lượng vừa phải, theo dõi INR." },
+        { severity: "thấp", food: "Dầu cá (omega-3 liều cao >3g/ngày)", mechanism: "Tăng nhẹ nguy cơ chảy máu, tác dụng hiệp đồng.", action: "Liều omega-3 bình thường (1-2g/ngày) an toàn." },
+      ]},
+    {
+      name: "Metformin",
+      aliases: ["metformin","glucophage","metformin hcl","tiểu đường type 2","đái tháo đường"],
+      icon: "🩸",
+      category: "Hạ đường huyết (biguanide)",
+      interactions: [
+        { severity: "vừa", food: "Rượu bia", mechanism: "Làm tăng nguy cơ nhiễm toan lactic (dù hiếm gặp nhưng nguy hiểm).", action: "Hạn chế tối đa. Không uống rượu khi đói. Nếu uống, ăn no trước và chỉ lượng nhỏ." },
+        { severity: "thấp", food: "Thực phẩm giàu tinh bột đường", mechanism: "Metformin giảm hấp thu glucose, ăn nhiều carb làm giảm hiệu quả.", action: "Kết hợp chế độ ăn ít tinh bột tinh chế, tăng chất xơ." },
+        { severity: "thấp", food: "Bưởi", mechanism: "Không có tương tác đáng kể với metformin (khác với statin).", action: "An toàn khi dùng cùng metformin." },
+      ]},
+    {
+      name: "Statin (Atorvastatin, Simvastatin, Rosuvastatin)",
+      aliases: ["atorvastatin","simvastatin","rosuvastatin","lipitor","statin","mỡ máu","hạ mỡ máu"],
+      icon: "🧪",
+      category: "Hạ mỡ máu (statin)",
+      interactions: [
+        { severity: "cao", food: "Nước bưởi ép (grapefruit juice)", mechanism: "Ức chế CYP3A4 → tăng nồng độ statin trong máu (đặc biệt simvastatin, atorvastatin) → nguy cơ đau cơ, tiêu cơ vân.", action: "Tránh nước bưởi. Một ly nhỏ (200ml) có thể tăng nồng độ thuốc 3-5 lần. Có thể thay bằng nước cam." },
+        { severity: "cao", food: "Rượu bia", mechanism: "Tăng nguy cơ tổn thương gan khi dùng statin.", action: "Hạn chế rượu bia. Kiểm tra men gan định kỳ." },
+        { severity: "vừa", food: "Mỡ động vật, đồ chiên rán, thức ăn nhanh", mechanism: "Làm tăng LDL, giảm hiệu quả của statin.", action: "Hạn chế mỡ bão hòa, đồ chiên. Tăng chất xơ hòa tan (yến mạch, đậu)." },
+        { severity: "thấp", food: "Bột yến mạch, chất xơ hòa tan", mechanism: "Có thể giảm hấp thu statin nếu uống cùng lúc.", action: "Uống statin cách xa bữa ăn giàu chất xơ ít nhất 1 giờ." },
+      ]},
+    {
+      name: "Thuốc ức chế men chuyển (ACEi - Enalapril, Perindopril, Lisinopril)",
+      aliases: ["enalapril","perindopril","lisinopril","ace","ứce chế men chuyển","thuốc huyết áp","cao huyết áp","tăng huyết áp"],
+      icon: "🫀",
+      category: "Hạ huyết áp (ACEi)",
+      interactions: [
+        { severity: "vừa", food: "Thực phẩm giàu kali (chuối, khoai tây, cam, rau dền, đậu đỗ)", mechanism: "ACEi giữ kali → nguy cơ tăng kali máu nếu ăn nhiều thực phẩm giàu kali.", action: "Không kiêng hoàn toàn nhưng ăn vừa phải. Tránh bổ sung kali (muối kali). Xét nghiệm kali máu định kỳ." },
+        { severity: "cao", food: "Muối, thực phẩm mặn", mechanism: "Làm giảm tác dụng hạ huyết áp.", action: "Giảm muối dưới 5g/ngày (kể cả nước mắm, bột canh)." },
+      ]},
+    {
+      name: "Lợi tiểu (Furosemide, Hydrochlorothiazide, Spironolactone)",
+      aliases: ["furosemide","lasix","hydrochlorothiazide","hctz","spironolactone","lợi tiểu","thuốc lợi tiểu","huyết áp"],
+      icon: "💧",
+      category: "Lợi tiểu",
+      interactions: [
+        { severity: "vừa", food: "Cam thảo (licorice)", mechanism: "Gây giảm kali máu, tăng tác dụng của lợi tiểu thải kali.", action: "Tránh cam thảo, kẹo cam thảo. Ăn thêm thực phẩm giàu kali (nếu dùng lợi tiểu thải kali)." },
+        { severity: "vừa", food: "Chuối, khoai tây, rau xanh (nếu dùng lợi tiểu giữ kali)", mechanism: "Spironolactone giữ kali → ăn nhiều kali gây tăng kali máu.", action: "Nếu dùng spironolactone, hạn chế thực phẩm giàu kali. Nếu dùng furosemide/hctz, ăn thêm kali." },
+      ]},
+    {
+      name: "Levothyroxine (Thuốc tuyến giáp)",
+      aliases: ["levothyroxine","thyroxine","euthyrox","thyro","suy giáp","tuyến giáp"],
+      icon: "🏥",
+      category: "Nội tiết (hormone giáp)",
+      interactions: [
+        { severity: "cao", food: "Canxi (sữa, sữa chua, tôm, cua)", mechanism: "Canxi làm giảm hấp thu levothyroxine đến 20-40%.", action: "Uống thuốc khi đói, cách bữa ăn ít nhất 30-60 phút. Đặc biệt tránh uống chung với sữa." },
+        { severity: "cao", food: "Sắt, chất xơ, cà phê", mechanism: "Làm giảm hấp thu levothyroxine.", action: "Uống thuốc khi đói (30-60 phút trước ăn sáng). Cà phê cách ít nhất 1 giờ." },
+        { severity: "cao", food: "Đậu nành, bột đậu nành", mechanism: "Làm giảm hấp thu levothyroxine nhẹ.", action: "Uống thuốc cách xa sản phẩm đậu nành ít nhất 4 giờ." },
+      ]},
+    {
+      name: "Kháng sinh (Fluoroquinolones, Tetracycline, Doxycycline)",
+      aliases: ["kháng sinh","fluoroquinolone","ciprofloxacin","levofloxacin","tetracycline","doxycycline","kháng sinh"],
+      icon: "💊",
+      category: "Kháng sinh",
+      interactions: [
+        { severity: "cao", food: "Canxi, sữa, sữa chua, phô mai", mechanism: "Canxi và magie trong sữa tạo phức chelat với kháng sinh → giảm hấp thu 50-90%.", action: "Uống kháng sinh cách xa sữa và chế phẩm từ sữa ít nhất 2-3 giờ." },
+        { severity: "cao", food: "Sắt, kẽm, magie (thực phẩm chức năng)", mechanism: "Giảm hấp thu kháng sinh.", action: "Uống kháng sinh cách xa các viên bổ sung 2-3 giờ." },
+        { severity: "thấp", food: "Bưởi", mechanism: "Có thể tăng nồng độ một số kháng sinh.", action: "Hạn chế bưởi khi dùng kháng sinh nhóm macrolid (erythromycin, clarithromycin)." },
+      ]},
+    {
+      name: "NSAID (Ibuprofen, Diclofenac, Naproxen, Aspirin)",
+      aliases: ["ibuprofen","diclofenac","naproxen","aspirin","voltaren","giảm đau","kháng viêm","nsaid"],
+      icon: "🩹",
+      category: "Giảm đau - Kháng viêm",
+      interactions: [
+        { severity: "cao", food: "Rượu bia", mechanism: "Tăng nguy cơ chảy máu dạ dày, loét dạ dày-tá tràng.", action: "Tuyệt đối không uống rượu khi dùng NSAID. Nguy cơ chảy máu tiêu hóa tăng gấp 3-5 lần." },
+        { severity: "vừa", food: "Đồ ăn cay nóng, dấm chua", mechanism: "Kích ứng niêm mạc dạ dày, tăng khó chịu.", action: "Uống NSAID sau bữa ăn. Tránh đồ ăn quá cay hoặc chua." },
+        { severity: "thấp", food: "Gừng, tỏi", mechanism: "Ức chế tiểu cầu nhẹ, tăng nguy cơ chảy máu khi kết hợp.", action: "Lượng nhỏ trong nấu ăn an toàn. Tránh dạng chiết xuất liều cao." },
+      ]},
+    {
+      name: "Thuốc ức chế bơm proton (PPI - Omeprazole, Esomeprazole, Lansoprazole)",
+      aliases: ["omeprazole","esomeprazole","lansoprazole","ppi","ức chế bơm proton","dạ dày","trào ngược"],
+      icon: "🩹",
+      category: "Dạ dày - Giảm acid",
+      interactions: [
+        { severity: "vừa", food: "Thực phẩm giàu canxi, sữa", mechanism: "PPI làm giảm acid → giảm hấp thu canxi → nguy cơ loãng xương nếu dùng dài ngày.", action: "Bổ sung canxi và vitamin D nếu dùng PPI >3 tháng. Tăng thực phẩm giàu canxi." },
+        { severity: "vừa", food: "Rượu bia", mechanism: "PPI giảm bảo vệ niêm mạc dạ dày khỏi tác hại của rượu.", action: "Hạn chế rượu bia." },
+        { severity: "thấp", food: "Thực phẩm giàu sắt (thịt đỏ, rau dền, huyết)", mechanism: "Giảm hấp thu sắt do giảm acid dạ dày.", action: "Bổ sung vitamin C (chanh, cam) cùng bữa ăn để tăng hấp thu sắt." },
+      ]},
+    {
+      name: "Calci channel blocker (Amlodipine, Nifedipine)",
+      aliases: ["amlodipine","nifedipine","felodipine","huyết áp","chẹn kênh canxi"],
+      icon: "🫀",
+      category: "Hạ huyết áp (CCB)",
+      interactions: [
+        { severity: "cao", food: "Nước bưởi ép (grapefruit juice)", mechanism: "Tăng nồng độ felodipine và nifedipine đến 2-3 lần → nguy cơ tụt huyết áp, phù chân.", action: "Tránh bưởi và nước bưởi khi dùng CCB (đặc biệt felodipine, nifedipine). Amlodipine ít tương tác hơn nhưng vẫn nên tránh." },
+        { severity: "vừa", food: "Muối, thực phẩm mặn", mechanism: "Làm giảm tác dụng hạ huyết áp.", action: "Giảm muối dưới 5g/ngày." },
+      ]},
+  ];
+
+  function load() {
+    renderFullList();
+  }
+
+  function search(query) {
+    var q = query.toLowerCase().trim();
+    var res = document.getElementById("di-results");
+    if(!q) { res.innerHTML = '<div class="di-hint">Gõ tên thuốc để tra cứu...</div>'; document.getElementById("di-detail").style.display="none"; return; }
+
+    var matches = [];
+    drugs.forEach(function(d,idx) {
+      var match = d.name.toLowerCase().includes(q) || d.aliases.some(function(a){return a.includes(q)});
+      if(match) matches.push({drug:d, idx:idx});
+    });
+
+    if(matches.length===0) {
+      res.innerHTML = '<div class="di-hint">Không tìm thấy — thử: warfarin, metformin, statin, thuốc huyết áp, kháng sinh...</div>';
+      return;
+    }
+
+    res.innerHTML = matches.map(function(m) {
+      var d = m.drug;
+      var highCount = d.interactions.filter(function(i){return i.severity==="cao"}).length;
+      var badge = highCount > 0 ? ' <span style="background:#dc3545;color:white;font-size:0.7rem;padding:1px 6px;border-radius:999px;margin-left:4px;">'+highCount+' tương tác nguy hiểm</span>' : '';
+      return '<div class="di-item" onclick="DI.showDrug('+m.idx+')">'+
+        '<div class="di-item-icon">'+d.icon+'</div>'+
+        '<div class="di-item-info"><strong>'+d.name+'</strong>'+badge+'<span style="font-size:0.78rem;color:var(--ink-tertiary);display:block;">'+d.category+'</span></div>'+
+        '<span style="color:var(--brand);font-size:0.85rem;">Xem →</span>'+
+      '</div>';
+    }).join("");
+  }
+
+  function showDrug(idx) {
+    var d = drugs[idx];
+    if(!d) return;
+    var el = document.getElementById("di-detail");
+    el.style.display = "block";
+
+    var severityLabel = {cao:"🔴 Cao — Nguy hiểm", vừa:"🟡 Vừa — Cần thận trọng", thấp:"🟢 Thấp — Lưu ý"};
+
+    el.innerHTML = '<div class="di-detail-card">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">'+
+        '<div><span style="font-size:1.5rem;">'+d.icon+'</span> <strong style="font-size:1.1rem;">'+d.name+'</strong><div style="font-size:0.82rem;color:var(--ink-tertiary);">'+d.category+'</div></div>'+
+        '<button class="di-close" onclick="document.getElementById(\'di-detail\').style.display=\'none\'">✕</button>'+
+      '</div>'+
+      '<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-size:0.84rem;color:#856404;">'+
+        '⚠️ <strong>Cảnh báo:</strong> Thông tin mang tính tham khảo. Luôn hỏi bác sĩ trước khi thay đổi chế độ ăn khi đang dùng thuốc.'+
+      '</div>'+
+      '<div class="di-interactions">'+
+        d.interactions.map(function(i) {
+          return '<div class="di-icard">'+
+            '<div class="di-sev '+i.severity+'">'+severityLabel[i.severity]+'</div>'+
+            '<div style="margin-bottom:6px;"><strong>🍽️ '+i.food+'</strong></div>'+
+            '<div style="font-size:0.85rem;margin-bottom:6px;line-height:1.5;color:var(--ink-secondary);">🔬 <em>'+i.mechanism+'</em></div>'+
+            '<div style="font-size:0.88rem;line-height:1.4;padding:8px 10px;background:var(--brand-dim);border-radius:var(--radius);">✅ <strong>Khuyến cáo:</strong> '+i.action+'</div>'+
+          '</div>';
+        }).join("")+
+      '</div></div>';
+    el.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function renderFullList() {
+    var el = document.getElementById("di-full-list");
+    el.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;">'+
+      drugs.map(function(d) {
+        var high = d.interactions.filter(function(i){return i.severity==="cao"}).length;
+        return '<div class="di-item" onclick="DI.showDrug('+drugs.indexOf(d)+')">'+
+          '<div class="di-item-icon">'+d.icon+'</div>'+
+          '<div class="di-item-info"><strong>'+d.name+'</strong>'+
+            (high ? '<span style="background:#dc3545;color:white;font-size:0.7rem;padding:1px 6px;border-radius:999px;margin-left:4px;">'+high+' nguy hiểm</span>' : '')+
+            '<span style="font-size:0.78rem;color:var(--ink-tertiary);display:block;">'+d.category+' — '+d.interactions.length+' tương tác</span></div>'+
+        '</div>';
+      }).join("")+
+    '</div>';
+  }
+
+  window.DI = { search: search, showDrug: showDrug, load: load };
+  load();
+})();
+</script>
+
+<style is:global>
+  .di-search { width:100%; padding:10px 14px; border:2px solid var(--line); border-radius:var(--radius); font-size:1rem; background:var(--bg); color:var(--ink); box-sizing:border-box; }
+  .di-search:focus { border-color:var(--brand); outline:none; }
+  .di-hint { color:var(--ink-tertiary); font-size:0.88rem; text-align:center; padding:20px; }
+  .di-item { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:var(--radius); cursor:pointer; transition:background 0.15s; }
+  .di-item:hover { background:var(--dim); }
+  .di-item-icon { font-size:1.4rem; width:32px; text-align:center; flex-shrink:0; }
+  .di-item-info { flex:1; }
+  .di-item-info strong { font-size:0.92rem; }
+  .di-detail-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); padding:20px; margin-bottom:16px; }
+  .di-close { background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--ink-tertiary); width:32px; height:32px; display:flex;align-items:center;justify-content:center; }
+  .di-close:hover { color:var(--ink); }
+  .di-interactions { display:flex;flex-direction:column;gap:12px; }
+  .di-icard { border:1px solid var(--line); border-radius:var(--radius); padding:12px; }
+  .di-sev { font-size:0.8rem; font-weight:600; margin-bottom:8px; padding:3px 8px; border-radius:4px; display:inline-block; }
+  .di-sev.cao { background:#f8d7da; color:#721c24; }
+  .di-sev.vừa { background:#fff3cd; color:#856404; }
+  .di-sev.thấp { background:#d4edda; color:#155724; }
+  .di-note { margin-top:20px; font-size:0.84rem; color:var(--ink-tertiary); background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); padding:14px 18px; line-height:1.6; }
+  @media(max-width:600px) {
+    .di-icard { padding:10px; }
+  }
+</style>

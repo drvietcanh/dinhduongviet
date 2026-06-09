@@ -1,0 +1,86 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["benh-wilson-dinh-duong"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Bệnh Wilson là rối loạn di truyền hiếm gặp khiến cơ thể <strong>tích tụ đồng</strong> ở gan, não, mắt và các cơ quan khác. Nếu không điều trị, đồng dư sẽ gây tổn thương gan, rối loạn thần kinh, và tâm thần.</p>
+    <p>Điều trị chính là thuốc thải đồng (chelator) kết hợp với <strong>chế độ ăn giảm đồng</strong>. Dinh dưỡng đúng giúp giảm gánh nặng cho thuốc và ngăn tích tụ thêm.</p>
+    <p class="safety-warning">⚠️ Người bệnh Wilson cần <strong>tránh tuyệt đối các thực phẩm giàu đồng</strong> — nội tạng động vật và hải sản có vỏ là nguồn đồng cao nhất.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Hạn chế thực phẩm giàu đồng:</strong> Nội tạng (gan, cật, tim), sò, hàu, nghêu, cua, tôm hùm, chocolate, nấm, mè (vừng), hạt điều, đậu nành.</li>
+      <li><strong>Tránh thực phẩm chức năng chứa đồng:</strong> Nhiều viên đa vitamin có chứa đồng (copper) — cần đọc nhãn.</li>
+      <li><strong>Uống nước lọc:</strong> Tránh nước máy từ ống đồng cũ (nếu nhà bạn có hệ thống ống nước bằng đồng, dùng nước đóng chai).</li>
+      <li><strong>Bổ sung kẽm:</strong> Kẽm cạnh tranh hấp thu đồng ở ruột — thường dùng dưới dạng thuốc theo chỉ định.</li>
+      <li><strong>Đủ vitamin B6:</strong> Thuốc thải đồng penicillamine có thể gây thiếu B6. Nguồn: chuối, khoai tây, thịt gà, cá.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-limit">
+    <h2>Thực phẩm giàu đồng cần tránh</h2>
+    <div class="food-table">
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Nội tạng</span><span>Gan bò, gan gà, cật, tim, lòng, tiết — giàu đồng nhất</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Hải sản có vỏ</span><span>Sò, hàu, nghêu, trai, tôm hùm</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Nấm</span><span>Nấm hương, nấm mỡ, nấm rơm khô</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Hạt & đậu</span><span>Hạt điều, mè (vừng), đậu nành, đậu phộng, chocolate, ca cao</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Trái cây sấy</span><span>Nho khô, mơ khô, vải khô</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-eat">
+    <h2>Thực phẩm an toàn</h2>
+    <ul>
+      <li><strong>Thịt trắng:</strong> Thịt gà (không ăn gan), thịt heo nạc, thịt bò nạc với lượng vừa phải</li>
+      <li><strong>Cá:</strong> Cá đồng, cá biển (trừ hàu, sò)</li>
+      <li><strong>Trứng, sữa:</strong> An toàn, ít đồng</li>
+      <li><strong>Rau củ:</strong> Đa số rau củ an toàn — ưu tiên rau xanh</li>
+      <li><strong>Trái cây tươi:</strong> Táo, chuối, cam, nho, đu đủ, xoài</li>
+      <li><strong>Tinh bột:</strong> Cơm, bún, phở, bánh mì, khoai tây, khoai lang</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Bánh mì trứng ốp la + 1 ly sữa tươi</span></div>
+      <div class="meal-row"><span class="meal-time">🍎 Phụ sáng</span><span>1 quả chuối + 1 hũ sữa chua</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm trắng + thịt heo luộc + canh rau muống (luộc kỹ)</span></div>
+      <div class="meal-row"><span class="meal-time">🥤 Xế</span><span>Sinh tố mãng cầu (hoặc xoài) + bánh quy lạt</span></div>
+      <div class="meal-row"><span class="meal-time">🍜 Tối</span><span>Bún gạo + thịt gà xé + rau thơm + nước mắm chanh (không nấm, không mè)</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Ăn chocolate có sao không?</summary>
+      <p>Rất không nên. Ca cao và chocolate (nhất là dark chocolate) rất giàu đồng. Một thanh chocolate đen có thể chứa tới 0.5–1mg đồng, tương đương gần một ngày đồng hấp thu ở người bệnh.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Nên uống thuốc thải đồng xa bữa ăn bao lâu?</summary>
+      <p>Penicillamine và trientine nên uống lúc đói (1h trước ăn hoặc 2h sau ăn) vì thức ăn, đặc biệt là thực phẩm giàu sắt và kẽm, cản trở hấp thu thuốc.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Khi nào cần kiêng đồng nghiêm ngặt?</summary>
+      <p>Giai đoạn mới chẩn đoán hoặc đang có triệu chứng thần kinh cần kiêng chặt. Sau khi kiểm soát tốt, có thể nới lỏng nhưng vẫn tránh nội tạng và hải sản có vỏ.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p><strong>3 nhóm thực phẩm cần tránh tuyệt đối</strong> khi mới chẩn đoán: (1) Nội tạng động vật, (2) Sò hàu nghêu, (3) Nấm + chocolate. Uống thuốc thải đồng đúng giờ và đo đồng niệu định kỳ.</p>
+    </div>
+  </section>
+</ArticleLayout>

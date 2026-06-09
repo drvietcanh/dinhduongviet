@@ -1,0 +1,121 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["suy-than"];
+if (!art) throw new Error("Article not found: suy-than");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Ông Đức, 62 tuổi, phát hiện suy thận giai đoạn 3 cách đây 2 năm. Từ đó ông kiêng gần như mọi thứ: sợ ăn thịt vì sợ đạm, sợ ăn cam vì sợ kali, cơm cũng chỉ dám ăn nửa bát. Kết quả là ông sụt 8kg trong 3 tháng, người lúc nào cũng mệt. Bác sĩ nói: "Chế độ ăn của bác đang hại thận hơn là giúp thận".</p>
+  <p>Chuyện của ông Đức không hiếm. Người suy thận thường rơi vào hai thái cực: hoặc kiêng quá mức dẫn tới suy dinh dưỡng, hoặc ăn uống vô tội vạ làm bệnh nặng thêm. Bài này giúp bạn tìm được điểm cân bằng.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người suy thận cần <u>giảm đạm</u> chứ không phải bỏ đạm, <u>kiểm soát kali và phốt pho</u> theo xét nghiệm máu, 
+    và <u>luộc bỏ nước</u> để giảm kali từ rau củ. Chế độ ăn cần được cá nhân hóa theo từng giai đoạn bệnh.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao suy thận phải thay đổi cách ăn?</h2>
+  <p>Thận khoẻ có nhiệm vụ lọc máu — loại bỏ chất thải (ure, creatinin), điều chỉnh nước, kali, natri, phốt pho. Khi thận suy, các chất này tích tụ trong máu. Nếu ăn quá nhiều đạm, thận phải làm việc nhiều hơn, suy nhanh hơn. Nếu ăn quá nhiều kali, tim có thể ngừng đập. Nếu ăn quá nhiều phốt pho, xương sẽ yếu đi.</p>
+  <p>Nhưng nếu ăn quá ít — đặc biệt là kiêng đạm thái quá — cơ thể sẽ tự "ăn" cơ bắp để lấy năng lượng, dẫn tới suy mòn, yếu ớt, dễ nhiễm trùng.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tinh bột ít đạm:</strong> <a href="/thuc-pham/com-trang">Cơm trắng</a>, <a href="/thuc-pham/bun-tuoi">bún</a>, <a href="/thuc-pham/mien-dong">miến</a>, <a href="/thuc-pham/banh-pho-chin">phở</a>, bánh mì, <a href="/thuc-pham/khoai-lang">khoai lang</a> (luộc bỏ nước)</li>
+      <li><strong>Rau củ ít kali:</strong> Bắp cải, su hào, cải thìa, bí xanh — luộc <strong>bỏ nước</strong></li>
+      <li><strong>Đạm chất lượng cao (lượng vừa):</strong> <a href="/thuc-pham/trung-ga">Trứng</a> (lòng trắng), <a href="/thuc-pham/ca-loc">cá lóc nạc</a>, <a href="/thuc-pham/uc-ga">ức gà</a>, <a href="/thuc-pham/dau-phu">đậu phụ</a> (lượng nhỏ)</li>
+      <li><strong>Chất béo:</strong> Dầu thực vật (oliu, mè, hướng dương), mỡ động vật lượng vừa</li>
+      <li><strong>Trái cây ít kali:</strong> <a href="/thuc-pham/tao">Táo</a>, <a href="/thuc-pham/cam">cam</a>, <a href="/thuc-pham/dua-hau">dưa hấu</a>, <a href="/thuc-pham/le">lê</a>, <a href="/thuc-pham/oi">ổi</a>, <a href="/thuc-pham/nho">nho</a> (1 phần nhỏ/ngày)</li>
+      <li><strong>Đồ uống:</strong> Nước lọc tinh khiết, nước đun sôi để nguội</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Thịt đỏ, nội tạng (gan, lòng, tim), hải sản (đạm cao + phốt pho cao)</li>
+      <li>Chuối, bơ, khoai tây, cà chua, rau ngót, mồng tơi, rau dền (kali cao)</li>
+      <li>Nước ngọt có gas, nước khoáng, trà sữa (phốt pho vô cơ)</li>
+      <li>Đậu đỗ khô (đậu nành, đậu xanh), lạc, hạt điều, hạt dưa</li>
+      <li>Sữa tươi, sữa chua, phô mai (phốt pho + kali cao)</li>
+      <li>Muối, nước mắm, bột ngọt, thực phẩm chế biến sẵn (xúc xích, đồ hộp)</li>
+      <li>Nước dừa, nước ép trái cây (kali cao)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Hình dung</th></tr></thead>
+    <tbody>
+      <tr><td>Đạm (protein)</td><td>0.6–0.8g/kg/ngày (G3–G5)</td><td>Một phần thịt/cá = lòng bàn tay, 1 bữa/ngày</td></tr>
+      <tr><td>Muối (natri)</td><td>&lt; 3g muối/ngày (~1200mg natri)</td><td>Hạn chế nước mắm, không chấm muối</td></tr>
+      <tr><td>Kali</td><td>Theo xét nghiệm máu</td><td>Trái cây: tối đa 1 phần nhỏ/ngày</td></tr>
+      <tr><td>Nước</td><td>500ml + lượng nước tiểu/ngày</td><td>Không uống quá nhiều nếu có phù</td></tr>
+      <tr><td>Tinh bột</td><td>3–4 phần/ngày</td><td>1 phần = 1 bát cơm hoặc tô bún</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">Các con số này chỉ là hướng dẫn chung. Căn cứ vào xét nghiệm máu của bạn để điều chỉnh.</p>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~40g đạm)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Đạm (g)</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Bánh mì 1 lát + mứt/mật ong + trà gừng</td><td>~4g</td><td>Không bơ, không sữa</td></tr>
+      <tr><td>🍎 Phụ sáng</td><td>1 quả táo hoặc lê</td><td>~0g</td><td>Trái cây ít kali</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm 1 chén vừa + trứng luộc (1 quả) + rau luộc bỏ nước</td><td>~12g</td><td>Không nước mắm mặn</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>Chè đường (đậu xanh ít) hoặc dưa hấu 1 miếng</td><td>~2g</td><td>Nếu kali máu bình thường</td></tr>
+      <tr><td>🌙 Tối</td><td>Cơm 1 chén + đậu phụ luộc (miếng nhỏ) + canh rau bỏ nước</td><td>~10g</td><td>Đậu phụ là đạm thực vật tốt</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">⚠️ Thực đơn mẫu — không áp dụng cho tất cả. Cần điều chỉnh theo giai đoạn bệnh và xét nghiệm.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Luộc rau bỏ nước giảm 30–50% kali.</li>
+        <li>Ngâm rau củ thái lát trong nước 1–2 giờ trước khi nấu giúp giảm kali thêm.</li>
+        <li>Đọc nhãn: tránh phụ gia phốt pho (E338–E341, E450–E452).</li>
+        <li>Uống nước lọc tinh khiết — tránh nước khoáng, nước ion kiềm.</li>
+        <li>Chia đạm đều cả ngày, không dồn vào một bữa.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Phù chân, phù mặt, khó thở.</li>
+        <li>Tiểu ít (dưới 400ml/ngày).</li>
+        <li>Mệt lả, chóng mặt, tụt huyết áp.</li>
+        <li>Buồn nôn, nôn, chán ăn kéo dài.</li>
+        <li>Ngứa toàn thân, chuột rút nhiều.</li>
+        <li>Sụt cân không chủ ý &gt;3kg/tháng.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { articles, SERIES } from "../../data/articles";
+
+const series = SERIES["dung-tin-ngay"];
+const dungTinNgayArticles = articles.filter(a => a.series === "dung-tin-ngay").sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const fmtDate = (d: string) => new Date(d).toLocaleDateString("vi-VN", { year: "numeric", month: "long", day: "numeric" });
+const title = `${series.emoji} ${series.name} — Phân tích hiểu lầm | Dinh Dưỡng Việt`;
+const desc = series.description;
+const articleHref = (slug: string) => slug.startsWith("canh-bao-hieu-lam-")
+  ? `/kien-thuc-dinh-duong/${slug}`
+  : `/dung-tin-ngay/${slug}`;
+
+function audLabel(aud: string): string {
+  const map: Record<string, string> = { diabetes:"🩸 Tiểu đường", hypertension:"🫗 Tăng huyết áp", gout:"🦶 Gout", kidney:"🫘 Thận", "fatty-liver":"🫁 Gan nhiễm mỡ", "weight-loss":"⚖️ Giảm cân", elderly:"👴 Người già", children:"🧒 Trẻ em", pregnancy:"🤰 Thai kỳ", stomach:"😣 Dạ dày", vegan:"🥬 Ăn chay", caregiver:"👨‍👩‍👧‍👦 Chăm sóc" };
+  return map[aud] || aud;
+}
+---
+
+<BaseLayout title={title} description={desc} canonical="/dung-tin-ngay">
+  <div class="dtn-hero">
+    <span class="dtn-badge">🔍 Chuỗi bài đặc biệt</span>
+    <h1><span class="dtn-magnifier">🔍</span> Đừng Tin Ngay!</h1>
+    <p class="dtn-hero-desc">{series.description}</p>
+    <div class="dtn-stats">
+      <span class="dtn-stat"><strong>{dungTinNgayArticles.length}</strong> bài viết</span>
+      <span class="dtn-stat">Cập nhật <strong>06/2026</strong></span>
+    </div>
+  </div>
+
+  <div class="dtn-intro">
+    <div class="dtn-myth-box">
+      <div class="dtn-myth-label">❌ Hiểu lầm phổ biến</div>
+      <p>Tin đồn về thực phẩm, thuốc, phương pháp ăn kiêng — truyền miệng, mạng xã hội, quảng cáo.</p>
+    </div>
+    <div class="dtn-truth-box">
+      <div class="dtn-truth-label">✅ Sự thật có căn cứ</div>
+      <p>Phân tích dựa trên bằng chứng khoa học, khuyến nghị của tổ chức y tế uy tín, dễ hiểu cho người Việt.</p>
+    </div>
+  </div>
+
+  <div class="dtn-grid">
+    {dungTinNgayArticles.map(a => (
+      <a class="dtn-card" href={articleHref(a.slug)}>
+        <div class="dtn-card-badge">🔍 Đừng Tin Ngay</div>
+        <div class="dtn-card-icon">{a.emoji}</div>
+        <h3 class="dtn-card-title">{a.title}</h3>
+        <p class="dtn-card-desc">{a.description}</p>
+        <div class="dtn-card-meta">
+          <span>{a.readTime} phút</span>
+          <span>·</span>
+          <span>{fmtDate(a.date)}</span>
+        </div>
+        {a.audience && a.audience.length > 0 && (
+          <div class="dtn-card-audience">
+            {a.audience.map(aud => <span class="dtn-aud-tag">{audLabel(aud)}</span>)}
+          </div>
+        )}
+        <div class="dtn-card-action">Xem phân tích →</div>
+      </a>
+    ))}
+  </div>
+
+  <div class="dtn-suggest">
+    <h2>💡 Có hiểu lầm nào bạn muốn chúng tôi phân tích?</h2>
+    <p>Gửi đề xuất của bạn — chúng tôi sẽ nghiên cứu và trả lời trong chuỗi bài "Đừng Tin Ngay" tiếp theo.</p>
+    <a href="/hoi-dap" class="dtn-suggest-btn">Gửi đề xuất →</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .dtn-hero { text-align:center; padding:48px 20px 32px; background:linear-gradient(135deg,var(--dtn-hero-bg1,#1a1a2e) 0%,var(--dtn-hero-bg2,#16213e) 50%,var(--dtn-hero-bg3,#0f3460) 100%); margin:-1px -24px 24px; position:relative; overflow:hidden; }
+  [data-theme="dark"] .dtn-hero { --dtn-hero-bg1: #1a1a2e; --dtn-hero-bg2: #16213e; --dtn-hero-bg3: #0f3460; }
+  .dtn-hero::before { content:''; position:absolute; top:-50%; left:-20%; width:140%; height:150%; background:radial-gradient(ellipse at 30% 50%,var(--dtn-hero-glow,rgba(255,183,77,0.08)) 0%,transparent 60%); pointer-events:none; }
+  .dtn-badge { display:inline-block; padding:4px 14px; border-radius:999px; background:var(--dtn-badge-bg,rgba(255,183,77,0.15)); color:var(--dtn-badge-fg,#ffb74d); font-size:0.82rem; font-weight:600; margin-bottom:12px; }
+  .dtn-hero h1 { font-size:clamp(2rem,5vw,2.8rem); margin:0 0 10px; color:var(--dtn-hero-text,#fff); font-weight:800; letter-spacing:-0.02em; }
+  [data-theme="dark"] .dtn-hero { --dtn-hero-text: #e0e0e0; --dtn-hero-glow: rgba(255,183,77,0.05); }
+  .dtn-magnifier { font-size:clamp(1.6rem,4vw,2.2rem); }
+  .dtn-hero-desc { max-width:520px; margin:0 auto 16px; color:var(--dtn-hero-desc,rgba(255,255,255,0.7)); font-size:0.95rem; line-height:1.6; }
+  [data-theme="dark"] .dtn-hero-desc { color: rgba(200,200,200,0.8); }
+  .dtn-stats { display:flex; justify-content:center; gap:24px; color:var(--dtn-stats,rgba(255,255,255,0.5)); font-size:0.85rem; }
+  [data-theme="dark"] .dtn-stats { color: rgba(200,200,200,0.5); }
+  .dtn-stat strong { color:var(--dtn-stat-em,#ffb74d); }
+  [data-theme="dark"] .dtn-stat strong { color: #ffb74d; }
+
+  .dtn-intro { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:24px auto; max-width:700px; }
+  .dtn-myth-box,.dtn-truth-box { padding:14px 16px; border-radius:12px; font-size:0.88rem; line-height:1.5; }
+  .dtn-myth-box { background:var(--bg-warning,#fef2f2); border:1px solid var(--myth-border,#fecaca); color:var(--myth-text,#991b1b); }
+  [data-theme="dark"] .dtn-myth-box { --myth-border: #5a2020; --myth-text: #e8a0a0; }
+  .dtn-truth-box { background:var(--bg-success,#f0fdf4); border:1px solid var(--truth-border,#bbf7d0); color:var(--truth-text,#166534); }
+  [data-theme="dark"] .dtn-truth-box { --truth-border: #1a4a1a; --truth-text: #81c784; }
+  .dtn-myth-label,.dtn-truth-label { font-weight:700; font-size:0.9rem; margin-bottom:4px; }
+  .dtn-myth-box p,.dtn-truth-box p { margin:0; font-size:0.82rem; }
+
+  .dtn-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:28px 0; }
+  .dtn-card { display:flex; flex-direction:column; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; text-decoration:none; color:inherit; transition:all 0.25s ease; position:relative; overflow:hidden; }
+  .dtn-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#ffb74d,#ff9800); opacity:0; transition:opacity 0.25s; }
+  .dtn-card:hover { border-color:var(--brand); transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
+  .dtn-card:hover::before { opacity:1; }
+  .dtn-card-badge { display:inline-block; align-self:flex-start; padding:3px 10px; border-radius:999px; background:var(--dtn-badge-bg2,linear-gradient(135deg,#fff3e0,#ffe0b2)); color:var(--dtn-badge-fg2,#e65100); font-size:0.72rem; font-weight:700; margin-bottom:8px; letter-spacing:0.01em; }
+  [data-theme="dark"] .dtn-card-badge { --dtn-badge-bg2: linear-gradient(135deg,#3a2a10,#4a2a00); --dtn-badge-fg2: #ffb74d; }
+  .dtn-card-icon { font-size:2rem; margin-bottom:6px; }
+  .dtn-card-title { font-size:0.95rem; font-weight:700; margin:0 0 6px; line-height:1.4; }
+  .dtn-card-desc { font-size:0.82rem; color:var(--ink-secondary); margin:0 0 8px; line-height:1.5; flex:1; }
+  .dtn-card-meta { font-size:0.75rem; color:var(--ink-tertiary); display:flex; gap:6px; margin-bottom:6px; }
+  .dtn-card-audience { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
+  .dtn-aud-tag { display:inline-block; padding:2px 7px; border-radius:4px; background:var(--bg-elevated); font-size:0.7rem; color:var(--ink-secondary); }
+  .dtn-card-action { font-size:0.82rem; font-weight:600; color:var(--brand); }
+
+  .dtn-suggest { text-align:center; padding:32px 20px; background:var(--card); border:1px solid var(--line); border-radius:14px; margin:24px 0; }
+  .dtn-suggest h2 { font-size:1.1rem; margin:0 0 8px; }
+  .dtn-suggest p { font-size:0.88rem; color:var(--ink-secondary); margin:0 0 12px; }
+  .dtn-suggest-btn { display:inline-block; padding:10px 24px; border-radius:999px; background:var(--brand); color:#fff; font-weight:600; text-decoration:none; }
+  .dtn-suggest-btn:hover { opacity:0.9; transform:translateY(-1px); text-decoration:none; }
+
+  @media(max-width:768px) { .dtn-grid { grid-template-columns:1fr; } .dtn-intro { grid-template-columns:1fr; } .dtn-hero { margin:-1px -16px 20px; padding:32px 16px 24px; } }
+</style>

@@ -1,0 +1,378 @@
+---
+// tra-cuu-thuc-pham-viet.astro — Tra cứu thành phần thực phẩm Việt Nam 2007
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Tra cứu thực phẩm Việt Nam - Bảng thành phần 2007 - Dinh Dưỡng Việt">
+  <style>
+    .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
+    .badge { display: inline-block; background: var(--bg-info); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 1.8rem; margin: 0 0 4px; }
+    .subtitle { color: var(--ink-secondary); margin-bottom: 20px; font-size: 0.95rem; }
+
+    .search-row { display: flex; gap: 8px; margin-bottom: 20px; }
+    .search-row input {
+      flex: 1; padding: 11px 16px; border: 2px solid var(--line); border-radius: 10px;
+      font-size: 1rem; box-sizing: border-box; transition: border-color .2s;
+    }
+    .search-row input:focus { outline: none; border-color: #283593; }
+    .search-row .info-count {
+      white-space: nowrap; display: flex; align-items: center;
+      padding: 0 12px; color: var(--ink-tertiary); font-size: 0.85rem;
+    }
+
+    /* ── Results list ── */
+    .results { max-height: 420px; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 20px; }
+    .result-item {
+      display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+      border-bottom: 1px solid var(--line-light); cursor: pointer; transition: background .1s;
+    }
+    .result-item:last-child { border-bottom: none; }
+    .result-item:hover { background: #f5f5ff; }
+    .result-item.active { background: #e8eaf6; }
+    .ri-code { color: #888; font-size: 0.8rem; width: 48px; flex-shrink: 0; font-family: monospace; }
+    .ri-name { flex: 1; font-weight: 500; }
+    .ri-name-en { font-size: 0.8rem; color: var(--ink-tertiary); }
+    .ri-kcal { color: #666; font-size: 0.85rem; white-space: nowrap; }
+
+    .empty-state { text-align: center; padding: 40px; color: #999; }
+
+    /* ── Detail panel ── */
+    .detail-panel { background: #fafafa; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .detail-panel h2 { margin: 0 0 4px; font-size: 1.3rem; }
+    .detail-panel .en-name { color: #888; font-size: 0.9rem; margin-bottom: 8px; }
+    .detail-panel .waste { font-size: 0.85rem; color: #888; }
+
+    .calc-row { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+    .calc-row label { font-weight: 500; }
+    .calc-row input[type="number"] {
+      width: 100px; padding: 8px 12px; border: 2px solid #ccc; border-radius: 8px;
+      font-size: 1rem; text-align: center;
+    }
+    .calc-row input:focus { border-color: #283593; outline: none; }
+
+    /* Core table */
+    .core-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px; margin-bottom: 16px;
+    }
+    .core-item {
+      background: var(--card); border: 1px solid #eee; border-radius: 8px;
+      padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .ci-label { font-size: 0.85rem; color: var(--ink-secondary); }
+    .ci-value { font-weight: 700; font-size: 1.05rem; color: #283593; }
+    .ci-unit { font-size: 0.75rem; color: #999; font-weight: 400; }
+    .ci-null { font-weight: 400; color: #bbb; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid var(--line); }
+    .tab {
+      padding: 10px 20px; cursor: pointer; font-weight: 500; font-size: 0.9rem;
+      color: #888; border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: all .15s;
+    }
+    .tab:hover { color: #283593; }
+    .tab.active { color: #283593; border-bottom-color: #283593; }
+
+    .tab-content { display: none; padding: 16px 0; }
+    .tab-content.active { display: block; }
+
+    /* Detail nutrients table */
+    .detail-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .detail-table th { text-align: left; padding: 8px 10px; background: #f0f0f0; font-weight: 600; }
+    .detail-table td { padding: 6px 10px; border-bottom: 1px solid #f0f0f0; }
+    .detail-table tr:hover td { background: #fafafa; }
+    .dt-null { color: #ccc; }
+
+    .detail-scroll { max-height: 500px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; }
+
+    .no-selection { text-align: center; padding: 40px; color: #999; }
+
+    .source-note { margin-top: 24px; padding: 14px; background: var(--line-light); border-radius: 10px; font-size: 0.85rem; color: #666; }
+
+    @media (max-width: 600px) {
+      .core-grid { grid-template-columns: repeat(2, 1fr); }
+      .search-row { flex-wrap: wrap; }
+    }
+  </style>
+
+  <section>
+    <span class="badge">📖 Dữ liệu chính thức</span>
+    <h1>Tra cứu thực phẩm Việt Nam</h1>
+    <p class="subtitle">
+      Dựa trên <strong>Bảng thành phần thực phẩm Việt Nam 2007</strong> — 526 thực phẩm, 45.000+ chỉ số dinh dưỡng từ Viện Dinh Dưỡng Quốc Gia.
+    </p>
+  </section>
+
+  <div class="app-container" id="vietnam-app">
+    <!-- Search -->
+    <div class="search-row">
+      <input type="text" id="search-input" placeholder="🔍 Tìm thực phẩm (gõ tên tiếng Việt, mã số...)" autocomplete="off">
+      <span class="info-count" id="result-count"></span>
+    </div>
+
+    <!-- Results list -->
+    <div id="results" class="results"></div>
+
+    <!-- Detail panel -->
+    <div id="detail-panel" class="detail-panel">
+      <div class="no-selection" id="no-selection">
+        <div style="font-size: 2.5rem;margin-bottom:8px;">🥬</div>
+        <p>Chọn một thực phẩm từ danh sách bên trên</p>
+        <p style="font-size:0.85rem;">hoặc gõ tên thực phẩm vào ô tìm kiếm</p>
+      </div>
+
+      <div id="detail-area" style="display:none">
+        <!-- Food header -->
+        <h2 id="food-name"></h2>
+        <div class="en-name" id="food-en-name"></div>
+        <div class="waste" id="food-waste"></div>
+
+        <!-- Gram calculator -->
+        <div class="calc-row">
+          <label>Khẩu phần:</label>
+          <input type="number" id="gram-input" value="100" min="1" max="5000" step="1">
+          <span>gram</span>
+          <span style="color:#888;font-size:0.85rem;">
+            ≈ <span id="calc-kcal"></span> kcal
+          </span>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab active" data-tab="core">Chỉ số chính</div>
+          <div class="tab" data-tab="full">Chi tiết đầy đủ</div>
+        </div>
+
+        <!-- Core tab -->
+        <div class="tab-content active" id="tab-core">
+          <div class="core-grid" id="core-grid"></div>
+        </div>
+
+        <!-- Full detail tab -->
+        <div class="tab-content" id="tab-full">
+          <div class="detail-scroll">
+            <table class="detail-table">
+              <thead><tr><th>Chất dinh dưỡng</th><th>Hàm lượng</th><th>Đơn vị</th><th>Nguồn</th></tr></thead>
+              <tbody id="detail-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="source-note">
+      <strong>📚 Nguồn:</strong> Bảng thành phần thực phẩm Việt Nam 2007 — Viện Dinh Dưỡng Quốc Gia (NIN). Dữ liệu tính trên <strong>100g phần ăn được</strong>.
+    </div>
+  </div>
+
+  <script type="module">
+    // ── Load data ──
+    let foods = [];
+    let nutrientsMap = {};
+
+    let loading = false;
+    let loadPromise = null;
+
+    async function load() {
+      if (loadPromise) return loadPromise;
+      loading = true;
+      loadPromise = new Promise(async (resolve) => {
+        const [f, n] = await Promise.all([
+          fetch("/api/vietnam-foods.json").then(r => r.json()),
+          fetch("/api/vietnam-nutrients.json").then(r => r.json()),
+        ]);
+        foods = f;
+        for (const rec of n) {
+          if (!nutrientsMap[rec.code]) nutrientsMap[rec.code] = [];
+          nutrientsMap[rec.code].push(rec);
+        }
+        loading = false;
+        resolve();
+      });
+      return loadPromise;
+    }
+
+    // Lazy load: trigger on first interaction
+    function triggerLoad() {
+      load();
+      document.getElementById("search-input").removeEventListener("focus", triggerLoad);
+      document.getElementById("search-input").removeEventListener("input", triggerLoad);
+    }
+    document.getElementById("search-input").addEventListener("focus", triggerLoad);
+    document.getElementById("search-input").addEventListener("input", triggerLoad);
+
+    // Also preload on idle/after page load
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => load());
+    } else {
+      setTimeout(() => load(), 2000);
+    }
+
+    // ── Search ──
+    const searchInput = document.getElementById("search-input");
+    const resultsDiv = document.getElementById("results");
+    const countSpan = document.getElementById("result-count");
+
+    let selectedCode = null;
+
+    function searchFoods(keyword) {
+      const q = keyword.toLowerCase().trim();
+      if (!q) return foods.slice(0, 50);
+
+      return foods.filter(f => {
+        // Search by code prefix
+        if (f.code.startsWith(q)) return true;
+        // Search by Vietnamese name
+        if (removeAccents(f.name_vi).includes(removeAccents(q))) return true;
+        if (f.name_vi.toLowerCase().includes(q)) return true;
+        // Search by English name
+        if (f.name_en && f.name_en.toLowerCase().includes(q)) return true;
+        return false;
+      }).slice(0, 50);
+    }
+
+    function removeAccents(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
+    function renderResults(keyword) {
+      const matches = searchFoods(keyword);
+      countSpan.textContent = `${matches.length} kết quả`;
+
+      if (!matches.length) {
+        resultsDiv.innerHTML = `<div class="empty-state">Không tìm thấy thực phẩm "${keyword}"</div>`;
+        return;
+      }
+
+      resultsDiv.innerHTML = matches.map(f => `
+        <div class="result-item${selectedCode === f.code ? ' active' : ''}" data-code="${f.code}">
+          <span class="ri-code">${f.code}</span>
+          <div class="ri-name">
+            ${f.name_vi}
+            ${f.name_en ? `<div class="ri-name-en">${f.name_en}</div>` : ""}
+          </div>
+          <span class="ri-kcal">${f.energy_kcal != null ? f.energy_kcal + " kcal" : ""}</span>
+        </div>
+      `).join("");
+
+      // Click handler
+      resultsDiv.querySelectorAll(".result-item").forEach(el => {
+        el.addEventListener("click", () => selectFood(el.dataset.code));
+      });
+    }
+
+    searchInput.addEventListener("input", function() {
+      renderResults(this.value);
+    });
+
+    // ── Select food ──
+    function selectFood(code) {
+      selectedCode = code;
+      const food = foods.find(f => f.code === code);
+      if (!food) return;
+
+      // Update results active state
+      document.querySelectorAll(".result-item").forEach(el => {
+        el.classList.toggle("active", el.dataset.code === code);
+      });
+
+      // Show detail
+      document.getElementById("no-selection").style.display = "none";
+      document.getElementById("detail-area").style.display = "";
+      document.getElementById("food-name").textContent = food.name_vi;
+      document.getElementById("food-en-name").textContent = food.name_en || "";
+      document.getElementById("food-waste").textContent = food.waste_percent != null && food.waste_percent > 0
+        ? `Tỉ lệ thải bỏ: ${food.waste_percent}%`
+        : "";
+
+      // Show code in title
+      document.getElementById("food-name").innerHTML = `${food.name_vi} <span style="font-size:0.85rem;color:#999;font-weight:400;">(#${food.code})</span>`;
+
+      // Reset gram to 100
+      document.getElementById("gram-input").value = 100;
+
+      // Render core nutrients
+      renderCore(food, 100);
+      renderFullNutrients(code);
+    }
+
+    // ── Core nutrients ──
+    const CORE_KEYS = [
+      { key: "energy_kcal", label: "Năng lượng", unit: "kcal" },
+      { key: "protein_g", label: "Protein", unit: "g" },
+      { key: "lipid_g", label: "Lipid (béo)", unit: "g" },
+      { key: "glucid_g", label: "Glucid (bột đường)", unit: "g" },
+      { key: "fiber_g", label: "Chất xơ", unit: "g" },
+      { key: "calcium_mg", label: "Canxi", unit: "mg" },
+      { key: "iron_mg", label: "Sắt", unit: "mg" },
+      { key: "sodium_mg", label: "Natri", unit: "mg" },
+      { key: "potassium_mg", label: "Kali", unit: "mg" },
+      { key: "cholesterol_mg", label: "Cholesterol", unit: "mg" },
+      { key: "purin_mg", label: "Purin", unit: "mg" },
+    ];
+
+    function renderCore(food, grams) {
+      const factor = grams / 100;
+      const grid = document.getElementById("core-grid");
+      grid.innerHTML = CORE_KEYS.map(({ key, label, unit }) => {
+        const val = food[key];
+        if (val === null || val === undefined) {
+          return `<div class="core-item"><span class="ci-label">${label}</span><span class="ci-null">—</span></div>`;
+        }
+        const scaled = val * factor;
+        const display = Number.isInteger(scaled) ? scaled : scaled.toFixed(1);
+        return `<div class="core-item">
+          <span class="ci-label">${label}</span>
+          <span class="ci-value">${display} <span class="ci-unit">${unit}</span></span>
+        </div>`;
+      }).join("");
+    }
+
+    // Gram input handler
+    document.getElementById("gram-input").addEventListener("input", function() {
+      const grams = parseFloat(this.value) || 0;
+      if (!selectedCode) return;
+      const food = foods.find(f => f.code === selectedCode);
+      if (!food || grams <= 0) return;
+      renderCore(food, grams);
+
+      // Update kcal preview
+      if (food.energy_kcal != null) {
+        document.getElementById("calc-kcal").textContent = (food.energy_kcal * grams / 100).toFixed(0);
+      }
+    });
+
+    // ── Full nutrients ──
+    function renderFullNutrients(code) {
+      const tbody = document.getElementById("detail-tbody");
+      const nuts = nutrientsMap[code] || [];
+
+      if (!nuts.length) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#999;">Chưa có số liệu chi tiết</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = nuts.map(n => `
+        <tr>
+          <td><strong>${n.nutrient_name}</strong></td>
+          <td>${n.value_num != null ? n.value_num : (n.value_text === "-" ? '<span class="dt-null">—</span>' : n.value_text || '<span class="dt-null">—</span>')}</td>
+          <td>${n.unit || ""}</td>
+          <td style="font-size:0.8rem;color:#999;">${n.source_ref || ""}</td>
+        </tr>
+      `).join("");
+    }
+
+    // ── Tab switching ──
+    document.querySelector(".tabs").addEventListener("click", function(e) {
+      const tab = e.target.closest(".tab");
+      if (!tab) return;
+      const tabId = tab.dataset.tab;
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById("tab-" + tabId).classList.add("active");
+    });
+  </script>
+</BaseLayout>

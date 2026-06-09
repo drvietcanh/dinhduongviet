@@ -1,0 +1,46 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dung-tin-ngay-nhin-an-giam-can"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>🤔 Hiểu lầm: Nhịn ăn là cách giảm cân tốt nhất</h2>
+    <p>Nhiều người tin rằng bỏ bữa hoặc nhịn ăn vài ngày sẽ giúp giảm cân nhanh. Đúng là cân nặng sẽ giảm — nhưng phần lớn là <strong>nước và cơ</strong>, không phải mỡ. Khi ăn lại, bạn dễ tăng cân nhiều hơn (yo-yo effect).</p>
+    <div class="truth-box">
+      <strong>Sự thật:</strong> Nhịn ăn làm chậm chuyển hóa, khiến cơ thể tích trữ mỡ nhiều hơn. Giảm mỡ bền vững cần <strong>thâm hụt calo nhẹ</strong> (300-500 calo/ngày) kết hợp tập luyện, chứ không phải bỏ bữa.
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🔬 Bằng chứng khoa học</h2>
+    <ul>
+      <li><strong>Mất cơ:</strong> Khi nhịn ăn, cơ thể phá hủy protein cơ bắp để lấy năng lượng — mỗi kg mất đi có thể có 30-50% từ cơ, không phải mỡ.</li>
+      <li><strong>Chậm chuyển hóa:</strong> Sau 48-72 giờ nhịn ăn, chuyển hóa cơ bản giảm 8-15% (theo nghiên cứu trên American Journal of Clinical Nutrition). Khi bạn ăn lại, mỡ tích nhanh hơn vì cơ thể sợ bị đói lần nữa.</li>
+      <li><strong>Hiệu quả ngắn hạn:</strong> Nhịn ăn giảm cân nhanh trong tuần đầu, nhưng tỷ lệ tăng cân lại sau 6 tháng lên đến 80-90%.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>💡 Cách giảm cân khoa học và bền vững</h2>
+    <ul>
+      <li><strong>Thâm hụt calo nhẹ:</strong> Giảm 300-500 calo/ngày so với nhu cầu — đủ để giảm 0.3-0.5kg/tuần (an toàn, bền vững).</li>
+      <li><strong>Ăn đủ 3 bữa:</strong> Bỏ bữa không giúp ích — ăn đúng bữa, đủ chất giúp kiểm soát cơn đói về chiều/tối.</li>
+      <li><strong>Tăng protein (20-25% năng lượng):</strong> Giúp no lâu, duy trì cơ bắp trong quá trình giảm cân.</li>
+      <li><strong>Tập thể dục:</strong> Kết hợp cardio (đi bộ, chạy) + kháng lực (tạ, squat) để giữ cơ và đốt mỡ.</li>
+      <li><strong>Ngủ đủ 7-8 tiếng:</strong> Thiếu ngủ làm tăng ghrelin (hormone đói) và giảm leptin (hormone no).</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Nhịn ăn gián đoạn thì sao?</h2>
+    <p>Phương pháp nhịn ăn gián đoạn (16:8, 5:2) có nghiên cứu ủng hộ — nhưng <strong>vẫn cần kiểm soát calo</strong> trong khung giờ ăn. Không phải ai cũng phù hợp, đặc biệt là người tiểu đường, phụ nữ mang thai, trẻ em. Hãy hỏi chuyên gia trước khi áp dụng.</p>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Nhịn ăn <strong>không phải cách giảm cân thông minh</strong> — bạn mất cơ, chậm chuyển hóa và dễ tăng cân trở lại. Giảm cân bền vững là ăn ít hơn một chút, vận động nhiều hơn một chút, mỗi ngày. Không có đường tắt.</p>
+  </section>
+</ArticleLayout>

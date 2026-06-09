@@ -1,0 +1,744 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { foods, recipes } from "../../data/nutrition";
+import { calculateRecipe } from "../../lib/nutrition";
+
+const foodData = foods.map(f => ({
+  id: f.id, slug: f.slug, name: f.name, category: f.category,
+  kcal: f.nutrients.energyKcal || 0, protein: f.nutrients.proteinG || 0,
+  fat: f.nutrients.fatG || 0, carb: f.nutrients.carbG || 0,
+  fiber: f.nutrients.fiberG || 0, sodium: f.nutrients.sodiumMg || 0,
+  cholesterol: f.nutrients.cholesterolMg || 0, satFat: f.nutrients.satFatG || 0,
+  sugar: f.nutrients.sugarG || 0, calcium: f.nutrients.calciumMg || 0,
+  iron: f.nutrients.ironMg || 0, potassium: f.nutrients.potassiumMg || 0,
+}));
+
+const recipeData = recipes.map(r => {
+  const n = calculateRecipe(r);
+  return {
+    slug: r.slug, name: r.name, servingName: r.servingName || "", servingWeightG: r.servingWeightG || 0,
+    kcal: n.energyKcal || 0, protein: n.proteinG || 0, fat: n.fatG || 0,
+    carb: n.carbG || 0, fiber: n.fiberG || 0, sodium: n.sodiumMg || 0,
+    sugar: n.sugarG || 0, satFat: n.satFatG || 0, cholesterol: n.cholesterolMg || 0,
+  };
+});
+---
+<BaseLayout title="Nhật ký ăn uống | Dinh Dưỡng Việt" description="Ghi chép khẩu phần ăn hàng ngày, theo dõi năng lượng và chất dinh dưỡng.">
+  <div id="mt-root">
+    <div style="margin-bottom:20px"><h1>📓 Nhật ký ăn uống</h1><p style="color:var(--ink-secondary);">Ghi chép khẩu phần ăn hàng ngày, theo dõi năng lượng và chất dinh dưỡng.</p></div>
+
+    <div class="mt-nav">
+      <button class="mt-btn mt-btn-icon" onclick="MT.changeDate(-1)" title="Ngày trước">◀</button>
+      <div style="flex:1;text-align:center;">
+        <input type="date" id="mt-date" onchange="MT.goDate(this.value)" />
+      </div>
+      <button class="mt-btn mt-btn-icon" onclick="MT.changeDate(1)" title="Ngày sau">▶</button>
+      <button class="mt-btn" onclick="MT.goToday()">Hôm nay</button>
+      <button class="mt-btn" id="mt-copy-btn" onclick="MT.copyFromYesterday()" title="Sao chép từ hôm qua" style="display:none;">📋 Hôm qua</button>
+      <button class="mt-btn" onclick="MT.exportCSV()" title="Xuất CSV tất cả nhật ký">📤 CSV</button>
+      <button class="mt-btn" onclick="MT.exportPDF()" title="Xuất PDF ngày hiện tại">🖨️ PDF</button>
+    </div>
+
+    <div class="mt-summary" id="mt-summary"></div>
+    <div id="mt-meals"></div>
+
+    <div style="text-align:center;margin:20px 0;">
+      <button class="mt-btn mt-add-btn" onclick="MT.showAddDialog()">+ Thêm thực phẩm / món ăn</button>
+    </div>
+
+    <details class="mt-settings" id="mt-settings">
+      <summary style="cursor:pointer;color:var(--ink-tertiary);font-size:0.88rem;">⚙️ Mục tiêu dinh dưỡng cá nhân</summary>
+      <div class="mt-settings-body">
+        <div class="mt-settings-grid">
+          <label>Tuổi <input type="number" id="mt-age" value="30" min="10" max="120" /></label>
+          <label>Giới <select id="mt-sex"><option value="male">Nam</option><option value="female">Nữ</option></select></label>
+          <label>Cân nặng (kg) <input type="number" id="mt-weight" value="65" min="20" max="300" /></label>
+          <label>Chiều cao (cm) <input type="number" id="mt-height" value="168" min="80" max="250" /></label>
+          <label>Hoạt động <select id="mt-activity"><option value="1.2">Ít vận động</option><option value="1.375">Nhẹ (1-3 ngày/tuần)</option><option value="1.55" selected>Vừa (3-5 ngày)</option><option value="1.725">Nặng (6-7 ngày)</option></select></label>
+          <label>Mục tiêu <select id="mt-goal"><option value="lose">Giảm cân</option><option value="maintain" selected>Duy trì</option><option value="gain">Tăng cơ</option></select></label>
+        </div>
+        <button class="mt-btn" onclick="MT.saveSettings()">💾 Lưu mục tiêu</button>
+      </div>
+    </details>
+  </div>
+
+  <div id="mt-overlay" class="mt-overlay" onclick="if(event.target===this)MT.hideAddDialog()">
+    <div class="mt-dialog" onclick="event.stopPropagation()">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <strong>➕ Thêm thực phẩm / món ăn</strong>
+        <button class="mt-btn-close" onclick="MT.hideAddDialog()">✕</button>
+      </div>
+      <input type="text" id="mt-search" class="mt-search-input" placeholder="Gõ tên thực phẩm hoặc món ăn..." oninput="MT.search(this.value)" autocomplete="off" />
+      <div class="mt-search-results" id="mt-search-results"><div class="mt-hint">Gõ tên để tìm kiếm...</div></div>
+    </div>
+  </div>
+
+  <div id="mt-overlay-port" class="mt-overlay" onclick="if(event.target===this)MT.hidePortionDialog()">
+    <div class="mt-dialog" onclick="event.stopPropagation()">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <strong id="mt-port-title">⚖️ Chọn khẩu phần</strong>
+        <button class="mt-btn-close" onclick="MT.hidePortionDialog()">✕</button>
+      </div>
+      <div id="mt-port-body"></div>
+    </div>
+  </div>
+
+  <div id="mt-overlay-edit" class="mt-overlay" onclick="if(event.target===this)MT.hideEditDialog()">
+    <div class="mt-dialog" onclick="event.stopPropagation()">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <strong id="mt-edit-title">✏️ Sửa khẩu phần</strong>
+        <button class="mt-btn-close" onclick="MT.hideEditDialog()">✕</button>
+      </div>
+      <div id="mt-edit-body"></div>
+    </div>
+  </div>
+
+  <script id="mt-foods" type="application/json">{JSON.stringify(foodData)}</script>
+  <script id="mt-recipes" type="application/json">{JSON.stringify(recipeData)}</script>
+
+  <script is:inline>
+(function() {
+  const FOODS = JSON.parse(document.getElementById("mt-foods").textContent);
+  const RECIPES = JSON.parse(document.getElementById("mt-recipes").textContent);
+  const SK = "mt-diary-v2";
+  const TK = "mt-target-v2";
+  const MEAL_SLOTS = [
+    { id: "sang", icon: "🌅", name: "Sáng", pct: 0.25 },
+    { id: "trua", icon: "🌞", name: "Trưa", pct: 0.35 },
+    { id: "chieu", icon: "🌆", name: "Chiều", pct: 0.10 },
+    { id: "toi", icon: "🌙", name: "Tối", pct: 0.30 },
+    { id: "phu", icon: "🍿", name: "Phụ", pct: 0 },
+  ];
+
+  let cur = new Date();
+  let log = {};
+  let tgt = null;
+  let addSlot = "sang";
+  let pending = null;
+
+  function fmt(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,"0");
+    const dd = String(d.getDate()).padStart(2,"0");
+    return y+"-"+m+"-"+dd;
+  }
+  function ds() { return fmt(cur); }
+
+  function load() {
+    try { const r = localStorage.getItem(SK); if(r) log = JSON.parse(r); } catch(e) {}
+    if(!log || typeof log !== "object") log = {};
+    try { const r = localStorage.getItem(TK); if(r) tgt = JSON.parse(r); } catch(e) {}
+    if(tgt) {
+      ["mt-age","mt-sex","mt-weight","mt-height","mt-activity","mt-goal"].forEach(function(id) {
+        var el = document.getElementById(id);
+        var k = id.replace("mt-","");
+        if(el && tgt[k] !== undefined) {
+          if(el.type==="select-one") el.value = String(tgt[k]);
+          else el.value = tgt[k];
+        }
+      });
+    }
+  }
+
+  function save() {
+    try { localStorage.setItem(SK, JSON.stringify(log)); } catch(e) {}
+  }
+
+  function calcBMR(a,s,w,h) {
+    return s==="male" ? 10*w+6.25*h-5*a+5 : 10*w+6.25*h-5*a-161;
+  }
+
+  function calcTgt() {
+    var a = parseInt(document.getElementById("mt-age").value)||30;
+    var s = document.getElementById("mt-sex").value;
+    var w = parseFloat(document.getElementById("mt-weight").value)||65;
+    var h = parseFloat(document.getElementById("mt-height").value)||168;
+    var ac = parseFloat(document.getElementById("mt-activity").value)||1.55;
+    var g = document.getElementById("mt-goal").value;
+    var bmr = calcBMR(a,s,w,h);
+    var tdee = Math.round(bmr*ac);
+    if(g==="lose") tdee = Math.round(tdee*0.85);
+    else if(g==="gain") tdee = Math.round(tdee*1.15);
+    return {
+      energy: tdee,
+      protein: Math.round(w*(g==="gain"?2.0:1.4)),
+      fat: Math.round(tdee*0.25/9),
+      carb: Math.round(tdee*0.5/4),
+      fiber: 25, satFat: Math.round(tdee*0.08/9),
+      sugar: 50, sodium: 2000,
+    };
+  }
+
+  function myEsc(s) { return s.replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function dayLabel(d) {
+    var days = ["CN","T2","T3","T4","T5","T6","T7"];
+    var t = new Date();
+    var a = fmt(d), b = fmt(t);
+    if(a===b) return "Hôm nay";
+    var y = new Date(t); y.setDate(y.getDate()-1);
+    if(a===fmt(y)) return "Hôm qua";
+    var tom = new Date(t); tom.setDate(tom.getDate()+1);
+    if(a===fmt(tom)) return "Ngày mai";
+    return days[d.getDay()]+", "+d.getDate()+"/"+(d.getMonth()+1);
+  }
+
+  function getN(it) {
+    var r = {kcal:0,protein:0,fat:0,carb:0,fiber:0,sodium:0,satFat:0,sugar:0,chol:0,ca:0,fe:0,k:0};
+    if(it.type==="food") {
+      var f = FOODS.find(function(x){return x.id===it.id});
+      if(!f) return r;
+      var ratio = it.amount/100;
+      r.kcal=f.kcal*ratio; r.protein=f.protein*ratio; r.fat=f.fat*ratio;
+      r.carb=f.carb*ratio; r.fiber=(f.fiber||0)*ratio; r.sodium=(f.sodium||0)*ratio;
+      r.satFat=(f.satFat||0)*ratio; r.sugar=(f.sugar||0)*ratio;
+      r.ca=(f.calcium||0)*ratio; r.fe=(f.iron||0)*ratio; r.k=(f.potassium||0)*ratio;
+    } else if(it.type==="recipe") {
+      var rec = RECIPES.find(function(x){return x.slug===it.id});
+      if(!rec) return r;
+      var p = it.amount/(rec.servingWeightG||100);
+      r.kcal=rec.kcal*p; r.protein=rec.protein*p; r.fat=rec.fat*p;
+      r.carb=rec.carb*p; r.fiber=(rec.fiber||0)*p; r.sodium=(rec.sodium||0)*p;
+      r.satFat=(rec.satFat||0)*p; r.sugar=(rec.sugar||0)*p;
+    }
+    return r;
+  }
+
+  function sumDay(dayLog) {
+    var t = {kcal:0,protein:0,fat:0,carb:0,fiber:0,sodium:0,satFat:0,sugar:0,chol:0,ca:0,fe:0,k:0};
+    Object.keys(dayLog).forEach(function(slot) {
+      (dayLog[slot]||[]).forEach(function(it) {
+        var n = getN(it);
+        Object.keys(t).forEach(function(k) { t[k] += n[k]||0; });
+      });
+    });
+    t.kcal=Math.round(t.kcal); t.protein=Math.round(t.protein); t.fat=Math.round(t.fat);
+    t.carb=Math.round(t.carb); t.fiber=Math.round(t.fiber*10)/10;
+    t.sodium=Math.round(t.sodium); t.satFat=Math.round(t.satFat*10)/10;
+    t.sugar=Math.round(t.sugar*10)/10; t.ca=Math.round(t.ca); t.fe=Math.round(t.fe*10)/10;
+    return t;
+  }
+
+  // RENDER
+  function render() {
+    var d = ds();
+    var dl = log[d] || {sang:[],trua:[],chieu:[],toi:[],phu:[]};
+    if(!log[d]) log[d]=dl;
+    var t = calcTgt();
+    var totals = sumDay(dl);
+    renderSummary(totals, t);
+    renderMeals(dl);
+    updateCopyBtn();
+  }
+
+  function renderSummary(totals, tgt) {
+    var el = document.getElementById("mt-summary");
+    var pk = Math.round(totals.kcal/(tgt.energy||2000)*100);
+    var pp = Math.round(totals.protein/(tgt.protein||60)*100);
+    var pf = Math.round(totals.fat/(tgt.fat||65)*100);
+    var pc = Math.round(totals.carb/(tgt.carb||250)*100);
+    var pfb = Math.round(totals.fiber/(tgt.fiber||25)*100);
+
+    // Pie macro splits
+    var calP = totals.protein*4, calF = totals.fat*9, calC = totals.carb*4;
+    var totalCal = calP+calF+calC || 1;
+    var pctP = Math.round(calP/totalCal*100);
+    var pctF = Math.round(calF/totalCal*100);
+    var pctC = Math.round(calC/totalCal*100);
+
+    // SVG arc helper - use string concat to avoid nested templates
+    var r = 36, cx = 40, cy = 40;
+    var circ = 2*Math.PI*r;
+    var aOff = -90;
+    function arcP(pct) { return pct/100*circ; }
+    function dash(pct) { return arcP(pct)+","+(circ-arcP(pct)); }
+    // Build arcs for protein, fat, carb
+    var sOff1 = -90;
+    var sOff2 = -90-360*pctP/100;
+    var sOff3 = -90-360*(pctP+pctF)/100;
+
+    // Suggestions (enhanced with food recommendations)
+    var sug = [];
+    function sugFoods(msg, keyword) {
+      return '<span class="mt-sug-link" onclick="MT.addDeficiencyFood(\''+keyword+'\')">'+msg+'</span>';
+    }
+    if(pk < 60 && totals.kcal > 0) sug.push("Năng lượng thấp — "+sugFoods("thêm bữa phụ giàu calo","cơm gạo"));
+    if(pp < 60 && totals.protein > 0) sug.push("Thiếu đạm — "+sugFoods("thêm thịt, cá, trứng, đậu phụ","thịt gà"));
+    if(pfb < 60 && totals.fiber > 0) sug.push("Thiếu chất xơ — "+sugFoods("thêm rau xanh, trái cây","rau muống"));
+    if(totals.fat>0 && totals.satFat>0 && totals.satFat/totals.fat > 0.4) sug.push("⛔ Nhiều mỡ bão hòa — hạn chế mỡ động vật, đồ chiên");
+    if(totals.sugar > 50) sug.push("⛔ Nhiều đường — "+sugFoods("giảm đồ ngọt, nước có đường","nước ngọt"));
+    if(totals.sodium > 2300) sug.push("⛔ Nhiều muối — "+sugFoods("giảm nước mắm, đồ hộp","thực phẩm ít natri"));
+    if(totals.kcal > 0 && totals.kcal < tgt.energy*0.7) sug.push("Cần thêm năng lượng — "+sugFoods("cơm, bún, phở","cơm rang"));
+    if(totals.ca > 0 && totals.ca < 400) sug.push("Thiếu canxi — "+sugFoods("sữa, sữa chua, tôm, cua","sữa"));
+    if(totals.fe > 0 && totals.fe < 8) sug.push("Thiếu sắt — "+sugFoods("thịt đỏ, huyết, rau dền, đậu đỗ","thịt bò"));
+
+    var h = '<div class="mt-summary-top">'+
+      '<span class="mt-summary-date">'+dayLabel(cur)+'</span>'+
+      '<span class="mt-summary-kcal">🔥 <strong>'+totals.kcal+'</strong> / '+tgt.energy+' kcal</span>'+
+    '</div>'+
+    '<div class="mt-summary-body">'+
+      '<div class="mt-macro-pie">'+
+        '<svg width="80" height="80" viewBox="0 0 80 80">'+
+          '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="var(--line)" stroke-width="12"/>'+
+          '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#e74c3c" stroke-width="12" stroke-dasharray="'+dash(pctP)+'" stroke-dashoffset="0" transform="rotate('+sOff1+' '+cx+' '+cy+')" stroke-linecap="round"/>'+
+          '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#f39c12" stroke-width="12" stroke-dasharray="'+dash(pctF)+'" stroke-dashoffset="0" transform="rotate('+sOff2+' '+cx+' '+cy+')" stroke-linecap="round"/>'+
+          '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#3498db" stroke-width="12" stroke-dasharray="'+dash(pctC)+'" stroke-dashoffset="0" transform="rotate('+sOff3+' '+cx+' '+cy+')" stroke-linecap="round"/>'+
+          '<text x="'+cx+'" y="'+cy+'" text-anchor="middle" dominant-baseline="central" font-size="20" font-weight="700" fill="var(--ink)">'+totals.kcal+'</text>'+
+        '</svg>'+
+        '<div class="mt-pie-legend">'+
+          '<span><span class="mt-dot" style="background:#e74c3c"></span>Đạm '+pctP+'%</span>'+
+          '<span><span class="mt-dot" style="background:#f39c12"></span>Béo '+pctF+'%</span>'+
+          '<span><span class="mt-dot" style="background:#3498db"></span>Carb '+pctC+'%</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="mt-summary-bars">'+
+        barRow("Năng lượng", pk, "var(--brand)", totals.kcal+"/"+tgt.energy+" kcal")+
+        barRow("Đạm", pp, "#e74c3c", totals.protein+"/"+tgt.protein+"g")+
+        barRow("Béo", pf, "#f39c12", totals.fat+"/"+tgt.fat+"g")+
+        barRow("Carb", pc, "#3498db", totals.carb+"/"+tgt.carb+"g")+
+        barRow("Chất xơ", pfb, "#2ecc71", totals.fiber.toFixed(1)+"/"+tgt.fiber+"g")+
+      '</div>'+
+    '</div>';
+
+    if(sug.length>0) {
+      h += '<div class="mt-suggestions"><div style="font-size:0.82rem;font-weight:600;margin-bottom:6px;color:var(--ink-secondary);">💡 Gợi ý</div>';
+      sug.forEach(function(s) { h += '<div class="mt-suggestion">'+s+'</div>'; });
+      h += '</div>';
+    } else {
+      h += '<div class="mt-suggestion-none">📝 Hoàn thành - bữa ăn cân đối!</div>';
+    }
+
+    h += '<div class="mt-summary-detail" style="margin-top:8px;display:flex;gap:16px;flex-wrap:wrap;font-size:0.82rem;color:var(--ink-tertiary);">'+
+      '<span>🥩 Đạm '+totals.protein+'g</span>'+
+      '<span>🧈 Béo '+totals.fat+'g · Bão hòa '+totals.satFat.toFixed(1)+'g</span>'+
+      '<span>🍚 Carb '+totals.carb+'g · Đường '+totals.sugar.toFixed(1)+'g</span>'+
+      '<span>🧂 Natri '+totals.sodium+'mg</span>'+
+    '</div>';
+
+    el.innerHTML = h;
+  }
+
+  function barRow(label, pct, color, val) {
+    return '<div class="mt-bar-row">'+
+      '<span class="mt-bar-label">'+label+'</span>'+
+      '<div class="mt-bar-track"><div class="mt-bar-fill" style="width:'+Math.min(pct,100)+'%;background:'+color+';"></div></div>'+
+      '<span class="mt-bar-val">'+Math.min(pct,999)+'% <small>'+val+'</small></span>'+
+    '</div>';
+  }
+
+  function renderMeals(dl) {
+    var el = document.getElementById("mt-meals");
+    el.innerHTML = MEAL_SLOTS.map(function(slot) {
+      var items = dl[slot.id] || [];
+      var sum = items.reduce(function(s, it) {
+        var n = getN(it); s.kcal+=n.kcal; s.protein+=n.protein; return s;
+      }, {kcal:0,protein:0});
+      return '<div class="mt-meal">'+
+        '<div class="mt-meal-header" onclick="this.parentElement.classList.toggle(\'collapsed\')">'+
+          '<span class="mt-meal-icon">'+slot.icon+'</span>'+
+          '<span class="mt-meal-name">'+slot.name+'</span>'+
+          '<span class="mt-meal-sum">🔥 '+Math.round(sum.kcal)+' kcal · Đạm '+Math.round(sum.protein)+'g</span>'+
+          '<span class="mt-meal-toggle">▼</span>'+
+        '</div>'+
+        '<div class="mt-meal-items">'+
+          (items.length===0 ? '<div class="mt-empty">Chưa có thực phẩm nào. Nhấn "+" để thêm.</div>' : "")+
+          items.map(function(it, idx) {
+            return renderItem(it, slot.id, idx);
+          }).join("")+
+          '<button class="mt-add-small" onclick="MT.showAddDialogForSlot(\''+slot.id+'\')">+ Thêm</button>'+
+        '</div>'+
+      '</div>';
+    }).join("");
+  }
+
+  function renderItem(it, slotId, idx) {
+    var n = getN(it);
+    var name = it.type==="food"
+      ? (FOODS.find(function(f){return f.id===it.id})||{}).name||it.id
+      : (RECIPES.find(function(r){return r.slug===it.id})||{}).name||it.id;
+    var tag = it.type==="food" ? "Thực phẩm" : (it.type==="recipe" ? "Món ăn" : "");
+    return '<div class="mt-item">'+
+      '<div class="mt-item-info"><strong>'+name+'</strong><span class="mt-item-tag">'+tag+'</span><span class="mt-item-amount">'+it.amount+'g</span>'+(it.note?' <span class="mt-item-note" title="'+myEsc(it.note)+'">📝</span>':'')+'</div>'+
+      '<div class="mt-item-nutri">🔥'+Math.round(n.kcal)+' · P'+Math.round(n.protein)+' · F'+Math.round(n.fat)+' · C'+Math.round(n.carb)+'</div>'+
+      '<div class="mt-item-actions">'+
+        '<button class="mt-btn-sm" onclick="MT.editItem(\''+slotId+'\','+idx+')" title="Sửa">✏️</button>'+
+        '<button class="mt-btn-sm" onclick="MT.deleteItem(\''+slotId+'\','+idx+')" title="Xóa">🗑️</button>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function updateCopyBtn() {
+    var btn = document.getElementById("mt-copy-btn");
+    if(!btn) return;
+    var y = new Date(cur); y.setDate(y.getDate()-1);
+    var ys = fmt(y);
+    var yl = log[ys];
+    btn.style.display = (yl && Object.values(yl).some(function(a){return a.length>0})) ? "" : "none";
+  }
+
+  function copyFromYesterday() {
+    var y = new Date(cur); y.setDate(y.getDate()-1);
+    var ys = fmt(y);
+    var yl = log[ys];
+    if(!yl) { alert("Không có dữ liệu hôm qua"); return; }
+    var d = ds();
+    if(!log[d]) log[d] = {sang:[],trua:[],chieu:[],toi:[],phu:[]};
+    MEAL_SLOTS.forEach(function(slot) {
+      var src = yl[slot.id];
+      if(src && src.length>0) {
+        if(!log[d][slot.id]) log[d][slot.id]=[];
+        src.forEach(function(it) {
+          log[d][slot.id].push({type:it.type,id:it.id,amount:it.amount,note:it.note||""});
+        });
+      }
+    });
+    save(); render();
+    alert("✅ Đã sao chép từ "+dayLabel(y));
+  }
+
+  // NAV
+  function changeDate(delta) {
+    cur.setDate(cur.getDate()+delta);
+    document.getElementById("mt-date").value = ds();
+    render();
+  }
+  function goDate(val) {
+    var p = val.split("-");
+    cur = new Date(parseInt(p[0]), parseInt(p[1])-1, parseInt(p[2]));
+    render();
+  }
+  function goToday() {
+    cur = new Date();
+    document.getElementById("mt-date").value = ds();
+    render();
+  }
+
+  // SETTINGS
+  function saveSettings() {
+    tgt = {
+      age: parseInt(document.getElementById("mt-age").value)||30,
+      sex: document.getElementById("mt-sex").value,
+      weight: parseFloat(document.getElementById("mt-weight").value)||65,
+      height: parseFloat(document.getElementById("mt-height").value)||168,
+      activity: parseFloat(document.getElementById("mt-activity").value)||1.55,
+      goal: document.getElementById("mt-goal").value,
+    };
+    try { localStorage.setItem(TK, JSON.stringify(tgt)); } catch(e) {}
+    render();
+    alert("✅ Đã lưu mục tiêu!");
+  }
+
+  // ADD DIALOG
+  function showAddDialog() { addSlot="sang"; openSearch(); }
+  function showAddDialogForSlot(slotId) { addSlot=slotId; openSearch(); }
+  function openSearch() {
+    document.getElementById("mt-search").value="";
+    document.getElementById("mt-search-results").innerHTML='<div class="mt-hint">Gõ tên để tìm kiếm...</div>';
+    document.getElementById("mt-overlay").style.display="flex";
+    setTimeout(function(){document.getElementById("mt-search").focus();},100);
+  }
+  function hideAddDialog() { document.getElementById("mt-overlay").style.display="none"; }
+  function search(q) {
+    var query = q.toLowerCase().trim();
+    var res = document.getElementById("mt-search-results");
+    if(!query) { res.innerHTML='<div class="mt-hint">Gõ tên để tìm kiếm...</div>'; return; }
+    var fm = FOODS.filter(function(f){return f.name.toLowerCase().includes(query)}).slice(0,6);
+    var rm = RECIPES.filter(function(r){return r.name.toLowerCase().includes(query)}).slice(0,6);
+    var all = [];
+    fm.forEach(function(f){all.push({type:"food",id:f.id,name:f.name,kcal:f.kcal,cat:f.category});});
+    rm.forEach(function(r){all.push({type:"recipe",id:r.slug,name:r.name,kcal:r.kcal});});
+    all = all.slice(0,10);
+    if(!all.length) { res.innerHTML='<div class="mt-hint">Không tìm thấy - thử từ khóa khác</div>'; return; }
+    res.innerHTML = all.map(function(item) {
+      return '<div class="mt-search-item" onclick="MT.showPortionDialog(\''+item.type+'\',\''+item.id+'\')">'+
+        '<div class="mt-si-icon">'+(item.type==="food"?"🥬":"🍲")+'</div>'+
+        '<div class="mt-si-info"><strong>'+item.name+'</strong><span class="mt-si-type">'+(item.type==="food"?item.cat:"Món ăn")+'</span></div>'+
+        '<div class="mt-si-kcal">🔥 '+Math.round(item.kcal)+' kcal/100g</div>'+
+      '</div>';
+    }).join("");
+  }
+
+  // PORTION DIALOG
+  function showPortionDialog(type, id) {
+    pending = {type:type,id:id};
+    var name = type==="food"
+      ? (FOODS.find(function(f){return f.id===id})||{}).name||id
+      : (RECIPES.find(function(r){return r.slug===id})||{}).name||id;
+    document.getElementById("mt-port-title").textContent = type==="food"?"🥬 Thêm thực phẩm":"🍲 Thêm món ăn";
+    document.getElementById("mt-port-body").innerHTML =
+      '<p style="margin-bottom:8px;color:var(--ink-secondary);font-size:0.9rem;"><strong>'+name+'</strong></p>'+
+      '<label>Khẩu phần (g) <input type="number" id="mt-port-amount" value="100" min="1" step="5"/></label>'+
+      '<label>Bữa ăn <select id="mt-port-slot">'+
+        '<option value="sang">🌅 Sáng</option><option value="trua">🌞 Trưa</option>'+
+        '<option value="chieu">🌆 Chiều</option><option value="toi">🌙 Tối</option><option value="phu">🍿 Phụ</option>'+
+      '</select></label>'+
+      '<div id="mt-port-preview" style="font-size:0.85rem;color:var(--ink-tertiary);margin-bottom:12px;"></div>'+
+      '<div style="display:flex;gap:8px;"><button class="mt-btn" onclick="MT.confirmAdd()">✅ Thêm</button><button class="mt-btn mt-btn-secondary" onclick="MT.hidePortionDialog()">Hủy</button></div>';
+    document.getElementById("mt-overlay-port").style.display="flex";
+    updatePreview(type, id);
+    document.getElementById("mt-port-amount").oninput = function(){updatePreview(type,id);};
+    // Pre-select the current add slot
+    document.getElementById("mt-port-slot").value = addSlot;
+  }
+  function hidePortionDialog() { document.getElementById("mt-overlay-port").style.display="none"; pending=null; }
+  function updatePreview(type, id) {
+    var amt = parseFloat(document.getElementById("mt-port-amount").value)||100;
+    if(type==="food") {
+      var f = FOODS.find(function(x){return x.id===id});
+      if(!f) return;
+      var r = amt/100;
+      document.getElementById("mt-port-preview").textContent = "🔥 "+Math.round(f.kcal*r)+" kcal · P"+Math.round(f.protein*r)+"g · F"+Math.round(f.fat*r)+"g · C"+Math.round(f.carb*r)+"g";
+    } else {
+      var rec = RECIPES.find(function(x){return x.slug===id});
+      if(!rec) return;
+      var p = amt/(rec.servingWeightG||100);
+      document.getElementById("mt-port-preview").textContent = "🔥 "+Math.round(rec.kcal*p)+" kcal · P"+Math.round(rec.protein*p)+"g · F"+Math.round(rec.fat*p)+"g · C"+Math.round(rec.carb*p)+"g";
+    }
+  }
+
+  function confirmAdd() {
+    if(!pending) return;
+    var slotId = document.getElementById("mt-port-slot").value;
+    var amt = parseFloat(document.getElementById("mt-port-amount").value)||100;
+    var d = ds();
+    if(!log[d]) log[d] = {sang:[],trua:[],chieu:[],toi:[],phu:[]};
+    if(!log[d][slotId]) log[d][slotId]=[];
+    log[d][slotId].push({type:pending.type,id:pending.id,amount:amt,note:""});
+    save(); hidePortionDialog(); hideAddDialog(); render();
+  }
+
+  // EDIT / DELETE
+  function editItem(slotId, idx) {
+    var d = ds();
+    var dl = log[d]||{};
+    var items = dl[slotId]||[];
+    var it = items[idx];
+    if(!it) return;
+    var name = it.type==="food"
+      ? (FOODS.find(function(f){return f.id===it.id})||{}).name||it.id
+      : (RECIPES.find(function(r){return r.slug===it.id})||{}).name||it.id;
+    document.getElementById("mt-edit-title").textContent = "✏️ Sửa khẩu phần";
+    document.getElementById("mt-edit-body").innerHTML =
+      '<p style="margin-bottom:8px;color:var(--ink-secondary);font-size:0.9rem;"><strong>'+name+'</strong></p>'+
+      '<label>Khẩu phần (g) <input type="number" id="mt-edit-amount" value="'+it.amount+'" min="1" step="5"/></label>'+
+      '<div style="display:flex;gap:8px;margin-top:12px;">'+
+        '<button class="mt-btn" onclick="MT.confirmEdit(\''+slotId+'\','+idx+')">💾 Lưu</button>'+
+        '<button class="mt-btn mt-btn-secondary" onclick="MT.hideEditDialog()">Hủy</button>'+
+      '</div>';
+    document.getElementById("mt-overlay-edit").style.display="flex";
+  }
+  function hideEditDialog() { document.getElementById("mt-overlay-edit").style.display="none"; }
+  function confirmEdit(slotId, idx) {
+    var amt = parseFloat(document.getElementById("mt-edit-amount").value);
+    if(!amt||amt<=0) return;
+    var d = ds();
+    var dl = log[d]||{};
+    var items = dl[slotId]||[];
+    if(items[idx]) { items[idx].amount=amt; items[idx].note=document.getElementById("mt-edit-note").value||""; }
+    save(); hideEditDialog(); render();
+  }
+  function deleteItem(slotId, idx) {
+    if(!confirm("Xóa thực phẩm này khỏi nhật ký?")) return;
+    var d = ds();
+    var dl = log[d]||{};
+    var items = dl[slotId]||[];
+    items.splice(idx,1);
+    save(); render();
+  }
+
+  // EXPORT CSV
+  function exportCSV() {
+    var allData = [];
+    Object.keys(log).forEach(function(date) {
+      var dl = log[date];
+      if(!dl) return;
+      Object.keys(dl).forEach(function(slotId) {
+        var items = dl[slotId]||[];
+        items.forEach(function(it) {
+          var name = it.type==='food'
+            ? (FOODS.find(function(f){return f.id===it.id})||{}).name||it.id
+            : (RECIPES.find(function(r){return r.slug===it.id})||{}).name||it.id;
+          var n = getN(it);
+          allData.push({
+            date: date, meal: slotId, name: name,
+            type: it.type==='food' ? 'Thực phẩm' : 'Món ăn',
+            amount: it.amount+'g',
+            kcal: Math.round(n.kcal), protein: Math.round(n.protein),
+            fat: Math.round(n.fat), carb: Math.round(n.carb),
+            fiber: n.fiber.toFixed(1), sodium: Math.round(n.sodium),
+          });
+        });
+      });
+    });
+    if(allData.length===0) { alert('Chưa có dữ liệu nhật ký'); return; }
+    allData.sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:0;});
+    var rows = [['Ngày','Bữa','Tên','Loại','Khẩu phần','Kcal','Đạm(g)','Béo(g)','Carb(g)','Xơ(g)','Natri(mg)']];
+    allData.forEach(function(r) {
+      rows.push([r.date, r.meal, r.name, r.type, r.amount, r.kcal, r.protein, r.fat, r.carb, r.fiber, r.sodium]);
+    });
+    var csv = rows.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+    var blob = new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'nhat-ky-an-uong.csv';
+    a.click();
+  }
+
+  // EXPORT PDF (via window.print with printable format)
+  function exportPDF() {
+    var d = ds();
+    var dl = log[d] || {};
+    var totals = sumDay(dl);
+    var t = calcTgt();
+
+    var h = '<html><head><meta charset="utf-8"><title>Nhật ký ăn uống - '+d+'</title>';
+    h += '<style>'; h += 'body{font-family:sans-serif;max-width:700px;margin:20px auto;padding:20px;color:#222;}'; h += 'h1{font-size:20px;margin-bottom:4px;}'; h += '.sub{color:#666;font-size:13px;margin-bottom:20px;}'; h += 'table{width:100%;border-collapse:collapse;margin:10px 0;}'; h += 'th,td{padding:6px 8px;text-align:left;border-bottom:1px solid #ddd;font-size:13px;}'; h += 'th{background:#f5f5f5;font-size:12px;}'; h += '.slot{background:#e8f5e9;padding:6px 10px;margin-top:16px;font-weight:bold;font-size:14px;}'; h += '.sum{background:#fff8e1;padding:10px;border-radius:6px;margin-top:16px;font-size:13px;}'; h += '.sum b{color:#1a8a4a;}'; h += '@media print{body{margin:0;padding:15px;}}'; h += '</style></head><body>';
+    h += '<h1>📓 Nhật ký ăn uống</h1><div class="sub">'+dayLabel(cur)+' — '+d+'</div>';
+
+    MEAL_SLOTS.forEach(function(slot) {
+      var items = dl[slot.id]||[];
+      if(items.length===0) return;
+      h += '<div class="slot">'+slot.icon+' '+slot.name+'</div>';
+      h += '<table><tr><th>Tên</th><th>Loại</th><th>Khẩu phần</th><th>Kcal</th><th>Đạm</th><th>Béo</th><th>Carb</th></tr>';
+      items.forEach(function(it) {
+        var name = it.type==='food'
+          ? (FOODS.find(function(f){return f.id===it.id})||{}).name||it.id
+          : (RECIPES.find(function(r){return r.slug===it.id})||{}).name||it.id;
+        var n = getN(it);
+        var tag = it.type==='food' ? 'Thực phẩm' : 'Món ăn';
+        h += '<tr><td>'+name+'</td><td>'+tag+'</td><td>'+it.amount+'g</td><td>'+Math.round(n.kcal)+'</td><td>'+Math.round(n.protein)+'g</td><td>'+Math.round(n.fat)+'g</td><td>'+Math.round(n.carb)+'g</td></tr>';
+      });
+      h += '</table>';
+    });
+
+    h += '<div class="sum"><b>Tổng cộng:</b> 🔥 '+totals.kcal+'/'+t.energy+' kcal | 🥩 Đạm '+totals.protein+'/'+t.protein+'g | 🧈 Béo '+totals.fat+'/'+t.fat+'g | 🍚 Carb '+totals.carb+'/'+t.carb+'g | Chất xơ '+totals.fiber.toFixed(1)+'/'+t.fiber+'g</div>';
+    h += '<div style="margin-top:10px;font-size:11px;color:#999;">Xuất từ Dinh Dưỡng Việt — dinh-duong-viet.pages.dev</div>';
+    h += '</body></html>';
+
+    var win = window.open('', '_blank', 'width=700,height=600,scrollbars=yes');
+    if(!win) { alert('Trình duyệt chặn popup. Cho phép popup để xuất PDF.'); return; }
+    win.document.write(h);
+    win.document.close();
+    win.focus();
+    setTimeout(function(){win.print();},300);
+  }
+
+  // EXPOSE
+  function addDeficiencyFood(keyword) {
+    addSlot="phu";
+    document.getElementById("mt-search").value = keyword;
+    document.getElementById("mt-overlay").style.display="flex";
+    search(keyword);
+  }
+
+  window.MT = {
+    myEsc,
+    changeDate, goDate, goToday, saveSettings,
+    showAddDialog, showAddDialogForSlot, hideAddDialog,
+    search, showPortionDialog, hidePortionDialog, confirmAdd,
+    editItem, hideEditDialog, confirmEdit,
+    deleteItem, copyFromYesterday,
+    addDeficiencyFood,
+    exportCSV, exportPDF,
+  };
+
+  // Init
+  document.addEventListener("DOMContentLoaded", function() {
+    load();
+    document.getElementById("mt-date").value = ds();
+    render();
+  });
+})();
+</script>
+
+<style is:global>
+  #mt-root { max-width: 720px; margin: 0 auto; padding: 0 0 40px; }
+  .mt-nav { display: flex; align-items: center; gap: 4px; margin-bottom: 16px; }
+  .mt-nav input[type=date] { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; font-size: 0.95rem; background: var(--card); color: var(--ink); width: 100%; max-width: 220px; }
+  .mt-btn { padding: 8px 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; font-size: 0.88rem; transition: all var(--transition); white-space: nowrap; }
+  .mt-btn:hover { border-color: var(--brand); background: var(--brand-dim); }
+  .mt-btn-icon { font-size: 1.1rem; padding: 8px 10px; }
+  .mt-btn-sm { background: none; border: none; cursor: pointer; padding: 4px 6px; opacity: 0.6; font-size: 0.85rem; }
+  .mt-btn-sm:hover { opacity: 1; }
+  .mt-btn-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--ink-tertiary); }
+  .mt-btn-secondary { background: transparent; }
+  .mt-add-btn { width: 100%; padding: 12px; background: var(--brand); color: white; border: none; border-radius: var(--radius); font-size: 1rem; cursor: pointer; }
+  .mt-add-btn:hover { opacity: 0.9; }
+  .mt-summary { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; }
+  .mt-summary-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px; }
+  .mt-summary-date { font-weight: 600; font-size: 1rem; }
+  .mt-summary-kcal { font-size: 0.9rem; color: var(--ink-secondary); }
+  .mt-summary-kcal strong { font-size: 1.4rem; color: var(--brand); }
+
+  .mt-summary-body { display: flex; gap: 14px; align-items: flex-start; }
+  .mt-macro-pie { flex-shrink: 0; text-align: center; }
+  .mt-pie-legend { display: flex; flex-direction: column; gap: 2px; font-size: 0.72rem; margin-top: 4px; color: var(--ink-secondary); }
+  .mt-pie-legend span { display: flex; align-items: center; gap: 4px; }
+  .mt-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .mt-summary-bars { flex: 1; min-width: 0; }
+  .mt-summary-bars { display: flex; flex-direction: column; gap: 5px; }
+  .mt-bar-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; }
+  .mt-bar-label { width: 72px; flex-shrink: 0; color: var(--ink-secondary); }
+  .mt-bar-track { flex: 1; height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .mt-bar-fill { height: 100%; border-radius: 999px; transition: width 0.3s; }
+  .mt-bar-val { width: 130px; text-align: right; flex-shrink: 0; color: var(--ink-tertiary); }
+  .mt-bar-val small { font-size: 0.75rem; }
+
+  .mt-suggestions { margin-top: 10px; padding: 10px 12px; background: var(--brand-dim); border-radius: var(--radius); border: 1px solid var(--brand-light); }
+  .mt-suggestion { font-size: 0.82rem; padding: 3px 0; color: var(--ink-secondary); line-height: 1.4; }
+  .mt-sug-link { color: var(--brand); font-weight:600; cursor: pointer; border-bottom: 1px dashed var(--brand); }
+  .mt-sug-link:hover { opacity: 0.8; }
+  .mt-suggestion-none { margin-top: 10px; font-size: 0.82rem; color: #2e7d32; text-align: center; padding: 6px; }
+
+  .mt-meal { margin-bottom: 12px; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+  .mt-meal.collapsed .mt-meal-items { display: none; }
+  .mt-meal.collapsed .mt-meal-toggle { transform: rotate(-90deg); }
+  .mt-meal-header { display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: var(--card); cursor: pointer; user-select: none; }
+  .mt-meal-header:hover { background: var(--dim); }
+  .mt-meal-icon { font-size: 1.2rem; }
+  .mt-meal-name { font-weight: 600; flex: 1; }
+  .mt-meal-sum { font-size: 0.82rem; color: var(--ink-tertiary); }
+  .mt-meal-toggle { transition: transform 0.2s; font-size: 0.8rem; }
+  .mt-meal-items { padding: 0 14px 10px; }
+  .mt-empty { color: var(--ink-tertiary); font-size: 0.85rem; padding: 8px 0; text-align: center; }
+
+  .mt-item { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line-dim); }
+  .mt-item:last-child { border-bottom: none; }
+  .mt-item-info { flex: 1; }
+  .mt-item-info strong { font-size: 0.9rem; display: block; }
+  .mt-item-tag { font-size: 0.72rem; color: var(--ink-tertiary); background: var(--dim); padding: 1px 6px; border-radius: 4px; }
+  .mt-item-amount { font-size: 0.78rem; color: var(--ink-tertiary); margin-left: 4px; }
+  .mt-item-nutri { font-size: 0.8rem; color: var(--ink-secondary); white-space: nowrap; }
+  .mt-item-actions { display: flex; gap: 2px; }
+  .mt-add-small { display: block; width: 100%; padding: 8px; margin-top: 6px; background: none; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--ink-tertiary); cursor: pointer; font-size: 0.85rem; text-align: center; }
+  .mt-add-small:hover { border-color: var(--brand); color: var(--brand); }
+
+  .mt-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1000; justify-content: center; align-items: center; }
+  .mt-dialog { background: var(--card); border-radius: var(--radius-lg); padding: 20px; width: 90%; max-width: 480px; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+  .mt-search-input { width: 100%; padding: 10px 14px; border: 2px solid var(--line); border-radius: var(--radius); font-size: 1rem; background: var(--bg); color: var(--ink); box-sizing: border-box; }
+  .mt-search-input:focus { border-color: var(--brand); outline: none; }
+  .mt-search-results { margin-top: 8px; }
+  .mt-hint { color: var(--ink-tertiary); font-size: 0.88rem; text-align: center; padding: 20px; }
+  .mt-search-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius); cursor: pointer; transition: background 0.15s; }
+  .mt-search-item:hover { background: var(--dim); }
+  .mt-si-icon { font-size: 1.3rem; }
+  .mt-si-info { flex: 1; }
+  .mt-si-info strong { display: block; font-size: 0.92rem; }
+  .mt-si-type { font-size: 0.75rem; color: var(--ink-tertiary); }
+  .mt-si-kcal { font-size: 0.82rem; color: var(--ink-tertiary); white-space: nowrap; }
+
+  .mt-settings { margin-top: 24px; }
+  .mt-settings-body { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-top: 8px; }
+  .mt-settings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .mt-settings-grid label { font-size: 0.82rem; color: var(--ink-secondary); display: flex; flex-direction: column; gap: 4px; }
+  .mt-settings-grid input, .mt-settings-grid select { padding: 6px 10px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.92rem; background: var(--bg); color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .mt-summary-body { flex-direction: column; align-items: stretch; }
+    .mt-macro-pie { display: flex; align-items: center; gap: 12px; }
+    .mt-summary-detail { flex-direction: column; gap: 4px; }
+    .mt-bar-label { width: 56px; font-size: 0.75rem; }
+    .mt-bar-val { width: 110px; font-size: 0.75rem; }
+    .mt-item { flex-wrap: wrap; }
+    .mt-item-nutri { width: 100%; padding-left: 0; }
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["dinh-duong-chay"];
+if (!art) throw new Error("Article not found: dinh-duong-chay");
+---
+
+<ArticleLayout article={art}>
+<div class="disclaimer">
+    ⚠️ <strong>Cảnh báo y khoa:</strong> Nội dung mang tính tham khảo. Người ăn chay nên kiểm tra công thức máu và vitamin B12 định kỳ, đặc biệt phụ nữ mang thai, trẻ em và người cao tuổi.
+  </div>
+
+  <section class="section card">
+    <h2>🥇 Các loại chế độ ăn chay</h2>
+    <table class="table" style="margin-top: 10px;">
+      <thead>
+        <tr><th>Loại</th><th>Mô tả</th><th>Nguy cơ thiếu hụt</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Lacto-ovo</strong></td><td>Ăn trứng và sữa, không thịt cá</td><td>Thấp — dễ bổ sung nhất</td></tr>
+        <tr><td><strong>Lacto</strong></td><td>Ăn sữa, không trứng, thịt, cá</td><td>B12 (ít), sắt, kẽm</td></tr>
+        <tr><td><strong>Ovo</strong></td><td>Ăn trứng, không sữa, thịt, cá</td><td>Canxi, B12, vitamin D</td></tr>
+        <tr><td><strong>Thuần chay (Vegan)</strong></td><td>Không bất kỳ sản phẩm động vật nào</td><td>Cao — B12, sắt, canxi, kẽm, omega-3, vitamin D, iốt</td></tr>
+        <tr><td><strong>Chay theo Phật giáo</strong></td><td>Không thịt cá, thường không trứng, có sữa đậu nành</td><td>Tùy loại, thường thiếu B12 và sắt</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>🧪 Chất dinh dưỡng cần đặc biệt chú ý</h2>
+    
+    <h3 style="margin-top: 16px;">1. Vitamin B12 — Nguy cơ cao nhất</h3>
+    <p>B12 <strong>chỉ có trong thực phẩm động vật</strong>. Người ăn thuần chay <strong>bắt buộc phải bổ sung</strong> viên B12 hoặc thực phẩm tăng cường B12.</p>
+    <ul style="line-height: 1.8;">
+      <li><strong>Hậu quả thiếu:</strong> Thiếu máu hồng cầu to, tổn thương thần kinh, mệt mỏi, suy giảm trí nhớ</li>
+      <li><strong>Khuyến nghị:</strong> Bổ sung 50-100 µg/ngày (cyanocobalamin) hoặc 2000 µg/tuần</li>
+      <li><strong>Nguồn thực vật B12:</strong> Rong biển, tảo xoắn, tempeh — không đáng tin cậy. Nên dùng viên bổ sung</li>
+    </ul>
+
+    <h3 style="margin-top: 16px;">2. Sắt — Hấp thu kém hơn</h3>
+    <ul style="line-height: 1.8;">
+      <li>Sắt từ thực vật (non-heme) hấp thu kém hơn sắt từ thịt (heme)</li>
+      <li><strong>Cách tăng hấp thu:</strong> Ăn kèm vitamin C (chanh, cam, ớt chuông) trong cùng bữa</li>
+      <li><strong>Nguồn tốt:</strong> Đậu phụ, đậu lăng, đậu xanh, rau bina (cải bó xôi), hạt bí, hạt mè, mộc nhĩ</li>
+      <li><strong>Tránh uống trà/cà phê</strong> ngay sau bữa ăn — tannin cản trở hấp thu sắt</li>
+    </ul>
+
+    <h3 style="margin-top: 16px;">3. Canxi — Thiếu nếu không dùng sữa</h3>
+    <ul style="line-height: 1.8;">
+      <li><strong>Nguồn thực vật:</strong> Đậu phụ (làm từ thạch cao), sữa đậu nành bổ sung canxi, cải xoăn, bông cải xanh, hạt mè, rau dền</li>
+      <li><strong>Nhu cầu:</strong> 500-1000 mg/ngày tùy độ tuổi</li>
+    </ul>
+
+    <h3 style="margin-top: 16px;">4. Kẽm — Hấp thu cạnh tranh với phytate</h3>
+    <ul style="line-height: 1.8;">
+      <li>Phytate trong ngũ cốc nguyên hạt và đậu làm giảm hấp thu kẽm</li>
+      <li><strong>Cách tăng hấp thu:</strong> Ngâm, nảy mầm, lên men đậu và hạt trước khi nấu</li>
+      <li><strong>Nguồn tốt:</strong> Đậu lăng, hạt bí, hạt điều, đậu phụ, yến mạch</li>
+    </ul>
+
+    <h3 style="margin-top: 16px;">5. Omega-3 (DHA)</h3>
+    <ul style="line-height: 1.8;">
+      <li>Người ăn chay thiếu DHA trực tiếp — chỉ có ALA từ hạt lanh, hạt chia, quả óc chó</li>
+      <li>Cơ thể chuyển đổi ALA → DHA rất kém (< 10%)</li>
+      <li><strong>Khuyến nghị:</strong> Bổ sung DHA từ tảo (200-300 mg/ngày) hoặc ăn nhiều hạt lanh, hạt chia (2-3 muỗng/ngày)</li>
+    </ul>
+
+    <h3 style="margin-top: 16px;">6. Iốt</h3>
+    <ul style="line-height: 1.8;">
+      <li>Nguồn chính từ hải sản và muối iốt — người ăn chay dễ thiếu nếu không dùng muối iốt</li>
+      <li>Rong biển giàu iốt nhưng hàm lượng không ổn định</li>
+    </ul>
+
+    <h3 style="margin-top: 16px;">7. Đạm (Protein) — Dễ đáp ứng nếu biết kết hợp</h3>
+    <ul style="line-height: 1.8;">
+      <li><strong>Cần kết hợp:</strong> Đậu + gạo (gạo đậu), đậu + ngũ cốc, đậu + hạt</li>
+      <li><strong>Nguồn tốt:</strong> Đậu phụ (8-16g/100g), tempeh (19g/100g), đậu lăng (9g/100g), hạt chia, quinoa, đậu gà</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <div class="grid two">
+      <div>
+        <h3>🌾 Tinh bột & ngũ cốc</h3>
+        <ul style="line-height: 1.8;">
+          <li><a href="/thuc-pham/com-gao-lut">Gạo lứt</a>, <a href="/thuc-pham/com-trang">gạo trắng</a></li>
+          <li><a href="/thuc-pham/mien-dong">Miến dong</a>, <a href="/thuc-pham/bun-tuoi">bún tươi</a></li>
+          <li>Yến mạch, quinoa, kiều mạch</li>
+        </ul>
+      </div>
+      <div>
+        <h3>🥦 Đạm thực vật</h3>
+        <ul style="line-height: 1.8;">
+          <li><a href="/thuc-pham/dau-phu">Đậu phụ</a>, đậu phụ nướng</li>
+          <li><a href="/thuc-pham/dau-nanh">Đậu nành</a>, sữa đậu nành</li>
+          <li><a href="/thuc-pham/dau-xanh">Đậu xanh</a>, <a href="/thuc-pham/dau-den">đậu đen</a>, <a href="/thuc-pham/dau-do">đậu đỏ</a></li>
+          <li>Đậu lăng, đậu gà</li>
+          <li>Nấm các loại</li>
+        </ul>
+      </div>
+      <div>
+        <h3>🥜 Hạt & chất béo tốt</h3>
+        <ul style="line-height: 1.8;">
+          <li><a href="/thuc-pham/lac-rang">Lạc</a>, <a href="/thuc-pham/me-vung">mè (vừng)</a></li>
+          <li><a href="/thuc-pham/hat-dieu-rang">Hạt điều</a>, <a href="/thuc-pham/hat-bi">hạt bí</a>, hạt hướng dương</li>
+          <li><a href="/thuc-pham/dau-o-liu">Dầu ô liu</a>, <a href="/thuc-pham/dau-dau-nanh">dầu đậu nành</a></li>
+          <li>Bơ, dầu dừa (vừa phải)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>🥗 Rau củ quả</h3>
+        <ul style="line-height: 1.8;">
+          <li><a href="/thuc-pham/rau-ngot">Rau ngót</a>, <a href="/thuc-pham/rau-muong">rau muống</a>, <a href="/thuc-pham/cai-xanh">cải xanh</a></li>
+          <li><a href="/thuc-pham/bap-cai">Bắp cải</a>, <a href="/thuc-pham/sup-lo">súp lơ</a>, <a href="/thuc-pham/ca-rot">cà rốt</a></li>
+          <li><a href="/thuc-pham/cam">Cam</a>, <a href="/thuc-pham/chuoi">chuối</a>, <a href="/thuc-pham/du-du">đu đủ</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Bổ sung khuyến nghị theo loại chay</h2>
+    <table class="table" style="margin-top: 10px;">
+      <thead>
+        <tr><th>Chất</th><th>Lacto-ovo</th><th>Thuần chay (Vegan)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vitamin B12</td><td>Có thể thiếu — nên bổ sung 50 µg/ngày</td><td><strong>Bắt buộc</strong> — 50-100 µg/ngày</td></tr>
+        <tr><td>Vitamin D</td><td>Tùy phơi nắng — 600 IU/ngày nếu ít nắng</td><td>Giống lacto-ovo</td></tr>
+        <tr><td>Sắt</td><td>Kiểm tra định kỳ, bổ sung nếu thiếu</td><td>Kiểm tra định kỳ, khả năng thiếu cao hơn</td></tr>
+        <tr><td>Canxi</td><td>Sữa bò đủ — 500ml/ngày</td><td>Bổ sung sữa đậu nành có canxi hoặc viên canxi 500 mg/ngày</td></tr>
+        <tr><td>DHA từ tảo</td><td>Khuyến khích — 200-300 mg/ngày</td><td><strong>Khuyến khích</strong> — 200-300 mg/ngày</td></tr>
+        <tr><td>Iốt</td><td>Dùng muối iốt</td><td>Dùng muối iốt hoặc rong biển</td></tr>
+        <tr><td>Kẽm</td><td>Thường đủ nếu ăn trứng sữa</td><td>Có thể bổ sung 8-11 mg/ngày</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>📝 Lưu ý thực tế</h2>
+    <ul style="line-height: 1.8;">
+      <li><strong>Chuyển sang ăn chay từ từ:</strong> Giảm thịt dần, tăng rau đậu, theo dõi cơ thể 2-4 tuần</li>
+      <li><strong>Đa dạng thực phẩm:</strong> Ăn nhiều loại đậu, hạt, ngũ cốc, rau củ khác nhau trong ngày</li>
+      <li><strong>Kết hợp đạm:</strong> Gạo + đậu tạo protein hoàn chỉnh — ví dụ cơm + đậu phụ, bún + đậu phụ rán</li>
+      <li><strong>Bổ sung B12 ngay:</strong> Từ ngày đầu tiên ăn thuần chay — thiếu B12 mất nhiều tháng mới có triệu chứng nhưng tổn thương thần kinh có thể không hồi phục</li>
+      <li><strong>Xét nghiệm máu định kỳ:</strong> 6-12 tháng/lần kiểm tra B12, sắt (ferritin), vitamin D, canxi</li>
+      <li><strong>Phụ nữ mang thai ăn chay:</strong> Cần theo dõi sát B12, sắt, DHA — bổ sung đầy đủ</li>
+      <li><strong>Trẻ em ăn chay:</strong> Cần đảm bảo năng lượng và đạm cho tăng trưởng — tham khảo chuyên gia dinh dưỡng</li>
+    </ul>
+  </section>
+
+  <DietMealPlan condition="an-chay" conditionLabel="người ăn chay" />
+</ArticleLayout>

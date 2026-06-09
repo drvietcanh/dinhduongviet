@@ -1,0 +1,120 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["gout"];
+if (!art) throw new Error("Article not found: gout");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Tuấn, 38 tuổi, vừa đi tiệc cưới về thì nửa đêm đau ngón chân cái dữ dội — sưng đỏ, nóng ran, đụng đến chăn cũng đau. Đi khám bác sĩ bảo bị <strong>gút (gout)</strong>. Anh ngỡ ngàng: "Em không ăn gì nhiều, chỉ uống vài lon bia và ăn ít hải sản thôi mà!".</p>
+  <p>Chuyện của anh Tuấn là kịch bản kinh điển. Gút thường "tấn công" sau những bữa nhậu, đám cưới, liên hoan cuối năm. Nhưng tin tốt là: kiểm soát chế độ ăn có thể giúp bạn giảm hẳn tần suất các đợt cấp.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người bị gút cần <u>hạn chế purin</u> — đặc biệt từ nội tạng, hải sản, thịt đỏ — <u>tránh bia rượu tuyệt đối</u> trong đợt cấp,
+    <u>uống 2–3 lít nước/ngày</u> để thải acid uric, và <u>không nhịn ăn</u> (nhịn đói làm tăng acid uric).</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống ảnh hưởng tới gút?</h2>
+  <p>Gút là do acid uric trong máu quá cao, tạo thành tinh thể muối urat lắng đọng ở khớp. Purin — một chất có trong nhiều thực phẩm — khi vào cơ thể sẽ chuyển hóa thành acid uric. Bia (đặc biệt là bia) làm chậm quá trình đào thải nó qua thận, nên dễ gây đợt cấp nhất.</p>
+  <p>Mục tiêu: duy trì acid uric máu dưới <strong>360 µmol/L</strong> (hoặc dưới 300 µmol/L nếu có tophi/sỏi thận).</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rau xanh:</strong> <a href="/thuc-pham/rau-muong">Rau muống</a>, <a href="/thuc-pham/bap-cai">bắp cải</a>, <a href="/thuc-pham/bi-do">bí đỏ</a>, <a href="/thuc-pham/cai-thia">cải thìa</a></li>
+      <li><strong>Trái cây ít ngọt:</strong> <a href="/thuc-pham/cam">Cam</a>, <a href="/thuc-pham/tao">táo</a>, <a href="/thuc-pham/bo-trai">bơ</a>, <a href="/thuc-pham/dua-hau">dưa hấu</a>, <a href="/thuc-pham/le">lê</a>, <a href="/thuc-pham/oi">ổi</a></li>
+      <li><strong>Sữa ít béo:</strong> <a href="/thuc-pham/sua-tuoi-khong-duong">Sữa tươi không đường</a>, <a href="/thuc-pham/sua-chua">sữa chua</a> ít béo</li>
+      <li><strong>Tinh bột:</strong> <a href="/thuc-pham/com-trang">Cơm</a>, <a href="/thuc-pham/bun-tuoi">bún</a>, <a href="/thuc-pham/mien-dong">miến</a>, <a href="/thuc-pham/banh-pho-chin">phở</a>, <a href="/thuc-pham/khoai-lang">khoai lang</a></li>
+      <li><strong>Đạm thay thế:</strong> <a href="/thuc-pham/trung-ga">Trứng</a>, <a href="/thuc-pham/dau-phu">đậu phụ</a>, các loại đậu</li>
+      <li><strong>Chất béo tốt:</strong> <a href="/thuc-pham/dau-an">Dầu thực vật</a> (oliu, mè, hướng dương)</li>
+      <li><strong>Uống:</strong> Nước lọc 2–3 lít/ngày, có thể thêm nước chanh</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Nội tạng:</strong> <a href="/thuc-pham/gan-heo">Gan</a>, lòng, tim, thận, dạ dày (purin rất cao)</li>
+      <li><strong>⛔ Hải sản vỏ cứng:</strong> <a href="/thuc-pham/tom-tuoi">Tôm</a>, <a href="/thuc-pham/cua-dong">cua</a>, <a href="/thuc-pham/muc-tuoi">mực</a>, sò, ốc</li>
+      <li><strong>⛔ Thịt đỏ:</strong> <a href="/thuc-pham/thit-bo-nac">Bò</a>, <a href="/thuc-pham/thit-heo-nac">heo</a>, <a href="/thuc-pham/thit-cuu">cừu</a> — ăn tối đa 2–3 bữa/tuần</li>
+      <li><strong>⛔ Bia rượu:</strong> Đặc biệt bia — tác nhân số 1 gây đợt cấp</li>
+      <li><strong>⛔ Nước ngọt:</strong> Nước có gas, nước ép trái cây đóng hộp (fructose)</li>
+      <li><strong>⚠️ Nước dùng xương:</strong> Nước ninh xương, nước lẩu — purin hòa tan trong nước</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Hình dung</th></tr></thead>
+    <tbody>
+      <tr><td>Thịt/cá</td><td>Tối đa 100–150g/ngày</td><td>1 phần = lòng bàn tay, 1 bữa/ngày</td></tr>
+      <tr><td>Nội tạng</td><td>0g trong đợt cấp, &lt; 1 lần/tháng</td><td>Tránh hoàn toàn nếu có thể</td></tr>
+      <tr><td>Rau xanh</td><td>Không giới hạn</td><td>Rau luộc, xào, canh thoải mái</td></tr>
+      <tr><td>Trái cây</td><td>2–3 phần/ngày</td><td>1 phần = 1 quả cam/1 miếng dưa hấu</td></tr>
+      <tr><td>Nước</td><td>2–3 lít/ngày</td><td>~8–12 ly nước lọc</td></tr>
+      <tr><td>Sữa ít béo</td><td>200–300ml/ngày</td><td>1–2 ly sữa hoặc sữa chua</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (dưới 150mg purin)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Bánh mì + trứng ốp la + sữa ít béo</td><td>Không bơ, không pate</td></tr>
+      <tr><td>🍎 Phụ sáng</td><td>1 quả táo + 1 hũ sữa chua</td><td>Ăn nguyên quả, không ép nước</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm 1 chén + đậu phụ sốt cà + canh rau ngót</td><td>Đạm chính từ đậu</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>Sinh tố bơ không đường</td><td>Không sữa đặc</td></tr>
+      <tr><td>🌙 Tối</td><td>Cơm 1 chén + trứng luộc + rau luộc</td><td>Trứng ít purin</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💧 Uống 2–3 lít nước đều trong ngày. Tránh nhịn ăn — nhịn đói làm tăng acid uric.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Luộc thịt bỏ nước làm giảm ~30% purin.</li>
+        <li>Không nhịn ăn — nhịn đói khiến cơ thể tự phân hủy cơ, giải phóng purin nội sinh.</li>
+        <li>Hạn chế fructose: tránh nước ngọt, siro, mật ong lượng lớn.</li>
+        <li>Uống đủ nước — giúp thận lọc acid uric tốt hơn.</li>
+        <li>Kết hợp thuốc: uống thuốc hạ acid uric đều, không tự ý ngừng.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Đau khớp dữ dội — đặc biệt ngón chân cái, mắt cá, đầu gối.</li>
+        <li>Khớp sưng đỏ, nóng, không cử động được.</li>
+        <li>Sốt kèm đau khớp — có thể là viêm khớp nhiễm khuẩn.</li>
+        <li>Tophi (cục urat) vỡ, chảy dịch, nhiễm trùng.</li>
+        <li>Đợt cấp tái diễn dù đã uống thuốc đúng.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

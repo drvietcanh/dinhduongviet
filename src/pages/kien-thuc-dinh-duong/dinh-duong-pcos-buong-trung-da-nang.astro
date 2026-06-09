@@ -1,0 +1,97 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-pcos-buong-trung-da-nang"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Trang, 27 tuổi, kinh nguyệt không đều 3 năm, tăng cân không rõ nguyên nhân, mọc nhiều mụn, lông mặt. Đi khám phụ khoa: siêu âm thấy buồng trứng đa nang, nội tiết tố nam cao. Bác sĩ nói: "PCOS. Nếu không can thiệp, chị có nguy cơ vô sinh và tiểu đường sau này."</p>
+  <p>PCOS (hội chứng buồng trứng đa nang) ảnh hưởng tới 8–13% phụ nữ trong độ tuổi sinh sản. Đây là rối loạn nội tiết — không phải bệnh phụ khoa đơn thuần. Kháng insulin là yếu tố trung tâm, và dinh dưỡng là phương pháp điều trị đầu tay hiệu quả nhất.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người PCOS cần <u>giảm carb GI thấp</u> (gạo lứt, yến mạch, khoai lang),
+    <u>tăng chất xơ & đạm</u>, <u>cắt đường tinh luyện</u>, <u>giảm sữa bò (thử)</u>,
+    <u>duy trì cân nặng hợp lý</u> — chỉ cần giảm 5% cân là cải thiện rõ kinh nguyệt!</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao PCOS liên quan tới dinh dưỡng?</h2>
+  <p>PCOS là kháng insulin — tế bào không đáp ứng với insulin, buộc tụy tiết nhiều insulin hơn. Insulin cao kích thích buồng trứng sản xuất hormone nam (testosterone), gây rối loạn rụng trứng. Chế độ ăn ít GI, giàu chất xơ giúp giảm tiết insulin → giảm testosterone → kinh nguyệt đều → tăng khả năng thụ thai.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Carb GI thấp: gạo lứt, yến mạch, khoai lang, bánh mì nguyên cám</li>
+      <li>Rau xanh: ăn ít nhất 3 bát/ngày — nhiều xơ</li>
+      <li>Đạm: ức gà, cá, trứng, đậu phụ, hạt — giúp no lâu</li>
+      <li>Chất béo tốt: dầu olive, bơ, hạt óc chó, hạnh nhân</li>
+      <li>Gia vị chống viêm: nghệ, gừng, quế</li>
+      <li>Trà xanh — EGCG giúp cải thiện chuyển hóa</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Cơm trắng, bánh mì trắng, bún, mì gói — GI cao</li>
+      <li>⛔ Nước ngọt, trà sữa, bánh kẹo, nước ép đóng hộp</li>
+      <li>⛔ Đồ chiên rán, thức ăn nhanh</li>
+      <li>⚠️ Sữa bò (một số người): có thể tăng IGF-1, thử bỏ 4 tuần</li>
+      <li>⚠️ Rượu bia — tăng insulin, tăng testosterone</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Mục tiêu PCOS</h2>
+  <table class="table"><thead><tr><th>Mục tiêu</th><th>Cụ thể</th><th>Tác động</th></tr></thead><tbody>
+    <tr><td>Giảm 5% cân nặng</td><td>Nếu BMI &gt;23</td><td>Cải thiện rụng trứng, kinh nguyệt đều</td></tr>
+    <tr><td>Carb mỗi bữa</td><td>30–45g, ưu tiên GI thấp</td><td>Giảm insulin máu</td></tr>
+    <tr><td>Chất xơ</td><td>≥25g/ngày</td><td>Tăng nhạy insulin</td></tr>
+    <tr><td>Vận động</td><td>150 phút/tuần (đi bộ nhanh + tạ nhẹ)</td><td>Giảm kháng insulin</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Yến mạch nấu sữa hạt + 1 muỗng hạt chia + quả mọng</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 nắm hạnh nhân + trà xanh</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi áp chảo + salad rau dầu olive</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa chua không đường + quả óc chó</td></tr>
+    <tr><td>🌙 Tối</td><td>Ức gà nướng + khoai lang luộc + bông cải xanh hấp</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Bổ sung inositol (myo-inositol 2g sáng + 2g tối) — hỗ trợ PCOS.</li>
+        <li>Thử ăn ít sữa bò 4 tuần — xem có cải thiện không.</li>
+        <li>Theo dõi kinh nguyệt — nếu đều hơn là đang đi đúng hướng.</li>
+        <li>Tập tạ nhẹ 2–3 lần/tuần tốt hơn cardio đơn thuần.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Kinh nguyệt &gt;3 tháng không có — cần nội tiết.</li>
+        <li>Đau bụng dưới dữ dội — nguy cơ xoắn buồng trứng.</li>
+        <li>Tăng cân nhanh, nổi mụn nhiều, rậm lông.</li>
+        <li>Đường huyết đói &gt;7.0 — đã thành tiểu đường.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

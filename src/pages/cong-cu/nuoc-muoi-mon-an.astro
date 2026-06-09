@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "Tra nhanh lượng muối trong món ăn Việt";
+const desc = "Xem lượng muối trong các món ăn thường ngày của người Việt. Kiểm soát muối dễ dàng.";
+---
+
+<BaseLayout title={title} description={desc} image="/logo.svg">
+  <main class="container" style="padding: 2rem 1rem; max-width: 760px; margin: 0 auto;">
+    <h1>🧂 Tra nhanh lượng muối trong món ăn</h1>
+    <p class="lead">Nhập tên món hoặc tìm trong danh sách để xem lượng muối. Mỗi ngày không nên ăn quá <strong>5g muối</strong> (tương đương 1 muỗng cà phê).</p>
+
+    <div class="toolbar">
+      <input type="text" id="search-input" placeholder="Tìm món ăn..." style="flex:1; padding: 0.6rem; font-size: 1rem; border:1px solid var(--b3); border-radius:8px; background:var(--bg); color:var(--fg);">
+    </div>
+
+    <div id="results" style="margin-top: 1rem;"></div>
+
+    <div class="summary-card" style="margin-top:2rem; background:var(--b1); padding:1rem; border-radius:12px;">
+      <h3>📊 Mức muối khuyến nghị</h3>
+      <table>
+        <tr><th>Nhóm</th><th>Lượng muối/ngày</th><th>Tương đương</th></tr>
+        <tr><td>Người khỏe mạnh</td><td>dưới 5g</td><td>1 muỗng cà phê</td></tr>
+        <tr><td>Tăng huyết áp</td><td>dưới 2-3g</td><td>1/2 muỗng cà phê</td></tr>
+        <tr><td>Suy tim, suy thận</td><td>dưới 2g</td><td>1/3 muỗng cà phê</td></tr>
+      </table>
+    </div>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+const foods = [
+  { name: "Phở bò (1 tô)", salt: "3.5-4.5g", note: "Nước dùng + nước mắm chấm" },
+  { name: "Bún bò Huế (1 tô)", salt: "4-5g", note: "Mắm ruốc + nước dùng đậm" },
+  { name: "Bún riêu (1 tô)", salt: "3.5-4g", note: "Mắm tôm + nước dùng" },
+  { name: "Bánh mì thịt (1 ổ)", salt: "2-3g", note: "Ruốc, pate, xúc xích, nước sốt" },
+  { name: "Cơm tấm sườn bì (1 đĩa)", salt: "3-4g", note: "Sườn ướp + nước mắm + đồ chua" },
+  { name: "Cơm trắng + cá kho (1 suất)", salt: "2.5-3.5g", note: "Cá kho mặn + nước mắm" },
+  { name: "Cơm trắng + thịt kho (1 suất)", salt: "2.5-3.5g", note: "Nước kho mặn" },
+  { name: "Canh chua (1 bát)", salt: "1.5-2g", note: "Nêm mắm + muối" },
+  { name: "Canh rau (1 bát)", salt: "1-1.5g", note: "Tùy độ mặn khi nêm" },
+  { name: "Rau luộc (1 đĩa)", salt: "0-0.5g", note: "Không muối khi luộc" },
+  { name: "Rau xào (1 đĩa)", salt: "1-1.5g", note: "Nêm nước mắm khi xào" },
+  { name: "Gỏi cuốn (2 cuốn)", salt: "0.8-1.2g", note: "Nước chấm là chính" },
+  { name: "Bánh cuốn (1 đĩa)", salt: "2-3g", note: "Nước mắm + chả/sườn" },
+  { name: "Bún chả (1 suất)", salt: "3-4g", note: "Nước mắm chấm + chả" },
+  { name: "Bánh xèo (2 cái)", salt: "2-3g", note: "Bột + nước mắm chấm" },
+  { name: "Bún mắm (1 tô)", salt: "4-6g", note: "Mắm cá — rất mặn" },
+  { name: "Lẩu (1 bát nước lẩu)", salt: "1.5-2.5g", note: "Nước lẩu thường mặn" },
+  { name: "Bún thịt nướng (1 suất)", salt: "2.5-3.5g", note: "Thịt ướp + nước mắm" },
+  { name: "Miến gà (1 tô)", salt: "2-3g", note: "Nước dùng + nước mắm" },
+  { name: "Cháo thịt băm (1 tô)", salt: "1-1.5g", note: "Tùy nêm" },
+  { name: "Cá hấp (1 suất)", salt: "1-1.5g", note: "Nước mắm chấm riêng" },
+  { name: "Thịt luộc (1 suất)", salt: "0.5-1g", note: "Nước mắm chấm riêng" },
+  { name: "Salad trộn (1 đĩa)", salt: "0.5-1g", note: "Tùy sốt" },
+  { name: "Mì gói (1 gói)", salt: "3-4g", note: "Gói gia vị + gói dầu" },
+  { name: "Xúc xích (1 cây)", salt: "1-1.5g", note: "Cao muối" },
+  { name: "Giò lụa (100g)", salt: "2-3g", note: "Muối trong chế biến" },
+  { name: "Lạp xưởng (1 cây)", salt: "2-3g", note: "Rất mặn" },
+  { name: "Dưa muối, cà muối (100g)", salt: "3-5g", note: "Hạn chế ăn nhiều" },
+];
+
+const searchInput = document.getElementById('search-input');
+const resultsDiv = document.getElementById('results');
+
+function render(list) {
+  if (list.length === 0) {
+    resultsDiv.innerHTML = '<p style="color:var(--fg); opacity:0.6;">Không tìm thấy món nào.</p>';
+    return;
+  }
+  let html = list.map(f => `
+    <div class="food-row" style="display:flex; justify-content:space-between; align-items:center; padding:0.6rem; border-bottom:1px solid var(--b2);">
+      <div>
+        <strong>${f.name}</strong>
+        <div style="font-size:0.85rem; opacity:0.6;">${f.note}</div>
+      </div>
+      <div style="text-align:right;">
+        <span style="font-size:1.1rem; font-weight:bold; color:${parseFloat(f.salt) > 3 ? 'var(--red)' : parseFloat(f.salt) > 1.5 ? 'var(--orange)' : 'var(--green)'};">${f.salt}</span>
+        <div style="font-size:0.75rem; opacity:0.6;">muối</div>
+      </div>
+    </div>
+  `).join('');
+  resultsDiv.innerHTML = html;
+}
+
+render(foods);
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase();
+  render(foods.filter(f => f.name.toLowerCase().includes(q)));
+});
+</script>
+
+<style>
+  @media (max-width: 600px) {
+    .food-row { flex-direction: column; align-items: flex-start !important; gap: 0.3rem; }
+  }
+  .toolbar { display: flex; gap: 0.5rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  th, td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid var(--b2); }
+</style>

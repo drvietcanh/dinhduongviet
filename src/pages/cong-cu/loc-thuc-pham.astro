@@ -1,0 +1,378 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Advanced food filter — filter 667+ thực phẩm VN theo chất dinh dưỡng, tags, nhóm
+---
+
+<BaseLayout title="Lọc thực phẩm nâng cao - Dinh Dưỡng Việt">
+  <section>
+    <span class="badge">🔬 Công cụ</span>
+    <h1>Lọc thực phẩm nâng cao</h1>
+    <p class="lead">
+      Tìm thực phẩm theo nhiều tiêu chí: giàu đạm, ít natri, nhiều chất xơ, chỉ số đường huyết thấp…
+      Kết hợp nhiều bộ lọc để tìm thực phẩm phù hợp với chế độ ăn của bạn.
+    </p>
+  </section>
+
+  <section class="section card">
+    <h2>🔍 Bộ lọc</h2>
+    <form id="filter-form">
+      <!-- Tìm kiếm từ khoá -->
+      <div style="margin-bottom: 14px;">
+        <label for="keyword">Từ khoá</label>
+        <input type="text" id="keyword" placeholder="Gõ tên thực phẩm..." style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--line);font-size:1rem;box-sizing:border-box;" />
+      </div>
+
+      <div class="grid-filters">
+        <!-- Nhóm thực phẩm -->
+        <div>
+          <label>Nhóm thực phẩm</label>
+          <select id="category">
+            <option value="">Tất cả</option>
+            <option value="Tinh bột">Tinh bột</option>
+            <option value="Thịt">Thịt</option>
+            <option value="Cá">Cá</option>
+            <option value="Hải sản">Hải sản</option>
+            <option value="Trứng sữa">Trứng & Sữa</option>
+            <option value="Đậu">Đậu & Hạt</option>
+            <option value="Rau xanh">Rau xanh</option>
+            <option value="Củ quả">Củ quả</option>
+            <option value="Trái cây">Trái cây</option>
+            <option value="Nấm">Nấm</option>
+            <option value="Dầu mỡ">Dầu mỡ</option>
+            <option value="Gia vị">Gia vị</option>
+            <option value="Rau gia vị">Rau gia vị</option>
+            <option value="Hạt">Hạt</option>
+            <option value="Đồ uống">Đồ uống</option>
+            <option value="Bánh kẹo">Bánh kẹo</option>
+            <option value="Nước dùng">Nước dùng</option>
+            <option value="Thịt chế biến">Thịt chế biến</option>
+          </select>
+        </div>
+
+        <!-- Trạng thái -->
+        <div>
+          <label>Trạng thái</label>
+          <select id="state">
+            <option value="">Tất cả</option>
+            <option value="raw">Sống / Tươi</option>
+            <option value="cooked">Đã nấu chín</option>
+            <option value="processed">Chế biến sẵn</option>
+            <option value="dried">Khô / Sấy</option>
+            <option value="roasted">Rang</option>
+          </select>
+        </div>
+
+        <!-- Năng lượng -->
+        <div>
+          <label>Năng lượng (kcal/100g)</label>
+          <div class="range-group">
+            <input type="number" id="kcal-min" placeholder="Tối thiểu" min="0" />
+            <span>→</span>
+            <input type="number" id="kcal-max" placeholder="Tối đa" min="0" />
+          </div>
+        </div>
+
+        <!-- Đạm -->
+        <div>
+          <label>Đạm (g/100g)</label>
+          <div class="range-group">
+            <input type="number" id="protein-min" placeholder="Tối thiểu" min="0" step="0.1" />
+            <span>→</span>
+            <input type="number" id="protein-max" placeholder="Tối đa" min="0" step="0.1" />
+          </div>
+        </div>
+
+        <!-- Chất xơ -->
+        <div>
+          <label>Chất xơ (g/100g)</label>
+          <div class="range-group">
+            <input type="number" id="fiber-min" placeholder="Tối thiểu" min="0" step="0.1" />
+            <span>→</span>
+            <input type="number" id="fiber-max" placeholder="Tối đa" min="0" step="0.1" />
+          </div>
+        </div>
+
+        <!-- Natri -->
+        <div>
+          <label>Natri (mg/100g)</label>
+          <div class="range-group">
+            <input type="number" id="sodium-min" placeholder="Tối thiểu" min="0" />
+            <span>→</span>
+            <input type="number" id="sodium-max" placeholder="Tối đa" min="0" />
+          </div>
+        </div>
+
+        <!-- Sắt -->
+        <div>
+          <label>Sắt (mg/100g)</label>
+          <div class="range-group">
+            <input type="number" id="iron-min" placeholder="Tối thiểu" min="0" step="0.1" />
+            <span>→</span>
+            <input type="number" id="iron-max" placeholder="Tối đa" min="0" step="0.1" />
+          </div>
+        </div>
+
+        <!-- Canxi -->
+        <div>
+          <label>Canxi (mg/100g)</label>
+          <div class="range-group">
+            <input type="number" id="calcium-min" placeholder="Tối thiểu" min="0" />
+            <span>→</span>
+            <input type="number" id="calcium-max" placeholder="Tối đa" min="0" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div style="margin-top: 14px;">
+        <label>Bộ lọc nhanh (theo chỉ định)</label>
+        <div class="tag-filters">
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-sodium" /> 🧂 Ít natri (&lt;120mg)</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-fat" /> 🥩 Ít béo (&lt;3g)</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-potassium" /> 🥔 Nhiều kali (&gt;250mg)</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-purine" /> 🫘 Ít purin</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-purine" /> ⚠️ Nhiều purin</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-low" /> 🟢 Đường huyết thấp</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-high" /> 🔴 Đường huyết cao</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-fat" /> 🔺 Nhiều béo</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-sodium" /> ⚠️ Nhiều natri</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-potassium" /> ⬇️ Ít kali</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" style="margin-top: 16px;">🔍 Lọc</button>
+    </form>
+  </section>
+
+  <section id="results-section" style="margin-top: 20px; display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h2 style="margin:0;">Kết quả</h2>
+      <span id="result-count" class="muted">— thực phẩm</span>
+    </div>
+    <div id="results-list" class="results-grid"></div>
+  </section>
+</BaseLayout>
+
+<style>
+  label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.9rem; }
+  select { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font-size:0.95rem; background:white; }
+  .grid-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .range-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .range-group input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    min-width: 0;
+  }
+  .range-group span { color: var(--ink-tertiary); }
+
+  .tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .tag-chip:hover { border-color: #60a5fa; background: var(--bg-info); }
+  .tag-chip input { display: none; }
+  .tag-chip:has(input:checked) {
+    border-color: #2563eb;
+    background: #dbeafe;
+    box-shadow: 0 0 0 1px #2563eb;
+  }
+
+  .btn {
+    padding: 12px 28px;
+    background: var(--brand);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--brand-dark); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+  .food-card {
+    display: block;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.15s;
+    background: var(--card);
+  }
+  .food-card:hover { border-color: #93c5fd; background: var(--card-hover); }
+  .fc-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+  .fc-detail { font-size: 0.8rem; color: #6b7280; display: flex; flex-wrap: wrap; gap: 4px; }
+  .fc-detail span { white-space: nowrap; }
+  .fc-cat {
+    font-size: 0.75rem;
+    color: #6b7280;
+    background: var(--line-light);
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+</style>
+
+<script>
+  let allFoods = [];
+
+  fetch('/api-foods.json')
+    .then(r => r.json())
+    .then(d => {
+      allFoods = Array.isArray(d) ? d : (d.foods || []);
+      document.getElementById('results-section').style.display = 'block';
+      // Initial show
+      document.getElementById('filter-form')?.dispatchEvent(new Event('submit', { cancelable: true }));
+    });
+
+  document.getElementById('filter-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!allFoods.length) return;
+
+    const keyword = document.getElementById('keyword').value.toLowerCase().trim();
+    const category = document.getElementById('category').value;
+    const state = document.getElementById('state').value;
+    const kcalMin = maybeFloat('kcal-min');
+    const kcalMax = maybeFloat('kcal-max');
+    const proteinMin = maybeFloat('protein-min');
+    const proteinMax = maybeFloat('protein-max');
+    const fiberMin = maybeFloat('fiber-min');
+    const fiberMax = maybeFloat('fiber-max');
+    const sodiumMin = maybeFloat('sodium-min');
+    const sodiumMax = maybeFloat('sodium-max');
+    const ironMin = maybeFloat('iron-min');
+    const ironMax = maybeFloat('iron-max');
+    const calciumMin = maybeFloat('calcium-min');
+    const calciumMax = maybeFloat('calcium-max');
+
+    const selectedTags = [...document.querySelectorAll('.tag-cb:checked')].map(cb => cb.dataset.tag);
+
+    const filtered = allFoods.filter(f => {
+      const n = f.nutrients || {};
+      const tags = f.tags || [];
+
+      // Keyword
+      if (keyword && !f.name.toLowerCase().includes(keyword) && !(f.aliases || []).some(a => a.toLowerCase().includes(keyword))) {
+        return false;
+      }
+
+      // Category
+      if (category && f.category !== category) return false;
+
+      // State
+      if (state && f.state !== state) return false;
+
+      // Numeric ranges
+      if (!inRange(n.energyKcal, kcalMin, kcalMax)) return false;
+      if (!inRange(n.proteinG, proteinMin, proteinMax)) return false;
+      if (!inRange(n.fiberG, fiberMin, fiberMax)) return false;
+      if (!inRange(n.sodiumMg, sodiumMin, sodiumMax)) return false;
+      if (!inRange(n.ironMg, ironMin, ironMax)) return false;
+      if (!inRange(n.calciumMg, calciumMin, calciumMax)) return false;
+
+      // Tags filter (AND logic)
+      if (selectedTags.length && !selectedTags.every(t => tags.includes(t))) return false;
+
+      return true;
+    });
+
+    displayResults(filtered);
+  });
+
+  function maybeFloat(id) {
+    const v = document.getElementById(id).value;
+    return v === '' ? undefined : parseFloat(v);
+  }
+
+  function inRange(val, min, max) {
+    if (val == null) return true;
+    if (min !== undefined && val < min) return false;
+    if (max !== undefined && val > max) return false;
+    return true;
+  }
+
+  function displayResults(foods) {
+    const list = document.getElementById('results-list');
+    const count = document.getElementById('result-count');
+
+    count.textContent = foods.length + ' thực phẩm';
+
+    if (!foods.length) {
+      list.innerHTML = '<div class="empty-state"><p>Không tìm thấy thực phẩm nào. Hãy nới lỏng bộ lọc.</p></div>';
+      document.getElementById('results-section').style.display = 'block';
+      return;
+    }
+
+    // Sort by name
+    foods.sort((a, b) => a.name.localeCompare(b.name, 'vi'));
+
+    list.innerHTML = foods.map(f => {
+      const n = f.nutrients || {};
+      const slug = f.slug || f.id;
+      return `<a class="food-card" href="/thuc-pham/${slug}">
+        <div class="fc-cat">${f.category || ''}</div>
+        <div class="fc-name">${f.name}</div>
+        <div class="fc-detail">
+          ${n.energyKcal != null ? `<span>🔥 ${n.energyKcal} kcal</span>` : ''}
+          ${n.proteinG != null ? `<span>🥩 ${n.proteinG}g đạm</span>` : ''}
+          ${n.fatG != null ? `<span>🫒 ${n.fatG}g béo</span>` : ''}
+          ${n.carbG != null ? `<span>🍚 ${n.carbG}g bột</span>` : ''}
+          ${n.fiberG != null ? `<span>🌿 ${n.fiberG}g xơ</span>` : ''}
+          ${n.sodiumMg != null ? `<span>🧂 ${n.sodiumMg}mg Na</span>` : ''}
+        </div>
+      </a>`;
+    }).join('');
+  }
+
+  // Auto-filter on any change
+  document.querySelectorAll('#filter-form input, #filter-form select').forEach(el => {
+    el.addEventListener('change', () => {
+      document.getElementById('filter-form')?.dispatchEvent(new Event('submit', { cancelable: true }));
+    });
+    if (el.tagName === 'INPUT' && el.type !== 'checkbox') {
+      el.addEventListener('input', debounce(() => {
+        document.getElementById('filter-form')?.dispatchEvent(new Event('submit', { cancelable: true }));
+      }, 300));
+    }
+  });
+
+  function debounce(fn, ms) {
+    let timer;
+    return function() {
+      clearTimeout(timer);
+      timer = setTimeout(fn, ms);
+    };
+  }
+</script>

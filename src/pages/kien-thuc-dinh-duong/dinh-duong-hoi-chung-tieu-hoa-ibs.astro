@@ -1,0 +1,74 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-hoi-chung-tieu-hoa-ibs"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Oanh, 30 tuổi, thường xuyên đau bụng sau ăn, lúc táo bón, lúc tiêu chảy, đầy hơi, chướng bụng. Đi khám đủ thứ: nội soi dạ dày, đại tràng — không phát hiện bệnh thực thể. Bác sĩ chẩn đoán <strong>hội chứng ruột kích thích (IBS)</strong>.</p>
+  <p>IBS ảnh hưởng tới 10–15% dân số. Không nguy hiểm tính mạng, nhưng ảnh hưởng nghiêm trọng tới chất lượng sống. Chế độ ăn đúng — đặc biệt low-FODMAP — có thể giúp kiểm soát 70–80% triệu chứng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 IBS cần <u>tránh thực phẩm FODMAP cao</u> (tỏi, hành, đậu đỗ, sữa tươi, lúa mì), 
+    <u>ăn chậm nhai kỹ</u>, <u>quản lý stress</u> (ruột – não), và <u>uống đủ nước</u>. 
+    Có 3 type IBS: táo bón, tiêu chảy, hỗn hợp.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao IBS khó chịu?</h2>
+  <p>IBS là rối loạn tương tác giữa não và ruột. Ruột của người IBS nhạy cảm hơn bình thường — hơi trong ruột bị cảm nhận là đau. Một số thực phẩm lên men nhanh (FODMAP) tạo nhiều hơi, gây chướng bụng và đau. Stress làm tăng co thắt ruột — đây là lý do IBS hay nặng hơn khi căng thẳng.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực phẩm theo từng type IBS</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="card">
+      <h4 style="margin-top:0;">🟤 IBS táo bón</h4>
+      <ul><li>Tăng chất xơ hòa tan: yến mạch, khoai lang, đu đủ, chuối chín</li>
+      <li>Uống 2 lít nước/ngày</li>
+      <li>Tập thể dục, massage bụng</li>
+      <li>Hạn chế chất xơ không tan: cám lúa mì, rau sống</li></ul>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0;">🟢 IBS tiêu chảy</h4>
+      <ul><li>Tinh bột dễ tiêu: cơm trắng, khoai tây, bánh mì không lúa mì</li>
+      <li>Hạn chế sữa (thử sữa không lactose)</li>
+      <li>Tránh cafein, rượu, đồ cay, trái cây nhiều xơ</li>
+      <li>Ăn chuối chín, bánh mì nướng — dễ hấp thu</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 FODMAP — nên và không nên</h2>
+  <table class="table"><thead><tr><th>Nhóm</th><th>✅ Ăn được (FODMAP thấp)</th><th>❌ Tránh (FODMAP cao)</th></tr></thead><tbody>
+    <tr><td>Rau</td><td>Cà rốt, bí đỏ, khoai tây, bắp cải, rau muống, cải thìa</td><td>Tỏi, hành tây, bông cải xanh, măng tây, nấm</td></tr>
+    <tr><td>Trái cây</td><td>Chuối, cam, thanh long, dưa hấu, dâu tây, kiwi</td><td>Xoài, táo, lê, vải, nhãn, sầu riêng, mít</td></tr>
+    <tr><td>Đạm</td><td>Thịt, cá, trứng, đậu phụ</td><td>Đậu xanh, đậu lăng, đậu nành (lượng lớn)</td></tr>
+    <tr><td>Sữa</td><td>Sữa không lactose, sữa hạt, phô mai cứng</td><td>Sữa tươi, sữa chua (lactose cao)</td></tr>
+    <tr><td>Ngũ cốc</td><td>Cơm trắng, yến mạch, bánh mì không lúa mì</td><td>Bánh mì lúa mì, mì sợi, bánh quy</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;font-size:0.82rem;">💡 Low-FODMAP là chế độ tạm thời (2–6 tuần) để tìm ra thực phẩm kích hoạt IBS, không phải ăn suốt đời.</p>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul><li>Nhật ký ăn uống + triệu chứng — tìm ra thực phẩm kích hoạt.</li><li>Ăn chậm, nhai kỹ, không ăn vội.</li><li>Uống trà bạc hà, gừng — giảm đầy hơi.</li><li>Quản lý stress: thiền, yoga, đi bộ.</li></ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul><li>Chảy máu tiêu hóa (phân đen, máu đỏ).</li><li>Sụt cân không rõ nguyên nhân.</li><li>Sốt, đau bụng dữ dội.</li><li>Tiêu chảy về đêm (IBS không gây tiêu chảy ban đêm).</li><li>Khởi phát &gt;50 tuổi.</li></ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

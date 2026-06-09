@@ -1,0 +1,441 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Hỏi nhanh – đáp gọn về dinh dưỡng bệnh lý";
+const desc = "Câu trả lời ngắn, trực diện cho các thắc mắc thường gặp: tiểu đường ăn cơm được không? Gout ăn đậu hũ được không? Mỡ máu có ăn trứng không?";
+---
+
+<BaseLayout title={title} description={desc} canonical="/hoi-dap">
+  <main class="content-page">
+    <div class="page-header">
+      <h1>❓ Hỏi nhanh – đáp gọn</h1>
+      <p class="page-desc">{desc}</p>
+      <div style="margin-top:12px;">
+        <input id="faq-search" type="text" placeholder="Tìm câu hỏi..." style="padding:10px 16px;border:1px solid var(--line);border-radius:var(--radius);width:100%;max-width:400px;background:var(--card);color:inherit;">
+      </div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item" data-q="tiểu đường cơm">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🩸</span>
+          <span><strong>Tiểu đường</strong> có được ăn cơm không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Có, nhưng cần kiểm soát lượng và cách ăn.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Cơm là nguồn tinh bột chính của người Việt. Người tiểu đường <em>không cần bỏ cơm hoàn toàn</em>. Vấn đề là <strong>bao nhiêu</strong> và <strong>ăn cùng gì</strong>.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Mỗi bữa: <strong>1/2-1 chén cơm</strong> (tùy thể trạng nam/nữ)</li>
+            <li>Ăn theo thứ tự: <strong>rau trước → đạm → cơm cuối</strong> — đường huyết tăng chậm hơn</li>
+            <li>Kết hợp rau xanh và đạm (thịt/cá/đậu) trong cùng bữa</li>
+            <li>Có thể thay 50% gạo trắng bằng <strong>gạo lứt</strong></li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đường huyết sau ăn vẫn > 10 mmol/L dù đã giảm cơm, hoặc khi đang dùng insulin.</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-tieu-duong-bo-com" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="gout đậu hũ">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🦶</span>
+          <span><strong>Gout</strong> có được ăn đậu hũ không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Thường vẫn được, không nên kiêng cực đoan.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Đậu hũ từng bị cho là nhiều purin, nhưng nghiên cứu mới cho thấy <strong>đạm thực vật ít gây tăng acid uric hơn đạm động vật</strong>. Đậu hũ còn cung cấp đạm tốt cho người gout.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Ăn <strong>100-150g đậu hũ/ngày</strong> (1-2 miếng) là an toàn</li>
+            <li>Tránh ăn kèm nội tạng, nước hầm xương, hải sản</li>
+            <li>Hạn chế <strong>đậu nành lên men</strong> (chao) — purin cao hơn</li>
+            <li><strong>Thực phẩm cần kiêng thật sự:</strong> nội tạng, hải sản có vỏ, thịt đỏ, rượu bia, nước ngọt</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đau gout cấp > 3 lần/năm, hoặc acid uric > 480 µmol/L dù đã kiêng ăn.</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-gout-chi-do-thit" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="mỡ máu trứng">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🧪</span>
+          <span><strong>Mỡ máu cao</strong> có ăn trứng được không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Phần lớn vẫn ăn được, mức hợp lý.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Trứng có cholesterol, nhưng cholesterol trong thức ăn <strong>ít ảnh hưởng đến mỡ máu</strong> hơn chất béo bão hòa. Hội Tim mạch cho phép 1-2 quả/ngày.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Người mỡ máu bình thường: <strong>1 quả/ngày</strong></li>
+            <li>Người mỡ máu cao kèm tiểu đường/tim mạch: <strong>4-6 quả/tuần</strong></li>
+            <li>Cách chế biến tốt: <strong>luộc, hấp</strong> — tránh chiên dầu</li>
+            <li><strong>Quan trọng hơn:</strong> giảm mỡ bão hòa (thịt mỡ, đồ chiên) và tăng chất xơ (rau, yến mạch) mới là then chốt</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu LDL > 4.1 mmol/L hoặc có bệnh tim mạch kèm theo.</p>
+          <a href="/kien-thuc-dinh-duong/trung-thuc-pham" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="tăng huyết áp muối">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🫗</span>
+          <span><strong>Tăng huyết áp</strong> có phải bỏ muối hoàn toàn không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>❌ Không, cần giảm muối đúng cách.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Người Việt trung bình ăn <strong>9-12g muối/ngày</strong> (gấp đôi khuyến nghị tối đa 5g). Bỏ hẳn muối đột ngột làm món ăn nhạt nhẽo, khó duy trì lâu dài.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Giảm từ từ: <strong>9g → 7g → 5g</strong> trong 4-6 tuần</li>
+            <li>Pha loãng nước mắm: <strong>1 mắm + 3-4 nước + chanh/ớt</strong></li>
+            <li>Hạn chế đồ kho, rim, nước chấm đậm — mặn đậm đặc</li>
+            <li>Dùng gia vị thay muối: tỏi, hành, ớt, tiêu, chanh, sả, gừng, thì là</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu huyết áp > 160/100 dù đã giảm muối, hoặc đang dùng từ 2 thuốc huyết áp trở lên.</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-an-nhat" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="dạ dày chua">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">😣</span>
+          <span><strong>Đau dạ dày</strong> có cần kiêng chua hoàn toàn không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>⚠️ Tùy người, không nên kiêng máy móc.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Một số người có thể ăn chanh, cà chua mà không đau; số khác thì không. Vấn đề thường là <strong>ăn lúc đói hoặc ăn quá nhiều</strong> cùng lúc, chứ không phải riêng độ chua.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Nếu thấy đau sau ăn chua → hạn chế loại đó</li>
+            <li>Không ăn chua <strong>lúc đói</strong> — chỉ ăn sau khi đã có thức ăn</li>
+            <li>Tránh <strong>đồ chiên rán, cay nóng, rượu bia</strong> — tác hại hơn nhiều</li>
+            <li>Không nằm ít nhất 2 giờ sau ăn</li>
+            <li>Chia nhỏ bữa: 5-6 bữa/ngày thay vì 3 bữa to</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đau kéo dài > 2 tuần, sụt cân không rõ nguyên nhân, hoặc đi ngoài phân đen.</p>
+          <a href="/kien-thuc-dinh-duong/thuc-don-da-day" class="faq-link">Xem thực đơn cho dạ dày →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="gan nhiễm mỡ mỡ">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🫁</span>
+          <span><strong>Gan nhiễm mỡ</strong> có phải do ăn mỡ không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>❌ Không chỉ do mỡ — chủ yếu do đường, tinh bột và rượu.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Gan nhiễm mỡ xảy ra khi mỡ tích tụ trong gan > 5%. Cơ chế chính: <strong>đường và tinh bột dư thừa</strong> được gan chuyển hóa thành mỡ — nhiều hơn lượng mỡ từ thực phẩm.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Giảm: nước ngọt, cơm trắng (bớt 1/3), bánh mì trắng, bún phở</li>
+            <li>Thay: gạo lứt, khoai lang, yến mạch, bánh mì nguyên cám</li>
+            <li>Tăng: rau xanh, cá béo, dầu olive, hạt, đậu phụ</li>
+            <li>Tập thể dục: 30 phút/ngày — đi bộ nhanh, đạp xe, bơi</li>
+            <li>Người <strong>gầy</strong> vẫn bị gan nhiễm mỡ nếu uống rượu, ăn nhiều đường, ngồi nhiều</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu men gan ALT/AST cao > 2 lần, hoặc có siêu âm gan nhiễm mỡ độ 2-3.</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-gan-nhiem-mo-an-mo" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="suy thận đạm">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🫘</span>
+          <span><strong>Suy thận</strong> có phải kiêng đạm hoàn toàn không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>❌ Không, cần điều chỉnh theo giai đoạn bệnh.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Suy thận kiêng đạm quá mức → <strong>suy dinh dưỡng, teo cơ, tử vong cao hơn</strong>. Mức đạm phụ thuộc vào <strong>giai đoạn suy thận</strong>.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li><strong>Giai đoạn 1-2:</strong> 0.8-1.0g/kg/ngày (ăn bình thường)</li>
+            <li><strong>Giai đoạn 3:</strong> 0.6-0.8g/kg/ngày (giảm nhẹ)</li>
+            <li><strong>Giai đoạn 4-5 (chưa lọc máu):</strong> 0.4-0.6g/kg/ngày (giảm nhiều)</li>
+            <li><strong>Đang lọc máu:</strong> 1.0-1.2g/kg/ngày (cần bù qua lọc)</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Không tự kiêng đạm, kali, phospho nếu chưa biết giai đoạn bệnh và xét nghiệm gần nhất. Luôn hỏi bác sĩ thận hoặc chuyên gia dinh dưỡng trước khi thay đổi.</p>
+          <a href="/kien-thuc-dinh-duong/soi-than-dinh-duong" class="faq-link">Xem bài viết về thận →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="sữa hạt sữa bò">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🥛</span>
+          <span><strong>Sữa hạt</strong> có thay thế được sữa bò không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>❌ Không hoàn toàn — sữa hạt ít đạm hơn nhiều.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Nhiều người nghĩ sữa hạt "lành" hơn, nhưng hàm lượng đạm chỉ bằng 1/3 đến 1/7 sữa bò: sữa bò 3-3.5g đạm/100ml, sữa hạt điều 0.5-1g, sữa gạo 0.3-0.5g.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Sữa hạt phù hợp cho người <strong>không dung nạp lactose</strong> hoặc ăn chay</li>
+            <li>Không thay sữa bò hoàn toàn cho trẻ em, người già, người bệnh cần nhiều đạm</li>
+            <li>Chọn loại <strong>có bổ sung canxi, vitamin D, B12</strong></li>
+            <li>Sữa đậu nành có bổ sung canxi là lựa chọn thay thế tốt nhất (đạm ~3-4g/100ml)</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đầy hơi, tiêu chảy sau uống sữa bò → có thể không dung nạp lactose, cần đổi sang sữa không lactose.</p>
+          <a href="/kien-thuc-dinh-duong/sua-ai-nen-uong" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="nước hầm xương canxi">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🦴</span>
+          <span><strong>Nước hầm xương</strong> có thật sự bổ xương không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>❌ Không — nước hầm xương rất ít canxi.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Canxi trong xương tồn tại dạng hydroxyapatite — <strong>không tan vào nước</strong> dù hầm bao lâu. Nước hầm xương chủ yếu có chất béo và collagen (gelatin) tạo vị ngon.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Nước hầm xương: <strong>5-10mg canxi/bát</strong> — rất ít</li>
+            <li>Sữa: <strong>120mg canxi/100ml</strong></li>
+            <li>Đậu hũ (có thạch cao): <strong>130-200mg canxi/miếng</strong></li>
+            <li>Cá nhỏ ăn xương, tôm ăn vỏ, rau xanh đậm: nguồn canxi tốt</li>
+            <li>Cần <strong>vitamin D</strong> (nắng sáng, cá béo, trứng) để hấp thu canxi</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đã loãng xương, nên kiểm tra vitamin D máu và hỏi về liều bổ sung.</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-loang-xuong-chi-canxi" class="faq-link">Xem bài chi tiết →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="trà sữa nước ngọt đường">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🧋</span>
+          <span><strong>Trà sữa, nước ngọt</strong> — một ly chứa bao nhiêu đường?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Nhiều hơn bạn nghĩ — 30-60g đường/ly.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> WHO khuyến nghị tối đa <strong>25g đường/ngày</strong>. Một ly nước ngọt hoặc trà sữa thường chứa 30-60g — đã vượt quá giới hạn.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Trà sữa trân châu (500ml): <strong>~40-55g đường</strong></li>
+            <li>Coca-cola (1 lon 330ml): <strong>~39g</strong></li>
+            <li>Trà đào (500ml): <strong>~35-50g</strong></li>
+            <li>Nước cam ép hộp (330ml): <strong>~27g</strong></li>
+            <li><strong>Mẹo:</strong> Gọi ít đường (30% hoặc không), uống 1/2 ly, tần suất 1-2 lần/tuần</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu bạn bị tiểu đường hoặc tiền tiểu đường — tốt nhất nên tránh hoàn toàn nước ngọt, trà sữa.</p>
+          <a href="/cong-cu/duong-do-uong" class="faq-link">Xem công cụ tra đường đồ uống →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="tieu duong chuoi com">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🍌</span>
+          <span><strong>Tiểu đường</strong> có ăn chuối được không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Có, chuối chưa chín hẳn thì tốt hơn chuối chín quá.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Chuối chín càng kỹ thì tinh bột chuyển hóa thành đường càng nhiều. Chuối xanh hơn có nhiều tinh bột kháng — GI thấp hơn.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Chuối chín tới (lốm đốm nâu): ăn 1/2-1 quả/bữa phụ</li>
+            <li>Chuối xanh hơn: ăn được 1 quả</li>
+            <li>Không ăn chuối chín mềm khi đường huyết đói >8 mmol/L</li>
+            <li>Thay 1 bữa cơm bằng 1 quả chuối + 1 hũ sữa chua không đường</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đường huyết tăng >10 mmol/L sau ăn chuối — chọn trái cây GI thấp hơn (ổi, thanh long, bưởi, táo).</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-trai-cay-nhieu-tot" class="faq-link">Xem bài trái cây cho người tiểu đường →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="huyet ap muoi huyet-ap">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🧂</span>
+          <span><strong>Tăng huyết áp</strong> có phải bỏ muối hoàn toàn không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Không, chỉ giảm. Cơ thể vẫn cần một ít muối để hoạt động.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Muối (natri) cần cho dẫn truyền thần kinh và co cơ. Người Việt trung bình ăn 9-12g muối/ngày. Mục tiêu là giảm xuống dưới 5g, lý tưởng 2g cho người tăng huyết áp.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Pha loãng nước mắm 1:4 (1 mắm + 4 nước)</li>
+            <li>Dùng gia vị thơm (hành, tỏi, gừng, sả, ớt, tiêu) thay muối</li>
+            <li>Chấm nhẹ — không chan nước mắm lên cơm</li>
+            <li>Cắt giảm từ từ: tuần 1 giảm 1/3, tuần 3 giảm 1/2. Sau 4-6 tuần vị giác quen dần</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu có suy tim hoặc suy thận kèm — cần hướng dẫn cụ thể từ bác sĩ về lượng muối.</p>
+          <a href="/kien-thuc-dinh-duong/giam-muoi-mon-ngon" class="faq-link">Xem bài cách giảm muối mà món vẫn ngon →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="mo-mau trung mo-mau">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🥚</span>
+          <span><strong>Mỡ máu</strong> có ăn trứng được không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Có, 3-4 quả/tuần là vừa.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Cholesterol từ trứng ít ảnh hưởng đến mỡ máu hơn chất béo bão hòa và đường. Trứng giàu đạm, vitamin D, B12, choline — rất tốt nếu ăn vừa phải.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Người mỡ máu cao: 3-4 quả trứng/tuần (kể cả lòng đỏ)</li>
+            <li>Ưu tiên luộc, hấp — hạn chế chiên dầu</li>
+            <li>Kết hợp với rau xanh, không ăn kèm thịt xông khói, xúc xích</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đã bị nhồi máu cơ tim hoặc tiểu đường nặng kèm mỡ máu — hỏi bác sĩ về lượng trứng phù hợp.</p>
+          <a href="/kien-thuc-dinh-duong/trung-thuc-pham" class="faq-link">Xem bài chi tiết về trứng →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="da-day cafe da-day">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">☕</span>
+          <span><strong>Đau dạ dày</strong> có uống cà phê được không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>⚠️ Nên hạn chế — đặc biệt khi đói.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Caffeine kích thích tiết acid dạ dày, làm nặng thêm đau và trào ngược.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Uống sau ăn no (không khi đói), tối đa 1 ly/ngày</li>
+            <li>Chọn cà phê ít acid (cold brew, cà phê rang nhạt)</li>
+            <li>Có thể thêm 1 ít sữa để giảm kích thích</li>
+            <li>Tốt nhất: chuyển sang trà thảo mộc (gừng, hoa cúc, cam thảo)</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu đau kèm ợ nóng, ợ chua nhiều — ngừng cà phê 2 tuần xem có cải thiện không. Nếu đau dai dẳng, sụt cân — nội soi dạ dày.</p>
+          <a href="/kien-thuc-dinh-duong/o-nong-nong-rat-nguc" class="faq-link">Xem bài dạ dày và ợ nóng →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="than trai-cay than">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🍎</span>
+          <span><strong>Suy thận</strong> có ăn trái cây được không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>⚠️ Có, nhưng chọn loại. Trái cây giàu kali cần hạn chế nếu kali máu cao.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Suy thận giảm khả năng đào thải kali. Nếu kali máu cao (>5.5 mmol/L), trái cây giàu kali có thể gây rối loạn nhịp tim.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Nếu kali bình thường: ổi, thanh long, táo, lê, dưa hấu — 1 phần/ngày</li>
+            <li>Nếu kali cao (>5.5): hạn chế chuối, cam, bưởi, sầu riêng, mít, đu đủ</li>
+            <li>KHÔNG tự kiêng — cần xét nghiệm máu trước</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Suy thận giai đoạn 3-5 (eGFR dưới 60) — xét nghiệm kali mỗi 1-3 tháng. Hỏi bác sĩ trước khi thay đổi chế độ ăn.</p>
+          <a href="/kien-thuc-dinh-duong/suy-than" class="faq-link">Xem bài suy thận →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="gan-nhiem-mo thuoc-bo-gan gan">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">💊</span>
+          <span><strong>Gan nhiễm mỡ</strong> có cần uống thuốc bổ gan không?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>⚠️ Không. Thuốc bổ gan không chữa được gan nhiễm mỡ. Điều trị chính là giảm đường và giảm cân.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Gan nhiễm mỡ do dư thừa năng lượng (đường, tinh bột) và ít vận động. "Thuốc bổ gan" chỉ hỗ trợ, không thay thế thay đổi lối sống.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Bỏ đường và nước ngọt hoàn toàn</li>
+            <li>Hạn chế tinh bột trắng (cơm, bánh mì, bún, phở — giảm 1/2)</li>
+            <li>Tập thể dục 30 phút/ngày (đi bộ nhanh, đạp xe, bơi)</li>
+            <li>Giảm 5-10% cân nặng — cải thiện đáng kể men gan</li>
+            <li>Cá béo (cá hồi, cá thu) 3 bữa/tuần</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu men gan tăng >2 lần dù đã thay đổi ăn uống 6 tháng, hoặc siêu âm gan nhiễm mỡ độ 2-3.</p>
+          <a href="/kien-thuc-dinh-duong/gan-nhiem-mo" class="faq-link">Xem bài gan nhiễm mỡ →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="nguoi-gia an-it bo-sung nguoi-gia">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">👴</span>
+          <span><strong>Người già ăn ít</strong> thì nên bổ sung gì?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Tăng mật độ đạm: thêm trứng, sữa, dầu, hạt vào mỗi bữa.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Người già thường ăn 1/2-2/3 nhu cầu đạm — dẫn đến teo cơ, yếu sức, dễ ngã.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Thêm trứng vào cháo: khuấy 1 quả trứng + thịt băm</li>
+            <li>Pha sữa bột đặc hơn bình thường</li>
+            <li>Rưới dầu olive/dầu mè lên cháo, canh, rau luộc</li>
+            <li>Rắc hạt xay (hạnh nhân, hạt bí, đậu phộng) lên thức ăn</li>
+            <li>Sữa dinh dưỡng giữa các bữa nếu ăn quá ít</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu sụt >3kg trong 3 tháng, hoặc khó nuốt, ho khi ăn.</p>
+          <a href="/kien-thuc-dinh-duong/them-dam-nguoi-gia" class="faq-link">Xem bài thêm đạm cho người già →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" data-q="thieu-mau bo-sung sat thieu-mau">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open');">
+          <span class="faq-icon">🩸</span>
+          <span><strong>Thiếu máu</strong> — Uống sắt hay ăn thực phẩm giàu sắt là đủ?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="answer"><strong>✅ Thiếu nhẹ: ăn thực phẩm giàu sắt + vitamin C là đủ. Thiếu nặng: cần uống sắt.</strong></p>
+          <p class="why">🔄 <strong>Vì sao?</strong> Sắt heme (thịt, cá) hấp thu 15-35%. Sắt non-heme (rau, đậu) hấp thu 2-20%. Vitamin C tăng hấp thu sắt non-heme gấp 3-6 lần.</p>
+          <p class="how">💡 <strong>Làm thế nào?</strong></p>
+          <ul>
+            <li>Thực phẩm giàu sắt: thịt bò, rau dền, rau ngót, đậu đỗ, mè đen, lòng đỏ trứng</li>
+            <li>Kết hợp vitamin C (ổi, cam, bông cải) trong cùng bữa</li>
+            <li>Tránh trà/cà phê ngay sau bữa ăn giàu sắt</li>
+            <li>Nếu uống sắt: uống khi đói + nước cam để tăng hấp thu</li>
+          </ul>
+          <p class="when">⚠️ <strong>Khi nào cần hỏi bác sĩ?</strong> Nếu Hb dưới 90 g/L, uống sắt 3 tháng không cải thiện, hoặc thiếu máu kèm sụt cân.</p>
+          <a href="/kien-thuc-dinh-duong/sai-lam-thieu-mau-uong-sat" class="faq-link">Xem bài thiếu máu →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .page-header { text-align:center; margin-bottom:24px; }
+    .page-desc { max-width:550px; margin:8px auto 0; color:var(--ink-secondary); font-size:0.9rem; }
+    .faq-list { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:6px; }
+    .faq-item { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+    .faq-q { display:flex; align-items:center; gap:10px; padding:14px 16px; cursor:pointer; user-select:none; transition:background 0.2s; }
+    .faq-q:hover { background:var(--bg-soft); }
+    .faq-q .faq-arrow { margin-left:auto; font-size:0.7rem; transition:transform 0.2s; }
+    .faq-q.open .faq-arrow { transform:rotate(180deg); }
+    .faq-icon { font-size:1.3rem; }
+    .faq-a { display:none; padding:0 16px 16px; border-top:1px solid var(--line); }
+    .faq-a.open { display:block; }
+    .faq-a p { margin:10px 0; font-size:0.9rem; line-height:1.6; }
+    .faq-a ul { margin:6px 0; padding-left:20px; }
+    .faq-a li { font-size:0.88rem; margin:4px 0; }
+    .faq-link { display:inline-block; margin-top:6px; color:var(--brand); font-size:0.85rem; font-weight:500; }
+    .answer { font-size:1.05rem; background:var(--brand-light); padding:8px 12px; border-radius:8px; color:var(--brand); }
+    .why { color:var(--ink-secondary); font-size:0.9rem; }
+    .how { font-weight:500; margin-top:12px !important; }
+    .when { margin-top:12px !important; padding:8px 12px; background:var(--bg-warning); border-radius:8px; font-size:0.9rem; color:var(--ink); }
+    @media(max-width:480px){ .faq-q { padding:12px; font-size:0.9rem; } }
+  </style>
+
+  <script>
+  (function(){
+    var inp = document.getElementById("faq-search");
+    if(inp) {
+      inp.addEventListener("input", function(){
+        var q = this.value.toLowerCase().trim();
+        document.querySelectorAll(".faq-item").forEach(function(item){
+          var dataQ = (item.getAttribute("data-q")||"").toLowerCase();
+          var text = item.textContent.toLowerCase();
+          var match = !q || dataQ.indexOf(q) >= 0 || text.indexOf(q) >= 0;
+          item.style.display = match ? "" : "none";
+        });
+      });
+    }
+  })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["noi-tang-dong-vat"];
+if (!art) throw new Error("Article not found: noi-tang-dong-vat");
+---
+
+<ArticleLayout article={art}>
+
+  <section class="section card">
+    <h2>🥩 Tóm tắt — Nội tạng động vật, bổ hay hại?</h2>
+    <p>Nội tạng (gan, tim, cật, dạ dày) giàu vitamin B12, sắt, kẽm, đồng và vitamin A — đặc biệt tốt cho người thiếu máu, suy nhược. Tuy nhiên, nội tạng cũng chứa nhiều cholesterol, purin và có thể tích trữ độc tố (đặc biệt là gan). Ăn với lượng vừa phải là chìa khóa.</p>
+  </section>
+
+  <section class="section card">
+    <h2>⚖️ Nguyên lý dinh dưỡng</h2>
+    <ul>
+      <li><strong>Gan:</strong> Giàu vitamin A (gấp 10-20 lần thịt), sắt dạng heme dễ hấp thu, B12, đồng. Nhưng cũng tích trữ kim loại nặng.</li>
+      <li><strong>Tim, cật:</strong> Giàu coenzyme Q10 (tim), sắt, kẽm. Ít độc tố hơn gan.</li>
+      <li><strong>Dạ dày, lòng:</strong> Chủ yếu là collagen, ít dinh dưỡng hơn. Cẩn thận vệ sinh an toàn thực phẩm.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Nên ăn như thế nào</h2>
+    <ul>
+      <li><strong>Liều khuyến nghị:</strong> 50-100g nội tạng/lần, 1-2 lần/tuần.</li>
+      <li><strong>Gan:</strong> Nên ngâm sữa hoặc nước muối loãng trước khi chế biến để giảm độc tố.</li>
+      <li><strong>Nguồn an toàn:</strong> Mua từ nguồn rõ ràng, có kiểm định thú y.</li>
+      <li><strong>Đối tượng nên ăn:</strong> Người thiếu máu, thiếu sắt, người suy nhược, trẻ em (lượng nhỏ).</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Ai cần hạn chế?</h2>
+    <ul>
+      <li><strong>Người gout, acid uric cao:</strong> Nội tạng giàu purin — hạn chế hoặc tránh.</li>
+      <li><strong>Người mỡ máu cao:</strong> Nội tạng chứa nhiều cholesterol (gan gà: 350mg/100g).</li>
+      <li><strong>Phụ nữ mang thai (3 tháng đầu):</strong> Quá nhiều vitamin A từ gan có thể gây dị tật thai nhi — hạn chế tối đa.</li>
+      <li><strong>Người bệnh thận:</strong> Hàm lượng phốt pho và kali cao.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <ul>
+      <li><strong>Ăn gan lợn có bổ máu không?</strong> Có — gan lợn chứa nhiều sắt dễ hấp thu, thích hợp cho người thiếu máu.</li>
+      <li><strong>Nội tạng có chứa chất độc không?</strong> Gan tích trữ độc tố, nhưng nếu ăn lượng vừa phải (1-2 lần/tuần) thì an toàn.</li>
+      <li><strong>Lòng non, lòng già khác nhau?</strong> Chủ yếu khác về kết cấu, dinh dưỡng tương đương — cần vệ sinh kỹ.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Nội tạng là thực phẩm giàu dinh dưỡng nhưng không dành cho tất cả mọi người. Ăn với lượng vừa phải (1-2 lần/tuần), chọn nguồn sạch, và đặc biệt lưu ý nếu bạn có bệnh gout, mỡ máu hoặc đang mang thai.</p>
+  </section>
+
+</ArticleLayout>

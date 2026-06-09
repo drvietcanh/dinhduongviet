@@ -1,0 +1,76 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-benh-gallbladder-mat"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Phát, 55 tuổi, thừa cân, hay ăn đồ chiên rán. Một tối sau bữa cơm nhiều thịt kho tàu, bác đau bụng dữ dội vùng hạ sườn phải, đau lan lên vai, buồn nôn. Đi cấp cứu bác sĩ bảo <strong>sỏi túi mật gây viêm</strong>. Sau đó bác phải cắt túi mật.</p>
+  <p>Túi mật chứa dịch mật do gan sản xuất, giúp tiêu hóa chất béo. Khi ăn quá nhiều chất béo, cholesterol kết tinh tạo sỏi. Đây là một trong những bệnh tiêu hóa phổ biến nhất ở người Việt trung niên.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người sỏi mật cần <u>ăn ít chất béo mỗi bữa</u>, <u>tăng chất xơ</u> (rau, trái cây, yến mạch), 
+    <u>duy trì cân nặng hợp lý</u>, <u>không nhịn ăn</u>. Sau cắt túi mật, cần <u>chia nhỏ bữa, giảm béo từ từ</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao sỏi mật hình thành?</h2>
+  <p>Mật được sản xuất ở gan, chứa cholesterol, bilirubin và muối mật. Khi cholesterol quá cao, muối mật quá thấp, hoặc túi mật co bóp yếu (do nhịn ăn kéo dài), cholesterol kết tinh thành sỏi. Cắt túi mật không ảnh hưởng sức khỏe cơ bản— mật vẫn được sản xuất ở gan và đi thẳng xuống ruột.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau xanh giàu chất xơ: bông cải, cải bó xôi, bắp cải</li>
+      <li>Trái cây: táo, lê, bưởi, dưa hấu, đu đủ</li>
+      <li>Ngũ cốc nguyên cám: gạo lứt, yến mạch, bánh mì nguyên cám</li>
+      <li>Đạm ít béo: ức gà, cá hấp, đậu phụ, trứng</li>
+      <li>Dầu thực vật: dầu oliu, dầu mè (lượng vừa)</li>
+      <li>Uống đủ nước 1.5–2 lít/ngày</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Đồ chiên rán, xào nhiều dầu mỡ</li>
+      <li>⛔ Thịt mỡ, da gà vịt, ba chỉ heo</li>
+      <li>⛔ Nội tạng (gan, lòng), lòng đỏ trứng nhiều</li>
+      <li>⛔ Sữa nguyên kem, phô mai béo, kem</li>
+      <li>⛔ Bánh ngọt nhiều bơ, socola</li>
+      <li>⛔ Nhịn ăn, bỏ bữa — làm mật cô đặc, dễ tạo sỏi</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Sau cắt túi mật</h2>
+  <table class="table"><thead><tr><th>Thời gian</th><th>Chế độ ăn</th></tr></thead><tbody>
+    <tr><td>1–2 tuần đầu</td><td>Lỏng, mềm: cháo, súp, nước hầm rau củ. TRÁNH chất béo hoàn toàn</td></tr>
+    <tr><td>3–4 tuần</td><td>Ăn thêm cơm mềm, thịt nạc hấp, cá hấp, rau luộc — chất béo rất ít</td></tr>
+    <tr><td>Tháng thứ 2+</td><td>Quen dần với chất béo: dầu thực vật 1–2 muỗng/ngày, ăn nhiều bữa nhỏ</td></tr>
+    <tr><td>Dài hạn</td><td>Chế độ ăn ít béo, nhiều xơ, nhiều bữa nhỏ. Phần lớn bệnh nhân ăn bình thường sau 6 tháng</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul><li>Giảm cân từ từ (0.5–1kg/tuần) — giảm nhanh làm tăng nguy cơ sỏi mật mới!</li><li>Không nhịn ăn sáng — túi mật co bóp mạnh nhất sau bữa sáng, giúp thải mật cũ.</li></ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul><li>Đau hạ sườn phải sau ăn béo.</li><li>Sốt, vàng da, vàng mắt.</li><li>Phân bạc màu, nước tiểu sẫm.</li></ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

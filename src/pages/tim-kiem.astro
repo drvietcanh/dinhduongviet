@@ -1,0 +1,529 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const siteTitle = "Tìm kiếm thực phẩm và món ăn Việt Nam | Dinh Dưỡng Việt";
+const siteDesc = "Tìm kiếm nhanh thực phẩm, món ăn Việt Nam theo tên, dinh dưỡng, hoặc danh mục.";
+const query = Astro.url.searchParams.get("q") ?? "";
+---
+
+<BaseLayout title={query ? `"${query}" - Tìm kiếm | Dinh Dưỡng Việt` : siteTitle} description={siteDesc}>
+  <div class="search-page">
+    <div class="search-hero">
+      <h1>🔍 Tìm kiếm</h1>
+      <div class="search-box">
+        <span class="search-icon">🔎</span>
+        <input type="search" id="searchInput" placeholder="Tìm thực phẩm, món ăn, bài viết, công cụ..." autocomplete="off" value={query} />
+        <button class="search-clear" id="searchClear" aria-label="Xóa">✕</button>
+        <div class="suggestions-dropdown" id="suggestionsDropdown"></div>
+      </div>
+      <div class="filter-row" id="filterRow">
+        <button class="chip active" data-filter="all">📋 Tất cả</button>
+        <button class="chip" data-filter="article">📖 Bài viết</button>
+        <button class="chip" data-filter="tool">🛠️ Công cụ</button>
+        <button class="chip" data-filter="food">🥬 Thực phẩm</button>
+        <button class="chip" data-filter="recipe">🍜 Món ăn</button>
+        <button class="chip" data-filter=">300">🔥 Nhiều calo</button>
+        <button class="chip" data-filter="<100">🥗 Ít calo</button>
+        <button class="chip" data-filter="protein>20">🥩 Giàu đạm</button>
+        <button class="chip" data-filter="fiber>5">🌾 Nhiều xơ</button>
+      </div>
+      <div class="result-count" id="resultCount"></div>
+    </div>
+    <div class="results" id="results"></div>
+  </div>
+
+  <script is:inline>
+  (() => {
+    const INDEX_URL = '/api/search-index.json';
+    const RECENT_KEY = 'dv_recent_searches';
+    let items = [];
+    let activeFilter = 'all';
+    let query = '';
+    let selectedIdx = -1;
+
+    const $input = document.getElementById('searchInput');
+    const $results = document.getElementById('results');
+    const $count = document.getElementById('resultCount');
+    const $clear = document.getElementById('searchClear');
+    const $suggestions = document.getElementById('suggestionsDropdown');
+
+    // Đơn giản hóa normalize: không bỏ hết dấu, chỉ normalize để search
+    function normalize(v) {
+      return String(v || '').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').trim();
+    }
+
+    // Fuzzy match: ký tự trong q phải xuất hiện theo đúng thứ tự trong text
+    function fuzzyMatch(text, q) {
+      if (!q) return true;
+      var ti = 0;
+      for (var qi = 0; qi < q.length; qi++) {
+        var found = false;
+        while (ti < text.length) {
+          if (text[ti] === q[qi]) { found = true; ti++; break; }
+          ti++;
+        }
+        if (!found) return false;
+      }
+      return true;
+    }
+
+    function matchesFilter(item) {
+      if (activeFilter === 'all') return true;
+      if (item.type === 'article') return activeFilter === 'all';
+      if (activeFilter === 'food') return item.type === 'food';
+      if (activeFilter === 'recipe') return item.type === 'recipe';
+      if (activeFilter === 'tool') return item.type === 'tool';
+      if (activeFilter.startsWith('>')) { var n = parseFloat(activeFilter.slice(1)); return item.kcal > n; }
+      if (activeFilter.startsWith('<')) { var n = parseFloat(activeFilter.slice(1)); return item.kcal > 0 && item.kcal < n; }
+      if (activeFilter.startsWith('protein>')) { var n = parseFloat(activeFilter.slice(8)); return item.protein > n; }
+      if (activeFilter.startsWith('fiber>')) { var n = parseFloat(activeFilter.slice(6)); return item.fiber > n; }
+      return true;
+    }
+
+    function highlight(text, q) {
+      if (!q) return text;
+      var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      return text.replace(re, '<em>$1</em>');
+    }
+
+    function getRecentSearches() {
+      try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); } catch(e) { return []; }
+    }
+    function addRecentSearch(q) {
+      if (!q) return;
+      var recents = getRecentSearches().filter(function(s) { return s !== q; });
+      recents.unshift(q);
+      if (recents.length > 8) recents = recents.slice(0, 8);
+      try { localStorage.setItem(RECENT_KEY, JSON.stringify(recents)); } catch(e) {}
+    }
+
+    function getCategoryEmoji(cat) {
+      var emojis = {
+        'Thịt':'🥩','Cá':'🐟','Hải sản':'🦐','Trứng sữa':'🥚','Đậu':'🫘','Hạt':'🥜',
+        'Rau xanh':'🥬','Củ quả':'🥕','Nấm':'🍄','Rau gia vị':'🌿','Tinh bột':'🍚',
+        'Trái cây':'🍎','Dầu mỡ':'🫒','Gia vị':'🧂','Thịt chế biến':'🥓','Bánh kẹo':'🍪',
+        'Nước dùng':'🥣','Đồ uống':'🧋','Món ăn':'🍽️','Bài viết':'📖'
+      };
+      return emojis[cat] || '📦';
+    }
+
+    function articleSlugToUrl(slug) {
+      // Determine URL based on slug pattern
+      if (slug.startsWith('dung-tin-ngay-')) return '/dung-tin-ngay/' + slug;
+      if (slug === '10-hieu-lam-dinh-duong-nguoi-benh') return '/kien-thuc-dinh-duong/' + slug;
+      if (slug.startsWith('canh-bao-hieu-lam-')) return '/kien-thuc-dinh-duong/' + slug;
+      return '/kien-thuc-dinh-duong/' + slug;
+    }
+
+    function renderSuggestions(q) {
+      if (q.length < 1) { $suggestions.classList.remove('show'); return; }
+      var qn = normalize(q);
+      var recents = getRecentSearches();
+      var html = '';
+
+      // Show recent searches when input is empty
+      if (q.length === 0) {
+        if (recents.length > 0) {
+          html = '<div class="sug-group"><div class="sug-label">🕐 Gần đây</div>';
+          recents.forEach(function(s) { html += '<div class="sug-item" data-q="' + s + '">🔍 ' + s + '</div>'; });
+          html += '</div>';
+        }
+        $suggestions.innerHTML = html;
+        $suggestions.classList.toggle('show', html !== '');
+        return;
+      }
+
+      if (items.length === 0) { $suggestions.classList.remove('show'); return; }
+
+      var top = items.filter(function(item) {
+        var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
+        return searchText.indexOf(qn) !== -1;
+      }).slice(0, 6);
+
+      // Fuzzy suggestions if no exact match
+      if (top.length < 3) {
+        var extra = items.filter(function(item) {
+          var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + (item.description || ''));
+          return fuzzyMatch(searchText, qn);
+        }).slice(0, 6);
+        // Merge dedup
+        extra.forEach(function(e) { if (!top.some(function(t) { return t.slug === e.slug; })) top.push(e); });
+        top = top.slice(0, 6);
+      }
+
+      if (top.length > 0) {
+        html = '<div class="sug-group"><div class="sug-label">🔍 Gợi ý nhanh</div>';
+        top.forEach(function(item) {
+          var url, tag, emoji;
+          if (item.type === 'article') {
+            url = articleSlugToUrl(item.slug);
+            tag = 'Bài viết';
+            emoji = '📖';
+          } else {
+            url = item.type === 'food' ? '/thuc-pham/' : '/mon-an/';
+            tag = item.type === 'food' ? item.category : 'Món ăn';
+            emoji = item.type === 'food' ? getCategoryEmoji(item.category) : '🍽️';
+          }
+          html += '<a class="sug-item" href="' + url + item.slug + '">' + emoji + ' <strong>' + item.name + '</strong> <span class="sug-tag">' + tag + '</span></a>';
+        });
+        html += '</div>';
+      }
+
+      $suggestions.innerHTML = html;
+      $suggestions.classList.toggle('show', html !== '');
+    }
+
+    function render() {
+      var q = normalize($input.value);
+      query = $input.value.trim();
+
+      // Hide suggestions on render
+      $suggestions.classList.remove('show');
+
+      // Update URL
+      var params = new URLSearchParams(window.location.search);
+      if (query) params.set('q', query); else params.delete('q');
+      window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
+
+      var matches = items.filter(function(item) {
+        var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
+        var textMatch = !q || searchText.indexOf(q) !== -1;
+        return textMatch && matchesFilter(item);
+      });
+
+      // Sort
+      if (q) {
+        matches.sort(function(a, b) {
+          var aStarts = normalize(a.name).startsWith(q) ? 0 : 1;
+          var bStarts = normalize(b.name).startsWith(q) ? 0 : 1;
+          if (aStarts !== bStarts) return aStarts - bStarts;
+          // Articles first for disease/topic queries
+          if (a.type === 'article' && b.type !== 'article') return -1;
+          if (b.type === 'article' && a.type !== 'article') return 1;
+          return a.name.localeCompare(b.name, 'vi');
+        });
+      } else {
+        matches.sort(function(a, b) {
+          if (a.type === 'article' && b.type !== 'article') return -1;
+          if (b.type === 'article' && a.type !== 'article') return 1;
+          return a.name.localeCompare(b.name, 'vi');
+        });
+      }
+
+      var total = matches.length;
+      var show = matches.slice(0, 60);
+
+      $count.textContent = total + ' kết quả' + (query ? ' cho "' + query + '"' : '') + (show.length < total ? ' (hiện ' + show.length + ')' : '');
+
+      if (show.length === 0) {
+        // Try fuzzy fallback
+        if (q && q.length > 1) {
+          var fuzzy = items.filter(function(item) {
+            var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
+            return fuzzyMatch(searchText, q);
+          }).slice(0, 24);
+          if (fuzzy.length > 0) {
+            $results.innerHTML = '<div class="fuzzy-hint">😕 Không tìm thấy chính xác. Hiển thị kết quả gần đúng:</div>' +
+              renderItems(fuzzy) + '</div>';
+            return;
+          }
+        }
+        $results.innerHTML = renderEmpty();
+        return;
+      }
+
+      $results.innerHTML = renderItems(show);
+
+      if (query && query.length > 1) {
+        addRecentSearch(query);
+      }
+    }
+
+    function renderItems(list) {
+      return list.map(function(item) {
+        if (item.type === 'article') {
+          var url = articleSlugToUrl(item.slug);
+          var nameHtml = highlight(item.name, query);
+          var descHtml = item.description ? '<span class="result-meta">' + highlight(item.description.slice(0, 100), query) + '</span>' : '';
+          return '<a class="result-item" href="' + url + '">' +
+            '<span class="result-emoji">📖</span>' +
+            '<span class="result-info">' +
+            '<span class="result-name">' + nameHtml + '</span>' +
+            descHtml +
+            '</span>' +
+            '<span class="badge badge-article">Bài viết</span>' +
+            '</a>';
+        }
+        if (item.type === 'tool') {
+          var url = '/cong-cu/' + item.slug;
+          var nameHtml = highlight(item.name, query);
+          var descHtml = item.description ? '<span class="result-meta">' + highlight(item.description, query) + '</span>' : '';
+          return '<a class="result-item" href="' + url + '">' +
+            '<span class="result-emoji">🛠️</span>' +
+            '<span class="result-info">' +
+            '<span class="result-name">' + nameHtml + '</span>' +
+            descHtml +
+            '</span>' +
+            '<span class="badge badge-tool">Công cụ</span>' +
+            '</a>';
+        }
+        var emoji = item.type === 'food' ? getCategoryEmoji(item.category) : '🍽️';
+        var badgeCls = item.type === 'food' ? 'badge-food' : 'badge-recipe';
+        var badgeText = item.type === 'food' ? item.category : 'Món ăn';
+        var url = item.type === 'food' ? '/thuc-pham/' + item.slug : '/mon-an/' + item.slug;
+        var nameHtml = highlight(item.name, query);
+
+        var meta = '';
+        if (item.kcal) meta += '🔥' + Math.round(item.kcal) + ' kcal';
+        if (item.protein && item.protein > 0) meta += (meta ? ' · ' : '') + '🥩' + item.protein.toFixed(1) + 'g đạm';
+        if (item.fiber && item.fiber > 3) meta += (meta ? ' · ' : '') + '🌾' + item.fiber.toFixed(1) + 'g xơ';
+
+        return '<a class="result-item" href="' + url + '">' +
+          '<span class="result-emoji">' + emoji + '</span>' +
+          '<span class="result-info">' +
+          '<span class="result-name">' + nameHtml + '</span>' +
+          (meta ? '<span class="result-meta">' + meta + '</span>' : '') +
+          '</span>' +
+          '<span class="badge ' + badgeCls + '">' + badgeText + '</span>' +
+          '</a>';
+      }).join('');
+    }
+
+    function renderEmpty() {
+      var recent = getRecentSearches();
+      var html = '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-title">Không tìm thấy kết quả</div>';
+      if (query) html += '<div class="empty-sub">Thử gõ từ khóa khác hoặc bỏ bộ lọc</div>';
+
+      // Show category links
+      var cats = ['Tinh bột','Thịt','Cá','Hải sản','Rau xanh','Củ quả','Trái cây','Đậu','Nấm'];
+      html += '<div class="empty-cats"><div class="empty-cats-label">Hoặc duyệt theo danh mục:</div>';
+      cats.forEach(function(c) {
+        html += '<a class="chip" href="/thuc-pham#' + encodeURIComponent(c) + '">' + getCategoryEmoji(c) + ' ' + c + '</a>';
+      });
+      html += '</div>';
+
+      if (recent.length > 0) {
+        html += '<div class="empty-recent"><div class="empty-cats-label">🕐 Tìm kiếm gần đây:</div>';
+        recent.forEach(function(s) {
+          html += '<button class="chip" onclick="document.getElementById(\'searchInput\').value=\'' + s.replace(/'/g,"\\'") + '\';document.getElementById(\'searchInput\').dispatchEvent(new Event(\'input\'))">' + s + '</button>';
+        });
+        html += '</div>';
+      }
+
+      html += '</div>';
+      return html;
+    }
+
+    // Lazy load search index — fetch only when user focuses the input or page is idle
+    var searchDataLoaded = false;
+    function loadSearchData() {
+      if (searchDataLoaded) return Promise.resolve();
+      searchDataLoaded = true;
+      return fetch(INDEX_URL).then(function(r) { return r.json(); }).then(function(data) {
+        items = data;
+        // Check URL for initial query
+        var urlParams = new URLSearchParams(window.location.search);
+        var urlQ = urlParams.get('q');
+        if (urlQ) {
+          $input.value = urlQ;
+        }
+        render();
+        setTimeout(function() { renderSuggestions($input.value); }, 200);
+      }).catch(function(err) {
+        $results.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">Lỗi tải dữ liệu</div><div class="empty-sub">Vui lòng thử lại sau.</div></div>';
+      });
+    }
+
+    // Load immediately if there's a query in URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var urlQ = urlParams.get('q');
+    if (urlQ) {
+      loadSearchData();
+    } else {
+      // Lazy: load on first focus/click of input, or when page is idle
+      var loadOnInteraction = function() {
+        loadSearchData();
+        $input.removeEventListener('focus', loadOnInteraction);
+        $input.removeEventListener('click', loadOnInteraction);
+      };
+      $input.addEventListener('focus', loadOnInteraction);
+      $input.addEventListener('click', loadOnInteraction);
+      // Also defer to requestIdleCallback or setTimeout as fallback
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { loadSearchData(); }, { timeout: 3000 });
+      } else {
+        setTimeout(loadSearchData, 2000);
+      }
+    }
+
+    // Input handler with suggestions
+    var debounceTimer;
+    $input.addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      $clear.style.display = this.value ? 'block' : 'none';
+      renderSuggestions(this.value);
+      debounceTimer = setTimeout(function() { render(); }, 120);
+    });
+
+    // Focus: show suggestions
+    $input.addEventListener('focus', function() {
+      if (this.value) renderSuggestions(this.value);
+    });
+
+    // Click outside: close suggestions
+    document.addEventListener('click', function(e) {
+      if (!$input.contains(e.target) && !$suggestions.contains(e.target)) {
+        $suggestions.classList.remove('show');
+      }
+    });
+
+    // Clear button
+    $clear.addEventListener('click', function() {
+      $input.value = '';
+      $input.focus();
+      $clear.style.display = 'none';
+      $suggestions.classList.remove('show');
+      render();
+    });
+
+    // Filter chips
+    document.querySelectorAll('.chip[data-filter]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.chip[data-filter]').forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        activeFilter = this.dataset.filter;
+        render();
+      });
+    });
+
+    // Keyboard navigation
+    $input.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { $suggestions.classList.remove('show'); return; }
+      var items = $suggestions.querySelectorAll('.sug-item');
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIdx = Math.min(selectedIdx + 1, items.length - 1);
+        items.forEach(function(el, i) { el.classList.toggle('focused', i === selectedIdx); });
+        if (items[selectedIdx]) items[selectedIdx].scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIdx = Math.max(selectedIdx - 1, -1);
+        items.forEach(function(el, i) { el.classList.toggle('focused', i === selectedIdx); });
+        if (selectedIdx >= 0 && items[selectedIdx]) items[selectedIdx].scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter' && selectedIdx >= 0 && items[selectedIdx]) {
+        e.preventDefault();
+        var a = items[selectedIdx].tagName === 'A' ? items[selectedIdx] : items[selectedIdx].querySelector('a');
+        if (a) { window.location.href = a.href; }
+        else {
+          var q = items[selectedIdx].dataset.q;
+          if (q) { $input.value = q; $suggestions.classList.remove('show'); render(); }
+        }
+      } else {
+        selectedIdx = -1;
+      }
+    });
+
+    // Focus if there's a value
+    if ($input.value) {
+      $input.select();
+      $clear.style.display = 'block';
+    }
+  })();
+  </script>
+
+<style is:global>
+.search-page { max-width: 800px; margin: 0 auto; }
+.search-hero { text-align: center; margin-bottom: 20px; }
+.search-hero h1 { font-size: 1.5rem; margin-bottom: 14px; }
+.search-box { position: relative; max-width: 600px; margin: 0 auto; }
+.search-box input {
+  width: 100%; padding: 14px 44px 14px 46px; border: 2px solid var(--line);
+  border-radius: 14px; font-size: 1.05rem; background: var(--card);
+  transition: all 0.15s; box-sizing:border-box; color:var(--ink);
+}
+.search-box input:focus { border-color: var(--brand); box-shadow: 0 0 0 4px var(--brand-light); outline: none; }
+.search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; pointer-events: none; }
+.search-clear {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--brand-light);
+  cursor: pointer; font-size: 0.85rem; display: none; color: var(--ink-tertiary);
+  line-height: 28px; text-align: center; transition: all 0.1s;
+}
+.search-clear:hover { background: var(--line); color: var(--ink); }
+
+/* Suggestions dropdown */
+.suggestions-dropdown {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  max-height: 360px; overflow-y: auto; z-index: 100;
+  display: none; text-align: left;
+}
+.suggestions-dropdown.show { display: block; }
+.sug-group { padding: 8px; }
+.sug-label { font-size: 0.78rem; color: var(--ink-tertiary); padding: 4px 8px; font-weight: 600; }
+.sug-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.88rem; color: var(--ink); text-decoration: none; transition: background 0.1s; }
+.sug-item:hover, .sug-item.focused { background: var(--brand-light); }
+.sug-item strong { font-weight: 600; }
+.sug-tag { margin-left: auto; font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; background: var(--brand-light); color: var(--ink-tertiary); flex-shrink: 0; }
+
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+.chip { padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--brand-light); color: var(--ink-secondary); font-size: 0.82rem; cursor: pointer; transition: all 0.1s; font-weight: 500; }
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.chip.active { background: var(--brand); border-color: var(--brand); color: white; }
+.result-count { text-align: center; color: var(--ink-tertiary); font-size: 0.85rem; margin-top: 10px; }
+
+.results { margin-top: 16px; }
+.result-item {
+  display: flex; align-items: center; gap: 14px; padding: 12px 16px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  margin-bottom: 8px; transition: all 0.12s; text-decoration: none; color: inherit;
+}
+.result-item:hover { border-color: var(--brand); box-shadow: 0 2px 8px rgba(0,0,0,0.04); transform: translateY(-1px); }
+.result-emoji { font-size: 1.5rem; flex-shrink: 0; width: 40px; text-align: center; }
+.result-info { flex: 1; min-width: 0; }
+.result-name { font-weight: 600; color: var(--ink); }
+.result-name em { background: #fef3c7; font-style: normal; padding: 0 2px; border-radius: 2px; }
+[data-theme="dark"] .result-name em { background: #4d3e1a; }
+.result-meta { display: block; font-size: 0.8rem; color: var(--ink-tertiary); margin-top: 2px; }
+.badge { font-size: 0.72rem; padding: 2px 10px; border-radius: 999px; font-weight: 500; flex-shrink: 0; }
+.badge-food { background: #dcfce7; color: #166534; }
+.badge-recipe { background: #dbeafe; color: #1e40af; }
+.badge-article { background: #fef3c7; color: #92400e; }
+.badge-tool { background: #e0e7ff; color: #3730a3; }
+[data-theme="dark"] .badge-food { background: #1a2e21; color: #4ade80; }
+[data-theme="dark"] .badge-recipe { background: #1e293b; color: #60a5fa; }
+[data-theme="dark"] .badge-article { background: #2a221a; color: #fbbf24; }
+
+/* Empty state */
+.empty-state { text-align: center; padding: 32px 20px; }
+.empty-icon { font-size: 2.5rem; margin-bottom: 8px; }
+.empty-title { font-size: 1rem; font-weight: 600; color: var(--ink); }
+.empty-sub { font-size: 0.85rem; color: var(--ink-tertiary); margin-top: 4px; }
+.empty-cats { margin-top: 24px; }
+.empty-cats-label { font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 10px; font-weight: 500; }
+.empty-cats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.empty-cats .chip { cursor: pointer; text-decoration: none; }
+.empty-recent { margin-top: 20px; }
+.fuzzy-hint { text-align: center; padding: 8px; font-size: 0.88rem; color: var(--ink-tertiary); margin-bottom: 8px; }
+
+@media (max-width: 600px) {
+  .result-item { gap: 10px; }
+  .result-emoji { font-size: 1.2rem; width: 32px; }
+  .filter-row { gap: 4px; }
+  .chip { font-size: 0.78rem; padding: 5px 10px; }
+}
+
+  @media (max-width: 600px) {
+    .result-grid { grid-template-columns: 1fr; gap: 10px; }
+    .result-card { padding: 12px; }
+    .result-card h3 { font-size: 0.9rem; }
+    .result-card p { font-size: 0.82rem; }
+    .chip { padding: 6px 12px; font-size: 0.78rem; margin: 3px; }
+    .search-box { padding: 8px 12px; font-size: 0.9rem; }
+    .search-wrapper { padding: 0 10px; }
+  }
+</style>
+</BaseLayout>

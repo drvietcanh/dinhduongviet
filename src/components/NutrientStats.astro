@@ -1,0 +1,19 @@
+---
+import { nutrientLabels, type NutrientValues } from "../data/nutrition";
+import { formatValue, primaryNutrients } from "../lib/nutrition";
+
+const { nutrients } = Astro.props as { nutrients: NutrientValues };
+---
+
+<div class="grid three">
+  {primaryNutrients.map((key) => {
+    const meta = nutrientLabels[key];
+    return (
+      <div class="stat">
+        <span class="muted">{meta.label}</span>
+        <strong>{formatValue(nutrients[key])}</strong>
+        <span class="muted">{nutrients[key] === undefined ? "chưa có dữ liệu" : meta.unit}</span>
+      </div>
+    );
+  })}
+</div>

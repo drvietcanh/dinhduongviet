@@ -1,0 +1,58 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ca-phe-uong-sao-cho-loi"];
+if (!art) throw new Error("Article not found: ca-phe-uong-sao-cho-loi");
+---
+
+<ArticleLayout article={art}>
+
+  <section class="section card">
+    <h2>☕ Tóm tắt — Lợi ích và rủi ro của cà phê</h2>
+    <p>Cà phê là một trong những đồ uống phổ biến nhất thế giới, giàu chất chống oxy hóa và có nhiều lợi ích sức khỏe khi dùng đúng cách. Các nghiên cứu cho thấy 2-3 tách cà phê/ngày có thể giảm nguy cơ tiểu đường type 2, bệnh Parkinson, gan nhiễm mỡ. Tuy nhiên, cà phê cũng có tác dụng phụ với một số người.</p>
+  </section>
+
+  <section class="section card">
+    <h2>⚖️ Nguyên lý dinh dưỡng</h2>
+    <ul>
+      <li><strong>Caffeine:</strong> Chất kích thích tự nhiên giúp tăng tỉnh táo, tập trung. Liều an toàn: 200-400mg caffeine/ngày (2-4 tách).</li>
+      <li><strong>Chất chống oxy hóa:</strong> Cà phê chứa polyphenol, axit chlorogenic — giúp giảm viêm, bảo vệ tế bào.</li>
+      <li><strong>Tác dụng lợi tiểu:</strong> Caffeine lợi tiểu nhẹ, nhưng không gây mất nước đáng kể ở người uống thường xuyên.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Uống cà phê đúng cách</h2>
+    <ul>
+      <li><strong>Không đường, ít sữa:</strong> Cà phê đen hoặc với chút sữa. Tránh cà phê sữa đặc (nhiều đường).</li>
+      <li><strong>2-3 tách/ngày:</strong> Đây là liều tối ưu cho lợi ích sức khỏe.</li>
+      <li><strong>Uống trước 14h:</strong> Caffeine tồn tại 4-6 giờ trong máu — uống chiều/tối có thể gây mất ngủ.</li>
+      <li><strong>Không uống khi đói:</strong> Ở người nhạy cảm, cà phê khi đói có thể gây cồn ruột, đau dạ dày.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Ai cần hạn chế cà phê?</h2>
+    <ul>
+      <li><strong>Người trào ngược dạ dày (GERD):</strong> Caffeine có thể làm giãn cơ vòng thực quản, tăng trào ngược.</li>
+      <li><strong>Người lo âu, mất ngủ:</strong> Caffeine làm tăng cortisol, có thể làm nặng thêm triệu chứng.</li>
+      <li><strong>Phụ nữ mang thai:</strong> Giới hạn dưới 200mg caffeine/ngày (2 tách).</li>
+      <li><strong>Người tăng huyết áp chưa kiểm soát:</strong> Caffeine có thể tăng huyết áp tạm thời.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <ul>
+      <li><strong>Cà phê có gây mất nước không?</strong> Không đáng kể ở người uống thường xuyên — cơ thể thích nghi.</li>
+      <li><strong>Cà phê hòa tan có tốt không?</strong> Tốt nhưng thường thêm đường, chất béo — kiểm tra nhãn.</li>
+      <li><strong>Có nên uống cà phê trước khi tập gym?</strong> Có — caffeine cải thiện hiệu suất vận động 5-10%.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Cà phê là đồ uống lành mạnh nếu dùng đúng cách: không đường, đúng liều, đúng thời điểm. Người có bệnh nền (dạ dày, lo âu, thai kỳ) cần hạn chế. Đừng uống cà phê để thay nước lọc — hãy uống nước là chính.</p>
+  </section>
+
+</ArticleLayout>

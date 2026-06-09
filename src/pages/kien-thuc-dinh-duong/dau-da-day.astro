@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dau-da-day"];
+if (!art) throw new Error("Article not found: dau-da-day");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Tuấn, 35 tuổi, hay đau rát vùng thượng vị, nhất là khi đói. Đi nội soi: viêm loét dạ dày tá tràng, HP dương tính. Bác sĩ kê kháng sinh và hỏi: "Anh có hay uống rượu, cà phê, hút thuốc không?" Cả ba. Anh được yêu cầu thay đổi ngay nếu muốn khỏi hẳn.</p>
+  <p>Viêm loét dạ dày ảnh hưởng tới 10–15% người Việt. HP (Helicobacter pylori) là nguyên nhân số 1, nhưng chế độ ăn sai làm nặng thêm và tái phát.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người đau dạ dày cần <u>ăn chín mềm, chia 4–5 bữa nhỏ</u>, <u>tránh đồ chua cay</u> (cam, chanh, ớt),
+    <u>không uống rượu bia cà phê</u>, <u>ngừng thuốc lá</u>, <u>không nằm ngay sau ăn</u>, 
+    <u>điều trị HP kháng sinh đủ phác đồ</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao dạ dày bị viêm loét?</h2>
+  <p>Dạ dày có lớp niêm mạc bảo vệ khỏi acid. Khi vi khuẩn HP làm tổn thương lớp niêm mạc này, hoặc khi bạn dùng thuốc giảm đau NSAID (ibuprofen, diclofenac) kéo dài, hoặc uống rượu hút thuốc — acid dạ dày "tấn công" trực tiếp vào niêm mạc, gây viêm, trợt, loét. Thức ăn cay chua, cà phê làm tăng tiết acid, càng nặng thêm.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cháo, súp, cơm nát, khoai lang luộc</li>
+      <li>Thịt nạc băm, cá hấp, trứng luộc — đạm dễ tiêu</li>
+      <li>Rau luộc mềm: bí đỏ, cà rốt, khoai tây, bầu</li>
+      <li>Chuối chín, đu đủ chín — dịu niêm mạc</li>
+      <li>Sữa ấm, sữa chua (để hết lạnh) — trung hòa acid</li>
+      <li>Gừng, nghệ — chống viêm nhẹ, hỗ trợ niêm mạc</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Cam, chanh, cà chua sống, xoài xanh — nhiều acid</li>
+      <li>⛔ Ớt, tiêu, giấm, mù tạt, sa tế — gia vị cay nóng</li>
+      <li>⛔ Cà phê, trà đặc, rượu bia — tăng tiết acid</li>
+      <li>⛔ Đồ chiên rán, nước mắm mặn, dưa muối</li>
+      <li>⛔ Kem, nước đá — kích thích co thắt dạ dày</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Nguyên tắc</th><th>Cụ thể</th></tr></thead><tbody>
+    <tr><td>Số bữa/ngày</td><td>4–5 bữa nhỏ — không bữa nào quá no</td></tr>
+    <tr><td>Mỗi bữa</td><td>Bằng nửa so với người bình thường</td></tr>
+    <tr><td>Không nằm sau ăn</td><td>Ngồi/đi lại 30 phút — tránh trào ngược</td></tr>
+    <tr><td>Bữa tối</td><td>Kết thúc trước 20:00</td></tr>
+    <tr><td>Nhai kỹ</td><td>Mỗi miếng nhai 20–30 lần</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo thịt băm (tô nhỏ) + 1 ly sữa ấm</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả chuối chín</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát + cá hấp + canh bí đỏ nấu thịt băm</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 hũ sữa chua không đường (để hết lạnh)</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm nát + trứng hấp + đậu phụ luộc + rau luộc mềm</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Trà gừng ấm giảm đầy bụng, buồn nôn.</li>
+        <li>Không tự ý uống thuốc giảm đau NSAID.</li>
+        <li>HP cần diệt đủ phác đồ 14 ngày — không bỏ dở.</li>
+        <li>Giảm stress — stress làm tăng tiết acid.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Nôn ra máu hoặc đi ngoài phân đen.</li>
+        <li>Sụt cân không rõ nguyên nhân.</li>
+        <li>Đau dữ dội, đau xuyên ra lưng.</li>
+        <li>Khó nuốt, nôn sau ăn.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

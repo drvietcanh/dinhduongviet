@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-tre-bieng-an-suy-dinh-duong"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Biếng ăn ở trẻ em là vấn đề phổ biến và gây lo lắng cho cha mẹ. Khi kéo dài, trẻ có thể bị suy dinh dưỡng, chậm tăng cân, ảnh hưởng phát triển thể chất và trí tuệ. Bài này hướng dẫn cách phục hồi dinh dưỡng cho trẻ biếng ăn từ nhẹ đến nặng.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul><li><strong>Tăng năng lượng, không tăng khối lượng:</strong> Dùng sữa nguyên kem, thêm dầu/dầu ăn vào cháo, bột</li><li><strong>Đạm chất lượng cao:</strong> Trứng, thịt gà, cá, sữa, đậu hũ</li><li><strong>Chia nhỏ bữa ăn:</strong> 6-7 bữa/ngày thay vì 3 bữa lớn</li><li><strong>Kẽm & vitamin nhóm B:</strong> Thiếu kẽm gây giảm vị giác — bổ sung hàu, thịt bò, hạt bí</li><li><strong>Tạo môi trường ăn tích cực:</strong> Không ép, không la mắng, không màn hình</li></ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ưu tiên</h2>
+    <div class="food-table"><div class="food-row"><span class="food-cat">🥚 Sữa & trứng</span><span>Sữa nguyên kem, sữa chua, phô mai, trứng — giàu năng lượng & đạm</span></div><div class="food-row"><span class="food-cat">🥩 Thịt & cá</span><span>Thịt gà xay nhuyễn, cá hấp, gan (1 lần/tuần)</span></div><div class="food-row"><span class="food-cat">🥑 Dầu & bơ</span><span>Thêm 1-2 muỗng dầu olive/dầu mè vào cháo, bột</span></div><div class="food-row"><span class="food-cat">🍌 Trái cây</span><span>Chuối, bơ, đu đủ — trộn vào sinh tố</span></div></div>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Gợi ý thực đơn 1 ngày (trẻ 2-5 tuổi)</h2>
+    <div class="meal-table"><div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Cháo thịt gà + cà rốt, thêm 1 muỗng dầu olive</span></div><div class="meal-row"><span class="meal-time">🥤 Phụ sáng</span><span>1 ly sữa nguyên kem + 1/2 quả chuối</span></div><div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm mềm + trứng cuộn + canh rau củ nghiền</span></div><div class="meal-row"><span class="meal-time">🥣 Xế</span><span>Sữa chua + đu đủ xay nhuyễn</span></div><div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Cháo cá hồi + bí đỏ, thêm 1 muỗng dầu</span></div></div>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Khi nào cần đưa trẻ biếng ăn đi khám?</summary><p>Nếu trẻ sụt cân, không tăng cân trong 3 tháng, bỏ bữa liên tục, nôn trớ, hoặc có dấu hiệu thiếu vi chất (rụng tóc, da khô, mệt mỏi).</p></details><details class="faq-item"><summary>Có nên cho trẻ uống vitamin tổng hợp không?</summary><p>Có thể bổ sung kẽm và vitamin nhóm B trong giai đoạn phục hồi. Hỏi bác sĩ dinh dưỡng để có liều phù hợp.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>4 mẹo vàng:</strong> (1) Thêm 1 muỗng dầu vào mỗi bữa, (2) Chia nhỏ 6-7 bữa, (3) Không ép ăn, (4) Cho trẻ tham gia nấu ăn. Kiên nhẫn — cần 10-15 lần thử trước khi trẻ chấp nhận món mới.</p></div>
+  </section>
+</ArticleLayout>

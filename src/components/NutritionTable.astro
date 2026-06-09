@@ -1,0 +1,32 @@
+---
+import { nutrientLabels, type NutrientValues } from "../data/nutrition";
+import { detailNutrients, formatValue } from "../lib/nutrition";
+
+const { nutrients, caption = "Thành phần dinh dưỡng" } = Astro.props as {
+  nutrients: NutrientValues;
+  caption?: string;
+};
+---
+
+<div class="card">
+  <h2>{caption}</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Chất dinh dưỡng</th>
+        <th>Giá trị</th>
+      </tr>
+    </thead>
+    <tbody>
+      {detailNutrients.map((key) => {
+        const meta = nutrientLabels[key];
+        return (
+          <tr>
+            <td>{meta.label}</td>
+            <td><strong>{formatValue(nutrients[key])}</strong> {nutrients[key] === undefined ? "" : meta.unit}</td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

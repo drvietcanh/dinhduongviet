@@ -1,0 +1,155 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NutritionTable from "../../components/NutritionTable.astro";
+import NutritionChart from "../../components/NutritionChart.astro";
+import NutrientStats from "../../components/NutrientStats.astro";
+import PortionCalculator from "../../components/PortionCalculator.astro";
+import HealthAlert from "../../components/HealthAlert.astro";
+import GlycemicLoad from "../../components/GlycemicLoad.astro";
+import VNHealthScore from "../../components/VNHealthScore.astro";
+import { recipes } from "../../data/nutrition";
+import { calculateRecipe, confidenceLabel, foodById, recipeBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
+
+export function getStaticPaths() {
+  return recipes.map((recipe) => ({ params: { slug: recipe.slug } }));
+}
+
+const recipe = recipeBySlug(Astro.params.slug ?? "");
+if (!recipe) return Astro.redirect("/tim-kiem");
+const nutrients = calculateRecipe(recipe);
+const source = sourceFor(recipe.sourceId);
+
+// Build JSON-LD Recipe schema object (will be stringified in template)
+const recipeSchema = {
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": recipe.servingName + " " + recipe.name,
+  "description": recipe.note || "Thông tin dinh dưỡng cho " + recipe.servingName + " " + recipe.name,
+  "image": recipe.imageUrl || "https://dinh-duong-viet.pages.dev/og-default.png",
+  "author": { "@type": "Organization", "name": "Dinh Dưỡng Việt" },
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": Math.round(nutrients.energyKcal) + " kcal",
+    "proteinContent": Math.round(nutrients.proteinG) + " g",
+    "fatContent": Math.round(nutrients.fatG) + " g",
+    "carbohydrateContent": Math.round(nutrients.carbG) + " g",
+    "fiberContent": Math.round(nutrients.fiberG) + " g",
+    "sodiumContent": Math.round(nutrients.sodiumMg) + " mg"
+  },
+  "recipeIngredient": recipe.items.map(function(item) {
+    var food = foodById(item.foodId);
+    return item.amountG + "g " + (food ? food.name : item.foodId);
+  }),
+  "recipeYield": recipe.servingName || "1 suất"
+};
+---
+
+<BaseLayout title={`${recipe.servingName} ${recipe.name} bao nhiêu calo? - Dinh Dưỡng Việt`}>
+  <script type="application/ld+json" set:html={JSON.stringify(recipeSchema)}></script>
+  <section>
+    <span class="badge">Món ăn · {confidenceLabel(recipe.confidence)}</span>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;justify-content:space-between;">
+      <h1 style="flex:1;min-width:200px;">{recipe.servingName} {recipe.name}</h1>
+      <div class="action-btns" style="display:flex;gap:6px;flex-shrink:0;">
+        <button class="btn-sm btn-outline" onclick="shareRecipe()" title="Chia sẻ">📤 Chia sẻ</button>
+        <button class="btn-sm btn-outline" onclick="window.print()" title="In / Xuất PDF">🖨️ In / PDF</button>
+      </div>
+    </div>
+    {recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.name} class="food-img" loading="lazy" />}
+    <div class="tags" style="margin: 12px 0;">
+      {allTags({ tags: recipe.tags, nutrients: nutrients }).map(tag => <span class="tag">{tagLabel(tag)}</span>)}
+    </div>
+    <p class="lead">{recipe.note}</p>
+  </section>
+
+  <HealthAlert nutrients={nutrients} name={recipe.name} />
+
+  <section class="section">
+    <NutrientStats nutrients={nutrients} />
+  </section>
+
+  <section class="section">
+    <NutritionChart nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} />
+  </section>
+
+  <section class="section">
+    <VNHealthScore nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} isRecipe servingKcal={nutrients.energyKcal} />
+  </section>
+
+  <section class="section">
+    <GlycemicLoad glycemicIndex={nutrients.glycemicIndex} carbG={nutrients.carbG} />
+  </section>
+
+  <section class="section grid two">
+    <NutritionTable nutrients={nutrients} caption={`Ước tính cho ${recipe.servingName}`} />
+    <div class="card">
+      <h2>Công thức tính</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nguyên liệu</th>
+            <th>Khối lượng</th>
+          </tr>
+        </thead>
+        <tbody>
+          {recipe.items.map((item) => {
+            const food = foodById(item.foodId);
+            return (
+              <tr>
+                <td>{food?.name ?? item.foodId}<br /><span class="muted">{item.note}</span></td>
+                <td>{item.amountG}g</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {recipe.commonPortions && (
+    <section class="section card">
+      <h2>Khẩu phần thường gặp</h2>
+      <p class="muted" style="margin: 6px 0 12px;">{recipe.portionNote}</p>
+      <div class="grid three">
+        {recipe.commonPortions.map((portion) => (
+          <div class="stat">
+            <span class="muted">{portion.label}</span>
+            <strong>{portion.beefAmountG ? `${portion.beefAmountG}g` : "—"}</strong>
+            <span class="muted">thịt bò chín</span>
+            <p class="muted" style="margin-top: 8px;">{portion.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section card">
+    <h2>Nguồn và sai số</h2>
+    <p class="muted"><strong>Nguồn:</strong> {source?.name ?? recipe.sourceId}</p>
+    <p class="muted" style="margin-top: 10px;">
+      Đây là giá trị ước tính theo công thức mẫu. Món ăn thực tế có thể thay đổi theo lượng tinh bột, thịt, dầu mỡ, muối/nước mắm và kích thước khẩu phần.
+    </p>
+  </section>
+
+  <section class="section">
+    <PortionCalculator
+      nutrients={nutrients}
+      baseAmountG={recipe.servingWeightG}
+      defaultAmountG={recipe.servingWeightG}
+      title={`Đổi khẩu phần ${recipe.name}`}
+    />
+  </section>
+  <script>
+    function shareRecipe() {
+      var title = document.title;
+      var url = window.location.href;
+      if (navigator.share) {
+        navigator.share({ title: title, url: url }).catch(function(){});
+      } else {
+        navigator.clipboard.writeText(url).then(function() {
+          alert('Đã sao chép đường dẫn!');
+        }).catch(function(){});
+      }
+    }
+  </script>
+</BaseLayout>

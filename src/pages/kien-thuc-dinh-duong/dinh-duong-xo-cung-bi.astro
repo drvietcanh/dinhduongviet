@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-xo-cung-bi"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Xơ cứng bì hệ thống (scleroderma) là bệnh tự miễn gây xơ hóa da và các cơ quan nội tạng, đặc biệt là thực quản và đường tiêu hóa. Khó nuốt, trào ngược và kém hấp thu là những thách thức dinh dưỡng lớn nhất.</p>
+    <p>Một yếu tố quan trọng trong xơ cứng bì là stress oxy hóa và tình trạng viêm mạn tính toàn thân. Chế độ dinh dưỡng giàu chất chống oxy hóa, vitamin D và vitamin E có thể hỗ trợ làm chậm tiến triển xơ hóa, giảm viêm và cải thiện triệu chứng tiêu hóa. Nhiều bệnh nhân cũng bị hội chứng ruột kém hấp thu, dẫn đến thiếu nhiều vi chất quan trọng cần được bổ sung kịp thời.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Thức ăn mềm, dễ nuốt:</strong> Cháo, súp, sinh tố, thực phẩm xay nhuyễn</li>
+      <li><strong>Ăn chậm, ngồi thẳng 30 phút sau ăn:</strong> Giảm trào ngược do giảm nhu động thực quản</li>
+      <li><strong>Chia nhỏ bữa ăn:</strong> 5-6 bữa/ngày thay vì 3 bữa lớn</li>
+      <li><strong>Tránh thực phẩm kích thích trào ngược:</strong> Cay, chua, chiên rán, caffeine, rượu</li>
+      <li><strong>Bổ sung vitamin & khoáng chất:</strong> Canxi, vitamin D, sắt, B12 — dễ thiếu do kém hấp thu</li>
+      <li><strong>Tăng cường vitamin D:</strong> Thiếu vitamin D rất phổ biến ở bệnh nhân xơ cứng bì, làm nặng thêm xơ hóa và suy giảm miễn dịch. Nên xét nghiệm máu định kỳ. Mặt trời buổi sáng 15 phút/ngày kết hợp bổ sung từ thực phẩm và thuốc theo chỉ định bác sĩ.</li>
+      <li><strong>Vitamin E — chống oxy hóa:</strong> Vitamin E (alpha-tocopherol) bảo vệ màng tế bào khỏi tổn thương oxy hóa. Nguồn: dầu thực vật (dầu hướng dương, dầu olive), hạt hạnh nhân, bơ, rau bina. Liều cao trên 400 IU/ngày cần hỏi ý kiến bác sĩ.</li>
+      <li><strong>Chống oxy hóa đa dạng:</strong> Kết hợp vitamin C, selenium, beta-caroten từ rau củ quả nhiều màu sắc để trung hòa gốc tự do — yếu tố thúc đẩy xơ hóa.</li>
+      <li><strong>Xử lý triệu chứng tiêu hóa:</strong> Trào ngược thực quản gây đau rát, khó nuốt — cần tránh ăn sát giờ ngủ. Đầy bụng, táo bón do giảm nhu động ruột — tăng chất xơ hòa tan từ yến mạch, chuối chín, bơ. Tiêu chảy do vi khuẩn phát triển quá mức (SIBO) — cần khám chuyên khoa tiêu hóa.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🍚 Cháo/súp</span><span>Cháo thịt bằm, súp gà, súp bí đỏ xay nhuyễn</span></div>
+      <div class="food-row"><span class="food-cat">🥤 Sinh tố</span><span>Sinh tố trái cây + sữa chua, sữa hạt</span></div>
+      <div class="food-row"><span class="food-cat">🥚 Đạm mềm</span><span>Trứng luộc, đậu hũ non, cá hấp, thịt xay nhuyễn</span></div>
+      <div class="food-row"><span class="food-cat">🌰 Hạt & dầu thực vật</span><span>Hạnh nhân, hạt óc chó, dầu olive, dầu hướng dương — vitamin E, chất béo lành mạnh</span></div>
+      <div class="food-row"><span class="food-cat">🥑 Bơ & chuối chín</span><span>Giàu chất xơ hòa tan — hỗ trợ tiêu hóa, dễ nuốt, mềm</span></div>
+      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu — omega-3, vitamin D tự nhiên, chống viêm</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần tránh</h2>
+    <ul>
+      <li><strong>Đồ ăn cứng, khô:</strong> Bánh mì giòn, hạt, bỏng ngô</li>
+      <li><strong>Đồ cay nóng, chua:</strong> Ớt, giấm, cam, chanh</li>
+      <li><strong>Caffeine & rượu:</strong> Làm giảm nhu động thực quản</li>
+      <li><strong>Đồ ăn chiên rán nhiều dầu mỡ</strong></li>
+      <li><strong>Thực phẩm sinh hơi:</strong> Hành tây, tỏi sống, cải bắp, đậu khô — nếu gây đầy bụng, đau bụng sau ăn</li>
+      <li><strong>Đồ uống có gas:</strong> Dễ gây đầy hơi, căng tức bụng, tăng áp lực lên cơ thắt thực quản</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Xơ cứng bì có cần uống thuốc bổ sung không?</summary><p>Nhiều người cần bổ sung vitamin D, canxi và sắt do kém hấp thu. Xét nghiệm máu định kỳ để biết thiếu gì. Vitamin E liều thấp từ thực phẩm an toàn, liều cao cần theo chỉ định bác sĩ vì có thể tương tác với thuốc chống đông.</p></details>
+    <details class="faq-item"><summary>Làm sao để cải thiện triệu chứng trào ngược và khó nuốt?</summary><p>Ăn chậm, nhai kỹ, ngồi thẳng 30-45 phút sau ăn. Ngủ với đầu cao 15-20 cm. Tránh ăn 3 giờ trước khi ngủ. Nếu khó nuốt nhiều, cần gặp bác sĩ để đánh giá mức độ hẹp thực quản — có thể cần nong thực quản.</p></details>
+    <details class="faq-item"><summary>Có nên ăn chay không?</summary><p>Không khuyến khích ăn chay hoàn toàn vì nguy cơ thiếu đạm, B12, sắt, kẽm — vốn đã khó hấp thu. Nếu muốn ăn chay, cần có tư vấn dinh dưỡng chuyên sâu và bổ sung vi chất đầy đủ.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>Quan trọng:</strong> (1) Ăn mềm — cháo, súp, sinh tố, (2) Ngồi thẳng 30 phút sau ăn — tránh trào ngược, (3) Chia 5-6 bữa nhỏ trong ngày, (4) Xét nghiệm máu định kỳ để phát hiện thiếu vitamin D, sắt, B12, (5) Bổ sung chất chống oxy hóa từ rau củ nhiều màu sắc, (6) Vitamin E từ hạt và dầu thực vật giúp bảo vệ tế bào. Cần tư vấn bác sĩ dinh dưỡng và chuyên khoa tiêu hóa để có kế hoạch cá nhân hóa.</p></div>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NutritionTable from "../../components/NutritionTable.astro";
+import NutrientStats from "../../components/NutrientStats.astro";
+import NutritionChart from "../../components/NutritionChart.astro";
+import PortionCalculator from "../../components/PortionCalculator.astro";
+import MacroPie from "../../components/MacroPie.astro";
+import NutritionBars from "../../components/NutritionBars.astro";
+import DRIWidget from "../../components/DRIWidget.astro";
+import HealthAlert from "../../components/HealthAlert.astro";
+import GlycemicLoad from "../../components/GlycemicLoad.astro";
+import VNHealthScore from "../../components/VNHealthScore.astro";
+import { foods } from "../../data/nutrition";
+import { confidenceLabel, foodBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
+
+export function getStaticPaths() {
+  return foods.map((food) => ({ params: { slug: food.slug } }));
+}
+
+const food = foodBySlug(Astro.params.slug ?? "");
+if (!food) return Astro.redirect("/tim-kiem");
+const source = sourceFor(food.sourceId);
+
+// JSON-LD Food structured data
+var foodSchema = {
+  "@context": "https://schema.org",
+  "@type": "Food",
+  "name": "100g " + food.name,
+  "description": "100g " + food.name + " chứa " + Math.round(food.nutrients.energyKcal) + " kcal, " + Math.round(food.nutrients.proteinG) + "g protein, " + Math.round(food.nutrients.fatG) + "g chất béo, " + Math.round(food.nutrients.carbG) + "g carbohydrate.",
+  "image": "https://dinh-duong-viet.pages.dev/og-default.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Dinh Dưỡng Việt"
+  },
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": Math.round(food.nutrients.energyKcal) + " kcal",
+    "proteinContent": Math.round(food.nutrients.proteinG) + " g",
+    "fatContent": Math.round(food.nutrients.fatG) + " g",
+    "carbohydrateContent": Math.round(food.nutrients.carbG) + " g",
+    "fiberContent": Math.round(food.nutrients.fiberG) + " g",
+    "sodiumContent": Math.round(food.nutrients.sodiumMg) + " mg"
+  },
+  "category": food.category,
+  "servingSize": "100g"
+};
+---
+
+<BaseLayout title={`100g ${food.name} bao nhiêu calo? - Dinh Dưỡng Việt`}>
+  <script type="application/ld+json" set:html={JSON.stringify(foodSchema)}></script>
+  <section>
+    <span class="badge">{food.category} · {confidenceLabel(food.confidence)}</span>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;justify-content:space-between;">
+      <h1 style="flex:1;min-width:200px;">100g {food.name}</h1>
+      <div class="action-btns" style="display:flex;gap:6px;flex-shrink:0;">
+        <button class="btn-outline" onclick="shareRecipe()" title="Chia sẻ">📤 Chia sẻ</button>
+        <button class="btn-outline" onclick="window.print()" title="In / Xuất PDF">🖨️ In / PDF</button>
+      </div>
+    </div>
+    {food.imageUrl && <img src={food.imageUrl} alt={food.name} class="food-img" loading="lazy" decoding="async" fetchpriority="low" />}
+    <div class="tags" style="margin: 12px 0;">
+      {allTags(food).map(tag => <span class="tag">{tagLabel(tag)}</span>)}
+    </div>
+    <p class="lead">{food.edibleNote}</p>
+  </section>
+
+  <HealthAlert nutrients={food.nutrients} name={food.name} category={food.category} />
+
+  <div id="vn-crossref" data-slug="{food.slug}" data-exkcal="{food.nutrients.energyKcal}" style="max-width: 800px; margin: 0 auto;"></div>
+
+  <section class="section">
+    <NutrientStats nutrients={food.nutrients} />
+  </section>
+
+  <section class="section">
+    <VNHealthScore nutrients={food.nutrients} name={food.name} />
+  </section>
+
+  {food.nutrients.glycemicIndex != null && (
+    <section class="section">
+      <GlycemicLoad glycemicIndex={food.nutrients.glycemicIndex} carbG={food.nutrients.carbG} />
+    </section>
+  )}
+
+  <section class="section grid two" style="margin-top: 20px;">
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">🥧 Phân bố năng lượng</h3>
+      <MacroPie proteinG={food.nutrients.proteinG ?? 0} fatG={food.nutrients.fatG ?? 0} carbG={food.nutrients.carbG ?? 0} />
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">📊 % RDI tham khảo</h3>
+      <NutritionBars nutrients={food.nutrients} />
+    </div>
+  </section>
+
+  <section class="section grid two">
+    <NutritionTable nutrients={food.nutrients} caption={`Thành phần dinh dưỡng trong ${food.basis}`} />
+    <div class="card">
+      <h2>Nguồn và ghi chú</h2>
+      <p class="muted"><strong>Nguồn:</strong> {source?.name ?? food.sourceId}</p>
+      <p class="muted" style="margin-top: 10px;"><strong>Mức tin cậy:</strong> {confidenceLabel(food.confidence)}</p>
+      <p class="muted" style="margin-top: 10px;">{food.note}</p>
+      <p class="muted" style="margin-top: 10px;">Bản phát hành chính thức cần đối chiếu từng chỉ số với nguồn gốc.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <DRIWidget nutrients={food.nutrients} name={food.name} />
+  </section>
+
+  <section class="section">
+    <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
+  </section>
+  <script>
+    function shareRecipe() {
+      var title = document.title;
+      var url = window.location.href;
+      if (navigator.share) {
+        navigator.share({ title: title, url: url }).catch(function(){});
+      } else {
+        navigator.clipboard.writeText(url).then(function() {
+          alert('Đã sao chép đường dẫn!');
+        }).catch(function(){});
+      }
+    }
+  </script>
+</BaseLayout>
+
+<script is:inline>
+  (function() {
+    var container = document.getElementById('vn-crossref');
+    if (!container) return;
+    var slug = container.getAttribute('data-slug');
+    if (!slug) return;
+    fetch('/vn-crossref.json').then(function(r){return r.json()}).then(function(cr){
+      var ref = cr[slug];
+      if (!ref) return;
+      return fetch('/api/vietnam-foods.json').then(function(r){return r.json()}).then(function(vn){
+        var vnFood = vn.find(function(f){return f.code===ref.code});
+        if (!vnFood || vnFood.energy_kcal == null) return;
+        var exKcalStr = container.getAttribute('data-exkcal');
+        var exKcal = exKcalStr ? parseFloat(exKcalStr) : null;
+        var diff = exKcal !== null ? Math.abs(exKcal - vnFood.energy_kcal) : 0;
+        var pct = exKcal !== null && vnFood.energy_kcal > 0 ? Math.round(diff / vnFood.energy_kcal * 100) : null;
+        var html = '<div style="background:#f0f4ff;border:1px solid #d0d8f0;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.9rem;">';
+        html += '<div style="display:flex;align-items:center;gap:10px;"><span style="font-size:1.3rem;">📖</span><div><strong>Bảng thành phần thực phẩm Việt Nam 2007</strong><span style="color:#888;font-size:0.8rem;"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" style="margin-left:auto;color:#283593;font-weight:500;white-space:nowrap;">Xem thêm →</a></div>';
+        html += '<div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;"><div><span style="color:#888;">Tương ứng:</span> <strong>' + ref.name + '</strong></div><div><span style="color:#888;">Năng lượng VN 2007:</span> <strong>' + vnFood.energy_kcal + ' kcal</strong>' + (pct !== null && pct > 15 ? ' <span style="color:#e65100;font-weight:600;">(khác ' + pct + '% so với số ước tính)</span>' : ' <span style="color:#2e7d32;">✓ tương đương</span>') + '</div><div><span style="color:#888;">Mã số:</span> <strong>#' + vnFood.code + '</strong></div></div>';
+        if (pct !== null && pct > 30) {
+          html += '<div style="margin-top:8px;background:#fff3e0;padding:8px 12px;border-radius:6px;font-size:0.85rem;">⚠️ Số liệu trong database hiện tại là ước tính. Bảng thành phần VN 2007 (mã #' + vnFood.code + ') là nguồn chính thống từ Viện Dinh Dưỡng.</div>';
+        }
+        html += '</div>';
+        container.innerHTML = html;
+      });
+    }).catch(function(){});
+  })();
+</script>

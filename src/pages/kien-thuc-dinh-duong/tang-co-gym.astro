@@ -1,0 +1,15 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tang-co-gym"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card"><h2>💪 Tóm tắt — Dinh dưỡng tăng cơ cho người tập gym</h2><p>Tăng cơ cần 3 yếu tố: (1) thặng dư calo nhẹ (200-300 calo/ngày), (2) đạm đủ (1.6-2.2g/kg cơ thể/ngày), và (3) tập lực đều đặn (3-5 buổi/tuần). Không cần uống quá nhiều whey protein — ăn thực phẩm tự nhiên vẫn đáp ứng được nhu cầu.</p></section>
+  <section class="section card"><h2>⚖️ Nguyên lý tăng cơ</h2><ul><li><strong>Thặng dư calo nhẹ:</strong> TDEE + 200-300 calo/ngày. Tăng quá nhiều → tăng mỡ. Quá ít → không tăng cơ.</li><li><strong>Đạm — yếu tố then chốt:</strong> 1.6-2.2g/kg/ngày. Người 60kg cần 96-132g đạm/ngày.</li><li><strong>Tinh bột để tập luyện:</strong> 3-5g/kg/ngày — cung cấp năng lượng cho buổi tập. Ăn tinh bột trước tập 1-2 tiếng.</li></ul></section>
+  <section class="section card"><h2>✅ Thực phẩm tăng cơ</h2><ul><li><strong>Đạm chất lượng:</strong> Ức gà (25g/100g), trứng (6g/quả), cá hồi, đậu phụ, sữa chua Hy Lạp.</li><li><strong>Tinh bột:</strong> Gạo lứt, yến mạch, khoai lang, bánh mì nguyên cám, chuối.</li><li><strong>Chất béo lành mạnh:</strong> Bơ, dầu ô-liu, các loại hạt, bơ đậu phộng.</li><li><strong>Nước:</strong> 2.5-3L/ngày — cơ bắp cần nước để phục hồi và phát triển.</li></ul></section>
+  <section class="section card"><h2>⚠️ Lưu ý và hạn chế</h2><ul><li><strong>Whey protein là bổ sung, không phải chính:</strong> Ưu tiên ăn thực phẩm trước, dùng whey khi không đủ hoặc tiện lợi.</li><li><strong>Tăng cơ không tăng mỡ:</strong> Có thể tăng một ít mỡ kèm cơ — điều này bình thường. Giới hạn thặng dư calo để kiểm soát mỡ.</li><li><strong>Sau 40 tuổi:</strong> Cơ thể kháng đạm hơn — cần ăn nhiều đạm hơn (2-2.4g/kg) và tập nặng hơn để duy trì cơ.</li></ul></section>
+  <section class="section card"><h2>❓ Câu hỏi thường gặp</h2><ul><li><strong>Ăn trứng mỗi ngày có tăng cơ không?</strong> Có — trứng giàu đạm và choline. 2-3 quả/ngày là tốt.</li><li><strong>Có cần uống whey ngay sau tập?</strong> "Đồng hồ protein" không chính xác — chỉ cần ăn đủ đạm trong 4-6 giờ sau tập.</li><li><strong>Tập bụng mỗi ngày có giảm mỡ bụng?</strong> Không — giảm mỡ toàn thân mới giảm mỡ bụng. Không thể giảm mỡ điểm.</li></ul></section>
+  <section class="section card"><h2>🎯 Tóm lại</h2><p>Tăng cơ là quá trình kết hợp dinh dưỡng và tập luyện. Ăn đủ đạm, đủ calo, tập nặng và ngủ đủ. Không cần thực phẩm chức năng đắt tiền — thực phẩm tự nhiên vẫn là nền tảng tốt nhất.</p></section>
+</ArticleLayout>

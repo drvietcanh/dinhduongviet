@@ -1,0 +1,383 @@
+---
+// so-sanh-thuc-pham.astro — So sánh dinh dưỡng thực phẩm
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="So sánh dinh dưỡng thực phẩm - Dinh Dưỡng Việt">
+  <style>
+    .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
+    .badge { display: inline-block; background: var(--bg-success); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2rem; margin: 0 0 8px; }
+    .lead { color: var(--ink-secondary); margin-bottom: 24px; font-size: 1.1rem; }
+
+    .search-box { position: relative; margin-bottom: 24px; }
+    .search-box input {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--line); border-radius: 12px;
+      font-size: 1rem; box-sizing: border-box; transition: border-color .2s;
+    }
+    .search-box input:focus { outline: none; border-color: #2e7d32; }
+
+    .slot-container { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+    .slot {
+      flex: 1; min-width: 160px; max-width: 250px; position: relative;
+      background: var(--bg-highlight); border: 2px dashed #ccc; border-radius: 12px;
+      padding: 40px 12px; text-align: center; transition: all .2s; cursor: pointer;
+      min-height: 80px; display: flex; align-items: center; justify-content: center;
+    }
+    .slot.filled { border-style: solid; border-color: #2e7d32; background: var(--card-hover); }
+    .slot .placeholder { color: var(--ink-tertiary); font-size: 0.9rem; }
+    .slot .food-name { font-weight: 700; font-size: 1.05rem; color: #1b5e20; }
+    .slot .remove-btn {
+      position: absolute; top: 6px; right: 8px; background: none; border: none;
+      color: #c62828; cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 2px 6px;
+    }
+    .slot .remove-btn:hover { color: #b71c1c; }
+
+    .suggestions {
+      position: absolute; top: 100%; left: 0; right: 0; z-index: 100;
+      background: var(--card); border: 1px solid var(--line); border-radius: 0 0 12px 12px;
+      max-height: 320px; overflow-y: auto; display: none; box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+    .suggestions.open { display: block; }
+    .suggestion-item {
+      padding: 10px 16px; cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; border-bottom: 1px solid var(--line-light);
+    }
+    .suggestion-item:hover { background: #e8f5e9; }
+    .suggestion-item .s-name { font-weight: 500; }
+    .suggestion-item .s-cat { font-size: 0.8rem; color: var(--ink-tertiary); }
+
+    /* Comparison Table */
+    .compare-area { margin-top: 24px; }
+    .compare-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .compare-table th, .compare-table td {
+      padding: 10px 14px; text-align: center; border-bottom: 1px solid #f0f0f0;
+    }
+    .compare-table thead th {
+      background: #2e7d32; color: white; font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .compare-table thead th:first-child { text-align: left; }
+    .compare-table tbody td:first-child {
+      text-align: left; font-weight: 500; color: var(--ink);
+      background: #fafafa; min-width: 140px;
+    }
+    .compare-table tbody tr:hover td:first-child { background: #f0f4f0; }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+
+    .value-best { color: #2e7d32; font-weight: 700; }
+    .value-worst { color: #c62828; }
+    .value-equal { color: var(--ink-secondary); }
+
+    .section-label { font-weight: 700; background: #e8f5e9 !important; color: #1b5e20; }
+
+    .empty-state { text-align: center; padding: 60px 20px; color: #999; }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+
+    .add-more { display: inline-block; margin-top: 8px; }
+    .add-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 20px; background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;
+      border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem;
+    }
+    .add-btn:hover { background: #c8e6c9; }
+    .add-btn.disabled { opacity: .4; cursor: not-allowed; }
+  </style>
+
+  <section>
+    <span class="badge">🔬 Công cụ</span>
+    <h1>So sánh dinh dưỡng thực phẩm</h1>
+    <p class="lead">
+      Chọn 2–4 thực phẩm để so sánh các chỉ số dinh dưỡng cạnh nhau. <br>Phát hiện ngay thực phẩm nào tốt hơn cho mục tiêu sức khỏe của bạn!
+    </p>
+  </section>
+
+  <div class="app-container" id="compare-app">
+    <!-- Search -->
+    <div class="search-box" style="position:relative">
+      <input type="text" id="food-search" placeholder="🔍 Tìm thực phẩm... (gõ tên tiếng Việt, ví dụ: thịt heo, trứng gà)" autocomplete="off">
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+
+    <!-- Slots -->
+    <div class="slot-container" id="slot-container"></div>
+
+    <!-- Compare Table -->
+    <div class="compare-area" id="compare-area">
+      <div class="empty-state" id="empty-state">
+        <div class="icon">🥗</div>
+        <p>Chọn ít nhất 2 thực phẩm để so sánh</p>
+      </div>
+      <div id="table-area" style="display:none"></div>
+    </div>
+  </div>
+
+  <script>
+    // Data & state
+    let foods = [];
+    let selected = [];
+    const MAX_SLOTS = 4;
+
+    // Nutrient config
+    const NUTRIENTS = [
+      { key: "energyKcal", label: "Năng lượng", unit: "kcal", lower: false },
+      { key: "proteinG", label: "Đạm", unit: "g", lower: false },
+      { key: "carbG", label: "Tinh bột (Carbs)", unit: "g", lower: false },
+      { key: "fatG", label: "Chất béo", unit: "g", lower: false },
+      { key: "saturatedFatG", label: "Béo bão hòa", unit: "g", lower: false },
+      { key: "fiberG", label: "Chất xơ", unit: "g", lower: false },
+      { key: "sugarG", label: "Đường", unit: "g", lower: true },
+      { key: "cholesterolMg", label: "Cholesterol", unit: "mg", lower: true },
+      { key: "sodiumMg", label: "Natri", unit: "mg", lower: true },
+      { key: "potassiumMg", label: "Kali", unit: "mg", lower: false },
+      { key: "calciumMg", label: "Canxi", unit: "mg", lower: false },
+      { key: "ironMg", label: "Sắt", unit: "mg", lower: false },
+      { key: "zincMg", label: "Kẽm", unit: "mg", lower: false },
+      { key: "phosphorusMg", label: "Phốt pho", unit: "mg", lower: false },
+      { key: "vitaminCMg", label: "Vitamin C", unit: "mg", lower: false },
+      { key: "vitaminAUg", label: "Vitamin A", unit: "µg", lower: false },
+      { key: "folateUg", label: "Folate (B9)", unit: "µg", lower: false },
+    ];
+
+    async function loadData() {
+      const res = await fetch("/api-foods.json");
+      const raw = await res.json();
+      foods = raw.sort((a, b) => a.name.localeCompare(b.name, "vi"));
+      renderSlots();
+    }
+
+    function getNut(food, key) {
+      const val = food.nutrients?.[key];
+      return (val === undefined || val === null) ? null : val;
+    }
+
+    function getGlycemicLoad(food) {
+      const n = food.nutrients;
+      if (!n) return null;
+      return (n.glycemicIndex != null && n.carbG != null) ? Math.round(n.glycemicIndex * n.carbG / 100) : null;
+    }
+
+    // Selection
+    function addFood(food) {
+      if (selected.length >= MAX_SLOTS) return;
+      if (selected.find(s => s.id === food.id)) return;
+      selected.push(food);
+      document.getElementById("food-search").value = "";
+      closeSuggestions();
+      renderSlots();
+      renderComparison();
+    }
+
+    function removeFood(idx) {
+      selected.splice(idx, 1);
+      renderSlots();
+      renderComparison();
+    }
+
+    // Slots
+    function renderSlots() {
+      const container = document.getElementById("slot-container");
+      container.innerHTML = "";
+      for (let i = 0; i < MAX_SLOTS; i++) {
+        const slot = document.createElement("div");
+        slot.className = "slot" + (selected[i] ? " filled" : "");
+        if (selected[i]) {
+          slot.innerHTML = `<span class="food-name">${selected[i].name}</span>
+            <button class="remove-btn" data-idx="${i}" aria-label="Xóa">✕</button>`;
+          slot.querySelector(".remove-btn").onclick = () => removeFood(i);
+        } else {
+          slot.innerHTML = `<span class="placeholder">${i === 0 ? "Chọn thực phẩm..." : "..."}</span>`;
+        }
+        container.appendChild(slot);
+      }
+
+      // Add-more button
+      let addBtn = container.parentNode.querySelector(".add-more");
+      if (!addBtn) {
+        addBtn = document.createElement("div");
+        addBtn.className = "add-more";
+        container.parentNode.appendChild(addBtn);
+      }
+      const canAdd = selected.length > 0 && selected.length < MAX_SLOTS;
+      addBtn.innerHTML = canAdd
+        ? `<button class="add-btn" onclick="document.getElementById('food-search').focus()">＋ Thêm thực phẩm</button>`
+        : selected.length >= MAX_SLOTS
+          ? `<span class="add-btn disabled">✓ Đã đủ ${MAX_SLOTS} thực phẩm</span>`
+          : "";
+    }
+
+    // Search autocomplete
+    let currentFocus = -1;
+
+    function closeSuggestions() {
+      document.getElementById("suggestions").classList.remove("open");
+      currentFocus = -1;
+    }
+
+    document.getElementById("food-search").addEventListener("input", function() {
+      const val = this.value.trim().toLowerCase();
+      const sugEl = document.getElementById("suggestions");
+      if (val.length < 1) { closeSuggestions(); return; }
+
+      const selectedIds = new Set(selected.map(s => s.id));
+      const matches = foods.filter(f =>
+        !selectedIds.has(f.id) &&
+        (f.name.toLowerCase().includes(val) ||
+         (f.aliases && f.aliases.some(a => a.toLowerCase().includes(val))))
+      ).slice(0, 10);
+
+      sugEl.innerHTML = matches.length
+        ? matches.map(m => `<div class="suggestion-item" data-id="${m.id}">
+            <span class="s-name">${highlight(m.name, val)}</span>
+            <span class="s-cat">${m.category || ""}</span>
+          </div>`).join("")
+        : `<div class="suggestion-item" style="color:#999">Không tìm thấy</div>`;
+
+      sugEl.classList.add("open");
+      currentFocus = -1;
+    });
+
+    function highlight(text, query) {
+      const idx = text.toLowerCase().indexOf(query);
+      if (idx === -1) return text;
+      return text.slice(0, idx) + "<strong>" + text.slice(idx, idx + query.length) + "</strong>" + text.slice(idx + query.length);
+    }
+
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".search-box")) closeSuggestions();
+    });
+
+    document.getElementById("food-search").addEventListener("keydown", function(e) {
+      const items = document.querySelectorAll("#suggestions .suggestion-item");
+      if (e.key === "ArrowDown") {
+        currentFocus = Math.min(currentFocus + 1, items.length - 1);
+        items.forEach((el, i) => el.style.background = i === currentFocus ? "#e8f5e9" : "");
+        e.preventDefault();
+      } else if (e.key === "ArrowUp") {
+        currentFocus = Math.max(currentFocus - 1, -1);
+        items.forEach((el, i) => el.style.background = i === currentFocus ? "#e8f5e9" : "");
+        e.preventDefault();
+      } else if (e.key === "Enter" && currentFocus >= 0 && items[currentFocus]) {
+        items[currentFocus].click();
+      }
+    });
+
+    document.getElementById("suggestions").addEventListener("click", function(e) {
+      const item = e.target.closest(".suggestion-item");
+      if (!item) return;
+      const food = foods.find(f => f.id === item.dataset.id);
+      if (food) addFood(food);
+    });
+
+    // Comparison Table
+    function renderComparison() {
+      const empty = document.getElementById("empty-state");
+      const tableArea = document.getElementById("table-area");
+
+      if (selected.length < 2) {
+        empty.style.display = "";
+        tableArea.style.display = "none";
+        return;
+      }
+      empty.style.display = "none";
+      tableArea.style.display = "";
+
+      const rkc = renderCompareCells;
+      let html = `<div style="overflow-x:auto"><table class="compare-table">
+        <thead><tr><th>Chỉ số</th>`;
+
+      selected.forEach(f => {
+        html += `<th>${f.name}</th>`;
+      });
+      html += `</tr></thead><tbody>`;
+
+      // Category rows
+      let currentSection = "";
+      for (const n of NUTRIENTS) {
+        const section = getSection(n.key);
+        if (section !== currentSection) {
+          html += `<tr><td class="section-label" colspan="${selected.length + 1}">${section}</td></tr>`;
+          currentSection = section;
+        }
+
+        const values = selected.map(f => getNut(f, n.key));
+        const allNull = values.every(v => v === null);
+        if (allNull) continue;
+
+        const bestVal = findBest(values, n.lower);
+        const worstVal = findWorst(values, n.lower);
+
+        html += `<tr><td>${n.label} <span class="unit">(${n.unit})</span></td>`;
+        values.forEach((v, i) => {
+          if (v === null) {
+            html += `<td class="value-equal">—</td>`;
+          } else {
+            const cls = v === bestVal ? "value-best" : (v === worstVal ? "value-worst" : "");
+            const icon = v === bestVal ? " ✓" : (v === worstVal ? " ⚠" : "");
+            html += `<td class="${cls}">${formatVal(v)}${icon}</td>`;
+          }
+        });
+        html += `</tr>`;
+      }
+
+      // Glycemic Load row
+      const gls = selected.map(f => getGlycemicLoad(f));
+      if (gls.some(g => g !== null)) {
+        html += `<tr><td class="section-label" colspan="${selected.length + 1}">Chỉ số đường huyết</td></tr>`;
+        const bestGL = findBest(gls, true);
+        html += `<tr><td>Glycemic Load (GL)</td>`;
+        gls.forEach((v, i) => {
+          if (v === null) {
+            html += `<td class="value-equal">—</td>`;
+          } else {
+            const cls = v === bestGL ? "value-best" : "";
+            const icon = v === bestGL ? " ✓" : "";
+            html += `<td class="${cls}">${v}${icon}</td>`;
+          }
+        });
+        html += `</tr>`;
+      }
+
+      html += `</tbody></table></div>`;
+
+      // Legend
+      html += `<p style="font-size:0.85rem;color:#888;margin-top:12px">
+        <span style="color:#2e7d32;font-weight:700">✓ Tốt nhất</span> ·
+        <span style="color:#c62828;">⚠ Cần lưu ý</span>
+        &nbsp; (giá trị thấp hơn tốt hơn cho: đường, béo bão hòa, cholesterol, natri)
+      </p>`;
+
+      tableArea.innerHTML = html;
+    }
+
+    function getSection(key) {
+      if (["energyKcal"].includes(key)) return "⚡ Năng lượng & Macro";
+      if (["proteinG", "carbG", "fatG", "saturatedFatG", "fiberG", "sugarG"].includes(key)) return "🥩 Macro";
+      if (["cholesterolMg", "sodiumMg", "potassiumMg"].includes(key)) return "🧂 Khoáng đa lượng";
+      if (["calciumMg", "ironMg", "zincMg", "phosphorusMg"].includes(key)) return "🦴 Vi khoáng";
+      return "🍊 Vitamin";
+    }
+
+    function formatVal(v) {
+      if (v === null || v === undefined) return "—";
+      return Number.isInteger(v) ? v : v.toFixed(1);
+    }
+
+    function findBest(values, lowerIsBetter) {
+      const nums = values.filter(v => v !== null);
+      if (!nums.length) return null;
+      return lowerIsBetter ? Math.min(...nums) : Math.max(...nums);
+    }
+
+    function findWorst(values, lowerIsBetter) {
+      const nums = values.filter(v => v !== null);
+      if (!nums.length) return null;
+      return lowerIsBetter ? Math.max(...nums) : Math.min(...nums);
+    }
+
+    loadData();
+  </script>
+</BaseLayout>

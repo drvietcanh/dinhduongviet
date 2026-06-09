@@ -1,0 +1,127 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["sai-lam-gout-chi-do-thit"];
+---
+
+<ArticleLayout article={article}>
+
+Nhiều người nghĩ gout (thống phong) là bệnh của người "ăn sang" — do thịt chó, hải sản, rượu bia. Sự thật phức tạp hơn nhiều.
+
+## 🚫 Sai lầm 1: "Gout là do ăn thịt chó, hải sản"
+
+Đây là quan niệm phổ biến, nhưng chưa đầy đủ. Thực phẩm giàu purin (thịt đỏ, nội tạng, hải sản có vỏ) **có thể** góp phần, nhưng không phải là nguyên nhân duy nhất.
+
+### Nguyên nhân chính gây gout
+
+<table>
+<thead>
+<tr>
+<th>Yếu tố</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>**Di truyền**</td>
+<td>20-30% người bệnh gout có yếu tố gia đình</td>
+</tr>
+<tr>
+<td>**Suy thận**</td>
+<td>Thận không đào thải được acid uric → tăng trong máu</td>
+</tr>
+<tr>
+<td>**Thuốc**</td>
+<td>Lợi tiểu thiazide, aspirin liều thấp, cyclosporine</td>
+</tr>
+<tr>
+<td>**Bia rượu**</td>
+<td>Làm tăng sản xuất + giảm đào thải acid uric</td>
+</tr>
+<tr>
+<td>**Ăn uống**</td>
+<td>Góp phần, nhưng thường chỉ "giọt nước tràn ly"</td>
+</tr>
+<tr>
+<td>**Béo phì**</td>
+<td>Tăng sản xuất acid uric</td>
+</tr>
+</tbody>
+</table>
+> **Sự thật:** Nhiều người ăn uống rất điều độ vẫn bị gout, vì vấn đề nằm ở **đào thải** (qua thận) hơn là ăn vào.
+
+## 🚫 Sai lầm 2: "Nhịn ăn hoàn toàn thịt, cá là hết gout"
+
+Nhịn ăn còn có thể làm nặng thêm vì:
+
+- Nhịn đói → tăng ketone → **cạnh tranh đào thải** với acid uric → acid uric càng cao
+- Thiếu đạm → suy dinh dưỡng → sức khỏe suy giảm
+- Ăn quá nhiều tinh bột/đường → tăng insulin → giảm đào thải acid uric
+
+> **Người gout cần đạm vừa phải, không phải kiêng tuyệt đối.**
+
+## ✅ Đúng: Kiểm soát toàn diện
+
+### Kiểm soát thực phẩm đúng
+
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Nên</th>
+<th>Tránh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đạm cao purin</td>
+<td>Hạn chế, mỗi tuần 2-3 bữa thịt</td>
+<td>Nội tạng, hải sản có vỏ, thịt thú rừng</td>
+</tr>
+<tr>
+<td>Đạm trung bình</td>
+<td>Thịt gà, cá sông, tôm</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Đạm thấp purin</td>
+<td>Trứng, đậu hũ, sữa, rau</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+### Kiểm soát khác quan trọng hơn thực phẩm
+
+<table>
+<thead>
+<tr>
+<th>Biện pháp</th>
+<th>Tác dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>**Uống 2-3 lít nước/ngày**</td>
+<td>Giúp thận đào thải acid uric — quan trọng nhất</td>
+</tr>
+<tr>
+<td>**Giảm cân** (nếu thừa cân)</td>
+<td>Giảm 5-10% cân nặng → giảm đáng kể acid uric</td>
+</tr>
+<tr>
+<td>**Bỏ rượu bia**</td>
+<td>Đặc biệt là bia — làm tăng mạnh acid uric</td>
+</tr>
+<tr>
+<td>**Hạn chế đường, nước ngọt**</td>
+<td>Fructose làm tăng sản xuất acid uric</td>
+</tr>
+<tr>
+<td>**Dùng thuốc đúng** (allopurinol, febuxostat)</td>
+<td>Mục tiêu: acid uric dưới 360 µmol/L</td>
+</tr>
+</tbody>
+</table>
+> **Kết luận:** Gout không chỉ do ăn uống — di truyền, suy thận, thuốc, béo phì mới là yếu tố chính. Không cần kiêng thịt tuyệt đối. Uống nhiều nước, giảm cân, bỏ bia rượu quan trọng hơn kiêng từng miếng thịt.
+
+</ArticleLayout>

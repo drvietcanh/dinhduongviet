@@ -1,0 +1,118 @@
+---
+const { nutrients, name } = Astro.props;
+const kcal = nutrients.energyKcal || 0;
+const protein = nutrients.proteinG || 0;
+const fat = nutrients.fatG || 0;
+const carb = nutrients.carbG || 0;
+const fiber = nutrients.fiberG || 0;
+const sugar = nutrients.sugarG || 0;
+const satFat = nutrients.satFatG || 0;
+const sodium = nutrients.sodiumMg || 0;
+
+// Calorie contribution: protein 4 kcal/g, carb 4 kcal/g, fat 9 kcal/g
+const proteinKcal = protein * 4;
+const carbKcal = carb * 4;
+const fatKcal = fat * 9;
+const totalMacroKcal = proteinKcal + carbKcal + fatKcal;
+const pPct = totalMacroKcal > 0 ? (proteinKcal / totalMacroKcal * 100) : 0;
+const cPct = totalMacroKcal > 0 ? (carbKcal / totalMacroKcal * 100) : 0;
+const fPct = totalMacroKcal > 0 ? (fatKcal / totalMacroKcal * 100) : 0;
+
+// Daily reference values (DRI for adult, ~2000 kcal)
+const DRI = {
+  protein: { value: 60, label: "g", color: "#e53935" },  // ~15% of 2000 kcal
+  fiber: { value: 25, label: "g", color: "#43a047" },
+  satFat: { value: 20, label: "g", color: "#f4511e" }, // max
+  sugar: { value: 50, label: "g", color: "#fb8c00" }, // max added sugar
+  sodium: { value: 2300, label: "mg", color: "#5c6bc0" },
+  fat: { value: 65, label: "g", color: "#fdd835" },
+  carb: { value: 300, label: "g", color: "#8e24aa" },
+};
+
+const bars = [
+  { label: "Đạm", key: "protein", val: protein, max: DRI.protein.value, unit: "g", color: "#e53935" },
+  { label: "Chất xơ", key: "fiber", val: fiber, max: DRI.fiber.value, unit: "g", color: "#43a047" },
+  { label: "Đường", key: "sugar", val: sugar, max: DRI.sugar.value, unit: "g", color: "#fb8c00" },
+  { label: "Béo bão hòa", key: "satFat", val: satFat, max: DRI.satFat.value, unit: "g", color: "#f4511e" },
+  { label: "Natri", key: "sodium", val: sodium, max: DRI.sodium.value, unit: "mg", color: "#5c6bc0" },
+];
+
+const barWidth = 100; // percentage scale
+const barHeight = 18;
+---
+
+<section class="card chart-section">
+  <h2>📊 Biểu đồ dinh dưỡng — {name}</h2>
+
+  <!-- Macro donut bar: tỉ lệ năng lượng từ đạm-béo-carb -->
+  <div class="chart-block">
+    <h3>Phân bổ năng lượng</h3>
+    <div class="macro-bar">
+      {pPct > 0 && <div class="macro-seg macro-protein" style={`width:${pPct}%`} title={`Đạm ${pPct.toFixed(0)}%`}></div>}
+      {fPct > 0 && <div class="macro-seg macro-fat" style={`width:${fPct}%`} title={`Béo ${fPct.toFixed(0)}%`}></div>}
+      {cPct > 0 && <div class="macro-seg macro-carb" style={`width:${cPct}%`} title={`Carb ${cPct.toFixed(0)}%`}></div>}
+    </div>
+    <div class="macro-legend">
+      {pPct > 0 && <span class="legend-item"><span class="dot dot-protein"></span>Đạm {pPct.toFixed(0)}%</span>}
+      {fPct > 0 && <span class="legend-item"><span class="dot dot-fat"></span>Béo {fPct.toFixed(0)}%</span>}
+      {cPct > 0 && <span class="legend-item"><span class="dot dot-carb"></span>Carb {cPct.toFixed(0)}%</span>}
+    </div>
+  </div>
+
+  <!-- Nutrient bars vs daily reference -->
+  <div class="chart-block">
+    <h3>So với nhu cầu hàng ngày*</h3>
+    {bars.map(b => {
+      const pct = Math.min(100, (b.val / b.max * 100));
+      const displayVal = b.val < 10 ? b.val.toFixed(1) : Math.round(b.val);
+      return (
+        <div class="nutri-bar-row">
+          <div class="nutri-label">
+            <span>{b.label}</span>
+            <strong>{displayVal}<span class="unit">{b.unit}</span></strong>
+          </div>
+          <div class="nutri-track">
+            <div class="nutri-fill" style={`width:${Math.max(2, pct)}%;background:${b.color}`}></div>
+            {pct < 100 && <span class="nutri-end">{Math.round(pct)}%</span>}
+            {pct >= 100 && <span class="nutri-end nutri-over">≥100%</span>}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <p class="chart-footnote">*DRI người trưởng thành (~2000 kcal). Giá trị thực tế thay đổi theo tuổi, giới, vận động.</p>
+</section>
+
+<style>
+.chart-section { padding: 20px; }
+.chart-section h2 { margin: 0 0 16px; font-size: 1rem; }
+.chart-block { margin-bottom: 20px; }
+.chart-block h3 { font-size: 0.88rem; margin: 0 0 10px; color: var(--ink-secondary); font-weight: 500; }
+
+/* Macro bar */
+.macro-bar { display:flex; height:28px; border-radius:14px; overflow:hidden; background:var(--bg-elevated); }
+.macro-seg { height:100%; transition:width 0.3s; }
+.macro-protein { background:#e53935; }
+.macro-fat { background:#fdd835; }
+.macro-carb { background:#8e24aa; }
+
+.macro-legend { display:flex; gap:16px; margin-top:10px; flex-wrap:wrap; }
+.legend-item { font-size:0.84rem; display:flex; align-items:center; gap:6px; color:var(--ink-secondary); }
+.dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+.dot-protein { background:#e53935; }
+.dot-fat { background:#fdd835; }
+.dot-carb { background:#8e24aa; }
+
+/* Nutrient bars */
+.nutri-bar-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.nutri-label { width:110px; flex-shrink:0; font-size:0.85rem; display:flex; justify-content:space-between; }
+.nutri-label strong { font-weight:700; font-size:0.9rem; color:var(--ink); }
+.nutri-label .unit { font-weight:400; font-size:0.72rem; color:var(--ink-tertiary); margin-left:2px; }
+.nutri-track { flex:1; height:18px; border-radius:9px; background:var(--bg-elevated); position:relative; overflow:hidden; }
+.nutri-fill { height:100%; border-radius:9px; transition:width 0.4s; min-width:4px; }
+.nutri-end { position:absolute; right:6px; top:50%; transform:translateY(-50%); font-size:0.72rem; font-weight:600; color:var(--ink-tertiary); }
+.nutri-over { color:#e53935; font-size:0.68rem; }
+
+.chart-footnote { font-size:0.78rem; color:var(--ink-tertiary); margin-top:8px; font-style:italic; }
+</style>

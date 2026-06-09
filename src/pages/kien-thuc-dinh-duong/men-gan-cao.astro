@@ -1,0 +1,97 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["men-gan-cao"];
+if (!art) throw new Error("Article not found: men-gan-cao");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Cường, 38 tuổi, khám sức khỏe định kỳ thấy men gan ALT 85, AST 72 — cao gấp đôi. Anh lo lắng: "Có phải em bị viêm gan không?" Bác sĩ hỏi: "Anh có uống rượu không? Có thừa cân không?" Anh bia mỗi tối 2 lon, BMI 27. Chẩn đoán: <strong>gan nhiễm mỡ do rượu + chuyển hóa</strong>.</p>
+  <p>Men gan cao gặp ở 15–20% dân số Việt. Quan trọng: men gan cao KHÔNG phải là bệnh — nó là dấu hiệu tế bào gan đang bị tổn thương. Tìm nguyên nhân mới là then chốt.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Men gan cao = hết bia rượu 4–6 tuần, giảm cân nếu thừa, ăn ít đường & đồ chiên. 
+    Tăng rau xanh, cá béo, nghệ, trà xanh. Men gan sẽ giảm trong 2–3 tháng nếu nguyên nhân là do ăn uống và lối sống.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Men gan là gì? Vì sao tăng?</h2>
+  <p>Men gan (ALT, AST) là enzyme trong tế bào gan. Khi tế bào gan tổn thương do rượu, mỡ, virus, thuốc — các enzyme này thoát ra máu. 7 nguyên nhân thường gặp: (1) gan nhiễm mỡ, (2) rượu bia, (3) thuốc (paracetamol liều cao, statin), (4) viêm gan B/C, (5) tiểu đường/mỡ máu, (6) viêm gan tự miễn, (7) vận động gắng sức (AST tăng đơn độc).</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau xanh: bông cải, cải bó xôi, rau ngót, bắp cải</li>
+      <li>Trái cây ít ngọt: bưởi, cam, táo, ổi, dâu tây</li>
+      <li>Cá béo: cá hồi, cá thu — omega-3 chống viêm</li>
+      <li>Dầu thực vật: dầu olive, dầu mè</li>
+      <li>Ngũ cốc nguyên hạt: gạo lứt, yến mạch</li>
+      <li>Đậu hạt: đậu xanh, óc chó, hạnh nhân</li>
+      <li>Nghệ, trà xanh — bảo vệ gan</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ RƯỢU BIA — số 1 gây men gan cao</li>
+      <li>⛔ Đồ chiên rán, thức ăn nhanh</li>
+      <li>⛔ Đường, nước ngọt, bánh kẹo</li>
+      <li>⛔ Thịt đỏ nhiều mỡ, nội tạng</li>
+      <li>⚠️ Paracetamol liều cao — cực kỳ độc gan</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Khi nào đáng lo?</h2>
+  <table class="table"><thead><tr><th>Mức ALT</th><th>Ý nghĩa</th><th>Hành động</th></tr></thead><tbody>
+    <tr><td>40–80 U/L</td><td>🟡 Cao nhẹ</td><td>Ngừng rượu, giảm cân, kiểm tra lại 3 tháng</td></tr>
+    <tr><td>80–400 U/L</td><td>🟠 Cao vừa</td><td>Cần xét nghiệm viêm gan B/C, siêu âm gan</td></tr>
+    <tr><td>&gt;400 U/L</td><td>🔴 Cao nặng</td><td>Viêm gan cấp — nhập viện ngay</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Yến mạch nấu + trứng luộc + 1 ly trà xanh</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả bưởi</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá thu nướng + rau cải luộc + canh bí đỏ</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 nắm hạt óc chó</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm gạo lứt + đậu phụ sốt cà + rau ngót xào tỏi</td></tr>
+    <tr><td>🌜 Trước ngủ</td><td>Sữa chua không đường</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Ngừng rượu 4–6 tuần — men gan sẽ giảm nếu nguyên nhân do rượu.</li>
+        <li>Giảm 5–10% cân nặng — giảm men gan hiệu quả.</li>
+        <li>Không tự uống "thuốc mát gan" — nhiều loại gây độc gan!</li>
+        <li>Xét nghiệm viêm gan B/C — nếu chưa biết.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Men gan &gt;100 U/L kéo dài &gt;3 tháng.</li>
+        <li>Kèm vàng da, vàng mắt.</li>
+        <li>Mệt mỏi kéo dài, chán ăn, sụt cân.</li>
+        <li>Tiền sử gia đình viêm gan B/C.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,0 +1,112 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-suy-giap"];
+if (!art) throw new Error("Article not found: dinh-duong-suy-giap");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Ngân, 35 tuổi, lúc nào cũng mệt, da khô, lạnh chân tay, tóc rụng nhiều, trí nhớ kém. Đi khám bác sĩ bảo <strong>suy giáp</strong> — tuyến giáp không sản xuất đủ hormone. Chị được kê levothyroxine và hỏi: "Em nên ăn gì? Có thực phẩm nào ảnh hưởng tới thuốc không?"</p>
+  <p>Câu trả lời: có, rất nhiều. I-ốt, selen, kẽm là những vi chất cần thiết cho tuyến giáp. Nhưng một số thực phẩm (goitrogen) nếu ăn quá nhiều sống có thể ức chế hấp thu i-ốt.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người suy giáp cần <u>bổ sung i-ốt</u> (rong biển, cá biển), <u>selen</u> (hạt Brazil, cá ngừ), <u>kẽm</u> (hàu, thịt bò),
+    <u>uống thuốc giáp xa bữa ăn 30–60 phút</u>, và <u>tránh ăn quá nhiều bắp cải, cải xoăn sống</u> (goitrogen).</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao dinh dưỡng ảnh hưởng tới tuyến giáp?</h2>
+  <p>Tuyến giáp dùng i-ốt để sản xuất hormone T3 và T4. Nếu thiếu i-ốt, tuyến giáp to lên (bướu cổ) và hoạt động kém. Selen giúp chuyển T4 thành T3 (dạng hoạt động). Kẽm cần thiết để tổng hợp hormone. Một số thực phẩm sống chứa goitrogen — chất ức chế hấp thu i-ốt — nhưng nấu chín kỹ sẽ vô hiệu hóa các chất này.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>I-ốt:</strong> Rong biển (tảo bẹ, nori), cá biển, tôm, cua, trứng, sữa, muối i-ốt</li>
+      <li><strong>Selen:</strong> Hạt Brazil (2 hạt/ngày đủ), cá ngừ, cá hồi, trứng, nấm</li>
+      <li><strong>Kẽm:</strong> Hàu (giàu nhất), thịt bò, thịt gà, hạt bí, đậu, hạt điều</li>
+      <li><strong>Vitamin B:</strong> Ngũ cốc nguyên cám, trứng, sữa, rau xanh</li>
+      <li><strong>Chất xơ:</strong> Rau, trái cây, yến mạch — giúp tiêu hóa tốt, tránh táo bón (thường gặp ở suy giáp)</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần lưu ý</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⚠️ Goitrogen (ăn sống nhiều):</strong> Bắp cải, cải xoăn, bông cải, củ cải, đậu nành — nấu chín thì không sao</li>
+      <li><strong>⛔ Đậu nành lượng lớn:</strong> Đậu nành và chế phẩm có thể giảm hấp thu thuốc giáp — ăn vừa phải là được</li>
+      <li><strong>⛔ Thực phẩm giàu canxi/sắt:</strong> Uống cùng lúc với thuốc giáp làm giảm hấp thu — cách ít nhất 2 giờ</li>
+      <li><strong>⛔ Caffeine:</strong> Cà phê/trà làm giảm hấp thu levothyroxine — uống thuốc xong chờ 30–60 phút</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Hướng dẫn dùng thuốc và ăn uống</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Hoạt động</th><th>Khuyến nghị</th></tr></thead>
+    <tbody>
+      <tr><td>Uống levothyroxine</td><td>Sáng sớm, lúc đói, uống với nước lọc — chờ 30–60 phút sau mới ăn</td></tr>
+      <tr><td>Cà phê/trà</td><td>Cách thuốc ít nhất 60 phút</td></tr>
+      <tr><td>Canxi/sắt (thuốc)</td><td>Cách thuốc ít nhất 2 giờ</td></tr>
+      <tr><td>Đậu nành/rong biển</td><td>Ăn vừa phải, KHÔNG ăn cùng lúc với uống thuốc</td></tr>
+      <tr><td>Chất xơ cao</td><td>Tốt, nhưng không ăn quá nhiều cùng lúc với thuốc</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Uống thuốc → chờ 30 phút → ăn: cháo yến mạch + trứng ốp la + 1 quả cam</td><td>Tránh cà phê sáng sớm</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi nướng + salad rong biển + rau cải luộc</td><td>I-ốt + selen + kẽm</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 hũ sữa chua + 2 hạt Brazil + 1 quả táo</td><td>Selen từ hạt Brazil</td></tr>
+      <tr><td>🌙 Tối</td><td>Cơm + thịt bò xào bông cải + canh rong biển đậu phụ</td><td>Luộc kỹ bông cải</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Nếu ăn các món giàu goitrogen, nấu chín kỹ là an toàn.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Uống thuốc giáp cùng 1 giờ mỗi sáng, lúc đói.</li>
+        <li>Nếu quên: uống ngay khi nhớ, trừ khi gần tới liều kế.</li>
+        <li>Dùng muối i-ốt thay muối thường (trừ khi đã cường giáp).</li>
+        <li>Hạn chế đậu nành lượng lớn hàng ngày.</li>
+        <li>Tập thể dục nhẹ: đi bộ, yoga — giúp tăng chuyển hóa.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Mệt mỏi, da khô, rụng tóc kéo dài dù đã uống thuốc.</li>
+        <li>Tăng cân không rõ nguyên nhân.</li>
+        <li>Nhịp tim chậm, tay chân lạnh.</li>
+        <li>Khó chịu ở cổ, khó nuốt, giọng khàn.</li>
+        <li>Phụ nữ có thai hoặc dự định có thai — cần theo dõi sát.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

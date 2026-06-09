@@ -1,0 +1,31 @@
+---
+const { category = "" } = Astro.props;
+
+const emojiMap: Record<string, string> = {
+  "Thịt": "🥩",
+  "Thịt chế biến": "🥓",
+  "Thủy sản": "🐟",
+  "Cá": "🐟",
+  "Hải sản": "🦐",
+  "Trứng": "🥚",
+  "Sữa": "🥛",
+  "Tinh bột": "🍚",
+  "Rau xanh": "🥬",
+  "Củ quả": "🥕",
+  "Rau củ": "🥬",
+  "Rau gia vị": "🌿",
+  "Nấm": "🍄",
+  "Trái cây": "🍌",
+  "Hạt và đậu": "🫘",
+  "Đậu": "🫘",
+  "Hạt": "🥜",
+  "Dầu mỡ": "🧈",
+  "Nước dùng": "🥣",
+  "Gia vị": "🧂",
+  "Đồ uống": "☕",
+  "Bánh kẹo": "🍪",
+};
+
+const icon = emojiMap[category] ?? "🍽️";
+---
+{icon}

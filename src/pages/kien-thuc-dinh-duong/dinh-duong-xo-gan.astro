@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-xo-gan"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Nhân, 58 tuổi, viêm gan B 20 năm, uống rượu thường xuyên. Gần đây bác thấy mệt nhiều, phù chân, bụng to dần. Siêu âm: xơ gan, cổ trướng. Bác sĩ nói: "Gan đã xơ rồi, không thể hồi phục. Mục tiêu bây giờ là duy trì càng lâu càng tốt bằng thuốc và dinh dưỡng."</p>
+  <p>Xơ gan là giai đoạn cuối của các bệnh gan mạn tính, khi mô gan bị thay thế bằng mô xơ sẹo. Ở giai đoạn còn bù, dinh dưỡng tốt có thể duy trì chất lượng sống và kéo dài thời gian trước khi ghép gan.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người xơ gan cần <u>kiêng rượu tuyệt đối</u>, <u>đủ năng lượng (25–35 kcal/kg)</u>,
+    <u>đạm 1–1.2g/kg (nếu không có não gan)</u>, <u>hạn chế muối nếu cổ trướng (&lt;2g)</u>,
+    <u>chia nhiều bữa nhỏ</u>. Khi não gan: giảm đạm 0.6–0.8g/kg.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao xơ gan gây suy dinh dưỡng?</h2>
+  <p>Gan là "nhà máy" chuyển hóa chất dinh dưỡng. Khi xơ, gan không tổng hợp đủ albumin (gây phù), không dự trữ được vitamin, không chuyển hóa được đạm (gây tích tụ amoniac → não gan). Bệnh nhân xơ gan thường chán ăn, chuyển hóa tăng, dễ suy dinh dưỡng — vòng xoáy làm xơ gan nặng thêm.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đạm: đậu phụ, sữa, trứng, cá, ức gà — 1–1.2g/kg</li>
+      <li>Tinh bột: cơm trắng, cháo, bánh mì, khoai tây</li>
+      <li>Chất béo tốt: dầu olive, bơ (nếu hấp thu được)</li>
+      <li>Rau luộc mềm, trái cây chín mềm</li>
+      <li>BCAA (acid amin mạch nhánh): sữa công thức chuyên biệt</li>
+      <li>Vitamin B, kẽm, magie — thường thiếu ở xơ gan</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ RƯỢU BIA — tuyệt đối tránh</li>
+      <li>⛔ Đồ sống/tái — nguy cơ nhiễm trùng</li>
+      <li>⛔ Cổ trướng: giảm muối &lt;2g/ngày</li>
+      <li>⛔ Não gan: giảm đạm tạm thời, chọn đạm thực vật + sữa</li>
+      <li>⛔ Cá nhiều xương dăm (dễ hóc gây chảy máu nếu giãn tĩnh mạch thực quản)</li>
+      <li>⚠️ Không tự ý dùng thảo dược</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Chế độ theo biến chứng</h2>
+  <table class="table"><thead><tr><th>Tình trạng</th><th>Muối</th><th>Đạm</th><th>Dịch</th><th>Khác</th></tr></thead><tbody>
+    <tr><td>Xơ gan còn bù</td><td>&lt;5g</td><td>1–1.2g/kg</td><td>2 lít</td><td>Đủ năng lượng</td></tr>
+    <tr><td>Cổ trướng</td><td>&lt;2g</td><td>1–1.2g/kg</td><td>1.5 lít</td><td>Thuốc lợi tiểu + cân nặng hàng ngày</td></tr>
+    <tr><td>Não gan</td><td>&lt;2g</td><td>0.6–0.8g/kg</td><td>1.5 lít</td><td>Đạm thực vật, sữa; thuốc lactulose</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (xơ gan còn bù)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch + 1 ly sữa + 1 quả chuối</td></tr>
+    <tr><td>🌞 Phụ</td><td>Sinh tố bơ sữa</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm trắng + cá hấp + rau cải luộc + canh bí đỏ</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa chua + đu đủ chín</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm trắng + đậu phụ sốt cà + canh rau ngót</td></tr>
+    <tr><td>🌜 Phụ tối</td><td>Sữa ấm 200ml</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Cân mỗi ngày — phát hiện cổ trướng sớm.</li>
+        <li>Báo bác sĩ nếu tăng &gt;1kg/ngày.</li>
+        <li>Chia 6–8 bữa nhỏ — chống suy dinh dưỡng.</li>
+        <li>Tiêm vaccine viêm gan B, cúm, phế cầu.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Nôn ra máu, đi ngoài phân đen — giãn vỡ tĩnh mạch thực quản.</li>
+        <li>Lơ mơ, run tay, nói nhảm — não gan.</li>
+        <li>Sốt, đau bụng — nhiễm trùng dịch cổ trướng.</li>
+        <li>Khó thở, bụng căng to.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

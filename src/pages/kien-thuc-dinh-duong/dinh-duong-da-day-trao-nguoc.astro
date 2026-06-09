@@ -1,0 +1,86 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-da-day-trao-nguoc"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Tuấn, 34 tuổi, mỗi tối nằm xuống là ợ nóng, đắng họng, có đêm trào ngược thức ăn lên miệng. Khám bác sĩ bảo bị <strong>trào ngược dạ dày thực quản (GERD)</strong>. Nguyên nhân: ăn tối muộn, uống nhiều cà phê, bia và thừa cân.</p>
+  <p>GERD ảnh hưởng tới 20–30% người Việt. Tin tốt: thay đổi chế độ ăn có thể giảm 80% triệu chứng mà không cần thuốc.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người trào ngược cần <u>ăn ít một lần, không nằm sau ăn 2–3h</u>, <u>tránh đồ chiên rán, cà phê, rượu bia, cam chanh</u>,
+    <u>kê cao đầu khi ngủ</u>, và <u>giảm cân nếu thừa</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao thức ăn trào ngược?</h2>
+  <p>Giữa thực quản và dạ dày có một van cơ (LES). Khi van này yếu, acid dạ dày trào lên thực quản. Đồ chiên rán, cà phê, rượu bia, socola làm yến van này. Ăn quá no cũng làm tăng áp lực dạ dày, đẩy acid lên.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cháo, cơm mềm, bánh mì, khoai lang luộc</li>
+      <li>Thịt nạc, cá hấp, trứng luộc, đậu phụ</li>
+      <li>Chuối chín, đu đủ, dưa hấu, lê (trái cây ít acid)</li>
+      <li>Rau luộc: bí đỏ, cà rốt, bông cải, khoai tây</li>
+      <li>Gừng, nghệ — giúp giảm viêm niêm mạc</li>
+      <li>Nước lọc, trà gừng ấm, sữa hạt (không đường)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Cà phê, trà đặc, nước ngọt có gas</li>
+      <li>⛔ Rượu bia — làm yếu van LES</li>
+      <li>⛔ Cam, chanh, bưởi, cà chua (trái cây nhiều acid)</li>
+      <li>⛔ Đồ chiên rán, bánh ngọt nhiều kem, socola</li>
+      <li>⛔ Hành tỏi sống, ớt, tiêu, gia vị cay</li>
+      <li>⛔ Bạc hà — tưởng tốt nhưng làm yếu van LES</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Nguyên tắc</th><th>Cụ thể</th></tr></thead><tbody>
+    <tr><td>Khẩu phần</td><td>Ít một lần, ăn 4–5 bữa nhỏ/ngày</td></tr>
+    <tr><td>Không nằm ngay</td><td>Ngồi/thẳng lưng 2–3 giờ sau ăn</td></tr>
+    <tr><td>Bữa tối</td><td>Kết thúc trước ngủ ít nhất 3 giờ</td></tr>
+    <tr><td>Kê cao đầu</td><td>Gối cao 15–20cm khi ngủ — không nằm thẳng</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch + chuối + 1 ly sữa hạt</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm mềm + ức gà luộc + bí đỏ luộc + canh khoai tây cà rốt</td></tr>
+    <tr><td>🌆 Chiều</td><td>Đu đủ chín + 1 hũ sữa chua không đường</td></tr>
+    <tr><td>🌙 Tối (trước 19h)</td><td>Cháo cá hấp + rau luộc + bánh mì lát</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul><li>Nhai kỹ, ăn chậm.</li><li>Mặc quần áo rộng vùng bụng.</li><li>Giảm cân nếu BMI > 25.</li><li>Không hút thuốc.</li></ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul><li>Nuốt đau, nuốt nghẹn.</li><li>Sụt cân không rõ nguyên nhân.</li><li>Nôn ra máu, phân đen.</li><li>Đau ngực kèm khó thở.</li></ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

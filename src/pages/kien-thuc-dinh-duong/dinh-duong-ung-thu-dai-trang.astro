@@ -1,0 +1,58 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-ung-thu-dai-trang"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    Ung thư đại trực tràng liên quan chặt chẽ đến chế độ ăn. Dinh dưỡng đúng giúp giảm nguy cơ, hỗ trợ điều trị (trước/sau mổ, hóa trị) và phòng tái phát.
+
+<p>Bài này bao gồm: (1) Phòng ngừa, (2) Trước mổ, (3) Sau mổ, (4) Sau hóa trị.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+<li><strong>Xơ hòa tan & không hòa tan:</strong> 25–30g xơ/ngày giúp giảm nguy cơ ung thư đại tràng. Nguồn: yến mạch, đậu, rau, trái cây.</li>
+<li><strong>Canxi:</strong> Chế độ ăn giàu canxi (sữa, cá nhỏ, cải xoăn) giúp giảm nguy cơ polyp đại tràng.</li>
+<li><strong>Hạn chế thịt đỏ & thịt chế biến:</strong> IARC xếp thịt chế biến vào nhóm 1 (chắc chắn gây ung thư) và thịt đỏ nhóm 2A.</li>
+<li><strong>Tránh rượu & thuốc lá.</strong></li>
+<li><strong>Sau mổ: ăn mềm, ít xơ giai đoạn đầu, tăng dần.</strong></li>
+</ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+<div class="food-row"><span class="food-cat">🌾 Ngũ cốc nguyên hạt</span><span>Yến mạch, gạo lứt, bánh mì nguyên cám, quinoa</span></div>
+<div class="food-row"><span class="food-cat">🥬 Rau xanh</span><span>Cải bó xôi, cải xoăn, bông cải xanh, măng tây</span></div>
+<div class="food-row"><span class="food-cat">🫘 Đậu & hạt</span><span>Đậu lăng, đậu xanh, đậu gà, hạt óc chó, hạt chia</span></div>
+<div class="food-row"><span class="food-cat">🍎 Trái cây</span><span>Táo, lê, chuối, cam, việt quất, nho</span></div>
+<div class="food-row"><span class="food-cat">🥛 Canxi</span><span>Sữa chua, sữa tươi, cá mòi, cải xoăn, đậu hũ</span></div>
+</div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần hạn chế</h2>
+    <ul>
+<li><strong>Thịt đỏ:</strong> Giới hạn &lt;500g/tuần (WHO khuyến nghị)</li>
+<li><strong>Thịt chế biến:</strong> Xúc xích, thịt xông khói, giăm bông — nên tránh hoàn toàn nếu có thể</li>
+<li><strong>Rượu bia:</strong> Tăng nguy cơ ung thư đại tràng kể cả ở mức thấp</li>
+<li><strong>Đồ ăn chiên rán, thức ăn nhanh</strong></li>
+</ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Sau mổ đại tràng có cần kiêng xơ không?</summary><p>Giai đoạn 2-4 tuần đầu sau mổ, nên ăn ít xơ để ruột lành. Sau đó từ từ thêm xơ hòa tan (yến mạch, chuối chín). Sau 2-3 tháng, ăn xơ bình thường.</p></details>
+<details class="faq-item"><summary>Có cần uống bổ sung gì không?</summary><p>Người có túi thông (ostomy) cần bổ sung vitamin B12, kẽm và điện giải. Tham khảo bác sĩ. Không tự ý uống thuốc bổ.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>3 việc quan trọng:</strong> (1) 25g xơ/ngày — giảm nguy cơ & tái phát, (2) Hạn chế thịt đỏ & bỏ thịt chế biến, (3) Khám tầm soát định kỳ — nội soi đại tràng sau 50 tuổi (hoặc sớm hơn nếu có yếu tố nguy cơ).</p></div>
+  </section>
+</ArticleLayout>

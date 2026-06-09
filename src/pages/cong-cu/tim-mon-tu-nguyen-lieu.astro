@@ -1,0 +1,281 @@
+---
+// tim-mon-tu-nguyen-lieu.astro — Gợi ý món ăn từ nguyên liệu có sẵn
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Categories are hardcoded for the static checklist UI
+// Ingredient data loaded client-side from /ingredient-map.json
+const catData = [
+  "Rau xanh", "Củ quả", "Thịt", "Cá", "Hải sản", "Tinh bột", "Trái cây",
+  "Đậu", "Nấm", "Trứng sữa", "Gia vị", "Dầu mỡ", "Rau gia vị", "Bánh kẹo", "Thịt chế biến", "Đồ uống", "Nước dùng", "Hạt"
+];
+---
+
+<BaseLayout title="Tìm món từ nguyên liệu có sẵn - Dinh Dưỡng Việt">
+  <section>
+    <span class="badge">🔍 Công cụ</span>
+    <h1>Tìm món từ nguyên liệu có sẵn</h1>
+    <p class="lead">
+      Chọn các nguyên liệu bạn có trong tủ lạnh/tủ bếp, xem gợi ý món ăn Việt Nam phù hợp!
+    </p>
+  </section>
+
+  <div class="app-container" id="recipe-finder-app">
+    <!-- Category filter tabs -->
+    <div class="cat-tabs" id="cat-tabs">
+      <button class="cat-tab active" data-cat="all">Tất cả</button>
+      {catData.map(cat => (
+        <button class="cat-tab" data-cat={cat}>{cat}</button>
+      ))}
+    </div>
+
+    <!-- Ingredient checkboxes -->
+    <div class="ing-grid" id="ing-grid">
+      <div class="empty-state"><p>Đang tải nguyên liệu...</p></div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-panel">
+      <div class="results-header">
+        <h2>Món gợi ý</h2>
+        <span class="results-count" id="results-count">Chọn nguyên liệu để bắt đầu</span>
+      </div>
+      <div class="recipe-results" id="recipe-results">
+        <div class="empty-state">
+          <p>☝️ Chọn ít nhất 1 nguyên liệu, mình sẽ gợi ý món cho bạn!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  fetch('/ingredient-map.json')
+    .then(r => r.json())
+    .then(data => {
+      window.recipeData = data;
+      initApp();
+    });
+
+  function initApp() {
+    const data = window.recipeData;
+    const grid = document.getElementById('ing-grid');
+    const results = document.getElementById('recipe-results');
+    const count = document.getElementById('results-count');
+    const tabs = document.querySelectorAll('.cat-tab');
+    const allRecipes = Object.keys(data.recipeToIngs || {});
+
+    grid.innerHTML = (data.categories || []).map(cat => {
+      const items = (cat.items || []).map(item => `
+        <label class="ing-chip" data-id="${item.id}">
+          <input type="checkbox" value="${item.id}" />
+          <span class="chip-name">${item.name}</span>
+          <span class="chip-count">${item.recipeCount || 0}</span>
+        </label>
+      `).join('');
+      return `<section class="cat-group" data-cat="${cat.name}">
+        <div class="cat-label">${cat.name}</div>
+        <div class="ing-items">${items}</div>
+      </section>`;
+    }).join('');
+
+    const checkboxes = document.querySelectorAll('.ing-chip input[type="checkbox"]');
+
+    // Category filter
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const cat = tab.dataset.cat;
+        document.querySelectorAll('.cat-group').forEach(g => {
+          g.style.display = (cat === 'all' || g.dataset.cat === cat) ? '' : 'none';
+        });
+      });
+    });
+
+    // Search when ingredients change
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', searchRecipes);
+    });
+
+    function searchRecipes() {
+      const selected = [...checkboxes].filter(cb => cb.checked).map(cb => cb.value);
+      
+      if (selected.length === 0) {
+        results.innerHTML = '<div class="empty-state"><p>☝️ Chọn ít nhất 1 nguyên liệu, mình sẽ gợi ý món cho bạn!</p></div>';
+        count.textContent = 'Chọn nguyên liệu để bắt đầu';
+        return;
+      }
+
+      // Score each recipe
+      const scored = allRecipes.map(slug => {
+        const ings = data.recipeToIngs[slug] || [];
+        const matched = ings.filter(id => selected.includes(id));
+        const score = matched.length;
+        const matchRatio = ings.length > 0 ? (matched.length / ings.length) : 0;
+        return { slug, score, matchRatio, totalIngs: ings.length, matched };
+      });
+
+      // Sort: by matched count desc, then match ratio asc (prioritizes recipes that use selected ings)
+      scored.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.matchRatio !== b.matchRatio) return a.matchRatio - b.matchRatio;
+        return (data.recipeNames[a.slug] || a.slug).localeCompare(data.recipeNames[b.slug] || b.slug, 'vi');
+      });
+
+      const top = scored.filter(r => r.score > 0).slice(0, 20);
+      
+      count.textContent = `Tìm thấy ${top.length} món phù hợp`;
+      
+      if (top.length === 0) {
+        results.innerHTML = '<div class="empty-state"><p>Không tìm thấy món nào với nguyên liệu đã chọn. Thử chọn thêm nguyên liệu khác!</p></div>';
+        return;
+      }
+
+      results.innerHTML = top.map(r => {
+        const matchedNames = r.matched.map(id => {
+          const f = document.querySelector(`.ing-chip[data-id="${id}"] .chip-name`);
+          return f ? f.textContent : id;
+        }).join(', ');
+        
+        return `<a href="/mon-an/${r.slug}" class="recipe-result-item">
+          <div class="rr-header">
+            <strong>${data.recipeNames[r.slug] || r.slug}</strong>
+            <span class="rr-badge">${r.score}/${r.totalIngs} NL trùng</span>
+          </div>
+          <div class="rr-matched">Nguyên liệu khớp: ${matchedNames}</div>
+          ${r.matchRatio >= 0.5 ? '<div class="rr-tip">✅ Bạn đã có hầu hết nguyên liệu!</div>' : ''}
+        </a>`;
+      }).join('');
+    }
+  }
+</script>
+
+<style>
+  .app-container {
+    margin-top: 20px;
+  }
+  .cat-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .cat-tab {
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--card);
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.15s;
+  }
+  .cat-tab:hover { background: var(--line-light); }
+  .cat-tab.active {
+    background: #1d4ed8;
+    color: #fff;
+    border-color: #1d4ed8;
+  }
+  .cat-group {
+    display: none;
+    margin-bottom: 16px;
+  }
+  .cat-group[data-cat] { display: none; }
+  .cat-group:first-of-type { display: block; }
+  .cat-tab[data-cat="all"].active ~ #ing-grid .cat-group { display: block; }
+  /* Simple approach: show all groups by default, JS toggles */
+  .cat-group { display: block; }
+  
+  .cat-label {
+    font-size: 0.9em;
+    color: #6b7280;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .ing-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .ing-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 16px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .ing-chip:hover { border-color: #60a5fa; background: var(--bg-info); }
+  .ing-chip input { display: none; }
+  .ing-chip:has(input:checked) {
+    border-color: #2563eb;
+    background: #dbeafe;
+    box-shadow: 0 0 0 1px #2563eb;
+  }
+  .chip-name { flex: 1; }
+  .chip-count {
+    font-size: 0.75em;
+    color: #9ca3af;
+    background: #f3f4f6;
+    padding: 0 5px;
+    border-radius: 8px;
+  }
+  
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-top: 20px;
+    border-top: 2px solid #e5e7eb;
+  }
+  .results-count { font-size: 0.9em; color: #6b7280; }
+  
+  .recipe-results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .recipe-result-item {
+    display: block;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.15s;
+  }
+  .recipe-result-item:hover { border-color: #93c5fd; background: var(--card-hover); }
+  .rr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .rr-badge {
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #e5e7eb;
+    color: #374151;
+  }
+  .rr-matched {
+    font-size: 0.85em;
+    color: #6b7280;
+  }
+  .rr-tip {
+    font-size: 0.8em;
+    color: #16a34a;
+    margin-top: 4px;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+  }
+</style>

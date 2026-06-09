@@ -1,0 +1,92 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["cuong-can-giap"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Cường tuyến cận giáp (hyperparathyroidism) là tình trạng tuyến cận giáp sản xuất quá nhiều hormone PTH, làm tăng canxi máu và giải phóng canxi từ xương. Hậu quả: loãng xương, sỏi thận, mệt mỏi, rối loạn tiêu hóa.</p>
+    <p>Dinh dưỡng <strong>không thể thay thế phẫu thuật hay thuốc</strong>, nhưng giúp kiểm soát canxi máu, giảm nguy cơ sỏi thận và bảo vệ xương.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Uống nhiều nước (2–3 lít/ngày):</strong> Giúp thận đào thải canxi dư, giảm nguy cơ sỏi thận.</li>
+      <li><strong>Không kiêng quá mức canxi từ thực phẩm:</strong> Canxi từ ăn uống giúp giảm hấp thu canxi từ ruột. Tránh dư thừa từ <em>thuốc bổ sung canxi</em> nếu không có chỉ định.</li>
+      <li><strong>Hạn chế natri:</strong> Ăn mặn làm tăng đào thải canxi qua thận — không tốt cho xương.</li>
+      <li><strong>Bổ sung magie:</strong> Magie cần cho điều hòa PTH. Nguồn: hạt bí, hạnh nhân, rau lá xanh đậm.</li>
+      <li><strong>Giới hạn oxalat:</strong> Rau muối, rau dền, củ dền — kết hợp canxi tạo sỏi. Uống nhiều nước để phòng ngừa.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Nước</span><span>Nước lọc, nước chanh tươi (citrate giúp ngừa sỏi thận)</span></div>
+      <div class="food-row"><span class="food-cat">Rau lá xanh</span><span>Cải xoăn, cải bó xôi (nấu chín để giảm oxalat), xà lách</span></div>
+      <div class="food-row"><span class="food-cat">Trái cây ít oxalat</span><span>Bưởi, cam, dưa hấu, táo, lê, nho</span></div>
+      <div class="food-row"><span class="food-cat">Hạt & đậu</span><span>Hạnh nhân, hạt bí, đậu xanh, đậu lăng</span></div>
+      <div class="food-row"><span class="food-cat">Chất béo lành</span><span>Dầu olive, bơ, dầu cá — giảm viêm</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần hạn chế</h2>
+    <ul>
+      <li><strong>Muối & thực phẩm chế biến sẵn</strong> (đồ hộp, snack mặn, xúc xích) — tăng đào thải canxi</li>
+      <li><strong>Viên bổ sung canxi liều cao</strong> — không dùng nếu không có chỉ định của bác sĩ</li>
+      <li><strong>Caffeine quá mức</strong> (cà phê >3 ly/ngày) — tăng canxi niệu</li>
+      <li><strong>Đồ uống có gas (cola):</strong> Phốt pho cao làm tăng bài tiết canxi</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Cháo yến mạch + sữa hạt + 1 quả táo</span></div>
+      <div class="meal-row"><span class="meal-time">🌰 Phụ sáng</span><span>1 nắm hạt hạnh nhân + nước chanh ấm</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm gạo lứt + cá thu hấp + canh rau cải luộc</span></div>
+      <div class="meal-row"><span class="meal-time">🥤 Xế</span><span>Sinh tố bơ chuối (ít sữa) hoặc 1 ly nước cam</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Salad cải xoăn + đậu gà + dầu olive + hạt bí</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="special-cases">
+    <h2>Lưu ý đặc biệt</h2>
+    <ul>
+      <li><strong>Sau phẫu thuật:</strong> Nếu cắt bỏ tuyến cận giáp, cần theo dõi canxi máu sát. Có thể cần bổ sung canxi + vitamin D tạm thời.</li>
+      <li><strong>Kết hợp loãng xương:</strong> Cần đảm bảo đủ canxi từ thực phẩm (800–1000 mg/ngày) + vitamin D + tập chịu lực.</li>
+      <li><strong>Sỏi thận:</strong> Uống 2.5–3 lít nước/ngày, hạn chế oxalat, bổ sung citrate (chanh, bưởi).</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Cường cận giáp có cần kiêng canxi không?</summary>
+      <p>Không. Canxi từ thực phẩm giúp ổn định hấp thu và giảm kích thích PTH. Chỉ tránh viên bổ sung canxi liều cao nếu không có chỉ định.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Có thể điều trị bằng ăn uống thay phẫu thuật không?</summary>
+      <p>Không. Dinh dưỡng chỉ hỗ trợ. Phẫu thuật cắt bỏ u tuyến cận giáp là điều trị triệt căn cho cường cận giáp nguyên phát.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Uống cà phê được không?</summary>
+      <p>1–2 ly/ngày không vấn đề, nhưng tránh >3 ly vì caffeine làm tăng đào thải canxi qua thận.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p><strong>3 việc quan trọng nhất:</strong> (1) Uống 2–3 lít nước mỗi ngày, (2) Không tự ý uống canxi bổ sung, (3) Hạn chế muối. Phẫu thuật là phương pháp triệt căn — đừng trì hoãn nếu bác sĩ chỉ định.</p>
+    </div>
+  </section>
+</ArticleLayout>

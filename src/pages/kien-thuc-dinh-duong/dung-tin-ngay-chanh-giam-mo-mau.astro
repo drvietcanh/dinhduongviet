@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dung-tin-ngay-chanh-giam-mo-mau"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>🤔 Hiểu lầm: Uống nước chanh giảm mỡ máu</h2>
+    <p>Nhiều người tin rằng uống nước chanh pha loãng mỗi sáng có thể "rửa" mạch máu, giảm cholesterol và ngăn ngừa mỡ máu. Quan niệm này xuất phát từ niềm tin rằng vị chua của chanh có thể "hòa tan" chất béo trong máu.</p>
+    <div class="truth-box">
+      <strong>Sự thật:</strong> Chanh giàu vitamin C và chất chống oxy hóa, rất tốt cho sức khỏe. <strong>Nhưng không có bằng chứng khoa học nào</strong> cho thấy uống nước chanh làm giảm trực tiếp cholesterol hay triglyceride trong máu.
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🔬 Bằng chứng khoa học</h2>
+    <ul>
+      <li><strong>Chanh và mỡ máu:</strong> Một số nghiên cứu trên động vật cho thấy flavonoid trong chanh (hesperidin, eriocitrin) có thể hỗ trợ chống oxy hóa, nhưng <em>chưa có thử nghiệm lâm sàng nào</em> khẳng định chanh làm giảm LDL hay tăng HDL ở người.</li>
+      <li><strong>Vitamin C:</strong> Bổ sung vitamin C liều cao có thể giảm nhẹ stress oxy hóa, nhưng ảnh hưởng trực tiếp lên cholesterol máu là <em>không đáng kể</em> (theo American Heart Association).</li>
+      <li><strong>Yếu tố chính:</strong> Chế độ ăn tổng thể — đặc biệt là giảm mỡ bão hòa, tăng chất xơ hòa tan, giảm đường — mới là yếu tố quyết định trong kiểm soát mỡ máu.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>💡 Cách giảm mỡ máu thực sự hiệu quả</h2>
+    <ul>
+      <li><strong>Giảm mỡ bão hòa:</strong> Hạn chế mỡ động vật, da gà, đồ chiên rán, bơ thực vật.</li>
+      <li><strong>Tăng chất xơ hòa tan:</strong> Yến mạch, đậu, táo, cà rốt, mướp đắng — chất xơ giúp giảm hấp thu cholesterol.</li>
+      <li><strong>Omega-3 từ cá:</strong> Cá hồi, cá thu, cá trích — ăn ít nhất 2 bữa cá/tuần.</li>
+      <li><strong>Dầu thực vật:</strong> Dầu ô-liu, dầu hạt cải, dầu đậu nành thay cho mỡ động vật.</li>
+      <li><strong>Tập thể dục:</strong> Đi bộ nhanh 30 phút/ngày, 5 ngày/tuần giúp tăng HDL hiệu quả.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🍋 Vai trò thực sự của chanh</h2>
+    <p>Chanh vẫn là thực phẩm tốt — nhưng là <strong>thực phẩm bổ trợ</strong>, không phải "thuốc" giảm mỡ máu. Bạn nên:</p>
+    <ul>
+      <li>Uống nước chanh thay nước ngọt có đường — giảm calo</li>
+      <li>Dùng chanh làm nước sốt thay mayonnaise — giảm mỡ bão hòa</li>
+      <li>Uống chanh ấm như thói quen hydrat hóa buổi sáng</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Uống nước chanh tốt cho sức khỏe nhưng <strong>không thể thay thế</strong> điều chỉnh chế độ ăn và thuốc điều trị mỡ máu (nếu đã có chỉ định). Đừng bỏ thuốc để uống chanh — hãy uống chanh như một phần của lối sống lành mạnh, <strong>không phải phương pháp chữa bệnh</strong>.</p>
+  </section>
+</ArticleLayout>

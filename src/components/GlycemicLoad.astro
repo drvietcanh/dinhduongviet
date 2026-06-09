@@ -1,0 +1,129 @@
+---
+// GlycemicLoad.astro — Hiển thị chỉ số đường huyết (GI) và tải lượng đường huyết (GL)
+interface Props {
+  glycemicIndex?: number;
+  carbG?: number;
+}
+
+const { glycemicIndex, carbG } = Astro.props;
+
+// Tính Glycemic Load khi có GI
+let gl: number | null = null;
+if (glycemicIndex != null && carbG != null) {
+  gl = glycemicIndex * carbG / 100;
+}
+
+// Phân loại GL
+let glClass = "";
+let glLabel = "";
+if (gl != null) {
+  if (gl >= 20) { glClass = "high"; glLabel = "Cao"; }
+  else if (gl >= 11) { glClass = "medium"; glLabel = "Trung bình"; }
+  else { glClass = "low"; glLabel = "Thấp"; }
+}
+
+// Phân loại GI
+let giClass = "";
+let giLabel = "";
+if (glycemicIndex != null) {
+  if (glycemicIndex >= 70) { giClass = "high"; giLabel = "Cao"; }
+  else if (glycemicIndex >= 56) { giClass = "medium"; giLabel = "Trung bình"; }
+  else { giClass = "low"; giLabel = "Thấp"; }
+}
+---
+
+<div class="glycemic-widget">
+  <div class="glycemic-header">
+    <span class="glycemic-icon">🩸</span>
+    <span class="glycemic-title">Chỉ số đường huyết</span>
+  </div>
+  <div class="glycemic-body">
+    {glycemicIndex != null ? (
+      <>
+        <div class="glycemic-row">
+          <span class="glycemic-label">Chỉ số GI</span>
+          <span class={`glycemic-value gi-${giClass}`}>{glycemicIndex.toFixed(0)}</span>
+          <span class={`glycemic-badge gi-${giClass}`}>{giLabel}</span>
+        </div>
+        <div class="glycemic-divider"></div>
+        <div class="glycemic-row">
+          <span class="glycemic-label">Tải lượng GL / khẩu phần</span>
+          <span class={`glycemic-value gl-${glClass}`}>{gl!.toFixed(1)}</span>
+          <span class={`glycemic-badge gl-${glClass}`}>{glLabel}</span>
+        </div>
+        <div class="glycemic-legend">
+          <p><strong>GL thấp (≤10):</strong> Ảnh hưởng nhẹ đến đường huyết</p>
+          <p><strong>GL trung bình (11–19):</strong> Ảnh hưởng vừa phải</p>
+          <p><strong>GL cao (≥20):</strong> Làm tăng đường huyết đáng kể</p>
+        </div>
+        {glClass === "high" && (
+          <div class="glycemic-warning" role="alert">
+            ⚠️ Món này có tải lượng đường cao. Người tiểu đường nên hạn chế khẩu phần hoặc chọn thực phẩm thay thế.
+          </div>
+        )}
+      </>
+    ) : (
+      <p class="glycemic-na">Không có dữ liệu GI cho món này.</p>
+    )}
+  </div>
+</div>
+
+<style>
+  .glycemic-widget {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .glycemic-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #fef3c7;
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  .glycemic-icon { font-size: 1.2em; }
+  .glycemic-body { padding: 12px 14px; }
+  .glycemic-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .glycemic-label { flex: 1; font-size: 0.85em; color: #374151; }
+  .glycemic-value {
+    font-weight: 700;
+    font-size: 1.1em;
+    min-width: 50px;
+    text-align: right;
+  }
+  .glycemic-badge {
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    min-width: 48px;
+    text-align: center;
+  }
+  .gi-high, .gl-high { color: #dc2626; }
+  .gi-medium, .gl-medium { color: #d97706; }
+  .gi-low, .gl-low { color: #16a34a; }
+  .gi-high + .gi-high, .gl-high + .gl-high { background: #fecaca; color: #991b1b; }
+  .gi-medium + .gi-medium, .gl-medium + .gl-medium { background: #fef3c7; color: #92400e; }
+  .gi-low + .gi-low, .gl-low + .gl-low { background: #dcfce7; color: #166534; }
+  .glycemic-divider { height: 1px; background: #fde68a; margin: 8px 0; }
+  .glycemic-legend { margin-top: 10px; font-size: 0.8em; color: #6b7280; }
+  .glycemic-legend p { margin: 2px 0; }
+  .glycemic-warning {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    font-size: 0.85em;
+    color: #991b1b;
+  }
+  .glycemic-na { font-size: 0.85em; color: #9ca3af; }
+</style>

@@ -1,0 +1,124 @@
+---
+// DRIWidget.astro — Hiển thị %DRI cho từng thực phẩm
+export interface Props {
+  nutrients: {
+    proteinG?: number;
+    fiberG?: number;
+    calciumMg?: number;
+    ironMg?: number;
+    vitaminCMg?: number;
+    vitaminAIu?: number;
+    sodiumMg?: number;
+    potassiumMg?: number;
+  };
+  name?: string;
+}
+const { nutrients, name } = Astro.props;
+const dataAttrs = [
+  'proteinG', 'fiberG', 'calciumMg', 'ironMg', 'vitaminCMg', 'vitaminAIu', 'sodiumMg', 'potassiumMg'
+].map(k => `data-${k}="${nutrients[k] ?? ''}"`).join(' ');
+---
+
+<div class="dri-widget card" style="margin-top: 16px;" id="driWidget">
+  <h3 style="margin-bottom: 12px;">📊 % Nhu cầu khuyến nghị (DRI)</h3>
+  <div style="font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 10px;">
+    Dựa trên 100g <strong>{name || 'thực phẩm'}</strong> — Chọn giới tính để xem %:
+  </div>
+  <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+    <button class="dri-gen-btn active" data-gen="female" onclick="switchDRIGender('female')">👩 Nữ</button>
+    <button class="dri-gen-btn" data-gen="male" onclick="switchDRIGender('male')">👨 Nam</button>
+  </div>
+  <div id="driBars" style="display: flex; flex-direction: column; gap: 8px;"></div>
+  <div style="font-size: 0.72rem; color: var(--ink-tertiary); margin-top: 8px;">
+    * DRI cho người trưởng thành 19-49 tuổi, lao động nhẹ. Nhu cầu thực tế có thể thay đổi.
+  </div>
+</div>
+
+<div id="driData" style="display:none;" {dataAttrs} data-name={name || ''}></div>
+
+<script is:inline>
+  (function() {
+    const dataEl = document.getElementById('driData');
+    if (!dataEl) return;
+    const nutrients = {};
+    const keys = ['proteinG', 'fiberG', 'calciumMg', 'ironMg', 'vitaminCMg', 'vitaminAIu', 'sodiumMg', 'potassiumMg'];
+    keys.forEach(k => {
+      const v = dataEl.getAttribute('data-' + k);
+      nutrients[k] = v !== null && v !== '' ? parseFloat(v) : null;
+    });
+
+    const DRI = {
+      female: {
+        proteinG: 60, fiberG: 25, calciumMg: 600, ironMg: 24,
+        vitaminCMg: 80, vitaminAIu: 2000, sodiumMg: 2400, potassiumMg: 2000
+      },
+      male: {
+        proteinG: 68, fiberG: 25, calciumMg: 600, ironMg: 12,
+        vitaminCMg: 80, vitaminAIu: 2000, sodiumMg: 2400, potassiumMg: 2000
+      }
+    };
+
+    const labels = {
+      proteinG: { label: 'Đạm', unit: 'g', icon: '🥩' },
+      fiberG: { label: 'Chất xơ', unit: 'g', icon: '🥬' },
+      calciumMg: { label: 'Canxi', unit: 'mg', icon: '🦴' },
+      ironMg: { label: 'Sắt', unit: 'mg', icon: '🩸' },
+      vitaminCMg: { label: 'Vitamin C', unit: 'mg', icon: '🍊' },
+      vitaminAIu: { label: 'Vitamin A', unit: 'IU', icon: '👁ï¿½' },
+      sodiumMg: { label: 'Natri', unit: 'mg', icon: '🧂' },
+      potassiumMg: { label: 'Kali', unit: 'mg', icon: '🍌' }
+    };
+
+    const order = ['proteinG', 'fiberG', 'calciumMg', 'ironMg', 'vitaminCMg', 'vitaminAIu', 'sodiumMg', 'potassiumMg'];
+    let currentGender = 'female';
+
+    window.switchDRIGender = function(gen) {
+      currentGender = gen;
+      document.querySelectorAll('.dri-gen-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.gen === gen);
+      });
+      renderDRI();
+    };
+
+    function renderDRI() {
+      const dri = DRI[currentGender];
+      const $bars = document.getElementById('driBars');
+      if (!$bars) return;
+
+      $bars.innerHTML = order.map(function(key) {
+        const val = nutrients[key];
+        if (val == null) return '';
+        const target = dri[key];
+        if (!target) return '';
+        const pct = Math.min(100, (val / target) * 100);
+        const isOverLimit = key === 'sodiumMg' && pct > 30;
+        const info = labels[key];
+        const barColor = isOverLimit ? '#fc8181' : pct >= 80 ? '#68d391' : pct >= 40 ? '#ecc94b' : '#4299e1';
+        return '<div class="dri-row">' +
+          '<div class="dri-label"><span>' + info.icon + ' ' + info.label + '</span><span>' + val.toFixed(1) + ' ' + info.unit + '</span></div>' +
+          '<div class="dri-bar-bg"><div class="dri-bar" style="width:' + Math.min(pct, 100) + '%;background:' + barColor + ';"></div></div>' +
+          '<div class="dri-pct">' + pct.toFixed(0) + '%</div></div>';
+      }).filter(Boolean).join('');
+    }
+
+    renderDRI();
+  })();
+</script>
+
+<style is:global>
+  .dri-gen-btn {
+    padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line);
+    background: var(--bg-elevated); color: var(--ink-secondary); font-size: 0.85rem;
+    font-weight: 500; cursor: pointer; transition: all var(--transition);
+  }
+  .dri-gen-btn:hover { border-color: var(--brand); }
+  .dri-gen-btn.active { background: var(--brand); border-color: var(--brand); color: white; }
+  .dri-row { display: flex; align-items: center; gap: 8px; }
+  .dri-label { min-width: 120px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 6px; }
+  .dri-label span:first-child { color: var(--ink); font-weight: 500; }
+  .dri-label span:last-child { color: var(--ink-tertiary); }
+  .dri-bar-bg { flex: 1; height: 12px; background: var(--line-light); border-radius: 999px; overflow: hidden; }
+  .dri-bar { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
+  .dri-pct { min-width: 40px; text-align: right; font-size: 0.82rem; font-weight: 600; color: var(--ink-secondary); }
+  [data-theme="dark"] .dri-bar-bg { background: #242a23; }
+</style>

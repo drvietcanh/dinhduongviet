@@ -1,0 +1,240 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thap-dinh-duong-viet-nam"];
+if (!art) throw new Error("Article not found: thap-dinh-duong-viet-nam");
+---
+
+<ArticleLayout article={art}>
+<style is:global>
+    .hero { text-align: center; margin-bottom: 24px; }
+    .hero h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .hero .sub { color: var(--ink-secondary); font-size: 0.95rem; }
+    .pyramid-layout { display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 500px; margin: 0 auto; }
+    .tier {
+      width: 100%; text-align: center; padding: 14px 12px; cursor: pointer;
+      transition: all var(--transition); position: relative; border: none;
+      font: inherit; color: white; font-weight: 700; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; box-sizing: border-box;
+    }
+    .tier:hover { filter: brightness(1.12); transform: scale(1.02); z-index: 2; box-shadow: var(--shadow-md); }
+    .tier.active { filter: brightness(1.2); z-index: 3; }
+    .tier .emoji { font-size: 1.3rem; }
+    .tier .count-tag { position: absolute; right: 10px; background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 500; }
+    .tier-1 { background: #e53e3e; width: 30%; border-radius: 10px 10px 0 0; }       /* Đường/Muối/Dầu — hạn chế */
+    .tier-2 { background: #dd6b20; width: 42%; }                                     /* Sữa */
+    .tier-3 { background: #d69e2e; width: 54%; }                                     /* Đạm */
+    .tier-4 { background: #38a169; width: 66%; }                                     /* Trái cây */
+    .tier-5 { background: #319795; width: 78%; }                                     /* Rau */
+    .tier-6 { background: #3182ce; width: 90%; }                                     /* Tinh bột */
+    .tier-7 { background: #5a67d8; width: 100%; border-radius: 0 0 10px 10px; }      /* Nước */
+    .detail-section { max-width: 600px; margin: 20px auto 0; }
+    .detail-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; display: none; }
+    .detail-card.open { display: block; }
+    .detail-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .detail-card .rec { font-size: 0.88rem; color: var(--ink-secondary); margin-bottom: 12px; line-height: 1.4; }
+    .detail-card .example-label { font-size: 0.82rem; color: var(--ink-tertiary); font-weight: 600; margin-top: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+    .food-chip { display: flex; align-items: center; gap: 6px; padding: 6px 10px; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 8px; font-size: 0.82rem; cursor: pointer; transition: all var(--transition); }
+    .food-chip:hover { border-color: var(--brand); }
+    .food-chip .kcal { margin-left: auto; color: var(--ink-tertiary); font-size: 0.72rem; }
+    .food-chip a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 6px; width: 100%; }
+    .legend { max-width: 500px; margin: 24px auto; text-align: center; font-size: 0.82rem; color: var(--ink-tertiary); line-height: 1.5; }
+    .pillar-info { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; max-width: 600px; margin: 20px auto; }
+    .pillar-info h3 { font-size: 1rem; margin-bottom: 8px; }
+    .pillar-info p { font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.6; }
+    .pillar-info ul { font-size: 0.88rem; color: var(--ink-secondary); padding-left: 18px; line-height: 1.7; }
+  </style>
+
+  <div class="hero">
+    
+    <p class="sub">Click vào từng tầng để xem thực phẩm gợi ý từ cơ sở dữ liệu Dinh Dưỡng Việt</p>
+  </div>
+
+  <div class="pyramid-layout">
+    <button class="tier tier-1" data-tier="1" onclick="showTier(1)">
+      <span class="emoji">🧂</span> <span>Ăn hạn chế</span> <span class="count-tag" id="count-1"></span>
+    </button>
+    <button class="tier tier-2" data-tier="2" onclick="showTier(2)">
+      <span class="emoji">🥛</span> <span>Sữa &amp; chế phẩm</span> <span class="count-tag" id="count-2"></span>
+    </button>
+    <button class="tier tier-3" data-tier="3" onclick="showTier(3)">
+      <span class="emoji">🥩</span> <span>Đạm (thịt, cá, trứng, đậu)</span> <span class="count-tag" id="count-3"></span>
+    </button>
+    <button class="tier tier-4" data-tier="4" onclick="showTier(4)">
+      <span class="emoji">🍎</span> <span>Trái cây</span> <span class="count-tag" id="count-4"></span>
+    </button>
+    <button class="tier tier-5" data-tier="5" onclick="showTier(5)">
+      <span class="emoji">🥬</span> <span>Rau xanh</span> <span class="count-tag" id="count-5"></span>
+    </button>
+    <button class="tier tier-6" data-tier="6" onclick="showTier(6)">
+      <span class="emoji">🌾</span> <span>Tinh bột (gạo, bún, bánh mì)</span> <span class="count-tag" id="count-6"></span>
+    </button>
+    <button class="tier tier-7" data-tier="7" onclick="showTier(7)">
+      <span class="emoji">💧</span> <span>Nước (&ge; 8 ly/ngày)</span> <span class="count-tag" id="count-7"></span>
+    </button>
+  </div>
+
+  <div class="detail-section" id="detailSection">
+    <div class="detail-card" id="detailTier1">
+      <h3>🧂 Ăn hạn chế</h3>
+      <div class="rec">Khuyến nghị: &lt; 5g muối/ngày, &lt; 20g dầu mỡ/ngày, hạn chế đường. Thực phẩm giàu đường, muối, béo nên dùng ít.</div>
+      <div class="example-label">🔍 Thực phẩm liên quan trong database</div>
+      <div class="food-grid" id="foods-1"></div>
+    </div>
+    <div class="detail-card" id="detailTier2">
+      <h3>🥛 Sữa &amp; chế phẩm</h3>
+      <div class="rec">Khuyến nghị: 1-2 đơn vị sữa/ngày (~200-400ml sữa tươi hoặc tương đương). Cung cấp canxi, vitamin D, đạm chất lượng cao.</div>
+      <div class="example-label">🔍 Thực phẩm trong database</div>
+      <div class="food-grid" id="foods-2"></div>
+    </div>
+    <div class="detail-card" id="detailTier3">
+      <h3>🥩 Đạm (thịt, cá, trứng, đậu)</h3>
+      <div class="rec">Khuyến nghị: 3-5 đơn vị/ngày (thịt ~100-150g + cá ~100g + trứng + đậu). Ưu tiên đạm thực vật và cá.</div>
+      <div class="example-label">🔍 Thực phẩm trong database</div>
+      <div class="food-grid" id="foods-3"></div>
+    </div>
+    <div class="detail-card" id="detailTier4">
+      <h3>🍎 Trái cây</h3>
+      <div class="rec">Khuyến nghị: 2-3 phần/ngày (1 phần = 100g trái cây tươi). Giàu vitamin, khoáng chất, chất xơ.</div>
+      <div class="example-label">🔍 Thực phẩm trong database</div>
+      <div class="food-grid" id="foods-4"></div>
+    </div>
+    <div class="detail-card" id="detailTier5">
+      <h3>🥬 Rau xanh</h3>
+      <div class="rec">Khuyến nghị: 3-5 đơn vị/ngày (~300-400g). Giàu chất xơ, vitamin, khoáng chất, chống oxy hoá.</div>
+      <div class="example-label">🔍 Thực phẩm trong database</div>
+      <div class="food-grid" id="foods-5"></div>
+    </div>
+    <div class="detail-card" id="detailTier6">
+      <h3>🌾 Tinh bột (gạo, bún, phở, bánh mì)</h3>
+      <div class="rec">Khuyến nghị: 6-12 đơn vị/ngày (1 đơn vị ~100g cơm). Là nguồn năng lượng chính. Ưu tiên ngũ cốc nguyên hạt.</div>
+      <div class="example-label">🔍 Thực phẩm trong database</div>
+      <div class="food-grid" id="foods-6"></div>
+    </div>
+    <div class="detail-card" id="detailTier7">
+      <h3>💧 Nước</h3>
+      <div class="rec">Khuyến nghị: 8-12 ly/ngày (~1.5-2L), tăng khi vận động hoặc thời tiết nóng. Giúp thanh lọc, vận chuyển dinh dưỡng.</div>
+      <div class="example-label">🔍 Thực phẩm/gợi ý liên quan</div>
+      <div class="food-grid" id="foods-7"></div>
+    </div>
+  </div>
+
+  <div class="pillar-info">
+    <h3>📖 Về Tháp dinh dưỡng Việt Nam</h3>
+    <p>Tháp dinh dưỡng dành cho người trưởng thành của Viện Dinh Dưỡng Quốc Gia (Việt Nam) được xây dựng dựa trên:</p>
+    <ul>
+      <li><strong>Nhu cầu năng lượng:</strong> 1800-2300 kcal/ngày tuỳ giới tính và mức độ hoạt động</li>
+      <li><strong>7 tầng</strong> thể hiện mức độ ưu tiên: tầng đáy rộng = ăn nhiều, tầng đỉnh hẹp = hạn chế</li>
+      <li><strong>Cân đối:</strong> Kết hợp giữa các nhóm thực phẩm, không tuyệt đối hoá bất kỳ nhóm nào</li>
+    </ul>
+  </div>
+
+  <div class="legend">
+    🖱️ Click từng tầng để xem thực phẩm gợi ý trích từ dữ liệu hiện có • Dữ liệu cập nhật từ Bảng TP VN 2007 &amp; ước tính
+  </div>
+
+  <script is:inline>
+  (() => {
+    const FOODS_URL = '/api/foods-slim.json';
+    let allFoods = [];
+    let currentTier = 1;
+
+    // Tier food definitions by category matching
+    const tierCategories = {
+      1: { cats: ['Gia vị', 'Dầu mỡ', 'Bánh kẹo', 'Đường/Muối'], desc: 'Hạn chế tối đa: đường, muối, dầu mỡ, bánh kẹo, đồ ngọt.' },
+      2: { cats: ['Sữa', 'Trứng'], desc: 'Sữa tươi, sữa chua, phô mai, sữa đặc.' },
+      3: { cats: ['Thịt', 'Cá', 'Đậu', 'Hải sản', 'Đậu hũ'], desc: 'Thịt heo, bò, gà, cá các loại, trứng, đậu hạt, đậu phụ.' },
+      4: { cats: ['Trái cây'], desc: 'Trái cây tươi các loại: chuối, cam, xoài, đu đủ, thanh long...' },
+      5: { cats: ['Rau', 'Củ', 'Nấm'], desc: 'Rau xanh, rau thơm, củ quả, nấm.' },
+      6: { cats: ['Tinh bột'], desc: 'Gạo, bún, phở, bánh mì, mì, ngô, khoai.' },
+      7: { cats: [], desc: 'Nước lọc, nước trà, canh, súp.' }
+    };
+
+    // Keywords to match categories that are broader
+    const tierKeyword = {
+      1: ['gia vị', 'dầu', 'bánh kẹo', 'đường'],
+      2: ['sữa'],
+      3: ['thịt', 'cá', 'hải sản', 'đậu', 'trứng'],
+      4: ['trái cây', 'quả'],
+      5: ['rau', 'nấm', 'củ'],
+      6: ['tinh bột', 'ngũ cốc'],
+      7: []
+    };
+
+    fetch(FOODS_URL)
+      .then(r => r.json())
+      .then(data => {
+        allFoods = data;
+        // Count foods per tier
+        for (let t = 1; t <= 6; t++) {
+          const foods = getFoodsForTier(t);
+          const el = document.getElementById('count-' + t);
+          if (el) el.textContent = foods.length + ' TP';
+        }
+        const el7 = document.getElementById('count-7');
+        if (el7) el7.textContent = 'Gợi ý';
+        showTier(1);
+      });
+
+    function getFoodsForTier(tier) {
+      if (tier === 7) return []; // water - no food data
+      const cats = tierCategories[tier].cats;
+      return allFoods.filter(f => {
+        const fc = f.category || '';
+        return cats.some(cat => fc.includes(cat)) ||
+          tierKeyword[tier].some(k => fc.toLowerCase().includes(k));
+      }).slice(0, 18);
+    }
+
+    window.showTier = function(tier) {
+      currentTier = tier;
+      // Update active state
+      document.querySelectorAll('.tier').forEach(el => el.classList.remove('active'));
+      document.querySelector('.tier-' + tier)?.classList.add('active');
+      // Show detail
+      document.querySelectorAll('.detail-card').forEach(el => el.classList.remove('open'));
+      const el = document.getElementById('detailTier' + tier);
+      if (el) el.classList.add('open');
+      // Fill foods
+      const container = document.getElementById('foods-' + tier);
+      if (!container) return;
+      if (tier === 7) {
+        container.innerHTML = `<div style="grid-column:1/-1;padding:10px;color:var(--ink-secondary);font-size:0.88rem;line-height:1.5;">
+          <strong>☕ Đồ uống &amp; Nước:</strong> Nước lọc, trà xanh, nước ép trái cây, canh rau, súp.<br><br>
+          <strong>💡 Mẹo:</strong> Uống 1 ly nước trước mỗi bữa ăn, mang theo bình nước khi ra ngoài.
+        </div>`;
+        return;
+      }
+      const foods = getFoodsForTier(tier);
+      if (foods.length === 0) {
+        container.innerHTML = '<div style="grid-column:1/-1;padding:10px;color:var(--ink-tertiary);">Không có dữ liệu thực phẩm phù hợp cho tầng này.</div>';
+        return;
+      }
+      container.innerHTML = foods.map(f => {
+        const kcal = f.kcal || 0;
+        const slug = f.slug || '';
+        const emoji = getEmoji(f.category);
+        return `<div class="food-chip"><a href="/thuc-pham/${slug}"><span>${emoji}</span><span>${f.name}</span><span class="kcal">${Math.round(kcal)} kcal</span></a></div>`;
+      }).join('');
+    };
+
+    function getEmoji(category) {
+      if (!category) return '🥗';
+      if (category.includes('Thịt') || category.includes('Cá')) return '🥩';
+      if (category.includes('Rau') || category.includes('Nấm')) return '🥬';
+      if (category.includes('Củ')) return '🥕';
+      if (category.includes('Trái cây') || category.includes('Quả')) return '🍎';
+      if (category.includes('Sữa')) return '🥛';
+      if (category.includes('Trứng')) return '🥚';
+      if (category.includes('Tinh bột')) return '🌾';
+      if (category.includes('Đậu')) return '🫘';
+      if (category.includes('Gia vị') || category.includes('Dầu')) return '🧂';
+      if (category.includes('Đồ uống')) return '🥤';
+      if (category.includes('Hải sản')) return '🦐';
+      return '🥗';
+    }
+  })();
+  </script>
+</ArticleLayout>

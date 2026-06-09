@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["roi-loan-mo-mau"];
+if (!art) throw new Error("Article not found: roi-loan-mo-mau");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chú Dũng, 52 tuổi, thích đồ chiên rán và bia. Khám sức khỏe định kỳ thấy cholesterol toàn phần 7.2, LDL 4.8, triglyceride 3.5 — mỡ máu cao. Bác sĩ nói: "Chú có 2 lựa chọn: đổi chế độ ăn hoặc uống thuốc suốt đời."</p>
+  <p>Mỡ máu cao thường không triệu chứng, nhưng nguy hiểm — là nguyên nhân hàng đầu gây nhồi máu cơ tim và đột quỵ. Tin tốt: thay đổi dinh dưỡng có thể giảm LDL 15–25% chỉ sau 3 tháng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Giảm mỡ máu = <u>tăng chất xơ hòa tan</u> (yến mạch, đậu, táo), <u>omega-3</u> (cá béo, hạt), 
+    <u>chất béo không bão hòa</u> (dầu olive, bơ). <u>Tránh mỡ bão hòa & trans fat</u>, <u>hạn chế đường</u>, <u>tập thể dục</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống làm tăng mỡ máu?</h2>
+  <p>Mỡ máu có 2 loại chính: cholesterol và triglyceride. Thức ăn nhiều mỡ bão hòa (mỡ động vật, da gà, đồ chiên) và trans fat (bánh quy, snack) làm tăng LDL — "mỡ xấu". Đường và rượu làm tăng triglyceride. Chất xơ hòa tan trong yến mạch, đậu, táo "hút" cholesterol trong ruột và thải ra ngoài, giảm LDL tự nhiên.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cá béo: cá thu, cá hồi, cá nục — omega-3 (ít nhất 2 bữa/tuần)</li>
+      <li>Yến mạch, lúa mạch, gạo lứt, khoai lang</li>
+      <li>Đậu đỗ: đậu xanh, đậu lăng, đậu phụ, sữa đậu nành</li>
+      <li>Dầu olive, dầu mè, quả bơ, hạt óc chó, hạnh nhân</li>
+      <li>Rau xanh + trái cây: táo, cam, bưởi, dâu tây</li>
+      <li>Tỏi, nghệ, gừng — gia vị giúp giảm cholesterol</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Mỡ động vật, ba chỉ heo, da gà/vịt, nội tạng</li>
+      <li>⛔ Đồ chiên rán, fast food, mì gói</li>
+      <li>⛔ Bánh quy, bánh ngọt, kem, snack — trans fat</li>
+      <li>⛔ Lòng đỏ trứng (tối đa 2–3 quả/tuần nếu LDL cao)</li>
+      <li>⛔ Nước ngọt, trà sữa, bánh kẹo</li>
+      <li>⛔ Rượu bia — làm triglyceride tăng vọt</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Loại</th><th>Khuyến nghị</th></tr></thead><tbody>
+    <tr><td>Chất béo bão hòa</td><td>&lt;7% tổng năng lượng (~15g/ngày)</td></tr>
+    <tr><td>Trans fat</td><td>&lt;1% tổng năng lượng — tốt nhất 0g</td></tr>
+    <tr><td>Chất xơ hòa tan</td><td>10–25g/ngày (yến mạch, đậu, táo)</td></tr>
+    <tr><td>Cá béo</td><td>≥2 bữa/tuần (mỗi bữa ~150g)</td></tr>
+    <tr><td>Rau trái</td><td>≥5 phần/ngày</td></tr>
+    <tr><td>Muối</td><td>&lt;5g/ngày</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Yến mạch nấu (40g) + sữa không đường + 1 quả táo</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả cam + 5 hạt óc chó</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá thu kho + canh rau cải</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 hũ sữa chua không đường + 1 muỗng hạt bí</td></tr>
+    <tr><td>🌙 Tối</td><td>Đậu phụ sốt cà + cơm gạo lứt + rau luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đọc nhãn — tránh "hydrogenated oil", "dầu thực vật hydro hóa".</li>
+        <li>Dùng dầu olive thay mỡ lợn khi xào nấu.</li>
+        <li>Giảm 5kg — LDL giảm ~5–10%.</li>
+        <li>Đi bộ nhanh 30 phút/ngày, 5 ngày/tuần.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đau ngực, khó thở — có thể đã có mảng xơ vữa.</li>
+        <li>Đau chân khi đi (cách hồi) — tắc mạch ngoại vi.</li>
+        <li>Đột quỵ: yếu liệt nửa người, méo miệng.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

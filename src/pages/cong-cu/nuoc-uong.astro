@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Tính nhu cầu nước uống - Dinh Dưỡng Việt">
+  <section>
+    <span class="badge">📊 Công cụ</span>
+    <h1>Tính nhu cầu nước uống</h1>
+    <p class="lead">
+      Nước chiếm ~60% trọng lượng cơ thể. Nhu cầu nước thay đổi theo cân nặng, vận động, thời tiết.
+      Công thức tính đơn giản giúp bạn biết cần uống bao nhiêu nước mỗi ngày.
+    </p>
+  </section>
+
+  <div class="disclaimer">
+    ⚠️ <strong>Cảnh báo y khoa:</strong> Người suy thận, suy tim, xơ gan có thể bị hạn chế nước. Trong trường hợp ra mồ hôi nhiều (sốt, tiêu chảy, nôn), nhu cầu nước tăng cao hơn.
+  </div>
+
+  <section class="section card">
+    <h2>Thông số</h2>
+    <form id="water-form">
+      <div class="grid two" style="margin-bottom: 16px;">
+        <div>
+          <label>Cân nặng (kg)</label>
+          <input type="number" id="weight" min="10" max="300" step="0.1" value="65" required />
+        </div>
+        <div>
+          <label>Mức vận động</label>
+          <select id="activity">
+            <option value="1.0">Ít: ngồi nhiều, không tập</option>
+            <option value="1.2" selected>Trung bình: 30-60 phút/ngày</option>
+            <option value="1.4">Nhiều: &gt;60 phút/ngày hoặc lao động nặng</option>
+          </select>
+        </div>
+        <div>
+          <label>Thời tiết</label>
+          <select id="weather">
+            <option value="1.0">Mát mẻ (&lt;25°C)</option>
+            <option value="1.1" selected>Ấm (25-30°C)</option>
+            <option value="1.2">Nóng (&gt;30°C)</option>
+          </select>
+        </div>
+        <div>
+          <label>Cho con bú?</label>
+          <select id="breastfeeding">
+            <option value="0" selected>Không</option>
+            <option value="0.7">Có (thêm 700ml/ngày)</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn">Tính nhu cầu nước</button>
+    </form>
+  </section>
+
+  <section id="result" class="section card" style="display:none;">
+    <h2>💧 Kết quả</h2>
+    <div class="grid two">
+      <div class="stat">
+        <span class="muted">Nhu cầu nước cơ bản</span>
+        <strong id="base-water">—</strong>
+        <span class="muted">lít/ngày</span>
+      </div>
+      <div class="stat">
+        <span class="muted">Nhu cầu điều chỉnh</span>
+        <strong id="adjusted-water">—</strong>
+        <span class="muted">lít/ngày</span>
+      </div>
+      <div class="stat">
+        <span class="muted">Tương đương ly ~200ml</span>
+        <strong id="cups">—</strong>
+        <span class="muted">ly</span>
+      </div>
+      <div class="stat">
+        <span class="muted">Trong đó từ ăn uống</span>
+        <strong id="from-food">—</strong>
+        <span class="muted">lít (thức ăn ~20%)</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--bg-info); border: 1px solid var(--brand-light);">
+      <h3 style="margin-bottom: 6px;">⏰ Nhắc nhở uống nước</h3>
+      <ul style="line-height: 1.8;">
+        <li>Một ly ngay sau khi thức dậy</li>
+        <li>Một ly trước mỗi bữa ăn 30 phút</li>
+        <li>Một ly trong/vào cuối buổi tập</li>
+        <li>Không uống quá nhiều một lúc — chia đều trong ngày</li>
+        <li>Màu nước tiểu vàng nhạt = đủ nước; vàng đậm = thiếu nước</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>📊 Bảng tham khảo nhanh</h2>
+    <table class="table" style="margin-top: 10px;">
+      <thead>
+        <tr><th>Cân nặng</th><th>Ít vận động</th><th>TB vận động</th><th>Nhiều vận động</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>40 kg</td><td>1.2 L</td><td>1.5 L</td><td>1.7 L</td></tr>
+        <tr><td>50 kg</td><td>1.5 L</td><td>1.8 L</td><td>2.1 L</td></tr>
+        <tr><td>60 kg</td><td>1.8 L</td><td>2.2 L</td><td>2.5 L</td></tr>
+        <tr><td>70 kg</td><td>2.1 L</td><td>2.5 L</td><td>2.9 L</td></tr>
+        <tr><td>80 kg</td><td>2.4 L</td><td>2.9 L</td><td>3.4 L</td></tr>
+        <tr><td>90 kg</td><td>2.7 L</td><td>3.2 L</td><td>3.8 L</td></tr>
+        <tr><td>100 kg</td><td>3.0 L</td><td>3.6 L</td><td>4.2 L</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 8px;">⚠️ Công thức: 30-35 ml/kg/ngày (cơ bản) x hệ số vận động x hệ số thời tiết + thêm cho con bú.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  label { display: block; font-weight: 600; margin-bottom: 4px; }
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    box-sizing: border-box;
+  }
+  .btn {
+    padding: 12px 28px;
+    background: var(--brand);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--brand-dark); }
+  .stat { margin-bottom: 8px; }
+  .stat strong { font-size: 1.8rem; display: block; }
+</style>
+
+<script>
+  function calcWater() {
+    
+
+    const weight = parseFloat(document.getElementById("weight").value);
+    const activity = parseFloat(document.getElementById("activity").value);
+    const weather = parseFloat(document.getElementById("weather").value);
+    const bf = parseFloat(document.getElementById("breastfeeding").value);
+
+    if (!weight || weight < 10) {
+      alert("Vui lòng nhập cân nặng hợp lệ.");
+      return;
+    }
+
+    const base = weight * 0.033; // 33 ml/kg
+    const adjusted = base * activity * weather + bf;
+
+    document.getElementById("base-water").textContent = base.toFixed(1);
+    document.getElementById("adjusted-water").textContent = adjusted.toFixed(1);
+    document.getElementById("cups").textContent = adjusted > 0 ? Math.round(adjusted / 0.2) + " ly" : "—";
+    document.getElementById("from-food").textContent = (adjusted * 0.2).toFixed(1);
+
+    document.getElementById("result").style.display = "block";
+    window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+  }
+
+  // Auto-calculate on every change
+  ["weight","activity","weather","breastfeeding"].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("change", calcWater);
+      el.addEventListener("input", calcWater);
+    }
+  });
+
+  // Calc on load
+  window.addEventListener("DOMContentLoaded", calcWater);
+</script>

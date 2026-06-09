@@ -1,0 +1,117 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["tang-huyet-ap"];
+if (!art) throw new Error("Article not found: tang-huyet-ap");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Hạnh, 55 tuổi, đi khám sức khỏe định kỳ thấy huyết áp 155/95. Bác sĩ bảo tăng huyết áp. Bác lo lắng: "Tôi có ăn mặn đâu, chỉ ăn canh + chấm nước mắm bình thường thôi!" Nhưng khi hỏi kỹ, bác Hạnh ăn cơm kèm cà muối, dưa chua mỗi bữa, nêm nếm "vừa miệng" và không đọc nhãn thực phẩm.</p>
+  <p>70% người Việt tăng huyết áp không biết là mình đã ăn quá nhiều muối — vì "vừa miệng" của họ thường đã là quá mặn so với khuyến nghị.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người tăng huyết áp cần <u>giảm muối dưới 5g/ngày</u> (1 muỗng cafe), <u>tăng rau xanh và trái cây</u> giàu kali,
+    <u>hạn chế đồ chế biến sẵn</u> (mì gói, xúc xích, chả), và <u>nêm sau khi nấu</u> để kiểm soát lượng muối.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao muối làm tăng huyết áp?</h2>
+  <p>Muối (natri) hút nước vào lòng mạch máu — càng nhiều muối, thể tích máu càng lớn, tim phải bóp mạnh hơn, huyết áp tăng lên. Kali có tác dụng ngược lại: giúp mạch máu giãn ra và thải natri qua thận. Chế độ ăn DASH kết hợp giảm muối + tăng kali được chứng minh giảm huyết áp tương đương một viên thuốc hạng nhẹ.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rau xanh:</strong> Rau muống, bắp cải, cải xanh, <a href="/thuc-pham/rau-ngot">rau ngót</a>, mồng tơi</li>
+      <li><strong>Trái cây tươi:</strong> <a href="/thuc-pham/chuoi">Chuối</a>, <a href="/thuc-pham/cam">cam</a>, <a href="/thuc-pham/buoi">bưởi</a>, <a href="/thuc-pham/dua-hau">dưa hấu</a>, <a href="/thuc-pham/tao">táo</a></li>
+      <li><strong>Tinh bột giàu xơ:</strong> <a href="/thuc-pham/khoai-lang">Khoai lang</a>, ngũ cốc nguyên cám, yến mạch, <a href="/thuc-pham/com-gao-lut">cơm gạo lứt</a></li>
+      <li><strong>Đạm ít béo:</strong> <a href="/thuc-pham/ca-basa">Cá</a>, ức gà, <a href="/thuc-pham/dau-phu">đậu phụ</a>, các loại đậu</li>
+      <li><strong>Sữa ít béo:</strong> Sữa tươi không đường, sữa chua ít béo</li>
+      <li><strong>Chất béo tốt:</strong> Dầu thực vật, quả <a href="/thuc-pham/bo-trai">bơ</a>, hạt khô</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Muối + gia vị mặn:</strong> Nước mắm, bột ngọt, xì dầu, hạt nêm — nêm rất nhẹ</li>
+      <li><strong>⛔ Đồ chế biến sẵn:</strong> Mì gói (1 gói ~1.700mg natri), xúc xích, chả lụa, thịt nguội, đồ hộp</li>
+      <li><strong>⛔ Dưa muối, cà muối, kim chi</strong> — muối chứa natri rất cao</li>
+      <li><strong>⛔ Thịt mỡ:</strong> Ba chỉ heo, da vịt, đồ chiên rán — mỡ bão hòa làm huyết áp khó kiểm soát</li>
+      <li><strong>⛔ Bia rượu:</strong> Nam dưới 2 đơn vị/ngày, nữ dưới 1 — tốt nhất là không</li>
+      <li><strong>⚠️ Bánh kẹo, nước ngọt:</strong> Đường làm tăng huyết áp gián tiếp qua tăng cân</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Hình dung</th></tr></thead>
+    <tbody>
+      <tr><td>Muối (natri)</td><td>&lt; 5g muối/ngày (&lt; 2000mg natri)</td><td>1 muỗng cafe muối ~5g — tất cả gia vị trong ngày</td></tr>
+      <tr><td>Rau xanh</td><td>300–400g/ngày (3–4 phần)</td><td>1 phần = 1 bát con rau luộc</td></tr>
+      <tr><td>Trái cây</td><td>2–3 phần/ngày</td><td>1 phần = 1 quả chuối/cam</td></tr>
+      <tr><td>Sữa ít béo</td><td>200–300ml/ngày</td><td>1–2 ly, giàu canxi giúp giảm huyết áp</td></tr>
+      <tr><td>Thịt/cá</td><td>100–150g/ngày</td><td>Lòng bàn tay, ưu tiên cá hơn thịt đỏ</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1600 kcal)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Bánh mì nguyên cám + trứng ốp la + cà chua</td><td>Không bơ, không pate</td></tr>
+      <tr><td>🍎 Phụ sáng</td><td>1 quả chuối</td><td>Giàu kali, tốt cho huyết áp</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm 1 chén + cá nục kho (ít mặn) + canh rau ngót</td><td>Nêm chỉ ½ lượng thường dùng</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 hũ sữa chua không đường</td><td>Canxi tự nhiên</td></tr>
+      <tr><td>🌙 Tối</td><td>Cơm 1 chén + đậu phụ sốt cà + rau luộc</td><td>Dùng chanh/tỏi/tiện thay muối</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Nêm sau khi nấu, giảm dần độ mặn — vị giác sẽ thích nghi sau 2–3 tuần.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Đọc nhãn: chọn sản phẩm có natri &lt; 120mg/100g.</li>
+        <li>Nêm sau cùng, đúng bàn ăn — kiểm soát lượng dễ hơn.</li>
+        <li>Dùng tỏi, gừng, sả, ớt, chanh, riềng thay muối.</li>
+        <li>Ăn ngoài hàng: gọi "ít mắm", "nhạt", "không bột ngọt".</li>
+        <li>Tự đo huyết áp tại nhà — ghi chép để theo dõi.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Huyết áp &gt; 180/120 mmHg — tăng huyết áp cấp cứu.</li>
+        <li>Nhức đầu dữ dội, hoa mắt, chóng mặt.</li>
+        <li>Đau ngực, khó thở, hồi hộp.</li>
+        <li>Tê yếu tay chân, méo miệng — dấu hiệu đột quỵ.</li>
+        <li>Phù chân, tiểu ít — kèm theo bệnh thận.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

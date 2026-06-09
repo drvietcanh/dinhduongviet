@@ -1,0 +1,15 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-dan-van-phong"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card"><h2>🏢 Tóm tắt — Dinh dưỡng cho dân văn phòng</h2><p>Dân văn phòng thường gặp các vấn đề: ăn sáng vội, trưa ăn cơm hộp/ngoài hàng, chiều ăn vặt, tối về ăn bù. Ngồi nhiều, ít vận động → dễ tăng vòng eo, mỡ nội tạng, trào ngược dạ dày. Một số điều chỉnh nhỏ trong thói quen có thể cải thiện đáng kể.</p></section>
+  <section class="section card"><h2>⚖️ Nguyên lý cho dân văn phòng</h2><ul><li><strong>Phân bổ bữa ăn hợp lý:</strong> Sáng: 20% năng lượng, trưa: 35%, chiều: 15% (ăn vặt lành mạnh), tối: 30%.</li><li><strong>Ngồi lâu làm chậm tiêu hóa:</strong> Sau ăn, không ngồi ngay — đứng dậy đi lại 5-10 phút.</li><li><strong>Nhịn ăn sáng:</strong> Khiến đường huyết dao động, ăn trưa nhiều hơn, dễ tích mỡ bụng.</li></ul></section>
+  <section class="section card"><h2>✅ Ăn gì trong ngày làm việc</h2><ul><li><strong>Sáng:</strong> Yến mạch + sữa + trái cây, bánh mì nguyên cám + trứng, cháo/ phở (không nhiều mỡ).</li><li><strong>Trưa (mang theo):</strong> Cơm gạo lứt + ức gà + rau luộc. Tự nấu mang theo tiết kiệm và lành mạnh.</li><li><strong>Ăn vặt chiều:</strong> Trái cây (1 quả), sữa chua không đường, hạt (1 nắm), bánh gạo lứt.</li><li><strong>Uống:</strong> Nước lọc là chính. Trà xanh, cà phê đen (1-2 tách/ngày, không đường).</li></ul></section>
+  <section class="section card"><h2>⚠️ Thực phẩm cần tránh</h2><ul><li><strong>Nước ngọt, trà sữa:</strong> 1 ly trà sữa = 300-500 calo, 40-60g đường — tương đương 1 bữa ăn.</li><li><strong>Bánh kẹo, snack:</strong> Nhiều đường, muối, chất béo chuyển hóa — không có giá trị dinh dưỡng.</li><li><strong>Cơm hộp nhiều dầu mỡ:</strong> Chọn phần rau nhiều, thịt ít mỡ, không chan nước thịt kho.</li><li><strong>Ăn tối quá khuya:</strong> Tránh ăn sau 20h. Nếu đói, uống sữa ấm hoặc ăn nhẹ trái cây.</li></ul></section>
+  <section class="section card"><h2>❓ Câu hỏi thường gặp</h2><ul><li><strong>Ngồi nhiều có giảm cân được không?</strong> Khó hơn nhưng vẫn được — kiểm soát khẩu phần và tận dụng giờ nghỉ đi bộ.</li><li><strong>Ăn trưa ngoài hàng làm sao để lành?</strong> Chọn quán có rau, gọi riêng phần rau, tránh quán dùng nhiều dầu.</li><li><strong>Có cần máy đứng bàn?</strong> Đứng 2-4 tiếng/ngày giúp đốt thêm ~100-200 calo, nhưng không thay thế tập thể dục.</li></ul></section>
+  <section class="section card"><h2>🎯 Tóm lại</h2><p>Dân văn phòng hoàn toàn có thể ăn uống lành mạnh mà không tốn nhiều thời gian. Chuẩn bị bữa trưa từ tối hôm trước, kiểm soát ăn vặt, uống đủ nước, và đứng dậy vận động mỗi giờ. Những thay đổi nhỏ — kết quả lớn.</p></section>
+</ArticleLayout>

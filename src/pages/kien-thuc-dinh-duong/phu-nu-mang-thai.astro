@@ -1,0 +1,100 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["phu-nu-mang-thai"];
+if (!art) throw new Error("Article not found: phu-nu-mang-thai");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Hà, 28 tuổi, mang thai lần đầu. Chị băn khoăn: "Em ăn thế nào để con thông minh? Có cần ăn gấp đôi không?" Mẹ chồng thì bảo ăn nhiều để con bụ bẫm, bạn thì bảo ăn ít kẻo tiểu đường thai kỳ. Chị hoang mang không biết nghe ai.</p>
+  <p>Mang thai không cần ăn gấp đôi — chỉ cần tăng 250–450 kcal/ngày ở các giai đoạn sau. Quan trọng nhất là <strong>chất lượng</strong> thay vì số lượng: đủ acid folic, sắt, canxi, DHA. Thai kỳ là cơ hội duy nhất để nền tảng sức khỏe của con suốt đời.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Mẹ bầu: <u>uống acid folic 400 mcg/ngày (trước & trong 3 tháng đầu)</u>,
+    <u>bổ sung sắt + canxi + DHA</u>, <u>tăng 250–450 kcal (tùy giai đoạn)</u>,
+    <u>tránh đồ sống/tái/rượu</u>. <u>Tăng cân đúng theo BMI trước thai kỳ</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao dinh dưỡng thai kỳ quan trọng?</h2>
+  <p>1000 ngày đầu đời (từ thụ thai tới 2 tuổi) quyết định sức khỏe suốt đời. Acid folic ngăn khuyết tật ống thần kinh (não, tủy sống). Sắt tạo hồng cầu cho cả mẹ và thai. Canxi và vitamin D xây xương cho thai. DHA phát triển não bộ — 70% sự phát triển não xảy ra trong 3 tháng cuối thai kỳ.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nhu cầu dinh dưỡng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>3 tháng đầu:</strong> Giữ nguyên năng lượng + acid folic 600 mcg</li>
+      <li><strong>3 tháng giữa:</strong> +250–300 kcal + canxi 1000mg + sắt 27mg</li>
+      <li><strong>3 tháng cuối:</strong> +450 kcal + DHA 200–300mg + chất xơ</li>
+      <li><strong>Cho con bú:</strong> +500 kcal + nước 2.5–3 lít</li>
+      <li>Tăng cân theo BMI trước thai: thiếu cân +12.5–18kg, thường +11.5–16kg, thừa +7–11.5kg</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Rượu bia, thuốc lá — tuyệt đối</li>
+      <li>⛔ Đồ sống/tái: gỏi cá, sushi, thịt tái, trứng sống</li>
+      <li>⛔ Pate gan (nhiều vitamin A)</li>
+      <li>⛔ Cá nhiều thủy ngân: cá kiếm, cá kình</li>
+      <li>⛔ Caffeine &gt;200mg/ngày (~1–2 tách cafe)</li>
+      <li>⚠️ Không tự ý bổ sung vitamin A liều cao</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Bổ sung vi chất — liều khuyến nghị</h2>
+  <table class="table"><thead><tr><th>Chất</th><th>Liều/ngày</th><th>Khi nào</th></tr></thead><tbody>
+    <tr><td>Acid folic</td><td>400–600 mcg</td><td>Trước 3 tháng + hết thai kỳ</td></tr>
+    <tr><td>Sắt</td><td>27 mg</td><td>Cả thai kỳ (uống kèm vitamin C)</td></tr>
+    <tr><td>Canxi</td><td>1000 mg</td><td>3 tháng giữa + cuối</td></tr>
+    <tr><td>Vitamin D</td><td>600 IU</td><td>Cả thai kỳ (hỗ trợ hấp thu canxi)</td></tr>
+    <tr><td>DHA</td><td>200–300 mg</td><td>Đặc biệt 3 tháng cuối</td></tr>
+    <tr><td>Iốt</td><td>220 mcg</td><td>Cả thai kỳ</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (3 tháng cuối)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bánh mì nguyên cám + trứng ốp + 1 ly sữa tách béo</td></tr>
+    <tr><td>🌞 Phụ 1</td><td>1 hũ sữa chua + vài hạt óc chó</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi áp chảo + canh rau ngót + 1 quả cam</td></tr>
+    <tr><td>🌆 Phụ 2</td><td>Sinh tố bơ chuối sữa</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm vừa + thịt bò xào rau cải + canh bí đỏ</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Ốm nghén: ăn bánh mì khô trước khi ra khỏi giường.</li>
+        <li>Táo bón: uống 2–3 lít nước, ăn nhiều rau.</li>
+        <li>Khám sàng lọc tiểu đường thai kỳ tuần 24–28.</li>
+        <li>Đi bộ 20–30 phút/ngày nếu không có chống chỉ định.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Tăng cân quá nhanh hoặc quá chậm.</li>
+        <li>Đau bụng, ra máu, vỡ ối.</li>
+        <li>Phù tay mặt đột ngột, đau đầu, nhìn mờ — tiền sản giật.</li>
+        <li>Giảm cử động thai.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

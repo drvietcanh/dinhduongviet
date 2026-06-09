@@ -1,0 +1,107 @@
+---
+import type { NutrientValues } from "../data/nutrition";
+
+interface Props {
+  nutrients: NutrientValues;
+  /** RDI reference, default 2000 kcal adult */
+  rdiKcal?: number;
+}
+
+const { nutrients: n, rdiKcal = 2000 } = Astro.props;
+
+type Bar = {
+  label: string;
+  value: number;
+  unit: string;
+  pct: number;
+  color: string;
+};
+
+const bars: Bar[] = [];
+
+// Macronutrients with approximate RDI
+bars.push({ label: "Năng lượng", value: n.energyKcal, unit: "kcal", pct: Math.min(n.energyKcal / rdiKcal * 100, 100), color: "var(--brand)" });
+bars.push({ label: "Chất đạm", value: n.proteinG ?? 0, unit: "g", pct: Math.min((n.proteinG ?? 0) / 65 * 100, 100), color: "#e0875a" });
+bars.push({ label: "Chất béo", value: n.fatG ?? 0, unit: "g", pct: Math.min((n.fatG ?? 0) / 65 * 100, 100), color: "#f0c050" });
+bars.push({ label: "Carb", value: n.carbG ?? 0, unit: "g", pct: Math.min((n.carbG ?? 0) / 275 * 100, 100), color: "#41b87a" });
+bars.push({ label: "Chất xơ", value: n.fiberG ?? 0, unit: "g", pct: Math.min((n.fiberG ?? 0) / 30 * 100, 100), color: "#7b9f6e" });
+
+// Highlight minerals if present
+if (n.sodiumMg !== undefined) {
+  bars.push({ label: "Natri", value: n.sodiumMg, unit: "mg", pct: Math.min((n.sodiumMg) / 2300 * 100, 100), color: "#8b8b9e" });
+}
+if (n.potassiumMg !== undefined) {
+  bars.push({ label: "Kali", value: n.potassiumMg, unit: "mg", pct: Math.min((n.potassiumMg) / 4700 * 100, 100), color: "#b088c8" });
+}
+if (n.glycemicIndex !== undefined) {
+  bars.push({ label: "GI", value: n.glycemicIndex, unit: "", pct: Math.min(n.glycemicIndex, 100), color: "#d65f5f" });
+  // GL
+  const gl = (n.glycemicIndex * (n.carbG ?? 0)) / 100;
+  bars.push({ label: "GL", value: Math.round(gl * 10) / 10, unit: "", pct: Math.min(gl / 20 * 100, 100), color: "#e0875a" });
+}
+if (n.phosphorusMg !== undefined) {
+  bars.push({ label: "Phốt-pho", value: n.phosphorusMg, unit: "mg", pct: Math.min((n.phosphorusMg) / 700 * 100, 100), color: "#6ba3b8" });
+}
+---
+
+<div class="bars-container">
+  {bars.map((bar) => (
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>{bar.label}</span>
+        <span class="bar-value">{bar.value}{bar.unit === 'kcal' ? ' kcal' : bar.unit}</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style={`width: ${bar.pct.toFixed(0)}%; background: ${bar.color};`}></div>
+      </div>
+      <span class="bar-pct">{bar.pct.toFixed(0)}%</span>
+    </div>
+  ))}
+  <p class="bar-footnote">% theo RDI tham khảo ({rdiKcal} kcal/ngày cho người trưởng thành)</p>
+</div>
+
+<style>
+  .bars-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 40px;
+    gap: 10px;
+    align-items: center;
+  }
+  .bar-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+  .bar-label .bar-value {
+    display: block;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 0.88rem;
+  }
+  .bar-track {
+    height: 10px;
+    background: var(--line-light);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.6s ease;
+  }
+  .bar-pct {
+    font-size: 0.75rem;
+    color: var(--ink-tertiary);
+    font-weight: 500;
+    text-align: right;
+  }
+  .bar-footnote {
+    font-size: 0.72rem;
+    color: var(--ink-tertiary);
+    margin-top: 4px;
+  }
+</style>

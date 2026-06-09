@@ -1,0 +1,104 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-alzheimer-sa-sut-tri-tue"];
+if (!art) throw new Error("Article not found: dinh-duong-alzheimer-sa-sut-tri-tue");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bà Liên, 78 tuổi, bị Alzheimer đã 3 năm. Bà hay quên: quên đã ăn cơm chưa, quên tên con cháu, có hôm đi lạc ngay trong xóm. Con gái bà lo nhất là bà ăn ít quá: "Mẹ em hay nói không ngon, bỏ bữa, sụt 4kg trong 2 tháng."</p>
+  <p>Sa sút trí tuệ ảnh hưởng nặng tới dinh dưỡng: người bệnh quên ăn, không nhận ra thức ăn, khó nhai nuốt. Đây là nguyên nhân hàng đầu khiến họ suy kiệt và nhiễm trùng. Tin tốt: chế độ ăn MIND và Địa Trung Hải có thể làm chậm tiến triển bệnh.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Chế độ ăn <u>MIND (kết hợp Địa Trung Hải + DASH)</u> giúp chậm tiến triển Alzheimer: 
+    rau xanh, quả mọng (việt quất, dâu), cá béo, dầu oliu, ngũ cốc nguyên cám — 
+    <u>hạn chế thịt đỏ, bơ, phô mai, đồ chiên rán, bánh kẹo</u>. Hỗ trợ người bệnh ăn bằng cách tạo môi trường quen thuộc.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống ảnh hưởng tới não?</h2>
+  <p>Viêm mạn tính và stress oxy hóa là hai cơ chế chính gây tổn thương tế bào thần kinh trong Alzheimer. Chế độ ăn Địa Trung Hải giàu chất chống oxy hóa và chất béo chống viêm giúp bảo vệ mạch máu não và giảm tích tụ mảng beta-amyloid. Nghiên cứu cho thấy tuân thủ tốt chế độ ăn MIND có thể làm chậm suy giảm nhận thức tương đương 7,5 năm tuổi.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn (MIND diet)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rau xanh lá:</strong> Cải bó xôi, cải xoăn, rau ngót — ít nhất 6 phần/tuần</li>
+      <li><strong>Quả mọng:</strong> Việt quất, dâu tây, mâm xôi — ít nhất 2 phần/tuần</li>
+      <li><strong>Cá béo:</strong> Cá hồi, cá thu, cá trích — ít nhất 1 bữa/tuần</li>
+      <li><strong>Dầu oliu:</strong> Dùng chính trong nấu nướng</li>
+      <li><strong>Ngũ cốc nguyên cám:</strong> Gạo lứt, yến mạch, bánh mì nguyên cám</li>
+      <li><strong>Các loại hạt:</strong> Óc chó, hạnh nhân, hạt lanh — giàu omega-3</li>
+      <li><strong>Đậu đỗ:</strong> Đậu nành, đậu xanh, đậu lăng — ít nhất 3 bữa/tuần</li>
+      <li><strong>Ức gà/cá:</strong> Thay thế thịt đỏ</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế (MIND diet)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Thịt đỏ:</strong> Dưới 4 bữa/tuần — thay bằng gà, cá</li>
+      <li><strong>⛔ Bơ và phô mai:</strong> Hạn chế tối đa (dưới 1 lần/tuần)</li>
+      <li><strong>⛔ Đồ chiên rán:</strong> Đặc biệt khoai tây chiên — dưới 1 lần/tuần</li>
+      <li><strong>⛔ Bánh kẹo, kem, nước ngọt:</strong> Dưới 5 phần/tuần</li>
+      <li><strong>⛔ Bia rượu:</strong> Nếu uống thì tối đa 1 ly rượu vang/ngày</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Mẹo cho người chăm sóc -->
+<section class="section card">
+  <h2>📏 Mẹo cho người chăm sóc Alzheimer</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Vấn đề</th><th>Cách xử lý</th></tr></thead>
+    <tbody>
+      <tr><td>Quên ăn</td><td>Đặt giờ ăn cố định, gọi nhẹ nhàng, ngồi ăn cùng</td></tr>
+      <tr><td>Không muốn ăn</td><td>Thức ăn mềm, thơm, trình bày đẹp — dùng bát đĩa màu sắc tương phản</td></tr>
+      <tr><td>Khó nuốt</td><td>Nấu mềm, hấp/luộc, cắt miếng nhỏ, tránh thức ăn dính</td></tr>
+      <tr><td>Ăn vãi, bẩn</td><td>Dùng thìa to bản, bát có đế chống đổ, khăn lau rộng</td></tr>
+      <tr><td>Đi lang thang bỏ ăn</td><td>Đồ ăn nhẹ cầm tay: bánh mì, chuối, sữa hộp</td></tr>
+      <tr><td>Sụt cân</td><td>Thêm dầu oliu/dầu mè vào cháo, sinh tố, chia 5–6 bữa nhỏ</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (MIND diet)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Cháo yến mạch + dâu tây + ½ ly sữa</td><td>Quả mọng — tốt nhất cho não</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi nướng + salad rau dầu oliu + 1 quả cam</td><td>Omega-3 + chống oxy hóa</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 nắm quả óc chó + việt quất khô</td><td>Nhỏ, dễ cầm, dễ ăn</td></tr>
+      <tr><td>🌙 Tối</td><td>Canh bí đỏ thịt gà bằm + đậu phụ luộc + cơm mềm</td><td>Nấu mềm, dễ nhai nuốt</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Ăn cùng người thân, nói chuyện nhẹ nhàng — môi trường vui vẻ giúp bệnh nhân ăn ngon hơn.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Khi nào cần đi khám?</h2>
+  <ul style="line-height:1.8;padding-left:16px;">
+    <li>Sụt cân &gt; 5% trọng lượng trong 1 tháng.</li>
+    <li>Khó nuốt, sặc, ho khi ăn — nguy cơ viêm phổi hít.</li>
+    <li>Lú lẫn tăng đột ngột — có thể do nhiễm trùng tiểu hoặc mất nước.</li>
+    <li>Bỏ ăn hoàn toàn &gt; 2 ngày.</li>
+    <li>Nôn, tiêu chảy, táo bón kéo dài.</li>
+    <li>Cần gặp chuyên gia dinh dưỡng hoặc bác sĩ lão khoa để được tư vấn cá nhân hóa.</li>
+  </ul>
+</section>
+
+</ArticleLayout>

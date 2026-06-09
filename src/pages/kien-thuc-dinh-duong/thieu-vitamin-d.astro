@@ -1,0 +1,99 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thieu-vitamin-d"];
+if (!art) throw new Error("Article not found: thieu-vitamin-d");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Ly, 32 tuổi, dân văn phòng, ít khi ra ngoài nắng. Gần đây chị hay mệt mỏi, đau nhức xương khớp, tóc rụng nhiều. Tưởng thiếu sắt, uống sắt mãi không đỡ. Xét nghiệm máu mới phát hiện: vitamin D chỉ 28 nmol/L — thiếu nặng.</p>
+  <p>Vitamin D là "vitamin ánh nắng" — cơ thể tự sản xuất khi da tiếp xúc nắng. Thiếu vitamin D là tình trạng phổ biến toàn cầu, kể cả ở Việt Nam. Nguyên nhân: ít ra nắng, dùng kem chống nắng quá mức, ngồi văn phòng suốt ngày.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Cách tốt nhất: <u>tắm nắng 10–15 phút/ngày trước 9h sáng</u> (mặt, tay, chân). 
+    Ăn thêm <u>cá béo (2–3 bữa/tuần)</u>, <u>trứng, sữa tăng cường D</u>. 
+    Nếu xét nghiệm thiếu: uống vitamin D3 800–2000 IU/ngày, uống trong bữa ăn có chất béo.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao vitamin D quan trọng?</h2>
+  <p>Vitamin D không chỉ giúp hấp thu canxi — nó có thụ thể khắp cơ thể. Thiếu D gây loãng xương (dù uống nhiều canxi), yếu cơ, đau nhức, giảm miễn dịch (hay ốm vặt), mệt mỏi kéo dài, thậm chí liên quan trầm cảm. Ở trẻ em: còi xương, chậm mọc răng. Ở người già: yếu cơ, dễ té ngã.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nguồn vitamin D</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>☀️ Ánh nắng: 10–15 phút nắng sáng trước 9h</li>
+      <li>🐟 Cá béo: cá hồi (100g ~600 IU), cá thu, cá mòi</li>
+      <li>🥚 Lòng đỏ trứng: 1 quả ~40 IU</li>
+      <li>🍄 Nấm phơi nắng: 100g ~400 IU</li>
+      <li>🥛 Sữa tăng cường D: 200ml ~100 IU</li>
+      <li>💊 Viên bổ sung D3: 800–2000 IU/ngày nếu thiếu</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Nguyên nhân thiếu D</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⚠️ Ít ra nắng / dùng kem chống nắng thường xuyên</li>
+      <li>⚠️ Da ngăm/da đen — tổng hợp D kém hơn</li>
+      <li>⚠️ Người già — da tổng hợp D giảm 50%</li>
+      <li>⚠️ Béo phì — vitamin D bị giữ trong mỡ</li>
+      <li>⚠️ Bệnh thận mạn — giảm hoạt hóa vitamin D</li>
+      <li>⚠️ Mặc kín áo quần (tôn giáo, văn hóa)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Xét nghiệm & nhu cầu</h2>
+  <table class="table"><thead><tr><th>Mức máu</th><th>nmol/L</th><th>Hành động</th></tr></thead><tbody>
+    <tr><td>🔴 Thiếu nặng</td><td>&lt;30</td><td>Uống 2000 IU/ngày, xét nghiệm lại sau 3 tháng</td></tr>
+    <tr><td>🟡 Thiếu</td><td>30–50</td><td>Uống 800–1000 IU/ngày</td></tr>
+    <tr><td>🟢 Đủ</td><td>50–75</td><td>Duy trì: nắng + thực phẩm</td></tr>
+    <tr><td>🔵 Tối ưu</td><td>75–120</td><td>Tiếp tục chế độ hiện tại</td></tr>
+    <tr><td>🟣 Ngộ độc</td><td>&gt;250</td><td>Rất hiếm — chỉ do uống quá liều kéo dài</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Vitamin D tan trong dầu — uống viên D3 trong bữa ăn có chất béo để hấp thu tốt nhất.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th><th>Vitamin D</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng + nắng</td><td>1 quả trứng ốp la + 1 ly sữa tăng cường D + tắm nắng 10 phút</td><td>~5000 IU (từ nắng)</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cá hồi nướng 100g + salad + cơm</td><td>~600 IU</td></tr>
+    <tr><td>🌆 Phụ</td><td>Nấm phơi nắng xào 50g</td><td>~200 IU</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm + ức gà + rau luộc</td><td>—</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Nắng sáng 10–15 phút tạo ra 2000–5000 IU vitamin D — nhiều hơn cả thực phẩm cộng lại!</p>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Xét nghiệm máu 25-OH vitamin D trước khi uống.</li>
+        <li>Không bôi kem chống nắng khi tắm nắng ngắn.</li>
+        <li>Uống D3 kèm bữa ăn có chất béo (sáng/trưa).</li>
+        <li>Mùa mưa: bổ sung 1000–2000 IU/ngày.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đau xương, yếu cơ, mệt kéo dài không rõ nguyên nhân.</li>
+        <li>Trẻ em: chậm lớn, chân vòng kiềng.</li>
+        <li>Người già: té ngã liên tục, gãy xương nhẹ.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

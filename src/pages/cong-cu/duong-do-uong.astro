@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "Tra nhanh lượng đường trong đồ uống phổ biến";
+const desc = "Xem ngay một ly trà sữa, nước ngọt, nước ép có bao nhiêu đường — so với khuyến nghị 25g/ngày.";
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/duong-do-uong">
+  <main class="content-page">
+    <div class="page-header">
+      <h1>🧋 Đường trong đồ uống</h1>
+      <p class="page-desc">{desc}</p>
+    </div>
+
+    <div class="sugar-summary">
+      <div class="sugar-card compare">
+        <div class="sugar-label">Khuyến nghị WHO</div>
+        <div class="sugar-value"><strong>25g</strong> đường/ngày</div>
+        <div class="sugar-note">(tương đương ~6 muỗng cà phê)</div>
+      </div>
+      <div class="sugar-card note">
+        <div class="sugar-label">1 muỗng cà phê đường</div>
+        <div class="sugar-value"><strong>4g</strong></div>
+        <div class="sugar-note">đường cát trắng</div>
+      </div>
+    </div>
+
+    <div class="sugar-search-box">
+      <input id="sugar-search" type="text" placeholder="Tìm đồ uống (trà sữa, cà phê, pepsi...)" style="padding:10px 16px;border:1px solid var(--line);border-radius:var(--radius);width:100%;max-width:420px;background:var(--card);color:inherit;">
+    </div>
+
+    <div class="drink-grid" id="drink-grid">
+      <!-- rendered by JS -->
+    </div>
+  </main>
+
+  <style>
+    .page-header { text-align:center; margin-bottom:24px; }
+    .page-desc { max-width:550px; margin:8px auto 0; color:var(--ink-secondary); font-size:0.9rem; }
+    .sugar-summary { display:flex; gap:16px; justify-content:center; margin-bottom:28px; flex-wrap:wrap; }
+    .sugar-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 24px; text-align:center; min-width:180px; }
+    .sugar-card.compare { border-color:var(--brand); background:var(--brand-light); }
+    .sugar-label { font-size:0.8rem; color:var(--ink-secondary); margin-bottom:4px; }
+    .sugar-value { font-size:1.5rem; font-weight:700; color:var(--brand); }
+    .sugar-note { font-size:0.78rem; color:var(--ink-tertiary); margin-top:2px; }
+    .sugar-search-box { text-align:center; margin-bottom:20px; }
+    .drink-grid { max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:6px; }
+    .drink-item { display:flex; align-items:center; gap:12px; padding:12px 16px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); }
+    .drink-icon { font-size:1.4rem; }
+    .drink-info { flex:1; }
+    .drink-name { font-weight:600; font-size:0.9rem; }
+    .drink-portion { font-size:0.78rem; color:var(--ink-secondary); }
+    .drink-sugar { text-align:right; min-width:140px; }
+    .drink-sugar-val { font-weight:700; font-size:1rem; }
+    .drink-sugar-val.high { color:#c0392b; }
+    .drink-sugar-val.medium { color:#e67e22; }
+    .drink-sugar-val.low { color:#27ae60; }
+    .drink-bar { height:6px; background:var(--line); border-radius:4px; margin-top:4px; overflow:hidden; }
+    .drink-fill { height:100%; border-radius:4px; }
+    .drink-fill.high { background:#c0392b; }
+    .drink-fill.medium { background:#e67e22; }
+    .drink-fill.low { background:#27ae60; }
+    .drink-pct { font-size:0.72rem; color:var(--ink-tertiary); margin-top:1px; }
+    @media(max-width:540px){ .drink-item { flex-wrap:wrap; } .drink-sugar { min-width:100%; text-align:left; } }
+  </style>
+
+  <script>
+  (function(){
+    var drinks = [
+      {icon:"🧋",name:"Trà sữa trân châu (size M)",portion:"500ml",sugar:48},
+      {icon:"🧋",name:"Trà sữa trân châu (size L)",portion:"700ml",sugar:65},
+      {icon:"🥤",name:"Coca-Cola",portion:"1 lon 330ml",sugar:39},
+      {icon:"🥤",name:"Pepsi",portion:"1 lon 330ml",sugar:41},
+      {icon:"🥤",name:"Sprite",portion:"1 lon 330ml",sugar:38},
+      {icon:"🥤",name:"7Up",portion:"1 lon 330ml",sugar:38},
+      {icon:"🧃",name:"Nước cam ép đóng hộp",portion:"330ml",sugar:27},
+      {icon:"🧃",name:"Nước ép táo đóng hộp",portion:"330ml",sugar:30},
+      {icon:"🧃",name:"Nước ép xoài đóng hộp",portion:"330ml",sugar:32},
+      {icon:"🧋",name:"Trà đào",portion:"500ml",sugar:46},
+      {icon:"🧋",name:"Trà chanh (sugar)",portion:"500ml",sugar:35},
+      {icon:"☕",name:"Cà phê sữa đá",portion:"300ml",sugar:28},
+      {icon:"☕",name:"Cà phê đen (đường)",portion:"1 tách",sugar:8},
+      {icon:"☕",name:"Starbucks Caramel Frappuccino",portion:"Grande 473ml",sugar:54},
+      {icon:"🥤",name:"Nước tăng lực Red Bull",portion:"1 lon 250ml",sugar:27},
+      {icon:"🥤",name:"Nước tăng lực Monster",portion:"1 lon 473ml",sugar:54},
+      {icon:"🥛",name:"Sữa đặc có đường (pha)",portion:"200ml",sugar:24},
+      {icon:"🥛",name:"Sữa Milo",portion:"1 hộp 200ml",sugar:22},
+      {icon:"🥛",name:"Sữa chua uống Yakult",portion:"1 chai 100ml",sugar:13},
+      {icon:"🧃",name:"Nước dừa tươi",portion:"1 trái ~300ml",sugar:15},
+      {icon:"🧃",name:"Nước mía",portion:"1 ly 250ml",sugar:30},
+      {icon:"🧃",name:"Sinh tố bơ (có đường/sữa đặc)",portion:"300ml",sugar:28},
+      {icon:"🧃",name:"Sinh tố xoài (có đường)",portion:"300ml",sugar:32},
+      {icon:"🍺",name:"Bia (tùy loại)",portion:"1 lon 330ml",sugar:0},
+      {icon:"🍷",name:"Rượu vang đỏ",portion:"1 ly 150ml",sugar:1},
+      {icon:"🍸",name:"Rượu cocktail Mojito",portion:"1 ly 300ml",sugar:20},
+    ];
+    var threshold = 25; // WHO daily limit
+
+    function render(list) {
+      var grid = document.getElementById("drink-grid");
+      grid.innerHTML = list.map(function(d){
+        var pct = Math.round(d.sugar / threshold * 100);
+        var cls = d.sugar > 30 ? "high" : d.sugar > 15 ? "medium" : "low";
+        var barCls = d.sugar > 30 ? "high" : d.sugar > 15 ? "medium" : "low";
+        return '<div class="drink-item">'+
+          '<div class="drink-icon">'+d.icon+'</div>'+
+          '<div class="drink-info">'+
+            '<div class="drink-name">'+d.name+'</div>'+
+            '<div class="drink-portion">'+d.portion+'</div>'+
+          '</div>'+
+          '<div class="drink-sugar">'+
+            '<div class="drink-sugar-val '+cls+'">'+d.sugar+'g đường</div>'+
+            '<div class="drink-bar"><div class="drink-fill '+barCls+'" style="width:'+Math.min(pct,100)+'%"></div></div>'+
+            '<div class="drink-pct">'+pct+'% nhu cầu ngày</div>'+
+          '</div>'+
+        '</div>';
+      }).join("");
+    }
+
+    render(drinks);
+
+    var inp = document.getElementById("sugar-search");
+    if(inp){
+      inp.addEventListener("input", function(){
+        var q = this.value.toLowerCase().trim();
+        if(!q) { render(drinks); return; }
+        var filtered = drinks.filter(function(d){ return d.name.toLowerCase().indexOf(q) >= 0; });
+        render(filtered);
+      });
+    }
+  })();
+  </script>
+</BaseLayout>

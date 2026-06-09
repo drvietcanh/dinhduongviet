@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output and framework cache
+dist/
+.astro/
+
+# Local test/browser output
+test-results/
+.playwright-cli/
+playwright-report/
+
+# Local runtime output
+output/
+
+# Logs and temporary audit/build artifacts
+*.log
+*.err
+*.txt
+build-*.txt
+build*.txt
+qa-*.txt
+audit-*.txt
+site-audit.txt
+stdout.txt
+stderr.txt
+err*.txt
+out.txt
+tq-out.txt
+
+# Ad hoc local helper scripts generated during repair sessions
+_*.mjs
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

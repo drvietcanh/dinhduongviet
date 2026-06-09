@@ -1,0 +1,15 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["hieu-dung-ve-calo"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card"><h2>🔥 Tóm tắt — Calo là gì và tại sao quan trọng</h2><p>Calo (kilocalorie) là đơn vị đo năng lượng. Cơ thể cần một lượng calo nhất định mỗi ngày để duy trì hoạt động — gọi là TDEE (Tổng năng lượng tiêu hao hàng ngày). Khi ăn nhiều calo hơn TDEE → tăng cân. Ăn ít hơn → giảm cân. Kiểm soát calo không phải là "ăn kiêng" mà là quản lý năng lượng.</p></section>
+  <section class="section card"><h2>⚖️ Nguyên lý cơ bản</h2><ul><li><strong>1kg mỡ ≈ 7700 calo:</strong> Để giảm 1kg mỡ, cần thâm hụt ~7700 calo — tương đương 300-500 calo/ngày trong 2-3 tuần.</li><li><strong>Calo đến từ đâu:</strong> Đạm (4 calo/g), tinh bột (4 calo/g), chất béo (9 calo/g), cồn (7 calo/g). Chất béo dễ tích mỡ nhất vì mật độ năng lượng cao.</li><li><strong>TDEE = BMR × hệ số vận động:</strong> BMR là năng lượng lúc nghỉ. Hệ số vận động: 1.2 (ít), 1.375 (nhẹ), 1.55 (vừa), 1.725 (nặng).</li></ul></section>
+  <section class="section card"><h2>✅ Tính nhu cầu calo cá nhân</h2><ul><li><strong>Công thức Mifflin-St Jeor:</strong> Nam: 10 × cân nặng(kg) + 6.25 × chiều cao(cm) − 5 × tuổi + 5. Nữ: 10 × cân nặng + 6.25 × chiều cao − 5 × tuổi − 161.</li><li><strong>Duy trì cân nặng:</strong> Ăn ~TDEE. Theo dõi cân 1 lần/tuần (sáng sớm, sau khi đi vệ sinh).</li><li><strong>Giảm cân:</strong> TDEE − 300 đến 500 calo. Không nên dưới 1200 calo/ngày cho nữ, 1500 cho nam.</li><li><strong>Tăng cân:</strong> TDEE + 300 đến 500 calo, kết hợp tập lực.</li></ul></section>
+  <section class="section card"><h2>⚠️ Hiểu lầm về calo</h2><ul><li><strong>Calo trong — calo ra không đơn giản:</strong> Cơ thể hấp thu calo từ thực phẩm khác nhau tùy loại. Calo từ thực phẩm nguyên hạt (hạt, đậu) hấp thu thấp hơn từ thực phẩm chế biến sẵn.</li><li><strong>Không phải tất cả calo đều giống nhau:</strong> 200 calo từ sô-cô-la khác 200 calo từ bông cải xanh — khác về vi chất, chất xơ, tác động lên đường huyết và cảm giác no.</li><li><strong>Đếm calo cũng có sai số:</strong> Đồng hồ thông minh có thể sai ±20%. Nhãn thực phẩm có sai số ±20% hợp pháp.</li></ul></section>
+  <section class="section card"><h2>❓ Câu hỏi thường gặp</h2><ul><li><strong>Có cần đếm calo mỗi ngày?</strong> Không cần — ước lượng bằng mắt và ăn theo khẩu phần là đủ cho hầu hết mọi người.</li><li><strong>Tại sao ăn ít mà không giảm?</strong> Có thể do tính sai calo, ăn vặt quá nhiều, hoặc chuyển hóa chậm lại sau khi giảm cân.</li><li><strong>Ăn đêm có tăng cân hơn?</strong> Calo là calo — thời điểm không quan trọng bằng tổng lượng trong ngày.</li></ul></section>
+  <section class="section card"><h2>🎯 Tóm lại</h2><p>Hiểu về calo giúp bạn kiểm soát cân nặng mà không cần ăn kiêng khổ sở. Không cần đếm từng calo — chỉ cần biết ước lượng và ăn uống có ý thức. Công cụ tính calo trên website này có thể hỗ trợ bạn bắt đầu.</p></section>
+</ArticleLayout>

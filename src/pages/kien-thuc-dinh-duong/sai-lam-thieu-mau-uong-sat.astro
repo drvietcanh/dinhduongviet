@@ -1,0 +1,156 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["sai-lam-thieu-mau-uong-sat"];
+---
+
+<ArticleLayout article={article}>
+
+Người bị thiếu máu thường tự mua sắt uống. Nhưng thiếu máu có nhiều nguyên nhân — uống sắt bừa bãi vừa không hiệu quả, vừa có thể gây hại.
+
+## 🩸 Các loại thiếu máu — không phải loại nào cũng do thiếu sắt
+
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Nguyên nhân</th>
+<th>Xét nghiệm đặc trưng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>**Thiếu máu thiếu sắt** (phổ biến nhất)</td>
+<td>Mất máu, thiếu sắt trong ăn uống</td>
+<td>Ferritin thấp, MCV nhỏ</td>
+</tr>
+<tr>
+<td>**Thiếu máu do thiếu B12**</td>
+<td>Ăn chay lâu, viêm dạ dày tự miễn</td>
+<td>B12 máu thấp, MCV to</td>
+</tr>
+<tr>
+<td>**Thiếu máu do thiếu folate**</td>
+<td>Chế độ ăn thiếu rau xanh</td>
+<td>Folate máu thấp</td>
+</tr>
+<tr>
+<td>**Thiếu máu bệnh mạn tính** (viêm, ung thư, suy thận)</td>
+<td>Bệnh nền gây ức chế tạo máu</td>
+<td>Ferritin bình thường/cao, MCV bình thường</td>
+</tr>
+<tr>
+<td>**Thiếu máu tan máu**</td>
+<td>Hồng cầu bị phá hủy sớm</td>
+<td>Bilirubin cao, LDH cao</td>
+</tr>
+</tbody>
+</table>
+> **Uống sắt khi không thiếu sắt:** Có thể gây thừa sắt — tổn thương gan, tim, tăng nguy cơ ung thư.
+
+## 🚫 Khi nào không nên uống sắt?
+
+- **Thiếu máu do thiếu B12** — uống sắt không giúp gì, cần tiêm/uống B12
+- **Thiếu máu bệnh mạn tính** — sắt không có tác dụng, cần điều trị bệnh nền
+- **Người thừa sắt** (hemochromatosis) — uống sắt nguy hiểm
+- **Người có viêm loét dạ dày** — uống sắt có thể kích ứng thêm
+
+## ✅ Khi nào thực sự cần uống sắt?
+
+<table>
+<thead>
+<tr>
+<th>Dấu hiệu</th>
+<th>Chỉ khi có xét nghiệm xác nhận</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mệt mỏi, da xanh</td>
+<td>Ferritin dưới 30 ng/mL</td>
+</tr>
+<tr>
+<td>Khó thở khi gắng sức</td>
+<td>Hemoglobin nam dưới 13, nữ dưới 12 g/dL</td>
+</tr>
+<tr>
+<td>Tim đập nhanh</td>
+<td>MCV nhỏ (dưới 80 fL)</td>
+</tr>
+<tr>
+<td>Móng tay dễ gãy, hình thìa</td>
+<td>Bác sĩ chẩn đoán thiếu sắt</td>
+</tr>
+</tbody>
+</table>
+## 🥗 Thực phẩm giàu sắt — nên ăn trước khi uống thuốc
+
+### Sắt heme (hấp thu tốt: 25-30%)
+
+<table>
+<thead>
+<tr>
+<th>Thực phẩm</th>
+<th>Sắt (100g)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiết (bò/heo)</td>
+<td>30mg ⭐</td>
+</tr>
+<tr>
+<td>Gan heo</td>
+<td>12mg ⭐</td>
+</tr>
+<tr>
+<td>Thịt bò</td>
+<td>3mg</td>
+</tr>
+<tr>
+<td>Cá thu</td>
+<td>2mg</td>
+</tr>
+</tbody>
+</table>
+### Sắt non-heme (hấp thu kém: 5-10%)
+
+<table>
+<thead>
+<tr>
+<th>Thực phẩm</th>
+<th>Sắt (100g)</th>
+<th>Hấp thu tốt hơn khi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rau dền</td>
+<td>4mg</td>
+<td>Kết hợp vitamin C (cam, chanh)</td>
+</tr>
+<tr>
+<td>Đậu đỗ</td>
+<td>2-4mg</td>
+<td>Kết hợp vitamin C</td>
+</tr>
+<tr>
+<td>Cải bó xôi</td>
+<td>3mg</td>
+<td>Kết hợp vitamin C</td>
+</tr>
+<tr>
+<td>Hạt bí</td>
+<td>3mg</td>
+<td>Kết hợp vitamin C</td>
+</tr>
+</tbody>
+</table>
+**Mẹo tăng hấp thu sắt:**
+- Ăn thực phẩm giàu sắt + vitamin C cùng bữa (thịt bò + ớt chuông, rau dền + nước cam)
+- Tránh uống trà/cà phê ngay sau bữa ăn giàu sắt — tanin ức chế hấp thu sắt
+- Ngâm đậu trước khi nấu để giảm phytate ức chế hấp thu sắt
+
+> **Kết luận:** Thiếu máu không phải lúc nào cũng do thiếu sắt. Cần xét nghiệm máu để biết loại thiếu máu. Nếu thiếu sắt thật: ưu tiên ăn thực phẩm giàu sắt + vitamin C. Chỉ uống viên sắt khi có chỉ định của bác sĩ — và nhớ uống kèm vitamin C, tránh trà/cà phê.
+
+</ArticleLayout>

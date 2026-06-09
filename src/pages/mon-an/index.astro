@@ -1,0 +1,255 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SearchBox from "../../components/SearchBox.astro";
+import DataSummary from "../../components/DataSummary.astro";
+import { recipes } from "../../data/nutrition";
+import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/nutrition";
+---
+
+<BaseLayout title="Danh sách món ăn - Dinh Dưỡng Việt">
+  <section>
+    <h1>Danh sách món ăn</h1>
+    <p class="lead">Mỗi món được tính từ công thức định lượng. Với phở bò, app ghi rõ lượng thịt bò giả định trong tô thường.</p>
+    <div style="margin-top: 18px;">
+      <SearchBox />
+    </div>
+    <div class="filter-panel" aria-label="Bộ lọc món ăn nâng cao">
+      <div class="filter-row">
+        <label>
+          <span>Sắp xếp</span>
+          <select id="recipe-sort">
+            <option value="name-asc">Tên A→Z</option>
+            <option value="name-desc">Tên Z→A</option>
+            <option value="calo-asc">Calo thấp → cao</option>
+            <option value="calo-desc">Calo cao → thấp</option>
+            <option value="protein-desc">Đạm cao → thấp</option>
+            <option value="sodium-asc">Natri thấp → cao</option>
+          </select>
+        </label>
+        <label>
+          <span>🏥 Phù hợp bệnh</span>
+          <select id="recipe-profile" style="font-weight:600;">
+            <option value="all">Tất cả</option>
+            <option value="diabetes">🩸 Đái tháo đường</option>
+            <option value="hypertension">❤️ Tăng huyết áp</option>
+            <option value="gout">🦶 Gout</option>
+            <option value="weight">⚖️ Giảm cân</option>
+          </select>
+        </label>
+        <label>
+          <span>Tag</span>
+          <select id="recipe-tag">
+            <option value="all">Tất cả tag</option>
+            <option value="low-sodium">Ít natri</option>
+            <option value="high-sodium">Nhiều natri</option>
+            <option value="low-purine">Ít purin</option>
+            <option value="high-purine">Nhiều purin</option>
+            <option value="glycemic-index-low">GI thấp</option>
+            <option value="high-fat">Nhiều béo</option>
+          </select>
+        </label>
+      </div>
+      <div class="filter-row numeric-row">
+        <label><span>Kcal tối đa</span><input id="recipe-max-kcal" type="number" min="0" step="25" placeholder="vd 500" /></label>
+        <label><span>Đạm tối thiểu</span><input id="recipe-min-protein" type="number" min="0" step="1" placeholder="g/phần" /></label>
+        <label><span>Natri tối đa</span><input id="recipe-max-sodium" type="number" min="0" step="50" placeholder="mg/phần" /></label>
+        <button id="recipe-reset" class="button secondary" type="button">Xóa lọc</button>
+      </div>
+      <p class="muted" id="recipe-summary"></p>
+    </div>
+  </section>
+
+  <DataSummary />
+
+  <section class="section">
+    <div class="grid two" id="recipe-grid">
+      {recipes.map((recipe) => {
+        const nutrients = calculateRecipe(recipe);
+        const tags = allTags({ tags: recipe.tags, nutrients });
+        return (
+          <a
+            class="card result-link recipe-card"
+            href={`/mon-an/${recipe.slug}`}
+            data-tags={tags.join(" ")}
+            data-kcal={Math.round(nutrients.energyKcal)}
+            data-protein={nutrients.proteinG.toFixed(1)}
+            data-sodium={Math.round(nutrients.sodiumMg ?? 0)}
+          >
+            {recipe.imageUrl && <div class="food-thumb" style={`background-image: url(${recipe.imageUrl});`}></div>}
+            <span class="badge">{recipe.servingName} · {confidenceLabel(recipe.confidence)}</span>
+            <h2 style="margin-top: 10px;">{recipe.name}</h2>
+            <div style="margin: 6px 0;">
+              {tags.slice(0, 3).map(tag => <span class="mini-tag">{tagLabel(tag)}</span>)}
+              {tags.indexOf('low-sodium') !== -1 && <span class="mini-tag phu-hop" style="background:#e8f5e9;color:#2e7d32;font-weight:500;">❤️ THA</span>}
+              {tags.indexOf('low-purine') !== -1 && <span class="mini-tag phu-hop" style="background:#fce4ec;color:#c62828;font-weight:500;">🦶 Gout</span>}
+              {(tags.indexOf('glycemic-index-low') !== -1) && <span class="mini-tag phu-hop" style="background:#e8eaf6;color:#283593;font-weight:500;">🩸 ĐTĐ</span>}
+              {nutrients.energyKcal <= 300 && <span class="mini-tag phu-hop" style="background:#fff8e1;color:#f57f17;font-weight:500;">⚖️ Giảm cân</span>}
+            </div>
+            <p class="muted">Ước tính {Math.round(nutrients.energyKcal)} kcal · {nutrients.proteinG.toFixed(1)}g protein</p>
+            {recipe.portionNote && <p class="muted" style="margin-top: 8px;">{recipe.portionNote}</p>}
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  var recipeSort = document.getElementById('recipe-sort');
+  var recipeProfile = document.getElementById('recipe-profile');
+  var recipeTag = document.getElementById('recipe-tag');
+  var recipeMaxKcal = document.getElementById('recipe-max-kcal');
+  var recipeMinProtein = document.getElementById('recipe-min-protein');
+  var recipeMaxSodium = document.getElementById('recipe-max-sodium');
+  var recipeSummary = document.getElementById('recipe-summary');
+  var params = new URLSearchParams(window.location.search);
+
+  function numberValue(el) {
+    if (!el || el.value === '') return null;
+    var value = Number(el.value);
+    return Number.isFinite(value) ? value : null;
+  }
+
+  function tagsOf(card) {
+    return (card.getAttribute('data-tags') || '').split(' ').filter(Boolean);
+  }
+
+  function hasTag(card, tag) {
+    return tagsOf(card).indexOf(tag) >= 0;
+  }
+
+  function matchesProfile(card, profile) {
+    var kcal = Number(card.getAttribute('data-kcal') || 0);
+    var sodium = Number(card.getAttribute('data-sodium') || 0);
+    if (profile === 'diabetes') return hasTag(card, 'glycemic-load-low') || hasTag(card, 'glycemic-index-low');
+    if (profile === 'hypertension') return sodium <= 600 || hasTag(card, 'low-sodium');
+    if (profile === 'gout') return hasTag(card, 'low-purine');
+    if (profile === 'weight') return kcal <= 500;
+    return true;
+  }
+
+  function sortRecipes() {
+    var val = recipeSort?.value || 'name-asc';
+    var grid = document.getElementById('recipe-grid');
+    if (!grid) return;
+    var cards = Array.from(grid.querySelectorAll('.recipe-card'));
+    cards.sort(function(a, b) {
+      var aName = (a.querySelector('h2')?.textContent || '');
+      var bName = (b.querySelector('h2')?.textContent || '');
+      if (val === 'name-asc') return aName.localeCompare(bName, 'vi');
+      if (val === 'name-desc') return bName.localeCompare(aName, 'vi');
+      if (val === 'calo-asc') return (parseFloat(a.getAttribute('data-kcal') || '0')) - (parseFloat(b.getAttribute('data-kcal') || '0'));
+      if (val === 'calo-desc') return (parseFloat(b.getAttribute('data-kcal') || '0')) - (parseFloat(a.getAttribute('data-kcal') || '0'));
+      if (val === 'protein-desc') return (parseFloat(b.getAttribute('data-protein') || '0')) - (parseFloat(a.getAttribute('data-protein') || '0'));
+      if (val === 'sodium-asc') return (parseFloat(a.getAttribute('data-sodium') || '0')) - (parseFloat(b.getAttribute('data-sodium') || '0'));
+      return 0;
+    });
+    cards.forEach(function(card) { grid.appendChild(card); });
+  }
+
+  function applyRecipeFilters() {
+    var tag = recipeTag?.value || 'all';
+    var profile = recipeProfile?.value || 'all';
+    var maxKcal = numberValue(recipeMaxKcal);
+    var minProtein = numberValue(recipeMinProtein);
+    var maxSodium = numberValue(recipeMaxSodium);
+    var visible = 0;
+    document.querySelectorAll('.recipe-card').forEach(function(card) {
+      var kcal = Number(card.getAttribute('data-kcal') || 0);
+      var protein = Number(card.getAttribute('data-protein') || 0);
+      var sodium = Number(card.getAttribute('data-sodium') || 0);
+      var ok = true;
+      if (tag !== 'all' && !hasTag(card, tag)) ok = false;
+      if (maxKcal !== null && kcal > maxKcal) ok = false;
+      if (minProtein !== null && protein < minProtein) ok = false;
+      if (maxSodium !== null && sodium > maxSodium) ok = false;
+      if (!matchesProfile(card, profile)) ok = false;
+      card.style.display = ok ? '' : 'none';
+      if (ok) visible += 1;
+    });
+    if (recipeSummary) recipeSummary.textContent = 'Đang hiển thị ' + visible + ' / ' + document.querySelectorAll('.recipe-card').length + ' món ăn.';
+  }
+
+  [recipeSort, recipeProfile, recipeTag, recipeMaxKcal, recipeMinProtein, recipeMaxSodium].forEach(function(el) {
+    el?.addEventListener('change', function() {
+      sortRecipes();
+      applyRecipeFilters();
+    });
+    el?.addEventListener('input', applyRecipeFilters);
+  });
+  document.getElementById('recipe-reset')?.addEventListener('click', function() {
+    if (recipeProfile) recipeProfile.value = 'all';
+    if (recipeTag) recipeTag.value = 'all';
+    [recipeMaxKcal, recipeMinProtein, recipeMaxSodium].forEach(function(el) { if (el) el.value = ''; });
+    applyRecipeFilters();
+  });
+  function applyUrlPresets() {
+    var profile = params.get('profile');
+    var tag = params.get('tag');
+    if (profile && recipeProfile?.querySelector('option[value="' + CSS.escape(profile) + '"]')) recipeProfile.value = profile;
+    if (tag && recipeTag?.querySelector('option[value="' + CSS.escape(tag) + '"]')) recipeTag.value = tag;
+    if (params.get('maxKcal') && recipeMaxKcal) recipeMaxKcal.value = params.get('maxKcal');
+    if (params.get('minProtein') && recipeMinProtein) recipeMinProtein.value = params.get('minProtein');
+    if (params.get('maxSodium') && recipeMaxSodium) recipeMaxSodium.value = params.get('maxSodium');
+  }
+  applyUrlPresets();
+  sortRecipes();
+  applyRecipeFilters();
+</script>
+
+<style>
+  .filter-panel {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+  .filter-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    align-items: end;
+  }
+  .filter-row + .filter-row { margin-top: 10px; }
+  .filter-row label { display: grid; gap: 5px; }
+  .filter-row label span {
+    font-size: 0.82rem;
+    color: var(--ink-secondary);
+    font-weight: 600;
+  }
+  .filter-row select,
+  .filter-row input {
+    min-height: 38px;
+    padding: 0 10px;
+  }
+  .numeric-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .recipe-card {
+    position: relative;
+  }
+  .food-thumb {
+    width: 100%;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    margin-top: -16px;
+    margin-bottom: 10px;
+  }
+  .mini-tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: var(--brand-light);
+    color: var(--brand);
+    margin-right: 4px;
+  }
+  @media (max-width: 760px) {
+    .filter-row,
+    .numeric-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .recipe-grid { grid-template-columns: 1fr; gap: 10px; }
+    .recipe-card { padding: 12px; }
+  }
+</style>

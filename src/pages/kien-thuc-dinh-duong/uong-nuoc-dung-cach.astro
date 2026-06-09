@@ -1,0 +1,15 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["uong-nuoc-dung-cach"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card"><h2>💧 Tóm tắt — Uống nước đúng cách bao nhiêu là đủ?</h2><p>Nước chiếm 60% trọng lượng cơ thể, tham gia mọi quá trình chuyển hóa. Nhu cầu nước trung bình: 30-35ml/kg/ngày. Nam: ~2.5L, Nữ: ~2.0L (tổng từ nước uống + thực phẩm). Uống thiếu nước gây mệt mỏi, đau đầu, giảm tập trung. Uống thừa nước ở người khỏe mạnh hiếm khi xảy ra.</p></section>
+  <section class="section card"><h2>⚖️ Nguyên lý cân bằng nước</h2><ul><li><strong>Nước từ thực phẩm:</strong> Rau, canh, trái cây cung cấp ~20-30% nhu cầu. Phần còn lại từ nước uống.</li><li><strong>Dấu hiệu mất nước:</strong> Nước tiểu vàng đậm, khô miệng, mệt mỏi, giảm lượng nước tiểu. Uống ngay khi thấy khát — khát là dấu hiệu mất nước nhẹ.</li><li><strong>Vận động nhiều:</strong> Cần thêm 300-500ml mỗi 30 phút vận động, tùy cường độ và mồ hôi.</li></ul></section>
+  <section class="section card"><h2>✅ Cách uống nước đúng</h2><ul><li><strong>Uống đều trong ngày:</strong> Chia đều 8-10 ly, mỗi ly 200ml. Không đợi khát mới uống.</li><li><strong>Buổi sáng sau khi ngủ dậy:</strong> 1 ly nước ấm (200-300ml) giúp kích hoạt chuyển hóa sau 6-8 tiếng nhịn.</li><li><strong>Trước bữa ăn 30 phút:</strong> 1 ly nước giúp tiêu hóa tốt, giảm ăn quá nhiều.</li><li><strong>Sau khi đi vệ sinh:</strong> Uống bù lượng nước mất đi.</li></ul></section>
+  <section class="section card"><h2>⚠️ Lưu ý đặc biệt</h2><ul><li><strong>Người suy thận, suy tim:</strong> Có thể cần hạn chế nước theo chỉ định bác sĩ — không tự ý uống >2L/ngày.</li><li><strong>Nước ngọt, nước có đường:</strong> Không thay thế nước lọc. 1 lon nước ngọt (330ml) chứa 35g đường — cần tránh.</li><li><strong>Nước tăng lực:</strong> Chỉ dùng khi vận động cường độ cao >1 tiếng. Chứa nhiều đường và caffeine.</li></ul></section>
+  <section class="section card"><h2>❓ Câu hỏi thường gặp</h2><ul><li><strong>Uống 8 ly nước/ngày có đúng?</strong> Khẩu hiệu dễ nhớ — nhu cầu thực tế tùy thuộc cân nặng, vận động, thời tiết.</li><li><strong>Nước chanh, trà có tính là nước?</strong> Có — nhưng ưu tiên nước lọc (không calo, không đường).</li><li><strong>Uống nhiều nước có giảm cân?</strong> Hỗ trợ — nước giúp chuyển hóa tốt hơn, nhưng không đốt mỡ trực tiếp.</li></ul></section>
+  <section class="section card"><h2>🎯 Tóm lại</h2><p>Uống nước đúng là thói quen đơn giản mà quan trọng nhất cho sức khỏe. Mang theo bình nước, uống đều trong ngày, theo dõi màu nước tiểu. Nếu bạn có bệnh thận hoặc tim, hỏi bác sĩ về lượng nước phù hợp.</p></section>
+</ArticleLayout>

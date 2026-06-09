@@ -1,0 +1,116 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["loang-xuong"];
+if (!art) throw new Error("Article not found: loang-xuong");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Thơm, 68 tuổi, uống sữa mỗi ngày, ăn nhiều tôm cá — nhưng vẫn bị <strong>loãng xương</strong>. Khi bác ngã nhẹ trong nhà tắm, xương đùi gãy. Bác không hiểu: "Tôi tưởng uống sữa là đủ canxi rồi!".</p>
+  <p>Sự thật: bổ sung canxi thôi chưa đủ. Cơ thể cần <strong>vitamin D</strong> để hấp thu canxi từ ruột vào máu. Nếu thiếu vitamin D, uống bao nhiêu canxi cũng chẳng vào xương được. Và canxi từ <strong>thực phẩm</strong> (cá nhỏ ăn cả xương, tôm khô, sữa) hấp thu tốt hơn thuốc bổ rất nhiều.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người lớn tuổi cần <u>1000–1200mg canxi/ngày</u> từ thực phẩm, kết hợp <u>vitamin D 600–800 IU/ngày</u>
+    (tắm nắng sáng 15 phút), và <u>tập thể dục chịu lực</u> (đi bộ, leo cầu thang) để xương chắc khỏe.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao xương yếu dần?</h2>
+  <p>Xương giống như một ngân hàng canxi. Hồi trẻ, bạn gửi canxi vào xương, xương đặc và chắc. Sau 30 tuổi, lượng gửi bắt đầu giảm. Sau mãn kinh (nữ) hoặc sau 60 (nam), tốc độ rút canxi khỏi xương nhanh hơn tốc độ nạp. Kết quả: xương xốp, giòn, dễ gãy.</p>
+  <p>Phụ nữ sau mãn kinh mất xương nhanh nhất — có thể mất 1–3% mật độ xương mỗi năm trong 5–10 năm đầu.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Canxi từ thực phẩm:</strong> <a href="/thuc-pham/sua-tuoi">Sữa tươi</a> (1 ly 200ml ~240mg canxi), <a href="/thuc-pham/sua-chua">sữa chua</a>, <a href="/thuc-pham/pho-mai-cheddar">phô mai cheddar</a></li>
+      <li><strong>Cá nhỏ ăn cả xương:</strong> Cá trích, <a href="/thuc-pham/ca-com-kho">cá cơm</a>, tôm khô, tép đồng — canxi rất dồi dào</li>
+      <li><strong>Rau xanh giàu canxi:</strong> <a href="/thuc-pham/rau-ngot">Rau ngót</a>, cải xoăn, <a href="/thuc-pham/cai-thia">cải thìa</a>, rau dền</li>
+      <li><strong>Đậu nành:</strong> <a href="/thuc-pham/dau-phu">Đậu phụ</a> (làm từ nước muối canxi), <a href="/thuc-pham/sua-dau-nanh">sữa đậu nành</a></li>
+      <li><strong>Hạt:</strong> Hạnh nhân, vừng (mè), hạt chia</li>
+      <li><strong>Vitamin D:</strong> Tắm nắng sáng 15 phút + trứng, cá béo, gan (lượng vừa)</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Muối:</strong> Giảm muối dưới 5g/ngày — muối làm tăng thải canxi qua nước tiểu</li>
+      <li><strong>⛔ Caffeine quá nhiều:</strong> &gt; 3 tách cà phê/ngày có thể giảm hấp thu canxi</li>
+      <li><strong>⛔ Rượu bia:</strong> Cản trở tạo xương mới, tăng nguy cơ ngã</li>
+      <li><strong>⛔ Nước ngọt có gas:</strong> Phốt pho trong nước ngọt cạnh tranh với canxi</li>
+      <li><strong>⚠️ Thuốc lá:</strong> Hút thuốc làm mất xương nhanh gấp đôi</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Hình dung</th></tr></thead>
+    <tbody>
+      <tr><td>Canxi</td><td>1000–1200 mg/ngày</td><td>1 ly sữa 200ml + 1 hũ sữa chua + 1 miếng đậu phụ + rau</td></tr>
+      <tr><td>Vitamin D</td><td>600–800 IU/ngày</td><td>Tắm nắng sáng 15 phút (~1000 IU) + trứng, cá</td></tr>
+      <tr><td>Đạm</td><td>1–1.2g/kg/ngày</td><td>Lòng bàn tay thịt/cá + 1 trứng + 1 ly sữa</td></tr>
+      <tr><td>Muối</td><td>&lt; 5g/ngày</td><td>Giảm nước mắm, tránh đồ chế biến sẵn</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">⚠️ Không uống thuốc canxi liều cao (≥500mg) cùng lúc với sắt hoặc thyroxin.</p>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1000mg canxi)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Canxi (mg)</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>1 ly sữa tươi không đường (200ml) + 1 lát bánh mì + trứng</td><td>~240</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm 1 chén + tôm kho thịt + canh rau ngót + đậu phụ rán</td><td>~400</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 hũ sữa chua + 1 quả chuối</td><td>~150</td></tr>
+      <tr><td>🌙 Tối</td><td>Cơm 1 chén + cá trích kho + rau cải luộc</td><td>~300</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Tổng ~1000mg canxi — nếu thiếu, có thể bổ sung 500mg canxi citrate sau ăn tối.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Tắm nắng 15 phút trước 9h sáng — tổng hợp vitamin D miễn phí.</li>
+        <li>Ăn thêm tôm khô, ruốc — canxi cao, dễ mua ở chợ.</li>
+        <li>Nấu canh riêu cua, canh cá nấu chua — canxi từ xương và cua.</li>
+        <li>Đi bộ, leo cầu thang, tập tạ nhẹ — kích thích tạo xương.</li>
+        <li>Tránh ngã: dùng dép chống trơn, lắp tay vịn trong nhà vệ sinh.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Đau lưng, đau cột sống kéo dài không rõ nguyên nhân.</li>
+        <li>Cao giảm &gt; 3cm so với thời thanh niên — dấu hiệu xẹp đốt sống.</li>
+        <li>Gãy xương chỉ với chấn thương nhẹ (ngã từ tư thế đứng).</li>
+        <li>Phụ nữ sau mãn kinh chưa từng đo loãng xương.</li>
+        <li>Dùng thuốc corticoid kéo dài &gt; 3 tháng.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

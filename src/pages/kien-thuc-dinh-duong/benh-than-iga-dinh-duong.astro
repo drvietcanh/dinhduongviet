@@ -1,0 +1,94 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["benh-than-iga-dinh-duong"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Bệnh thận IgA (IgA nephropathy, bệnh Berger) là viêm cầu thận do lắng đọng phức hợp miễn dịch IgA ở cầu thận. Đây là nguyên nhân hàng đầu gây viêm cầu thận nguyên phát trên thế giới. Bệnh tiến triển chậm, có thể dẫn đến suy thận giai đoạn cuối sau 10–20 năm.</p>
+    <p>Mục tiêu dinh dưỡng: <strong>giảm gánh nặng lên thận</strong>, kiểm soát huyết áp, giảm đạm niệu, và tránh các yếu tố kích hoạt miễn dịch.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Giảm muối:</strong> &lt;2g natri/ngày (&lt;5g muối). Muối làm tăng huyết áp và tăng đạm niệu.</li>
+      <li><strong>Kiểm soát đạm (protein):</strong> 0.8g/kg/ngày nếu chức năng thận suy giảm (GFR &lt;60). Không thừa, không thiếu.</li>
+      <li><strong>Bổ sung omega-3:</strong> Cá béo (cá hồi, cá thu) giúp giảm viêm cầu thận. Một số nghiên cứu cho thấy dầu cá hỗ trợ giảm đạm niệu.</li>
+      <li><strong>Hạn chế gluten? (còn tranh cãi):</strong> Một số người thấy cải thiện khi loại bỏ gluten. Tuy nhiên bằng chứng chưa đủ mạnh để khuyến nghị cho tất cả.</li>
+      <li><strong>Kiểm soát đường huyết và mỡ máu:</strong> Bệnh thận IgA có nguy cơ tim mạch cao.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu, cá trích — omega-3 giảm viêm cầu thận</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau xanh</span><span>Rau cải, bông cải, rau muống, cần tây — ít kali hơn rau lá đậm</span></div>
+      <div class="food-row"><span class="food-cat">🍎 Trái cây</span><span>Táo, lê, nho, dưa hấu, thanh long — ít kali hơn chuối, cam</span></div>
+      <div class="food-row"><span class="food-cat">🫘 Đạm thực vật</span><span>Đậu hũ, đậu lăng, đậu xanh — thay thế một phần thịt để giảm gánh thận</span></div>
+      <div class="food-row"><span class="food-cat">🫒 Dầu lành</span><span>Dầu olive, dầu hạt cải — thay thế mỡ động vật</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần hạn chế</h2>
+    <ul>
+      <li><strong>Muối & thực phẩm mặn:</strong> Nước mắm, đồ hộp, xúc xích, chả lụa, snack mặn</li>
+      <li><strong>Đạm dư thừa:</strong> Không ăn quá nhiều thịt đỏ, không dùng bột đạm (whey, casein) nếu không có chỉ định</li>
+      <li><strong>Thực phẩm chế biến sẵn:</strong> Giàu natri, phốt pho vô cơ, phụ gia có hại cho thận</li>
+      <li><strong>Rượu bia:</strong> Làm tăng huyết áp và gánh nặng cho thận</li>
+      <li><strong>Thực phẩm giàu kali</strong> (nếu suy thận giai đoạn 3–4): chuối, cam, khoai tây, cà chua, rau bina</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Bánh mì nguyên cám (ít muối) + trứng ốp la + 1 quả lê</span></div>
+      <div class="meal-row"><span class="meal-time">🌰 Phụ sáng</span><span>1 hũ sữa chua + ít hạt óc chó</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm trắng + cá hồi áp chảo + canh rau muống luộc (nêm nhạt)</span></div>
+      <div class="meal-row"><span class="meal-time">🍎 Xế</span><span>1 quả táo + nước lọc</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Cơm + đậu hũ sốt cà chua + bông cải xanh luộc</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="living-with">
+    <h2>Sống chung với bệnh thận IgA</h2>
+    <ul>
+      <li><strong>Khám định kỳ:</strong> Đo huyết áp, xét nghiệm đạm niệu, creatinin máu, GFR. Theo dõi sát tiến triển.</li>
+      <li><strong>Kiểm soát huyết áp nghiêm ngặt:</strong> Mục tiêu &lt;130/80 mmHg. Dùng thuốc ức chế men chuyển (ACEi) hoặc ức chế thụ thể (ARB) nếu có đạm niệu.</li>
+      <li><strong>Tránh nhiễm trùng:</strong> Nhiễm trùng hô hấp và tiêu hóa có thể kích hoạt đợt cấp — rửa tay, tiêm vắc-xin phòng cúm.</li>
+      <li><strong>Không tự ý dùng thảo dược:</strong> Nhiều thảo dược độc thận, đặc biệt ở người đã suy giảm chức năng thận.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Bệnh thận IgA có cần kiêng hoàn toàn gluten không?</summary>
+      <p>Không bắt buộc. Một số người có nồng độ IgA cao nhạy cảm với gluten. Nếu bạn thấy đau bụng hoặc đạm niệu tăng sau ăn gluten, thử loại bỏ 4–6 tuần và theo dõi. Nhưng chưa có khuyến cáo chính thức cho tất cả.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Ăn đậu hũ có hại thận không?</summary>
+      <p>Đậu hũ là nguồn đạm thực vật tốt, ít phốt pho hơn thịt. Một lượng vừa phải (100–150g/ngày) là an toàn và có lợi hơn thịt đỏ cho người bệnh thận.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Bệnh có chữa khỏi không?</summary>
+      <p>Chưa có thuốc chữa khỏi hoàn toàn, nhưng kiểm soát huyết áp, giảm đạm niệu và dinh dưỡng phù hợp giúp làm chậm tiến triển. Nhiều người sống ổn định hàng chục năm mà không tiến đến suy thận giai đoạn cuối.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p><strong>3 ưu tiên hàng đầu:</strong> (1) Giảm muối — huyết áp là yếu tố quyết định tiến triển bệnh, (2) Kiểm soát đạm — không thừa, không thiếu, (3) Khám định kỳ — theo dõi đạm niệu và GFR. Dinh dưỡng + thuốc kiểm soát huyết áp là chiến lược dài hạn.</p>
+    </div>
+  </section>
+</ArticleLayout>

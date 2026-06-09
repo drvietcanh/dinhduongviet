@@ -1,0 +1,117 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-benh-phoi-copd"];
+if (!art) throw new Error("Article not found: dinh-duong-benh-phoi-copd");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Đạo, 72 tuổi, hút thuốc 40 năm. Giờ mắc COPD, đi lại khó thở, leo 2 tầng lầu phải nghỉ 3 lần. Ăn uống kém, 6 tháng sụt 7kg. Bác yếu đến nỗi khi bị viêm phổi nhẹ cũng phải nằm viện 2 tuần mới ổn.</p>
+  <p>Người bệnh phổi mạn thường rơi vào vòng xoắn: khó thở → ăn ít → suy kiệt → yếu cơ hô hấp → càng khó thở. Tin tốt: <strong>dinh dưỡng tốt có thể phá vỡ vòng xoắn này</strong>.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người bệnh phổi cần <u>tăng đạm</u> chống suy kiệt, <u>vitamin D</u> cho cơ hô hấp, 
+    <u>chia nhiều bữa nhỏ</u> để tránh khó thở sau ăn, và <u>hạn chế tinh bột nhanh</u> (cơm trắng, bánh mì) 
+    vì carb sinh CO₂ nhiều.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao dinh dưỡng quan trọng với phổi?</h2>
+  <p>Chuyển hóa tinh bột tạo ra CO₂ nhiều hơn chuyển hóa đạm và chất béo. Người bệnh phổi không thải CO₂ tốt, nên ăn quá nhiều tinh bột làm nặng thêm tình trạng khó thở. Trong khi đó, đạm giúp duy trì cơ hoành và cơ hô hấp — nếu thiếu, cơ hô hấp yếu đi, càng khó thở hơn.</p>
+  <p>Nghiên cứu cho thấy 30–60% người COPD bị suy dinh dưỡng, và suy dinh dưỡng là yếu tố tiên lượng tử vong mạnh nhất ở bệnh này.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Đạm chất lượng cao:</strong> Trứng, thịt nạc (gà, heo, bò), cá, tôm, đậu phụ, sữa</li>
+      <li><strong>Chất béo tốt:</strong> Dầu oliu, dầu cá, quả bơ, hạt khô — cung cấp năng lượng ít CO₂</li>
+      <li><strong>Tinh bột chậm:</strong> Gạo lứt, khoai lang, yến mạch — ít CO₂ hơn cơm trắng</li>
+      <li><strong>Vitamin D:</strong> Trứng, cá béo, sữa — rất quan trọng cho miễn dịch phổi</li>
+      <li><strong>Rau xanh giàu chất chống oxy hóa:</strong> Bông cải xanh, cải bó xôi, ớt chuông</li>
+      <li><strong>Uống đủ nước:</strong> Giúp làm loãng đờm, dễ khạc hơn</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Tinh bột nhanh:</strong> Cơm trắng nhiều, bánh mì trắng, xôi, mì gói — nhiều CO₂</li>
+      <li><strong>⛔ Đồ chiên rán:</strong> Gây đầy hơi, chèn cơ hoành, khó thở hơn</li>
+      <li><strong>⛔ Đồ ăn gây đầy hơi:</strong> Hành tây, bắp cải, đậu đỗ (nếu dễ chướng bụng)</li>
+      <li><strong>⛔ Sữa đặc/đồ ngọt:</strong> Đường làm tăng CO₂, dễ nhiễm trùng phổi</li>
+      <li><strong>⛔ Khói thuốc, bụi:</strong> Tránh tuyệt đối — là yếu tố nặng bệnh số 1</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>Năng lượng</td><td>25–35 kcal/kg/ngày</td><td>Cần hơn nếu suy kiệt</td></tr>
+      <tr><td>Đạm</td><td>1.2–1.5g/kg/ngày</td><td>Cao hơn người thường để giữ cơ</td></tr>
+      <tr><td>Chất béo</td><td>40–50% tổng năng lượng</td><td>Nguồn năng lượng ít CO₂</td></tr>
+      <tr><td>Bữa ăn</td><td>5–6 bữa nhỏ/ngày</td><td>Tránh no quá gây khó thở</td></tr>
+      <tr><td>Nước</td><td>1.5–2 lít/ngày</td><td>Trừ khi có bệnh tim/thận kèm</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Cháo yến mạch + trứng luộc + ½ ly sữa</td><td>Bữa sáng giàu đạm, dễ nhai</td></tr>
+      <tr><td>🍎 Phụ sáng</td><td>1 quả chuối + 5 hạt óc chó</td><td>Năng lượng nhanh, ít CO₂</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm gạo lứt ½ chén + cá hấp + canh bí đỏ</td><td>Chất béo cá giúp chống viêm</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 hũ sữa chua + 1 miếng đu đủ</td><td>Men tiêu hóa, dễ ăn</td></tr>
+      <tr><td>🌙 Tối</td><td>Cháo thịt bằm bí đỏ + ½ ly sữa ấm</td><td>Dễ nuốt, dễ tiêu, không đầy hơi</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Nghỉ 30 phút sau ăn trước khi tập thở — không tập ngay sau ăn.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Ngồi thẳng lưng khi ăn — phổi có không gian để nở.</li>
+        <li>Nghỉ giữa các món — đừng vội.</li>
+        <li>Nấu thức ăn mềm, dễ nhai — tiết kiệm oxy cho tiêu hóa.</li>
+        <li>Uống nước giữa bữa, không uống trong bữa — tránh đầy hơi.</li>
+        <li>Tập thở mím môi sau ăn — giúp thải CO₂ tốt hơn.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Khó thở tăng dù đã dùng thuốc giãn phế quản.</li>
+        <li>Đờm đặc, đổi màu (xanh/vàng) — dấu hiệu nhiễm trùng.</li>
+        <li>Sốt, ớn lạnh, mệt lả.</li>
+        <li>Sụt cân &gt; 3kg/tháng không chủ ý.</li>
+        <li>Phù chân, mắt cá — dấu hiệu suy tim phải.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,0 +1,76 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-thieu-ke-kem"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Nhung, 29 tuổi, gần đây tóc rụng nhiều, móng tay yếu, vết thương nhỏ lâu lành, ăn không ngon, lúc nào cũng mệt. Đi khám bác sĩ cho xét nghiệm — thiếu kẽm. Bác sĩ hỏi: "Em có ăn hàu, tôm đồng, thịt bò không?" Chị lắc đầu: "Em ăn chay bán phần, ít ăn hải sản."</p>
+  <p>Kẽm là vi chất thiết yếu cho miễn dịch, tăng trưởng, vị giác. Thiếu kẽm phổ biến đến mức WHO xếp vào 10 nguyên nhân hàng đầu gây bệnh ở các nước đang phát triển.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Nguồn kẽm tốt nhất: <u>hàu, tôm đồng, thịt bò, lòng đỏ trứng, hạt bí, hạt điều</u>. 
+    Người ăn chay cần gấp rưỡi khuyến nghị vì kẽm thực vật hấp thu kém hơn.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao kẽm quan trọng?</h2>
+  <p>Kẽm tham gia hơn 300 phản ứng enzyme trong cơ thể. Cần thiết cho: phân chia tế bào (tóc, móng, da), chức năng miễn dịch (bạch cầu), tổng hợp protein, cảm nhận vị giác, lành vết thương, sản xuất tinh trùng. Thiếu kẽm gây rụng tóc, lở miệng, ăn không ngon, chậm lành vết thương, dễ nhiễm trùng.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm giàu kẽm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>🦪 <strong>Hàu:</strong> 6 con hàu (~90g) = 32mg kẽm (gấp 4 lần nhu cầu ngày)</li>
+      <li>🦐 <strong>Tôm đồng, tép:</strong> 100g = 2–3mg kẽm</li>
+      <li>🥩 <strong>Thịt bò nạc:</strong> 100g = 5mg kẽm</li>
+      <li>🥚 <strong>Lòng đỏ trứng:</strong> 2 quả = 1.5mg kẽm</li>
+      <li>🌰 <strong>Hạt bí, hạt điều:</strong> 30g = 2–3mg kẽm</li>
+      <li>🫘 <strong>Đậu xanh, đậu lăng:</strong> 100g nấu chín = 1.5mg kẽm</li>
+      <li>🍫 <strong>Socola đen (&gt;70%):</strong> 30g = 1mg kẽm</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Nguyên nhân thiếu kẽm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⚠️ Ăn chay, ăn ít hải sản và thịt</li>
+      <li>⚠️ Rối loạn tiêu hóa (tiêu chảy kéo dài, IBD)</li>
+      <li>⚠️ Trẻ em suy dinh dưỡng</li>
+      <li>⚠️ Mang thai và cho con bú (nhu cầu tăng)</li>
+      <li>⚠️ Người già (hấp thu kém hơn)</li>
+      <li>⚠️ Bệnh gan, thận mạn</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Nhu cầu và bổ sung</h2>
+  <table class="table"><thead><tr><th>Đối tượng</th><th>Nhu cầu/ngày</th><th>Giới hạn tối đa</th></tr></thead><tbody>
+    <tr><td>Nam trưởng thành</td><td>11 mg</td><td>40 mg</td></tr>
+    <tr><td>Nữ trưởng thành</td><td>8 mg</td><td>40 mg</td></tr>
+    <tr><td>Mang thai</td><td>11–12 mg</td><td>40 mg</td></tr>
+    <tr><td>Cho con bú</td><td>12–13 mg</td><td>40 mg</td></tr>
+    <tr><td>Trẻ em 1–8 tuổi</td><td>3–5 mg</td><td>7–12 mg</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;font-size:0.82rem;">💡 Kẽm từ động vật hấp thu tốt hơn. Người ăn chay cần ~15–16mg/ngày.</p>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo bổ sung kẽm</h2>
+  <ul style="line-height:1.8;">
+    <li>Ăn hàu 1 lần/tuần — cách dễ nhất bổ sung kẽm.</li>
+    <li>Ngâm đậu/hạt trước khi nấu — giảm phytate ức chế hấp thu kẽm.</li>
+    <li>Kết hợp thực phẩm giàu kẽm với vitamin C (chanh, cam) — tăng hấp thu.</li>
+    <li>Không uống kẽm cùng canxi, sắt — cạnh tranh hấp thu.</li>
+    <li>Nếu dùng viên kẽm, uống sau ăn, không uống lúc đói (gây buồn nôn).</li>
+  </ul>
+</section>
+
+</ArticleLayout>

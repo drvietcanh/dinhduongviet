@@ -1,0 +1,99 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["dinh-duong-tre-em"];
+if (!art) throw new Error("Article not found: dinh-duong-tre-em");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bé Su, 2 tuổi, biếng ăn gần 3 tháng. Mẹ lo lắng: "Bé chỉ ăn vài thìa cháo, còn lại bỏ. Có phải bé thiếu chất không?" Chuyện rất phổ biến — 50% trẻ 1–3 tuổi trải qua giai đoạn biếng ăn sinh lý. Nhưng nếu kéo dài và sụt cân, cần can thiệp.</p>
+  <p>Dinh dưỡng trẻ em quyết định sự phát triển chiều cao, trí não và hệ miễn dịch suốt đời. 4 giai đoạn: bú mẹ (0–6 tháng), ăn dặm (6–12 tháng), mẫu giáo (1–6 tuổi), thiếu niên (7–18 tuổi) — mỗi giai đoạn có nhu cầu riêng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 4 nguyên tắc vàng: <u>bú mẹ hoàn toàn 6 tháng đầu</u>, <u>ăn dặm đúng thời điểm (6 tháng)</u>,
+    <u>đa dạng thực phẩm</u>, <u>không thêm muối/đường dưới 1 tuổi</u>. 
+    Vận động ≥60 phút/ngày. Theo dõi biểu đồ tăng trưởng WHO.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Ảnh hưởng dinh dưỡng lên trẻ</h2>
+  <p>1000 ngày đầu đời (từ thụ thai tới 2 tuổi) là "cửa sổ vàng" — dinh dưỡng trong giai đoạn này quyết định chiều cao, trí não và miễn dịch. Thiếu sắt gây giảm chỉ số IQ tới 10 điểm. Thiếu kẽm gây chậm lớn, biếng ăn. Thiếu vitamin D gây còi xương. Ngược lại, thừa đạm/đường dưới 5 tuổi góp phần vào béo phì sau này.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nhu cầu dinh dưỡng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>0–6 tháng:</strong> Bú mẹ hoàn toàn + vitamin D 400 IU/ngày</li>
+      <li><strong>6–12 tháng:</strong> Bú + ăn dặm từ lỏng→đặc, không muối/đường</li>
+      <li><strong>1–6 tuổi:</strong> 900–1300 kcal, 400–500ml sữa, 2–3 phần đạm</li>
+      <li><strong>7–18 tuổi:</strong> 1800–2800 kcal, canxi 1000–1300mg, sắt 15mg (nữ)</li>
+      <li>Sắt + kẽm + vitamin D — 3 vi chất hay thiếu nhất</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Nước ngọt, bánh kẹo, snack — dưới 2 tuổi không nên</li>
+      <li>⛔ Đồ ăn nhanh, xúc xích, đồ chiên rán</li>
+      <li>⛔ Mật ong dưới 1 tuổi — nguy cơ ngộ độc botulinum</li>
+      <li>⛔ Thức ăn cứng, tròn, dễ hóc (kẹo cứng, nho nguyên quả) dưới 3 tuổi</li>
+      <li>⛔ Ép ăn, dùng đồ ăn làm phần thưởng</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Cách đánh giá tăng trưởng</h2>
+  <table class="table"><thead><tr><th>Chỉ số</th><th>Theo dõi</th><th>Ngưỡng báo động</th></tr></thead><tbody>
+    <tr><td>Cân nặng</td><td>Cân mỗi tháng dưới 1 tuổi, 3 tháng/lần 1–3 tuổi</td><td>Không tăng/giảm 2 tháng liền</td></tr>
+    <tr><td>Chiều cao</td><td>Đo 3–6 tháng/lần</td><td>&lt; -2 SD so với chuẩn WHO</td></tr>
+    <tr><td>Vòng đầu</td><td>Đo dưới 2 tuổi</td><td>Ngừng tăng 3 tháng</td></tr>
+    <tr><td>BMI</td><td>Từ 2 tuổi</td><td>≥85th = thừa cân, ≥95th = béo phì</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (trẻ 1–3 tuổi)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo thịt băm + cà rốt nghiền + 1 ly sữa</td></tr>
+    <tr><td>🌞 Phụ</td><td>Sữa chua + chuối nghiền</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát/cơm viên + cá hấp nghiền + canh bí đỏ thịt băm</td></tr>
+    <tr><td>🌆 Phụ</td><td>Phô mai + đu đủ chín</td></tr>
+    <tr><td>🌙 Tối</td><td>Cháo gà + rau ngót nghiền</td></tr>
+    <tr><td>🌜 Trước ngủ</td><td>Sữa ấm 150ml</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Cho trẻ ăn cùng gia đình — tạo không khí vui vẻ.</li>
+        <li>Làm gương — cha mẹ ăn rau, trẻ sẽ ăn rau.</li>
+        <li>Không dùng tivi/ipad trong bữa ăn.</li>
+        <li>Vận động tối thiểu 60 phút/ngày.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Sụt cân, không tăng cân 2 tháng liền.</li>
+        <li>Biếng ăn kèm sốt, tiêu chảy, nôn.</li>
+        <li>Da xanh, hoa mắt — thiếu máu.</li>
+        <li>BMI ≥95th — béo phì cần can thiệp.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>
+

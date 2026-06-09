@@ -1,0 +1,57 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["trung-thuc-pham"];
+if (!art) throw new Error("Article not found: trung-thuc-pham");
+---
+
+<ArticleLayout article={art}>
+
+  <section class="section card">
+    <h2>🥚 Tóm tắt — Trứng trong chế độ ăn người Việt</h2>
+    <p>Trứng là thực phẩm giàu đạm, vitamin B12, D, choline và lutein. Một quả trứng (50g) cung cấp ~70 calo, 6g đạm và 5g chất béo. Trong nhiều năm, trứng từng bị cho là làm tăng cholesterol máu, nhưng các nghiên cứu hiện đại đã bác bỏ quan niệm này ở đa số người khỏe mạnh.</p>
+  </section>
+
+  <section class="section card">
+    <h2>⚖️ Nguyên lý dinh dưỡng</h2>
+    <ul>
+      <li><strong>Cholesterol trong trứng:</strong> Một quả trứng chứa ~185mg cholesterol, nhưng cholesterol ăn vào ít ảnh hưởng đến cholesterol máu ở 70-80% dân số (những người không bị tăng cholesterol bẩm sinh).</li>
+      <li><strong>Lòng đỏ vs lòng trắng:</strong> Lòng đỏ chứa hầu hết vitamin, khoáng chất và chất béo — không nên bỏ lòng đỏ. Lòng trắng là protein tinh khiết, ít calo.</li>
+      <li><strong>Choline:</strong> Trứng là nguồn choline dồi dào — quan trọng cho não bộ và chuyển hóa.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Nên ăn như thế nào</h2>
+    <ul>
+      <li><strong>Người khỏe mạnh:</strong> 1-2 quả/ngày, 5-14 quả/tuần — hoàn toàn an toàn (theo Harvard T.H. Chan School of Public Health).</li>
+      <li><strong>Người tiểu đường, mỡ máu:</strong> Có thể ăn 4-7 quả/tuần, ưu tiên luộc/hấp thay vì chiên rán.</li>
+      <li><strong>Cách chế biến tốt nhất:</strong> Luộc, hấp, ốp la ít dầu — giữ được dinh dưỡng, ít calo thêm.</li>
+      <li><strong>Kết hợp rau xanh:</strong> Ăn trứng với rau giúp cân bằng bữa ăn.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Hạn chế và lưu ý</h2>
+    <ul>
+      <li><strong>Trứng chiên nhiều dầu:</strong> Làm tăng calo đáng kể — mỗi muỗng dầu thêm 45-60 calo.</li>
+      <li><strong>Trứng sống:</strong> Có nguy cơ nhiễm khuẩn Salmonella. Phụ nữ mang thai, trẻ nhỏ, người già không nên ăn trứng sống.</li>
+      <li><strong>Người tăng cholesterol bẩm sinh:</strong> Nếu đã có rối loạn chuyển hóa cholesterol nghiêm trọng, hỏi bác sĩ về giới hạn cụ thể.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <ul>
+      <li><strong>Ăn trứng mỗi ngày có tốt không?</strong> Có — với người khỏe mạnh, 1 quả/ngày là an toàn và có lợi.</li>
+      <li><strong>Có nên bỏ lòng đỏ?</strong> Không — lòng đỏ chứa hầu hết dưỡng chất. Bỏ lòng đỏ là bỏ phần bổ dưỡng nhất.</li>
+      <li><strong>Trứng vịt khác trứng gà?</strong> Trứng vịt to hơn, nhiều calo và chất béo hơn một chút, nhưng giá trị dinh dưỡng tương đương.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Trứng là thực phẩm tuyệt vời — rẻ, dễ chế biến, giàu dinh dưỡng. Đừng sợ cholesterol trong trứng. Hãy ăn điều độ, chế biến lành mạnh, và kết hợp với rau xanh để có bữa ăn cân bằng.</p>
+  </section>
+
+</ArticleLayout>

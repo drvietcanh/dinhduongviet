@@ -1,0 +1,259 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Tính mục tiêu giảm/tăng cân & Tỷ lệ đạm-béo-carb - Dinh Dưỡng Việt">
+  <section>
+    <span class="badge">⚖️ Công cụ</span>
+    <h1>Tính mục tiêu cân nặng</h1>
+    <p class="lead">
+      Nhập cân nặng hiện tại và mục tiêu, chọn thời gian — app tính lượng calo cần giảm/tăng mỗi ngày.
+      Kèm bảng tỷ lệ đạm-béo-carb khuyến nghị cho từng bệnh nền.
+    </p>
+  </section>
+
+  <div class="wt-layout">
+    <!-- LEFT: Weight calculator -->
+    <div class="wt-card">
+      <h2>🎯 Mục tiêu giảm/tăng cân</h2>
+      <div class="wt-form-grid">
+        <div class="wt-fld">
+          <label>Giới tính</label>
+          <select id="wt-sex">
+            <option value="male">Nam</option>
+            <option value="female" selected>Nữ</option>
+          </select>
+        </div>
+        <div class="wt-fld">
+          <label>Tuổi</label>
+          <input type="number" id="wt-age" min="10" max="120" value="40" />
+        </div>
+        <div class="wt-fld">
+          <label>Cân nặng hiện tại (kg)</label>
+          <input type="number" id="wt-current" min="20" max="300" step="0.1" value="70" />
+        </div>
+        <div class="wt-fld">
+          <label>Cân nặng mục tiêu (kg)</label>
+          <input type="number" id="wt-target" min="15" max="300" step="0.1" value="60" />
+        </div>
+        <div class="wt-fld">
+          <label>Chiều cao (cm)</label>
+          <input type="number" id="wt-height" min="100" max="250" step="1" value="160" />
+        </div>
+        <div class="wt-fld">
+          <label>Thời gian mục tiêu</label>
+          <select id="wt-duration">
+            <option value="1">1 tháng</option>
+            <option value="2">2 tháng</option>
+            <option value="3" selected>3 tháng</option>
+            <option value="4">4 tháng</option>
+            <option value="5">5 tháng</option>
+            <option value="6">6 tháng</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="wt-result" style="margin-top: 14px; display: none;">
+        <div class="wt-result-card">
+          <div class="wt-rows">
+            <div class="wt-ri"><span class="wt-rl">BMR</span><span class="wt-rv" id="wt-bmr">—</span></div>
+            <div class="wt-ri"><span class="wt-rl">TDEE</span><span class="wt-rv" id="wt-tdee">—</span></div>
+            <div class="wt-ri"><span class="wt-rl">Tổng thay đổi</span><span class="wt-rv" id="wt-total-change">—</span></div>
+            <div class="wt-ri"><span class="wt-rl">Giảm/tăng mỗi tuần</span><span class="wt-rv" id="wt-per-week">—</span></div>
+          </div>
+          <div style="margin-top:12px;padding:12px;background:var(--bg-warning,#fff8e1);border-radius:8px;font-size:0.9rem;">
+            <strong>🔥 Calo mỗi ngày để đạt mục tiêu:</strong>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--brand);margin:4px 0;" id="wt-daily-kcal">—</div>
+            <div style="font-size:0.82rem;color:var(--ink-secondary);margin-top:4px;">
+              <span id="wt-detail">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pie chart placeholder -->
+        <div style="margin-top:14px;">
+          <h3>🥗 Phân bổ khuyến nghị</h3>
+          <div class="wt-macro-box">
+            <div class="wt-macro-bar" id="wt-macro-bar">
+              <div class="wt-bar-pro" id="wt-bar-pro" style="width:20%">20%</div>
+              <div class="wt-bar-fat" id="wt-bar-fat" style="width:25%">25%</div>
+              <div class="wt-bar-carb" id="wt-bar-carb" style="width:55%">55%</div>
+            </div>
+            <div class="wt-macro-labels">
+              <span><span class="wt-dot-pro"></span> Đạm <span id="wt-pro-g">—</span>g</span>
+              <span><span class="wt-dot-fat"></span> Béo <span id="wt-fat-g">—</span>g</span>
+              <span><span class="wt-dot-carb"></span> Carb <span id="wt-carb-g">—</span>g</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Macro table by disease -->
+      <div class="wt-macro-ref" style="margin-top:16px;">
+        <h3>📋 Tỷ lệ khuyến nghị theo bệnh</h3>
+        <div class="wt-ref-table">
+          <div class="wt-ref-row wt-ref-header">
+            <span>Bệnh nền</span><span>Đạm</span><span>Béo</span><span>Carb</span><span>Ghi chú</span>
+          </div>
+          <div class="wt-ref-row"><span>Không có</span><span>15-20%</span><span>20-30%</span><span>50-60%</span><span>Cân đối</span></div>
+          <div class="wt-ref-row"><span>🩸 Đái tháo đường</span><span>20-25%</span><span>25-30%</span><span>40-50%</span><span>GI thấp, tăng xơ</span></div>
+          <div class="wt-ref-row"><span>❤️ Tăng huyết áp</span><span>15-20%</span><span>20-25%</span><span>55-65%</span><span>Hạn chế muối</span></div>
+          <div class="wt-ref-row"><span>🫘 Bệnh thận mạn</span><span>10-15%</span><span>25-30%</span><span>55-65%</span><span>Giảm đạm, K, P</span></div>
+          <div class="wt-ref-row"><span>🦶 Gout</span><span>15-20%</span><span>25-30%</span><span>50-60%</span><span>Tránh purin</span></div>
+          <div class="wt-ref-row"><span>💔 Mỡ máu</span><span>15-20%</span><span>20-25%</span><span>55-60%</span><span>Giảm béo bão hòa</span></div>
+          <div class="wt-ref-row"><span>⚖️ Giảm cân</span><span>25-30%</span><span>20-25%</span><span>40-50%</span><span>Đạm cao giữ cơ</span></div>
+        </div>
+        <p class="muted" style="margin-top:8px;font-size:0.78rem;">
+          Tỷ lệ này là khuyến nghị chung. Tham khảo bác sĩ/dinh dưỡng viên để điều chỉnh phù hợp.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Quick info -->
+    <div class="wt-sidebar">
+      <div class="wt-card">
+        <h3>💡 Nguyên tắc</h3>
+        <ul style="padding-left:16px;font-size:0.88rem;line-height:1.7;">
+          <li><strong>1kg mỡ ≈ 7.700 kcal</strong></li>
+          <li>Giảm <strong>0.5-1kg/tuần</strong> là an toàn</li>
+          <li>Giảm <strong>500 kcal/ngày</strong> ≈ 2kg/tháng</li>
+          <li>Không nên <strong>&lt; 1.200 kcal/ngày</strong> (nữ) hoặc <strong>&lt; 1.500</strong> (nam)</li>
+          <li>Kết hợp <strong>vận động</strong> để tăng hiệu quả</li>
+        </ul>
+      </div>
+      <div class="wt-card" style="margin-top:12px;">
+        <h3>🍽️ Gợi ý món</h3>
+        <ul style="padding-left:16px;font-size:0.88rem;line-height:1.8;">
+          <li><a href="/mon-an">Xem danh sách món ăn</a></li>
+          <li><a href="/cong-cu/ke-hoach-bua-an">Lập kế hoạch bữa ăn</a></li>
+          <li><a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a></li>
+          <li><a href="/cong-cu/theo-doi-suc-khoe">Theo dõi sức khỏe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .wt-layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
+  @media (max-width: 800px) { .wt-layout { grid-template-columns: 1fr; } }
+  .wt-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
+  .wt-card h2 { font-size: 1.05rem; margin-bottom: 12px; }
+  .wt-card h3 { font-size: 0.95rem; margin-bottom: 10px; }
+  .wt-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .wt-fld { margin-bottom: 4px; }
+  .wt-fld label { font-size: 0.8rem; font-weight: 600; color: var(--ink-secondary); display: block; margin-bottom: 2px; }
+  .wt-fld select, .wt-fld input { width: 100%; min-height: 38px; border: 1.5px solid var(--line); border-radius: 8px; padding: 0 10px; font-size: 0.88rem; background: var(--bg-elevated); color: var(--ink); box-sizing: border-box; }
+  .wt-result-card { }
+  .wt-rows { }
+  .wt-ri { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+  .wt-rl { color: var(--ink-secondary); }
+  .wt-rv { font-weight: 600; }
+  .wt-macro-box { margin-top: 8px; }
+  .wt-macro-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; font-size: 0.75rem; font-weight: 700; color: #fff; }
+  .wt-bar-pro { background: #e53935; display: flex; align-items: center; justify-content: center; }
+  .wt-bar-fat { background: #ff9800; display: flex; align-items: center; justify-content: center; }
+  .wt-bar-carb { background: #2196f3; display: flex; align-items: center; justify-content: center; }
+  .wt-macro-labels { display: flex; gap: 16px; margin-top: 4px; font-size: 0.82rem; flex-wrap: wrap; }
+  .wt-dot-pro, .wt-dot-fat, .wt-dot-carb { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
+  .wt-dot-pro { background: #e53935; }
+  .wt-dot-fat { background: #ff9800; }
+  .wt-dot-carb { background: #2196f3; }
+  .wt-macro-ref { border-top: 1px solid var(--line); padding-top: 16px; }
+  .wt-ref-table { font-size: 0.82rem; }
+  .wt-ref-row { display: grid; grid-template-columns: 130px 55px 55px 55px 1fr; gap: 4px; padding: 5px 6px; border-bottom: 1px solid var(--line); align-items: center; }
+  .wt-ref-header { font-weight: 700; color: var(--ink-secondary); background: var(--bg-elevated); border-radius: 6px 6px 0 0; }
+  @media (max-width: 500px) { .wt-ref-row { grid-template-columns: 1fr 1fr; } }
+</style>
+
+<script>
+(function() {
+  var sel = function(id) { return document.getElementById(id); };
+
+  function calc() {
+    var sex = sel('wt-sex').value;
+    var age = parseInt(sel('wt-age').value) || 40;
+    var curW = parseFloat(sel('wt-current').value) || 70;
+    var tgtW = parseFloat(sel('wt-target').value) || 60;
+    var height = parseFloat(sel('wt-height').value) || 160;
+    var months = parseInt(sel('wt-duration').value) || 3;
+
+    // BMR
+    var bmr = sex === 'male'
+      ? (10 * curW + 6.25 * height - 5 * age + 5)
+      : (10 * curW + 6.25 * height - 5 * age - 161);
+    var tdee = Math.round(bmr * 1.375); // light activity default
+
+    // Weight change
+    var diff = curW - tgtW; // positive = lose, negative = gain
+    if (Math.abs(diff) < 0.1) { sel('wt-result').style.display = 'none'; return; }
+    sel('wt-result').style.display = 'block';
+
+    var totalKcal = Math.abs(diff) * 7700;
+    var days = months * 30;
+    var dailyDeficit = Math.round(totalKcal / days);
+    var perWeek = Math.abs(diff) / months * 0.25; // weekly estimate
+
+    var dailyKcal;
+    var direction;
+    if (diff > 0) { // losing weight
+      dailyKcal = tdee - dailyDeficit;
+      direction = 'giảm';
+    } else { // gaining weight
+      dailyKcal = tdee + dailyDeficit;
+      direction = 'tăng';
+    }
+
+    // Safety check
+    var safeMin = sex === 'male' ? 1500 : 1200;
+    var safeMax = sex === 'male' ? 3500 : 3000;
+    if (dailyKcal < safeMin) dailyKcal = safeMin;
+    if (dailyKcal > safeMax) dailyKcal = safeMax;
+
+    // Display
+    sel('wt-bmr').textContent = Math.round(bmr) + ' kcal';
+    sel('wt-tdee').textContent = tdee + ' kcal';
+    sel('wt-total-change').textContent = Math.abs(diff).toFixed(1) + ' kg (' + direction + ')';
+    sel('wt-per-week').textContent = perWeek.toFixed(2) + ' kg/tuần';
+    sel('wt-daily-kcal').textContent = dailyKcal + ' kcal/ngày';
+
+    var detail;
+    if (diff > 0) {
+      detail = 'Giảm ' + dailyDeficit + ' kcal/ngày so với TDEE (' + tdee + '). Thâm hụt ' + totalKcal.toLocaleString() + ' kcal trong ' + months + ' tháng.';
+    } else {
+      detail = 'Tăng ' + dailyDeficit + ' kcal/ngày so với TDEE (' + tdee + '). Dư ' + totalKcal.toLocaleString() + ' kcal trong ' + months + ' tháng.';
+    }
+    sel('wt-detail').textContent = detail;
+
+    // Macro: 25P / 25F / 50C default, adjust for losing weight
+    var pPct = 25, fPct = 25, cPct = 50;
+    if (diff > 0) { pPct = 30; fPct = 25; cPct = 45; } // high protein for losing
+    if (diff < 0) { pPct = 20; fPct = 25; cPct = 55; } // more carbs for gaining
+
+    sel('wt-bar-pro').style.width = pPct + '%';
+    sel('wt-bar-pro').textContent = pPct + '%';
+    sel('wt-bar-fat').style.width = fPct + '%';
+    sel('wt-bar-fat').textContent = fPct + '%';
+    sel('wt-bar-carb').style.width = cPct + '%';
+    sel('wt-bar-carb').textContent = cPct + '%';
+
+    var pG = Math.round((dailyKcal * pPct / 100) / 4);
+    var fG = Math.round((dailyKcal * fPct / 100) / 9);
+    var cG = Math.round((dailyKcal * cPct / 100) / 4);
+    sel('wt-pro-g').textContent = pG;
+    sel('wt-fat-g').textContent = fG;
+    sel('wt-carb-g').textContent = cG;
+  }
+
+  // Auto-calc on input change
+  ['wt-sex','wt-age','wt-current','wt-target','wt-height','wt-duration'].forEach(function(id) {
+    var el = sel(id);
+    if (el) el.addEventListener('change', calc);
+    if (el && el.type === 'number') el.addEventListener('input', calc);
+  });
+
+  // Initial calc
+  calc();
+})();
+</script>
+</BaseLayout>

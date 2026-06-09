@@ -1,0 +1,72 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-thieu-vitamin-b12"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Thanh, 32 tuổi, ăn chay được 5 năm. Gần đây chị hay mệt mỏi, hoa mắt, tim đập nhanh, lưỡi đỏ đau, tay chân tê bì. Đi khám bác sĩ phát hiện <strong>thiếu vitamin B12 nặng</strong>. Chị ngạc nhiên: "Em tưởng ăn rau đậu là đủ chất?"</p>
+  <p>B12 là vitamin <strong>duy nhất</strong> không có trong thực vật. Người ăn chay trường buộc phải bổ sung hoặc ăn thực phẩm tăng cường B12. Thiếu B12 kéo dài gây tổn thương thần kinh không hồi phục.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 B12 chỉ có trong thực phẩm động vật. Người ăn chay trường cần <u>bổ sung B12 viên 50–100mcg/ngày</u> hoặc ăn thực phẩm tăng cường. 
+    Người trên 65 tuổi và người uống thuốc dạ dày (PPI) kéo dài cũng có nguy cơ thiếu.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao thiếu B12 nguy hiểm?</h2>
+  <p>B12 cần thiết để tạo hồng cầu và duy trì vỏ myelin bảo vệ dây thần kinh. Thiếu B12 gây thiếu máu hồng cầu to (megaloblastic anemia) và tổn thương thần kinh — tê bì, mất thăng bằng, trí nhớ kém. Nếu kéo dài >6 tháng, tổn thương thần kinh có thể không hồi phục được.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm giàu B12</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>🦪 <strong>Nghêu, sò, ốc:</strong> 100g nghêu ~98mcg B12 (gấp 40 lần nhu cầu)</li>
+      <li>🦐 <strong>Tôm, cua:</strong> 100g tôm ~2mcg B12</li>
+      <li>🐟 <strong>Cá béo:</strong> Cá hồi (100g ~4mcg), cá thu, cá trích</li>
+      <li>🥩 <strong>Gan bò / gan gà:</strong> 100g gan bò ~70mcg (nhưng chỉ ăn 1 lần/tuần)</li>
+      <li>🥚 <strong>Trứng:</strong> 1 quả ~0.6mcg B12</li>
+      <li>🥛 <strong>Sữa, sữa chua:</strong> 1 ly sữa 200ml ~1mcg B12</li>
+      <li>🌱 <strong>Người ăn chay:</strong> Sữa đậu nành tăng cường B12, men dinh dưỡng (nutritional yeast), viên bổ sung</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Nguyên nhân thường gặp</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⚠️ <strong>Ăn chay trường</strong> không bổ sung — nguyên nhân số 1</li>
+      <li>⚠️ <strong>Người &gt;65 tuổi:</strong> Giảm hấp thu B12 do giảm acid dạ dày</li>
+      <li>⚠️ <strong>Thuốc dạ dày (PPI):</strong> Omeprazol dài ngày giảm hấp thu B12</li>
+      <li>⚠️ <strong>Metformin:</strong> Thuốc tiểu đường làm giảm B12 sau 6 tháng</li>
+      <li>⚠️ <strong>Cắt dạ dày/ruột:</strong> Giảm hấp thu B12</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Nhu cầu và bổ sung</h2>
+  <table class="table"><thead><tr><th>Đối tượng</th><th>Nhu cầu/ngày</th><th>Cách bổ sung</th></tr></thead><tbody>
+    <tr><td>Người lớn</td><td>2.4 mcg</td><td>Ăn thực phẩm động vật</td></tr>
+    <tr><td>Mang thai</td><td>2.6 mcg</td><td>Cá, trứng, sữa — có thể viên bổ sung</td></tr>
+    <tr><td>Cho con bú</td><td>2.8 mcg</td><td>Cá, trứng, sữa</td></tr>
+    <tr><td>Ăn chay trường</td><td>50–100 mcg/ngày</td><td>Viên B12 dạng uống hoặc xịt</td></tr>
+    <tr><td>Thiếu B12 nặng</td><td>1000 mcg/tuần</td><td>Tiêm B12 hoặc viên liều cao theo chỉ định</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div>
+    <h4>🚨 Dấu hiệu thiếu B12:</h4>
+    <p style="line-height:1.8;">Mệt mỏi kéo dài · Da xanh xao · Lưỡi đỏ đau · Tê bì tay chân · Mất thăng bằng · Trí nhớ kém · Tim đập nhanh · Khó thở khi gắng sức</p>
+    <p class="muted">💡 Nếu bạn ăn chay, &gt;65 tuổi, hoặc uống PPI/metformin kéo dài — hãy xét nghiệm B12 máu mỗi năm.</p>
+  </div>
+</section>
+
+</ArticleLayout>

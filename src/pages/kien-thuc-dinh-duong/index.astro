@@ -1,0 +1,405 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { articles, DISPLAY_CATEGORIES, SPECIALTIES } from "../../data/articles";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+const title = "Kiến thức dinh dưỡng | Dinh Dưỡng Việt";
+const desc = "Bài viết dinh dưỡng cho người Việt — tra cứu theo chuyên khoa: tim mạch, nội tiết, tiêu hóa, thận, xương khớp...";
+
+// Group articles by specialty
+const specOrder = ["dinh-duong-tong-quat", "noi-tiet", "tieu-hoa", "tim-mach", "than-tiet-nieu", "co-xuong-khop", "huyet-hoc", "than-kinh", "ho-hap", "da-lieu", "phu-nu-nhi", "ung-thu"];
+
+const grouped = specOrder.map(key => ({
+  key,
+  meta: SPECIALTIES[key],
+  items: articles.filter(a => a.specialty === key),
+})).filter(g => g.items.length > 0);
+
+// Articles that don't fit any known specialty (shouldn't happen but safety)
+const unknownItems = articles.filter(a => !a.specialty || a.specialty === "unknown");
+
+// Featured (from any specialty, non-specialty specific)
+const featured = articles.filter(a => a.featured && a.series !== "dung-tin-ngay");
+
+// Display category labels (for sub-grouping within each specialty)
+const dcLabel = {
+  "bai-viet": { name: "📝 Bài viết", desc: "Dinh dưỡng cơ bản, lối sống, bệnh lý, chăm sóc" },
+  "mon-an": { name: "🍜 Món ăn & Thực phẩm", desc: "Phân tích từng món" },
+  "thuc-don": { name: "📋 Thực đơn mẫu", desc: "Thực đơn 1 ngày" },
+  "dung-tin-ngay": { name: "🔍 Đừng Tin Ngay", desc: "Hiểu lầm thường gặp" },
+};
+const dcKeys = ["bai-viet", "mon-an", "thuc-don", "dung-tin-ngay"];
+
+// Audiences
+const audiences = [
+  { id: "diabetes", label: "🩸 Người tiểu đường" },
+  { id: "hypertension", label: "🫗 Người tăng huyết áp" },
+  { id: "gout", label: "🦶 Người gout" },
+  { id: "kidney", label: "🫘 Người bệnh thận" },
+  { id: "fatty-liver", label: "🫁 Người gan nhiễm mỡ" },
+  { id: "stomach", label: "😣 Người bệnh dạ dày" },
+  { id: "elderly", label: "👴 Người cao tuổi" },
+  { id: "pregnancy", label: "🤰 Phụ nữ mang thai" },
+  { id: "children", label: "🧒 Trẻ em" },
+  { id: "weight-loss", label: "🏋️ Giảm cân" },
+  { id: "vegan", label: "🥬 Ăn chay" },
+  { id: "caregiver", label: "👨👩👧👦 Người chăm sóc" },
+];
+---
+
+<BaseLayout title={title} description={desc}>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">🏠 Trang chủ</a> <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">📚 Kiến thức dinh dưỡng</span>
+  </nav>
+  <div class="ki-page">
+
+    <!-- Hero -->
+    <div class="ki-hero">
+      <h1>📚 Kiến thức dinh dưỡng</h1>
+      <p class="ki-desc">Tra cứu bài viết theo chuyên khoa. Từ bệnh lý đến thực đơn mẫu — tất cả bằng ngôn ngữ đời thường cho người Việt.</p>
+      <div class="ki-actions">
+        <a href="/tim-kiem" class="cta-btn">🔍 Tìm bài viết →</a>
+        <a href="/hoi-dap" class="cta-alt-btn">❓ Hỏi nhanh – đáp gọn</a>
+      </div>
+    </div>
+
+    <!-- Specialty Tabs (quick filters) -->
+    <div class="ki-tabs">
+      <button class="sp-tab sp-active" data-sp="all" onclick="filterSpecialty('all')">📋 Tất cả</button>
+      {grouped.map(g => (
+        <button class="sp-tab" data-sp={g.key} onclick={`filterSpecialty('${g.key}')`}>
+          {g.meta.emoji} {g.meta.name} <span class="sp-count">{g.items.length}</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Audience filter (secondary) -->
+    <details class="ki-aud-filter">
+      <summary>🎯 Lọc theo đối tượng</summary>
+      <div class="aud-btns">
+        <button class="aud-btn aud-active" data-filter="all" onclick="filterAudience('all')">📋 Tất cả</button>
+        {audiences.map(a => (
+          <button class="aud-btn" data-filter={a.id} onclick={`filterAudience('${a.id}')`}>{a.label}</button>
+        ))}
+      </div>
+    </details>
+
+    <!-- Featured (only in "All" mode) -->
+    <section id="sec-featured" class="ki-section" data-sp-section="featured">
+      <h2 class="ki-section-title">🌟 Bài viết nổi bật</h2>
+      <div class="ki-article-grid">
+        {featured.map(a => (
+          <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Specialty Sections -->
+    {grouped.map(g => {
+      // Sub-group by display category
+      const subGroups = dcKeys
+        .map(dc => ({ key: dc, ...dcLabel[dc], items: g.items.filter(a => a.displayCategory === dc) }))
+        .filter(sg => sg.items.length > 0);
+
+      // Large sections (>15) start collapsed
+      const defaultOpen = g.items.length > 15 ? "open" : "";
+
+      return (
+        <section id={`sec-${g.key}`} class="ki-section" data-sp-section={g.key}>
+          <details class="ki-details" {defaultOpen}>
+            <summary class="ki-section-title">
+              <span class="spec-header">
+                <span class="spec-emoji">{g.meta.emoji}</span>
+                <span class="spec-name">{g.meta.name}</span>
+                <span class="spec-count">{g.items.length} bài</span>
+              </span>
+              <span class="ki-toggle-arrow">▼</span>
+            </summary>
+            <p class="spec-desc">{g.meta.desc}</p>
+
+            {subGroups.map(sg => (
+              <div class="ki-subgroup">
+                <h3 class="ki-sub-title">{sg.name} <span class="sub-count">({sg.items.length})</span></h3>
+                <div class="ki-article-grid">
+                  {sg.items.map(a => (
+                    <div data-audience={(a.audience||[]).join(',')}>
+                      <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </details>
+        </section>
+      );
+    })}
+
+    {unknownItems.length > 0 && (
+      <section class="ki-section">
+        <h2 class="ki-section-title">📋 Bài viết khác</h2>
+        <div class="ki-article-grid">
+          {unknownItems.map(a => (
+            <div data-audience={(a.audience||[]).join(',')}>
+              <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="ki-footer-links">
+      <p class="muted">Chưa tìm thấy bài viết phù hợp?</p>
+      <div class="ki-actions">
+        <a href="/ban-do-benh" class="cta-alt-btn">🗺️ Bản đồ bệnh lý</a>
+        <a href="/tim-kiem" class="cta-alt-btn">🔍 Tìm kiếm toàn bộ</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .ki-page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .ki-hero {
+      margin-bottom: 1.5rem;
+    }
+    .ki-hero h1 {
+      font-size: 1.8rem;
+      margin: 0 0 8px;
+    }
+    .ki-desc {
+      color: var(--ink-secondary);
+      max-width: 620px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+    .ki-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none; }
+    .cta-alt-btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--ink);
+      text-decoration: none;
+      transition: all 0.15s;
+      font-weight: 500;
+    }
+    .cta-alt-btn:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
+
+    /* Specialty tabs */
+    .ki-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .sp-tab {
+      padding: 6px 14px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--card);
+      color: var(--ink);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .sp-tab:hover { border-color: var(--brand); transform: translateY(-1px); }
+    .sp-tab.sp-active { background: var(--brand); color: white; border-color: var(--brand); }
+    .sp-count {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 0.72rem;
+      opacity: 0.7;
+    }
+
+    /* Audience filter */
+    .ki-aud-filter {
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+    }
+    .ki-aud-filter summary {
+      cursor: pointer;
+      color: var(--ink-secondary);
+      font-weight: 500;
+      padding: 4px 0;
+    }
+    .aud-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .aud-btn {
+      padding: 4px 11px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--card);
+      color: var(--ink-secondary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .aud-btn:hover { border-color: var(--brand); color: var(--ink); }
+    .aud-btn.aud-active { background: var(--brand-light); color: var(--brand); border-color: var(--brand-light2); font-weight: 600; }
+
+    /* Sections */
+    .ki-section {
+      margin-bottom: 12px;
+    }
+    .ki-section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 10px 14px;
+      background: var(--bg-soft);
+      border-radius: 10px;
+      transition: background 0.15s;
+      user-select: none;
+    }
+    .ki-section-title:hover {
+      background: var(--brand-light);
+    }
+    .spec-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spec-emoji { font-size: 1.2rem; }
+    .spec-name { font-size: 0.95rem; }
+    .spec-count {
+      font-size: 0.78rem;
+      color: var(--ink-tertiary);
+      font-weight: 400;
+    }
+    .ki-toggle-arrow {
+      font-size: 0.8rem;
+      color: var(--ink-tertiary);
+      transition: transform 0.2s;
+    }
+    details[open] .ki-toggle-arrow {
+      transform: rotate(180deg);
+    }
+    .spec-desc {
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+      margin: -8px 0 14px 14px;
+    }
+
+    /* Sub-group */
+    .ki-subgroup {
+      margin: 0 0 18px 14px;
+    }
+    .ki-sub-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+      color: var(--brand);
+      border-left: 3px solid var(--brand-light2);
+      padding-left: 10px;
+    }
+    .sub-count {
+      font-size: 0.8rem;
+      color: var(--ink-tertiary);
+      font-weight: 400;
+    }
+
+    /* Article grid */
+    .ki-article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    /* Footer */
+    .ki-footer-links {
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .ki-footer-links p { margin-bottom: 12px; }
+    .ki-footer-links .ki-actions { justify-content: center; }
+
+    @media (max-width: 640px) {
+      .ki-article-grid { grid-template-columns: 1fr; }
+      .ki-tabs { gap: 4px; }
+      .sp-tab { font-size: 0.78rem; padding: 5px 10px; }
+      .ki-subgroup { margin-left: 0; }
+    }
+    @media (max-width: 600px) {
+    .spec-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; gap: 4px; }
+    .spec-tab { padding: 6px 12px; font-size: 0.8rem; white-space: nowrap; }
+    .article-item { padding: 12px; }
+    .article-item h3 { font-size: 0.9rem; }
+    .article-item p { font-size: 0.82rem; }
+  }
+</style>
+
+  <script is:inline>
+    // Specialty filter
+    function filterSpecialty(sp) {
+      document.querySelectorAll('.sp-tab').forEach(b => b.classList.remove('sp-active'));
+      var btn = document.querySelector('.sp-tab[data-sp="' + sp + '"]');
+      if (btn) btn.classList.add('sp-active');
+
+      if (sp === 'all') {
+        document.querySelectorAll('[data-sp-section]').forEach(function(s) {
+          s.style.display = '';
+        });
+        return;
+      }
+
+      document.querySelectorAll('[data-sp-section]').forEach(function(s) {
+        s.style.display = s.id === 'sec-' + sp ? '' : 'none';
+      });
+    }
+
+    // Audience filter
+    function filterAudience(aud) {
+      document.querySelectorAll('.aud-btn').forEach(b => b.classList.remove('aud-active'));
+      var btn = document.querySelector('.aud-btn[data-filter="' + aud + '"]');
+      if (btn) btn.classList.add('aud-active');
+
+      if (aud === 'all') {
+        document.querySelectorAll('[data-audience]').forEach(function(w) {
+          w.style.display = '';
+        });
+        return;
+      }
+
+      document.querySelectorAll('[data-audience]').forEach(function(wrapper) {
+        var audList = wrapper.getAttribute('data-audience') || '';
+        var match = audList.split(',').indexOf(aud) >= 0;
+        wrapper.style.display = match ? '' : 'none';
+      });
+    }
+  </script>
+</BaseLayout>

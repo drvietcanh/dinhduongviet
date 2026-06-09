@@ -1,0 +1,169 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["an-toan-thuc-pham"];
+if (!art) throw new Error("Article not found: an-toan-thuc-pham");
+---
+
+<ArticleLayout article={art}>
+<div class="disclaimer">
+    ⚠️ <strong>Cảnh báo y khoa:</strong> Nội dung mang tính tham khảo. Khi có dấu hiệu ngộ độc thực phẩm (nôn ói, tiêu chảy nhiều lần, sốt cao, mất nước), cần đến cơ sở y tế ngay.
+  </div>
+
+  <section class="section card">
+    <h2>🥇 10 Nguyên tắc vàng của WHO</h2>
+    <ol style="line-height: 2; margin-top: 10px;">
+      <li><strong>Chọn thực phẩm an toàn:</strong> Thực phẩm tươi, có nguồn gốc rõ ràng, còn hạn sử dụng</li>
+      <li><strong>Nấu chín kỹ:</strong> Đặc biệt thịt gia cầm, trứng, hải sản — nhiệt độ lõi ≥ 70°C</li>
+      <li><strong>Ăn ngay sau khi nấu:</strong> Để nguội > 2 giờ vi khuẩn sinh sôi nhanh</li>
+      <li><strong>Bảo quản thực phẩm chín đúng cách:</strong> Dưới 5°C nếu chưa dùng ngay, hâm nóng kỹ trước khi ăn</li>
+      <li><strong>Hâm nóng thức ăn thừa đúng cách:</strong> Đun sôi lại hoặc hâm ở nhiệt độ ≥ 70°C</li>
+      <li><strong>Tránh lây nhiễm chéo:</strong> Thớt riêng cho đồ sống và chín. Rửa tay sau khi chạm thịt sống</li>
+      <li><strong>Rửa tay thường xuyên:</strong> Trước khi nấu, sau khi đi vệ sinh, sau khi chạm thịt sống</li>
+      <li><strong>Giữ bề mặt bếp sạch sẽ:</strong> Lau dọn thường xuyên, thay khăn lau bát đĩa hàng ngày</li>
+      <li><strong>Để thực phẩm tránh xa côn trùng & động vật:</strong> Đậy kín thức ăn, đựng trong hộp kín</li>
+      <li><strong>Sử dụng nước sạch:</strong> Nước uống, nước nấu ăn, nước rửa thực phẩm đều phải là nước sạch</li>
+    </ol>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>🧊 Bảo quản thực phẩm đúng cách</h2>
+      <table class="table" style="margin-top: 8px; font-size: 0.85rem;">
+        <thead>
+          <tr><th>Thực phẩm</th><th>Nhiệt độ phòng</th><th>Tủ lạnh (4°C)</th><th>Đông lạnh (-18°C)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Thịt tươi sống</td><td>≤ 2 giờ</td><td>1-2 ngày</td><td>3-6 tháng</td></tr>
+          <tr><td>Gia cầm</td><td>≤ 2 giờ</td><td>1-2 ngày</td><td>6-9 tháng</td></tr>
+          <tr><td>Cá tươi</td><td>≤ 1 giờ</td><td>1 ngày</td><td>2-3 tháng</td></tr>
+          <tr><td>Trứng</td><td>1-2 tuần</td><td>3-5 tuần</td><td>Không nên đông</td></tr>
+          <tr><td>Sữa tươi</td><td>≤ 2 giờ</td><td>5-7 ngày</td><td>3 tháng</td></tr>
+          <tr><td>Rau xanh</td><td>4-8 giờ</td><td>3-7 ngày</td><td>Không nên</td></tr>
+          <tr><td>Thức ăn chín</td><td>≤ 2 giờ</td><td>3-4 ngày</td><td>2-3 tháng</td></tr>
+        </tbody>
+      </table>
+      <p class="muted" style="margin-top: 8px;">⚠️ Không để thực phẩm ở "vùng nguy hiểm" (5-60°C) quá 2 giờ.</p>
+    </div>
+    <div class="card">
+      <h2>🔪 Lây nhiễm chéo — Nguy cơ thường gặp</h2>
+      <ul style="line-height: 1.8;">
+        <li><strong>Một thớt cho tất cả:</strong> Thái thịt sống rồi thái rau ăn sống trên cùng thớt — đây là nguyên nhân hàng đầu gây nhiễm khuẩn chéo</li>
+        <li><strong>Khăn lau chùi:</strong> Khăn lau bát đĩa lau cả thớt, tay, bàn bếp</li>
+        <li><strong>Bọt biển rửa bát:</strong> Ẩm ướt, giàu vi khuẩn — thay hàng tuần, luộc hoặc ngâm thuốc sát khuẩn</li>
+        <li><strong>Giải pháp:</strong> Ít nhất 2 thớt (1 cho đồ sống, 1 cho đồ chín/rau sống). Dùng màu sắc khác nhau để phân biệt.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Nhóm thực phẩm nguy cơ cao</h2>
+    <table class="table" style="margin-top: 10px;">
+      <thead>
+        <tr><th>Thực phẩm</th><th>Nguy cơ</th><th>Phòng tránh</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Trứng sống hoặc chưa chín kỹ</td><td>Salmonella</td>
+          <td>Luộc/lòng đào ít nhất 5 phút ở 70°C. Không ăn trứng lòng đào quá lỏng với trẻ nhỏ, người già, thai phụ</td>
+        </tr>
+        <tr>
+          <td>Hải sản sống (gỏi, sushi)</td><td>Vibrio, ký sinh trùng</td>
+          <td>Chỉ ăn khi nguồn gốc rõ ràng, đã được cấp đông -18°C ít nhất 7 ngày (diệt ký sinh trùng)</td>
+        </tr>
+        <tr>
+          <td>Thịt tái, tiết canh</td><td>Liên cầu lợn (Streptococcus suis)</td>
+          <td><strong>Không ăn tiết canh.</strong> Thịt lợn phải nấu chín kỹ (≥ 70°C). Liên cầu lợn gây tử vong cao.</td>
+        </tr>
+        <tr>
+          <td>Rau sống, giá đỗ</td><td>E. coli, ký sinh trùng</td>
+          <td>Rửa dưới vòi nước chảy 2-3 lần, ngâm nước muối loãng 10-15 phút. Giá đỗ nên trụng qua nước sôi</td>
+        </tr>
+        <tr>
+          <td>Thực phẩm đóng hộp phồng</td><td>Clostridium botulinum (ngộ độc thịt)</td>
+          <td><strong>Bỏ ngay.</strong> Không mở, không nếm thử. Botulinum toxin cực độc, gây liệt cơ tử vong</td>
+        </tr>
+        <tr>
+          <td>Pate, thịt nguội</td><td>Listeria monocytogenes</td>
+          <td>Người có thai, suy giảm miễn dịch nên tránh hoặc hâm nóng kỹ trước ăn</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>🧪 Hoá chất trong thực phẩm</h2>
+    <div class="grid two">
+      <div>
+        <h3>🚫 Chất cấm & tồn dư</h3>
+        <ul style="line-height: 1.8;">
+          <li><strong>Formol (formaldehyde):</strong> Ngâm bánh phở, bún, giá — gây ung thư. Nhận biết: bún trắng bất thường, không thiu sau 2 ngày</li>
+          <li><strong>Hàn the (borax):</strong> Giò chả, bánh cuốn — gây ngộ độc cấp và mãn tính. Nhận biết: giòn bất thường, để lâu không hỏng</li>
+          <li><strong>Thuốc tăng trọng:</strong> Thịt heo, gà — ảnh hưởng nội tiết, gây dậy thì sớm</li>
+          <li><strong>Thuốc bảo vệ thực vật:</strong> Dư lượng trên rau củ — rửa kỹ, ngâm nước muối, gọt vỏ khi cần</li>
+        </ul>
+      </div>
+      <div>
+        <h3>✅ Cách chọn thực phẩm an toàn</h3>
+        <ul style="line-height: 1.8;">
+          <li><strong>Chợ/siêu thị:</strong> Mua ở nơi uy tín, có nguồn gốc rõ ràng</li>
+          <li><strong>Nhìn, ngửi, sờ:</strong> Thịt cá tươi, rau củ không dập nát, không mùi lạ</li>
+          <li><strong>Nhãn mác:</strong> Đọc thành phần, hạn sử dụng, chứng nhận an toàn</li>
+          <li><strong>Rau củ quả:</strong> Rửa dưới vòi nước 30-60 giây, ngâm nước muối 10 phút, rửa lại</li>
+          <li><strong>Thịt cá:</strong> Không mua thịt có màu đỏ tươi bất thường, không mua cá ươn</li>
+          <li><strong>Đồ khô:</strong> Kiểm tra mốc, mọt, hạn sử dụng</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🍳 Mẹo chế biến an toàn</h2>
+    <div class="grid two">
+      <div>
+        <ul style="line-height: 1.8;">
+          <li><strong>Rã đông đúng cách:</strong> Ngăn mát tủ lạnh (qua đêm), không rã đông ở nhiệt độ phòng</li>
+          <li><strong>Ướp thịt trong tủ lạnh:</strong> Không để thịt sống ướp ở nhiệt độ phòng > 2 giờ</li>
+          <li><strong>Nấu chín lòng đỏ trứng:</strong> Trứng ốp-la/lòng đào nấu đến khi lòng trắng chín hẳn</li>
+        </ul>
+      </div>
+      <div>
+        <ul style="line-height: 1.8;">
+          <li><strong>Dầu ăn chiên đi chiên lại:</strong> Tạo chất béo chuyển hoá và acrolein — gây hại. Chỉ dùng dầu 1-2 lần chiên</li>
+          <li><strong>Không để thức ăn nóng vào tủ lạnh:</strong> Để nguội bớt (không quá 2 giờ) rồi mới cho vào tủ</li>
+          <li><strong>Phân chia thực phẩm:</strong> Chia nhỏ trước khi cấp đông — rã đông đủ dùng, không cấp đông lại</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🚨 Nhận biết & xử trí ngộ độc thực phẩm</h2>
+    <div class="grid two">
+      <div>
+        <h3>⚠️ Triệu chứng</h3>
+        <ul style="line-height: 1.8;">
+          <li>Buồn nôn, nôn ói</li>
+          <li>Tiêu chảy nhiều lần (có thể lẫn máu)</li>
+          <li>Đau quặn bụng</li>
+          <li>Sốt, ớn lạnh</li>
+          <li>Mệt mỏi, khát nước (dấu hiệu mất nước)</li>
+          <li>Thường xuất hiện 1-48 giờ sau ăn</li>
+        </ul>
+      </div>
+      <div>
+        <h3>✅ Xử trí</h3>
+        <ul style="line-height: 1.8;">
+          <li><strong>Bù nước và điện giải:</strong> Oresol, nước cháo muối, nước dừa</li>
+          <li><strong>Không tự ý dùng thuốc cầm tiêu chảy:</strong> Cơ thể cần đào thải độc chất</li>
+          <li><strong>Không gây nôn nếu:</strong> Người bệnh hôn mê, co giật, hoặc ngộ độc chất ăn mòn</li>
+          <li><strong>Đến cơ sở y tế ngay nếu:</strong> Nôn/tiêu chảy nhiều không ngừng, sốt >38.5°C, có máu trong phân, dấu hiệu mất nước nặng</li>
+          <li><strong>Giữ lại mẫu thực phẩm nghi ngờ:</strong> Để xét nghiệm xác định nguyên nhân</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <DietMealPlan condition="an-toan-thuc-pham" conditionLabel="an toàn thực phẩm" />
+</ArticleLayout>

@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-tram-cam"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Ngày càng nhiều bằng chứng cho thấy dinh dưỡng ảnh hưởng trực tiếp đến tâm trạng và sức khỏe tâm thần thông qua trục ruột - não. Chế độ ăn Địa Trung Hải có liên quan đến giảm nguy cơ trầm cảm đến 30%.</p>
+    <p>Mối liên hệ giữa thực phẩm và tâm trạng không chỉ là chuyện tâm lý — nó có cơ sở sinh học rõ ràng: omega-3 giảm viêm thần kinh, tryptophan là tiền chất tổng hợp serotonin (hormone hạnh phúc), vitamin nhóm B và vitamin D tham gia vào quá trình sản xuất neurotransmitter. Một chế độ ăn cân bằng, giàu dưỡng chất có thể hỗ trợ cải thiện tâm trạng và nâng cao hiệu quả điều trị trầm cảm.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Omega-3 (EPA/DHA):</strong> Giảm viêm thần kinh, cải thiện tâm trạng. Liều khuyến nghị cho hỗ trợ tâm thần: EPA 1-2g/ngày. Nguồn: cá béo (cá hồi, cá thu, cá mòi), hạt chia, hạt lanh, dầu tảo biển.</li>
+      <li><strong>Tryptophan:</strong> Tiền chất của serotonin — trứng, sữa, chuối, đậu nành, hạt bí, gà tây</li>
+      <li><strong>Vitamin nhóm B:</strong> Folate (B9), B6, B12 — cần cho tổng hợp neurotransmitter. Thiếu folate liên quan đến trầm cảm kháng trị. Nguồn: rau lá xanh, đậu, trứng, thịt, sữa.</li>
+      <li><strong>Men vi sinh (probiotic):</strong> Hệ vi khuẩn đường ruột ảnh hưởng tâm trạng qua trục não - ruột. Sữa chua, kim chi, dưa cải, kombucha.</li>
+      <li><strong>Hạn chế đường tinh luyện:</strong> Đường gây viêm và dao động đường huyết ảnh hưởng tâm trạng. Đường huyết tăng nhanh rồi tụt gây mệt mỏi, cáu gắt, lo âu.</li>
+      <li><strong>Chế độ ăn Địa Trung Hải cho não bộ:</strong> Giàu rau, trái cây, dầu olive, cá, hạt. Hạn chế thịt đỏ, đồ ngọt. Nghiên cứu SMILES (2017) cho thấy chế độ này cải thiện triệu chứng trầm cảm rõ rệt sau 12 tuần.</li>
+      <li><strong>Magie — khoáng chất chống căng thẳng:</strong> Thiếu magie làm tăng lo âu, mất ngủ, co thắt cơ. Magie tham gia trên 300 phản ứng enzyme, bao gồm sản xuất serotonin. Nguồn: hạt bí, hạnh nhân, rau bina, chuối, socola đen (trên 70% cacao).</li>
+      <li><strong>Vitamin D — vitamin ánh nắng:</strong> Thiếu vitamin D phổ biến ở người trầm cảm. Thụ thể vitamin D có trong nhiều vùng não liên quan đến tâm trạng. Nên xét nghiệm máu và bổ sung nếu thiếu. Phơi nắng 15 phút/ngày (trước 9 giờ sáng).</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu, cá mòi — giàu EPA/DHA omega-3 giảm viêm thần kinh</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau lá xanh</span><span>Cải bó xôi, cải xoăn, rau muống — folate, magie</span></div>
+      <div class="food-row"><span class="food-cat">🫘 Đậu nành & hạt</span><span>Đậu hũ, hạt bí, hạt óc chó — tryptophan, magie, kẽm</span></div>
+      <div class="food-row"><span class="food-cat">🥛 Sữa chua</span><span>Sữa chua probiotic — lợi khuẩn cho đường ruột, hỗ trợ trục não-ruột</span></div>
+      <div class="food-row"><span class="food-cat">🍌 Trái cây</span><span>Chuối, cam, việt quất — vitamin C, B6, chất chống oxy hóa</span></div>
+      <div class="food-row"><span class="food-cat">🍫 Socola đen</span><span>Socola trên 70% cacao — giàu magie, flavonoid cải thiện tâm trạng (ăn vừa phải)</span></div>
+      <div class="food-row"><span class="food-cat">🥚 Trứng & gà tây</span><span>Giàu tryptophan, vitamin B12, vitamin D, protein chất lượng cao</span></div>
+      <div class="food-row"><span class="food-cat">🫒 Dầu olive</span><span>Chất béo lành mạnh, chống viêm — nền tảng chế độ ăn Địa Trung Hải cho não</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần hạn chế</h2>
+    <ul>
+      <li><strong>Đường tinh luyện:</strong> Bánh ngọt, nước ngọt, kem — gây dao động đường huyết, viêm thần kinh</li>
+      <li><strong>Thực phẩm chế biến sẵn:</strong> Xúc xích, đồ hộp, đồ ăn nhanh — thiếu dưỡng chất, nhiều phụ gia</li>
+      <li><strong>Chất béo chuyển hóa:</strong> Bơ thực vật, bánh quy công nghiệp, snack chiên — tăng viêm, giảm dẫn truyền thần kinh</li>
+      <li><strong>Rượu bia quá mức:</strong> Rượu là chất ức chế hệ thần kinh trung ương, làm nặng thêm trầm cảm</li>
+      <li><strong>Caffeine quá nhiều:</strong> Có thể gây lo âu, mất ngủ, làm rối loạn giấc ngủ — vốn đã kém ở người trầm cảm</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Ăn uống có thể thay thế thuốc chống trầm cảm không?</summary><p>Không. Dinh dưỡng hỗ trợ nhưng không thay thế thuốc. Kết hợp dinh dưỡng tốt + tập thể dục + trị liệu tâm lý + thuốc (nếu cần) là chiến lược toàn diện. Không tự ý bỏ thuốc.</p></details>
+    <details class="faq-item"><summary>Ăn nhiều chuối có giúp vui hơn không?</summary><p>Chuối giàu tryptophan, vitamin B6, magie — hỗ trợ tổng hợp serotonin. Ăn 1-2 quả/ngày có lợi cho tâm trạng, nhưng không đủ mạnh để điều trị trầm cảm. Cần kết hợp với chế độ ăn tổng thể.</p></details>
+    <details class="faq-item"><summary>Tôi bị trầm cảm nên ăn sáng thế nào?</summary><p>Bữa sáng lý tưởng: yến mạch + sữa chua + chuối + hạt óc chó. Hoặc trứng ốp la với bánh mì nguyên cám + bơ. Tránh bánh mì trắng, ngũ cốc có đường, nước ngọt — gây tụt đường huyết giữa buổi sáng, khiến mệt mỏi và cáu gắt hơn.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>Ăn gì cho tinh thần tốt:</strong> (1) Cá béo 2 lần/tuần — omega-3 EPA/DHA cho não, (2) Rau xanh mỗi ngày — folate và magie, (3) Probiotic từ sữa chua — hỗ trợ trục não - ruột, (4) Hạn chế đường — tránh dao động tâm trạng. Thêm: socola đen vừa phải, trái cây tươi, hạt và dầu olive. Luôn duy trì thuốc và trị liệu nếu đang điều trị trầm cảm. Tập thể dục 30 phút/ngày cũng quan trọng không kém dinh dưỡng.</p></div>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,142 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["suy-dinh-duong-nguoi-benh"];
+---
+
+<ArticleLayout article={article} lead="Suy dinh dưỡng (malnutrition) ở người bệnh là một vấn đề phổ biến nhưng thường bị bỏ qua. Có thể 30–50% bệnh nhân nằm viện bị suy dinh dưỡng — làm tăng biến chứng, kéo dài thời gian nằm viện và tăng tử vong.">
+
+## 🔍 Nhận biết suy dinh dưỡng
+
+Suy dinh dưỡng không chỉ là "gầy". Nó có thể xảy ra ở cả người thừa cân.
+
+**Dấu hiệu sớm:**
+- Sụt cân không chủ ý (hơn 5% trong 3 tháng hoặc hơn 10% trong 6 tháng)
+- Ăn kém, chán ăn kéo dài
+- Giảm khối cơ (yếu tay chân, teo cơ thái dương)
+- Mệt mỏi, giảm vận động
+- Phù (do thiếu đạm — hypoalbuminemia)
+
+**Nguyên nhân thường gặp:**
+- Ung thư, hóa/xạ trị (gây chán ăn, buồn nôn, rối loạn vị giác)
+- Bệnh tiêu hóa (kém hấp thu, viêm ruột)
+- Sau phẫu thuật lớn (tăng nhu cầu + giảm ăn)
+- Bệnh mạn tính (COPD, suy tim, suy thận, lao)
+- Rối loạn nuốt, sa sút trí tuệ, trầm cảm
+
+## 📋 Sàng lọc nhanh
+
+Trả lời 3 câu hỏi sau:
+
+1. **3 tháng qua, bạn có sụt hơn 3kg?** (không do chủ động giảm cân)
+2. **Bạn có ăn dưới 50% bữa ăn bình thường hơn 1 tuần?**
+3. **Bạn có bệnh lý cấp/mạn tính đang tiến triển?**
+
+> Nếu trả lời **Có** cho ≥2 câu — cần can thiệp dinh dưỡng sớm. Tham khảo bác sĩ hoặc dinh dưỡng viên.
+
+## 🥜 Nguyên tắc can thiệp
+
+### 1. Tăng calo & đạm mà không tăng thể tích
+
+- **Dầu ăn, bơ, mỡ** — thêm 1 muỗng (5g) dầu/bơ vào mỗi bát cháo/súp = +45 kcal
+- **Sữa bột** — thêm 1 muỗng bột sữa vào cháo/sinh tố = +30 kcal
+- **Trứng** — thêm 1 lòng đỏ trứng vào cháo = +55 kcal, +3g đạm
+- **Đậu phộng, mè** — rắc lên cháo, cơm
+
+### 2. Sữa dinh dưỡng — Khi ăn uống không đủ
+
+**Sữa Ensure, Glucerna, Prosure...** có thể dùng làm bữa phụ hoặc thay bữa chính:
+
+<table>
+<thead>
+<tr>
+<th>Sản phẩm</th>
+<th>Calo/ly</th>
+<th>Đạm/ly</th>
+<th>Phù hợp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ensure Original</td>
+<td>250</td>
+<td>9g</td>
+<td>Suy dinh dưỡng chung</td>
+</tr>
+<tr>
+<td>Glucerna</td>
+<td>220</td>
+<td>9g</td>
+<td>Đái tháo đường + suy dd</td>
+</tr>
+<tr>
+<td>Prosure</td>
+<td>350</td>
+<td>18g</td>
+<td>Ung thư suy kiệt</td>
+</tr>
+<tr>
+<td>Forticare</td>
+<td>300</td>
+<td>14g</td>
+<td>Tăng đạm, cao calo</td>
+</tr>
+</tbody>
+</table>
+
+### 3. Chia nhỏ bữa ăn
+
+- **6-8 bữa/ngày** thay vì 3 bữa lớn
+- Mỗi bữa ½–1 chén thức ăn
+- Đặt lịch nhắc ăn nếu người bệnh hay quên
+- Luôn có sẵn đồ ăn nhẹ năng lượng cao
+
+## 🍲 Thực đơn tăng cường (2.000–2.500 kcal)
+
+<table>
+<thead>
+<tr>
+<th>Bữa</th>
+<th>Món</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6h30</td>
+<td>Cháo thịt bằm + 1 lòng đỏ trứng + 1 muỗng dầu</td>
+</tr>
+<tr>
+<td>9h00</td>
+<td>Sữa Ensure/Glucerna 1 ly</td>
+</tr>
+<tr>
+<td>11h30</td>
+<td>Cơm nát + cá kho/trứng luộc + canh rau nấu thịt + 1 muỗng dầu</td>
+</tr>
+<tr>
+<td>15h00</td>
+<td>Sữa chua + 1 trái chuối</td>
+</tr>
+<tr>
+<td>18h00</td>
+<td>Cháo gà/súp gà + 1 muỗng dầu</td>
+</tr>
+<tr>
+<td>20h30</td>
+<td>Sữa Ensure/Glucerna 1 ly</td>
+</tr>
+</tbody>
+</table>
+
+## ⚠️ Khi nào cần truyền ăn (Tube Feeding)?
+
+Không thể ăn qua đường miệng trong 5–7 ngày, hoặc ăn dưới 50% nhu cầu dù đã can thiệp bổ sung, cân nhắc nuôi ăn qua sonde (Nasogastric / PEG).
+
+**Bác sĩ sẽ chỉ định khi:**
+- Rối loạn nuốt nặng (tai biến, Parkinson, ung thư thực quản)
+- Chấn thương/bỏng nặng (nhu cầu rất cao)
+- Suy kiệt nặng không ăn uống được
+- Hôn mê, suy giảm ý thức
+**Cảnh báo:** Truyền ăn là kỹ thuật y tế. Không tự ý đặt sonde dạ dày tại nhà.
+
+</ArticleLayout>

@@ -1,0 +1,305 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "👶 Nhu cầu dinh dưỡng trẻ em — theo tuổi & cân nặng";
+const desc = "Tính nhanh nhu cầu năng lượng, đạm, canxi, sắt, vitamin cho trẻ từ 0–14 tuổi. Kèm hướng dẫn ăn dặm và sữa.";
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/nhu-cau-dinh-duong-tre-em">
+  <main class="content-page">
+    <div class="page-header">
+      <h1><span class="h-icon">👶</span><span class="h-text">Nhu cầu dinh dưỡng trẻ em</span></h1>
+      <p class="page-desc">{desc}</p>
+    </div>
+
+    <div class="section-label"><span class="sl-num">1</span> Thông tin của bé</div>
+    <div class="form-card">
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="gender">🧑 Giới tính</label>
+          <div class="input-wrap stage-wrap">
+            <select id="gender"><option value="boy">Nam</option><option value="girl">Nữ</option></select>
+            <span class="stage-arrow">▼</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="age">🎂 Tuổi</label>
+          <div class="input-wrap stage-wrap">
+            <select id="age">
+              <option value="0-6m">Sơ sinh 0–6 tháng</option>
+              <option value="6-12m">Trẻ nhỏ 6–12 tháng</option>
+              <option value="1-3y">Mẫu giáo 1–3 tuổi</option>
+              <option value="4-6y">Thiếu nhi 4–6 tuổi</option>
+              <option value="7-9y">Nhi đồng 7–9 tuổi</option>
+              <option value="10-14y">Vị thành niên 10–14 tuổi</option>
+            </select>
+            <span class="stage-arrow">▼</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="weight">⚖️ Cân nặng</label>
+          <div class="input-wrap"><input type="number" id="weight" value="20" min="2" max="100" step="0.1"><span class="input-suffix">kg</span></div>
+        </div>
+        <div class="form-row">
+          <label for="height">📏 Chiều cao</label>
+          <div class="input-wrap"><input type="number" id="height" value="110" min="40" max="180"><span class="input-suffix">cm</span></div>
+        </div>
+        <div class="form-row" style="grid-column:1/-1;">
+          <label for="activity">🏃 Mức vận động</label>
+          <div class="input-wrap stage-wrap">
+            <select id="activity"><option value="1.2">Ít vận động (ngồi chơi, tĩnh)</option><option value="1.4">Vận động nhẹ (đi lại, chơi nhẹ)</option><option value="1.6">Vận động nhiều (chạy nhảy, thể thao)</option></select>
+            <span class="stage-arrow">▼</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-calc" onclick="calculate()">✨ Tính nhu cầu</button>
+    </div>
+
+    <div id="result" style="display:none;">
+      <div class="section-label"><span class="sl-num">2</span> Đánh giá tăng trưởng</div>
+      <div class="assess-card">
+        <div class="assess-header">
+          <span class="assess-emoji">📊</span>
+          <div>
+            <div class="assess-title">So với chuẩn WHO</div>
+            <div class="assess-subtitle">Dựa trên chiều cao, cân nặng theo lứa tuổi</div>
+          </div>
+        </div>
+        <div id="growth-assessment" class="growth-assessment"></div>
+      </div>
+
+      <div class="section-label"><span class="sl-num">3</span> Nhu cầu dinh dưỡng</div>
+      <div class="nutrient-grid" id="nutrient-grid"></div>
+
+      <div class="section-label"><span class="sl-num">4</span> Hướng dẫn ăn uống</div>
+      <div class="guide-card">
+        <div id="feeding-guide" class="feeding-guide"></div>
+
+        <details style="margin-top:12px;">
+          <summary class="meal-summary">📋 Cấu trúc bữa ăn mẫu</summary>
+          <div id="meal-example" class="meal-example"></div>
+        </details>
+      </div>
+
+      <div class="section-label"><span class="sl-num">5</span> Thực phẩm cần ưu tiên</div>
+      <div class="focus-card">
+        <div id="focus-foods" class="focus-foods"></div>
+      </div>
+    </div>
+
+    <div class="safety-note">
+      <div class="safety-icon-col">⚠️</div>
+      <div class="safety-text-col">
+        <strong style="color:var(--ink);display:block;margin-bottom:4px;">Thông tin tham khảo</strong>
+        Dựa trên khuyến nghị của <strong>Viện Dinh dưỡng Quốc gia Việt Nam</strong> và <strong>WHO</strong>. Mỗi trẻ có tốc độ tăng trưởng khác nhau. Theo dõi biểu đồ tăng trưởng và tham khảo bác sĩ nếu lo lắng.
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .content-page { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+
+    .page-header { text-align:center; margin-bottom:28px; }
+    .page-header h1 { display:flex; align-items:center; justify-content:center; gap:12px; margin:0 0 10px; }
+    .h-icon { font-size:1.8rem; line-height:1; }
+    .h-text { font-size:1.65rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; }
+    .page-desc { max-width:560px; margin:0 auto; color:var(--ink-secondary); font-size:0.92rem; line-height:1.6; }
+
+    .section-label { display:flex; align-items:center; gap:10px; font-weight:700; font-size:0.9rem; margin:24px 0 12px; color:var(--ink); }
+    .section-label:first-of-type { margin-top:0; }
+    .sl-num { width:28px; height:28px; border-radius:50%; background:var(--brand-light); color:var(--brand); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:800; flex-shrink:0; }
+
+    .form-card { background:var(--card); border:2px solid var(--line); border-radius:16px; padding:24px; margin-bottom:8px; box-shadow:0 2px 8px rgba(0,0,0,0.04); transition:border-color 0.2s; }
+    .form-card:focus-within { border-color:var(--brand); }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; margin-bottom:18px; }
+    .form-row label { display:block; font-size:0.82rem; font-weight:600; margin-bottom:5px; color:var(--ink-secondary); }
+    .input-wrap { display:flex; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:10px; transition:border-color 0.15s; }
+    .input-wrap:focus-within { border-color:var(--brand); box-shadow:0 0 0 2px rgba(46,125,50,0.1); }
+    .input-wrap input, .input-wrap select { flex:1; border:none; background:transparent; padding:11px 12px; font-size:0.92rem; color:var(--ink); outline:none; box-sizing:border-box; width:100%; }
+    .input-wrap select { appearance:none; -webkit-appearance:none; cursor:pointer; font-weight:500; }
+    .input-suffix { padding-right:12px; font-size:0.78rem; color:var(--ink-tertiary); font-weight:500; }
+    .stage-wrap { position:relative; }
+    .stage-arrow { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:0.65rem; color:var(--ink-tertiary); pointer-events:none; }
+
+    .btn-calc { width:100%; padding:14px; border:none; border-radius:12px; background:linear-gradient(135deg,#2e7d32,#388e3c); color:white; font-size:1rem; font-weight:700; cursor:pointer; transition:all 0.15s; font-family:inherit; box-shadow:0 2px 8px rgba(46,125,50,0.2); }
+    .btn-calc:hover { opacity:0.9; transform:translateY(-1px); box-shadow:0 4px 12px rgba(46,125,50,0.3); }
+    .btn-calc:active { transform:translateY(0); }
+
+    .assess-card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:8px; box-shadow:0 2px 6px rgba(0,0,0,0.04); }
+    .assess-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .assess-emoji { font-size:1.8rem; line-height:1; }
+    .assess-title { font-weight:700; font-size:0.95rem; }
+    .assess-subtitle { font-size:0.78rem; color:var(--ink-tertiary); margin-top:2px; }
+    .growth-assessment { font-size:0.9rem; line-height:1.7; }
+    .growth-assessment .status-normal { color:#2e7d32; font-weight:600; }
+    .growth-assessment .status-warn { color:#e65100; font-weight:600; }
+    .growth-assessment .status-danger { color:#c62828; font-weight:600; }
+
+    .nutrient-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:10px; margin-bottom:8px; }
+    .nutrient-card { position:relative; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 14px 14px; text-align:center; transition:border-color 0.15s, transform 0.15s; }
+    .nutrient-card:hover { border-color:var(--brand-light2); transform:translateY(-2px); }
+    .nutrient-icon { font-size:1.4rem; line-height:1; }
+    .nutrient-name { font-weight:600; font-size:0.78rem; margin:8px 0 4px; color:var(--ink-secondary); text-transform:uppercase; letter-spacing:0.04em; }
+    .nutrient-value { font-size:1.35rem; font-weight:800; color:var(--brand); line-height:1.2; }
+    .nutrient-unit { font-size:0.7rem; color:var(--ink-tertiary); margin-bottom:6px; }
+    .nutrient-desc { font-size:0.75rem; color:var(--ink-tertiary); line-height:1.4; }
+
+    .guide-card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:8px; }
+    .feeding-guide { font-size:0.88rem; line-height:1.7; }
+    .feeding-guide ul { padding-left:18px; margin:6px 0; }
+    .feeding-guide li { margin-bottom:4px; }
+    .meal-summary { cursor:pointer;font-weight:600;color:var(--ink-secondary);padding:8px 0;font-size:0.88rem; }
+    .meal-example { padding:14px 0;font-size:0.85rem;line-height:1.7; }
+    .meal-example strong { color:var(--brand); }
+
+    .focus-card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:8px; }
+    .focus-foods { font-size:0.88rem; line-height:1.7; }
+    .focus-foods strong { color:var(--brand); }
+    .focus-foods p { margin:8px 0; padding:8px 12px; background:var(--bg-soft); border-radius:8px; border-left:3px solid var(--brand-light2); }
+
+    .safety-note { display:flex; align-items:flex-start; gap:12px; margin-top:20px; padding:16px 18px; background:var(--bg-soft); border:1px solid var(--line-light); border-radius:12px; font-size:0.82rem; line-height:1.6; }
+    .safety-icon-col { flex-shrink:0; font-size:1.1rem; }
+    .safety-text-col { flex:1; color:var(--ink-secondary); }
+
+    @media (max-width:600px) {
+      .content-page { padding:20px 14px; }
+      .h-text { font-size:1.25rem; }
+      .form-grid { grid-template-columns:1fr; gap:12px; }
+      .nutrient-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
+      .page-header h1 { gap:8px; }
+    }
+  </style>
+
+  <script is:inline>
+  function calculate() {
+    var gender = document.getElementById('gender').value;
+    var age = document.getElementById('age').value;
+    var weight = parseFloat(document.getElementById('weight').value) || 10;
+    var height = parseFloat(document.getElementById('height').value) || 80;
+    var activity = parseFloat(document.getElementById('activity').value) || 1.4;
+
+    // ---- Growth assessment ----
+    // WHO median weight for height approximate
+    var expectedData = {
+      'boy': { '0-6m': 7.5, '6-12m': 9.0, '1-3y': 12.5, '4-6y': 19.0, '7-9y': 26.0, '10-14y': 43.0 },
+      'girl': { '0-6m': 7.0, '6-12m': 8.5, '1-3y': 12.0, '4-6y': 18.5, '7-9y': 25.5, '10-14y': 44.0 }
+    };
+    var expectedHt = {
+      '0-6m': 66, '6-12m': 74, '1-3y': 90, '4-6y': 110, '7-9y': 130, '10-14y': 155
+    };
+
+    var expWt = expectedData[gender][age];
+    var expHt = expectedHt[age];
+    var wtPct = weight / expWt * 100;
+    var htPct = height / expHt * 100;
+
+    var growthHtml = '';
+    if (wtPct < 60) {
+      growthHtml = '<p><span class="status-danger">🔴 Suy dinh dưỡng nặng</span> — Cân nặng chỉ ' + Math.round(wtPct) + '% so với chuẩn. Cần khám bác sĩ ngay.</p>';
+    } else if (wtPct < 80) {
+      growthHtml = '<p><span class="status-warn">🟡 Suy dinh dưỡng vừa</span> — Cân nặng ' + Math.round(wtPct) + '% chuẩn. Cần điều chỉnh chế độ ăn.</p>';
+    } else if (wtPct < 90) {
+      growthHtml = '<p><span class="status-warn">🟡 Nguy cơ nhẹ cân</span> — Cân nặng ' + Math.round(wtPct) + '% chuẩn. Theo dõi thêm.</p>';
+    } else if (wtPct <= 120) {
+      growthHtml = '<p><span class="status-normal">🟢 Bình thường</span> — Cân nặng và chiều cao trong khoảng phù hợp với lứa tuổi.</p>';
+    } else if (wtPct <= 140) {
+      growthHtml = '<p><span class="status-warn">🟡 Thừa cân</span> — Cân nặng ' + Math.round(wtPct) + '% chuẩn. Cần kiểm soát khẩu phần, tăng vận động.</p>';
+    } else {
+      growthHtml = '<p><span class="status-danger">🔴 Béo phì</span> — Cân nặng >140% chuẩn. Cần can thiệp dinh dưỡng và khám bác sĩ.</p>';
+    }
+    if (htPct < 90) {
+      growthHtml += '<p style="margin-top:6px;"><span class="status-warn">📏 Chiều cao thấp ' + Math.round(htPct) + '% chuẩn</span> — Cần bổ sung canxi, vitamin D, kẽm, đạm.</p>';
+    } else {
+      growthHtml += '<p style="margin-top:6px;color:var(--ink-secondary);">📏 Chiều cao ' + Math.round(htPct) + '% so với chuẩn.</p>';
+    }
+    document.getElementById('growth-assessment').innerHTML = growthHtml;
+
+    // ---- Nutrient targets ----
+    var data = {
+      '0-6m': { kcalPerKg: 100, protein: 10, fat: 30, carb: 55, calcium: 300, iron: 0.3, vitD: 400, zinc: 2, vitA: 400, vitC: 25, fiber: 0 },
+      '6-12m': { kcalPerKg: 85, protein: 20, fat: 28, carb: 60, calcium: 400, iron: 11, vitD: 400, zinc: 3, vitA: 500, vitC: 30, fiber: 5 },
+      '1-3y': { kcalPerKg: 95, protein: 25, fat: 30, carb: 130, calcium: 500, iron: 7, vitD: 600, zinc: 4, vitA: 300, vitC: 30, fiber: 8 },
+      '4-6y': { kcalPerKg: 85, protein: 35, fat: 35, carb: 170, calcium: 600, iron: 10, vitD: 600, zinc: 5, vitA: 400, vitC: 35, fiber: 12 },
+      '7-9y': { kcalPerKg: 70, protein: 40, fat: 38, carb: 210, calcium: 700, iron: 12, vitD: 600, zinc: 6, vitA: 500, vitC: 40, fiber: 15 },
+      '10-14y': { kcalPerKg: 50, protein: 50, fat: 45, carb: 250, calcium: 1000, iron: gender==='girl' ? 15 : 12, vitD: 800, zinc: 8, vitA: 600, vitC: 45, fiber: 18 }
+    };
+    var d = data[age];
+    var calories = Math.round(weight * d.kcalPerKg * activity);
+
+    // Adjust puberty iron for girls
+    if (gender === 'girl' && age === '10-14y') d.iron = 18;
+
+    var calDesc = age === '0-6m' ? 'Sữa mẹ hoặc sữa công thức là nguồn duy nhất' :
+                 age === '6-12m' ? 'Sữa mẹ + ăn dặm 2–3 bữa/ngày' :
+                 'Tính theo cân nặng × ' + d.kcalPerKg + ' × mức vận động ' + activity;
+
+    var nutrients = [
+      { icon: '🔥', name: 'Năng lượng', value: calories, unit: 'kcal/ngày', desc: calDesc },
+      { icon: '🥩', name: 'Đạm', value: d.protein + 'g', unit: '/ngày', desc: d.protein + 'g là mức tối thiểu cho lứa tuổi' },
+      { icon: '🫘', name: 'Chất béo', value: d.fat + 'g', unit: '/ngày', desc: age === '0-6m' ? 'Rất quan trọng cho phát triển não' : 'Cung cấp năng lượng' },
+      { icon: '🌾', name: 'Carb', value: d.carb + 'g', unit: '/ngày', desc: age === '0-6m' ? 'Chủ yếu từ đường lactose trong sữa' : 'Từ cơm, cháo, bún, bánh mì' },
+      { icon: '🦴', name: 'Canxi', value: d.calcium + 'mg', unit: '/ngày', desc: age === '10-14y' ? 'Giai đoạn phát triển chiều cao tối đa!' : 'Cho xương và răng chắc khỏe' },
+      { icon: '🩸', name: 'Sắt', value: d.iron + 'mg', unit: '/ngày', desc: gender==='girl'&&age==='10-14y' ? 'Bé gái tuổi dậy thì cần nhiều sắt hơn (kinh nguyệt)' : 'Ngừa thiếu máu' },
+      { icon: '☀️', name: 'Vitamin D', value: d.vitD + 'IU', unit: '/ngày', desc: 'Tắm nắng sáng 15–20 phút. Bổ sung nếu cần.' },
+      { icon: '🧪', name: 'Kẽm', value: d.zinc + 'mg', unit: '/ngày', desc: 'Tăng cường miễn dịch, ăn ngon miệng' },
+      { icon: '🌿', name: 'Chất xơ', value: d.fiber + 'g', unit: '/ngày', desc: d.fiber === 0 ? 'Chưa cần bổ sung' : 'Chống táo bón' }
+    ];
+
+    var grid = document.getElementById('nutrient-grid');
+    grid.innerHTML = nutrients.map(function(n) {
+      return '<div class="nutrient-card">' +
+        '<div class="nutrient-icon">' + n.icon + '</div>' +
+        '<div class="nutrient-name">' + n.name + '</div>' +
+        '<div class="nutrient-value">' + n.value + '</div>' +
+        '<div class="nutrient-unit">' + n.unit + '</div>' +
+        '<div class="nutrient-desc">' + n.desc + '</div>' +
+      '</div>';
+    }).join('');
+
+    // ---- Feeding guide ----
+    var guides = {
+      '0-6m': '<ul><li>🍼 <strong>Bú mẹ hoàn toàn</strong> — không cần nước, không cần ăn thêm</li><li>🕐 Bú theo nhu cầu: 8–12 lần/ngày</li><li>💧 Không cho trẻ uống nước lọc, nước cam, nước cơm... trước 6 tháng</li><li>☀️ Bổ sung vitamin D 400 IU/ngày từ ngày thứ 3 sau sinh</li><li>⚠️ Nếu không có sữa mẹ: dùng sữa công thức số 1 (theo hướng dẫn)</li></ul>',
+      '6-12m': '<ul><li>🍼 <strong>Sữa mẹ vẫn là chính</strong> — bú 600–800ml sữa/ngày</li><li>🥣 <strong>Ăn dặm</strong>: bắt đầu từ bột/cháo loãng → đặc dần</li><li>🥩 Thêm đạm (thịt, cá, trứng, tôm, đậu) từ tháng thứ 7–8</li><li>🥦 Rau xanh nghiền nhuyễn, dầu ăn (2–3 muỗng cafe/ngày)</li><li>🍎 Cho ăn trái cây nghiền, trái cây mềm cắt nhỏ</li><li>⚠️ Không thêm muối, đường, mật ong (nguy cơ botulism dưới 1 tuổi)</li></ul>',
+      '1-3y': '<ul><li>🍼 <strong>Sữa</strong>: 300–500ml sữa/ngày (sữa tươi nguyên kem hoặc F2/F3)</li><li>🥣 <strong>3 bữa chính + 2 bữa phụ</strong> (sữa chua, trái cây, phô mai)</li><li>🍚 Mỗi bữa: 1 chén cháo/cháo đặc/cơm nát (120–150g) + 30g đạm + rau</li><li>🥦 Ăn đa dạng: 4 nhóm (tinh bột, đạm, rau, chất béo)</li><li>🍪 Hạn chế: kẹo, bánh ngọt, nước ngọt, bim bim</li></ul>',
+      '4-6y': '<ul><li>🍼 <strong>Sữa</strong>: 300–400ml sữa tươi/ngày</li><li>🥣 <strong>3 bữa chính + 2 bữa phụ</strong></li><li>🍚 Mỗi bữa: 1 chén cơm + 50–70g đạm + rau xanh + canh</li><li>🍎 Trái cây: 1–2 phần/ngày (1 phần = 1 quả chuối/quả cam)</li><li>🍪 Hạn chế: đồ ngọt, chiên rán, nước ngọt — dễ gây thừa cân</li><li>🏃 Khuyến khích chạy nhảy, chơi thể thao 60 phút/ngày</li></ul>',
+      '7-9y': '<ul><li>🥣 <strong>3 bữa chính + 1–2 bữa phụ</strong></li><li>🍚 Mỗi bữa: 1–1,5 chén cơm + 70–100g đạm + rau + canh</li><li>🍼 Sữa: 300ml sữa tươi/ngày (sữa chua, phô mai)</li><li>🏃 Tập thể dục, thể thao 60 phút/ngày</li><li>📵 Hạn chế màn hình, đảm bảo ngủ đủ 9–11h/đêm</li><li>⚠️ Giai đoạn chuẩn bị dậy thì — cần chú ý dinh dưỡng tốt để tăng trưởng chiều cao</li></ul>',
+      '10-14y': '<ul><li>🥣 <strong>3 bữa chính + 2–3 bữa phụ</strong> — trẻ lớn nhanh, nhu cầu cao</li><li>🍚 Mỗi bữa: 1,5–2,5 chén cơm + 100–150g đạm + rau xanh</li><li>🍼 Sữa: 400–500ml sữa tươi/ngày (ưu tiên sữa giàu canxi)</li><li>🦴 <strong>Giai đoạn vàng cho chiều cao</strong> — canxi, vitamin D, kẽm rất quan trọng</li><li>🩸 Bé gái cần bổ sung sắt nhiều hơn (kinh nguyệt)</li><li>🏃 Thể thao ít nhất 60 phút/ngày, ngủ 8–10h/đêm</li><li>🍪 Tránh đồ ăn nhanh, nước ngọt, thức khuya</li></ul>'
+    };
+    document.getElementById('feeding-guide').innerHTML = guides[age];
+
+    // ---- Meal example ----
+    var meals = {
+      '0-6m': '🍼 Sữa mẹ bú theo nhu cầu, 8–12 lần/ngày. Không ăn uống gì thêm.',
+      '6-12m': '<strong>🌅 Sáng:</strong> Cháo/bột thịt heo + cà rốt nghiền<br><strong>🌞 Trưa:</strong> Cháo/bột tôm + rau ngót nghiền + 1 muỗng cafe dầu ăn<br><strong>🌆 Chiều:</strong> Sữa mẹ + trái cây nghiền (chuối, đu đủ, táo)<br><strong>🌙 Tối:</strong> Cháo/bột cá lóc hấp + bí đỏ nghiền + dầu ăn',
+      '1-3y': '<strong>🌅 Sáng:</strong> Cháo thịt bò + cà rốt + 1 ly sữa (~200ml)<br><strong>🌞 Trưa:</strong> Cơm nát + cá kho + canh rau ngót + 1 miếng đu đủ<br><strong>🌆 Chiều:</strong> Sữa chua 1 hộp + 1 quả chuối<br><strong>🌙 Tối:</strong> Cơm nát + thịt gà xào bông cải + canh bí',
+      '4-6y': '<strong>🌅 Sáng:</strong> Bánh mì trứng ốp la + 1 ly sữa 200ml<br><strong>🌞 Trưa:</strong> 1 chén cơm + thịt kho + canh rau muống + trái cây<br><strong>🌆 Chiều:</strong> 1 hộp sữa chua + 1 miếng phô mai + trái cây<br><strong>🌙 Tối:</strong> 1 chén cơm + cá rô kho tộ + canh bí đỏ',
+      '7-9y': '<strong>🌅 Sáng:</strong> Phở/bún bò + 1 ly sữa 200ml<br><strong>🌞 Trưa:</strong> 1–1,5 chén cơm + thịt heo luộc + rau luộc + canh<br><strong>🌆 Chiều:</strong> Trái cây + sữa chua/hạt khô<br><strong>🌙 Tối:</strong> 1–1,5 chén cơm + cá hấp + canh rau + trái cây',
+      '10-14y': '<strong>🌅 Sáng:</strong> Xôi/bánh mì + 1 ly sữa + trái cây<br><strong>🌞 Trưa:</strong> 1,5–2 chén cơm + thịt bò xào + canh rau + trái cây<br><strong>🌆 Chiều:</strong> Sữa chua + bánh mì nguyên cám + hạt dinh dưỡng<br><strong>🌙 Tối:</strong> 1,5–2 chén cơm + tôm rang + canh khoai mỡ + trái cây'
+    };
+    document.getElementById('meal-example').innerHTML = meals[age];
+
+    // ---- Focus foods ----
+    var focusHtml = '';
+    if (age === '0-6m') {
+      focusHtml = '<p><strong>Sữa mẹ</strong> là thức ăn hoàn chỉnh. Nếu không đủ: sữa công thức số 1 pha đúng hướng dẫn.</p>';
+    } else if (age === '6-12m') {
+      focusHtml = '<p><strong>🥩 Đạm:</strong> thịt nạc heo, gà, bò, cá lóc, tôm, lươn, trứng, đậu phụ (nghiền nhuyễn)</p><p><strong>🥦 Rau:</strong> rau ngót, cải bó xôi, bí đỏ, cà rốt, bông cải</p><p><strong>🫘 Dầu ăn:</strong> dầu oliu, dầu mè, dầu cá — 2–3 muỗng cafe/ngày</p><p><strong>🍎 Trái cây:</strong> chuối, đu đủ, bơ, táo, thanh long</p>';
+    } else if (age === '1-3y') {
+      focusHtml = '<p><strong>🥩 Đạm:</strong> thịt (30–40g/bữa), cá, trứng (1 quả/ngày), tôm, đậu hũ</p><p><strong>🥦 Rau xanh:</strong> rau ngót, cải bó xôi, mồng tơi, bí đỏ</p><p><strong>🍳 Chất béo:</strong> dầu ăn 2 muỗng cafe/ngày, phô mai, bơ</p><p><strong>🍼 Sữa:</strong> 300–500ml sữa tươi nguyên kem + sữa chua</p>';
+    } else if (age === '4-6y') {
+      focusHtml = '<p><strong>🥩 Đạm:</strong> thịt, cá, trứng, tôm, đậu nành — 50–70g/bữa</p><p><strong>🦴 Canxi:</strong> sữa 300–400ml + phô mai + sữa chua + cá nhỏ ăn cả xương</p><p><strong>🥦 Chất xơ:</strong> rau xanh 150g/ngày + trái cây 1–2 phần</p><p><strong>🩸 Sắt:</strong> thịt bò, tiết, tim, đậu đỗ — ăn kèm vitamin C (cam, bưởi)</p>';
+    } else if (age === '7-9y') {
+      focusHtml = '<p><strong>🦴 Canxi & Vit D:</strong> sữa 300ml/ngày + phô mai + cá nhỏ + tắm nắng 20 phút/ngày</p><p><strong>🥩 Đạm:</strong> thịt, cá, trứng, đậu — 70–100g/bữa</p><p><strong>🩸 Sắt:</strong> thịt bò, tim, lòng đỏ trứng, rau xanh đậm + cam</p><p><strong>💧 Nước:</strong> 1,2–1,6 lít/ngày (kể cả súp, canh, sữa)</p>';
+    } else {
+      focusHtml = '<p><strong>🦴 Canxi (quan trọng nhất!):</strong> sữa 400–500ml/ngày + sữa chua + phô mai + cải xoăn + cá hồi</p><p><strong>🥩 Đạm:</strong> thịt (100–150g/bữa), cá, trứng, tôm, đậu nành, hạt</p><p><strong>🩸 Sắt (bé gái):</strong> thịt bò, tim, lòng đỏ trứng, rau dền, cải bó xôi</p><p><strong>🌰 Kẽm:</strong> tôm đồng, hàu, thịt bò, lòng đỏ trứng, hạt bí, đậu</p><p><strong>💧 Nước:</strong> 1,6–2 lít/ngày. Hạn chế nước ngọt, trà sữa!</p>';
+    }
+    document.getElementById('focus-foods').innerHTML = focusHtml;
+
+    document.getElementById('result').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('result').offsetTop - 20, behavior: 'smooth' });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(calculate, 100);
+  });
+  </script>
+</BaseLayout>

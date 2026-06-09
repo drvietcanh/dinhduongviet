@@ -1,0 +1,85 @@
+---
+import type { Food } from "../data/nutrition";
+import { allTags, tagLabel, confidenceLabel, formatValue } from "../lib/nutrition";
+import FoodIcon from "./FoodIcon.astro";
+
+const { food, compact = false } = Astro.props as { food: Food; compact?: boolean };
+const tags = allTags(food);
+const kcal = food.nutrients.energyKcal;
+const carb = food.nutrients.carbG ?? 0;
+const protein = food.nutrients.proteinG ?? 0;
+const fat = food.nutrients.fatG ?? 0;
+const fiber = food.nutrients.fiberG ?? 0;
+const sodium = food.nutrients.sodiumMg ?? 0;
+const potassium = food.nutrients.potassiumMg ?? 0;
+const gi = food.nutrients.glycemicIndex ?? "";
+---
+
+<a class="food-card card" href={`/thuc-pham/${food.slug}`}
+  data-tags={tags.join(' ')}
+  data-category={food.category}
+  data-kcal={kcal}
+  data-protein={protein}
+  data-carb={carb}
+  data-fat={fat}
+  data-fiber={fiber}
+  data-sodium={sodium}
+  data-potassium={potassium}
+  data-gi={gi}>
+  <div class="food-icon-area">
+    <FoodIcon category={food.category} />
+  </div>
+  <div class="food-card-body">
+    <span class="badge">{confidenceLabel(food.confidence)}</span>
+    <h3>{food.name}</h3>
+    <div class="food-macro">
+      <span class="macro-kcal">{kcal} kcal</span>
+      <span class="macro-sep">·</span>
+      <span>Carb {formatValue(carb)}g</span>
+      <span class="macro-sep">·</span>
+      <span>Đạm {formatValue(protein)}g</span>
+    </div>
+    {!compact && <div class="food-tags">
+      {tags.slice(0, 3).map(t => <span class="mini-tag">{tagLabel(t)}</span>)}
+    </div>}
+  </div>
+</a>
+
+<style>
+  .food-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  .food-card:hover { border-color: var(--brand); }
+  .food-icon-area {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+  }
+  .food-card-body { flex: 1; min-width: 0; }
+  .food-card-body h3 { margin: 4px 0 2px; font-size: 1rem; }
+  .badge { font-size: 0.7rem; }
+  .food-macro {
+    font-size: 0.82rem;
+    color: var(--ink-secondary);
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .macro-sep { color: var(--line); }
+  .food-tags { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
+  .mini-tag {
+    font-size: 0.68rem; padding: 1px 8px;
+    border-radius: 999px; background: var(--brand-light);
+    color: var(--brand); font-weight: 500;
+  }
+</style>

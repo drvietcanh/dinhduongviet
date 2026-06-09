@@ -1,0 +1,96 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["chat-xo"];
+if (!art) throw new Error("Article not found: chat-xo");
+---
+
+<ArticleLayout article={art}>
+<article style="max-width: 720px; margin: 0 auto; padding: 20px 0;">
+    
+    <p style="color:var(--ink-secondary); font-size:0.9rem; margin-bottom:24px;">Đăng ngày 02/06/2026 — 6 phút đọc</p>
+
+    <section>
+      <h2>Chất xơ là gì?</h2>
+      <p>Chất xơ (fiber) là phần carbohydrate không thể tiêu hóa được trong thực phẩm thực vật. Không giống như tinh bột và đường, chất xơ đi qua hệ tiêu hóa gần như nguyên vẹn. Có hai loại chất xơ chính:</p>
+      <ul>
+        <li><strong>Chất xơ hòa tan:</strong> tan trong nước, tạo gel — giúp giảm cholesterol và đường huyết. Có trong yến mạch, đậu, táo, cà rốt.</li>
+        <li><strong>Chất xơ không hòa tan:</strong> không tan, giúp nhuận tràng và ngăn táo bón. Có trong lúa mì nguyên cám, rau xanh, hạt.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>1. Hỗ trợ tiêu hóa và phòng ngừa táo bón</h2>
+      <p>Chất xơ không hòa tan làm tăng khối lượng phân và rút ngắn thời gian lưu thông trong ruột. Một nghiên cứu trên <em>American Journal of Gastroenterology</em> cho thấy bổ sung 25g chất xơ/ngày giảm 36% nguy cơ táo bón ở người lớn.</p>
+      <p>Chất xơ hòa tan lên men trong ruột già tạo ra acid béo chuỗi ngắn (SCFA) — nguồn năng lượng cho tế bào niêm mạc ruột, giúp duy trì hàng rào ruột khỏe mạnh.</p>
+    </section>
+
+    <section>
+      <h2>2. Kiểm soát đường huyết</h2>
+      <p>Chất xơ hòa tan làm chậm hấp thu đường, giúp đường huyết không tăng đột biến sau ăn. Một phân tích gộp 15 thử nghiệm lâm sàng cho thấy chế độ ăn giàu chất xơ (≥25g/ngày) giảm HbA1c trung bình 0.5% ở bệnh nhân đái tháo đường type 2.</p>
+    </section>
+
+    <section>
+      <h2>3. Giảm cholesterol và bảo vệ tim mạch</h2>
+      <p>Chất xơ hòa tan (đặc biệt beta-glucan trong yến mạch) liên kết với acid mật trong ruột, kéo cholesterol ra ngoài theo phân. Một đánh giá năm 2018 trên <em>Nutrition Reviews</em> kết luận: ăn thêm 10g chất xơ/ngày giảm 12% nguy cơ tim mạch và 15% nguy cơ tử vong do bệnh tim.</p>
+    </section>
+
+    <section>
+      <h2>4. Hỗ trợ kiểm soát cân nặng</h2>
+      <p>Chất xơ tạo cảm giác no lâu, giảm tổng năng lượng nạp vào. Mỗi 10g chất xơ bổ sung thêm mỗi ngày có thể giảm 0.5kg cân nặng sau 6 tháng (theo nghiên cứu trong <em>Obesity Reviews</em>).</p>
+    </section>
+
+    <section>
+      <h2>5. Giảm nguy cơ ung thư đại tràng</h2>
+      <p>Chất xơ làm loãng nồng độ chất gây ung thư, rút ngắn thời gian tiếp xúc qua niêm mạc ruột. Tổ chức Y tế Thế giới (WHO) khuyến cáo ăn ≥25g chất xơ/ngày để giảm nguy cơ ung thư đại trực tràng.</p>
+    </section>
+
+    <section>
+      <h2>Khuyến nghị chất xơ cho người Việt</h2>
+      <table style="width:100%; border-collapse:collapse; margin-bottom:16px; font-size:0.9rem;">
+        <thead>
+          <tr style="background:var(--bg-elevated);"><th style="padding:8px;border:1px solid var(--line);text-align:left;">Nhóm</th><th style="padding:8px;border:1px solid var(--line);">Khuyến nghị</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:8px;border:1px solid var(--line);">Người lớn (nam)</td><td style="padding:8px;border:1px solid var(--line);text-align:center;">30-35g/ngày</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--line);">Người lớn (nữ)</td><td style="padding:8px;border:1px solid var(--line);text-align:center;">25-30g/ngày</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--line);">Trẻ em (4-8 tuổi)</td><td style="padding:8px;border:1px solid var(--line);text-align:center;">20-25g/ngày</td></tr>
+          <tr><td style="padding:8px;border:1px solid var(--line);">Người đái tháo đường</td><td style="padding:8px;border:1px solid var(--line);text-align:center;">30-40g/ngày</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Thực phẩm Việt giàu chất xơ:</strong></p>
+      <ul>
+        <li><strong>Rau lá xanh:</strong> rau ngót (3,4g/100g), rau dền (2,8g), cải xoăn (3,6g)</li>
+        <li><strong>Đậu đỗ:</strong> đậu xanh (11,5g), đậu đen (15,5g), đậu Hà Lan (8,3g)</li>
+        <li><strong>Trái cây:</strong> ổi (5,4g), lê (3,1g), táo (2,4g), cam (2,1g)</li>
+        <li><strong>Hạt và ngũ cốc:</strong> gạo lứt (1,8g), yến mạch (10g), hạt chia (34g)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Lưu ý khi tăng chất xơ</h2>
+      <ol>
+        <li><strong>Tăng từ từ:</strong> bắt đầu với lượng nhỏ, tăng dần trong 2-3 tuần để ruột thích nghi.</li>
+        <li><strong>Uống đủ nước:</strong> chất xơ hút nước — cần 2-2.5L/ngày để tránh tắc nghẽn.</li>
+        <li><strong>Kết hợp hai loại:</strong> cả hòa tan và không hòa tan đều quan trọng.</li>
+        <li><strong>Tham khảo bác sĩ:</strong> nếu bạn có hội chứng ruột kích thích (IBS) hoặc bệnh viêm ruột (IBD).</li>
+      </ol>
+    </section>
+
+    <div style="margin-top:30px; padding-top:20px; border-top:1px solid var(--line);">
+      <p><strong>Nguồn tham khảo:</strong></p>
+      <ul style="font-size:0.85rem; color:var(--ink-secondary);">
+        <li>American Journal of Gastroenterology (2019) — Fiber intake and constipation risk.</li>
+        <li>Nutrition Reviews (2018) — Dietary fiber and cardiovascular disease.</li>
+        <li>Obesity Reviews (2020) — Fiber and weight management.</li>
+        <li>WHO Guidelines on Carbohydrate Intake (2023).</li>
+        <li>Bảng thành phần thực phẩm Việt Nam — Viện Dinh dưỡng Quốc gia (2007).</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:20px;">
+      <a href="/kien-thuc-dinh-duong" class="button compact">← Quay lại bài viết kiến thức</a>
+      <a href="/cong-cu/muc-tieu-dinh-duong" class="button secondary compact">🎯 Tính mục tiêu dinh dưỡng</a>
+    </div>
+  </article>
+</ArticleLayout>

@@ -1,0 +1,369 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SearchBox from "../../components/SearchBox.astro";
+import DataSummary from "../../components/DataSummary.astro";
+import FoodCard from "../../components/FoodCard.astro";
+import FoodIcon from "../../components/FoodIcon.astro";
+import { foods } from "../../data/nutrition";
+import { allTags, tagLabel } from "../../lib/nutrition";
+
+const groups = foods.reduce<Record<string, typeof foods>>((acc, food) => {
+  acc[food.category] ??= [];
+  acc[food.category].push(food);
+  return acc;
+}, {});
+const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
+---
+
+<BaseLayout title="Danh sách thực phẩm - Dinh Dưỡng Việt">
+  <section>
+    <h1>Danh sách thực phẩm</h1>
+    <p class="lead">Chọn thực phẩm theo nhóm hoặc dùng ô tìm kiếm.</p>
+    <div style="margin-top: 18px;">
+      <SearchBox />
+    </div>
+    <div class="filter-panel" aria-label="Bộ lọc thực phẩm nâng cao">
+      <div class="filter-row">
+        <label>
+          <span>Nhóm</span>
+          <select id="category-filter">
+            <option value="all">Tất cả nhóm</option>
+            {categories.map((category) => <option value={category}>{category}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>Sắp xếp</span>
+          <select id="sort-select">
+            <option value="name-asc">Tên A→Z</option>
+            <option value="name-desc">Tên Z→A</option>
+            <option value="calo-asc">Calo thấp → cao</option>
+            <option value="calo-desc">Calo cao → thấp</option>
+            <option value="protein-desc">Đạm cao → thấp</option>
+            <option value="sodium-asc">Natri thấp → cao</option>
+            <option value="fiber-desc">Chất xơ cao → thấp</option>
+          </select>
+        </label>
+        <label>
+          <span>Hồ sơ nhanh</span>
+          <select id="profile-filter">
+            <option value="all">Không áp dụng</option>
+            <option value="diabetes">ĐTĐ: GI/GL thấp</option>
+            <option value="hypertension">THA: ít natri</option>
+            <option value="gout">Gout: ít purin</option>
+            <option value="ckd">Suy thận: ít natri/kali</option>
+            <option value="weight">Giảm cân: kcal thấp, xơ cao</option>
+          </select>
+        </label>
+      </div>
+      <div class="filter-row numeric-row">
+        <label><span>Kcal tối đa</span><input id="max-kcal" type="number" min="0" step="10" placeholder="vd 150" /></label>
+        <label><span>Đạm tối thiểu</span><input id="min-protein" type="number" min="0" step="1" placeholder="g/100g" /></label>
+        <label><span>Carb tối đa</span><input id="max-carb" type="number" min="0" step="1" placeholder="g/100g" /></label>
+        <label><span>Natri tối đa</span><input id="max-sodium" type="number" min="0" step="10" placeholder="mg/100g" /></label>
+        <button id="reset-filters" class="button secondary" type="button">Xóa lọc</button>
+      </div>
+      <p class="muted" id="filter-summary"></p>
+    </div>
+    <div class="quick-nav" style="margin-top: 12px;">
+      <span class="muted" style="font-size: 0.85rem;">Nhảy nhanh: </span>
+      {Object.entries(groups).map(([category, items]) => (
+        <a class="badge" href={`#${encodeURIComponent(category)}`}>{category} · {items.length}</a>
+      ))}
+    </div>
+  </section>
+
+  <DataSummary compact />
+
+  <!-- Tag filter bar -->
+  <div class="filter-bar" style="margin: 16px 0;">
+    <span class="muted" style="margin-right: 8px;">Lọc: </span>
+    <button class="badge filter-btn active" data-filter="all">Tất cả</button>
+    <button class="badge filter-btn" data-filter="vegan">🌱 Thuần chay</button>
+    <button class="badge filter-btn" data-filter="high-protein">💪 Nhiều đạm</button>
+    <button class="badge filter-btn" data-filter="low-fat">🌿 Ít béo</button>
+    <button class="badge filter-btn" data-filter="glycemic-index-low">⬇ GI thấp</button>
+    <button class="badge filter-btn" data-filter="glycemic-index-high">⬆ GI cao</button>
+    <button class="badge filter-btn" data-filter="low-purine">🟢 Ít purin</button>
+    <button class="badge filter-btn" data-filter="high-purine">🔴 Nhiều purin</button>
+    <button class="badge filter-btn" data-filter="low-sodium">🧂 Ít natri</button>
+    <button class="badge filter-btn" data-filter="high-sodium">🧂 Nhiều natri</button>
+    <button class="badge filter-btn" data-filter="high-fiber">🌿 Giàu xơ</button>
+    <button class="badge filter-btn" data-filter="high-calcium">🦴 Nhiều canxi</button>
+  </div>
+
+  <!-- Foods rendered client-side from JSON -->
+  <div id="foods-container"><p class="muted" id="foods-loading">Đang tải dữ liệu thực phẩm...</p></div>
+</BaseLayout>
+
+<style>
+  .quick-nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .filter-panel {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+  .filter-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    align-items: end;
+  }
+  .filter-row + .filter-row { margin-top: 10px; }
+  .filter-row label { display: grid; gap: 5px; }
+  .filter-row label span {
+    font-size: 0.82rem;
+    color: var(--ink-secondary);
+    font-weight: 600;
+  }
+  .filter-row select,
+  .filter-row input {
+    min-height: 38px;
+    padding: 0 10px;
+  }
+  .numeric-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .filter-btn.active { background: var(--brand); color: white; border-color: var(--brand); }
+  .filter-btn { cursor: pointer; border: 1px solid var(--line); user-select: none; }
+  .food-group.is-empty { display: none; }
+  @media (max-width: 760px) {
+    .filter-row,
+    .numeric-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .food-grid { grid-template-columns: 1fr; gap: 10px; }
+    .food-card { padding: 12px; }
+    .filter-btn { padding: 6px 12px; font-size: 0.8rem; min-height: 36px; }
+  }
+</style>
+
+<script is:inline>
+  var foodsData = null;
+  var loaded = false;
+  var activeTag = 'all';
+  var categoryFilter = document.getElementById('category-filter');
+  var sortSelect = document.getElementById('sort-select');
+  var profileFilter = document.getElementById('profile-filter');
+  var maxKcal = document.getElementById('max-kcal');
+  var minProtein = document.getElementById('min-protein');
+  var maxCarb = document.getElementById('max-carb');
+  var maxSodium = document.getElementById('max-sodium');
+  var summary = document.getElementById('filter-summary');
+  var params = new URLSearchParams(window.location.search);
+
+  function numberValue(el) {
+    if (!el || el.value === '') return null;
+    var value = Number(el.value);
+    return Number.isFinite(value) ? value : null;
+  }
+
+  function tagsOf(card) {
+    return (card.getAttribute('data-tags') || '').split(' ').filter(Boolean);
+  }
+
+  function hasTag(card, tag) {
+    return tagsOf(card).indexOf(tag) >= 0;
+  }
+
+  function matchesProfile(card, profile) {
+    var kcal = Number(card.getAttribute('data-kcal') || 0);
+    var fiber = Number(card.getAttribute('data-fiber') || 0);
+    var sodium = Number(card.getAttribute('data-sodium') || 0);
+    var potassium = Number(card.getAttribute('data-potassium') || 0);
+    if (profile === 'diabetes') return hasTag(card, 'glycemic-load-low') || hasTag(card, 'glycemic-index-low');
+    if (profile === 'hypertension') return sodium <= 100 || hasTag(card, 'low-sodium');
+    if (profile === 'gout') return hasTag(card, 'low-purine');
+    if (profile === 'ckd') return sodium <= 100 && potassium <= 150;
+    if (profile === 'weight') return kcal <= 150 && (fiber >= 2 || hasTag(card, 'low-fat'));
+    return true;
+  }
+
+  function sortCards() {
+    var val = sortSelect?.value || 'name-asc';
+    document.querySelectorAll('.food-group').forEach(function(group) {
+      var grid = group.querySelector('.food-grid');
+      if (!grid) return;
+      var cards = Array.from(grid.querySelectorAll('.food-card'));
+      cards.sort(function(a, b) {
+        var aName = (a.querySelector('h3')?.textContent || '');
+        var bName = (b.querySelector('h3')?.textContent || '');
+        if (val === 'name-asc') return aName.localeCompare(bName, 'vi');
+        if (val === 'name-desc') return bName.localeCompare(aName, 'vi');
+        if (val === 'calo-asc') return (parseFloat(a.getAttribute('data-kcal') || '0')) - (parseFloat(b.getAttribute('data-kcal') || '0'));
+        if (val === 'calo-desc') return (parseFloat(b.getAttribute('data-kcal') || '0')) - (parseFloat(a.getAttribute('data-kcal') || '0'));
+        if (val === 'protein-desc') return (parseFloat(b.getAttribute('data-protein') || '0')) - (parseFloat(a.getAttribute('data-protein') || '0'));
+        if (val === 'sodium-asc') return (parseFloat(a.getAttribute('data-sodium') || '0')) - (parseFloat(b.getAttribute('data-sodium') || '0'));
+        if (val === 'fiber-desc') return (parseFloat(b.getAttribute('data-fiber') || '0')) - (parseFloat(a.getAttribute('data-fiber') || '0'));
+        return 0;
+      });
+      cards.forEach(function(card) { grid.appendChild(card); });
+    });
+  }
+
+  function applyFilters() {
+    var selectedCategory = categoryFilter?.value || 'all';
+    var selectedProfile = profileFilter?.value || 'all';
+    var maxKcalValue = numberValue(maxKcal);
+    var minProteinValue = numberValue(minProtein);
+    var maxCarbValue = numberValue(maxCarb);
+    var maxSodiumValue = numberValue(maxSodium);
+    var visible = 0;
+
+    document.querySelectorAll('.food-card').forEach(function(card) {
+      var tags = tagsOf(card);
+      var category = card.getAttribute('data-category') || '';
+      var kcal = Number(card.getAttribute('data-kcal') || 0);
+      var protein = Number(card.getAttribute('data-protein') || 0);
+      var carb = Number(card.getAttribute('data-carb') || 0);
+      var sodium = Number(card.getAttribute('data-sodium') || 0);
+      var ok = true;
+      if (activeTag !== 'all' && tags.indexOf(activeTag) < 0) ok = false;
+      if (selectedCategory !== 'all' && category !== selectedCategory) ok = false;
+      if (maxKcalValue !== null && kcal > maxKcalValue) ok = false;
+      if (minProteinValue !== null && protein < minProteinValue) ok = false;
+      if (maxCarbValue !== null && carb > maxCarbValue) ok = false;
+      if (maxSodiumValue !== null && sodium > maxSodiumValue) ok = false;
+      if (!matchesProfile(card, selectedProfile)) ok = false;
+      card.style.display = ok ? '' : 'none';
+      if (ok) visible += 1;
+    });
+
+    document.querySelectorAll('.food-group').forEach(function(group) {
+      var hasVisible = Array.from(group.querySelectorAll('.food-card')).some(function(card) {
+        return card.style.display !== 'none';
+      });
+      group.classList.toggle('is-empty', !hasVisible);
+    });
+    if (summary) summary.textContent = 'Đang hiển thị ' + visible + ' / ' + document.querySelectorAll('.food-card').length + ' thực phẩm.';
+  }
+
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    var btn = target.closest('.filter-btn');
+    if (btn) {
+      activeTag = btn.getAttribute('data-filter') || 'all';
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      applyFilters();
+      return;
+    }
+    if (target.closest('#reset-filters')) {
+      activeTag = 'all';
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-filter') === 'all'); });
+      if (categoryFilter) categoryFilter.value = 'all';
+      if (profileFilter) profileFilter.value = 'all';
+      [maxKcal, minProtein, maxCarb, maxSodium].forEach(function(el) { if (el) el.value = ''; });
+      applyFilters();
+    }
+  });
+
+  [categoryFilter, profileFilter, maxKcal, minProtein, maxCarb, maxSodium].forEach(function(el) {
+    el?.addEventListener('input', applyFilters);
+    el?.addEventListener('change', applyFilters);
+  });
+  function applyUrlPresets() {
+    var profile = params.get('profile');
+    var category = params.get('category');
+    var tag = params.get('tag');
+    if (profile && profileFilter?.querySelector('option[value="' + CSS.escape(profile) + '"]')) profileFilter.value = profile;
+    if (category && categoryFilter?.querySelector('option[value="' + CSS.escape(category) + '"]')) categoryFilter.value = category;
+    if (tag && document.querySelector('.filter-btn[data-filter="' + CSS.escape(tag) + '"]')) {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-filter') === tag); });
+    }
+    if (params.get('maxKcal') && maxKcal) maxKcal.value = params.get('maxKcal');
+    if (params.get('minProtein') && minProtein) minProtein.value = params.get('minProtein');
+    if (params.get('maxCarb') && maxCarb) maxCarb.value = params.get('maxCarb');
+    if (params.get('maxSodium') && maxSodium) maxSodium.value = params.get('maxSodium');
+  }
+  sortSelect?.addEventListener('change', function() {
+    sortCards();
+    applyFilters();
+  });
+
+  function renderFoods(data) {
+    foodsData = data;
+    loaded = true;
+    // Group by category (index 2)
+    var groups = {};
+    for (var i = 0; i < data.length; i++) {
+      var item = data[i];
+      var cat = item[2];
+      if (!groups[cat]) groups[cat] = [];
+      groups[cat].push(item);
+    }
+    var cats = Object.keys(groups).sort(function(a,b) { return a.localeCompare(b, 'vi'); });
+    var container = document.getElementById('foods-container');
+    var html = '';
+    for (var c = 0; c < cats.length; c++) {
+      var catName = cats[c];
+      var items = groups[catName];
+      html += '<section class="section food-group" id="' + encodeURIComponent(catName) + '" data-category="' + catName + '">';
+      html += '<h2 style="display:flex;align-items:center;gap:8px;"><span class="fi">' + getIcon(catName) + '</span> ' + catName + ' <span class="muted" style="font-size:1rem;">(' + items.length + ')</span></h2>';
+      html += '<div class="grid three food-grid" style="margin-top:12px;">';
+      for (var i = 0; i < items.length; i++) {
+        html += renderCard(items[i]);
+      }
+      html += '</div></section>';
+    }
+    container.innerHTML = html;
+    document.getElementById('foods-loading')?.remove();
+    applyFilters();
+  }
+
+  function getIcon(cat) {
+    var icons = {
+      'Tinh bột': '🍚','Rau củ': '🥬','Trái cây': '🍎','Thịt': '🥩','Cá': '🐟','Hải sản': '🦐','Trứng': '🥚',
+      'Sữa': '🥛','Đậu': '🫘','Hạt': '🥜','Dầu': '🫒','Gia vị': '🧂','Đồ uống': '🥤','Bánh kẹo': '🍪','Khác': '📦'
+    };
+    return icons[cat] || '🍽️';
+  }
+
+  function renderCard(item) {
+    var s = item[0], n = item[1], t = item[10], kcal = item[3], p = item[4], cb = item[5], fat = item[6], fb = item[7];
+    return '<a class="food-card" href="/thuc-pham/' + s + '" data-tags="' + t + '" data-category="' + item[2] + '" data-kcal="' + kcal + '" data-protein="' + p + '" data-carb="' + cb + '" data-fat="' + fat + '" data-fiber="' + fb + '" data-sodium="' + item[8] + '" data-potassium="' + item[9] + '" data-gi="' + item[11] + '" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;background:var(--card);">' +
+      '<div style="flex-shrink:0;width:56px;height:56px;border-radius:12px;background:var(--bg-elevated);display:flex;align-items:center;justify-content:center;font-size:1.8rem;">' + getIcon(item[2]) + '</div>' +
+      '<div style="flex:1;min-width:0;">' +
+        '<h3 style="margin:4px 0 2px;font-size:1rem;">' + n + '</h3>' +
+        '<div style="font-size:0.82rem;color:var(--ink-secondary);display:flex;gap:4px;flex-wrap:wrap;">' +
+          '<span>' + kcal + ' kcal</span>' +
+          (p > 0 ? '<span class="macro-sep">·</span><span>Đạm ' + p + 'g</span>' : '') +
+          (cb > 0 ? '<span class="macro-sep">·</span><span>Carb ' + cb + 'g</span>' : '') +
+          (fat > 0 ? '<span class="macro-sep">·</span><span>Béo ' + fat + 'g</span>' : '') +
+          (fb > 0 ? '<span class="macro-sep">·</span><span>Xơ ' + fb + 'g</span>' : '') +
+        '</div>' +
+      '</div>' +
+    '</a>';
+  }
+
+  // Quick nav rebuild
+  function refreshQuickNav() {
+    var nav = document.querySelector('.quick-nav');
+    if (!nav || !foodsData) return;
+    var groups = {};
+    for (var i = 0; i < foodsData.length; i++) {
+      var cat = foodsData[i][2];
+      if (!groups[cat]) groups[cat] = 0;
+      groups[cat]++;
+    }
+    var cats = Object.keys(groups).sort(function(a,b) { return a.localeCompare(b, 'vi'); });
+    var inner = '<span class="muted" style="font-size:0.85rem;">Nhảy nhanh: </span>';
+    for (var c = 0; c < cats.length; c++) {
+      inner += '<a class="badge" href="#' + encodeURIComponent(cats[c]) + '">' + cats[c] + ' · ' + groups[cats[c]] + '</a>';
+    }
+    nav.innerHTML = inner;
+  }
+
+  applyUrlPresets();
+  // Load data lazy
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(function() {
+      fetch('/api/foods-full.json').then(function(r) { return r.json(); }).then(renderFoods).then(refreshQuickNav);
+    });
+  } else {
+    setTimeout(function() {
+      fetch('/api/foods-full.json').then(function(r) { return r.json(); }).then(renderFoods).then(refreshQuickNav);
+    }, 500);
+  }
+</script>

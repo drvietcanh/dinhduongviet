@@ -1,0 +1,118 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["gan-nhiem-mo"];
+if (!art) throw new Error("Article not found: gan-nhiem-mo");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Mai, 34 tuổi, nhân viên văn phòng. Sức khỏe bình thường, không uống rượu bia, nhưng đi khám tổng quát bác sĩ bảo <strong>gan nhiễm mỡ</strong>. Chị sốc: "Em không uống rượu, sao lại bị nhiễm mỡ gan?"</p>
+  <p>Thực tế, gan nhiễm mỡ không chỉ do rượu — mà chủ yếu do <strong>thừa năng lượng, lười vận động, ăn nhiều đường và tinh bột tinh chế</strong>. Chị Mai thuộc nhóm NAFLD (non-alcoholic fatty liver disease) — đang gia tăng nhanh ở người Việt trẻ, đặc biệt nhân viên văn phòng và người béo bụng.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Gan nhiễm mỡ <u>có thể đảo ngược</u> bằng chế độ ăn — cắt đường tinh luyện, giảm tinh bột trắng, 
+    tăng rau xanh và chất xơ. Quan trọng nhất: <u>giảm cân 5–10%</u> nếu đang thừa cân.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao mỡ tích ở gan?</h2>
+  <p>Gan là cơ quan chuyển hóa trung tâm. Khi bạn ăn quá nhiều đường và tinh bột, gan không kịp xử lý, phải "cất" chúng dưới dạng mỡ (triglycerid) — gọi là nhiễm mỡ gan. Fructose (đường trong trái cây ngọt, nước ngọt) đặc biệt có hại vì chỉ được chuyển hóa ở gan và dễ tạo mỡ nhất.</p>
+  <p>Nếu không kiểm soát, 20–30% trường hợp NAFLD tiến triển thành viêm gan nhiễm mỡ (NASH) → xơ gan → ung thư gan.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rau xanh:</strong> Rau muống, bắp cải, cải xanh, <a href="/thuc-pham/rau-ngot">rau ngót</a>, mồng tơi — ăn không giới hạn</li>
+      <li><strong>Chất xơ hòa tan:</strong> Yến mạch, lúa mạch, <a href="/thuc-pham/dau-xanh">đậu xanh</a>, <a href="/thuc-pham/khoai-lang">khoai lang</a></li>
+      <li><strong>Đạm thực vật:</strong> <a href="/thuc-pham/dau-phu">Đậu phụ</a>, <a href="/thuc-pham/dau-nanh">đậu nành</a>, <a href="/thuc-pham/nam">nấm</a></li>
+      <li><strong>Cá béo:</strong> <a href="/thuc-pham/ca-hoi">Cá hồi</a>, cá trích, <a href="/thuc-pham/ca-thu">cá thu</a> — omega-3 giảm viêm gan</li>
+      <li><strong>Dầu thực vật:</strong> Dầu oliu, dầu mè, dầu hướng dương</li>
+      <li><strong>Trái cây ít ngọt:</strong> <a href="/thuc-pham/bo-trai">Bơ</a>, <a href="/thuc-pham/tao">táo</a>, <a href="/thuc-pham/oi">ổi</a>, <a href="/thuc-pham/buoi">bưởi</a></li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Đường tinh luyện:</strong> Bánh kẹo, nước ngọt, trà sữa, siro, mứt</li>
+      <li><strong>⛔ Tinh bột tinh chế:</strong> Cơm trắng (giảm ½), bánh mì trắng, mì gói</li>
+      <li><strong>⛔ Đồ chiên rán:</strong> Khoai tây chiên, gà rán, nem rán</li>
+      <li><strong>⛔ Nội tạng, thịt mỡ:</strong> Mỡ heo, da gà/vịt, lòng heo</li>
+      <li><strong>⛔ Bia rượu:</strong> Tránh tuyệt đối nếu đã có viêm gan nhiễm mỡ</li>
+      <li><strong>⛔ Trái cây ngọt:</strong> Sầu riêng, mít, vải, nhãn — hạn chế tối đa</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Nhóm</th><th>Khuyến nghị</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>Năng lượng</td><td>Giảm 500–1000 kcal/ngày (nếu thừa cân)</td><td>Mục tiêu giảm 5–10% cân nặng</td></tr>
+      <tr><td>Tinh bột</td><td>½ bát cơm/bữa, ưu tiên gạo lứt</td><td>Chỉ 1 bữa có tinh bột trắng/ngày</td></tr>
+      <tr><td>Rau xanh</td><td>Không giới hạn (tối thiểu 300g/ngày)</td><td>Luộc, xào nhẹ, ăn sống</td></tr>
+      <tr><td>Đạm</td><td>100–150g thịt/cá/ngày hoặc đậu phụ</td><td>Ưu tiên đạm thực vật ½ thời gian</td></tr>
+      <tr><td>Dầu</td><td>2–3 muỗng cafe dầu thực vật/ngày</td><td>Oliu, mè, hướng dương</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Cháo yến mạch + sữa hạt + 1 quả táo</td><td>Không đường, no lâu</td></tr>
+      <tr><td>🍎 Phụ sáng</td><td>Ổi hoặc bưởi 1 phần</td><td>Ít ngọt, nhiều xơ</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm gạo lứt ½ chén + cá hồi áp chảo + bông cải luộc</td><td>Omega-3 + chất xơ</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 nắm hạt điều/óc chó + trà xanh</td><td>Chất béo tốt</td></tr>
+      <tr><td>🌙 Tối</td><td>Đậu phụ sốt cà + rau muống luộc + ½ bát cơm</td><td>Nhẹ, tiêu hóa nhanh</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Tập thể dục 30 phút/ngày giúp giảm mỡ gan nhanh gấp đôi chỉ ăn kiêng.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Cắt hẳn nước ngọt, trà sữa, bánh kẹo — đây là nguyên nhân số 1.</li>
+        <li>Thay cơm trắng bằng gạo lứt hoặc giảm ½ lượng cơm.</li>
+        <li>Uống cà phê đen (2–3 tách/ngày) — có thể giảm men gan.</li>
+        <li>Không bỏ bữa — chia nhỏ 4–5 bữa/ngày.</li>
+        <li>Đi bộ 30 phút sau ăn tối — giảm đường huyết và mỡ gan.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Đau hạ sườn phải kéo dài.</li>
+        <li>Men gan (ALT/AST) tăng cao &gt; 2 lần ngưỡng bình thường.</li>
+        <li>Vàng da, vàng mắt.</li>
+        <li>Mệt mỏi kéo dài, chán ăn, sụt cân.</li>
+        <li>Phù chân, bụng báng (dấu hiệu nặng).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

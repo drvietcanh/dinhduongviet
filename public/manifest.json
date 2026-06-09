@@ -1,0 +1,59 @@
+{
+  "name": "Dinh Dưỡng Việt",
+  "short_name": "DD Việt",
+  "description": "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam. Theo dõi sức khỏe, nhật ký ăn uống, công cụ tính toán dinh dưỡng.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a8a4a",
+  "orientation": "portrait-primary",
+  "lang": "vi-VN",
+  "categories": ["health", "nutrition", "food", "medical"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/screenshot-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Trang chủ Dinh Dưỡng Việt"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tra thực phẩm",
+      "short_name": "Thực phẩm",
+      "description": "Tra cứu dinh dưỡng thực phẩm",
+      "url": "/thuc-pham",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nhật ký ăn uống",
+      "short_name": "Nhật ký",
+      "description": "Ghi chép khẩu phần ăn hàng ngày",
+      "url": "/cong-cu/nhat-ky",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Theo dõi sức khỏe",
+      "short_name": "Sức khỏe",
+      "description": "Ghi chép chỉ số sức khỏe",
+      "url": "/cong-cu/theo-doi-suc-khoe",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Công cụ",
+      "short_name": "Công cụ",
+      "description": "Danh sách tất cả công cụ",
+      "url": "/cong-cu",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "display_override": ["window-controls-overlay", "standalone"],
+  "edge_side_panel": {}
+}

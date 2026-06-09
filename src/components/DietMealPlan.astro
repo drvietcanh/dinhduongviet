@@ -1,0 +1,427 @@
+---
+// DietMealPlan.astro — Thực đơn gợi ý theo bệnh lý
+
+export interface Props {
+  condition: string; // slug bệnh
+  conditionLabel: string;
+}
+
+const { condition, conditionLabel } = Astro.props;
+
+// Dữ liệu recipes với tags bệnh lý (tĩnh từ build)
+const mealPlans: Record<string, { day: string; meals: { time: string; recipeSlug: string; recipeName: string; note: string }[] }[]> = {
+  "gout": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-bo", recipeName: "Phở bò", note: "Ít thịt bò, nhiều rau thơm, nước dùng trong" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Sườn nướng vừa phải, nhiều dưa leo" },
+        { time: "Tối", recipeSlug: "canh-hen-nau-chua", recipeName: "Canh hến nấu chua", note: "Nhiều rau, ít hến, thanh nhiệt" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-bo", recipeName: "Phở bò", note: "Bánh phở, ít thịt, nhiều rau" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá đồng ít purin hơn cá biển" },
+        { time: "Tối", recipeSlug: "canh-chua-ca", recipeName: "Canh chua cá", note: "Cá ít purin, nhiều rau" },
+      ]
+    },
+    {
+      day: "Thứ Tư",
+      meals: [
+        { time: "Sáng", recipeSlug: "thit-kho-trung", recipeName: "Thịt kho trứng + cơm", note: "Lượng thịt vừa phải, ít purin" },
+        { time: "Trưa", recipeSlug: "bun-bo-hue", recipeName: "Bún bò Huế (ít thịt)", note: "Giảm thịt, tăng rau sống" },
+        { time: "Tối", recipeSlug: "rau-muong-luoc-cham-kho-quet", recipeName: "Rau muống luộc kho quẹt", note: "Lý tưởng cho người gút, ít purin" },
+      ]
+    },
+    {
+      day: "Thứ Năm",
+      meals: [
+        { time: "Sáng", recipeSlug: "banh-bot-loc", recipeName: "Bánh bột lọc", note: "Nhân tôm thịt ít, ăn kèm rau" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Sườn vừa, nhiều dưa leo, đồ chua" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Thanh nhiệt, lợi tiểu, ít purin" },
+      ]
+    },
+  ],
+  "dai-thao-duong": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "xoi-ma-pha", recipeName: "Xôi mỡ phà", note: "Khẩu phần nhỏ (100g), kèm rau" },
+        { time: "Trưa", recipeSlug: "com-ga-tam-ky", recipeName: "Cơm gà tam kỳ", note: "Cơm gạo lứt nếu có, nhiều rau" },
+        { time: "Tối", recipeSlug: "ca-hoi-ap-chao", recipeName: "Cá hồi áp chảo", note: "Ít carb, giàu protein và omega-3" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-bo", recipeName: "Phở bò", note: "Chọn bánh phở ít béo, nhiều rau" },
+        { time: "Trưa", recipeSlug: "bun-thit-nuong", recipeName: "Bún thịt nướng", note: "Ít bún (~100g), nhiều rau sống" },
+        { time: "Tối", recipeSlug: "salad-rong-bien-tom", recipeName: "Salad rong biển tôm", note: "Ít carb, giàu iốt và chất xơ" },
+      ]
+    },
+  ],
+  "tang-huyet-ap": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-bo", recipeName: "Phở bò", note: "Không uống hết nước dùng để giảm natri" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Hạn chế nước mắm, thêm dưa leo" },
+        { time: "Tối", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Giàu kali, ít natri, tốt cho huyết áp" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "banh-bot-loc", recipeName: "Bánh bột lọc", note: "Không chấm quá nhiều nước mắm" },
+        { time: "Trưa", recipeSlug: "bo-bit-tet-tai", recipeName: "Bò bít tết", note: "Khoai tây thay vì khoai tây chiên" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Giàu kali, tốt cho huyết áp" },
+      ]
+    },
+  ],
+  "suy-than": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-ga", recipeName: "Phở gà", note: "Thịt gà ít kali hơn thịt đỏ" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Khẩu phần nhỏ, thịt vừa phải" },
+        { time: "Tối", recipeSlug: "canh-hen-nau-chua", recipeName: "Canh hến nấu chua", note: "Không dùng nước dùng rau củ giàu kali" },
+      ]
+    },
+  ],
+  "loang-xuong": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Thêm sữa tươi không đường, tăng canxi" },
+        { time: "Trưa", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Cá nhỏ ăn cả xương, giàu canxi" },
+        { time: "Tối", recipeSlug: "rau-muong-luoc-cham-kho-quet", recipeName: "Rau muống luộc", note: "Rau xanh giàu canxi, uống thêm sữa" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-bo", recipeName: "Phở bò", note: "Nước dùng xương hầm giàu canxi" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Thêm rau xanh, uống sữa sau ăn" },
+        { time: "Tối", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá đồng, ăn cả xương khi hầm mềm" },
+      ]
+    },
+  ],
+  "thieu-mau": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "com-rang-trung", recipeName: "Cơm rang trứng", note: "Thêm thịt bò băm, rau xanh, giàu sắt" },
+        { time: "Trưa", recipeSlug: "bo-bit-tet-tai", recipeName: "Bò bít tết tái", note: "Thịt bò tái giàu sắt heme hấp thu tốt" },
+        { time: "Tối", recipeSlug: "canh-hen-nau-chua", recipeName: "Canh hến nấu chua", note: "Hến giàu sắt, kèm rau muống giàu folate" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "thit-kho-trung", recipeName: "Thịt kho trứng", note: "Giàu đạm, B12 từ trứng, sắt từ thịt" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá giàu sắt, ăn kèm rau cải" },
+        { time: "Tối", recipeSlug: "canh-chua-ca", recipeName: "Canh chua cá", note: "Cá ít béo, giàu đạm, rau giàu folate" },
+      ]
+    },
+  ],
+  "gan-nhiem-mo": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-ga", recipeName: "Phở gà", note: "Ít béo, ít đường, protein chất lượng" },
+        { time: "Trưa", recipeSlug: "ca-hoi-ap-chao", recipeName: "Cá hồi áp chảo", note: "Giàu omega-3, chống viêm gan" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Atisô bảo vệ gan, lợi mật" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Giàu chất xơ hòa tan, giảm mỡ máu" },
+        { time: "Trưa", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Ít béo, giàu đạm, nhiều rau" },
+        { time: "Tối", recipeSlug: "salad-rong-bien-tom", recipeName: "Salad rong biển tôm", note: "Giàu iốt, ít calo, nhiều xơ" },
+      ]
+    },
+  ],
+  "beo-phi": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "xoi-ma-pha", recipeName: "Xôi mỡ phà (100g)", note: "Đủ năng lượng cho sáng" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cơm 100g + cá + rau luộc" },
+        { time: "Tối", recipeSlug: "salad-rong-bien-tom", recipeName: "Salad rong biển tôm", note: "Ít calo, nhiều xơ, giàu chất khoáng" },
+      ]
+    },
+  ],
+  "mang-thai": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Giàu đạm, dễ tiêu, thêm hành lá" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá giàu DHA và omega-3" },
+        { time: "Tối", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Giàu canxi và đạm dễ hấp thu" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-ga", recipeName: "Phở gà", note: "Thêm rau thơm giàu folate" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Sườn nạc, thêm dưa leo và rau sống" },
+        { time: "Tối", recipeSlug: "canh-rau-ngot-thit-bam", recipeName: "Canh rau ngót thịt băm", note: "Rau ngót giàu folate và sắt" },
+      ]
+    },
+  ],
+  "tre-em": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "xoi-ma-pha", recipeName: "Xôi mỡ phà", note: "Khẩu phần vừa, thêm ít hạt vừng" },
+        { time: "Trưa", recipeSlug: "thit-kho-trung", recipeName: "Thịt kho trứng", note: "Cơm mềm, thịt nạc, trứng giàu đạm" },
+        { time: "Tối", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Cá nhỏ giàu canxi, dễ ăn" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "banh-bot-loc", recipeName: "Bánh bột lọc", note: "Ăn kèm rau sống, nước mắm nhạt" },
+        { time: "Trưa", recipeSlug: "com-ga-tam-ky", recipeName: "Cơm gà tam kỳ", note: "Ức gà giàu đạm, nhiều rau" },
+        { time: "Tối", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Dễ tiêu, giàu năng lượng" },
+      ]
+    },
+  ],
+  "nguoi-cao-tuoi": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Dễ nhai, thêm ít hành lá" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá mềm, bỏ xương, dễ nhai" },
+        { time: "Tối", recipeSlug: "canh-bi-do-thit-bam", recipeName: "Canh bí đỏ thịt băm", note: "Bí đỏ mềm, giàu vitamin A và xơ" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-ga", recipeName: "Phở gà mềm", note: "Bánh phở mềm, cắt nhỏ" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Sườn nướng cắt nhỏ, cơm mềm" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Mát, tốt cho tiêu hóa" },
+      ]
+    },
+  ],
+  "mo-mau": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-ga", recipeName: "Phở gà", note: "Bỏ da gà, ít mỡ" },
+        { time: "Trưa", recipeSlug: "ca-hoi-ap-chao", recipeName: "Cá hồi áp chảo", note: "Giàu omega-3 tốt cho mỡ máu" },
+        { time: "Tối", recipeSlug: "salad-rong-bien-tom", recipeName: "Salad rong biển tôm", note: "Ít béo, giàu chất xơ" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Nấu với yến mạch thay gạo để thêm xơ" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá đồng ít mỡ, giàu omega-3" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Giàu chất xơ và chất chống oxy hóa" },
+      ]
+    },
+  ],
+  "tim-mach": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-ga", recipeName: "Phở gà", note: "Bỏ da, nước dùng nhạt" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Kho nhạt, ít muối" },
+        { time: "Tối", recipeSlug: "rau-muong-luoc-cham-kho-quet", recipeName: "Rau muống luộc", note: "Ít muối, nhiều chất xơ" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Thêm yến mạch, giảm muối" },
+        { time: "Trưa", recipeSlug: "ca-hoi-ap-chao", recipeName: "Cá hồi áp chảo", note: "Omega-3 tốt cho tim mạch" },
+        { time: "Tối", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Ít natri, giàu kali tốt cho tim" },
+      ]
+    },
+  ],
+  "tao-bon-ibs": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Dễ tiêu, ít FODMAP" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá + cơm trắng + rau luộc" },
+        { time: "Tối", recipeSlug: "canh-bi-do-thit-bam", recipeName: "Canh bí đỏ thịt băm", note: "Giàu chất xơ hòa tan" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "banh-bot-loc", recipeName: "Bánh bột lọc", note: "Ít FODMAP, dễ tiêu" },
+        { time: "Trưa", recipeSlug: "com-ga-tam-ky", recipeName: "Cơm gà tam kỳ", note: "Cơm trắng + ức gà + rau" },
+        { time: "Tối", recipeSlug: "canh-hen-nau-chua", recipeName: "Canh hến nấu chua", note: "Nấu không hành tỏi, vị chua thanh" },
+      ]
+    },
+  ],
+  "an-chay": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "xoi-ma-pha", recipeName: "Xôi mỡ phà", note: "Thêm mè rang, đậu phộng giàu đạm" },
+        { time: "Trưa", recipeSlug: "dau-hu-chien-nuoc-mam", recipeName: "Đậu hũ chiên nước mắm chay", note: "Đậu phụ giàu đạm, ăn kèm rau luộc" },
+        { time: "Tối", recipeSlug: "canh-rau-ngot-thit-bam", recipeName: "Canh rau ngót" , note: "Nấu chay với nấm, giàu sắt và folate" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "com-rang-trung", recipeName: "Cơm rang trứng (chay)", note: "Thêm đậu hũ non, rau củ" },
+        { time: "Trưa", recipeSlug: "bun-rieu-cua", recipeName: "Bún riêu chay", note: "Dùng đậu phụ thay cua, nhiều rau sống" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Giàu chất xơ, thanh nhiệt" },
+      ]
+    },
+  ],
+  "ung-thu": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "chao-ga", recipeName: "Cháo gà", note: "Thêm thịt gà xé, dễ ăn, giàu đạm" },
+        { time: "Trưa", recipeSlug: "ca-hoi-ap-chao", recipeName: "Cá hồi áp chảo", note: "Giàu omega-3 chống viêm, ăn kèm bông cải" },
+        { time: "Tối", recipeSlug: "canh-rau-ngot-thit-bam", recipeName: "Canh rau ngót thịt băm", note: "Rau ngót giàu sắt và vitamin" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "banh-bot-loc", recipeName: "Bánh bột lọc", note: "Mềm, dễ nuốt, ít gia vị" },
+        { time: "Trưa", recipeSlug: "com-ga-tam-ky", recipeName: "Cơm gà tam kỳ", note: "Ức gà luộc, cơm mềm, ít dầu" },
+        { time: "Tối", recipeSlug: "canh-kho-qua-nhoi-thit", recipeName: "Canh khổ qua nhồi thịt", note: "Khổ qua giải nhiệt, mát gan" },
+      ]
+    },
+  ],
+  "vitamin-khoang-chat": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "com-rang-trung", recipeName: "Cơm rang trứng", note: "Trứng giàu B12, vitamin D; thêm cà rốt" },
+        { time: "Trưa", recipeSlug: "bo-bit-tet-tai", recipeName: "Bò bít tết tái", note: "Thịt bò giàu sắt và kẽm, khoai tây giàu kali" },
+        { time: "Tối", recipeSlug: "canh-rau-ngot-thit-bam", recipeName: "Canh rau ngót thịt băm", note: "Rau ngót giàu folate và canxi" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "sua-dau-nanh-mon", recipeName: "Sữa đậu nành + bánh mì", note: "Giàu canxi, đạm thực vật" },
+        { time: "Trưa", recipeSlug: "ca-thu-sot-ca", recipeName: "Cá thu sốt cà", note: "Cá béo giàu vitamin D và omega-3" },
+        { time: "Tối", recipeSlug: "canh-atiso-bong-he", recipeName: "Canh atisô bông hẹ", note: "Giàu chất xơ, kali, magie" },
+      ]
+    },
+  ],
+  "an-toan-thuc-pham": [
+    {
+      day: "Thứ Hai",
+      meals: [
+        { time: "Sáng", recipeSlug: "pho-bo", recipeName: "Phở bò chín", note: "Nấu chín kỹ, ăn nóng, thêm rau thơm" },
+        { time: "Trưa", recipeSlug: "com-tam-suon", recipeName: "Cơm tấm sườn", note: "Đồ nướng chín đều, rau sống rửa sạch" },
+        { time: "Tối", recipeSlug: "canh-bi-do-thit-bam", recipeName: "Canh bí đỏ thịt băm", note: "Nấu chín kỹ, ăn ngay sau khi nấu" },
+      ]
+    },
+    {
+      day: "Thứ Ba",
+      meals: [
+        { time: "Sáng", recipeSlug: "banh-mi-trung", recipeName: "Bánh mì trứng ốp-la", note: "Trứng chín hẳn, không ăn lòng đào" },
+        { time: "Trưa", recipeSlug: "ca-kho-to", recipeName: "Cá kho tộ", note: "Cá nấu chín kỹ, ăn trong ngày" },
+        { time: "Tối", recipeSlug: "canh-ca-bong-doc-mung", recipeName: "Canh cá bống dọc mùng", note: "Nấu sôi kỹ, không để nguội >2 giờ" },
+      ]
+    },
+  ],
+};
+
+const plan = mealPlans[condition];
+if (!plan) return;
+---
+
+<section class="section">
+  <h2 style="margin-bottom: 8px;">🥗 Thực đơn mẫu cho {conditionLabel}</h2>
+  <p class="muted" style="margin-bottom: 16px;">
+    Gợi ý thực đơn ẩm thực Việt, <strong>lưu ý khẩu phần ăn cần cá nhân hóa</strong> theo tình trạng bệnh và thuốc đang dùng.
+  </p>
+
+  <div class="meal-plan-grid">
+    {plan.map(day => (
+      <div class="meal-plan-day">
+        <h3 class="day-title">{day.day}</h3>
+        <div class="meal-list">
+          {day.meals.map(meal => (
+            <a href={`/mon-an/${meal.recipeSlug}`} class="meal-item">
+              <span class="meal-time">{meal.time}</span>
+              <div class="meal-body">
+                <strong class="meal-name">{meal.recipeName}</strong>
+                <span class="meal-note">{meal.note}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .meal-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .meal-plan-day {
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .day-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .meal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .meal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f9fafb;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+  .meal-item:hover {
+    background: #e5f0ff;
+  }
+  .meal-time {
+    flex-shrink: 0;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 42px;
+    padding-top: 2px;
+  }
+  .meal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meal-name {
+    font-size: 0.95em;
+  }
+  .meal-note {
+    font-size: 0.8em;
+    color: #6b7280;
+  }
+</style>

@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "Checklist — Hôm nay tôi ăn có đủ rau, đạm, nước không?";
+const desc = "Trả lời nhanh 7 câu hỏi để biết chế độ ăn hôm nay có ổn không. Đơn giản, không chuyên môn.";
+---
+
+<BaseLayout title={title} description={desc} image="/logo.svg">
+  <main class="container" style="padding: 2rem 1rem; max-width: 640px; margin: 0 auto;">
+    <h1>✅ Checklist — Hôm nay tôi ăn uống thế nào?</h1>
+    <p class="lead">Trả lời nhanh 7 câu hỏi <strong>có/không</strong>. Không cần tính toán — chỉ cần nhớ lại trong ngày.</p>
+
+    <form id="checklist-form" style="display:flex; flex-direction:column; gap:1.2rem; margin-top:1.5rem;">
+      <div class="q">
+        <p>1️⃣ Hôm nay tôi có ăn <strong>rau xanh</strong> ít nhất 1 bát (lưng) không?</p>
+        <label><input type="radio" name="q1" value="co"> Có</label>
+        <label><input type="radio" name="q1" value="khong"> Không</label>
+        <div class="tip" style="display:none;">Rau nên ăn 2 bát/ngày. Hãy thêm rau vào bữa trưa và tối.</div>
+      </div>
+
+      <div class="q">
+        <p>2️⃣ Hôm nay tôi có ăn <strong>trái cây</strong> không (1 phần = 1 nắm tay)?</p>
+        <label><input type="radio" name="q2" value="co"> Có</label>
+        <label><input type="radio" name="q2" value="khong"> Không</label>
+        <div class="tip" style="display:none;">Trái cây cung cấp vitamin, chất xơ. Ổi, bưởi, thanh long là lựa chọn tốt.</div>
+      </div>
+
+      <div class="q">
+        <p>3️⃣ Hôm nay tôi có uống <strong>1.5 - 2 lít nước</strong> (khoảng 6-8 ly) không?</p>
+        <label><input type="radio" name="q3" value="co"> Có</label>
+        <label><input type="radio" name="q3" value="khong"> Không</label>
+        <div class="tip" style="display:none;">Uống ít nước gây mệt mỏi, táo bón. Hãy uống đều trong ngày.</div>
+      </div>
+
+      <div class="q">
+        <p>4️⃣ Hôm nay tôi có ăn <strong>đạm</strong> (thịt/cá/trứng/đậu) trong cả bữa trưa và tối không?</p>
+        <label><input type="radio" name="q4" value="co"> Có</label>
+        <label><input type="radio" name="q4" value="khong"> Không</label>
+        <div class="tip" style="display:none;">Mỗi bữa nên có 1 phần đạm. Nếu ăn chay: đậu phụ, nấm, trứng, sữa.</div>
+      </div>
+
+      <div class="q">
+        <p>5️⃣ Hôm nay tôi có ăn <strong>tinh bột</strong> (cơm/bún/phở/bánh mì) đủ nhưng không quá nhiều không?</p>
+        <label><input type="radio" name="q5" value="co"> Có</label>
+        <label><input type="radio" name="q5" value="khong"> Không</label>
+        <div class="tip" style="display:none;">Cơm mỗi bữa 1/2-1 chén. Nếu ăn bún/phở: chỉ ăn 1/2 tô.</div>
+      </div>
+
+      <div class="q">
+        <p>6️⃣ Hôm nay tôi có ăn <strong>đồ uống có đường</strong> (nước ngọt, trà sữa, nước ép) không?</p>
+        <label><input type="radio" name="q6" value="co_hoply"> Có — nhưng không quá 1 ly</label>
+        <label><input type="radio" name="q6" value="nhieu"> Có — nhiều hơn 1 ly</label>
+        <label><input type="radio" name="q6" value="khong"> Không — hoàn toàn không uống</label>
+        <div class="tip" style="display:none;">Nước ngọt, trà sữa chứa nhiều đường. Uống nhiều làm tăng đường huyết, mỡ máu.</div>
+      </div>
+
+      <div class="q">
+        <p>7️⃣ Hôm nay tôi có dùng <strong>rượu bia</strong> không?</p>
+        <label><input type="radio" name="q7" value="khong"> Không</label>
+        <label><input type="radio" name="q7" value="it"> Có — 1-2 ly</label>
+        <label><input type="radio" name="q7" value="nhieu"> Có — trên 2 ly</label>
+        <div class="tip" style="display:none;">Rượu bia không có lợi cho sức khỏe. Hạn chế tối đa.</div>
+      </div>
+
+      <button type="submit" style="padding: 0.8rem; background:var(--primary); color:white; border:none; border-radius:10px; font-size:1.1rem; cursor:pointer;">
+        Xem kết quả →
+      </button>
+    </form>
+
+    <div id="result" style="display:none; margin-top:2rem; padding:1.5rem; border-radius:12px;"></div>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+const form = document.getElementById('checklist-form');
+const resultDiv = document.getElementById('result');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const q1 = fd.get('q1');
+  const q2 = fd.get('q2');
+  const q3 = fd.get('q3');
+  const q4 = fd.get('q4');
+  const q5 = fd.get('q5');
+  const q6 = fd.get('q6');
+  const q7 = fd.get('q7');
+
+  let good = 0, alert = 0;
+  const msgs = [];
+
+  if (q1 === 'co') { good++; msgs.push('✅ Rau: có rau — tốt'); } else { alert++; msgs.push('⚠️ Thiếu rau — cố gắng ăn 2 bát rau/ngày'); }
+  if (q2 === 'co') { good++; msgs.push('✅ Trái cây: có — tốt'); } else { alert++; msgs.push('⚠️ Thiếu trái cây — ăn thêm ổi, bưởi, thanh long'); }
+  if (q3 === 'co') { good++; msgs.push('✅ Nước: đủ — tốt'); } else { alert++; msgs.push('⚠️ Thiếu nước — uống thêm, 1.5-2 lít/ngày'); }
+  if (q4 === 'co') { good++; msgs.push('✅ Đạm: có — tốt'); } else { alert++; msgs.push('⚠️ Thiếu đạm — thêm thịt/cá/trứng/đậu vào bữa ăn'); }
+  if (q5 === 'co') { good++; msgs.push('✅ Tinh bột: vừa phải — tốt'); } else { alert++; msgs.push('⚠️ Quá nhiều tinh bột — giảm cơm/bún/phở'); }
+
+  if (q6 === 'khong') { good++; msgs.push('✅ Không uống nước ngọt — rất tốt'); }
+  else if (q6 === 'co_hoply') { msgs.push('⚠️ Nước ngọt: 1 ly là chấp nhận được, cố gắng không uống'); }
+  else { alert++; msgs.push('🔴 Nhiều nước ngọt — cần cắt giảm!'); }
+
+  if (q7 === 'khong') { good++; msgs.push('✅ Không rượu bia — tốt'); }
+  else if (q7 === 'it') { msgs.push('⚠️ Rượu bia: 1-2 ly, hạn chế'); }
+  else { alert++; msgs.push('🔴 Rượu bia nhiều — cần giảm!'); }
+
+  let summary = '';
+  if (good >= 5 && alert === 0) {
+    summary = '🌟 Hôm nay bạn ăn uống rất tốt! Duy trì nhé!';
+    resultDiv.style.background = 'var(--green-bg)';
+  } else if (alert <= 2) {
+    summary = '👍 Tạm ổn. Chỉ cần cải thiện vài điểm nhỏ là sẽ tốt hơn.';
+    resultDiv.style.background = 'var(--orange-bg)';
+  } else {
+    summary = '🔴 Cần cải thiện nhiều. Hãy đọc các bài viết trên web để biết cách ăn uống lành mạnh hơn.';
+    resultDiv.style.background = 'var(--red-bg)';
+  }
+
+  resultDiv.innerHTML = `<h3>${summary}</h3><div style="margin-top:0.8rem;">${msgs.map(m => '<div style="margin:0.3rem 0;">' + m + '</div>').join('')}</div>`;
+  resultDiv.style.display = 'block';
+  resultDiv.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Show tips on select
+document.querySelectorAll('.q input[type="radio"]').forEach(r => {
+  r.addEventListener('change', () => {
+    const tip = r.closest('.q').querySelector('.tip');
+    if (r.checked) tip.style.display = 'block';
+  });
+});
+</script>
+
+<style>
+  .q {
+    background: var(--b1); padding: 1rem; border-radius: 12px;
+  }
+  .q p { margin: 0 0 0.5rem 0; }
+  .q label { margin-right: 1.2rem; cursor: pointer; }
+  .tip { margin-top: 0.5rem; padding: 0.5rem; border-radius: 8px; background: var(--primary-bg); font-size: 0.9rem; }
+  #result { background: var(--b1); }
+</style>

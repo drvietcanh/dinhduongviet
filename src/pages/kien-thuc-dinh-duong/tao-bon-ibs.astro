@@ -1,0 +1,91 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["tao-bon-ibs"];
+if (!art) throw new Error("Article not found: tao-bon-ibs");
+---
+
+<ArticleLayout article={art}>
+<div class="disclaimer">
+    ⚠️ <strong>Cảnh báo y khoa:</strong> Nội dung mang tính tham khảo, không thay thế tư vấn bác sĩ. IBS có nhiều thể (tiêu chảy, táo bón, hỗn hợp) cần chế độ ăn cá nhân hóa. Triệu chứng kéo dài, sụt cân, đi ngoài ra máu cần nội soi đại tràng.
+  </div>
+
+  <section class="section card">
+    <h2>🚽 Nguyên tắc cho người táo bón</h2>
+    <ol style="line-height: 2; margin-top: 10px;">
+      <li><strong>Tăng chất xơ:</strong> 25-30g/ngày — tăng từ từ để tránh đầy hơi, kết hợp uống nhiều nước.</li>
+      <li><strong>Uống đủ nước:</strong> 2-2.5 lít/ngày — nước giúp chất xơ trương nở và làm mềm phân.</li>
+      <li><strong>Chất xơ hòa tan:</strong> Yến mạch, lúa mạch, đậu đỗ, táo, cà rốt, khoai lang.</li>
+      <li><strong>Chất xơ không hòa tan:</strong> Rau xanh, ngũ cốc nguyên hạt, vỏ trái cây — tăng khối lượng phân.</li>
+      <li><strong>Vận động:</strong> Đi bộ 30 phút/ngày kích thích nhu động ruột.</li>
+      <li><strong>Đi vệ sinh đúng giờ:</strong> Tập thói quen đi đại tiện vào một giờ cố định, không nhịn.</li>
+    </ol>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Nguyên tắc cho người IBS (hội chứng ruột kích thích)</h2>
+    <ol style="line-height: 2; margin-top: 10px;">
+      <li><strong>Chế độ ăn Low FODMAP:</strong> Hạn chế thực phẩm lên men nhiều trong ruột — tham khảo chuyên gia dinh dưỡng để thực hiện.</li>
+      <li><strong>FODMAP cao nên hạn chế:</strong> Hành, tỏi, bắp cải, đậu đỗ, sữa tươi (lactose), lúa mì, táo, xoài.</li>
+      <li><strong>FODMAP thấp nên ăn:</strong> Chuối chín, cam, cà rốt, bí đỏ, khoai tây, gạo trắng, yến mạch, thịt cá trứng.</li>
+      <li><strong>Ăn chậm, nhai kỹ:</strong> Giảm nuốt hơi, giảm đầy bụng.</li>
+      <li><strong>Tránh kích thích:</strong> Caffeine, rượu, thức ăn cay, đồ chiên nhiều dầu.</li>
+      <li><strong>Quản lý stress:</strong> Yoga, thiền, hít thở sâu — stress là yếu tố kích hoạt IBS hàng đầu.</li>
+    </ol>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>✅ Thực phẩm nên ăn (táo bón & IBS)</h2>
+      <ul style="line-height: 1.8;">
+        <li><a href="/thuc-pham/khoai-lang">Khoai lang</a> (luộc/hấp cả vỏ)</li>
+        <li>Yến mạch, <a href="/thuc-pham/com-trang">cơm trắng</a> (<a href="/thuc-pham/com-gao-lut">gạo lứt</a> với táo bón, gạo trắng với IBS)</li>
+        <li><a href="/thuc-pham/chuoi">Chuối chín</a>, <a href="/thuc-pham/du-du">đu đủ</a>, <a href="/thuc-pham/cam">cam</a></li>
+        <li><a href="/thuc-pham/bap-cai">Bắp cải</a>, <a href="/thuc-pham/ca-rot">cà rốt nấu chín</a>, bí đỏ</li>
+        <li><a href="/thuc-pham/sua-chua">Sữa chua</a> không đường (probiotic)</li>
+        <li><a href="/thuc-pham/trung-ga">Trứng</a>, <a href="/thuc-pham/uc-ga">ức gà</a>, <a href="/thuc-pham/ca-thu">cá</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>❌ Thực phẩm nên hạn chế</h2>
+      <ul style="line-height: 1.8;">
+        <li>Đồ chiên rán, nhiều dầu mỡ</li>
+        <li>Bia rượu, cà phê, trà đặc, nước ngọt có gas</li>
+        <li>Thức ăn cay (ớt, tiêu) với IBS</li>
+        <li>Hành tây, tỏi, bắp cải (IBS — FODMAP cao)</li>
+        <li>Sữa tươi (nếu không dung nạp lactose)</li>
+        <li>Đậu đỗ khô nhiều (FODMAP cao)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🍽️ Thực đơn mẫu 1 ngày (tốt cho tiêu hóa)</h2>
+    <table class="table" style="margin-top: 10px;">
+      <thead>
+        <tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sáng</td><td>Yến mạch nấu với sữa không đường + ½ chuối chín</td><td>Chất xơ hòa tan</td></tr>
+        <tr><td>Phụ sáng</td><td>1 hũ sữa chua không đường</td><td>Probiotic</td></tr>
+        <tr><td>Trưa</td><td>Cơm trắng (vừa) + <a href="/mon-an/ca-kho-to">cá kho tộ</a> + <a href="/mon-an/canh-bi-do-thit-bam">canh bí đỏ</a></td><td>Dễ tiêu, ít FODMAP</td></tr>
+        <tr><td>Phụ chiều</td><td>1 quả đu đủ chín</td><td>Enzyme tiêu hóa</td></tr>
+        <tr><td>Tối</td><td>Cơm trắng + <a href="/thuc-pham/trung-ga-luoc">trứng luộc</a> + rau củ luộc (cà rốt, bí, su hào)</td><td>Nhẹ bụng, dễ ngủ</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>📝 Mẹo thực tế</h2>
+    <ul style="line-height: 1.8;">
+      <li><strong>Nhật ký ăn uống:</strong> Ghi lại thực phẩm ăn và triệu chứng — giúp xác định thực phẩm kích hoạt.</li>
+      <li><strong>Probiotic:</strong> Sữa chua, dưa cải muối tự nhiên, kim chi — hỗ trợ hệ vi sinh đường ruột.</li>
+      <li><strong>Chất xơ tăng từ từ:</strong> Tăng 5g/tuần, chia đều các bữa, uống nhiều nước.</li>
+      <li><strong>Tránh ăn quá no:</strong> Chia 5-6 bữa nhỏ thay vì 3 bữa lớn.</li>
+      <li><strong>Massage bụng:</strong> Xoa bụng theo chiều kim đồng hồ sau khi ngủ dậy giúp kích thích nhu động ruột.</li>
+    </ul>
+  </section>
+
+  <DietMealPlan condition="tao-bon-ibs" conditionLabel="người táo bón/IBS" />
+</ArticleLayout>

@@ -1,0 +1,99 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["hoi-chung-chuyen-hoa"];
+if (!art) throw new Error("Article not found: hoi-chung-chuyen-hoa");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Tuấn, 44 tuổi, khám sức khỏe: vòng eo 98cm, huyết áp 135/88, đường đói 6.1, triglyceride 2.5, HDL 0.9 — hội chứng chuyển hóa. Bác sĩ nói: "Anh có ít nhất 3/5 yếu tố. Nếu không thay đổi, 5 năm nữa anh sẽ bị tiểu đường và nhồi máu cơ tim."</p>
+  <p>Hội chứng chuyển hóa không phải một bệnh — nó là cụm 5 yếu tố nguy cơ xảy ra cùng nhau (béo bụng, mỡ máu, huyết áp, đường huyết). Tin tốt: có thể đảo ngược hoàn toàn bằng dinh dưỡng và lối sống trong 6 tháng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Đảo ngược hội chứng chuyển hóa = <u>giảm vòng eo (nam &lt;90cm, nữ &lt;80cm)</u>,
+    <u>cắt đường/nước ngọt</u>, <u>tăng rau trái & ngũ cốc nguyên hạt</u>, <u>giảm muối &lt;5g</u>,
+    <u>tập thể dục 30 phút/ngày</u>. Chỉ cần giảm 5–10% cân nặng là cải thiện đáng kể!</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao hội chứng chuyển hóa nguy hiểm?</h2>
+  <p>Mỡ nội tạng (béo bụng) giải phóng các chất gây viêm và kháng insulin. Kháng insulin dẫn đến đường huyết cao. Mỡ bụng cũng gây rối loạn mỡ máu (triglyceride cao, HDL thấp) và tăng huyết áp. Khi 3–5 yếu tố này kết hợp, nguy cơ tim mạch và đột quỵ tăng gấp 3–5 lần so với người bình thường.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau xanh không hạn chế — ít calo, nhiều xơ, no lâu</li>
+      <li>Ngũ cốc nguyên hạt: gạo lứt, yến mạch, khoai lang</li>
+      <li>Cá béo: cá thu, cá hồi — omega-3 giảm viêm, tăng HDL</li>
+      <li>Chất béo tốt: dầu olive, bơ, các loại hạt</li>
+      <li>Đạm: ức gà, cá, đậu phụ — giúp no lâu, ít béo</li>
+      <li>Trái cây ít ngọt: bưởi, cam, ổi, dâu tây</li>
+      <li>Sữa chua không đường — men vi sinh</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Nước ngọt, trà sữa — nguy hiểm nhất cho chuyển hóa</li>
+      <li>⛔ Bánh mì trắng, cơm trắng, bún, mì gói</li>
+      <li>⛔ Đồ chiên rán, thức ăn nhanh</li>
+      <li>⛔ Bánh kẹo, kem, chè, nước ép trái cây đóng hộp</li>
+      <li>⛔ Rượu bia — tăng triglyceride, mỡ bụng</li>
+      <li>⚠️ Ăn tối sau 20h, ăn quá no</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 5 mục tiêu cụ thể</h2>
+  <table class="table"><thead><tr><th>Yếu tố</th><th>Mục tiêu</th><th>Điều chỉnh ăn uống</th></tr></thead><tbody>
+    <tr><td>① Vòng eo</td><td>Nam &lt;90cm, Nữ &lt;80cm</td><td>Giảm 5–10% cân, cắt đường, kiểm soát khẩu phần</td></tr>
+    <tr><td>② Triglyceride</td><td>&lt;1.7 mmol/L</td><td>Cắt đường & carb tinh chế, omega-3</td></tr>
+    <tr><td>③ HDL</td><td>Nam &gt;1.03, Nữ &gt;1.29</td><td>Chất béo tốt (dầu olive, bơ, hạt), tập thể dục</td></tr>
+    <tr><td>④ Huyết áp</td><td>&lt;130/85</td><td>Giảm muối &lt;5g, tăng kali (rau, chuối, khoai lang)</td></tr>
+    <tr><td>⑤ Đường huyết đói</td><td>&lt;5.6 mmol/L</td><td>Carb phức tạp, chia nhỏ bữa, giảm cân</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1800 kcal)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bánh mì nguyên cám + trứng ốp + bơ + cà chua</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 trái táo + 1 nắm hạnh nhân</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá thu nướng + rau luộc + canh bí đao</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa chua không đường</td></tr>
+    <tr><td>🌙 Tối</td><td>Ức gà áp chảo + salad rau dầu olive + khoai lang luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đo vòng eo mỗi tuần — mục tiêu &lt;90/80cm.</li>
+        <li>Đi bộ nhanh 30 phút/ngày — va chạm với đất giúp chuyển hóa đường tốt hơn.</li>
+        <li>Uống nước lọc thay tất cả đồ ngọt — 2 tuần thấy khác.</li>
+        <li>Ăn rau đầu bữa — no trước khi ăn tinh bột.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Huyết áp &gt;160/100 dù đã thay đổi lối sống.</li>
+        <li>Đường huyết &gt;7.0 đói — đã thành tiểu đường.</li>
+        <li>Vòng eo tăng nhanh kèm khát nước, tiểu nhiều.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

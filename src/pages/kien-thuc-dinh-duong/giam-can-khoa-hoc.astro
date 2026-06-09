@@ -1,0 +1,15 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["giam-can-khoa-hoc"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card"><h2>📋 Tóm tắt — Giảm cân khoa học</h2><p>Giảm cân bền vững dựa trên thâm hụt calo nhẹ (300-500 calo/ngày), kết hợp chế độ ăn đủ đạm, nhiều rau xanh, và tập luyện thường xuyên. Giảm 0.3-0.5kg/tuần là tốc độ an toàn và bền vững. Các chế độ ăn cấp tốc thường dẫn đến tăng cân trở lại (yo-yo effect).</p></section>
+  <section class="section card"><h2>⚖️ Nguyên lý giảm cân</h2><ul><li><strong>Thâm hụt calo:</strong> Giảm 300-500 calo/ngày so với nhu cầu duy trì (TDEE) — đủ để giảm 0.3-0.5kg/tuần mà không gây mất cơ nhiều.</li><li><strong>Đạm — chất xơ — nước:</strong> Ăn đủ đạm (20-25% năng lượng) để giữ cơ. Chất xơ từ rau giúp no lâu. Uống 1.5-2L nước/ngày.</li><li><strong>Ngủ đủ 7-8 tiếng:</strong> Thiếu ngủ làm tăng ghrelin (đói) và giảm leptin (no) — khiến bạn ăn nhiều hơn 200-300 calo/ngày.</li></ul></section>
+  <section class="section card"><h2>✅ Thực phẩm nên ăn</h2><ul><li><strong>Rau xanh:</strong> Ăn không giới hạn — rau lá xanh, bông cải, cà chua, dưa leo.</li><li><strong>Đạm nạc:</strong> Ức gà, cá, đậu phụ, trứng, sữa chua không đường.</li><li><strong>Tinh bột phức tạp:</strong> Yến mạch, gạo lứt, khoai lang, bánh mì nguyên cám.</li><li><strong>Chất béo lành mạnh:</strong> Bơ, dầu ô-liu, các loại hạt (1 nắm/ngày).</li></ul></section>
+  <section class="section card"><h2>⚠️ Thực phẩm hạn chế</h2><ul><li><strong>Đường và đồ ngọt:</strong> Nước ngọt, bánh kẹo, trà sữa — cần cắt giảm triệt để.</li><li><strong>Tinh bột tinh chế:</strong> Cơm trắng (giảm 30-50%), bánh mì trắng, bún, hủ tiếu.</li><li><strong>Đồ chiên rán:</strong> Giảm dầu mỡ khi chế biến.</li><li><strong>Rượu bia:</strong> 1 gram cồn = 7 calo — rượu làm giảm ức chế, khiến bạn ăn nhiều hơn.</li></ul></section>
+  <section class="section card"><h2>❓ Câu hỏi thường gặp</h2><ul><li><strong>Có nên bỏ bữa tối?</strong> Không — bỏ bữa tối làm đói về đêm, dễ ăn bù. Nên ăn tối nhẹ trước 19h.</li><li><strong>Ăn kiêng keto có tốt không?</strong> Giảm cân nhanh ban đầu, nhưng khó duy trì. Hiệu quả dài hạn tương đương ăn thâm hụt calo thông thường.</li><li><strong>Tập gì để giảm mỡ?</strong> Cardio (đi bộ nhanh 30-45 phút) + kháng lực (tạ, squat) 3-4 buổi/tuần.</li></ul></section>
+  <section class="section card"><h2>🎯 Tóm lại</h2><p>Giảm cân không có đường tắt. Giảm chậm, đều, kết hợp ăn uống và vận động là cách duy nhất bền vững. Hãy kiên nhẫn — mất 3-6 tháng để thấy kết quả rõ rệt và giữ được lâu dài.</p></section>
+</ArticleLayout>

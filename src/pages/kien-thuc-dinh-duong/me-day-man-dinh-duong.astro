@@ -1,0 +1,85 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["me-day-man-dinh-duong"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Mề đay mạn tính là tình trạng nổi mề đay (hives) kéo dài <strong>trên 6 tuần</strong>, thường không rõ nguyên nhân. Có thể do tự miễn, nhiễm trùng tiềm ẩn, hoặc dị ứng thực phẩm.</p>
+    <p>Dinh dưỡng đóng vai trò <strong>hỗ trợ giảm triệu chứng</strong> ở một số người — đặc biệt là chế độ ăn low-histamine hoặc loại trừ thực phẩm kích hoạt.</p>
+    <p class="safety-warning">⚠️ Nếu bạn khó thở, sưng môi/mặt/lưỡi kèm mề đay — đó là dấu hiệu sốc phản vệ, cần đi cấp cứu ngay.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Thử chế độ ăn low-histamine:</strong> Histamin có trong nhiều thực phẩm và cũng được giải phóng từ tế bào mast. Ở một số người, giảm histamin giúp cải thiện.</li>
+      <li><strong>Ghi nhật ký thực phẩm – triệu chứng:</strong> Ghi lại món ăn trong 4–6 tiếng trước khi nổi mề đay để phát hiện thực phẩm nghi ngờ.</li>
+      <li><strong>Không tự loại trừ quá nhiều cùng lúc:</strong> Có thể thử loại từng nhóm dưới sự hướng dẫn của chuyên gia dinh dưỡng.</li>
+      <li><strong>Tránh thực phẩm giải phóng histamin:</strong> Rượu, cà phê, trà xanh đặc, chocolate, chuối chín, cà chua, cá ngừ, cá thu.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="high-histamine">
+    <h2>Thực phẩm giàu histamin & giải phóng histamin</h2>
+    <div class="food-table">
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Thực phẩm lên men</span><span>Dưa muối, cà muối, kim chi, phô mai già (cheddar, parmesan), sữa chua để lâu</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Cá & hải sản đóng hộp</span><span>Cá ngừ hộp, cá mòi hộp, cá thu hun khói, tôm khô</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Đồ uống có cồn</span><span>Rượu vang đỏ, bia, rượu mạnh</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Trái cây giàu histamin</span><span>Chuối chín, bơ, đu đủ, dứa, dâu tây, cam, quýt</span></div>
+      <div class="food-row food-row-warn"><span class="food-cat">🔴 Phụ gia thực phẩm</span><span>Bột ngọt (MSG), chất bảo quản, phẩm màu thực phẩm</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm an toàn (low-histamine)</h2>
+    <ul>
+      <li><strong>Thịt tươi nấu ngay:</strong> Thịt gà tươi, thịt heo tươi, thịt bò tươi (không để qua ngày)</li>
+      <li><strong>Cá tươi:</strong> Cá rô, cá lóc, cá điêu hồng — nấu và ăn trong ngày</li>
+      <li><strong>Rau củ tươi:</strong> Bông cải xanh, cà rốt, bầu bí, khoai tây, dưa leo, xà lách</li>
+      <li><strong>Trái cây:</strong> Táo, lê, nho xanh, dưa hấu, thanh long, vải</li>
+      <li><strong>Tinh bột:</strong> Cơm, bún, phở, bánh mì tươi, miến dong</li>
+      <li><strong>Gia vị nhẹ:</strong> Muối, gừng tươi, nghệ, húng quế, rau thơm</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Cháo thịt bằm nấu với cà rốt + rau thơm</span></div>
+      <div class="meal-row"><span class="meal-time">🍎 Phụ sáng</span><span>1 quả táo + vài lát dưa hấu</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm trắng + thịt gà luộc + canh bầu nấu tươi</span></div>
+      <div class="meal-row"><span class="meal-time">🥤 Xế</span><span>Nước ép lê tươi + 1 lát bánh mì</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Cơm + cá lóc kho tộ + bông cải luộc</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Ăn bột ngọt (MSG) có gây mề đay không?</summary>
+      <p>Một số người nhạy cảm với MSG và báo cáo nổi mề đay sau ăn. Nếu nghi ngờ, thử loại bỏ MSG trong 2–4 tuần và theo dõi triệu chứng.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Low-histamine diet có khó không?</summary>
+      <p>Khó ở giai đoạn đầu vì nhiều thực phẩm quen thuộc (chuối, cà chua, dưa muối) bị hạn chế. Tuy nhiên, chỉ nên áp dụng tối đa 4 tuần, sau đó từ từ thêm lại từng món để xác định ngưỡng dung nạp.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Mề đay mạn có thể khỏi không?</summary>
+      <p>Nhiều trường hợp tự thuyên giảm sau 1–5 năm, đặc biệt là mề đay mạn tự phát. Điều trị bằng kháng histamin và tránh yếu tố kích hoạt giúp kiểm soát. Một số người cần điều trị chuyên sâu hơn (omalizumab).</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p>Mề đay mạn tính không nguy hiểm đến tính mạng nhưng ảnh hưởng chất lượng cuộc sống. <strong>Bước đầu tiên:</strong> giữ nhật ký ăn uống 2 tuần, thử low-histamine diet, và luôn dùng thuốc kháng histamin theo chỉ dẫn. Nếu kèm khó thở — cấp cứu ngay!</p>
+    </div>
+  </section>
+</ArticleLayout>

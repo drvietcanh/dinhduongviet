@@ -1,0 +1,103 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["chon-dau-an"];
+if (!art) throw new Error("Article not found: chon-dau-an");
+---
+
+<ArticleLayout article={art}>
+
+  <section class="section card">
+    <h2>📋 Tóm tắt — Chọn dầu ăn không cực đoan</h2>
+    <p>Dầu ăn và chất béo là một trong những chủ đề gây nhầm lẫn nhất. Trên mạng xã hội có hai luồng cực đoan: "dầu thực vật độc — chỉ dùng mỡ heo" và "mỡ heo gây bệnh tim — chỉ dùng dầu thực vật". Cả hai đều sai. Sự thật: mỗi loại dầu có điểm mạnh riêng, và chìa khóa là đa dạng hóa + kiểm soát tổng lượng.</p>
+  </section>
+
+  <section class="section card">
+    <h2>⚖️ Hiểu đúng về chất béo</h2>
+    <table>
+      <thead><tr><th>Loại chất béo</th><th>Tác dụng</th><th>Nguồn thực phẩm</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Không bão hòa đơn (MUFA)</strong></td><td>✅ Tốt — tăng HDL, giảm LDL</td><td>Dầu olive, dầu lạc, bơ, hạt điều</td></tr>
+        <tr><td><strong>Không bão hòa đa (PUFA)</strong><br><small>omega-3 & 6</small></td><td>✅ Tốt — chống viêm, tim mạch</td><td>Dầu cá, dầu đậu nành, dầu hướng dương, hạt chia</td></tr>
+        <tr><td><strong>Bão hòa (SFA)</strong></td><td>⚠️ Hạn chế — tăng LDL nếu quá nhiều</td><td>Mỡ động vật, dầu dừa, dầu cọ</td></tr>
+        <tr><td><strong>Trans fat</strong></td><td>❌ Tránh hoàn toàn</td><td>Đồ chiên rán công nghiệp, bánh kẹo, shortening</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Bảng so sánh 7 loại dầu phổ biến</h2>
+    <table>
+      <thead><tr><th>Loại dầu</th><th>Không bão hòa</th><th>Bão hòa</th><th>Nhiệt bốc khói</th><th>Phù hợp nhất</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dầu olive nguyên chất</strong></td><td>73%</td><td>14%</td><td>190-210°C</td><td>Salad, xào nhẹ, rưới món</td></tr>
+        <tr><td><strong>Dầu lạc (đậu phộng)</strong></td><td>46%</td><td>17%</td><td>230°C</td><td>Xào, chiên, rán — phổ biến VN</td></tr>
+        <tr><td><strong>Dầu hướng dương</strong></td><td>84%</td><td>10%</td><td>225°C</td><td>Chiên, rán, xào nhiệt cao</td></tr>
+        <tr><td><strong>Dầu đậu nành</strong></td><td>61%</td><td>15%</td><td>230°C</td><td>Xào, chiên — rẻ, dễ tìm</td></tr>
+        <tr><td><strong>Dầu cám gạo (gạo lứt)</strong></td><td>47%</td><td>20%</td><td>250°C</td><td>Chiên ngập dầu — chịu nhiệt tốt nhất</td></tr>
+        <tr><td><strong>Dầu dừa</strong></td><td>9%</td><td>82%</td><td>175°C</td><td>Làm bánh, keto — không chiên</td></tr>
+        <tr><td><strong>Mỡ heo</strong></td><td>42%</td><td>40%</td><td>185°C</td><td>Kho, rim, thỉnh thoảng xào</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>🧑‍🍳 Chọn dầu theo cách nấu</h2>
+    <table>
+      <thead><tr><th>Cách nấu</th><th>Dầu phù hợp</th></tr></thead>
+      <tbody>
+        <tr><td>Salad, rưới lên món</td><td>Dầu olive extra virgin</td></tr>
+        <tr><td>Xào nhanh lửa lớn</td><td>Dầu lạc, dầu hướng dương, dầu olive thường</td></tr>
+        <tr><td>Chiên, rán</td><td>Dầu lạc, dầu hướng dương, dầu đậu nành</td></tr>
+        <tr><td>Chiên ngập dầu</td><td>Dầu cám gạo, dầu lạc</td></tr>
+        <tr><td>Kho, rim</td><td>Dầu lạc hoặc mỡ heo (lượng nhỏ)</td></tr>
+        <tr><td>Làm bánh</td><td>Dầu dừa, bơ động vật (lượng nhỏ)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Cảnh báo: Trans fat — Kẻ thù thực sự</h2>
+    <p>Dù dùng dầu gì, nguy hiểm nhất là <strong>chất béo chuyển hóa (trans fat)</strong>. Trans fat xuất hiện khi:</p>
+    <ul>
+      <li><strong>Dầu chiên đi chiên lại</strong> ở quán ăn, tiệm rán — dùng một lần rồi bỏ.</li>
+      <li><strong>Dầu thực vật hydro hóa</strong> trong bánh quy, snack, kem béo thực vật, bánh mì công nghiệp.</li>
+      <li><strong>Đồ chiên sẵn</strong> đóng gói — kiểm tra nhãn "chất béo chuyển hóa".</li>
+    </ul>
+    <p style="margin-top:10px;">Ở Việt Nam, trans fat chủ yếu từ dầu chiên lại ở hàng quán và bánh kẹo công nghiệp. Ăn đồ chiên quán vỉa hè — cẩn thận dầu đen, khói nhiều.</p>
+  </section>
+
+  <section class="section card">
+    <h2>🇻🇳 Khuyến nghị cho gia đình Việt</h2>
+    <table>
+      <thead><tr><th>Thay vì</th><th>Hãy dùng</th></tr></thead>
+      <tbody>
+        <tr><td>Mỡ lợn xào rau mỗi ngày</td><td>Dầu lạc hoặc dầu olive</td></tr>
+        <tr><td>Chỉ dùng 1 loại dầu</td><td>Xoay vòng 2-3 loại</td></tr>
+        <tr><td>Dầu thực vật rẻ tiền</td><td>Dầu đậu nành/dầu hướng dương chính hãng</td></tr>
+        <tr><td>Bơ thực vật (margarine)</td><td>Bơ động vật nguyên chất (dùng ít)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;"><strong>Tủ dầu lý tưởng:</strong> Dầu lạc (xào/chiên) + dầu olive (salad/rưới). Thêm dầu cám gạo nếu hay chiên ngập. Thỉnh thoảng mỡ heo cho món kho, rim.</p>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <table>
+      <thead><tr><th>Câu hỏi</th><th>Trả lời</th></tr></thead>
+      <tbody>
+        <tr><td>Dầu olive có chiên được không?</td><td>Chiên nhẹ được (dưới 190°C). Không chiên ngập.</td></tr>
+        <tr><td>Mỡ heo có tốt không?</td><td>Dùng được, nhưng không phải "thần dược". 40% bão hòa — dùng có chừng mực.</td></tr>
+        <tr><td>Dầu dừa có tốt cho tim không?</td><td>82% bão hòa — không tốt hơn mỡ động vật. Hạn chế.</td></tr>
+        <tr><td>Dầu chiên xong có dùng lại được không?</td><td>Không — bỏ ngay sau một lần chiên.</td></tr>
+        <tr><td>Nên mua chai thủy tinh hay nhựa?</td><td>Chai tối màu, thủy tinh càng tốt — tránh oxy hóa.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Không có loại dầu nào "tốt tuyệt đối" hay "xấu hoàn toàn". Chiến lược đúng: đa dạng hóa, chọn theo nhiệt độ nấu, kiểm soát tổng chất béo bão hòa dưới 10% năng lượng, và đặc biệt <strong>tránh trans fat</strong>. Mua chai tối màu, không dùng lại dầu đã chiên.</p>
+  </section>
+
+</ArticleLayout>

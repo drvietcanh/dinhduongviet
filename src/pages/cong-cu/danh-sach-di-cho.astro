@@ -1,0 +1,303 @@
+---
+// danh-sach-di-cho.astro — Tạo danh sách đi chợ từ món ăn
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Danh sách đi chợ - Dinh Dưỡng Việt">
+  <style>
+    .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
+    .badge { display: inline-block; background: var(--bg-warning); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2rem; margin: 0 0 8px; }
+    .lead { color: var(--ink-secondary); margin-bottom: 24px; font-size: 1.1rem; }
+
+    .layout { display: flex; gap: 24px; }
+    .recipe-panel { flex: 1; }
+    .list-panel { flex: 1; position: sticky; top: 20px; align-self: flex-start; }
+
+    .search-box { margin-bottom: 16px; }
+    .search-box input {
+      width: 100%; padding: 10px 14px; border: 2px solid var(--line); border-radius: 10px;
+      font-size: 0.95rem; box-sizing: border-box;
+    }
+    .search-box input:focus { outline: none; border-color: var(--accent); }
+
+    .recipe-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-bottom: 1px solid var(--line-light); cursor: pointer;
+      transition: background .15s;
+    }
+    .recipe-item:hover { background: var(--line-light); }
+    .recipe-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+    .ri-name { font-weight: 500; flex: 1; }
+    .ri-calo { color: var(--ink-tertiary); font-size: 0.85rem; white-space: nowrap; }
+    .ri-checked { color: #e65100; }
+    .count-badge {
+      display: inline-block; background: #e65100; color: white;
+      border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; font-weight: 600;
+      margin-left: 6px;
+    }
+
+    .recipe-group { margin-bottom: 16px; }
+    .group-label { font-weight: 700; color: var(--ink); padding: 6px 12px; background: #f5f5f5; border-radius: 6px; margin-bottom: 4px; font-size: 0.9rem; }
+
+    // Shopping list
+    .list-panel h2 { margin: 0 0 16px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+    .empty-list { text-align: center; padding: 40px 20px; color: var(--ink-tertiary); background: var(--bg-highlight); border-radius: 12px; }
+    .empty-list .icon { font-size: 2.5rem; margin-bottom: 8px; }
+
+    .list-section { margin-bottom: 20px; }
+    .list-section-title {
+      font-weight: 700; font-size: 0.95rem; color: #333;
+      padding-bottom: 6px; border-bottom: 2px solid var(--line); margin-bottom: 8px;
+    }
+    .list-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 8px; border-bottom: 1px solid var(--line-light); font-size: 0.9rem;
+    }
+    .list-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: #e65100; cursor: pointer; flex-shrink: 0; }
+    .li-name { flex: 1; }
+    .li-amt { color: #888; font-size: 0.85rem; white-space: nowrap; }
+    .li-checked { text-decoration: line-through; color: var(--ink-tertiary); }
+
+    .empty-msg { display: none; text-align: center; padding: 20px; color: #999; }
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .clear-btn {
+      padding: 6px 14px; background: none; border: 1px solid var(--line); border-radius: 6px;
+      cursor: pointer; font-size: 0.8rem; color: var(--ink-secondary);
+    }
+    .clear-btn:hover { background: #f5f5f5; }
+
+    @media (max-width: 768px) {
+      .layout { flex-direction: column; }
+      .list-panel { position: static; }
+    }
+  </style>
+
+  <section>
+    <span class="badge">🛒 Công cụ</span>
+    <h1>Danh sách đi chợ</h1>
+    <p class="lead">
+      Chọn các món bạn muốn nấu trong tuần → tự động tổng hợp nguyên liệu cần mua,
+      phân loại theo gian hàng siêu thị để đi chợ dễ dàng hơn!
+    </p>
+  </section>
+
+  <div class="app-container" id="shop-app">
+    <div class="layout">
+      <!-- Recipe selection panel -->
+      <div class="recipe-panel">
+        <div class="search-box">
+          <input type="text" id="recipe-search" placeholder="🔍 Tìm món ăn...">
+        </div>
+        <div id="recipe-list">
+          <div style="text-align:center;padding:40px;color:#999">⏳ Đang tải...</div>
+        </div>
+      </div>
+
+      <!-- Shopping list panel -->
+      <div class="list-panel">
+        <div class="header-row">
+          <h2>🛍️ Danh sách mua</h2>
+          <button class="clear-btn" id="clear-btn" style="display:none">🗑️ Xoá hết</button>
+        </div>
+        <div id="list-content">
+          <div class="empty-list">
+            <div class="icon">🛒</div>
+            <p>Chưa chọn món nào</p>
+            <p style="font-size:0.85rem">Chọn món bên trái, danh sách nguyên liệu sẽ hiện ra ở đây</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data
+    let recipes = [];
+    let foods = [];
+    let selected = new Set();
+
+    const CAT_ORDER = [
+      "Rau xanh", "Củ quả", "Nấm", "Trái cây", "Rau gia vị",
+      "Thịt", "Cá", "Hải sản", "Thịt chế biến", "Trứng sữa",
+      "Tinh bột", "Đậu", "Hạt", "Gia vị", "Dầu mỡ", "Đồ uống", "Nước dùng", "Bánh kẹo"
+    ];
+
+    // Load data
+    Promise.all([
+      fetch("/api-recipes.json").then(r => r.json()),
+      fetch("/api-foods.json").then(r => r.json())
+    ]).then(([r, f]) => {
+      // Only recipes with ingredients
+      recipes = r.filter(rec => rec.ingredients && rec.ingredients.length > 0);
+      foods = f;
+      renderRecipes();
+    });
+
+    // Render recipe list
+    function renderRecipes(filter = "") {
+      const q = filter.toLowerCase().trim();
+      const container = document.getElementById("recipe-list");
+
+      // Group recipes alphabetically-ish
+      let filtered = q
+        ? recipes.filter(r => r.name.toLowerCase().includes(q) || (r.aliases && r.aliases.some(a => a.toLowerCase().includes(q))))
+        : recipes;
+
+      if (!filtered.length) {
+        container.innerHTML = `<div style="text-align:center;padding:40px;color:#999">Không tìm thấy món "${q}"</div>`;
+        return;
+      }
+
+      // Group by first letter
+      const groups = {};
+      filtered.forEach(r => {
+        const letter = r.name.charAt(0).toUpperCase();
+        if (!groups[letter]) groups[letter] = [];
+        groups[letter].push(r);
+      });
+
+      let html = "";
+      const letters = Object.keys(groups).sort();
+      letters.forEach(letter => {
+        html += `<div class="recipe-group"><div class="group-label">${letter} <span class="count-badge">${groups[letter].length}</span></div>`;
+        groups[letter].forEach(r => {
+          // Show recipe.id in the slug, not name, for uniqueness
+          const checked = selected.has(r.id);
+          html += `<label class="recipe-item${checked ? ' ri-checked' : ''}">
+            <input type="checkbox" data-id="${r.id}" ${checked ? 'checked' : ''}>
+            <span class="ri-name">${r.name}</span>
+            <span class="ri-calo">${r.nutrients.energyKcal} kcal</span>
+          </label>`;
+        });
+        html += `</div>`;
+      });
+
+      container.innerHTML = html;
+
+      // Bind checkbox events
+      container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener("change", function() {
+          const id = this.dataset.id;
+          if (this.checked) {
+            selected.add(id);
+          } else {
+            selected.delete(id);
+          }
+          updateList();
+          // Re-render to show checked state
+          renderRecipes(document.getElementById("recipe-search").value);
+        });
+      });
+    }
+
+    // Search
+    document.getElementById("recipe-search").addEventListener("input", function() {
+      renderRecipes(this.value);
+    });
+
+    // Build shopping list
+    function updateList() {
+      const content = document.getElementById("list-content");
+      const clearBtn = document.getElementById("clear-btn");
+
+      if (selected.size === 0) {
+        content.innerHTML = `<div class="empty-list">
+          <div class="icon">🛒</div>
+          <p>Chưa chọn món nào</p>
+          <p style="font-size:0.85rem">Chọn món bên trái, danh sách nguyên liệu sẽ hiện ra ở đây</p>
+        </div>`;
+        clearBtn.style.display = "none";
+        return;
+      }
+
+      clearBtn.style.display = "";
+
+      // Aggregate ingredients
+      const foodMap = {};
+      foods.forEach(f => foodMap[f.id] = f);
+
+      const agg = {}; // foodId -> { name, category, totalG, recipes: [] }
+      selected.forEach(rid => {
+        const rec = recipes.find(r => r.id === rid);
+        if (!rec || !rec.ingredients) return;
+        rec.ingredients.forEach(ing => {
+          if (!agg[ing.foodId]) {
+            const food = foodMap[ing.foodId];
+            agg[ing.foodId] = {
+              name: ing.note || (food ? food.name : ing.foodId),
+              category: food ? food.category : "Khác",
+              totalG: 0,
+              recipes: []
+            };
+          }
+          agg[ing.foodId].totalG += ing.amountG || 0;
+          if (!agg[ing.foodId].recipes.includes(rec.name)) {
+            agg[ing.foodId].recipes.push(rec.name);
+          }
+        });
+      });
+
+      // Group by category
+      const catGroups = {};
+      Object.values(agg).forEach(item => {
+        const cat = item.category || "Khác";
+        if (!catGroups[cat]) catGroups[cat] = [];
+        catGroups[cat].push(item);
+      });
+
+      // Render by category order
+      let html = `<div id="shop-list">`;
+      const usedCats = Object.keys(catGroups).filter(c => catGroups[c].length > 0);
+      const sortedCats = CAT_ORDER.filter(c => usedCats.includes(c)).concat(usedCats.filter(c => !CAT_ORDER.includes(c)));
+
+      sortedCats.forEach(cat => {
+        const items = catGroups[cat].sort((a, b) => a.name.localeCompare(b.name, "vi"));
+        html += `<div class="list-section">
+          <div class="list-section-title">${cat} (${items.length})</div>`;
+        items.forEach(item => {
+          const amt = item.totalG >= 1000
+            ? (item.totalG / 1000).toFixed(1) + " kg"
+            : Math.round(item.totalG) + " g";
+          const tooltip = item.recipes.join(", ");
+          html += `<label class="list-item" title="${tooltip}">
+            <input type="checkbox">
+            <span class="li-name">${item.name}</span>
+            <span class="li-amt">${amt}</span>
+          </label>`;
+        });
+        html += `</div>`;
+      });
+
+      html += `</div>`;
+
+      // Count summary
+      const totalItems = Object.keys(agg).length;
+      html = `<p style="margin:0 0 12px;font-size:0.9rem;color:#555">
+        📋 <strong>${totalItems}</strong> nguyên liệu cho <strong>${selected.size}</strong> món
+      </p>` + html;
+
+      // Checkbox toggle line-through
+      html = html.replace(`<div id="shop-list">`, `<div id="shop-list">`) + `
+      <p style="margin-top:16px;font-size:0.85rem;color:#888;text-align:center">
+        ☑️ Tick vào ô để đánh dấu đã mua
+      </p>`;
+
+      content.innerHTML = html;
+
+      // Bind strike-through
+      content.querySelectorAll('.list-item input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener("change", function() {
+          this.closest(".list-item").classList.toggle("li-checked", this.checked);
+        });
+      });
+    }
+
+    // Clear all
+    document.getElementById("clear-btn").addEventListener("click", function() {
+      selected.clear();
+      renderRecipes(document.getElementById("recipe-search").value);
+      updateList();
+    });
+  </script>
+</BaseLayout>

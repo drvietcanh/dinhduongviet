@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-benh-tri"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Lan, 38 tuổi, nhân viên văn phòng, ngồi 8 tiếng/ngày, ít uống nước, hay táo bón. Gần đây chị thấy đi cầu ra máu, ngồi đau rát, sờ thấy cục ở hậu môn. Bác sĩ bảo <strong>bệnh trĩ</strong> độ 2.</p>
+  <p>Trĩ rất phổ biến — gần 1/3 người Việt trưởng thành từng bị. Nguyên nhân số 1: táo bón kéo dài. Tin tốt: tăng chất xơ và nước có thể kiểm soát >80% trường hợp.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Vũ khí số 1 chống trĩ: <u>chất xơ 25–30g/ngày</u> và <u>nước 2–2.5 lít/ngày</u>. 
+    Tránh ngồi lâu, đi cầu đúng cách (không rặn), ăn rau trái đủ, hạn chế cay nóng.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Tại sao táo bón gây trĩ?</h2>
+  <p>Khi phân khô và cứng, bạn phải rặn để đẩy ra. Áp lực rặn làm căng các tĩnh mạch ở hậu môn, chúng sưng lên thành búi trĩ. Chất xơ giúp phân mềm và nở to, đi dễ dàng không cần rặn. Nước giúp chất xơ trương nở — nếu uống ít, chất xơ không phát huy tác dụng.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau xanh: rau ngót, mồng tơi, rau đay, rau dền, bắp cải</li>
+      <li>Trái cây nhuận tràng: đu đủ chín, thanh long, chuối chín, bơ, cam</li>
+      <li>Ngũ cốc nguyên cám: yến mạch, gạo lứt, bánh mì nguyên cám</li>
+      <li>Các loại đậu: đậu xanh, đậu đen, đậu lăng</li>
+      <li>Khoai lang luộc — giàu chất xơ nhất trong các loại củ</li>
+      <li>Uống: nước ấm pha mật ong, nước chanh, nước ép mận</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Đồ cay nóng: ớt, tiêu, mù tạt — kích thích búi trĩ, đau rát</li>
+      <li>⛔ Rượu bia, cà phê — mất nước, táo bón thêm</li>
+      <li>⛔ Đồ chiên rán, thức ăn nhanh — ít xơ, dễ táo bón</li>
+      <li>⛔ Bánh kẹo ngọt, bim bim — thay thế rau trái</li>
+      <li>⛔ Ngồi lâu trên bồn cầu &gt;5 phút — tăng áp lực hậu môn</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul><li>Uống 2 lít nước/ngày — đủ để chất xơ phát huy tác dụng.</li><li>Ngâm nước ấm 10–15 phút/ngày — giảm sưng đau.</li><li>Không ngồi >2h liên tục — đứng dậy đi lại.</li><li>Đi cầu ngay khi có nhu cầu — không nhịn.</li></ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul><li>Chảy máu nhiều, máu đỏ tươi thành tia.</li><li>Búi trĩ sa ra ngoài không đẩy vào được</li><li>Đau dữ dội, sốt — trĩ tắc mạch</li><li>Thay đổi thói quen đi cầu &gt;1 tháng</li></ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

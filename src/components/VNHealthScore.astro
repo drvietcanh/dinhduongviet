@@ -1,0 +1,334 @@
+---
+// VNHealthScore.astro — Bảng điểm dinh dưỡng Việt (theo khuyến nghị Bộ Y Tế)
+
+interface Props {
+  nutrients: {
+    energyKcal?: number;
+    proteinG?: number;
+    carbG?: number;
+    fatG?: number;
+    fiberG?: number;
+    sugarG?: number;
+    sodiumMg?: number;
+    saturatedFatG?: number;
+    calciumMg?: number;
+    ironMg?: number;
+    vitaminCMg?: number;
+    vitaminAUg?: number;
+    [key: string]: any;
+  };
+  name: string;
+  isRecipe?: boolean;
+  servingKcal?: number;
+}
+
+const { nutrients, name, isRecipe, servingKcal } = Astro.props;
+
+// --- NHÓM ĐIỂM ---
+// Dựa trên khuyến nghị Bộ Y Tế VN (BMR 2000kcal, RDI tham khảo)
+let score = 0;
+const maxScore = 10;
+const details: { label: string; points: number; max: number; reason: string }[] = [];
+
+// 1. Chất xơ (+2 tối đa)
+let fiberPoints = 0;
+const fiber = nutrients.fiberG ?? 0;
+if (fiber >= 6) { fiberPoints = 2; }
+else if (fiber >= 4) { fiberPoints = 1.5; }
+else if (fiber >= 2) { fiberPoints = 1; }
+else if (fiber > 0) { fiberPoints = 0.5; }
+score += fiberPoints;
+details.push({ label: "Chất xơ", points: fiberPoints, max: 2, reason: fiber >= 2 
+  ? `✅ ${fiber.toFixed(1)}g — tốt cho tiêu hóa, ổn định đường huyết`
+  : fiber > 0 ? `🟡 Chỉ ${fiber.toFixed(1)}g — nên bổ sung thêm rau, củ` 
+  : `❌ Không có chất xơ` });
+
+// 2. Đạm vừa phải (+1.5)
+let proteinPoints = 0;
+const protein = nutrients.proteinG ?? 0;
+if (isRecipe) {
+  const kcal = servingKcal || nutrients.energyKcal || 0;
+  const pct = kcal > 0 ? (protein * 4 / kcal) * 100 : 0;
+  if (pct >= 15 && pct <= 30) proteinPoints = 1.5;
+  else if (pct >= 10 && pct <= 35) proteinPoints = 1;
+  else if (pct > 0) proteinPoints = 0.5;
+} else {
+  if (protein >= 10 && protein <= 25) proteinPoints = 1.5;
+  else if (protein >= 5 && protein <= 30) proteinPoints = 1;
+  else if (protein > 0) proteinPoints = 0.5;
+}
+score += proteinPoints;
+details.push({ label: "Đạm", points: proteinPoints, max: 1.5, reason: proteinPoints >= 1.5
+  ? `✅ ${protein.toFixed(1)}g — tỷ lệ hợp lý`
+  : proteinPoints >= 1 ? `🟡 ${protein.toFixed(1)}g — tạm ổn`
+  : protein > 0 ? `🟡 ${protein.toFixed(1)}g — thấp, thiếu đạm`
+  : `❌ Không có đạm` });
+
+// 3. Ít đường (+1.5)
+let sugarPoints = 0;
+const sugar = nutrients.sugarG ?? 0;
+if (sugar <= 2) sugarPoints = 1.5;
+else if (sugar <= 5) sugarPoints = 1;
+else if (sugar <= 10) sugarPoints = 0.5;
+score += sugarPoints;
+details.push({ label: "Đường", points: sugarPoints, max: 1.5, reason: sugarPoints >= 1
+  ? `✅ Chỉ ${sugar.toFixed(1)}g đường — an toàn`
+  : sugarPoints > 0 ? `🟡 ${sugar.toFixed(1)}g — hơi nhiều đường`
+  : sugar > 0 ? `🔴 ${sugar.toFixed(1)}g — nhiều đường, cần hạn chế`
+  : `✅ Không chứa đường` });
+
+// 4. Ít natri (+1.5)
+let sodiumPoints = 0;
+const sodium = nutrients.sodiumMg ?? 0;
+if (sodium <= 120) sodiumPoints = 1.5;
+else if (sodium <= 300) sodiumPoints = 1;
+else if (sodium <= 600) sodiumPoints = 0.5;
+score += sodiumPoints;
+details.push({ label: "Muối (Natri)", points: sodiumPoints, max: 1.5, reason: sodiumPoints >= 1
+  ? `✅ ${sodium.toFixed(0)}mg — lượng muối thấp`
+  : sodiumPoints > 0 ? `🟡 ${sodium.toFixed(0)}mg — muối trung bình`
+  : `🔴 ${sodium.toFixed(0)}mg — nhiều muối (nguy cơ THA)` });
+
+// 5. Ít chất béo bão hòa (+1)
+let satPoints = 0;
+const satFat = nutrients.saturatedFatG ?? 0;
+if (satFat <= 1.5) satPoints = 1;
+else if (satFat <= 3) satPoints = 0.5;
+score += satPoints;
+details.push({ label: "Chất béo bão hòa", points: satPoints, max: 1, reason: satPoints >= 1
+  ? `✅ ${satFat.toFixed(1)}g — rất ít`
+  : satPoints > 0 ? `🟡 ${satFat.toFixed(1)}g — mức vừa`
+  : `🔴 ${satFat.toFixed(1)}g — nhiều mỡ bão hòa` });
+
+// 6. Giàu vi chất (canxi + sắt + vitamin C + A) (+1.5)
+let microPoints = 0;
+const calcium = nutrients.calciumMg ?? 0;
+const iron = nutrients.ironMg ?? 0;
+const vitC = nutrients.vitaminCMg ?? 0;
+const vitA = nutrients.vitaminAUg ?? 0;
+const micros = [
+  { val: calcium, threshold: 100, label: "Canxi" },
+  { val: iron, threshold: 1.5, label: "Sắt" },
+  { val: vitC, threshold: 10, label: "Vit C" },
+  { val: vitA, threshold: 100, label: "Vit A" },
+];
+const richMicros = micros.filter(m => m.val >= m.threshold);
+microPoints = Math.min(richMicros.length * 0.375, 1.5);
+score += microPoints;
+details.push({ label: "Vi chất", points: microPoints, max: 1.5, reason: microPoints >= 1
+  ? `✅ Giàu ${richMicros.map(m => m.label).join(", ")}`
+  : microPoints > 0
+  ? `🟡 Có ${richMicros.map(m => m.label).join(", ")}, thiếu ${micros.filter(m => m.val < m.threshold).map(m => m.label).join(", ")}`
+  : `🟡 Nghèo vi chất` });
+
+// 7. Tỷ lệ calo từ chất béo hợp lý (+1)
+let fatPctPoints = 0;
+const fat = nutrients.fatG ?? 0;
+const kcal = nutrients.energyKcal ?? 0;
+if (kcal > 0) {
+  const fatPct = (fat * 9 / kcal) * 100;
+  if (fatPct >= 15 && fatPct <= 30) fatPctPoints = 1;
+  else if (fatPct >= 10 && fatPct <= 35) fatPctPoints = 0.5;
+  if (fatPct < 5 && fatPctPoints > 0) fatPctPoints = 0.3; // quá ít béo cũng không tốt
+} else {
+  fatPctPoints = 0.5;
+}
+score += fatPctPoints;
+details.push({ label: "% calo từ béo", points: fatPctPoints, max: 1, reason: fatPctPoints >= 0.5
+  ? `✅ Tỷ lệ hợp lý`
+  : `🟡 Chưa cân đối` });
+
+// Làm tròn
+score = Math.round(score * 10) / 10;
+
+// Phân loại
+let grade = "", gradeColor = "", gradeIcon = "";
+if (score >= 9) { grade = "Xuất sắc"; gradeColor = "#16a34a"; gradeIcon = "🏆"; }
+else if (score >= 8) { grade = "Rất tốt"; gradeColor = "#22c55e"; gradeIcon = "🌟"; }
+else if (score >= 6.5) { grade = "Tốt"; gradeColor = "#65a30d"; gradeIcon = "👍"; }
+else if (score >= 5) { grade = "Trung bình"; gradeColor = "#d97706"; gradeIcon = "🫤"; }
+else if (score >= 3.5) { grade = "Kém"; gradeColor = "#ea580c"; gradeIcon = "⚠️"; }
+else { grade = "Cần cân nhắc"; gradeColor = "#dc2626"; gradeIcon = "🔴"; }
+
+const starCount = Math.round(score / 2);
+const stars = "★".repeat(starCount) + "☆".repeat(5 - starCount);
+---
+
+<div class="vn-score-widget">
+  <div class="vn-score-header">
+    <span class="vn-score-icon">🇻🇳</span>
+    <span class="vn-score-title">VN Health Score</span>
+    <span class="vn-score-badge">{gradeIcon} {grade}</span>
+  </div>
+  
+  <div class="vn-score-body">
+    <div class="vn-score-main">
+      <div class="vn-score-circle" style="--score-pct: {(score / maxScore * 100).toFixed(0)}%; --score-color: {gradeColor};">
+        <span class="vn-score-value">{score.toFixed(1)}</span>
+        <span class="vn-score-max">/{maxScore}</span>
+      </div>
+      <div class="vn-score-text">
+        <div class="vn-score-stars">{stars}</div>
+        <div class="vn-score-label">{name}</div>
+      </div>
+    </div>
+
+    <div class="vn-score-details">
+      {details.map(d => (
+        <div class="vn-score-row">
+          <div class="vn-score-row-label">{d.label}</div>
+          <div class="vn-score-bar-wrapper">
+            <div class="vn-score-bar-bg">
+              <div class="vn-score-bar-fill" style="width: {(d.points / d.max * 100).toFixed(0)}%;"></div>
+            </div>
+          </div>
+          <div class="vn-score-row-pts">{d.points}/{d.max}</div>
+          <div class="vn-score-row-reason">{d.reason}</div>
+        </div>
+      ))}
+    </div>
+
+    {score < 5 && (
+      <div class="vn-score-warning">
+        ⚠️ Món này có điểm dinh dưỡng thấp. Nên cân nhắc giảm khẩu phần hoặc kết hợp với rau xanh, trái cây để cân bằng bữa ăn.
+      </div>
+    )}
+    {score >= 8 && (
+      <div class="vn-score-tip">
+        💪 Món này giàu dinh dưỡng! Kết hợp thêm rau xanh để có bữa ăn hoàn chỉnh.
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .vn-score-widget {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .vn-score-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #f0fdf4;
+    border-bottom: 1px solid #dcfce7;
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  .vn-score-icon { font-size: 1.2em; }
+  .vn-score-badge {
+    margin-left: auto;
+    font-size: 0.8em;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    background: #e5e7eb;
+  }
+  .vn-score-body { padding: 14px; }
+  .vn-score-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .vn-score-circle {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(var(--score-color) 0% var(--score-pct), #e5e7eb var(--score-pct) 100%);
+    position: relative;
+  }
+  .vn-score-circle::before {
+    content: '';
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .vn-score-value {
+    font-weight: 700;
+    font-size: 1.1em;
+    z-index: 1;
+    line-height: 1;
+  }
+  .vn-score-max {
+    font-size: 0.7em;
+    color: #9ca3af;
+    z-index: 1;
+  }
+  .vn-score-text { flex: 1; }
+  .vn-score-stars {
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    color: #f59e0b;
+  }
+  .vn-score-label {
+    font-size: 0.85em;
+    color: #6b7280;
+    margin-top: 2px;
+  }
+  .vn-score-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .vn-score-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 50px;
+    gap: 6px;
+    align-items: center;
+    font-size: 0.83em;
+  }
+  .vn-score-row-label { color: #374151; font-weight: 500; }
+  .vn-score-bar-wrapper { min-width: 0; }
+  .vn-score-bar-bg {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .vn-score-bar-fill {
+    height: 100%;
+    background: #22c55e;
+    border-radius: 3px;
+    transition: width 0.3s;
+  }
+  .vn-score-row-pts {
+    text-align: right;
+    color: #374151;
+    font-weight: 500;
+  }
+  .vn-score-row-reason {
+    grid-column: 1 / -1;
+    font-size: 0.8em;
+    color: #6b7280;
+    margin-top: -4px;
+  }
+  .vn-score-warning {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    font-size: 0.85em;
+    color: #991b1b;
+  }
+  .vn-score-tip {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    font-size: 0.85em;
+    color: #166534;
+  }
+</style>

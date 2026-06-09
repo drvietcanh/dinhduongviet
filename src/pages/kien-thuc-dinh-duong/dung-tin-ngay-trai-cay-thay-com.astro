@@ -1,0 +1,53 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dung-tin-ngay-trai-cay-thay-com"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>🤔 Hiểu lầm: Ăn trái cây thay cơm giúp giảm cân</h2>
+    <p>Nhiều người giảm cân áp dụng "chế độ ăn trái cây" — chỉ ăn trái cây thay cơm. Họ nghĩ trái cây ít calo, giàu vitamin, nên ăn bao nhiêu cũng tốt. Thực tế, trái cây chứa nhiều <strong>đường fructose</strong> — ăn quá nhiều có thể gây tăng mỡ gan, mất cơ và rối loạn chuyển hóa.</p>
+    <div class="truth-box">
+      <strong>Sự thật:</strong> Một bữa ăn chỉ có trái cây thiếu đạm, chất béo và chất xơ đủ — dẫn đến tăng đường huyết nhanh, đói nhanh, và cuối cùng là ăn bù nhiều hơn. Trái cây là thực phẩm bổ sung, <strong>không thể thay bữa chính</strong>.
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🔬 Tại sao ăn trái cây thay cơm không hiệu quả</h2>
+    <ul>
+      <li><strong>Thiếu protein:</strong> Trái cây hầu như không có đạm (&lt;/100g). Thiếu đạm kéo dài → mất cơ, chậm chuyển hóa.</li>
+      <li><strong>Đường fructose:</strong> Fructose từ trái cây được chuyển hóa ở gan — quá nhiều có thể gây gan nhiễm mỡ, tăng triglyceride.</li>
+      <li><strong>Đói nhanh:</strong> Trái cây ít chất béo và đạm → tiêu hóa nhanh → đói sau 1-2 tiếng → ăn bù.</li>
+      <li><strong>Ví dụ thực tế:</strong> 1 chén cơm (130g) ≈ 170 calo. 1 quả xoài lớn (300g) ≈ 180 calo — lượng calo tương đương, nhưng cơm có thêm chất xơ, vitamin nhóm B, và có thể ăn kèm rau/đạm.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>💡 Cách ăn trái cây đúng cách</h2>
+    <ul>
+      <li><strong>Lượng hợp lý:</strong> 1-2 phần trái cây/ngày (1 phần ≈ 100g trái cây tươi hoặc 1 quả cỡ vừa).</li>
+      <li><strong>Ăn sau bữa chính:</strong> Ăn trái cây ngay sau bữa ăn (hoặc tráng miệng) thay vì thay thế bữa ăn.</li>
+      <li><strong>Chọn trái cây ít ngọt:</strong> Bưởi, ổi, thanh long ruột đỏ, dâu tây, táo xanh — GI thấp hơn xoài, sầu riêng, chôm chôm.</li>
+      <li><strong>Không uống nước ép thay trái cây:</strong> Nước ép mất chất xơ, làm tăng đường huyết nhanh hơn.</li>
+      <li><strong>Kết hợp rau xanh:</strong> Rau trước, cơm và đạm sau, trái cây làm tráng miệng — đây là thứ tự ăn tốt cho đường huyết.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🍎 Bảng so sánh nhanh</h2>
+    <table class="table">
+      <thead><tr><th>Bữa ăn</th><th>Calo</th><th>Đạm</th><th>Cảm giác no</th><th>Tác động đường huyết</th></tr></thead>
+      <tbody>
+        <tr><td>1 quả xoài lớn</td><td>~180</td><td>~1g</td><td>Đói sau 1-2h</td><td>Tăng nhanh</td></tr>
+        <tr><td>1 chén cơm + rau + đậu phụ</td><td>~350</td><td>~15g</td><td>No 4-5h</td><td>Tăng chậm, ổn định</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Trái cây rất tốt cho sức khỏe — nhưng <strong>không thể thay thế bữa chính</strong>. Ăn trái cây thay cơm thường xuyên gây thiếu đạm, mất cơ, tăng mỡ gan và cuối cùng là tăng cân. Hãy ăn trái cây đúng cách: đúng lượng, đúng thời điểm, và luôn kết hợp với các nhóm thực phẩm khác.</p>
+  </section>
+</ArticleLayout>

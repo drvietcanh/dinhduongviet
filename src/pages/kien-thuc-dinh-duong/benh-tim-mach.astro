@@ -1,0 +1,100 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["benh-tim-mach"];
+if (!art) throw new Error("Article not found: benh-tim-mach");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chú Hải, 58 tuổi, hút thuốc 30 năm, ăn mặn, ít vận động. Một lần đang làm vườn, chú thấy đau thắt ngực, vã mồ hôi, khó thở. Vào viện cấp cứu — nhồi máu cơ tim, đặt stent 2 mạch. Bác sĩ nói: "Từ giờ chú phải thay đổi hoàn toàn cách ăn."</p>
+  <p>Bệnh tim mạch là nguyên nhân gây tử vong số 1 tại Việt Nam (chiếm 31% tổng số ca tử vong). Chế độ ăn kiểu Địa Trung Hải và DASH có thể giảm 30% nguy cơ tái phát.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người bệnh tim cần <u>giảm muối (&lt;4g/ngày)</u>, <u>tăng cá béo (2–3 bữa/tuần)</u>, 
+    <u>ăn nhiều rau xanh & ngũ cốc nguyên hạt</u>, <u>hạn chế mỡ động vật & đồ chế biến sẵn</u>, 
+    <u>kiểm soát cân nặng</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống ảnh hưởng tới tim?</h2>
+  <p>Bệnh tim bắt nguồn từ xơ vữa động mạch — mảng bám cholesterol lắng đọng trong lòng mạch. Muối làm tăng huyết áp, gây áp lực lên thành mạch. Mỡ bão hòa và trans fat làm tăng cholesterol xấu (LDL). Chất xơ và omega-3 giúp giảm LDL, chống viêm, bảo vệ thành mạch.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cá béo: cá hồi, cá thu, cá nục, cá trích — omega-3 bảo vệ tim</li>
+      <li>Rau xanh: tối thiểu 5 phần/ngày, đủ màu sắc</li>
+      <li>Ngũ cốc nguyên hạt: gạo lứt, yến mạch, khoai lang, bánh mì nguyên cám</li>
+      <li>Đạm lành: ức gà (bỏ da), cá, đậu phụ, các loại đậu</li>
+      <li>Chất béo tốt: dầu olive, dầu mè, quả bơ, hạt óc chó, hạnh nhân</li>
+      <li>Trái cây giàu kali: chuối, cam, bưởi — giúp ổn định huyết áp</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Muối & món mặn: nước mắm, mắm, dưa muối, đồ hộp, snack</li>
+      <li>⛔ Mỡ động vật, da gà/vịt, nội tạng, lòng, ba chỉ heo</li>
+      <li>⛔ Đồ chế biến sẵn: xúc xích, lạp xưởng, thịt nguội, đồ chiên</li>
+      <li>⛔ Bánh kẹo, nước ngọt, trà sữa — đường làm tăng triglycerid</li>
+      <li>⛔ Rượu bia quá mức (&gt;1 đơn vị nữ, &gt;2 đơn vị nam/ngày)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Loại</th><th>Số phần/ngày</th><th>1 phần =</th></tr></thead><tbody>
+    <tr><td>Rau xanh</td><td>≥5 phần</td><td>1 bát con rau luộc</td></tr>
+    <tr><td>Trái cây</td><td>2–3 phần</td><td>1 quả cam / ½ bát dâu</td></tr>
+    <tr><td>Ngũ cốc nguyên hạt</td><td>4–6 phần</td><td>1 bát cơm / 1 lát bánh mì nguyên cám</td></tr>
+    <tr><td>Đạm lành</td><td>2–3 phần</td><td>Lòng bàn tay thịt/cá / 1 bìa đậu</td></tr>
+    <tr><td>Chất béo tốt</td><td>2–3 phần</td><td>1 muỗng dầu / ¼ bơ / 1 nắm hạt</td></tr>
+    <tr><td>Muối</td><td>&lt;4g (1 thìa café)</td><td>Không thêm mắm muối khi ăn</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Người suy tim nặng có thể cần &lt;2g muối/ngày — hỏi bác sĩ.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Yến mạch nấu sữa hạt không đường + ½ quả chuối</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả cam + 5 hạt hạnh nhân</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá nục kho nhạt + canh rau cải</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 hũ sữa chua không đường</td></tr>
+    <tr><td>🌙 Tối</td><td>Ức gà áp chảo + khoai lang luộc + rau luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Hấp/luộc/áp chảo thay vì chiên rán.</li>
+        <li>Nêm nhạt, ăn thêm chanh/ớt/tỏi/gừng thay mắm muối.</li>
+        <li>Đi bộ 30 phút/ngày, 5 ngày/tuần (hỏi bác sĩ trước).</li>
+        <li>Theo dõi huyết áp, cân nặng, nhịp tim mỗi ngày.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đau thắt ngực, khó thở đột ngột.</li>
+        <li>Phù chân, tăng cân &gt;2kg trong 1–2 ngày.</li>
+        <li>Huyết áp &gt;160/100 hoặc &lt;90/60.</li>
+        <li>Tim đập nhanh không rõ nguyên nhân.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

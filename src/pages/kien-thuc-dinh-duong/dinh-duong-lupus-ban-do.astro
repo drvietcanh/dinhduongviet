@@ -1,0 +1,113 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-lupus-ban-do"];
+if (!art) throw new Error("Article not found: dinh-duong-lupus-ban-do");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Hồng, 28 tuổi, sống với <strong>lupus ban đỏ hệ thống</strong> (SLE) từ năm 20 tuổi. Đợt nào căng thẳng hoặc thay đổi thời tiết là bệnh bùng phát: đau khớp, ban đỏ mặt, mệt mỏi kéo dài. Chị đang uống corticoid liều thấp hàng ngày. Bác sĩ nói chị có nguy cơ loãng xương sớm và bệnh tim mạch vì thuốc và vì viêm mạn tính.</p>
+  <p>Chế độ ăn đúng có thể giúp chị Hồng kiểm soát đợt bùng phát, giảm viêm, bảo vệ xương và tim mạch.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người lupus cần <u>chế độ ăn chống viêm</u> (omega-3 từ cá béo), <u>bổ sung canxi và vitamin D</u> (phòng loãng xương do corticoid),
+    <u>tránh cỏ linh lăng (alfalfa)</u> có thể kích hoạt đợt bùng phát, và <u>hạn chế muối</u> nếu có tổn thương thận.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao chế độ ăn quan trọng với lupus?</h2>
+  <p>Lupus là bệnh tự miễn — hệ miễn dịch tấn công nhầm vào cơ thể. Viêm mạn tính kéo dài gây tổn thương nhiều cơ quan. Omega-3 (EPA/DHA) giúp giảm viêm tự nhiên, có thể hỗ trợ giảm liều thuốc chống viêm. Corticoid trị lupus làm tăng nguy cơ loãng xương, cao huyết áp, tiểu đường — nên chế độ ăn cần bảo vệ xương và tim mạch.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cá béo giàu omega-3:</strong> Cá hồi, cá thu, cá trích, cá sardine — ít nhất 2 bữa/tuần</li>
+      <li><strong>Rau củ chống viêm:</strong> Bông cải xanh, cải bó xôi, ớt chuông, cà chua, nghệ, gừng</li>
+      <li><strong>Trái cây giàu chất chống oxy hóa:</strong> Việt quất, dâu tây, cam, bưởi, lựu</li>
+      <li><strong>Canxi + Vitamin D:</strong> Sữa ít béo, sữa chua, phô mai, cá nhỏ ăn cả xương, tắm nắng 15 phút/ngày</li>
+      <li><strong>Chất béo tốt:</strong> Dầu oliu, quả bơ, hạt lanh, hạt chia</li>
+      <li><strong>Ngũ cốc nguyên cám:</strong> Gạo lứt, yến mạch, bánh mì nguyên cám</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Cỏ linh lăng (alfalfa sprouts):</strong> Chứa L-canavanin — có thể kích hoạt đợt lupus bùng phát</li>
+      <li><strong>⛔ Tỏi sống lượng lớn:</strong> Một số báo cáo cho thấy tỏi có thể kích thích miễn dịch — ăn vừa phải</li>
+      <li><strong>⛔ Muối:</strong> Hạn chế nếu có tổn thương thận hoặc tăng huyết áp do corticoid</li>
+      <li><strong>⛔ Đường tinh luyện:</strong> Bánh kẹo, nước ngọt — làm tăng viêm</li>
+      <li><strong>⛔ Chất béo bão hòa:</strong> Mỡ động vật, đồ chiên rán — tăng viêm, tăng mỡ máu</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Chất đặc biệt cần chú ý</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Lý do</th></tr></thead>
+    <tbody>
+      <tr><td>Omega-3</td><td>1000–2000mg EPA+DHA/ngày</td><td>Giảm viêm, có thể hỗ trợ giảm thuốc</td></tr>
+      <tr><td>Canxi</td><td>1000–1200mg/ngày</td><td>Phòng loãng xương do corticoid</td></tr>
+      <tr><td>Vitamin D</td><td>800–1000 IU/ngày</td><td>Tăng hấp thu canxi, điều hòa miễn dịch</td></tr>
+      <tr><td>Muối</td><td>&lt; 5g/ngày</td><td>Nếu có tổn thương thận, giảm thêm</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (chống viêm)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Cháo yến mạch + việt quất + ½ ly sữa ít béo</td><td>Chất chống oxy hóa cao</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi nướng + bông cải luộc + salad dầu oliu</td><td>Omega-3 + chống viêm</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 hũ sữa chua ít béo + 1 quả cam</td><td>Canxi + vitamin C</td></tr>
+      <tr><td>🌙 Tối</td><td>Đậu phụ sốt nghệ + canh rau ngót + cơm ½ chén</td><td>Nghệ chống viêm nhẹ</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Nếu đang dùng thuốc chống đông (warfarin), giữ lượng rau xanh ổn định hàng ngày.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Ghi nhật ký ăn uống — phát hiện thực phẩm kích hoạt đợt bùng phát.</li>
+        <li>Ngủ đủ 7–8h — thiếu ngủ làm lupus nặng hơn.</li>
+        <li>Tránh nắng gắt — 70% người lupus nhạy cảm ánh sáng.</li>
+        <li>Tập thể dục nhẹ: đi bộ, yoga, bơi — giúp khớp dẻo dai.</li>
+        <li>Quản lý stress — stress là yếu tố kích hoạt số 1.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Đợt bùng phát: sốt, đau khớp, ban đỏ lan rộng.</li>
+        <li>Tiểu máu, tiểu ít, phù — tổn thương thận.</li>
+        <li>Đau ngực, khó thở — viêm màng tim/phổi.</li>
+        <li>Co giật, lú lẫn — lupus thần kinh.</li>
+        <li>Đau đầu dữ dội, rối loạn thị giác.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

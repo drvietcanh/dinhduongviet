@@ -1,0 +1,99 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-sau-phau-thuat"];
+if (!art) throw new Error("Article not found: dinh-duong-sau-phau-thuat");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Hồng, 45 tuổi, mổ u xơ tử cung. Sau mổ ngày thứ 2, chị mệt, không muốn ăn, chỉ uống nước. Bác sĩ lo: "Chị ăn được càng sớm, vết mổ lành càng nhanh. Không ăn là suy kiệt, nhiễm trùng."</p>
+  <p>Sau phẫu thuật, cơ thể cần nhiều năng lượng và dưỡng chất hơn bình thường để sửa chữa mô, sản sinh tế bào mới và chống nhiễm trùng. Đạm là nguyên liệu số 1 — nhu cầu tăng gấp rưỡi so với ngày thường.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Sau phẫu thuật: <u>tăng đạm 1.2–2g/kg</u> (thịt, cá, trứng, sữa, cháo thịt băm),
+    <u>vitamin C</u> (cam, ổi) + <u>kẽm</u> (thịt bò, hạt bí) giúp lành vết thương,
+    <u>uống đủ nước 1.5–2 lít</u>, <u>tránh đồ sống, chiên rán, rượu bia</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao sau mổ cần nhiều đạm?</h2>
+  <p>Vết mổ là vùng tổn thương mô. Cơ thể phải tổng hợp collagen, tạo mạch máu mới, tái tạo da — tất cả cần đạm (acid amin). Nếu thiếu đạm, vết mổ chậm lành, dễ bục, dễ nhiễm trùng. Sốt sau mổ cũng làm tăng chuyển hóa, đốt cháy năng lượng nhanh hơn.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đạm dễ tiêu: cháo thịt băm, cá hấp, trứng luộc, sữa</li>
+      <li>Vitamin C: cam, ổi, rau ngót — tăng tổng hợp collagen</li>
+      <li>Kẽm: thịt bò, hàu, hạt bí — phân chia tế bào</li>
+      <li>Sắt: thịt đỏ, rau xanh — tạo máu</li>
+      <li>Sữa Ensure/Glucerna — nếu chán ăn, dễ uống</li>
+      <li>Cháo, súp, cơm nát — năng lượng dễ hấp thu</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Đồ sống/tái: gỏi, sushi, rau sống — nguy cơ nhiễm khuẩn</li>
+      <li>⛔ Đồ chiên rán nhiều dầu mỡ — khó tiêu</li>
+      <li>⛔ Bánh kẹo, nước ngọt — tăng viêm</li>
+      <li>⛔ Rượu bia, thuốc lá — chậm lành vết thương</li>
+      <li>⚠️ Đồ lạnh, uống nước đá — co mạch vết mổ</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Lộ trình ăn uống sau mổ</h2>
+  <table class="table"><thead><tr><th>Thời gian</th><th>Ăn gì?</th><th>Lưu ý</th></tr></thead><tbody>
+    <tr><td>6–12 giờ đầu</td><td>Nước trong, không ăn</td><td>Chờ hết tác dụng gây mê/gây tê</td></tr>
+    <tr><td>Khi có trung tiện</td><td>Cháo loãng, súp, nước canh</td><td>Bắt đầu từ lỏng, ăn ít</td></tr>
+    <tr><td>Ngày 2–3</td><td>Cháo thịt băm, cơm nát, cá hấp</td><td>Thêm sữa vào bữa phụ</td></tr>
+    <tr><td>Ngày 4–7</td><td>Cơm mềm + đạm đa dạng</td><td>Ăn đủ 1.2–1.5g đạm/kg</td></tr>
+    <tr><td>Tuần 2+</td><td>Ăn bình thường, đạm cao</td><td>Theo dõi lành vết thương</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (ngày 2–3 sau mổ)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo thịt bằm + ½ ly sữa</td></tr>
+    <tr><td>🌞 Phụ</td><td>Nước cam hoặc 1 hũ sữa chua</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát + cá hấp + canh rau ngót thịt băm</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa Ensure 1 ly 250ml</td></tr>
+    <tr><td>🌙 Tối</td><td>Cháo gà hoặc súp gà</td></tr>
+    <tr><td>🌜 Phụ tối</td><td>Sữa ấm 200ml</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Xay nhuyễn thịt/cá nấu cháo nếu khó nhai.</li>
+        <li>Không ăn quá no — chia 6–7 bữa nhỏ.</li>
+        <li>Ghi chép ăn uống — theo dõi lượng đạm.</li>
+        <li>Đi lại nhẹ sau 24h nếu được phép.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Sốt &gt;38.5°C, vết mổ sưng đỏ, chảy mủ.</li>
+        <li>Không ăn uống được &gt;2 ngày.</li>
+        <li>Đau bụng nhiều, nôn, không trung tiện.</li>
+        <li>Chảy máu vết mổ.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

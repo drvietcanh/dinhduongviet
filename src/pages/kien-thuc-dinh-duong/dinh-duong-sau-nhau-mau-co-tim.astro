@@ -1,0 +1,66 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-sau-nhau-mau-co-tim"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Sau nhồi máu cơ tim, mục tiêu dinh dưỡng là: (1) Giảm gánh nặng cho tim, (2) Ngăn tiến triển xơ vữa mạch vành, (3) Kiểm soát huyết áp & mỡ máu, (4) Phục hồi cơ tim.</p>
+    <p>Chế độ ăn Địa Trung Hải (Mediterranean diet) và chế độ ăn DASH (Dietary Approaches to Stop Hypertension) là hai mô hình dinh dưỡng được khuyến nghị mạnh mẽ nhất cho người sau nhồi máu cơ tim. Cả hai đều nhấn mạnh rau củ quả, ngũ cốc nguyên hạt, chất béo lành mạnh từ dầu olive và cá béo, hạn chế muối, mỡ bão hòa và đường tinh luyện. Giai đoạn hồi phục kéo dài nhiều tháng và dinh dưỡng đúng ngay từ đầu giúp cải thiện đáng kể tiên lượng lâu dài.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Giảm muối:</strong> Dưới 5g muối/ngày (tương đương 1 thìa cà phê) — giảm phù, giảm tăng huyết áp, giảm gánh tim. Lưu ý nước mắm, xì dầu, bột nêm cũng chứa nhiều natri.</li>
+      <li><strong>Giảm mỡ bão hòa:</strong> Hạn chế mỡ động vật, thay bằng dầu thực vật</li>
+      <li><strong>Tăng omega-3:</strong> Cá béo 2-3 lần/tuần — giảm viêm mạch, giảm nguy cơ rối loạn nhịp</li>
+      <li><strong>Tăng xơ:</strong> Yến mạch, rau, trái cây — giảm hấp thu cholesterol</li>
+      <li><strong>Hạn chế đường:</strong> Giảm nguy cơ tiểu đường kèm theo</li>
+      <li><strong>Chế độ ăn DASH:</strong> Giàu rau, trái cây, sữa ít béo, ngũ cốc nguyên hạt, đạm từ thực vật và cá. Hạn chế thịt đỏ, ưu tiên thịt gia cầm không da. Hạn chế muối dưới 4-5g/ngày. Giàu kali, magie, canxi — giúp hạ huyết áp tự nhiên.</li>
+      <li><strong>Chế độ ăn Địa Trung Hải:</strong> Dầu olive nguyên chất là chất béo chính. Nhiều rau, trái cây, các loại đậu, cá, hải sản. Thịt đỏ rất hạn chế. Rượu vang đỏ tối đa 1 ly nhỏ/ngày (nếu bác sĩ cho phép). Nghiên cứu cho thấy giảm 30% nguy cơ tái nhồi máu sau 4 năm theo dõi.</li>
+      <li><strong>Giai đoạn hồi phục sớm (0-4 tuần sau nhồi máu):</strong> Ăn nhẹ, dễ tiêu, chia 6-8 bữa nhỏ. Tránh ăn quá no vì dễ gây khó thở, tăng gánh tim. Thức ăn nên được nấu mềm, hấp/luộc thay vì chiên xào. Uống đủ nước nhưng không uống quá nhiều một lúc.</li>
+      <li><strong>Kiểm soát cholesterol toàn diện:</strong> Chất xơ hòa tan từ yến mạch, lúa mạch, đậu, mướp, táo giúp giảm LDL. Phytosterol từ dầu thực vật, hạt giúp giảm hấp thu cholesterol. Hạn chế cholesterol từ nội tạng động vật, lòng đỏ trứng không quá 2-3 quả/tuần.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu, cá trích — omega-3, 2-3 lần/tuần</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau xanh</span><span>Cải bó xôi, bông cải, cải xoăn — giàu vitamin K, folate, magie</span></div>
+      <div class="food-row"><span class="food-cat">🌾 Yến mạch</span><span>Yến mạch nguyên chất, gạo lứt — chất xơ hòa tan giảm cholesterol</span></div>
+      <div class="food-row"><span class="food-cat">🫒 Dầu olive</span><span>Dầu olive nguyên chất — chất béo không bão hòa đơn, chống oxy hóa</span></div>
+      <div class="food-row"><span class="food-cat">🍎 Trái cây</span><span>Táo, lê, cam, việt quất — giàu chất chống oxy hóa, chất xơ pectin</span></div>
+      <div class="food-row"><span class="food-cat">🥦 Các loại đậu</span><span>Đậu xanh, đậu lăng, đậu gà — giàu đạm thực vật, chất xơ, kali</span></div>
+      <div class="food-row"><span class="food-cat">🥜 Hạt & quả hạch</span><span>Óc chó, hạnh nhân, hạt chia — omega-3 thực vật, magie, chất xơ</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần hạn chế</h2>
+    <ul>
+      <li><strong>Muối:</strong> Nước mắm, đồ hộp, xúc xích, snack mặn, thực phẩm chế biến sẵn</li>
+      <li><strong>Mỡ bão hòa:</strong> Mỡ heo, mỡ bò, da gà, đồ chiên, dầu dừa, dầu cọ</li>
+      <li><strong>Đường:</strong> Bánh ngọt, nước ngọt, kem, bánh kẹo</li>
+      <li><strong>Thịt đỏ:</strong> Hạn chế, ưu tiên thịt gia cầm & cá. Nếu ăn, chọn phần nạc, bỏ mỡ</li>
+      <li><strong>Rượu bia:</strong> Tối đa 1 ly nhỏ/ngày. Hỏi ý kiến bác sĩ vì tương tác với thuốc tim mạch</li>
+      <li><strong>Chất béo chuyển hóa:</strong> Bơ thực vật dạng cứng, bánh quy, snack chiên — tăng nguy cơ viêm mạch, xơ vữa</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Sau đau tim có cần kiêng trứng không?</summary><p>Không. Trứng giàu dinh dưỡng, 2-3 quả/tuần an toàn cho hầu hết người bệnh tim mạch. Nếu mỡ máu cao, hạn chế lòng đỏ nhưng lòng trắng ăn thoải mái.</p></details>
+    <details class="faq-item"><summary>Chế độ ăn DASH và Địa Trung Hải khác nhau thế nào?</summary><p>Cả hai đều tốt cho tim. DASH tập trung giảm muối mạnh, tăng kali/magie để hạ huyết áp. Địa Trung Hải tập trung dầu olive, cá béo, rau củ và hạn chế thịt đỏ để giảm viêm và cholesterol. Có thể kết hợp cả hai: nguyên tắc DASH về muối + nguyên tắc Địa Trung Hải về chất béo.</p></details>
+    <details class="faq-item"><summary>Sau nhồi máu cơ tim bao lâu thì hồi phục?</summary><p>Giai đoạn cấp 4-6 tuần đầu cần ăn nhẹ, chia nhỏ. Sau 3 tháng, hầu hết có thể ăn uống bình thường theo nguyên tắc ăn lành mạnh. Tuy nhiên, thay đổi dinh dưỡng là lâu dài suốt đời. Tái khám tim mạch định kỳ và kiểm tra mỡ máu, huyết áp, đường huyết mỗi 3-6 tháng.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>3 điều quan trọng:</strong> (1) Dưới 5g muối/ngày — đọc kỹ nhãn thực phẩm để tránh natri ẩn, (2) Cá béo 2-3 lần/tuần + dầu olive — omega-3 bảo vệ tim, (3) Tập thể dục nhẹ theo chỉ dẫn bác sĩ — đi bộ 15-30 phút/ngày sau giai đoạn hồi phục. Áp dụng chế độ ăn DASH hoặc Địa Trung Hải lâu dài. Chia nhỏ bữa ăn, không ăn quá no. Kiểm tra mỡ máu, huyết áp, đường huyết định kỳ.</p></div>
+  </section>
+</ArticleLayout>

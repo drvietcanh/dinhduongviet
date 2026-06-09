@@ -1,0 +1,446 @@
+---
+// Thêm thực phẩm đóng gói từ nhãn sản phẩm
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const siteTitle = "Thêm thực phẩm đóng gói | Dinh Dưỡng Việt";
+const siteDesc = "Nhập dữ liệu dinh dưỡng từ nhãn sản phẩm đóng gói. Lưu trên trình duyệt hoặc xuất JSON để đóng góp vào ứng dụng.";
+const domain = "dinhduongviet.vn";
+---
+<BaseLayout title={siteTitle} description={siteDesc} image="/og-image.png" canonical={"https://" + domain + "/cong-cu/them-thuc-pham-dong-goi"}>
+ <style is:global>
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+  .main { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+  h1 { text-align: center; color: #1a365d; font-size: 1.8rem; margin-bottom: 4px; }
+  .sub { text-align: center; color: #4a5568; font-size: 0.95rem; margin-bottom: 24px; }
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .card h2 { font-size: 1.1rem; color: #2d3748; margin-top: 0; margin-bottom: 12px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-group { margin-bottom: 6px; }
+  .form-group label { display: block; font-size: 0.8rem; color: #4a5568; font-weight: 600; margin-bottom: 2px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; }
+  .form-group input:focus, .form-group select:focus { border-color: #4299e1; outline: none; }
+  .form-group .hint { font-size: 0.7rem; color: #a0aec0; }
+  .btn-primary { background: #4299e1; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+  .btn-primary:hover { background: #3182ce; }
+  .btn-secondary { background: #e2e8f0; color: #2d3748; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+  .btn-secondary:hover { background: #cbd5e0; }
+  .btn-danger { background: #fc8181; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+  .btn-danger:hover { background: #f56565; }
+  .actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .food-list { }
+  .food-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid #edf2f7; gap: 8px; }
+  .food-item:last-child { border-bottom: none; }
+  .food-item .info { flex: 1; }
+  .food-item .fname { font-weight: 600; font-size: 0.9rem; color: #2d3748; }
+  .food-item .fbrand { font-size: 0.8rem; color: #718096; }
+  .food-item .fstats { font-size: 0.78rem; color: #a0aec0; margin-top: 2px; }
+  .food-item .faction { display: flex; gap: 4px; }
+  .food-item .faction button { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 4px; }
+  .food-item .faction .edit-btn:hover { background: #ebf8ff; }
+  .food-item .faction .del-btn:hover { background: var(--card)5f5; color: #e53e3e; }
+  .empty-state { text-align: center; padding: 30px 0; color: #a0aec0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .tag { background: #ebf8ff; color: #2b6cb0; border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; }
+  .info-note { background: #ebf4ff; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #2b6cb0; margin-bottom: 16px; line-height: 1.5; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #22543d; color: white; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; z-index: 999; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .full-width { grid-column: 1 / -1; }
+  .search-bar { margin-bottom: 12px; }
+  .search-bar input { width: 100%; padding: 8px 12px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; }
+  .badge { display: inline-block; background: #edf2f7; border-radius: 99px; padding: 1px 8px; font-size: 0.75rem; color: #4a5568; margin-left: 4px; }
+  .count-bar { font-size: 0.85rem; color: #718096; margin-bottom: 8px; }
+ </style>
+
+ <div class="main">
+  <h1>📦 Thêm thực phẩm đóng gói</h1>
+  <p class="sub">Nhập dữ liệu từ nhãn sản phẩm → lưu trên trình duyệt của bạn</p>
+
+  <div class="info-note">
+   <strong>💡 Cách dùng:</strong> Nhập thông tin từ nhãn dinh dưỡng (Nutrition Facts) vào form bên phải.
+   Thực phẩm sẽ được lưu trên trình duyệt (<strong>localStorage</strong>) và hiển thị cùng dữ liệu chính thống.
+   Có thể <strong>xuất JSON</strong> để backup hoặc gửi đóng góp.
+  </div>
+
+  <div class="layout">
+   <!-- Left: My foods list -->
+   <div class="card">
+    <h2>📋 Thực phẩm của tôi <span class="badge" id="foodCount">0</span></h2>
+    <div class="search-bar">
+     <input type="text" id="listSearch" placeholder="Tìm trong thực phẩm của tôi..." oninput="renderList()" />
+    </div>
+    <div id="foodListContainer" class="food-list">
+     <div class="empty-state">Chưa có thực phẩm nào. Nhập bên phải để bắt đầu! 👉</div>
+    </div>
+    <div class="actions">
+     <button class="btn-secondary" onclick="exportAll()">📤 Xuất JSON</button>
+     <button class="btn-secondary" onclick="document.getElementById('importInput').click()">📥 Nhập JSON</button>
+     <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)" />
+    </div>
+   </div>
+
+   <!-- Right: Form -->
+   <div class="card" id="formCard">
+    <h2 id="formTitle">✏️ Thêm mới</h2>
+    <div class="form-grid">
+     <div class="form-group">
+      <label>Tên sản phẩm *</label>
+      <input type="text" id="fName" placeholder="VD: Mì gói Hảo Hảo tôm chua cay" />
+     </div>
+     <div class="form-group">
+      <label>Thương hiệu</label>
+      <input type="text" id="fBrand" placeholder="VD: Acecook" />
+     </div>
+     <div class="form-group full-width">
+      <label>Danh mục</label>
+      <select id="fCategory">
+       <option value="Mì, bún, phở ăn liền">Mì, bún, phở ăn liền</option>
+       <option value="Đồ uống đóng chai">Đồ uống đóng chai</option>
+       <option value="Sữa & sản phẩm từ sữa">Sữa &amp; sản phẩm từ sữa</option>
+       <option value="Bánh kẹo">Bánh kẹo</option>
+       <option value="Snack & đồ ăn vặt">Snack &amp; đồ ăn vặt</option>
+       <option value="Gia vị đóng chai">Gia vị đóng chai</option>
+       <option value="Đồ hộp">Đồ hộp</option>
+       <option value="Ngũ cốc ăn sáng">Ngũ cốc ăn sáng</option>
+       <option value="Thực phẩm đông lạnh">Thực phẩm đông lạnh</option>
+       <option value="Sốt, gia vị chế biến sẵn">Sốt, gia vị chế biến sẵn</option>
+       <option value="Khác">Khác</option>
+      </select>
+     </div>
+    </div>
+
+    <h3 style="font-size:0.9rem;color:#4a5568;margin:12px 0 8px;">📊 Dinh dưỡng trên 100g / 100ml</h3>
+    <div class="form-grid">
+     <div class="form-group">
+      <label>Khẩu phần (g/ml)</label>
+      <input type="number" id="fServing" placeholder="100" value="100" step="1" />
+      <span class="hint">VD: 100g, 250ml</span>
+     </div>
+     <div class="form-group">
+      <label>Năng lượng (kcal) *</label>
+      <input type="number" id="fKcal" placeholder="450" step="1" />
+     </div>
+     <div class="form-group">
+      <label>Đạm (g) *</label>
+      <input type="number" id="fProtein" placeholder="8" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Carb (g) *</label>
+      <input type="number" id="fCarb" placeholder="60" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Đường (g)</label>
+      <input type="number" id="fSugar" placeholder="5" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Chất xơ (g)</label>
+      <input type="number" id="fFiber" placeholder="2" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Chất béo (g) *</label>
+      <input type="number" id="fFat" placeholder="18" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Béo bão hòa (g)</label>
+      <input type="number" id="fSatFat" placeholder="8" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Cholesterol (mg)</label>
+      <input type="number" id="fChol" placeholder="0" step="1" />
+     </div>
+     <div class="form-group">
+      <label>Natri (mg)</label>
+      <input type="number" id="fSodium" placeholder="800" step="1" />
+     </div>
+     <div class="form-group">
+      <label>Kali (mg)</label>
+      <input type="number" id="fKali" placeholder="100" step="1" />
+     </div>
+     <div class="form-group">
+      <label>Canxi (mg)</label>
+      <input type="number" id="fCalcium" placeholder="80" step="1" />
+     </div>
+     <div class="form-group">
+      <label>Sắt (mg)</label>
+      <input type="number" id="fIron" placeholder="2" step="0.1" />
+     </div>
+     <div class="form-group">
+      <label>Vitamin C (mg)</label>
+      <input type="number" id="fVitC" placeholder="0" step="1" />
+     </div>
+     <div class="form-group full-width">
+      <label>Ghi chú</label>
+      <textarea id="fNote" rows="2" placeholder="Mùi vị, thành phần đặc biệt..." style="resize:vertical;"></textarea>
+     </div>
+    </div>
+
+    <div class="actions">
+     <button class="btn-primary" id="saveBtn" onclick="saveFood()">💾 Lưu</button>
+     <button class="btn-secondary" onclick="resetForm()">↩️ Làm lại</button>
+     <input type="hidden" id="editId" value="" />
+    </div>
+   </div>
+  </div>
+ </div>
+ <div id="toast" class="toast"></div>
+
+ <script is:inline>
+ (() => {
+  const STORAGE_KEY = 'dinhduongviet_branded';
+  let foods = [];
+
+  function loadData() {
+   try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    foods = raw ? JSON.parse(raw) : [];
+   } catch(e) { foods = []; }
+  }
+  function saveData() {
+   localStorage.setItem(STORAGE_KEY, JSON.stringify(foods));
+  }
+
+  loadData();
+
+  // category emoji
+  function catEmoji(cat) {
+   const map = {
+    'Mì, bún, phở ăn liền': '🍜',
+    'Đồ uống đóng chai': '🥤',
+    'Sữa & sản phẩm từ sữa': '🥛',
+    'Sữa &amp; sản phẩm từ sữa': '🥛',
+    'Bánh kẹo': '🍪',
+    'Snack & đồ ăn vặt': '🍿',
+    'Snack &amp; đồ ăn vặt': '🍿',
+    'Gia vị đóng chai': '🧂',
+    'Đồ hộp': '🥫',
+    'Ngũ cốc ăn sáng': '🥣',
+    'Thực phẩm đông lạnh': '🧊',
+    'Sốt, gia vị chế biến sẵn': '🥫',
+   };
+   return map[cat] || '📦';
+  }
+
+  function renderList() {
+   const q = (document.getElementById('listSearch').value || '').toLowerCase().trim();
+   const filtered = q ? foods.filter(f => 
+     f.name.toLowerCase().includes(q) || (f.brand || '').toLowerCase().includes(q)
+   ) : [...foods];
+
+   filtered.sort((a,b) => b.created - a.created);
+
+   const $container = document.getElementById('foodListContainer');
+   const $count = document.getElementById('foodCount');
+   $count.textContent = foods.length;
+
+   if (filtered.length === 0) {
+    $container.innerHTML = `<div class="empty-state">${foods.length === 0 ? 'Chưa có thực phẩm nào. Nhập bên phải để bắt đầu! 👉' : 'Không tìm thấy kết quả'}</div>`;
+    return;
+   }
+
+   $container.innerHTML = filtered.map(f => {
+    const kcal = f.kcal || 0;
+    const p = f.protein || 0;
+    const c = f.carb || 0;
+    const fat = f.fat || 0;
+    const cate = f.category || 'Khác';
+    const emoji = catEmoji(cate);
+    return `<div class="food-item">
+      <div class="info">
+        <div class="fname">${emoji} ${escHtml(f.name)}</div>
+        <div class="fbrand">${escHtml(f.brand || '')}</div>
+        <div class="fstats">${kcal}kcal · P${p}g · C${c}g · F${fat}g <span class="tag">${cate}</span></div>
+      </div>
+      <div class="faction">
+        <button class="edit-btn" onclick="editFood('${f.id}')" title="Sửa">✏️</button>
+        <button class="del-btn" onclick="deleteFood('${f.id}')" title="Xoá">🗑️</button>
+      </div>
+    </div>`;
+   }).join('');
+  }
+
+  function escHtml(s) {
+   const d = document.createElement('div');
+   d.textContent = s;
+   return d.innerHTML;
+  }
+
+  // Generate unique ID
+  function genId(name, brand) {
+   const base = (name + '-' + (brand || '')).toLowerCase()
+     .replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, 'a')
+     .replace(/[èéẹẻẽêềếệểễ]/g, 'e')
+     .replace(/[ìíịỉĩ]/g, 'i')
+     .replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, 'o')
+     .replace(/[ùúụủũưừứựửữ]/g, 'u')
+     .replace(/[ỳýỵỷỹ]/g, 'y')
+     .replace(/đ/g, 'd')
+     .replace(/[^a-z0-9\s-]/g, '')
+     .replace(/\s+/g, '-')
+     .replace(/-+/g, '-')
+     .replace(/^-|-$/g, '') || 'sp-' + Date.now();
+   // ensure unique
+   let slug = base;
+   let i = 1;
+   while (foods.some(f => f.id === slug)) {
+    slug = base + '-' + (i++);
+   }
+   return 'bd-' + slug;
+  }
+
+  window.saveFood = function() {
+   const name = document.getElementById('fName').value.trim();
+   const brand = document.getElementById('fBrand').value.trim();
+   const category = document.getElementById('fCategory').value;
+   const kcal = parseFloat(document.getElementById('fKcal').value) || 0;
+   const protein = parseFloat(document.getElementById('fProtein').value) || 0;
+   const carb = parseFloat(document.getElementById('fCarb').value) || 0;
+   const fat = parseFloat(document.getElementById('fFat').value) || 0;
+   const fiber = parseFloat(document.getElementById('fFiber').value) || 0;
+   const sugar = parseFloat(document.getElementById('fSugar').value) || 0;
+   const satFat = parseFloat(document.getElementById('fSatFat').value) || 0;
+   const chol = parseFloat(document.getElementById('fChol').value) || 0;
+   const sodium = parseFloat(document.getElementById('fSodium').value) || 0;
+   const potassium = parseFloat(document.getElementById('fKali').value) || 0;
+   const calcium = parseFloat(document.getElementById('fCalcium').value) || 0;
+   const iron = parseFloat(document.getElementById('fIron').value) || 0;
+   const vitC = parseFloat(document.getElementById('fVitC').value) || 0;
+   const note = document.getElementById('fNote').value.trim();
+   const editId = document.getElementById('editId').value;
+
+   // Validate
+   if (!name) { showToast('⚠️ Vui lòng nhập tên sản phẩm'); return; }
+   if (!kcal && !protein && !carb && !fat) { showToast('⚠️ Nhập ít nhất năng lượng hoặc đạm/carb/béo'); return; }
+
+   if (editId) {
+    // Update existing
+    const idx = foods.findIndex(f => f.id === editId);
+    if (idx >= 0) {
+     foods[idx] = { ...foods[idx], name, brand, category, kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, modified: Date.now() };
+     saveData();
+     showToast('✅ Đã cập nhật: ' + name);
+    }
+   } else {
+    // Add new
+    const id = genId(name, brand);
+    const food = { id, name, brand, category, kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, created: Date.now(), modified: Date.now() };
+    foods.push(food);
+    saveData();
+    showToast('✅ Đã thêm: ' + name);
+   }
+
+   resetForm();
+   renderList();
+  };
+
+  window.editFood = function(id) {
+   const f = foods.find(f => f.id === id);
+   if (!f) return;
+   document.getElementById('editId').value = f.id;
+   document.getElementById('fName').value = f.name;
+   document.getElementById('fBrand').value = f.brand || '';
+   document.getElementById('fCategory').value = f.category || 'Khác';
+   document.getElementById('fKcal').value = f.kcal || '';
+   document.getElementById('fProtein').value = f.protein || '';
+   document.getElementById('fCarb').value = f.carb || '';
+   document.getElementById('fFat').value = f.fat || '';
+   document.getElementById('fFiber').value = f.fiber || '';
+   document.getElementById('fSugar').value = f.sugar || '';
+   document.getElementById('fSatFat').value = f.satFat || '';
+   document.getElementById('fChol').value = f.chol || '';
+   document.getElementById('fSodium').value = f.sodium || '';
+   document.getElementById('fKali').value = f.potassium || '';
+   document.getElementById('fCalcium').value = f.calcium || '';
+   document.getElementById('fIron').value = f.iron || '';
+   document.getElementById('fVitC').value = f.vitC || '';
+   document.getElementById('fNote').value = f.note || '';
+   document.getElementById('formTitle').textContent = '✏️ Chỉnh sửa';
+   document.getElementById('saveBtn').textContent = '💾 Cập nhật';
+   document.getElementById('formCard').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  window.deleteFood = function(id) {
+   if (!confirm('Xoá thực phẩm này?')) return;
+   foods = foods.filter(f => f.id !== id);
+   saveData();
+   renderList();
+   showToast('🗑️ Đã xoá');
+  };
+
+  window.resetForm = function() {
+   document.getElementById('editId').value = '';
+   document.getElementById('fName').value = '';
+   document.getElementById('fBrand').value = '';
+   document.getElementById('fCategory').value = 'Mì, bún, phở ăn liền';
+   document.getElementById('fKcal').value = '';
+   document.getElementById('fProtein').value = '';
+   document.getElementById('fCarb').value = '';
+   document.getElementById('fFat').value = '';
+   document.getElementById('fFiber').value = '';
+   document.getElementById('fSugar').value = '';
+   document.getElementById('fSatFat').value = '';
+   document.getElementById('fChol').value = '';
+   document.getElementById('fSodium').value = '';
+   document.getElementById('fKali').value = '';
+   document.getElementById('fCalcium').value = '';
+   document.getElementById('fIron').value = '';
+   document.getElementById('fVitC').value = '';
+   document.getElementById('fNote').value = '';
+   document.getElementById('formTitle').textContent = '✏️ Thêm mới';
+   document.getElementById('saveBtn').textContent = '💾 Lưu';
+   renderList();
+  };
+
+  window.exportAll = function() {
+   if (foods.length === 0) { showToast('⚠️ Không có dữ liệu để xuất'); return; }
+   const blob = new Blob([JSON.stringify(foods, null, 2)], { type: 'application/json' });
+   const url = URL.createObjectURL(blob);
+   const a = document.createElement('a');
+   a.href = url;
+   a.download = 'thuc-pham-dong-goi-' + new Date().toISOString().slice(0,10) + '.json';
+   a.click();
+   URL.revokeObjectURL(url);
+   showToast('📤 Đã xuất ' + foods.length + ' thực phẩm');
+  };
+
+  window.importJSON = function(event) {
+   const file = event.target.files[0];
+   if (!file) return;
+   const reader = new FileReader();
+   reader.onload = function(e) {
+    try {
+     const data = JSON.parse(e.target.result);
+     if (!Array.isArray(data)) { showToast('⚠️ File không đúng định dạng'); return; }
+     const count = data.length;
+     // Merge: add new, skip dupes by name+brand
+     const existingKeys = new Set(foods.map(f => (f.name+'|||'+(f.brand||'')).toLowerCase()));
+     let added = 0;
+     data.forEach(f => {
+      const key = (f.name+'|||'+(f.brand||'')).toLowerCase();
+      if (!existingKeys.has(key) && f.name) {
+       f.id = genId(f.name, f.brand);
+       foods.push(f);
+       existingKeys.add(key);
+       added++;
+      }
+     });
+     saveData();
+     renderList();
+     showToast('📥 Đã nhập ' + added + '/' + count + ' thực phẩm');
+    } catch(e) { showToast('⚠️ Lỗi đọc file: ' + e.message); }
+   };
+   reader.readAsText(file);
+   event.target.value = '';
+  };
+
+  function showToast(msg) {
+   const $t = document.getElementById('toast');
+   $t.textContent = msg;
+   $t.style.display = 'block';
+   setTimeout(() => { $t.style.display = 'none'; }, 2500);
+  }
+
+  // Initial render
+  renderList();
+ })();
+ </script>
+</BaseLayout>

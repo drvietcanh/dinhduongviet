@@ -1,0 +1,66 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-viem-mui-di-ung"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Cứ mỗi đầu mùa lạnh hoặc mùa mưa, chị Thúy, 27 tuổi, lại bị: hắt hơi liên tục, sổ mũi trong, ngứa mắt, ngứa mũi. Chị uống thuốc dị ứng thì đỡ nhưng không dám uống dài ngày vì sợ tác dụng phụ. Chị hỏi: "Có thực phẩm nào giúp giảm dị ứng không?"</p>
+  <p>Câu trả lời: có! Quercetin (trong hành tây, táo), vitamin C, omega-3 — tất cả đều có thể hỗ trợ ổn định tế bào mast (tế bào giải phóng histamin).</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Thực phẩm chống dị ứng: <u>hành tây, táo, trà xanh</u> (quercetin), <u>cá béo</u> (omega-3), <u>cam, ớt chuông</u> (vitamin C).
+    Tránh: <u>rượu bia, đồ cay nóng, thực phẩm chế biến sẵn</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao thực phẩm ảnh hưởng tới dị ứng?</h2>
+  <p>Dị ứng xảy ra khi tế bào mast giải phóng histamin — chất gây viêm, ngứa, chảy nước mũi. Quercetin (một flavonoid) giúp ổn định tế bào mast, giảm giải phóng histamin tự nhiên, không gây buồn ngủ như thuốc kháng histamin. Omega-3 giảm phản ứng viêm tổng thể.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Hành tây (cả sống lẫn chín) — giàu quercetin nhất</li>
+      <li>Táo — ăn cả vỏ (vỏ táo chứa nhiều quercetin)</li>
+      <li>Trà xanh — EGCG chống viêm, giảm histamin</li>
+      <li>Cá béo: cá hồi, cá thu, cá trích — omega-3</li>
+      <li>Ớt chuông, cam, chanh, kiwi — vitamin C</li>
+      <li>Nghệ, gừng — giảm viêm đường thở</li>
+      <li>Sữa chua, kefir — lợi khuẩn hỗ trợ miễn dịch</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Rượu bia — tăng giải phóng histamin, giãn mạch gây ngạt mũi</li>
+      <li>⛔ Đồ cay nóng (ớt, tiêu) — kích thích niêm mạc mũi</li>
+      <li>⛔ Thực phẩm chế biến sẵn, đồ hộp — phụ gia có thể gây dị ứng</li>
+      <li>⚠️ Sữa bò (một số người) — có thể làm đặc đờm</li>
+      <li>⚠️ Thực phẩm giàu histamin: phô mai già, dưa muối, rượu vang đỏ</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul><li>Rửa mũi bằng nước muối sinh lý mỗi sáng.</li><li>Hạn chế ra đường khi nồng độ phấn hoa/bụi cao.</li><li>Uống trà gừng + mật ong ấm — giảm ngạt mũi.</li><li>Xông hơi với tinh dầu bạc hà/khuynh diệp.</li></ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul><li>Sốt kèm sổ mũi, đau mặt — nguy cơ viêm xoang.</li><li>Khò khè, khó thở — có thể hen suyễn.</li><li>Mẩn ngứa toàn thân, phù môi mắt — dị ứng nặng.</li><li>Triệu chứng kéo dài dù đã thay đổi chế độ ăn.</li></ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

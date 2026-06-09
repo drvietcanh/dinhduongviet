@@ -1,0 +1,5 @@
+r = open(r'D:\openclaw\apps\dinh-duong-viet\src\pages\dung-tin-ngay\index.astro', encoding='utf-8').read()
+print(len(r))
+print(r[:500])
+print('...')
+print(r[-500:])

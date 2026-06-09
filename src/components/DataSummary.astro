@@ -1,0 +1,96 @@
+---
+import { dataSummary } from "../lib/nutrition";
+
+const summary = dataSummary();
+const topCategories = summary.categories.slice(0, 6);
+---
+
+<section class="section">
+  <div class="grid three">
+    <div class="stat">
+      <span class="muted">Thực phẩm</span>
+      <strong>{summary.totalFoods}</strong>
+      <p class="muted">mục theo 100g phần ăn được</p>
+    </div>
+    <div class="stat">
+      <span class="muted">Món ăn</span>
+      <strong>{summary.totalRecipes}</strong>
+      <p class="muted">món tính từ công thức định lượng</p>
+    </div>
+    <div class="stat">
+      <span class="muted">Nhóm thực phẩm</span>
+      <strong>{summary.totalCategories}</strong>
+      <p class="muted">nhóm đang có trong dữ liệu</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 16px;">
+    <div class="summary-head">
+      <div>
+        <h2>Thống kê theo nhóm</h2>
+        <p class="muted">Các nhóm nhiều dữ liệu nhất hiện tại.</p>
+      </div>
+      <a class="button secondary" href="/thong-ke">Xem đầy đủ</a>
+    </div>
+    <div class="category-bars">
+      {topCategories.map((item) => {
+        const width = Math.max(12, Math.round((item.count / summary.totalFoods) * 100));
+        return (
+          <a class="category-row" href={`/thuc-pham#${encodeURIComponent(item.category)}`}>
+            <span>{item.category}</span>
+            <div class="bar"><span style={`width: ${width}%`}></span></div>
+            <strong>{item.count}</strong>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .summary-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+  }
+  .category-bars {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .category-row {
+    display: grid;
+    grid-template-columns: minmax(110px, 160px) minmax(0, 1fr) 44px;
+    gap: 12px;
+    align-items: center;
+    color: var(--ink);
+  }
+  .category-row:hover span:first-child {
+    color: var(--brand);
+  }
+  .bar {
+    height: 10px;
+    border-radius: 999px;
+    background: #edf1e9;
+    overflow: hidden;
+  }
+  .bar span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--brand);
+  }
+  @media (max-width: 760px) {
+    .summary-head,
+    .category-row {
+      grid-template-columns: 1fr;
+    }
+    .summary-head {
+      align-items: flex-start;
+    }
+    .category-row {
+      gap: 6px;
+    }
+  }
+</style>

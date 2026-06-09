@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-eczema-viem-da-co-dia"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Viêm da cơ địa (eczema, atopic dermatitis) là bệnh viêm da mạn tính thường gặp ở trẻ em và người lớn. Dinh dưỡng đóng vai trò hỗ trợ giảm bùng phát ở một số người, đặc biệt là trẻ nhỏ có dị ứng thực phẩm kèm theo.</p>
+    <p>Ở nhiều bệnh nhân, triệu chứng eczema có liên quan đến histamine — một chất trung gian gây viêm và ngứa. Histamine có thể đến từ thực phẩm giàu histamine hoặc do cơ thể thiếu men DAO (diamine oxidase) — enzyme chính phân giải histamine trong đường ruột. Hiểu được cơ chế này giúp xây dựng chế độ ăn phù hợp, đặc biệt là chế độ ăn low-histamine cho người nhạy cảm.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Xác định thực phẩm kích hoạt:</strong> Sữa bò, trứng, đậu phộng, hải sản, lúa mì — là những dị nguyên thường gặp nhất</li>
+      <li><strong>Thử loại trừ:</strong> Loại bỏ 1 nhóm thực phẩm trong 4-6 tuần, ghi nhật ký triệu chứng</li>
+      <li><strong>Omega-3:</strong> Cá béo giúp giảm viêm da</li>
+      <li><strong>Probiotic:</strong> Có thể hỗ trợ ở trẻ em (còn tranh cãi ở người lớn)</li>
+      <li><strong>Kẽm & vitamin D:</strong> Thiếu hụt có thể làm nặng thêm tình trạng da</li>
+      <li><strong>Chế độ ăn low-histamine:</strong> Hạn chế thực phẩm giàu histamine nếu có triệu chứng nổi mề đay, ngứa nhiều sau ăn. Áp dụng thử 2-4 tuần để đánh giá đáp ứng.</li>
+      <li><strong>Vai trò men DAO:</strong> Thiếu men DAO làm tích tụ histamine. Bổ sung DAO từ thực phẩm chức năng cần tham khảo bác sĩ. Vitamin C và vitamin B6 là đồng yếu tố giúp men DAO hoạt động tốt.</li>
+      <li><strong>Thực phẩm tươi sống:</strong> Histamine tăng cao trong thực phẩm để lâu, bảo quản không đúng cách. Ưu tiên thực phẩm tươi, chế biến và ăn ngay.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu — omega-3 chống viêm</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau xanh</span><span>Cải bó xôi, bông cải, rau muống</span></div>
+      <div class="food-row"><span class="food-cat">💧 Nước</span><span>Uống đủ 1.5-2 lít/ngày — da khô cần đủ nước</span></div>
+      <div class="food-row"><span class="food-cat">🥩 Đạm ít histamine</span><span>Thịt gà tươi, thịt heo tươi, trứng — chế biến và ăn ngay, không để qua đêm</span></div>
+      <div class="food-row"><span class="food-cat">🍐 Trái cây ít histamine</span><span>Lê, táo, nho xanh, dưa hấu — ít gây dị ứng, an toàn với người nhạy cảm</span></div>
+      <div class="food-row"><span class="food-cat">🌿 Rau thơm & gia vị</span><span>Rau mùi, tía tô, kinh giới, nghệ, gừng — kháng histamine và chống viêm tự nhiên</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần thận trọng</h2>
+    <ul>
+      <li><strong>Sữa bò:</strong> Dị nguyên hàng đầu ở trẻ eczema</li>
+      <li><strong>Trứng:</strong> Phổ biến thứ hai</li>
+      <li><strong>Hải sản, đậu phộng, lúa mì</strong></li>
+      <li><strong>Phụ gia thực phẩm:</strong> Một số người nhạy cảm</li>
+      <li><strong>Thực phẩm lên men:</strong> Dưa cà muối, kim chi, phô mai lâu năm, rượu vang — giàu histamine</li>
+      <li><strong>Đồ hộp & thịt chế biến:</strong> Cá hộp, thịt nguội, xúc xích — histamine tăng cao do quá trình bảo quản</li>
+      <li><strong>Trái cây sấy khô, chuối chín, bơ, cà chua:</strong> Nồng độ histamine tự nhiên cao</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Eczema có chữa khỏi bằng ăn kiêng không?</summary><p>Không. Eczema là bệnh đa yếu tố. Dinh dưỡng hỗ trợ giảm triệu chứng ở một số người, nhưng không thay thế kem dưỡng ẩm và thuốc bôi.</p></details>
+    <details class="faq-item"><summary>Thiếu men DAO là gì và làm sao biết?</summary><p>DAO (diamine oxidase) là enzyme chính phân giải histamine trong ruột. Một số người bẩm sinh thiếu men này hoặc do viêm ruột, dùng thuốc kháng acid kéo dài. Triệu chứng gợi ý: nổi mề đay, eczema bùng phát, đau đầu, đầy bụng, tiêu chảy sau ăn thực phẩm giàu histamine. Xét nghiệm máu đo hoạt độ DAO có thể chẩn đoán.</p></details>
+    <details class="faq-item"><summary>Ăn low-histamine có khó không?</summary><p>Ban đầu hơi khó vì nhiều thực phẩm quen thuộc cần tránh. Nguyên tắc chính: ăn thực phẩm tươi, chế biến đơn giản, không để qua đêm, tránh đồ lên men. Sau 2-4 tuần, nhiều người thấy da cải thiện rõ. Sau đó có thể thêm dần từng loại thực phẩm để kiểm tra dung nạp.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>Quan trọng:</strong> Ghi nhật ký ăn uống 4 tuần. Thử loại trừ sữa & trứng trước. Dùng kem dưỡng ẩm đều đặn. Nếu ngứa nhiều sau ăn, thử chế độ low-histamine 2 tuần. Ăn thực phẩm tươi, chế biến và ăn ngay — histamine tăng theo thời gian bảo quản. Bổ sung vitamin C, kẽm, vitamin D đầy đủ. Tham khảo bác sĩ dinh dưỡng nếu cần hướng dẫn chi tiết.</p></div>
+  </section>
+</ArticleLayout>

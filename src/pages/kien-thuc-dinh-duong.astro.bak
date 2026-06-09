@@ -1,0 +1,170 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const conditions = [
+  {
+    slug: "tang-huyet-ap",
+    name: "Tăng huyết áp",
+    icon: "🫀",
+    desc: "Kiểm soát huyết áp bằng chế độ ăn giảm muối, tăng kali và duy trì cân nặng khỏe mạnh.",
+    principles: ["Giảm natri dưới 5g muối/ngày", "Tăng rau xanh và trái cây giàu kali", "Hạn chế mỡ bão hòa, đồ chế biến sẵn", "Duy trì BMI 18.5–22.9"]
+  },
+  {
+    slug: "dai-thao-duong",
+    name: "Đái tháo đường (tiểu đường)",
+    icon: "🩸",
+    desc: "Kiểm soát đường huyết bằng cách chọn carbohydrate chất lượng và ăn đúng giờ.",
+    principles: ["Kiểm soát tổng carbohydrate mỗi bữa", "Ưu tiên thực phẩm chỉ số đường huyết thấp", "Chia nhỏ bữa ăn (3 chính + 2 phụ)", "Hạn chế đường đơn, nước ngọt, bánh kẹo"]
+  },
+  {
+    slug: "gout",
+    name: "Gút (Gout)",
+    icon: "🦶",
+    desc: "Giảm đợt cấp và duy trì acid uric ổn định bằng chế độ ăn giảm purin.",
+    principles: ["Hạn chế thịt đỏ, nội tạng, hải sản vỏ cứng", "Tránh bia rượu hoàn toàn", "Uống đủ nước (2-3 lít/ngày)", "Tăng rau xanh, sữa ít béo"]
+  },
+  {
+    slug: "suy-than",
+    name: "Bệnh thận mạn",
+    icon: "🫘",
+    desc: "Bảo vệ chức năng thận còn lại bằng chế độ ăn giảm đạm, muối, kali, phốt pho.",
+    principles: ["Giảm đạm theo giai đoạn bệnh (0.6–0.8g/kg/ngày)", "Hạn chế natri", "Kiểm soát kali tùy xét nghiệm máu", "Giảm thực phẩm giàu phốt pho"]
+  },
+  {
+    slug: "dau-da-day",
+    name: "Viêm loét dạ dày - tá tràng",
+    icon: "🫃",
+    desc: "Giảm tiết acid và bảo vệ niêm mạc bằng chế độ ăn nhẹ nhàng, đúng giờ.",
+    principles: ["Ăn chín, nhai kỹ, không ăn quá no", "Tránh đồ chua, cay, rượu bia, thuốc lá", "Hạn chế cà phê, nước ngọt có gas", "Chia nhỏ bữa ăn trong ngày"]
+  },
+  {
+    slug: "thieu-mau",
+    name: "Thiếu máu dinh dưỡng",
+    icon: "🩸",
+    desc: "Tăng hấp thu sắt, kẽm, vitamin B12 và acid folic từ thực phẩm.",
+    principles: ["Tăng thịt đỏ, gan, hải sản giàu sắt", "Kết hợp vitamin C (cam, chanh) để tăng hấp thu sắt", "Tránh uống trà/cà phê ngay sau bữa ăn", "Bổ sung rau xanh đậm, các loại đậu"]
+  },
+  {
+    slug: "beo-phi",
+    name: "Thừa cân — Béo phì",
+    icon: "⚖️",
+    desc: "Giảm cân an toàn và duy trì cân nặng hợp lý bằng chế độ ăn thâm hụt calo, giàu protein và chất xơ.",
+    principles: ["Thâm hụt 300–500 kcal/ngày", "Protein 1.2–1.6g/kg cân nặng", "Cắt nước ngọt, tinh bột tinh chế", "Kết hợp 150 phút vận động/tuần"]
+  },
+  {
+    slug: "gan-nhiem-mo",
+    name: "Gan nhiễm mỡ",
+    icon: "🫁",
+    desc: "Đảo ngược gan nhiễm mỡ bằng chế độ ăn giảm đường, giảm carb tinh chế và tăng chất béo tốt.",
+    principles: ["Cắt đường và fructose hoàn toàn", "Giảm carb tinh chế", "Tăng omega-3 từ cá béo", "Tránh rượu bia"]
+  },
+  {
+    slug: "loang-xuong",
+    name: "Loãng xương",
+    icon: "🦴",
+    desc: "Bảo vệ xương bằng chế độ ăn giàu canxi, vitamin D và protein.",
+    principles: ["Canxi 1000–1200 mg/ngày", "Vitamin D 600–800 IU", "Đủ protein 1.0–1.2g/kg", "Hạn chế muối, caffeine, rượu bia"]
+  }
+];
+---
+
+<BaseLayout title="Kiến thức dinh dưỡng cho bệnh nhân - Dinh Dưỡng Việt">
+  <section>
+    <h1>🥗 Kiến thức dinh dưỡng cho bệnh nhân</h1>
+    <p class="lead">Áp dụng chế độ ăn hợp lý là nền tảng trong phòng ngừa và hỗ trợ điều trị nhiều bệnh lý mạn tính. Các thông tin dưới đây chỉ mang tính tham khảo và không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.</p>
+  </section>
+
+  <div class="disclaimer">
+    ⚠️ <strong>Cảnh báo y khoa:</strong> Nội dung trang này không phải là chẩn đoán hoặc chỉ định điều trị.
+    Người bệnh cần tham khảo ý kiến bác sĩ trước khi thay đổi chế độ ăn, đặc biệt khi đang dùng thuốc.
+  </div>
+
+  <section class="section">
+    <div class="grid two">
+      {conditions.map((c) => (
+        <a class="card condition-card" href={`/kien-thuc-dinh-duong/${c.slug}`}>
+          <div class="condition-header">
+            <span class="condition-icon">{c.icon}</span>
+            <h2>{c.name}</h2>
+          </div>
+          <p class="muted">{c.desc}</p>
+          <ul class="principle-list">
+            {c.principles.slice(0, 2).map((p) => <li>{p}</li>)}
+          </ul>
+          <span class="read-more">Xem chi tiết →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Nguyên tắc chung cho mọi bệnh lý</h2>
+    <div class="grid two" style="margin-top: 12px;">
+      <div>
+        <h3>✅ Nên</h3>
+        <ul>
+          <li>Ăn đa dạng, đủ nhóm chất</li>
+          <li>Ưu tiên thực phẩm tươi, ít chế biến</li>
+          <li>Uống đủ nước (1.5-2.5 lít/ngày)</li>
+          <li>Ăn đúng giờ, không bỏ bữa</li>
+          <li>Duy trì cân nặng hợp lý (BMI 18.5–22.9)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>❌ Không nên</h3>
+        <ul>
+          <li>Đồ chiên rán nhiều dầu mỡ</li>
+          <li>Đồ ngọt, nước ngọt có gas</li>
+          <li>Rượu bia, thuốc lá</li>
+          <li>Ăn quá mặn hoặc quá cay</li>
+          <li>Ăn khuya sau 20:00</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    color: #856404;
+    font-size: 0.9rem;
+  }
+  .condition-card {
+    position: relative;
+  }
+  .condition-card:hover {
+    border-color: var(--brand);
+  }
+  .condition-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .condition-icon {
+    font-size: 1.8rem;
+  }
+  .principle-list {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--brand);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  ul {
+    margin: 8px 0;
+    padding-left: 20px;
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import { nutrientLabels, type NutrientValues } from "../data/nutrition";
+import { detailNutrients } from "../lib/nutrition";
+
+const {
+  nutrients,
+  baseAmountG,
+  defaultAmountG,
+  title = "Đổi khẩu phần"
+} = Astro.props as {
+  nutrients: NutrientValues;
+  baseAmountG: number;
+  defaultAmountG: number;
+  title?: string;
+};
+
+const id = `portion-${Math.random().toString(36).slice(2)}`;
+const payload = JSON.stringify({ nutrients, labels: nutrientLabels, keys: detailNutrients, baseAmountG });
+---
+
+<div class="card portion-calculator" id={id}>
+  <h2>{title}</h2>
+  <p class="muted" style="margin: 6px 0 12px;">Nhập khối lượng khẩu phần để hệ thống quy đổi theo cùng nguồn dữ liệu.</p>
+  <div class="search-row">
+    <input type="number" min="1" step="1" value={defaultAmountG} aria-label="Khối lượng gram" data-portion-input />
+    <button class="button secondary" type="button" data-reset>Đặt lại</button>
+  </div>
+  <p class="muted" style="margin-top: 10px;">Đang tính cho <strong data-current-amount>{defaultAmountG}</strong>g.</p>
+  <table class="table" style="margin-top: 12px;">
+    <thead>
+      <tr>
+        <th>Chất dinh dưỡng</th>
+        <th>Giá trị</th>
+      </tr>
+    </thead>
+    <tbody data-portion-body></tbody>
+  </table>
+  <script is:inline type="application/json" data-portion-payload set:html={payload}></script>
+</div>
+
+<script is:inline>
+  function formatNutritionValue(value) {
+    if (value === undefined || Number.isNaN(value)) return "—";
+    if (value >= 100) return Math.round(value).toLocaleString("vi-VN");
+    if (value >= 10) return value.toFixed(1).replace(".0", "");
+    return value.toFixed(2).replace(/\.?0+$/, "");
+  }
+
+  document.querySelectorAll(".portion-calculator").forEach((root) => {
+    const payloadEl = root.querySelector("[data-portion-payload]");
+    const input = root.querySelector("[data-portion-input]");
+    const reset = root.querySelector("[data-reset]");
+    const current = root.querySelector("[data-current-amount]");
+    const body = root.querySelector("[data-portion-body]");
+    if (!payloadEl || !input || !reset || !current || !body) return;
+
+    const payload = JSON.parse(payloadEl.textContent || "{}");
+    const defaultValue = Number(input.value) || payload.baseAmountG || 100;
+
+    function render() {
+      const amount = Math.max(1, Number(input.value) || defaultValue);
+      current.textContent = amount.toLocaleString("vi-VN");
+      body.innerHTML = payload.keys.map((key) => {
+        const meta = payload.labels[key];
+        const raw = payload.nutrients[key];
+        const scaled = raw === undefined ? undefined : raw * amount / payload.baseAmountG;
+        const unit = scaled === undefined ? "" : ` ${meta.unit}`;
+        return `<tr><td>${meta.label}</td><td><strong>${formatNutritionValue(scaled)}</strong>${unit}</td></tr>`;
+      }).join("");
+    }
+
+    input.addEventListener("input", render);
+    reset.addEventListener("click", () => {
+      input.value = String(defaultValue);
+      render();
+    });
+    render();
+  });
+</script>

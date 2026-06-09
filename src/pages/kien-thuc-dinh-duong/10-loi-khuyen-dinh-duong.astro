@@ -1,0 +1,139 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["10-loi-khuyen-dinh-duong"];
+if (!art) throw new Error("Article not found: 10-loi-khuyen-dinh-duong");
+---
+
+<ArticleLayout article={art}>
+<style is:global>
+    .hero { text-align: center; margin-bottom: 24px; }
+    .hero h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .hero .sub { color: var(--ink-secondary); font-size: 0.95rem; max-width: 600px; margin: 0 auto; }
+    .tip-list { max-width: 700px; margin: 0 auto; }
+    .tip-item { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 14px; transition: all var(--transition); }
+    .tip-item:hover { box-shadow: var(--shadow-md); }
+    .tip-item .tip-number { display: inline-flex; width: 32px; height: 32px; background: var(--brand); color: white; border-radius: 50%; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; margin-right: 10px; flex-shrink: 0; }
+    .tip-item .tip-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .tip-item .tip-header h3 { font-size: 1rem; margin: 0; }
+    .tip-item .tip-text { color: var(--ink-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .tip-item .tip-links { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tip-item .tip-links a { padding: 4px 10px; background: var(--brand-light); border-radius: 6px; font-size: 0.82rem; color: var(--brand); text-decoration: none; }
+    .tip-item .tip-links a:hover { text-decoration: underline; }
+    .source { text-align: center; font-size: 0.82rem; color: var(--ink-tertiary); margin-top: 24px; line-height: 1.5; }
+  </style>
+
+  <div class="hero">
+    
+    <p class="sub">Dựa trên "10 lời khuyên dinh dưỡng hợp lý" do Bộ Y Tế ban hành, kết hợp gợi ý thực phẩm từ dữ liệu Dinh Dưỡng Việt</p>
+  </div>
+
+  <div class="tip-list">
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">1</span><h3>🥗 Ăn đa dạng thực phẩm, đảm bảo đủ 4 nhóm</h3></div>
+      <div class="tip-text">Mỗi bữa ăn cần có đủ 4 nhóm: bột đường, đạm, béo, vitamin và khoáng chất. Không nên ăn quá nhiều một loại thực phẩm hay bỏ bất kỳ nhóm nào.</div>
+      <div class="tip-links">
+        <a href="/kien-thuc-dinh-duong/thap-dinh-duong-viet-nam">🏛️ Tháp dinh dưỡng</a>
+        <a href="/cong-cu/so-sanh-bua-an">🍽️ So sánh bữa ăn</a>
+        <a href="/kien-thuc-dinh-duong/nhu-cau-dinh-duong-khuyen-nghi">📊 DRI</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">2</span><h3>🌾 Ăn nhiều lương thực (gạo, bánh mì, khoai)</h3></div>
+      <div class="tip-text">Cung cấp 55-65% năng lượng hàng ngày. Ưu tiên ngũ cốc nguyên hạt (gạo lứt, bánh mì đen) thay vì đồ tinh chế.</div>
+      <div class="tip-links">
+        <a href="/thuc-pham/com-gao-lut">Gạo lứt</a>
+        <a href="/thuc-pham/com-trang">Cơm trắng</a>
+        <a href="/mon-an?q=cơm">Món cơm</a>
+        <a href="/mon-an?q=x%C3%B4i">Xôi</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">3</span><h3>🥬 Ăn nhiều rau xanh, trái cây chín</h3></div>
+      <div class="tip-text">Tối thiểu 300-400g rau và 100-200g trái cây tươi/ngày. Rau trái cung cấp chất xơ, vitamin và khoáng chất, chống oxy hoá, giảm nguy cơ ung thư và tim mạch.</div>
+      <div class="tip-links">
+        <a href="/kien-thuc-dinh-duong/thap-dinh-duong-viet-nam">🏛️ Tháp dinh dưỡng</a>
+        <a href="/cong-cu/bang-xep-hang">🏆 Giàu xơ nhất</a>
+        <a href="/thuc-pham/rau-ngot">Rau ngót</a>
+        <a href="/thuc-pham/bap-cai">Bắp cải</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">4</span><h3>🥛 Dùng sữa và chế phẩm sữa phù hợp</h3></div>
+      <div class="tip-text">Sữa cung cấp canxi, đạm chất lượng cao, vitamin D. Người trưởng thành nên uống 1-2 ly sữa/ngày (~200-400ml), ưu tiên sữa tươi ít đường.</div>
+      <div class="tip-links">
+        <a href="/thuc-pham/sua-tuoi">Sữa tươi</a>
+        <a href="/thuc-pham/sua-chua">Sữa chua</a>
+        <a href="/thuc-pham/sua-dac">Sữa đặc</a>
+        <a href="/thuc-pham/pho-mai-cheddar">Phô mai</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">5</span><h3>🐟 Ăn cá, thịt, trứng, đậu đỗ — ưu tiên cá và đậu</h3></div>
+      <div class="tip-text">Nên ăn cá ít nhất 3 bữa/tuần. Giảm thịt đỏ (heo, bò), tăng thịt trắng (gà, vịt) và đậu đỗ. Đậu nành và các chế phẩm rất tốt cho sức khoẻ tim mạch.</div>
+      <div class="tip-links">
+        <a href="/thuc-pham/ca-hoi">Cá hồi</a>
+        <a href="/thuc-pham/dau-phu">Đậu phụ</a>
+        <a href="/mon-an/ca-kho-to">Cá kho tộ</a>
+        <a href="/mon-an/canh-chua-ca">Canh chua cá</a>
+        <a href="/mon-an/chao-ca-loc">Cháo cá</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">6</span><h3>🧂 Hạn chế muối, đường, chất béo bão hoà</h3></div>
+      <div class="tip-text">Muối &lt; 5g/ngày. Đường &lt; 40g/ngày. Béo bão hoà ≤ 7% năng lượng. Tránh đồ chiên xào nhiều dầu mỡ, nước ngọt có ga, bánh kẹo ngọt.</div>
+      <div class="tip-links">
+        <a href="/kien-thuc-dinh-duong/tang-huyet-ap">🫀 THA</a>
+        <a href="/kien-thuc-dinh-duong/beo-phi">⚖️ Béo phì</a>
+        <a href="/thuc-pham?q=ít+calo">Ít calo</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">7</span><h3>💧 Uống đủ nước</h3></div>
+      <div class="tip-text">1.5-2 lít/ngày (8-12 ly). Uống thêm khi vận động, thời tiết nóng. Nước lọc là tốt nhất, hạn chế nước ngọt, trà sữa, cà phê đá.</div>
+      <div class="tip-links">
+        <a href="/kien-thuc-dinh-duong/thap-dinh-duong-viet-nam">🏛️ Tháp tầng nước</a>
+        <a href="/thuc-pham/tra-xanh">Trà xanh</a>
+        <a href="/mon-an/nuoc-mia">Nước mía</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">8</span><h3>🏃 Duy trì cân nặng hợp lý, vận động đều đặn</h3></div>
+      <div class="tip-text">BMI 18.5-23 là lý tưởng cho người Việt. Kết hợp ăn uống hợp lý với 30-60 phút vận động/ngày. Tính toán nhu cầu calo và điều chỉnh khẩu phần.</div>
+      <div class="tip-links">
+        <a href="/cong-cu/tinh-nang-luong">🥩 Tính calo & macro</a>
+        <a href="/kien-thuc-dinh-duong/beo-phi">⚖️ Béo phì</a>
+        <a href="/kien-thuc-dinh-duong/thap-dinh-duong-my-nhat">🌍 Tháp Nhật — vận động</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">9</span><h3>🍶 Dùng đồ uống có cồn có chừng mực</h3></div>
+      <div class="tip-text">Nam &lt; 2 đơn vị/ngày, nữ &lt; 1 đơn vị/ngày (1 đơn vị = 10g cồn). Không nên uống hàng ngày. Rượu bia cung cấp năng lượng rỗng (7 kcal/g) và làm tăng nguy cơ nhiều bệnh.</div>
+      <div class="tip-links">
+        <a href="/thuc-pham/bia">Bia</a>
+        <a href="/thuc-pham/ruou">Rượu trắng</a>
+        <a href="/thuc-pham/ruou">Rượu vang</a>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-header"><span class="tip-number">10</span><h3>👶 Cho trẻ bú mẹ hoàn toàn trong 6 tháng đầu</h3></div>
+      <div class="tip-text">Sữa mẹ là thức ăn tốt nhất cho trẻ sơ sinh, cung cấp đầy đủ dinh dưỡng và kháng thể. Cho trẻ bú đúng cách, bắt đầu ăn dặm từ tháng thứ 6, tiếp tục bú mẹ đến 24 tháng.</div>
+      <div class="tip-links">
+        <a href="/kien-thuc-dinh-duong/nhu-cau-dinh-duong-khuyen-nghi">📊 DRI thai kỳ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">
+    Nguồn: "10 lời khuyên dinh dưỡng hợp lý" — Bộ Y Tế Việt Nam, Viện Dinh Dưỡng Quốc Gia.
+    Tham khảo thêm tại <a href="https://viendinhduong.vn" target="_blank" style="color:var(--brand);">Viện Dinh Dưỡng</a>.
+</ArticleLayout>

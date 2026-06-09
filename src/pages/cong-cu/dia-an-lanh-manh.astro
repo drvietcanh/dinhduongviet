@@ -1,0 +1,279 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "Đĩa ăn lành mạnh | Dinh Dưỡng Việt";
+const desc = "Chia đĩa ăn theo bệnh lý: 1/2 rau, 1/4 tinh bột, 1/4 đạm. Trực quan, dễ nhìn, không cần đọc lý thuyết.";
+---
+
+<BaseLayout title={title} description={desc}>
+  <main style="max-width: 800px; margin: 0 auto; padding: 1.5rem;">
+    <h1 style="font-size: 1.6rem;">🍽️ Đĩa ăn lành mạnh</h1>
+    <p style="color: var(--ink-secondary); margin-bottom: 1.5rem;">Không công thức rườm rà. Nhìn vào đĩa là biết ăn đúng.</p>
+
+    <!-- Disease selector -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="disease" style="display: block; font-weight: 600; margin-bottom: 8px;">Bạn có bệnh nền nào dưới đây?</label>
+      <select id="disease" style="width: 100%; max-width: 400px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--fg); font-size: 1rem;">
+        <option value="none">Không bệnh nền — Người khỏe mạnh</option>
+        <option value="diabetes">🩸 Đái tháo đường (tiểu đường)</option>
+        <option value="hypertension">🫗 Tăng huyết áp (cao huyết áp)</option>
+        <option value="gout">🦶 Gout</option>
+        <option value="kidney">🫘 Suy thận</option>
+        <option value="fatty-liver">🫁 Gan nhiễm mỡ / Mỡ máu</option>
+        <option value="gerd">😣 Dạ dày / Trào ngược</option>
+        <option value="elderly">👴 Người cao tuổi (ăn ít, yếu cơ)</option>
+        <option value="weight-loss">🏋️ Giảm cân</option>
+      </select>
+    </div>
+
+    <!-- Plate visualization -->
+    <div id="plate" style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start;">
+      <!-- Visual plate -->
+      <div style="flex: 1; min-width: 280px;">
+        <svg viewBox="0 0 400 400" style="width: 100%; max-width: 380px; aspect-ratio: 1;">
+          <!-- Plate base -->
+          <circle cx="200" cy="200" r="190" fill="none" stroke="var(--line)" stroke-width="3"/>
+          
+          <!-- 1/2 rau (top half) -->
+          <path d="M 200 20 A 180 180 0 0 1 380 200 L 200 200 Z" fill="#27ae60" opacity="0.15"/>
+          <!-- 1/4 tinh bột (bottom right) -->
+          <path d="M 200 200 L 380 200 A 180 180 0 0 1 200 380 Z" fill="#f39c12" opacity="0.15"/>
+          <!-- 1/4 đạm (bottom left) -->
+          <path d="M 200 200 A 180 180 0 0 0 20 200 L 200 200 Z" fill="#3498db" opacity="0.15"/>
+          
+          <!-- Divider lines -->
+          <line x1="20" y1="200" x2="380" y2="200" stroke="var(--line)" stroke-width="2" opacity="0.5"/>
+          <line x1="200" y1="200" x2="200" y2="380" stroke="var(--line)" stroke-width="2" opacity="0.5"/>
+          
+          <!-- Labels -->
+          <text x="200" y="120" text-anchor="middle" font-size="22" font-weight="bold" fill="#27ae60" id="label-veggie">🥬 Rau / Trái cây</text>
+          <text x="200" y="145" text-anchor="middle" font-size="15" fill="#27ae60" id="sub-veggie">50% đĩa</text>
+          
+          <text x="310" y="310" text-anchor="middle" font-size="20" font-weight="bold" fill="#f39c12" id="label-carb">🍚 Tinh bột</text>
+          <text x="310" y="335" text-anchor="middle" font-size="15" fill="#f39c12" id="sub-carb">25% đĩa</text>
+          
+          <text x="90" y="310" text-anchor="middle" font-size="20" font-weight="bold" fill="#3498db" id="label-protein">🥩 Đạm</text>
+          <text x="90" y="335" text-anchor="middle" font-size="15" fill="#3498db" id="sub-protein">25% đĩa</text>
+        </svg>
+      </div>
+
+      <!-- Details -->
+      <div style="flex: 1; min-width: 240px;">
+        <div id="detail-veggie" style="background: #eafaf1; border-radius: 10px; padding: 1rem; margin-bottom: 10px;">
+          <h3 style="margin: 0 0 4px; font-size: 1rem; color: #27ae60;">🥬 Rau & Trái cây</h3>
+          <p style="margin: 0; font-size: 0.9rem; color: #1e8449;" id="veggie-text">Rau luộc, canh rau, salad, trái cây ít ngọt. Nên ăn đa dạng màu sắc.</p>
+        </div>
+        <div id="detail-carb" style="background: #fef9e7; border-radius: 10px; padding: 1rem; margin-bottom: 10px;">
+          <h3 style="margin: 0 0 4px; font-size: 1rem; color: #f39c12;">🍚 Tinh bột</h3>
+          <p style="margin: 0; font-size: 0.9rem; color: #b7950b;" id="carb-text">Cơm, bún, phở, bánh mì, khoai, ngô. Chọn loại nguyên hạt nếu được.</p>
+        </div>
+        <div id="detail-protein" style="background: #eaf2f8; border-radius: 10px; padding: 1rem; margin-bottom: 10px;">
+          <h3 style="margin: 0 0 4px; font-size: 1rem; color: #3498db;">🥩 Đạm</h3>
+          <p style="margin: 0; font-size: 0.9rem; color: #1a5276;" id="protein-text">Thịt nạc, cá, trứng, đậu phụ, tôm. Ưu tiên đạm nạc, hạn chế thịt mỡ.</p>
+        </div>
+        <div id="detail-note" style="background: var(--b1); border-radius: 10px; padding: 1rem;">
+          <h3 style="margin: 0 0 4px; font-size: 1rem; color: var(--ink-secondary);">💡 Lưu ý</h3>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--ink-secondary);" id="note-text">Uống đủ nước. Hạn chế nước ngọt, nước ép hộp, đồ chế biến sẵn.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disease-specific tips -->
+    <div id="tips" style="margin-top: 1.5rem; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem;">
+      <h3 style="margin: 0 0 8px; font-size: 1rem;">📌 Mẹo cho từng bệnh</h3>
+      <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.8;" id="tips-list">
+        <li><strong>Không bệnh nền:</strong> Giữ 50% rau, chọn đạm nạc, tinh bột nguyên hạt. Trái cây tráng miệng.</li>
+        <li><strong>Tiểu đường:</strong> Tinh bột = gạo lứt hoặc trộn 50-50. Rau ăn trước cơm.</li>
+        <li><strong>Tăng HA:</strong> Chú ý muối ẩn trong nước chấm, nước kho. Rau luộc hơn xào.</li>
+        <li><strong>Gout:</strong> Đạm = trứng, đậu, sữa. Hạn chế thịt đỏ, nội tạng. Uống nhiều nước.</li>
+        <li><strong>Suy thận:</strong> Tùy giai đoạn — cần hỏi bác sĩ về lượng đạm và kali.</li>
+        <li><strong>Gan nhiễm mỡ:</strong> Giảm tinh bột trắng, đường. Tăng rau xanh.</li>
+        <li><strong>Dạ dày:</strong> Rau nấu mềm. Tránh đồ chua, cay. Chia 5 bữa nhỏ.</li>
+        <li><strong>Người già:</strong> Thêm đạm vào đĩa. Tinh bột nấu mềm. Sữa giữa bữa.</li>
+      </ul>
+    </div>
+
+    <script is:inline>
+      (function() {
+        var disease = document.getElementById('disease');
+        var veggieText = document.getElementById('veggie-text');
+        var carbText = document.getElementById('carb-text');
+        var proteinText = document.getElementById('protein-text');
+        var noteText = document.getElementById('note-text');
+        var tipsList = document.getElementById('tips-list');
+        var labelVeggie = document.getElementById('label-veggie');
+        var labelCarb = document.getElementById('label-carb');
+        var labelProtein = document.getElementById('label-protein');
+        var subVeggie = document.getElementById('sub-veggie');
+        var subCarb = document.getElementById('sub-carb');
+        var subProtein = document.getElementById('sub-protein');
+
+        var data = {
+          'none': {
+            veggie: 'Rau luộc, canh rau, salad. Ăn đa dạng màu sắc.',
+            carb: 'Cơm, bún, phở, bánh mì, khoai lang. Có thể trộn gạo lứt.',
+            protein: 'Thịt nạc, cá, trứng, đậu phụ, tôm. Ưu tiên đạm nạc.',
+            note: 'Uống nước đủ. Hạn chế nước ngọt, đồ chế biến sẵn.',
+            tips: [
+              '<strong>Bữa chính:</strong> áp dụng luật đĩa 50-25-25.',
+              '<strong>Bữa phụ:</strong> sữa chua, trái cây ít ngọt, các loại hạt.',
+              '<strong>Hạn chế:</strong> nước ngọt, trà sữa, bánh ngọt công nghiệp.',
+            ]
+          },
+          'diabetes': {
+            veggie: 'Rau luộc, salad — ăn <strong>trước</strong> cơm. Trái cây ít ngọt (ổi, thanh long, bưởi).',
+            carb: 'Gạo lứt hoặc trộn 50% gạo lứt + 50% gạo trắng. Giảm lượng: 1 chén/bữa.',
+            protein: 'Cá, gà bỏ da, đậu phụ, trứng. Hạn chế thịt đỏ, thịt mỡ.',
+            note: 'Không bỏ cơm — chỉ giảm lượng. Không nước ngọt. Đo đường huyết định kỳ.',
+            tips: [
+              '<strong>Thứ tự ăn:</strong> Rau → Đạm → Tinh bột → Trái cây.',
+              '<strong>GI thấp:</strong> Gạo lứt, khoai lang, yến mạch, bánh mì nguyên cám.',
+              '<strong>Tránh:</strong> Cơm chiên, mì xào, xôi, bánh ngọt, trà sữa.',
+            ]
+          },
+          'hypertension': {
+            veggie: 'Rau luộc, canh rau (nêm nhạt). Salad dầu dấm. Rau giàu kali: rau dền, mồng tơi, khoai tây.',
+            carb: 'Cơm, bánh mì, khoai. <strong>Lưu ý:</strong> bánh mì có muối! Khoai luộc tốt hơn chiên.',
+            protein: 'Cá hấp, gà luộc, đậu phụ. Chấm nước mắm pha loãng (1:3). Hạn chế thịt kho mặn.',
+            note: 'Mục tiêu: dưới 2g muối/ngày. Pha loãng nước mắm 1:3 hoặc 1:4.',
+            tips: [
+              '<strong>Nước chấm:</strong> 1 mắm + 3-4 nước + chanh + tỏi ớt (giảm đường).',
+              '<strong>Tránh:</strong> Dưa muối, cà muối, thịt kho, mì gói (1 gói = 3-4g muối).',
+              '<strong>Dùng:</strong> Hành, tỏi, gừng, sả, tiêu — thay muối tạo vị.',
+            ]
+          },
+          'gout': {
+            veggie: 'Tất cả rau xanh đều tốt. Cherry, dâu tây giúp giảm acid uric.',
+            carb: 'Cơm, bún, phở, bánh mì, khoai — không hạn chế đặc biệt.',
+            protein: 'Trứng, sữa, đậu phụ là nguồn đạm chính. Cá 1-2 bữa/tuần. Hạn chế thịt đỏ.',
+            note: 'Uống 2-3 lít nước/ngày. Tránh bia rượu, nội tạng, nước hầm xương.',
+            tips: [
+              '<strong>Uống nước:</strong> 2-3 lít/ngày — quan trọng hơn kiêng thịt.',
+              '<strong>Đạm thân thiện:</strong> Trứng, sữa, đậu phụ, sữa chua.',
+              '<strong>Tránh:</strong> Nội tạng, hải sản vỏ, nước hầm xương, bia, rượu.',
+            ]
+          },
+          'kidney': {
+            veggie: 'Tùy giai đoạn suy thận. Rau giàu kali cần hạn chế nếu kali máu cao.',
+            carb: 'Cơm, bún, phở — chọn tinh bột ít đạm. Miến, bún tươi tốt hơn mì sợi.',
+            protein: 'Hạn chế đạm theo chỉ định bác sĩ. Đạm từ trứng và sữa ưu tiên.',
+            note: '⚠️ <strong>Không tự kiêng!</strong> Cần xét nghiệm máu để biết mức độ. Hỏi bác sĩ trước khi áp dụng.',
+            tips: [
+              '<strong>Nguy hiểm:</strong> Tự kiêng đạm/kali/phốt pho quá mức có thể gây suy dinh dưỡng.',
+              '<strong>Lượng đạm:</strong> Tùy giai đoạn — thường 0.6-0.8g/kg/ngày (chỉ khi có chỉ định).',
+              '<strong>Hạn chế:</strong> Sữa hạt, nước dừa, chuối, cam, khoai tây nếu kali máu cao.',
+            ]
+          },
+          'fatty-liver': {
+            veggie: 'Rau xanh — càng nhiều càng tốt. Bông cải xanh, cải bó xôi, cần tây.',
+            carb: 'Giảm: cơm trắng, bánh mì trắng. Thay bằng: gạo lứt, yến mạch, khoai lang.',
+            protein: 'Cá béo (cá hồi, cá thu, cá trích) — 3 bữa/tuần. Thịt nạc 2 bữa/tuần.',
+            note: 'Tuyệt đối không rượu bia. Hạn chế đường, kể cả đường trái cây ngọt (sầu riêng, mít).',
+            tips: [
+              '<strong>Không rượu bia:</strong> Đây là yếu tố số 1 làm nặng gan nhiễm mỡ.',
+              '<strong>Giảm đường:</strong> Tránh nước ngọt, trà sữa, bánh kẹo, chè.',
+              '<strong>Omega-3:</strong> Cá hồi, cá thu, hạt lanh, hạt chia, quả óc chó.',
+            ]
+          },
+          'gerd': {
+            veggie: 'Rau nấu chín, không chua. Tránh: cà chua, chanh, dưa muối, hành sống.',
+            carb: 'Cơm mềm/nát, bánh mì nướng, khoai lang, cháo. Ăn từng ít một, nhai kỹ.',
+            protein: 'Gà luộc bỏ da, cá hấp, trứng (luộc/hấp), đậu phụ non. Tránh chiên xào nhiều dầu.',
+            note: 'Ăn tối trước 19h. Chia 5 bữa nhỏ. Sau ăn không nằm ít nhất 2-3 giờ.',
+            tips: [
+              '<strong>Không nằm sau ăn:</strong> Đi lại nhẹ 15-20 phút hoặc ngồi thẳng.',
+              '<strong>Tránh:</strong> Cà phê, trà đặc, rượu, bia, đồ chiên, đồ chua, cay.',
+              '<strong>Kê cao đầu:</strong> Gối cao 15-20cm khi ngủ để chống trào ngược ban đêm.',
+            ]
+          },
+          'elderly': {
+            veggie: 'Rau nấu mềm, thái nhỏ. Canh rau củ, bí đỏ, su su, cà rốt.',
+            carb: 'Cơm mềm, cháo, bánh mì nướng mềm, khoai lang hấp tán nhuyễn.',
+            protein: 'Thêm trứng, sữa, thịt băm vào mỗi bữa. Cá hấp dầm, đậu phụ non. <strong>Quan trọng:</strong> tăng mật độ đạm.',
+            note: 'Người già thường ăn ít → dễ thiếu đạm → yếu cơ. Tăng đạm, sữa, hạt. Uống đủ nước.',
+            tips: [
+              '<strong>Mật độ đạm:</strong> Thêm trứng vào cháo, thêm sữa bột vào món ăn, rắc hạt lên rau.',
+              '<strong>Bữa phụ:</strong> Sữa (300-500ml/ngày), sữa chua, hạt nghiền, chuối chín.',
+              '<strong>Tránh:</strong> Ăn quá nhạt — người già cần 1 ít muối để kích thích ăn uống.',
+            ]
+          },
+          'weight-loss': {
+            veggie: 'Rau luộc, salad (dầu dấm, không sốt béo). Chiếm 50-60% đĩa để tạo cảm giác no.',
+            carb: 'Giảm còn 1/4 đĩa. Chọn gạo lứt, khoai lang, yến mạch, bánh mì nguyên cám.',
+            protein: 'Đạm nạc — ức gà, cá, đậu phụ. Trứng. Đạm giúp no lâu và giữ cơ bắp.',
+            note: 'Không nhịn bữa. Giảm 300-500 kcal/ngày so với nhu cầu. Tập thể dục 30 phút/ngày.',
+            tips: [
+              '<strong>Không nhịn sáng:</strong> Nhịn ăn làm chậm chuyển hóa, dễ ăn bù trưa.',
+              '<strong>Hạn chế:</strong> Nước ngọt (1 lon = 140 kcal), trà sữa (1 ly = 350-500 kcal).',
+              '<strong>Giấc ngủ:</strong> Ngủ 7-8 tiếng — thiếu ngủ làm tăng cortisol, dễ tích mỡ bụng.',
+            ]
+          }
+        };
+
+        function update() {
+          var val = disease.value;
+          var d = data[val] || data['none'];
+          veggieText.innerHTML = d.veggie;
+          carbText.innerHTML = d.carb;
+          proteinText.innerHTML = d.protein;
+          noteText.innerHTML = d.note;
+
+          // Update plate labels for some conditions
+          if (val === 'weight-loss') {
+            subVeggie.textContent = '50-60%';
+            subCarb.textContent = '20-25%';
+            subProtein.textContent = '20-25%';
+          } else if (val === 'elderly') {
+            subVeggie.textContent = '40%';
+            subCarb.textContent = '30%';
+            subProtein.textContent = '30%';
+          } else {
+            subVeggie.textContent = '50%';
+            subCarb.textContent = '25%';
+            subProtein.textContent = '25%';
+          }
+
+          // Update tips
+          var tips = d.tips || [];
+          var html = '';
+          for (var i = 0; i < tips.length; i++) {
+            html += '<li>' + tips[i] + '</li>';
+          }
+          tipsList.innerHTML = html;
+        }
+
+        disease.addEventListener('change', update);
+        update();
+      })();
+    </script>
+
+    <!-- Quick comparison: existing tools -->
+    <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 12px;">
+      <a href="/cong-cu/bmi" class="quick-btn">⚖️ Tính BMI</a>
+      <a href="/cong-cu/nuoc-uong" class="quick-btn">💧 Nhu cầu nước</a>
+      <a href="/cong-cu/doi-don-vi" class="quick-btn">📐 Đổi đơn vị</a>
+      <a href="/cong-cu/duong-do-uong" class="quick-btn">🥤 Đường đồ uống</a>
+      <a href="/cong-cu/nuoc-muoi-mon-an" class="quick-btn">🧂 Tra muối</a>
+      <a href="/cong-cu/khau-phan-don-gian" class="quick-btn">🥄 Khẩu phần</a>
+      <a href="/cong-cu/checklist-an-uong" class="quick-btn">✅ Checklist</a>
+    </div>
+
+    <style>
+      .quick-btn {
+        padding: 10px 16px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--fg);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .quick-btn:hover {
+        border-color: var(--primary);
+        background: var(--primary-bg);
+        transform: translateY(-2px);
+      }
+    </style>
+  </main>
+</BaseLayout>

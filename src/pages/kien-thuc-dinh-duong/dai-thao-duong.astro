@@ -1,0 +1,107 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dai-thao-duong"];
+if (!art) throw new Error("Article not found: dai-thao-duong");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Bình, 63 tuổi, phát hiện tiểu đường 2 năm trước. Sáng nào bác cũng ăn bánh mì trắng ốp la, trưa cơm trắng 2 bát, tối bún bò. Đường huyết lúc nào cũng 9–10 mmol/L. Bác than: "Tôi ăn có nhiều đâu, sao đường vẫn cao?" Vấn đề không phải lượng, mà là <strong>loại carb</strong> và <strong>cách chia bữa</strong>.</p>
+  <p>Tiểu đường type 2 ảnh hưởng tới hơn 5 triệu người Việt. Tin tốt: dinh dưỡng đúng giúp kiểm soát đường huyết như thuốc, giảm HbA1c 1–2% chỉ sau 3 tháng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người tiểu đường cần <u>ăn đúng tổng carb mỗi bữa (45–60g)</u>, <u>chọn carb GI thấp</u> (gạo lứt, khoai lang, yến mạch),
+    <u>ăn rau trước tinh bột</u>, <u>chia 3 bữa chính + 2 bữa phụ</u>, <u>vận động sau ăn 15 phút</u>.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn tinh bột ảnh hưởng tới đường huyết?</h2>
+  <p>Tinh bột khi vào cơ thể được tiêu hóa thành glucose. Ở người tiểu đường, insulin không đủ hoặc không hoạt động tốt, glucose không vào được tế bào, ứ trong máu. Ăn nhiều carb GI cao (cơm trắng, bánh mì, bún) làm đường huyết tăng vọt sau ăn. Ăn carb GI thấp (gạo lứt, khoai lang, yến mạch) giúp glucose vào máu từ từ.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Khoai lang luộc, gạo lứt, yến mạch, bánh mì nguyên cám</li>
+      <li>Rau xanh: rau muống, cải xanh, rau ngót — ăn không hạn chế</li>
+      <li>Đạm: ức gà, cá, trứng, đậu phụ, tôm</li>
+      <li>Trái cây ít ngọt: bơ, dưa hấu, thanh long, ổi, táo</li>
+      <li>Chất béo tốt: dầu oliu, dầu mè, quả bơ, các loại hạt</li>
+      <li>Sữa chua không đường, sữa hạt không đường</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Cơm trắng, bánh mì trắng, bún, mì gói, hủ tiếu</li>
+      <li>⛔ Nước ngọt, trà sữa, nước ép trái cây đóng hộp</li>
+      <li>⛔ Trái cây ngọt: nhãn, vải, sầu riêng, xoài chín, nho</li>
+      <li>⛔ Bánh kẹo, kem, chè, mứt</li>
+      <li>⛔ Bia rượu — gây tăng đường + hạ đường huyết muộn</li>
+      <li>⛔ Đồ chiên rán nhiều dầu mỡ</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Loại thực phẩm</th><th>1 phần =</th><th>Số phần/ngày</th></tr></thead><tbody>
+    <tr><td>Tinh bột</td><td>1 bát cơm nhỏ / 1 củ khoai lang / 1 ổ bánh mì nguyên cám</td><td>4–6 phần (15–20g carb/phần)</td></tr>
+    <tr><td>Rau xanh</td><td>1 bát rau luộc</td><td>≥3 phần</td></tr>
+    <tr><td>Đạm</td><td>Lòng bàn tay thịt/cá / 2 quả trứng / 1 bìa đậu</td><td>2–3 phần</td></tr>
+    <tr><td>Trái cây</td><td>1 nắm tay hoặc ½ bát</td><td>1–2 phần</td></tr>
+    <tr><td>Chất béo</td><td>1 muỗng canh dầu / ¼ bơ / 1 nắm hạt</td><td>2–3 phần</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Mỗi người có mức dung nạp carb khác nhau. Dùng máy đo đường huyết sau ăn 1–2h để biết ngưỡng của bạn.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1500 kcal)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th><th>Carb</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bánh mì nguyên cám 1 lát + trứng ốp + ½ quả bơ + cà phê đen</td><td>~25g</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 hũ sữa chua không đường + vài hạt điều</td><td>~8g</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt 1 bát con + cá kho + canh rau thập cẩm</td><td>~45g</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 trái ổi hoặc ½ quả bơ</td><td>~10g</td></tr>
+    <tr><td>🌙 Tối</td><td>1 bát cơm gạo lứt + ức gà xé + rau luộc</td><td>~40g</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Ăn rau trước, đạm tiếp theo, tinh bột cuối cùng — giúp giảm đường huyết sau ăn tới 20%.</p>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đi bộ 15–20 phút sau ăn — giúp cơ dùng glucose tốt hơn.</li>
+        <li>Giảm 5–10% cân nặng cải thiện đáng kể đường huyết.</li>
+        <li>Theo dõi đường huyết đói (mục tiêu 4.4–7.0) và HbA1c (&lt;7%).</li>
+        <li>Luôn mang theo kẹo/đường nếu dùng insulin hoặc thuốc hạ đường huyết.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đường huyết &gt;16.7 mmol/L kéo dài — nguy cơ nhiễm toan ceton.</li>
+        <li>Hạ đường huyết &lt;3.9 mmol/L, vã mồ hôi, run, lơ mơ.</li>
+        <li>Vết thương lâu lành, nhiễm trùng tái phát.</li>
+        <li>Mắt mờ, tê bì chân tay, tiểu đêm nhiều.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section card" style="background:#e8f5e9;border:1px solid #a5d6a7;text-align:center;">
+  <p style="margin:0;font-size:1rem;">
+    <strong>🧮 Tính thử GL bữa ăn của bạn</strong><br>
+    <a href="/cong-cu/tinh-gl-bua-an" style="display:inline-block;margin-top:10px;padding:10px 24px;background:var(--brand);color:white;border-radius:999px;text-decoration:none;font-weight:600;">⚖️ Tính GL bữa ăn →</a>
+  </p>
+</section>
+
+</ArticleLayout>

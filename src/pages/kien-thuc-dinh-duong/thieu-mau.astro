@@ -1,0 +1,100 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thieu-mau"];
+if (!art) throw new Error("Article not found: thieu-mau");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Hoa, 28 tuổi, hay mệt mỏi, hoa mắt, da xanh xao, móng tay dễ gãy, thỉnh thoảng khó thở. Tưởng do làm việc quá sức. Một lần đi hiến máu mới biết: Hb chỉ 85 g/L — thiếu máu thiếu sắt nặng.</p>
+  <p>Thiếu máu là bệnh phổ biến nhất thế giới — Ảnh hưởng tới 30% dân số, đặc biệt phụ nữ mang thai, trẻ em, người ăn chay. Đa số là thiếu máu thiếu sắt, có thể cải thiện hoàn toàn bằng dinh dưỡng nếu phát hiện sớm.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Phòng thiếu máu = <u>ăn thực phẩm giàu sắt</u> (thịt bò, gan, trứng, rau ngót), 
+    <u>kết hợp vitamin C</u> (cam, chanh, ổi) để tăng hấp thu sắt, 
+    <u>tránh uống trà/cà phê ngay sau ăn</u> (giảm tới 60% hấp thu sắt).</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao thiếu máu?</h2>
+  <p>Thiếu máu là thiếu hồng cầu khỏe mạnh để mang oxy đi khắp cơ thể. Có 3 loại chính: (1) thiếu sắt — không đủ nguyên liệu tạo hồng cầu, (2) thiếu B12/folate — ảnh hưởng quá trình tạo máu, (3) bệnh mạn tính — viêm nhiễm kéo dài cản trở sử dụng sắt. Cần xét nghiệm máu (Hb, MCV, ferritin) để biết loại thiếu máu.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Thịt bò, thịt heo nạc — sắt heme hấp thu tốt nhất (10–30%)</li>
+      <li>Lòng đỏ trứng, gan heo (ăn 1 lần/tuần, không quá 100g)</li>
+      <li>Hải sản: hàu, nghêu, sò — giàu sắt + B12</li>
+      <li>Rau xanh đậm: rau ngót, mồng tơi, cải xanh</li>
+      <li>Đậu đỗ: đậu xanh, đậu phụ, đậu lăng</li>
+      <li>Vitamin C: cam, chanh, ổi, cà chua, rau ngót</li>
+      <li>B12 & folate: cá, trứng, sữa, bơ, chuối</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Lưu ý khi ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Trà/cà phê ngay sau ăn — tanin giảm 60% hấp thu sắt</li>
+      <li>⛔ Sữa trong bữa ăn giàu sắt — canxi cạnh tranh hấp thu</li>
+      <li>⛔ Ngũ cốc thô chưa ngâm — phytate ức chế hấp thu sắt</li>
+      <li>💡 Ngâm/ủ mầm đậu trước nấu giúp giảm phytate</li>
+      <li>💡 Nấu nồi gang — sắt thấm vào thức ăn, tăng sắt tự nhiên</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Nhu cầu và cách kết hợp</h2>
+  <table class="table"><thead><tr><th>Đối tượng</th><th>Nhu cầu sắt/ngày</th><th>Thực phẩm gợi ý</th></tr></thead><tbody>
+    <tr><td>Nam</td><td>8–11 mg</td><td>Thịt bò + rau ngót + cam</td></tr>
+    <tr><td>Nữ có kinh nguyệt</td><td>15–18 mg</td><td>Thịt bò + lòng đỏ trứng + cà chua</td></tr>
+    <tr><td>Mang thai</td><td>27 mg</td><td>Cá + trứng + rau ngót + bổ sung sắt theo chỉ định</td></tr>
+    <tr><td>Ăn chay</td><td>Gấp rưỡi (vì sắt non-heme hấp thu kém)</td><td>Đậu + hạt + rau xanh + cam chanh (uống kèm)</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Sắt heme (thịt, cá) hấp thu 15–30%. Sắt non-heme (thực vật) hấp thu 2–10%. Vitamin C tăng hấp thu sắt non-heme lên 3–6 lần.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bánh mì + trứng ốp + 1 ly nước cam (vitamin C giúp hấp thu sắt trứng)</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả ổi hoặc đu đủ chín</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm + cá nục kho + canh rau ngót thịt băm</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 quả cam</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm + thịt bò xào rau cải + cà chua</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Trà/cà phê uống cách xa bữa ăn 1–2 giờ, không uống ngay sau ăn.</p>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Xét nghiệm máu (Hb, MCV, ferritin) trước khi tự bổ sung sắt.</li>
+        <li>Uống viên sắt lúc đói, kèm nước cam — tránh uống với canxi.</li>
+        <li>Không tự uống sắt nếu không có chỉ định — thừa sắt gây hại gan, tim.</li>
+        <li>Người ăn chay cần xét nghiệm B12 và sắt định kỳ.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Hb &lt;80 g/L (thiếu máu nặng) — cần truyền máu/sắt tĩnh mạch.</li>
+        <li>Khó thở khi nằm, tim đập nhanh.</li>
+        <li>Da xanh, lưỡi đỏ đau (thiếu B12), tê bì tay chân.</li>
+        <li>Phân đen — chảy máu tiêu hóa.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

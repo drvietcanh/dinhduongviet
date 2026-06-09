@@ -1,0 +1,99 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-benh-than-man-ckd"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Sơn, 55 tuổi, tiểu đường 10 năm, tăng huyết áp. Xét nghiệm thấy creatinine 160, eGFR 42 — suy thận giai đoạn 3. Bác sĩ bảo: "Từ giờ bác phải ăn kiêng đạm, kiêng kali, giảm muối, nếu không 3–4 năm nữa sẽ phải lọc máu." Bác hoang mang không biết bắt đầu từ đâu.</p>
+  <p>Việt Nam có khoảng 5 triệu người bệnh thận mạn, đa số phát hiện muộn. Dinh dưỡng đúng ở giai đoạn sớm có thể làm chậm tiến triển, trì hoãn lọc máu 5–10 năm.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người bệnh thận mạn cần <u>giảm đạm (0.6–0.8g/kg giai đoạn 3–4)</u>, <u>giảm muối &lt;5g</u>,
+    <u>kiểm soát kali</u> (hạn chế chuối, cam, khoai), <u>kiểm soát phốt pho</u> (sữa, nội tạng, nước ngọt có gas).
+    Mỗi giai đoạn có chế độ khác nhau — hỏi bác sĩ dinh dưỡng!</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Thận suy ảnh hưởng tới dinh dưỡng thế nào?</h2>
+  <p>Thận là bộ lọc của cơ thể. Khi suy, chất thải (urê, creatinine) tích tụ, và khả năng điều chỉnh nước, muối, kali, phốt pho suy giảm. Ăn đạm nhiều làm thận phải làm việc nhiều hơn. Ăn nhiều kali có thể gây ngừng tim. Ăn nhiều phốt pho đẩy nhanh suy thận. Chế độ ăn thay đổi theo từng giai đoạn CKD.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đạm chất lượng: trứng, ức gà, cá, đậu phụ — đúng liều lượng</li>
+      <li>Rau ít kali: bắp cải, bông cải, cải thảo, dưa leo</li>
+      <li>Trái cây ít kali: táo, lê, dưa hấu, nho, dâu tây</li>
+      <li>Gạo trắng, bún, miến — năng lượng chính</li>
+      <li>Dầu olive, dầu mè — bổ sung năng lượng</li>
+      <li>Nước lọc — theo chỉ định (không phải lúc nào cũng uống nhiều)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Chuối, cam, bưởi, khoai lang, cà chua, rau dền — nhiều kali</li>
+      <li>⛔ Sữa, phô mai, sữa chua — nhiều phốt pho</li>
+      <li>⛔ Nội tạng, lòng, thịt đỏ — nhiều đạm + phốt pho</li>
+      <li>⛔ Nước ngọt có gas — phốt pho vô cơ</li>
+      <li>⛔ Đồ hộp, snack, mì gói — nhiều muối</li>
+      <li>⚠️ Tự ý ăn kiêng quá mức — gây suy dinh dưỡng</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Chế độ theo giai đoạn</h2>
+  <table class="table"><thead><tr><th>Giai đoạn (eGFR)</th><th>Đạm</th><th>Muối</th><th>Kali</th><th>Phốt pho</th></tr></thead><tbody>
+    <tr><td>1–2 (&gt;60)</td><td>0.8–1g/kg</td><td>&lt;5g</td><td>Bình thường</td><td>Bình thường</td></tr>
+    <tr><td>3 (30–59)</td><td>0.6–0.8g/kg</td><td>&lt;5g</td><td>Hạn chế nếu cao</td><td>Hạn chế nếu cao</td></tr>
+    <tr><td>4 (15–29)</td><td>0.6g/kg</td><td>&lt;4g</td><td>Hạn chế</td><td>Hạn chế</td></tr>
+    <tr><td>5 (&lt;15/ lọc máu)</td><td>1–1.2g/kg (mất qua lọc)</td><td>&lt;5g</td><td>Hạn chế</td><td>Hạn chế</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Đây là hướng dẫn chung. Xét nghiệm máu định kỳ là cơ sở để điều chỉnh — không tự suy luận.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (CKD giai đoạn 3)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo trắng thịt băm 50g + dầu olive + táo</td></tr>
+    <tr><td>🌞 Phụ</td><td>Nho 1 chùm hoặc dưa hấu 1 miếng</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm trắng + ức gà luộc 70g + bắp cải luộc + canh bầu</td></tr>
+    <tr><td>🌆 Phụ</td><td>Lê 1 quả</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm trắng + cá hấp 70g + bông cải luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Luộc rau 2 lần nước — giảm kali.</li>
+        <li>Gọt vỏ trái cây, thái nhỏ ngâm nước — giảm kali.</li>
+        <li>Không tự ý bổ sung bất kỳ viên uống nào.</li>
+        <li>Ghi chép lại xét nghiệm máu mỗi lần.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Phù chân, mặt — giữ nước.</li>
+        <li>Khó thở, tiểu ít &lt;400ml/ngày.</li>
+        <li>Mệt lả, tim đập chậm — kali cao.</li>
+        <li>Nôn, buồn nôn kéo dài — urê máu cao.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

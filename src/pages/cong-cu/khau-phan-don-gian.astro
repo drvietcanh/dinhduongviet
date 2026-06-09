@@ -1,0 +1,154 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "Khẩu phần bằng chén, muỗng, lát — Gợi ý đơn giản";
+const desc = "Không cần cân đo — chỉ cần biết một khẩu phần tương đương bao nhiêu chén, muỗng, lát, miếng.";
+---
+
+<BaseLayout title={title} description={desc} image="/logo.svg">
+  <main class="container" style="padding: 2rem 1rem; max-width: 760px; margin: 0 auto;">
+    <h1>🥄 Khẩu phần đơn giản — chén, muỗng, lát, miếng</h1>
+    <p class="lead">Không cần cân! Mỗi khẩu phần dưới đây tính cho <strong>người trưởng thành</strong> trung bình. Điều chỉnh lên/xuống tùy nhu cầu.</p>
+
+    <div class="tabs" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+      <button class="tab active" data-cat="tinh-bot">🍚 Tinh bột</button>
+      <button class="tab" data-cat="dam">🥩 Đạm</button>
+      <button class="tab" data-cat="rau">🥬 Rau</button>
+      <button class="tab" data-cat="trai-cay">🍎 Trái cây</button>
+      <button class="tab" data-cat="sua-hat">🥜 Sữa & Hạt</button>
+      <button class="tab" data-cat="gia-vi">🧂 Gia vị & Dầu</button>
+    </div>
+
+    <div id="content"></div>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+const data = {
+  "tinh-bot": {
+    label: "🍚 Tinh bột",
+    items: [
+      { name: "Cơm trắng", qty: "1 chén", gram: "~120g cơm (60g gạo)", cal: 180 },
+      { name: "Bún tươi", qty: "1 bát vừa", gram: "~200g", cal: 200 },
+      { name: "Phở (bánh phở)", qty: "1 bát vừa", gram: "~180g", cal: 200 },
+      { name: "Bánh mì trắng", qty: "1 ổ nhỏ", gram: "~80g", cal: 210 },
+      { name: "Bánh mì nguyên cám", qty: "2 lát", gram: "~60g", cal: 150 },
+      { name: "Khoai lang", qty: "1 củ vừa", gram: "~150g", cal: 135 },
+      { name: "Khoai tây", qty: "1 củ vừa", gram: "~150g", cal: 115 },
+      { name: "Bắp (ngô)", qty: "1 trái vừa", gram: "~150g hạt", cal: 140 },
+      { name: "Yến mạch khô", qty: "4 muỗng canh", gram: "~40g", cal: 150 },
+      { name: "Cháo trắng", qty: "1 tô (1/2 chén gạo)", gram: "~400g cháo", cal: 260 },
+      { name: "Miến", qty: "1 bát", gram: "~100g", cal: 180 },
+      { name: "Bún gạo lứt", qty: "1 bát", gram: "~200g", cal: 180 },
+    ]
+  },
+  "dam": {
+    label: "🥩 Đạm",
+    items: [
+      { name: "Thịt heo nạc", qty: "1 miếng", gram: "~100g (bằng bộ bài)", cal: 140 },
+      { name: "Thịt bò", qty: "1 miếng", gram: "~100g (bằng bộ bài)", cal: 160 },
+      { name: "Ức gà", qty: "1 miếng", gram: "~100g (bằng lòng bàn tay)", cal: 120 },
+      { name: "Cá phi lê", qty: "1 miếng", gram: "~100g (bằng lòng bàn tay)", cal: 90-130 },
+      { name: "Cá hồi", qty: "1 miếng", gram: "~100g", cal: 200 },
+      { name: "Tôm", qty: "10-12 con", gram: "~100g", cal: 100 },
+      { name: "Trứng", qty: "1 quả", gram: "~50g", cal: 70 },
+      { name: "Đậu phụ", qty: "1 miếng", gram: "~150g (bằng 1/2 bộ bài)", cal: 120 },
+      { name: "Thịt băm", qty: "1 nắm", gram: "~50g (bằng quả trứng)", cal: 70 },
+      { name: "Sữa", qty: "1 ly", gram: "~200ml", cal: 130-250 },
+    ]
+  },
+  "rau": {
+    label: "🥬 Rau",
+    items: [
+      { name: "Rau luộc (rau muống, cải)", qty: "1 bát", gram: "~150g rau chín", cal: 30 },
+      { name: "Rau luộc mỗi bữa", qty: "2 bát", gram: "~300g rau chín", cal: 60 },
+      { name: "Rau sống (xà lách)", qty: "1 đĩa", gram: "~100g", cal: 20 },
+      { name: "Canh rau", qty: "1 bát", gram: "~50g rau + nước", cal: 30 },
+      { name: "Rau xào", qty: "1 đĩa", gram: "~150g rau + dầu", cal: 100 },
+    ]
+  },
+  "trai-cay": {
+    label: "🍎 Trái cây",
+    items: [
+      { name: "Ổi", qty: "1 quả vừa", gram: "~150g", cal: 60 },
+      { name: "Cam", qty: "1 quả vừa", gram: "~150g", cal: 60 },
+      { name: "Bưởi", qty: "1/2 quả vừa", gram: "~150g", cal: 50 },
+      { name: "Chuối", qty: "1 quả vừa", gram: "~100g", cal: 90 },
+      { name: "Táo", qty: "1 quả vừa", gram: "~150g", cal: 80 },
+      { name: "Thanh long", qty: "1/2 quả vừa", gram: "~150g", cal: 70 },
+      { name: "Dưa hấu", qty: "2 lát", gram: "~200g", cal: 60 },
+      { name: "Nho", qty: "1 nắm", gram: "~100g", cal: 70 },
+      { name: "Sầu riêng", qty: "2-3 múi", gram: "~100g", cal: 150 },
+      { name: "Vải, nhãn", qty: "10 quả", gram: "~100g", cal: 70 },
+    ]
+  },
+  "sua-hat": {
+    label: "🥜 Sữa & Hạt",
+    items: [
+      { name: "Sữa tươi không đường", qty: "1 ly", gram: "~200ml", cal: 130 },
+      { name: "Sữa chua không đường", qty: "1 hộp", gram: "~100g", cal: 60 },
+      { name: "Sữa chua có đường", qty: "1 hộp", gram: "~100g", cal: 110 },
+      { name: "Phô mai", qty: "1 lát", gram: "~20g", cal: 80 },
+      { name: "Hạnh nhân", qty: "1 nắm", gram: "~20g", cal: 120 },
+      { name: "Hạt bí", qty: "1 nắm", gram: "~20g", cal: 110 },
+      { name: "Đậu phộng", qty: "1 nắm", gram: "~20g", cal: 110 },
+      { name: "Hạt điều", qty: "1 nắm", gram: "~20g", cal: 110 },
+      { name: "Bơ quả", qty: "1/2 quả", gram: "~100g", cal: 160 },
+    ]
+  },
+  "gia-vi": {
+    label: "🧂 Gia vị & Dầu",
+    items: [
+      { name: "Dầu ăn (1 muỗng canh)", qty: "1 muỗng canh", gram: "~15ml", cal: 120 },
+      { name: "Nước mắm (1 muỗng canh)", qty: "1 muỗng canh", gram: "~15ml", salt: "~2.5g muối" },
+      { name: "Nước tương (1 muỗng canh)", qty: "1 muỗng canh", gram: "~15ml", salt: "~1.5g muối" },
+      { name: "Đường (1 muỗng cà phê)", qty: "1 muỗng cà phê", gram: "~5g", cal: 20 },
+      { name: "Mật ong (1 muỗng canh)", qty: "1 muỗng canh", gram: "~20g", cal: 60 },
+      { name: "Muối", qty: "1 muỗng cà phê", gram: "~5g" },
+      { name: "Sữa đặc (1 muỗng canh)", qty: "1 muỗng canh", gram: "~15g", cal: 60 },
+    ]
+  }
+};
+
+let activeCat = "tinh-bot";
+const content = document.getElementById('content');
+
+function renderTab(cat) {
+  const d = data[cat];
+  let html = `<h2>${d.label}</h2><div style="display:grid; gap:0.5rem;">`;
+  d.items.forEach(i => {
+    html += `<div class="item" style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0.4rem; border-bottom:1px solid var(--b2);">
+      <div><strong>${i.name}</strong><div style="font-size:0.85rem; opacity:0.6;">${i.qty} · ${i.gram}</div></div>
+      <div style="text-align:right;">
+        ${i.cal ? `<span style="font-weight:bold;">${i.cal} kcal</span>` : ''}
+        ${i.salt ? `<span style="font-weight:bold; color:var(--red);">${i.salt}</span>` : ''}
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+  content.innerHTML = html;
+}
+
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.cat;
+    renderTab(activeCat);
+  });
+});
+
+renderTab(activeCat);
+</script>
+
+<style>
+  .tab {
+    padding: 0.4rem 0.8rem; border:1px solid var(--b3); border-radius:20px; background:var(--b1); color:var(--fg); cursor:pointer; font-size:0.9rem;
+  }
+  .tab.active {
+    background:var(--primary); color:white; border-color:var(--primary);
+  }
+  .item:hover { background:var(--b1); }
+  @media (max-width: 600px) {
+    .item { flex-direction: column; align-items: flex-start !important; gap:0.2rem; }
+  }
+</style>

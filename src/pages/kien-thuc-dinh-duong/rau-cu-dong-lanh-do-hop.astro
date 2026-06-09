@@ -1,0 +1,57 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["rau-cu-dong-lanh-do-hop"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+  <section class="section card">
+    <h2>🥦 Tóm tắt — Rau củ đông lạnh và đồ hộp, có xấu không?</h2>
+    <p>Rau củ đông lạnh thường <strong>giữ được nhiều vitamin hơn</strong> rau "tươi" đã để tủ lạnh vài ngày vì được cấp đông ngay sau thu hoạch. Đồ hộp (đậu, cà chua, cá) cũng là lựa chọn tiện lợi và dinh dưỡng nếu chọn đúng loại. Quan trọng là đọc nhãn để tránh muối và đường thêm vào.</p>
+  </section>
+
+  <section class="section card">
+    <h2>⚖️ Nguyên lý dinh dưỡng</h2>
+    <ul>
+      <li><strong>Đông lạnh:</strong> Giữ được 80-95% vitamin. Rau cấp đông thường giàu vitamin hơn rau "tươi" để 3-5 ngày trong tủ lạnh.</li>
+      <li><strong>Đồ hộp:</strong> Giữ được khoáng chất tốt, nhưng vitamin tan trong nước (C, B) giảm trong quá trình chế biến nhiệt.</li>
+      <li><strong>Chất bảo quản:</strong> Hầu hết rau củ đông lạnh không cần chất bảo quản. Đồ hộp dùng nhiệt để bảo quản.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Chọn mua và sử dụng đúng</h2>
+    <ul>
+      <li><strong>Rau đông lạnh:</strong> Chọn loại không thêm muối, không thêm nước sốt. Rau củ hỗn hợp tiện cho xào nhanh.</li>
+      <li><strong>Đồ hộp:</strong> Chọn loại "không thêm muối" hoặc "giảm muối". Rửa qua trước khi dùng để giảm natri.</li>
+      <li><strong>Cá hộp:</strong> Cá sardine, cá thu hộp là nguồn omega-3 tốt. Chọn loại trong nước sốt cà chua hoặc dầu ô-liu.</li>
+      <li><strong>Bảo quản:</strong> Sau khi mở hộp, chuyển sang hộp thủy tinh, dùng trong 2-3 ngày.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Lưu ý</h2>
+    <ul>
+      <li><strong>Muối trong đồ hộp:</strong> Một lon rau củ hộp có thể chứa 300-500mg natri (15-25% nhu cầu ngày). Người tăng huyết áp cần chọn loại không muối.</li>
+      <li><strong>BPA trong lớp lót hộp:</strong> Một số hộp có lớp lót BPA. Chọn hộp ghi "BPA-free" hoặc ưu tiên đông lạnh.</li>
+      <li><strong>Đường trong đồ hộp:</strong> Trái cây hộp thường ngâm nước đường — chọn loại ngâm nước trái cây hoặc không đường.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <ul>
+      <li><strong>Rau đông lạnh có vitamin không?</strong> Có — thậm chí nhiều hơn rau tươi để lâu ngày.</li>
+      <li><strong>Đồ hộp có hại không?</strong> Không — nếu chọn loại ít muối, ít đường. Đồ hộp là cách bảo quản an toàn.</li>
+      <li><strong>Nên ưu tiên rau tươi hay đông lạnh?</strong> Rau tươi (nếu dùng trong 1-2 ngày) vẫn tốt nhất. Sau đó là đông lạnh, cuối cùng là đồ hộp.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Rau củ đông lạnh và đồ hộp là lựa chọn thực tế và dinh dưỡng, đặc biệt khi trái vụ hoặc không có thời gian đi chợ hàng ngày. Chọn loại ít muối, ít đường, không nước sốt — và ưu tiên rau củ đông lạnh hơn đồ hộp khi có thể.</p>
+  </section>
+
+</ArticleLayout>

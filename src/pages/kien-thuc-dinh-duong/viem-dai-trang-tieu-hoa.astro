@@ -1,0 +1,102 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["viem-dai-trang-tieu-hoa"];
+if (!art) throw new Error("Article not found: viem-dai-trang-tieu-hoa");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Hạnh, 60 tuổi, bị viêm đại tràng mạn hơn 10 năm. Cứ ăn rau sống, đồ lạnh hay uống sữa là đau bụng, đi ngoài, đầy hơi. Bác từng nghĩ "mình không ăn được rau" nên bỏ hẳn rau xanh — hậu quả là táo bón thêm, suy dinh dưỡng.</p>
+  <p>Viêm đại tràng và rối loạn tiêu hóa kéo dài khác với IBS (hội chứng ruột kích thích) — ở đây có tổn thương niêm mạc thực sự. Nhưng ăn đúng cách vẫn giúp 80% bệnh nhân kiểm soát được triệu chứng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người viêm đại tràng cần <u>ăn chín mềm, chia 5–6 bữa nhỏ</u>, <u>tránh sống lạnh cay</u>,
+    <u>hạn chế sữa tươi (nếu bất dung nạp lactose)</u>, <u>không ăn rau sống</u>, 
+    <u>ưu tiên chất xơ hòa tan</u> (khoai tây, bí đỏ, cà rốt luộc).</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao đại tràng bị viêm?</h2>
+  <p>Đại tràng (ruột già) là nơi hấp thu nước và tạo khuôn phân. Khi niêm mạc bị tổn thương do nhiễm trùng, kháng sinh kéo dài, hoặc rối loạn miễn dịch, nó mất khả năng hấp thu và co bóp bất thường — gây đau, đầy hơi, tiêu chảy. Thức ăn sống, lạnh, nhiều xơ thô cọ xát vào niêm mạc viêm, làm nặng thêm.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cơm trắng nát, cháo, súp — dễ tiêu</li>
+      <li>Khoai lang, khoai tây luộc — chất xơ mềm</li>
+      <li>Thịt nạc băm, cá hấp, trứng luộc — đạm dễ hấp thu</li>
+      <li>Rau củ nấu chín mềm: cà rốt, bí đỏ, bầu, su su</li>
+      <li>Sữa chua không đường — men vi sinh (dùng ở nhiệt độ phòng)</li>
+      <li>Chuối chín, táo hấp — pectin tốt cho niêm mạc</li>
+      <li>Gừng, nghệ — chống viêm nhẹ</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Rau sống, gỏi, đồ tái</li>
+      <li>⛔ Rau nhiều xơ thô: rau muống, bắp cải, giá, măng</li>
+      <li>⛔ Đồ chiên rán, mỡ động vật — khó tiêu</li>
+      <li>⛔ Sữa tươi (nếu không dung nạp lactose) — thử sữa không lactose</li>
+      <li>⛔ Đồ uống lạnh, nước đá — co thắt đại tràng</li>
+      <li>⛔ Cà phê, rượu bia, nước ngọt có gas</li>
+      <li>⛔ Đậu đỗ nguyên hạt, đồ muối chua, cay</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Nguyên tắc</th><th>Cụ thể</th></tr></thead><tbody>
+    <tr><td>Số bữa/ngày</td><td>5–6 bữa nhỏ — không bữa nào quá nhiều</td></tr>
+    <tr><td>Rau củ</td><td>Luộc chín mềm, 150–200g/bữa — không ăn sống</td></tr>
+    <tr><td>Đạm</td><td>100–150g thịt/cá mỗi bữa chính</td></tr>
+    <tr><td>Sữa chua</td><td>1 hũ/ngày — không ăn lạnh từ tủ lạnh</td></tr>
+    <tr><td>Nước</td><td>1.5–2 lít/ngày — nước ấm, không uống trong bữa ăn</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo thịt băm + ½ quả chuối chín</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 hũ sữa chua không đường (để hết lạnh)</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát + cá hấp + cà rốt luộc mềm + canh bí đỏ</td></tr>
+    <tr><td>🌆 Chiều</td><td>Táo hấp (nạo nhỏ)</td></tr>
+    <tr><td>🌙 Tối</td><td>Cháo yến mạch gà xé + trứng luộc</td></tr>
+    <tr><td>🌜 Trước ngủ</td><td>Nước ấm + ½ quả chuối</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Ghi nhật ký ăn uống 2 tuần — biết ngay "ăn gì là bị".</li>
+        <li>Nhai kỹ — giúp ruột non tiêu hóa bớt trước khi xuống đại tràng.</li>
+        <li>Uống nước giữa các bữa, không uống trong bữa.</li>
+        <li>Tập yoga, đi bộ nhẹ — giảm stress, kích thích nhu động ruột.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đi ngoài ra máu hoặc phân đen.</li>
+        <li>Sụt cân không rõ nguyên nhân.</li>
+        <li>Sốt kéo dài, đau bụng dữ dội.</li>
+        <li>Triệu chứng không cải thiện sau 4 tuần thay đổi chế độ ăn.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

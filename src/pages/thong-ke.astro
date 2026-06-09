@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const siteTitle = "Thống kê dữ liệu | Dinh Dưỡng Việt";
+const siteDesc = "Thống kê tổng quan về cơ sở dữ liệu dinh dưỡng: số thực phẩm, món ăn, nhóm dinh dưỡng, top giàu/xếp hạng.";
+const domain = "dinhduongviet.vn";
+---
+<BaseLayout title={siteTitle} description={siteDesc} canonical={"https://" + domain + "/thong-ke"}>
+  <style is:global>
+    .hero { text-align: center; margin-bottom: 24px; }
+    .hero h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .hero .sub { color: var(--ink-secondary); font-size: 0.95rem; }
+    .big-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .stat-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 16px; text-align: center; }
+    .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--brand); }
+    .stat-card .label { font-size: 0.85rem; color: var(--ink-secondary); margin-top: 4px; font-weight: 500; }
+    .stat-card .sub-label { font-size: 0.75rem; color: var(--ink-tertiary); margin-top: 2px; }
+    .section-title { font-size: 1.15rem; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+    .section-title .bar { width: 4px; height: 22px; background: var(--brand); border-radius: 4px; }
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+    .cat-item { padding: 10px 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); display: flex; justify-content: space-between; font-size: 0.85rem; }
+    .cat-item .cat-name { color: var(--ink); font-weight: 500; }
+    .cat-item .cat-count { color: var(--brand); font-weight: 700; }
+    .top-section { margin-top: 24px; }
+    .top-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 700px) { .top-grid { grid-template-columns: 1fr; } }
+    .top-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+    .top-card h3 { padding: 12px 16px; background: var(--brand-light); font-size: 0.95rem; margin: 0; }
+    [data-theme="dark"] .top-card h3 { background: #1a2e21; }
+    .top-item { display: flex; align-items: center; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: 0.85rem; gap: 8px; }
+    .top-item:last-child { border-bottom: none; }
+    .top-item .rank { font-weight: 700; color: var(--ink-tertiary); min-width: 24px; }
+    .top-item .rank.gold { color: #d69e2e; }
+    .top-item .rank.silver { color: #a0aec0; }
+    .top-item .rank.bronze { color: #dd6b20; }
+    .top-item .tname { flex: 1; }
+    .top-item .tname a { color: var(--ink); text-decoration: none; }
+    .top-item .tname a:hover { color: var(--brand); }
+    .top-item .tvalue { font-weight: 600; color: var(--ink-secondary); min-width: 60px; text-align: right; }
+    .tool-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; }
+    .tool-link { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); transition: all var(--transition); }
+    .tool-link:hover { border-color: var(--brand); }
+    .tool-link .tlem { font-size: 1.5rem; }
+    .tool-link a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; width: 100%; }
+    .tool-link .tlinfo { flex: 1; }
+    .tool-link .tlinfo .tltitle { font-weight: 600; font-size: 0.9rem; }
+    .tool-link .tlinfo .tldesc { font-size: 0.78rem; color: var(--ink-tertiary); }
+  </style>
+
+  <div id="stats-root">
+    <div class="hero">
+      <h1>📊 Thống kê Dinh Dưỡng Việt</h1>
+      <p class="sub">Tổng quan dữ liệu thực phẩm, món ăn và các chỉ số dinh dưỡng</p>
+    </div>
+
+    <div class="big-grid" id="bigStats">
+      <div class="stat-card"><div class="num">—</div><div class="label">Thực phẩm</div><div class="sub-label">VN 2007 + ước tính</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="label">Món ăn Việt</div><div class="sub-label">Từ cơ sở dữ liệu</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="label">Nhóm TP</div><div class="sub-label">Danh mục phân loại</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="label">Công cụ</div><div class="sub-label">Tính năng hỗ trợ</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="label">Bệnh lý</div><div class="sub-label">Đối chiếu tự động</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="label">Trang web</div><div class="sub-label">Tổng số trang tĩnh</div></div>
+    </div>
+
+    <div class="section-title"><span class="bar"></span> 🗂️ Thực phẩm theo nhóm</div>
+    <div class="category-grid" id="categoryStats"></div>
+
+    <div class="top-section">
+      <h2 style="font-size:1.15rem;margin-bottom:12px;">🏆 Top dinh dưỡng</h2>
+      <div class="top-grid">
+        <div class="top-card"><h3>🥩 Giàu đạm nhất</h3><div id="topProtein"></div></div>
+        <div class="top-card"><h3>🥬 Giàu chất xơ nhất</h3><div id="topFiber"></div></div>
+        <div class="top-card"><h3>🦴 Giàu canxi nhất</h3><div id="topCalcium"></div></div>
+        <div class="top-card"><h3>🩸 Giàu sắt nhất</h3><div id="topIron"></div></div>
+        <div class="top-card"><h3>🍋 Giàu vitamin C nhất</h3><div id="topVitC"></div></div>
+        <div class="top-card"><h3>🍌 Giàu kali nhất</h3><div id="topKali"></div></div>
+        <div class="top-card"><h3>🔥 Ít calo nhất</h3><div id="topLowCal"></div></div>
+        <div class="top-card"><h3>🧂 Ít natri nhất</h3><div id="topLowNat"></div></div>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="bar"></span> 🛠️ Công cụ liên quan</div>
+    <div class="tool-links">
+      <div class="tool-link"><a href="/cong-cu/bang-xep-hang"><span class="tlem">🏆</span><span class="tlinfo"><span class="tltitle">Bảng xếp hạng</span><span class="tldesc">15 bảng xếp hạng chi tiết</span></span></a></div>
+      <div class="tool-link"><a href="/cong-cu/so-sanh-thuc-pham"><span class="tlem">🔬</span><span class="tlinfo"><span class="tltitle">So sánh thực phẩm</span><span class="tldesc">18 chỉ số cạnh nhau</span></span></a></div>
+      <div class="tool-link"><a href="/cong-cu/so-sanh-bua-an"><span class="tlem">🍽️</span><span class="tlinfo"><span class="tltitle">So sánh bữa ăn</span><span class="tldesc">Tổng dinh dưỡng 2-4 bữa</span></span></a></div>
+      <div class="tool-link"><a href="/cong-cu/danh-sach-di-cho"><span class="tlem">🛒</span><span class="tlinfo"><span class="tltitle">Danh sách đi chợ</span><span class="tldesc">Tổng hợp nguyên liệu</span></span></a></div>
+    </div>
+  </div>
+
+  <script is:inline>
+  (() => {
+    const FOODS_URL = '/api-foods.json';
+    const RECIPES_URL = '/api-recipes.json';
+
+    function rankEmoji(i) { if (i === 0) return '🥇'; if (i === 1) return '🥈'; if (i === 2) return '🥉'; return ''; }
+
+    Promise.all([fetch(FOODS_URL).then(r => r.json()), fetch(RECIPES_URL).then(r => r.json())])
+      .then(function([foods, recipes]) {
+        // Big stats
+        document.getElementById('bigStats').innerHTML = [
+          { num: foods.length, label: 'Thực phẩm', sub: 'VN 2007 + ước tính' },
+          { num: recipes.length, label: 'Món ăn Việt', sub: 'Từ cơ sở dữ liệu' },
+          { num: new Set(foods.map(f => f.category)).size, label: 'Nhóm TP', sub: 'Danh mục phân loại' },
+          { num: 14, label: 'Công cụ', sub: 'Tính năng hỗ trợ' },
+          { num: 8, label: 'Bệnh lý', sub: 'Đối chiếu tự động' },
+          { num: 1021, label: 'Trang web', sub: 'Tổng số trang tĩnh' }
+        ].map(function(s) {
+          return '<div class="stat-card"><div class="num">' + s.num + '</div><div class="label">' + s.label + '</div><div class="sub-label">' + s.sub + '</div></div>';
+        }).join('');
+
+        // Category breakdown
+        const cats = {};
+        foods.forEach(function(f) {
+          const c = f.category || 'Khác';
+          cats[c] = (cats[c] || 0) + 1;
+        });
+        const sortedCats = Object.entries(cats).sort(function(a,b) { return b[1] - a[1]; });
+        document.getElementById('categoryStats').innerHTML = sortedCats.map(function(c) {
+          return '<div class="cat-item"><span class="cat-name">' + c[0] + '</span><span class="cat-count">' + c[1] + '</span></div>';
+        }).join('');
+
+        // Top rankings
+        function topList(items, key, limit) {
+          return items.filter(function(f) { return f.nutrients && f.nutrients[key] > 0; })
+            .sort(function(a,b) { return (b.nutrients[key] || 0) - (a.nutrients[key] || 0); })
+            .slice(0, limit);
+        }
+
+        function renderTop(id, items, key, unit, decimals) {
+          document.getElementById(id).innerHTML = items.map(function(f, i) {
+            const val = f.nutrients[key] || 0;
+            return '<div class="top-item"><span class="rank ' + (i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '') + '">' + rankEmoji(i) + '</span><span class="tname"><a href="/thuc-pham/' + f.slug + '">' + f.name + '</a></span><span class="tvalue">' + val.toFixed(decimals || 1) + ' ' + unit + '</span></div>';
+          }).join('');
+        }
+
+        renderTop('topProtein', topList(foods, 'proteinG', 8), 'proteinG', 'g', 1);
+        renderTop('topFiber', topList(foods, 'fiberG', 8), 'fiberG', 'g', 1);
+        renderTop('topCalcium', topList(foods, 'calciumMg', 8), 'calciumMg', 'mg', 0);
+        renderTop('topIron', topList(foods, 'ironMg', 8), 'ironMg', 'mg', 1);
+        renderTop('topVitC', topList(foods, 'vitaminCMg', 8), 'vitaminCMg', 'mg', 0);
+        renderTop('topKali', topList(foods, 'potassiumMg', 8), 'potassiumMg', 'mg', 0);
+        // Ít calo nhất = sắp xếp tăng dần, có calo > 0
+        function topLowList(items, key, limit) {
+          return items.filter(function(f) { return f.nutrients && f.nutrients[key] > 0; })
+            .sort(function(a,b) { return (a.nutrients[key] || 0) - (b.nutrients[key] || 0); })
+            .slice(0, limit);
+        }
+        renderTop('topLowCal', topLowList(foods, 'energyKcal', 8), 'energyKcal', 'kcal', 0);
+        renderTop('topLowNat', topLowList(foods, 'sodiumMg', 8), 'sodiumMg', 'mg', 0);
+      })
+      .catch(function() {
+        document.getElementById('stats-root').innerHTML = '<div style="text-align:center;padding:40px;color:var(--ink-tertiary);">⚠️ Không thể tải dữ liệu thống kê.</div>';
+      });
+  })();
+  </script>
+</BaseLayout>

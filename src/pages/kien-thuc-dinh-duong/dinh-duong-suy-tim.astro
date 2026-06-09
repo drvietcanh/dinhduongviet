@@ -1,0 +1,95 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-suy-tim"];
+if (!art) throw new Error("Article not found: dinh-duong-suy-tim");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Đạo, 65 tuổi, từng nhồi máu cơ tim, giờ bị suy tim độ II. Bác thường xuyên phù chân, khó thở khi đi bộ, nhất là những hôm ăn mặn. Bác bảo: "Tôi biết phải ăn nhạt, nhưng không biết bao nhiêu là vừa."</p>
+  <p>Suy tim là bệnh mạn tính, tim bơm máu yếu dần. Dinh dưỡng đúng giúp giảm triệu chứng, giảm nhập viện, cải thiện chất lượng sống. 3 điều quan trọng nhất: hạn chế muối, hạn chế dịch, theo dõi cân nặng hàng ngày.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người suy tim cần <u>giảm muối (&lt;4g, nếu nặng &lt;2g)</u>, <u>hạn chế dịch 1.5–2 lít/ngày</u>,
+    <u>cân nặng mỗi sáng</u> (tăng &gt;2kg trong 2–3 ngày = dư dịch — báo bác sĩ ngay),
+    <u>không tự ý bổ sung kali</u> nếu đang dùng thuốc ức chế men chuyển (ACE).</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao muối nguy hiểm với suy tim?</h2>
+  <p>Muối giữ nước trong cơ thể. Khi tim yếu, nước tích tụ gây phù chân, phù phổi — khó thở. Mỗi gram muối giữ thêm ~200ml nước. Giảm muối từ 9g xuống 4g/ngày có thể giảm tới 1 lít dịch thừa trong cơ thể — tương đương tác dụng của thuốc lợi tiểu liều nhẹ.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau trái tươi — ít muối, giàu kali/magie</li>
+      <li>Thịt nạc, cá hấp/luộc, ức gà — đạm 1–1.2g/kg</li>
+      <li>Khoai lang, bí đao, chuối — giàu kali (nếu không dùng ACE)</li>
+      <li>Hành, tỏi, ớt, tiêu, chanh — tạo vị thay muối</li>
+      <li>Ngũ cốc nguyên hạt: yến mạch, gạo lứt</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Nước mắm, muối chấm, bột canh, hạt nêm</li>
+      <li>⛔ Đồ hộp, thực phẩm chế biến sẵn, snack mặn</li>
+      <li>⛔ Bánh mì (nhiều muối), nước tương, mì gói</li>
+      <li>⛔ Rượu bia — tuyệt đối nếu suy tim do rượu</li>
+      <li>⚠️ Cà phê &gt;2 tách/ngày</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Hướng dẫn muối & dịch</h2>
+  <table class="table"><thead><tr><th>Mức độ suy tim</th><th>Muối/ngày</th><th>Dịch/ngày</th><th>Giám sát</th></tr></thead><tbody>
+    <tr><td>Suy tim nhẹ (NYHA I–II)</td><td>&lt;4g</td><td>2 lít</td><td>Cân mỗi sáng</td></tr>
+    <tr><td>Suy tim nặng (NYHA III–IV)</td><td>&lt;2g</td><td>1.5 lít</td><td>Cân mỗi sáng + báo BS nếu tăng &gt;1.5kg/ngày</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Mẹo: Tổng dịch bao gồm cả nước, canh, cháo, sữa, trái cây nhiều nước. Ghi chép lại nếu khó nhớ.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1.5 lít, 2g muối)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch nấm rơm + sữa tách béo 100ml</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả táo hoặc lê</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm vừa + cá hấp + canh bí đao nấm rơm (không muối) + 1 chuối</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 lát đu đủ chín</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm vừa + ức gà luộc xé + rau cải luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Cân mỗi sáng sau đi vệ sinh — ghi vào sổ.</li>
+        <li>Không thêm mắm muối khi ăn, chỉ dùng 1 thìa nước mắm nhạt/cả bữa.</li>
+        <li>Hành tỏi ớt tiêu chanh — gia vị thay muối.</li>
+        <li>Không tự ý bỏ hoặc thay đổi liều thuốc lợi tiểu.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Tăng &gt;2kg trong 2–3 ngày — dư dịch nặng.</li>
+        <li>Khó thở khi nằm, phải ngồi mới thở được.</li>
+        <li>Phù chân lên tới đùi, bụng to.</li>
+        <li>Tim đập nhanh, huyết áp thấp.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

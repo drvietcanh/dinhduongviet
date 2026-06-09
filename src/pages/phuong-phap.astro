@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sources } from "../data/nutrition";
+---
+
+<BaseLayout title="Phương pháp tính - Dinh Dưỡng Việt">
+  <h1>Phương pháp tính</h1>
+  <p class="lead">
+    Website ưu tiên tính minh bạch: thực phẩm đơn lẻ lưu theo 100g phần ăn được, món ăn được tính từ công thức định lượng.
+  </p>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Thực phẩm đơn lẻ</h2>
+      <p class="muted">Giá trị dinh dưỡng được chuẩn hóa trên 100g phần ăn được. Khi người dùng đổi khẩu phần, hệ thống nhân theo khối lượng.</p>
+      <p class="muted" style="margin-top: 10px;">Công thức: giá trị mới = giá trị 100g x khối lượng / 100.</p>
+    </div>
+    <div class="card">
+      <h2>Món ăn Việt</h2>
+      <p class="muted">Món ăn như phở bò được lưu thành danh sách nguyên liệu và gram tương ứng. Tổng dinh dưỡng là tổng của từng nguyên liệu.</p>
+      <p class="muted" style="margin-top: 10px;">Sai số đến từ công thức, lượng nước, mỡ, muối và khẩu phần thực tế.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Nguồn dữ liệu</h2>
+    <div class="grid" style="margin-top: 12px;">
+      {sources.map((source) => (
+        <div class="card">
+          <h3>{source.name} {source.year ? `(${source.year})` : ""}</h3>
+          <p class="muted">{source.note}</p>
+          {source.url && <p style="margin-top: 8px;"><a class="button secondary" href={source.url} target="_blank" rel="noreferrer">Mở nguồn</a></p>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Cảnh báo</h2>
+    <p class="muted">
+      Bản hiện tại là MVP với dữ liệu mẫu để dựng sản phẩm. Trước khi công bố rộng rãi, cần đối chiếu từng số liệu với bảng gốc và tài liệu dinh dưỡng chính thống.
+    </p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,100 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dot-quy-dinh-duong"];
+if (!art) throw new Error("Article not found: dot-quy-dinh-duong");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Thành, 62 tuổi, tăng huyết áp 10 năm nhưng không uống thuốc đều, hay nhậu. Một tối đang xem tivi, bác thấy yếu tay trái, méo miệng, nói không rõ. Vợ bác gọi cấp cứu ngay — may mắn tới viện kịp giờ vàng. Sau đột quỵ, bác liệt nửa người, phải tập vật lý trị liệu 6 tháng.</p>
+  <p>Việt Nam có hơn 200.000 ca đột quỵ mỗi năm, trong đó 80% có thể phòng ngừa được. Dinh dưỡng đúng giúp phòng ngừa gấp 3 lần so với tập thể dục đơn thuần.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Phòng đột quỵ = <u>kiểm soát huyết áp (giảm muối &lt;5g)</u>, 
+    <u>chế độ DASH</u> (rau trái, sữa ít béo, ngũ cốc nguyên hạt), <u>omega-3 từ cá</u>,
+    <u>bỏ rượu bia thuốc lá</u>. Sau đột quỵ: <u>tăng đạm 1.2–1.5g/kg</u>, <u>thức ăn mềm dễ nuốt</u>,
+    <u>ổn định vitamin K</u> nếu dùng thuốc chống đông.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống liên quan tới đột quỵ?</h2>
+  <p>Đột quỵ xảy ra khi mạch máu não bị tắc (nhồi máu não, 85%) hoặc vỡ (xuất huyết não, 15%). Tăng huyết áp là nguyên nhân số 1 — muối làm tăng huyết áp. Mỡ máu cao, béo phì, tiểu đường là 3 yếu tố làm tăng nguy cơ xơ vữa mạch máu. Kiểm soát ăn uống tấn công vào tất cả các yếu tố này cùng lúc.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau trái: ≥5 phần/ngày — giàu kali, chất xơ, chống oxy hóa</li>
+      <li>Ngũ cốc nguyên hạt: gạo lứt, yến mạch, khoai lang</li>
+      <li>Cá béo: cá thu, cá hồi — omega-3 bảo vệ mạch não</li>
+      <li>Sữa ít béo, sữa chua — canxi, ít bão hòa</li>
+      <li>Chất béo tốt: dầu olive, bơ, hạt óc chó, hạnh nhân</li>
+      <li>Vitamin B: thịt nạc, trứng, cá, rau xanh — giảm homocysteine</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Muối &gt;5g/ngày — tăng huyết áp</li>
+      <li>⛔ Mỡ động vật, da gà, đồ chiên rán</li>
+      <li>⛔ Thịt chế biến sẵn: xúc xích, lạp xưởng, thịt nguội</li>
+      <li>⛔ Rượu bia — tăng huyết áp & nguy cơ xuất huyết não</li>
+      <li>⛔ Bánh kẹo, nước ngọt</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📚 Dự phòng vs Phục hồi — khác gì nhau?</h2>
+  <table class="table"><thead><tr><th>Khía cạnh</th><th>Dự phòng</th><th>Sau đột quỵ</th></tr></thead><tbody>
+    <tr><td>Mục tiêu</td><td>Kiểm soát huyết áp, mỡ máu</td><td>Phục hồi cơ, thần kinh</td></tr>
+    <tr><td>Muối</td><td>&lt;5g/ngày</td><td>&lt;4g — nếu huyết áp cao</td></tr>
+    <tr><td>Đạm</td><td>0.8–1g/kg</td><td>1.2–1.5g/kg — phục hồi cơ</td></tr>
+    <tr><td>Kết cấu thức ăn</td><td>Bình thường</td><td>Mềm, dễ nuốt — sợ khó nuốt</td></tr>
+    <tr><td>Vitamin K</td><td>Ổn định (nếu dùng warfarin)</td><td>Ổn định — không thay đổi đột ngột</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Người dùng warfarin: duy trì lượng rau lá xanh ổn định. Không tự ý tăng/giảm đột ngột.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (người sau đột quỵ, ~60kg)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch cá hồi xay + 1 ly sữa ít béo</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 ly sinh tố bơ + chuối + sữa</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm mềm gạo lứt + cá thu kho + canh rau ngót + dầu olive</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa chua + óc chó + chuối</td></tr>
+    <tr><td>🌙 Tối</td><td>Cháo đậu xanh thịt băm + rau cải luộc mềm</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đo huyết áp hàng ngày — mục tiêu &lt;130/80.</li>
+        <li>Nếu khó nuốt: thức ăn xay nhuyễn, sữa dinh dưỡng.</li>
+        <li>Vitamin D + đi bộ — hỗ trợ phục hồi vận động.</li>
+        <li>Tránh thay đổi đột ngột lượng rau nếu dùng thuốc chống đông.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Sụt cân &gt;5% không chủ ý — suy dinh dưỡng sau đột quỵ.</li>
+        <li>Khó nuốt nặng — cần sonde nuôi ăn.</li>
+        <li>Huyết áp dao động mạnh dù đã dùng thuốc.</li>
+        <li>Táo bón kéo dài — tăng nguy cơ tái phát.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

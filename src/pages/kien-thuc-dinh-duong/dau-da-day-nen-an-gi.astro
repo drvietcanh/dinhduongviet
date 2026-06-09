@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const targetSlug = "dinh-duong-benh-da-day-nen-an-gi";
+---
+
+<BaseLayout title="Đau dạ dày — Ăn gì để nhanh lành? | Dinh Dưỡng Việt" description="Bài viết đã được chuyển đến địa chỉ mới.">
+  <div style="max-width:600px;margin:4rem auto;text-align:center;line-height:1.8;">
+    <h1 style="font-size:2rem;">🔀 Bài viết đã được di chuyển</h1>
+    <p>Bài viết này đã được chuyển sang liên kết mới.</p>
+    <a href={`/kien-thuc-dinh-duong/${targetSlug}`} style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--brand);color:white;border-radius:999px;text-decoration:none;font-weight:600;">
+      → Xem bài viết tại đây
+    </a>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  // Auto-redirect after 3 seconds
+  setTimeout(function() {
+    window.location.href = "/kien-thuc-dinh-duong/dinh-duong-benh-da-day-nen-an-gi";
+  }, 3000);
+</script>

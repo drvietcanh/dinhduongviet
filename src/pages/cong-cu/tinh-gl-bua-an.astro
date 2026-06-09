@@ -1,0 +1,332 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "⚖️ Tính GL (tải lượng đường huyết) bữa ăn";
+const desc = "Ghép nhiều thực phẩm để tính tổng GL một bữa ăn — biết ngay bữa này có an toàn cho đường huyết không.";
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/tinh-gl-bua-an">
+  <main class="content-page">
+    <div class="page-header">
+      <h1>⚖️ Tính GL bữa ăn</h1>
+      <p class="page-desc">{desc}</p>
+    </div>
+
+    <!-- GL Guide -->
+    <div class="gl-guide">
+      <div class="gl-card low">
+        <div class="gl-range">≤ 10</div>
+        <div class="gl-label">🟢 GL thấp</div>
+        <div class="gl-desc">An toàn cho đường huyết</div>
+      </div>
+      <div class="gl-card mid">
+        <div class="gl-range">11–19</div>
+        <div class="gl-label">🟡 GL trung bình</div>
+        <div class="gl-desc">Cần theo dõi lượng</div>
+      </div>
+      <div class="gl-card high">
+        <div class="gl-range">≥ 20</div>
+        <div class="gl-label">🔴 GL cao</div>
+        <div class="gl-desc">Hạn chế — đường huyết tăng mạnh</div>
+      </div>
+    </div>
+
+    <!-- Khuyến nghị -->
+    <div class="rec-banner">
+      <strong>🎯 Mục tiêu:</strong> Tổng GL mỗi bữa chính nên <strong>&lt; 20</strong>
+    </div>
+
+    <!-- Food picker -->
+    <div class="picker-section">
+      <label style="font-weight:600;display:block;margin-bottom:8px;">🍽️ Chọn thực phẩm trong bữa:</label>
+      <div style="display:flex;gap:8px;">
+        <input id="gl-search" type="text" placeholder="Tìm: cơm, bún, khoai, chuối..." style="flex:1;padding:10px 14px;border:2px solid var(--line);border-radius:var(--radius-lg);font-size:0.95rem;">
+        <select id="gl-category" style="padding:10px 14px;border:2px solid var(--line);border-radius:var(--radius-lg);font-size:0.9rem;background:var(--card);color:var(--ink);">
+          <option value="all">📋 Tất cả</option>
+          <option value="thap">🟢 GI thấp</option>
+          <option value="trung-binh">🟡 GI trung bình</option>
+          <option value="cao">🔴 GI cao</option>
+        </select>
+      </div>
+      <div id="food-list" class="food-list"></div>
+    </div>
+
+    <!-- Selected meal -->
+    <div class="meal-section">
+      <h2>🥘 Bữa ăn của bạn</h2>
+      <div id="meal-items" class="meal-items">
+        <div class="meal-empty">Chưa có thực phẩm nào. Chọn từ danh sách bên trên 👆</div>
+      </div>
+      <div id="meal-total" class="meal-total" style="display:none;">
+        <div class="total-row">
+          <span>Tổng GL:</span>
+          <span id="total-gl" class="total-value">0</span>
+        </div>
+        <div class="total-row">
+          <span>Tổng carb:</span>
+          <span id="total-carb" class="total-value">0g</span>
+        </div>
+        <div class="total-row">
+          <span>Đánh giá:</span>
+          <span id="total-rating" class="total-value">—</span>
+        </div>
+        <div id="total-bar" class="total-bar-wrap">
+          <div id="total-bar-fill" class="total-bar-fill" style="width:0%"></div>
+        </div>
+        <p class="muted" style="font-size:0.85rem;margin-top:12px;text-align:center;">
+          🎯 Mục tiêu: tổng GL dưới 20 cho bữa chính, dưới 10 cho bữa phụ.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tips -->
+    <div class="tips-box">
+      <h3>💡 Mẹo giảm GL bữa ăn</h3>
+      <ul>
+        <li><strong>Giảm lượng tinh bột</strong> — giảm ½ cơm, bún, phở so với bình thường</li>
+        <li><strong>Thay thế thông minh</strong> — cơm gạo lứt thay cơm trắng, khoai lang thay cơm</li>
+        <li><strong>Thêm rau trước</strong> — ăn rau trước tinh bột giảm GL bữa ăn tới 20%</li>
+        <li><strong>Thêm đạm và chất béo</strong> — thịt, cá, trứng, dầu olive làm chậm hấp thu carb</li>
+        <li><strong>Đi bộ sau ăn 15 phút</strong> — giúp cơ bắp hấp thu glucose, giảm đường huyết sau ăn</li>
+      </ul>
+    </div>
+
+    <!-- Related -->
+    <div class="related-links" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:10px;">
+      <a href="/cong-cu/chi-so-gi" class="rl-btn">🌾 Tra chỉ số GI thực phẩm</a>
+      <a href="/cong-cu/tinh-carb" class="rl-btn">🔢 Tính carb bữa ăn</a>
+      <a href="/kien-thuc-dinh-duong/dai-thao-duong" class="rl-btn">📖 Dinh dưỡng tiểu đường</a>
+      <a href="/kien-thuc-dinh-duong/tien-dai-thao-duong" class="rl-btn">📖 Tiền tiểu đường</a>
+    </div>
+  </main>
+
+  <style>
+    .content-page { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+    .page-header { text-align:center; margin-bottom:24px; }
+    .page-desc { max-width:560px; margin:8px auto 0; color:var(--ink-secondary); font-size:0.9rem; line-height:1.6; }
+
+    .gl-guide { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; justify-content:center; }
+    .gl-card { flex:1; min-width:120px; text-align:center; padding:14px 12px; border-radius:var(--radius-lg); }
+    .gl-card.low { background:#e8f5e9; border:1px solid #a5d6a7; }
+    .gl-card.mid { background:#fff8e1; border:1px solid #ffcc80; }
+    .gl-card.high { background:#ffebee; border:1px solid #ef9a9a; }
+    .gl-range { font-size:1.3rem; font-weight:700; }
+    .gl-label { font-weight:600; margin:3px 0; }
+    .gl-desc { font-size:0.75rem; opacity:0.8; }
+
+    .rec-banner { padding:12px 18px; background:var(--brand-light); border-radius:var(--radius); text-align:center; margin-bottom:24px; font-size:0.95rem; }
+
+    .picker-section { margin-bottom:24px; }
+    .food-list { margin-top:12px; max-height:360px; overflow-y:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); }
+    .food-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid var(--line-light); cursor:pointer; transition:background 0.15s; }
+    .food-item:hover { background:var(--brand-light); }
+    .food-item:last-child { border-bottom:none; }
+    .food-item .fi-name { flex:1; font-weight:500; font-size:0.9rem; }
+    .food-item .fi-gi { font-size:0.8rem; padding:2px 8px; border-radius:8px; font-weight:600; }
+    .food-item .fi-gl { font-size:0.8rem; color:var(--ink-tertiary); }
+
+    .meal-section { margin-bottom:24px; }
+    .meal-items { min-height:60px; }
+    .meal-empty { padding:30px; text-align:center; color:var(--ink-tertiary); font-size:0.9rem; }
+    .meal-item { display:flex; align-items:center; gap:10px; padding:12px 14px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); margin-bottom:8px; }
+    .meal-item .mi-name { flex:1; font-weight:500; }
+    .meal-item .mi-gl { font-weight:700; }
+    .meal-item .mi-remove { cursor:pointer; color:#e74c3c; font-size:1.2rem; line-height:1; padding:2px 6px; border:none; background:none; }
+    .meal-item .mi-remove:hover { background:#fdedec; border-radius:50%; }
+
+    .meal-total { padding:18px; background:var(--bg-soft); border-radius:var(--radius); border:1px solid var(--line); }
+    .total-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; font-size:0.95rem; }
+    .total-value { font-weight:700; font-size:1.05rem; }
+    .total-value .gl-low { color:#2e7d32; }
+    .total-value .gl-mid { color:#e65100; }
+    .total-value .gl-high { color:#c62828; }
+
+    .total-bar-wrap { height:12px; background:var(--line-light); border-radius:6px; overflow:hidden; margin-top:8px; }
+    .total-bar-fill { height:100%; border-radius:6px; transition:width 0.3s; background:linear-gradient(90deg, #2e7d32, #e65100, #c62828); }
+
+    .tips-box { padding:18px; background:var(--bg-soft); border-radius:var(--radius); }
+    .tips-box h3 { margin:0 0 10px; font-size:1rem; }
+    .tips-box ul { margin:0; padding-left:20px; }
+    .tips-box li { margin-bottom:8px; font-size:0.88rem; line-height:1.5; }
+
+    .rl-btn { display:inline-flex; align-items:center; gap:4px; padding:8px 16px; border:1px solid var(--brand-light2); border-radius:999px; background:var(--card); color:var(--brand); text-decoration:none; font-size:0.85rem; font-weight:500; transition:all 0.15s; }
+    .rl-btn:hover { background:var(--brand-light); border-color:var(--brand); }
+
+    @media (max-width:600px) {
+      .gl-card { min-width:90px; }
+      .food-item { flex-wrap:wrap; }
+    }
+  </style>
+
+  <script is:inline>
+  (function() {
+    // GI data (subset from chi-so-gi tool)
+    var foods = [
+      {name:"Cơm trắng",gi:73,gl:39,level:"cao",portion:"1 bát (130g)"},
+      {name:"Cơm gạo lứt",gi:55,gl:24,level:"thap",portion:"1 bát (130g)"},
+      {name:"Bún tươi",gi:58,gl:26,level:"trung-binh",portion:"1 bát (200g)"},
+      {name:"Phở",gi:60,gl:33,level:"trung-binh",portion:"1 tô (250g)"},
+      {name:"Miến dong",gi:50,gl:25,level:"thap",portion:"1 bát (200g)"},
+      {name:"Bánh mì trắng",gi:71,gl:30,level:"cao",portion:"1 ổ (80g)"},
+      {name:"Bánh mì nguyên cám",gi:52,gl:22,level:"thap",portion:"1 ổ (80g)"},
+      {name:"Xôi trắng",gi:75,gl:42,level:"cao",portion:"1 bát (150g)"},
+      {name:"Cháo gạo",gi:78,gl:20,level:"cao",portion:"1 bát (250ml)"},
+      {name:"Hủ tiếu",gi:65,gl:36,level:"trung-binh",portion:"1 tô (300g)"},
+      {name:"Mì gói",gi:70,gl:28,level:"cao",portion:"1 gói (75g)"},
+      {name:"Khoai lang luộc",gi:46,gl:17,level:"thap",portion:"1 củ (150g)"},
+      {name:"Khoai tây luộc",gi:65,gl:17,level:"trung-binh",portion:"1 củ (150g)"},
+      {name:"Khoai tây chiên",gi:72,gl:20,level:"cao",portion:"1 suất (150g)"},
+      {name:"Khoai môn",gi:54,gl:13,level:"thap",portion:"1 miếng (100g)"},
+      {name:"Ngô luộc",gi:56,gl:17,level:"trung-binh",portion:"1 trái (150g)"},
+      {name:"Chuối chín",gi:62,gl:14,level:"trung-binh",portion:"1 quả (100g)"},
+      {name:"Xoài chín",gi:56,gl:17,level:"trung-binh",portion:"1 quả (200g)"},
+      {name:"Thanh long",gi:55,gl:13,level:"thap",portion:"1 quả (200g)"},
+      {name:"Ổi",gi:38,gl:6,level:"thap",portion:"1 quả (150g)"},
+      {name:"Dưa hấu",gi:76,gl:10,level:"cao",portion:"1 lát (200g)"},
+      {name:"Sầu riêng",gi:60,gl:15,level:"trung-binh",portion:"1 múi (100g)"},
+      {name:"Nước ngọt có gas",gi:72,gl:43,level:"cao",portion:"1 lon (330ml)"},
+      {name:"Trà sữa",gi:65,gl:29,level:"trung-binh",portion:"Size M (500ml)"},
+      {name:"Sữa tươi không đường",gi:37,gl:4,level:"thap",portion:"1 ly (200ml)"},
+      {name:"Socola đen ≥70%",gi:23,gl:2,level:"thap",portion:"1 thanh nhỏ (20g)"},
+      {name:"Bánh bích quy",gi:72,gl:16,level:"cao",portion:"3 cái (30g)"},
+      {name:"Bánh flan",gi:44,gl:6,level:"thap",portion:"1 cái (80g)"},
+    ];
+
+    // Add extra portions
+    foods.forEach(function(f, i) {
+      f._portions = [
+        {label:"½ khẩu phần", mult:0.5},
+        {label:"1 khẩu phần (mặc định)", mult:1},
+        {label:"1.5 khẩu phần", mult:1.5},
+        {label:"2 khẩu phần", mult:2},
+      ];
+      f.id = 'f' + i;
+    });
+
+    var meal = []; // {food, portionMult}
+
+    // Render food list
+    var foodList = document.getElementById('food-list');
+    var search = document.getElementById('gl-search');
+    var cat = document.getElementById('gl-category');
+
+    function renderFoodList() {
+      var q = (search.value || '').toLowerCase().trim();
+      var c = cat.value;
+      var filtered = foods.filter(function(f) {
+        if (c !== 'all' && f.level !== c) return false;
+        if (q && f.name.toLowerCase().indexOf(q) < 0) return false;
+        return true;
+      });
+      if (filtered.length === 0) {
+        foodList.innerHTML = '<div style="padding:20px;text-align:center;color:var(--ink-tertiary);">❌ Không tìm thấy thực phẩm</div>';
+        return;
+      }
+      foodList.innerHTML = filtered.map(function(f) {
+        var lc = f.level === 'thap' ? 'low' : f.level === 'trung-binh' ? 'mid' : 'high';
+        var lt = f.level === 'thap' ? '🟢' : f.level === 'trung-binh' ? '🟡' : '🔴';
+        return '<div class="food-item" data-id="' + f.id + '">' +
+          '<span class="fi-name">' + f.name + '</span>' +
+          '<span class="fi-gi" style="background:' + (lc==='low'?'#e8f5e9':lc==='mid'?'#fff8e1':'#ffebee') + ';color:' + (lc==='low'?'#2e7d32':lc==='mid'?'#e65100':'#c62828') + '">' + lt + ' GI ' + f.gi + '</span>' +
+          '<span class="fi-gl">GL ' + f.gl + ' / ' + f.portion + '</span>' +
+        '</div>';
+      }).join('');
+
+      // Click to add
+      foodList.querySelectorAll('.food-item').forEach(function(el) {
+        el.addEventListener('click', function() {
+          var id = this.getAttribute('data-id');
+          var food = foods.find(function(f) { return f.id === id; });
+          if (food) addToMeal(food);
+        });
+      });
+    }
+
+    function addToMeal(food) {
+      // Check if already in meal
+      var existing = meal.find(function(m) { return m.food.id === food.id; });
+      if (existing) {
+        existing.mult += 0.5; // increase portion
+      } else {
+        meal.push({food: food, mult: 1});
+      }
+      renderMeal();
+    }
+
+    function removeFromMeal(index) {
+      meal.splice(index, 1);
+      renderMeal();
+    }
+
+    function renderMeal() {
+      var container = document.getElementById('meal-items');
+      var total = document.getElementById('meal-total');
+
+      if (meal.length === 0) {
+        container.innerHTML = '<div class="meal-empty">Chưa có thực phẩm nào. Chọn từ danh sách bên trên 👆</div>';
+        total.style.display = 'none';
+        return;
+      }
+
+      container.innerHTML = meal.map(function(m, i) {
+        var gl = Math.round(m.food.gl * m.mult);
+        var lc = gl <= 10 ? 'low' : gl <= 19 ? 'mid' : 'high';
+        var c = lc === 'low' ? '#2e7d32' : lc === 'mid' ? '#e65100' : '#c62828';
+        var portionMult = m.mult === 0.5 ? '½' : m.mult === 1 ? '' : m.mult + 'x';
+        return '<div class="meal-item">' +
+          '<span class="mi-name">' + m.food.name + ' <span style="font-size:0.8rem;color:var(--ink-tertiary);">' + portionMult + (m.mult===1?'1x':'') + '</span></span>' +
+          '<select style="font-size:0.8rem;padding:4px 6px;border:1px solid var(--line);border-radius:6px;" onchange="adjustPortion(' + i + ', this.value)">' +
+            m.food._portions.map(function(p) { return '<option value="' + p.mult + '"' + (Math.abs(m.mult - p.mult) < 0.01 ? ' selected' : '') + '>' + p.label + '</option>'; }).join('') +
+          '</select>' +
+          '<span class="mi-gl" style="color:' + c + '">GL ' + gl + '</span>' +
+          '<button class="mi-remove" onclick="removeFromMeal(' + i + ')">✕</button>' +
+        '</div>';
+      }).join('');
+
+      // Total
+      var totalGL = 0;
+      var totalCarb = 0;
+      meal.forEach(function(m) {
+        totalGL += m.food.gl * m.mult;
+        totalCarb += Math.round((m.food.gl * 100 / m.food.gi) * m.mult);
+      });
+      totalGL = Math.round(totalGL);
+      totalCarb = Math.round(totalCarb);
+
+      total.style.display = 'block';
+      document.getElementById('total-gl').textContent = totalGL;
+      document.getElementById('total-gl').style.color = totalGL <= 10 ? '#2e7d32' : totalGL <= 19 ? '#e65100' : '#c62828';
+
+      document.getElementById('total-carb').textContent = totalCarb + 'g';
+
+      var ratingEl = document.getElementById('total-rating');
+      if (totalGL <= 10) {
+        ratingEl.textContent = '🟢 Tốt — GL thấp, an toàn';
+        ratingEl.style.color = '#2e7d32';
+      } else if (totalGL <= 19) {
+        ratingEl.textContent = '🟡 Trung bình — cần theo dõi';
+        ratingEl.style.color = '#e65100';
+      } else {
+        ratingEl.textContent = '🔴 Cao — ăn xong nên đo đường huyết và vận động nhẹ';
+        ratingEl.style.color = '#c62828';
+      }
+
+      var fillPct = Math.min(100, totalGL / 30 * 100);
+      document.getElementById('total-bar-fill').style.width = fillPct + '%';
+
+      // Make functions global for onclick
+      window.adjustPortion = function(idx, val) {
+        meal[idx].mult = parseFloat(val);
+        renderMeal();
+      };
+      window.removeFromMeal = removeFromMeal;
+    }
+
+    // Events
+    search.addEventListener('input', renderFoodList);
+    cat.addEventListener('change', renderFoodList);
+
+    // Init
+    renderFoodList();
+  })();
+  </script>
+</BaseLayout>

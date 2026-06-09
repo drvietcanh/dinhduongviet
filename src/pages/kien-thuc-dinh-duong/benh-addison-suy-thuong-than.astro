@@ -1,0 +1,86 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["benh-addison-suy-thuong-than"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Suy thượng thận (bệnh Addison) là tình trạng tuyến thượng thận không sản xuất đủ cortisol và aldosterone. Người bệnh thường mệt mỏi, tụt huyết áp, rối loạn điện giải, và cần bổ sung hormone suốt đời.</p>
+    <p>Dinh dưỡng đóng vai trò <strong>hỗ trợ quan trọng</strong> giúp ổn định năng lượng, cân bằng điện giải và tránh các cơn suy thượng thận cấp.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Natri (muối):</strong> Người suy thượng thận thường cần ăn mặn hơn người bình thường vì thiếu aldosterone gây mất muối qua thận. Nên ăn 4–6g muối/ngày hoặc hơn nếu có triệu chứng tụt huyết áp.</li>
+      <li><strong>Đường huyết ổn định:</strong> Thiếu cortisol làm giảm khả năng điều hòa đường huyết — dễ hạ đường huyết. Cần ăn đủ tinh bột phức hợp (gạo lứt, yến mạch, khoai), chia nhỏ bữa ăn.</li>
+      <li><strong>Canxi & vitamin D:</strong> Người dùng glucocorticoid dài hạn có nguy cơ loãng xương. Cần bổ sung canxi (sữa, cá nhỏ) và vitamin D (nắng sáng, trứng, cá béo).</li>
+      <li><strong>Kali:</strong> Thiếu aldosterone có thể gây tăng kali máu. Không cần kiêng quá mức, nhưng theo dõi nếu ăn nhiều chuối, cam, khoai tây.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Tinh bột phức hợp</span><span>Gạo lứt, yến mạch, khoai lang, bánh mì nguyên cám, ngũ cốc nguyên hạt</span></div>
+      <div class="food-row"><span class="food-cat">Đạm chất lượng</span><span>Thịt gà, trứng, cá hồi, đậu hũ, sữa chua Hy Lạp</span></div>
+      <div class="food-row"><span class="food-cat">Muối lành mạnh</span><span>Muối i-ốt, nước mắm, súp/canh có nêm muối vừa phải</span></div>
+      <div class="food-row"><span class="food-cat">Canxi & Vitamin D</span><span>Sữa tươi, phô mai, cá mòi, lòng đỏ trứng, nấm</span></div>
+      <div class="food-row"><span class="food-cat">Vitamin C</span><span>Ổi, cam, bưởi, kiwi, ớt chuông đỏ — hỗ trợ tổng hợp cortisol</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần thận trọng</h2>
+    <ul>
+      <li><strong>Thực phẩm giàu kali</strong> (nếu xét nghiệm kali máu cao): chuối, cam, khoai tây, cà chua, rau bina</li>
+      <li><strong>Rượu bia:</strong> Có thể gây hạ đường huyết và tương tác với thuốc</li>
+      <li><strong>Caffeine quá mức:</strong> Có thể làm tăng lo âu và rối loạn nhịp tim ở người nhạy cảm</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Bánh mì nguyên cám + trứng ốp la + 1 ly sữa tươi</span></div>
+      <div class="meal-row"><span class="meal-time">🍎 Phụ sáng</span><span>1 ổ táo + ít hạt óc chó</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm gạo lứt + cá hồi áp chảo + canh cải nấu tôm (nêm vừa mặn)</span></div>
+      <div class="meal-row"><span class="meal-time">☕ Xế</span><span>Sữa chua + 1 lát bánh mì lúa mạch</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Salad ức gà + bơ + cà chua + dầu olive, 1 chén cơm nhỏ</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="special-cases">
+    <h2>Lưu ý đặc biệt</h2>
+    <ul>
+      <li><strong>Khi bị ốm/stress:</strong> Cần tăng liều glucocorticoid theo chỉ dẫn bác sĩ — không tự ý giảm hoặc ngưng thuốc.</li>
+      <li><strong>Trước khi tập thể dục:</strong> Nên ăn nhẹ có tinh bột + đạm để tránh hạ đường huyết.</li>
+      <li><strong>Du lịch:</strong> Luôn mang theo thuốc và snack (bánh quy, hạt, thanh ngũ cốc) phòng trường hợp không ăn đúng bữa.</li>
+      <li><strong>Dùng thẻ y tế:</strong> Nên đeo vòng/ví thẻ y tế ghi rõ "Suy thượng thận — cần dùng cortisol cấp cứu".</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Người suy thượng thận có nên ăn mặn không?</summary>
+      <p>Có. Vì thiếu aldosterone, thận không giữ được natri, dẫn đến mất muối, tụt huyết áp. Nhiều người cần 4–6g muối/ngày hoặc hơn. Tuy nhiên, cần theo dõi huyết áp và hỏi bác sĩ về mức phù hợp.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Có thể kiêng hoàn toàn kali không?</summary>
+      <p>Không cần thiết. Người suy thượng thận giai đoạn ổn định thường duy trì kali ở mức bình thường nếu dùng fludrocortisone đúng liều. Chỉ hạn chế kali khi xét nghiệm cho thấy tăng kali máu.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p>Suy thượng thận không phải là bản án — với thuốc đúng và dinh dưỡng phù hợp, người bệnh có thể sống khỏe mạnh. <strong>3 trụ cột:</strong> (1) Đủ muối, (2) Đường huyết ổn định, (3) Không bao giờ tự ý ngưng thuốc.</p>
+    </div>
+  </section>
+</ArticleLayout>

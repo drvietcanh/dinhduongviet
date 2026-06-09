@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-viem-khop"];
+if (!art) throw new Error("Article not found: dinh-duong-viem-khop");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Phương, 68 tuổi, bị viêm khớp gối 10 năm. Mỗi sáng thức dậy cứng khớp 30 phút, đi lại khó nhọc, hết mùa mưa lại đau hơn. Bác từng uống đủ loại thuốc nhưng bác sĩ nói: "Nếu không giảm cân và đổi chế độ ăn, thuốc chỉ giúp được một phần."</p>
+  <p>Viêm khớp có 2 loại chính: thoái hóa khớp (OA) và viêm khớp dạng thấp (RA). Dinh dưỡng không "chữa" được viêm khớp, nhưng có thể giảm đau tương đương thuốc giảm đau liều nhẹ — nhờ tác dụng chống viêm tự nhiên.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Giảm đau khớp bằng ăn uống = <u>omega-3 từ cá béo (2 bữa/tuần)</u>, 
+    <u>nghệ + gừng</u>, <u>rau trái đa màu sắc</u>. <u>TRÁNH đường, đồ chiên, rượu bia.</u>
+    <u>Giảm cân nếu thừa</u> — mỗi kg giảm = 4kg áp lực lên khớp gối.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống làm giảm đau khớp?</h2>
+  <p>Viêm khớp là viêm mạn tính. Thực phẩm chống viêm (omega-3, curcumin trong nghệ, vitamin C, E) làm giảm các chất trung gian gây viêm (cytokine). Ngược lại, đường, mỡ bão hòa, trans fat kích thích sản xuất cytokine — làm đau hơn. Chế độ ăn Địa Trung Hải có bằng chứng giảm đau và cải thiện chức năng vận động rõ rệt.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cá béo: cá thu, cá hồi, cá basa, cá trích — ≥2 bữa/tuần</li>
+      <li>Nghệ (dùng với tiêu đen) + gừng tươi — chống viêm tự nhiên</li>
+      <li>Rau xanh nhiều màu: bông cải, cải bó xôi, rau ngót, cà rốt, bí đỏ</li>
+      <li>Trái cây giàu vitamin C: cam, bưởi, ổi, kiwi, dâu tây</li>
+      <li>Hạt: óc chó, hạnh nhân, hạt chia, hạt lanh</li>
+      <li>Sữa, sữa chua, tôm, cua — canxi cho xương khớp</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Đường, bánh kẹo, nước ngọt — kích hoạt cytokine gây viêm</li>
+      <li>⛔ Mỡ động vật, đồ chiên rán — mỡ bão hòa, trans fat</li>
+      <li>⛔ Thịt chế biến sẵn: xúc xích, lạp xưởng, thịt nguội</li>
+      <li>⛔ Rượu bia — làm nặng triệu chứng</li>
+      <li>⚠️ Thừa cân — mỗi kg tăng thêm = 4kg áp lực lên gối</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu?</h2>
+  <table class="table"><thead><tr><th>Loại</th><th>Khuyến nghị</th></tr></thead><tbody>
+    <tr><td>Cá béo</td><td>≥2 bữa/tuần (150g/bữa)</td></tr>
+    <tr><td>Rau trái</td><td>≥5 phần/ngày, nhiều màu sắc</td></tr>
+    <tr><td>Dầu cá bổ sung</td><td>1g/ngày (hỏi bác sĩ trước)</td></tr>
+    <tr><td>Cân nặng</td><td>Mục tiêu BMI 18.5–23</td></tr>
+    <tr><td>Muối</td><td>&lt;5g/ngày</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Thử elimination diet: kiêng gluten, sữa, trứng, thịt đỏ 2-4 tuần — theo dõi xem có đỡ không.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Yến mạch nấu + 1 muỗng hạt chia + dâu tây</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả cam + 5 hạt óc chó</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá thu kho + canh bông cải xanh + nghệ</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 hũ sữa chua không đường + ½ muỗng tinh bột nghệ</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm vừa + đậu phụ sốt cà + rau cải luộc + trà gừng ấm</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Giảm 5kg — giảm 20kg áp lực lên khớp gối.</li>
+        <li>Uống trà gừng ấm mỗi ngày — giảm đau viêm.</li>
+        <li>Nghệ + tiêu đen + dầu — curcumin hấp thu tốt hơn.</li>
+        <li>Đi bộ, đạp xe, bơi — tốt cho khớp.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Sưng nóng đỏ khớp, sốt — viêm khớp nhiễm khuẩn.</li>
+        <li>Đau dữ dội, mất khả năng đi lại.</li>
+        <li>Biến dạng khớp — đã muộn.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

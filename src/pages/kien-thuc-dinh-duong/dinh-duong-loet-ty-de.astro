@@ -1,0 +1,79 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-loet-ty-de"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Loét tỳ đẻ (pressure ulcer, bed sore) là tổn thương da và mô dưới da do tì đè kéo dài, thường gặp ở người già nằm liệt giường hoặc ngồi xe lăn. Sau khi giảm áp lực, <strong>dinh dưỡng là yếu tố quyết định</strong> giúp vết loét mau lành.</p>
+    <p class="safety-warning">⚠️ Loét tỳ đẻ độ 3–4 có nguy cơ nhiễm trùng huyết. Cần điều trị y tế tích cực — dinh dưỡng hỗ trợ chứ không thay thế chăm sóc vết thương.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Tăng đạm (protein):</strong> 1.2–1.5g/kg/ngày — người nặng 50kg cần 60–75g đạm/ngày. Đạm là nguyên liệu tạo mô hạt.</li>
+      <li><strong>Đủ năng lượng:</strong> 30–35 kcal/kg/ngày — thiếu năng lượng sẽ dùng đạm làm nhiên liệu, không dành cho lành vết thương.</li>
+      <li><strong>Kẽm:</strong> Cần cho tổng hợp collagen. Nguồn: thịt bò, hàu (tránh nếu Wilson), hạt bí, đậu lăng.</li>
+      <li><strong>Vitamin C:</strong> Cần cho hydroxyl hóa collagen và chống oxy hóa. 200–500 mg/ngày từ ổi, cam, kiwi.</li>
+      <li><strong>Vitamin A:</strong> Hỗ trợ biểu mô hóa. Cà rốt, khoai lang, bí đỏ, trứng.</li>
+      <li><strong>Arginine & glutamine:</strong> Acid amin tăng tưới máu vết thương và hỗ trợ miễn dịch. Có thể bổ sung qua sữa chuyên dụng.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ưu tiên</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🥩 Đạm</span><span>Thịt gà, thịt heo, trứng, đậu hũ, cá, sữa, sữa chua Hy Lạp</span></div>
+      <div class="food-row"><span class="food-cat">🧈 Kẽm</span><span>Hàu, thịt bò nạc, hạt bí, hạt điều, đậu gà</span></div>
+      <div class="food-row"><span class="food-cat">🍊 Vitamin C</span><span>Ổi, cam, kiwi, ớt chuông, đu đủ, cải xoăn</span></div>
+      <div class="food-row"><span class="food-cat">🥕 Vitamin A</span><span>Cà rốt, khoai lang, bí đỏ, xoài, lòng đỏ trứng</span></div>
+      <div class="food-row"><span class="food-cat">🫘 Bổ sung</span><span>Sữa tăng đạm (Ensure, Prosure), bột đạm whey, thực phẩm xay nhuyễn nếu khó nuốt</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Cháo thịt bằm + trứng (1 lòng đỏ) + 1 ly sữa tăng cường</span></div>
+      <div class="meal-row"><span class="meal-time">🥤 Phụ sáng</span><span>1 ly sinh tố ổi + sữa chua Hy Lạp</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm mềm + cá hồi hấp + cà rốt luộc nghiền</span></div>
+      <div class="meal-row"><span class="meal-time">🥣 Xế</span><span>Súp gà + bí đỏ + sữa công thức (Ensure)</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Cơm mềm + thịt gà xé nhỏ + canh rau củ xay nhuyễn</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="care-notes">
+    <h2>Lưu ý cho người chăm sóc</h2>
+    <ul>
+      <li><strong>Chế biến phù hợp:</strong> Người già nằm liệt có thể khó nuốt — thức ăn cần xay nhuyễn, nấu mềm, chia 5–6 bữa nhỏ.</li>
+      <li><strong>Theo dõi cân nặng:</strong> Người bệnh sụt cân nhanh là nguy cơ cao nhất cho loét tỳ đẻ. Cân 1 lần/tuần và báo bác sĩ nếu giảm >2% trong 1 tuần.</li>
+      <li><strong>Bổ sung qua tube (sonde):</strong> Nếu không tự ăn được, cần nuôi ăn qua ống thông với công thức tăng đạm.</li>
+      <li><strong>Uống đủ nước:</strong> 1.5–2 lít/ngày (hoặc thêm nếu dùng thực phẩm đặc). Mất nước làm chậm lành vết thương.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Có cần mua sữa đắt tiền để mau lành không?</summary>
+      <p>Không nhất thiết. Ăn uống tự nhiên đã đủ nếu ăn được. Sữa tăng đạm (Ensure, Prosure) hữu ích cho người ăn kém hoặc suy dinh dưỡng. Có thể làm sinh tố từ sữa đặc + trứng + trái cây — cũng giàu năng lượng và đạm.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Loét tỳ đẻ bao lâu thì lành?</summary>
+      <p>Loét độ 1–2: 1–4 tuần với chăm sóc đúng. Loét độ 3–4: có thể 1–6 tháng hoặc lâu hơn. Dinh dưỡng tốt giúp rút ngắn thời gian lành đáng kể.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p><strong>4 yếu tố quyết định:</strong> (1) Giảm áp lực — (2) Tăng đạm (1.2–1.5g/kg) — (3) Bổ sung kẽm + vitamin C — (4) Theo dõi cân nặng. Vết loét tỳ đẻ là dấu hiệu suy dinh dưỡng — can thiệp dinh dưỡng là ưu tiên hàng đầu song song với chăm sóc y tế.</p>
+    </div>
+  </section>
+</ArticleLayout>

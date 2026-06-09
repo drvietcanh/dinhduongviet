@@ -1,0 +1,473 @@
+---
+import { marked } from 'marked';
+import BaseLayout from "./BaseLayout.astro";
+import type { ArticleMeta } from "../data/articles";
+import { getRelatedArticles, articleBySlug, SERIES, SOURCE_ORG, SPECIALTIES } from "../data/articles";
+import practicalQA from "../data/practical-qa";
+
+export interface Props {
+  article: ArticleMeta;
+  lead?: string;
+  children?: any;
+}
+
+const { article: articleInput, lead } = Astro.props;
+// Merge with registry data to get complete info (tags, etc.)
+const fullData = articleBySlug[articleInput.slug];
+const article = { ...articleInput, ...fullData };
+const qa = practicalQA[article.slug] || null;
+const related = getRelatedArticles(article.slug, 4);
+const dateStr = new Date(article.date).toLocaleDateString("vi-VN", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const seriesInfo = article.series ? SERIES[article.series] : null;
+const backLink = seriesInfo ? "/" + article.series : "/kien-thuc-dinh-duong";
+const backLabel = seriesInfo ? "← Quay lại " + seriesInfo.name : "← Quay lại Kiến thức";
+const showSafety = article.category === "disease" || article.category === "special" || (article.tags && article.tags.includes("ask-doctor"));
+
+// Tool links per specialty
+const toolMap = {
+  'noi-tiet': [{ h: '/cong-cu/chi-so-gi', l: 'Tra chỉ số GI' }, { h: '/cong-cu/tinh-gl-bua-an', l: 'Tính GL bữa ăn' }, { h: '/cong-cu/tinh-carb', l: 'Tính carb' }],
+  'tim-mach': [{ h: '/cong-cu/chi-so-gi', l: 'Tra chỉ số GI' }, { h: '/cong-cu/tinh-calo-tieu-thu', l: 'Tính calo' }, { h: '/cong-cu/tinh-carb', l: 'Tính carb' }],
+  'tieu-hoa': [{ h: '/cong-cu/tinh-carb', l: 'Tính carb' }, { h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }],
+  'than': [{ h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }, { h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }],
+  'xuong-khop': [{ h: '/cong-cu/tinh-calo-tieu-thu', l: 'Calo tiêu thụ' }, { h: '/cong-cu/ti-le-mo-co-the', l: 'Tỷ lệ mỡ cơ thể' }],
+  'ho-hap': [{ h: '/cong-cu/theo-doi-duong-huyet', l: 'Theo dõi đường huyết' }, { h: '/cong-cu/tinh-calo-tieu-thu', l: 'Calo tiêu thụ' }],
+  'than-kinh': [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/tinh-calo-tieu-thu', l: 'Calo tiêu thụ' }],
+  'da-lieu': [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }],
+  'phu-nu-nhi': [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }],
+  'huyet-hoc': [{ h: '/cong-cu/theo-doi-duong-huyet', l: 'Theo dõi đường huyết' }, { h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }],
+  'ung-thu': [{ h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }, { h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }],
+};
+
+// CTA per specialty — shown after article body, before Q&A
+const specialtyCTA = {
+  'noi-tiet': '📊 Muốn biết chỉ số đường huyết của bữa ăn bạn? Dùng ngay <a href="/cong-cu/tinh-gl-bua-an">công cụ tính GL bữa ăn</a> hoặc <a href="/cong-cu/chi-so-gi">tra chỉ số GI thực phẩm</a>.',
+  'tim-mach': '❤️ Kiểm tra sức khỏe tim mạch của bạn với <a href="/cong-cu/bmi">máy tính BMI & vòng eo</a> hoặc tính <a href="/cong-cu/tinh-calo-tieu-thu">calo tiêu thụ khi tập</a>.',
+  'tieu-hoa': '🥗 Theo dõi chế độ ăn cho hệ tiêu hoá — tính <a href="/cong-cu/tinh-carb">lượng carb</a> hoặc <a href="/cong-cu/tinh-nhu-cau-dam">nhu cầu đạm</a> của bạn.',
+  'than': '🫘 Bệnh thận cần kiểm soát đạm chặt chẽ. Dùng <a href="/cong-cu/tinh-nhu-cau-dam">công cụ tính nhu cầu đạm</a> và <a href="/cong-cu/bmi">BMI</a>.',
+  'xuong-khop': '🦴 Duy trì cân nặng hợp lý giảm áp lực lên khớp. Tính thử <a href="/cong-cu/bmi">BMI</a> hoặc <a href="/cong-cu/tinh-calo-tieu-thu">calo tiêu thụ</a> khi vận động.',
+  'ho-hap': '🫁 Theo dõi đường huyết và dinh dưỡng với <a href="/cong-cu/theo-doi-duong-huyet">công cụ theo dõi</a> hoặc tính <a href="/cong-cu/tinh-calo-tieu-thu">calo tiêu thụ</a>.',
+  'than-kinh': '🧠 Dinh dưỡng tốt cho thần kinh. Dùng <a href="/cong-cu/bmi">BMI & vòng eo</a> để kiểm tra cân nặng hoặc <a href="/cong-cu/tinh-calo-tieu-thu">tính calo</a> vận động.',
+  'da-lieu': '🌟 Chăm sóc da từ bên trong. Kiểm tra <a href="/cong-cu/bmi">BMI</a> và cân nặng hợp lý.',
+  'phu-nu-nhi': '👶 Mẹ và bé khoẻ mạnh. Tính thử <a href="/cong-cu/bmi">BMI</a> hoặc <a href="/cong-cu/tinh-nhu-cau-dam">nhu cầu đạm</a> cho cả gia đình.',
+  'huyet-hoc': '🩸 Duy trì dinh dưỡng tốt với <a href="/cong-cu/bmi">BMI</a> và <a href="/cong-cu/theo-doi-duong-huyet">theo dõi đường huyết</a>.',
+  'ung-thu': '🎗️ Dinh dưỡng hỗ trợ điều trị ung thư. Tính <a href="/cong-cu/tinh-nhu-cau-dam">nhu cầu đạm</a> và <a href="/cong-cu/bmi">BMI</a>.',
+};
+const cta = specialtyCTA[article.specialty] || null;
+
+const toolLinks = (article.specialty && toolMap[article.specialty]) || [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/muc-tieu-can-nang', l: 'Mục tiêu cân nặng' }];
+
+// Render markdown inside slot content
+const rawSlot = await Astro.slots.render("default");
+// Normalize: add blank lines after HTML blocks so marked can parse following markdown
+const normalized = rawSlot
+  // Add blank line after HTML blocks before markdown: headings, blockquotes, bullet lists
+  .replace(/<\/(table|div|section|ul|ol|blockquote)>\n(?!\n)([#>\-\*])/g, '</$1>\n\n$2');
+const renderedContent = marked.parse(normalized, { async: false })
+  // Fix remaining **bold** inside HTML blocks (section, table, div, li...)
+  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+  // Fix remaining *italic*
+  .replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.description,
+  datePublished: article.date,
+  author: {
+    "@type": "Organization",
+    name: "Dinh Dưỡng Việt",
+  },
+};
+---
+
+<BaseLayout title={`${article.title} | Dinh Dưỡng Việt`} description={article.description} image={`/og/${article.slug}.svg`}>
+  <div style="max-width: 760px; margin: 0 auto; padding: 24px 0;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">🏠 Trang chủ</a>
+      <span class="bc-sep">/</span>
+      {seriesInfo ? (
+        <a href={"/" + article.series}>{seriesInfo.emoji} {seriesInfo.name}</a>
+      ) : (
+        <a href="/kien-thuc-dinh-duong">📚 Kiến thức</a>
+      )}
+      {article.specialty && SPECIALTIES[article.specialty] && (
+        <div style="display:inline">
+          <span class="bc-sep">/</span>
+          <a href="/kien-thuc-dinh-duong">
+            {SPECIALTIES[article.specialty].emoji} {SPECIALTIES[article.specialty].name}
+          </a>
+        </div>
+      )}
+      <span class="bc-sep">/</span>
+      <span class="bc-current">{article.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 24px;">
+      <a href={backLink} class="back-link">{backLabel}</a>
+      <div style="font-size: 0.85rem; color: var(--ink-tertiary); margin: 8px 0;">
+        <span class="badge" style="margin-right: 8px;">{article.emoji} {article.categoryName}</span>
+        <span>{dateStr}</span>
+        <span style="margin: 0 6px">·</span>
+        <span>{article.readTime} phút đọc</span>
+      </div>
+      <h1 style="margin: 12px 0 8px; font-size: 1.75rem; line-height: 1.3;">{article.emoji} {article.title}</h1>
+      {lead && <p style="color: var(--ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 6px;">{lead}</p>}
+      <!-- Priority tags -->
+      {article.tags && article.tags.length > 0 && (
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+          {article.tags.map(t => {
+            const info = {
+              'new-diagnosis': { label: '🆕 Mới chẩn đoán — nên đọc', color: '#2e86de', bg: '#ebf5ff' },
+              'before-shopping': { label: '🛒 Đọc trước khi đi chợ', color: '#27ae60', bg: '#eafaf1' },
+              'before-supplement': { label: '🏷️ Đọc trước khi mua', color: '#e67e22', bg: '#fef5e7' },
+              'caregiver': { label: '👨‍👩‍👧‍👦 Dành cho người nhà chăm sóc', color: '#8e44ad', bg: '#f4ecf7' },
+              'ask-doctor': { label: '⚕️ Cần hỏi bác sĩ trước khi áp dụng', color: '#e74c3c', bg: '#fdedec' },
+            }[t] || { label: t, color: '#718093', bg: '#f1f2f6' };
+            return <span style={`display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;background:${info.bg};color:${info.color};font-size:0.8rem;font-weight:500;line-height:1.3;`}>{info.label}</span>;
+          })}
+        </div>
+      )}
+      <!-- Series badge -->
+      {seriesInfo && (
+        <a href={"/" + article.series} style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 12px;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:8px;text-decoration:none;color:#ffb74d;font-size:0.85rem;font-weight:600;">
+          <span>{seriesInfo.emoji}</span>
+          <span>Series: {seriesInfo.name}</span>
+          <span style="font-size:0.75rem;opacity:0.7;">→</span>
+        </a>
+      )}
+    </div>
+
+    <!-- Tóm tắt nhanh -->
+    <div style="margin-bottom: 24px; background: linear-gradient(135deg, #eafaf1 0%, #d5f5e3 100%); border: 1px solid #a9dfbf; border-radius: 12px; padding: 1rem 1.2rem;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+        <span style="font-size: 1.3rem;">📌</span>
+        <strong style="font-size: 1rem;">Tóm tắt nhanh</strong>
+      </div>
+      <ul style="margin: 0; padding-left: 1.4rem; font-size: 0.88rem; line-height: 1.7;">
+        <li>{qa?.summary || 'Không cần kiêng tuyệt đối — điều chỉnh là chính.'}</li>
+        <li>Quan trọng là <strong>lượng ăn</strong> và <strong>cách phối hợp</strong> thực phẩm.</li>
+        <li>Ưu tiên thực phẩm tươi, <strong>ít đường</strong>, <strong>ít muối</strong>, <strong>ít chế biến sẵn</strong>.</li>
+        <li>Có bệnh thận/tim/đái tháo đường cần <strong>cá thể hóa</strong> — không áp dụng máy móc.</li>
+        <li>Có triệu chứng bất thường: sụt cân, mệt nhiều, đau — <strong>nên đi khám</strong> ngay.</li>
+      </ul>
+    </div>
+
+    <!-- Article body -->
+      <div class="article-body" set:html={renderedContent} />
+
+    <!-- Practical Q&A box -->
+    
+    <!-- Specialty CTA -->
+    {cta && (
+      <div style="margin-top: 32px; padding: 16px 20px; background: var(--brand-light); border: 1px solid var(--brand-light2); border-radius: 12px; font-size: 0.92rem; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px;">
+        <span style="font-size: 1.1rem; flex-shrink: 0;">💡</span>
+        <span set:html={cta}></span>
+      </div>
+    )}
+
+{qa && (
+      <div style="margin-top: 36px; background: linear-gradient(135deg, var(--primary-bg) 0%, var(--card) 100%); border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem;">
+        <h3 style="margin: 0 0 16px; font-size: 1.1rem;">📋 Câu trả lời nhanh</h3>
+        {qa.summary && (
+          <div style="background: var(--brand); color: white; padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; font-size: 0.95rem; font-weight: 500;">
+            {qa.summary}
+          </div>
+        )}
+        <div style="display: grid; gap: 12px;">
+          {qa.canEat && (
+            <div style="background: var(--card); border-left: 4px solid #27ae60; padding: 12px 14px; border-radius: 8px;">
+              <div style="font-weight: 600; font-size: 0.9rem; color: #27ae60; margin-bottom: 4px;">✅ Ăn được không?</div>
+              <div style="font-size: 0.92rem; line-height: 1.6;">{qa.canEat}</div>
+            </div>
+          )}
+          {qa.howMuch && (
+            <div style="background: var(--card); border-left: 4px solid #f39c12; padding: 12px 14px; border-radius: 8px;">
+              <div style="font-weight: 600; font-size: 0.9rem; color: #f39c12; margin-bottom: 4px;">📏 Ăn bao nhiêu là vừa?</div>
+              <div style="font-size: 0.92rem; line-height: 1.6;">{qa.howMuch}</div>
+            </div>
+          )}
+          {qa.swapWith && (
+            <div style="background: var(--card); border-left: 4px solid #3498db; padding: 12px 14px; border-radius: 8px;">
+              <div style="font-weight: 600; font-size: 0.9rem; color: #3498db; margin-bottom: 4px;">🔄 Nên thay bằng gì?</div>
+              <div style="font-size: 0.92rem; line-height: 1.6;">{qa.swapWith}</div>
+            </div>
+          )}
+          {qa.whenDoctor && (
+            <div style="background: var(--card); border-left: 4px solid #e74c3c; padding: 12px 14px; border-radius: 8px;">
+              <div style="font-weight: 600; font-size: 0.9rem; color: #e74c3c; margin-bottom: 4px;">⚕️ Khi nào cần hỏi bác sĩ?</div>
+              <div style="font-size: 0.92rem; line-height: 1.6;">{qa.whenDoctor}</div>
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+
+    <!-- Cảnh báo an toàn (chỉ hiện với bài bệnh/đối tượng đặc biệt) -->
+    {showSafety && (
+    <div style="margin-top: 32px; background: linear-gradient(135deg, #fdedec 0%, #fadbd8 100%); border: 1px solid #f1948a; border-radius: 14px; padding: 1.2rem 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-size: 1.3rem;">🛑</span>
+        <strong style="font-size: 1rem;">Lưu ý an toàn</strong>
+      </div>
+      <ul style="margin: 0; padding-left: 1.4rem; font-size: 0.88rem; line-height: 1.8;">
+        <li><strong>Không tự kiêng</strong> đạm, kali, phốt pho quá mức nếu chưa có chỉ định — có thể gây suy dinh dưỡng nguy hiểm.</li>
+        <li><strong>Không tự uống thực phẩm chức năng</strong> thay thuốc điều trị — thực phẩm chức năng là bổ sung, không phải thuốc.</li>
+        <li>Người có bệnh <strong>thận, suy tim, xơ gan, ung thư</strong>, phụ nữ mang thai, trẻ nhỏ hoặc đang dùng thuốc đặc biệt — <strong>hỏi bác sĩ</strong> trước khi tự kiêng khem hoặc dùng thực phẩm bổ sung.</li>
+        <li><strong>Giảm cân quá nhanh</strong> (>1.5kg/tuần) có thể gây mất cơ, mệt mỏi, rối loạn chuyển hóa.</li>
+        <li>Đây là thông tin dinh dưỡng cộng đồng — <strong>không thay thế</strong> tư vấn y tế cá nhân.</li>
+      </ul>
+    </div>
+    )}
+
+    <!-- Công cụ liên quan -->
+    <div class="tool-links-section">
+      <h3 class="tool-links-title">🛠️ Công cụ liên quan</h3>
+      {toolLinks.map(t => (
+        <a href={t.h} class="art-btn art-btn-secondary" style="font-size: 0.85rem; margin: 4px;">🔧 {t.l}</a>
+      ))}
+    </div>
+
+    <!-- Nguồn tham khảo -->
+    {article.sources && article.sources.length > 0 && (
+      <div style="margin-top: 28px; padding: 16px 0; border-top: 1px solid var(--line);">
+        <details style="font-size: 0.82rem; color: var(--ink-tertiary);">
+          <summary style="cursor: pointer; font-weight: 600; color: var(--ink-secondary);">📚 Nguồn tham khảo ({article.sources.length})</summary>
+          <ol style="margin: 10px 0 0; padding-left: 1.2rem; line-height: 1.8;">
+            {article.sources.map(s => (
+              <li><a href={s.url} target="_blank" rel="noopener" style="color: var(--brand); text-decoration: none;">{s.name}</a></li>
+            ))}
+          </ol>
+        </details>
+      </div>
+    )}
+
+    <!-- Related articles -->
+    {related.length > 0 && (
+      <div style="margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line);">
+        <h3 style="font-size: 1.1rem; margin-bottom: 16px;">📖 Bài viết liên quan</h3>
+        <div class="related-grid">
+          {related.map((r) => (
+            <a href={`/kien-thuc-dinh-duong/${r.slug}`} class="related-card">
+              <span style="font-size: 1.6rem; display: block; margin-bottom: 6px;">{r.emoji}</span>
+              <strong style="font-size: 0.9rem;">{r.title}</strong>
+              <span style="font-size: 0.8rem; color: var(--ink-tertiary); margin-top: 4px;">{r.readTime} phút đọc</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Article actions -->
+    <div style="margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+      <a href="/tim-kiem" class="art-btn art-btn-secondary">🔍 Tìm thực phẩm</a>
+      <a href="/cong-cu/muc-tieu-can-nang" class="art-btn art-btn-secondary">🎯 Mục tiêu cân nặng</a>
+      <button class="art-btn art-btn-primary" id="art-share" onclick="navigator.share?navigator.share({title:document.title,url:location.href}):(navigator.clipboard.writeText(location.href),alert('Đã copy link'))">📤 Chia sẻ</button>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .back-link {
+    color: var(--brand);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .badge {
+    display: inline-block;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .article-body h2 {
+    margin-top: 36px;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--brand-light);
+  }
+  .article-body h3 {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  .article-body p {
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+  .article-body ul, .article-body ol {
+    margin-bottom: 18px;
+    padding-left: 26px;
+  }
+  .article-body li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .article-body li strong {
+    color: var(--brand);
+  }
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.92rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .article-body th, .article-body td {
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .article-body th {
+    background: var(--brand-light);
+    font-weight: 700;
+    color: var(--brand);
+  }
+  .article-body tr:nth-child(even) {
+    background: var(--bg-soft);
+  }
+  .article-body blockquote {
+    border-left: 4px solid var(--brand);
+    margin: 20px 0;
+    padding: 12px 18px;
+    background: var(--bg-elevated);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--ink-secondary);
+    font-style: italic;
+  }
+  .article-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+  }
+  .highlight-box {
+    background: var(--brand-light);
+    border: 1px solid var(--brand-light);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .highlight-box strong { color: var(--brand); }
+  .warn-box {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.92rem;
+    color: #856404;
+  }
+  .tip-box {
+    background: #d4edda;
+    border: 1px solid #28a745;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.92rem;
+    color: #155724;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+  }
+  .related-card:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--brand-light);
+  }
+  .related-card strong { display: block; }
+  .art-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .art-btn-primary {
+    background: var(--brand);
+    color: white;
+  }
+  .art-btn-primary:hover { opacity: 0.9; }
+  .art-btn-secondary {
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .art-btn-secondary:hover { border-color: var(--brand); }
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+    font-size: 0.82rem;
+    color: var(--ink-tertiary);
+    padding: 8px 12px;
+    background: var(--bg-soft);
+    border-radius: 8px;
+  }
+  .breadcrumb a {
+    color: var(--brand);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .bc-sep {
+    color: var(--ink-tertiary);
+    font-size: 0.75rem;
+  }
+  .bc-current {
+    color: var(--ink-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+  }
+  @media (max-width: 600px) {
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+    .bc-current { max-width: 160px; }
+  }
+  .tool-links-section { margin-top: 28px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .tool-links-title { font-size: 1rem; margin: 0 0 12px; }
+  .tool-links-section .art-btn { display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--brand); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.15s; margin: 4px; }
+  .tool-links-section .art-btn:hover { background: var(--brand-light); border-color: var(--brand); }
+  /* Responsive tables on mobile */
+  .article-body table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; }
+  .article-body td, .article-body th { white-space: nowrap; }
+  .article-body th, .article-body td { padding: 8px 12px; border: 1px solid var(--line-light); }
+</style>

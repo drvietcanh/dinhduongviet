@@ -1,0 +1,88 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-sau-ghep-tang"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Sau ghép tạng (thận, gan, tim, phổi), người bệnh phải dùng thuốc ức chế miễn dịch suốt đời để chống thải ghép. Dinh dưỡng lúc này vừa phải <strong>đảm bảo đủ dưỡng chất để hồi phục</strong>, vừa phải <strong>tránh nhiễm trùng</strong> và <strong>tương tác với thuốc</strong>.</p>
+    <p class="safety-warning">⚠️ Không dùng bưởi, cam đắng (Seville), hoặc nước ép bưởi khi đang dùng tacrolimus, cyclosporine — gây tăng nồng độ thuốc nguy hiểm.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Vệ sinh an toàn thực phẩm tuyệt đối:</strong> Người ghép tạng suy giảm miễn dịch, dễ nhiễm khuẩn từ thực phẩm sống (salmonella, listeria, toxoplasma).</li>
+      <li><strong>Đủ đạm:</strong> 1.2–1.5g/kg/ngày để mau lành vết mổ và duy trì khối cơ.</li>
+      <li><strong>Hạn chế muối & đường:</strong> Thuốc ức chế miễn dịch (corticosteroid, tacrolimus) dễ gây tăng huyết áp, tăng đường huyết, giữ nước.</li>
+      <li><strong>Bổ sung canxi & vitamin D:</strong> Corticosteroid dài hạn gây loãng xương nhanh.</li>
+      <li><strong>Kiểm soát kali & phốt pho:</strong> Đặc biệt sau ghép thận — chức năng thận chưa ổn định.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-avoid">
+    <h2>Thực phẩm cần tránh</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🚫 Bưởi, cam đắng</span><span>Bưởi, bưởi chùm, cam Seville, nước ép bưởi — ức chế CYP3A4, tăng nồng độ thuốc ức chế miễn dịch gây độc thận</span></div>
+      <div class="food-row"><span class="food-cat">🚫 Thực phẩm sống / tái</span><span>Sushi, sashimi, hàu sống, thịt tái, trứng lòng đào, pate gan, phô mai mềm nhập khẩu</span></div>
+      <div class="food-row"><span class="food-cat">🚫 Rau mầm sống</span><span>Giá đỗ, rau mầm ăn sống — nguy cơ nhiễm khuẩn cao</span></div>
+      <div class="food-row"><span class="food-cat">🚫 Rượu bia</span><span>Tương tác với tacrolimus, gây hại gan, giảm miễn dịch</span></div>
+      <div class="food-row"><span class="food-cat">🚫 Thảo dược tự ý</span><span>St. John's Wort (ban Âu), nghệ liều cao, nhân sâm — có thể tương tác với ức chế miễn dịch</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <ul>
+      <li><strong>Đạm nấu chín kỹ:</strong> Thịt gà, thịt heo nạc, trứng luộc, cá nấu chín, đậu hũ</li>
+      <li><strong>Tinh bột:</strong> Cơm, khoai lang, bánh mì (ưu tiên nguyên cám nếu tiêu hóa tốt)</li>
+      <li><strong>Rau củ nấu chín:</strong> Cà rốt, bông cải xanh, bầu bí, su su</li>
+      <li><strong>Trái cây gọt vỏ:</strong> Chuối, táo, lê, dưa hấu (tránh bưởi!)</li>
+      <li><strong>Canxi & vitamin D:</strong> Sữa tiệt trùng, sữa chua, phô mai tiệt trùng</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Cháo thịt bằm + 1 ly sữa tiệt trùng</span></div>
+      <div class="meal-row"><span class="meal-time">🍌 Phụ sáng</span><span>1 quả chuối + ít hạt bí</span></div>
+      <div class="meal-row"><span class="meal-time">🍚 Trưa</span><span>Cơm trắng + thịt gà kho gừng + canh cà rốt nấu chín</span></div>
+      <div class="meal-row"><span class="meal-time">🥣 Xế</span><span>Sữa chua + 1 miếng đu đủ chín</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Tối</span><span>Cơm + cá lóc kho tộ + bông cải xanh luộc</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="drug-interactions">
+    <h2>Tương tác thuốc quan trọng</h2>
+    <div class="drug-warn">
+      <p><strong>🔴 Tacrolimus / Cyclosporine:</strong> Tuyệt đối tránh bưởi và cam đắng. Tăng nồng độ thuốc, độc thận.</p>
+      <p><strong>🟡 Corticosteroid (prednisone):</strong> Hạn chế muối và đường. Bổ sung canxi + vitamin D.</p>
+      <p><strong>🟡 Mycophenolate (MMF):</strong> Uống xa bữa ăn (trước ăn 1h hoặc sau ăn 2h). Tránh thực phẩm giàu sắt nếu gây rối loạn tiêu hóa.</p>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Sau ghép bao lâu thì ăn uống bình thường trở lại?</summary>
+      <p>Thường 3–6 tháng đầu cần kiêng cữ nhiều nhất. Sau đó có thể ăn đa dạng hơn nhưng vẫn phải tuân thủ an toàn thực phẩm và tránh bưởi suốt đời.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Có được ăn rau sống không?</summary>
+      <p>Không khuyến khích. Rau sống tiềm ẩn nhiều vi khuẩn. Nên ăn rau nấu chín trong ít nhất 6 tháng đầu sau ghép, sau đó rửa sạch và ngâm kỹ nếu muốn ăn sống.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p><strong>3 nguyên tắc sống còn:</strong> (1) Không bưởi & cam đắng, (2) Nấu chín mọi thứ, (3) Uống thuốc đúng giờ — dinh dưỡng hỗ trợ chứ không thay thế thuốc ức chế miễn dịch.</p>
+    </div>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,97 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-viem-tuy"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Hùng, 42 tuổi, thể trạng khỏe, tối nào cũng vài lon bia, hay ăn đồ chiên rán. Một đêm đau bụng dữ dội vùng thượng vị, đau xuyên ra sau lưng, buồn nôn. Vào cấp cứu — viêm tụy cấp, men lipase 1200. Bác sĩ nói: "Phải nhịn ăn 3 ngày, sau đó ăn rất ít béo."</p>
+  <p>Viêm tụy là tình trạng viêm tuyến tụy — cơ quan sản xuất enzyme tiêu hóa và insulin. Cấp tính nguy hiểm cấp cứu, mạn tính âm thầm hủy hoại. Dinh dưỡng đóng vai trò quyết định trong cả hai.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người viêm tụy cần <u>kiêng rượu tuyệt đối</u>, <u>rất ít chất béo (&lt;30g/ngày)</u>,
+    <u>ăn nhiều bữa nhỏ</u>, <u>tránh đồ chiên rán, bia rượu, đồ lạnh</u>.
+    Viêm tụy cấp thường phải nhịn ăn vài ngày — tuân thủ y lệnh.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn béo gây viêm tụy?</h2>
+  <p>Tuyến tụy sản xuất enzyme tiêu hóa chất béo (lipase). Khi ăn nhiều béo, tụy phải làm việc quá sức. Ở người viêm tụy (nhất là do rượu, sỏi mật), các enzyme này bị kích hoạt ngay trong tụy thay vì trong ruột — "tự tiêu hóa" tuyến tụy, gây viêm dữ dội. Chất béo là yếu tố kích hoạt mạnh nhất.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Tinh bột dễ tiêu: cơm trắng nát, cháo, bánh mì, khoai tây luộc</li>
+      <li>Đạm ít béo: ức gà luộc, cá hấp, lòng trắng trứng, đậu phụ</li>
+      <li>Rau luộc mềm: bí đỏ, cà rốt, khoai tây, bầu</li>
+      <li>Trái cây ít béo: táo, lê, chuối chín</li>
+      <li>Dầu thực vật: tối đa 1–2 muỗng/ngày</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ RƯỢU BIA — tuyệt đối, kể cả khi hết triệu chứng</li>
+      <li>⛔ Đồ chiên rán, thức ăn nhanh, mỡ động vật</li>
+      <li>⛔ Thịt mỡ, ba chỉ, heo quay, da gà vịt</li>
+      <li>⛔ Nội tạng, lòng, đồ xào nhiều dầu</li>
+      <li>⛔ Bánh ngọt kem, socola, dừa, sầu riêng</li>
+      <li>⛔ Thuốc lá — tăng nguy cơ tái phát</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Chế độ ăn theo giai đoạn</h2>
+  <table class="table"><thead><tr><th>Giai đoạn</th><th>Chất béo/ngày</th><th>Thức ăn</th></tr></thead><tbody>
+    <tr><td>Viêm tụy cấp (cấp cứu)</td><td>0g (nhịn hoàn toàn)</td><td>Nuôi tĩnh mạch theo y lệnh</td></tr>
+    <tr><td>Hồi phục sau cấp (1–2 tuần)</td><td>&lt;20g</td><td>Cháo, súp, cơm nát, ức gà luộc</td></tr>
+    <tr><td>Viêm tụy mạn (ổn định)</td><td>&lt;30–40g</td><td>Chia nhỏ bữa, ít béo, kiêng rượu</td></tr>
+    <tr><td>Có enzyme tụy bổ sung</td><td>Có thể tăng dần</td><td>Theo chỉ định bác sĩ</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (viêm tụy mạn)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo ức gà (bỏ da) + ít dầu olive + bánh mì lát</td></tr>
+    <tr><td>🌞 Phụ</td><td>Bánh mì khô + 1 quả táo</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát + cá hấp + bí đỏ luộc + canh rau cải</td></tr>
+    <tr><td>🌆 Phụ</td><td>Lòng trắng trứng hấp</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm nát + đậu phụ luộc + rau luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Hấp/luộc thay vì chiên xào — giảm béo.</li>
+        <li>Chia 5–6 bữa nhỏ, không để đói hoặc quá no.</li>
+        <li>Uống đủ nước, tránh đồ uống có gas.</li>
+        <li>Nếu phân mỡ (phân nhạt màu, nổi, hôi) — cần enzyme tụy bổ sung.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đau bụng dữ dội sau ăn béo.</li>
+        <li>Sốt, vàng da, đau lan ra sau lưng.</li>
+        <li>Nôn, chướng bụng, không đi ngoài được.</li>
+        <li>Sụt cân, tiêu chảy phân mỡ kéo dài.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

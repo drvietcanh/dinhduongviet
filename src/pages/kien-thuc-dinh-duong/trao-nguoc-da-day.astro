@@ -1,0 +1,165 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["trao-nguoc-da-day"];
+if (!art) throw new Error("Article not found: trao-nguoc-da-day");
+---
+
+<ArticleLayout article={art}>
+<div class="toc">
+      <strong>📑 Nội dung</strong>
+      <ul>
+        <li><a href="#nguyen-tac">Nguyên tắc ăn uống cho người trào ngược</a></li>
+        <li><a href="#nen">🟢 Thực phẩm nên ăn</a></li>
+        <li><a href="#khong">🔴 Thực phẩm nên tránh</a></li>
+        <li><a href="#thoi-quen">Thói quen ăn uống</a></li>
+        <li><a href="#thuc-don">Gợi ý thực đơn 1 ngày</a></li>
+        <li><a href="#khi-nao">Khi nào cần đi khám?</a></li>
+      </ul>
+    </div>
+
+    <section id="nguyen-tac">
+      <h2>📋 Nguyên tắc vàng cho người trào ngược</h2>
+      <div class="highlight-box">
+        <ol>
+          <li><strong>Ăn ít một, chia nhiều bữa</strong> — 5-6 bữa nhỏ/ngày thay vì 3 bữa lớn</li>
+          <li><strong>Không nằm ngay sau ăn</strong> — chờ ít nhất 2-3 giờ</li>
+          <li><strong>Tránh ăn tối muộn</strong> — bữa cuối trước ngủ ≥3 giờ</li>
+          <li><strong>Kê cao đầu khi ngủ</strong> — 15-20cm giúp giảm trào ngược đêm</li>
+          <li><strong>Nhai kỹ, ăn chậm</strong> — thức ăn nghiền nhỏ giảm áp lực dạ dày</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="nen">
+      <h2>🟢 Thực phẩm nên ăn</h2>
+      <div class="two-col">
+        <div class="col-card good">
+          <h3>🥬 Rau xanh & Củ quả</h3>
+          <ul>
+            <li><a href="/thuc-pham/rau-muong">Rau muống</a>, <a href="/thuc-pham/bong-cai-xanh">bông cải xanh</a></li>
+            <li><a href="/thuc-pham/ca-rot">Cà rốt</a>, <a href="/thuc-pham/khoai-tay">khoai tây</a> (luộc/hấp)</li>
+            <li><a href="/thuc-pham/bap-cai">Bắp cải</a>, <a href="/thuc-pham/sup-lo">súp lơ</a></li>
+            <li>Rau má, nước ép rau má (giảm nóng)</li>
+          </ul>
+        </div>
+        <div class="col-card good">
+          <h3>🍚 Tinh bột dễ tiêu</h3>
+          <ul>
+            <li><a href="/thuc-pham/com-trang">Cơm trắng</a> (không chiên)</li>
+            <li><a href="/thuc-pham/banh-mi">Bánh mì</a> không bơ, không tỏi</li>
+            <li>Cháo loãng, bột yến mạch</li>
+            <li>Bánh quy khô, bánh mì nướng</li>
+          </ul>
+        </div>
+        <div class="col-card good">
+          <h3>🥩 Đạm lành</h3>
+          <ul>
+            <li><a href="/thuc-pham/uc-ga">Ức gà</a> không da (luộc/hấp)</li>
+            <li><a href="/thuc-pham/ca-loc">Cá lóc</a> hấp, luộc</li>
+            <li><a href="/thuc-pham/trung-ga">Trứng</a> luộc (lòng trắng)</li>
+            <li><a href="/thuc-pham/dau-phu">Đậu phụ</a> hấp</li>
+          </ul>
+        </div>
+        <div class="col-card good">
+          <h3>🍌 Trái cây ít acid</h3>
+          <ul>
+            <li>Chuối chín</li>
+            <li><a href="/thuc-pham/dua-hau">Dưa hấu</a></li>
+            <li><a href="/thuc-pham/tao">Táo</a> (<em>không</em> xanh chua)</li>
+            <li><a href="/thuc-pham/le">Lê</a>, <a href="/thuc-pham/dua-gang">đu đủ</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="small">➡️ Tra cứu thực phẩm phù hợp tại <a href="/thuc-pham">danh sách thực phẩm</a></p>
+    </section>
+
+    <section id="khong">
+      <h2>🔴 Thực phẩm cần tránh</h2>
+      <div class="avoid-grid">
+        <div class="avoid-item"><span class="a-icon">☕</span><strong>Caffeine</strong><br>cà phê, trà đặc, nước tăng lực</div>
+        <div class="avoid-item"><span class="a-icon">🍊</span><strong>Trái cây chua</strong><br>cam, chanh, bưởi, quýt, me</div>
+        <div class="avoid-item"><span class="a-icon">🍅</span><strong>Thực phẩm acid</strong><br>cà chua, dưa muối, giấm</div>
+        <div class="avoid-item"><span class="a-icon">🌶️</span><strong>Cay nóng</strong><br>ớt, tiêu, gừng, tỏi, hành sống</div>
+        <div class="avoid-item"><span class="a-icon">🍟</span><strong>Chiên rán</strong><br>khoai tây chiên, gà rán, nem rán</div>
+        <div class="avoid-item"><span class="a-icon">🥫</span><strong>Đồ chế biến</strong><br>thịt nguội, xúc xích, đồ hộp</div>
+        <div class="avoid-item"><span class="a-icon">🥛</span><strong>Sữa béo</strong><br>sữa nguyên kem, kem, phô mai béo</div>
+        <div class="avoid-item"><span class="a-icon">🍫</span><strong>Sô-cô-la</strong><br>đặc biệt là sô-cô-la đen</div>
+      </div>
+    </section>
+
+    <section id="thoi-quen">
+      <h2>⏰ Thói quen ăn uống quan trọng</h2>
+      <table class="nutri-table">
+        <tr><th>Nên</th><th>Không nên</th></tr>
+        <tr><td>Ăn chậm, nhai kỹ (~20 nhát/ miếng)</td><td>Vừa ăn vừa uống nước nhiều</td></tr>
+        <tr><td>Uống nước giữa các bữa, không uống trong bữa quá nhiều</td><td>Nằm/ngủ ngay sau ăn</td></tr>
+        <tr><td>Mặc quần áo rộng sau ăn</td><td>Thắt lưng quá chặt</td></tr>
+        <tr><td>Đi bộ nhẹ 10-15 phút sau ăn</td><td>Chạy nhảy, tập nặng sau ăn</td></tr>
+        <tr><td>Giảm cân nếu thừa cân (BMI &gt; 23)</td><td>Hút thuốc, uống rượu bia</td></tr>
+      </table>
+    </section>
+
+    <section id="thuc-don">
+      <h2>🍜 Thực đơn mẫu 1 ngày (~1.600 kcal)</h2>
+      <table class="nutri-table">
+        <tr><th>Bữa</th><th>Món</th><th>Lưu ý</th></tr>
+        <tr><td>🌅 Sáng 6:30</td><td>Cháo yến mạch + chuối + sữa hạt</td><td>Tránh cà phê, ăn chậm</td></tr>
+        <tr><td>🍎 Phụ 9:00</td><td>Bánh mì nướng khô + 1 quả táo</td><td>Khoảng cách 2-3h sau sáng</td></tr>
+        <tr><td>🌞 Trưa 12:00</td><td>Cơm trắng 100g + ức gà luộc + rau muống luộc</td><td>Không chiên, không nhiều dầu</td></tr>
+        <tr><td>🌰 Phụ 15:00</td><td>Bánh quy khô + sữa chua không đường</td><td>Không ăn quà vặt chua/cay</td></tr>
+        <tr><td>🌙 Tối 18:00</td><td>Cháo thịt bằm + cà rốt luộc</td><td>Ăn xong 19:00, đi bộ nhẹ</td></tr>
+      </table>
+    </section>
+
+    <section id="khi-nao">
+      <h2>🩺 Khi nào cần đi khám?</h2>
+      <p>Đến bác sĩ nếu bạn có các dấu hiệu sau dù đã điều chỉnh ăn uống:</p>
+      <ul>
+        <li>Ợ nóng / ợ chua &gt; 2 lần/tuần</li>
+        <li>Đau ngực, khó nuốt, nghẹn</li>
+        <li>Ho kéo dài, khàn tiếng không rõ nguyên nhân</li>
+        <li>Sụt cân không chủ đích</li>
+        <li>Nôn ra máu hoặc phân đen</li>
+      </ul>
+      <p>🔬 Bác sĩ có thể chỉ định nội soi dạ dày, đo pH thực quản, hoặc xét nghiệm HP.</p>
+    </section>
+
+    <div class="article-actions">
+      <a href="/kien-thuc-dinh-duong/dau-da-day" class="cta-btn">🩺 Đau dạ dày & Viêm loét</a>
+      <a href="/thuc-pham" class="cta-btn cta-alt">🥬 Tra thực phẩm</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.article-wrapper { max-width: 740px; margin: 0 auto; }
+.toc { background: var(--bg-elevated); padding: 16px 20px; border-radius: 12px; margin-bottom: 24px; font-size:0.9rem; }
+.toc ul { margin:8px 0 0; padding-left:20px; }
+.toc a { color:var(--brand); }
+section { margin-bottom:28px; }
+h2 { font-size:1.15rem; margin-bottom:10px; }
+p, li { line-height:1.7; }
+.highlight-box { background:var(--brand-light); padding:16px 20px; border-radius:12px; margin:16px 0; }
+.highlight-box ol { margin:0; padding-left:20px; }
+.highlight-box li { margin-bottom:6px; }
+.small { font-size:0.82rem; color:var(--ink-tertiary); }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
+.col-card { padding:14px; border-radius:10px; border:1px solid var(--border); background:var(--bg-card); }
+.col-card.good { border-left:3px solid #2e7d32; }
+.col-card h3 { margin:0 0 8px; font-size:0.9rem; }
+.col-card ul { margin:0; padding-left:16px; font-size:0.85rem; }
+.col-card li { margin-bottom:4px; }
+.avoid-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:12px 0; }
+.avoid-item { padding:12px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; text-align:center; border-left:3px solid #e53935; font-size:0.85rem; }
+.a-icon { display:block; font-size:1.4rem; margin-bottom:4px; }
+.nutri-table { width:100%; border-collapse:collapse; font-size:0.88rem; margin:12px 0; }
+.nutri-table th { background:var(--bg-elevated); padding:8px 10px; text-align:left; border-bottom:2px solid var(--border); }
+.nutri-table td { padding:8px 10px; border-bottom:1px solid var(--border); }
+.article-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; padding-top:16px; border-top:1px solid var(--border); }
+.cta-btn { display:inline-block; padding:10px 22px; border-radius:999px; font-weight:600; background:var(--brand); color:white; text-decoration:none; }
+.cta-alt { background:var(--ink-tertiary); }
+@media (max-width:700px) { .two-col { grid-template-columns:1fr; } .avoid-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:500px) { .avoid-grid { grid-template-columns:1fr; } }
+</style>
+</ArticleLayout>

@@ -1,0 +1,202 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const title = "📏 Tính % mỡ cơ thể & vòng eo/mông";
+const desc = "Ước tính tỷ lệ mỡ cơ thể từ số đo. Kết hợp vòng eo và vòng mông (WHR) đánh giá nguy cơ sức khỏe.";
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/ti-le-mo-co-the">
+  <main class="content-page">
+    <div class="page-header">
+      <h1>📏 Tỷ lệ mỡ cơ thể & Vòng eo/mông</h1>
+      <p class="page-desc">{desc}</p>
+    </div>
+
+    <div class="card form-card">
+      <div class="form-row">
+        <label>Giới tính</label>
+        <select id="gender" class="form-input"><option value="male">👦 Nam</option><option value="female">👧 Nữ</option></select>
+      </div>
+      <div class="form-row">
+        <label>Chiều cao (cm)</label>
+        <input type="number" id="height" value="165" min="100" max="220" class="form-input">
+      </div>
+      <div class="form-row">
+        <label>Cân nặng (kg)</label>
+        <input type="number" id="weight" value="65" min="20" max="250" class="form-input">
+      </div>
+      <div class="form-row">
+        <label>Vòng eo (cm) — đo ở rốn</label>
+        <input type="number" id="waist" value="80" min="40" max="180" class="form-input">
+      </div>
+      <div class="form-row">
+        <label>Vòng mông (cm) — đo ở chỗ lớn nhất</label>
+        <input type="number" id="hip" value="95" min="40" max="180" class="form-input">
+      </div>
+      <button class="btn-calc" onclick="calculate()">✨ Tính toán</button>
+    </div>
+
+    <div id="result" style="display:none;">
+      <div class="result-grid">
+        <!-- BFP -->
+        <div class="card">
+          <h2>🧴 Tỷ lệ mỡ cơ thể (ước tính)</h2>
+          <div id="bfp-result" class="metric-hero"></div>
+          <div class="bfp-bar-track" id="bfp-bar"><div class="bfp-bar-fill" id="bfp-fill"></div></div>
+          <div id="bfp-table" class="metric-table"></div>
+          <p class="muted" style="margin-top:8px;font-size:0.8rem;">Ước tính theo công thức US Navy (vòng eo, cổ, cao). Dùng vòng eo và chiều cao thay thế.</p>
+        </div>
+
+        <!-- WHR -->
+        <div class="card">
+          <h2>📊 Chỉ số eo/mông (WHR)</h2>
+          <div id="whr-result" class="metric-hero"></div>
+          <div id="whr-assess" class="metric-assess"></div>
+        </div>
+
+        <!-- BMI -->
+        <div class="card">
+          <h2>⚖️ BMI</h2>
+          <div id="bmi-result" class="metric-hero"></div>
+          <div id="bmi-assess" class="metric-assess"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <h2>💡 Đánh giá tổng thể</h2>
+        <div id="overall" class="overall-text"></div>
+      </div>
+    </div>
+
+    <div class="safety-note">
+      ⚠️ Công thức US Navy ước tính tương đối. Sai số ±3% so với DEXA. % mỡ lý tưởng thay đổi theo tuổi và thể trạng.
+    </div>
+  </main>
+
+  <style>
+    .content-page { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+    .page-header { text-align:center; margin-bottom:20px; }
+    .page-desc { max-width:560px; margin:8px auto 0; color:var(--ink-secondary); font-size:0.9rem; line-height:1.6; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); padding:20px; margin-bottom:16px; }
+    .card h2 { font-size:1rem; margin:0 0 12px; display:flex; align-items:center; gap:6px; }
+    .form-card { max-width:460px; margin:0 auto 24px; }
+    .form-row { margin-bottom:12px; }
+    .form-row label { display:block; font-size:0.85rem; font-weight:600; margin-bottom:3px; color:var(--ink); }
+    .form-input { width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg); color:var(--ink); font-size:0.92rem; box-sizing:border-box; }
+    .btn-calc { width:100%; padding:12px; border:none; border-radius:var(--radius); background:var(--brand); color:white; font-size:1rem; font-weight:600; cursor:pointer; font-family:inherit; }
+    .btn-calc:hover { opacity:0.85; }
+    .result-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+    @media (max-width:680px) { .result-grid { grid-template-columns:1fr; } }
+
+    .metric-hero { text-align:center; padding:6px 0; }
+    .metric-hero .metric-value { font-size:2.4rem; font-weight:800; color:var(--brand); line-height:1.1; }
+    .metric-hero .metric-label { font-size:0.78rem; color:var(--ink-secondary); }
+
+    .metric-assess { text-align:center; font-size:0.85rem; line-height:1.5; padding:8px 0; }
+    .metric-assess .assess-good { color:#2e7d32; font-weight:600; }
+    .metric-assess .assess-warn { color:#e65100; font-weight:600; }
+    .metric-assess .assess-bad { color:#c62828; font-weight:600; }
+
+    .bfp-bar-track { height:16px; background:var(--line); border-radius:8px; overflow:hidden; margin:8px auto 0; max-width:400px; }
+    .bfp-bar-fill { height:100%; border-radius:8px; transition:width 0.5s; }
+
+    .metric-table { font-size:0.78rem; line-height:1.6; margin-top:10px; }
+    .metric-table .row { display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px solid var(--line-light); }
+    .metric-table .current { font-weight:700; color:var(--brand); }
+
+    .overall-text { font-size:0.9rem; line-height:1.7; }
+  </style>
+
+  <script is:inline>
+  (function() {
+    function calculate() {
+      var gender = document.getElementById('gender').value;
+      var h = parseFloat(document.getElementById('height').value) || 165;
+      var w = parseFloat(document.getElementById('weight').value) || 65;
+      var wa = parseFloat(document.getElementById('waist').value) || 80;
+      var hi = parseFloat(document.getElementById('hip').value) || 95;
+
+      // BMI
+      var bmi = w / ((h/100)*(h/100));
+      var bmiCls = bmi < 18.5 ? 'warn' : bmi < 23 ? 'good' : bmi < 27.5 ? 'warn' : 'bad';
+      var bmiLbl = bmi < 18.5 ? '🟡 Thiếu cân' : bmi < 23 ? '🟢 Bình thường' : bmi < 27.5 ? '🟡 Thừa cân' : '🔴 Béo phì';
+      document.getElementById('bmi-result').innerHTML = '<div class="metric-value">' + bmi.toFixed(1) + '</div><div class="metric-label">BMI</div>';
+      document.getElementById('bmi-assess').innerHTML = '<span class="assess-' + bmiCls + '">' + bmiLbl + '</span>';
+
+      // WHR
+      var whr = wa / hi;
+      var whrCls, whrLbl;
+      if (gender === 'male') {
+        whrCls = whr < 0.9 ? 'good' : whr < 1.0 ? 'warn' : 'bad';
+        whrLbl = whr < 0.9 ? '🟢 Nguy cơ thấp' : whr < 1.0 ? '🟡 Nguy cơ trung bình' : '🔴 Nguy cơ cao';
+      } else {
+        whrCls = whr < 0.8 ? 'good' : whr < 0.85 ? 'warn' : 'bad';
+        whrLbl = whr < 0.8 ? '🟢 Nguy cơ thấp' : whr < 0.85 ? '🟡 Nguy cơ trung bình' : '🔴 Nguy cơ cao';
+      }
+      document.getElementById('whr-result').innerHTML = '<div class="metric-value">' + whr.toFixed(2) + '</div><div class="metric-label">WHR (eo/mông)</div>';
+      document.getElementById('whr-assess').innerHTML = '<span class="assess-' + whrCls + '">' + whrLbl + '</span> — mỡ ' + (whr > (gender==='male'?0.9:0.8) ? 'bụng' : 'phân bố đều');
+
+      // Body fat % (US Navy simplified: using waist and height)
+      var bfp;
+      if (gender === 'male') {
+        bfp = 86.010 * Math.log10(wa - 0) - 70.041 * Math.log10(h) + 36.76;
+      } else {
+        bfp = 163.205 * Math.log10(wa) - 97.684 * Math.log10(h) - 78.387;
+      }
+      bfp = Math.max(3, Math.min(50, parseFloat(bfp.toFixed(1))));
+
+      // BFP assessment
+      var bfpLevel, bfpCls;
+      if (gender === 'male') {
+        if (bfp < 6) { bfpLevel = '⚠️ Quá thấp'; bfpCls = 'bad'; }
+        else if (bfp < 14) { bfpLevel = '✅ Vận động viên'; bfpCls = 'good'; }
+        else if (bfp < 18) { bfpLevel = '✅ Cân đối'; bfpCls = 'good'; }
+        else if (bfp < 25) { bfpLevel = '🟡 Trung bình'; bfpCls = 'warn'; }
+        else { bfpLevel = '🔴 Cao'; bfpCls = 'bad'; }
+      } else {
+        if (bfp < 14) { bfpLevel = '⚠️ Quá thấp'; bfpCls = 'bad'; }
+        else if (bfp < 21) { bfpLevel = '✅ Vận động viên'; bfpCls = 'good'; }
+        else if (bfp < 25) { bfpLevel = '✅ Cân đối'; bfpCls = 'good'; }
+        else if (bfp < 32) { bfpLevel = '🟡 Trung bình'; bfpCls = 'warn'; }
+        else { bfpLevel = '🔴 Cao'; bfpCls = 'bad'; }
+      }
+
+      document.getElementById('bfp-result').innerHTML = '<div class="metric-value">' + bfp + '%</div><div class="metric-label">' + bfpLevel + '</div>';
+      var fillPct = Math.min(bfp / (gender==='male'?35:45) * 100, 100);
+      var fillColor = bfpCls === 'good' ? '#22c55e' : bfpCls === 'warn' ? '#f97316' : '#ef4444';
+      document.getElementById('bfp-fill').style.width = fillPct + '%';
+      document.getElementById('bfp-fill').style.background = fillColor;
+      document.getElementById('bfp-bar').style.display = 'block';
+
+      // BFP reference table
+      var ref = gender === 'male' ?
+        '<div class="row"><span>Vận động viên</span><span>6–14%</span></div><div class="row"><span>Cân đối</span><span>14–18%</span></div><div class="row current"><span><strong>📍 Bạn</strong></span><span><strong>' + bfp + '%</strong></span></div><div class="row"><span>Trung bình</span><span>18–25%</span></div><div class="row"><span>Cao (béo phì)</span><span>&gt;25%</span></div>' :
+        '<div class="row"><span>Vận động viên</span><span>14–21%</span></div><div class="row"><span>Cân đối</span><span>21–25%</span></div><div class="row current"><span><strong>📍 Bạn</strong></span><span><strong>' + bfp + '%</strong></span></div><div class="row"><span>Trung bình</span><span>25–32%</span></div><div class="row"><span>Cao (béo phì)</span><span>&gt;32%</span></div>';
+      document.getElementById('bfp-table').innerHTML = ref;
+
+      // Overall assessment
+      var risks = [];
+      if (bmi >= 23) risks.push('BMI thừa cân');
+      if (whr > (gender==='male'?0.9:0.85)) risks.push('mỡ bụng nhiều (WHR cao)');
+      if (bfp > (gender==='male'?25:32)) risks.push('% mỡ cơ thể cao');
+
+      var overall = '';
+      if (risks.length === 0) {
+        overall = '<p>🟢 <strong>Tốt!</strong> BMI, vòng eo/mông và % mỡ cơ thể đều trong ngưỡng khỏe mạnh. Duy trì chế độ ăn và vận động nhé!</p>';
+      } else if (risks.length === 1) {
+        overall = '<p>🟡 <strong>Lưu ý:</strong> ' + risks[0] + '. Nên kiểm tra lại sau 1 tháng và điều chỉnh chế độ ăn uống, tăng vận động.</p>';
+      } else {
+        overall = '<p>🔴 <strong>Cần cải thiện:</strong> Bạn có ' + risks.join(', ') + '. Nguy cơ hội chứng chuyển hóa cao. Nên tham khảo bác sĩ và chuyên gia dinh dưỡng.</p>';
+      }
+      if (wa > (gender==='male'?90:80)) {
+        overall += '<p style="margin-top:8px;">📏 Vòng eo của bạn ' + wa + 'cm > ' + (gender==='male'?90:80) + 'cm — mỡ nội tạng tăng nguy cơ bệnh tim mạch và tiểu đường.</p>';
+      }
+      document.getElementById('overall').innerHTML = overall;
+
+      document.getElementById('result').style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(calculate, 100); });
+    window.calculate = calculate;
+  })();
+  </script>
+</BaseLayout>

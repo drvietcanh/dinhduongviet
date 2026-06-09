@@ -1,0 +1,81 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["dinh-duong-nguoi-cao-tuoi"];
+if (!art) throw new Error("Article not found: dinh-duong-nguoi-cao-tuoi");
+---
+
+<ArticleLayout article={art}>
+<div class="disclaimer">
+    ⚠️ <strong>Cảnh báo y khoa:</strong> Nội dung mang tính tham khảo, không thay thế tư vấn bác sĩ. Người cao tuổi có bệnh nền cần chế độ ăn cá nhân hóa.
+  </div>
+
+  <section class="section card">
+    <h2>🥇 Nguyên tắc chính</h2>
+    <ol style="line-height: 2; margin-top: 10px;">
+      <li><strong>Giữ protein đủ cao:</strong> 1.2-1.5g/kg cân nặng/ngày (cao hơn người trẻ) — chống sarcopenia và loãng xương.</li>
+      <li><strong>Canxi & Vitamin D:</strong> 1000-1200 mg canxi + 800 IU vitamin D/ngày — chống loãng xương, giảm ngã gãy.</li>
+      <li><strong>Vitamin B12:</strong> Đảm bảo đủ — giảm hấp thu B12 do teo niêm mạc dạ dày. Bổ sung nếu thiếu.</li>
+      <li><strong>Chất xơ và nước:</strong> 20-25g xơ + 1.5-2 lít nước/ngày — chống táo bón, giảm cholesterol.</li>
+      <li><strong>Giảm muối:</strong> Dưới 4g muối/ngày — kiểm soát huyết áp, giảm gánh nặng tim-thận.</li>
+      <li><strong>Hạn chế đường và chất béo bão hòa:</strong> Giảm nguy cơ tiểu đường, mỡ máu, tim mạch.</li>
+    </ol>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>✅ Thực phẩm nên ăn</h2>
+      <ul style="line-height: 1.8;">
+        <li><strong>Protein:</strong> <a href="/thuc-pham/trung-ga">Trứng</a>, <a href="/thuc-pham/ca-thu">cá</a>, <a href="/thuc-pham/uc-ga">ức gà</a>, <a href="/thuc-pham/dau-phu">đậu phụ</a>, <a href="/thuc-pham/sua-tuoi">sữa</a></li>
+        <li><strong>Canxi:</strong> <a href="/thuc-pham/sua-tuoi">Sữa</a> (200ml/ngày), <a href="/thuc-pham/sua-chua">sữa chua</a>, <a href="/thuc-pham/dau-phu">đậu phụ</a>, <a href="/thuc-pham/me-vung">mè</a></li>
+        <li><strong>Ngũ cốc nguyên hạt:</strong> <a href="/thuc-pham/com-gao-lut">Gạo lứt</a>, yến mạch, <a href="/thuc-pham/khoai-lang">khoai lang</a></li>
+        <li><strong>Rau xanh mềm:</strong> <a href="/thuc-pham/rau-muong">Rau muống</a>, <a href="/thuc-pham/bi-do">bí đỏ</a>, <a href="/thuc-pham/ca-rot">cà rốt nấu chín</a></li>
+        <li><strong>Trái cây mềm:</strong> <a href="/thuc-pham/du-du">Đu đủ</a>, <a href="/thuc-pham/chuoi">chuối chín</a>, <a href="/thuc-pham/bo-trai">bơ</a></li>
+        <li><strong>Chất béo tốt:</strong> Dầu olive, dầu hạt cải, các loại hạt</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>❌ Thực phẩm nên hạn chế</h2>
+      <ul style="line-height: 1.8;">
+        <li>Thịt đỏ nhiều, nội tạng, da gia cầm</li>
+        <li>Đồ chiên rán, nhiều dầu mỡ</li>
+        <li>Bánh kẹo ngọt, nước ngọt, nước ép trái cây</li>
+        <li>Thực phẩm chế biến sẵn, đồ hộp mặn</li>
+        <li><a href="/thuc-pham/mi-goi">Mì gói</a>, snack, đồ ăn nhanh</li>
+        <li>Rượu bia, cà phê quá đặc</li>
+        <li>Thức ăn quá cứng, quá dai, quá khô (khó nhai)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🍽️ Thực đơn mẫu 1 ngày (dễ nhai, dễ tiêu)</h2>
+    <table class="table" style="margin-top: 10px;">
+      <thead>
+        <tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sáng</td><td><a href="/mon-an/chao-ga">Cháo gà</a> hoặc yến mạch nấu sữa + ½ chuối chín</td><td>Dễ nuốt, giàu năng lượng</td></tr>
+        <tr><td>Phụ sáng</td><td>1 hũ <a href="/thuc-pham/sua-chua">sữa chua</a> + 1 muỗng mè rang</td><td>Bổ sung canxi</td></tr>
+        <tr><td>Trưa</td><td>Cơm mềm + <a href="/mon-an/ca-kho-to">cá kho tộ</a> (bỏ xương) + <a href="/mon-an/canh-bi-do-thit-bam">canh bí đỏ</a></td><td>Đạm dễ hấp thu</td></tr>
+        <tr><td>Phụ chiều</td><td><a href="/thuc-pham/du-du">Đu đủ chín</a> hoặc 1 ly sữa ấm</td><td>Tốt cho tiêu hóa</td></tr>
+        <tr><td>Tối</td><td>Cơm mềm + <a href="/mon-an/dau-phu-sot-ca-chua">đậu phụ sốt cà</a> + rau luộc mềm</td><td>Đạm thực vật, ít béo</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>📝 Mẹo thực tế</h2>
+    <ul style="line-height: 1.8;">
+      <li><strong>Nhai kém:</strong> Cắt nhỏ, nấu mềm, hầm kỹ, xay nhuyễn nếu cần.</li>
+      <li><strong>Giảm khứu giác/vị giác:</strong> Tăng gia vị thảo mộc (gừng, hành, tỏi, tiêu, sả) thay vì muối.</li>
+      <li><strong>Uống nước đều:</strong> Giữa các bữa ăn, không uống quá nhiều trong bữa ăn.</li>
+      <li><strong>Vận động nhẹ:</strong> Đi bộ, dưỡng sinh, yoga — giúp duy trì khối cơ và cảm giác ngon miệng.</li>
+      <li><strong>Kiểm tra cân nặng:</strong> Giảm cân không chủ ý là dấu hiệu nguy hiểm — cần khám bác sĩ.</li>
+      <li><strong>Bổ sung:</strong> Có thể cần vitamin D, B12 và canxi dạng bổ sung — hỏi bác sĩ trước khi dùng.</li>
+    </ul>
+  </section>
+
+  <DietMealPlan condition="nguoi-cao-tuoi" conditionLabel="người cao tuổi" />
+</ArticleLayout>

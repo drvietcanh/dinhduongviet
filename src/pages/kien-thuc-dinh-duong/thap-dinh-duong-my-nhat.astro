@@ -1,0 +1,172 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thap-dinh-duong-my-nhat"];
+if (!art) throw new Error("Article not found: thap-dinh-duong-my-nhat");
+---
+
+<ArticleLayout article={art}>
+<style is:global>
+    .hero { text-align: center; margin-bottom: 24px; }
+    .hero h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .hero .sub { color: var(--ink-secondary); font-size: 0.95rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; }
+    .card h2 { font-size: 1.15rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .card .desc { font-size: 0.9rem; color: var(--ink-secondary); margin-bottom: 14px; line-height: 1.5; }
+    .plate-visual { max-width: 340px; margin: 0 auto 16px; text-align: center; }
+    .plate-diagram { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative; margin: 0 auto; max-width: 250px; }
+    .plate-segment { position: absolute; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: white; text-align: center; padding: 4px; }
+    .plate-grains { background: #e8b859; top: 0; left: 0; width: 50%; height: 100%; border-radius: 50% 0 0 50%; padding-left: 20px; }
+    .plate-veggies { background: #5a8f3e; top: 0; left: 50%; width: 25%; height: 50%; border-radius: 0 50% 0 0; }
+    .plate-fruits { background: #c1443a; bottom: 0; left: 50%; width: 25%; height: 50%; border-radius: 0 0 50% 0; }
+    .plate-protein { background: #9d5b8e; top: 0; left: 75%; width: 25%; height: 100%; border-radius: 0 50% 50% 0; padding-right: 10px; }
+    .plate-dairy { position: absolute; width: 20%; height: 20%; background: #4a90d9; top: 5%; right: -10%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.55rem; color: white; }
+    .plate-label { font-size: 0.75rem; color: var(--ink-tertiary); margin-top: 8px; }
+    .pyramid-jp { max-width: 300px; margin: 0 auto 16px; }
+    .jp-tier { display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; padding: 12px 8px; width: 100%; text-align: center; }
+    .jp-bottom { background: #38a169; border-radius: 0 0 12px 12px; padding: 18px 8px; }
+    .jp-t2 { background: #68d391; color: #22543d; }
+    .jp-t3 { background: #f6e05e; color: #744210; }
+    .jp-t4 { background: #ed8936; }
+    .jp-t5 { background: #e53e3e; }
+    .jp-top { background: #805ad5; border-radius: 12px 12px 0 0; }
+    .jp-rotate { margin-top: 8px; display: block; text-align: center; font-size: 1.5rem; }
+    .comparison-section { margin-top: 32px; }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .comparison-table th, .comparison-table td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; }
+    .comparison-table th { background: var(--brand-light); font-weight: 600; color: var(--ink); }
+    [data-theme="dark"] .comparison-table th { background: #1a2e21; }
+    .comparison-table td:first-child { font-weight: 600; white-space: nowrap; }
+    .note { font-size: 0.8rem; color: var(--ink-tertiary); margin-top: 16px; line-height: 1.5; }
+  </style>
+
+  <div class="hero">
+    
+    <p class="sub">So sánh 3 mô hình dinh dưỡng phổ biến: Việt Nam, Mỹ (MyPlate) và Nhật Bản (Spinning Top)</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>🇺🇸 MyPlate — Hoa Kỳ</h2>
+      <div class="desc">Công bố 2011 bởi USDA, thay thế tháp thực phẩm. MyPlate chia đĩa ăn thành 5 nhóm, nhấn mạnh rau &amp; trái cây = ½ đĩa, ngũ cốc &amp; đạm = ¼ đĩa, sữa bên cạnh.</div>
+      <div class="plate-visual">
+        <div class="plate-diagram">
+          <div class="plate-segment plate-grains">Ngũ cốc<br/>¼</div>
+          <div class="plate-segment plate-veggies">Rau<br/>¼</div>
+          <div class="plate-segment plate-fruits">Trái cây<br/>¼</div>
+          <div class="plate-segment plate-protein">Đạm<br/>¼</div>
+          <div class="plate-dairy">🥛<br/>Sữa</div>
+        </div>
+        <div class="plate-label">MyPlate 2011 — ½ rau+trái, ¼ ngũ cốc, ¼ đạm + sữa</div>
+      </div>
+      <ul style="font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;padding-left:16px;">
+        <li><strong>Ưu điểm:</strong> Đơn giản, trực quan, dễ áp dụng vào bữa ăn thực tế</li>
+        <li><strong>Nhược điểm:</strong> Không phân biệt loại ngũ cốc (tinh chế/toàn phần), thiếu hướng dẫn về chất béo</li>
+        <li><strong>Thay thế 2026:</strong> "The New Pyramid" quay lại mô hình tháp</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🇯🇵 Tháp xoay Nhật Bản</h2>
+      <div class="desc">"Japanese Food Guide Spinning Top" do Bộ Y tế Nhật công bố 2005. Mô hình con quay: tầng trên = ăn nhiều, tầng dưới = vận động. Nhấn mạnh gạo lứt, cá, đậu nành, rau xanh.</div>
+      <div class="pyramid-jp">
+        <div class="jp-tier jp-top">🍬 Đồ ngọt, đồ uống có đường (ít nhất có thể)</div>
+        <div class="jp-tier jp-t5">🐟 Cá, thịt, trứng, đậu nành (3-5 SV)</div>
+        <div class="jp-tier jp-t4">🥛 Sữa, sữa chua, phô mai (2 SV)</div>
+        <div class="jp-tier jp-t3">🍎 Trái cây (2 SV)</div>
+        <div class="jp-tier jp-t2">🥬 Rau xanh (5-6 SV)</div>
+        <div class="jp-tier jp-bottom">🍚 Ngũ cốc, cơm, bánh mì (5-7 SV)</div>
+      </div>
+      <div class="jp-rotate">🔄</div>
+      <ul style="font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;padding-left:16px;">
+        <li><strong>Đặc trưng:</strong> Nhấn mạnh vận động thể chất (hình người chạy phần đáy con quay)</li>
+        <li><strong>Khác biệt:</strong> Đạm ưu tiên cá &gt; thịt, sữa ở tầng trên (ít hơn Mỹ/VN)</li>
+        <li><strong>Số phần cụ thể:</strong> Mỗi tầng có lượng khuyến nghị tối thiểu</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="comparison-section card">
+    <h2 style="margin-bottom:12px;">⚖️ So sánh 3 mô hình</h2>
+    <div style="overflow-x:auto;">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Tiêu chí</th>
+          <th>🇻🇳 Việt Nam</th>
+          <th>🇺🇸 Hoa Kỳ</th>
+          <th>🇯🇵 Nhật Bản</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cơ quan</td>
+          <td>Viện Dinh Dưỡng QG</td>
+          <td>USDA</td>
+          <td>Bộ Y tế Nhật</td>
+        </tr>
+        <tr>
+          <td>Năm công bố</td>
+          <td>~2010</td>
+          <td>2011 (thay 2026)</td>
+          <td>2005</td>
+        </tr>
+        <tr>
+          <td>Dạng</td>
+          <td>🟩 Tháp 7 tầng</td>
+          <td>🔵 Đĩa 5 phần</td>
+          <td>🟣 Con quay 6 tầng</td>
+        </tr>
+        <tr>
+          <td>Nhóm ưu tiên</td>
+          <td>Tinh bột + Rau nhiều</td>
+          <td>Rau + Trái cây = ½</td>
+          <td>Ngũ cốc + Rau nhiều</td>
+        </tr>
+        <tr>
+          <td>Sữa</td>
+          <td>Tầng 2 (trung bình)</td>
+          <td>Kèm đĩa (cao)</td>
+          <td>Tầng 3 (trung bình)</td>
+        </tr>
+        <tr>
+          <td>Đạm</td>
+          <td>Đa dạng (thịt + cá)</td>
+          <td>¼ đĩa (thịt nhiều)</td>
+          <td>Ưu tiên cá &gt; thịt</td>
+        </tr>
+        <tr>
+          <td>Nước</td>
+          <td>Có tầng riêng (đáy)</td>
+          <td>Không trong sơ đồ</td>
+          <td>Không trong sơ đồ</td>
+        </tr>
+        <tr>
+          <td>Vận động</td>
+          <td>Không trong sơ đồ</td>
+          <td>Khuyên riêng</td>
+          <td>Có (đáy con quay)</td>
+        </tr>
+        <tr>
+          <td>Dễ áp dụng</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>Phù hợp VN</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>⚠️ Lưu ý:</strong> MyPlate đã được thay thế bởi "The New Pyramid" từ tháng 1/2026. Thông tin MyPlate trên đây mang tính tham khảo lịch sử.
+    Tháp Việt Nam chưa có bản cập nhật chính thức kể từ 2010-2012.
+</ArticleLayout>

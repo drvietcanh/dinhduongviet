@@ -1,0 +1,118 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import DietMealPlan from "../../components/DietMealPlan.astro";
+const art = articleBySlug["beo-phi"];
+if (!art) throw new Error("Article not found: beo-phi");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Quân, 30 tuổi, chiều cao 1m68, nặng 92kg. BMI ~32. Sáng đi làm ly cà phê sữa đá, trưa cơm văn phòng, chiều trà sữa, tối về ăn cơm xong lại lướt điện thoại 3 tiếng. Gần đây anh đi khám phát hiện mỡ máu cao, men gan cao, huyết áp cao — cả bộ "hội chứng chuyển hóa".</p>
+  <p>Anh Quân không phải cá biệt. Theo Viện Dinh dưỡng Quốc gia, <strong>~36% người Việt thừa cân béo phì</strong>, trong đó tỷ lệ béo phì tăng nhanh nhất ở nhóm 25–40 tuổi thành thị.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Giảm cân hiệu quả không cần nhịn đói: <u>cắt nước ngọt và đồ ăn vặt</u>, 
+    <u>ăn rau trước khi ăn cơm</u>, <u>ngủ đủ 7–8h/đêm</u>, và <u>đi bộ 30 phút/ngày</u>. 
+    Mục tiêu an toàn: giảm 0.5–1kg/tuần.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao khó giảm cân?</h2>
+  <p>Béo phì là mất cân bằng năng lượng: calo vào > calo ra. Nhưng cơ thể có cơ chế chống đói rất mạnh — khi bạn nhịn ăn, cơ thể tự hạ chuyển hóa, giữ mỡ lại. Đó là lý do "nhịn ăn cấp tốc" thường thất bại sau 2 tuần.</p>
+  <p>Giải pháp: giảm calo từ từ (300–500 kcal/ngày), tập trung vào cắt <strong>đường lỏng</strong> (nước ngọt, trà sữa) và <strong>tinh bột trắng</strong> trước — dễ cắt hơn chất béo và không gây đói.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rau xanh không giới hạn:</strong> Rau muống, bắp cải, xà lách, dưa chuột, cà chua</li>
+      <li><strong>Đạm nạc:</strong> Ức gà, cá, tôm, <a href="/thuc-pham/dau-phu">đậu phụ</a>, <a href="/thuc-pham/trung-ga">trứng</a></li>
+      <li><strong>Tinh bột chậm:</strong> <a href="/thuc-pham/com-gao-lut">Cơm gạo lứt</a>, <a href="/thuc-pham/khoai-lang">khoai lang</a>, yến mạch, <a href="/thuc-pham/mien-dong">miến</a></li>
+      <li><strong>Chất béo tốt:</strong> <a href="/thuc-pham/bo-trai">Bơ</a>, dầu oliu, hạt điều, hạnh nhân, <a href="/thuc-pham/oc-cho">óc chó</a></li>
+      <li><strong>Trái cây ít ngọt:</strong> <a href="/thuc-pham/oi">Ổi</a>, <a href="/thuc-pham/buoi">bưởi</a>, <a href="/thuc-pham/tao">táo</a>, <a href="/thuc-pham/dua-hau">dưa hấu</a></li>
+      <li><strong>Uống:</strong> Nước lọc, trà xanh, cà phê đen</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⛔ Đường lỏng:</strong> Nước ngọt, trà sữa, nước ép đóng hộp, siro — dễ gây béo nhất</li>
+      <li><strong>⛔ Tinh bột trắng:</strong> Cơm trắng (1 bát ~200 kcal), bánh mì trắng, bánh ngọt, xôi</li>
+      <li><strong>⛔ Đồ chiên rán:</strong> Khoai tây chiên, gà rán, nem, chả giò</li>
+      <li><strong>⛔ Đồ ăn vặt:</strong> Bim bim, bánh quy, socola sữa, kem</li>
+      <li><strong>⛔ Bia rượu:</strong> 1 lon bia ~150 kcal — uống 3 lon = 1 bữa cơm</li>
+      <li><strong>⚠️ Ăn khuya:</strong> Sau 8h tối nên ngừng ăn, uống nước lọc nếu đói</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Nhóm</th><th>Khuyến nghị</th><th>Hình dung</th></tr></thead>
+    <tbody>
+      <tr><td>Năng lượng</td><td>Giảm 300–500 kcal so với nhu cầu</td><td>~1500–1800 kcal/ngày (nữ), 1800–2200 (nam)</td></tr>
+      <tr><td>Tinh bột</td><td>½–1 bát cơm/bữa</td><td>Ưu tiên gạo lứt, khoai lang</td></tr>
+      <tr><td>Đạm</td><td>1 phần lòng bàn tay/bữa</td><td>Thịt nạc, cá, đậu phụ</td></tr>
+      <tr><td>Rau</td><td>Không giới hạn</td><td>Ăn rau trước khi ăn cơm</td></tr>
+      <tr><td>Nước</td><td>2–2.5 lít/ngày</td><td>Giúp no giả và tăng chuyển hóa</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1500 kcal)</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Kcal ước tính</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>2 lát bánh mì nguyên cám + 1 quả trứng ốp la + cà phê đen</td><td>~300</td></tr>
+      <tr><td>🌞 Trưa</td><td>½ bát cơm gạo lứt + ức gà nướng + rau luộc + canh bí</td><td>~450</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>1 quả ổi + 10 hạt hạnh nhân</td><td>~150</td></tr>
+      <tr><td>🌙 Tối</td><td>Cá hấp + salad rau trộn dầu dấm + ½ bát cơm</td><td>~400</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Chia đều 4 bữa, không bỏ bữa sáng — tránh bù ăn nhiều buổi tối.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Ăn rau trước khi ăn cơm — giảm ~20% calo mỗi bữa.</li>
+        <li>Dùng bát nhỏ hơn — mắt thấy vẫn no, thực tế ăn ít hơn.</li>
+        <li>Ngủ đủ 7–8h — thiếu ngủ làm tăng cortisol, dễ thèm ăn.</li>
+        <li>Đi bộ sau ăn 15 phút — giảm đường huyết, hỗ trợ tiêu hóa.</li>
+        <li>Cân 1 lần/tuần — không cân hàng ngày vì dao động nước.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Chỉnh chế độ ăn 3 tháng không giảm cân.</li>
+        <li>BMI &gt; 35 — cần can thiệp chuyên sâu.</li>
+        <li>Kèm bệnh lý: tiểu đường, tăng huyết áp, ngưng thở khi ngủ.</li>
+        <li>Rối loạn ăn uống: nhịn ăn – ăn bù, hoặc ăn vô độ.</li>
+        <li>Mệt mỏi, thở dốc khi đi cầu thang.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

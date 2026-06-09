@@ -1,0 +1,739 @@
+---
+// BaseLayout.astro — Layout chính cho toàn bộ trang Dinh Dưỡng Việt
+// Có dark mode, responsive, SEO meta tags, self-hosted fonts, print/PDF style
+import Fonts from "../components/Fonts.astro";
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+const { title, description, image, canonical } = Astro.props;
+const defaultImage = "https://dinh-duong-viet.pages.dev/og-default.png";
+const imageUrl = image || defaultImage;
+const canonicalUrl = canonical ? `https://dinh-duong-viet.pages.dev${canonical}` : null;
+
+const pathname = Astro.url.pathname;
+const pathParts = pathname.split("/").filter(Boolean);
+const isArticle = pathname.startsWith("/kien-thuc-dinh-duong/") && pathParts.length >= 2;
+var breadcrumbItems = [
+  { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://dinh-duong-viet.pages.dev/" }
+];
+var breadcrumbNames = {
+  "thuc-pham": "Thực phẩm",
+  "mon-an": "Món ăn",
+  "kien-thuc-dinh-duong": "Kiến thức dinh dưỡng",
+  "cong-cu": "Công cụ",
+  "tim-kiem": "Tìm kiếm",
+  "bmi": "BMI & Vòng eo",
+  "muc-tieu-can-nang": "Mục tiêu cân nặng",
+  "bang-xep-hang": "Bảng xếp hạng thực phẩm",
+  "so-sanh-thuc-pham": "So sánh thực phẩm",
+  "ke-hoach-bua-an": "Kế hoạch bữa ăn",
+  "loc-thuc-pham": "Lọc thực phẩm",
+  "nuoc-uong": "Nước uống",
+  "doi-don-vi": "Đổi đơn vị",
+  "danh-gia-bua-an": "Đánh giá bữa ăn",
+  "thong-ke": "Thống kê"
+};
+var accumulated = "";
+for (var i = 0; i < pathParts.length; i++) {
+  accumulated += "/" + pathParts[i];
+  var name = breadcrumbNames[pathParts[i]];
+  if (!name) {
+    name = pathParts[i].replace(/-/g, " ").replace(/\b[a-z]/g, function(c) { return c.toUpperCase(); });
+  }
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    "position": i + 2,
+    "name": name,
+    "item": "https://dinh-duong-viet.pages.dev" + accumulated
+  });
+}
+if (breadcrumbItems.length > 1 && pathParts.length > 0) {
+  breadcrumbItems[breadcrumbItems.length - 1].name = title;
+}
+var breadcrumbSchema = null;
+if (breadcrumbItems.length > 1) {
+  breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems
+  };
+}
+
+// Organization + WebSite JSON-LD (chạy 1 lần)
+var orgSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dinh-duong-viet.pages.dev/#organization",
+      "name": "Dinh Dưỡng Việt",
+      "url": "https://dinh-duong-viet.pages.dev",
+      "sameAs": [ "https://www.facebook.com/dinhduongviet", "https://www.youtube.com/@dinhduongviet" ],
+      "description": "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam.",
+      "founder": { "@type": "Person", "name": "Dr. Viet Canh" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dinh-duong-viet.pages.dev/#website",
+      "url": "https://dinh-duong-viet.pages.dev",
+      "name": "Dinh Dưỡng Việt",
+      "description": "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam.",
+      "publisher": { "@id": "https://dinh-duong-viet.pages.dev/#organization" },
+      "inLanguage": "vi-VN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://dinh-duong-viet.pages.dev/tim-kiem?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+};
+
+// Article JSON-LD for pages /kien-thuc-dinh-duong/*
+var articleSchema = null;
+if (isArticle) {
+  const articleTitle = title.replace(" - Dinh Dưỡng Việt", "");
+  articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": articleTitle,
+    "description": "Bài viết kiến thức dinh dưỡng: " + articleTitle,
+    "author": { "@id": "https://dinh-duong-viet.pages.dev/#organization" },
+    "publisher": { "@id": "https://dinh-duong-viet.pages.dev/#organization" },
+    "datePublished": "2026-06-01",
+    "dateModified": "2026-06-02",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://dinh-duong-viet.pages.dev" + pathname
+    }
+  };
+}
+---
+
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description || "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam. Dữ liệu từ Bảng thành phần thực phẩm Việt Nam 2007 và USDA."} />
+    <meta name="theme-color" content="#1b5e20" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="DD Việt" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- OG / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description || "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam. Dữ liệu từ Bảng thành phần thực phẩm Việt Nam 2007 và USDA."} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Dinh Dưỡng Việt" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:url" content={canonicalUrl ? canonicalUrl : "https://dinh-duong-viet.pages.dev"} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description || "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam."} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <!-- Breadcrumb JSON-LD -->
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>}
+    <!-- Organization + WebSite JSON-LD (once per page) -->
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
+    {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>}
+
+    <!-- Self-hosted fonts (replaces Google Fonts CDN) -->
+    <Fonts />
+
+    <title>{title}</title>
+
+    <style is:global>
+      /* ===================== RESET & BASE ===================== */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Inter', 'Noto Sans', system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+      a { color: var(--brand); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      img { max-width: 100%; height: auto; display: block; }
+      ul { list-style: none; }
+      table { border-collapse: collapse; width: 100%; }
+
+      /* ===================== CSS CUSTOM PROPERTIES ===================== */
+      :root {
+        --brand: #2e7d32;
+        --brand-dark: #1b5e20;
+        --brand-light: #e8f5e9;
+        --brand-light2: #c8e6c9;
+        --brand-subtle: #f1f8e9;
+        --ink: #1a1a2e;
+        --ink-secondary: #4a4a5a;
+        --ink-tertiary: #8a8a9a;
+        --bg: #ffffff;
+        --bg-soft: #f7f9f8;
+        --bg-elevated: #f0faf0;
+        --card: #ffffff;
+        --card-hover: #f7fcf7;
+        --card-border: #e2e5e4;
+        --line: #ddd;
+        --line-light: #eee;
+        --radius: 10px;
+        --radius-lg: 14px;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+        --shadow: 0 2px 8px rgba(0,0,0,0.06);
+        --shadow-lg: 0 6px 20px rgba(0,0,0,0.08);
+        --accent: #1565c0;
+        --accent-light: #e3f2fd;
+        --bg-success: #f0fdf4;
+        --bg-info: #e3f2fd;
+        --bg-warning: #fef2f2;
+        --bg-highlight: #f0faf0;
+        --transition: 0.2s ease;
+      }
+
+      [data-theme="dark"] {
+        --brand: #66bb6a;
+        --brand-dark: #4caf50;
+        --brand-light: #1b3d1e;
+        --brand-light2: #2e5a32;
+        --brand-subtle: #1a2a1a;
+        --ink: #e0e0e0;
+        --ink-secondary: #aaa;
+        --ink-tertiary: #777;
+        --bg: #121212;
+        --bg-soft: #1a1a2e;
+        --bg-elevated: #1e2a1e;
+        --card: #1e1e1e;
+        --card-hover: #2a2a2a;
+        --card-border: #2a2d2a;
+        --line: #333;
+        --line-light: #2a2a2a;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+        --shadow: 0 2px 8px rgba(0,0,0,0.4);
+        --shadow-lg: 0 6px 20px rgba(0,0,0,0.5);
+        --accent: #90caf9;
+        --accent-light: #1a2740;
+        --bg-success: #0a1f0a;
+        --bg-info: #0a1f30;
+        --bg-warning: #2a0a0a;
+        --bg-highlight: #1a2e1a;
+        --transition: 0.2s ease;
+      }
+
+      /* ===================== COMMON STYLES ===================== */
+      .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+        flex: 1;
+      }
+      .wrapper-wide {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ===================== NAV ===================== */
+      .top-bar {
+        background: var(--brand);
+        color: white;
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      }
+      .top-bar .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .top-bar .logo {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .top-bar .logo img.logo-svg { width: 26px; height: 26px; display: block; }
+      .top-bar .logo:hover { text-decoration: none; opacity: 0.9; }
+      .nav-links {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+      .nav-links a {
+        color: rgba(255,255,255,0.9);
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 4px 0;
+        border-bottom: 2px solid transparent;
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .nav-links a:hover {
+        color: white;
+        text-decoration: none;
+        border-bottom-color: white;
+      }
+      .nav-search {
+        display: flex;
+        align-items: center;
+        background: rgba(255,255,255,0.15);
+        border-radius: 24px;
+        padding: 2px 10px;
+        gap: 6px;
+        min-width: 120px;
+        max-width: 200px;
+        transition: background 0.2s, min-width 0.3s;
+      }
+      .nav-search:focus-within {
+        background: rgba(255,255,255,0.25);
+        min-width: 180px;
+      }
+      .nav-search input {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 0.82rem;
+        padding: 6px 0;
+        width: 100%;
+        outline: none;
+        font-family: inherit;
+      }
+      .nav-search input::placeholder { color: rgba(255,255,255,0.6); }
+      .nav-search .search-icon { font-size: 0.85rem; opacity: 0.7; flex-shrink: 0; }
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: white;
+        font-size: 1.5rem;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .theme-toggle {
+        background: rgba(255,255,255,0.15);
+        border: none;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: background 0.2s;
+        flex-shrink: 0;
+      }
+      .theme-toggle:hover { background: rgba(255,255,255,0.25); }
+
+      /* Mobile */
+      @media (max-width: 700px) {
+        .hamburger { display: block; }
+        .nav-links, .nav-search { display: none; }
+        .nav-open .nav-links, .nav-open .nav-search {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding: 12px 0;
+        }
+        .nav-open .nav-links a { font-size: 0.95rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .nav-open .nav-search { max-width: none; width: 100%; }
+        .top-bar .wrapper.nav-open { flex-wrap: wrap; }
+      }
+
+      /* ===================== CONTENT ===================== */
+      main { }
+      .content-wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      section.section { margin-bottom: 36px; }
+      .badge {
+        display: inline-block;
+        background: var(--brand-light);
+        color: var(--brand);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      h1 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); margin: 0 0 14px; font-weight: 700; line-height: 1.2; }
+      h2 { font-size: 1.3rem; margin: 0 0 12px; font-weight: 700; color: var(--brand); }
+      h2 .count { font-size: 0.85rem; color: var(--ink-tertiary); font-weight: 400; }
+      p.lead { color: var(--ink-secondary); font-size: 1.05rem; margin-bottom: 24px; line-height: 1.7; }
+      .muted { color: var(--ink-tertiary); font-size: 0.9rem; }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-lg);
+        padding: 22px;
+        box-shadow: var(--shadow-sm);
+        transition: box-shadow var(--transition), transform var(--transition);
+      }
+      .card:hover { 
+        box-shadow: var(--shadow);
+        transform: translateY(-2px);
+      }
+      a.card:hover { text-decoration: none; }
+      .result-link { display: block; }
+
+      /* Fade-in animation for main content */
+      main { padding: 36px 0; animation: fadeIn 0.3s ease-out; }
+      @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+      .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+      .grid { display: grid; gap: 16px; }
+      .grid.two { grid-template-columns: 1fr 1fr; }
+      .grid.three { grid-template-columns: 1fr 1fr 1fr; }
+
+      @media (max-width: 640px) {
+        .grid.two, .grid.three { grid-template-columns: 1fr; }
+      }
+
+      /* ===================== TAGS ===================== */
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+      .tag {
+        display: inline-block;
+        background: var(--brand-light);
+        color: var(--brand);
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+      .mini-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: var(--brand-light);
+        color: var(--brand);
+        font-weight: 500;
+      }
+
+      /* ===================== TABLES ===================== */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      .table th, .table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line-light); }
+      .table th { background: var(--bg-soft); font-weight: 600; color: var(--brand); }
+      .table tr:hover { background: var(--line-light); }
+
+      /* ===================== BUTTONS ===================== */
+      .btn-outline {
+        display: inline-flex; align-items: center; gap: 4px;
+        padding: 8px 16px; border: 1px solid var(--line);
+        border-radius: 999px; background: var(--card);
+        color: var(--ink-secondary); font-size: 0.85rem;
+        cursor: pointer; transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .btn-outline:hover { border-color: var(--brand); color: var(--brand); }
+      .btn-sm { padding: 5px 12px; font-size: 0.8rem; }
+
+      /* ===================== DISCLAIMER ===================== */
+      .disclaimer {
+        background: var(--bg-warning);
+        border: 1px solid #f5c6cb;
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        font-size: 0.88rem;
+        color: #8a3a3a;
+        margin-bottom: 20px;
+      }
+      [data-theme="dark"] .disclaimer {
+        background: #2a0a0a;
+        border-color: #5a2020;
+        color: #e8a0a0;
+      }
+
+      /* ===================== STATS ===================== */
+      .stat { text-align: center; padding: 12px; }
+      .stat strong { display: block; font-size: 1.6rem; color: var(--brand); margin: 4px 0; }
+      .stat-block { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
+
+      /* ===================== FOOD IMG ===================== */
+      .food-img { max-width: 400px; border-radius: var(--radius-lg); margin: 16px 0; box-shadow: var(--shadow-lg); }
+
+      /* ===================== FOOTER ===================== */
+      .footer {
+        background: var(--bg-soft);
+        border-top: 1px solid var(--line);
+        padding: 32px 0;
+        margin-top: 40px;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+      }
+      .footer .wrapper { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; }
+      .footer-col { flex: 1; min-width: 160px; }
+      .footer-col h4 { font-weight: 600; margin-bottom: 10px; color: var(--ink); }
+      .footer-col a { display: block; color: var(--ink-secondary); padding: 3px 0; }
+      .footer-col a:hover { color: var(--brand); }
+      .footer-bottom { text-align: center; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-tertiary); }
+
+      /* ===================== ACTION BUTTONS ===================== */
+      .action-btns { display: flex; gap: 6px; flex-shrink: 0; }
+
+      /* ===================== HEALTH SCORE BADGE ===================== */
+      .score-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 14px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; }
+
+      /* ===================== BREADCRUMB (global) ===================== */
+      .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 18px;
+        font-size: 0.82rem;
+        color: var(--ink-tertiary);
+        padding: 8px 12px;
+        background: var(--bg-soft);
+        border-radius: 8px;
+      }
+      .breadcrumb a {
+        color: var(--brand);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .breadcrumb a:hover { text-decoration: underline; }
+      .breadcrumb-sep {
+        color: var(--ink-tertiary);
+        font-size: 0.75rem;
+      }
+      .breadcrumb-current {
+        color: var(--ink-secondary);
+        font-weight: 500;
+      }
+
+      /* ===================== DISABLED ===================== */
+      .disabled { opacity: 0.4; pointer-events: none; }
+
+      /* ===================== RESPONSIVE ===================== */
+      @media (max-width: 768px) {
+        .grid.two, .grid.three { grid-template-columns: 1fr; }
+        .top-bar .wrapper { flex-wrap: wrap; }
+        .nav-links { gap: 10px; }
+        .nav-links a { font-size: 0.82rem; }
+        .theme-toggle { font-size: 0.8rem; padding: 4px 10px; }
+        .food-img { max-width: 100%; }
+        .footer .wrapper { flex-direction: column; gap: 16px; }
+      }
+      @media (max-width: 640px) {
+        .wrapper, .content-wrapper { padding: 0 14px; }
+        main { padding: 20px 0; }
+        .card { padding: 14px; }
+      }
+      @media (max-width: 480px) {
+        .top-bar .logo { font-size: 1rem; }
+        .nav-links { gap: 6px; }
+        .nav-links a { font-size: 0.75rem; padding: 2px 0; }
+        .action-btns { flex-direction: column; width: 100%; }
+        .action-btns .btn-outline { width: 100%; justify-content: center; }
+      }
+
+      /* ===================== PRINT ===================== */
+      @media print {
+        body { background: white !important; color: black !important; }
+        .top-bar, .footer, .action-btns, .disclaimer { display: none !important; }
+        .card { border: 1px solid #ccc !important; box-shadow: none !important; }
+        a { color: #1b5e20 !important; text-decoration: underline !important; }
+        .table th, .table td { border-color: #ccc !important; }
+      }
+
+      /* ===================== SCROLL-TOP BUTTON ===================== */
+      #scroll-top-btn {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--brand);
+        color: white;
+        border: none;
+        font-size: 1.3rem;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        transition: opacity 0.3s;
+        line-height: 44px;
+        text-align: center;
+      }
+
+      /* ===================== SKELETON ===================== */
+      .skeleton { background: var(--line-light); border-radius: var(--radius); animation: pulse 1.5s ease-in-out infinite; }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="top-bar">
+      <div class="wrapper">
+        <a href="/" class="logo">
+        <img src="/logo.svg" alt="Dinh Dưỡng Việt" class="logo-svg" width="26" height="26" />
+        <span>Dinh Dưỡng Việt</span>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu">☰</button>
+      <div class="nav-search">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="nav-search-input" placeholder="Tìm..." autocomplete="off" />
+      </div>
+        <div class="nav-links">
+          <a href="/kien-thuc-dinh-duong">Kiến thức</a>
+          <a href="/ban-do-benh">Bệnh lý</a>
+          <a href="/dung-tin-ngay">🔍 Đừng Tin Ngay</a>
+          <a href="/thuc-pham">Thực phẩm</a>
+          <a href="/mon-an">Món ăn</a>
+          <a href="/cong-cu">Công cụ</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" title="Chuyển giao diện sáng/tối">🌓</button>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="content-wrapper">
+        <slot />
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="wrapper">
+        <div class="footer-col">
+          <h4>Dinh Dưỡng Việt</h4>
+          <p style="font-size:0.85rem;">Dữ liệu tham khảo từ Bảng thành phần thực phẩm Việt Nam 2007 và các nguồn quốc tế.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tra cứu</h4>
+          <a href="/kien-thuc-dinh-duong">📚 Kiến thức dinh dưỡng</a>
+          <a href="/dung-tin-ngay">🔍 Đừng Tin Ngay!</a>
+          <a href="/ban-do-benh">🗺️ Bản đồ bệnh mạn tính</a>
+          <a href="/thuc-pham">🥬 Thực phẩm</a>
+          <a href="/mon-an">🍜 Món ăn Việt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Công cụ</h4>
+          <a href="/cong-cu/bmi">⚖️ BMI & Vòng eo</a>
+          <a href="/cong-cu/muc-tieu-can-nang">🎯 Mục tiêu cân nặng</a>
+          <a href="/cong-cu/bang-xep-hang">🏆 Bảng xếp hạng</a>
+          <a href="/cong-cu/theo-doi-suc-khoe">📊 Theo dõi sức khỏe</a>
+          <a href="/cong-cu/khau-phan-viet-clinical">🔬 Khẩu phần Clinical</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hỗ trợ</h4>
+          <a href="/hoi-dap">❓ Hỏi nhanh – đáp gọn</a>
+          <a href="/tim-kiem">🔍 Tìm kiếm</a>
+          <a href="/phuong-phap">📖 Phương pháp & Dữ liệu</a>
+          <a href="/kien-thuc-dinh-duong">📋 Danh sách bài viết</a>
+          <a href="/ban-do-benh">🗺️ Bản đồ bệnh mạn tính</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dinh Dưỡng Việt — Dữ liệu chỉ mang tính tham khảo, không thay thế tư vấn y tế.</p>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang">&#8593;</button>
+
+    <script is:inline>
+      (function() {
+        var btn = document.getElementById('scroll-top-btn');
+        if (btn) {
+          window.addEventListener('scroll', function() {
+            btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+          });
+          btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      })();
+    </script>
+
+    <!-- Nav: Hamburger + Search -->
+    <script is:inline>
+      (function() {
+        var ham = document.getElementById('hamburger-btn');
+        var wrapper = ham && ham.closest('.wrapper');
+        if (ham && wrapper) {
+          ham.addEventListener('click', function() {
+            wrapper.classList.toggle('nav-open');
+          });
+        }
+        var searchInput = document.getElementById('nav-search-input');
+        if (searchInput) {
+          searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+              var q = this.value.trim();
+              if (q) {
+                window.location.href = '/tim-kiem?q=' + encodeURIComponent(q);
+              }
+            }
+          });
+        }
+      })();
+    </script>
+
+    <!-- Dark Mode Script -->
+    <script is:inline>
+      (function() {
+        var key = 'ddv-theme';
+        var stored = localStorage.getItem(key);
+
+        function apply(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+
+        if (stored) {
+          apply(stored);
+        } else {
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          apply(prefersDark ? 'dark' : 'light');
+        }
+
+        document.getElementById('theme-toggle')?.addEventListener('click', function() {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          apply(next);
+          try { localStorage.setItem(key, next); } catch(e) {}
+        });
+      })();
+    </script>
+
+    <!-- Service Worker Registration (PWA) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(function(err) {
+          console.log('SW reg failed:', err);
+        });
+      }
+    </script>
+  </body>
+</html>

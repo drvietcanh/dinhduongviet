@@ -1,0 +1,89 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["viem-mach-dinh-duong"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Viêm mạch (vasculitis) là nhóm bệnh tự miễn gây viêm thành mạch máu, dẫn đến hẹp hoặc tổn thương mạch, giảm tưới máu đến các cơ quan. Có nhiều thể: viêm mạch hệ thống (GPA/Wegener), viêm mạch tế bào khổng lồ, viêm mạch IgA (Henoch-Schönlein)...</p>
+    <p>Dinh dưỡng không thể thay thế thuốc ức chế miễn dịch, nhưng <strong>chế độ ăn chống viêm</strong> giúp giảm hoạt động bệnh, hỗ trợ sức khỏe mạch máu và giảm tác dụng phụ của thuốc.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Chống viêm:</strong> Omega-3 (cá béo, hạt lanh, dầu olive), trái cây giàu polyphenol, rau xanh nhiều chất chống oxy hóa.</li>
+      <li><strong>Tránh kích hoạt miễn dịch:</strong> Một số người nhạy cảm với gluten, sữa, hoặc phụ gia thực phẩm. Có thể thử loại trừ dưới sự hướng dẫn.</li>
+      <li><strong>Hỗ trợ thuốc:</strong> Corticosteroid và ức chế miễn dịch (cyclophosphamide, rituximab) ảnh hưởng xương, huyết áp, đường huyết. Cần chế độ ăn phù hợp.</li>
+      <li><strong>Duy trì cân nặng khỏe:</strong> Tránh thiếu dinh dưỡng trong đợt cấp, tránh tăng cân do corticoid.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm chống viêm</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu, cá trích, cá mòi — giàu omega-3 EPA/DHA</span></div>
+      <div class="food-row"><span class="food-cat">🫒 Dầu olive</span><span>Dầu olive nguyên chất (extra virgin) — giàu oleocanthal chống viêm</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau xanh đậm</span><span>Cải xoăn, cải bó xôi, cải thìa — giàu vitamin K, chất chống oxy hóa</span></div>
+      <div class="food-row"><span class="food-cat">🍓 Trái cây mọng</span><span>Việt quất, dâu tây, mâm xôi — anthocyanin chống viêm mạnh</span></div>
+      <div class="food-row"><span class="food-cat">🧄 Gia vị thảo mộc</span><span>Nghệ (curcumin), gừng, tỏi, quế — có tác dụng điều hòa miễn dịch</span></div>
+      <div class="food-row"><span class="food-cat">🌰 Hạt</span><span>Hạnh nhân, hạt óc chó, hạt chia, hạt lanh</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm nên hạn chế</h2>
+    <ul>
+      <li><strong>Thực phẩm chế biến sẵn & đồ chiên rán</strong> — chất béo chuyển hóa và AGEs thúc đẩy viêm</li>
+      <li><strong>Đường tinh luyện & đồ ngọt</strong> — làm tăng cytokine viêm</li>
+      <li><strong>Thực phẩm giàu natri</strong> — tăng huyết áp, nhất là khi dùng corticoid</li>
+      <li><strong>Thịt đỏ & chế phẩm từ thịt</strong> — nên giới hạn, ưu tiên đạm thực vật</li>
+      <li><strong>Rượu bia</strong> — có thể kích hoạt bệnh ở một số người</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="meal-plan">
+    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <div class="meal-table">
+      <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Yến mạch nấu với sữa hạt + việt quất + hạt chia</span></div>
+      <div class="meal-row"><span class="meal-time">🌰 Phụ sáng</span><span>1 nắm óc chó + 1 quả lê</span></div>
+      <div class="meal-row"><span class="meal-time">🥗 Trưa</span><span>Salad cải xoăn + cá hồi xông khói + dầu olive + bơ + hạt bí</span></div>
+      <div class="meal-row"><span class="meal-time">🥤 Xế</span><span>Sinh tố việt quất + sữa chua Hy Lạp</span></div>
+      <div class="meal-row"><span class="meal-time">🍜 Tối</span><span>Bún gạo lứt + thịt gà xé + rau thơm + nghệ</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="living-with">
+    <h2>Sống chung với viêm mạch</h2>
+    <ul>
+      <li><strong>Theo dõi cơn đau:</strong> Ghi nhật ký thực phẩm — nếu thấy triệu chứng nặng sau ăn món nào, hãy thử loại bỏ.</li>
+      <li><strong>Kiểm soát stress:</strong> Stress làm tăng hoạt động bệnh. Thiền, yoga, ngủ đủ giấc.</li>
+      <li><strong>Không tự ý bỏ thuốc:</strong> Dinh dưỡng hỗ trợ, không thay thế ức chế miễn dịch.</li>
+      <li><strong>Theo dõi dinh dưỡng:</strong> Trong đợt cấp, ăn uống kém — cần bổ sung năng lượng, có thể dùng sữa dinh dưỡng.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+
+    <details class="faq-item">
+      <summary>Chế độ ăn có thể thay thế thuốc điều trị viêm mạch không?</summary>
+      <p>Không. Viêm mạch là bệnh tự miễn cần thuốc ức chế miễn dịch. Dinh dưỡng chỉ hỗ trợ giảm viêm và giảm tác dụng phụ của thuốc.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Có nên ăn chay không?</summary>
+      <p>Một số người thấy cải thiện với chế độ ăn chay chống viêm (Mediterranean-style). Tuy nhiên cần đảm bảo đủ đạm, B12, sắt, omega-3. Tham khảo chuyên gia dinh dưỡng.</p>
+    </details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway">
+      <p>Viêm mạch là bệnh mạn tính cần quản lý lâu dài. <strong>3 trụ cột:</strong> (1) Thuốc ức chế miễn dịch đúng liều, (2) Chế độ ăn chống viêm giàu omega-3, (3) Theo dõi và ghi nhật ký bệnh. Đừng tự ý ngưng thuốc dù ăn uống tốt.</p>
+    </div>
+  </section>
+</ArticleLayout>

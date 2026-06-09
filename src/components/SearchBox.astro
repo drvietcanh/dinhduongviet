@@ -1,0 +1,10 @@
+---
+const { value = "" } = Astro.props;
+---
+
+<form class="card" action="/tim-kiem" method="get">
+  <div class="search-row">
+    <input name="q" value={value} placeholder="Tìm thực phẩm hoặc món ăn: phở bò, thịt bò, trứng gà..." aria-label="Từ khóa tìm kiếm" />
+    <button class="button" type="submit">Tìm kiếm</button>
+  </div>
+</form>

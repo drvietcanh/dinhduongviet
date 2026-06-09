@@ -1,0 +1,543 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AutoSearch from "../components/AutoSearch.astro";
+import FoodIcon from "../components/FoodIcon.astro";
+import DataSummary from "../components/DataSummary.astro";
+import NutrientStats from "../components/NutrientStats.astro";
+import { foods, recipes } from "../data/nutrition";
+import { calculateRecipe, foodBySlug, allTags, tagLabel } from "../lib/nutrition";
+
+const phoRecipe = recipes.find((recipe) => recipe.slug === "pho-bo")!;
+const phoNutrients = calculateRecipe(phoRecipe);
+const categories = [...new Set(foods.map((f) => f.category))];
+const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
+const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
+const toolCards = [
+  { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Tính BMR, TDEE, lộ trình giảm/tăng" },
+  { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI & vòng eo", desc: "Đánh giá béo phì châu Á, WHR" },
+  { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI cơm, bún, phở, trái cây Việt" },
+  { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Biết ngay bữa này có an toàn cho đường huyết" },
+  { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Huyết áp, đường huyết, mỡ máu" },
+  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Calo, sắt, canxi, DHA từng tam cá nguyệt" },
+  { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Năng lượng, đạm, canxi 0–14 tuổi" },
+  { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "26 môn tập, calo tương đương thực phẩm" },
+  { href: "/cong-cu/ti-le-mo-co-the", icon: "📏", name: "Tỷ lệ mỡ cơ thể", desc: "US Navy, WHR, đánh giá mỡ nội tạng" },
+];
+---
+
+<BaseLayout title="Dinh Dưỡng Việt - Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam" canonical="/">
+  <section class="hero">
+    <span class="hero-badge">🇻🇳 Thực phẩm Việt Nam — Có nguồn gốc</span>
+    <h1>Ăn gì cũng biết <span class="brand-text">bao nhiêu calo</span></h1>
+    <p class="hero-desc">Tra nhanh calo, protein, carb, chất béo của thực phẩm và món ăn Việt Nam theo 100g hoặc khẩu phần.</p>
+    <div class="hero-search"><AutoSearch /></div>
+    <div class="hero-actions">
+      <a class="cta-btn" href="/thuc-pham">🥬 Tra thực phẩm</a>
+      <a class="cta-btn" href="/mon-an">🍜 Tra món ăn</a>
+      <a class="cta-btn cta-outline" href="/ban-do-benh">🩺 Bệnh lý</a>
+      <a class="cta-btn cta-outline" href="/dung-tin-ngay">🔍 Đừng Tin Ngay</a>
+      <a class="cta-btn cta-outline" href="/cong-cu/bang-xep-hang">🏆 Xếp hạng</a>
+    </div>
+  </section>
+
+  <!-- Đừng Tin Ngay promo ribbon -->
+  <section class="dtn-ribbon">
+    <a href="/dung-tin-ngay" class="dtn-ribbon-link">
+      <span class="dtn-ribbon-icon">🔍</span>
+      <span class="dtn-ribbon-text"><strong>Đừng Tin Ngay!</strong> — Những hiểu lầm phổ biến về dinh dưỡng</span>
+      <span class="dtn-ribbon-action">Xem tất cả →</span>
+    </a>
+  </section>
+
+  <!-- Bản đồ bệnh promo ribbon -->
+  <section class="map-ribbon">
+    <a href="/ban-do-benh" class="map-ribbon-link">
+      <span class="map-ribbon-icon">🗺️</span>
+      <span class="map-ribbon-text"><strong>Bản đồ bệnh mạn tính</strong> — Tra cứu dinh dưỡng theo từng bệnh, 21 nhóm bệnh theo chuyên khoa</span>
+      <span class="map-ribbon-action">Khám phá →</span>
+    </a>
+  </section>
+
+  <section class="section entry-grid">
+    <div class="entry-cards">
+      <a href="/kien-thuc-dinh-duong" class="entry-card">
+        <div class="entry-icon">🥗</div>
+        <div class="entry-title">Tôi muốn ăn lành mạnh hơn</div>
+        <div class="entry-desc">Tháp dinh dưỡng, đĩa ăn lành mạnh, giảm muối, giảm đường, đọc nhãn thực phẩm</div>
+      </a>
+      <a href="/ban-do-benh" class="entry-card">
+        <div class="entry-icon">🩺</div>
+        <div class="entry-title">Tôi đang có bệnh</div>
+        <div class="entry-desc">Tiểu đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu — ăn gì, kiêng gì?</div>
+      </a>
+      <a href="/cong-cu/muc-tieu-can-nang" class="entry-card">
+        <div class="entry-icon">⚖️</div>
+        <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
+        <div class="entry-desc">Tính BMR, TDEE, mục tiêu calo, kế hoạch giảm cân khoa học, tăng cơ</div>
+      </a>
+      <a href="/cong-cu/ke-hoach-bua-an" class="entry-card">
+        <div class="entry-icon">📋</div>
+        <div class="entry-title">Tôi cần thực đơn cụ thể</div>
+        <div class="entry-desc">Thực đơn 1 ngày, bữa sáng, bữa tối, ăn ngoài hàng, kế hoạch bữa ăn cá nhân</div>
+      </a>
+    </div>
+  </section>
+
+  <DataSummary />
+
+  <!-- Dashboard health alerts -->
+  <section class="section" id="ha-root" style="display:none;">
+    <div class="section-header"><h2>🩺 Cảnh báo sức khỏe</h2><a href="/cong-cu/theo-doi-suc-khoe" class="view-all">📊 Xem chi tiết →</a></div>
+    <div id="ha-alerts"></div>
+    <div id="ha-good" style="display:none;text-align:center;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);">
+      <div style="font-size:2rem;margin-bottom:6px;">✅</div>
+      <div style="font-weight:600;font-size:0.95rem;">Các chỉ số gần đây trong ngưỡng an toàn</div>
+      <div style="font-size:0.82rem;color:var(--ink-tertiary);margin-top:4px;">Tiếp tục theo dõi định kỳ tại <a href="/cong-cu/theo-doi-suc-khoe">📊 Theo dõi sức khỏe</a></div>
+    </div>
+  </section>
+
+  <!-- Meal tracker alert banner -->
+  <section class="section" id="mt-banner-root" style="display:none;">
+    <div class="section-header"><h2>📓 Nhật ký ăn uống hôm nay</h2><a href="/cong-cu/nhat-ky" class="view-all">Xem chi tiết →</a></div>
+    <div id="mt-banner" style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;">
+      <div id="mt-banner-content"></div>
+    </div>
+  </section>
+
+  <script>
+(function() {
+  // Dashboard health alerts from health-track-v1
+  try {
+    var ra = localStorage.getItem("health-track-v1");
+    if(ra) {
+      var data = JSON.parse(ra);
+      if(data && data.length > 0) {
+        data.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
+        var l = data[0];
+
+        // Load goals
+        var goals = null;
+        try { var gs = localStorage.getItem("health-goals-v1"); if(gs) goals=JSON.parse(gs); } catch(e){}
+
+        // Load weight/height from meal tracker targets
+        var mtWeight = 65, mtHeight = 168;
+        try {
+          var mt = localStorage.getItem("mt-target-v2");
+          if(mt) { var mtp = JSON.parse(mt); if(mtp.weight) mtWeight=mtp.weight; if(mtp.height) mtHeight=mtp.height; }
+        } catch(e){}
+
+        var alerts = [];
+
+        // BP
+        if(l.sys && l.sys >= 140) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm thu cao",msg:"<strong>"+l.sys+"</strong> mmHg — nguy cơ tăng huyết áp. Giảm muối &lt;5g/ngày.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Giảm muối, hạn chế rượu bia, tập thể dục."});
+        else if(l.sys && l.sys >= 130) alerts.push({severity:"vua",icon:"🫀",title:"Huyết áp tâm thu cao nhẹ",msg:"<strong>"+l.sys+"</strong> mmHg — tiền tăng huyết áp.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Theo dõi thường xuyên, giảm muối."});
+
+        if(l.dia && l.dia >= 90) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm trương cao",msg:"<strong>"+l.dia+"</strong> mmHg.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Giảm muối &lt;5g, tăng rau xanh, hạn chế rượu."});
+        else if(l.dia && l.dia >= 80) alerts.push({severity:"vua",icon:"🫀",title:"HA tâm trương cao nhẹ",msg:"<strong>"+l.dia+"</strong> mmHg.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Theo dõi và giảm muối."});
+
+        // Blood glucose
+        if(l.glucose && l.glucose > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"Đường huyết cao",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — nguy cơ đái tháo đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Hạn chế tinh bột tinh chế, tăng chất xơ, khám bác sĩ."});
+        else if(l.glucose && l.glucose >= 5.6 && l.glucose <= 7.0) alerts.push({severity:"vua",icon:"🩸",title:"Đường huyết cao nhẹ",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — tiền tiểu đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Giảm đường, tăng chất xơ, tập thể dục."});
+
+        // HbA1c
+        if(l.a1c && l.a1c > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"HbA1c > mục tiêu",msg:"<strong>"+l.a1c.toFixed(1)+"%</strong> — cần kiểm soát đường huyết tốt hơn.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Chế độ ăn GI thấp, theo dõi đường huyết hàng ngày."});
+
+        // Waist
+        if(l.waist) {
+          if(l.waist > 90) alerts.push({severity:"cao",icon:"📏",title:"Vòng eo lớn",msg:"<strong>"+l.waist+" cm</strong> — nguy cơ béo bụng, mỡ nội tạng.",link:"/cong-cu/bmi",tip:"Giảm calo, tăng vận động, hạn chế đường."});
+          else if(l.waist > 80) alerts.push({severity:"vua",icon:"📏",title:"Vòng eo lớn nhẹ",msg:"<strong>"+l.waist+" cm</strong> — theo dõi.",link:"/cong-cu/bmi",tip:"Duy trì chế độ ăn lành mạnh."});
+        }
+
+        // BMI from mt weight
+        if(mtWeight && mtHeight) {
+          var bmi = mtWeight / ((mtHeight/100)*(mtHeight/100));
+          if(bmi >= 30) alerts.push({severity:"cao",icon:"⚖️",title:"Béo phì (BMI "+bmi.toFixed(1)+")",msg:"BMI <strong>"+bmi.toFixed(1)+"</strong> — &ge;30: béo phì độ I.",link:"/cong-cu/bmi",tip:"Giảm 300-500 kcal/ngày, tăng vận động."});
+          else if(bmi >= 25) alerts.push({severity:"vua",icon:"⚖️",title:"Béo phì nhẹ (BMI "+bmi.toFixed(1)+")",msg:"BMI <strong>"+bmi.toFixed(1)+"</strong> — &ge;25 (châu Á): thừa cân.",link:"/cong-cu/bmi",tip:"Giảm tinh bột tinh chế, tăng rau xanh."});
+        }
+
+        // LDL
+        if(l.ldl && l.ldl > 3.4) alerts.push({severity:"cao",icon:"🧪",title:"LDL cholesterol cao",msg:"<strong>"+l.ldl.toFixed(2)+"</strong> mmol/L — nguy cơ xơ vữa mạch.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Giảm mỡ bão hòa, đồ chiên. Tăng chất xơ hòa tan."});
+        else if(l.ldl && l.ldl >= 2.6) alerts.push({severity:"vua",icon:"🧪",title:"LDL cao nhẹ",msg:"<strong>"+l.ldl.toFixed(2)+"</strong> mmol/L.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Theo dõi chế độ ăn, hạn chế mỡ bão hòa."});
+
+        // Triglyceride
+        if(l.tg && l.tg > 2.3) alerts.push({severity:"cao",icon:"🧪",title:"Triglyceride cao",msg:"<strong>"+l.tg.toFixed(2)+"</strong> mmol/L — nguy cơ viêm tụy.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Giảm đường, tinh bột tinh chế, rượu bia."});
+        else if(l.tg && l.tg >= 1.7) alerts.push({severity:"vua",icon:"🧪",title:"Triglyceride cao nhẹ",msg:"<strong>"+l.tg.toFixed(2)+"</strong> mmol/L.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Hạn chế đường và rượu."});
+
+        var root = document.getElementById("ha-root");
+        var al = document.getElementById("ha-alerts");
+        var good = document.getElementById("ha-good");
+        if(!root || !al) return;
+
+        if(alerts.length > 0) {
+          root.style.display="";
+          al.innerHTML = '<div class="health-alert-grid">'+
+            alerts.map(function(a) {
+              return '<div class="card ha-card ha-'+a.severity+'">'+
+                '<div class="ha-icon">'+a.icon+'</div>'+
+                '<div class="ha-body">'+
+                  '<div class="ha-title">'+a.title+'</div>'+
+                  '<div class="ha-msg">'+a.msg+'</div>'+
+                  '<div class="ha-tip">💡 '+a.tip+'</div>'+
+                  '<a href="'+a.link+'" class="ha-link">Xem hướng dẫn →</a>'+
+                '</div>'+
+              '</div>';
+            }).join("")+
+          '</div>';
+        } else {
+          root.style.display="";
+          good.style.display="";
+        }
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+
+  <!-- Meal tracker dashboard banner -->
+  <script>
+(function() {
+  try {
+    var raw = localStorage.getItem("mt-diary-v2");
+    if(!raw) return;
+    var log = JSON.parse(raw);
+    if(typeof log !== "object") return;
+    var d = new Date();
+    var y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0"), dd = String(d.getDate()).padStart(2,"0");
+    var today = y+"-"+m+"-"+dd;
+    var dayLog = log[today];
+    if(!dayLog) return;
+
+    // Compute totals
+    var totals = {kcal:0,protein:0,fat:0,carb:0,fiber:0};
+    var hasData = false;
+    Object.values(dayLog).forEach(function(items) {
+      (items||[]).forEach(function() { hasData = true; });
+    });
+    if(!hasData) return;
+
+    // Load targets
+    var tgtEnergy = 2000, tgtProtein = 60, tgtFiber = 25;
+    try {
+      var mt = localStorage.getItem("mt-target-v2");
+      if(mt) {
+        var tgt = JSON.parse(mt);
+        if(tgt && tgt.weight) {
+          var a = tgt.age||30, s = tgt.sex||"male", w = tgt.weight, h = tgt.height||168;
+          var ac = tgt.activity||1.55, gl = tgt.goal||"maintain";
+          var bmr = s==="male" ? 10*w+6.25*h-5*a+5 : 10*w+6.25*h-5*a-161;
+          tgtEnergy = Math.round(bmr*ac);
+          if(gl==="lose") tgtEnergy = Math.round(tgtEnergy*0.85);
+          else if(gl==="gain") tgtEnergy = Math.round(tgtEnergy*1.15);
+          tgtProtein = Math.round(w*(gl==="gain"?2.0:1.4));
+        }
+      }
+    } catch(e){}
+
+    var kcal = 0, protein = 0, fiber = 0, fat = 0, carb = 0;
+    var foodNames = [];
+    Object.keys(dayLog).forEach(function(slot) {
+      (dayLog[slot]||[]).forEach(function(it) {
+        kcal += it.kcal||0;
+        protein += it.protein||0;
+        fiber += it.fiber||0;
+        fat += it.fat||0;
+        carb += it.carb||0;
+        if(it.name) foodNames.push(it.name);
+      });
+    });
+
+    // We don't have full nutrient data in log, only IDs. Use the search approach:
+    // Display just calorie total based on entry counts. More accurate from the actual tool.
+
+    var count = 0;
+    Object.values(dayLog).forEach(function(items){count += (items||[]).length;});
+
+    var root = document.getElementById("mt-banner-root");
+    if(!root) return;
+
+    var pctKcal = Math.min(Math.round(kcal/tgtEnergy*100), 999);
+    var pctProtein = Math.min(Math.round(protein/tgtProtein*100), 999);
+
+    root.style.display = "";
+    document.getElementById("mt-banner-content").innerHTML =
+      '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;">'+
+        '<div style="display:flex;align-items:center;gap:10px;">'+
+          '<span style="font-size:1.8rem;">📓</span>'+
+          '<div><div style="font-size:0.95rem;font-weight:600;">Đã ghi '+count+' thực phẩm/món hôm nay</div>'+
+          '<div style="font-size:0.82rem;color:var(--ink-tertiary);">Nhật ký ăn uống cá nhân</div></div>'+
+        '</div>'+
+        '<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">'+
+          '<div style="text-align:center;"><span style="font-size:1.2rem;font-weight:700;color:var(--brand);">'+Math.round(kcal)+'</span><br><span style="font-size:0.75rem;color:var(--ink-tertiary);">/'+tgtEnergy+' kcal</span></div>'+
+          '<div class="mt-banner-ring"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--line)" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="'+Math.min(pctKcal,100)*1.005+',100" stroke-dashoffset="25" stroke-linecap="round"/><text x="20" y="20" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="bold" fill="var(--ink)">'+pctKcal+'%</text></svg></div>'+
+          '<a href="/cong-cu/nhat-ky" class="cta-btn" style="font-size:0.82rem;padding:6px 16px;">📝 Ghi tiếp →</a>'+
+        '</div>'+
+      '</div>'+
+      '<div style="margin-top:10px;font-size:0.82rem;color:var(--ink-secondary);display:flex;gap:16px;flex-wrap:wrap;">'+
+        '<span>🔥 '+Math.round(kcal)+'/'+tgtEnergy+' kcal</span>'+
+        '<span>🥩 Đạm ~'+Math.round(protein)+'/'+tgtProtein+'g</span>'+
+      '</div>';
+  } catch(e) {}
+})();
+</script>
+
+  <section class="section">
+    <div class="section-header"><h2>🩺 Lối tắt theo mục tiêu sức khỏe</h2><a href="/ban-do-benh" class="view-all">Xem tất cả →</a></div>
+    <div class="health-grid">
+      <a class="card health-card" href="/ban-do-benh#tieu-duong"><span class="health-icon">🩸</span><div><h3>Đái tháo đường</h3><p class="muted">Chế độ ăn, thực đơn, hiểu lầm</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#huyet-ap"><span class="health-icon">🫀</span><div><h3>Tăng huyết áp</h3><p class="muted">Giảm muối, DASH, thực đơn</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#gout"><span class="health-icon">🦶</span><div><h3>Gout</h3><p class="muted">Purin, đạm, thực đơn mẫu</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#mo-mau-suy-tim"><span class="health-icon">❤️</span><div><h3>Mỡ máu • Tim mạch</h3><p class="muted">Giảm mỡ máu, chế độ ăn tim mạch</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#da-day"><span class="health-icon">😣</span><div><h3>Dạ dày • Trào ngược</h3><p class="muted">Thực đơn mềm, tránh đồ chua</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#than"><span class="health-icon">🫘</span><div><h3>Suy thận • Sỏi thận</h3><p class="muted">Kiểm soát kali, phốt pho, đạm</p></div></a>
+    </div>
+    <div class="health-grid" style="margin-top:10px;">
+      <a class="card health-card" href="/ban-do-benh#beo-phi"><span class="health-icon">⚖️</span><div><h3>Béo phì • Giảm cân</h3><p class="muted">Calo, BMI, kế hoạch giảm cân</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#nguoi-gia"><span class="health-icon">👴</span><div><h3>Người cao tuổi</h3><p class="muted">Dinh dưỡng, thêm đạm, chán ăn</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#dot-quy"><span class="health-icon">🧠</span><div><h3>Đột quỵ • Alzheimer</h3><p class="muted">Phòng ngừa & phục hồi</p></div></a>
+      <a class="card health-card" href="/ban-do-benh#ho-hap"><span class="health-icon">🫁</span><div><h3>COPD • Hen suyễn</h3><p class="muted">Dinh dưỡng hô hấp</p></div></a>
+      <a class="card health-card" href="/cong-cu/so-sanh-thuc-pham"><span class="health-icon">🔬</span><div><h3>So sánh thực phẩm</h3><p class="muted">18 chỉ số cạnh nhau</p></div></a>
+      <a class="card health-card" href="/cong-cu/duong-do-uong"><span class="health-icon">🧋</span><div><h3>Đường đồ uống</h3><p class="muted">Kiểm tra ngay 1 ly trà sữa</p></div></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><h2>🔧 Công cụ dinh dưỡng</h2><a href="/cong-cu" class="view-all">Xem tất cả →</a></div>
+    <div class="tool-grid">
+      {toolCards.map(t => (
+        <a class="card tool-card" href={t.href}>
+          <div class="tool-icon">{t.icon}</div>
+          <h3>{t.name}</h3>
+          <p class="muted">{t.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><h2>🔥 Thực phẩm phổ biến</h2><a href="/thuc-pham" class="view-all">Xem tất cả →</a></div>
+    <div class="food-grid">
+      {popularFoods.map((food) => (
+        <a class="card food-card" href={`/thuc-pham/${food.slug}`}>
+          <div class="food-icon"><FoodIcon category={food.category} /></div>
+          <div>
+            <span class="mini-tag">{food.category}</span>
+            <h3>{food.name}</h3>
+            <span class="food-cal">{food.nutrients.energyKcal} kcal/100g · Đạm {food.nutrients.proteinG}g</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section featured-recipe">
+    <div class="section-header"><h2>🍜 Món ăn nổi bật</h2><a href="/mon-an" class="view-all">Xem tất cả →</a></div>
+    <a class="card recipe-card" href="/mon-an/pho-bo">
+      <div class="recipe-info">
+        <span class="mini-tag">Món ăn</span>
+        <h2>Phở bò — 1 tô có gì?</h2>
+        <div class="stats-row">
+          <span class="stat-chip">🔥 {Math.round(phoNutrients.energyKcal)} kcal</span>
+          <span class="stat-chip">🥩 {phoNutrients.proteinG.toFixed(1)}g đạm</span>
+          <span class="stat-chip">🍚 {phoNutrients.carbG.toFixed(1)}g carb</span>
+          <span class="stat-chip">🧈 {phoNutrients.fatG.toFixed(1)}g béo</span>
+        </div>
+        <p class="muted">180g bánh phở + 70g thịt bò + 400g nước dùng + 30g rau</p>
+        <span class="view-link">Xem chi tiết →</span>
+      </div>
+      <div class="recipe-nutrition">
+        <h3>Thành phần</h3>
+        <NutrientStats nutrients={phoNutrients} compact />
+      </div>
+    </a>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><h2>📂 Danh mục thực phẩm</h2><a href="/thuc-pham" class="view-all">Xem tất cả →</a></div>
+    <div class="category-grid">
+      {categories.slice(0, 10).map((cat) => {
+        const items = foods.filter((f) => f.category === cat);
+        return (
+          <a class="card category-card" href={`/thuc-pham#${encodeURIComponent(cat)}`}>
+            <h3>{cat}</h3>
+            <span class="count-badge">{items.length}</span>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.section-header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px; }
+.view-all { font-size:0.88rem; color:var(--brand); font-weight:600; transition:opacity var(--transition); }
+.view-all:hover { opacity:0.7; }
+.brand-text { color:var(--brand); }
+
+/* Hero */
+.hero { padding:48px 0 36px; text-align:center; position:relative; overflow:hidden; background:linear-gradient(180deg, #c8e6c9 0%, var(--bg) 55%); border-radius:var(--radius-lg); }
+[data-theme="dark"] .hero { background:linear-gradient(180deg, #1b5e20 0%, var(--bg) 55%); }
+.hero-badge { display:inline-block; padding:5px 16px; border-radius:999px; background:var(--brand); color:white; font-size:0.83rem; font-weight:600; margin-bottom:14px; letter-spacing:0.3px; }
+[data-theme="dark"] .hero-badge { background:var(--brand-dark); }
+.hero h1 { margin:0 auto; max-width:680px; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.2; color:var(--ink); }
+.hero-desc { margin:12px auto 20px; max-width:520px; color:#4B5563; font-size:0.96rem; line-height:1.6; }
+[data-theme="dark"] .hero-desc { color:var(--ink-secondary); }
+.hero-search { max-width:540px; margin:0 auto; }
+.hero-actions { display:flex; gap:8px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+
+.entry-grid { padding-top:0; }
+.entry-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.entry-card { display:flex; flex-direction:column; align-items:center; text-align:center; padding:24px 16px; background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius-lg); text-decoration:none; color:inherit; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+.entry-card:hover { transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--brand-light2); }
+.entry-card:active { transform:translateY(-1px); }
+.entry-icon { font-size:2.2rem; margin-bottom:8px; display:block; }
+.entry-title { font-weight:600; font-size:0.95rem; margin-bottom:6px; color:var(--brand); }
+.entry-desc { font-size:0.78rem; color:var(--ink-secondary); line-height:1.45; max-width:200px; }
+@media(max-width:700px){ .entry-cards { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:480px){ .entry-cards { grid-template-columns:1fr; } }
+
+.cta-btn { display:inline-block; padding:10px 22px; border-radius:999px; font-weight:600; font-size:0.92rem; background:var(--brand); color:white; transition:all var(--transition); white-space:nowrap; text-decoration:none; border:none; cursor:pointer; }
+.cta-btn:hover { opacity:0.92; transform:translateY(-2px); text-decoration:none; box-shadow:0 4px 12px rgba(46,125,50,0.25); }
+.cta-outline { background:transparent; color:var(--ink-secondary); border:1.5px solid var(--line); font-weight:500; font-size:0.88rem; padding:9px 18px; }
+.cta-outline:hover { border-color:var(--brand); color:var(--brand); background:var(--brand-light); opacity:1; transform:translateY(-2px); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+
+/* Health alert cards */
+.ha-card { display:flex; gap:10px; padding:14px; align-items:flex-start; border-left:4px solid; }
+.ha-cao { border-left-color:#dc3545; }
+.ha-vua { border-left-color:#ffc107; }
+.ha-icon { font-size:1.4rem; line-height:1; }
+.ha-body { flex:1; }
+.ha-title { font-weight:600; font-size:0.88rem; margin-bottom:2px; }
+.ha-msg { font-size:0.82rem; color:var(--ink-secondary); line-height:1.4; }
+.ha-tip { font-size:0.78rem; color:var(--ink-tertiary); margin-top:4px; }
+.ha-link { font-size:0.78rem; color:var(--brand); font-weight:600; display:inline-block; margin-top:4px; }
+.health-alert-grid { display:flex; flex-direction:column; gap:8px; }
+.mt-banner-ring { flex-shrink:0; }
+
+.health-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.health-card { display:flex; align-items:flex-start; gap:10px; padding:14px; }
+.health-card:hover { border-color:var(--brand); transform:translateY(-2px); }
+.health-card h3 { font-size:0.88rem; margin:0 0 2px; }
+.health-card p { font-size:0.82rem; margin:0; }
+.health-icon { width:36px; height:36px; border-radius:10px; background:var(--brand-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.2rem; }
+
+/* Ribbon banners */
+.dtn-ribbon, .map-ribbon {
+  padding: 0 0 12px;
+}
+.dtn-ribbon-link, .map-ribbon-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.dtn-ribbon-link:hover, .map-ribbon-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.dtn-ribbon-link {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+[data-theme="dark"] .dtn-ribbon-link {
+  background: linear-gradient(135deg, #2a2a4e 0%, #263150 100%);
+}
+.map-ribbon-link {
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+}
+[data-theme="dark"] .map-ribbon-link {
+  background: linear-gradient(135deg, #1a3d1a 0%, #2a5a2a 100%);
+}
+.dtn-ribbon-icon, .map-ribbon-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+.dtn-ribbon-text, .map-ribbon-text {
+  flex: 1;
+  font-size: 0.9rem;
+}
+.dtn-ribbon-text strong {
+  color: #ffb74d;
+}
+.map-ribbon-text strong {
+  color: #81c784;
+}
+.dtn-ribbon-action, .map-ribbon-action {
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dtn-ribbon-action {
+  color: #ffb74d;
+}
+.map-ribbon-action {
+  color: #81c784;
+}
+
+/* Tool grid */
+.tool-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.tool-card { text-align:center; padding:18px 10px; }
+.tool-card:hover { border-color:var(--brand); transform:translateY(-3px); }
+.tool-card h3 { font-size:0.88rem; margin:8px 0 4px; }
+.tool-card p { font-size:0.78rem; }
+.tool-icon { font-size:1.6rem; }
+
+/* Food grid */
+.food-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.food-card { display:flex; gap:12px; align-items:center; padding:12px 14px; }
+.food-card h3 { font-size:0.88rem; margin:2px 0; }
+.food-cal { font-size:0.82rem; color:var(--ink-secondary); }
+.food-icon { width:44px; height:44px; flex-shrink:0; border-radius:10px; background:var(--bg-elevated); display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+
+/* Recipe card */
+.recipe-card { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; padding:20px; }
+.recipe-info { flex:2; min-width:240px; }
+.recipe-info h2 { margin:8px 0; font-size:1.1rem; }
+.recipe-nutrition { flex:1; min-width:180px; }
+.recipe-nutrition h3 { font-size:0.9rem; margin-bottom:12px; }
+.stats-row { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.stat-chip { display:inline-block; padding:5px 12px; background:var(--brand-light); border-radius:999px; font-size:0.85rem; font-weight:600; color:var(--brand); }
+.view-link { display:inline-block; margin-top:8px; font-weight:600; font-size:0.9rem; color:var(--brand); }
+
+/* Categories */
+.category-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+.category-card { display:flex; justify-content:space-between; align-items:center; padding:14px; }
+.category-card:hover { border-color:var(--brand); }
+.category-card h3 { font-size:0.88rem; margin:0; }
+.count-badge { background:var(--brand-light); padding:2px 10px; border-radius:999px; font-size:0.8rem; color:var(--brand); font-weight:600; }
+
+/* Health grid */
+.health-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.health-card { display:flex; align-items:flex-start; gap:10px; padding:16px; }
+.health-card:hover { border-color:var(--brand); transform:translateY(-2px); }
+.health-card h3 { font-size:0.88rem; margin:0 0 2px; }
+.health-card p { font-size:0.82rem; margin:0; }
+.health-icon { width:36px; height:36px; border-radius:10px; background:var(--brand-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.2rem; }
+
+@media (max-width:820px) {
+  .entry-cards { grid-template-columns:repeat(2,1fr); }
+  .tool-grid { grid-template-columns:repeat(2,1fr); }
+  .health-grid { grid-template-columns:repeat(2,1fr); }
+  .food-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:620px) {
+  .entry-cards { grid-template-columns:1fr; }
+  .tool-grid { grid-template-columns:1fr 1fr; }
+  .health-grid { grid-template-columns:1fr; }
+  .food-grid { grid-template-columns:1fr; }
+  .hero-actions { gap:6px; }
+  .cta-btn { font-size:0.85rem; padding:8px 16px; }
+  .cta-outline { font-size:0.82rem; padding:7px 14px; }
+}
+@media (max-width:480px) {
+  .hero { padding:32px 0 24px; }
+  .hero h1 { font-size:1.3rem; }
+  .hero-actions { flex-direction:column; align-items:center; }
+  .cta-btn { width:100%; max-width:260px; }
+  .cta-outline { width:100%; max-width:260px; }
+  .dtn-ribbon-link, .map-ribbon-link { flex-wrap:wrap; justify-content:center; text-align:center; }
+  .dtn-ribbon-icon, .map-ribbon-icon { font-size:1.2rem; }
+}
+</style>

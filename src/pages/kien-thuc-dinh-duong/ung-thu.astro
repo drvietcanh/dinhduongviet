@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu"];
+if (!art) throw new Error("Article not found: ung-thu");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Cô Lan, 55 tuổi, phát hiện ung thư vú giai đoạn 2. Sau mỗi đợt hóa trị, cô kiệt sức, chán ăn, sụt 4kg trong 2 tuần. Hàng xóm mách uống đủ loại "thuốc nam thải độc", cô càng mệt hơn. Bác sĩ dinh dưỡng nói: "Cô chỉ cần ăn đủ đạm, đủ năng lượng — không cần thực phẩm chức năng đắt tiền."</p>
+  <p>Dinh dưỡng đúng trong ung thư không phải để "chữa" ung thư, mà để: duy trì sức khỏe trong điều trị, giảm tác dụng phụ, ngăn suy kiệt (cachexia). Đây là yếu tố quyết định khả năng hoàn thành phác đồ điều trị.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Mục tiêu số 1: <u>chống sụt cân</u>. Ăn đủ đạm (1.2–2.0g/kg), 
+    <u>chia 6–8 bữa nhỏ</u> nếu chán ăn, <u>ưu tiên an toàn thực phẩm</u> (tránh đồ sống),
+    <u>không tự ý uống thực phẩm chức năng</u> — hỏi bác sĩ trước.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Tại sao người ung thư dễ suy kiệt?</h2>
+  <p>Khối u giải phóng chất gây viêm (cytokine) làm tăng chuyển hóa cơ bản 20–30%. Đồng thời hóa/xạ trị gây chán ăn, buồn nôn, loét miệng, thay đổi vị giác. Kết quả: người bệnh ăn được ít hơn trong khi nhu cầu năng lượng lại cao hơn — đó là vòng xoáy sụt cân.</p>
+</section>
+
+<section class="section card">
+  <h2>✅ Thực phẩm nên ăn theo từng triệu chứng</h2>
+  <table class="table"><thead><tr><th>Triệu chứng</th><th>Nên ăn</th></tr></thead><tbody>
+    <tr><td>🔴 Chán ăn</td><td>Chia 6–8 bữa nhỏ, ưu tiên sữa công thức, sinh tố, cháo thịt xay — đặc, giàu năng lượng</td></tr>
+    <tr><td>🟠 Buồn nôn</td><td>Ăn nhạt, nguội bớt, không mùi. Tránh đồ chiên rán. Gừng, bạc hà giúp giảm buồn nôn</td></tr>
+    <tr><td>🔴 Loét miệng</td><td>Thức ăn mềm/lỏng: cháo, súp, sữa. Nguội bớt, tránh chua cay, cứng. Súc miệng nước muối</td></tr>
+    <tr><td>🟢 Tiêu chảy</td><td>Cơm trắng, chuối, bánh mì nướng, khoai tây luộc. Bù điện giải oresol</td></tr>
+    <tr><td>🟤 Táo bón</td><td>Tăng chất xơ hòa tan: yến mạch, bí đỏ, đu đủ. Uống 2 lít nước</td></tr>
+    <tr><td>🟡 Đắng miệng</td><td>Thử vị chua ngọt: chanh, cam, dứa. Ướp gia vị thảo mộc: gừng, quế, bạc hà</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🆙 Đạm & Năng lượng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Ức gà, thịt bò nạc, cá hồi, cá thu</li>
+      <li>Trứng gà (luộc/hấp) — dễ ăn</li>
+      <li>Đậu phụ, sữa đậu nành</li>
+      <li>Sữa công thức bổ sung (ensure, prosure...)</li>
+      <li>Bơ, dầu olive — thêm 1 muỗng vào cháo/canh</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⛔ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Đồ sống: gỏi cá, rau sống chưa rửa kỹ</li>
+      <li>⛔ Thực phẩm lên men sống: dưa muối sống, kim chi tươi</li>
+      <li>⛔ Rượu bia — tương tác với hóa trị</li>
+      <li>⛔ Thực phẩm chức năng "thải độc" không rõ nguồn gốc</li>
+      <li>⚠️ Hạn chế đường tinh luyện (bánh kẹo, nước ngọt)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý (ngày chán ăn)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch + sữa công thức + trứng hấp</td></tr>
+    <tr><td>🌞 Phụ 1</td><td>Sinh tố bơ + chuối + sữa (xay nhuyễn)</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát + cá hấp + bí đỏ luộc mềm + canh rau</td></tr>
+    <tr><td>🌆 Phụ 2</td><td>Sữa công thức 1 ly</td></tr>
+    <tr><td>🌙 Tối</td><td>Cháo thịt gà xé + đậu phụ luộc</td></tr>
+    <tr><td>🌜 Phụ 3</td><td>Sữa chua không đường</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần can thiệp</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Nấu sẵn chia đông lạnh — ngày mệt chỉ cần hâm.</li>
+        <li>Thêm 1 muỗng dầu/dầu mè vào cháo, canh.</li>
+        <li>Đi bộ nhẹ 10–15 phút sau ăn — giúp tiêu hóa.</li>
+        <li>Sữa chua, men vi sinh — hỗ trợ đường ruột sau hóa trị.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Can thiệp ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Sụt &gt;5% cân trong 1 tháng — cần chuyên gia dinh dưỡng.</li>
+        <li>Không ăn được &gt;5 ngày — cần nuôi ăn qua sonde/tĩnh mạch.</li>
+        <li>BMI &lt;18.5 hoặc albumin &lt;3.5 g/dL.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

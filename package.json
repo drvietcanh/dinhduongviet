@@ -1,0 +1,20 @@
+{
+  "name": "dinh-duong-viet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "prebuild": "C:\\Python313\\python.exe scripts/export_vietnam_json.py",
+    "build": "npm run prebuild && astro build",
+    "qa": "node scripts/qa.mjs",
+    "preview": "astro preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.16.4",
+    "glob": "^13.0.6",
+    "marked": "^18.0.4",
+    "typescript": "^5.9.3"
+  }
+}

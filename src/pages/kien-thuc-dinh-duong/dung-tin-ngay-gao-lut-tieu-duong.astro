@@ -1,0 +1,40 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dung-tin-ngay-gao-lut-tieu-duong"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>🤔 Hiểu lầm: Ăn gạo lứt chữa được tiểu đường</h2>
+    <p>Nhiều người bệnh tiểu đường chuyển hẳn sang ăn gạo lứt với hy vọng "chữa khỏi" bệnh. Thực tế, gạo lứt <strong>chỉ tốt hơn gạo trắng</strong> ở chỉ số đường huyết thấp hơn, chứ không có khả năng chữa bệnh.</p>
+    <div class="truth-box">
+      <strong>Sự thật:</strong> Gạo lứt vẫn là tinh bột, vẫn làm tăng đường huyết — chỉ chậm hơn gạo trắng. Người tiểu đường cần <strong>kiểm soát lượng</strong> chứ không thể ăn bao nhiêu tùy thích chỉ vì đó là gạo lứt.
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🔬 Bằng chứng khoa học</h2>
+    <ul>
+      <li><strong>GI của gạo lứt:</strong> Chỉ số đường huyết ~50-55 (thấp hơn gạo trắng ~70-80), nhưng vẫn ở mức trung bình. Với khẩu phần lớn, tải lượng đường huyết vẫn cao.</li>
+      <li><strong>Không "chữa" tiểu đường:</strong> Chưa có nghiên cứu nào chứng minh gạo lứt làm đảo ngược tiểu đường. Một số nghiên cứu cho thấy thay gạo trắng bằng gạo lứt <em>hỗ trợ kiểm soát</em> đường huyết, nhưng không thay thế thuốc.</li>
+      <li><strong>Chất xơ nhiều hơn:</strong> Gạo lứt giàu chất xơ, magiê, vitamin nhóm B — tốt hơn gạo trắng, nhưng vẫn cần ăn đúng lượng.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>💡 Cách ăn gạo đúng khi bị tiểu đường</h2>
+    <ul>
+      <li><strong>Kiểm soát khẩu phần:</strong> Mỗi bữa chỉ nên ăn 1 chén cơm (khoảng 130g cơm đã nấu) — dù là gạo lứt hay gạo trắng.</li>
+      <li><strong>Đa dạng tinh bột:</strong> Luân phiên gạo lứt, yến mạch, khoai lang, bún tươi, phở tươi để thay đổi.</li>
+      <li><strong>Kết hợp rau xanh:</strong> Ăn rau trước — giúp làm chậm hấp thu đường từ cơm.</li>
+      <li><strong>Không thêm đường:</strong> Không chan nước tương có đường, không ăn kèm đồ ngọt.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Gạo lứt tốt hơn gạo trắng cho người tiểu đường — <strong>nhưng không phải thực phẩm thần kỳ</strong>. Người bệnh vẫn cần dùng thuốc theo chỉ định, tập thể dục đều đặn và kiểm soát tổng lượng tinh bột mỗi ngày. Đừng bỏ thuốc để chuyển sang ăn gạo lứt — hãy đưa gạo lứt vào thực đơn như một lựa chọn lành mạnh hơn, không phải phương thuốc.</p>
+  </section>
+</ArticleLayout>

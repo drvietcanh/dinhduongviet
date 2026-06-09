@@ -1,0 +1,97 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-benh-da-day-nen-an-gi"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bác Thanh, 55 tuổi, viêm loét dạ dày tái phát nhiều lần. Mỗi đợt đau, bác chỉ ăn cháo trắng thịt băm, sợ ăn các thứ khác. Bác ăn vậy mãi, người cứ gầy dần. Bác sĩ nói: "Không cần kiêng nhiều quá. Chỉ cần tránh đồ chua cay, rượu bia, cà phê. Còn lại ăn đa dạng nhưng chế biến mềm."</p>
+  <p>Viêm loét dạ dày không cần kiêng quá mức — nhiều người kiêng tới mức suy dinh dưỡng. Quan trọng: chế biến đúng (nấu mềm), ăn đúng bữa (không bỏ bữa), tránh thuốc kích ứng (NSAID).</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Dạ dày đang viêm cần <u>cháo, cơm nát, khoai lang</u>, <u>thịt cá hấp/luộc</u>,
+    <u>rau củ luộc mềm</u>, <u>chuối/đu đủ chín</u>. <u>Tránh chua cay, cà phê, rượu bia, đồ chiên rán</u>.
+    <u>Không nằm sau ăn 30 phút</u>. Điều trị HP nếu có.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao một số thực phẩm làm đau dạ dày?</h2>
+  <p>Dạ dày tiết acid để tiêu hóa thức ăn. Khi niêm mạc bị viêm/loét, acid tiếp xúc trực tiếp với lớp tổn thương gây đau. Thực phẩm chua (cam, chanh, cà chua), cay (ớt, tiêu), cafein (cà phê, trà đặc) làm tăng tiết acid. Đồ chiên rán ở lại dạ dày lâu hơn, kích thích tiết acid kéo dài. Rượu bia trực tiếp làm tổn thương niêm mạc.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cháo loãng đến đặc, cơm nát, khoai lang, khoai tây luộc</li>
+      <li>Thịt nạc băm, cá hấp, trứng luộc, đậu phụ</li>
+      <li>Rau củ luộc mềm: cà rốt, bí đỏ, bầu, su su</li>
+      <li>Chuối chín, đu đủ, táo hấp — ít acid, dịu niêm mạc</li>
+      <li>Sữa ấm, sữa chua (để hết lạnh), nghệ</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Cam, chanh, bưởi, cà chua sống — nhiều acid</li>
+      <li>⛔ Ớt, tiêu, giấm, mù tạt — kích thích niêm mạc</li>
+      <li>⛔ Cà phê, trà đặc, rượu bia — tăng tiết acid</li>
+      <li>⛔ Đồ chiên rán — ở lâu trong dạ dày</li>
+      <li>⛔ Thuốc giảm đau NSAID (ibuprofen, diclofenac) — gây loét</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Cách ăn cho dạ dày viêm</h2>
+  <table class="table"><thead><tr><th>Nguyên tắc</th><th>Thực hiện</th></tr></thead><tbody>
+    <tr><td>Số bữa</td><td>Chia 5–6 bữa nhỏ, không để đói hoặc quá no</td></tr>
+    <tr><td>Nhai kỹ</td><td>Mỗi miếng nhai 20–30 lần — giúp dạ dày bớt việc</td></tr>
+    <tr><td>Nhiệt độ</td><td>Ấm vừa — không quá nóng hoặc quá lạnh</td></tr>
+    <tr><td>Sau ăn</td><td>Không nằm 30–60 phút — tránh trào ngược</td></tr>
+    <tr><td>Bữa tối</td><td>Trước 20:00, ăn nhẹ để dạ dày nghỉ đêm</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch nấu thịt băm + ½ quả chuối</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 hũ sữa chua không đường (để hết lạnh)</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm nát + cá hấp + canh bí đỏ thịt băm</td></tr>
+    <tr><td>🌆 Phụ</td><td>Khoai lang luộc + 1 ly sữa ấm</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm nát + đậu phụ luộc + rau cải luộc mềm</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Nghệ + mật ong pha nước ấm uống sáng/tối.</li>
+        <li>Xét nghiệm HP(nội soi hoặc hơi thở) — nếu dương, diệt đủ phác đồ.</li>
+        <li>Không tự ý uống thuốc giảm đau NSAID.</li>
+        <li>Giảm stress — thiền, yoga, thở sâu.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Nôn ra máu (đỏ tươi hoặc nâu đen).</li>
+        <li>Đi ngoài phân đen — chảy máu tiêu hóa.</li>
+        <li>Đau bụng dữ dội, đau xuyên ra lưng.</li>
+        <li>Sụt cân, khó nuốt, nôn sau ăn.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

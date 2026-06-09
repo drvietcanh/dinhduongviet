@@ -1,0 +1,271 @@
+---
+// HealthAlert.astro — Cảnh báo dinh dưỡng thông minh theo bệnh lý
+// Đưa vào trang thực phẩm và món ăn
+
+export interface Props {
+  nutrients: Record<string, number | undefined>;
+  name: string;
+  category?: string;
+}
+
+const { nutrients, name, category } = Astro.props;
+const energy = nutrients.energyKcal ?? 0;
+const protein = nutrients.proteinG ?? 0;
+const fat = nutrients.fatG ?? 0;
+const carb = nutrients.carbG ?? 0;
+const sugar = nutrients.sugarG ?? 0;
+const fiber = nutrients.fiberG ?? 0;
+const sodium = nutrients.sodiumMg ?? 0;
+const potassium = nutrients.potassiumMg ?? 0;
+const calcium = nutrients.calciumMg ?? 0;
+const iron = nutrients.ironMg ?? 0;
+const saturatedFat = nutrients.saturatedFatG ?? 0;
+const gi = nutrients.glycemicIndex;
+
+// Định nghĩa các ngưỡng cảnh báo
+const warnings: { icon: string; title: string; advice: string; severity: "high" | "medium" | "info" }[] = [];
+
+// 1. Gout — purin cao (proxy: protein >= 20g/100g là rất cao, 10-19 vừa)
+if (protein >= 20) {
+  warnings.push({
+    icon: "🦶",
+    title: "Cảnh báo Gout",
+    advice: `Thực phẩm này giàu đạm (${protein.toFixed(1)}g/100g), có thể giàu purin. Người bị gút nên hạn chế.`,
+    severity: "high",
+  });
+} else if (protein >= 10) {
+  warnings.push({
+    icon: "🦶",
+    title: "Lưu ý Gout",
+    advice: `Lượng đạm ở mức trung bình (${protein.toFixed(1)}g/100g). Người gút có thể ăn lượng nhỏ, không nên ăn nhiều trong đợt cấp.`,
+    severity: "medium",
+  });
+}
+
+// 2. Tiểu đường — GI, GL, carb, sugar
+if (gi !== undefined) {
+  if (gi > 70) {
+    warnings.push({
+      icon: "🩸",
+      title: "Cảnh báo Tiểu đường",
+      advice: `Chỉ số đường huyết GI=${gi} (cao). Làm tăng đường huyết nhanh. Người tiểu đường nên hạn chế hoặc ăn kèm chất xơ/đạm.`,
+      severity: "high",
+    });
+  } else if (gi >= 56) {
+    warnings.push({
+      icon: "🩸",
+      title: "Lưu ý Tiểu đường",
+      advice: `Chỉ số đường huyết GI=${gi} (trung bình). Có thể ăn với lượng vừa phải, kiểm soát khẩu phần.`,
+      severity: "medium",
+    });
+  }
+} else if (carb > 40 && sugar > 10) {
+  warnings.push({
+    icon: "🩸",
+    title: "Cảnh báo Tiểu đường",
+    advice: `Nhiều carb (${carb.toFixed(0)}g) và đường (${sugar.toFixed(1)}g)/100g. Người tiểu đường nên hạn chế.`,
+    severity: "high",
+  });
+} else if (carb > 30 || sugar > 15) {
+  warnings.push({
+    icon: "🩸",
+    title: "Lưu ý Tiểu đường",
+    advice: `Lượng carb (${carb.toFixed(0)}g/100g) ở mức cần kiểm soát khẩu phần nếu bạn bị tiểu đường.`,
+    severity: "medium",
+  });
+} else if (carb <= 10 && sugar <= 3 && fiber >= 2) {
+  warnings.push({
+    icon: "🩸",
+    title: "Thân thiện với Tiểu đường",
+    advice: `Ít carb (${carb.toFixed(0)}g), ít đường, giàu xơ — phù hợp cho người tiểu đường.`,
+    severity: "info",
+  });
+}
+
+// 3. Tăng huyết áp — natri cao
+if (sodium > 600) {
+  warnings.push({
+    icon: "🫀",
+    title: "Cảnh báo Tăng huyết áp",
+    advice: `Rất nhiều natri (${sodium.toFixed(0)}mg). Người cao huyết áp nên tránh hoặc ăn rất hạn chế.`,
+    severity: "high",
+  });
+} else if (sodium > 200) {
+  warnings.push({
+    icon: "🫀",
+    title: "Lưu ý Tăng huyết áp",
+    advice: `Natri ở mức ${sodium.toFixed(0)}mg. Nếu ăn nhiều khẩu phần có thể vượt ngưỡng 2000mg/ngày.`,
+    severity: "medium",
+  });
+} else if (sodium <= 50 && potassium >= 200) {
+  warnings.push({
+    icon: "🫀",
+    title: "Tốt cho tim mạch",
+    advice: `Ít natri, giàu kali — phù hợp chế độ ăn DASH cho người tăng huyết áp.`,
+    severity: "info",
+  });
+}
+
+// 4. Suy thận — kali + protein + natri
+if (potassium > 400) {
+  warnings.push({
+    icon: "🫘",
+    title: "Cảnh báo Suy thận",
+    advice: `Kali cao (${potassium.toFixed(0)}mg/100g). Người suy thận giai đoạn 3-5 cần hạn chế.`,
+    severity: "high",
+  });
+} else if (potassium > 250) {
+  warnings.push({
+    icon: "🫘",
+    title: "Lưu ý Suy thận",
+    advice: `Kali ở mức trung bình-cao (${potassium.toFixed(0)}mg). Người suy thận nên tham khảo bác sĩ.`,
+    severity: "medium",
+  });
+}
+if (protein >= 20 && potassium > 300) {
+  warnings.push({
+    icon: "🫘",
+    title: "Cảnh báo Suy thận (kép)",
+    advice: `Cả đạm cao (${protein.toFixed(0)}g) và kali cao (${potassium.toFixed(0)}mg). Người suy thận cần tránh.`,
+    severity: "high",
+  });
+}
+
+// 5. Gan nhiễm mỡ — chất béo + đường
+if (fat > 20 && sugar > 5) {
+  warnings.push({
+    icon: "🫁",
+    title: "Cảnh báo Gan nhiễm mỡ",
+    advice: `Nhiều chất béo (${fat.toFixed(0)}g) và đường (${sugar.toFixed(1)}g). Cả hai đều là yếu tố nguy cơ cho gan nhiễm mỡ.`,
+    severity: "high",
+  });
+} else if (fat > 15 || saturatedFat > 5) {
+  warnings.push({
+    icon: "🫁",
+    title: "Lưu ý Gan nhiễm mỡ",
+    advice: `Chất béo ở mức cần chú ý (${fat.toFixed(0)}g/100g). Người gan nhiễm mỡ nên hạn chế.`,
+    severity: "medium",
+  });
+}
+
+// 6. Loãng xương — canxi thấp + kết nối
+if (calcium !== undefined) {
+  if (calcium >= 200) {
+    warnings.push({
+      icon: "🦴",
+      title: "Tốt cho xương",
+      advice: `Giàu canxi (${calcium.toFixed(0)}mg/100g). Hỗ trợ phòng ngừa loãng xương.`,
+      severity: "info",
+    });
+  } else if (calcium < 20) {
+    warnings.push({
+      icon: "🦴",
+      title: "Lưu ý Loãng xương",
+      advice: `Canxi thấp (${calcium.toFixed(0)}mg/100g). Cần bổ sung canxi từ các nguồn khác như sữa, đậu phụ, cải xanh.`,
+      severity: "medium",
+    });
+  }
+}
+
+// 7. Thiếu máu — sắt
+if (iron !== undefined) {
+  if (iron >= 3) {
+    warnings.push({
+      icon: "🩸",
+      title: "Giàu sắt",
+      advice: `Giàu sắt (${iron.toFixed(1)}mg/100g). Tốt cho người thiếu máu do thiếu sắt.`,
+      severity: "info",
+    });
+  }
+}
+
+// 8. Béo phì — năng lượng cao
+if (energy > 300) {
+  warnings.push({
+    icon: "⚖️",
+    title: "Cảnh báo Năng lượng cao",
+    advice: `Năng lượng cao (${energy.toFixed(0)} kcal/100g). Cần kiểm soát khẩu phần nếu đang giảm cân.`,
+    severity: "high",
+  });
+} else if (energy > 200) {
+  warnings.push({
+    icon: "⚖️",
+    title: "Lưu ý Năng lượng",
+    advice: `Năng lượng ở mức trung bình-cao (${energy.toFixed(0)} kcal/100g). Nên ăn lượng vừa phải.`,
+    severity: "medium",
+  });
+} else if (energy <= 40 && fiber >= 2) {
+  warnings.push({
+    icon: "⚖️",
+    title: "Thân thiện giảm cân",
+    advice: `Ít calo (${energy.toFixed(0)} kcal), giàu xơ — phù hợp cho chế độ giảm cân.`,
+    severity: "info",
+  });
+}
+
+// Bỏ qua nếu không có warnings đáng kể
+const significantWarnings = warnings.filter(w => w.severity !== "info");
+if (significantWarnings.length === 0 && warnings.length <= 1) return;
+---
+
+{warnings.length > 0 && (
+  <section class="section">
+    <h2 style="margin-bottom: 12px;">⚠️ Cảnh báo dinh dưỡng</h2>
+    <p class="muted" style="margin-bottom: 12px;">
+      Đối chiếu tự động với các bệnh lý phổ biến. Click vào tên bệnh để xem chi tiết.
+    </p>
+    <div class="health-alerts">
+      {warnings.map(w => (
+        <div class={`alert alert-${w.severity}`}>
+          <div class="alert-header">
+            <span class="alert-icon">{w.icon}</span>
+            <strong>{w.title}</strong>
+          </div>
+          <p class="alert-advice">{w.advice}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .health-alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 4px solid;
+    background: var(--bg-card, #fff);
+  }
+  .alert-high {
+    border-left-color: #ef4444;
+    background: #fef2f2;
+  }
+  .alert-medium {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+  }
+  .alert-info {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+  }
+  .alert-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .alert-icon {
+    font-size: 1.2em;
+  }
+  .alert-advice {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #374151;
+  }
+  section.section h2 { font-size: 1.25rem; }
+</style>

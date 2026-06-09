@@ -1,0 +1,61 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-benh-thien-sach-hemophilia"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Hemophilia là rối loạn đông máu di truyền. Người bệnh dễ chảy máu khớp, cơ và nội tạng. Mục tiêu dinh dưỡng: duy trì cân nặng hợp lý để giảm áp lực lên khớp, bổ sung sắt nếu thiếu máu, tránh thực phẩm loãng máu.</p>
+    <p>Bên cạnh việc tránh chảy máu, người bệnh hemophilia cần chú ý đến chế độ dinh dưỡng hỗ trợ tạo máu và bảo vệ xương khớp. Sắt và vitamin K đóng vai trò quan trọng — sắt giúp phòng thiếu máu do mất máu mạn tính, còn vitamin K cần cho quá trình tổng hợp một số yếu tố đông máu. Tuy nhiên, vitamin K không thay thế được yếu tố VIII hay IX bị thiếu trong hemophilia. Một chế độ ăn cân bằng, tránh các chất có tác dụng chống đông và làm loãng máu là chiến lược dinh dưỡng then chốt.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Duy trì cân nặng hợp lý:</strong> Thừa cân làm tăng áp lực lên khớp đã tổn thương do chảy máu</li>
+      <li><strong>Canxi & vitamin D:</strong> Bảo vệ xương khớp, đặc biệt nếu hạn chế vận động</li>
+      <li><strong>Sắt:</strong> Chảy máu mạn có thể gây thiếu máu thiếu sắt — thịt đỏ, rau xanh, đậu</li>
+      <li><strong>Tránh thực phẩm loãng máu:</strong> Tỏi liều cao, gừng liều cao, nghệ liều cao, rượu — tham khảo bác sĩ trước khi dùng</li>
+      <li><strong>Vitamin K — vai trò và giới hạn:</strong> Vitamin K cần cho tổng hợp yếu tố đông máu II, VII, IX, X tại gan. Tuy nhiên ở người hemophilia, thiếu yếu tố VIII (hemophilia A) hoặc IX (hemophilia B) là do di truyền, không thể bù bằng vitamin K từ thực phẩm. Vẫn nên ăn đủ rau xanh để duy trì sức khỏe tổng thể nhưng đừng kỳ vọng thay thế thuốc.</li>
+      <li><strong>Duy trì sức khỏe mạch máu:</strong> Vitamin C và flavonoid từ trái cây giúp củng cố thành mạch, giảm nguy cơ chảy máu mao mạch. Cam, bưởi, việt quất, nho đỏ là những nguồn tốt.</li>
+      <li><strong>Hạn chế thực phẩm gây viêm khớp:</strong> Khi khớp đã tổn thương do chảy máu lặp lại, cần giảm thực phẩm gây viêm như đường tinh luyện, chất béo chuyển hóa, thực phẩm chế biến sẵn.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🦴 Canxi</span><span>Sữa, sữa chua, phô mai, cá mòi, cải xoăn</span></div>
+      <div class="food-row"><span class="food-cat">🥩 Sắt</span><span>Thịt bò nạc, gan (vừa phải), rau bina, đậu lăng</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau xanh</span><span>Cải bó xôi, bông cải, măng tây — giàu vitamin K, folate, chất xơ</span></div>
+      <div class="food-row"><span class="food-cat">🍊 Vitamin C</span><span>Cam, ổi, kiwi, ớt chuông — củng cố thành mạch, hỗ trợ hấp thu sắt</span></div>
+      <div class="food-row"><span class="food-cat">🫘 Đạm thực vật</span><span>Đậu hũ, đậu xanh, đậu lăng — bổ sung sắt và đạm, dễ tiêu</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm cần thận trọng</h2>
+    <ul>
+      <li><strong>Tỏi, gừng, nghệ liều cao:</strong> Có thể kéo dài thời gian chảy máu (đặc biệt ở dạng thực phẩm chức năng)</li>
+      <li><strong>Rượu bia:</strong> Tăng nguy cơ chảy máu tiêu hóa</li>
+      <li><strong>Thuốc bổ sung:</strong> Omega-3 liều cao, ginkgo biloba, vitamin E liều cao — có tác dụng chống kết tập tiểu cầu</li>
+      <li><strong>Thực phẩm chức năng thảo dược:</strong> Bạch quả (ginkgo), nhân sâm, đan sâm, đinh hương, thì là — có thể tăng nguy cơ chảy máu. Luôn tham khảo bác sĩ trước khi dùng bất kỳ thảo dược nào.</li>
+      <li><strong>Đồ ăn cứng, sắc:</strong> Bánh quy cứng, xương cá, xương gà — có thể gây tổn thương niêm mạc miệng, thực quản</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Người hemophilia có nên ăn tỏi không?</summary><p>Tỏi lượng nhỏ (1-2 tép/ngày trong món ăn) an toàn. Tránh tỏi liều cao dưới dạng thực phẩm chức năng.</p></details>
+    <details class="faq-item"><summary>Vitamin K có giúp cải thiện đông máu không?</summary><p>Vitamin K giúp tổng hợp một số yếu tố đông máu tại gan. Tuy nhiên, hemophilia là do thiếu yếu tố VIII hoặc IX do di truyền — không thể khắc phục bằng vitamin K. Ăn đủ rau xanh vẫn tốt cho sức khỏe tổng thể nhưng không thay thế được yếu tố đông máu.</p></details>
+    <details class="faq-item"><summary>Thiếu máu ở người hemophilia có nguy hiểm không?</summary><p>Chảy máu mạn tính, đặc biệt là chảy máu tiêu hóa, khớp, cơ, có thể dẫn đến thiếu máu thiếu sắt. Triệu chứng: mệt mỏi, da xanh, khó thở khi gắng sức. Cần xét nghiệm máu định kỳ để phát hiện. Bổ sung sắt từ thịt đỏ, rau xanh, đậu và vitamin C để tăng hấp thu.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>Quan trọng:</strong> (1) Duy trì cân nặng hợp lý — giảm áp lực khớp, (2) Đủ canxi & vitamin D — bảo vệ xương khớp, (3) Sắt & vitamin C — phòng thiếu máu, (4) Tham khảo bác sĩ trước khi dùng bất kỳ thực phẩm chức năng nào — tỏi, gừng, nghệ, omega-3, thảo dược liều cao có thể kéo dài chảy máu, (5) Tránh rượu bia và đồ ăn quá cứng để hạn chế nguy cơ chảy máu.</p></div>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,58 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dau-an-mo-heo"];
+if (!art) throw new Error("Article not found: dau-an-mo-heo");
+---
+
+<ArticleLayout article={art}>
+
+  <section class="section card">
+    <h2>🫒 Tóm tắt — Dầu ăn và mỡ heo, nên chọn gì?</h2>
+    <p>Dầu thực vật và mỡ động vật đều có vai trò trong bữa ăn người Việt. Dầu thực vật giàu chất béo không bão hòa (tốt cho tim mạch), trong khi mỡ heo giàu chất béo bão hòa (cần hạn chế). Chìa khóa là sử dụng đúng loại cho đúng mục đích nấu nướng và kiểm soát tổng lượng.</p>
+  </section>
+
+  <section class="section card">
+    <h2>⚖️ Nguyên lý dinh dưỡng</h2>
+    <ul>
+      <li><strong>Dầu ô-liu, dầu hạt cải:</strong> Giàu chất béo không bão hòa đơn — tốt nhất cho tim mạch. Chịu nhiệt trung bình.</li>
+      <li><strong>Dầu đậu nành, dầu hướng dương:</strong> Giàu chất béo không bão hòa đa — dùng cho xào nấu ở nhiệt độ thường.</li>
+      <li><strong>Dầu dừa, mỡ heo:</strong> Giàu chất béo bão hòa — dùng ở lượng nhỏ, không phải dầu ăn chính.</li>
+      <li><strong>Điểm bốc khói:</strong> Mỗi loại dầu có nhiệt độ tối đa. Dùng dầu quá điểm bốc khói tạo chất gây hại.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Chọn dầu ăn theo nhu cầu</h2>
+    <ul>
+      <li><strong>Nấu ở nhiệt độ cao (chiên, rán):</strong> Dầu đậu nành, dầu hướng dương (smoke point ~230°C).</li>
+      <li><strong>Xào ở nhiệt độ vừa:</strong> Dầu ô-liu thường, dầu hạt cải.</li>
+      <li><strong>Làm salad, trộn:</strong> Dầu ô-liu extra virgin, dầu mè, dầu bơ.</li>
+      <li><strong>Mỡ heo:</strong> Có thể dùng thỉnh thoảng (1-2 lần/tuần) — tạo vị thơm, không nên ăn hàng ngày.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Hạn chế</h2>
+    <ul>
+      <li><strong>Dầu đã qua sử dụng nhiều lần:</strong> Tạo chất béo trans — không dùng lại dầu chiên đi chiên lại.</li>
+      <li><strong>Mỡ heo, bơ thực vật:</strong> Hạn chế nếu có mỡ máu cao, bệnh tim mạch.</li>
+      <li><strong>Dầu cọ:</strong> Chứa nhiều chất béo bão hòa — thường có trong đồ ăn chế biến sẵn.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <ul>
+      <li><strong>Tại sao người xưa ăn mỡ heo mà vẫn khỏe?</strong> Vì họ ăn với lượng nhỏ, lao động nhiều và ăn ít thực phẩm chế biến sẵn.</li>
+      <li><strong>Dầu ô-liu có dùng để chiên được không?</strong> Dầu ô-liu thường (không phải extra virgin) có thể chiên ở 180-200°C.</li>
+      <li><strong>Nên dùng bao nhiêu dầu mỗi ngày?</strong> 15-25g/ngày (2-3 muỗng cà phê) cho người ăn 1800-2000 calo.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🎯 Tóm lại</h2>
+    <p>Không có loại dầu nào là "tốt nhất" — hãy đa dạng hóa. Dùng dầu thực vật là chính (đậu nành, hạt cải, ô-liu), thỉnh thoảng mỡ heo để đổi vị. Kiểm soát tổng lượng dầu mỡ dù là loại nào.</p>
+  </section>
+
+</ArticleLayout>

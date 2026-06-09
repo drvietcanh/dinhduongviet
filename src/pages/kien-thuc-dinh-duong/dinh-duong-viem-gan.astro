@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-viem-gan"];
+if (!art) throw new Error("Article not found: dinh-duong-viem-gan");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Quyền, 45 tuổi, phát hiện viêm gan B mạn 5 năm. Anh uống thuốc kháng virus đều, nhưng hay ăn đồ chiên rán, tối nào cũng vài lon bia. Kết quả gan nhiễm mỡ chồng lên viêm gan — men gan luôn cao gấp 2 lần bình thường. Bác sĩ cảnh báo: "Nếu tiếp tục uống bia, anh sẽ xơ gan sớm."</p>
+  <p>Việt Nam có tỷ lệ viêm gan B/C cao nhất thế giới (~15% dân số). Dinh dưỡng đúng không diệt được virus, nhưng giúp gan khỏe hơn, giảm nguy cơ tiến triển thành xơ gan và ung thư gan.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người viêm gan cần <u>bỏ rượu hoàn toàn</u>, <u>ăn đủ đạm 1–1.2g/kg</u> (không quá nhiều),
+    <u>hạn chế đồ chiên rán & đường</u>, <u>bổ sung nghệ, trà xanh, rau xanh đậm</u>.
+    <u>Khi não gan: giảm đạm tạm thời</u> — có chỉ định bác sĩ.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao ăn uống ảnh hưởng tới gan?</h2>
+  <p>Gan là "nhà máy xử lý" của cơ thể: chuyển hóa chất dinh dưỡng, giải độc thuốc và rượu. Khi gan bị viêm (do virus, rượu, mỡ), các tế bào gan yếu đi. Rượu và đồ chiên rán là "gánh nặng" trực tiếp lên gan. Ngược lại, nghệ (curcumin), trà xanh (catechins), omega-3 giúp giảm viêm và bảo vệ tế bào gan.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nghệ, trà xanh — chống viêm, bảo vệ tế bào gan</li>
+      <li>Rau xanh đậm: cải xoăn, rau ngót, cải bó xôi</li>
+      <li>Trái cây giàu chống oxy hóa: bưởi, cam, chanh</li>
+      <li>Cá béo: cá hồi, cá thu — omega-3 chống viêm</li>
+      <li>Tỏi, dầu olive — bảo vệ gan</li>
+      <li>Đạm: đậu phụ, cá, trứng, ức gà — 1–1.2g/kg/ngày</li>
+      <li>Tinh bột nguyên hạt: gạo lứt, yến mạch</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ RƯỢU BIA — tuyệt đối tránh, kể cả bia không độ</li>
+      <li>⛔ Đồ chiên rán, thức ăn nhanh — mỡ xấu</li>
+      <li>⛔ Đường tinh chế: nước ngọt, bánh kẹo, chè</li>
+      <li>⛔ Thực phẩm sống/tái: gỏi, rau sống chưa rửa kỹ</li>
+      <li>⚠️ Paracetamol liều cao — cực kỳ độc cho gan</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn bao nhiêu khi viêm gan?</h2>
+  <table class="table"><thead><tr><th>Tình trạng</th><th>Năng lượng</th><th>Đạm</th><th>Chất béo</th></tr></thead><tbody>
+    <tr><td>Viêm gan cấp (chán ăn)</td><td>Chia 6–8 bữa lỏng nhỏ</td><td>Tạm duy trì</td><td>Hạn chế tối đa</td></tr>
+    <tr><td>Viêm gan mạn ổn định</td><td>25–35 kcal/kg</td><td>1–1.2g/kg</td><td>25% tổng năng lượng</td></tr>
+    <tr><td>Viêm gan + não gan</td><td>Duy trì</td><td>0.6–0.8g/kg (thực vật/sữa)</td><td>Dầu thực vật</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Não gan (encephalopathy) là biến chứng nguy hiểm — lơ mơ, run tay, nói nhảm — cần nhập viện ngay.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (viêm gan mạn)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Yến mạch nấu sữa không đường + 1 ly trà xanh</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả bưởi + vài hạt điều</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi hấp + canh rau ngót + nghệ</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa chua không đường</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm gạo lứt + đậu phụ sốt cà + rau cải luộc</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Tiêm vaccine viêm gan B nếu chưa.</li>
+        <li>Xét nghiệm men gan, siêu âm gan mỗi 6 tháng.</li>
+        <li>Không tự ý dùng thảo dược "mát gan" — nhiều loại gây độc gan.</li>
+        <li>Rượu = độc tố với gan đã viêm — 0 là an toàn nhất.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Vàng da, vàng mắt.</li>
+        <li>Phù chân, bụng to (cổ trướng).</li>
+        <li>Nôn ra máu, đi ngoài phân đen (giãn tĩnh mạch thực quản).</li>
+        <li>Lơ mơ, run tay, nói nhảm (não gan).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

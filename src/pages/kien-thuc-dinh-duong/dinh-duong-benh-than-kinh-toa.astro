@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-benh-than-kinh-toa"];
+if (!art) throw new Error("Article not found");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Minh, 45 tuổi, dân văn phòng, ngồi nhiều, ít vận động. Một ngày đẹp trời, anh cúi nhặt bút và thấy đau nhói từ thắt lưng lan xuống mông, mặt sau đùi, xuống tận bàn chân. Đau không đứng thẳng nổi. Khám MRI cho thấy <strong>thoát vị đĩa đệm chèn dây thần kinh tọa</strong>.</p>
+  <p>Chế độ ăn không thể làm đĩa đệm hết thoát vị, nhưng có thể giảm viêm xung quanh rễ thần kinh, giảm đau và ngăn tái phát đợt cấp.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Thực phẩm <u>chống viêm</u> (omega-3, vitamin B, magie) giúp giảm đau thần kinh. 
+    <u>Tránh đường, đồ chiên rán, rượu bia</u> — làm tăng viêm. <u>Kiểm soát cân nặng</u> giảm áp lực lên cột sống.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao viêm ảnh hưởng tới đau thần kinh?</h2>
+  <p>Khi đĩa đệm thoát vị chèn vào rễ thần kinh, cơ thể phản ứng bằng phản ứng viêm. Chất viêm (cytokine) kích thích dây thần kinh, gây đau. Chế độ ăn chống viêm giảm các chất này xuống, giúp giảm đau mà không cần tăng thuốc.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cá béo: cá hồi, cá thu, cá trích — giàu omega-3 chống viêm</li>
+      <li>Rau xanh: bông cải, cải bó xôi, cải xoăn, rau ngót</li>
+      <li>Vitamin B (tái tạo thần kinh): thịt nạc, trứng, sữa, ngũ cốc nguyên cám</li>
+      <li>Magie (giảm co cứng cơ): hạt bí, hạt điều, chuối, bơ, rau xanh</li>
+      <li>Trái cây chống oxy hóa: việt quất, dâu tây, cam, bưởi</li>
+      <li>Gia vị chống viêm: nghệ, gừng, tỏi</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Đường tinh luyện: bánh kẹo, nước ngọt — làm tăng cytokine viêm</li>
+      <li>⛔ Đồ chiên rán, mỡ bão hòa — tăng viêm</li>
+      <li>⛔ Rượu bia — làm mất B1, B12, magie, giảm khả năng tái tạo thần kinh</li>
+      <li>⛔ Thực phẩm chế biến sẵn: xúc xích, thịt nguội — nhiều chất bảo quản gây viêm</li>
+      <li>⚠️ Thừa cân — mỗi kg tăng thêm làm áp lực lên cột sống tăng 4 lần</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul><li>Giảm cân nếu thừa — mục tiêu BMI &lt;23.</li><li>Tập core (plank, bridge) — giúp giữ cột sống ổn định.</li><li>Ngồi ghế có tựa lưng, không ngồi vắt chéo chân.</li><li>Ngủ nệm vừa phải — không quá mềm, không quá cứng.</li></ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul><li>Đau lan xuống chân kèm tê yếu.</li><li>Rối loạn tiểu tiện: bí tiểu, mất kiểm soát.</li><li>Tê vùng yên ngựa (bẹn, hậu môn).</li><li>Sốt kèm đau lưng.</li></ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

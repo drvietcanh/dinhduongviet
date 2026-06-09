@@ -1,0 +1,806 @@
+{
+ "gao-te": {
+  "code": "1004",
+  "name": "Gạo tẻ máy"
+ },
+ "gao-nep": {
+  "code": "1001",
+  "name": "Gạo nếp cái"
+ },
+ "gao-lut": {
+  "code": "1005",
+  "name": "Gạo lứt"
+ },
+ "com-trang": {
+  "code": "1004",
+  "name": "Gạo tẻ máy"
+ },
+ "com-gao-lut": {
+  "code": "1005",
+  "name": "Gạo lứt"
+ },
+ "banh-mi": {
+  "code": "1016",
+  "name": "Bột gạo nếp"
+ },
+ "bun-tuoi": {
+  "code": "1007",
+  "name": "Ngô bắp tươi"
+ },
+ "bun-quay": {
+  "code": "1010",
+  "name": "Bánh đa nem"
+ },
+ "pho": {
+  "code": "1015",
+  "name": "Bỏng ngô"
+ },
+ "mi-tuoi": {
+  "code": "1023",
+  "name": "Ngô nếp luộc"
+ },
+ "mi-goi": {
+  "code": "1022",
+  "name": "Mỳ sợi"
+ },
+ "bot-gao": {
+  "code": "1016",
+  "name": "Bột gạo nếp"
+ },
+ "bot-mi": {
+  "code": "1018",
+  "name": "Bột mì"
+ },
+ "bot-nghe": {
+  "code": "13006",
+  "name": "Nghệ khô, bột"
+ },
+ "banh-trang": {
+  "code": "1017",
+  "name": "Bột gạo tẻ"
+ },
+ "banh-da": {
+  "code": "1017",
+  "name": "Bột gạo tẻ"
+ },
+ "bun-kho": {
+  "code": "1010",
+  "name": "Bánh đa nem"
+ },
+ "mien": {
+  "code": "1013",
+  "name": "1141"
+ },
+ "mien-dong": {
+  "code": "1014",
+  "name": "Bánh quẩy"
+ },
+ "bap-xoi": {
+  "code": "2009",
+  "name": "Khoai lang nghệ"
+ },
+ "ngo-tuoi": {
+  "code": "2012",
+  "name": "Khoai riềng"
+ },
+ "khoai-lang": {
+  "code": "2008",
+  "name": "Khoai lang"
+ },
+ "khoai-tay": {
+  "code": "2006",
+  "name": "Củ súng khô (đã bỏ vỏ)"
+ },
+ "khoai-mon": {
+  "code": "2003",
+  "name": "Củ dong"
+ },
+ "san-tuoi": {
+  "code": "2004",
+  "name": "Củ sắn"
+ },
+ "san-kho": {
+  "code": "2015",
+  "name": "Miến dong"
+ },
+ "dau-nanh": {
+  "code": "3006",
+  "name": "Đậu Hà lan (hạt)"
+ },
+ "dau-xanh": {
+  "code": "3010",
+  "name": "Đậu xanh (đậu tắt)"
+ },
+ "dau-do": {
+  "code": "3014",
+  "name": "Hạt đen"
+ },
+ "dau-den": {
+  "code": "3012",
+  "name": "Hạt dẻ tươi"
+ },
+ "dau-phong": {
+  "code": "3001",
+  "name": "Cùi dừa già"
+ },
+ "dau-dieu": {
+  "code": "3028",
+  "name": "Hạt bí đỏ rang"
+ },
+ "vung-me": {
+  "code": "3020",
+  "name": "Vừng (đen, trắng)"
+ },
+ "hat-bi": {
+  "code": "3029",
+  "name": "Hạt da đỏ rang (dưa hấu)"
+ },
+ "dau-phu": {
+  "code": "3025",
+  "name": "Đậu phụ"
+ },
+ "dau-phu-non": {
+  "code": "3026",
+  "name": "Đậu phụ chúc"
+ },
+ "bap-cai": {
+  "code": "4008",
+  "name": "Cà rốt khô"
+ },
+ "cai-xanh": {
+  "code": "4002",
+  "name": "Bí đao (bí xanh)"
+ },
+ "cai-thia": {
+  "code": "4004",
+  "name": "Cà bát"
+ },
+ "cai-be-trang": {
+  "code": "4005",
+  "name": "Cà chua"
+ },
+ "cai-be-xanh": {
+  "code": "4006",
+  "name": "Cà pháo"
+ },
+ "cai-bap": {
+  "code": "4008",
+  "name": "Cà rốt khô"
+ },
+ "rau-ngot": {
+  "code": "4012",
+  "name": "Cải bắp khô"
+ },
+ "rau-muong": {
+  "code": "4084",
+  "name": "Rau muống khô"
+ },
+ "rau-cai": {
+  "code": "4001",
+  "name": "Bầu"
+ },
+ "xuplo": {
+  "code": "4010",
+  "name": "Cải bắp"
+ },
+ "xuplo-xanh": {
+  "code": "4011",
+  "name": "Cải bắp đỏ"
+ },
+ "mung-toi": {
+  "code": "4017",
+  "name": "Cần ta"
+ },
+ "gia-giu": {
+  "code": "4020",
+  "name": "Củ cải đỏ"
+ },
+ "gia-do": {
+  "code": "4021",
+  "name": "Củ cải trắng"
+ },
+ "xa-lach": {
+  "code": "4024",
+  "name": "Củ niễng"
+ },
+ "rau-diep": {
+  "code": "4024",
+  "name": "Củ niễng"
+ },
+ "rau-thom-hung-que": {
+  "code": "4026",
+  "name": "Dọc mùng"
+ },
+ "rau-thom-hung-lui": {
+  "code": "4027",
+  "name": "Dưa chuột"
+ },
+ "rau-thom-bac-ha": {
+  "code": "4025",
+  "name": "Dọc củ cải (non)"
+ },
+ "rau-thom-tia-to": {
+  "code": "4015",
+  "name": "Cải thìa (cải trắng)"
+ },
+ "rau-thom-kinh-gioi": {
+  "code": "4022",
+  "name": "Củ cải trắng khô"
+ },
+ "ngotay": {
+  "code": "4018",
+  "name": "Cần tây"
+ },
+ "can-tay": {
+  "code": "4019",
+  "name": "Chuèi xanh"
+ },
+ "can-tau": {
+  "code": "4019",
+  "name": "Chuèi xanh"
+ },
+ "ngo-bap": {
+  "code": "4009",
+  "name": "Cà tím"
+ },
+ "ca-rot": {
+  "code": "4007",
+  "name": "Cà rốt (củ đỏ, vàng)"
+ },
+ "su-hao": {
+  "code": "4096",
+  "name": "Su hào"
+ },
+ "ca-chua": {
+  "code": "4005",
+  "name": "Cà chua"
+ },
+ "ca-tim": {
+  "code": "4009",
+  "name": "Cà tím"
+ },
+ "muop-dang": {
+  "code": "4055",
+  "name": "Mướp đắng"
+ },
+ "muop-huong": {
+  "code": "4058",
+  "name": "Ngô bao tử"
+ },
+ "muop": {
+  "code": "4056",
+  "name": "Mướp Nhật bản"
+ },
+ "dua-chuot": {
+  "code": "4033",
+  "name": "Đu đủ xanh"
+ },
+ "cu-cai-do": {
+  "code": "4020",
+  "name": "Củ cải đỏ"
+ },
+ "cu-cai-trang": {
+  "code": "4021",
+  "name": "Củ cải trắng"
+ },
+ "nam-rom": {
+  "code": "4036",
+  "name": "Giá đậu xanh"
+ },
+ "nam-mo": {
+  "code": "4035",
+  "name": "Giá đậu tương"
+ },
+ "nam-huong": {
+  "code": "4037",
+  "name": "Hành củ tươi"
+ },
+ "nam-kim-cham": {
+  "code": "4039",
+  "name": "Hành tây"
+ },
+ "nam-linh-chi": {
+  "code": "4040",
+  "name": "Hạt sen tươi"
+ },
+ "chuoi-tieu": {
+  "code": "5007",
+  "name": "Chuối tiêu"
+ },
+ "cam": {
+  "code": "5024",
+  "name": "Lùu"
+ },
+ "buoi": {
+  "code": "5016",
+  "name": "Đào"
+ },
+ "xoai": {
+  "code": "5018",
+  "name": "Gioi"
+ },
+ "du-du": {
+  "code": "5012",
+  "name": "Dưa hồng"
+ },
+ "dua-hau": {
+  "code": "5037",
+  "name": "Nho ngät"
+ },
+ "nho": {
+  "code": "5026",
+  "name": "Mắc coọc"
+ },
+ "bo-trai": {
+  "code": "5041",
+  "name": "Quả bơ vỏ tím"
+ },
+ "chom-chom": {
+  "code": "5004",
+  "name": "Chôm chôm"
+ },
+ "thanh-long": {
+  "code": "5044",
+  "name": "Quả thanh long"
+ },
+ "mang-cau": {
+  "code": "5025",
+  "name": "Mãng cầu xiêm"
+ },
+ "dua": {
+  "code": "5023",
+  "name": "Lê"
+ },
+ "oi": {
+  "code": "5027",
+  "name": "Mận"
+ },
+ "va": {
+  "code": "5028",
+  "name": "Mít dai"
+ },
+ "quyt": {
+  "code": "5025",
+  "name": "Mãng cầu xiêm"
+ },
+ "nhan": {
+  "code": "5031",
+  "name": "Mơ"
+ },
+ "vai": {
+  "code": "5032",
+  "name": "Mơ khô"
+ },
+ "dau-tay": {
+  "code": "5009",
+  "name": "Dâu tây"
+ },
+ "le": {
+  "code": "5002",
+  "name": "Cam"
+ },
+ "dau-an": {
+  "code": "6002",
+  "name": "Dầu thảo mộc (Lạc, vừng, cám...)"
+ },
+ "bo": {
+  "code": "6001",
+  "name": "Bơ"
+ },
+ "thit-heo": {
+  "code": "7017",
+  "name": "Thịt lợn nạc"
+ },
+ "thit-bo": {
+  "code": "7011",
+  "name": "Thịt dê, nạc"
+ },
+ "thit-ga-ta": {
+  "code": "7013",
+  "name": "Thịt gà ta"
+ },
+ "thit-vit": {
+  "code": "7007",
+  "name": "Thịt bồ câu ra ràng"
+ },
+ "thit-ngan": {
+  "code": "7008",
+  "name": "Thịt chó sấn"
+ },
+ "thit-ngong": {
+  "code": "7009",
+  "name": "Thịt chó vai"
+ },
+ "thit-cuu": {
+  "code": "7001",
+  "name": "Thịt bê mỡ"
+ },
+ "thit-de": {
+  "code": "7011",
+  "name": "Thịt dê, nạc"
+ },
+ "thit-tho": {
+  "code": "7006",
+  "name": "Thịt bò, lưng, nạc và mỡ"
+ },
+ "thit-ngua": {
+  "code": "7005",
+  "name": "Thịt bò, lưng, nạc"
+ },
+ "xuong-heo": {
+  "code": "7021",
+  "name": "Thịt thỏ nhà"
+ },
+ "xuong-bo": {
+  "code": "7022",
+  "name": "Thịt thỏ rừng"
+ },
+ "da-heo": {
+  "code": "7080",
+  "name": "Ếch (thịt đùi)"
+ },
+ "long-heo": {
+  "code": "7045",
+  "name": "Lưỡi lợn"
+ },
+ "ca-chep": {
+  "code": "8003",
+  "name": "Cá chép"
+ },
+ "ca-loc": {
+  "code": "8006",
+  "name": "Cá diếc"
+ },
+ "ca-tram": {
+  "code": "8001",
+  "name": "Cá bống"
+ },
+ "ca-sac": {
+  "code": "8007",
+  "name": "Cá đao"
+ },
+ "ca-thu": {
+  "code": "8026",
+  "name": "Cá thu"
+ },
+ "ca-ngu": {
+  "code": "8008",
+  "name": "Cá đé"
+ },
+ "ca-nuc": {
+  "code": "8015",
+  "name": "Cá mòi (cá sardin)"
+ },
+ "ca-hong": {
+  "code": "8018",
+  "name": "Cá nạc"
+ },
+ "ca-chem": {
+  "code": "8021",
+  "name": "Cá phèn"
+ },
+ "ca-qua": {
+  "code": "8006",
+  "name": "Cá diếc"
+ },
+ "ca-basa": {
+  "code": "8001",
+  "name": "Cá bống"
+ },
+ "ca-tra": {
+  "code": "8001",
+  "name": "Cá bống"
+ },
+ "ca-tre": {
+  "code": "8033",
+  "name": "Cua bể"
+ },
+ "ca-bong": {
+  "code": "8043",
+  "name": "Ốc nhồi"
+ },
+ "ca-bong-lau": {
+  "code": "8043",
+  "name": "Ốc nhồi"
+ },
+ "ca-hoi": {
+  "code": "8011",
+  "name": "Cá hồi"
+ },
+ "ca-dieu-hong": {
+  "code": "8009",
+  "name": "Cá đối"
+ },
+ "ca-moi": {
+  "code": "8016",
+  "name": "Cá mỡ"
+ },
+ "ca-phao": {
+  "code": "8017",
+  "name": "Cá mối"
+ },
+ "ca-ngat": {
+  "code": "8024",
+  "name": "Cá rô phi"
+ },
+ "tom-sudo": {
+  "code": "8052",
+  "name": "Tôm đồng"
+ },
+ "tom-kho": {
+  "code": "8053",
+  "name": "Tôm khô"
+ },
+ "muc-tuoi": {
+  "code": "8013",
+  "name": "Cá lác"
+ },
+ "muc-kho": {
+  "code": "8014",
+  "name": "Cá mè"
+ },
+ "luon": {
+  "code": "8039",
+  "name": "Mực khô"
+ },
+ "ech": {
+  "code": "8037",
+  "name": "Hến"
+ },
+ "oc-buou": {
+  "code": "8040",
+  "name": "Mực tươi"
+ },
+ "trung-ga": {
+  "code": "5045",
+  "name": "Quả trứng gà"
+ },
+ "sua-tuoi": {
+  "code": "10001",
+  "name": "Sữa bò tươi"
+ },
+ "sua-chua": {
+  "code": "10004",
+  "name": "Sữa chua"
+ },
+ "nuoc-mam": {
+  "code": "13014",
+  "name": "Nước mắm cá (loại đặc biệt)"
+ },
+ "muoi": {
+  "code": "13013",
+  "name": "Mắm tép chua"
+ },
+ "duong": {
+  "code": "13004",
+  "name": "Hạt tiêu"
+ },
+ "mat-ong": {
+  "code": "13005",
+  "name": "Muèi"
+ },
+ "mi-chinh": {
+  "code": "13009",
+  "name": "Riềng"
+ },
+ "hat-nem": {
+  "code": "13010",
+  "name": "Magi"
+ },
+ "tieu": {
+  "code": "13004",
+  "name": "Hạt tiêu"
+ },
+ "toi": {
+  "code": "4104",
+  "name": "Tỏi tây (cả lá)"
+ },
+ "hanh-tim": {
+  "code": "4037",
+  "name": "Hành củ tươi"
+ },
+ "hanh-tay": {
+  "code": "4039",
+  "name": "Hành tây"
+ },
+ "hanh-la": {
+  "code": "4038",
+  "name": "Hành lá (hành hoa)"
+ },
+ "gung-tuoi": {
+  "code": "13003",
+  "name": "Gừng tươi"
+ },
+ "nghe-tuoi": {
+  "code": "13007",
+  "name": "Nghệ tươi"
+ },
+ "mam-tom": {
+  "code": "13011",
+  "name": "Mắm tôm đặc"
+ },
+ "ca-phe-den": {
+  "code": "12011",
+  "name": "Bánh trứng nhện"
+ },
+ "ca-phe-sua-da": {
+  "code": "12012",
+  "name": "Bét ca cao"
+ },
+ "tra-xanh": {
+  "code": "12006",
+  "name": "Bánh kem xốp"
+ },
+ "bia": {
+  "code": "12001",
+  "name": "Bánh bích cốt"
+ },
+ "ruou": {
+  "code": "12002",
+  "name": "Bánh bích quy"
+ },
+ "ruou-vang": {
+  "code": "12003",
+  "name": "Bánh chả"
+ },
+ "xuc-xich": {
+  "code": "7081",
+  "name": "Nhéng"
+ },
+ "cha-lua": {
+  "code": "7062",
+  "name": "Tủy xương lợn"
+ },
+ "kinh-gioi": {
+  "code": "4022",
+  "name": "Củ cải trắng khô"
+ },
+ "tia-to": {
+  "code": "4015",
+  "name": "Cải thìa (cải trắng)"
+ },
+ "hung-que": {
+  "code": "4026",
+  "name": "Dọc mùng"
+ },
+ "hung-lui": {
+  "code": "4027",
+  "name": "Dưa chuột"
+ },
+ "ngo-gai": {
+  "code": "4086",
+  "name": "Rau ngãt"
+ },
+ "bac-ha": {
+  "code": "4025",
+  "name": "Dọc củ cải (non)"
+ },
+ "thit-bo-nac": {
+  "code": "7011",
+  "name": "Thịt dê, nạc"
+ },
+ "thit-lon-nac": {
+  "code": "7017",
+  "name": "Thịt lợn nạc"
+ },
+ "thit-heo-nac": {
+  "code": "7017",
+  "name": "Thịt lợn nạc"
+ },
+ "thit-bo-giet-mo": {
+  "code": "7010",
+  "name": "Thịt cừu, nạc"
+ },
+ "thit-bo-kho": {
+  "code": "7010",
+  "name": "Thịt cừu, nạc"
+ },
+ "rau-den-do": {
+  "code": "4014",
+  "name": "Cải soong"
+ },
+ "rau-den-trang": {
+  "code": "4012",
+  "name": "Cải bắp khô"
+ },
+ "rau-cang-cua": {
+  "code": "4028",
+  "name": "Dưa gang"
+ },
+ "la-chanh": {
+  "code": "4030",
+  "name": "Đậu đũa"
+ },
+ "lap-xuong": {
+  "code": "7071",
+  "name": "Lạp xường"
+ },
+ "chao": {
+  "code": "3027",
+  "name": "Đậu phụ nướng"
+ },
+ "nam-heo": {
+  "code": "7047",
+  "name": "Lòng lợn (ruột non)"
+ },
+ "ot-kho": {
+  "code": "13008",
+  "name": "Ớt khô bột"
+ },
+ "mang-kho": {
+  "code": "4051",
+  "name": "Măng khô"
+ },
+ "sua-dac": {
+  "code": "10008",
+  "name": "Sữa đặc có đường Việt Nam"
+ },
+ "sua-bot": {
+  "code": "10006",
+  "name": "Sữa bột toàn phần"
+ },
+ "xi-dau": {
+  "code": "13022",
+  "name": "Xì dầu"
+ },
+ "gio-thu": {
+  "code": "7061",
+  "name": "Tủy xương bò"
+ },
+ "gion": {
+  "code": "7064",
+  "name": "Chả lợn"
+ },
+ "cha-bong": {
+  "code": "7063",
+  "name": "Ba tê"
+ },
+ "cu-den": {
+  "code": "4021",
+  "name": "Củ cải trắng"
+ },
+ "do-heo": {
+  "code": "7072",
+  "name": "Nem chạo"
+ },
+ "tuong-den": {
+  "code": "13020",
+  "name": "Tương nếp"
+ },
+ "tuong-ot": {
+  "code": "13021",
+  "name": "Tương ớt"
+ },
+ "rau-dieu": {
+  "code": "4018",
+  "name": "Cần tây"
+ },
+ "dua-chua": {
+  "code": "4032",
+  "name": "Đậu rồng (quả non)"
+ },
+ "hanh-huong": {
+  "code": "4038",
+  "name": "Hành lá (hành hoa)"
+ },
+ "tra-sua": {
+  "code": "12006",
+  "name": "Bánh kem xốp"
+ },
+ "thit-bo-xay": {
+  "code": "7011",
+  "name": "Thịt dê, nạc"
+ },
+ "thit-bo-bam": {
+  "code": "7011",
+  "name": "Thịt dê, nạc"
+ },
+ "thit-heo-bam": {
+  "code": "7017",
+  "name": "Thịt lợn nạc"
+ },
+ "thit-heo-xay": {
+  "code": "7017",
+  "name": "Thịt lợn nạc"
+ }
+}

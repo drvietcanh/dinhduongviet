@@ -1,0 +1,99 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-basedow-cuong-giap"];
+if (!art) throw new Error("Article not found: dinh-duong-basedow-cuong-giap");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Mai, 28 tuổi, gần đây hay hồi hộp, tim đập nhanh, sụt 5kg trong 2 tháng dù ăn nhiều hơn trước, tay run, ra nhiều mồ hôi, hay cáu gắt. Đi khám bác sĩ chẩn đoán bệnh Basedow (cường giáp tự miễn). Chị hỏi: "Em sụt cân nhanh quá, làm sao để tăng cân lại?"</p>
+  <p>Basedow là bệnh tuyến giáp hoạt động quá mức, đốt cháy năng lượng gấp 1.5–2 lần bình thường. Dinh dưỡng không chữa Basedow, nhưng giúp chống suy kiệt, chống loãng xương trong khi chờ thuốc phát huy tác dụng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người cường giáp cần <u>ăn tăng năng lượng (35–45 kcal/kg)</u>, <u>tăng đạm 1.2–1.5g/kg</u>,
+    <u>bổ sung canxi 1200mg + vitamin D</u> (chống loãng xương), <u>selen</u> (hạt Brazil, cá ngừ),
+    <u>hạn chế cà phê, rượu bia</u>. <u>KHÔNG cần kiêng muối i-ốt</u> — chỉ tránh rong biển/tảo.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao cường giáp làm tăng chuyển hóa?</h2>
+  <p>Hormone giáp (T3, T4) là "chân ga" của cơ thể — điều khiển tốc độ chuyển hóa tế bào. Khi tuyến giáp sản xuất quá nhiều (Basedow, bướu giáp nhân), mọi tế bào đều tăng tốc: tim đập nhanh hơn, thân nhiệt cao hơn, đốt cháy năng lượng nhanh hơn. Cơ thể luôn trong trạng thái "chạy marathon" kể cả khi ngồi yên.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Tăng năng lượng: thêm dầu olive, sữa, bơ, hạt vào bữa ăn</li>
+      <li>Đạm: thịt nạc, trứng, sữa, cá hồi, đậu phụ — 1.2–1.5g/kg/ngày</li>
+      <li>Canxi & D: sữa 2–3 ly/ngày, sữa chua, phô mai, tôm, cua</li>
+      <li>Selen: hạt Brazil (1 hạt/ngày đủ!), cá ngừ, trứng, nấm</li>
+      <li>Kẽm: hàu, thịt bò, hạt bí, đậu đỗ</li>
+      <li>Vitamin B: ngũ cốc nguyên hạt, trứng, sữa, rau xanh</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Rong biển, tảo biển — quá nhiều i-ốt, làm nặng Basedow</li>
+      <li>⛔ Cà phê, trà đặc, nước tăng lực — tăng tim đập nhanh</li>
+      <li>⛔ Rượu bia — tương tác thuốc, ảnh hưởng gan</li>
+      <li>⛔ Bánh kẹo, nước ngọt — biến động đường huyết</li>
+      <li>💡 Muối i-ốt bình thường KHÔNG cần kiêng</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Nhu cầu dinh dưỡng</h2>
+  <table class="table"><thead><tr><th>Chất</th><th>Khuyến nghị cho cường giáp</th></tr></thead><tbody>
+    <tr><td>Năng lượng</td><td>35–45 kcal/kg/ngày (tùy mức độ)</td></tr>
+    <tr><td>Đạm</td><td>1.2–1.5g/kg — cao hơn bình thường để chống teo cơ</td></tr>
+    <tr><td>Canxi</td><td>1200mg/ngày (cường giáp tăng hủy xương)</td></tr>
+    <tr><td>Vitamin D</td><td>800 IU/ngày + tắm nắng 15 phút</td></tr>
+    <tr><td>Selen</td><td>55–70mcg/ngày — giúp chuyển hóa hormone giáp</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày (~2500–3000 kcal)</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bún bò hoặc phở + 1 ly sữa ấm</td></tr>
+    <tr><td>🌞 Phụ 1</td><td>Sinh tố chuối + sữa + bơ + 1 nắm hạt</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm + cá hồi áp chảo + canh rau ngót + trái cây</td></tr>
+    <tr><td>🌆 Phụ 2</td><td>Sữa chua + 1 lát bánh mì nguyên cám</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm + thịt gà luộc + rau cải luộc + canh bí đỏ</td></tr>
+    <tr><td>🌜 Trước ngủ</td><td>1 ly sữa ấm</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Ăn nhiều bữa nhỏ — 6 bữa/ngày thay vì 3 bữa lớn.</li>
+        <li>Thêm dầu olive/dầu mè vào cháo, canh để tăng năng lượng.</li>
+        <li>1 hạt Brazil/ngày — đủ selen không cần thêm.</li>
+        <li>Uống thuốc kháng giáp đúng giờ, không tự ngưng.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Tim đập rất nhanh &gt;120 lần/phút.</li>
+        <li>Sốt, đau họng, nuốt đau — nguy cơ mất bạch cầu hạt do thuốc.</li>
+        <li>Mắt lồi nhiều, nhìn đôi.</li>
+        <li>Phù chân, khó thở — suy tim do cường giáp.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

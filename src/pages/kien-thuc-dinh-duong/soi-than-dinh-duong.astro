@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["soi-than-dinh-duong"];
+if (!art) throw new Error("Article not found: soi-than-dinh-duong");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Quân, 42 tuổi, dân văn phòng, ngồi máy lạnh 8 tiếng, uống rất ít nước. Một hôm đau quặn thắt lưng phải, đau lan xuống bụng, buồn nôn — đi cấp cứu, bác sĩ bảo sỏi thận 7mm. Mổ tán sỏi xong tưởng khỏi, ai ngờ 2 năm sau tái phát. Vì sao? Vì chế độ ăn không thay đổi.</p>
+  <p>Sỏi thận tái phát tới 50% trong 5 năm nếu không thay đổi dinh dưỡng. Tin tốt: 3 thói quen đơn giản — uống đủ nước, ăn đủ canxi, giảm muối — giảm tới 80% nguy cơ tái phát.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Quan trọng nhất: <u>uống 2.5–3 lít nước/ngày</u>!!! Tiếp theo: <u>ăn đủ canxi từ thực phẩm</u> (sữa, đậu hũ, tôm — KHÔNG kiêng canxi),
+    <u>giảm muối</u>, <u>hạn chế đạm động vật quá nhiều</u>. Uống nước chanh mỗi ngày giúp ngừa sỏi.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao sỏi thận hình thành?</h2>
+  <p>Khi nước tiểu quá cô đặc (do uống ít nước), các chất như canxi, oxalat, acid uric kết tinh thành sỏi. 80% sỏi là canxi oxalat. Nhiều người hiểu lầm kiêng canxi — nhưng thực tế, ăn canxi từ thực phẩm giúp gắn oxalat ở ruột, ngăn nó vào máu và thận. Kiêng canxi làm tăng hấp thu oxalat → sỏi nặng thêm!</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Uống 2.5–3 lít nước; nước chanh, nước cam — citrat ức chế tạo sỏi</li>
+      <li>Sữa, sữa chua, phô mai ít béo — canxi từ thực phẩm BẢO VỆ bạn</li>
+      <li>Đậu phụ, tôm, tép — giàu canxi</li>
+      <li>Rau ít oxalat: bầu, bí, dưa leo, cải thảo, súp lơ</li>
+      <li>Trái cây: chuối, dưa hấu, dưa lưới, táo</li>
+      <li>Ngũ cốc nguyên hạt: gạo lứt, yến mạch</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>⛔ Uống ít nước — nguyên nhân số 1</li>
+      <li>⛔ Muối &gt;5g/ngày — tăng canxi niệu</li>
+      <li>⛔ Đạm động vật quá nhiều (&gt;2g/kg/ngày)</li>
+      <li>⛔ Vitamin C liều cao (&gt;1000mg/ngày) — chuyển thành oxalat</li>
+      <li>⚠️ Rau giàu oxalat (rau dền, rau muống, cải bó xôi) — chỉ hạn chế nếu ăn không kèm canxi</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Uống nước thế nào?</h2>
+  <table class="table"><thead><tr><th>Đối tượng</th><th>Lượng nước/ngày</th><th>Mẹo</th></tr></thead><tbody>
+    <tr><td>Người bình thường</td><td>2–2.5 lít</td><td>Nước lọc, trà thảo mộc</td></tr>
+    <tr><td>Có tiền sử sỏi thận</td><td>2.5–3 lít</td><td>Thêm nước chanh, cam</td></tr>
+    <tr><td>Uống cách</td><td>Uống đều cả ngày</td><td>Đặt chai 1.5 lít ở bàn làm việc</td></tr>
+    <tr><td>Kiểm tra</td><td>Nước tiểu vàng nhạt</td><td>Nếu vàng đậm — uống thêm!</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bánh mì nguyên cám + phô mai + 1 ly sữa + 1 quả chuối</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 ly nước chanh tươi</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm vừa + cá kho nhạt + canh bầu nấu tôm + cải thảo luộc</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 hũ sữa chua + 1 quả táo</td></tr>
+    <tr><td>🌙 Tối</td><td>Cơm vừa + đậu phụ sốt cà + canh bí đỏ</td></tr>
+    <tr><td>🌜 Tối muộn</td><td>1 ly sữa ấm (200ml)</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Nước chanh + sữa = hai "thuốc" tốt nhất cho người sỏi thận.</p>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Uống nước chanh mỗi ngày — citrat ức chế kết tinh sỏi.</li>
+        <li>Ăn rau giàu oxalat CÙNG bữa với canxi (sữa, đậu hũ).</li>
+        <li>Giảm muối — không thêm mắm muối khi ăn.</li>
+        <li>Hạn chế thịt đỏ, nội tạng (sỏi acid uric).</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Đau quặn thắt lưng, đau lan xuống bụng.</li>
+        <li>Tiểu ra máu, tiểu buốt.</li>
+        <li>Sốt kèm đau — nguy cơ nhiễm trùng thận.</li>
+        <li>Bí tiểu hoàn toàn — tắc đường tiết niệu.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

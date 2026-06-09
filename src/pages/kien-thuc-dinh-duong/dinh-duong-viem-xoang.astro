@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-viem-xoang"];
+---
+
+<ArticleLayout article={article}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Viêm xoang mạn tính ảnh hưởng đến hàng triệu người. Dinh dưỡng có thể hỗ trợ giảm viêm niêm mạc xoang, giảm dịch nhầy và tăng cường miễn dịch.</p>
+    <p>Viêm xoang thường đi kèm với tình trạng viêm niêm mạc mũi xoang kéo dài, làm tăng sản xuất dịch nhầy đặc. Một chế độ ăn giàu chất chống viêm và chất chống oxy hóa — đặc biệt là vitamin C, quercetin và omega-3 — có thể giúp giảm phù nề niêm mạc, loãng dịch nhầy và cải thiện dẫn lưu xoang. Sữa và chế phẩm từ sữa có thể làm đặc dịch nhầy ở một số người nhạy cảm, cần thử loại trừ để đánh giá.</p>
+  </section>
+
+  <section class="article-section" data-section="diet-principles">
+    <h2>Nguyên tắc dinh dưỡng</h2>
+    <ul>
+      <li><strong>Chống viêm:</strong> Omega-3, nghệ, gừng, trái cây giàu vitamin C</li>
+      <li><strong>Uống đủ nước:</strong> Giúp loãng dịch nhầy, dễ thoát ra khỏi xoang</li>
+      <li><strong>Tránh thực phẩm tăng đờm:</strong> Sữa (ở một số người nhạy cảm), đồ chiên rán, đường tinh luyện</li>
+      <li><strong>Giảm histamin:</strong> Nếu có cơ địa dị ứng — thử low-histamine diet</li>
+      <li><strong>Tăng cường vitamin C:</strong> Liều 500-1000 mg/ngày từ thực phẩm giúp giảm viêm và tăng sức đề kháng niêm mạc. Vitamin C cũng có tác dụng kháng histamine tự nhiên, giảm hắt hơi, sổ mũi.</li>
+      <li><strong>Bổ sung kẽm:</strong> Kẽm hỗ trợ hệ miễn dịch và giúp niêm mạc phục hồi. Thiếu kẽm làm suy giảm hàng rào bảo vệ đường hô hấp. Nguồn: hàu, thịt bò, hạt bí, đậu.</li>
+      <li><strong>Quercetin (chất chống viêm tự nhiên):</strong> Flavonoid này ức chế giải phóng histamine, giảm viêm niêm mạc. Nguồn giàu: táo, hành tây, trà xanh, nho đỏ, bông cải xanh. Nên ăn hành tây sống hoặc nấu chín vừa phải để giữ quercetin.</li>
+      <li><strong>Thức ăn ấm, dễ tiêu:</strong> Súp gà, cháo hành tía tô, trà gừng mật ong — giúp làm ấm cơ thể, thông mũi, giảm nghẹt xoang.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods-to-eat">
+    <h2>Thực phẩm nên ăn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">🧄 Gừng & nghệ</span><span>Pha trà gừng, thêm nghệ vào món ăn — chống viêm mạnh</span></div>
+      <div class="food-row"><span class="food-cat">🌶️ Ớt cay (nếu dung nạp)</span><span>Capsaicin giúp thông mũi, giảm tắc xoang</span></div>
+      <div class="food-row"><span class="food-cat">🍊 Vitamin C</span><span>Cam, ổi, kiwi, ớt chuông — chống oxy hóa, kháng histamine tự nhiên</span></div>
+      <div class="food-row"><span class="food-cat">🐟 Omega-3</span><span>Cá hồi, cá thu, hạt chia, hạt lanh</span></div>
+      <div class="food-row"><span class="food-cat">🥣 Súp gà, cháo hành</span><span>Thức ăn ấm — giảm viêm, thông mũi, dễ tiêu hóa</span></div>
+      <div class="food-row"><span class="food-cat">🍎 Táo & hành tây</span><span>Giàu quercetin — giảm giải phóng histamine, chống viêm niêm mạc</span></div>
+      <div class="food-row"><span class="food-cat">💧 Nước ấm & trà thảo mộc</span><span>Trà gừng, trà hoa cúc, trà bạc hà — giữ ẩm niêm mạc, thông thoáng đường thở</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="foods-to-limit">
+    <h2>Thực phẩm nên tránh</h2>
+    <ul>
+      <li><strong>Sữa & phô mai</strong> (nếu thấy tắc mũi sau ăn)</li>
+      <li><strong>Đường tinh luyện & đồ ngọt</strong> — làm tăng viêm và tăng sản xuất dịch nhầy</li>
+      <li><strong>Đồ chiên rán, thức ăn nhanh</strong></li>
+      <li><strong>Rượu bia</strong> — làm giãn mạch, tăng nghẹt mũi, giảm sức đề kháng</li>
+      <li><strong>Thực phẩm lạnh:</strong> Kem lạnh, nước đá — có thể kích thích dây thần kinh phế vị, tăng tiết dịch mũi</li>
+      <li><strong>Thực phẩm giàu histamine:</strong> Rượu vang, phô mai lâu năm, dưa muối, đồ hộp — nếu có cơ địa dị ứng kèm theo</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <details class="faq-item"><summary>Bỏ sữa có giúp hết viêm xoang không?</summary><p>Không phải ai cũng nhạy cảm với sữa. Một số người thấy giảm đờm sau khi bỏ sữa. Thử loại bỏ sữa 2 tuần và theo dõi triệu chứng. Nếu thấy cải thiện rõ, có thể hạn chế sữa lâu dài và tìm nguồn canxi thay thế.</p></details>
+    <details class="faq-item"><summary>Vitamin C liều cao có an toàn không?</summary><p>Vitamin C từ thực phẩm hoàn toàn an toàn. Bổ sung liều cao (trên 2000 mg/ngày) có thể gây tiêu chảy, đau bụng. Mức 500-1000 mg/ngày từ cam, ổi, kiwi, ớt chuông là lý tưởng và an toàn cho hầu hết mọi người.</p></details>
+    <details class="faq-item"><summary>Ăn gì khi đang bị viêm xoang cấp?</summary><p>Uống nhiều nước ấm, ăn cháo hành tía tô, súp gà, thêm gừng và nghệ. Hạn chế sữa, đồ ngọt, đồ chiên rán. Rửa mũi bằng nước muối sinh lý hàng ngày. Trà gừng mật ong ấm giúp thông mũi rất tốt.</p></details>
+  </section>
+
+  <section class="article-section" data-section="summary-reminder">
+    <h2>💡 Nhớ chính</h2>
+    <div class="key-takeaway"><p><strong>3 việc:</strong> (1) Uống đủ nước — ấm tốt hơn lạnh, (2) Trà gừng & nghệ mỗi ngày — chống viêm mạnh, (3) Vitamin C đều đặn — cam, ổi, kiwi, ớt chuông. Thêm: hạn chế sữa, thử bỏ 2 tuần nếu nghi ngờ. Rửa mũi bằng nước muối sinh lý đều đặn. Ăn táo và hành tây để bổ sung quercetin chống viêm tự nhiên.</p></div>
+  </section>
+</ArticleLayout>

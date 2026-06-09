@@ -1,0 +1,112 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-parkinson"];
+if (!art) throw new Error("Article not found: dinh-duong-parkinson");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Tuyết, 70 tuổi, bị Parkinson đã 5 năm. Đôi tay run nhiều, ăn uống vãi cơm ra bàn, nuốt nghẹn, táo bón kinh niên. Bác ngại ăn cùng gia đình vì "ăn bẩn" và ngày càng ăn ít đi. Con cháu lo lắng vì bác sụt 5kg trong 2 tháng.</p>
+  <p>Parkinson không chỉ ảnh hưởng vận động — nó ảnh hưởng cả việc ăn uống: khó nhai, khó nuốt, chậm tiêu, táo bón. Nhưng có nhiều cách điều chỉnh để người bệnh vẫn ăn ngon và đủ chất.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người Parkinson cần <u>tăng chất xơ</u> chống táo bón, <u>ăn thức ăn mềm</u> dễ nuốt, 
+    <u>kiểm soát đạm</u> nếu dùng levodopa (đạm cản trở hấp thu thuốc), và <u>ngồi thẳng lưng</u> khi ăn.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vì sao lại thế? -->
+<section class="section card">
+  <h2>🔬 Vì sao Parkinson ảnh hưởng dinh dưỡng?</h2>
+  <p>Bệnh Parkinson làm giảm dopamine — chất dẫn truyền thần kinh kiểm soát vận động. Điều này ảnh hưởng tới: cơ miệng (khó nuốt), cơ dạ dày (chậm tiêu, đầy hơi), ruột (táo bón nặng). Thuốc levodopa (Sinemet) cạnh tranh với đạm để vào máu — ăn nhiều đạm cùng lúc với thuốc sẽ giảm tác dụng.</p>
+</section>
+
+<!-- 4️⃣ Ăn gì? -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ăn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chất xơ:</strong> Yến mạch, gạo lứt, khoai lang, rau xanh, trái cây chín mềm (chuối, đu đủ, thanh long)</li>
+      <li><strong>Đạm dễ tiêu:</strong> Trứng, cá hấp, đậu phụ, sữa chua, thịt bằm nhuyễn</li>
+      <li><strong>Chất béo tốt:</strong> Dầu oliu, dầu mè, quả bơ — giúp chống viêm thần kinh</li>
+      <li><strong>Chất chống oxy hóa:</strong> Việt quất, dâu tây, trà xanh, nghệ, cà phê (lượng vừa)</li>
+      <li><strong>Uống đủ nước:</strong> 1.5–2 lít/ngày — tránh táo bón nặng</li>
+    </ul>
+  </div>
+
+  <!-- 5️⃣ Kiêng gì? -->
+  <div class="card">
+    <h2>❌ Thực phẩm cần lưu ý</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>⚠️ Đạm cao (nếu uống levodopa):</strong> Thịt bò, thịt heo, gà, cá nhiều — nên chia đều trong ngày, tránh ăn đạm nhiều cùng lúc với thuốc</li>
+      <li><strong>⚠️ Thức ăn khô, cứng:</strong> Bánh mì cứng, thịt dai, rau sống — khó nhai, dễ sặc</li>
+      <li><strong>⛔ Rượu bia:</strong> Làm triệu chứng Parkinson nặng hơn, tăng nguy cơ ngã</li>
+      <li><strong>⚠️ Cafein nhiều:</strong> Có thể tương tác với thuốc — uống vừa phải</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6️⃣ Ăn bao nhiêu? -->
+<section class="section card">
+  <h2>📏 Hướng dẫn ăn uống với levodopa</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Thời điểm</th><th>Khuyến nghị</th></tr></thead>
+    <tbody>
+      <tr><td>Uống levodopa</td><td>Trước ăn 30–60 phút, uống với nước lọc</td></tr>
+      <tr><td>Bữa ăn gần thuốc</td><td>Hạn chế đạm (chỉ ăn tinh bột + rau)</td></tr>
+      <tr><td>Bữa ăn xa thuốc</td><td>Có thể ăn đạm thoải mái hơn</td></tr>
+      <tr><td>Nước</td><td>Uống từng ngụm nhỏ, thường xuyên</td></tr>
+      <tr><td>Bữa ăn</td><td>5–6 bữa nhỏ, thức ăn mềm</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 7️⃣ Thực đơn 1 ngày -->
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
+  <table class="table" style="margin-top:10px;">
+    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>🌅 Sáng</td><td>Cháo yến mạch + chuối dầm + ½ ly sữa ấm</td><td>Ít đạm, giàu chất xơ</td></tr>
+      <tr><td>🌞 Trưa (xa thuốc)</td><td>Cơm mềm + cá hấp + bí đỏ luộc mềm + rau cải luộc</td><td>Bữa đạm chính</td></tr>
+      <tr><td>🌆 Phụ chiều</td><td>Sinh tố bơ chuối (không sữa đặc) + 1 hũ sữa chua</td><td>Dễ uống, nhiều năng lượng</td></tr>
+      <tr><td>🌙 Tối (gần thuốc)</td><td>Cháo thịt bằm (thịt ít) + bông cải xanh luộc mềm</td><td>Ít đạm, không ảnh hưởng thuốc tối</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Thức ăn nên được nấu chín mềm, cắt nhỏ, hấp hoặc luộc.</p>
+</section>
+
+<!-- 8️⃣ Mẹo thực tế -->
+<section class="section card">
+  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Mẹo áp dụng</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Dùng bát đĩa có đế hút chống đổ, thìa to bản dễ xúc.</li>
+        <li>Ngồi thẳng lưng, hơi cúi cằm khi nuốt — giảm nguy cơ sặc.</li>
+        <li>Chia thức ăn thành miếng nhỏ, nấu mềm, hấp hoặc luộc.</li>
+        <li>Uống nước từng ngụm nhỏ, dùng ống hút nếu cần.</li>
+        <li>Mát-xa bụng theo chiều kim đồng hồ 5 phút/ngày — giảm táo bón.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khi nào cần đi khám ngay</h4>
+      <ul style="line-height:1.8;padding-left:16px;">
+        <li>Sặc, ho dữ dội khi ăn — nguy cơ viêm phổi hít.</li>
+        <li>Không nuốt được thuốc.</li>
+        <li>Sụt cân nhanh &gt; 3kg/tháng.</li>
+        <li>Táo bón &gt; 5 ngày không đi.</li>
+        <li>Ảo giác, lú lẫn — tác dụng phụ của thuốc.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>
