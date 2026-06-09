@@ -4,6 +4,8 @@ import {
   PROTEIN_FOOD_EXAMPLES,
   PROTEIN_GLOBAL_SAFETY_NOTE,
   PROTEIN_PROFILES,
+  PROTEIN_WEIGHT_MAX_KG,
+  PROTEIN_WEIGHT_MIN_KG,
 } from "../../lib/protein-requirement";
 
 const title = "Tính nhu cầu đạm (protein) mỗi ngày";
@@ -14,6 +16,7 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
   <script id="protein-profiles" type="application/json" set:html={JSON.stringify(PROTEIN_PROFILES)}></script>
   <script id="protein-foods" type="application/json" set:html={JSON.stringify(PROTEIN_FOOD_EXAMPLES)}></script>
   <script id="protein-safety" type="application/json" set:html={JSON.stringify(PROTEIN_GLOBAL_SAFETY_NOTE)}></script>
+  <script id="protein-weight-limits" type="application/json" set:html={JSON.stringify({ min: PROTEIN_WEIGHT_MIN_KG, max: PROTEIN_WEIGHT_MAX_KG })}></script>
 
   <main class="protein-page">
     <header class="page-header">
@@ -29,7 +32,7 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
           <label class="form-row" for="weight">
             <span>Cân nặng hiện tại</span>
             <div class="input-wrap">
-              <input type="number" id="weight" value="60" min="20" max="200" step="0.1" inputmode="decimal" />
+              <input type="number" id="weight" value="60" min={PROTEIN_WEIGHT_MIN_KG} max={PROTEIN_WEIGHT_MAX_KG} step="0.1" inputmode="decimal" />
               <span class="input-suffix">kg</span>
             </div>
           </label>
@@ -178,6 +181,7 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
       var profiles = JSON.parse(document.getElementById("protein-profiles").textContent || "[]");
       var foods = JSON.parse(document.getElementById("protein-foods").textContent || "[]");
       var safety = JSON.parse(document.getElementById("protein-safety").textContent || "\"\"");
+      var weightLimits = JSON.parse(document.getElementById("protein-weight-limits").textContent || "{\"min\":20,\"max\":200}");
       var profileById = profiles.reduce(function(acc, profile) {
         acc[profile.profileId] = profile;
         return acc;
@@ -204,8 +208,8 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
       }
 
       function rangeText(min, max) {
-        if (min === max) return String(min) + "g";
-        return String(min) + "–" + String(max) + "g";
+        if (min === max) return String(min) + " g";
+        return String(min) + "–" + String(max) + " g";
       }
 
       function getModeLabel(mode) {
@@ -230,7 +234,7 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
       function validateWeight(raw) {
         var weight = Number(raw);
         if (!Number.isFinite(weight)) return null;
-        if (weight < 20 || weight > 200) return null;
+        if (weight < weightLimits.min || weight > weightLimits.max) return null;
         return weight;
       }
 
@@ -266,7 +270,7 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
         mealCard.hidden = true;
         foodCard.hidden = true;
         resultMain.innerHTML = '<span class="clinical-title">Không tự động tính mục tiêu cá nhân</span>' +
-          '<span class="per-kg">' + (profile.minGPerKg && profile.maxGPerKg ? "Range nguồn tham khảo: " + profile.minGPerKg + "–" + profile.maxGPerKg + " g/kg/ngày" : "Chưa khóa range g/kg cho engine tự phục vụ") + '</span>';
+          '<span class="per-kg">' + (profile.minGPerKg && profile.maxGPerKg ? "Khoảng nguồn tham khảo: " + profile.minGPerKg + "–" + profile.maxGPerKg + " g/kg/ngày" : "Chưa khóa khoảng g/kg cho engine tự phục vụ") + '</span>';
         resultNote.textContent = profile.safetyMessage + " " + profile.resultNote;
       }
 
@@ -291,8 +295,11 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
         inputError.textContent = "";
 
         if (!weight) {
-          inputError.textContent = "Vui lòng nhập cân nặng từ 20 đến 200 kg.";
+          inputError.textContent = "Vui lòng nhập cân nặng từ " + weightLimits.min + " đến " + weightLimits.max + " kg.";
           inputError.hidden = false;
+          modeBadge.textContent = "Ước tính";
+          resultMain.textContent = "";
+          resultNote.textContent = "";
           resultEl.style.display = "none";
           return;
         }

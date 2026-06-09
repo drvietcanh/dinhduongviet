@@ -22,6 +22,19 @@ export interface ProteinFoodExample {
   serving: string;
 }
 
+export interface ProteinRequirementCalculation {
+  ok: boolean;
+  error?: string;
+  profile?: ProteinRequirementProfile;
+  mode?: ProteinRequirementMode;
+  minGPerDay?: number;
+  maxGPerDay?: number;
+  isPersonalTarget: boolean;
+}
+
+export const PROTEIN_WEIGHT_MIN_KG = 20;
+export const PROTEIN_WEIGHT_MAX_KG = 200;
+
 export const PROTEIN_GLOBAL_SAFETY_NOTE =
   "Kết quả là ước tính giáo dục, không thay thế tư vấn dinh dưỡng cá thể. Nếu có bệnh thận, gan, tim, phù, xơ gan, đang mang thai/cho con bú, ung thư, suy dinh dưỡng, đang lọc máu hoặc đang ăn theo chỉ định, hãy hỏi bác sĩ/dinh dưỡng viên trước khi thay đổi lượng đạm.";
 
@@ -109,7 +122,7 @@ export const PROTEIN_PROFILES: ProteinRequirementProfile[] = [
     maxGPerKg: 0.8,
     mode: "clinical_no_auto",
     sourceLabel: "KDOQI/NKF 2020 Nutrition in CKD.",
-    safetyMessage: "Bệnh thận mạn chưa lọc máu: không tự giảm hoặc tăng đạm. Range này chỉ để trao đổi với bác sĩ/dinh dưỡng viên.",
+    safetyMessage: "Bệnh thận mạn chưa lọc máu: không tự giảm hoặc tăng đạm. Khoảng này chỉ để trao đổi với bác sĩ/dinh dưỡng viên.",
     appliesTo: "CKD stage/eGFR đã xác định, chưa lọc máu, có theo dõi dinh dưỡng và năng lượng ăn vào.",
     notFor: "Đang lọc máu, suy dinh dưỡng, bệnh cấp/catabolic, thai kỳ, ung thư, hội chứng thận hư hoặc không biết eGFR/stage.",
     requiresClinicalReview: true,
@@ -173,7 +186,7 @@ export const PROTEIN_PROFILES: ProteinRequirementProfile[] = [
     appliesTo: "Cần tuổi thai, cân nặng trước mang thai, BMI, song thai/không, nguy cơ sản khoa và mục tiêu sản khoa.",
     notFor: "Thai nguy cơ cao, tiền sản giật, CKD, đái tháo đường thai kỳ, suy dinh dưỡng, sinh non hoặc mẹ có bệnh nền.",
     requiresClinicalReview: true,
-    resultNote: "Chưa khóa range g/kg vào engine tự phục vụ.",
+    resultNote: "Chưa khóa khoảng g/kg vào engine tự phục vụ.",
     uiWording: "Không tự động tính mục tiêu cá nhân.",
   },
   {
@@ -216,3 +229,32 @@ export const PROTEIN_FOOD_EXAMPLES: ProteinFoodExample[] = [
   { name: "Sữa tươi", serving: "200ml", proteinG: 7 },
   { name: "Đậu nành luộc", serving: "100g", proteinG: 16 },
 ];
+
+export function calculateProteinRequirement(profileId: string, weightKg: number): ProteinRequirementCalculation {
+  if (!Number.isFinite(weightKg) || weightKg < PROTEIN_WEIGHT_MIN_KG || weightKg > PROTEIN_WEIGHT_MAX_KG) {
+    return {
+      ok: false,
+      error: `Vui lòng nhập cân nặng từ ${PROTEIN_WEIGHT_MIN_KG} đến ${PROTEIN_WEIGHT_MAX_KG} kg.`,
+      isPersonalTarget: false,
+    };
+  }
+
+  const profile = PROTEIN_PROFILES.find((item) => item.profileId === profileId) ?? PROTEIN_PROFILES[0];
+  if (profile.mode === "clinical_no_auto" || profile.minGPerKg == null || profile.maxGPerKg == null) {
+    return {
+      ok: true,
+      profile,
+      mode: profile.mode,
+      isPersonalTarget: false,
+    };
+  }
+
+  return {
+    ok: true,
+    profile,
+    mode: profile.mode,
+    minGPerDay: Math.round(weightKg * profile.minGPerKg),
+    maxGPerDay: Math.round(weightKg * profile.maxGPerKg),
+    isPersonalTarget: profile.mode !== "clinical_no_auto",
+  };
+}
