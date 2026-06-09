@@ -27,6 +27,14 @@ const food = foodBySlug(canonicalSlug);
 if (!food) return Astro.redirect("/tim-kiem");
 if (requestedSlug !== canonicalSlug) return Astro.redirect(`/thuc-pham/${canonicalSlug}`);
 const source = sourceFor(food.sourceId);
+const qualityLabels: Record<string, string> = {
+  reviewed_keep_current: "Đã rà soát sơ bộ, giữ số hiện tại",
+  recipe_estimate_only: "Dữ liệu ước tính từ công thức",
+  needs_better_source: "Cần nguồn tốt hơn",
+  candidate_pending_dietitian_review: "Có candidate chờ duyệt chuyên môn",
+  needs_external_source: "Cần nguồn ngoài để đối chiếu",
+};
+const qualityNote = food.sourceReviewStatus ? qualityLabels[food.sourceReviewStatus] : "";
 
 // JSON-LD Food structured data
 var foodSchema = {
@@ -106,6 +114,13 @@ var foodSchema = {
       <h2>Nguồn và ghi chú</h2>
       <p class="muted"><strong>Nguồn:</strong> {source?.name ?? food.sourceId}</p>
       <p class="muted" style="margin-top: 10px;"><strong>Mức tin cậy:</strong> {confidenceLabel(food.confidence)}</p>
+      {qualityNote && (
+        <div class="quality-note">
+          <span>{qualityNote}</span>
+          {food.basisNote && <p>{food.basisNote}</p>}
+          {food.needsDietitianReview && <p>Cần bác sĩ hoặc chuyên gia dinh dưỡng duyệt trước khi dùng để thay đổi dữ liệu chính.</p>}
+        </div>
+      )}
       <p class="muted" style="margin-top: 10px;">{food.note}</p>
       <p class="muted" style="margin-top: 10px;">Bản phát hành chính thức cần đối chiếu từng chỉ số với nguồn gốc.</p>
     </div>
@@ -132,6 +147,34 @@ var foodSchema = {
     }
   </script>
 </BaseLayout>
+
+<style>
+  .quality-note {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    padding: 10px 12px;
+    color: var(--ink-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .quality-note span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    border-radius: 999px;
+    background: var(--bg-card);
+    padding: 2px 9px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .quality-note p {
+    margin: 8px 0 0;
+  }
+</style>
 
 <script is:inline>
   (function() {

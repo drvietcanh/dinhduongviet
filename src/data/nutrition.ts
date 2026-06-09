@@ -6,6 +6,7 @@ import { extraFoods5 } from "./foods-extra5";
 import { extraFoods6 } from "./foods-extra6";
 import { extraFoods7 } from "./foods-extra7";
 import { extraFoods8 } from "./foods-extra8";
+import { foodQualityReviews } from "./food-quality-reviews";
 import { extraRecipes } from "./recipes-extra";
 import { extraRecipes2 } from "./recipes-extra2";
 import { extraRecipes3 } from "./recipes-extra3";
@@ -54,6 +55,19 @@ export type Food = {
   sourceId: string;
   confidence: "high" | "medium" | "low";
   note: string;
+  dataQuality?: "recipe_estimate" | "source_backed" | "needs_review";
+  sourceConfidence?: "high" | "medium" | "low";
+  sourceReviewStatus?:
+    | "reviewed_keep_current"
+    | "recipe_estimate_only"
+    | "needs_better_source"
+    | "candidate_pending_dietitian_review"
+    | "needs_external_source";
+  basisNote?: string;
+  reviewNote?: string;
+  candidateSource?: string;
+  needsExternalSource?: boolean;
+  needsDietitianReview?: boolean;
 };
 
 export type RecipeItem = {
@@ -1802,6 +1816,10 @@ recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipe
 const leafyVegetablePattern = /^(Rau|Cải|Bắp cải|Súp lơ|Mồng tơi|Mướp|Đậu que|Đậu bắp|Măng tây|Ngò|Ớt chuông|Cà tím|Bí xanh|Hẹ)/i;
 
 for (const food of foods) {
+  const qualityReview = foodQualityReviews[food.slug];
+  if (qualityReview) {
+    Object.assign(food, qualityReview);
+  }
   if (food.category === "Rau") {
     food.category = "Rau xanh";
   } else if (food.category === "Rau củ") {

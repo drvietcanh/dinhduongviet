@@ -151,6 +151,31 @@ const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
 const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
 const slimBySlug = new Map(slim.map((item) => [item.slug, item]));
+const decisionTableSlugs = [
+  "com-nep",
+  "com-gao-lut-do",
+  "com-gao-lut-den",
+  "suon-heo-nuong",
+  "nem-lui",
+  "thit-heo-quay",
+  "banh-chung",
+  "banh-troi",
+  "banh-chay",
+  "banh-gio",
+  "banh-mi-pate",
+  "banh-mi-cha-ca",
+  "banh-mi-cha-lua",
+  "nem-nuong",
+  "lap-xuong-nuong",
+  "thit-xong-khoi",
+  "thit-bacon",
+  "thit-bacon-chien",
+  "xuc-xich-duc",
+  "xuc-xich-my",
+  "xuc-xich-bo",
+  "xuc-xich-ga",
+  "xuc-xich-heo",
+];
 
 const duplicateSlugs = groupBy(slim, (item) => item.slug).map(([slug, entries]) => ({
   severity: duplicateSeverity(classifyDuplicate(entries)),
@@ -255,6 +280,36 @@ const riceSourceReview = ["com-nep", "com-gao-lut-do", "com-gao-lut-den"]
     note: food.note,
     suggestion: food.sourceId === "recipe-estimate-v1" || food.source === "recipe-estimate-v1" ? "needs_source_review" : "source_present",
   }));
+const foodsWithDataQuality = sourceFoods.filter((food) => Boolean(food.dataQuality));
+const foodsWithSourceReviewStatus = sourceFoods.filter((food) => Boolean(food.sourceReviewStatus));
+const foodsNeedingExternalSource = sourceFoods.filter((food) => food.needsExternalSource === true);
+const foodsNeedingDietitianReview = sourceFoods.filter((food) => food.needsDietitianReview === true);
+const sourceReviewStatusCounts = foodsWithSourceReviewStatus.reduce((totals, food) => {
+  totals[food.sourceReviewStatus] = (totals[food.sourceReviewStatus] || 0) + 1;
+  return totals;
+}, {});
+const dataQualityCounts = foodsWithDataQuality.reduce((totals, food) => {
+  totals[food.dataQuality] = (totals[food.dataQuality] || 0) + 1;
+  return totals;
+}, {});
+const decisionTableMissingMetadata = decisionTableSlugs
+  .map((slug) => sourceBySlug.get(slug))
+  .filter((food) => !food || !food.sourceReviewStatus || !food.dataQuality || !food.reviewNote)
+  .map((food) => issue("info", {
+    slug: food?.slug || "missing-food",
+    name: food?.name || "-",
+    reason: "Decision table item is missing dataQuality/sourceReviewStatus/reviewNote metadata.",
+  }));
+const cookedHighEnergyWithoutReviewMetadata = cookedHighEnergyReview
+  .filter((item) => {
+    const food = sourceBySlug.get(item.slug);
+    return !food?.sourceReviewStatus || !food?.reviewNote;
+  })
+  .map((item) => issue("info", {
+    slug: item.slug,
+    name: item.name,
+    reason: "Cooked high energy item has no source review metadata yet.",
+  }));
 
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
 const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.find((item) => item.slug === slug) || { slug, count: 0, action: "not_found_as_duplicate" });
@@ -278,6 +333,8 @@ const allIssues = [
   ...compatAliasStatus,
   ...cookedHighEnergyReview,
   ...riceSourceReview,
+  ...decisionTableMissingMetadata,
+  ...cookedHighEnergyWithoutReviewMetadata,
 ];
 const issuesBySeverity = allIssues.reduce((totals, item) => {
   totals[item.severity] = (totals[item.severity] || 0) + 1;
@@ -299,7 +356,15 @@ const report = {
     compatAliases: compatAliasStatus.length,
     cookedHighEnergyReview: cookedHighEnergyReview.length,
     riceSourceReview: riceSourceReview.length,
+    dataQuality: foodsWithDataQuality.length,
+    sourceReviewStatus: foodsWithSourceReviewStatus.length,
+    needsExternalSource: foodsNeedingExternalSource.length,
+    needsDietitianReview: foodsNeedingDietitianReview.length,
+    cookedHighEnergyWithoutReviewMetadata: cookedHighEnergyWithoutReviewMetadata.length,
+    decisionTableMissingMetadata: decisionTableMissingMetadata.length,
   },
+  dataQualityCounts,
+  sourceReviewStatusCounts,
   aliasWarningsByType,
   issuesBySeverity,
   sourceNotes,
@@ -311,6 +376,20 @@ const report = {
   rawCookedAmbiguity,
   cookedHighEnergyReview,
   riceSourceReview,
+  foodQualityMetadata: foodsWithSourceReviewStatus.map((food) => ({
+    severity: "info",
+    slug: food.slug,
+    name: food.name,
+    dataQuality: food.dataQuality,
+    sourceReviewStatus: food.sourceReviewStatus,
+    needsExternalSource: food.needsExternalSource === true,
+    needsDietitianReview: food.needsDietitianReview === true,
+    hasBasisNote: Boolean(food.basisNote),
+    hasReviewNote: Boolean(food.reviewNote),
+    candidateSource: food.candidateSource,
+  })),
+  decisionTableMissingMetadata,
+  cookedHighEnergyWithoutReviewMetadata,
   missingCoreNutrients,
   aliasWarnings: aliasWarnings.slice(0, 200),
 };
