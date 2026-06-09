@@ -1,290 +1,320 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const title = "🥩 Tính nhu cầu đạm (protein) mỗi ngày";
-const desc = "Tính lượng đạm cần ăn theo cân nặng, bệnh lý và mức vận động. Phù hợp suy thận, gout, tăng cơ, giảm cân.";
+import {
+  PROTEIN_FOOD_EXAMPLES,
+  PROTEIN_GLOBAL_SAFETY_NOTE,
+  PROTEIN_PROFILES,
+} from "../../lib/protein-requirement";
+
+const title = "Tính nhu cầu đạm (protein) mỗi ngày";
+const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tình huống, kèm cảnh báo an toàn cho nhóm cần cá thể hóa.";
 ---
 
 <BaseLayout title={title} description={desc} canonical="/cong-cu/tinh-nhu-cau-dam">
-  <main class="content-page">
-    <div class="page-header">
-      <h1><span class="h-icon">🥩</span><span class="h-text">Tính nhu cầu đạm mỗi ngày</span></h1>
+  <script id="protein-profiles" type="application/json" set:html={JSON.stringify(PROTEIN_PROFILES)}></script>
+  <script id="protein-foods" type="application/json" set:html={JSON.stringify(PROTEIN_FOOD_EXAMPLES)}></script>
+  <script id="protein-safety" type="application/json" set:html={JSON.stringify(PROTEIN_GLOBAL_SAFETY_NOTE)}></script>
+
+  <main class="protein-page">
+    <header class="page-header">
+      <p class="eyebrow">Công cụ dinh dưỡng</p>
+      <h1>Tính nhu cầu đạm mỗi ngày</h1>
       <p class="page-desc">{desc}</p>
-    </div>
+    </header>
 
-    <div class="section-label"><span class="sl-num">1</span> Thông tin của bạn</div>
-    <div class="form-card">
-      <div class="form-grid">
-        <div class="form-row">
-          <label for="weight">⚖️ Cân nặng</label>
-          <div class="input-wrap"><input type="number" id="weight" value="60" min="20" max="200"><span class="input-suffix">kg</span></div>
+    <section class="tool-shell" aria-label="Tính nhu cầu protein">
+      <div class="form-card">
+        <div class="section-label"><span>1</span> Thông tin đầu vào</div>
+        <div class="form-grid">
+          <label class="form-row" for="weight">
+            <span>Cân nặng hiện tại</span>
+            <div class="input-wrap">
+              <input type="number" id="weight" value="60" min="20" max="200" step="0.1" inputmode="decimal" />
+              <span class="input-suffix">kg</span>
+            </div>
+          </label>
+
+          <label class="form-row" for="profile">
+            <span>Tình huống</span>
+            <div class="input-wrap select-wrap">
+              <select id="profile">
+                {PROTEIN_PROFILES.map((profile) => (
+                  <option value={profile.profileId}>{profile.label}</option>
+                ))}
+              </select>
+            </div>
+          </label>
         </div>
-        <div class="form-row">
-          <label for="activity">🏃 Mức vận động</label>
-          <div class="input-wrap stage-wrap">
-            <select id="activity">
-              <option value="1.2">Ít vận động</option>
-              <option value="1.4" selected>Vận động nhẹ (đi lại, tập nhẹ)</option>
-              <option value="1.6">Vận động vừa (3–5 buổi/tuần)</option>
-              <option value="1.8">Vận động nhiều (6–7 buổi)</option>
-            </select>
-            <span class="stage-arrow">▼</span>
-          </div>
+
+        <div id="input-error" class="input-error" role="alert" hidden></div>
+        <button class="btn-calc" type="button" id="calculate-btn">Tính nhu cầu đạm</button>
+      </div>
+
+      <section id="result" class="result-stack" aria-live="polite">
+        <div class="section-label"><span>2</span> Kết quả</div>
+        <div class="result-card" id="result-card">
+          <div id="mode-badge" class="mode-badge">Ước tính</div>
+          <div id="result-main" class="result-main"></div>
+          <div id="result-note" class="result-note"></div>
         </div>
-        <div class="form-row" style="grid-column:1/-1;">
-          <label for="condition">🩺 Tình trạng / Bệnh lý</label>
-          <div class="input-wrap stage-wrap">
-            <select id="condition">
-              <option value="normal">Người khoẻ mạnh bình thường</option>
-              <option value="elderly">Người cao tuổi (&gt;65)</option>
-              <option value="sedentary" selected>Ít vận động, muốn duy trì cân</option>
-              <option value="weight-loss">Giảm cân (giảm mỡ, giữ cơ)</option>
-              <option value="muscle">Tăng cơ, tập gym</option>
-              <option value="pregnant">Mang thai (tam cá nguyệt 2/3)</option>
-              <option value="breastfeeding">Cho con bú</option>
-              <option value="sick">Ốm, hậu phẫu, suy kiệt</option>
-              <option value="kidney-g3">Suy thận G3 (chưa lọc)</option>
-              <option value="kidney-g4">Suy thận G4–G5 (chưa lọc)</option>
-              <option value="kidney-dialysis">Suy thận đang lọc máu</option>
-              <option value="gout">Gout (đợt cấp / kiểm soát)</option>
-              <option value="vegan">Ăn chay (đạm thực vật)</option>
-            </select>
-            <span class="stage-arrow">▼</span>
-          </div>
+
+        <div id="meal-card" class="info-card">
+          <div class="section-label compact"><span>3</span> Gợi ý chia đều trong ngày</div>
+          <div id="meal-breakdown" class="meal-breakdown"></div>
         </div>
-      </div>
-      <button class="btn-calc" onclick="calculate()">✨ Tính nhu cầu đạm</button>
-    </div>
 
-    <div id="result" style="display:none;">
-      <div class="section-label"><span class="sl-num">2</span> Kết quả</div>
-      <div class="protein-card">
-        <div class="protein-hero" id="protein-hero"></div>
-      </div>
+        <div id="food-card" class="info-card">
+          <div class="section-label compact"><span>4</span> Ví dụ tương đương</div>
+          <div id="food-equiv" class="food-equiv"></div>
+        </div>
 
-      <div class="section-label"><span class="sl-num">3</span> Chia đạm theo bữa</div>
-      <div class="card-plain">
-        <div id="meal-breakdown" class="meal-breakdown"></div>
-      </div>
+        <div class="info-card">
+          <div class="section-label compact"><span>5</span> Nguồn và phạm vi</div>
+          <dl class="source-list">
+            <div>
+              <dt>Nguồn chính</dt>
+              <dd id="source-label"></dd>
+            </div>
+            <div>
+              <dt>Áp dụng khi</dt>
+              <dd id="applies-to"></dd>
+            </div>
+            <div>
+              <dt>Không áp dụng khi</dt>
+              <dd id="not-for"></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </section>
 
-      <div class="section-label"><span class="sl-num">4</span> Quy đổi ra thực phẩm</div>
-      <div class="card-plain">
-        <div id="food-equiv" class="food-equiv"></div>
-      </div>
-
-      <div class="section-label"><span class="sl-num">5</span> Lời khuyên</div>
-      <div class="card-plain">
-        <div id="advice" class="advice-text"></div>
-      </div>
-    </div>
-
-    <div class="safety-note">
-      <div class="safety-icon-col">⚠️</div>
-      <div class="safety-text-col">
-        <strong style="color:var(--ink);display:block;margin-bottom:4px;">Thông tin tham khảo</strong>
-        Người suy thận, suy gan, hoặc có bệnh chuyển hóa cần được bác sĩ hoặc chuyên gia dinh dưỡng tư vấn cụ thể.
-      </div>
-    </div>
+    <aside class="safety-note">
+      <strong>Thông tin tham khảo</strong>
+      <span>{PROTEIN_GLOBAL_SAFETY_NOTE}</span>
+    </aside>
   </main>
 
   <style>
-    .content-page { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+    .protein-page { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+    .page-header { text-align: center; margin-bottom: 28px; }
+    .eyebrow { margin: 0 0 6px; color: var(--brand); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+    .page-header h1 { margin: 0 0 10px; font-size: 1.85rem; line-height: 1.18; }
+    .page-desc { max-width: 620px; margin: 0 auto; color: var(--ink-secondary); font-size: 0.95rem; line-height: 1.6; }
 
-    .page-header { text-align:center; margin-bottom:28px; }
-    .page-header h1 { display:flex; align-items:center; justify-content:center; gap:12px; margin:0 0 10px; }
-    .h-icon { font-size:1.8rem; line-height:1; }
-    .h-text { font-size:1.65rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; }
-    .page-desc { max-width:560px; margin:0 auto; color:var(--ink-secondary); font-size:0.92rem; line-height:1.6; }
+    .tool-shell { display: grid; gap: 18px; }
+    .form-card,
+    .result-card,
+    .info-card,
+    .safety-note {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .form-card { border-width: 2px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+    .form-card:focus-within { border-color: var(--brand); }
+    .section-label { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-weight: 800; color: var(--ink); }
+    .section-label span { width: 28px; height: 28px; border-radius: 50%; background: var(--brand-light); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; flex-shrink: 0; }
+    .section-label.compact { margin-bottom: 12px; font-size: 0.92rem; }
 
-    .section-label { display:flex; align-items:center; gap:10px; font-weight:700; font-size:0.9rem; margin:24px 0 12px; color:var(--ink); }
-    .section-label:first-of-type { margin-top:0; }
-    .sl-num { width:28px; height:28px; border-radius:50%; background:var(--brand-light); color:var(--brand); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:800; flex-shrink:0; }
+    .form-grid { display: grid; grid-template-columns: minmax(160px, 0.7fr) minmax(240px, 1.3fr); gap: 14px 18px; }
+    .form-row { display: grid; gap: 6px; font-size: 0.84rem; font-weight: 700; color: var(--ink-secondary); }
+    .input-wrap { display: flex; align-items: center; min-height: 46px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .input-wrap:focus-within { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(46,125,50,0.1); }
+    .input-wrap input,
+    .input-wrap select { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.94rem; font-weight: 600; }
+    .input-wrap select { cursor: pointer; }
+    .input-suffix { padding-right: 12px; color: var(--ink-tertiary); font-size: 0.8rem; }
+    .input-error { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: #fff3e0; border: 1px solid #ffcc80; color: #8a4b00; font-size: 0.88rem; }
 
-    .form-card { background:var(--card); border:2px solid var(--line); border-radius:16px; padding:24px; margin-bottom:8px; box-shadow:0 2px 8px rgba(0,0,0,0.04); transition:border-color 0.2s; }
-    .form-card:focus-within { border-color:var(--brand); }
-    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; margin-bottom:18px; }
-    .form-row label { display:block; font-size:0.82rem; font-weight:600; margin-bottom:5px; color:var(--ink-secondary); }
-    .input-wrap { display:flex; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:10px; transition:border-color 0.15s; }
-    .input-wrap:focus-within { border-color:var(--brand); box-shadow:0 0 0 2px rgba(46,125,50,0.1); }
-    .input-wrap input, .input-wrap select { flex:1; border:none; background:transparent; padding:11px 12px; font-size:0.92rem; color:var(--ink); outline:none; box-sizing:border-box; width:100%; font-weight:500; }
-    .input-wrap select { appearance:none; -webkit-appearance:none; cursor:pointer; }
-    .input-suffix { padding-right:12px; font-size:0.78rem; color:var(--ink-tertiary); font-weight:500; }
-    .stage-wrap { position:relative; }
-    .stage-arrow { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:0.65rem; color:var(--ink-tertiary); pointer-events:none; }
+    .btn-calc { width: 100%; min-height: 48px; margin-top: 18px; border: 0; border-radius: 10px; background: var(--brand); color: #fff; font: inherit; font-size: 1rem; font-weight: 800; cursor: pointer; }
+    .btn-calc:hover { background: var(--brand-dark); }
 
-    .btn-calc { width:100%; padding:14px; border:none; border-radius:12px; background:linear-gradient(135deg,#2e7d32,#388e3c); color:white; font-size:1rem; font-weight:700; cursor:pointer; transition:all 0.15s; font-family:inherit; box-shadow:0 2px 8px rgba(46,125,50,0.2); }
-    .btn-calc:hover { opacity:0.9; transform:translateY(-1px); box-shadow:0 4px 12px rgba(46,125,50,0.3); }
+    .result-stack { display: grid; gap: 10px; }
+    .result-card { text-align: center; border-top: 5px solid var(--brand); }
+    .result-card.caution { border-top-color: #f59e0b; }
+    .result-card.clinical { border-top-color: #dc2626; }
+    .mode-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: 0.78rem; font-weight: 800; }
+    .mode-badge.caution { background: #fff7ed; color: #b45309; }
+    .mode-badge.clinical { background: #fef2f2; color: #b91c1c; }
+    .result-main { margin-top: 12px; }
+    .result-main .amount { display: block; color: var(--brand); font-size: 2.65rem; font-weight: 900; line-height: 1.1; }
+    .result-main .clinical-title { display: block; color: #b91c1c; font-size: 1.25rem; font-weight: 900; line-height: 1.3; }
+    .result-main .per-kg { display: block; margin-top: 6px; color: var(--ink-secondary); font-size: 0.9rem; font-weight: 700; }
+    .result-note { max-width: 680px; margin: 12px auto 0; color: var(--ink-secondary); line-height: 1.6; font-size: 0.9rem; }
 
-    .protein-card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:8px; text-align:center; }
-    .protein-hero { }
-    .protein-hero .protein-amount { font-size:2.8rem; font-weight:800; color:var(--brand); line-height:1.1; }
-    .protein-hero .protein-range { font-size:1rem; color:var(--ink-secondary); font-weight:500; }
-    .protein-hero .protein-desc { margin-top:10px; font-size:0.9rem; line-height:1.5; padding:0 20px; }
-    .protein-hero .protein-per-kg { font-size:0.82rem; color:var(--ink-tertiary); margin-top:6px; }
-    .protein-bar-track { height:16px; background:var(--line); border-radius:10px; overflow:hidden; margin:14px auto 0; max-width:360px; }
-    .protein-bar-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,#388e3c,#66bb6a); transition:width 0.5s; }
+    .meal-breakdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .meal-card { padding: 12px 10px; border: 1px solid var(--line-light); border-radius: 10px; background: var(--bg-soft); text-align: center; }
+    .meal-label { display: block; color: var(--ink-secondary); font-size: 0.78rem; font-weight: 700; }
+    .meal-amount { display: block; margin-top: 3px; color: var(--brand); font-size: 1.05rem; font-weight: 900; }
 
-    .card-plain { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:8px; }
+    .food-equiv { display: grid; gap: 8px; font-size: 0.9rem; }
+    .food-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-light); align-items: baseline; }
+    .food-row:last-child { border-bottom: 0; }
+    .food-row strong { color: var(--ink); }
+    .food-row span:last-child { color: var(--ink-secondary); font-weight: 700; white-space: nowrap; }
 
-    .meal-breakdown { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; }
-    .meal-card { background:var(--bg-soft); border-radius:12px; padding:14px 10px; text-align:center; transition:transform 0.15s; }
-    .meal-card:hover { transform:translateY(-2px); }
-    .meal-card .meal-icon { font-size:1.3rem; }
-    .meal-card .meal-label { font-size:0.78rem; color:var(--ink-secondary); margin:4px 0 2px; font-weight:600; }
-    .meal-card .meal-amount { font-size:1.15rem; font-weight:800; color:var(--brand); }
-    .meal-card .meal-range { font-size:0.72rem; color:var(--ink-tertiary); }
+    .source-list { display: grid; gap: 10px; margin: 0; }
+    .source-list div { display: grid; gap: 3px; }
+    .source-list dt { color: var(--ink-secondary); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .source-list dd { margin: 0; color: var(--ink); font-size: 0.9rem; line-height: 1.55; }
 
-    .food-equiv { font-size:0.88rem; line-height:1.7; }
-    .food-equiv p { margin:0 0 10px; font-size:0.9rem; }
-    .food-equiv strong { color:var(--brand); }
-    .food-row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line-light); flex-wrap:wrap; gap:2px; }
-    .food-row:last-child { border-bottom:none; }
+    .safety-note { display: grid; gap: 6px; margin-top: 20px; background: var(--bg-soft); color: var(--ink-secondary); font-size: 0.86rem; line-height: 1.6; }
+    .safety-note strong { color: var(--ink); }
 
-    .advice-text { font-size:0.88rem; line-height:1.7; }
-    .advice-text p { margin:8px 0; padding:10px 14px; background:var(--bg-soft); border-radius:8px; border-left:3px solid var(--brand-light2); }
-
-    .safety-note { display:flex; align-items:flex-start; gap:12px; margin-top:20px; padding:16px 18px; background:var(--bg-soft); border:1px solid var(--line-light); border-radius:12px; font-size:0.82rem; line-height:1.6; }
-    .safety-icon-col { flex-shrink:0; font-size:1.1rem; }
-    .safety-text-col { flex:1; color:var(--ink-secondary); }
-
-    @media (max-width:600px) {
-      .content-page { padding:20px 14px; }
-      .h-text { font-size:1.25rem; }
-      .form-grid { grid-template-columns:1fr; gap:12px; }
-      .protein-hero .protein-amount { font-size:2.2rem; }
-      .meal-breakdown { grid-template-columns:repeat(3,1fr); gap:8px; }
-      .page-header h1 { gap:8px; }
+    @media (max-width: 720px) {
+      .protein-page { padding: 22px 14px; }
+      .page-header h1 { font-size: 1.45rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .meal-breakdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .result-main .amount { font-size: 2.1rem; }
+      .food-row { grid-template-columns: 1fr; gap: 2px; }
+      .food-row span:last-child { white-space: normal; }
     }
   </style>
 
-  <script is:inline>
-  (function() {
-    var CONDITIONS = {
-      normal: { label: "Người khoẻ mạnh", gPerKg: [0.8, 1.0], desc: "Duy trì cơ thể khoẻ mạnh." },
-      elderly: { label: "Người cao tuổi", gPerKg: [1.0, 1.2], desc: "Người >65 tuổi cần nhiều đạm hơn để chống loãng cơ (sarcopenia)." },
-      sedentary: { label: "Ít vận động", gPerKg: [0.8, 1.0], desc: "Duy trì cơ bắp, không cần thêm." },
-      'weight-loss': { label: "Giảm cân", gPerKg: [1.4, 1.8], desc: "Đạm cao giúp giữ cơ khi thiếu calo, no lâu, tăng chuyển hóa." },
-      muscle: { label: "Tăng cơ / Gym", gPerKg: [1.6, 2.2], desc: "Cần đạm để tổng hợp cơ bắp sau tập. Ăn trong vòng 2h sau tập." },
-      pregnant: { label: "Mang thai (T2/T3)", gPerKg: [1.1, 1.2], desc: "Thai nhi tăng trưởng nhanh, cần thêm đạm." },
-      breastfeeding: { label: "Cho con bú", gPerKg: [1.1, 1.3], desc: "Sản xuất sữa cần nhiều đạm." },
-      sick: { label: "Ốm / Hậu phẫu", gPerKg: [1.2, 2.0], desc: "Phục hồi mô, tăng miễn dịch. Cần thêm nếu suy kiệt." },
-      'kidney-g3': { label: "Suy thận G3", gPerKg: [0.6, 0.8], desc: "Giảm đạm để giảm gánh nặng lọc thận. Theo dõi sát dinh dưỡng." },
-      'kidney-g4': { label: "Suy thận G4-G5", gPerKg: [0.5, 0.6], desc: "Hạn chế đạm nghiêm ngặt. Cần chuyên gia dinh dưỡng theo dõi." },
-      'kidney-dialysis': { label: "Đang lọc máu", gPerKg: [1.0, 1.2], desc: "Lọc máu mất đạm. Cần bù lại — không ăn kiêng đạm nếu đang lọc!" },
-      gout: { label: "Gout", gPerKg: [0.8, 1.0], desc: "Đạm vừa phải, ưu tiên nguồn ít purin: trứng, sữa, đậu phụ." },
-      vegan: { label: "Ăn chay (đạm thực vật)", gPerKg: [0.9, 1.1], desc: "Đạm thực vật hấp thu thấp hơn, cần ăn thêm ~10–20%." }
-    };
+  <script>
+    (function() {
+      var profiles = JSON.parse(document.getElementById("protein-profiles").textContent || "[]");
+      var foods = JSON.parse(document.getElementById("protein-foods").textContent || "[]");
+      var safety = JSON.parse(document.getElementById("protein-safety").textContent || "\"\"");
+      var profileById = profiles.reduce(function(acc, profile) {
+        acc[profile.profileId] = profile;
+        return acc;
+      }, {});
 
-    var FOODS = [
-      { name: "Ức gà (100g)", protein: 31, emoji: "🍗" },
-      { name: "Thịt heo nạc (100g)", protein: 21, emoji: "🥩" },
-      { name: "Thịt bò nạc (100g)", protein: 26, emoji: "🥩" },
-      { name: "Cá hồi (100g)", protein: 22, emoji: "🐟" },
-      { name: "Cá lóc (100g)", protein: 18, emoji: "🐟" },
-      { name: "Tôm tươi (100g)", protein: 20, emoji: "🦐" },
-      { name: "Trứng (1 quả ~50g)", protein: 6.5, emoji: "🥚" },
-      { name: "Đậu phụ (150g)", protein: 12, emoji: "🧊" },
-      { name: "Sữa tươi (200ml)", protein: 7, emoji: "🥛" },
-      { name: "Sữa chua (1 hũ 100g)", protein: 4, emoji: "🥣" },
-      { name: "Đậu nành luộc (100g)", protein: 16, emoji: "🫘" },
-      { name: "Đậu xanh nấu (100g)", protein: 8, emoji: "🫘" },
-      { name: "Lạc rang (30g)", protein: 7.5, emoji: "🥜" },
-      { name: "Cơm trắng (1 bát 130g)", protein: 3.5, emoji: "🍚" },
-    ];
+      var weightEl = document.getElementById("weight");
+      var profileEl = document.getElementById("profile");
+      var resultEl = document.getElementById("result");
+      var resultCard = document.getElementById("result-card");
+      var modeBadge = document.getElementById("mode-badge");
+      var resultMain = document.getElementById("result-main");
+      var resultNote = document.getElementById("result-note");
+      var mealCard = document.getElementById("meal-card");
+      var mealBreakdown = document.getElementById("meal-breakdown");
+      var foodCard = document.getElementById("food-card");
+      var foodEquiv = document.getElementById("food-equiv");
+      var sourceLabel = document.getElementById("source-label");
+      var appliesTo = document.getElementById("applies-to");
+      var notFor = document.getElementById("not-for");
+      var inputError = document.getElementById("input-error");
 
-    function calculate() {
-      var weight = parseFloat(document.getElementById('weight').value) || 60;
-      var condKey = document.getElementById('condition').value;
-      var activity = parseFloat(document.getElementById('activity').value) || 1.4;
-      var cond = CONDITIONS[condKey];
-
-      var gLow = cond.gPerKg[0];
-      var gHigh = cond.gPerKg[1];
-      var gMid = Math.round((gLow + gHigh) / 2 * 100) / 100;
-
-      var proteinLow = Math.round(weight * gLow);
-      var proteinHigh = Math.round(weight * gHigh);
-      var proteinMid = Math.round(weight * gMid);
-
-      // Render hero
-      var rangeText = proteinLow === proteinHigh ? proteinLow + 'g' : proteinLow + '–' + proteinHigh + 'g';
-      var heroHtml = [
-        '<div class="protein-amount">' + rangeText + '</div>',
-        '<div class="protein-range">đạm / ngày</div>',
-        '<div class="protein-bar-track"><div class="protein-bar-fill" style="width:' + Math.min(proteinHigh/200*100,60) + '%"></div></div>',
-        '<div class="protein-desc"><strong>' + cond.label + ':</strong> ' + cond.desc + '</div>',
-        '<div class="protein-per-kg">Hệ số: ' + gLow + '–' + gHigh + 'g đạm/kg cân nặng</div>',
-      ].join('');
-      document.getElementById('protein-hero').innerHTML = heroHtml;
-
-      // Meal breakdown
-      var meals = [
-        { icon: '🌅', label: 'Sáng', pct: 0.25 },
-        { icon: '🍎', label: 'Phụ sáng', pct: 0.1 },
-        { icon: '🌞', label: 'Trưa', pct: 0.3 },
-        { icon: '🌆', label: 'Xế', pct: 0.1 },
-        { icon: '🌙', label: 'Tối', pct: 0.25 },
-      ];
-      var mealHtml = meals.map(function(m) {
-        var mLow = Math.round(proteinLow * m.pct);
-        var mHigh = Math.round(proteinHigh * m.pct);
-        var range = mLow === mHigh ? mLow + 'g' : mLow + '–' + mHigh + 'g';
-        return '<div class="meal-card">' +
-          '<div class="meal-icon">' + m.icon + '</div>' +
-          '<div class="meal-label">' + m.label + '</div>' +
-          '<div class="meal-amount">' + range + '</div>' +
-          '<div class="meal-range">đạm</div>' +
-        '</div>';
-      }).join('');
-      document.getElementById('meal-breakdown').innerHTML = mealHtml;
-
-      // Food equivalents
-      var target = proteinMid;
-      var foodHtml = '<p><strong>Cần ~' + target + 'g đạm/ngày</strong>. Quy đổi ra thực phẩm:</p>';
-      FOODS.forEach(function(f) {
-        var amt = Math.round(target / f.protein * 100) / 100;
-        var pct = Math.round(f.protein / target * 100);
-        foodHtml += '<div class="food-row">' +
-          '<span>' + f.emoji + ' <strong>' + f.name + '</strong> = ' + f.protein + 'g đạm</span>' +
-          '<span style="color:var(--ink-secondary);">' + pct + '% nhu cầu</span>' +
-        '</div>';
-      });
-      document.getElementById('food-equiv').innerHTML = foodHtml;
-
-      // Advice
-      var adviceHtml = '';
-      if (condKey.startsWith('kidney')) {
-        adviceHtml = '<p>🫘 <strong>' + cond.label + ':</strong> ' + cond.desc + '</p>' +
-          '<p>💡 Nên gặp chuyên gia dinh dưỡng để xây dựng thực đơn giảm đạm nhưng vẫn đủ năng lượng. Nếu đang lọc máu, cần TĂNG đạm — không tự ý kiêng!</p>';
-      } else if (condKey === 'gout') {
-        adviceHtml = '<p>🦶 <strong>Gout:</strong> Ưu tiên đạm từ trứng, sữa ít béo, đậu phụ. Hạn chế nội tạng, hải sản.</p>' +
-          '<p>💡 Luộc thịt bỏ nước giảm ~30% purin. Uống 2–3 lít nước/ngày.</p>';
-      } else if (condKey === 'weight-loss') {
-        adviceHtml = '<p>⚖️ <strong>Giảm cân:</strong> Đạm cao giúp no lâu, giữ cơ. Ăn 1 phần đạm (lòng bàn tay) mỗi bữa.</p>' +
-          '<p>💡 Tập gym + đạm đủ giúp giảm mỡ, giữ cơ. Kết hợp rau trước bữa ăn.</p>';
-      } else if (condKey === 'muscle') {
-        adviceHtml = '<p>💪 <strong>Tăng cơ:</strong> Ăn đạm đều 4–5 bữa/ngày. Sau tập 2h là khung giờ vàng.</p>' +
-          '<p>💡 1 bữa phụ giàu đạm sau tập: sữa chua Hy Lạp + hạt, hoặc 2 trứng luộc + 1 chuối.</p>';
-      } else if (condKey === 'vegan') {
-        adviceHtml = '<p>🌱 <strong>Ăn chay:</strong> Kết hợp nhiều nguồn đạm thực vật khác nhau trong ngày (đậu + gạo, đậu + hạt).</p>' +
-          '<p>💡 Bổ sung B12, sắt, kẽm, omega-3 nếu ăn chay trường.</p>';
-      } else if (condKey === 'sick') {
-        adviceHtml = '<p>🤒 <strong>Ốm / Hậu phẫu:</strong> Cần đạm để lành mô. Nếu chán ăn, ưu tiên thức ăn mềm, dễ tiêu.</p>' +
-          '<p>💡 Cháo thịt bằm, súp gà, sữa trứng, sinh tố đậu phộng. Ăn nhiều bữa nhỏ.</p>';
-      } else {
-        adviceHtml = '<p>🙂 <strong>Duy trì sức khoẻ:</strong> Đạm đủ mỗi bữa, chia đều 3–4 bữa/ngày.</p>' +
-          '<p>💡 Một phần đạm = lòng bàn tay (không tính ngón) mỗi bữa là đủ. Tránh dồn đạm vào 1 bữa.</p>';
+      function round(value) {
+        return Math.round(value);
       }
-      document.getElementById('advice').innerHTML = adviceHtml;
 
-      document.getElementById('result').style.display = 'block';
-      window.scrollTo({ top: document.getElementById('result').offsetTop - 20, behavior: 'smooth' });
-    }
+      function rangeText(min, max) {
+        if (min === max) return String(min) + "g";
+        return String(min) + "–" + String(max) + "g";
+      }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(calculate, 100);
-    });
+      function getModeLabel(mode) {
+        if (mode === "auto") return "Tự động tính";
+        if (mode === "caution") return "Tham khảo có cảnh báo";
+        return "Cần cá thể hóa lâm sàng";
+      }
 
-    window.calculate = calculate;
-  })();
+      function setModeClass(mode) {
+        resultCard.className = "result-card";
+        modeBadge.className = "mode-badge";
+        if (mode === "caution") {
+          resultCard.classList.add("caution");
+          modeBadge.classList.add("caution");
+        }
+        if (mode === "clinical_no_auto") {
+          resultCard.classList.add("clinical");
+          modeBadge.classList.add("clinical");
+        }
+      }
+
+      function validateWeight(raw) {
+        var weight = Number(raw);
+        if (!Number.isFinite(weight)) return null;
+        if (weight < 20 || weight > 200) return null;
+        return weight;
+      }
+
+      function renderMeals(low, high) {
+        var meals = [
+          { label: "Sáng", pct: 0.25 },
+          { label: "Trưa", pct: 0.30 },
+          { label: "Tối", pct: 0.25 },
+          { label: "Bữa phụ", pct: 0.20 },
+        ];
+        mealBreakdown.innerHTML = meals.map(function(meal) {
+          var mealLow = round(low * meal.pct);
+          var mealHigh = round(high * meal.pct);
+          return '<div class="meal-card">' +
+            '<span class="meal-label">' + meal.label + '</span>' +
+            '<span class="meal-amount">' + rangeText(mealLow, mealHigh) + '</span>' +
+          '</div>';
+        }).join("");
+      }
+
+      function renderFoods(target) {
+        foodEquiv.innerHTML = foods.map(function(food) {
+          var amount = Math.max(0.25, Math.round((target / food.proteinG) * 100) / 100);
+          var percent = Math.round((food.proteinG / target) * 100);
+          return '<div class="food-row">' +
+            '<span><strong>' + food.name + '</strong> (' + food.serving + ') cung cấp khoảng ' + food.proteinG + 'g protein</span>' +
+            '<span>' + percent + '% nhu cầu; cần khoảng ' + amount + ' phần nếu chỉ dùng món này</span>' +
+          '</div>';
+        }).join("");
+      }
+
+      function renderClinical(profile) {
+        mealCard.hidden = true;
+        foodCard.hidden = true;
+        resultMain.innerHTML = '<span class="clinical-title">Không tự động tính mục tiêu cá nhân</span>' +
+          '<span class="per-kg">' + (profile.minGPerKg && profile.maxGPerKg ? "Range nguồn tham khảo: " + profile.minGPerKg + "–" + profile.maxGPerKg + " g/kg/ngày" : "Chưa khóa range g/kg cho engine tự phục vụ") + '</span>';
+        resultNote.textContent = profile.safetyMessage + " " + profile.resultNote;
+      }
+
+      function renderCalculated(profile, weight) {
+        var low = round(weight * profile.minGPerKg);
+        var high = round(weight * profile.maxGPerKg);
+        var mid = round((low + high) / 2);
+        resultMain.innerHTML = '<span class="amount">' + rangeText(low, high) + '</span>' +
+          '<span class="per-kg">' + profile.minGPerKg + "–" + profile.maxGPerKg + " g/kg/ngày · tính theo " + weight + "kg" + '</span>';
+        resultNote.textContent = profile.safetyMessage + " " + profile.resultNote;
+        mealCard.hidden = false;
+        foodCard.hidden = false;
+        renderMeals(low, high);
+        renderFoods(mid);
+      }
+
+      function calculate() {
+        var profile = profileById[profileEl.value] || profiles[0];
+        var weight = validateWeight(weightEl.value);
+
+        inputError.hidden = true;
+        inputError.textContent = "";
+
+        if (!weight) {
+          inputError.textContent = "Vui lòng nhập cân nặng từ 20 đến 200 kg.";
+          inputError.hidden = false;
+          resultEl.style.display = "none";
+          return;
+        }
+
+        setModeClass(profile.mode);
+        modeBadge.textContent = getModeLabel(profile.mode);
+        sourceLabel.textContent = profile.sourceLabel;
+        appliesTo.textContent = profile.appliesTo;
+        notFor.textContent = profile.notFor + " " + safety;
+
+        if (profile.mode === "clinical_no_auto") renderClinical(profile);
+        else renderCalculated(profile, weight);
+
+        resultEl.style.display = "grid";
+      }
+
+      document.getElementById("calculate-btn").addEventListener("click", calculate);
+      profileEl.addEventListener("change", calculate);
+      weightEl.addEventListener("input", function() {
+        if (!inputError.hidden) calculate();
+      });
+      calculate();
+    })();
   </script>
 </BaseLayout>
