@@ -18,7 +18,7 @@ const toolGroups = [
     title: "Năng lượng và khẩu phần",
     items: [
       { icon: "🔥", name: "Calo tiêu thụ khi tập", href: "/cong-cu/tinh-calo-tieu-thu", desc: "Ước tính calo đốt cháy theo hoạt động và cân nặng." },
-      { icon: "🥩", name: "Tính nhu cầu đạm", href: "/cong-cu/tinh-nhu-cau-dam", desc: "Lượng đạm theo cân nặng, bệnh lý và mục tiêu." },
+      { icon: "🥩", name: "Tính nhu cầu đạm", href: "/cong-cu/tinh-nhu-cau-dam", desc: "Lượng đạm theo cân nặng, bệnh lý và mục tiêu.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🥣", name: "Khẩu phần đơn giản", href: "/cong-cu/khau-phan-don-gian", desc: "Quy đổi khẩu phần bằng đơn vị quen thuộc." },
       { icon: "🔬", name: "Khẩu phần Việt Clinical", href: "/cong-cu/khau-phan-viet-clinical", desc: "Đối chiếu bữa ăn với nhiều chỉ số dinh dưỡng." },
       { icon: "🔁", name: "Đổi đơn vị", href: "/cong-cu/doi-don-vi", desc: "Đổi gram, muỗng, khẩu phần và đơn vị bếp." },
@@ -28,8 +28,8 @@ const toolGroups = [
     title: "Carb, đường huyết, GI/GL",
     items: [
       { icon: "🌾", name: "Chỉ số GI thực phẩm Việt", href: "/cong-cu/chi-so-gi", desc: "Tra GI của cơm, bún, phở, bánh mì và trái cây." },
-      { icon: "⚖️", name: "Tính GL từ bữa ăn", href: "/cong-cu/tinh-gl-bua-an", desc: "Ghép nhiều thực phẩm để tính tải đường huyết." },
-      { icon: "🔢", name: "Tính carb trong bữa ăn", href: "/cong-cu/tinh-carb", desc: "Tính carb thực tế trong món và khẩu phần Việt." },
+      { icon: "⚖️", name: "Tính GL từ bữa ăn", href: "/cong-cu/tinh-gl-bua-an", desc: "Ghép nhiều thực phẩm để tính tải đường huyết.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🔢", name: "Tính carb trong bữa ăn", href: "/cong-cu/tinh-carb", desc: "Tính carb thực tế trong món và khẩu phần Việt.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🧋", name: "Đường trong đồ uống", href: "/cong-cu/duong-do-uong", desc: "Ước tính đường trong trà sữa, nước ngọt, cà phê sữa." },
       { icon: "🩸", name: "Theo dõi đường huyết", href: "/cong-cu/theo-doi-duong-huyet", desc: "Ghi nhật ký đường huyết đói/sau ăn và xem xu hướng." },
     ],
@@ -37,7 +37,7 @@ const toolGroups = [
   {
     title: "Muối, nước, bệnh mạn",
     items: [
-      { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Tính nước theo cân nặng, vận động và thời tiết." },
+      { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Ước tính nước cho người khỏe, có chặn nhóm cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Ước tính muối ẩn trong món Việt và nước chấm." },
       { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhu cầu calo, sắt, canxi, DHA, folate cho mẹ bầu." },
       { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Nhu cầu năng lượng và vi chất theo tuổi." },
@@ -102,6 +102,7 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
     .cc-card h3 span { color: var(--brand); }
     .cc-card p { margin: 0; font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.5; }
     .cc-status { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 9px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .cc-status.is-stable { background: #e8f5ee; color: #217245; }
     .cc-note { margin-top: 24px; padding: 14px 16px; background: var(--brand-light); border-radius: 10px; font-size: 0.85rem; color: var(--ink-secondary); }
     .cc-note strong { color: var(--ink); }
     @media(max-width:700px) {
@@ -135,7 +136,7 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
               <div class="cc-top">
                 <span class="cc-icon">{t.icon}</span>
                 <h3>{t.name} <span>→</span></h3>
-                {t.status && <span class="cc-status">{t.status}</span>}
+                {t.status && <span class:list={["cc-status", t.statusType === "stable" && "is-stable"]}>{t.status}</span>}
               </div>
               <p>{t.desc}</p>
             </a>
