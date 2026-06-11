@@ -106,6 +106,10 @@ assert.ok(!/bắt buộc ăn/i.test(textOf(result)));
 result = calculateVietnameseMealAssessment(baseInput({ generalGoal: "mild_weight_gain" }));
 assert.equal(result.mode, "caution");
 
+result = calculateVietnameseMealAssessment(baseInput({ age: 70 }));
+assert.equal(result.mode, "caution");
+assert.match(textOf(result), /Người cao tuổi/);
+
 result = calculateVietnameseMealAssessment(baseInput({ flags: { diabetesMedicationRisk: true } }));
 assert.equal(result.mode, "clinical_no_auto");
 assert.match(textOf(result), /insulin|sulfonylurea/);
@@ -156,6 +160,26 @@ result = calculateVietnameseMealAssessment(baseInput({
 }));
 assert.equal(result.ok, true);
 assert.ok(result.warnings.some((warning) => /chưa có dữ liệu/.test(warning)));
+
+result = calculateVietnameseMealAssessment(baseInput({
+  selectedItems: [
+    {
+      name: "Món cần rà nguồn",
+      grams: 100,
+      energyKcalPer100g: 95,
+      carbGPer100g: 12,
+      proteinGPer100g: 4,
+      fatGPer100g: 3,
+      fiberGPer100g: 2,
+      sodiumMgPer100g: 120,
+      sugarGPer100g: 1,
+      sourceReviewStatus: "needs_external_source",
+      needsDietitianReview: true,
+    },
+  ],
+}));
+assert.equal(result.ok, true);
+assert.ok(result.warnings.some((warning) => /đối chiếu nguồn|chuyên môn/.test(warning)));
 
 const forbiddenText = [
   "khẩu phần điều trị chuẩn cho bệnh",

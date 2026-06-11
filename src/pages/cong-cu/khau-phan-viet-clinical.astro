@@ -320,20 +320,54 @@ const quickJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     const fmt = (value, unit, digits = 0) => value == null ? "—" : `${Number(value).toLocaleString("vi-VN", { maximumFractionDigits: digits })} ${unit}`;
     const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+    function normalizeSearch(value) {
+      return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
+    }
+
+    function rawSearch(value) {
+      return String(value || "").toLowerCase();
+    }
+
+    function searchScore(item, query, rawQuery) {
+      if (!query) return 0;
+      const rawName = rawSearch(item.name);
+      const rawAliases = (item.aliases || []).map(rawSearch);
+      const rawWords = rawName.split(/[^\p{L}0-9]+/u).filter(Boolean);
+      if (rawQuery && rawName === rawQuery) return 0;
+      if (rawQuery && (rawName.startsWith(`${rawQuery} `) || rawWords[0] === rawQuery)) return 1;
+      if (rawQuery && rawWords.some((word) => word === rawQuery || word.startsWith(rawQuery))) return 2;
+      if (rawQuery && rawAliases.some((alias) => alias === rawQuery || alias.startsWith(rawQuery))) return 3;
+
+      const name = normalizeSearch(item.name);
+      const category = normalizeSearch(item.category);
+      const aliases = (item.aliases || []).map(normalizeSearch);
+      const words = name.split(/[^a-z0-9]+/).filter(Boolean);
+      if (name === query) return 4;
+      if (name.startsWith(`${query} `) || words[0] === query) return 5;
+      if (words.some((word) => word === query || word.startsWith(query))) return 6;
+      if (aliases.some((alias) => alias === query || alias.startsWith(query))) return 7;
+      if (name.includes(query)) return 8;
+      if (aliases.some((alias) => alias.includes(query))) return 9;
+      if (category.includes(query)) return 10;
+      return 99;
+    }
+
     function compactSource(item) {
       const bits = [item.defaultLabel, item.sourceId, item.confidence === "low" ? "ước tính" : ""].filter(Boolean);
       return bits.join(" · ");
     }
 
     function renderItems() {
-      const q = ($("item-search").value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").trim();
+      const rawQ = rawSearch($("item-search").value).trim();
+      const q = normalizeSearch($("item-search").value).trim();
       const list = itemData
         .filter((item) => activeGroup === "all" || item.group === activeGroup)
         .filter((item) => {
           if (!q) return true;
-          const text = [item.name, item.category, ...(item.aliases || [])].join(" ").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
+          const text = normalizeSearch([item.name, item.category, ...(item.aliases || [])].join(" "));
           return text.includes(q);
         })
+        .sort((a, b) => searchScore(a, q, rawQ) - searchScore(b, q, rawQ) || a.name.localeCompare(b.name, "vi"))
         .slice(0, 24);
 
       $("item-list").innerHTML = list.length ? list.map((item) => `
