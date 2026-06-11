@@ -19,7 +19,8 @@
     "test:carb": "node scripts/test-carb-calculator.mjs",
     "test:gl": "node scripts/test-glycemic-load-calculator.mjs",
     "test:water": "node scripts/test-water-intake.mjs",
-    "test:tools": "npm run test:protein && npm run test:carb && npm run test:gl && npm run test:water",
+    "test:meal-assessment": "node scripts/test-vietnamese-meal-assessment.mjs",
+    "test:tools": "npm run test:protein && npm run test:carb && npm run test:gl && npm run test:water && npm run test:meal-assessment",
     "preview": "astro preview --host 0.0.0.0"
   },
   "dependencies": {
