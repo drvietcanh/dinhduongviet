@@ -2,258 +2,358 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Tính mục tiêu giảm/tăng cân & Tỷ lệ đạm-béo-carb - Dinh Dưỡng Việt">
-  <section>
-    <span class="badge">⚖️ Công cụ</span>
-    <h1>Tính mục tiêu cân nặng</h1>
-    <p class="lead">
-      Nhập cân nặng hiện tại và mục tiêu, chọn thời gian — app tính lượng calo cần giảm/tăng mỗi ngày.
-      Kèm bảng tỷ lệ đạm-béo-carb khuyến nghị cho từng bệnh nền.
-    </p>
+<BaseLayout
+  title="Mục tiêu cân nặng - Dinh Dưỡng Việt"
+  description="Định hướng mục tiêu cân nặng tham khảo với cờ cần cá thể hóa."
+>
+  <section class="wgp-shell">
+    <div class="wgp-head">
+      <span class="badge">Công cụ</span>
+      <h1>Mục tiêu cân nặng</h1>
+      <p class="lead">
+        Công cụ giúp định hướng an toàn khi đặt mục tiêu cân nặng. Kết quả chỉ mang tính tham khảo, không thay thế tư vấn cá thể của bác sĩ hoặc chuyên gia dinh dưỡng.
+      </p>
+    </div>
+
+    <div class="wgp-layout">
+      <form class="wgp-panel wgp-form" id="wgp-form">
+        <div class="wgp-section-title">
+          <h2>Thông tin cơ bản</h2>
+        </div>
+
+        <div class="wgp-grid">
+          <label class="wgp-field">
+            <span>Tuổi</span>
+            <input id="wgp-age" type="number" min="1" max="120" value="35" inputmode="numeric" />
+          </label>
+
+          <label class="wgp-field">
+            <span>Giới</span>
+            <select id="wgp-sex">
+              <option value="female">Nữ</option>
+              <option value="male">Nam</option>
+            </select>
+          </label>
+
+          <label class="wgp-field">
+            <span>Cân nặng hiện tại (kg)</span>
+            <input id="wgp-weight" type="number" min="20" max="300" step="0.1" value="60" inputmode="decimal" />
+          </label>
+
+          <label class="wgp-field">
+            <span>Chiều cao (cm)</span>
+            <input id="wgp-height" type="number" min="100" max="250" step="1" value="165" inputmode="numeric" />
+          </label>
+
+          <label class="wgp-field">
+            <span>Mức hoạt động</span>
+            <select id="wgp-activity">
+              <option value="low">Thấp</option>
+              <option value="moderate" selected>Vừa</option>
+              <option value="high">Cao</option>
+            </select>
+          </label>
+
+          <label class="wgp-field">
+            <span>Định hướng</span>
+            <select id="wgp-goal">
+              <option value="maintain">Duy trì cân nặng</option>
+              <option value="mild_weight_loss">Giảm cân nhẹ</option>
+              <option value="mild_weight_gain">Tăng cân nhẹ</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="wgp-check wgp-wide-check">
+          <input id="wgp-vegetarian" type="checkbox" />
+          <span>Ăn chay hoặc chủ yếu thực vật</span>
+        </label>
+
+        <div class="wgp-section-title wgp-red-title">
+          <h2>Nhóm cần cá thể hóa</h2>
+          <p>Chọn nếu có tình huống phù hợp để công cụ chuyển sang chế độ thận trọng hơn.</p>
+        </div>
+
+        <div class="wgp-check-grid">
+          <label class="wgp-check"><input type="checkbox" data-red-flag="pregnancyLactation" /><span>Thai kỳ/cho con bú</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="rapidUnintentionalWeightLoss" /><span>Sụt cân nhanh không chủ ý</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="eatingDisorder" /><span>Rối loạn ăn uống</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="chronicKidneyDisease" /><span>Bệnh thận mạn</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="dialysis" /><span>Lọc máu</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="heartFailureOrFluidRestriction" /><span>Suy tim/hạn chế dịch</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="cirrhosisAscites" /><span>Xơ gan/cổ trướng</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="diabetesInsulinOrSulfonylurea" /><span>Đái tháo đường dùng insulin hoặc sulfonylurea</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="cancerMalnutrition" /><span>Ung thư/suy dinh dưỡng</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="acuteIllness" /><span>Bệnh cấp</span></label>
+          <label class="wgp-check"><input type="checkbox" data-red-flag="complexMedication" /><span>Thuốc/bệnh phức tạp</span></label>
+        </div>
+
+        <button class="wgp-submit" type="submit">Cập nhật kết quả</button>
+      </form>
+
+      <aside class="wgp-panel wgp-result" aria-live="polite">
+        <div class="wgp-result-head">
+          <span class="wgp-kicker">Kết quả</span>
+          <h2 id="wgp-mode-label">-</h2>
+          <p id="wgp-mode-note">Nhập thông tin để xem phân tầng tham khảo.</p>
+        </div>
+
+        <div id="wgp-error" class="wgp-alert is-error" hidden></div>
+
+        <div class="wgp-result-grid">
+          <div class="wgp-mini">
+            <span>BMI</span>
+            <strong id="wgp-bmi">-</strong>
+          </div>
+          <div class="wgp-mini">
+            <span>Phân tầng</span>
+            <strong id="wgp-bmi-category">-</strong>
+          </div>
+        </div>
+
+        <div class="wgp-block">
+          <h3>Cảnh báo và lý do</h3>
+          <ul id="wgp-reasons" class="wgp-list"></ul>
+        </div>
+
+        <div id="wgp-protein-block" class="wgp-block">
+          <h3>Khoảng đạm tham khảo</h3>
+          <p id="wgp-protein-value" class="wgp-protein-value">-</p>
+          <p class="wgp-muted">Đây là khoảng tham khảo, không phải chỉ định cá nhân.</p>
+          <p id="wgp-protein-source" class="wgp-muted"></p>
+        </div>
+
+        <div class="wgp-alert">
+          <strong>Công cụ không đưa kcal hoặc macro cá nhân dạng số ở v1 vì cần khóa nguồn rõ hơn.</strong>
+          <span>Không dùng để tự chỉnh thuốc, insulin, lợi tiểu hoặc thuốc giảm cân.</span>
+        </div>
+      </aside>
+    </div>
   </section>
 
-  <div class="wt-layout">
-    <!-- LEFT: Weight calculator -->
-    <div class="wt-card">
-      <h2>🎯 Mục tiêu giảm/tăng cân</h2>
-      <div class="wt-form-grid">
-        <div class="wt-fld">
-          <label>Giới tính</label>
-          <select id="wt-sex">
-            <option value="male">Nam</option>
-            <option value="female" selected>Nữ</option>
-          </select>
-        </div>
-        <div class="wt-fld">
-          <label>Tuổi</label>
-          <input type="number" id="wt-age" min="10" max="120" value="40" />
-        </div>
-        <div class="wt-fld">
-          <label>Cân nặng hiện tại (kg)</label>
-          <input type="number" id="wt-current" min="20" max="300" step="0.1" value="70" />
-        </div>
-        <div class="wt-fld">
-          <label>Cân nặng mục tiêu (kg)</label>
-          <input type="number" id="wt-target" min="15" max="300" step="0.1" value="60" />
-        </div>
-        <div class="wt-fld">
-          <label>Chiều cao (cm)</label>
-          <input type="number" id="wt-height" min="100" max="250" step="1" value="160" />
-        </div>
-        <div class="wt-fld">
-          <label>Thời gian mục tiêu</label>
-          <select id="wt-duration">
-            <option value="1">1 tháng</option>
-            <option value="2">2 tháng</option>
-            <option value="3" selected>3 tháng</option>
-            <option value="4">4 tháng</option>
-            <option value="5">5 tháng</option>
-            <option value="6">6 tháng</option>
-          </select>
-        </div>
-      </div>
+  <script>
+    import { planNutritionGoal } from "../../lib/nutrition-goal-planner";
 
-      <div id="wt-result" style="margin-top: 14px; display: none;">
-        <div class="wt-result-card">
-          <div class="wt-rows">
-            <div class="wt-ri"><span class="wt-rl">BMR</span><span class="wt-rv" id="wt-bmr">—</span></div>
-            <div class="wt-ri"><span class="wt-rl">TDEE</span><span class="wt-rv" id="wt-tdee">—</span></div>
-            <div class="wt-ri"><span class="wt-rl">Tổng thay đổi</span><span class="wt-rv" id="wt-total-change">—</span></div>
-            <div class="wt-ri"><span class="wt-rl">Giảm/tăng mỗi tuần</span><span class="wt-rv" id="wt-per-week">—</span></div>
-          </div>
-          <div style="margin-top:12px;padding:12px;background:var(--bg-warning,#fff8e1);border-radius:8px;font-size:0.9rem;">
-            <strong>🔥 Calo mỗi ngày để đạt mục tiêu:</strong>
-            <div style="font-size:1.4rem;font-weight:800;color:var(--brand);margin:4px 0;" id="wt-daily-kcal">—</div>
-            <div style="font-size:0.82rem;color:var(--ink-secondary);margin-top:4px;">
-              <span id="wt-detail">—</span>
-            </div>
-          </div>
-        </div>
+    const modeLabels = {
+      auto: "Tham khảo cơ bản",
+      caution: "Cần thận trọng",
+      clinical_no_auto: "Cần cá thể hóa",
+    };
 
-        <!-- Pie chart placeholder -->
-        <div style="margin-top:14px;">
-          <h3>🥗 Phân bổ khuyến nghị</h3>
-          <div class="wt-macro-box">
-            <div class="wt-macro-bar" id="wt-macro-bar">
-              <div class="wt-bar-pro" id="wt-bar-pro" style="width:20%">20%</div>
-              <div class="wt-bar-fat" id="wt-bar-fat" style="width:25%">25%</div>
-              <div class="wt-bar-carb" id="wt-bar-carb" style="width:55%">55%</div>
-            </div>
-            <div class="wt-macro-labels">
-              <span><span class="wt-dot-pro"></span> Đạm <span id="wt-pro-g">—</span>g</span>
-              <span><span class="wt-dot-fat"></span> Béo <span id="wt-fat-g">—</span>g</span>
-              <span><span class="wt-dot-carb"></span> Carb <span id="wt-carb-g">—</span>g</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    const modeNotes = {
+      auto: "Phù hợp để xem định hướng giáo dục cơ bản cho người trưởng thành tương đối khỏe.",
+      caution: "Kết quả chỉ nên xem như gợi ý tham khảo vì có yếu tố cần theo dõi thêm.",
+      clinical_no_auto: "Không nên tự đặt chỉ số cá nhân bằng công cụ này; cần đánh giá riêng.",
+    };
 
-      <!-- Macro table by disease -->
-      <div class="wt-macro-ref" style="margin-top:16px;">
-        <h3>📋 Tỷ lệ khuyến nghị theo bệnh</h3>
-        <div class="wt-ref-table">
-          <div class="wt-ref-row wt-ref-header">
-            <span>Bệnh nền</span><span>Đạm</span><span>Béo</span><span>Carb</span><span>Ghi chú</span>
-          </div>
-          <div class="wt-ref-row"><span>Không có</span><span>15-20%</span><span>20-30%</span><span>50-60%</span><span>Cân đối</span></div>
-          <div class="wt-ref-row"><span>🩸 Đái tháo đường</span><span>20-25%</span><span>25-30%</span><span>40-50%</span><span>GI thấp, tăng xơ</span></div>
-          <div class="wt-ref-row"><span>❤️ Tăng huyết áp</span><span>15-20%</span><span>20-25%</span><span>55-65%</span><span>Hạn chế muối</span></div>
-          <div class="wt-ref-row"><span>🫘 Bệnh thận mạn</span><span>10-15%</span><span>25-30%</span><span>55-65%</span><span>Giảm đạm, K, P</span></div>
-          <div class="wt-ref-row"><span>🦶 Gout</span><span>15-20%</span><span>25-30%</span><span>50-60%</span><span>Tránh purin</span></div>
-          <div class="wt-ref-row"><span>💔 Mỡ máu</span><span>15-20%</span><span>20-25%</span><span>55-60%</span><span>Giảm béo bão hòa</span></div>
-          <div class="wt-ref-row"><span>⚖️ Giảm cân</span><span>25-30%</span><span>20-25%</span><span>40-50%</span><span>Đạm cao giữ cơ</span></div>
-        </div>
-        <p class="muted" style="margin-top:8px;font-size:0.78rem;">
-          Tỷ lệ này là khuyến nghị chung. Tham khảo bác sĩ/dinh dưỡng viên để điều chỉnh phù hợp.
-        </p>
-      </div>
-    </div>
+    const reasonLabels = {
+      healthy_adult_reference: "Người trưởng thành tương đối khỏe, không có cờ cần cá thể hóa.",
+      mild_weight_loss: "Giảm cân nhẹ được xếp vào nhóm cần thận trọng; công cụ không hứa tốc độ thay đổi cân nặng.",
+      mild_weight_gain: "Tăng cân nhẹ được xếp vào nhóm cần thận trọng; công cụ không đưa mức tăng năng lượng dạng số.",
+      age_65_or_older: "Từ 65 tuổi trở lên: nhu cầu nên cá thể hóa theo sức khỏe, khối cơ và khả năng ăn uống.",
+      high_activity: "Mức hoạt động cao: nhu cầu thay đổi nhiều theo cường độ và thời lượng vận động.",
+      vegetarian_pattern: "Ăn chay hoặc chủ yếu thực vật: cần chú ý chất lượng nguồn đạm và vi chất.",
+      bmi_25_or_higher: "BMI từ 25 trở lên: chỉ là tín hiệu sàng lọc, không tự động tạo kế hoạch giảm cân.",
+      under_18: "Dưới 18 tuổi: không dùng công cụ người lớn để đặt mục tiêu cá nhân.",
+      bmi_below_18_5: "BMI dưới 18.5 hoặc nghi thiếu cân: cần đánh giá cá thể.",
+      pregnancy_lactation: "Thai kỳ/cho con bú cần đánh giá theo sản khoa và dinh dưỡng.",
+      rapid_unintentional_weight_loss: "Sụt cân nhanh không chủ ý cần được đánh giá nguyên nhân.",
+      eating_disorder: "Rối loạn ăn uống hoặc tiền sử liên quan cần hỗ trợ chuyên môn.",
+      chronic_kidney_disease: "Bệnh thận mạn cần cá thể hóa theo chức năng thận và tình trạng dinh dưỡng.",
+      dialysis: "Lọc máu cần mục tiêu dinh dưỡng theo trung tâm điều trị.",
+      heart_failure_or_fluid_restriction: "Suy tim hoặc hạn chế dịch cần đánh giá riêng về dịch, muối và năng lượng.",
+      cirrhosis_ascites: "Xơ gan/cổ trướng cần cá thể hóa theo dịch, muối và tình trạng dinh dưỡng.",
+      diabetes_insulin_or_sulfonylurea: "Đái tháo đường dùng insulin hoặc sulfonylurea không dùng công cụ này để chỉnh thuốc.",
+      cancer_malnutrition: "Ung thư hoặc suy dinh dưỡng cần đánh giá dinh dưỡng lâm sàng.",
+      acute_illness: "Bệnh cấp làm nhu cầu thay đổi và cần theo dõi riêng.",
+      complex_medication: "Nhiều bệnh hoặc thuốc phức tạp cần cá thể hóa.",
+      invalid_input: "Thông tin nhập chưa hợp lệ.",
+    };
 
-    <!-- RIGHT: Quick info -->
-    <div class="wt-sidebar">
-      <div class="wt-card">
-        <h3>💡 Nguyên tắc</h3>
-        <ul style="padding-left:16px;font-size:0.88rem;line-height:1.7;">
-          <li><strong>1kg mỡ ≈ 7.700 kcal</strong></li>
-          <li>Giảm <strong>0.5-1kg/tuần</strong> là an toàn</li>
-          <li>Giảm <strong>500 kcal/ngày</strong> ≈ 2kg/tháng</li>
-          <li>Không nên <strong>&lt; 1.200 kcal/ngày</strong> (nữ) hoặc <strong>&lt; 1.500</strong> (nam)</li>
-          <li>Kết hợp <strong>vận động</strong> để tăng hiệu quả</li>
-        </ul>
-      </div>
-      <div class="wt-card" style="margin-top:12px;">
-        <h3>🍽️ Gợi ý món</h3>
-        <ul style="padding-left:16px;font-size:0.88rem;line-height:1.8;">
-          <li><a href="/mon-an">Xem danh sách món ăn</a></li>
-          <li><a href="/cong-cu/ke-hoach-bua-an">Lập kế hoạch bữa ăn</a></li>
-          <li><a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a></li>
-          <li><a href="/cong-cu/theo-doi-suc-khoe">Theo dõi sức khỏe</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    const bmiLabels = {
+      low_bmi: "Cần cá thể hóa",
+      adult_reference_range: "Vùng tham khảo người lớn",
+      bmi_25_or_higher: "Cần thận trọng",
+    };
+
+    const form = document.getElementById("wgp-form");
+    const ageInput = document.getElementById("wgp-age");
+    const sexInput = document.getElementById("wgp-sex");
+    const weightInput = document.getElementById("wgp-weight");
+    const heightInput = document.getElementById("wgp-height");
+    const activityInput = document.getElementById("wgp-activity");
+    const goalInput = document.getElementById("wgp-goal");
+    const vegetarianInput = document.getElementById("wgp-vegetarian");
+    const modeLabel = document.getElementById("wgp-mode-label");
+    const modeNote = document.getElementById("wgp-mode-note");
+    const errorBox = document.getElementById("wgp-error");
+    const bmiValue = document.getElementById("wgp-bmi");
+    const bmiCategory = document.getElementById("wgp-bmi-category");
+    const reasonList = document.getElementById("wgp-reasons");
+    const proteinBlock = document.getElementById("wgp-protein-block");
+    const proteinValue = document.getElementById("wgp-protein-value");
+    const proteinSource = document.getElementById("wgp-protein-source");
+
+    function num(input) {
+      return Number.parseFloat(input.value);
+    }
+
+    function getRedFlags() {
+      const flags = {};
+      document.querySelectorAll("[data-red-flag]").forEach((input) => {
+        if (input instanceof HTMLInputElement && input.checked) {
+          flags[input.dataset.redFlag] = true;
+        }
+      });
+      return flags;
+    }
+
+    const warningText = {
+      auto: "Kết quả là tham khảo cho người trưởng thành tương đối khỏe.",
+      caution: "Các chỉ số dạng số về năng lượng và macro chưa bật vì cần khóa nguồn rõ hơn.",
+      clinical_no_auto: "Nhóm này cần cá thể hóa với bác sĩ hoặc chuyên gia dinh dưỡng.",
+    };
+
+    function setList(items) {
+      reasonList.replaceChildren();
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        reasonList.appendChild(li);
+      });
+    }
+
+    function render() {
+      const result = planNutritionGoal({
+        age: num(ageInput),
+        sex: sexInput.value,
+        weightKg: num(weightInput),
+        heightCm: num(heightInput),
+        activityLevel: activityInput.value,
+        goal: goalInput.value,
+        vegetarianPattern: vegetarianInput.checked,
+        redFlags: getRedFlags(),
+      });
+
+      modeLabel.textContent = modeLabels[result.mode];
+      modeLabel.dataset.mode = result.mode;
+      modeNote.textContent = result.ok ? modeNotes[result.mode] : "Thông tin nhập chưa hợp lệ.";
+
+      if (!result.ok && result.error) {
+        errorBox.hidden = false;
+        errorBox.textContent = result.error;
+      } else {
+        errorBox.hidden = true;
+        errorBox.textContent = "";
+      }
+
+      bmiValue.textContent = typeof result.bmi === "number" ? String(result.bmi) : "-";
+      bmiCategory.textContent = result.bmiCategory ? (bmiLabels[result.bmiCategory] ?? result.bmiCategory) : "-";
+      setList([
+        ...result.reasons.map((item) => reasonLabels[item] ?? item),
+        warningText[result.mode],
+      ]);
+
+      if (result.proteinReference && result.shouldShowTargets) {
+        proteinBlock.hidden = false;
+        const min = result.proteinReference.minGrams;
+        const max = result.proteinReference.maxGrams;
+        proteinValue.textContent = typeof min === "number" && typeof max === "number"
+          ? `${min}-${max} g/ngày`
+          : "Cần xem theo bối cảnh cá nhân";
+        proteinSource.textContent = result.proteinReference.sourceLabel;
+      } else {
+        proteinBlock.hidden = true;
+        proteinValue.textContent = "-";
+        proteinSource.textContent = "";
+      }
+    }
+
+    form?.addEventListener("input", render);
+    form?.addEventListener("change", render);
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      render();
+    });
+    render();
+  </script>
 </BaseLayout>
 
 <style is:global>
-  .wt-layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
-  @media (max-width: 800px) { .wt-layout { grid-template-columns: 1fr; } }
-  .wt-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
-  .wt-card h2 { font-size: 1.05rem; margin-bottom: 12px; }
-  .wt-card h3 { font-size: 0.95rem; margin-bottom: 10px; }
-  .wt-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .wt-fld { margin-bottom: 4px; }
-  .wt-fld label { font-size: 0.8rem; font-weight: 600; color: var(--ink-secondary); display: block; margin-bottom: 2px; }
-  .wt-fld select, .wt-fld input { width: 100%; min-height: 38px; border: 1.5px solid var(--line); border-radius: 8px; padding: 0 10px; font-size: 0.88rem; background: var(--bg-elevated); color: var(--ink); box-sizing: border-box; }
-  .wt-result-card { }
-  .wt-rows { }
-  .wt-ri { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
-  .wt-rl { color: var(--ink-secondary); }
-  .wt-rv { font-weight: 600; }
-  .wt-macro-box { margin-top: 8px; }
-  .wt-macro-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; font-size: 0.75rem; font-weight: 700; color: #fff; }
-  .wt-bar-pro { background: #e53935; display: flex; align-items: center; justify-content: center; }
-  .wt-bar-fat { background: #ff9800; display: flex; align-items: center; justify-content: center; }
-  .wt-bar-carb { background: #2196f3; display: flex; align-items: center; justify-content: center; }
-  .wt-macro-labels { display: flex; gap: 16px; margin-top: 4px; font-size: 0.82rem; flex-wrap: wrap; }
-  .wt-dot-pro, .wt-dot-fat, .wt-dot-carb { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
-  .wt-dot-pro { background: #e53935; }
-  .wt-dot-fat { background: #ff9800; }
-  .wt-dot-carb { background: #2196f3; }
-  .wt-macro-ref { border-top: 1px solid var(--line); padding-top: 16px; }
-  .wt-ref-table { font-size: 0.82rem; }
-  .wt-ref-row { display: grid; grid-template-columns: 130px 55px 55px 55px 1fr; gap: 4px; padding: 5px 6px; border-bottom: 1px solid var(--line); align-items: center; }
-  .wt-ref-header { font-weight: 700; color: var(--ink-secondary); background: var(--bg-elevated); border-radius: 6px 6px 0 0; }
-  @media (max-width: 500px) { .wt-ref-row { grid-template-columns: 1fr 1fr; } }
-</style>
-
-<script>
-(function() {
-  var sel = function(id) { return document.getElementById(id); };
-
-  function calc() {
-    var sex = sel('wt-sex').value;
-    var age = parseInt(sel('wt-age').value) || 40;
-    var curW = parseFloat(sel('wt-current').value) || 70;
-    var tgtW = parseFloat(sel('wt-target').value) || 60;
-    var height = parseFloat(sel('wt-height').value) || 160;
-    var months = parseInt(sel('wt-duration').value) || 3;
-
-    // BMR
-    var bmr = sex === 'male'
-      ? (10 * curW + 6.25 * height - 5 * age + 5)
-      : (10 * curW + 6.25 * height - 5 * age - 161);
-    var tdee = Math.round(bmr * 1.375); // light activity default
-
-    // Weight change
-    var diff = curW - tgtW; // positive = lose, negative = gain
-    if (Math.abs(diff) < 0.1) { sel('wt-result').style.display = 'none'; return; }
-    sel('wt-result').style.display = 'block';
-
-    var totalKcal = Math.abs(diff) * 7700;
-    var days = months * 30;
-    var dailyDeficit = Math.round(totalKcal / days);
-    var perWeek = Math.abs(diff) / months * 0.25; // weekly estimate
-
-    var dailyKcal;
-    var direction;
-    if (diff > 0) { // losing weight
-      dailyKcal = tdee - dailyDeficit;
-      direction = 'giảm';
-    } else { // gaining weight
-      dailyKcal = tdee + dailyDeficit;
-      direction = 'tăng';
-    }
-
-    // Safety check
-    var safeMin = sex === 'male' ? 1500 : 1200;
-    var safeMax = sex === 'male' ? 3500 : 3000;
-    if (dailyKcal < safeMin) dailyKcal = safeMin;
-    if (dailyKcal > safeMax) dailyKcal = safeMax;
-
-    // Display
-    sel('wt-bmr').textContent = Math.round(bmr) + ' kcal';
-    sel('wt-tdee').textContent = tdee + ' kcal';
-    sel('wt-total-change').textContent = Math.abs(diff).toFixed(1) + ' kg (' + direction + ')';
-    sel('wt-per-week').textContent = perWeek.toFixed(2) + ' kg/tuần';
-    sel('wt-daily-kcal').textContent = dailyKcal + ' kcal/ngày';
-
-    var detail;
-    if (diff > 0) {
-      detail = 'Giảm ' + dailyDeficit + ' kcal/ngày so với TDEE (' + tdee + '). Thâm hụt ' + totalKcal.toLocaleString() + ' kcal trong ' + months + ' tháng.';
-    } else {
-      detail = 'Tăng ' + dailyDeficit + ' kcal/ngày so với TDEE (' + tdee + '). Dư ' + totalKcal.toLocaleString() + ' kcal trong ' + months + ' tháng.';
-    }
-    sel('wt-detail').textContent = detail;
-
-    // Macro: 25P / 25F / 50C default, adjust for losing weight
-    var pPct = 25, fPct = 25, cPct = 50;
-    if (diff > 0) { pPct = 30; fPct = 25; cPct = 45; } // high protein for losing
-    if (diff < 0) { pPct = 20; fPct = 25; cPct = 55; } // more carbs for gaining
-
-    sel('wt-bar-pro').style.width = pPct + '%';
-    sel('wt-bar-pro').textContent = pPct + '%';
-    sel('wt-bar-fat').style.width = fPct + '%';
-    sel('wt-bar-fat').textContent = fPct + '%';
-    sel('wt-bar-carb').style.width = cPct + '%';
-    sel('wt-bar-carb').textContent = cPct + '%';
-
-    var pG = Math.round((dailyKcal * pPct / 100) / 4);
-    var fG = Math.round((dailyKcal * fPct / 100) / 9);
-    var cG = Math.round((dailyKcal * cPct / 100) / 4);
-    sel('wt-pro-g').textContent = pG;
-    sel('wt-fat-g').textContent = fG;
-    sel('wt-carb-g').textContent = cG;
+  .wgp-shell { max-width: 1080px; margin: 0 auto; padding: 24px 0 36px; }
+  .wgp-head { max-width: 760px; margin-bottom: 22px; }
+  .wgp-head h1 { font-size: 1.7rem; margin: 8px 0 8px; }
+  .wgp-head .lead { color: var(--ink-secondary); font-size: 0.98rem; line-height: 1.65; margin: 0; }
+  .wgp-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr); gap: 18px; align-items: start; }
+  .wgp-panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  .wgp-section-title { margin: 0 0 12px; }
+  .wgp-section-title h2 { margin: 0; font-size: 1.05rem; }
+  .wgp-section-title p { margin: 4px 0 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.5; }
+  .wgp-red-title { margin-top: 18px; }
+  .wgp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .wgp-field span { display: block; margin-bottom: 4px; color: var(--ink-secondary); font-size: 0.82rem; font-weight: 700; }
+  .wgp-field input,
+  .wgp-field select {
+    width: 100%;
+    min-height: 40px;
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 0 10px;
+    background: var(--bg-elevated);
+    color: var(--ink);
+    box-sizing: border-box;
+    font-size: 0.9rem;
   }
-
-  // Auto-calc on input change
-  ['wt-sex','wt-age','wt-current','wt-target','wt-height','wt-duration'].forEach(function(id) {
-    var el = sel(id);
-    if (el) el.addEventListener('change', calc);
-    if (el && el.type === 'number') el.addEventListener('input', calc);
-  });
-
-  // Initial calc
-  calc();
-})();
-</script>
-</BaseLayout>
+  .wgp-wide-check { margin-top: 12px; }
+  .wgp-check-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .wgp-check { display: flex; gap: 8px; align-items: flex-start; min-height: 36px; color: var(--ink); font-size: 0.86rem; line-height: 1.35; }
+  .wgp-check input { margin-top: 2px; }
+  .wgp-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.92rem;
+    cursor: pointer;
+  }
+  .wgp-submit:focus-visible { outline: 3px solid var(--brand-light); outline-offset: 2px; }
+  .wgp-result { position: sticky; top: 14px; }
+  .wgp-result-head { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 12px; }
+  .wgp-kicker { display: block; color: var(--ink-tertiary); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0; }
+  .wgp-result-head h2 { margin: 4px 0; font-size: 1.25rem; }
+  .wgp-result-head h2[data-mode="auto"] { color: #217245; }
+  .wgp-result-head h2[data-mode="caution"] { color: #9a6700; }
+  .wgp-result-head h2[data-mode="clinical_no_auto"] { color: #b42318; }
+  .wgp-result-head p { margin: 0; color: var(--ink-secondary); font-size: 0.88rem; line-height: 1.5; }
+  .wgp-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .wgp-mini { border: 1px solid var(--line); border-radius: 8px; padding: 10px; min-height: 64px; }
+  .wgp-mini span { display: block; color: var(--ink-secondary); font-size: 0.78rem; margin-bottom: 4px; }
+  .wgp-mini strong { font-size: 1rem; }
+  .wgp-block { margin-top: 14px; }
+  .wgp-block h3 { margin: 0 0 8px; font-size: 0.96rem; }
+  .wgp-list { margin: 0; padding-left: 18px; color: var(--ink-secondary); font-size: 0.86rem; line-height: 1.55; }
+  .wgp-protein-value { margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--brand); }
+  .wgp-muted { margin: 5px 0 0; color: var(--ink-secondary); font-size: 0.78rem; line-height: 1.45; }
+  .wgp-alert { margin-top: 14px; border: 1px solid #f2d98d; background: #fff8e1; color: #5f4600; border-radius: 8px; padding: 12px; font-size: 0.86rem; line-height: 1.5; }
+  .wgp-alert strong,
+  .wgp-alert span { display: block; }
+  .wgp-alert.is-error { border-color: #f2b8b5; background: #fff2f1; color: #9b1c1c; }
+  @media (max-width: 860px) {
+    .wgp-layout { grid-template-columns: 1fr; }
+    .wgp-result { position: static; }
+  }
+  @media (max-width: 560px) {
+    .wgp-grid,
+    .wgp-check-grid,
+    .wgp-result-grid { grid-template-columns: 1fr; }
+    .wgp-panel { padding: 15px; }
+    .wgp-head h1 { font-size: 1.45rem; }
+  }
+</style>
