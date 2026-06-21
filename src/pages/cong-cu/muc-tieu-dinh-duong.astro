@@ -11,7 +11,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <span class="badge">Công cụ</span>
       <h1>Mục tiêu dinh dưỡng</h1>
       <p class="lead">
-        Công cụ giúp định hướng mục tiêu dinh dưỡng tham khảo. Không thay thế tư vấn cá thể của bác sĩ hoặc chuyên gia dinh dưỡng.
+        Công cụ giúp định hướng mục tiêu dinh dưỡng tham khảo. Kết quả phụ thuộc thông tin bạn nhập và không thay thế tư vấn cá thể của bác sĩ hoặc chuyên gia dinh dưỡng.
       </p>
     </div>
 
@@ -88,6 +88,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <label class="ngp-check"><input type="checkbox" data-red-flag="acuteIllness" /><span>Bệnh cấp</span></label>
           <label class="ngp-check"><input type="checkbox" data-red-flag="complexMedication" /><span>Thuốc/bệnh phức tạp</span></label>
         </div>
+
+        <button class="ngp-submit" type="submit">Cập nhật kết quả</button>
       </form>
 
       <aside class="ngp-panel ngp-result" aria-live="polite">
@@ -118,6 +120,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div id="ngp-protein-block" class="ngp-block">
           <h3>Khoảng đạm tham khảo</h3>
           <p id="ngp-protein-value" class="ngp-protein-value">-</p>
+          <p class="ngp-muted">Đây là khoảng tham khảo, không phải chỉ định cá nhân.</p>
           <p id="ngp-protein-source" class="ngp-muted"></p>
         </div>
 
@@ -269,6 +272,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     form?.addEventListener("input", render);
     form?.addEventListener("change", render);
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      render();
+    });
     render();
   </script>
 </BaseLayout>
@@ -302,6 +309,22 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .ngp-check-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .ngp-check { display: flex; gap: 8px; align-items: flex-start; min-height: 36px; color: var(--ink); font-size: 0.86rem; line-height: 1.35; }
   .ngp-check input { margin-top: 2px; }
+  .ngp-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.92rem;
+    cursor: pointer;
+  }
+  .ngp-submit:focus-visible { outline: 3px solid var(--brand-light); outline-offset: 2px; }
   .ngp-result { position: sticky; top: 14px; }
   .ngp-result-head { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 12px; }
   .ngp-kicker { display: block; color: var(--ink-tertiary); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0; }
