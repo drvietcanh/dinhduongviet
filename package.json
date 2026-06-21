@@ -20,7 +20,8 @@
     "test:gl": "node scripts/test-glycemic-load-calculator.mjs",
     "test:water": "node scripts/test-water-intake.mjs",
     "test:meal-assessment": "node scripts/test-vietnamese-meal-assessment.mjs",
-    "test:tools": "npm run test:protein && npm run test:carb && npm run test:gl && npm run test:water && npm run test:meal-assessment",
+    "test:nutrition-goal": "node scripts/test-nutrition-goal-planner.mjs",
+    "test:tools": "npm run test:protein && npm run test:carb && npm run test:gl && npm run test:water && npm run test:meal-assessment && npm run test:nutrition-goal",
     "preview": "astro preview --host 0.0.0.0"
   },
   "dependencies": {
