@@ -11,7 +11,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <span class="badge">Công cụ</span>
       <h1>Mục tiêu cân nặng</h1>
       <p class="lead">
-        Công cụ giúp định hướng an toàn khi đặt mục tiêu cân nặng. Kết quả chỉ mang tính tham khảo, không thay thế tư vấn cá thể của bác sĩ hoặc chuyên gia dinh dưỡng.
+        Công cụ giúp định hướng an toàn khi đặt mục tiêu cân nặng. Thông tin hiển thị chỉ mang tính tham khảo, không thay thế tư vấn cá thể của bác sĩ hoặc chuyên gia dinh dưỡng.
       </p>
     </div>
 
@@ -88,12 +88,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <label class="wgp-check"><input type="checkbox" data-red-flag="complexMedication" /><span>Thuốc/bệnh phức tạp</span></label>
         </div>
 
-        <button class="wgp-submit" type="submit">Cập nhật kết quả</button>
+        <button class="wgp-submit" type="submit">Xem định hướng</button>
       </form>
 
       <aside class="wgp-panel wgp-result" aria-live="polite">
         <div class="wgp-result-head">
-          <span class="wgp-kicker">Kết quả</span>
+          <span class="wgp-kicker">Định hướng</span>
           <h2 id="wgp-mode-label">-</h2>
           <p id="wgp-mode-note">Nhập thông tin để xem phân tầng tham khảo.</p>
         </div>
@@ -142,7 +142,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     const modeNotes = {
       auto: "Phù hợp để xem định hướng giáo dục cơ bản cho người trưởng thành tương đối khỏe.",
-      caution: "Kết quả chỉ nên xem như gợi ý tham khảo vì có yếu tố cần theo dõi thêm.",
+      caution: "Thông tin chỉ nên xem như gợi ý tham khảo vì có yếu tố cần theo dõi thêm.",
       clinical_no_auto: "Không nên tự đặt chỉ số cá nhân bằng công cụ này; cần đánh giá riêng.",
     };
 
@@ -160,7 +160,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       rapid_unintentional_weight_loss: "Sụt cân nhanh không chủ ý cần được đánh giá nguyên nhân.",
       eating_disorder: "Rối loạn ăn uống hoặc tiền sử liên quan cần hỗ trợ chuyên môn.",
       chronic_kidney_disease: "Bệnh thận mạn cần cá thể hóa theo chức năng thận và tình trạng dinh dưỡng.",
-      dialysis: "Lọc máu cần mục tiêu dinh dưỡng theo trung tâm điều trị.",
+      dialysis: "Lọc máu cần mục tiêu dinh dưỡng được cá thể hóa theo đơn vị đang theo dõi.",
       heart_failure_or_fluid_restriction: "Suy tim hoặc hạn chế dịch cần đánh giá riêng về dịch, muối và năng lượng.",
       cirrhosis_ascites: "Xơ gan/cổ trướng cần cá thể hóa theo dịch, muối và tình trạng dinh dưỡng.",
       diabetes_insulin_or_sulfonylurea: "Đái tháo đường dùng insulin hoặc sulfonylurea không dùng công cụ này để chỉnh thuốc.",
@@ -209,7 +209,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
 
     const warningText = {
-      auto: "Kết quả là tham khảo cho người trưởng thành tương đối khỏe.",
+      auto: "Thông tin là tham khảo cho người trưởng thành tương đối khỏe.",
       caution: "Các chỉ số dạng số về năng lượng và macro chưa bật vì cần khóa nguồn rõ hơn.",
       clinical_no_auto: "Nhóm này cần cá thể hóa với bác sĩ hoặc chuyên gia dinh dưỡng.",
     };
