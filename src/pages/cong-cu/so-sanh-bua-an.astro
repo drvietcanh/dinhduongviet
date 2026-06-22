@@ -58,7 +58,7 @@ const recipeData = recipes.map(r => ({
     </div>
   </section>
 
-  <script id="recipe-data" type="application/json">{JSON.stringify(recipeData)}</script>
+  <script id="recipe-data" type="application/json" set:html={JSON.stringify(recipeData)}></script>
 </BaseLayout>
 
 <script>
