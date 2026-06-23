@@ -28,6 +28,8 @@ const scenarios = [
   ["blood", "Thuốc chống đông hoặc thuốc tim mạch"],
   ["diabetes", "Thuốc đái tháo đường hoặc đường huyết"],
   ["fluid", "Thuốc huyết áp, lợi tiểu hoặc điện giải"],
+  ["seizure", "Thuốc chống động kinh"],
+  ["cancer", "Thuốc ung thư"],
   ["organ", "Bệnh thận, gan hoặc tim mạch"],
   ["pregnancy", "Mang thai hoặc cho con bú"],
   ["age", "Trẻ em, người cao tuổi hoặc người dễ suy kiệt"],
@@ -63,7 +65,7 @@ const scenarios = [
         <p class="eyebrow">Định hướng an toàn</p>
         <h2 id="check-title">Chọn tình huống gần nhất</h2>
         <p>
-          V1 không tra cứu tương tác cá nhân và không phân mức nặng nhẹ. Kết quả
+          V1 không tra cứu tương tác cá nhân và không phân mức độ tương tác. Kết quả
           chỉ là lời nhắc để chuẩn bị thông tin trước khi hỏi bác sĩ hoặc dược sĩ.
         </p>
       </div>
@@ -129,9 +131,11 @@ const scenarios = [
         blood: "Nhóm thuốc tim mạch hoặc chống đông cần được cá thể hóa theo hồ sơ đang theo dõi. Trang này không đưa kết luận dùng chung cho từng thuốc.",
         diabetes: "Thuốc đường huyết cần được theo dõi theo bữa ăn, triệu chứng và chỉ dẫn chuyên môn. Hãy hỏi người đang theo dõi nếu muốn đổi chế độ ăn.",
         fluid: "Thuốc huyết áp, lợi tiểu hoặc điện giải cần xem kèm xét nghiệm và tình trạng bệnh nền. Không tự thay đổi thuốc dựa trên nội dung này.",
+        seizure: "Thuốc chống động kinh cần được xem theo hồ sơ dùng thuốc, triệu chứng và lịch theo dõi. Hãy hỏi bác sĩ hoặc dược sĩ trước khi đổi thực phẩm bổ sung hay chế độ ăn.",
+        cancer: "Thuốc ung thư cần được theo dõi cá thể theo phác đồ và tình trạng ăn uống. Hãy hỏi đội ngũ đang chăm sóc trước khi đổi thực phẩm bổ sung hay chế độ ăn.",
         organ: "Bệnh thận, gan hoặc tim mạch cần đánh giá cá thể. Hãy hỏi bác sĩ hoặc dược sĩ trước khi thay đổi thực phẩm hay thực phẩm bổ sung.",
         pregnancy: "Thai kỳ và cho con bú cần được tư vấn riêng. Hãy hỏi bác sĩ hoặc dược sĩ trước khi dùng thêm thực phẩm bổ sung hoặc thay đổi thuốc.",
-        age: "Trẻ em, người cao tuổi hoặc người dễ suy kiệt cần được xem theo cân nặng, bệnh nền và thuốc đang dùng.",
+        age: "Trẻ em, người cao tuổi hoặc người dễ suy kiệt cần được xem theo hồ sơ sức khỏe, bệnh nền và thuốc đang dùng.",
         symptom: "Nếu có triệu chứng bất thường sau khi dùng thuốc, hãy liên hệ cơ sở y tế hoặc người đang theo dõi cho bạn.",
       };
 
