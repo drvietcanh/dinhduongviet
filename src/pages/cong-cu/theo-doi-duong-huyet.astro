@@ -10,8 +10,8 @@ const safetySituations = [
   "Có triệu chứng bất thường như run tay, vã mồ hôi, lơ mơ, khát nhiều, tiểu nhiều hoặc mệt lả",
   "Đang mang thai, nghi đái tháo đường thai kỳ hoặc đang chuẩn bị mang thai",
   "Có bệnh thận, bệnh tim mạch, bệnh gan, nhiễm trùng cấp hoặc đang nằm viện",
-  "Có thay đổi thuốc, thay đổi chế độ ăn, bỏ bữa, uống rượu hoặc vận động khác thường",
-  "Muốn đặt mục tiêu đường huyết, HbA1c hoặc tự điều chỉnh thuốc",
+  "Có thay đổi thuốc, ăn uống thất thường, uống rượu hoặc vận động khác thường",
+  "Muốn cá thể hóa chỉ số theo dõi, HbA1c hoặc kế hoạch dùng thuốc",
 ];
 
 const prepItems = [
@@ -39,8 +39,8 @@ const timeOptions = [
       <h1 id="page-title">Theo dõi đường huyết</h1>
       <p>
         Trang này chỉ giúp ghi lại chỉ số để bạn mang theo khi trao đổi với bác sĩ
-        hoặc chuyên gia đang theo dõi. V1 không đặt mục tiêu đường huyết, không
-        phân loại kết quả và không hướng dẫn tự chỉnh thuốc.
+        hoặc chuyên gia đang theo dõi. V1 không đặt ngưỡng cá nhân, không phân
+        loại kết quả và không hướng dẫn thay đổi thuốc.
       </p>
     </section>
 
@@ -49,8 +49,8 @@ const timeOptions = [
       <p>
         Đường huyết và HbA1c cần được cá thể hóa theo chẩn đoán, thuốc, thai kỳ,
         bệnh nền, triệu chứng và kế hoạch theo dõi. Vì chưa có source-lock và
-        quy trình duyệt lâm sàng riêng, công cụ này không đưa ngưỡng mục tiêu,
-        không kết luận chỉ số tốt hay xấu và không thay thế tư vấn chuyên môn.
+        quy trình duyệt lâm sàng riêng, công cụ này không đưa ngưỡng cá nhân,
+        không diễn giải chỉ số và không thay thế tư vấn chuyên môn.
       </p>
     </section>
 
@@ -116,8 +116,8 @@ const timeOptions = [
       <p>
         Nếu có triệu chứng bất thường, kết quả lặp lại khác thường, đang dùng thuốc
         hạ đường huyết, đang mang thai hoặc có bệnh nền phức tạp, hãy liên hệ bác sĩ
-        hoặc cơ sở y tế đang theo dõi. Không dùng trang này để tự đổi thuốc, đổi liều
-        hoặc đặt mục tiêu điều trị.
+        hoặc cơ sở y tế đang theo dõi. Không dùng trang này để thay đổi thuốc,
+        lịch dùng thuốc hoặc kế hoạch chăm sóc nếu chưa trao đổi với bác sĩ.
       </p>
     </section>
 
@@ -441,7 +441,7 @@ const timeOptions = [
         summary.innerHTML = [
           `<div class="summary-item"><strong>${entries.length}</strong> lần ghi</div>`,
           `<div class="summary-item"><strong>${latest ? formatDate(latest.date) : "--"}</strong> lần gần nhất</div>`,
-          `<div class="summary-item">Trang không phân loại hoặc đặt mục tiêu đường huyết.</div>`,
+          `<div class="summary-item">Trang chỉ ghi nhật ký và không diễn giải chỉ số.</div>`,
         ].join("");
       };
 
@@ -541,9 +541,9 @@ const timeOptions = [
         ctx.fillStyle = "#8a8f98";
         ctx.font = "12px sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText(`Thấp nhất đã ghi: ${min.toFixed(1)}`, pad.left, height - 10);
+        ctx.fillText(`Giá trị nhỏ nhất đã ghi: ${min.toFixed(1)}`, pad.left, height - 10);
         ctx.textAlign = "right";
-        ctx.fillText(`Cao nhất đã ghi: ${max.toFixed(1)}`, width - pad.right, height - 10);
+        ctx.fillText(`Giá trị lớn nhất đã ghi: ${max.toFixed(1)}`, width - pad.right, height - 10);
       };
 
       const renderAll = () => {
