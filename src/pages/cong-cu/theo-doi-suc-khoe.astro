@@ -1,464 +1,608 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
 const toolTitle = "Theo dõi sức khỏe";
-const toolDesc = "Ghi chép và theo dõi cân nặng, huyết áp, đường huyết, vòng eo theo thời gian với biểu đồ so sánh mục tiêu.";
+const toolDesc =
+  "Ghi nhật ký chỉ số sức khỏe để chuẩn bị thông tin khi trao đổi với bác sĩ hoặc chuyên gia.";
+
+const safetySituations = [
+  "Đang dùng thuốc huyết áp, thuốc hạ đường huyết, insulin, thuốc lợi tiểu hoặc nhiều thuốc cùng lúc",
+  "Có triệu chứng như đau ngực, khó thở, ngất, lơ mơ, yếu liệt, run tay, vã mồ hôi hoặc mệt lả",
+  "Đang mang thai, sau sinh, người cao tuổi yếu, trẻ em hoặc có bệnh nền phức tạp",
+  "Có bệnh tim mạch, bệnh thận, bệnh gan, đái tháo đường, ung thư hoặc đang nằm viện",
+  "Kết quả đo lặp lại khác thường so với sổ theo dõi hoặc chỉ dẫn trước đó của bác sĩ",
+  "Muốn cá thể hóa chỉ số theo dõi, xét nghiệm hoặc kế hoạch dùng thuốc",
+];
+
+const prepItems = [
+  "Ngày đo và thời điểm đo trong ngày",
+  "Thiết bị đo, đơn vị đo và cách đo nếu có ghi chú",
+  "Cân nặng, huyết áp, đường huyết, vòng eo hoặc xét nghiệm bạn muốn theo dõi",
+  "Triệu chứng đi kèm, bữa ăn, vận động, giấc ngủ, stress hoặc rượu bia",
+  "Danh sách thuốc đang dùng, liều đã được kê và thời điểm uống hoặc tiêm",
+  "Kết quả xét nghiệm gần đây và sổ khám nếu có",
+];
 ---
+
 <BaseLayout title={`${toolTitle} | Dinh Dưỡng Việt`} description={toolDesc}>
-  <div id="ht-root">
-    <div style="margin-bottom:20px"><h1>📊 {toolTitle}</h1><p style="color:var(--ink-secondary);">{toolDesc}</p></div>
+  <main class="health-log-shell" aria-labelledby="page-title">
+    <section class="hero-panel">
+      <p class="eyebrow">Nhật ký an toàn v1</p>
+      <h1 id="page-title">{toolTitle}</h1>
+      <p>
+        Trang này chỉ giúp ghi lại chỉ số do bạn nhập để mang theo khi trao đổi
+        với bác sĩ hoặc chuyên gia đang theo dõi. V1 không đặt ngưỡng cá nhân,
+        không phân loại kết quả và không hướng dẫn thay đổi thuốc hay kế hoạch
+        chăm sóc.
+      </p>
+    </section>
 
-    <!-- Nav -->
-    <div class="ht-nav">
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <input type="date" id="ht-date" style="border:1px solid var(--line);border-radius:var(--radius);padding:8px 12px;font-size:0.95rem;background:var(--card);color:var(--ink);" />
-        <button class="ht-btn" onclick="HT.loadToday()">Hôm nay</button>
-      </div>
-      <button class="ht-btn" onclick="HT.switchView()" id="ht-view-btn">📈 Biểu đồ</button>
-    </div>
+    <section class="notice-panel" aria-labelledby="scope-title">
+      <h2 id="scope-title">Phạm vi hiện tại</h2>
+      <p>
+        Cân nặng, huyết áp, đường huyết, HbA1c, LDL, triglyceride và các chỉ số
+        khác cần được cá thể hóa theo tuổi, chẩn đoán, thuốc, thai kỳ, bệnh nền,
+        triệu chứng và kế hoạch theo dõi. Vì v1 chưa có quy trình khóa nguồn
+        và duyệt lâm sàng riêng, công cụ này không diễn giải chỉ số và không
+        thay thế tư vấn chuyên môn.
+      </p>
+    </section>
 
-    <!-- Input form -->
-    <div class="ht-form" id="ht-form">
-      <div class="ht-form-grid">
-        <label>Cân nặng (kg) <input type="number" id="ht-weight" step="0.1" min="20" max="300" placeholder="VD: 65" /></label>
-        <label>HA tâm thu <input type="number" id="ht-sys" min="60" max="250" placeholder="VD: 120" /></label>
-        <label>HA tâm trương <input type="number" id="ht-dia" min="30" max="150" placeholder="VD: 80" /></label>
-        <label>Đường huyết đói <input type="number" id="ht-glucose" step="0.1" min="1" max="30" placeholder="VD: 5.6" /> <small style="color:var(--ink-tertiary);">mmol/L</small></label>
-        <label>Vòng eo (cm) <input type="number" id="ht-waist" min="40" max="200" placeholder="VD: 80" /></label>
-        <label>HbA1c (%) <input type="number" id="ht-a1c" step="0.1" min="3" max="20" placeholder="VD: 5.6" /></label>
-        <label>LDL (mmol/L) <input type="number" id="ht-ldl" step="0.01" min="0.5" max="10" placeholder="VD: 2.6" /></label>
-        <label>Triglyceride (mmol/L) <input type="number" id="ht-tg" step="0.01" min="0.1" max="20" placeholder="VD: 1.7" /></label>
+    <section class="log-panel" aria-labelledby="log-title">
+      <div class="section-head">
+        <p class="eyebrow">Ghi lại để trao đổi</p>
+        <h2 id="log-title">Nhật ký chỉ số</h2>
+        <p>
+          Dữ liệu chỉ lưu trong trình duyệt của bạn. Hãy kiểm tra lại với thiết
+          bị đo, sổ khám hoặc ứng dụng chính thức nếu cần dùng trong buổi khám.
+        </p>
       </div>
-      <div style="display:flex;gap:8px;margin-top:10px;">
-        <button class="ht-btn ht-btn-primary" onclick="HT.save()">💾 Lưu chỉ số</button>
-        <button class="ht-btn" onclick="HT.clearForm()">✕ Xóa form</button>
-      </div>
-      <div id="ht-save-msg" style="margin-top:8px;font-size:0.85rem;"></div>
-    </div>
 
-    <!-- Data table + chart -->
-    <div id="ht-data-area" class="ht-data-area">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <strong id="ht-data-title">📋 Lịch sử gần đây</strong>
-        <div style="display:flex;gap:6px;font-size:0.82rem;">
-          <select id="ht-filter" onchange="HT.refresh()" style="border:1px solid var(--line);border-radius:4px;padding:4px 8px;background:var(--card);color:var(--ink);">
-            <option value="7">7 ngày</option>
-            <option value="14" selected>14 ngày</option>
-            <option value="30">30 ngày</option>
-            <option value="90">3 tháng</option>
-            <option value="all">Tất cả</option>
-          </select>
-          <button class="ht-btn ht-btn-sm" onclick="HT.exportCSV()">📤 Xuất CSV</button>
+      <div class="form-card" aria-label="Ghi nhật ký chỉ số sức khỏe">
+        <label>
+          Ngày đo
+          <input id="ht-date" type="date" />
+        </label>
+
+        <label>
+          Cân nặng (kg)
+          <input id="ht-weight" type="number" inputmode="decimal" step="0.1" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          HA tâm thu
+          <input id="ht-sys" type="number" inputmode="numeric" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          HA tâm trương
+          <input id="ht-dia" type="number" inputmode="numeric" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          Đường huyết
+          <input id="ht-glucose" type="number" inputmode="decimal" step="0.1" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          Vòng eo (cm)
+          <input id="ht-waist" type="number" inputmode="decimal" step="0.1" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          HbA1c (%)
+          <input id="ht-a1c" type="number" inputmode="decimal" step="0.1" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          LDL
+          <input id="ht-ldl" type="number" inputmode="decimal" step="0.01" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label>
+          Triglyceride
+          <input id="ht-tg" type="number" inputmode="decimal" step="0.01" min="0" placeholder="Nhập nếu có" />
+        </label>
+
+        <label class="full-width">
+          Ghi chú triệu chứng, bữa ăn, thuốc hoặc bối cảnh đo
+          <textarea id="ht-note" rows="3" placeholder="Ví dụ: sau bữa tối, vừa vận động, đang dùng thuốc theo toa"></textarea>
+        </label>
+
+        <div class="button-row">
+          <button type="button" class="primary-button" id="ht-save">Lưu vào nhật ký</button>
+          <button type="button" class="secondary-button" id="ht-clear-form">Xóa form</button>
+          <button type="button" class="secondary-button" id="ht-export">Xuất CSV</button>
         </div>
       </div>
-      <div class="ht-chart-container" id="ht-chart-container">
-        <div style="text-align:center;color:var(--ink-tertiary);padding:40px 0;font-size:0.9rem;" id="ht-chart-placeholder">Chưa có dữ liệu — nhập chỉ số trên và lưu lại.</div>
-        <canvas id="ht-chart" style="display:none;width:100%;max-height:300px;"></canvas>
+
+      <div class="summary-strip" id="ht-summary" aria-live="polite"></div>
+      <div class="table-card" id="ht-table" aria-live="polite"></div>
+    </section>
+
+    <section class="situation-panel" aria-labelledby="situation-title">
+      <p class="eyebrow">Khi nào cần hỏi chuyên môn?</p>
+      <h2 id="situation-title">Các tình huống cần cá thể hóa</h2>
+      <div class="situation-grid">
+        {safetySituations.map((item) => (
+          <article class="situation-card">
+            <span aria-hidden="true">!</span>
+            <p>{item}</p>
+          </article>
+        ))}
       </div>
-      <div id="ht-table" style="margin-top:12px;"></div>
-    </div>
+    </section>
 
-    <!-- Target setting -->
-    <details class="ht-settings" style="margin-top:20px;">
-      <summary style="cursor:pointer;color:var(--ink-tertiary);font-size:0.88rem;">🎯 Mục tiêu cá nhân</summary>
-      <div class="ht-settings-body">
-        <div class="ht-form-grid">
-          <label>Cân nặng mục tiêu (kg) <input type="number" id="ht-goal-weight" step="0.1" /></label>
-          <label>HA mục tiêu (tối đa) <input type="text" id="ht-goal-bp" value="130/85" placeholder="VD: 130/85" /></label>
-          <label>Đường huyết mục tiêu <input type="number" id="ht-goal-glucose" step="0.1" value="6.1" /></label>
-          <label>Vòng eo mục tiêu (cm) <input type="number" id="ht-goal-waist" /></label>
-          <label>HbA1c mục tiêu <input type="number" id="ht-goal-a1c" step="0.1" value="7.0" /></label>
-          <label>LDL mục tiêu <input type="number" id="ht-goal-ldl" step="0.01" value="2.6" /></label>
-        </div>
-        <button class="ht-btn" onclick="HT.saveGoals()">💾 Lưu mục tiêu</button>
-      </div>
-    </details>
-  </div>
+    <section class="result-panel" aria-labelledby="result-title">
+      <p class="result-label">Định hướng</p>
+      <h2 id="result-title">Không đủ điều kiện đưa khuyến nghị cá nhân ở v1</h2>
+      <p>
+        Nếu có triệu chứng bất thường, kết quả lặp lại khác thường, đang dùng
+        thuốc, đang mang thai hoặc có bệnh nền phức tạp, hãy liên hệ bác sĩ hoặc
+        cơ sở y tế đang theo dõi. Không dùng trang này để thay đổi thuốc, lịch
+        dùng thuốc, bữa ăn hoặc kế hoạch chăm sóc nếu chưa trao đổi với bác sĩ.
+      </p>
+    </section>
 
-<script>
-(function() {
-  var SK = "health-track-v1";
-  var GK = "health-goals-v1";
-  var data = null;
-  var goals = null;
-  var chartView = false;
-  var chartInstance = null;
-  var metricOrder = ["weight","sys","dia","glucose","waist","a1c","ldl","tg"];
-  var metricLabels = {
-    weight: "Cân nặng (kg)", sys: "HA tâm thu", dia: "HA tâm trương",
-    glucose: "Đường huyết (mmol/L)", waist: "Vòng eo (cm)",
-    a1c: "HbA1c (%)", ldl: "LDL (mmol/L)", tg: "Triglyceride (mmol/L)"
-  };
-  var metricColors = {
-    weight: "#2e7d32", sys: "#e74c3c", dia: "#c0392b",
-    glucose: "#3498db", waist: "#f39c12",
-    a1c: "#9b59b6", ldl: "#1abc9c", tg: "#e67e22"
-  };
+    <section class="prep-panel" aria-labelledby="prep-title">
+      <p class="eyebrow">Chuẩn bị thông tin</p>
+      <h2 id="prep-title">Nên mang theo khi đi hỏi</h2>
+      <ul>
+        {prepItems.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+  </main>
 
-  function fmt(d) { var y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),dd=String(d.getDate()).padStart(2,"0"); return y+"-"+m+"-"+dd; }
-  function today() { return fmt(new Date()); }
+  <script>
+    (function () {
+      var STORAGE_KEY = "health-track-v1";
+      var entries = [];
+      var fields = [
+        ["weight", "Cân nặng", "kg"],
+        ["sys", "HA tâm thu", ""],
+        ["dia", "HA tâm trương", ""],
+        ["glucose", "Đường huyết", ""],
+        ["waist", "Vòng eo", "cm"],
+        ["a1c", "HbA1c", "%"],
+        ["ldl", "LDL", ""],
+        ["tg", "Triglyceride", ""],
+      ];
 
-  function load() {
-    try { var r = localStorage.getItem(SK); data = r ? JSON.parse(r) : []; } catch(e) { data = []; }
-    if(!Array.isArray(data)) data = [];
-    try { var g = localStorage.getItem(GK); goals = g ? JSON.parse(g) : null; } catch(e) { goals = null; }
-    if(goals) applyGoalsToForm();
-    document.getElementById("ht-date").value = today();
-  }
+      function $(id) {
+        return document.getElementById(id);
+      }
 
-  function applyGoalsToForm() {
-    if(goals.weight !== undefined) document.getElementById("ht-goal-weight").value = goals.weight;
-    if(goals.bp !== undefined) document.getElementById("ht-goal-bp").value = goals.bp;
-    if(goals.glucose !== undefined) document.getElementById("ht-goal-glucose").value = goals.glucose;
-    if(goals.waist !== undefined) document.getElementById("ht-goal-waist").value = goals.waist;
-    if(goals.a1c !== undefined) document.getElementById("ht-goal-a1c").value = goals.a1c;
-    if(goals.ldl !== undefined) document.getElementById("ht-goal-ldl").value = goals.ldl;
-  }
+      function today() {
+        var now = new Date();
+        var y = now.getFullYear();
+        var m = String(now.getMonth() + 1).padStart(2, "0");
+        var d = String(now.getDate()).padStart(2, "0");
+        return y + "-" + m + "-" + d;
+      }
 
-  function save() {
-    var entry = {
-      date: document.getElementById("ht-date").value || today(),
-      weight: parseFloat(document.getElementById("ht-weight").value) || null,
-      sys: parseInt(document.getElementById("ht-sys").value) || null,
-      dia: parseInt(document.getElementById("ht-dia").value) || null,
-      glucose: parseFloat(document.getElementById("ht-glucose").value) || null,
-      waist: parseFloat(document.getElementById("ht-waist").value) || null,
-      a1c: parseFloat(document.getElementById("ht-a1c").value) || null,
-      ldl: parseFloat(document.getElementById("ht-ldl").value) || null,
-      tg: parseFloat(document.getElementById("ht-tg").value) || null,
-    };
-    // Check if at least one value
-    var hasVal = Object.values(entry).some(function(v) { return v !== null && typeof v === "number"; });
-    if(!hasVal) { msg("⚠️ Nhập ít nhất một chỉ số", "red"); return; }
+      function readNumber(id) {
+        var raw = $(id).value;
+        if (raw === "") return null;
+        var value = Number(raw);
+        return Number.isFinite(value) ? value : null;
+      }
 
-    // Replace existing entry for same date
-    var idx = -1;
-    for(var i=0;i<data.length;i++) { if(data[i].date === entry.date) { idx=i; break; } }
-    if(idx>=0) data[idx] = entry;
-    else data.push(entry);
-    data.sort(function(a,b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
-    try { localStorage.setItem(SK, JSON.stringify(data)); } catch(e) {}
-    msg("✅ Đã lưu ngày "+entry.date, "green");
-    refresh();
-    // Clear form values (keep date)
-    document.getElementById("ht-weight").value="";
-    document.getElementById("ht-sys").value="";
-    document.getElementById("ht-dia").value="";
-    document.getElementById("ht-glucose").value="";
-    document.getElementById("ht-waist").value="";
-    document.getElementById("ht-a1c").value="";
-    document.getElementById("ht-ldl").value="";
-    document.getElementById("ht-tg").value="";
-  }
+      function load() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          entries = raw ? JSON.parse(raw) : [];
+        } catch (error) {
+          entries = [];
+        }
+        if (!Array.isArray(entries)) entries = [];
+      }
 
-  function msg(txt, color) {
-    var el = document.getElementById("ht-save-msg");
-    el.textContent = txt;
-    el.style.color = color || "var(--ink)";
-    setTimeout(function(){el.textContent="";}, 3000);
-  }
-
-  function clearForm() {
-    document.getElementById("ht-weight").value="";
-    document.getElementById("ht-sys").value="";
-    document.getElementById("ht-dia").value="";
-    document.getElementById("ht-glucose").value="";
-    document.getElementById("ht-waist").value="";
-    document.getElementById("ht-a1c").value="";
-    document.getElementById("ht-ldl").value="";
-    document.getElementById("ht-tg").value="";
-  }
-
-  function loadToday() {
-    document.getElementById("ht-date").value = today();
-    // Load existing data for today into form
-    var ds = today();
-    var entry = null;
-    for(var i=0;i<data.length;i++) { if(data[i].date === ds) { entry=data[i]; break; } }
-    if(entry) {
-      if(entry.weight) document.getElementById("ht-weight").value = entry.weight;
-      if(entry.sys) document.getElementById("ht-sys").value = entry.sys;
-      if(entry.dia) document.getElementById("ht-dia").value = entry.dia;
-      if(entry.glucose) document.getElementById("ht-glucose").value = entry.glucose;
-      if(entry.waist) document.getElementById("ht-waist").value = entry.waist;
-      if(entry.a1c) document.getElementById("ht-a1c").value = entry.a1c;
-      if(entry.ldl) document.getElementById("ht-ldl").value = entry.ldl;
-      if(entry.tg) document.getElementById("ht-tg").value = entry.tg;
-    }
-    refresh();
-  }
-
-  function refresh() {
-    renderTable();
-    renderChart();
-  }
-
-  function getFiltered() {
-    var filter = parseInt(document.getElementById("ht-filter").value);
-    if(isNaN(filter)) return data;
-    var cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - filter);
-    var cs = fmt(cutoff);
-    return data.filter(function(e) { return e.date >= cs; });
-  }
-
-  function renderTable() {
-    var el = document.getElementById("ht-table");
-    var filtered = getFiltered();
-    if(filtered.length===0) { el.innerHTML='<div style="text-align:center;color:var(--ink-tertiary);padding:20px;font-size:0.85rem;">Chưa có dữ liệu</div>'; return; }
-
-    // Show latest entries in reverse chronological
-    var latest = filtered.slice().reverse();
-    var h = '<table class="ht-table"><thead><tr><th>Ngày</th><th>⚖️ Cân</th><th>🫀 HA</th><th>🩸 Đường</th><th>📏 EO</th><th style="display:none">HbA1c</th><th style="display:none">LDL</th><th style="display:none">TG</th><th></th></tr></thead><tbody>';
-    latest.forEach(function(e,i) {
-      var bp = "";
-      if(e.sys && e.dia) bp = e.sys+"/"+e.dia;
-      else if(e.sys) bp = e.sys+"/?";
-      else if(e.dia) bp = "?/"+e.dia;
-      var weightStr = e.weight ? e.weight+"kg" : "";
-      var glucoseStr = e.glucose ? e.glucose.toFixed(1) : "";
-      var waistStr = e.waist ? e.waist+"cm" : "";
-      var a1cStr = e.a1c ? e.a1c.toFixed(1)+"%" : "";
-      var ldlStr = e.ldl ? e.ldl.toFixed(2) : "";
-      var tgStr = e.tg ? e.tg.toFixed(2) : "";
-      h += '<tr>'+
-        '<td style="white-space:nowrap;font-size:0.82rem;">'+e.date.slice(5)+'</td>'+
-        '<td>'+weightStr+'</td>'+
-        '<td>'+bp+'</td>'+
-        '<td>'+glucoseStr+'</td>'+
-        '<td>'+waistStr+'</td>'+
-        '<td style="display:none">'+a1cStr+'</td>'+
-        '<td style="display:none">'+ldlStr+'</td>'+
-        '<td style="display:none">'+tgStr+'</td>'+
-        '<td><button class="ht-btn ht-btn-sm" onclick="HT.deleteEntry(\''+e.date+'\')" title="Xóa">🗑️</button></td>'+
-      '</tr>';
-    });
-    h += '</tbody></table>';
-    el.innerHTML = h;
-  }
-
-  function renderChart() {
-    var filtered = getFiltered();
-    if(filtered.length===0) {
-      document.getElementById("ht-chart-placeholder").style.display="";
-      document.getElementById("ht-chart").style.display="none";
-      return;
-    }
-    document.getElementById("ht-chart-placeholder").style.display="none";
-    document.getElementById("ht-chart").style.display="block";
-
-    // We need to find which metrics have enough data (3+ non-null points)
-    var activeMetrics = [];
-    metricOrder.forEach(function(m) {
-      var count = filtered.filter(function(e){return e[m]!==null}).length;
-      if(count>=3) activeMetrics.push(m);
-    });
-    if(activeMetrics.length===0) { activeMetrics=["weight"]; }
-
-    // We'll use a simple hand-drawn SVG chart instead of Chart.js to avoid dependency
-    drawSVGChart(filtered, activeMetrics);
-  }
-
-  function drawSVGChart(entries, metrics) {
-    var el = document.getElementById("ht-chart-container");
-    var w = 700, h = 240;
-    var pad = { top: 10, right: 16, bottom: 40, left: 44 };
-    var cw = w - pad.left - pad.right;
-    var ch = h - pad.top - pad.bottom;
-
-    // Prepare dataset: for each metric, build points
-    var datasets = [];
-    var allValues = [];
-    metrics.forEach(function(m) {
-      var pts = [];
-      entries.forEach(function(e) {
-        if(e[m] !== null) pts.push({ date: e.date, val: e[m] });
-      });
-      if(pts.length < 2) return;
-      pts.sort(function(a,b) { return a.date < b.date ? -1 : 1; });
-
-      // Remove duplicates (keep last per date)
-      var dedup = [];
-      var seen = {};
-      pts.forEach(function(p) {
-        if(seen[p.date]) {
-          for(var i=0;i<dedup.length;i++) { if(dedup[i].date===p.date) dedup[i]=p; }
-        } else { seen[p.date]=true; dedup.push(p); }
-      });
-      pts = dedup;
-
-      if(pts.length < 2) return;
-      pts.forEach(function(p) { allValues.push(p.val); });
-      datasets.push({ metric: m, points: pts });
-    });
-
-    if(datasets.length===0) {
-      el.innerHTML = '<div style="text-align:center;color:var(--ink-tertiary);padding:20px;">Chưa đủ dữ liệu để vẽ biểu đồ (cần ≥2 lần đo).</div>';
-      return;
-    }
-
-    var minVal = Math.min.apply(null, allValues);
-    var maxVal = Math.max.apply(null, allValues);
-    var range = maxVal - minVal || 1;
-    var padding = range * 0.15;
-    minVal -= padding;
-    maxVal += padding;
-
-    // X-axis: dates
-    var dates = [];
-    datasets.forEach(function(ds) {
-      ds.points.forEach(function(p) {
-        if(dates.indexOf(p.date)===-1) dates.push(p.date);
-      });
-    });
-    dates.sort();
-    var xMap = {};
-    dates.forEach(function(d,i){xMap[d]=i;});
-    var xStep = dates.length > 1 ? cw / (dates.length-1) : cw;
-
-    function xPos(date) { return pad.left + (xMap[date]||0) * xStep; }
-    function yPos(val) { return pad.top + ch - (val - minVal) / (maxVal - minVal) * ch; }
-
-    // Build SVG
-    var svg = '<svg width="100%" height="'+h+'" viewBox="0 0 '+w+' '+h+'" style="display:block;max-width:100%;">';
-    // Grid lines
-    var gridLines = 4;
-    for(var i=0;i<=gridLines;i++) {
-      var y = pad.top + ch/gridLines*i;
-      var val = maxVal - (maxVal-minVal)/gridLines*i;
-      svg += '<line x1="'+pad.left+'" y1="'+y+'" x2="'+(w-pad.right)+'" y2="'+y+'" stroke="var(--line)" stroke-width="1"/>';
-      svg += '<text x="'+(pad.left-6)+'" y="'+(y+3)+'" text-anchor="end" font-size="10" fill="var(--ink-tertiary)">'+val.toFixed(1)+'</text>';
-    }
-    // X-axis labels
-    dates.forEach(function(d,i) {
-      var x = xPos(d);
-      var label = d.slice(5); // MM-DD
-      svg += '<text x="'+x+'" y="'+(h-pad.top+14)+'" text-anchor="middle" font-size="9" fill="var(--ink-tertiary)">'+label+'</text>';
-    });
-
-    // Draw each dataset as line + dots
-    datasets.forEach(function(ds) {
-      var color = metricColors[ds.metric] || "#666";
-      var pts = ds.points;
-
-      // Goal line if goal exists
-      var goalLine = null;
-      if(goals) {
-        if(ds.metric==="weight" && goals.weight) goalLine=goals.weight;
-        else if(ds.metric==="glucose" && goals.glucose) goalLine=goals.glucose;
-        else if(ds.metric==="a1c" && goals.a1c) goalLine=goals.a1c;
-        else if(ds.metric==="ldl" && goals.ldl) goalLine=goals.ldl;
-        else if(ds.metric==="waist" && goals.waist) goalLine=goals.waist;
-        else if(ds.metric==="sys") {
-          // Parse "130/85"
-          var bpGoal = goals.bp;
-          if(bpGoal) { var parts = bpGoal.split("/"); if(parts[0]) goalLine=parseInt(parts[0]); }
+      function persist() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+        } catch (error) {
+          // Keep the page usable even if localStorage is unavailable.
         }
       }
-      if(goalLine && goalLine > minVal && goalLine < maxVal) {
-        var gy = yPos(goalLine);
-        svg += '<line x1="'+pad.left+'" y1="'+gy+'" x2="'+(w-pad.right)+'" y2="'+gy+'" stroke="'+color+'" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>';
-        svg += '<text x="'+(w-pad.right-4)+'" y="'+(gy-2)+'" text-anchor="end" font-size="8" fill="'+color+'" opacity="0.6">Mục tiêu '+goalLine+'</text>';
+
+      function clearForm() {
+        fields.forEach(function (field) {
+          $("ht-" + field[0]).value = "";
+        });
+        $("ht-note").value = "";
       }
 
-      // Line
-      var linePoints = pts.map(function(p,i) {
-        return (i===0?"M ":" L ")+xPos(p.date).toFixed(1)+" "+yPos(p.val).toFixed(1);
-      }).join("");
-      svg += '<path d="'+linePoints+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linejoin="round"/>';
+      function setMessage(text, tone) {
+        var el = $("ht-summary");
+        el.textContent = text;
+        el.className = "summary-strip" + (tone ? " is-" + tone : "");
+      }
 
-      // Dots
-      pts.forEach(function(p) {
-        var x = xPos(p.date).toFixed(1);
-        var y = yPos(p.val).toFixed(1);
-        svg += '<circle cx="'+x+'" cy="'+y+'" r="3.5" fill="'+color+'" stroke="white" stroke-width="1.5"/>';
-      });
-    });
+      function saveEntry() {
+        var entry = {
+          id: String(Date.now()),
+          date: $("ht-date").value || today(),
+          note: $("ht-note").value.trim(),
+        };
+        fields.forEach(function (field) {
+          entry[field[0]] = readNumber("ht-" + field[0]);
+        });
 
-    svg += '</svg>';
+        var hasMetric = fields.some(function (field) {
+          return entry[field[0]] !== null;
+        });
+        if (!hasMetric && !entry.note) {
+          setMessage("Hãy nhập ít nhất một chỉ số hoặc ghi chú để lưu nhật ký.", "warn");
+          return;
+        }
 
-    // Legend
-    svg += '<div class="ht-legend">';
-    datasets.forEach(function(ds) {
-      svg += '<span><span class="ht-legend-dot" style="background:'+(metricColors[ds.metric]||"#666")+'"></span> '+(metricLabels[ds.metric]||ds.metric)+'</span>';
-    });
-    svg += '</div>';
+        entries.push(entry);
+        entries.sort(function (a, b) {
+          return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+        });
+        persist();
+        render();
+        clearForm();
+        setMessage("Đã lưu nhật ký. Trang không diễn giải chỉ số hoặc đưa khuyến nghị cá nhân.", "ok");
+      }
 
-    el.innerHTML = svg;
-  }
+      function deleteEntry(id) {
+        entries = entries.filter(function (entry) {
+          return entry.id !== id;
+        });
+        persist();
+        render();
+        setMessage("Đã xóa một dòng nhật ký.", "ok");
+      }
 
-  function switchView() {
-    // Toggle between table only and chart+table
-    chartView = !chartView;
-    document.getElementById("ht-view-btn").textContent = chartView ? "📋 Bảng" : "📈 Biểu đồ";
-    // No actual toggle needed - chart is always shown
-  }
+      function formatMetric(entry, field) {
+        var value = entry[field[0]];
+        if (value === null || value === undefined) return "";
+        return String(value) + (field[2] ? " " + field[2] : "");
+      }
 
-  function deleteEntry(date) {
-    if(!confirm("Xóa chỉ số ngày "+date+"?")) return;
-    data = data.filter(function(e) { return e.date !== date; });
-    try { localStorage.setItem(SK, JSON.stringify(data)); } catch(e) {}
-    refresh();
-  }
+      function render() {
+        var table = $("ht-table");
+        if (!entries.length) {
+          table.innerHTML =
+            '<div class="empty-state">Chưa có dữ liệu. Bạn có thể dùng trang này như nhật ký local để chuẩn bị thông tin đi khám.</div>';
+          setMessage("0 dòng nhật ký. Không có diễn giải chỉ số.", "");
+          return;
+        }
 
-  function saveGoals() {
-    goals = {
-      weight: parseFloat(document.getElementById("ht-goal-weight").value) || null,
-      bp: document.getElementById("ht-goal-bp").value || null,
-      glucose: parseFloat(document.getElementById("ht-goal-glucose").value) || null,
-      waist: parseFloat(document.getElementById("ht-goal-waist").value) || null,
-      a1c: parseFloat(document.getElementById("ht-goal-a1c").value) || null,
-      ldl: parseFloat(document.getElementById("ht-goal-ldl").value) || null,
-    };
-    try { localStorage.setItem(GK, JSON.stringify(goals)); } catch(e) {}
-    refresh();
-    alert("✅ Đã lưu mục tiêu! (hiện trên biểu đồ dạng nét đứt)");
-  }
+        var latest = entries.slice().reverse();
+        var html =
+          '<div class="table-scroll"><table class="ht-table"><thead><tr><th>Ngày</th><th>Chỉ số đã ghi</th><th>Ghi chú</th><th></th></tr></thead><tbody>';
+        latest.forEach(function (entry) {
+          var metrics = fields
+            .map(function (field) {
+              var text = formatMetric(entry, field);
+              return text ? field[1] + ": " + text : "";
+            })
+            .filter(Boolean)
+            .join("; ");
+          html +=
+            "<tr><td>" +
+            entry.date +
+            "</td><td>" +
+            escapeHtml(metrics || "Chỉ có ghi chú") +
+            "</td><td>" +
+            escapeHtml(entry.note || "") +
+            '</td><td><button type="button" class="small-button" data-delete="' +
+            entry.id +
+            '">Xóa</button></td></tr>';
+        });
+        html += "</tbody></table></div>";
+        table.innerHTML = html;
+        Array.prototype.forEach.call(table.querySelectorAll("[data-delete]"), function (button) {
+          button.addEventListener("click", function () {
+            deleteEntry(button.getAttribute("data-delete"));
+          });
+        });
+        setMessage(entries.length + " dòng nhật ký. Trang chỉ lưu dữ liệu bạn nhập.", "ok");
+      }
 
-  function exportCSV() {
-    if(data.length===0) { alert("Chưa có dữ liệu"); return; }
-    var rows = [["Ngày","Cân nặng","HA tâm thu","HA tâm trương","Đường huyết","Vòng eo","HbA1c","LDL","Triglyceride"]];
-    data.forEach(function(e) {
-      rows.push([e.date, e.weight||"", e.sys||"", e.dia||"", e.glucose||"", e.waist||"", e.a1c||"", e.ldl||"", e.tg||""]);
-    });
-    var csv = rows.map(function(r){return r.join(",")}).join("\n");
-    var blob = new Blob(["\ufeff"+csv], {type:"text/csv;charset=utf-8"});
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "suc-khoe-"+today()+".csv";
-    a.click();
-  }
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
 
-  window.HT = {
-    load: load, loadToday: loadToday, save: save, clearForm: clearForm,
-    refresh: refresh, switchView: switchView,
-    deleteEntry: deleteEntry, saveGoals: saveGoals, exportCSV: exportCSV,
-  };
-})();
-</script>
+      function exportCSV() {
+        if (!entries.length) {
+          setMessage("Chưa có dữ liệu để xuất CSV.", "warn");
+          return;
+        }
+        var header = ["Ngay"].concat(fields.map(function (field) { return field[1]; }), ["Ghi chu"]);
+        var rows = entries.map(function (entry) {
+          return [entry.date]
+            .concat(fields.map(function (field) {
+              var value = entry[field[0]];
+              return value === null || value === undefined ? "" : value;
+            }))
+            .concat([entry.note || ""]);
+        });
+        var csv = [header].concat(rows).map(function (row) {
+          return row.map(function (cell) {
+            return '"' + String(cell).replace(/"/g, '""') + '"';
+          }).join(",");
+        }).join("\n");
+        var blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "nhat-ky-suc-khoe-" + today() + ".csv";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
 
-<style is:global>
-  #ht-root { max-width: 720px; margin: 0 auto; padding: 0 0 40px; }
-  .ht-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
-  .ht-btn { padding: 7px 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; font-size: 0.85rem; transition: all var(--transition); white-space: nowrap; }
-  .ht-btn:hover { border-color: var(--brand); background: var(--brand-dim); }
-  .ht-btn-sm { padding: 4px 8px; font-size: 0.8rem; }
-  .ht-btn-primary { background: var(--brand); color: white; border: none; }
-  .ht-btn-primary:hover { opacity: 0.9; background: var(--brand); }
-  .ht-form { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 16px; }
-  .ht-form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-  .ht-form-grid label { font-size: 0.82rem; color: var(--ink-secondary); display: flex; flex-direction: column; gap: 3px; }
-  .ht-form-grid input { padding: 6px 10px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.92rem; background: var(--bg); color: var(--ink); }
-  .ht-form-grid label small { font-size: 0.72rem; }
-  .ht-data-area { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px; }
-  .ht-chart-container { margin: 0 0 12px; min-height: 200px; }
-  .ht-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  .ht-table th { text-align: left; padding: 8px 6px; border-bottom: 2px solid var(--line); font-size: 0.78rem; color: var(--ink-secondary); }
-  .ht-table td { padding: 6px; border-bottom: 1px solid var(--line-dim); }
-  .ht-table tr:hover td { background: var(--dim); }
-  .ht-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; font-size: 0.78rem; color: var(--ink-secondary); }
-  .ht-legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-  .ht-settings-body { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-top: 8px; }
-  @media (max-width: 600px) {
-    .ht-form-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-</style>
+      $("ht-date").value = today();
+      $("ht-save").addEventListener("click", saveEntry);
+      $("ht-clear-form").addEventListener("click", clearForm);
+      $("ht-export").addEventListener("click", exportCSV);
+      load();
+      render();
+    })();
+  </script>
+
+  <style is:global>
+    .health-log-shell {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 24px 0 44px;
+    }
+
+    .health-log-shell section {
+      margin-bottom: 18px;
+    }
+
+    .hero-panel,
+    .notice-panel,
+    .log-panel,
+    .situation-panel,
+    .result-panel,
+    .prep-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(34, 197, 94, 0.08));
+    }
+
+    .eyebrow,
+    .result-label {
+      margin: 0 0 8px;
+      color: var(--brand);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .health-log-shell h1,
+    .health-log-shell h2 {
+      margin: 0 0 10px;
+      line-height: 1.25;
+    }
+
+    .health-log-shell h1 {
+      font-size: 1.75rem;
+    }
+
+    .health-log-shell h2 {
+      font-size: 1.16rem;
+    }
+
+    .health-log-shell p,
+    .health-log-shell li,
+    .health-log-shell label {
+      color: var(--ink-secondary);
+      line-height: 1.65;
+    }
+
+    .health-log-shell p {
+      margin: 0;
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+    }
+
+    .form-card {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+    }
+
+    .form-card label {
+      display: grid;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .form-card input,
+    .form-card textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--ink);
+      font: inherit;
+      padding: 10px 12px;
+    }
+
+    .form-card textarea {
+      resize: vertical;
+    }
+
+    .full-width,
+    .button-row {
+      grid-column: 1 / -1;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .small-button {
+      min-height: 42px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 10px 14px;
+    }
+
+    .primary-button {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+
+    .secondary-button,
+    .small-button {
+      background: var(--card);
+      color: var(--ink);
+    }
+
+    .small-button {
+      min-height: 34px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+
+    .summary-strip {
+      margin: 14px 0;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: var(--brand-light);
+      color: var(--ink-secondary);
+      font-weight: 700;
+    }
+
+    .summary-strip.is-ok {
+      background: #e8f5ee;
+      color: #217245;
+    }
+
+    .summary-strip.is-warn {
+      background: #fff7ed;
+      color: #9a3412;
+    }
+
+    .table-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    .ht-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      font-size: 0.86rem;
+    }
+
+    .ht-table th,
+    .ht-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .ht-table th {
+      color: var(--ink-secondary);
+      font-size: 0.78rem;
+    }
+
+    .empty-state {
+      padding: 18px;
+      color: var(--ink-secondary);
+      text-align: center;
+    }
+
+    .situation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .situation-card {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--bg);
+    }
+
+    .situation-card span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      background: var(--brand-light);
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+    .prep-panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .health-log-shell {
+        padding: 18px 0 34px;
+      }
+
+      .hero-panel,
+      .notice-panel,
+      .log-panel,
+      .situation-panel,
+      .result-panel,
+      .prep-panel {
+        padding: 16px;
+      }
+
+      .form-card,
+      .situation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row {
+        display: grid;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+      }
+    }
+  </style>
+</BaseLayout>
