@@ -1,261 +1,228 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const title = "🌾 Chỉ số đường huyết (GI) thực phẩm Việt";
-const desc = "Tra nhanh chỉ số GI của cơm, bún, phở, bánh mì, trái cây Việt Nam — kèm gợi ý thay thế thông minh.";
+
+const title = "Chỉ số GI thực phẩm Việt";
+const desc =
+  "Tìm hiểu ý nghĩa chỉ số GI ở mức tham khảo và các tình huống cần hỏi bác sĩ hoặc chuyên gia.";
+
+const safetySituations = [
+  "Đang có đái tháo đường, tiền đái tháo đường, rối loạn đường huyết hoặc từng hạ đường huyết",
+  "Đang dùng insulin, sulfonylurea hoặc thuốc hạ đường huyết khác",
+  "Đang mang thai, cho con bú, là trẻ em, người cao tuổi yếu hoặc đang sụt cân",
+  "Có bệnh thận, bệnh gan, bệnh tim mạch hoặc đang dùng nhiều thuốc cùng lúc",
+  "Muốn biết một món cụ thể có phù hợp với bữa ăn, thuốc hoặc mục tiêu chăm sóc cá nhân hay không",
+];
+
+const limits = [
+  "GI chỉ mô tả tốc độ làm tăng đường huyết của thực phẩm chứa carbohydrate trong điều kiện thử nghiệm.",
+  "GI không đủ để quyết định một món có phù hợp cho từng người hay từng bệnh nền hay không.",
+  "Khẩu phần, lượng carbohydrate thực tế, cách chế biến, món ăn đi kèm, vận động và thuốc đang dùng đều có thể làm thay đổi đáp ứng sau ăn.",
+  "V1 không đặt mốc GI, carb hoặc chỉ số theo dõi cá nhân.",
+];
+
+const prepareItems = [
+  "Tên món, khẩu phần thực tế và thời điểm ăn trong ngày",
+  "Các món ăn kèm, nước uống, nước chấm hoặc món tráng miệng trong cùng bữa",
+  "Thuốc đang dùng, triệu chứng hạ đường huyết nếu từng có và kết quả theo dõi gần đây",
+  "Lời dặn hiện tại của bác sĩ hoặc chuyên gia về carbohydrate, bữa ăn và theo dõi đường huyết",
+];
+
+const relatedLinks = [
+  {
+    href: "/cong-cu/tinh-carb",
+    title: "Tính carb trong bữa ăn",
+    desc: "Ước tính lượng carbohydrate từ khẩu phần thực tế.",
+  },
+  {
+    href: "/cong-cu/tinh-gl-bua-an",
+    title: "Tính GL từ bữa ăn",
+    desc: "Ước tính tải đường huyết của bữa ăn trong phạm vi đã kiểm v1.",
+  },
+  {
+    href: "/cong-cu/khau-phan-viet-clinical",
+    title: "Đánh giá khẩu phần Việt",
+    desc: "Xem khẩu phần ở mức giáo dục dinh dưỡng, không thay thế tư vấn cá nhân.",
+  },
+  {
+    href: "/cong-cu/muc-tieu-dinh-duong",
+    title: "Mục tiêu dinh dưỡng",
+    desc: "Định hướng mục tiêu dinh dưỡng với cờ cần cá thể hóa.",
+  },
+];
 ---
 
 <BaseLayout title={title} description={desc} canonical="/cong-cu/chi-so-gi">
-  <main class="content-page">
-    <div class="page-header">
-      <h1>🌾 Chỉ số đường huyết (GI) thực phẩm Việt</h1>
-      <p class="page-desc">{desc}</p>
-    </div>
+  <main class="gi-page">
+    <section class="hero">
+      <p class="eyebrow">Trang tham khảo</p>
+      <h1>Chỉ số GI thực phẩm Việt</h1>
+      <p class="lead">
+        Trang này chỉ giải thích GI như một khái niệm tham khảo về thực phẩm chứa carbohydrate.
+        Không dùng trang này để tự kết luận một món ăn phù hợp hay không phù hợp với bệnh nền,
+        thuốc đang dùng hoặc mục tiêu chăm sóc cá nhân.
+      </p>
+    </section>
 
-    <!-- What is GI -->
-    <div class="gi-hero">
-      <div class="gi-card low">
-        <div class="gi-range">≤ 55</div>
-        <div class="gi-label">🟢 GI thấp</div>
-        <div class="gi-desc">Đường huyết tăng chậm — An toàn</div>
-      </div>
-      <div class="gi-card mid">
-        <div class="gi-range">56–69</div>
-        <div class="gi-label">🟡 GI trung bình</div>
-        <div class="gi-desc">Ăn có chừng mực</div>
-      </div>
-      <div class="gi-card high">
-        <div class="gi-range">≥ 70</div>
-        <div class="gi-label">🔴 GI cao</div>
-        <div class="gi-desc">Hạn chế — Đường huyết tăng nhanh</div>
-      </div>
-    </div>
+    <section class="safety-card" aria-labelledby="safety-title">
+      <h2 id="safety-title">Khi nào cần hỏi chuyên môn?</h2>
+      <p>
+        Nếu bạn có bệnh nền, đang dùng thuốc hoặc cần cá thể hóa bữa ăn, hãy trao đổi với bác sĩ
+        hoặc chuyên gia dinh dưỡng trước khi thay đổi khẩu phần, lượng carb hoặc kế hoạch theo dõi.
+      </p>
+      <ul>
+        {safetySituations.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
 
-    <!-- Search & Filter -->
-    <div class="gi-search-bar">
-      <input id="gi-search" type="text" placeholder="Tìm thực phẩm (cơm, bún, khoai, sầu riêng...)" class="gi-search">
-      <div class="gi-filter-chips" id="gi-filter-chips">
-        <button class="chip active" data-group="all">📋 Tất cả</button>
-        <button class="chip" data-group="thap">🟢 GI thấp</button>
-        <button class="chip" data-group="trung-binh">🟡 GI trung bình</button>
-        <button class="chip" data-group="cao">🔴 GI cao</button>
-      </div>
-    </div>
+    <section class="info-grid" aria-label="Giới hạn của GI">
+      <article class="info-panel">
+        <h2>GI cho biết điều gì?</h2>
+        <p>
+          GI là một cách mô tả tương đối tốc độ làm tăng đường huyết sau khi ăn một thực phẩm
+          chứa carbohydrate. Con số này có thể thay đổi theo giống thực phẩm, độ chín, cách nấu,
+          cách bảo quản và khẩu phần thực tế.
+        </p>
+      </article>
 
-    <!-- GI Table -->
-    <div class="gi-table-wrap" id="gi-table-wrap">
-      <table class="gi-table" id="gi-table">
-        <thead>
-          <tr><th>🍽️ Thực phẩm</th><th>GI</th><th>Mức</th><th>Khẩu phần</th><th>Tải đường (GL)</th><th>💡 Gợi ý thay thế</th></tr>
-        </thead>
-        <tbody id="gi-tbody"></tbody>
-      </table>
-    </div>
+      <article class="info-panel">
+        <h2>Trang này không làm gì?</h2>
+        <ul>
+          {limits.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </section>
 
-    <!-- Legend -->
-    <details style="margin-top:20px;">
-      <summary style="cursor:pointer;font-weight:600;color:var(--ink-secondary);">📖 GI và GL là gì?</summary>
-      <div style="padding:16px;background:var(--bg-soft);border-radius:var(--radius);margin-top:10px;font-size:0.9rem;line-height:1.7;">
-        <p><strong>GI (Glycemic Index)</strong> — Chỉ số đường huyết: đo tốc độ thực phẩm làm tăng đường huyết sau ăn. GI càng cao, đường huyết tăng càng nhanh.</p>
-        <p><strong>GL (Glycemic Load)</strong> — Tải lượng đường huyết: GI × lượng carb / 100. GL mới là con số thực tế cho biết 1 khẩu phần ăn ảnh hưởng thế nào.</p>
-        <p>🟢 GL ≤ 10 thấp · 🟡 GL 11–19 trung bình · 🔴 GL ≥ 20 cao</p>
-        <p style="font-size:0.82rem;color:var(--ink-tertiary);">Nguồn: Dữ liệu từ University of Sydney GI Database, Harvard Health, ADA. GI có thể thay đổi theo độ chín, cách nấu, thương hiệu.</p>
-      </div>
-    </details>
+    <section class="info-grid" aria-label="Chuẩn bị thông tin">
+      <article class="info-panel">
+        <h2>Nên mang theo khi đi khám</h2>
+        <ul>
+          {prepareItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
 
-    <!-- Safety -->
-    <div class="safety-note">
-      ⚠️ Đây là ước tính tham khảo. GI thực tế thay đổi theo độ chín, cách nấu, thương hiệu. Người tiểu đường nên thử đường huyết sau ăn 2h để biết cơ thể mình đáp ứng thế nào với từng thực phẩm.
-    </div>
+      <article class="info-panel">
+        <h2>Công cụ liên quan đã kiểm</h2>
+        <div class="link-list">
+          {relatedLinks.map((link) => (
+            <a href={link.href} class="tool-link">
+              <strong>{link.title}</strong>
+              <span>{link.desc}</span>
+            </a>
+          ))}
+        </div>
+      </article>
+    </section>
   </main>
-
-  <style>
-    .content-page { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
-    .page-header { text-align:center; margin-bottom:24px; }
-    .page-desc { max-width:560px; margin:8px auto 0; color:var(--ink-secondary); font-size:0.9rem; line-height:1.6; }
-
-    .gi-hero { display:flex; gap:12px; margin-bottom:28px; flex-wrap:wrap; justify-content:center; }
-    .gi-card { flex:1; min-width:140px; text-align:center; padding:16px 12px; border-radius:var(--radius-lg); }
-    .gi-card.low { background:#e8f5e9; border:1px solid #a5d6a7; }
-    .gi-card.mid { background:#fff8e1; border:1px solid #ffcc80; }
-    .gi-card.high { background:#ffebee; border:1px solid #ef9a9a; }
-    .gi-range { font-size:1.4rem; font-weight:700; }
-    .gi-label { font-weight:600; margin:4px 0; }
-    .gi-desc { font-size:0.78rem; opacity:0.8; }
-
-    .gi-search-bar { margin-bottom:16px; }
-    .gi-search { width:100%; padding:12px 16px; border:2px solid var(--line); border-radius:var(--radius-lg); background:var(--card); color:inherit; font-size:1rem; box-sizing:border-box; }
-    .gi-search:focus { outline:none; border-color:var(--brand); }
-    .gi-filter-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
-    .chip { padding:6px 16px; border:1px solid var(--line); border-radius:20px; background:var(--card); color:var(--ink-secondary); font-size:0.82rem; cursor:pointer; transition:all 0.15s; font-family:inherit; }
-    .chip:hover { border-color:var(--brand); }
-    .chip.active { background:var(--brand-light); color:var(--brand); border-color:var(--brand-light2); font-weight:600; }
-
-    .gi-table-wrap { overflow-x:auto; }
-    .gi-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
-    .gi-table th { background:var(--brand-light); color:var(--brand); font-weight:700; padding:10px 12px; text-align:left; position:sticky; top:0; border-bottom:2px solid var(--brand-light2); }
-    .gi-table td { padding:10px 12px; border-bottom:1px solid var(--line-light); vertical-align:middle; }
-    .gi-table tr:hover { background:var(--bg-soft); }
-    .gi-table .gi-low { color:#2e7d32; font-weight:700; }
-    .gi-table .gi-mid { color:#e65100; font-weight:700; }
-    .gi-table .gi-high { color:#c62828; font-weight:700; }
-    .gi-badge { display:inline-block; padding:2px 10px; border-radius:10px; font-size:0.75rem; font-weight:600; }
-    .gi-badge.low { background:#e8f5e9; color:#2e7d32; }
-    .gi-badge.mid { background:#fff8e1; color:#e65100; }
-    .gi-badge.high { background:#ffebee; color:#c62828; }
-    .gi-alt { font-size:0.8rem; color:var(--ink-secondary); }
-    .gi-alternative { font-size:0.82rem; }
-    .gi-alternative .alt-good { color:#2e7d32; }
-    .gi-alternative .alt-bad { color:#c62828; }
-
-    .safety-note { margin-top:20px; padding:14px; background:var(--bg-soft); border-radius:var(--radius); font-size:0.82rem; color:var(--ink-secondary); line-height:1.6; }
-
-    @media (max-width:600px) {
-      .gi-table { font-size:0.78rem; }
-      .gi-card { min-width:100px; }
-    }
-  </style>
-
-  <script is:inline>
-  (function() {
-    // GI data: compiled from University of Sydney GI Database, Harvard, ADA
-    var foods = [
-      // ---- Tinh bột cao ----
-      {name:"Cơm trắng (hạt dài)",gi:73,level:"cao",portion:"1 bát (130g)",gl:39,alt:"Cơm gạo lứt (GI 55) hoặc cơm trộn 50% gạo lứt"},
-      {name:"Cơm tấm",gi:78,level:"cao",portion:"1 đĩa (200g)",gl:56,alt:"Cơm gạo lứt hoặc giảm ½ lượng cơm"},
-      {name:"Cơm nếp",gi:80,level:"cao",portion:"1 bát (150g)",gl:44,alt:"Cơm gạo lứt hoặc cơm trộn gạo lứt + nếp"},
-      {name:"Cơm gạo lứt",gi:55,level:"thap",portion:"1 bát (130g)",gl:24,alt:"✅ Tốt — ăn thay cơm trắng"},
-      {name:"Cơm gạo lứt đỏ",gi:50,level:"thap",portion:"1 bát (130g)",gl:22,alt:"✅ Tốt — GI thấp nhất trong các loại cơm"},
-      {name:"Bún tươi",gi:58,level:"trung-binh",portion:"1 bát (200g)",gl:26,alt:"Giảm lượng, ăn kèm nhiều rau"},
-      {name:"Phở",gi:60,level:"trung-binh",portion:"1 tô (250g)",gl:33,alt:"Giảm bánh phở, thêm thịt và rau"},
-      {name:"Bánh phở",gi:62,level:"trung-binh",portion:"1 bát (200g)",gl:39,alt:"Giảm lượng, ưu tiên bún hơn phở"},
-      {name:"Miến dong",gi:50,level:"thap",portion:"1 bát (200g)",gl:25,alt:"✅ Tốt — GI thấp, phù hợp người tiểu đường"},
-      {name:"Bánh mì trắng",gi:71,level:"cao",portion:"1 ổ (80g)",gl:30,alt:"Bánh mì nguyên cám (GI 50) hoặc bánh mì đen"},
-      {name:"Bánh mì nguyên cám",gi:52,level:"thap",portion:"1 ổ (80g)",gl:22,alt:"✅ Tốt — chọn loại 100% nguyên cám"},
-      {name:"Bánh mì đen (lúa mạch đen)",gi:50,level:"thap",portion:"1 lát (30g)",gl:7,alt:"✅ Tốt — GI thấp, giàu xơ"},
-      {name:"Xôi trắng",gi:75,level:"cao",portion:"1 bát (150g)",gl:42,alt:"Xôi gạo lứt (GI 55) hoặc giảm ½ lượng"},
-      {name:"Cháo gạo",gi:78,level:"cao",portion:"1 bát (250ml)",gl:20,alt:"Cháo yến mạch (GI 55) hoặc cháo gạo lứt"},
-      {name:"Hủ tiếu",gi:65,level:"trung-binh",portion:"1 tô (300g)",gl:36,alt:"Giảm lượng hủ tiếu, thêm rau và đạm"},
-      {name:"Mì sợi",gi:55,level:"thap",portion:"1 bát (200g)",gl:22,alt:"✅ Tốt — GI thấp hơn cơm và bánh mì"},
-      {name:"Mì gói",gi:70,level:"cao",portion:"1 gói (75g)",gl:28,alt:"Mì sợi thường (GI 55) hoặc giảm gia vị"},
-      {name:"Bánh cuốn",gi:64,level:"trung-binh",portion:"1 đĩa (150g)",gl:24,alt:"Giảm lượng, ăn kèm rau sống"},
-      {name:"Bánh đa (bánh tráng)",gi:72,level:"cao",portion:"1 cái (40g)",gl:23,alt:"Bánh tráng gạo lứt (GI 55) — nếu có"},
-
-      // ---- Củ ----
-      {name:"Khoai lang luộc",gi:46,level:"thap",portion:"1 củ vừa (150g)",gl:17,alt:"✅ Tốt — GI thấp, giàu xơ và vitamin A"},
-      {name:"Khoai tây luộc",gi:65,level:"trung-binh",portion:"1 củ vừa (150g)",gl:17,alt:"Để nguội sẽ có GI thấp hơn (tinh bột kháng)"},
-      {name:"Khoai tây chiên",gi:72,level:"cao",portion:"1 suất (150g)",gl:20,alt:"Khoai tây luộc để nguội hoặc khoai lang"},
-      {name:"Khoai môn",gi:54,level:"thap",portion:"1 miếng (100g)",gl:13,alt:"✅ Tốt — GI thấp, ăn luộc/hấp"},
-      {name:"Khoai mỡ",gi:51,level:"thap",portion:"1 củ vừa (150g)",gl:14,alt:"✅ Tốt — GI thấp"},
-      {name:"Khoai sọ",gi:52,level:"thap",portion:"1 củ (80g)",gl:10,alt:"✅ Tốt — ăn thay cơm"},
-      {name:"Sắn (khoai mì) luộc",gi:69,level:"trung-binh",portion:"1 củ vừa (150g)",gl:37,alt:"Giảm lượng, ăn với đạm và rau để làm chậm hấp thu"},
-      {name:"Ngô (bắp) luộc",gi:56,level:"trung-binh",portion:"1 trái (150g)",gl:17,alt:"✅ Vẫn OK — ăn cả trái, không bỏ màng"},
-      {name:"Ngô ngọt",gi:60,level:"trung-binh",portion:"1 trái (150g)",gl:20,alt:"Giảm lượng, ưu tiên ngô thường"},
-
-      // ---- Trái cây ----
-      {name:"Chuối xanh",gi:42,level:"thap",portion:"1 quả (100g)",gl:9,alt:"✅ Tốt — GI thấp, giàu kháng tinh bột"},
-      {name:"Chuối chín",gi:62,level:"trung-binh",portion:"1 quả vừa (100g)",gl:14,alt:"Ăn chuối xanh hơn hoặc giảm ½ quả"},
-      {name:"Chuối chín rục",gi:78,level:"cao",portion:"1 quả lớn (130g)",gl:22,alt:"Tránh — chọn chuối vừa chín tới"},
-      {name:"Xoài chín",gi:56,level:"trung-binh",portion:"1 quả vừa (200g)",gl:17,alt:"Xoài xanh (GI 40) hoặc giảm ½ quả"},
-      {name:"Xoài xanh",gi:40,level:"thap",portion:"1 quả (150g)",gl:9,alt:"✅ Tốt — chấm muối ớt, không đường"},
-      {name:"Thanh long",gi:55,level:"thap",portion:"1 quả vừa (200g)",gl:13,alt:"✅ Tốt — GI thấp, nhiều xơ"},
-      {name:"Ổi",gi:38,level:"thap",portion:"1 quả vừa (150g)",gl:6,alt:"✅ Tốt — GI rất thấp, nhiều vitamin C"},
-      {name:"Táo",gi:39,level:"thap",portion:"1 quả vừa (150g)",gl:6,alt:"✅ Tốt — ăn cả vỏ"},
-      {name:"Lê",gi:38,level:"thap",portion:"1 quả vừa (150g)",gl:7,alt:"✅ Tốt"},
-      {name:"Cam",gi:43,level:"thap",portion:"1 quả vừa (150g)",gl:7,alt:"✅ Tốt — ăn cả múi, không ép nước"},
-      {name:"Bưởi",gi:25,level:"thap",portion:"1 miếng (200g)",gl:4,alt:"✅ Rất tốt — GI thấp nhất trong trái cây"},
-      {name:"Đu đủ chín",gi:56,level:"trung-binh",portion:"1 miếng (200g)",gl:11,alt:"Đu đủ xanh (GI 45) hoặc giảm lượng"},
-      {name:"Dưa hấu",gi:76,level:"cao",portion:"1 lát (200g)",gl:10,alt:"Dưa gang hoặc dưa lưới (GI 45)"},
-      {name:"Sầu riêng",gi:60,level:"trung-binh",portion:"1 múi (100g)",gl:15,alt:"Hạn chế 1 múi, ăn sau bữa chính"},
-      {name:"Mít chín",gi:68,level:"trung-binh",portion:"1 múi (100g)",gl:21,alt:"Hạn chế, ưu tiên mít non"},
-      {name:"Măng cụt",gi:55,level:"thap",portion:"2 quả (100g)",gl:12,alt:"✅ Tốt — GI thấp"},
-      {name:"Chôm chôm",gi:62,level:"trung-binh",portion:"10 quả (100g)",gl:14,alt:"Hạn chế, ăn tối đa 10 quả"},
-      {name:"Nhãn",gi:58,level:"trung-binh",portion:"1 chùm (100g)",gl:13,alt:"Hạn chế, ăn tối đa 1 chùm nhỏ"},
-      {name:"Vải",gi:62,level:"trung-binh",portion:"1 chùm (100g)",gl:12,alt:"Hạn chế, ăn tối đa 1 chùm nhỏ"},
-      {name:"Mận",gi:34,level:"thap",portion:"5 quả (100g)",gl:4,alt:"✅ Tốt — GI thấp"},
-      {name:"Dâu tây",gi:40,level:"thap",portion:"1 chén (150g)",gl:5,alt:"✅ Tốt — GI thấp, ít đường"},
-      {name:"Nho đen",gi:42,level:"thap",portion:"1 chùm (120g)",gl:7,alt:"✅ Tốt — chọn nho đen hơn nho xanh"},
-      {name:"Nho xanh",gi:56,level:"trung-binh",portion:"1 chùm (120g)",gl:11,alt:"Giảm lượng, chọn nho đen"},
-
-      // ---- Đồ uống ----
-      {name:"Nước ngọt có gas",gi:72,level:"cao",portion:"1 lon (330ml)",gl:43,alt:"Nước lọc, nước chanh không đường, trà xanh"},
-      {name:"Trà sữa",gi:65,level:"trung-binh",portion:"Size M (500ml)",gl:29,alt:"Trà sữa không đường (GI ~40) hoặc trà tươi"},
-      {name:"Nước cam ép",gi:55,level:"thap",portion:"1 ly (200ml)",gl:11,alt:"✅ Tốt — nhưng ăn cam tươi tốt hơn"},
-      {name:"Nước táo ép",gi:44,level:"thap",portion:"1 ly (200ml)",gl:9,alt:"✅ Tốt — nhưng ăn táo tươi tốt hơn"},
-      {name:"Bia",gi:66,level:"trung-binh",portion:"1 lon (330ml)",gl:7,alt:"Hạn chế hoàn toàn nếu có tiểu đường"},
-      {name:"Sữa đậu nành không đường",gi:34,level:"thap",portion:"1 ly (200ml)",gl:3,alt:"✅ Tốt — có thể uống hàng ngày"},
-      {name:"Sữa tươi không đường",gi:37,level:"thap",portion:"1 ly (200ml)",gl:4,alt:"✅ Tốt — giàu protein, GI thấp"},
-      {name:"Sữa tươi có đường",gi:45,level:"thap",portion:"1 ly (200ml)",gl:9,alt:"Chọn sữa không đường tốt hơn"},
-
-      // ---- Bánh kẹo ----
-      {name:"Bánh bích quy",gi:72,level:"cao",portion:"3 cái (30g)",gl:16,alt:"Bánh nguyên cám (GI 50) hoặc hạt khô"},
-      {name:"Bánh ngọt (bánh bông lan)",gi:62,level:"trung-binh",portion:"1 miếng (80g)",gl:25,alt:"Bánh yến mạch hoặc trái cây tươi"},
-      {name:"Kem vani",gi:57,level:"trung-binh",portion:"1 ly (100g)",gl:14,alt:"Sữa chua Hy Lạp không đường (GI 15)"},
-      {name:"Socola đen (≥70%)",gi:23,level:"thap",portion:"1 thanh nhỏ (20g)",gl:2,alt:"✅ Tốt — chọn socola đen >70%, ít đường"},
-      {name:"Socola sữa",gi:55,level:"thap",portion:"1 thanh nhỏ (30g)",gl:10,alt:"Socola đen >70% tốt hơn"},
-      {name:"Bánh flan",gi:44,level:"thap",portion:"1 cái (80g)",gl:6,alt:"✅ Tốt — có thể ăn, không sốt caramel"},
-    ];
-
-    var tbody = document.getElementById('gi-tbody');
-
-    function renderRows(list) {
-      if (!tbody) return;
-      if (list.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--ink-tertiary);padding:20px;">❌ Không tìm thấy thực phẩm phù hợp</td></tr>';
-        return;
-      }
-      tbody.innerHTML = list.map(function(f) {
-        var levelClass = f.level === 'thap' ? 'low' : f.level === 'trung-binh' ? 'mid' : 'high';
-        var levelText = f.level === 'thap' ? '🟢 Thấp' : f.level === 'trung-binh' ? '🟡 Trung bình' : '🔴 Cao';
-        return '<tr>' +
-          '<td><strong>' + f.name + '</strong></td>' +
-          '<td class="gi-' + levelClass + '">' + f.gi + '</td>' +
-          '<td><span class="gi-badge ' + levelClass + '">' + levelText + '</span></td>' +
-          '<td class="gi-alt">' + f.portion + '</td>' +
-          '<td><span class="gi-' + (f.gl <= 10 ? 'low' : f.gl <= 19 ? 'mid' : 'high') + '">' + f.gl + '</span></td>' +
-          '<td class="gi-alternative"><span class="alt-' + (f.alt.startsWith('✅') ? 'good' : 'bad') + '">' + f.alt + '</span></td>' +
-        '</tr>';
-      }).join('');
-    }
-
-    // Filter state
-    var filtered = foods.slice();
-    var currentFilter = 'all';
-    var currentSearch = '';
-
-    function applyFilters() {
-      filtered = foods.filter(function(f) {
-        if (currentFilter !== 'all' && f.level !== currentFilter) return false;
-        if (currentSearch) {
-          var q = currentSearch.toLowerCase().trim();
-          return f.name.toLowerCase().indexOf(q) >= 0;
-        }
-        return true;
-      });
-      renderRows(filtered);
-    }
-
-    // Search
-    var search = document.getElementById('gi-search');
-    if (search) {
-      search.addEventListener('input', function() {
-        currentSearch = this.value;
-        applyFilters();
-      });
-    }
-
-    // Filter chips
-    var chips = document.querySelectorAll('#gi-filter-chips .chip');
-    chips.forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        chips.forEach(function(c) { c.classList.remove('active'); });
-        this.classList.add('active');
-        currentFilter = this.getAttribute('data-group');
-        applyFilters();
-      });
-    });
-
-    // Init
-    renderRows(foods);
-  })();
-  </script>
 </BaseLayout>
+
+<style>
+  .gi-page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+  }
+
+  .hero {
+    margin-bottom: 22px;
+  }
+
+  .eyebrow {
+    margin: 0 0 8px;
+    color: var(--brand);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 10px;
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+  }
+
+  .lead,
+  .safety-card p,
+  .info-panel p,
+  .tool-link span {
+    color: var(--ink-secondary);
+    line-height: 1.65;
+  }
+
+  .safety-card,
+  .info-panel {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--card);
+    padding: 18px;
+  }
+
+  .safety-card {
+    margin-bottom: 16px;
+    background: var(--brand-light);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  ul {
+    margin: 10px 0 0;
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 7px 0;
+    line-height: 1.5;
+  }
+
+  .link-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .tool-link {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+    color: inherit;
+    text-decoration: none;
+    background: var(--bg-soft);
+  }
+
+  .tool-link:hover {
+    border-color: var(--brand);
+  }
+
+  .tool-link strong,
+  .tool-link span {
+    display: block;
+  }
+
+  .tool-link span {
+    margin-top: 4px;
+    font-size: 0.86rem;
+  }
+
+  @media (max-width: 700px) {
+    .gi-page {
+      padding: 24px 14px 40px;
+    }
+
+    h1 {
+      font-size: 1.55rem;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
