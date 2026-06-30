@@ -44,44 +44,42 @@ const MEAL_VI = { sang: "🌅 Sáng", trua: "🌞 Trưa", chieu: "🌆 Chiều",
 const MEAL_PCT = { sang: 0.25, trua: 0.35, chieu: 0.10, toi: 0.30 };
 const DAY_NAMES = ["Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy","Chủ Nhật"];
 
-// Disease exclusion keywords
-const DISEASE_RULES = {
-  gout: { name: "🦶 Gout", exclude: ["lòng","óc","gan","thận","tim","cật","tiết canh","cháo lòng","dồi","nội tạng"], tip: "Tránh nội tạng, nước dùng xương hầm kỹ, hải sản nhiều purin. Uống đủ 2-2.5L nước/ngày." },
-  tieuDuong: { name: "🩸 Tiểu đường", exclude: ["nước ngọt","siro","bánh ngọt","chè đường","mứt","kem","sữa đặc"], tip: "Ưu tiên món GI thấp, chia nhỏ bữa, tránh đường tinh chế. Kết hợp chất xơ mỗi bữa." },
-  tangHuyetAp: { name: "🫀 Tăng huyết áp", exclude: ["mắm tôm","mắm nêm","chao","thịt nguội","xúc xích","dưa muối","cà muối","kim chi"], tip: "Hạn chế muối <5g/ngày. Tránh món kho rim mặn. Tăng rau quả giàu kali." },
-  beoPhi: { name: "⚖️ Béo phì", exclude: ["chiên dầu","xào nhiều dầu","thịt ba chỉ","thịt mỡ","da gà","da vịt"], tip: "Kiểm soát khẩu phần. Ưu tiên món luộc/hấp. Ăn rau trước bữa chính." },
-  suyThan: { name: "🫘 Suy thận", exclude: ["nước dùng","canh xương","lẩu","chuối","khoai tây","khoai lang","đu đủ","sầu riêng","mít"], tip: "Hạn chế đạm 0.6g/kg/ngày. Tránh thực phẩm giàu kali và phốt pho." },
-  damMach: { name: "💔 Mỡ máu", exclude: ["thịt ba chỉ","thịt mỡ","da heo","da gà","óc heo","lòng","phủ tạng","chiên ngập dầu"], tip: "Hạn chế chất béo bão hòa. Tăng omega-3 (cá thu, cá basa). Nên ăn nhiều chất xơ." },
+const SAFETY_GROUPS = {
+  tieuDuong: "Đái tháo đường, tiền đái tháo đường, đang dùng insulin hoặc thuốc hạ đường huyết",
+  tangHuyetAp: "Tăng huyết áp, bệnh tim mạch, suy tim hoặc đang dùng thuốc liên quan",
+  suyThan: "Bệnh thận hoặc cần theo dõi kali/phospho/natri kỹ hơn",
+  gout: "Gout hoặc acid uric cao",
+  thaiKy: "Thai kỳ, cho con bú, trẻ em, người cao tuổi hoặc đang có nhu cầu dinh dưỡng đặc biệt",
 };
 
-const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
+const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
 ---
 
 <BaseLayout title="Lập thực đơn tuần tự động - Dinh Dưỡng Việt" canonical="/cong-cu/lap-thuc-don-tuan">
   <span class="badge">⭐ Công cụ</span>
   <h1>🗓️ Lập thực đơn tuần tự động</h1>
-  <p class="lead">Tự động tạo thực đơn 7 ngày thông minh từ 400+ món ăn Việt, tối ưu theo calo mục tiêu và tình trạng sức khỏe của bạn.</p>
+  <p class="lead">Gợi ý khung thực đơn 7 ngày ở mức tham khảo từ món Việt quen thuộc, giúp bạn sắp xếp bữa ăn nhiều ngày mà không thay thế tư vấn chuyên môn.</p>
 
-  <div class="disclaimer">Món ăn được gợi ý dựa trên nhóm calo. Kết quả mang tính tham khảo — bạn có thể thay đổi theo sở thích cá nhân.</div>
+  <div class="disclaimer">Khung thực đơn và các con số trong trang này chỉ là ước tính tham khảo. Nếu bạn có bệnh nền, dùng thuốc, mang thai, đang nuôi con bú, là trẻ em, người cao tuổi hoặc cần chế độ ăn cần theo dõi riêng, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi áp dụng.</div>
 
   <section class="card config-section">
     <div class="config-grid">
       <div class="conf-item">
-        <label>🎯 Mục tiêu calo/ngày</label>
+        <label>🎯 Mức năng lượng tham khảo mỗi ngày</label>
         <select id="calTarget">
-          <option value="1500">1500 kcal — Giảm cân</option>
-          <option value="1800">1800 kcal — Giảm nhẹ</option>
-          <option value="2000" selected>2000 kcal — Duy trì</option>
-          <option value="2300">2300 kcal — Tăng nhẹ</option>
-          <option value="2600">2600 kcal — Tăng cơ</option>
-          <option value="3000">3000 kcal — Vận động nhiều</option>
+          <option value="1500">1500 kcal — Mốc tham khảo nhẹ</option>
+          <option value="1800">1800 kcal — Mốc tham khảo vừa</option>
+          <option value="2000" selected>2000 kcal — Mốc tham khảo phổ biến</option>
+          <option value="2300">2300 kcal — Mốc tham khảo cao hơn</option>
+          <option value="2600">2600 kcal — Mốc tham khảo cho ngày hoạt động nhiều</option>
+          <option value="3000">3000 kcal — Mốc tham khảo rất cao</option>
         </select>
       </div>
       <div class="conf-item">
-        <label>🩺 Bệnh lý / Chế độ</label>
+        <label>🩺 Trường hợp cần hỏi chuyên môn</label>
         <select id="diseaseFilter">
           <option value="">Không có</option>
-          {ALL_DISEASE_KEYS.map(k => <option value={k}>{DISEASE_RULES[k].name}</option>)}
+          {ALL_SAFETY_KEYS.map(k => <option value={k}>{SAFETY_GROUPS[k]}</option>)}
         </select>
       </div>
       <div class="conf-item">
@@ -94,7 +92,7 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
         </select>
       </div>
       <div class="conf-item">
-        <label>🥗 Chế độ ăn</label>
+        <label>🥗 Ưu tiên tham khảo</label>
         <select id="dietMode">
           <option value="">Không</option>
           <option value="it-natri">Ít natri</option>
@@ -125,20 +123,15 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
   var RECIPES = JSON.parse(store.getAttribute('data-recipes') || '[]');
   var MEAL_MAP = JSON.parse(store.getAttribute('data-meal-map') || '{}');
   var MEAL_KEYS = ["sang","trua","chieu","toi"];
-  var MEAL_MAP = {JSON.stringify(Object.fromEntries(MEAL_KEYS.map(k => [k, MEAL_MAP[k].map(r => r.slug)])))};
-  var MEAL_KEYS = ["sang","trua","chieu","toi"];
   var MEAL_VI = { sang:"🌅 Sáng", trua:"🌞 Trưa", chieu:"🌆 Chiều", toi:"🌙 Tối" };
   var MEAL_PCT = { sang:0.25, trua:0.35, chieu:0.10, toi:0.30 };
   var DAY_NAMES = ["Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy","Chủ Nhật"];
-  var K=1000;
-
-  var DISEASE = {
-    gout: { exclude: ["lòng","óc","gan","cật","tim","tiết canh","cháo lòng","dồi","nội tạng","phèo","lươn","ba ba"], tip: "⚠️ Tránh nội tạng, nước dùng xương hầm, hải sản nhiều purin. Uống 2-2.5L nước/ngày." },
-    tieuDuong: { exclude: ["nước ngọt","siro","bánh ngọt","chè đường","mứt","kem","sữa đặc"], tip: "⚠️ Ưu tiên GI thấp, chia nhỏ bữa, tránh đường tinh chế. Kết hợp chất xơ mỗi bữa." },
-    tangHuyetAp: { exclude: ["mắm tôm","mắm nêm","chao","thịt nguội","xúc xích","dưa muối","cà muối","kim chi","ruốc","mắm ruốc","cà pháo"], tip: "⚠️ Hạn chế muối <5g/ngày. Tránh món kho rim mặn. Tăng rau giàu kali." },
-    beoPhi: { exclude: ["chiên dầu","xào nhiều dầu","thịt ba chỉ","thịt mỡ","da gà","da vịt","heo quay"], tip: "⚠️ Kiểm soát khẩu phần. Ưu tiên luộc/hấp. Ăn rau trước bữa chính." },
-    suyThan: { exclude: ["nước dùng","canh xương","lẩu","chuối","khoai tây","khoai lang","đu đủ","sầu riêng","mít","nước dừa","bơ"], tip: "⚠️ Hạn chế đạm 0.6g/kg/ngày. Tránh thực phẩm giàu kali và phốt pho." },
-    damMach: { exclude: ["thịt ba chỉ","thịt mỡ","da heo","da gà","óc heo","lòng","phủ tạng","chiên ngập dầu","mỡ lợn","mỡ gà"], tip: "⚠️ Hạn chế chất béo bão hòa. Tăng omega-3 (cá thu, cá basa). Nhiều chất xơ." },
+  var SAFETY_GROUPS = {
+    tieuDuong: "Đái tháo đường, tiền đái tháo đường, đang dùng insulin hoặc thuốc hạ đường huyết",
+    tangHuyetAp: "Tăng huyết áp, bệnh tim mạch, suy tim hoặc đang dùng thuốc liên quan",
+    suyThan: "Bệnh thận hoặc cần theo dõi kali/phospho/natri kỹ hơn",
+    gout: "Gout hoặc acid uric cao",
+    thaiKy: "Thai kỳ, cho con bú, trẻ em, người cao tuổi hoặc đang có nhu cầu dinh dưỡng đặc biệt"
   };
 
   var DIET_FILTERS = {
@@ -178,15 +171,6 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
       // Build pool
       var pool = RECIPES.filter(function(r){return r.kcal > 0;});
 
-      // Disease filter
-      if (disease && DISEASE[disease]) {
-        var words = DISEASE[disease].exclude;
-        pool = pool.filter(function(r) {
-          var txt = (r.name + " " + (r.tags || []).join(" ")).toLowerCase();
-          return !words.some(function(w){ return txt.indexOf(w) !== -1; });
-        });
-      }
-
       // Diet filter
       if (dietMode && DIET_FILTERS[dietMode]) {
         pool = pool.filter(DIET_FILTERS[dietMode]);
@@ -194,7 +178,9 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
 
       if (pool.length < 7) {
         $loading.style.display = 'none';
-        document.getElementById('planContainer').innerHTML = '<div class="empty">😕 Không đủ món phù hợp. Thử bỏ bộ lọc.</div>';
+        renderEmptyState('😕 Chưa đủ món cho bộ lọc đang chọn. Hãy thử đổi mốc tham khảo hoặc bỏ bớt ưu tiên lọc.');
+        renderWeekSummary(null);
+        renderTip(disease, dietMode);
         return;
       }
 
@@ -307,37 +293,97 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
   };
 
   function renderPlan(plan, calTarget, disease) {
-    var html = plan.map(function(day, idx) {
-      var diff = day.kcal - calTarget;
-      var diffBadge = '';
-      if (diff > 100) diffBadge = '<span class="badge-hi">+' + Math.round(diff) + ' kcal</span>';
-      else if (diff < -100) diffBadge = '<span class="badge-lo">' + Math.round(diff) + ' kcal</span>';
-      else diffBadge = '<span class="badge-ok">✓ ' + Math.round(day.kcal) + ' kcal</span>';
+    var container = document.getElementById('planContainer');
+    var grid = document.createElement('div');
+    grid.className = 'plan-grid';
 
-      var mealsHtml = day.meals.map(function(m) {
-        if (!m.items || m.items.length === 0) return '';
-        var label = MEAL_VI[m.meal] || '🍿 Phụ';
-        var itemsHtml = m.items.map(function(item) {
-          return '<a class="meal-badge" href="/mon-an/' + item.slug + '">' + item.name + ' <small>(' + Math.round(item.kcal) + ' kcal)</small></a>';
-        }).join('');
-        return '<div class="meal-row"><span class="meal-lbl">' + label + '</span><div class="meal-items">' + itemsHtml + '</div></div>';
-      }).join('');
+    plan.forEach(function(day, idx) {
+      var dayCard = document.createElement('div');
+      dayCard.className = 'day-card';
 
-      return '<div class="day-card">' +
-        '<div class="day-head" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'collapsed\')">' +
-        '<span class="day-name">' + DAY_NAMES[idx] + '</span>' +
-        '<span class="day-cal">' + diffBadge + '</span>' +
-        '<span class="day-toggle">▼</span></div>' +
-        '<div class="day-body">' + mealsHtml +
-        '<div class="day-total">🥩 ' + day.protein.toFixed(0) + 'g · 🧈 ' + day.fat.toFixed(0) + 'g · 🌾 ' + day.carb.toFixed(0) + 'g · 🌱 ' + day.fiber.toFixed(0) + 'g xơ</div>' +
-        '</div></div>';
-    }).join('');
+      var dayHead = document.createElement('button');
+      dayHead.type = 'button';
+      dayHead.className = 'day-head';
 
-    document.getElementById('planContainer').innerHTML = '<div class="plan-grid">' + html + '</div>';
-    document.getElementById('planContainer').scrollIntoView({ behavior:'smooth', block:'start' });
+      var dayName = document.createElement('span');
+      dayName.className = 'day-name';
+      dayName.textContent = DAY_NAMES[idx];
+
+      var dayCal = document.createElement('span');
+      dayCal.className = 'day-cal';
+      dayCal.textContent = Math.round(day.kcal) + ' kcal tham khảo';
+
+      var dayToggle = document.createElement('span');
+      dayToggle.className = 'day-toggle';
+      dayToggle.textContent = '▼';
+
+      dayHead.appendChild(dayName);
+      dayHead.appendChild(dayCal);
+      dayHead.appendChild(dayToggle);
+
+      var dayBody = document.createElement('div');
+      dayBody.className = 'day-body';
+
+      dayHead.addEventListener('click', function() {
+        dayHead.classList.toggle('collapsed');
+        dayBody.classList.toggle('collapsed');
+      });
+
+      day.meals.forEach(function(m) {
+        if (!m.items || m.items.length === 0) return;
+        var row = document.createElement('div');
+        row.className = 'meal-row';
+
+        var label = document.createElement('span');
+        label.className = 'meal-lbl';
+        label.textContent = MEAL_VI[m.meal] || '🍿 Phụ';
+
+        var itemsWrap = document.createElement('div');
+        itemsWrap.className = 'meal-items';
+
+        m.items.forEach(function(item) {
+          var link = document.createElement('a');
+          link.className = 'meal-badge';
+          link.href = '/mon-an/' + item.slug;
+          link.textContent = item.name;
+
+          var small = document.createElement('small');
+          small.textContent = '(' + Math.round(item.kcal) + ' kcal)';
+          link.appendChild(small);
+          itemsWrap.appendChild(link);
+        });
+
+        row.appendChild(label);
+        row.appendChild(itemsWrap);
+        dayBody.appendChild(row);
+      });
+
+      var total = document.createElement('div');
+      total.className = 'day-total';
+      total.textContent = 'Ước tính tham khảo: ' +
+        'Đạm ' + day.protein.toFixed(0) + 'g · ' +
+        'Béo ' + day.fat.toFixed(0) + 'g · ' +
+        'Carb ' + day.carb.toFixed(0) + 'g · ' +
+        'Xơ ' + day.fiber.toFixed(0) + 'g';
+
+      dayBody.appendChild(total);
+      dayCard.appendChild(dayHead);
+      dayCard.appendChild(dayBody);
+      grid.appendChild(dayCard);
+    });
+
+    container.replaceChildren(grid);
+    container.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
   function renderWeekSummary(totals) {
+    var summary = document.getElementById('weekSummary');
+    if (!totals) {
+      summary.replaceChildren();
+      summary.style.display = 'none';
+      return;
+    }
+
     var avg = {
       kcal: totals.kcal / 7,
       protein: totals.protein / 7,
@@ -345,41 +391,96 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
       carb: totals.carb / 7,
       fiber: totals.fiber / 7
     };
-    document.getElementById('weekSummary').innerHTML =
-      '<div class="ws-header">📊 Tổng kết tuần</div>' +
-      '<div class="ws-grid">' +
-      '<div class="ws-item"><div class="ws-val">🔥 ' + Math.round(avg.kcal) + '</div><div class="ws-lbl">kcal/ngày (TB)</div></div>' +
-      '<div class="ws-item"><div class="ws-val">🥩 ' + avg.protein.toFixed(0) + 'g</div><div class="ws-lbl">Đạm/ngày</div></div>' +
-      '<div class="ws-item"><div class="ws-val">🧈 ' + avg.fat.toFixed(0) + 'g</div><div class="ws-lbl">Béo/ngày</div></div>' +
-      '<div class="ws-item"><div class="ws-val">🌾 ' + avg.carb.toFixed(0) + 'g</div><div class="ws-lbl">Carb/ngày</div></div>' +
-      '<div class="ws-item"><div class="ws-val">🌱 ' + avg.fiber.toFixed(0) + 'g</div><div class="ws-lbl">Xơ/ngày</div></div>' +
-      '<div class="ws-item"><div class="ws-val">🗓️ 7 ngày</div><div class="ws-lbl">' + Math.round(totals.kcal) + ' tổng kcal</div></div>' +
-      '</div>';
-    document.getElementById('weekSummary').style.display = 'block';
+    var header = document.createElement('div');
+    header.className = 'ws-header';
+    header.textContent = '📊 Tổng kết tuần (tham khảo)';
+
+    var grid = document.createElement('div');
+    grid.className = 'ws-grid';
+
+    [
+      ['🔥 ' + Math.round(avg.kcal), 'kcal/ngày (TB)'],
+      ['🥩 ' + avg.protein.toFixed(0) + 'g', 'Đạm/ngày'],
+      ['🧈 ' + avg.fat.toFixed(0) + 'g', 'Béo/ngày'],
+      ['🌾 ' + avg.carb.toFixed(0) + 'g', 'Carb/ngày'],
+      ['🌱 ' + avg.fiber.toFixed(0) + 'g', 'Xơ/ngày'],
+      ['🗓️ 7 ngày', Math.round(totals.kcal) + ' tổng kcal ước tính']
+    ].forEach(function(entry) {
+      var item = document.createElement('div');
+      item.className = 'ws-item';
+
+      var val = document.createElement('div');
+      val.className = 'ws-val';
+      val.textContent = entry[0];
+
+      var lbl = document.createElement('div');
+      lbl.className = 'ws-lbl';
+      lbl.textContent = entry[1];
+
+      item.appendChild(val);
+      item.appendChild(lbl);
+      grid.appendChild(item);
+    });
+
+    summary.replaceChildren(header, grid);
+    summary.style.display = 'block';
   }
 
   function renderTip(disease, dietMode) {
     var $tip = document.getElementById('healthTip');
-    if (disease && DISEASE[disease]) {
-      $tip.innerHTML = '<h3>💡 Lời khuyên ' + DISEASE[disease].tip + '</h3>';
-      $tip.style.display = 'block';
-    } else if (dietMode) {
-      var tips = { 'it-natri':'Chọn thực phẩm tươi, hạn chế gia vị mặn. <5g muối/ngày.', 'it-mo':'Hạn chế thịt đỏ nhiều mỡ, ưu tiên cá và thịt gia cầm bỏ da.', 'nhieu-xo':'Mỗi bữa nên có rau/củ/quả. Đặt mục tiêu 25-30g xơ/ngày.', 'it-do-ngot':'Hạn chế đường bổ sung. Dùng trái cây tươi thay đồ ngọt.' };
-      $tip.innerHTML = '<h3>💡 ' + (tips[dietMode] || '') + '</h3>';
-      $tip.style.display = 'block';
-    } else {
-      $tip.style.display = 'none';
+    $tip.replaceChildren();
+
+    var fragments = [];
+    if (disease && SAFETY_GROUPS[disease]) {
+      fragments.push('Nhóm "' + SAFETY_GROUPS[disease] + '" cần hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi áp dụng thực đơn nhiều ngày.');
     }
+    if (dietMode) {
+      var tips = {
+        'it-natri':'Nếu bạn đang ưu tiên ít natri, hãy xem kết quả như gợi ý tham khảo và kiểm tra lại khi có bệnh nền hoặc cần theo dõi riêng.',
+        'it-mo':'Nếu bạn đang ưu tiên ít chất béo bão hòa, hãy xem kết quả như gợi ý tham khảo, không phải hướng dẫn cá thể hóa.',
+        'nhieu-xo':'Nếu bạn đang ưu tiên nhiều chất xơ, hãy xem kết quả như gợi ý tham khảo và điều chỉnh cùng chuyên gia nếu có bệnh tiêu hóa, thận hoặc đái tháo đường.',
+        'it-do-ngot':'Nếu bạn đang ưu tiên ít đường, hãy xem kết quả như gợi ý tham khảo và hỏi bác sĩ/chuyên gia khi đang theo dõi đường huyết hoặc dùng thuốc.'
+      };
+      if (tips[dietMode]) fragments.push(tips[dietMode]);
+    }
+
+    fragments.push('Không tự đổi thuốc, insulin, lợi tiểu hoặc chế độ ăn đang theo dõi dựa vào trang này.');
+
+    if (fragments.length === 0) {
+      $tip.style.display = 'none';
+      return;
+    }
+
+    var title = document.createElement('h3');
+    title.textContent = '💡 Lưu ý an toàn';
+    $tip.appendChild(title);
+
+    fragments.forEach(function(text) {
+      var p = document.createElement('p');
+      p.textContent = text;
+      $tip.appendChild(p);
+    });
+
+    $tip.style.display = 'block';
+  }
+
+  function renderEmptyState(message) {
+    var container = document.getElementById('planContainer');
+    var empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = message;
+    container.replaceChildren(empty);
   }
 
   window.exportPlan = function() {
     var text = '🗓️ THỰC ĐƠN TUẦN\n';
     text += 'Ngày: ' + new Date().toLocaleDateString('vi-VN') + '\n';
-    text += 'Calo mục tiêu: ' + document.getElementById('calTarget').value + ' kcal/ngày\n';
+    text += 'Mốc năng lượng tham khảo: ' + document.getElementById('calTarget').value + ' kcal/ngày\n';
 
     if (document.getElementById('diseaseFilter').value) {
-      text += 'Bệnh lý: ' + document.getElementById('diseaseFilter').options[document.getElementById('diseaseFilter').selectedIndex].text + '\n';
+      text += 'Nhóm cần hỏi chuyên môn: ' + document.getElementById('diseaseFilter').options[document.getElementById('diseaseFilter').selectedIndex].text + '\n';
     }
+    text += 'Lưu ý: đây là khung tham khảo, không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.\n';
     text += '━━━━━━━━━━━━━━━━\n\n';
 
     var cards = document.querySelectorAll('.day-card');
@@ -450,10 +551,6 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
 .meal-badge small { color:var(--ink-tertiary); font-size:0.72rem; }
 .day-total { margin-top:8px; padding-top:8px; border-top:1px solid var(--line); font-size:0.82rem; color:var(--ink-secondary); }
 
-.badge-hi { color:#e65100; font-weight:700; font-size:0.85rem; }
-.badge-lo { color:#1565c0; font-weight:700; font-size:0.85rem; }
-.badge-ok { color:#2e7d32; font-weight:600; font-size:0.85rem; }
-
 /* Week summary */
 .week-summary { margin-top:16px; background:var(--bg-elevated); border-radius:12px; padding:20px; }
 .ws-header { font-weight:700; font-size:1rem; margin-bottom:12px; }
@@ -464,6 +561,7 @@ const ALL_DISEASE_KEYS = Object.keys(DISEASE_RULES);
 
 .health-tip { margin-top:12px; padding:16px 20px; background:var(--bg-elevated); border:1px solid var(--brand-light); border-radius:12px; font-size:0.9rem; line-height:1.6; color:var(--ink-secondary); }
 .health-tip h3 { font-size:0.95rem; color:var(--ink); font-weight:600; margin:0 0 4px; }
+.health-tip p { margin:6px 0 0; }
 
 @media (max-width:600px) {
   .config-grid { grid-template-columns:1fr; }
