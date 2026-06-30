@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const siteTitle = "Kế hoạch bữa ăn cá nhân hóa | Dinh Dưỡng Việt";
-const siteDesc = "Công cụ tạo kế hoạch bữa ăn hàng ngày dựa trên hồ sơ cá nhân, mục tiêu calo và sở thích — gợi ý món ăn Việt Nam phù hợp.";
+const siteTitle = "Kế hoạch bữa ăn tham khảo | Dinh Dưỡng Việt";
+const siteDesc = "Lập khung bữa ăn tham khảo từ thông tin cơ bản và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.";
 const domain = "dinhduongviet.vn";
 ---
 <BaseLayout title={siteTitle} description={siteDesc} canonical={"https://" + domain + "/cong-cu/ke-hoach-bua-an"}>
@@ -66,14 +66,14 @@ const domain = "dinhduongviet.vn";
   </style>
 
   <div class="hero">
-    <h1>🥗 Kế hoạch bữa ăn cá nhân hóa</h1>
-    <p class="sub">Nhập thông tin của bạn, chúng tôi sẽ gợi ý thực đơn trong ngày với các món ăn Việt Nam phù hợp.</p>
+    <h1>🥗 Kế hoạch bữa ăn tham khảo</h1>
+    <p class="sub">Trang này chỉ gợi ý khung bữa ăn ở mức tham khảo. Không dùng để tự kết luận thực đơn phù hợp cho bệnh nền hoặc tự thay đổi điều trị.</p>
   </div>
 
   <div class="mealplanner-layout">
     <!-- Sidebar: Profile Form -->
     <aside class="sidebar-card">
-      <h2>📋 Hồ sơ của bạn</h2>
+      <h2>📋 Thông tin tham khảo</h2>
       <form id="profile-form">
         <div class="form-row">
           <div class="form-group">
@@ -109,7 +109,7 @@ const domain = "dinhduongviet.vn";
           </select>
         </div>
         <div class="form-group">
-          <label>Mục tiêu</label>
+          <label>Mục đích tham khảo</label>
           <select id="goal">
             <option value="lose">Giảm cân</option>
             <option value="maintain" selected>Duy trì</option>
@@ -117,9 +117,9 @@ const domain = "dinhduongviet.vn";
           </select>
         </div>
         <div class="form-group">
-          <label>Bệnh nền / Chế độ ăn</label>
+          <label>Trường hợp cần hỏi chuyên môn</label>
           <select id="condition">
-            <option value="">Không có</option>
+            <option value="">Không có / chưa rõ</option>
             <option value="diabetes">Đái tháo đường</option>
             <option value="hypertension">Tăng huyết áp</option>
             <option value="dyslipidemia">Rối loạn mỡ máu</option>
@@ -128,7 +128,7 @@ const domain = "dinhduongviet.vn";
             <option value="vegetarian">Ăn chay</option>
           </select>
         </div>
-        <button class="gen-btn" type="submit">🎲 Tạo thực đơn hôm nay</button>
+        <button class="gen-btn" type="submit">🎲 Tạo khung bữa ăn tham khảo</button>
       </form>
     </aside>
 
@@ -136,8 +136,8 @@ const domain = "dinhduongviet.vn";
     <div class="result-area" id="result-area">
       <div class="placeholder-text" id="placeholder">
         <div class="big-icon">🍳</div>
-        <p>Điền thông tin bên cạnh và nhấn <strong>"Tạo thực đơn hôm nay"</strong></p>
-        <p style="font-size:0.85rem;">Bạn có thể tùy chỉnh từng bữa và tạo lại thực đơn bất kỳ lúc nào.</p>
+        <p>Điền thông tin bên cạnh và nhấn <strong>"Tạo khung bữa ăn tham khảo"</strong></p>
+        <p style="font-size:0.85rem;">Nếu có bệnh nền, đang dùng thuốc, đang mang thai, là trẻ em hoặc người cao tuổi, hãy xem kết quả như thông tin tham khảo và hỏi bác sĩ hoặc chuyên gia trước khi đổi chế độ ăn.</p>
       </div>
     </div>
   </div>
@@ -221,22 +221,37 @@ const domain = "dinhduongviet.vn";
       ]
     };
 
-    // Condition-based food restrictions
-    const CONDITION_RULES = {
-      diabetes: { maxSugarMeals: false, preferLowGI: true, desc: "Phù hợp cho người đái tháo đường", advice: "⚠️ Ưu tiên món ít đường, nhiều xơ" },
-      hypertension: { maxSodium: true, preferLowSalt: true, desc: "Phù hợp cho người tăng huyết áp", advice: "⚠️ Ưu tiên món ít muối, nhiều rau" },
-      dyslipidemia: { maxFat: true, preferLowFat: true, desc: "Phù hợp cho người rối loạn mỡ máu", advice: "⚠️ Hạn chế mỡ động vật, tăng chất xơ" },
-      gout: { maxPurine: true, preferLowPurine: true, desc: "Phù hợp cho người gout", advice: "⚠️ Hạn chế thịt đỏ, nội tạng; tăng rau" },
-      ckd: { maxProtein: true, preferLowProtein: true, desc: "Phù hợp cho người bệnh thận", advice: "⚠️ Giảm đạm, hạn chế muối" },
-      vegetarian: { noMeat: true, desc: "Không thịt cá", advice: "🌱 Chay: ưu tiên đậu phụ và rau củ" },
+    // Safety notes only. These flags no longer personalize disease treatment output.
+    const CONDITION_NOTES = {
+      diabetes: {
+        title: "Có đái tháo đường hoặc rối loạn đường huyết",
+        advice: "Hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi đổi khẩu phần, lượng carb, giờ ăn hoặc thuốc."
+      },
+      hypertension: {
+        title: "Có tăng huyết áp",
+        advice: "Cần hỏi bác sĩ hoặc chuyên gia nếu bạn đang theo dõi muối, cân nặng, huyết áp hoặc thuốc liên quan."
+      },
+      dyslipidemia: {
+        title: "Có rối loạn mỡ máu",
+        advice: "Không nên xem trang này như kế hoạch điều trị cá nhân; hãy hỏi chuyên gia nếu cần điều chỉnh khẩu phần lâu dài."
+      },
+      gout: {
+        title: "Có gout hoặc tăng acid uric",
+        advice: "Cần hỏi chuyên gia trước khi thay đổi chế độ ăn, lượng đạm hoặc rượu bia theo mục tiêu điều trị."
+      },
+      ckd: {
+        title: "Có bệnh thận mạn",
+        advice: "Không dùng kết quả này để tự đặt mục tiêu đạm, natri, kali, phospho hoặc nước; hãy hỏi bác sĩ hoặc chuyên gia."
+      },
+      vegetarian: {
+        title: "Ăn chay hoặc hạn chế thịt cá",
+        advice: "Nên kiểm tra lại nguồn đạm, vitamin và khoáng chất nếu bạn theo chế độ ăn này lâu dài."
+      }
     };
 
-    // Filter pool based on condition
+    // Only keep preference-style filtering for vegetarian. Disease flags show safety notes only.
     function filterMeal(pool, condition) {
-      if (!condition || condition === "") return pool;
-      const rules = CONDITION_RULES[condition];
-      if (!rules) return pool;
-      if (rules.noMeat) {
+      if (condition === "vegetarian") {
         return pool.filter(m => !["pho-bo","banh-mi-thit","bun-cha","thit-kho-trung","ca-kho-to",
           "thit-bo-xao-can","suon-kho","ca-chep-kho-tuong","thit-bo-nuong-la-lot",
           "ga-nuong-mat-ong","thit-heo-luoc","com-rau-muong-dau-huy","com-gao-lut-luoc",
@@ -247,18 +262,6 @@ const domain = "dinhduongviet.vn";
           "com-tam-suon","banh-trang-tron","bun-rieu-cua","banh-cuon"].includes(m.slug));
       }
       return pool;
-    }
-
-    function pickRandom(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
-    function shuffleArray(arr) {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
     }
 
     // Generate meal plan
@@ -285,9 +288,6 @@ const domain = "dinhduongviet.vn";
       let proteinPct = 0.25, fatPct = 0.25, carbPct = 0.50;
       if (goal === "gain") { proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45; }
       else if (goal === "lose") { proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45; }
-      // Adjust for condition
-      if (condition === "ckd") { proteinPct = 0.12; carbPct = 0.58; fatPct = 0.30; }
-
       const proteinG = Math.round((calTarget * proteinPct) / 4);
       const fatG = Math.round((calTarget * fatPct) / 9);
       const carbG = Math.round((calTarget * carbPct) / 4);
@@ -335,76 +335,162 @@ const domain = "dinhduongviet.vn";
         meta: { calTarget, tdee, bmr, proteinG, fatG, carbG, condition },
         meals,
         actualCal, actualPro, actualFat, actualCarb,
-        conditionInfo: condition && condition !== "" ? CONDITION_RULES[condition] : null
+        conditionInfo: condition && condition !== "" ? CONDITION_NOTES[condition] || null : null
       };
     }
 
-    // Render
     function renderPlan(plan) {
       const area = document.getElementById("result-area");
-      if (!plan) return;
-
-      const conditionBadge = plan.conditionInfo ? `<div style="margin-bottom:10px;"><span class="condition-badge">${plan.conditionInfo.advice}</span></div>` : "";
-
-      let mealsHtml = plan.meals.map(m => {
-        const tagClass = `tag-${m.type === "soup" ? "dinner" : m.type === "dessert" ? "snack" : m.type}`;
-        const tagLabel = {breakfast:"Sáng", lunch:"Trưa", dinner:"Tối", soup:"Canh", dessert:"Tráng miệng"}[m.type] || m.type;
-        return `<div class="meal-plan-card">
-          <div class="meal-plan-header">
-            <div>
-              <span class="meal-type-tag ${tagClass}">${tagLabel}</span>
-              <h3><a href="/mon-an/${m.meal.slug}">${m.meal.name}</a></h3>
-            </div>
-            <div class="cal-summary">~${m.meal.cal} kcal</div>
-          </div>
-          <ul class="meal-items">
-            <li><span>Protein</span><span class="cal">${m.meal.pro}g</span></li>
-            <li><span>Chất béo</span><span class="cal">${m.meal.fat}g</span></li>
-            <li><span>Carb</span><span class="cal">${m.meal.carb}g</span></li>
-          </ul>
-        </div>`;
-      }).join("");
-
-      const condNote = plan.conditionInfo ? `<p style="font-size:0.85rem;color:var(--ink-secondary);margin-top:8px;"><em>${plan.conditionInfo.desc}</em></p>` : "";
-
+      if (!plan || !area) return;
       const proteinPct = plan.actualCal > 0 ? Math.round((plan.actualPro * 4 / plan.actualCal) * 100) : 0;
       const fatPct = plan.actualCal > 0 ? Math.round((plan.actualFat * 9 / plan.actualCal) * 100) : 0;
       const carbPct = plan.actualCal > 0 ? Math.round((plan.actualCarb * 4 / plan.actualCal) * 100) : 0;
+      const mealTagLabels = { breakfast: "Sáng", lunch: "Trưa", dinner: "Tối", soup: "Canh", dessert: "Tráng miệng" };
+      const frag = document.createDocumentFragment();
 
-      const html = `
-        ${conditionBadge}
-        ${mealsHtml}
-        <div class="meal-plan-card">
-          <h3>📊 Tổng kết dinh dưỡng</h3>
-          <div class="summary-row">
-            <div class="summary-item"><div class="value">${plan.actualCal}</div><div class="label">kcal</div></div>
-            <div class="summary-item"><div class="value">${plan.actualPro}g</div><div class="label">Đạm</div></div>
-            <div class="summary-item"><div class="value">${plan.actualFat}g</div><div class="label">Béo</div></div>
-            <div class="summary-item"><div class="value">${plan.actualCarb}g</div><div class="label">Carb</div></div>
-          </div>
-          <div class="macro-bar-cont">
-            <div class="macro-bar-protein" style="width:${proteinPct}%"></div>
-            <div class="macro-bar-fat" style="width:${fatPct}%"></div>
-            <div class="macro-bar-carb" style="width:${carbPct}%"></div>
-          </div>
-          <div class="macro-labels">
-            <span><span class="dot dot-red"></span> Đạm ${proteinPct}%</span>
-            <span><span class="dot dot-orange"></span> Béo ${fatPct}%</span>
-            <span><span class="dot dot-blue"></span> Carb ${carbPct}%</span>
-          </div>
-          <div style="margin-top:10px;font-size:0.82rem;color:var(--ink-secondary);">
-            BMR: ${plan.meta.bmr} kcal | TDEE: ${plan.meta.tdee} kcal | Mục tiêu: ${plan.meta.calTarget} kcal/ngày
-          </div>
-          ${condNote}
-          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="/cong-cu/muc-tieu-dinh-duong" class="button secondary compact">🎯 Mục tiêu</a>
-            <a href="/cong-cu/nhat-ky" class="button secondary compact">📓 Nhật ký</a>
-            <button onclick="location.reload()" class="button secondary compact">🔄 Tạo lại</button>
-          </div>
-        </div>
-      `;
+      function make(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text != null) node.textContent = text;
+        return node;
+      }
 
-      area.innerHTML = html;
+      if (plan.conditionInfo) {
+        const noteCard = make("div", "meal-plan-card");
+        const noteTitle = make("h3", "", "Khi nào cần hỏi chuyên môn?");
+        const noteBadgeWrap = make("div", "");
+        noteBadgeWrap.style.marginBottom = "10px";
+        const noteBadge = make("span", "condition-badge", plan.conditionInfo.title);
+        noteBadgeWrap.appendChild(noteBadge);
+        const noteText = make("p", "");
+        noteText.style.fontSize = "0.85rem";
+        noteText.style.color = "var(--ink-secondary)";
+        noteText.style.margin = "0";
+        noteText.textContent = plan.conditionInfo.advice;
+        noteCard.appendChild(noteTitle);
+        noteCard.appendChild(noteBadgeWrap);
+        noteCard.appendChild(noteText);
+        frag.appendChild(noteCard);
+      }
+
+      plan.meals.forEach((m) => {
+        const card = make("div", "meal-plan-card");
+        const header = make("div", "meal-plan-header");
+        const left = make("div", "");
+        const tagClass = `tag-${m.type === "soup" ? "dinner" : m.type === "dessert" ? "snack" : m.type}`;
+        const badge = make("span", `meal-type-tag ${tagClass}`, mealTagLabels[m.type] || m.type);
+        const title = make("h3", "");
+        const link = make("a", "", m.meal.name);
+        link.href = `/mon-an/${m.meal.slug}`;
+        title.appendChild(link);
+        left.appendChild(badge);
+        left.appendChild(title);
+        const cal = make("div", "cal-summary", `~${m.meal.cal} kcal tham khảo`);
+        header.appendChild(left);
+        header.appendChild(cal);
+        card.appendChild(header);
+
+        const list = make("ul", "meal-items");
+        [
+          ["Đạm", `${m.meal.pro}g`],
+          ["Chất béo", `${m.meal.fat}g`],
+          ["Carb", `${m.meal.carb}g`],
+        ].forEach(([label, value]) => {
+          const li = make("li", "");
+          li.appendChild(make("span", "", label));
+          li.appendChild(make("span", "cal", value));
+          list.appendChild(li);
+        });
+        card.appendChild(list);
+        frag.appendChild(card);
+      });
+
+      const summaryCard = make("div", "meal-plan-card");
+      summaryCard.appendChild(make("h3", "", "📊 Tổng kết tham khảo"));
+      const disclaimer = make("p", "");
+      disclaimer.style.fontSize = "0.85rem";
+      disclaimer.style.color = "var(--ink-secondary)";
+      disclaimer.style.marginTop = "0";
+      disclaimer.textContent = "Các con số dưới đây chỉ để tham khảo từ thông tin bạn nhập. Không dùng như chỉ tiêu điều trị cá nhân hoặc để tự quyết định việc dùng thuốc đang theo dõi.";
+      summaryCard.appendChild(disclaimer);
+
+      const summaryRow = make("div", "summary-row");
+      [
+        [String(plan.actualCal), "kcal tham khảo"],
+        [`${plan.actualPro}g`, "Đạm"],
+        [`${plan.actualFat}g`, "Béo"],
+        [`${plan.actualCarb}g`, "Carb"],
+      ].forEach(([value, label]) => {
+        const item = make("div", "summary-item");
+        item.appendChild(make("div", "value", value));
+        item.appendChild(make("div", "label", label));
+        summaryRow.appendChild(item);
+      });
+      summaryCard.appendChild(summaryRow);
+
+      const bar = make("div", "macro-bar-cont");
+      const barProtein = make("div", "macro-bar-protein");
+      barProtein.style.width = `${proteinPct}%`;
+      const barFat = make("div", "macro-bar-fat");
+      barFat.style.width = `${fatPct}%`;
+      const barCarb = make("div", "macro-bar-carb");
+      barCarb.style.width = `${carbPct}%`;
+      bar.appendChild(barProtein);
+      bar.appendChild(barFat);
+      bar.appendChild(barCarb);
+      summaryCard.appendChild(bar);
+
+      const labels = make("div", "macro-labels");
+      [
+        ["dot-red", `Đạm ${proteinPct}%`],
+        ["dot-orange", `Béo ${fatPct}%`],
+        ["dot-blue", `Carb ${carbPct}%`],
+      ].forEach(([dotClass, text]) => {
+        const span = make("span", "");
+        span.appendChild(make("span", `dot ${dotClass}`));
+        span.appendChild(document.createTextNode(` ${text}`));
+        labels.appendChild(span);
+      });
+      summaryCard.appendChild(labels);
+
+      const est = make("div", "");
+      est.style.marginTop = "10px";
+      est.style.fontSize = "0.82rem";
+      est.style.color = "var(--ink-secondary)";
+      est.textContent = `Ước tính tham khảo từ thông tin đã nhập: khoảng ${plan.meta.calTarget} kcal/ngày, đạm ${plan.meta.proteinG}g, béo ${plan.meta.fatG}g, carb ${plan.meta.carbG}g.`;
+      summaryCard.appendChild(est);
+
+      const safetyTitle = make("h3", "");
+      safetyTitle.style.marginTop = "14px";
+      safetyTitle.textContent = "Khi nào cần hỏi chuyên môn?";
+      summaryCard.appendChild(safetyTitle);
+
+      const safety = make("div", "");
+      safety.style.marginTop = "6px";
+      safety.style.fontSize = "0.82rem";
+      safety.style.color = "var(--ink-secondary)";
+      safety.textContent = "Nếu bạn có bệnh nền, đang dùng insulin, thuốc hạ đường huyết, thuốc huyết áp, lợi tiểu hoặc thuốc khác, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi đổi bữa ăn, khẩu phần hoặc giờ ăn.";
+      summaryCard.appendChild(safety);
+
+      const actions = make("div", "");
+      actions.style.marginTop = "12px";
+      actions.style.display = "flex";
+      actions.style.gap = "8px";
+      actions.style.flexWrap = "wrap";
+      const goalLink = make("a", "button secondary compact", "🎯 Mục tiêu dinh dưỡng");
+      goalLink.href = "/cong-cu/muc-tieu-dinh-duong";
+      const diaryLink = make("a", "button secondary compact", "📓 Nhật ký ăn uống");
+      diaryLink.href = "/cong-cu/nhat-ky";
+      const reloadBtn = make("button", "button secondary compact", "🔄 Tạo lại");
+      reloadBtn.type = "button";
+      reloadBtn.addEventListener("click", () => location.reload());
+      actions.appendChild(goalLink);
+      actions.appendChild(diaryLink);
+      actions.appendChild(reloadBtn);
+      summaryCard.appendChild(actions);
+      frag.appendChild(summaryCard);
+
+      area.replaceChildren(frag);
     }
 
     // Main handler
