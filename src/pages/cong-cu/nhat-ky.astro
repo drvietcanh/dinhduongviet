@@ -912,6 +912,9 @@ const recipeData = recipes.map(r => {
   .mt-settings-grid input, .mt-settings-grid select { padding: 6px 10px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.92rem; background: var(--bg); color: var(--ink); }
 
   @media (max-width: 600px) {
+    .mt-nav { flex-wrap: wrap; }
+    .mt-nav > div { flex: 1 0 100%; order: -1; }
+    .mt-nav input[type=date] { max-width: none; }
     .mt-summary-body { flex-direction: column; align-items: stretch; }
     .mt-macro-pie { display: flex; align-items: center; gap: 12px; }
     .mt-summary-detail { flex-direction: column; gap: 4px; }
