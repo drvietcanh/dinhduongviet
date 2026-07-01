@@ -9,8 +9,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <span class="badge">🔬 Công cụ</span>
     <h1>Lọc thực phẩm nâng cao</h1>
     <p class="lead">
-      Tìm thực phẩm theo nhiều tiêu chí: giàu đạm, ít natri, nhiều chất xơ, chỉ số đường huyết thấp…
-      Kết hợp nhiều bộ lọc để tìm thực phẩm phù hợp với chế độ ăn của bạn.
+      Lọc thực phẩm theo tên, nhóm và chỉ số dinh dưỡng ở mức dữ liệu tham khảo.
+      Các bộ lọc bên dưới chỉ giúp sắp xếp dữ liệu trung tính, không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.
+    </p>
+  </section>
+
+  <section class="section card safety-shell">
+    <p>
+      Dữ liệu trong v1 chủ yếu hiển thị theo <strong>100g phần ăn được</strong>. Không dùng công cụ này để kết luận thực phẩm
+      nào “an toàn”, “phù hợp”, hay “nên/không nên ăn” cho bệnh nền. Nếu bạn có đái tháo đường, bệnh thận, tăng huyết áp,
+      gout, suy tim, đang dùng thuốc, đang mang thai, là trẻ em hoặc người cao tuổi, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng
+      khi cần cá thể hóa.
     </p>
   </section>
 
@@ -126,15 +135,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
       <!-- Tags -->
       <div style="margin-top: 14px;">
-        <label>Bộ lọc nhanh (theo chỉ định)</label>
+        <label>Bộ lọc nhanh theo dữ liệu</label>
         <div class="tag-filters">
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-sodium" /> 🧂 Ít natri (&lt;120mg)</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-fat" /> 🥩 Ít béo (&lt;3g)</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-potassium" /> 🥔 Nhiều kali (&gt;250mg)</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-purine" /> 🫘 Ít purin</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-purine" /> ⚠️ Nhiều purin</label>
-          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-low" /> 🟢 Đường huyết thấp</label>
-          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-high" /> 🔴 Đường huyết cao</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-low" /> 🟢 GI thấp</label>
+          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-high" /> 🔴 GI cao</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-fat" /> 🔺 Nhiều béo</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-sodium" /> ⚠️ Nhiều natri</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-potassium" /> ⬇️ Ít kali</label>
@@ -215,6 +224,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
   .btn:hover { background: var(--brand-dark); }
 
+  .safety-shell p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+  }
+
   .results-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -243,10 +259,24 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     display: inline-block;
     margin-bottom: 4px;
   }
+
+  .empty-state {
+    padding: 18px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    background: var(--bg-soft);
+    color: var(--ink-secondary);
+  }
+
+  .empty-state p {
+    margin: 0;
+    line-height: 1.6;
+  }
 </style>
 
 <script>
   let allFoods = [];
+  const sourceNote = 'Dữ liệu tham khảo theo 100g phần ăn được. Thiếu dữ liệu sẽ hiện trung tính, không suy đoán.';
 
   fetch('/api-foods.json')
     .then(r => r.json())
@@ -261,7 +291,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     e.preventDefault();
     if (!allFoods.length) return;
 
-    const keyword = document.getElementById('keyword').value.toLowerCase().trim();
+    const keyword = normalizeText(document.getElementById('keyword').value);
     const category = document.getElementById('category').value;
     const state = document.getElementById('state').value;
     const kcalMin = maybeFloat('kcal-min');
@@ -284,7 +314,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       const tags = f.tags || [];
 
       // Keyword
-      if (keyword && !f.name.toLowerCase().includes(keyword) && !(f.aliases || []).some(a => a.toLowerCase().includes(keyword))) {
+      const searchHaystack = [
+        f.name,
+        f.category,
+        f.name_en,
+        ...(f.aliases || []),
+      ].filter(Boolean).map(normalizeText);
+      if (keyword && !searchHaystack.some(text => text.includes(keyword))) {
         return false;
       }
 
@@ -328,9 +364,21 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     const count = document.getElementById('result-count');
 
     count.textContent = foods.length + ' thực phẩm';
+    list.replaceChildren();
 
     if (!foods.length) {
-      list.innerHTML = '<div class="empty-state"><p>Không tìm thấy thực phẩm nào. Hãy nới lỏng bộ lọc.</p></div>';
+      const empty = document.createElement('div');
+      empty.className = 'empty-state';
+
+      const message = document.createElement('p');
+      message.textContent = 'Không tìm thấy thực phẩm nào. Hãy nới lỏng bộ lọc hoặc thử từ khóa khác.';
+
+      const note = document.createElement('p');
+      note.textContent = sourceNote;
+
+      empty.appendChild(message);
+      empty.appendChild(note);
+      list.appendChild(empty);
       document.getElementById('results-section').style.display = 'block';
       return;
     }
@@ -338,22 +386,65 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     // Sort by name
     foods.sort((a, b) => a.name.localeCompare(b.name, 'vi'));
 
-    list.innerHTML = foods.map(f => {
+    const fragment = document.createDocumentFragment();
+
+    foods.forEach(f => {
       const n = f.nutrients || {};
       const slug = f.slug || f.id;
-      return `<a class="food-card" href="/thuc-pham/${slug}">
-        <div class="fc-cat">${f.category || ''}</div>
-        <div class="fc-name">${f.name}</div>
-        <div class="fc-detail">
-          ${n.energyKcal != null ? `<span>🔥 ${n.energyKcal} kcal</span>` : ''}
-          ${n.proteinG != null ? `<span>🥩 ${n.proteinG}g đạm</span>` : ''}
-          ${n.fatG != null ? `<span>🫒 ${n.fatG}g béo</span>` : ''}
-          ${n.carbG != null ? `<span>🍚 ${n.carbG}g bột</span>` : ''}
-          ${n.fiberG != null ? `<span>🌿 ${n.fiberG}g xơ</span>` : ''}
-          ${n.sodiumMg != null ? `<span>🧂 ${n.sodiumMg}mg Na</span>` : ''}
-        </div>
-      </a>`;
-    }).join('');
+      const card = document.createElement('a');
+      card.className = 'food-card';
+      card.href = `/thuc-pham/${slug}`;
+
+      if (f.category) {
+        const cat = document.createElement('div');
+        cat.className = 'fc-cat';
+        cat.textContent = f.category;
+        card.appendChild(cat);
+      }
+
+      const name = document.createElement('div');
+      name.className = 'fc-name';
+      name.textContent = f.name;
+      card.appendChild(name);
+
+      const detail = document.createElement('div');
+      detail.className = 'fc-detail';
+
+      appendMetric(detail, n.energyKcal, '🔥', 'kcal');
+      appendMetric(detail, n.proteinG, '🥩', 'g đạm');
+      appendMetric(detail, n.fatG, '🫒', 'g béo');
+      appendMetric(detail, n.carbG, '🍚', 'g glucid');
+      appendMetric(detail, n.fiberG, '🌿', 'g xơ');
+      appendMetric(detail, n.sodiumMg, '🧂', 'mg natri');
+
+      card.appendChild(detail);
+      fragment.appendChild(card);
+    });
+
+    list.appendChild(fragment);
+  }
+
+  function appendMetric(container, value, icon, unitLabel) {
+    if (value == null) return;
+    const chip = document.createElement('span');
+    chip.textContent = `${icon} ${formatNumber(value)} ${unitLabel}`;
+    container.appendChild(chip);
+  }
+
+  function formatNumber(value) {
+    if (!Number.isFinite(value)) return '—';
+    if (value >= 100) return value.toLocaleString('vi-VN', { maximumFractionDigits: 0 });
+    if (value >= 10) return value.toLocaleString('vi-VN', { maximumFractionDigits: 1 });
+    return value.toLocaleString('vi-VN', { maximumFractionDigits: 2 });
+  }
+
+  function normalizeText(value) {
+    return (value || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .trim();
   }
 
   // Auto-filter on any change
