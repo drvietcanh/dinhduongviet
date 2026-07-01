@@ -85,15 +85,29 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .detail-table tr:hover td { background: #fafafa; }
     .dt-null { color: #ccc; }
 
-    .detail-scroll { max-height: 500px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; }
+    .detail-scroll { max-height: 500px; overflow: auto; border: 1px solid #eee; border-radius: 8px; }
 
     .no-selection { text-align: center; padding: 40px; color: #999; }
+
+    .safety-note {
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      background: #f6f8fc;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+    }
+    .safety-note strong { color: var(--ink); }
 
     .source-note { margin-top: 24px; padding: 14px; background: var(--line-light); border-radius: 10px; font-size: 0.85rem; color: #666; }
 
     @media (max-width: 600px) {
       .core-grid { grid-template-columns: repeat(2, 1fr); }
       .search-row { flex-wrap: wrap; }
+      .detail-panel { padding: 16px; }
+      .calc-row { flex-wrap: wrap; }
     }
   </style>
 
@@ -103,6 +117,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <p class="subtitle">
       Dựa trên <strong>Bảng thành phần thực phẩm Việt Nam 2007</strong> — 526 thực phẩm, 45.000+ chỉ số dinh dưỡng từ Viện Dinh Dưỡng Quốc Gia.
     </p>
+    <div class="safety-note">
+      <strong>Phạm vi v1:</strong> Công cụ này chỉ tra cứu thành phần dinh dưỡng ở mức tham khảo theo dữ liệu nguồn. Không dùng để rút ra kết luận theo bệnh nền hoặc thay thế tư vấn của bác sĩ/chuyên gia dinh dưỡng.
+    </div>
   </section>
 
   <div class="app-container" id="vietnam-app">
@@ -237,30 +254,54 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
 
+    function clearNode(node) {
+      node.replaceChildren();
+    }
+
+    function createEmptyState(message) {
+      const wrap = document.createElement("div");
+      wrap.className = "empty-state";
+      wrap.textContent = message;
+      return wrap;
+    }
+
     function renderResults(keyword) {
       const matches = searchFoods(keyword);
       countSpan.textContent = `${matches.length} kết quả`;
+      clearNode(resultsDiv);
 
       if (!matches.length) {
-        resultsDiv.innerHTML = `<div class="empty-state">Không tìm thấy thực phẩm "${keyword}"</div>`;
+        resultsDiv.appendChild(createEmptyState(`Không tìm thấy thực phẩm "${keyword}"`));
         return;
       }
 
-      resultsDiv.innerHTML = matches.map(f => `
-        <div class="result-item${selectedCode === f.code ? ' active' : ''}" data-code="${f.code}">
-          <span class="ri-code">${f.code}</span>
-          <div class="ri-name">
-            ${f.name_vi}
-            ${f.name_en ? `<div class="ri-name-en">${f.name_en}</div>` : ""}
-          </div>
-          <span class="ri-kcal">${f.energy_kcal != null ? f.energy_kcal + " kcal" : ""}</span>
-        </div>
-      `).join("");
+      for (const f of matches) {
+        const item = document.createElement("div");
+        item.className = `result-item${selectedCode === f.code ? " active" : ""}`;
+        item.dataset.code = f.code;
 
-      // Click handler
-      resultsDiv.querySelectorAll(".result-item").forEach(el => {
-        el.addEventListener("click", () => selectFood(el.dataset.code));
-      });
+        const code = document.createElement("span");
+        code.className = "ri-code";
+        code.textContent = f.code;
+
+        const nameWrap = document.createElement("div");
+        nameWrap.className = "ri-name";
+        nameWrap.textContent = f.name_vi;
+        if (f.name_en) {
+          const nameEn = document.createElement("div");
+          nameEn.className = "ri-name-en";
+          nameEn.textContent = f.name_en;
+          nameWrap.appendChild(nameEn);
+        }
+
+        const kcal = document.createElement("span");
+        kcal.className = "ri-kcal";
+        kcal.textContent = f.energy_kcal != null ? `${f.energy_kcal} kcal` : "";
+
+        item.append(code, nameWrap, kcal);
+        item.addEventListener("click", () => selectFood(f.code));
+        resultsDiv.appendChild(item);
+      }
     }
 
     searchInput.addEventListener("input", function() {
@@ -281,20 +322,26 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       // Show detail
       document.getElementById("no-selection").style.display = "none";
       document.getElementById("detail-area").style.display = "";
-      document.getElementById("food-name").textContent = food.name_vi;
+      const foodName = document.getElementById("food-name");
+      foodName.textContent = food.name_vi;
       document.getElementById("food-en-name").textContent = food.name_en || "";
       document.getElementById("food-waste").textContent = food.waste_percent != null && food.waste_percent > 0
         ? `Tỉ lệ thải bỏ: ${food.waste_percent}%`
         : "";
 
-      // Show code in title
-      document.getElementById("food-name").innerHTML = `${food.name_vi} <span style="font-size:0.85rem;color:#999;font-weight:400;">(#${food.code})</span>`;
+      const codeBadge = document.createElement("span");
+      codeBadge.style.fontSize = "0.85rem";
+      codeBadge.style.color = "#999";
+      codeBadge.style.fontWeight = "400";
+      codeBadge.textContent = ` (#${food.code})`;
+      foodName.appendChild(codeBadge);
 
       // Reset gram to 100
       document.getElementById("gram-input").value = 100;
 
       // Render core nutrients
       renderCore(food, 100);
+      document.getElementById("calc-kcal").textContent = food.energy_kcal != null ? String(food.energy_kcal) : "—";
       renderFullNutrients(code);
     }
 
@@ -316,18 +363,36 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     function renderCore(food, grams) {
       const factor = grams / 100;
       const grid = document.getElementById("core-grid");
-      grid.innerHTML = CORE_KEYS.map(({ key, label, unit }) => {
-        const val = food[key];
-        if (val === null || val === undefined) {
-          return `<div class="core-item"><span class="ci-label">${label}</span><span class="ci-null">—</span></div>`;
+      clearNode(grid);
+      for (const { key, label, unit } of CORE_KEYS) {
+        const item = document.createElement("div");
+        item.className = "core-item";
+
+        const labelEl = document.createElement("span");
+        labelEl.className = "ci-label";
+        labelEl.textContent = label;
+
+        if (food[key] === null || food[key] === undefined) {
+          const nullEl = document.createElement("span");
+          nullEl.className = "ci-null";
+          nullEl.textContent = "—";
+          item.append(labelEl, nullEl);
+          grid.appendChild(item);
+          continue;
         }
-        const scaled = val * factor;
-        const display = Number.isInteger(scaled) ? scaled : scaled.toFixed(1);
-        return `<div class="core-item">
-          <span class="ci-label">${label}</span>
-          <span class="ci-value">${display} <span class="ci-unit">${unit}</span></span>
-        </div>`;
-      }).join("");
+
+        const scaled = food[key] * factor;
+        const display = Number.isInteger(scaled) ? String(scaled) : scaled.toFixed(1);
+        const valueEl = document.createElement("span");
+        valueEl.className = "ci-value";
+        valueEl.textContent = `${display} `;
+        const unitEl = document.createElement("span");
+        unitEl.className = "ci-unit";
+        unitEl.textContent = unit;
+        valueEl.appendChild(unitEl);
+        item.append(labelEl, valueEl);
+        grid.appendChild(item);
+      }
     }
 
     // Gram input handler
@@ -348,20 +413,51 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     function renderFullNutrients(code) {
       const tbody = document.getElementById("detail-tbody");
       const nuts = nutrientsMap[code] || [];
+      clearNode(tbody);
 
       if (!nuts.length) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#999;">Chưa có số liệu chi tiết</td></tr>`;
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 4;
+        cell.style.textAlign = "center";
+        cell.style.color = "#999";
+        cell.textContent = "Chưa có số liệu chi tiết";
+        row.appendChild(cell);
+        tbody.appendChild(row);
         return;
       }
 
-      tbody.innerHTML = nuts.map(n => `
-        <tr>
-          <td><strong>${n.nutrient_name}</strong></td>
-          <td>${n.value_num != null ? n.value_num : (n.value_text === "-" ? '<span class="dt-null">—</span>' : n.value_text || '<span class="dt-null">—</span>')}</td>
-          <td>${n.unit || ""}</td>
-          <td style="font-size:0.8rem;color:#999;">${n.source_ref || ""}</td>
-        </tr>
-      `).join("");
+      for (const n of nuts) {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        const nameStrong = document.createElement("strong");
+        nameStrong.textContent = n.nutrient_name;
+        nameCell.appendChild(nameStrong);
+
+        const valueCell = document.createElement("td");
+        if (n.value_num != null) {
+          valueCell.textContent = String(n.value_num);
+        } else if (n.value_text && n.value_text !== "-") {
+          valueCell.textContent = n.value_text;
+        } else {
+          const nullEl = document.createElement("span");
+          nullEl.className = "dt-null";
+          nullEl.textContent = "—";
+          valueCell.appendChild(nullEl);
+        }
+
+        const unitCell = document.createElement("td");
+        unitCell.textContent = n.unit || "";
+
+        const sourceCell = document.createElement("td");
+        sourceCell.style.fontSize = "0.8rem";
+        sourceCell.style.color = "#999";
+        sourceCell.textContent = n.source_ref || "";
+
+        row.append(nameCell, valueCell, unitCell, sourceCell);
+        tbody.appendChild(row);
+      }
     }
 
     // ── Tab switching ──
