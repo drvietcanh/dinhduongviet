@@ -8,7 +8,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
     .badge { display: inline-block; background: var(--bg-success); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
     h1 { font-size: 2rem; margin: 0 0 8px; }
-    .lead { color: var(--ink-secondary); margin-bottom: 24px; font-size: 1.1rem; }
+    .lead { color: var(--ink-secondary); margin-bottom: 12px; font-size: 1.05rem; line-height: 1.6; }
+    .safety-shell {
+      margin: 0 0 24px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      color: var(--ink-secondary);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+    .safety-shell strong { color: var(--ink); }
 
     .search-box { position: relative; margin-bottom: 24px; }
     .search-box input {
@@ -41,20 +52,24 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .suggestions.open { display: block; }
     .suggestion-item {
       padding: 10px 16px; cursor: pointer; display: flex; justify-content: space-between;
-      align-items: center; border-bottom: 1px solid var(--line-light);
+      align-items: center; gap: 12px; border-bottom: 1px solid var(--line-light);
     }
-    .suggestion-item:hover { background: #e8f5e9; }
+    .suggestion-item:hover,
+    .suggestion-item.is-active { background: #eef5ef; }
     .suggestion-item .s-name { font-weight: 500; }
-    .suggestion-item .s-cat { font-size: 0.8rem; color: var(--ink-tertiary); }
+    .suggestion-item .s-cat { font-size: 0.8rem; color: var(--ink-tertiary); text-align: right; }
+    .suggestion-empty { color: #999; cursor: default; }
 
-    /* Comparison Table */
     .compare-area { margin-top: 24px; }
+    .compare-table-wrap { overflow-x: auto; }
     .compare-table {
       width: 100%; border-collapse: separate; border-spacing: 0;
       border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      min-width: 640px;
     }
     .compare-table th, .compare-table td {
       padding: 10px 14px; text-align: center; border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
     }
     .compare-table thead th {
       background: #2e7d32; color: white; font-weight: 600;
@@ -63,16 +78,21 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .compare-table thead th:first-child { text-align: left; }
     .compare-table tbody td:first-child {
       text-align: left; font-weight: 500; color: var(--ink);
-      background: #fafafa; min-width: 140px;
+      background: #fafafa; min-width: 160px;
     }
     .compare-table tbody tr:hover td:first-child { background: #f0f4f0; }
     .compare-table tbody tr:last-child td { border-bottom: none; }
 
-    .value-best { color: #2e7d32; font-weight: 700; }
-    .value-worst { color: #c62828; }
-    .value-equal { color: var(--ink-secondary); }
-
     .section-label { font-weight: 700; background: #e8f5e9 !important; color: #1b5e20; }
+    .metric-unit { color: var(--ink-tertiary); font-weight: 400; font-size: 0.85rem; }
+    .value-main { display: block; font-weight: 600; color: var(--ink); }
+    .value-main.is-higher { color: #1f4fa3; }
+    .value-main.is-lower { color: #5b6472; }
+    .value-note { display: block; margin-top: 4px; font-size: 0.78rem; color: var(--ink-tertiary); }
+
+    .compare-note {
+      margin-top: 12px; font-size: 0.85rem; color: var(--ink-secondary); line-height: 1.6;
+    }
 
     .empty-state { text-align: center; padding: 60px 20px; color: #999; }
     .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
@@ -85,53 +105,60 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
     .add-btn:hover { background: #c8e6c9; }
     .add-btn.disabled { opacity: .4; cursor: not-allowed; }
+
+    @media (max-width: 700px) {
+      h1 { font-size: 1.55rem; }
+      .lead { font-size: 0.98rem; }
+      .slot { min-width: 140px; max-width: none; }
+      .compare-table { min-width: 580px; }
+    }
   </style>
 
   <section>
     <span class="badge">🔬 Công cụ</span>
     <h1>So sánh dinh dưỡng thực phẩm</h1>
     <p class="lead">
-      Chọn 2–4 thực phẩm để so sánh các chỉ số dinh dưỡng cạnh nhau. <br>Phát hiện ngay thực phẩm nào tốt hơn cho mục tiêu sức khỏe của bạn!
+      Chọn 2–4 thực phẩm để so sánh thành phần dinh dưỡng ở mức dữ liệu tham khảo. Công cụ này chỉ giúp nhìn khác biệt số liệu giữa các thực phẩm, không thay thế tư vấn chuyên môn hay quyết định chế độ ăn cá thể hóa.
+    </p>
+    <p class="safety-shell">
+      <strong>Ghi chú dữ liệu:</strong> Số liệu trong v1 chủ yếu hiển thị theo <strong>100g phần ăn được</strong>. Nếu có quy đổi gram, đó chỉ là quy đổi tham khảo. Không dùng công cụ này để tự quyết định chế độ ăn điều trị hoặc tự chỉnh thuốc, insulin, lợi tiểu. Nếu bạn có đái tháo đường, bệnh thận, tăng huyết áp, gout, suy tim, đang dùng thuốc, đang mang thai, là trẻ em hoặc người cao tuổi, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng khi cần cá thể hóa.
     </p>
   </section>
 
   <div class="app-container" id="compare-app">
-    <!-- Search -->
     <div class="search-box" style="position:relative">
-      <input type="text" id="food-search" placeholder="🔍 Tìm thực phẩm... (gõ tên tiếng Việt, ví dụ: thịt heo, trứng gà)" autocomplete="off">
+      <input type="text" id="food-search" placeholder="🔍 Tìm thực phẩm... (ví dụ: thịt heo, trứng gà, nước mắm)" autocomplete="off">
       <div class="suggestions" id="suggestions"></div>
     </div>
 
-    <!-- Slots -->
     <div class="slot-container" id="slot-container"></div>
 
-    <!-- Compare Table -->
     <div class="compare-area" id="compare-area">
       <div class="empty-state" id="empty-state">
         <div class="icon">🥗</div>
-        <p>Chọn ít nhất 2 thực phẩm để so sánh</p>
+        <p>Chọn ít nhất 2 thực phẩm để xem bảng so sánh dữ liệu.</p>
       </div>
       <div id="table-area" style="display:none"></div>
     </div>
   </div>
 
   <script>
-    // Data & state
     let foods = [];
     let selected = [];
+    let currentMatches = [];
+    let currentFocus = -1;
     const MAX_SLOTS = 4;
 
-    // Nutrient config
     const NUTRIENTS = [
       { key: "energyKcal", label: "Năng lượng", unit: "kcal", lower: false },
       { key: "proteinG", label: "Đạm", unit: "g", lower: false },
-      { key: "carbG", label: "Tinh bột (Carbs)", unit: "g", lower: false },
+      { key: "carbG", label: "Glucid", unit: "g", lower: false },
       { key: "fatG", label: "Chất béo", unit: "g", lower: false },
       { key: "saturatedFatG", label: "Béo bão hòa", unit: "g", lower: false },
       { key: "fiberG", label: "Chất xơ", unit: "g", lower: false },
-      { key: "sugarG", label: "Đường", unit: "g", lower: true },
-      { key: "cholesterolMg", label: "Cholesterol", unit: "mg", lower: true },
-      { key: "sodiumMg", label: "Natri", unit: "mg", lower: true },
+      { key: "sugarG", label: "Đường", unit: "g", lower: false },
+      { key: "cholesterolMg", label: "Cholesterol", unit: "mg", lower: false },
+      { key: "sodiumMg", label: "Natri", unit: "mg", lower: false },
       { key: "potassiumMg", label: "Kali", unit: "mg", lower: false },
       { key: "calciumMg", label: "Canxi", unit: "mg", lower: false },
       { key: "ironMg", label: "Sắt", unit: "mg", lower: false },
@@ -142,6 +169,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       { key: "folateUg", label: "Folate (B9)", unit: "µg", lower: false },
     ];
 
+    const text = {
+      noSuggestion: "Không tìm thấy thực phẩm phù hợp",
+      minTwo: "Chọn ít nhất 2 thực phẩm để xem bảng so sánh dữ liệu.",
+    };
+
+    const searchInput = document.getElementById("food-search");
+    const suggestionsEl = document.getElementById("suggestions");
+    const slotContainer = document.getElementById("slot-container");
+    const compareArea = document.getElementById("compare-area");
+    const emptyState = document.getElementById("empty-state");
+    const tableArea = document.getElementById("table-area");
+
+    function createNode(tag, className, textValue) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (textValue !== undefined && textValue !== null) node.textContent = textValue;
+      return node;
+    }
+
+    function normalizeText(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/Đ/g, "D")
+        .toLowerCase()
+        .trim();
+    }
+
     async function loadData() {
       const res = await fetch("/api-foods.json");
       const raw = await res.json();
@@ -150,22 +206,37 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
 
     function getNut(food, key) {
-      const val = food.nutrients?.[key];
+      const val = food?.nutrients?.[key];
       return (val === undefined || val === null) ? null : val;
     }
 
     function getGlycemicLoad(food) {
-      const n = food.nutrients;
+      const n = food?.nutrients;
       if (!n) return null;
-      return (n.glycemicIndex != null && n.carbG != null) ? Math.round(n.glycemicIndex * n.carbG / 100) : null;
+      return (n.glycemicIndex != null && n.carbG != null)
+        ? Math.round(n.glycemicIndex * n.carbG / 100)
+        : null;
     }
 
-    // Selection
+    function formatVal(v) {
+      if (v === null || v === undefined) return "—";
+      return Number.isInteger(v) ? String(v) : v.toFixed(1);
+    }
+
+    function getSection(key) {
+      if (["energyKcal"].includes(key)) return "⚡ Năng lượng";
+      if (["proteinG", "carbG", "fatG", "saturatedFatG", "fiberG", "sugarG"].includes(key)) return "🥩 Thành phần đa lượng";
+      if (["cholesterolMg", "sodiumMg", "potassiumMg"].includes(key)) return "🧂 Khoáng đa lượng";
+      if (["calciumMg", "ironMg", "zincMg", "phosphorusMg"].includes(key)) return "🦴 Vi khoáng";
+      return "🍊 Vitamin";
+    }
+
     function addFood(food) {
-      if (selected.length >= MAX_SLOTS) return;
-      if (selected.find(s => s.id === food.id)) return;
+      if (!food || selected.length >= MAX_SLOTS) return;
+      if (selected.find((s) => s.id === food.id)) return;
       selected.push(food);
-      document.getElementById("food-search").value = "";
+      searchInput.value = "";
+      currentMatches = [];
       closeSuggestions();
       renderSlots();
       renderComparison();
@@ -177,205 +248,235 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       renderComparison();
     }
 
-    // Slots
     function renderSlots() {
-      const container = document.getElementById("slot-container");
-      container.innerHTML = "";
+      slotContainer.replaceChildren();
       for (let i = 0; i < MAX_SLOTS; i++) {
-        const slot = document.createElement("div");
-        slot.className = "slot" + (selected[i] ? " filled" : "");
+        const slot = createNode("div", "slot" + (selected[i] ? " filled" : ""));
         if (selected[i]) {
-          slot.innerHTML = `<span class="food-name">${selected[i].name}</span>
-            <button class="remove-btn" data-idx="${i}" aria-label="Xóa">✕</button>`;
-          slot.querySelector(".remove-btn").onclick = () => removeFood(i);
+          const name = createNode("span", "food-name", selected[i].name);
+          const removeBtn = createNode("button", "remove-btn", "✕");
+          removeBtn.type = "button";
+          removeBtn.setAttribute("aria-label", "Xóa");
+          removeBtn.addEventListener("click", () => removeFood(i));
+          slot.appendChild(name);
+          slot.appendChild(removeBtn);
         } else {
-          slot.innerHTML = `<span class="placeholder">${i === 0 ? "Chọn thực phẩm..." : "..."}</span>`;
+          const placeholder = createNode("span", "placeholder", i === 0 ? "Chọn thực phẩm..." : "...");
+          slot.appendChild(placeholder);
         }
-        container.appendChild(slot);
+        slotContainer.appendChild(slot);
       }
 
-      // Add-more button
-      let addBtn = container.parentNode.querySelector(".add-more");
-      if (!addBtn) {
-        addBtn = document.createElement("div");
-        addBtn.className = "add-more";
-        container.parentNode.appendChild(addBtn);
+      let addMore = slotContainer.parentNode.querySelector(".add-more");
+      if (!addMore) {
+        addMore = createNode("div", "add-more");
+        slotContainer.parentNode.appendChild(addMore);
       }
+      addMore.replaceChildren();
       const canAdd = selected.length > 0 && selected.length < MAX_SLOTS;
-      addBtn.innerHTML = canAdd
-        ? `<button class="add-btn" onclick="document.getElementById('food-search').focus()">＋ Thêm thực phẩm</button>`
-        : selected.length >= MAX_SLOTS
-          ? `<span class="add-btn disabled">✓ Đã đủ ${MAX_SLOTS} thực phẩm</span>`
-          : "";
+      if (canAdd) {
+        const btn = createNode("button", "add-btn", "＋ Thêm thực phẩm");
+        btn.type = "button";
+        btn.addEventListener("click", () => searchInput.focus());
+        addMore.appendChild(btn);
+      } else if (selected.length >= MAX_SLOTS) {
+        addMore.appendChild(createNode("span", "add-btn disabled", `✓ Đã đủ ${MAX_SLOTS} thực phẩm`));
+      }
     }
 
-    // Search autocomplete
-    let currentFocus = -1;
+    function setSuggestionActive() {
+      const items = suggestionsEl.querySelectorAll(".suggestion-item[data-index]");
+      items.forEach((item, index) => {
+        item.classList.toggle("is-active", index === currentFocus);
+      });
+    }
 
     function closeSuggestions() {
-      document.getElementById("suggestions").classList.remove("open");
+      suggestionsEl.classList.remove("open");
+      suggestionsEl.replaceChildren();
       currentFocus = -1;
     }
 
-    document.getElementById("food-search").addEventListener("input", function() {
-      const val = this.value.trim().toLowerCase();
-      const sugEl = document.getElementById("suggestions");
-      if (val.length < 1) { closeSuggestions(); return; }
+    function buildHighlightedName(name) {
+      const frag = document.createDocumentFragment();
+      frag.appendChild(document.createTextNode(name));
+      return frag;
+    }
 
-      const selectedIds = new Set(selected.map(s => s.id));
-      const matches = foods.filter(f =>
-        !selectedIds.has(f.id) &&
-        (f.name.toLowerCase().includes(val) ||
-         (f.aliases && f.aliases.some(a => a.toLowerCase().includes(val))))
-      ).slice(0, 10);
+    function renderSuggestions(matches, query) {
+      suggestionsEl.replaceChildren();
+      if (!matches.length) {
+        const empty = createNode("div", "suggestion-item suggestion-empty", text.noSuggestion);
+        suggestionsEl.appendChild(empty);
+        suggestionsEl.classList.add("open");
+        currentFocus = -1;
+        return;
+      }
 
-      sugEl.innerHTML = matches.length
-        ? matches.map(m => `<div class="suggestion-item" data-id="${m.id}">
-            <span class="s-name">${highlight(m.name, val)}</span>
-            <span class="s-cat">${m.category || ""}</span>
-          </div>`).join("")
-        : `<div class="suggestion-item" style="color:#999">Không tìm thấy</div>`;
+      matches.forEach((food, index) => {
+        const item = createNode("div", "suggestion-item");
+        item.dataset.id = food.id;
+        item.dataset.index = String(index);
 
-      sugEl.classList.add("open");
+        const nameSpan = createNode("span", "s-name");
+        nameSpan.appendChild(buildHighlightedName(food.name));
+
+        const catSpan = createNode("span", "s-cat", food.category || "");
+        item.appendChild(nameSpan);
+        item.appendChild(catSpan);
+        item.addEventListener("click", () => addFood(food));
+        suggestionsEl.appendChild(item);
+      });
+
+      suggestionsEl.classList.add("open");
       currentFocus = -1;
+    }
+
+    function getMatches(query) {
+      const q = normalizeText(query);
+      if (!q) return [];
+      const selectedIds = new Set(selected.map((s) => s.id));
+      return foods.filter((f) => {
+        if (selectedIds.has(f.id)) return false;
+        const aliases = Array.isArray(f.aliases) ? f.aliases : [];
+        return normalizeText(f.name).includes(q) || aliases.some((a) => normalizeText(a).includes(q));
+      }).slice(0, 10);
+    }
+
+    searchInput.addEventListener("input", function() {
+      currentMatches = getMatches(this.value);
+      if (!this.value.trim()) {
+        closeSuggestions();
+        return;
+      }
+      renderSuggestions(currentMatches, this.value);
     });
-
-    function highlight(text, query) {
-      const idx = text.toLowerCase().indexOf(query);
-      if (idx === -1) return text;
-      return text.slice(0, idx) + "<strong>" + text.slice(idx, idx + query.length) + "</strong>" + text.slice(idx + query.length);
-    }
 
     document.addEventListener("click", function(e) {
       if (!e.target.closest(".search-box")) closeSuggestions();
     });
 
-    document.getElementById("food-search").addEventListener("keydown", function(e) {
-      const items = document.querySelectorAll("#suggestions .suggestion-item");
+    searchInput.addEventListener("keydown", function(e) {
+      const items = suggestionsEl.querySelectorAll(".suggestion-item[data-index]");
+      if (!items.length) return;
       if (e.key === "ArrowDown") {
         currentFocus = Math.min(currentFocus + 1, items.length - 1);
-        items.forEach((el, i) => el.style.background = i === currentFocus ? "#e8f5e9" : "");
+        setSuggestionActive();
         e.preventDefault();
       } else if (e.key === "ArrowUp") {
-        currentFocus = Math.max(currentFocus - 1, -1);
-        items.forEach((el, i) => el.style.background = i === currentFocus ? "#e8f5e9" : "");
+        currentFocus = Math.max(currentFocus - 1, 0);
+        setSuggestionActive();
         e.preventDefault();
-      } else if (e.key === "Enter" && currentFocus >= 0 && items[currentFocus]) {
-        items[currentFocus].click();
+      } else if (e.key === "Enter" && currentFocus >= 0 && currentMatches[currentFocus]) {
+        e.preventDefault();
+        addFood(currentMatches[currentFocus]);
       }
     });
 
-    document.getElementById("suggestions").addEventListener("click", function(e) {
-      const item = e.target.closest(".suggestion-item");
-      if (!item) return;
-      const food = foods.find(f => f.id === item.dataset.id);
-      if (food) addFood(food);
-    });
+    function getExtremes(values) {
+      const nums = values.filter((v) => v !== null);
+      if (!nums.length) return { max: null, min: null };
+      return { max: Math.max(...nums), min: Math.min(...nums) };
+    }
 
-    // Comparison Table
-    function renderComparison() {
-      const empty = document.getElementById("empty-state");
-      const tableArea = document.getElementById("table-area");
-
-      if (selected.length < 2) {
-        empty.style.display = "";
-        tableArea.style.display = "none";
+    function appendValueCell(row, value, comparison) {
+      const td = document.createElement("td");
+      if (value === null) {
+        td.textContent = "—";
+        row.appendChild(td);
         return;
       }
-      empty.style.display = "none";
+
+      const main = createNode("span", "value-main", formatVal(value));
+      if (comparison.max !== null && comparison.min !== null && comparison.max !== comparison.min) {
+        if (value === comparison.max) main.classList.add("is-higher");
+        if (value === comparison.min) main.classList.add("is-lower");
+      }
+      td.appendChild(main);
+
+      if (comparison.max !== null && comparison.min !== null && comparison.max !== comparison.min) {
+        if (value === comparison.max) {
+          td.appendChild(createNode("span", "value-note", "Cao hơn trong nhóm so sánh"));
+        } else if (value === comparison.min) {
+          td.appendChild(createNode("span", "value-note", "Thấp hơn trong nhóm so sánh"));
+        }
+      }
+      row.appendChild(td);
+    }
+
+    function renderComparison() {
+      if (selected.length < 2) {
+        emptyState.style.display = "";
+        emptyState.querySelector("p").textContent = text.minTwo;
+        tableArea.style.display = "none";
+        tableArea.replaceChildren();
+        return;
+      }
+
+      emptyState.style.display = "none";
       tableArea.style.display = "";
+      tableArea.replaceChildren();
 
-      const rkc = renderCompareCells;
-      let html = `<div style="overflow-x:auto"><table class="compare-table">
-        <thead><tr><th>Chỉ số</th>`;
+      const wrap = createNode("div", "compare-table-wrap");
+      const table = createNode("table", "compare-table");
+      const thead = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      headRow.appendChild(createNode("th", "", "Chỉ số"));
+      selected.forEach((food) => headRow.appendChild(createNode("th", "", food.name)));
+      thead.appendChild(headRow);
+      table.appendChild(thead);
 
-      selected.forEach(f => {
-        html += `<th>${f.name}</th>`;
-      });
-      html += `</tr></thead><tbody>`;
-
-      // Category rows
+      const tbody = document.createElement("tbody");
       let currentSection = "";
-      for (const n of NUTRIENTS) {
-        const section = getSection(n.key);
+
+      for (const nutrient of NUTRIENTS) {
+        const section = getSection(nutrient.key);
         if (section !== currentSection) {
-          html += `<tr><td class="section-label" colspan="${selected.length + 1}">${section}</td></tr>`;
+          const sectionRow = document.createElement("tr");
+          const sectionCell = createNode("td", "section-label", section);
+          sectionCell.colSpan = selected.length + 1;
+          sectionRow.appendChild(sectionCell);
+          tbody.appendChild(sectionRow);
           currentSection = section;
         }
 
-        const values = selected.map(f => getNut(f, n.key));
-        const allNull = values.every(v => v === null);
-        if (allNull) continue;
+        const values = selected.map((food) => getNut(food, nutrient.key));
+        if (values.every((value) => value === null)) continue;
 
-        const bestVal = findBest(values, n.lower);
-        const worstVal = findWorst(values, n.lower);
+        const row = document.createElement("tr");
+        const labelCell = document.createElement("td");
+        labelCell.appendChild(document.createTextNode(nutrient.label + " "));
+        labelCell.appendChild(createNode("span", "metric-unit", `(${nutrient.unit})`));
+        row.appendChild(labelCell);
 
-        html += `<tr><td>${n.label} <span class="unit">(${n.unit})</span></td>`;
-        values.forEach((v, i) => {
-          if (v === null) {
-            html += `<td class="value-equal">—</td>`;
-          } else {
-            const cls = v === bestVal ? "value-best" : (v === worstVal ? "value-worst" : "");
-            const icon = v === bestVal ? " ✓" : (v === worstVal ? " ⚠" : "");
-            html += `<td class="${cls}">${formatVal(v)}${icon}</td>`;
-          }
-        });
-        html += `</tr>`;
+        const extremes = getExtremes(values);
+        values.forEach((value) => appendValueCell(row, value, extremes));
+        tbody.appendChild(row);
       }
 
-      // Glycemic Load row
-      const gls = selected.map(f => getGlycemicLoad(f));
-      if (gls.some(g => g !== null)) {
-        html += `<tr><td class="section-label" colspan="${selected.length + 1}">Chỉ số đường huyết</td></tr>`;
-        const bestGL = findBest(gls, true);
-        html += `<tr><td>Glycemic Load (GL)</td>`;
-        gls.forEach((v, i) => {
-          if (v === null) {
-            html += `<td class="value-equal">—</td>`;
-          } else {
-            const cls = v === bestGL ? "value-best" : "";
-            const icon = v === bestGL ? " ✓" : "";
-            html += `<td class="${cls}">${v}${icon}</td>`;
-          }
-        });
-        html += `</tr>`;
+      const glValues = selected.map((food) => getGlycemicLoad(food));
+      if (glValues.some((value) => value !== null)) {
+        const sectionRow = document.createElement("tr");
+        const sectionCell = createNode("td", "section-label", "🍚 Glycemic Load tham khảo");
+        sectionCell.colSpan = selected.length + 1;
+        sectionRow.appendChild(sectionCell);
+        tbody.appendChild(sectionRow);
+
+        const glRow = document.createElement("tr");
+        glRow.appendChild(createNode("td", "", "GL ước tính"));
+        const extremes = getExtremes(glValues);
+        glValues.forEach((value) => appendValueCell(glRow, value, extremes));
+        tbody.appendChild(glRow);
       }
 
-      html += `</tbody></table></div>`;
-
-      // Legend
-      html += `<p style="font-size:0.85rem;color:#888;margin-top:12px">
-        <span style="color:#2e7d32;font-weight:700">✓ Tốt nhất</span> ·
-        <span style="color:#c62828;">⚠ Cần lưu ý</span>
-        &nbsp; (giá trị thấp hơn tốt hơn cho: đường, béo bão hòa, cholesterol, natri)
-      </p>`;
-
-      tableArea.innerHTML = html;
-    }
-
-    function getSection(key) {
-      if (["energyKcal"].includes(key)) return "⚡ Năng lượng & Macro";
-      if (["proteinG", "carbG", "fatG", "saturatedFatG", "fiberG", "sugarG"].includes(key)) return "🥩 Macro";
-      if (["cholesterolMg", "sodiumMg", "potassiumMg"].includes(key)) return "🧂 Khoáng đa lượng";
-      if (["calciumMg", "ironMg", "zincMg", "phosphorusMg"].includes(key)) return "🦴 Vi khoáng";
-      return "🍊 Vitamin";
-    }
-
-    function formatVal(v) {
-      if (v === null || v === undefined) return "—";
-      return Number.isInteger(v) ? v : v.toFixed(1);
-    }
-
-    function findBest(values, lowerIsBetter) {
-      const nums = values.filter(v => v !== null);
-      if (!nums.length) return null;
-      return lowerIsBetter ? Math.min(...nums) : Math.max(...nums);
-    }
-
-    function findWorst(values, lowerIsBetter) {
-      const nums = values.filter(v => v !== null);
-      if (!nums.length) return null;
-      return lowerIsBetter ? Math.max(...nums) : Math.min(...nums);
+      table.appendChild(tbody);
+      wrap.appendChild(table);
+      tableArea.appendChild(wrap);
+      tableArea.appendChild(createNode(
+        "p",
+        "compare-note",
+        "Ghi chú: các nhãn “cao hơn trong nhóm so sánh” hoặc “thấp hơn trong nhóm so sánh” chỉ mô tả chênh lệch dữ liệu trong bảng hiện tại, không phải kết luận sức khỏe hay khuyến nghị điều trị."
+      ));
     }
 
     loadData();
