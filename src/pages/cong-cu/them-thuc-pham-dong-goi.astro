@@ -2,7 +2,7 @@
 // Thêm thực phẩm đóng gói từ nhãn sản phẩm
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const siteTitle = "Thêm thực phẩm đóng gói | Dinh Dưỡng Việt";
-const siteDesc = "Nhập dữ liệu dinh dưỡng từ nhãn sản phẩm đóng gói. Lưu trên trình duyệt hoặc xuất JSON để đóng góp vào ứng dụng.";
+const siteDesc = "Nhập và lưu dữ liệu từ nhãn thực phẩm đóng gói ở mức tham khảo, không thay thế tư vấn chuyên môn.";
 const domain = "dinhduongviet.vn";
 ---
 <BaseLayout title={siteTitle} description={siteDesc} image="/og-image.png" canonical={"https://" + domain + "/cong-cu/them-thuc-pham-dong-goi"}>
@@ -39,7 +39,7 @@ const domain = "dinhduongviet.vn";
   .food-item .faction { display: flex; gap: 4px; }
   .food-item .faction button { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 4px; }
   .food-item .faction .edit-btn:hover { background: #ebf8ff; }
-  .food-item .faction .del-btn:hover { background: var(--card)5f5; color: #e53e3e; }
+  .food-item .faction .del-btn:hover { background: #fef2f2; color: #e53e3e; }
   .empty-state { text-align: center; padding: 30px 0; color: #a0aec0; }
   .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
   .tag { background: #ebf8ff; color: #2b6cb0; border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; }
@@ -50,16 +50,27 @@ const domain = "dinhduongviet.vn";
   .search-bar input { width: 100%; padding: 8px 12px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; }
   .badge { display: inline-block; background: #edf2f7; border-radius: 99px; padding: 1px 8px; font-size: 0.75rem; color: #4a5568; margin-left: 4px; }
   .count-bar { font-size: 0.85rem; color: #718096; margin-bottom: 8px; }
+  .safety-shell { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #9a3412; margin-bottom: 16px; line-height: 1.6; }
+  .data-shell { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #475569; margin-bottom: 16px; line-height: 1.6; }
  </style>
 
  <div class="main">
   <h1>📦 Thêm thực phẩm đóng gói</h1>
-  <p class="sub">Nhập dữ liệu từ nhãn sản phẩm → lưu trên trình duyệt của bạn</p>
+  <p class="sub">Nhập và lưu dữ liệu từ nhãn sản phẩm đóng gói ở mức tham khảo trên thiết bị của bạn.</p>
+
+  <div class="data-shell">
+   <strong>📌 Phạm vi dữ liệu:</strong> Công cụ này chỉ giúp nhập, lưu và chuẩn hóa dữ liệu từ nhãn thực phẩm đóng gói ở mức tham khảo.
+   Dữ liệu là do bạn nhập từ bao bì và cần đối chiếu lại với nhãn sản phẩm thực tế. Kết quả không xác nhận sản phẩm tốt, xấu, an toàn hay phù hợp cho bệnh nền.
+  </div>
+
+  <div class="safety-shell">
+   Người có bệnh nền, đang dùng thuốc, thai kỳ, trẻ em, người cao tuổi hoặc cần chế độ ăn điều trị nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng.
+   Không tự dùng dữ liệu này để chỉnh thuốc, insulin, lợi tiểu hoặc chế độ điều trị.
+  </div>
 
   <div class="info-note">
-   <strong>💡 Cách dùng:</strong> Nhập thông tin từ nhãn dinh dưỡng (Nutrition Facts) vào form bên phải.
-   Thực phẩm sẽ được lưu trên trình duyệt (<strong>localStorage</strong>) và hiển thị cùng dữ liệu chính thống.
-   Có thể <strong>xuất JSON</strong> để backup hoặc gửi đóng góp.
+   <strong>💡 Cách dùng:</strong> Nhập thông tin từ nhãn dinh dưỡng vào form bên phải.
+   Dữ liệu được lưu cục bộ trên trình duyệt của bạn (<strong>localStorage</strong>) và có thể <strong>xuất JSON</strong> để sao lưu hoặc nhập lại sau.
   </div>
 
   <div class="layout">
@@ -75,6 +86,7 @@ const domain = "dinhduongviet.vn";
     <div class="actions">
      <button class="btn-secondary" onclick="exportAll()">📤 Xuất JSON</button>
      <button class="btn-secondary" onclick="document.getElementById('importInput').click()">📥 Nhập JSON</button>
+     <button class="btn-danger" onclick="clearAllFoods()">🧹 Xóa dữ liệu local</button>
      <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)" />
     </div>
    </div>
@@ -109,12 +121,12 @@ const domain = "dinhduongviet.vn";
      </div>
     </div>
 
-    <h3 style="font-size:0.9rem;color:#4a5568;margin:12px 0 8px;">📊 Dinh dưỡng trên 100g / 100ml</h3>
+    <h3 style="font-size:0.9rem;color:#4a5568;margin:12px 0 8px;">📊 Dữ liệu theo khẩu phần trên nhãn</h3>
     <div class="form-grid">
      <div class="form-group">
-      <label>Khẩu phần (g/ml)</label>
+      <label>Khẩu phần trên nhãn (g/ml)</label>
       <input type="number" id="fServing" placeholder="100" value="100" step="1" />
-      <span class="hint">VD: 100g, 250ml</span>
+      <span class="hint">Hiển thị là theo khẩu phần bạn nhập từ bao bì.</span>
      </div>
      <div class="form-group">
       <label>Năng lượng (kcal) *</label>
@@ -170,7 +182,7 @@ const domain = "dinhduongviet.vn";
      </div>
      <div class="form-group full-width">
       <label>Ghi chú</label>
-      <textarea id="fNote" rows="2" placeholder="Mùi vị, thành phần đặc biệt..." style="resize:vertical;"></textarea>
+      <textarea id="fNote" rows="2" placeholder="Ví dụ: vị, dạng đóng gói, ghi chú cần đối chiếu lại với nhãn..." style="resize:vertical;"></textarea>
      </div>
     </div>
 
@@ -186,7 +198,7 @@ const domain = "dinhduongviet.vn";
 
  <script is:inline>
  (() => {
-  const STORAGE_KEY = 'dinhduongviet_branded';
+  const STORAGE_KEY = 'ddv_packaged_foods_v1';
   let foods = [];
 
   function loadData() {
@@ -197,6 +209,28 @@ const domain = "dinhduongviet.vn";
   }
   function saveData() {
    localStorage.setItem(STORAGE_KEY, JSON.stringify(foods));
+  }
+
+  function normalizeText(value) {
+   return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase()
+    .trim();
+  }
+
+  function parseNullableNumber(id) {
+   const raw = document.getElementById(id).value.trim();
+   if (raw === '') return null;
+   const num = Number(raw);
+   return Number.isFinite(num) ? num : null;
+  }
+
+  function fmtValue(value, suffix) {
+   if (value === null || value === undefined || value === '') return '—';
+   return `${value}${suffix || ''}`;
   }
 
   loadData();
@@ -221,9 +255,9 @@ const domain = "dinhduongviet.vn";
   }
 
   function renderList() {
-   const q = (document.getElementById('listSearch').value || '').toLowerCase().trim();
+   const q = normalizeText(document.getElementById('listSearch').value || '');
    const filtered = q ? foods.filter(f => 
-     f.name.toLowerCase().includes(q) || (f.brand || '').toLowerCase().includes(q)
+     normalizeText(f.name).includes(q) || normalizeText(f.brand || '').includes(q)
    ) : [...foods];
 
    filtered.sort((a,b) => b.created - a.created);
@@ -233,35 +267,82 @@ const domain = "dinhduongviet.vn";
    $count.textContent = foods.length;
 
    if (filtered.length === 0) {
-    $container.innerHTML = `<div class="empty-state">${foods.length === 0 ? 'Chưa có thực phẩm nào. Nhập bên phải để bắt đầu! 👉' : 'Không tìm thấy kết quả'}</div>`;
+    $container.replaceChildren(makeEmptyState(foods.length === 0 ? 'Chưa có thực phẩm nào. Nhập bên phải để bắt đầu! 👉' : 'Không tìm thấy kết quả'));
     return;
    }
 
-   $container.innerHTML = filtered.map(f => {
-    const kcal = f.kcal || 0;
-    const p = f.protein || 0;
-    const c = f.carb || 0;
-    const fat = f.fat || 0;
-    const cate = f.category || 'Khác';
-    const emoji = catEmoji(cate);
-    return `<div class="food-item">
-      <div class="info">
-        <div class="fname">${emoji} ${escHtml(f.name)}</div>
-        <div class="fbrand">${escHtml(f.brand || '')}</div>
-        <div class="fstats">${kcal}kcal · P${p}g · C${c}g · F${fat}g <span class="tag">${cate}</span></div>
-      </div>
-      <div class="faction">
-        <button class="edit-btn" onclick="editFood('${f.id}')" title="Sửa">✏️</button>
-        <button class="del-btn" onclick="deleteFood('${f.id}')" title="Xoá">🗑️</button>
-      </div>
-    </div>`;
-   }).join('');
+   const fragment = document.createDocumentFragment();
+   filtered.forEach((f) => {
+    fragment.appendChild(makeFoodItem(f));
+   });
+   $container.replaceChildren(fragment);
   }
 
-  function escHtml(s) {
-   const d = document.createElement('div');
-   d.textContent = s;
-   return d.innerHTML;
+  function makeEmptyState(message) {
+   const box = document.createElement('div');
+   box.className = 'empty-state';
+   box.textContent = message;
+   return box;
+  }
+
+  function makeFoodItem(f) {
+   const kcal = fmtValue(f.kcal, 'kcal');
+   const protein = fmtValue(f.protein, 'g');
+   const carb = fmtValue(f.carb, 'g');
+   const fat = fmtValue(f.fat, 'g');
+   const category = f.category || 'Khác';
+   const serving = f.serving ? ` · Khẩu phần ${f.serving}${f.servingUnit || 'g/ml'}` : '';
+
+   const item = document.createElement('div');
+   item.className = 'food-item';
+
+   const info = document.createElement('div');
+   info.className = 'info';
+
+   const name = document.createElement('div');
+   name.className = 'fname';
+   name.textContent = `${catEmoji(category)} ${f.name}`;
+
+   const brand = document.createElement('div');
+   brand.className = 'fbrand';
+   brand.textContent = f.brand || 'Chưa nhập thương hiệu';
+
+   const stats = document.createElement('div');
+   stats.className = 'fstats';
+   stats.textContent = `${kcal} · P${protein} · C${carb} · F${fat}${serving}`;
+
+   const tagWrap = document.createElement('span');
+   tagWrap.className = 'tag';
+   tagWrap.textContent = category;
+   stats.appendChild(document.createTextNode(' '));
+   stats.appendChild(tagWrap);
+
+   info.appendChild(name);
+   info.appendChild(brand);
+   info.appendChild(stats);
+
+   const action = document.createElement('div');
+   action.className = 'faction';
+
+   const editBtn = document.createElement('button');
+   editBtn.className = 'edit-btn';
+   editBtn.type = 'button';
+   editBtn.title = 'Sửa';
+   editBtn.textContent = '✏️';
+   editBtn.addEventListener('click', () => window.editFood(f.id));
+
+   const delBtn = document.createElement('button');
+   delBtn.className = 'del-btn';
+   delBtn.type = 'button';
+   delBtn.title = 'Xóa';
+   delBtn.textContent = '🗑️';
+   delBtn.addEventListener('click', () => window.deleteFood(f.id));
+
+   action.appendChild(editBtn);
+   action.appendChild(delBtn);
+   item.appendChild(info);
+   item.appendChild(action);
+   return item;
   }
 
   // Generate unique ID
@@ -291,38 +372,39 @@ const domain = "dinhduongviet.vn";
    const name = document.getElementById('fName').value.trim();
    const brand = document.getElementById('fBrand').value.trim();
    const category = document.getElementById('fCategory').value;
-   const kcal = parseFloat(document.getElementById('fKcal').value) || 0;
-   const protein = parseFloat(document.getElementById('fProtein').value) || 0;
-   const carb = parseFloat(document.getElementById('fCarb').value) || 0;
-   const fat = parseFloat(document.getElementById('fFat').value) || 0;
-   const fiber = parseFloat(document.getElementById('fFiber').value) || 0;
-   const sugar = parseFloat(document.getElementById('fSugar').value) || 0;
-   const satFat = parseFloat(document.getElementById('fSatFat').value) || 0;
-   const chol = parseFloat(document.getElementById('fChol').value) || 0;
-   const sodium = parseFloat(document.getElementById('fSodium').value) || 0;
-   const potassium = parseFloat(document.getElementById('fKali').value) || 0;
-   const calcium = parseFloat(document.getElementById('fCalcium').value) || 0;
-   const iron = parseFloat(document.getElementById('fIron').value) || 0;
-   const vitC = parseFloat(document.getElementById('fVitC').value) || 0;
+   const serving = parseNullableNumber('fServing');
+   const kcal = parseNullableNumber('fKcal');
+   const protein = parseNullableNumber('fProtein');
+   const carb = parseNullableNumber('fCarb');
+   const fat = parseNullableNumber('fFat');
+   const fiber = parseNullableNumber('fFiber');
+   const sugar = parseNullableNumber('fSugar');
+   const satFat = parseNullableNumber('fSatFat');
+   const chol = parseNullableNumber('fChol');
+   const sodium = parseNullableNumber('fSodium');
+   const potassium = parseNullableNumber('fKali');
+   const calcium = parseNullableNumber('fCalcium');
+   const iron = parseNullableNumber('fIron');
+   const vitC = parseNullableNumber('fVitC');
    const note = document.getElementById('fNote').value.trim();
    const editId = document.getElementById('editId').value;
 
    // Validate
    if (!name) { showToast('⚠️ Vui lòng nhập tên sản phẩm'); return; }
-   if (!kcal && !protein && !carb && !fat) { showToast('⚠️ Nhập ít nhất năng lượng hoặc đạm/carb/béo'); return; }
+   if (kcal === null && protein === null && carb === null && fat === null) { showToast('⚠️ Nhập ít nhất năng lượng hoặc đạm/carb/béo'); return; }
 
    if (editId) {
     // Update existing
     const idx = foods.findIndex(f => f.id === editId);
     if (idx >= 0) {
-     foods[idx] = { ...foods[idx], name, brand, category, kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, modified: Date.now() };
+     foods[idx] = { ...foods[idx], name, brand, category, serving, servingUnit: 'g/ml', kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, modified: Date.now() };
      saveData();
      showToast('✅ Đã cập nhật: ' + name);
     }
    } else {
     // Add new
     const id = genId(name, brand);
-    const food = { id, name, brand, category, kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, created: Date.now(), modified: Date.now() };
+    const food = { id, name, brand, category, serving, servingUnit: 'g/ml', kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, created: Date.now(), modified: Date.now() };
     foods.push(food);
     saveData();
     showToast('✅ Đã thêm: ' + name);
@@ -339,19 +421,20 @@ const domain = "dinhduongviet.vn";
    document.getElementById('fName').value = f.name;
    document.getElementById('fBrand').value = f.brand || '';
    document.getElementById('fCategory').value = f.category || 'Khác';
-   document.getElementById('fKcal').value = f.kcal || '';
-   document.getElementById('fProtein').value = f.protein || '';
-   document.getElementById('fCarb').value = f.carb || '';
-   document.getElementById('fFat').value = f.fat || '';
-   document.getElementById('fFiber').value = f.fiber || '';
-   document.getElementById('fSugar').value = f.sugar || '';
-   document.getElementById('fSatFat').value = f.satFat || '';
-   document.getElementById('fChol').value = f.chol || '';
-   document.getElementById('fSodium').value = f.sodium || '';
-   document.getElementById('fKali').value = f.potassium || '';
-   document.getElementById('fCalcium').value = f.calcium || '';
-   document.getElementById('fIron').value = f.iron || '';
-   document.getElementById('fVitC').value = f.vitC || '';
+   document.getElementById('fServing').value = f.serving ?? 100;
+   document.getElementById('fKcal').value = f.kcal ?? '';
+   document.getElementById('fProtein').value = f.protein ?? '';
+   document.getElementById('fCarb').value = f.carb ?? '';
+   document.getElementById('fFat').value = f.fat ?? '';
+   document.getElementById('fFiber').value = f.fiber ?? '';
+   document.getElementById('fSugar').value = f.sugar ?? '';
+   document.getElementById('fSatFat').value = f.satFat ?? '';
+   document.getElementById('fChol').value = f.chol ?? '';
+   document.getElementById('fSodium').value = f.sodium ?? '';
+   document.getElementById('fKali').value = f.potassium ?? '';
+   document.getElementById('fCalcium').value = f.calcium ?? '';
+   document.getElementById('fIron').value = f.iron ?? '';
+   document.getElementById('fVitC').value = f.vitC ?? '';
    document.getElementById('fNote').value = f.note || '';
    document.getElementById('formTitle').textContent = '✏️ Chỉnh sửa';
    document.getElementById('saveBtn').textContent = '💾 Cập nhật';
@@ -371,6 +454,7 @@ const domain = "dinhduongviet.vn";
    document.getElementById('fName').value = '';
    document.getElementById('fBrand').value = '';
    document.getElementById('fCategory').value = 'Mì, bún, phở ăn liền';
+   document.getElementById('fServing').value = '100';
    document.getElementById('fKcal').value = '';
    document.getElementById('fProtein').value = '';
    document.getElementById('fCarb').value = '';
@@ -402,6 +486,16 @@ const domain = "dinhduongviet.vn";
    showToast('📤 Đã xuất ' + foods.length + ' thực phẩm');
   };
 
+  window.clearAllFoods = function() {
+   if (!foods.length) { showToast('⚠️ Không có dữ liệu local để xóa'); return; }
+   if (!confirm('Xóa toàn bộ dữ liệu thực phẩm đóng gói đã lưu trên trình duyệt này?')) return;
+   foods = [];
+   localStorage.removeItem(STORAGE_KEY);
+   resetForm();
+   renderList();
+   showToast('🧹 Đã xóa dữ liệu local');
+  };
+
   window.importJSON = function(event) {
    const file = event.target.files[0];
    if (!file) return;
@@ -415,10 +509,35 @@ const domain = "dinhduongviet.vn";
      const existingKeys = new Set(foods.map(f => (f.name+'|||'+(f.brand||'')).toLowerCase()));
      let added = 0;
      data.forEach(f => {
-      const key = (f.name+'|||'+(f.brand||'')).toLowerCase();
-      if (!existingKeys.has(key) && f.name) {
-       f.id = genId(f.name, f.brand);
-       foods.push(f);
+      const safeName = String(f?.name || '').trim();
+      const safeBrand = String(f?.brand || '').trim();
+      const key = (safeName+'|||'+safeBrand).toLowerCase();
+      if (!existingKeys.has(key) && safeName) {
+       const safeFood = {
+        id: genId(safeName, safeBrand),
+        name: safeName,
+        brand: safeBrand,
+        category: String(f?.category || 'Khác'),
+        serving: Number.isFinite(Number(f?.serving)) ? Number(f.serving) : null,
+        servingUnit: 'g/ml',
+        kcal: Number.isFinite(Number(f?.kcal)) ? Number(f.kcal) : null,
+        protein: Number.isFinite(Number(f?.protein)) ? Number(f.protein) : null,
+        carb: Number.isFinite(Number(f?.carb)) ? Number(f.carb) : null,
+        fat: Number.isFinite(Number(f?.fat)) ? Number(f.fat) : null,
+        fiber: Number.isFinite(Number(f?.fiber)) ? Number(f.fiber) : null,
+        sugar: Number.isFinite(Number(f?.sugar)) ? Number(f.sugar) : null,
+        satFat: Number.isFinite(Number(f?.satFat)) ? Number(f.satFat) : null,
+        chol: Number.isFinite(Number(f?.chol)) ? Number(f.chol) : null,
+        sodium: Number.isFinite(Number(f?.sodium)) ? Number(f.sodium) : null,
+        potassium: Number.isFinite(Number(f?.potassium)) ? Number(f.potassium) : null,
+        calcium: Number.isFinite(Number(f?.calcium)) ? Number(f.calcium) : null,
+        iron: Number.isFinite(Number(f?.iron)) ? Number(f.iron) : null,
+        vitC: Number.isFinite(Number(f?.vitC)) ? Number(f.vitC) : null,
+        note: String(f?.note || '').trim(),
+        created: Date.now(),
+        modified: Date.now(),
+       };
+       foods.push(safeFood);
        existingKeys.add(key);
        added++;
       }
