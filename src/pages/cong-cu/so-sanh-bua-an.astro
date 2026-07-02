@@ -13,36 +13,39 @@ const recipeData = recipes.map(r => ({
 <BaseLayout title="So sánh bữa ăn - Dinh Dưỡng Việt" canonical="/cong-cu/so-sanh-bua-an">
   <span class="badge">⭐ Công cụ</span>
   <h1>🍽️ So sánh bữa ăn</h1>
-  <p class="lead">Chọn 2-4 món ăn để so sánh dinh dưỡng cạnh nhau. Xem bên nào nhiều đạm hơn, ít carb hơn, phù hợp với mục tiêu của bạn.</p>
+  <p class="lead">Chọn 2-4 món ăn để xem chênh lệch dữ liệu dinh dưỡng ở mức tham khảo. Công cụ này chỉ so sánh số liệu, không kết luận bữa nào tốt hay xấu.</p>
 
-  <div class="disclaimer">Dữ liệu ước tính dựa trên công thức trung bình. Kết quả có thể sai lệch ±15% theo cách chế biến thực tế.</div>
+  <div class="disclaimer">Dữ liệu ước tính dựa trên công thức trung bình và hiển thị theo 100g phần ăn được của thực phẩm nền. Kết quả có thể sai lệch theo lượng gram, cách chế biến, nguyên liệu thực tế hoặc nhãn hàng.</div>
+  <div class="safety-shell">
+    So sánh này chỉ nhằm đối chiếu dữ liệu dinh dưỡng tham khảo giữa các bữa ăn. Người có bệnh nền, đang dùng thuốc, thai kỳ, trẻ em, người cao tuổi hoặc cần ăn điều trị nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng, và không tự chỉnh thuốc, insulin hay lợi tiểu dựa trên kết quả này.
+  </div>
 
   <section class="tool-section card">
     <div class="picker-grid">
       <div class="picker-col">
         <label>Món 1 <span class="required">*</span></label>
-        <select id="meal1" class="meal-select" onchange="compare()">
+        <select id="meal1" class="meal-select">
           <option value="">-- Chọn món --</option>
           {recipeData.map(r => <option value={r.slug}>{r.name}</option>)}
         </select>
       </div>
       <div class="picker-col">
         <label>Món 2 <span class="required">*</span></label>
-        <select id="meal2" class="meal-select" onchange="compare()">
+        <select id="meal2" class="meal-select">
           <option value="">-- Chọn món --</option>
           {recipeData.map(r => <option value={r.slug}>{r.name}</option>)}
         </select>
       </div>
       <div class="picker-col">
         <label>Món 3</label>
-        <select id="meal3" class="meal-select" onchange="compare()">
+        <select id="meal3" class="meal-select">
           <option value="">-- Không chọn --</option>
           {recipeData.map(r => <option value={r.slug}>{r.name}</option>)}
         </select>
       </div>
       <div class="picker-col">
         <label>Món 4</label>
-        <select id="meal4" class="meal-select" onchange="compare()">
+        <select id="meal4" class="meal-select">
           <option value="">-- Không chọn --</option>
           {recipeData.map(r => <option value={r.slug}>{r.name}</option>)}
         </select>
@@ -66,10 +69,11 @@ const RECIPES = JSON.parse(document.getElementById('recipe-data').textContent);
 
 function getRecipe(slug) { return RECIPES.find(r => r.slug === slug); }
 
-function n(v) { return v && typeof v === 'number' ? v : 0; }
+function isNumber(v) { return typeof v === 'number' && Number.isFinite(v); }
 
 function fmt(v) {
-  if (v === 0 || v == null) return "—";
+  if (!isNumber(v)) return "—";
+  if (v === 0) return "0";
   return v < 10 ? v.toFixed(1) : Math.round(v).toString();
 }
 
@@ -88,61 +92,162 @@ const NUTRIENTS = [
   {key:"vitCIUMg",lbl:"🍊 Vitamin C",unit:"mg"},
 ];
 
+function createEl(tag, className, text) {
+  var el = document.createElement(tag);
+  if (className) el.className = className;
+  if (text != null) el.textContent = text;
+  return el;
+}
+
+function createEmptyState() {
+  var wrap = createEl("div", "empty-state");
+  wrap.appendChild(createEl("div", "empty-icon", "🍽️"));
+  wrap.appendChild(createEl("h3", "", "Chọn ít nhất 2 món để so sánh"));
+  wrap.appendChild(createEl("p", "muted", "Chọn từ 2-4 món ăn ở trên, bảng so sánh dữ liệu sẽ hiện ra tự động."));
+  return wrap;
+}
+
+function getNumericValue(meal, key) {
+  if (!meal || !meal.nutrients) return null;
+  var value = meal.nutrients[key];
+  return isNumber(value) ? value : null;
+}
+
+function getMinMax(values) {
+  var numericValues = values.filter(isNumber);
+  if (!numericValues.length) return null;
+  return {
+    max: Math.max.apply(null, numericValues),
+    min: Math.min.apply(null, numericValues)
+  };
+}
+
+function createValueCell(value, unit, relation) {
+  var td = createEl("td", "val-cell");
+  if (relation === "max") td.classList.add("highlight-higher");
+  if (relation === "min") td.classList.add("highlight-lower");
+
+  td.appendChild(createEl("span", "val-num", fmt(value)));
+  td.appendChild(document.createTextNode(" "));
+  td.appendChild(createEl("span", "val-unit", unit));
+  return td;
+}
+
+function createResultsTable(meals) {
+  var wrapper = createEl("div", "compare-table-wrapper");
+  var table = createEl("table", "compare-table");
+  var thead = document.createElement("thead");
+  var headRow = document.createElement("tr");
+  headRow.appendChild(createEl("th", "", "Chỉ số"));
+
+  meals.forEach(function(meal) {
+    var th = document.createElement("th");
+    var link = createEl("a", "", meal.name);
+    link.href = "/mon-an/" + meal.slug;
+    th.appendChild(link);
+    th.appendChild(document.createElement("br"));
+    th.appendChild(createEl("small", "", meal.servingName));
+    headRow.appendChild(th);
+  });
+
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  var tbody = document.createElement("tbody");
+  NUTRIENTS.forEach(function(nk) {
+    var values = meals.map(function(meal) { return getNumericValue(meal, nk.key); });
+    var range = getMinMax(values);
+    if (!range) return;
+
+    var row = document.createElement("tr");
+    row.appendChild(createEl("td", "key-cell", nk.lbl));
+
+    values.forEach(function(value) {
+      var relation = "";
+      if (isNumber(value)) {
+        if (value === range.max && range.max !== range.min) relation = "max";
+        else if (value === range.min && range.max !== range.min) relation = "min";
+      }
+      row.appendChild(createValueCell(value, nk.unit, relation));
+    });
+
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(tbody);
+  wrapper.appendChild(table);
+  return wrapper;
+}
+
+function createSummary(meals) {
+  var summaryBar = createEl("div", "summary-bar");
+  summaryBar.appendChild(createEl("h3", "", "📊 Tóm tắt chênh lệch dữ liệu"));
+
+  var intro = createEl("p", "summary-intro", "Các dòng dưới đây chỉ mô tả chênh lệch số liệu giữa những bữa đã chọn, không phải nhận định sức khỏe hay khuyến nghị lựa chọn bữa ăn.");
+  summaryBar.appendChild(intro);
+
+  var grid = createEl("div", "summary-grid");
+  NUTRIENTS.slice(0, 6).forEach(function(nk) {
+    var values = meals.map(function(meal) { return getNumericValue(meal, nk.key); });
+    var range = getMinMax(values);
+    if (!range || range.max === range.min) return;
+
+    var maxMeal = meals[values.findIndex(function(value) { return value === range.max; })];
+    var minMeal = meals[values.findIndex(function(value) { return value === range.min; })];
+    if (!maxMeal || !minMeal) return;
+
+    var card = createEl("div", "summary-card");
+    card.appendChild(createEl("div", "summary-label", nk.lbl));
+    card.appendChild(createEl("div", "summary-higher", maxMeal.name + " cao hơn về số liệu này: " + fmt(range.max) + " " + nk.unit));
+    card.appendChild(createEl("div", "summary-lower", minMeal.name + " thấp hơn về số liệu này: " + fmt(range.min) + " " + nk.unit));
+    grid.appendChild(card);
+  });
+
+  if (!grid.childElementCount) {
+    grid.appendChild(createEl("p", "muted", "Chưa có đủ chênh lệch số liệu để tạo tóm tắt ngắn."));
+  }
+
+  summaryBar.appendChild(grid);
+  return summaryBar;
+}
+
+function createMealLinks(meals) {
+  var wrap = createEl("div", "meal-links");
+  meals.forEach(function(meal) {
+    var link = createEl("a", "meal-link", "Chi tiết: " + meal.name + " →");
+    link.href = "/mon-an/" + meal.slug;
+    wrap.appendChild(link);
+  });
+  return wrap;
+}
+
 function compare() {
   var slugs = ["meal1","meal2","meal3","meal4"]
     .map(function(id){return document.getElementById(id).value})
     .filter(Boolean);
   var $r = document.getElementById("results");
   if (slugs.length < 2) {
-    $r.innerHTML = '<div class="empty-state"><div class="empty-icon">🍽️</div><h3>Chọn ít nhất 2 món để so sánh</h3><p class="muted">Chọn từ 2-4 món ăn ở trên, bảng so sánh sẽ hiện ra tự động.</p></div>';
+    $r.replaceChildren(createEmptyState());
     return;
   }
   var meals = slugs.map(function(slug){return {slug:slug,...getRecipe(slug)};});
   if (meals.some(function(m){return !m;})) return;
 
-  var html = '<div class="compare-table-wrapper"><table class="compare-table"><thead><tr><th>Chỉ số</th>';
-  meals.forEach(function(m){html += '<th><a href="/mon-an/'+m.slug+'">'+m.name+'</a><br><small>'+m.servingName+'</small></th>';});
-  html += '</tr></thead><tbody>';
-
-  NUTRIENTS.forEach(function(nk){
-    var vals = meals.map(function(m){return n(m.nutrients[nk.key]);});
-    var max = Math.max.apply(null, vals);
-    var min = Math.min.apply(null, vals.filter(function(v){return v>0;}));
-    if (!vals.some(function(v){return v>0;})) return;
-
-    html += '<tr><td class="key-cell">'+nk.lbl+'</td>';
-    vals.forEach(function(v){
-      var cls = "";
-      if (v === max && v > 0) cls = " highlight-max";
-      else if (v === min && v > 0) cls = " highlight-min";
-      html += '<td class="val-cell'+cls+'"><span class="val-num">'+fmt(v)+'</span> <span class="val-unit">'+nk.unit+'</span></td>';
-    });
-    html += '</tr>';
-  });
-  html += '</tbody></table></div>';
-
-  // Summary
-  html += '<div class="summary-bar"><h3>📊 Tóm tắt nhanh</h3><div class="summary-grid">';
-  NUTRIENTS.slice(0,6).forEach(function(nk){
-    var vals = meals.map(function(m){return n(m.nutrients[nk.key]);});
-    var max = Math.max.apply(null, vals);
-    var min = Math.min.apply(null, vals.filter(function(v){return v>0;}));
-    if (!vals.some(function(v){return v>0;})) return;
-    var maxMeal = meals[vals.indexOf(max)].name;
-    var minMeal = meals[vals.indexOf(min)].name;
-    html += '<div class="summary-card"><div class="summary-label">'+nk.lbl+'</div><div class="summary-max">⬆️ '+maxMeal+': '+fmt(max)+'</div><div class="summary-min">⬇️ '+minMeal+': '+fmt(min)+'</div></div>';
-  });
-  html += '</div></div>';
-  html += '<div class="meal-links">';
-  meals.forEach(function(m){html += '<a class="meal-link" href="/mon-an/'+m.slug+'">🔗 Chi tiết: '+m.name+' →</a>';});
-  html += '</div>';
-
-  $r.innerHTML = html;
+  $r.replaceChildren(
+    createResultsTable(meals),
+    createSummary(meals),
+    createMealLinks(meals)
+  );
 }
+
+document.querySelectorAll('.meal-select').forEach(function(select) {
+  select.addEventListener('change', compare);
+});
 </script>
 
 <style>
 .tool-section { padding: 20px; }
+.safety-shell { margin: 14px 0 20px; padding: 14px 16px; border-radius: 12px; background: var(--bg-elevated); color: var(--ink-secondary); font-size: 0.92rem; line-height: 1.55; }
 .picker-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
 .picker-col label { display:block; font-weight:600; font-size:0.88rem; margin-bottom:6px; }
 .required { color:#d32f2f; }
@@ -160,19 +265,20 @@ function compare() {
 .key-cell { text-align:left !important; font-weight:500; white-space:nowrap; }
 .val-num { font-weight:700; font-size:1.05rem; }
 .val-unit { font-size:0.78rem; color:var(--ink-tertiary); }
-.highlight-max { background:rgba(76,175,80,0.08); }
-.highlight-max .val-num { color:#2e7d32; }
-.highlight-min { background:rgba(255,152,0,0.08); }
-.highlight-min .val-num { color:#e65100; }
+.highlight-higher { background:rgba(33, 114, 69, 0.08); }
+.highlight-higher .val-num { color:#217245; }
+.highlight-lower { background:rgba(15, 23, 42, 0.06); }
+.highlight-lower .val-num { color:#334155; }
 .summary-bar { background:var(--bg-elevated); border-radius:12px; padding:20px; margin-bottom:16px; }
 .summary-bar h3 { margin:0 0 12px; font-size:1rem; }
+.summary-intro { margin:0 0 12px; color:var(--ink-secondary); font-size:0.88rem; line-height:1.5; }
 .summary-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
 .summary-card { padding:10px 14px; background:var(--bg-card); border-radius:8px; }
 .summary-label { font-weight:600; font-size:0.85rem; margin-bottom:6px; }
-.summary-max { font-size:0.82rem; color:#2e7d32; }
-.summary-min { font-size:0.82rem; color:#e65100; }
+.summary-higher { font-size:0.82rem; color:#217245; margin-bottom:4px; }
+.summary-lower { font-size:0.82rem; color:#334155; }
 .meal-links { display:flex; gap:12px; flex-wrap:wrap; }
 .meal-link { display:inline-block; padding:8px 16px; background:var(--brand-light); border-radius:8px; color:var(--brand); font-weight:600; font-size:0.9rem; }
-@media (max-width:700px) { .picker-grid { grid-template-columns:1fr 1fr; } .compare-table { font-size:0.82rem; } .compare-table th, .compare-table td { padding:8px 10px; } }
+@media (max-width:700px) { .picker-grid { grid-template-columns:1fr 1fr; } .compare-table { font-size:0.82rem; } .compare-table th, .compare-table td { padding:8px 10px; } .meal-link { width:100%; text-align:center; } }
 @media (max-width:500px) { .picker-grid { grid-template-columns:1fr; } }
 </style>
