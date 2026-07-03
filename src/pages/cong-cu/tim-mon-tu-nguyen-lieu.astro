@@ -15,9 +15,14 @@ const catData = [
     <span class="badge">🔍 Công cụ</span>
     <h1>Tìm món từ nguyên liệu có sẵn</h1>
     <p class="lead">
-      Chọn các nguyên liệu bạn có trong tủ lạnh/tủ bếp, xem gợi ý món ăn Việt Nam phù hợp!
+      Nhập các nguyên liệu bạn đang có để xem gợi ý ý tưởng món ăn ở mức tham khảo, dựa trên độ khớp nguyên liệu.
     </p>
   </section>
+
+  <div class="safety-shell">
+    <p><strong>Lưu ý:</strong> Công cụ này chỉ gợi ý ý tưởng món ăn từ nguyên liệu bạn nhập, không dùng để kết luận theo bệnh nền hoặc tư vấn điều trị.</p>
+    <p>Hãy kiểm tra lại dị ứng, hạn dùng, vệ sinh thực phẩm và chế biến chín trước khi dùng. Người có bệnh nền, đang dùng thuốc, thai kỳ, trẻ em hoặc cần chế độ ăn điều trị nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng.</p>
+  </div>
 
   <div class="app-container" id="recipe-finder-app">
     <!-- Category filter tabs -->
@@ -41,7 +46,7 @@ const catData = [
       </div>
       <div class="recipe-results" id="recipe-results">
         <div class="empty-state">
-          <p>☝️ Chọn ít nhất 1 nguyên liệu, mình sẽ gợi ý món cho bạn!</p>
+          <p>☝️ Chọn ít nhất 1 nguyên liệu để xem gợi ý ý tưởng món ăn.</p>
         </div>
       </div>
     </div>
@@ -54,6 +59,29 @@ const catData = [
     .then(data => {
       window.recipeData = data;
       initApp();
+    })
+    .catch(() => {
+      const grid = document.getElementById('ing-grid');
+      const results = document.getElementById('recipe-results');
+      const count = document.getElementById('results-count');
+      const message = 'Chưa tải được dữ liệu nguyên liệu. Hãy thử tải lại trang sau ít phút.';
+      if (grid) {
+        const box = document.createElement('div');
+        box.className = 'empty-state';
+        const p = document.createElement('p');
+        p.textContent = message;
+        box.appendChild(p);
+        grid.replaceChildren(box);
+      }
+      if (results) {
+        const box = document.createElement('div');
+        box.className = 'empty-state';
+        const p = document.createElement('p');
+        p.textContent = message;
+        box.appendChild(p);
+        results.replaceChildren(box);
+      }
+      if (count) count.textContent = 'Chưa tải được dữ liệu';
     });
 
   function initApp() {
@@ -64,19 +92,7 @@ const catData = [
     const tabs = document.querySelectorAll('.cat-tab');
     const allRecipes = Object.keys(data.recipeToIngs || {});
 
-    grid.innerHTML = (data.categories || []).map(cat => {
-      const items = (cat.items || []).map(item => `
-        <label class="ing-chip" data-id="${item.id}">
-          <input type="checkbox" value="${item.id}" />
-          <span class="chip-name">${item.name}</span>
-          <span class="chip-count">${item.recipeCount || 0}</span>
-        </label>
-      `).join('');
-      return `<section class="cat-group" data-cat="${cat.name}">
-        <div class="cat-label">${cat.name}</div>
-        <div class="ing-items">${items}</div>
-      </section>`;
-    }).join('');
+    renderIngredientGroups(data.categories || []);
 
     const checkboxes = document.querySelectorAll('.ing-chip input[type="checkbox"]');
 
@@ -101,7 +117,7 @@ const catData = [
       const selected = [...checkboxes].filter(cb => cb.checked).map(cb => cb.value);
       
       if (selected.length === 0) {
-        results.innerHTML = '<div class="empty-state"><p>☝️ Chọn ít nhất 1 nguyên liệu, mình sẽ gợi ý món cho bạn!</p></div>';
+        renderEmptyState('☝️ Chọn ít nhất 1 nguyên liệu để xem gợi ý ý tưởng món ăn.');
         count.textContent = 'Chọn nguyên liệu để bắt đầu';
         return;
       }
@@ -124,33 +140,136 @@ const catData = [
 
       const top = scored.filter(r => r.score > 0).slice(0, 20);
       
-      count.textContent = `Tìm thấy ${top.length} món phù hợp`;
+      count.textContent = `Tìm thấy ${top.length} gợi ý món`;
       
       if (top.length === 0) {
-        results.innerHTML = '<div class="empty-state"><p>Không tìm thấy món nào với nguyên liệu đã chọn. Thử chọn thêm nguyên liệu khác!</p></div>';
+        renderEmptyState('Không tìm thấy gợi ý món nào với nguyên liệu đã chọn. Thử thêm nguyên liệu khác để tham khảo thêm.');
         return;
       }
 
-      results.innerHTML = top.map(r => {
+      renderResults(top);
+    }
+
+    function renderIngredientGroups(categories) {
+      const fragment = document.createDocumentFragment();
+
+      categories.forEach(cat => {
+        const section = document.createElement('section');
+        section.className = 'cat-group';
+        section.dataset.cat = cat.name;
+
+        const label = document.createElement('div');
+        label.className = 'cat-label';
+        label.textContent = cat.name;
+
+        const itemsWrap = document.createElement('div');
+        itemsWrap.className = 'ing-items';
+
+        (cat.items || []).forEach(item => {
+          const chip = document.createElement('label');
+          chip.className = 'ing-chip';
+          chip.dataset.id = item.id;
+
+          const input = document.createElement('input');
+          input.type = 'checkbox';
+          input.value = item.id;
+
+          const name = document.createElement('span');
+          name.className = 'chip-name';
+          name.textContent = item.name;
+
+          const chipCount = document.createElement('span');
+          chipCount.className = 'chip-count';
+          chipCount.textContent = String(item.recipeCount || 0);
+
+          chip.appendChild(input);
+          chip.appendChild(name);
+          chip.appendChild(chipCount);
+          itemsWrap.appendChild(chip);
+        });
+
+        section.appendChild(label);
+        section.appendChild(itemsWrap);
+        fragment.appendChild(section);
+      });
+
+      grid.replaceChildren(fragment);
+    }
+
+    function renderResults(items) {
+      const fragment = document.createDocumentFragment();
+
+      items.forEach(r => {
         const matchedNames = r.matched.map(id => {
           const f = document.querySelector(`.ing-chip[data-id="${id}"] .chip-name`);
           return f ? f.textContent : id;
         }).join(', ');
-        
-        return `<a href="/mon-an/${r.slug}" class="recipe-result-item">
-          <div class="rr-header">
-            <strong>${data.recipeNames[r.slug] || r.slug}</strong>
-            <span class="rr-badge">${r.score}/${r.totalIngs} NL trùng</span>
-          </div>
-          <div class="rr-matched">Nguyên liệu khớp: ${matchedNames}</div>
-          ${r.matchRatio >= 0.5 ? '<div class="rr-tip">✅ Bạn đã có hầu hết nguyên liệu!</div>' : ''}
-        </a>`;
-      }).join('');
+
+        const link = document.createElement('a');
+        link.href = `/mon-an/${r.slug}`;
+        link.className = 'recipe-result-item';
+
+        const header = document.createElement('div');
+        header.className = 'rr-header';
+
+        const strong = document.createElement('strong');
+        strong.textContent = data.recipeNames[r.slug] || r.slug;
+
+        const badge = document.createElement('span');
+        badge.className = 'rr-badge';
+        badge.textContent = `${r.score}/${r.totalIngs} nguyên liệu khớp`;
+
+        header.appendChild(strong);
+        header.appendChild(badge);
+
+        const matched = document.createElement('div');
+        matched.className = 'rr-matched';
+        matched.textContent = `Khớp với nguyên liệu đã chọn: ${matchedNames}`;
+
+        link.appendChild(header);
+        link.appendChild(matched);
+
+        if (r.matchRatio >= 0.5) {
+          const tip = document.createElement('div');
+          tip.className = 'rr-tip';
+          tip.textContent = 'Mức khớp nguyên liệu cao trong tập nguyên liệu của món này.';
+          link.appendChild(tip);
+        }
+
+        fragment.appendChild(link);
+      });
+
+      results.replaceChildren(fragment);
+    }
+
+    function renderEmptyState(message) {
+      const box = document.createElement('div');
+      box.className = 'empty-state';
+      const p = document.createElement('p');
+      p.textContent = message;
+      box.appendChild(p);
+      results.replaceChildren(box);
     }
   }
 </script>
 
 <style>
+  .safety-shell {
+    margin: 18px 0 20px;
+    padding: 14px 16px;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #1f2937;
+  }
+  .safety-shell p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .safety-shell p + p {
+    margin-top: 8px;
+  }
   .app-container {
     margin-top: 20px;
   }
@@ -270,7 +389,7 @@ const catData = [
   }
   .rr-tip {
     font-size: 0.8em;
-    color: #16a34a;
+    color: #2563eb;
     margin-top: 4px;
   }
   .empty-state {
