@@ -1,139 +1,342 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const title = "Checklist — Hôm nay tôi ăn có đủ rau, đạm, nước không?";
-const desc = "Trả lời nhanh 7 câu hỏi để biết chế độ ăn hôm nay có ổn không. Đơn giản, không chuyên môn.";
+
+const title = "Checklist nhắc việc ăn uống hôm nay - Dinh Dưỡng Việt";
+const desc = "Checklist nhắc việc ăn uống ở mức tham khảo, không dùng để kết luận khẩu phần đạt hay chưa đạt.";
+
+const checklistItems = [
+  {
+    id: "q1",
+    label: "Rau xanh",
+    question: "Hôm nay tôi đã ghi nhận rau xanh trong bữa ăn.",
+    note: "Ghi chú tham khảo: lượng rau thực tế có thể thay đổi theo món, cách nấu và khẩu phần từng người.",
+  },
+  {
+    id: "q2",
+    label: "Trái cây",
+    question: "Hôm nay tôi đã ghi nhận một phần trái cây.",
+    note: "Ghi chú tham khảo: người cần kiểm soát đường hoặc có chế độ ăn điều trị nên hỏi chuyên gia trước khi tự đặt giới hạn riêng.",
+  },
+  {
+    id: "q3",
+    label: "Nước uống",
+    question: "Hôm nay tôi đã ghi nhận việc uống nước trong ngày.",
+    note: "Ghi chú tham khảo: nhu cầu nước có thể khác nhau theo thời tiết, vận động, bệnh nền và thuốc đang dùng.",
+  },
+  {
+    id: "q4",
+    label: "Nguồn đạm",
+    question: "Hôm nay tôi đã ghi nhận một nguồn đạm như thịt, cá, trứng, sữa, đậu hoặc lựa chọn tương tự.",
+    note: "Ghi chú tham khảo: lượng đạm cần cá thể hóa nếu có bệnh thận, gout, thai kỳ, trẻ em hoặc chế độ ăn điều trị.",
+  },
+  {
+    id: "q5",
+    label: "Tinh bột",
+    question: "Hôm nay tôi đã ghi nhận món có tinh bột như cơm, bún, phở, bánh mì hoặc món tương tự.",
+    note: "Ghi chú tham khảo: checklist này không tính khẩu phần tinh bột hoặc mục tiêu carb cá nhân.",
+  },
+  {
+    id: "q6",
+    label: "Đồ uống có đường",
+    question: "Hôm nay tôi đã ghi nhận tình trạng dùng đồ uống có đường.",
+    note: "Ghi chú tham khảo: mục này chỉ để tự nhắc việc, không đánh giá kiểm soát đường huyết.",
+    options: [
+      { value: "khong", label: "Không dùng" },
+      { value: "co", label: "Có dùng" },
+      { value: "khong_ro", label: "Chưa ghi rõ" },
+    ],
+  },
+  {
+    id: "q7",
+    label: "Rượu bia",
+    question: "Hôm nay tôi đã ghi nhận tình trạng dùng rượu bia.",
+    note: "Ghi chú tham khảo: người đang dùng thuốc, có bệnh nền hoặc cần chế độ ăn điều trị nên hỏi bác sĩ/chuyên gia.",
+    options: [
+      { value: "khong", label: "Không dùng" },
+      { value: "co", label: "Có dùng" },
+      { value: "khong_ro", label: "Chưa ghi rõ" },
+    ],
+  },
+];
 ---
 
 <BaseLayout title={title} description={desc} image="/logo.svg">
-  <main class="container" style="padding: 2rem 1rem; max-width: 640px; margin: 0 auto;">
-    <h1>✅ Checklist — Hôm nay tôi ăn uống thế nào?</h1>
-    <p class="lead">Trả lời nhanh 7 câu hỏi <strong>có/không</strong>. Không cần tính toán — chỉ cần nhớ lại trong ngày.</p>
+  <style>
+    .checklist-page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--brand-light);
+      color: var(--brand);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      line-height: 1.2;
+    }
+    .lead {
+      margin: 0 0 18px;
+      color: var(--ink-secondary);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    .safety-shell {
+      margin: 0 0 20px;
+      padding: 14px 16px;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #1f2937;
+    }
+    .safety-shell p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .safety-shell p + p { margin-top: 8px; }
+    .checklist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .check-item {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+    }
+    .check-item h2 {
+      margin: 0 0 6px;
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+    .check-item p {
+      margin: 0 0 12px;
+      color: var(--ink-secondary);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg-soft);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .note {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--bg-soft);
+      color: var(--ink-secondary);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .primary-action,
+    .secondary-action {
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--brand);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+    .primary-action {
+      background: var(--brand);
+      color: white;
+    }
+    .secondary-action {
+      background: var(--card);
+      color: var(--brand);
+    }
+    .result {
+      display: none;
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+    }
+    .result h2 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 1.08rem;
+    }
+    .result p {
+      margin: 0;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+    }
+    .result-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .result-list li {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--bg-soft);
+      color: var(--ink-secondary);
+      overflow-wrap: anywhere;
+    }
+    @media (max-width: 600px) {
+      .checklist-page,
+      .safety-shell,
+      .check-item,
+      .result { min-width: 0; max-width: 100%; }
+      .options { flex-direction: column; }
+      .options label,
+      .primary-action,
+      .secondary-action { width: 100%; justify-content: center; }
+      h1,
+      .lead,
+      .safety-shell p,
+      .check-item h2,
+      .check-item p { overflow-wrap: anywhere; }
+    }
+  </style>
 
-    <form id="checklist-form" style="display:flex; flex-direction:column; gap:1.2rem; margin-top:1.5rem;">
-      <div class="q">
-        <p>1️⃣ Hôm nay tôi có ăn <strong>rau xanh</strong> ít nhất 1 bát (lưng) không?</p>
-        <label><input type="radio" name="q1" value="co"> Có</label>
-        <label><input type="radio" name="q1" value="khong"> Không</label>
-        <div class="tip" style="display:none;">Rau nên ăn 2 bát/ngày. Hãy thêm rau vào bữa trưa và tối.</div>
+  <main class="checklist-page">
+    <span class="eyebrow">Checklist nhắc việc</span>
+    <h1>Checklist ăn uống hôm nay</h1>
+    <p class="lead">
+      Đánh dấu các mục bạn muốn tự ghi nhận trong ngày. Công cụ chỉ tổng hợp số mục đã đánh dấu, không chấm điểm sức khỏe và không kết luận khẩu phần đạt hay chưa đạt.
+    </p>
+
+    <div class="safety-shell">
+      <p><strong>Lưu ý:</strong> Checklist này chỉ để tự nhắc việc ở mức tham khảo, không dùng để tự chẩn đoán hoặc tự điều chỉnh chế độ điều trị.</p>
+      <p>Người có bệnh nền, đang dùng thuốc, thai kỳ, trẻ em hoặc cần chế độ ăn điều trị nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi tự đặt mục tiêu ăn uống riêng.</p>
+    </div>
+
+    <form id="checklist-form" class="checklist-form">
+      {checklistItems.map((item, index) => (
+        <section class="check-item" data-item={item.id}>
+          <h2>{index + 1}. {item.label}</h2>
+          <p>{item.question}</p>
+          <div class="options">
+            {(item.options || [
+              { value: "co", label: "Đã đánh dấu" },
+              { value: "chua", label: "Chưa đánh dấu" },
+            ]).map((option) => (
+              <label>
+                <input type="radio" name={item.id} value={option.value} />
+                <span>{option.label}</span>
+              </label>
+            ))}
+          </div>
+          <div class="note">{item.note}</div>
+        </section>
+      ))}
+
+      <div class="actions">
+        <button class="primary-action" type="submit">Xem mục đã đánh dấu</button>
+        <button class="secondary-action" type="reset">Đặt lại checklist</button>
       </div>
-
-      <div class="q">
-        <p>2️⃣ Hôm nay tôi có ăn <strong>trái cây</strong> không (1 phần = 1 nắm tay)?</p>
-        <label><input type="radio" name="q2" value="co"> Có</label>
-        <label><input type="radio" name="q2" value="khong"> Không</label>
-        <div class="tip" style="display:none;">Trái cây cung cấp vitamin, chất xơ. Ổi, bưởi, thanh long là lựa chọn tốt.</div>
-      </div>
-
-      <div class="q">
-        <p>3️⃣ Hôm nay tôi có uống <strong>1.5 - 2 lít nước</strong> (khoảng 6-8 ly) không?</p>
-        <label><input type="radio" name="q3" value="co"> Có</label>
-        <label><input type="radio" name="q3" value="khong"> Không</label>
-        <div class="tip" style="display:none;">Uống ít nước gây mệt mỏi, táo bón. Hãy uống đều trong ngày.</div>
-      </div>
-
-      <div class="q">
-        <p>4️⃣ Hôm nay tôi có ăn <strong>đạm</strong> (thịt/cá/trứng/đậu) trong cả bữa trưa và tối không?</p>
-        <label><input type="radio" name="q4" value="co"> Có</label>
-        <label><input type="radio" name="q4" value="khong"> Không</label>
-        <div class="tip" style="display:none;">Mỗi bữa nên có 1 phần đạm. Nếu ăn chay: đậu phụ, nấm, trứng, sữa.</div>
-      </div>
-
-      <div class="q">
-        <p>5️⃣ Hôm nay tôi có ăn <strong>tinh bột</strong> (cơm/bún/phở/bánh mì) đủ nhưng không quá nhiều không?</p>
-        <label><input type="radio" name="q5" value="co"> Có</label>
-        <label><input type="radio" name="q5" value="khong"> Không</label>
-        <div class="tip" style="display:none;">Cơm mỗi bữa 1/2-1 chén. Nếu ăn bún/phở: chỉ ăn 1/2 tô.</div>
-      </div>
-
-      <div class="q">
-        <p>6️⃣ Hôm nay tôi có ăn <strong>đồ uống có đường</strong> (nước ngọt, trà sữa, nước ép) không?</p>
-        <label><input type="radio" name="q6" value="co_hoply"> Có — nhưng không quá 1 ly</label>
-        <label><input type="radio" name="q6" value="nhieu"> Có — nhiều hơn 1 ly</label>
-        <label><input type="radio" name="q6" value="khong"> Không — hoàn toàn không uống</label>
-        <div class="tip" style="display:none;">Nước ngọt, trà sữa chứa nhiều đường. Uống nhiều làm tăng đường huyết, mỡ máu.</div>
-      </div>
-
-      <div class="q">
-        <p>7️⃣ Hôm nay tôi có dùng <strong>rượu bia</strong> không?</p>
-        <label><input type="radio" name="q7" value="khong"> Không</label>
-        <label><input type="radio" name="q7" value="it"> Có — 1-2 ly</label>
-        <label><input type="radio" name="q7" value="nhieu"> Có — trên 2 ly</label>
-        <div class="tip" style="display:none;">Rượu bia không có lợi cho sức khỏe. Hạn chế tối đa.</div>
-      </div>
-
-      <button type="submit" style="padding: 0.8rem; background:var(--primary); color:white; border:none; border-radius:10px; font-size:1.1rem; cursor:pointer;">
-        Xem kết quả →
-      </button>
     </form>
 
-    <div id="result" style="display:none; margin-top:2rem; padding:1.5rem; border-radius:12px;"></div>
+    <section id="result" class="result" aria-live="polite"></section>
   </main>
 </BaseLayout>
 
-<script is:inline>
-const form = document.getElementById('checklist-form');
-const resultDiv = document.getElementById('result');
+<script define:vars={{ checklistItems }}>
+  const form = document.getElementById("checklist-form");
+  const result = document.getElementById("result");
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const fd = new FormData(form);
-  const q1 = fd.get('q1');
-  const q2 = fd.get('q2');
-  const q3 = fd.get('q3');
-  const q4 = fd.get('q4');
-  const q5 = fd.get('q5');
-  const q6 = fd.get('q6');
-  const q7 = fd.get('q7');
-
-  let good = 0, alert = 0;
-  const msgs = [];
-
-  if (q1 === 'co') { good++; msgs.push('✅ Rau: có rau — tốt'); } else { alert++; msgs.push('⚠️ Thiếu rau — cố gắng ăn 2 bát rau/ngày'); }
-  if (q2 === 'co') { good++; msgs.push('✅ Trái cây: có — tốt'); } else { alert++; msgs.push('⚠️ Thiếu trái cây — ăn thêm ổi, bưởi, thanh long'); }
-  if (q3 === 'co') { good++; msgs.push('✅ Nước: đủ — tốt'); } else { alert++; msgs.push('⚠️ Thiếu nước — uống thêm, 1.5-2 lít/ngày'); }
-  if (q4 === 'co') { good++; msgs.push('✅ Đạm: có — tốt'); } else { alert++; msgs.push('⚠️ Thiếu đạm — thêm thịt/cá/trứng/đậu vào bữa ăn'); }
-  if (q5 === 'co') { good++; msgs.push('✅ Tinh bột: vừa phải — tốt'); } else { alert++; msgs.push('⚠️ Quá nhiều tinh bột — giảm cơm/bún/phở'); }
-
-  if (q6 === 'khong') { good++; msgs.push('✅ Không uống nước ngọt — rất tốt'); }
-  else if (q6 === 'co_hoply') { msgs.push('⚠️ Nước ngọt: 1 ly là chấp nhận được, cố gắng không uống'); }
-  else { alert++; msgs.push('🔴 Nhiều nước ngọt — cần cắt giảm!'); }
-
-  if (q7 === 'khong') { good++; msgs.push('✅ Không rượu bia — tốt'); }
-  else if (q7 === 'it') { msgs.push('⚠️ Rượu bia: 1-2 ly, hạn chế'); }
-  else { alert++; msgs.push('🔴 Rượu bia nhiều — cần giảm!'); }
-
-  let summary = '';
-  if (good >= 5 && alert === 0) {
-    summary = '🌟 Hôm nay bạn ăn uống rất tốt! Duy trì nhé!';
-    resultDiv.style.background = 'var(--green-bg)';
-  } else if (alert <= 2) {
-    summary = '👍 Tạm ổn. Chỉ cần cải thiện vài điểm nhỏ là sẽ tốt hơn.';
-    resultDiv.style.background = 'var(--orange-bg)';
-  } else {
-    summary = '🔴 Cần cải thiện nhiều. Hãy đọc các bài viết trên web để biết cách ăn uống lành mạnh hơn.';
-    resultDiv.style.background = 'var(--red-bg)';
+  function createNode(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
   }
 
-  resultDiv.innerHTML = `<h3>${summary}</h3><div style="margin-top:0.8rem;">${msgs.map(m => '<div style="margin:0.3rem 0;">' + m + '</div>').join('')}</div>`;
-  resultDiv.style.display = 'block';
-  resultDiv.scrollIntoView({ behavior: 'smooth' });
-});
+  function showItemNote(input) {
+    const item = input.closest(".check-item");
+    const note = item?.querySelector(".note");
+    if (note) note.style.display = "block";
+  }
 
-// Show tips on select
-document.querySelectorAll('.q input[type="radio"]').forEach(r => {
-  r.addEventListener('change', () => {
-    const tip = r.closest('.q').querySelector('.tip');
-    if (r.checked) tip.style.display = 'block';
+  function renderResult(formData) {
+    const selectedItems = [];
+    const unselectedItems = [];
+
+    checklistItems.forEach((item) => {
+      const value = formData.get(item.id);
+      if (value && value !== "chua" && value !== "khong_ro") {
+        selectedItems.push(item.label);
+      } else {
+        unselectedItems.push(item.label);
+      }
+    });
+
+    const heading = createNode("h2", "", "Tổng hợp checklist");
+    const summary = createNode(
+      "p",
+      "",
+      `Bạn đã đánh dấu ${selectedItems.length}/${checklistItems.length} mục. Đây là tổng hợp nhắc việc, không phải điểm sức khỏe hoặc kết luận khẩu phần.`
+    );
+
+    const list = createNode("ul", "result-list");
+    checklistItems.forEach((item) => {
+      const value = formData.get(item.id);
+      const label = value && value !== "chua" && value !== "khong_ro" ? "Mục đã đánh dấu" : "Mục chưa đánh dấu";
+      list.appendChild(createNode("li", "", `${item.label}: ${label}`));
+    });
+
+    const safety = createNode(
+      "p",
+      "",
+      "Nếu bạn cần chế độ ăn điều trị hoặc đang dùng thuốc, hãy trao đổi với bác sĩ hoặc chuyên gia dinh dưỡng trước khi thay đổi kế hoạch ăn uống."
+    );
+    safety.style.marginTop = "14px";
+
+    result.replaceChildren(heading, summary, list, safety);
+    result.style.display = "block";
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    renderResult(new FormData(form));
   });
-});
-</script>
 
-<style>
-  .q {
-    background: var(--b1); padding: 1rem; border-radius: 12px;
-  }
-  .q p { margin: 0 0 0.5rem 0; }
-  .q label { margin-right: 1.2rem; cursor: pointer; }
-  .tip { margin-top: 0.5rem; padding: 0.5rem; border-radius: 8px; background: var(--primary-bg); font-size: 0.9rem; }
-  #result { background: var(--b1); }
-</style>
+  form.addEventListener("reset", () => {
+    result.replaceChildren();
+    result.style.display = "none";
+    form.querySelectorAll(".note").forEach((note) => {
+      note.style.display = "none";
+    });
+  });
+
+  form.querySelectorAll('input[type="radio"]').forEach((input) => {
+    input.addEventListener("change", () => showItemNote(input));
+  });
+</script>
