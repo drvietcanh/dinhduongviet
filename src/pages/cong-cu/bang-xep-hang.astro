@@ -1,35 +1,58 @@
 ---
-// bang-xep-hang.astro — Bảng xếp hạng dinh dưỡng thực phẩm Việt
+// bang-xep-hang.astro - Bảng sắp xếp dữ liệu dinh dưỡng thực phẩm Việt
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const CATEGORIES = [
-  "Giàu đạm nhất", "Ít calo nhất", "Giàu chất xơ nhất", "Giàu sắt nhất",
-  "Giàu canxi nhất", "Giàu vitamin C nhất", "Ít đường nhất", "Ít béo bão hòa nhất"
+  "Đạm: giảm dần",
+  "Năng lượng: tăng dần",
+  "Chất xơ: giảm dần",
+  "Sắt: giảm dần",
+  "Canxi: giảm dần",
+  "Vitamin C: giảm dần",
+  "Đường: tăng dần",
+  "Béo bão hòa: tăng dần",
 ];
+
 const config = [
-  { id: "protein", title: "🥩 Top thực phẩm giàu đạm nhất", key: "proteinG", sort: -1, unit: "g" },
-  { id: "lowcal", title: "🥗 Top thực phẩm ít calo nhất", key: "energyKcal", sort: 1, unit: "kcal" },
-  { id: "fiber", title: "🌾 Top thực phẩm giàu chất xơ nhất", key: "fiberG", sort: -1, unit: "g" },
-  { id: "iron", title: "🩸 Top thực phẩm giàu sắt nhất", key: "ironMg", sort: -1, unit: "mg" },
-  { id: "calcium", title: "🦴 Top thực phẩm giàu canxi nhất", key: "calciumMg", sort: -1, unit: "mg" },
-  { id: "vitc", title: "🍊 Top thực phẩm giàu vitamin C nhất", key: "vitaminCMg", sort: -1, unit: "mg" },
-  { id: "lowsugar", title: "🍃 Top thực phẩm ít đường nhất", key: "sugarG", sort: 1, unit: "g" },
-  { id: "lowsatfat", title: "❤️ Top thực phẩm ít béo bão hòa nhất", key: "saturatedFatG", sort: 1, unit: "g" },
+  { id: "protein", title: "Đạm trong thực phẩm", key: "proteinG", sort: -1, unit: "g", direction: "giảm dần" },
+  { id: "lowcal", title: "Năng lượng trong thực phẩm", key: "energyKcal", sort: 1, unit: "kcal", direction: "tăng dần" },
+  { id: "fiber", title: "Chất xơ trong thực phẩm", key: "fiberG", sort: -1, unit: "g", direction: "giảm dần" },
+  { id: "iron", title: "Sắt trong thực phẩm", key: "ironMg", sort: -1, unit: "mg", direction: "giảm dần" },
+  { id: "calcium", title: "Canxi trong thực phẩm", key: "calciumMg", sort: -1, unit: "mg", direction: "giảm dần" },
+  { id: "vitc", title: "Vitamin C trong thực phẩm", key: "vitaminCMg", sort: -1, unit: "mg", direction: "giảm dần" },
+  { id: "sugar", title: "Đường trong thực phẩm", key: "sugarG", sort: 1, unit: "g", direction: "tăng dần" },
+  { id: "satfat", title: "Béo bão hòa trong thực phẩm", key: "saturatedFatG", sort: 1, unit: "g", direction: "tăng dần" },
 ];
-const RANK_LIMIT = 15;
 ---
 
-<BaseLayout title="Bảng xếp hạng dinh dưỡng thực phẩm - Dinh Dưỡng Việt">
+<BaseLayout title="Bảng sắp xếp dữ liệu dinh dưỡng thực phẩm - Dinh Dưỡng Việt">
   <style>
     .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
     .badge { display: inline-block; background: var(--bg-info); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
     h1 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 0 0 8px; }
-    .lead { color: var(--ink-secondary); margin-bottom: 24px; font-size: 1.1rem; }
+    .lead { color: var(--ink-secondary); margin-bottom: 18px; font-size: 1.05rem; }
 
-    .rank-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .safety-shell {
+      margin: 0 0 22px;
+      padding: 14px 16px;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #1f2937;
+    }
+    .safety-shell p { margin: 0; font-size: 0.92rem; line-height: 1.55; }
+    .safety-shell p + p { margin-top: 8px; }
+
+    section,
+    .safety-shell,
+    .app-container,
+    .rank-card,
+    .legend { min-width: 0; max-width: 100%; }
+
+    .rank-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; max-width: 100%; }
     .rank-nav button {
-      padding: 8px 16px; border: 1px solid var(--line); border-radius: 20px;
-      background: var(--card); cursor: pointer; font-size: 0.9rem; transition: all .2s;
+      padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px;
+      background: var(--card); cursor: pointer; font-size: 0.88rem; transition: all .2s;
       color: var(--ink);
     }
     .rank-nav button:hover { border-color: var(--brand); background: var(--card-hover); }
@@ -37,11 +60,20 @@ const RANK_LIMIT = 15;
 
     .rank-card { display: none; }
     .rank-card.active { display: block; }
+    .rank-card h2 { margin-bottom: 4px; }
+    .rank-card .rank-note { margin: 0 0 12px; color: var(--ink-secondary); font-size: 0.88rem; }
 
+    .rank-list { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); }
     .rank-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 10px 16px; border-bottom: 1px solid var(--line-light); transition: background .15s;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) max-content;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--line-light);
+      transition: background .15s;
     }
+    .rank-item:last-child { border-bottom: 0; }
     .rank-item:hover { background: var(--bg-highlight); }
 
     .rank-num {
@@ -50,63 +82,79 @@ const RANK_LIMIT = 15;
       font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
       background: var(--brand-light); color: var(--brand);
     }
-    .rank-num.top3 { background: var(--brand); color: var(--ink); }
-    .rank-num.gold { background: #ff8f00; color: white; }
-    .rank-num.silver { background: #78909c; color: white; }
-    .rank-num.bronze { background: #a1887f; color: white; }
 
-    .rank-info { flex: 1; }
-    .rank-name { font-weight: 600; color: var(--ink); }
-    .rank-cat { font-size: 0.8rem; color: var(--ink-tertiary); }
-    .rank-val { font-weight: 700; font-size: 1.1rem; color: var(--brand); text-align: right; white-space: nowrap; }
+    .rank-info { min-width: 0; }
+    .rank-name { font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+    .rank-cat { font-size: 0.8rem; color: var(--ink-tertiary); margin-top: 2px; }
+    .rank-val { font-weight: 700; font-size: 1.05rem; color: var(--brand); text-align: right; white-space: nowrap; }
     .rank-unit { font-weight: 400; color: var(--ink-tertiary); font-size: 0.85rem; }
 
-    .loading { text-align: center; padding: 60px; color: var(--ink-tertiary); }
+    .loading, .empty-state {
+      text-align: center;
+      padding: 44px 18px;
+      color: var(--ink-tertiary);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+    }
 
-    .legend { margin-top: 24px; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; font-size: 0.85rem; color: var(--ink-secondary); }
+    .legend { margin-top: 24px; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; font-size: 0.85rem; color: var(--ink-secondary); }
     .legend h3 { margin: 0 0 8px; color: var(--ink); }
+    .legend ul { margin-bottom: 0; padding-left: 18px; }
+    .legend li + li { margin-top: 6px; }
 
     @media (max-width: 600px) {
-      .rank-nav button { font-size: 0.8rem; padding: 6px 12px; }
+      h1 { font-size: 1.45rem; line-height: 1.22; overflow-wrap: anywhere; }
+      .lead,
+      .safety-shell p,
+      .rank-card .rank-note,
+      .legend { overflow-wrap: anywhere; }
+      .rank-nav button { font-size: 0.8rem; padding: 7px 10px; max-width: 100%; }
+      .rank-item { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; }
+      .rank-val { grid-column: 2; text-align: left; font-size: 0.95rem; }
     }
   </style>
 
   <section>
-    <span class="badge">🏆 Khám phá</span>
-    <h1>Bảng xếp hạng dinh dưỡng</h1>
+    <span class="badge">Dữ liệu tham khảo</span>
+    <h1>Bảng sắp xếp dữ liệu dinh dưỡng</h1>
     <p class="lead">
-      Khám phá thực phẩm Việt Nam nào giàu đạm nhất, ít calo nhất, giàu sắt nhất…
-      Dữ liệu từ <strong>683+ thực phẩm Việt Nam</strong>.
+      Sắp xếp thực phẩm Việt theo từng chỉ số dinh dưỡng ở mức tham khảo, không kết luận thực phẩm tốt hay xấu.
     </p>
   </section>
 
+  <div class="safety-shell">
+    <p><strong>Lưu ý:</strong> Đây là bảng sắp xếp dữ liệu dinh dưỡng, không phải công cụ chọn thực phẩm nên ăn hoặc không nên ăn.</p>
+    <p>Dữ liệu có thể thay đổi theo giống, phần ăn được, cách chế biến, nhãn sản phẩm và nguồn dữ liệu. Các giá trị hiển thị theo 100g phần ăn được khi dữ liệu có sẵn.</p>
+    <p>Người có bệnh nền, đang dùng thuốc, thai kỳ, trẻ em hoặc cần chế độ ăn điều trị nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi dùng dữ liệu để lên kế hoạch ăn uống.</p>
+  </div>
+
   <div class="app-container" id="rank-app">
-    <div class="rank-nav" id="rank-nav">
+    <div class="rank-nav" id="rank-nav" aria-label="Chọn chỉ số dinh dưỡng để sắp xếp">
       {CATEGORIES.map((cat, i) => (
-        <button data-id="{config[i].id}" class="{i === 0 ? 'active' : ''}">{cat}</button>
+        <button type="button" data-id={config[i].id} class={i === 0 ? "active" : ""}>{cat}</button>
       ))}
     </div>
 
     <div id="rank-content">
-      <div class="loading">⏳ Đang tải dữ liệu...</div>
+      <div class="loading">Đang tải dữ liệu...</div>
     </div>
 
     <div class="legend">
-      <h3>📌 Ghi chú</h3>
+      <h3>Ghi chú dữ liệu</h3>
       <ul>
-        <li>Dữ liệu dựa trên 683 thực phẩm Việt Nam với chỉ số ước tính (confidence: low-medium) từ nhiều nguồn.</li>
-        <li>Thực phẩm chế biến (state: cooked/salt-fermented/dried) có thể có sai khác so với thực phẩm tươi sống.</li>
-        <li>Không bao gồm nước chấm, gia vị, nước dùng trong các bảng xếp hạng (trừ những chỉ số liên quan).</li>
-        <li>Các thực phẩm có giá trị <em>null</em> ở chỉ số tương ứng sẽ bị loại khỏi bảng xếp hạng đó.</li>
+        <li>Danh sách chỉ sắp xếp các thực phẩm có số liệu ở chỉ số đang xem; dữ liệu thiếu được loại khỏi phép sắp xếp thay vì suy đoán là 0.</li>
+        <li>Giá trị 0 được giữ như một số liệu thật nếu có trong dữ liệu nguồn.</li>
+        <li>Không gọi natri là muối nếu chưa có quy đổi rõ.</li>
+        <li>Các nhãn tăng dần/giảm dần chỉ mô tả thứ tự số liệu, không phải đánh giá sức khỏe.</li>
       </ul>
     </div>
   </div>
 
-  <script>
-    const CATS = Object.freeze(JSON.parse('${JSON.stringify(config)}'));
+  <script define:vars={{ rankConfig: config }}>
+    const CATS = Object.freeze(rankConfig);
     const LIMIT = 15;
 
-    // Exclude condiments, cooking water, drinks from most rankings
     const EXCLUDE_LOW_CAL = ["Dầu mỡ", "Gia vị", "Nước dùng", "Đồ uống", "Hạt"];
     const EXCLUDE_PROTEIN = ["Dầu mỡ", "Gia vị", "Nước dùng", "Đồ uống"];
     const EXCLUDE_FIBER = ["Dầu mỡ", "Gia vị", "Nước dùng", "Đồ uống", "Trứng sữa"];
@@ -123,66 +171,92 @@ const RANK_LIMIT = 15;
       iron: EXCLUDE_IRON,
       calcium: EXCLUDE_CALCIUM,
       vitc: EXCLUDE_VITC,
-      lowsugar: EXCLUDE_LOW_SUGAR,
-      lowsatfat: EXCLUDE_LOW_SAT,
+      sugar: EXCLUDE_LOW_SUGAR,
+      satfat: EXCLUDE_LOW_SAT,
     };
 
-    function numClass(i) {
-      if (i === 0) return "gold";
-      if (i === 1) return "silver";
-      if (i === 2) return "bronze";
-      if (i < 5) return "top3";
-      return "";
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    function formatValue(value) {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return "—";
+      const number = Number(value);
+      return Number.isInteger(number) ? String(number) : number.toFixed(1);
+    }
+
+    function getRankedFoods(foods, cat) {
+      const exclude = EXCLUDE_MAP[cat.id] || [];
+      return foods
+        .filter((food) => !exclude.includes(food.category))
+        .filter((food) => {
+          const value = food.nutrients?.[cat.key];
+          return value !== undefined && value !== null && Number.isFinite(Number(value)) && Number(value) >= 0;
+        })
+        .sort((a, b) => cat.sort * (Number(a.nutrients[cat.key]) - Number(b.nutrients[cat.key])))
+        .slice(0, LIMIT);
+    }
+
+    function renderRankCard(foods, cat, index) {
+      const card = el("section", `rank-card${index === 0 ? " active" : ""}`);
+      card.dataset.cat = cat.id;
+
+      card.appendChild(el("h2", "", cat.title));
+      card.appendChild(el("p", "rank-note", `Danh sách sắp xếp ${cat.direction} theo số liệu ${cat.unit} trên 100g phần ăn được khi dữ liệu có sẵn.`));
+
+      const ranked = getRankedFoods(foods, cat);
+      if (!ranked.length) {
+        card.appendChild(el("div", "empty-state", "Chưa có dữ liệu cho chỉ số này."));
+        return card;
+      }
+
+      const list = el("div", "rank-list");
+      ranked.forEach((food, itemIndex) => {
+        const item = el("div", "rank-item");
+        item.appendChild(el("div", "rank-num", String(itemIndex + 1)));
+
+        const info = el("div", "rank-info");
+        info.appendChild(el("div", "rank-name", food.name || "Chưa có tên"));
+        info.appendChild(el("div", "rank-cat", food.category || "Chưa có nhóm"));
+        item.appendChild(info);
+
+        const value = el("div", "rank-val");
+        value.append(document.createTextNode(`${formatValue(food.nutrients?.[cat.key])} `));
+        value.appendChild(el("span", "rank-unit", cat.unit));
+        item.appendChild(value);
+
+        list.appendChild(item);
+      });
+
+      card.appendChild(list);
+      return card;
     }
 
     async function init() {
-      const res = await fetch("/api-foods.json");
-      const foods = await res.json();
-
       const content = document.getElementById("rank-content");
-      let html = "";
-      for (const cat of CATS) {
-        const exclude = EXCLUDE_MAP[cat.id] || [];
-        const filtered = foods.filter(f => !exclude.includes(f.category))
-          .filter(f => {
-            const v = f.nutrients?.[cat.key];
-            return v !== undefined && v !== null && v >= 0;
-          });
 
-        filtered.sort((a, b) => {
-          const va = a.nutrients[cat.key];
-          const vb = b.nutrients[cat.key];
-          return cat.sort * (va - vb);
+      try {
+        const res = await fetch("/api-foods.json");
+        const foods = await res.json();
+
+        const fragment = document.createDocumentFragment();
+        CATS.forEach((cat, index) => {
+          fragment.appendChild(renderRankCard(foods, cat, index));
         });
-
-        const top = filtered.slice(0, LIMIT);
-
-        html += `<div class="rank-card${cat.id === 'protein' ? ' active' : ''}" data-cat="${cat.id}">`;
-        html += `<h2>${cat.title}</h2>`;
-        html += `<div>`;
-        top.forEach((f, i) => {
-          const val = f.nutrients[cat.key];
-          html += `<div class="rank-item">
-            <div class="rank-num ${numClass(i)}">${i + 1}</div>
-            <div class="rank-info">
-              <div class="rank-name">${f.name}</div>
-              <div class="rank-cat">${f.category || ""}</div>
-            </div>
-            <div class="rank-val">${Number.isInteger(val) ? val : val.toFixed(1)} <span class="rank-unit">${cat.unit}</span></div>
-          </div>`;
-        });
-        html += `</div></div>`;
+        content.replaceChildren(fragment);
+      } catch (error) {
+        content.replaceChildren(el("div", "empty-state", "Chưa tải được dữ liệu. Vui lòng thử lại sau."));
       }
 
-      content.innerHTML = html;
-
-      // Tab switching
       document.getElementById("rank-nav").addEventListener("click", function(e) {
         const btn = e.target.closest("button");
         if (!btn) return;
-        document.querySelectorAll("#rank-nav button").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll("#rank-nav button").forEach((button) => button.classList.remove("active"));
         btn.classList.add("active");
-        document.querySelectorAll(".rank-card").forEach(c => c.classList.remove("active"));
+        document.querySelectorAll(".rank-card").forEach((card) => card.classList.remove("active"));
         const card = document.querySelector(`.rank-card[data-cat="${btn.dataset.id}"]`);
         if (card) card.classList.add("active");
       });
