@@ -7,9 +7,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <span class="badge">🔄 Công cụ</span>
     <h1>Bộ đổi đơn vị</h1>
     <p class="lead">
-      Chuyển đổi nhanh giữa các đơn vị đo lường thường gặp trong dinh dưỡng và nấu ăn.
+      Quy đổi đơn vị đo lường thường gặp ở mức tham khảo, có ghi chú khi giả định quy đổi có thể thay đổi theo dụng cụ và cách đo.
     </p>
   </section>
+
+  <div class="safety-shell">
+    <p><strong>Lưu ý:</strong> Đây là công cụ quy đổi đơn vị tham khảo, không dùng để kết luận khẩu phần phù hợp, lượng ăn an toàn, hay mục tiêu điều trị cá nhân.</p>
+    <p>Kết quả có thể thay đổi theo loại thực phẩm, cách cắt hoặc nấu, và độ đầy của muỗng, cốc, chén hoặc ly. Khi cần độ chính xác cao, hãy kiểm tra nhãn sản phẩm hoặc cân thực tế.</p>
+    <p>Người có bệnh nền, đang dùng thuốc, thai kỳ, trẻ em hoặc cần chế độ ăn điều trị nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng trước khi dùng kết quả để lên kế hoạch ăn uống.</p>
+  </div>
 
   <section class="section card">
     <h2>🔁 Chọn bộ chuyển đổi</h2>
@@ -25,7 +31,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="cv-panel active" id="panel-weight">
       <h3>⚖️ Khối lượng</h3>
       <div class="cv-grid">
-        <div><label>Giá trị</label><input type="number" class="cv-input" data-panel="weight" id="w-val" value="100" /></div>
+        <div><label>Giá trị</label><input type="text" inputmode="decimal" class="cv-input" data-panel="weight" id="w-val" value="100" /></div>
         <div>
           <label>Từ</label>
           <select class="cv-from" data-panel="weight" id="w-from">
@@ -49,6 +55,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div class="cv-result">
           <label>Kết quả</label>
           <strong id="w-result">0.1 kg</strong>
+          <span class="cv-hint" id="w-hint" aria-live="polite">Quy đổi tham khảo giữa các đơn vị khối lượng.</span>
         </div>
       </div>
     </div>
@@ -57,7 +64,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="cv-panel" id="panel-energy">
       <h3>🔥 Năng lượng</h3>
       <div class="cv-grid">
-        <div><label>Giá trị</label><input type="number" class="cv-input" data-panel="energy" id="e-val" value="100" /></div>
+        <div><label>Giá trị</label><input type="text" inputmode="decimal" class="cv-input" data-panel="energy" id="e-val" value="100" /></div>
         <div>
           <label>Từ</label>
           <select class="cv-from" data-panel="energy" id="e-from">
@@ -77,6 +84,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div class="cv-result">
           <label>Kết quả</label>
           <strong id="e-result">418.4 kJ</strong>
+          <span class="cv-hint" id="e-hint" aria-live="polite">Quy đổi tham khảo giữa các đơn vị năng lượng.</span>
         </div>
       </div>
       <p class="muted" style="margin-top: 8px;">💡 1 kcal = 4.184 kJ. Trên nhãn thực phẩm: 1 kcal = 1 Calorie (viết hoa C).</p>
@@ -86,7 +94,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="cv-panel" id="panel-volume">
       <h3>🧪 Thể tích</h3>
       <div class="cv-grid">
-        <div><label>Giá trị</label><input type="number" class="cv-input" data-panel="volume" id="v-val" value="1" step="0.1" /></div>
+        <div><label>Giá trị</label><input type="text" inputmode="decimal" class="cv-input" data-panel="volume" id="v-val" value="1" /></div>
         <div>
           <label>Từ</label>
           <select class="cv-from" data-panel="volume" id="v-from">
@@ -112,16 +120,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div class="cv-result">
           <label>Kết quả</label>
           <strong id="v-result">4.17 cups</strong>
+          <span class="cv-hint" id="v-hint" aria-live="polite">Quy đổi tham khảo theo giả định thể tích chuẩn.</span>
         </div>
       </div>
-      <p class="muted" style="margin-top: 8px;">💡 1 cup = 240 ml (chuẩn Mỹ). 1 tbsp = 15 ml, 1 tsp = 5 ml.</p>
+      <p class="muted" style="margin-top: 8px;">💡 1 cup = 240 ml (chuẩn Mỹ). 1 tbsp = 15 ml, 1 tsp = 5 ml. Không mặc định 1 ml = 1 g cho mọi thực phẩm.</p>
     </div>
 
     <!-- Chiều dài -->
     <div class="cv-panel" id="panel-length">
       <h3>📏 Chiều dài</h3>
       <div class="cv-grid">
-        <div><label>Giá trị</label><input type="number" class="cv-input" data-panel="length" id="l-val" value="170" /></div>
+        <div><label>Giá trị</label><input type="text" inputmode="decimal" class="cv-input" data-panel="length" id="l-val" value="170" /></div>
         <div>
           <label>Từ</label>
           <select class="cv-from" data-panel="length" id="l-from">
@@ -143,6 +152,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div class="cv-result">
           <label>Kết quả</label>
           <strong id="l-result">66.93 in</strong>
+          <span class="cv-hint" id="l-hint" aria-live="polite">Quy đổi tham khảo giữa các đơn vị chiều dài.</span>
         </div>
       </div>
       <p class="muted" style="margin-top: 8px;">💡 1 m = 100 cm = 39.37 in = 3.28 ft. Đồ dùng trong nấu ăn (nồi, chảo) hay tính bằng cm.</p>
@@ -152,7 +162,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="cv-panel" id="panel-temp">
       <h3>🌡️ Nhiệt độ</h3>
       <div class="cv-grid">
-        <div><label>Giá trị</label><input type="number" class="cv-input" data-panel="temp" id="t-val" value="180" /></div>
+        <div><label>Giá trị</label><input type="text" inputmode="decimal" class="cv-input" data-panel="temp" id="t-val" value="180" /></div>
         <div>
           <label>Từ</label>
           <select class="cv-from" data-panel="temp" id="t-from">
@@ -172,6 +182,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div class="cv-result">
           <label>Kết quả</label>
           <strong id="t-result">356 °F</strong>
+          <span class="cv-hint" id="t-hint" aria-live="polite">Quy đổi tham khảo giữa các thang nhiệt độ.</span>
         </div>
       </div>
       <p class="muted" style="margin-top: 8px;">💡 Lò nướng: 180°C = 356°F (gas mark 4). Công thức °F = °C × 9/5 + 32.</p>
@@ -181,6 +192,20 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <style>
   .converter-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .safety-shell {
+    margin: 18px 0 20px;
+    padding: 14px 16px;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #1f2937;
+  }
+  .safety-shell p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .safety-shell p + p { margin-top: 8px; }
   .cv-tab {
     padding: 8px 16px; border: 1px solid var(--line); border-radius: 8px;
     background: var(--card); cursor: pointer; font-size: 0.9rem; transition: all 0.15s;
@@ -205,6 +230,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     font-size: 1.6rem;
     padding: 8px 0;
     color: var(--brand);
+  }
+  .cv-hint {
+    display: block;
+    min-height: 2.8em;
+    font-size: 0.82rem;
+    color: var(--ink-secondary);
+    line-height: 1.45;
   }
 </style>
 
@@ -231,6 +263,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   const panels = ['weight', 'energy', 'volume', 'length', 'temp'];
   const panelName = { weight:'w', energy:'e', volume:'v', length:'l', temp:'t' };
+  const maxAbs = 1e9;
+
+  function parseLocalizedNumber(raw) {
+    if (typeof raw !== 'string') return Number.NaN;
+    const normalized = raw.trim().replace(',', '.');
+    if (!normalized) return Number.NaN;
+    const value = Number.parseFloat(normalized);
+    return Number.isFinite(value) ? value : Number.NaN;
+  }
 
   // Tabs
   document.querySelectorAll('.cv-tab').forEach(tab => {
@@ -249,10 +290,25 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     const fromEl = document.getElementById(prefix + '-from');
     const toEl = document.getElementById(prefix + '-to');
     const resEl = document.getElementById(prefix + '-result');
+    const hintEl = document.getElementById(prefix + '-hint');
 
     function update() {
-      const val = parseFloat(valEl.value);
-      if (isNaN(val)) { resEl.textContent = '—'; return; }
+      const val = parseLocalizedNumber(valEl.value);
+      if (Number.isNaN(val)) {
+        resEl.textContent = '—';
+        hintEl.textContent = 'Nhập một số hợp lệ, ví dụ 1.5 hoặc 1,5.';
+        return;
+      }
+      if (Math.abs(val) > maxAbs) {
+        resEl.textContent = '—';
+        hintEl.textContent = 'Giá trị quá lớn để quy đổi tham khảo trên màn hình này.';
+        return;
+      }
+      if (p !== 'temp' && val < 0) {
+        resEl.textContent = '—';
+        hintEl.textContent = 'Vui lòng nhập số không âm cho bộ quy đổi này.';
+        return;
+      }
 
       if (p === 'temp') {
         const from = fromEl.value;
@@ -260,11 +316,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         const inC = conv.temp[from].toBase(val);
         const out = conv.temp[to].fromBase(inC);
         resEl.textContent = out.toFixed(1) + ' °' + to.toUpperCase();
+        hintEl.textContent = 'Quy đổi tham khảo giữa các thang nhiệt độ.';
       } else {
         const factor = conv[p][fromEl.value] / conv[p][toEl.value];
         const out = val * factor;
         const decimals = out < 0.01 ? 4 : out < 1 ? 3 : out < 100 ? 2 : 1;
         resEl.textContent = out.toFixed(decimals) + ' ' + toEl.value;
+        if (p === 'volume') {
+          hintEl.textContent = 'Quy đổi tham khảo theo giả định thể tích chuẩn; không áp dụng như nhau cho mọi thực phẩm.';
+        } else {
+          hintEl.textContent = 'Quy đổi tham khảo giữa các đơn vị cùng loại.';
+        }
       }
     }
 
