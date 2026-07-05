@@ -2,104 +2,105 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Máy tính BMI & Vòng eo - Dinh Dưỡng Việt">
+<BaseLayout title="BMI tham khảo - Dinh Dưỡng Việt">
   <section>
     <span class="badge">📊 Công cụ</span>
-    <h1>Máy tính BMI & Vòng eo</h1>
+    <h1>Tính BMI tham khảo</h1>
     <p class="lead">
-      Tính chỉ số khối cơ thể (BMI) và đánh giá tình trạng dinh dưỡng.
-      Kết hợp với số đo vòng eo để đánh giá nguy cơ béo phì trung tâm.
+      Nhập chiều cao và cân nặng để tính BMI tham khảo. Đây là chỉ số sàng lọc
+      đơn giản, không thay thế đánh giá lâm sàng hoặc tư vấn cá nhân.
     </p>
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Cảnh báo y khoa:</strong> BMI là chỉ số tham khảo, không chẩn đoán. Người có cơ bắp phát triển (vận động viên), người cao tuổi mất cơ, phụ nữ mang thai có thể có BMI không chính xác.
+    ⚠️ <strong>Lưu ý:</strong> BMI chỉ là chỉ số tham khảo. Kết quả cần được
+    hiểu cùng tuổi, giới, vòng eo, thành phần cơ thể và bối cảnh sức khỏe.
   </div>
 
   <section class="section card">
-    <h2>Công thức BMI</h2>
-    <p><strong>BMI = Cân nặng (kg) / (Chiều cao (m))²</strong></p>
-    <div class="grid two" style="margin-top: 10px;">
-      <div>
-        <label>Cân nặng (kg)</label>
-        <input type="number" id="weight" min="20" max="300" step="0.1" value="65" required />
-      </div>
-      <div>
-        <label>Chiều cao (cm)</label>
-        <input type="number" id="height" min="100" max="250" step="1" value="170" required />
-      </div>
-    </div>
+    <h2>Nhập số liệu</h2>
+    <p class="muted">
+      Công thức dùng trong công cụ này: <strong>BMI = cân nặng (kg) / (chiều
+      cao (m))²</strong>.
+    </p>
 
     <div class="grid two" style="margin-top: 10px;">
       <div>
-        <label>Vòng eo (cm) — <em>tuỳ chọn</em></label>
-        <input type="number" id="waist" min="40" max="200" step="1" value="" placeholder="Rỗng để bỏ qua" />
+        <label for="weight">Cân nặng (kg)</label>
+        <input
+          type="text"
+          id="weight"
+          inputmode="decimal"
+          autocomplete="off"
+          placeholder="Ví dụ: 65 hoặc 65,5"
+        />
       </div>
       <div>
-        <label>Giới tính <em>(cho đánh giá vòng eo)</em></label>
-        <select id="gender">
-          <option value="male">Nam</option>
-          <option value="female">Nữ</option>
-        </select>
+        <label for="height">Chiều cao (cm)</label>
+        <input
+          type="text"
+          id="height"
+          inputmode="decimal"
+          autocomplete="off"
+          placeholder="Ví dụ: 170 hoặc 170,5"
+        />
       </div>
     </div>
 
-    <button type="submit" id="calc-btn" class="btn" style="margin-top: 16px;">Tính BMI</button>
+    <p class="muted" style="margin-top: 10px;">
+      Hỗ trợ nhập số thập phân bằng dấu chấm hoặc dấu phẩy.
+    </p>
+
+    <button type="button" id="calc-btn" class="btn" style="margin-top: 16px;">
+      Tính BMI tham khảo
+    </button>
+
+    <p id="form-message" class="form-message" hidden></p>
   </section>
 
   <section id="result-section" class="section card" style="display:none;">
-    <h2>✅ Kết quả</h2>
+    <h2>Kết quả tham khảo</h2>
     <div class="grid two">
       <div class="stat">
-        <span class="muted">BMI</span>
+        <span class="muted">BMI tham khảo</span>
         <strong id="bmi-value">—</strong>
       </div>
       <div class="stat">
-        <span class="muted">Phân loại</span>
-        <strong id="bmi-category">—</strong>
-      </div>
-      <div class="stat">
-        <span class="muted">Cân nặng lý tưởng (Creff)</span>
-        <strong id="ideal-weight">—</strong>
-        <span class="muted">kg (khung xương vừa)</span>
-      </div>
-      <div class="stat">
-        <span class="muted">Khoảng cân nặng khoẻ mạnh</span>
-        <strong id="healthy-range">—</strong>
+        <span class="muted">Cách hiểu</span>
+        <strong id="bmi-meaning">—</strong>
       </div>
     </div>
 
-    <div id="waist-result" style="display:none; margin-top: 16px; padding: 12px; background: var(--soft); border-radius: 8px;">
-      <span class="muted">Đánh giá vòng eo:</span>
-      <strong id="waist-assessment">—</strong>
-    </div>
+    <p id="bmi-note" class="result-note"></p>
+  </section>
 
-    <div style="margin-top: 16px; overflow-x: auto;">
-      <table class="table">
-        <thead>
-          <tr><th>Phân loại</th><th>BMI (kg/m²)</th><th>Nguy cơ bệnh</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Gầy (thiếu năng lượng trường diễn)</td><td>&lt; 18.5</td><td>Tăng nguy cơ nhiễm trùng, loãng xương</td></tr>
-          <tr><td>Bình thường</td><td>18.5 – 22.9</td><td>Thấp nhất</td></tr>
-          <tr><td>Thừa cân</td><td>23 – 24.9</td><td>Tăng nhẹ</td></tr>
-          <tr><td>Béo phì độ I</td><td>25 – 29.9</td><td>Tăng</td></tr>
-          <tr><td>Béo phì độ II</td><td>≥ 30</td><td>Cao</td></tr>
-        </tbody>
-      </table>
-      <p class="muted" style="margin-top: 8px;">⚠️ Phân loại theo IDI & WPRO dành cho người châu Á, khác với WHO cho người phương Tây.</p>
-    </div>
+  <section class="section card">
+    <h2>Giới hạn của BMI</h2>
+    <ul class="safe-list">
+      <li>BMI không phản ánh trực tiếp mỡ, cơ, phù hoặc phân bố mỡ cơ thể.</li>
+      <li>Kết quả có thể kém phù hợp với vận động viên, người cao tuổi, thai kỳ và trẻ em.</li>
+      <li>BMI chỉ là bước sàng lọc ban đầu, không phải chẩn đoán bệnh hoặc mục tiêu điều trị.</li>
+    </ul>
+  </section>
 
-    <div id="suggestion-box" style="margin-top: 16px; padding: 14px; border-radius: 8px;">
-      <h3 style="margin-bottom: 6px;">💡 Gợi ý</h3>
-      <p id="suggestion-text">—</p>
-    </div>
+  <section class="section card">
+    <h2>Khi nào nên hỏi nhân viên y tế</h2>
+    <p class="muted">
+      Nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng nếu bạn có bệnh nền, thay đổi cân
+      nặng nhanh, đang mang thai, là trẻ em, có rối loạn ăn uống hoặc cần mục
+      tiêu điều trị cá nhân.
+    </p>
   </section>
 </BaseLayout>
 
 <style>
-  label { display: block; font-weight: 600; margin-bottom: 4px; }
-  input, select {
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  input {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--line);
@@ -109,6 +110,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     color: var(--ink);
     box-sizing: border-box;
   }
+
   .btn {
     padding: 12px 28px;
     background: var(--brand);
@@ -119,105 +121,123 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     font-weight: 600;
     cursor: pointer;
   }
-  .btn:hover { background: var(--brand-dark); }
-  .stat { margin-bottom: 8px; }
-  .stat strong { font-size: 1.8rem; display: block; }
+
+  .btn:hover {
+    background: var(--brand-dark);
+  }
+
+  .stat {
+    margin-bottom: 8px;
+  }
+
+  .stat strong {
+    font-size: 1.8rem;
+    display: block;
+  }
+
+  .form-message {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fff7ed;
+    color: #9a3412;
+  }
+
+  .result-note {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--soft);
+  }
+
+  .safe-list {
+    margin: 10px 0 0;
+    padding-left: 18px;
+  }
+
+  .safe-list li + li {
+    margin-top: 8px;
+  }
 </style>
 
 <script>
-  document.getElementById("calc-btn")?.addEventListener("click", function() {
-    const weight = parseFloat(document.getElementById("weight").value);
-    const height = parseFloat(document.getElementById("height").value);
-    const waist = parseFloat(document.getElementById("waist").value);
-    const gender = document.getElementById("gender").value;
+  const weightInput = document.getElementById("weight");
+  const heightInput = document.getElementById("height");
+  const calcButton = document.getElementById("calc-btn");
+  const resultSection = document.getElementById("result-section");
+  const bmiValue = document.getElementById("bmi-value");
+  const bmiMeaning = document.getElementById("bmi-meaning");
+  const bmiNote = document.getElementById("bmi-note");
+  const formMessage = document.getElementById("form-message");
 
-    if (!weight || !height || height < 50) {
-      alert("Vui lòng nhập cân nặng và chiều cao hợp lệ.");
+  function normalizeNumber(rawValue) {
+    if (typeof rawValue !== "string") {
+      return Number.NaN;
+    }
+
+    const normalized = rawValue.trim().replace(",", ".");
+    if (!normalized) {
+      return Number.NaN;
+    }
+
+    return Number.parseFloat(normalized);
+  }
+
+  function setMessage(message) {
+    formMessage.textContent = message;
+    formMessage.hidden = !message;
+  }
+
+  function clearResult() {
+    resultSection.style.display = "none";
+    bmiValue.textContent = "—";
+    bmiMeaning.textContent = "—";
+    bmiNote.textContent = "";
+  }
+
+  calcButton?.addEventListener("click", () => {
+    setMessage("");
+    clearResult();
+
+    const weight = normalizeNumber(weightInput?.value ?? "");
+    const heightCm = normalizeNumber(heightInput?.value ?? "");
+
+    if (!Number.isFinite(weight) || !Number.isFinite(heightCm)) {
+      setMessage("Vui lòng nhập chiều cao và cân nặng bằng số hợp lệ.");
       return;
     }
 
-    const hM = height / 100;
-    const bmi = weight / (hM * hM);
-
-    let category, risk;
-    const suggestions = {
-      underweight: "Bạn đang ở mức gầy. Cần tăng cường dinh dưỡng, đặc biệt đạm và năng lượng. Xem thêm bài viết dinh dưỡng của chúng tôi để có chế độ ăn hợp lý.",
-      normal: "Bạn đang ở mức cân nặng lý tưởng! Duy trì chế độ ăn cân đối và vận động thường xuyên. Tham khảo thực đơn gợi ý trong các bài viết kiến thức dinh dưỡng.",
-      overweight: "Bạn đang thừa cân. Kiểm soát năng lượng ăn vào, tăng vận động. Tham khảo bài về dinh dưỡng cho người béo phì và tiểu đường.",
-      obese1: "Bạn ở mức béo phì độ I. Cần giảm cân dưới sự hướng dẫn của chuyên gia. Xem bài dinh dưỡng cho người béo phì, tăng huyết áp và mỡ máu.",
-      obese2: "Bạn ở mức béo phì độ II — nguy cơ cao cho sức khoẻ. Nên gặp bác sĩ và chuyên gia dinh dưỡng để được tư vấn toàn diện."
-    };
-
-    if (bmi < 18.5) {
-      category = "⬇️ Gầy";
-      risk = "Thấp (bệnh khác tăng)";
-      applySuggestion("underweight", "#fbbf24");
-    } else if (bmi < 23) {
-      category = "✅ Bình thường";
-      risk = "Thấp nhất";
-      applySuggestion("normal", "#22c55e");
-    } else if (bmi < 25) {
-      category = "⚠️ Thừa cân";
-      risk = "Tăng nhẹ";
-      applySuggestion("overweight", "#f59e0b");
-    } else if (bmi < 30) {
-      category = "⚠️⚠️ Béo phì độ I";
-      risk = "Tăng";
-      applySuggestion("obese1", "#ef4444");
-    } else {
-      category = "🚨 Béo phì độ II";
-      risk = "Cao";
-      applySuggestion("obese2", "#dc2626");
+    if (weight <= 0 || heightCm <= 0) {
+      setMessage("Chiều cao và cân nặng cần lớn hơn 0.");
+      return;
     }
 
-    document.getElementById("bmi-value").textContent = bmi.toFixed(1) + " kg/m²";
-    document.getElementById("bmi-category").textContent = category + " — " + risk;
-
-    // Cân nặng lý tưởng (Creff)
-    const idealCreff = ((height - 100) + (ageHeightFactor(gender, height))) / 2;
-    document.getElementById("ideal-weight").textContent = idealCreff.toFixed(1) + " kg";
-
-    // Khoảng cân nặng khoẻ mạnh
-    const lowHealthy = (18.5 * hM * hM).toFixed(1);
-    const highHealthy = (22.9 * hM * hM).toFixed(1);
-    document.getElementById("healthy-range").textContent = lowHealthy + " - " + highHealthy + " kg";
-
-    // Vòng eo
-    const waistEl = document.getElementById("waist-result");
-    const waistAssess = document.getElementById("waist-assessment");
-    if (waist && waist > 0) {
-      const cutoff = gender === "male" ? 90 : 80;
-      if (waist > cutoff) {
-        waistAssess.textContent = "⚠️ Vòng eo " + waist + " cm > " + cutoff + " cm — béo bụng, tăng nguy cơ chuyển hoá.";
-        waistAssess.style.color = "#ef4444";
-      } else {
-        waistAssess.textContent = "✅ Vòng eo " + waist + " cm ≤ " + cutoff + " cm — bình thường.";
-        waistAssess.style.color = "#22c55e";
-      }
-      waistEl.style.display = "block";
+    if (weight > 500 || heightCm > 300) {
+      setMessage("Số liệu đang vượt ngoài phạm vi tham khảo của công cụ.");
+      return;
     }
 
-    document.getElementById("result-section").style.display = "block";
-    window.scrollTo({ top: document.getElementById("result-section").offsetTop - 20, behavior: "smooth" });
+    if (heightCm < 50) {
+      setMessage("Chiều cao cần nhập theo cm, ví dụ 170 hoặc 170,5.");
+      return;
+    }
+
+    const heightM = heightCm / 100;
+    const bmi = weight / (heightM * heightM);
+
+    if (!Number.isFinite(bmi) || bmi <= 0) {
+      setMessage("Không thể tính BMI từ số liệu này. Vui lòng kiểm tra lại.");
+      return;
+    }
+
+    bmiValue.textContent = `${bmi.toFixed(1)} kg/m²`;
+    bmiMeaning.textContent = "Chỉ số sàng lọc tham khảo";
+    bmiNote.textContent =
+      "BMI không thay thế đánh giá lâm sàng. Nếu cần đánh giá cá nhân, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng.";
+    resultSection.style.display = "block";
+    window.scrollTo({
+      top: resultSection.offsetTop - 20,
+      behavior: "smooth",
+    });
   });
-
-  function ageHeightFactor(gender, height) {
-    // Creff: chiều cao - 100 + (tuổi)/10 * 0.9, đơn giản hoá
-    return gender === "male" ? 0 : -10;
-  }
-
-  function applySuggestion(key, color) {
-    const box = document.getElementById("suggestion-box");
-    const text = document.getElementById("suggestion-text");
-    const suggestions = {
-      underweight: "Bạn đang ở mức gầy. Cần tăng cường dinh dưỡng, đặc biệt đạm và năng lượng. Tham khảo các bài viết dinh dưỡng của chúng tôi để có chế độ ăn hợp lý.",
-      normal: "Cân nặng lý tưởng! Duy trì chế độ ăn cân đối và vận động thường xuyên. Xem thực đơn gợi ý trong các bài kiến thức dinh dưỡng.",
-      overweight: "Thừa cân — kiểm soát năng lượng ăn vào, tăng vận động. Tham khảo bài dinh dưỡng cho người béo phì và tiểu đường để biết thêm chi tiết.",
-      obese1: "Béo phì độ I — cần giảm cân dưới hướng dẫn chuyên gia. Xem bài dinh dưỡng cho người béo phì, tăng huyết áp và mỡ máu.",
-      obese2: "Béo phì độ II — nguy cơ cao cho sức khoẻ. Nên gặp bác sĩ và chuyên gia dinh dưỡng để được tư vấn toàn diện."
-    };
-    text.textContent = suggestions[key] || "";
-    box.style.background = color + "18";
-    box.style.border = "1px solid " + color;
-  }
 </script>
