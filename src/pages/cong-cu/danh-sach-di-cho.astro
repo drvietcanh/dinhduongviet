@@ -40,7 +40,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .recipe-group { margin-bottom: 16px; }
     .group-label { font-weight: 700; color: var(--ink); padding: 6px 12px; background: #f5f5f5; border-radius: 6px; margin-bottom: 4px; font-size: 0.9rem; }
 
-    // Shopping list
+    /* Shopping list */
     .list-panel h2 { margin: 0 0 16px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
     .empty-list { text-align: center; padding: 40px 20px; color: var(--ink-tertiary); background: var(--bg-highlight); border-radius: 12px; }
     .empty-list .icon { font-size: 2.5rem; margin-bottom: 8px; }
@@ -77,9 +77,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <span class="badge">🛒 Công cụ</span>
     <h1>Danh sách đi chợ</h1>
     <p class="lead">
-      Chọn các món bạn muốn nấu trong tuần → tự động tổng hợp nguyên liệu cần mua,
-      phân loại theo gian hàng siêu thị để đi chợ dễ dàng hơn!
+      Tạo danh sách nhắc việc đi chợ từ các món bạn chọn, với số lượng nguyên liệu ở mức tham khảo
+      để bạn dễ chỉnh lại theo gia đình và kế hoạch nấu ăn thực tế.
     </p>
+    <div class="empty-list" style="text-align:left;padding:16px 18px;margin-bottom:24px">
+      <p style="margin:0 0 8px"><strong>Lưu ý:</strong> Công cụ này chỉ giúp gom nguyên liệu để nhắc việc đi chợ.</p>
+      <p style="margin:0 0 8px">Không kết luận danh sách này đủ chất, cân đối, hay phù hợp cho bệnh nền.</p>
+      <p style="margin:0">Hãy kiểm tra dị ứng, hạn dùng, nhãn sản phẩm, điều kiện bảo quản và hỏi bác sĩ hoặc chuyên gia dinh dưỡng nếu bạn cần chế độ ăn điều trị.</p>
+    </div>
   </section>
 
   <div class="app-container" id="shop-app">
@@ -123,6 +128,70 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       "Tinh bột", "Đậu", "Hạt", "Gia vị", "Dầu mỡ", "Đồ uống", "Nước dùng", "Bánh kẹo"
     ];
 
+    function normalizeText(value) {
+      return (value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+    }
+
+    function formatWeight(totalG) {
+      if (!Number.isFinite(totalG) || totalG <= 0) {
+        return "—";
+      }
+
+      return totalG >= 1000
+        ? `${(totalG / 1000).toFixed(1)} kg`
+        : `${Math.round(totalG)} g`;
+    }
+
+    function clearNode(node) {
+      node.replaceChildren();
+    }
+
+    function buildHintLine(text, center = false) {
+      const line = document.createElement("p");
+      line.style.marginTop = "16px";
+      line.style.fontSize = "0.85rem";
+      line.style.color = "#888";
+      if (center) line.style.textAlign = "center";
+      line.textContent = text;
+      return line;
+    }
+
+    function renderRecipeEmpty(container, query) {
+      clearNode(container);
+      const box = document.createElement("div");
+      box.style.textAlign = "center";
+      box.style.padding = "40px";
+      box.style.color = "#999";
+      box.textContent = query
+        ? `Không tìm thấy món "${query}"`
+        : "Chưa có món phù hợp";
+      container.appendChild(box);
+    }
+
+    function renderListEmpty(content) {
+      clearNode(content);
+      const wrapper = document.createElement("div");
+      wrapper.className = "empty-list";
+
+      const icon = document.createElement("div");
+      icon.className = "icon";
+      icon.textContent = "🛒";
+
+      const title = document.createElement("p");
+      title.textContent = "Chưa chọn món nào";
+
+      const helper = document.createElement("p");
+      helper.style.fontSize = "0.85rem";
+      helper.textContent = "Chọn món bên trái để tạo danh sách nhắc việc đi chợ ở đây";
+
+      wrapper.append(icon, title, helper);
+      content.appendChild(wrapper);
+    }
+
     // Load data
     Promise.all([
       fetch("/api-recipes.json").then(r => r.json()),
@@ -132,24 +201,31 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       recipes = r.filter(rec => rec.ingredients && rec.ingredients.length > 0);
       foods = f;
       renderRecipes();
+    }).catch(() => {
+      const container = document.getElementById("recipe-list");
+      renderRecipeEmpty(container, "");
+      container.firstChild.textContent = "Chưa tải được dữ liệu món ăn. Hãy thử tải lại trang.";
     });
 
     // Render recipe list
     function renderRecipes(filter = "") {
-      const q = filter.toLowerCase().trim();
+      const q = normalizeText(filter);
       const container = document.getElementById("recipe-list");
 
-      // Group recipes alphabetically-ish
       let filtered = q
-        ? recipes.filter(r => r.name.toLowerCase().includes(q) || (r.aliases && r.aliases.some(a => a.toLowerCase().includes(q))))
+        ? recipes.filter(r =>
+            normalizeText(r.name).includes(q) ||
+            (r.aliases && r.aliases.some(a => normalizeText(a).includes(q)))
+          )
         : recipes;
 
       if (!filtered.length) {
-        container.innerHTML = `<div style="text-align:center;padding:40px;color:#999">Không tìm thấy món "${q}"</div>`;
+        renderRecipeEmpty(container, filter.trim());
         return;
       }
 
-      // Group by first letter
+      clearNode(container);
+
       const groups = {};
       filtered.forEach(r => {
         const letter = r.name.charAt(0).toUpperCase();
@@ -157,37 +233,57 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         groups[letter].push(r);
       });
 
-      let html = "";
       const letters = Object.keys(groups).sort();
       letters.forEach(letter => {
-        html += `<div class="recipe-group"><div class="group-label">${letter} <span class="count-badge">${groups[letter].length}</span></div>`;
+        const group = document.createElement("div");
+        group.className = "recipe-group";
+
+        const label = document.createElement("div");
+        label.className = "group-label";
+        label.append(document.createTextNode(`${letter} `));
+
+        const count = document.createElement("span");
+        count.className = "count-badge";
+        count.textContent = String(groups[letter].length);
+        label.appendChild(count);
+        group.appendChild(label);
+
         groups[letter].forEach(r => {
-          // Show recipe.id in the slug, not name, for uniqueness
           const checked = selected.has(r.id);
-          html += `<label class="recipe-item${checked ? ' ri-checked' : ''}">
-            <input type="checkbox" data-id="${r.id}" ${checked ? 'checked' : ''}>
-            <span class="ri-name">${r.name}</span>
-            <span class="ri-calo">${r.nutrients.energyKcal} kcal</span>
-          </label>`;
-        });
-        html += `</div>`;
-      });
 
-      container.innerHTML = html;
+          const item = document.createElement("label");
+          item.className = `recipe-item${checked ? " ri-checked" : ""}`;
 
-      // Bind checkbox events
-      container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener("change", function() {
-          const id = this.dataset.id;
-          if (this.checked) {
-            selected.add(id);
-          } else {
-            selected.delete(id);
-          }
-          updateList();
-          // Re-render to show checked state
-          renderRecipes(document.getElementById("recipe-search").value);
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.dataset.id = r.id;
+          checkbox.checked = checked;
+
+          const name = document.createElement("span");
+          name.className = "ri-name";
+          name.textContent = r.name;
+
+          const calo = document.createElement("span");
+          calo.className = "ri-calo";
+          const kcal = Number.isFinite(r?.nutrients?.energyKcal) ? r.nutrients.energyKcal : "—";
+          calo.textContent = `${kcal} kcal`;
+
+          checkbox.addEventListener("change", function() {
+            const id = this.dataset.id;
+            if (this.checked) {
+              selected.add(id);
+            } else {
+              selected.delete(id);
+            }
+            updateList();
+            renderRecipes(document.getElementById("recipe-search").value);
+          });
+
+          item.append(checkbox, name, calo);
+          group.appendChild(item);
         });
+
+        container.appendChild(group);
       });
     }
 
@@ -202,11 +298,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       const clearBtn = document.getElementById("clear-btn");
 
       if (selected.size === 0) {
-        content.innerHTML = `<div class="empty-list">
-          <div class="icon">🛒</div>
-          <p>Chưa chọn món nào</p>
-          <p style="font-size:0.85rem">Chọn món bên trái, danh sách nguyên liệu sẽ hiện ra ở đây</p>
-        </div>`;
+        renderListEmpty(content);
         clearBtn.style.display = "none";
         return;
       }
@@ -246,51 +338,68 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         catGroups[cat].push(item);
       });
 
-      // Render by category order
-      let html = `<div id="shop-list">`;
+      clearNode(content);
+
+      const summary = document.createElement("p");
+      summary.style.margin = "0 0 12px";
+      summary.style.fontSize = "0.9rem";
+      summary.style.color = "#555";
+
+      const totalItems = Object.keys(agg).length;
+      summary.append(
+        document.createTextNode("📋 "),
+        Object.assign(document.createElement("strong"), { textContent: String(totalItems) }),
+        document.createTextNode(" nguyên liệu tham khảo cho "),
+        Object.assign(document.createElement("strong"), { textContent: String(selected.size) }),
+        document.createTextNode(" món")
+      );
+
+      const shopList = document.createElement("div");
+      shopList.id = "shop-list";
       const usedCats = Object.keys(catGroups).filter(c => catGroups[c].length > 0);
       const sortedCats = CAT_ORDER.filter(c => usedCats.includes(c)).concat(usedCats.filter(c => !CAT_ORDER.includes(c)));
 
       sortedCats.forEach(cat => {
         const items = catGroups[cat].sort((a, b) => a.name.localeCompare(b.name, "vi"));
-        html += `<div class="list-section">
-          <div class="list-section-title">${cat} (${items.length})</div>`;
+        const section = document.createElement("div");
+        section.className = "list-section";
+
+        const sectionTitle = document.createElement("div");
+        sectionTitle.className = "list-section-title";
+        sectionTitle.textContent = `${cat} (${items.length})`;
+        section.appendChild(sectionTitle);
+
         items.forEach(item => {
-          const amt = item.totalG >= 1000
-            ? (item.totalG / 1000).toFixed(1) + " kg"
-            : Math.round(item.totalG) + " g";
+          const amt = formatWeight(item.totalG);
           const tooltip = item.recipes.join(", ");
-          html += `<label class="list-item" title="${tooltip}">
-            <input type="checkbox">
-            <span class="li-name">${item.name}</span>
-            <span class="li-amt">${amt}</span>
-          </label>`;
+
+          const listItem = document.createElement("label");
+          listItem.className = "list-item";
+          listItem.title = tooltip;
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.addEventListener("change", function() {
+            listItem.classList.toggle("li-checked", this.checked);
+          });
+
+          const name = document.createElement("span");
+          name.className = "li-name";
+          name.textContent = item.name;
+
+          const amount = document.createElement("span");
+          amount.className = "li-amt";
+          amount.textContent = amt;
+
+          listItem.append(checkbox, name, amount);
+          section.appendChild(listItem);
         });
-        html += `</div>`;
+
+        shopList.appendChild(section);
       });
 
-      html += `</div>`;
-
-      // Count summary
-      const totalItems = Object.keys(agg).length;
-      html = `<p style="margin:0 0 12px;font-size:0.9rem;color:#555">
-        📋 <strong>${totalItems}</strong> nguyên liệu cho <strong>${selected.size}</strong> món
-      </p>` + html;
-
-      // Checkbox toggle line-through
-      html = html.replace(`<div id="shop-list">`, `<div id="shop-list">`) + `
-      <p style="margin-top:16px;font-size:0.85rem;color:#888;text-align:center">
-        ☑️ Tick vào ô để đánh dấu đã mua
-      </p>`;
-
-      content.innerHTML = html;
-
-      // Bind strike-through
-      content.querySelectorAll('.list-item input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener("change", function() {
-          this.closest(".list-item").classList.toggle("li-checked", this.checked);
-        });
-      });
+      content.append(summary, shopList);
+      content.appendChild(buildHintLine("☑️ Tick vào ô để đánh dấu đã mua", true));
     }
 
     // Clear all
