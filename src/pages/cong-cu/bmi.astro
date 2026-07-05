@@ -203,8 +203,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     setMessage("");
     clearResult();
 
-    const weight = normalizeNumber(weightInput?.value ?? "");
-    const heightCm = normalizeNumber(heightInput?.value ?? "");
+    const rawWeight = weightInput?.value ?? "";
+    const rawHeight = heightInput?.value ?? "";
+
+    if (!rawWeight.trim() || !rawHeight.trim()) {
+      setMessage("Vui lòng nhập chiều cao và cân nặng trước khi tính BMI.");
+      return;
+    }
+
+    const weight = normalizeNumber(rawWeight);
+    const heightCm = normalizeNumber(rawHeight);
 
     if (!Number.isFinite(weight) || !Number.isFinite(heightCm)) {
       setMessage("Vui lòng nhập chiều cao và cân nặng bằng số hợp lệ.");
