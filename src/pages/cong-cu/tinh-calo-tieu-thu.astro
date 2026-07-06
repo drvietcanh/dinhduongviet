@@ -17,11 +17,11 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
       <div class="form-grid">
         <div class="form-row">
           <label for="weight">⚖️ Cân nặng</label>
-          <div class="input-wrap"><input type="number" id="weight" value="65" min="20" max="250"><span class="input-suffix">kg</span></div>
+          <div class="input-wrap"><input type="text" inputmode="decimal" id="weight" placeholder="Ví dụ: 70 hoặc 70,5" aria-describedby="weight-help"><span class="input-suffix">kg</span></div>
         </div>
         <div class="form-row">
           <label for="duration">⏱️ Thời gian</label>
-          <div class="input-wrap"><input type="number" id="duration" value="30" min="1" max="600"><span class="input-suffix">phút</span></div>
+          <div class="input-wrap"><input type="text" inputmode="decimal" id="duration" placeholder="Ví dụ: 30" aria-describedby="duration-help"><span class="input-suffix">phút</span></div>
         </div>
         <div class="form-row" style="grid-column:1/-1;">
           <label for="activity">🏃 Bài tập</label>
@@ -59,7 +59,7 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
         </div>
       </div>
       <div id="form-feedback" class="form-feedback" hidden></div>
-      <button class="btn-calc" onclick="calculate()">🔥 Tính calo tiêu thụ</button>
+      <button class="btn-calc" onclick="calculate()">🔥 Tính kcal ước tính</button>
     </div>
 
     <div id="result" style="display:none;">
@@ -190,8 +190,8 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
 
       clearFeedback();
 
-      var cal = Math.round(w * met * dur / 60 * 10) / 10;
-      var calH = Math.round(w * met * 10) / 10;
+      var cal = Math.round((met * 3.5 * w / 200 * dur) * 10) / 10;
+      var calH = Math.round((met * 3.5 * w / 200 * 60) * 10) / 10;
 
       document.getElementById('cal-burned').textContent = cal.toLocaleString();
 
