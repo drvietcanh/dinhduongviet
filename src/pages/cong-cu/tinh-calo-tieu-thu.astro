@@ -1,18 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const title = "🧮 Tính calo tiêu thụ khi tập luyện & vận động";
-const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, bơi, tập gym. Chọn theo cân nặng, thời gian và cường độ.";
+const title = "🧮 Ước tính năng lượng tiêu hao khi vận động";
+const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và hoạt động ở mức tham khảo, không dùng để đặt mục tiêu giảm cân, ăn bù hoặc điều trị.";
 ---
 
 <BaseLayout title={title} description={desc} canonical="/cong-cu/tinh-calo-tieu-thu">
   <main class="content-page">
     <div class="page-header">
-      <h1><span class="h-icon">🧮</span><span class="h-text">Calo tiêu thụ khi tập luyện</span></h1>
+      <h1><span class="h-icon">🧮</span><span class="h-text">Ước tính năng lượng tiêu hao khi vận động</span></h1>
       <p class="page-desc">{desc}</p>
     </div>
 
     <div class="section-label"><span class="sl-num">1</span> Thông tin tập luyện</div>
     <div class="form-card">
+      <p class="form-note">Công cụ này chỉ cho ra <strong>ước tính tham khảo</strong>. Kết quả phụ thuộc cường độ thực tế, kỹ thuật vận động, thể trạng và sai số của công thức.</p>
       <div class="form-grid">
         <div class="form-row">
           <label for="weight">⚖️ Cân nặng</label>
@@ -57,6 +58,7 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
           </div>
         </div>
       </div>
+      <div id="form-feedback" class="form-feedback" hidden></div>
       <button class="btn-calc" onclick="calculate()">🔥 Tính calo tiêu thụ</button>
     </div>
 
@@ -64,19 +66,19 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
       <div class="section-label"><span class="sl-num">2</span> Kết quả</div>
       <div class="card-plain" style="text-align:center;padding:28px;">
         <div style="font-size:3rem;font-weight:800;color:var(--brand);" id="cal-burned">0</div>
-        <div style="font-size:1rem;margin-bottom:6px;">kcal đã đốt cháy</div>
+        <div style="font-size:1rem;margin-bottom:6px;">kcal ước tính</div>
         <div id="cal-detail" class="cal-detail"></div>
         <div class="cal-bar-track" style="margin:14px auto 0;max-width:400px;height:18px;background:var(--line);border-radius:10px;overflow:hidden;">
           <div id="cal-fill" class="cal-bar-fill" style="width:0%;height:100%;background:var(--brand);border-radius:10px;transition:width 0.5s;"></div>
         </div>
-        <div id="food-equiv" class="food-equiv" style="margin-top:14px;"></div>
+        <p class="result-note">Không dùng kết quả này để tự đặt mục tiêu giảm cân, ăn bù sau vận động hoặc tự điều chỉnh chế độ điều trị.</p>
       </div>
     </div>
 
     <div class="safety-note">
       <div class="safety-icon-col">⚠️</div>
       <div class="safety-text-col">
-        Đây là ước tính. Calo thực tế thay đổi theo chuyển hóa cơ bản, kỹ thuật tập, điều kiện môi trường. MET values theo Compendium of Physical Activities.
+        Công cụ chỉ cung cấp ước tính năng lượng tiêu hao khi vận động ở mức tham khảo. Không dùng để tự xây dựng chế độ giảm cân, tăng cân, ăn bù hoặc tự điều chỉnh thuốc. Người có bệnh tim mạch, tăng huyết áp, tiểu đường, bệnh thận, bệnh hô hấp, bệnh cơ xương khớp, thai kỳ, trẻ em, người cao tuổi, hoặc có đau ngực, khó thở, chóng mặt khi vận động nên hỏi bác sĩ hoặc chuyên gia trước khi thay đổi mức vận động.
       </div>
     </div>
   </main>
@@ -95,6 +97,7 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
 
     .form-card { background:var(--card); border:2px solid var(--line); border-radius:16px; padding:24px; margin-bottom:8px; }
     .form-card:focus-within { border-color:var(--brand); }
+    .form-note { margin: 0 0 16px; font-size: 0.84rem; line-height: 1.6; color: var(--ink-secondary); }
     .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; margin-bottom:18px; }
     .form-row label { display:block; font-size:0.82rem; font-weight:600; margin-bottom:5px; color:var(--ink-secondary); }
     .input-wrap { display:flex; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
@@ -104,6 +107,7 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
     .input-suffix { padding-right:12px; font-size:0.78rem; color:var(--ink-tertiary); font-weight:500; }
     .stage-wrap { position:relative; }
     .stage-arrow { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:0.65rem; color:var(--ink-tertiary); pointer-events:none; }
+    .form-feedback { margin: 0 0 14px; padding: 10px 12px; border-radius: 10px; background: var(--bg-soft); color: var(--ink-secondary); font-size: 0.82rem; line-height: 1.5; text-align: left; }
 
     .btn-calc { width:100%; padding:14px; border:none; border-radius:12px; background:linear-gradient(135deg,#2e7d32,#388e3c); color:white; font-size:1rem; font-weight:700; cursor:pointer; font-family:inherit; box-shadow:0 2px 8px rgba(46,125,50,0.2); }
     .btn-calc:hover { opacity:0.9; transform:translateY(-1px); }
@@ -116,8 +120,7 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
 
     /* Page-specific styles */
     .cal-detail { font-size:0.82rem; color:var(--ink-secondary); margin-bottom:6px; }
-    .food-equiv { font-size:0.85rem; line-height:1.6; }
-    .food-equiv span { color:var(--ink-secondary); }
+    .result-note { margin: 14px auto 0; max-width: 500px; font-size: 0.84rem; line-height: 1.6; color: var(--ink-secondary); }
 
     @media (max-width:600px) {
       .content-page { padding:20px 14px; }
@@ -141,23 +144,54 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
       'dance': 5.5, 'stairs': 7.5, 'housework': 3.0
     };
 
-    var FOODS = [
-      { name: 'cơm trắng', kcal: 200 },
-      { name: 'bánh mì ổ', kcal: 250 },
-      { name: 'trà sữa size M', kcal: 350 },
-      { name: 'lon bia', kcal: 150 },
-      { name: 'kem ốc quế', kcal: 200 },
-      { name: 'củ khoai lang', kcal: 130 },
-    ];
+    function parseLocaleNumber(value) {
+      if (typeof value !== 'string') {
+        return Number(value);
+      }
+
+      var normalized = value.trim().replace(',', '.');
+      if (!normalized) {
+        return NaN;
+      }
+
+      return Number(normalized);
+    }
+
+    function showFeedback(message) {
+      var feedback = document.getElementById('form-feedback');
+      feedback.textContent = message;
+      feedback.hidden = false;
+    }
+
+    function clearFeedback() {
+      var feedback = document.getElementById('form-feedback');
+      feedback.textContent = '';
+      feedback.hidden = true;
+    }
 
     function calculate() {
-      var w = parseFloat(document.getElementById('weight').value) || 65;
-      var dur = parseFloat(document.getElementById('duration').value) || 30;
+      var w = parseLocaleNumber(document.getElementById('weight').value);
+      var dur = parseLocaleNumber(document.getElementById('duration').value);
       var act = document.getElementById('activity').value;
       var met = METS[act] || 3.0;
+      var result = document.getElementById('result');
 
-      var cal = Math.round(w * met * dur / 60); // kcal = MET * weight(kg) * hours
-      var calH = Math.round(w * met); // per hour
+      if (!Number.isFinite(w) || !Number.isFinite(dur) || w <= 0 || dur <= 0) {
+        result.style.display = 'none';
+        showFeedback('Vui lòng nhập cân nặng và thời gian hợp lệ để xem ước tính tham khảo.');
+        return;
+      }
+
+      if (w > 500 || dur > 1440) {
+        result.style.display = 'none';
+        showFeedback('Giá trị đang vượt ngoài phạm vi kiểm tra nhanh của công cụ. Hãy kiểm tra lại đơn vị và số đã nhập.');
+        return;
+      }
+
+      clearFeedback();
+
+      var cal = Math.round(w * met * dur / 60 * 10) / 10;
+      var calH = Math.round(w * met * 10) / 10;
 
       document.getElementById('cal-burned').textContent = cal.toLocaleString();
 
@@ -174,26 +208,14 @@ const desc = "Tính lượng calo đốt cháy khi đi bộ, chạy, đạp xe, 
         'dance': 'Nhảy', 'stairs': 'Leo cầu thang', 'housework': 'Việc nhà'
       };
 
-      document.getElementById('cal-detail').textContent = '🔥 ' + labels[act] + ' — ' + dur + ' phút — MET ' + met.toFixed(1) + ' — ~' + calH + ' kcal/giờ';
+      document.getElementById('cal-detail').textContent = labels[act] + ' — ' + dur + ' phút — MET tham khảo ' + met.toFixed(1) + ' — khoảng ' + calH + ' kcal/giờ';
 
       var fill = Math.min(cal/800*100, 100);
       document.getElementById('cal-fill').style.width = fill + '%';
 
-      // Food equivalent
-      var foodsHtml = '<strong>🍽️ Tương đương với:</strong> ';
-      var eq = [];
-      FOODS.forEach(function(f) {
-        var pct = Math.round(cal / f.kcal * 100);
-        if (pct >= 50) eq.push((pct < 150 ? '' : (Math.round(pct/100)) + ' ') + f.name);
-      });
-      if (eq.length === 0) eq.push('1 miếng trái cây nhỏ');
-      foodsHtml += eq.slice(0,3).join(' · ') + '<span> — (' + cal + ' kcal)</span>';
-      document.getElementById('food-equiv').innerHTML = foodsHtml;
-
-      document.getElementById('result').style.display = 'block';
+      result.style.display = 'block';
     }
 
-    document.addEventListener('DOMContentLoaded', function() { setTimeout(calculate, 100); });
     window.calculate = calculate;
   })();
   </script>
