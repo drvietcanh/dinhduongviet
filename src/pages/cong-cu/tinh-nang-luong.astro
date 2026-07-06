@@ -1,11 +1,199 @@
 ---
-// Redirect: tinh-nang-luong → muc-tieu-can-nang
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "Tính năng lượng | Dinh Dưỡng Việt";
+const pageDescription =
+  "Trang định hướng về năng lượng ở mức tham khảo, chưa dùng để tính nhu cầu năng lượng cá nhân.";
 ---
 
-<BaseLayout title="Đang chuyển hướng..." description="">
-  <meta http-equiv="refresh" content="0; url=/cong-cu/muc-tieu-can-nang" />
-  <div style="padding:40px;text-align:center;font-size:1.1rem;">
-    Tool này đã được cập nhật. <a href="/cong-cu/muc-tieu-can-nang">Chuyển tiếp →</a>
-  </div>
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="draft-energy">
+    <p class="eyebrow">Bản nháp định hướng</p>
+    <h1>Tính năng lượng</h1>
+    <p class="lead">
+      Trang này đang được chuẩn hóa. Nội dung hiện chỉ giới thiệu khái niệm
+      năng lượng trong dinh dưỡng ở mức tham khảo, chưa phải công cụ tính nhu
+      cầu năng lượng cá nhân.
+    </p>
+
+    <div class="status-chip" aria-label="Trang đang hoàn thiện">Đang hoàn thiện</div>
+
+    <div class="panel">
+      <h2>Năng lượng trong dinh dưỡng là gì?</h2>
+      <p>
+        Năng lượng trong dinh dưỡng thường được biểu thị bằng kcal và được dùng
+        để mô tả mức năng lượng cơ thể nhận từ thực phẩm.
+      </p>
+      <p>
+        Nhu cầu năng lượng thực tế phụ thuộc tuổi, giới, cân nặng, chiều cao,
+        mức vận động, bệnh lý, mục tiêu chăm sóc và bối cảnh sức khỏe.
+      </p>
+      <p>
+        Công cụ này hiện chưa tính BMR, TDEE, calo mỗi ngày, khẩu phần cá nhân
+        hoặc mục tiêu cân nặng.
+      </p>
+    </div>
+
+    <div class="panel safety">
+      <h2>Lưu ý an toàn</h2>
+      <ul>
+        <li>Nội dung chỉ để tham khảo và định hướng.</li>
+        <li>Không dùng để tự đặt mục tiêu calo mỗi ngày.</li>
+        <li>
+          Không dùng để tự xây dựng chế độ giảm cân, tăng cân, ăn bù, thực đơn
+          hoặc điều trị.
+        </li>
+        <li>
+          Người có tiểu đường, bệnh thận, bệnh tim mạch, gout, suy tim, ung
+          thư, thai kỳ, trẻ em, người cao tuổi, rối loạn ăn uống hoặc đang dùng
+          thuốc nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng nếu cần nhu cầu năng
+          lượng cá nhân.
+        </li>
+        <li>
+          Không tự chỉnh insulin, thuốc hạ đường huyết, lợi tiểu, thuốc tim
+          mạch hoặc chế độ điều trị dựa trên nội dung này.
+        </li>
+      </ul>
+    </div>
+
+    <nav class="panel links" aria-label="Điều hướng tham khảo">
+      <h2>Xem thêm</h2>
+      <p>
+        Bạn có thể quay lại danh sách công cụ hoặc xem các công cụ ổn định khác
+        theo nhu cầu hiện tại.
+      </p>
+      <div class="link-row">
+        <a class="link-card" href="/cong-cu/">Xem danh sách công cụ</a>
+        <a class="link-card" href="/cong-cu/tinh-calo-tieu-thu/">Calo tiêu thụ khi tập</a>
+        <a class="link-card" href="/cong-cu/muc-tieu-dinh-duong/">Mục tiêu dinh dưỡng</a>
+      </div>
+    </nav>
+  </section>
+
+  <style>
+    .draft-energy {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--ink-tertiary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .lead {
+      max-width: 64ch;
+      margin: 12px 0 0;
+      color: var(--ink-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      margin-top: 16px;
+      padding: 6px 12px;
+      border: 1px solid #e7c27a;
+      border-radius: 999px;
+      background: #fff7e6;
+      color: #8a6116;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .panel {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+    }
+
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--ink-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .safety {
+      background: var(--brand-light);
+    }
+
+    .safety ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .links p {
+      margin-top: 0;
+    }
+
+    .link-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg-soft);
+      color: var(--ink);
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .link-card:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    @media (max-width: 720px) {
+      .draft-energy {
+        padding: 20px 0 32px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      .link-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </BaseLayout>
