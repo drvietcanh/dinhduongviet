@@ -251,16 +251,15 @@ const desc =
         return card;
       }
 
-      function createEmptyState() {
+      function createState(titleText, bodyText) {
         var empty = document.createElement("div");
         empty.className = "empty-state";
 
         var title = document.createElement("strong");
-        title.textContent = "Chưa có kết quả phù hợp";
+        title.textContent = titleText;
 
         var body = document.createElement("p");
-        body.textContent =
-          "Hãy thử tên đồ uống khác hoặc kiểm tra lại cách viết. Kết quả chỉ mang tính tham khảo theo dữ liệu hiện có.";
+        body.textContent = bodyText;
 
         empty.appendChild(title);
         empty.appendChild(body);
@@ -272,7 +271,12 @@ const desc =
         if (!container) return;
 
         if (!list.length) {
-          container.replaceChildren(createEmptyState());
+          container.replaceChildren(
+            createState(
+              "Chưa có kết quả phù hợp",
+              "Hãy thử tên đồ uống khác hoặc kiểm tra lại cách viết. Kết quả chỉ mang tính tham khảo theo dữ liệu hiện có."
+            )
+          );
           return;
         }
 
@@ -281,14 +285,30 @@ const desc =
       }
 
       var input = document.getElementById("sugar-search");
-      renderResults(drinks);
+      var container = document.getElementById("drink-results");
+
+      if (container) {
+        container.replaceChildren(
+          createState(
+            "Nhập tên đồ uống để tra cứu",
+            "Bạn có thể thử các từ khóa như tra, trà, sua, sữa, nuoc, nước hoặc coca. Kết quả hiển thị theo dữ liệu tham khảo hiện có."
+          )
+        );
+      }
 
       if (!input) return;
 
       input.addEventListener("input", function () {
         var query = normalizeText(input.value);
         if (!query) {
-          renderResults(drinks);
+          if (container) {
+            container.replaceChildren(
+              createState(
+                "Nhập tên đồ uống để tra cứu",
+                "Bạn có thể thử các từ khóa như tra, trà, sua, sữa, nuoc, nước hoặc coca. Kết quả hiển thị theo dữ liệu tham khảo hiện có."
+              )
+            );
+          }
           return;
         }
 
