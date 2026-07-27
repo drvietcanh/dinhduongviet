@@ -1,0 +1,55 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tieu-duong-an-com-duoc-khong"];
+if (!art) throw new Error("Article not found: tieu-duong-an-com-duoc-khong");
+---
+
+<ArticleLayout article={art}>
+<div class="article-content">
+
+<section class="section card" style="background:#e8f5e9;border:1px solid #a5d6a7;">
+  <p>Chị Lan, 52 tuổi, vừa được chẩn đoán Tiểu đường Type 2. Điều đầu tiên chị nghĩ đến là <em>"Thôi xong, cả đời không được ăn cơm nữa rồi!"</em>. Nhưng bác sĩ dinh dưỡng nói điều hoàn toàn ngược lại. Sự thật là gì?</p>
+</section>
+
+<section class="section card">
+  <h2>1. Người Tiểu đường CÓ được ăn cơm không?</h2>
+  <p><strong>CÓ — nhưng phải ăn đúng cách!</strong> Cơm trắng là tinh bột, cơ thể cần tinh bột để hoạt động. Bỏ hoàn toàn cơm trắng sẽ gây hạ đường huyết đột ngột, đặc biệt nguy hiểm với người đang dùng thuốc hoặc tiêm Insulin.</p>
+  <p>Vấn đề không phải là <em>ăn hay không ăn</em>, mà là <strong>ăn bao nhiêu và ăn theo thứ tự nào</strong>.</p>
+</section>
+
+<section class="section card">
+  <h2>2. Ăn bao nhiêu cơm là vừa?</h2>
+  <p>Người Tiểu đường nên ăn <strong>lưng chén cơm (khoảng 100-150g cơm chín)</strong> mỗi bữa, tương đương 1/4 lượng thức ăn trên đĩa. Phần còn lại chia cho rau xanh (1/2 đĩa) và thịt-cá-đậu phụ (1/4 đĩa).</p>
+  <div style="background:#fff3e0;padding:16px;border-radius:12px;border-left:4px solid #ff9800;">
+    <strong>🍽️ Công thức "Đĩa ăn lành mạnh":</strong><br/>
+    ½ đĩa = Rau xanh các loại<br/>
+    ¼ đĩa = Cơm / Tinh bột<br/>
+    ¼ đĩa = Thịt / Cá / Đậu phụ
+  </div>
+</section>
+
+<section class="section card">
+  <h2>3. Bí quyết "Ăn cơm không tăng đường huyết"</h2>
+  <p>Thứ tự ăn quan trọng hơn bạn nghĩ! Khoa học chứng minh nếu bạn ăn theo thứ tự này, đường huyết sau bữa ăn thấp hơn tới 30%:</p>
+  <ol>
+    <li><strong>Bước 1:</strong> Ăn rau xanh trước (rau luộc, salad, canh rau)</li>
+    <li><strong>Bước 2:</strong> Ăn thịt-cá-trứng-đậu phụ</li>
+    <li><strong>Bước 3:</strong> Mới ăn cơm — lúc này tinh bột hấp thu chậm hơn nhiều!</li>
+  </ol>
+</section>
+
+<section class="section card">
+  <h2>4. Những loại cơm nào tốt hơn cơm trắng?</h2>
+  <ul>
+    <li><strong>Cơm gạo lứt:</strong> Chỉ số đường huyết (GI) thấp hơn, nhiều chất xơ hơn cơm trắng 3 lần.</li>
+    <li><strong>Cơm trộn đậu:</strong> Trộn thêm đậu xanh, đậu đỏ vào nồi cơm — chất xơ từ đậu làm chậm hấp thu đường.</li>
+    <li><strong>Cơm để nguội:</strong> Cơm nguội chứa tinh bột kháng tiêu hóa (Resistant Starch) — chỉ số GI thấp hơn cơm nóng!</li>
+  </ul>
+  <div style="background:#ffebee;padding:16px;border-radius:12px;border-left:4px solid #f44336;">
+    <strong>⚠️ Tuyệt đối tránh:</strong> Cơm rang, cơm chiên trứng, cháo đặc nóng — đây là những cách chế biến làm chỉ số GI tăng vọt!
+  </div>
+</section>
+
+</div>
+</ArticleLayout>

@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["nhin-an-gian-doan-16-8"];
+if (!art) throw new Error("Article not found: nhin-an-gian-doan-16-8");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Hương (28 tuổi, nhân viên văn phòng) áp dụng phương pháp <strong>Nhịn ăn gián đoạn 16:8</strong> để giảm mỡ bụng. Chị nhịn bữa sáng, chỉ uống trà không đường. Đến 12h trưa chị bắt đầu ăn và kết thúc bữa cuối cùng vào 8h tối. Chị rất bất ngờ vì không những giảm cân hiệu quả, mà đầu óc buổi sáng lại cực kỳ tỉnh táo, không còn bị buồn ngủ vật vờ như hồi ăn phở bún mặn.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Nhịn ăn gián đoạn (IF) không phải là ăn kiêng, mà là <u>thay đổi thời gian ăn</u>. Khi bạn nhịn đủ lâu (trên 12 tiếng), mức Insulin sẽ giảm sâu, buộc cơ thể phải <u>lấy Mỡ ra đốt làm năng lượng</u>. Phương pháp này còn kích hoạt cơ chế "Tự thực bào" (Autophagy) giúp cơ thể tự dọn dẹp tế bào già cỗi.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Phép màu của sự đói khát (Autophagy)</h2>
+  <p>Con người tiến hóa hàng triệu năm trong tình cảnh nay no mai đói. Cơ thể chúng ta được thiết kế để hoạt động cực kỳ hiệu quả khi bụng rỗng. Khái niệm "phải ăn 3 bữa chính + 2 bữa phụ" là sản phẩm của ngành công nghiệp thực phẩm hiện đại.</p>
+  <p><strong>Cơ chế 1 (Đốt mỡ):</strong> Mỗi lần bạn ăn, tuyến tụy bơm Insulin vào máu. Insulin giống như chìa khóa mở cửa cho mỡ đi vào kho cất trữ. Khi nồng độ Insulin cao, cơ thể <u>tuyệt đối không thể đốt mỡ</u>. Chỉ khi bạn nhịn ăn > 12 tiếng, Insulin chạm đáy, kho mỡ mới được mở ra để xài.</p>
+  <p><strong>Cơ chế 2 (Tự thực bào - Autophagy):</strong> Nhịn ăn 16 tiếng sẽ kích hoạt một hệ thống "thu gom rác" trong tế bào. Cơ thể vì "đói" nên sẽ tự động ăn thịt các đoạn protein hỏng, các tế bào già yếu và vi khuẩn để tái chế. Khám phá này đã đạt giải Nobel Y học 2016!</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Hướng dẫn thực hành 16:8</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nguyên tắc:</strong> Khung cửa sổ ăn là 8 tiếng, nhịn liên tục 16 tiếng. Khung giờ phổ biến nhất: Bắt đầu ăn lúc 12h trưa và kết thúc trước 8h tối (bỏ bữa sáng).</li>
+      <li><strong>Trong 16 tiếng nhịn ăn:</strong> Chỉ được uống nước lọc, trà xanh, hoặc cà phê đen nguyên chất (không đường, không sữa). <u>Tuyệt đối không nhai kẹo cao su</u> (chất tạo ngọt sẽ kích thích Insulin phá vỡ quá trình nhịn đói).</li>
+      <li><strong>Trong 8 tiếng được ăn:</strong> Vẫn ăn đủ 2 bữa chính no nê (Ưu tiên đạm và rau). Đừng nhồi nhét quá nhiều calo, nếu không bạn vẫn sẽ béo lên!</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Ai KHÔNG NÊN nhịn ăn gián đoạn?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Phụ nữ có thai và cho con bú:</strong> Thai nhi cần dinh dưỡng liên tục, nhịn đói làm giảm sút nguồn cung.</li>
+      <li><strong>Người bị đau dạ dày nặng (Viêm loét):</strong> Nếu dịch vị dạ dày tiết ra quá nhiều mà không có thức ăn để co bóp, vết loét có thể trầm trọng hơn. Hãy tập nhịn từ từ (12:12 rồi tăng dần).</li>
+      <li><strong>Bệnh nhân Tiểu đường Type 1:</strong> Đang tiêm Insulin. Nhịn ăn có thể gây hạ đường huyết đột ngột dẫn đến hôn mê.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

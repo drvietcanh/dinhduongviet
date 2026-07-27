@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-sua-hat-dam", title: "Cảnh báo hiểu lầm: Sữa hạt không phải lúc nào cũng giàu đạm", description: "Sữa hạt thường có ít đạm và canxi nếu không được bổ sung. Sữa bò là nguồn đạm tốt nhất.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","before-supplement"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

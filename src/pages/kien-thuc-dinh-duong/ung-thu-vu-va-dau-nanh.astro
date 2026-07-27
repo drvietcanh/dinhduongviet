@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["ung-thu-vu-va-dau-nanh"];
+if (!art) throw new Error("Article not found: ung-thu-vu-va-dau-nanh");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cô Hoa (52 tuổi) vừa điều trị xong Ung thư vú. Trước đây cô rất thích uống sữa đậu nành và ăn đậu hũ, nhưng từ khi phát bệnh, bạn bè và hàng xóm đều khuyên cô phải "kiêng tuyệt đối đậu nành vì nó chứa estrogen thực vật, làm ung thư tái phát nhanh hơn". Quá hoang mang, cô Hoa kiêng ngặt nghèo mọi sản phẩm từ đậu nành. Tuy nhiên, khi cô đem thắc mắc này hỏi bác sĩ ung bướu, bác sĩ đã cười và khẳng định: "Cô hoàn toàn có thể ăn đậu nành, thậm chí nó còn giúp bảo vệ cô khỏi ung thư tái phát!".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Lời đồn "Đậu nành gây ung thư vú" là một <u>Sai lầm Y khoa cổ điển</u>. Phytoestrogen trong đậu nành RẤT YẾU và hoạt động hoàn toàn khác với Estrogen của cơ thể người. Khi ăn đậu nành, Phytoestrogen sẽ tranh chỗ, bám vào tế bào và <u>CHẶN KHÔNG CHO</u> estrogen thực sự kích thích khối u phát triển. Bệnh nhân ung thư vú được khuyến nghị ăn 1-2 khẩu phần đậu nành nguyên hạt mỗi ngày.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Phytoestrogen: "Chìa khóa giả" chặn đứng ung thư</h2>
+  <p>Đúng là một số loại ung thư vú phát triển mạnh nhờ ăn hormone Estrogen (của cơ thể phụ nữ tiết ra).</p>
+  <p>Đậu nành chứa Isoflavones, một loại Phytoestrogen (Estrogen thực vật) có cấu trúc hóa học khá giống Estrogen của người. Do sự giống nhau này, nhiều người lầm tưởng đậu nành sẽ "đổ thêm dầu vào lửa".</p>
+  <p>Sự thật chứng minh điều ngược lại: Phytoestrogen giống như một chiếc "chìa khóa giả" cắm vào "ổ khóa" của tế bào ung thư. Vì là chìa giả, nó không thể mở cửa kích hoạt tế bào ung thư phát triển. Tuyệt vời hơn, vì ổ khóa đã bị chìa giả (Đậu nành) cắm vào rồi, nên chiếc chìa khóa thật (Estrogen hung hăng của cơ thể) không thể chen vào kích hoạt khối u được nữa! Đây gọi là cơ chế cạnh tranh thụ thể.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Cách dùng Đậu nành ĐÚNG CÁCH</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chọn Đậu nành nguyên bản (Whole Soy):</strong> Sữa đậu nành tự nấu, đậu hũ, tempeh, edamame (đậu nành Nhật). Đây là những thực phẩm an toàn tuyệt đối và mang lại lợi ích chống ung thư tối đa.</li>
+      <li><strong>Liều lượng an toàn:</strong> Ăn 1-2 khẩu phần mỗi ngày (Ví dụ: 1 ly sữa đậu nành hoặc 1/2 bìa đậu hũ).</li>
+      <li><strong>Hiệu quả bảo vệ tim mạch:</strong> Đậu nành là nguồn cung cấp đạm thực vật sạch nhất, giúp bệnh nhân ung thư giảm tiêu thụ thịt đỏ (thứ thực sự làm tăng nguy cơ ung thư), đồng thời giảm mỡ máu.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ: Sản phẩm biến đổi/Chiết xuất</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Viên uống tinh chất mầm đậu nành (Isoflavone cô đặc):</strong> Các loại TPCN chiết xuất liều lượng cao cô đặc chưa được chứng minh an toàn tuyệt đối cho bệnh nhân ung thư vú. HÃY TRÁNH XA viên uống, chỉ ăn đậu nành ở dạng thực phẩm tự nhiên!</li>
+      <li><strong>Bột protein đậu nành phân lập (Soy Protein Isolate):</strong> Thường có trong các loại thanh hạt, đồ ăn vặt chế biến sẵn, xúc xích chay. Dạng này đã bị tước bỏ hết chất xơ và vi chất có lợi, không mang lại tác dụng bảo vệ nguyên bản.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

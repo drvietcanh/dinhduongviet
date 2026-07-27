@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["lac-noi-mac-tu-cung"];
+if (!art) throw new Error("Article not found: lac-noi-mac-tu-cung");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Linh (30 tuổi) bị đau bụng kinh dữ dội đến mức phải xin nghỉ làm mỗi tháng. Khi đi khám, bác sĩ chẩn đoán chị bị <strong>Lạc nội mạc tử cung (Endometriosis)</strong>. Bác sĩ kê thuốc nội tiết và khuyên chị phải thay đổi chế độ ăn ngay lập tức để giảm phản ứng viêm trong cơ thể.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Lạc nội mạc tử cung là một bệnh lý phụ thuộc Estrogen và gây viêm mãn tính. Chế độ ăn phải tập trung vào <u>Chống Viêm</u> (Omega-3, chất chống oxy hóa) và <u>Giảm Estrogen dư thừa</u> (Rau họ cải, chất xơ). Cần cắt bỏ thịt đỏ tươi, thịt chế biến sẵn và đường tinh luyện.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bệnh Lạc nội mạc tử cung là gì?</h2>
+  <p>Bình thường, lớp niêm mạc (nội mạc) chỉ mọc bên trong tử cung. Hàng tháng, nó dày lên và bong ra tạo thành kinh nguyệt. Ở người bị Lạc nội mạc, các mô tương tự lại "đi lạc" và mọc ở bên ngoài tử cung (trên buồng trứng, ống dẫn trứng, thậm chí trên ruột).</p>
+  <p>Mỗi chu kỳ, các mô "đi lạc" này cũng chảy máu, nhưng máu không có đường thoát ra ngoài cơ thể. Nó tích tụ lại, gây viêm nhiễm nghiêm trọng, hình thành sẹo dính và các cơn đau xé ruột. Bệnh này tiến triển nhờ hormone Estrogen.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn Chống Viêm & Đào thải Estrogen</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Siêu thực phẩm họ Cải (Cruciferous):</strong> Bông cải xanh, bắp cải, súp lơ, cải xoăn (Kale). Chứa hợp chất <em>DIM (Diindolylmethane)</em> giúp gan chuyển hóa và đào thải Estrogen xấu ra khỏi cơ thể rất hiệu quả.</li>
+      <li><strong>Omega-3 (Chống viêm tự nhiên):</strong> Cá hồi, cá trích, hạt lanh, hạt chia. Omega-3 làm giảm sản xuất Prostaglandin — chất gây viêm và co thắt mô.</li>
+      <li><strong>Chất chống oxy hóa:</strong> Các loại quả mọng (Việt quất, dâu tây, mâm xôi), nghệ, gừng, trà xanh. Giúp dọn dẹp các gốc tự do sinh ra từ vùng mô bị viêm.</li>
+      <li><strong>Tăng cường Chất xơ:</strong> Yến mạch, các loại đậu. Chất xơ liên kết với Estrogen dư thừa trong ruột và đẩy nó ra ngoài qua phân.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ: "Nhiên liệu" gây viêm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thịt đỏ (Bò, Lợn, Cừu):</strong> Nghiên cứu cho thấy phụ nữ ăn nhiều thịt đỏ tươi có nguy cơ mắc bệnh cao hơn 56%. Thịt đỏ chứa axit arachidonic kích thích phản ứng viêm mạnh mẽ.</li>
+      <li><strong>Trans Fat (Chất béo chuyển hóa):</strong> Khoai tây chiên, gà rán, thức ăn nhanh. Kích hoạt toàn bộ hệ thống viêm nhiễm của cơ thể.</li>
+      <li><strong>Gluten (Cân nhắc):</strong> Rất nhiều phụ nữ bị lạc nội mạc tử cung báo cáo rằng cơn đau của họ giảm hẳn khi ngừng ăn Gluten (lúa mì). Mặc dù chưa có kết luận Y khoa chính thức, nhưng bác sĩ thường khuyến khích thử ăn Gluten-Free 1-2 tháng để xem phản ứng.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

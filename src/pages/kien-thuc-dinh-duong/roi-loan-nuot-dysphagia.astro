@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["roi-loan-nuot-dysphagia"];
+if (!art) throw new Error("Article not found: roi-loan-nuot-dysphagia");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cụ Tám (82 tuổi) bị tai biến mạch máu não nhẹ. Sau khi xuất viện, con cháu cẩn thận ninh cháo móng giò loãng cho cụ tẩm bổ. Nhưng cứ ăn vào là cụ lại ho sặc sụa, tím tái mặt mày. Vài ngày sau, cụ sốt cao, khó thở và phải nhập viện lại vì <strong>Viêm phổi hít</strong> (do thức ăn lọt vào đường thở).</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Rối loạn nuốt (Dysphagia) khiến van nắp thanh quản đóng không kín, đồ ăn lỏng (như nước, canh, cháo loãng) sẽ trôi thẳng vào phổi thay vì dạ dày.
+    Để người già ăn an toàn, thức ăn phải được điều chỉnh độ đặc bằng <u>Bột làm đặc (Thickener)</u> sao cho có kết cấu đặc sệt như mật ong hoặc pudding.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cấu tạo ngã ba hầu họng và nguy cơ Sặc</h2>
+  <p>Cổ họng chúng ta có 2 đường ống nằm sát nhau: Đường tiêu hóa (thực quản) dẫn xuống dạ dày, và Đường thở (khí quản) dẫn vào phổi. Bình thường, khi nuốt, một chiếc van (nắp thanh môn) sẽ đóng đường thở lại.</p>
+  <p>Ở người già yếu, sa sút trí tuệ hoặc sau tai biến, dây thần kinh điều khiển chiếc van này bị liệt hoặc phản xạ chậm. Nếu uống nước lọc hoặc cháo loãng, nước chảy quá nhanh sẽ lọt khe rớt vào phổi trước khi van kịp đóng. Vi khuẩn từ thức ăn sẽ gây nhiễm trùng phổi cực nặng (Viêm phổi hít).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chế độ ăn cho người rối loạn nuốt</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Mua Bột làm đặc (Thickener):</strong> Bán ở các hiệu thuốc lớn. Pha vào nước lọc, sữa, súp để làm dung dịch đặc lại (ở các mức độ: Nectar - Mật ong - Pudding) giúp nước chảy chậm lại khi qua cổ họng, cho phép nắp thanh quản có đủ thời gian để đóng.</li>
+      <li><strong>Tư thế ăn chuẩn:</strong> Ngồi thẳng lưng vuông góc 90 độ. <u>Tuyệt đối không nằm ngửa ăn</u>. Sau khi ăn xong phải ngồi hoặc đi lại nhẹ nhàng ít nhất 30 phút.</li>
+      <li><strong>Gầm cổ khi nuốt (Chin-tuck):</strong> Hướng dẫn cụ khi nuốt hãy cúi gập cằm xuống ngực. Tư thế này về mặt cơ học sẽ làm hẹp đường thở và mở rộng đường thực quản.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ: Kết cấu thực phẩm nguy hiểm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thức ăn lỏng - đặc lẫn lộn:</strong> Canh măng, cháo có lẫn miếng xương băm, phở (nước lỏng + sợi dai). Hệ thần kinh bị rối, không biết nên nhai hay nên nuốt nước, rất dễ sặc.</li>
+      <li><strong>Thực phẩm bở, tơi xốp:</strong> Bánh quy, bánh bông lan, kẹo đậu phộng. Các vụn bánh dễ vỡ lả tả và bay vào khí quản.</li>
+      <li><strong>Thực phẩm trơn tuột:</strong> Thạch rau câu (Jelly). Nó có thể trôi tuột nguyên khối chèn ngang cổ họng gây ngạt thở tử vong ngay lập tức.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -5,7 +5,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["dinh-duong-loet-ty-de"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
   <section class="article-section" data-section="summary">
     <h2>Tóm tắt</h2>
     <p>Loét tỳ đẻ (pressure ulcer, bed sore) là tổn thương da và mô dưới da do tì đè kéo dài, thường gặp ở người già nằm liệt giường hoặc ngồi xe lăn. Sau khi giảm áp lực, <strong>dinh dưỡng là yếu tố quyết định</strong> giúp vết loét mau lành.</p>

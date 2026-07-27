@@ -1,0 +1,62 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["benh-celiac-gluten"];
+if (!art) throw new Error("Article not found: benh-celiac-gluten");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Hoàng thường xuyên bị tiêu chảy kéo dài, sụt cân, mệt mỏi và thiếu máu không rõ nguyên nhân. Đi khám khắp nơi, cuối cùng bác sĩ chuyên khoa tiêu hóa cho làm sinh thiết ruột non và kết luận anh mắc <strong>Bệnh Celiac (Bất dung nạp Gluten)</strong>.</p>
+  <p>Hiện nay, xu hướng ăn "Gluten-Free" (Không chứa Gluten) đang rộ lên như một trào lưu giảm cân hay thanh lọc cơ thể. Nhưng dưới góc độ y khoa, chế độ ăn này được thiết kế đặc trị cho những người mang bệnh lý Celiac thực sự, chứ không phải phong trào.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Gluten là một loại protein có trong lúa mì, lúa mạch, lúa mạch đen. Với người bệnh Celiac, hệ miễn dịch sẽ tự tấn công phá hủy ruột non khi ăn phải Gluten.
+    Người bệnh phải <u>ăn Gluten-Free suốt đời</u>. Người khỏe mạnh bình thường không cần thiết phải kiêng Gluten.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bệnh Celiac phá hủy ruột non như thế nào?</h2>
+  <p>Ruột non của chúng ta được lót bằng hàng triệu nhung mao (villi) siêu nhỏ hình ngón tay. Chức năng của chúng là hấp thu chất dinh dưỡng từ thức ăn vào máu.</p>
+  <p>Khi bệnh nhân Celiac ăn bánh mì hoặc phở (chứa gluten), hệ miễn dịch bị nhầm lẫn và nhận diện gluten là "chất độc". Nó tạo ra kháng thể tấn công dữ dội vào ruột non, làm các nhung mao này bị cùn đi, là phẳng lì. Kết quả là ruột non hoàn toàn mất khả năng hấp thu dinh dưỡng. Dù bệnh nhân có ăn sơn hào hải vị thì cơ thể vẫn suy kiệt, thiếu máu, loãng xương và chậm lớn (ở trẻ em).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm Gluten-Free an toàn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Gạo và Ngô:</strong> Gạo tẻ, gạo lứt, ngô (bắp) hoàn toàn không có gluten. Rất may mắn, đây là lương thực chính của Việt Nam!</li>
+      <li><strong>Các loại củ:</strong> Khoai tây, khoai lang, khoai môn, sắn (khoai mì).</li>
+      <li><strong>Tinh bột thay thế:</strong> Bột năng, bột gạo, bột bắp, hạt Quinoa (Diêm mạch), yến mạch (phải có nhãn Gluten-free).</li>
+      <li><strong>Thịt, cá, trứng, sữa:</strong> Nguyên bản không tẩm ướp.</li>
+      <li><strong>Rau củ quả tươi.</strong></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ tuyệt đối (Chứa Gluten)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Lúa mì (Wheat):</strong> Bột mì, bánh mì, mì Ý (Pasta), mì tôm, bánh quy, pizza, bánh bao.</li>
+      <li><strong>Lúa mạch đen (Rye) & Lúa mạch (Barley):</strong> Bia, mạch nha (malt).</li>
+      <li><strong>Các loại nước chấm:</strong> <u>Nước tương (Xì dầu)</u> truyền thống thường chứa lúa mì. Nước mắm thì an toàn.</li>
+      <li><strong>Thực phẩm chế biến sẵn:</strong> Xúc xích, thịt nguội thường dùng bột mì làm chất kết dính. Cần đọc kỹ nhãn mác.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5️⃣ Hiểu lầm -->
+<section class="section card">
+  <h2>⚠️ Trào lưu Gluten-Free: Đừng lạm dụng nếu bạn khỏe mạnh</h2>
+  <p>Nhiều người nổi tiếng quảng bá chế độ Gluten-Free để giảm cân hoặc "thải độc". Y khoa hiện đại khẳng định: Nếu bạn không mắc bệnh Celiac hoặc Không dung nạp gluten (NCGS), việc kiêng gluten là vô ích, tốn kém và làm tăng nguy cơ thiếu hụt Vitamin nhóm B, chất xơ, Sắt vốn có nhiều trong ngũ cốc nguyên hạt.</p>
+</section>
+
+</ArticleLayout>

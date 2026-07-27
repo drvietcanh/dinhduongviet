@@ -1,4 +1,4 @@
-﻿---
+---
 import BaseLayout from "../layouts/BaseLayout.astro";
 const title = "Hỏi nhanh – đáp gọn về dinh dưỡng bệnh lý";
 const desc = "Câu trả lời ngắn, trực diện cho các thắc mắc thường gặp: tiểu đường ăn cơm được không? Gout ăn đậu hũ được không? Mỡ máu có ăn trứng không?";
@@ -10,7 +10,7 @@ const desc = "Câu trả lời ngắn, trực diện cho các thắc mắc thư�
       <h1>❓ Hỏi nhanh – đáp gọn</h1>
       <p class="page-desc">{desc}</p>
       <div style="margin-top:12px;">
-        <input id="faq-search" type="text" placeholder="Tìm câu hỏi..." style="padding:10px 16px;border:1px solid var(--line);border-radius:var(--radius);width:100%;max-width:400px;background:var(--card);color:inherit;">
+        <input id="faq-search" class="faq-search-input" type="text" placeholder="Tìm câu hỏi...">
       </div>
     </div>
 
@@ -402,24 +402,29 @@ const desc = "Câu trả lời ngắn, trực diện cho các thắc mắc thư�
   <style>
     .page-header { text-align:center; margin-bottom:24px; }
     .page-desc { max-width:550px; margin:8px auto 0; color:var(--ink-secondary); font-size:0.9rem; }
-    .faq-list { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:6px; }
-    .faq-item { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
-    .faq-q { display:flex; align-items:center; gap:10px; padding:14px 16px; cursor:pointer; user-select:none; transition:background 0.2s; }
+    .faq-search-input { padding:12px 16px; border:1px solid var(--card-border); border-radius:var(--radius-lg); width:100%; max-width:400px; background:var(--card); color:inherit; font-size:0.95rem; transition:all var(--transition); }
+    .faq-search-input:focus { border-color:var(--brand); box-shadow:0 0 0 3px rgba(5, 150, 105, 0.15); outline:none; }
+    .faq-list { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:8px; }
+    .faq-item { background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); transition:all var(--transition); }
+    .faq-item:hover { border-color:var(--brand-light2); box-shadow:var(--shadow); }
+    .faq-q { display:flex; align-items:center; gap:10px; padding:14px 16px; cursor:pointer; user-select:none; transition:background var(--transition); font-weight:500; }
     .faq-q:hover { background:var(--bg-soft); }
-    .faq-q .faq-arrow { margin-left:auto; font-size:0.7rem; transition:transform 0.2s; }
-    .faq-q.open .faq-arrow { transform:rotate(180deg); }
+    .faq-q .faq-arrow { margin-left:auto; font-size:0.7rem; transition:transform var(--transition); color:var(--ink-tertiary); }
+    .faq-q.open .faq-arrow { transform:rotate(180deg); color:var(--brand); }
     .faq-icon { font-size:1.3rem; }
-    .faq-a { display:none; padding:0 16px 16px; border-top:1px solid var(--line); }
-    .faq-a.open { display:block; }
+    .faq-a { display:none; padding:0 16px 16px; border-top:1px solid var(--card-border); }
+    .faq-a.open { display:block; animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
     .faq-a p { margin:10px 0; font-size:0.9rem; line-height:1.6; }
     .faq-a ul { margin:6px 0; padding-left:20px; }
-    .faq-a li { font-size:0.88rem; margin:4px 0; }
-    .faq-link { display:inline-block; margin-top:6px; color:var(--brand); font-size:0.85rem; font-weight:500; }
-    .answer { font-size:1.05rem; background:var(--brand-light); padding:8px 12px; border-radius:8px; color:var(--brand); }
+    .faq-a li { font-size:0.88rem; margin:4px 0; color:var(--ink-secondary); }
+    .faq-link { display:inline-block; margin-top:6px; color:var(--brand); font-size:0.85rem; font-weight:600; text-decoration:none; transition:color var(--transition); }
+    .faq-link:hover { color:var(--brand-dark); text-decoration:underline; }
+    .answer { font-size:1.05rem; background:var(--brand-light); padding:10px 14px; border-radius:var(--radius); color:var(--brand-dark); border-left:3px solid var(--brand); }
     .why { color:var(--ink-secondary); font-size:0.9rem; }
-    .how { font-weight:500; margin-top:12px !important; }
-    .when { margin-top:12px !important; padding:8px 12px; background:var(--bg-warning); border-radius:8px; font-size:0.9rem; color:var(--ink); }
-    @media(max-width:480px){ .faq-q { padding:12px; font-size:0.9rem; } }
+    .how { font-weight:600; margin-top:14px !important; color:var(--ink); }
+    .when { margin-top:14px !important; padding:10px 14px; background:#fff7ed; border-radius:var(--radius); font-size:0.9rem; color:#b45309; border-left:3px solid #f59e0b; }
+    @media(max-width:480px){ .faq-q { padding:12px; font-size:0.95rem; } }
   </style>
 
   <script>

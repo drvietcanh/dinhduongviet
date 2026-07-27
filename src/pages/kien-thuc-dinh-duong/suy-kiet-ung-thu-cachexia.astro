@@ -1,0 +1,49 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["suy-kiet-ung-thu-cachexia"];
+if (!art) throw new Error("Article not found: suy-kiet-ung-thu-cachexia");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chú Sơn phát hiện ung thư phổi giai đoạn muộn. Dù gia đình cố gắng bồi bổ đủ thứ sơn hào hải vị, chú vẫn sụt 15kg chỉ trong 2 tháng, người gầy giơ xương, cơ bắp teo tóp lỏng lẻo, mệt mỏi không lết nổi ra khỏi giường. Bác sĩ cho biết chú không thể tiếp tục hóa trị đợt 2 vì cơ thể đã rơi vào trạng thái <strong>Hội chứng suy kiệt ung thư (Cachexia)</strong>, phác đồ hóa trị giờ đây sẽ giết chết chú trước khi giết được khối u.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Hơn 20% bệnh nhân ung thư tử vong là do Hội chứng Suy kiệt Cachexia chứ không phải do khối u di căn. Đây là tình trạng cơ thể <u>đốt cháy cơ bắp và mỡ dự trữ với tốc độ điên cuồng</u>. Để chống lại, bệnh nhân cần ăn lượng Đạm khổng lồ, sử dụng Dầu cá Omega-3 (EPA) liều cao để dập tắt phản ứng viêm, và tuyệt đối KHÔNG ĐƯỢC NHỊN ĐÓI.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cachexia không giống như "sự nhịn đói" bình thường</h2>
+  <p>Khi người bình thường nhịn đói (hoặc ăn kiêng giảm cân), cơ thể sẽ ưu tiên đốt MỠ để sinh năng lượng và cố gắng giữ lại CƠ BẮP. Chỉ cần ăn lại là sẽ tăng cân.</p>
+  <p>Nhưng với Cachexia do ung thư, khối u tiết ra hàng loạt chất hóa học độc hại (Cytokine gây viêm). Các chất này làm đảo lộn toàn bộ quá trình trao đổi chất. Cơ thể đột nhiên <strong>đốt cháy sạch sẽ toàn bộ CƠ BẮP</strong> (Catabolism) để cung cấp dưỡng chất cho khối u. Dù bệnh nhân có cố gắng ăn thật nhiều cơm, cân nặng vẫn cứ sụt không phanh. Việc mất đi cơ hô hấp (cơ hoành, cơ liên sườn) sẽ khiến bệnh nhân suy hô hấp và tử vong.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Phác đồ Dinh dưỡng Giành lại Sự sống</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tăng Đạm (Protein) lên mức tối đa:</strong> Bệnh nhân ung thư cần 1.5 - 2.0g Protein/kg thể trọng (gấp đôi người bình thường). Ưu tiên các loại đạm dễ hấp thu: Sữa Whey Protein, lòng trắng trứng gà, đậu nành, cá biển.</li>
+      <li><strong>Vũ khí bí mật EPA (Omega-3):</strong> Các nghiên cứu lâm sàng khẳng định: Bổ sung <em>2 gram EPA mỗi ngày</em> (từ viên dầu cá chất lượng cao hoặc sữa y tế) có thể can thiệp thẳng vào hệ miễn dịch, làm <strong>ngừng lại quá trình teo cơ bắp</strong> do khối u gây ra.</li>
+      <li><strong>Tăng Calo bằng chất béo tốt:</strong> Ăn cơm nát chan thêm 1-2 thìa dầu Oliu/dầu hạt lanh. Dầu chứa lượng Calo gấp đôi tinh bột, giúp đẩy nhanh tổng mức năng lượng nạp vào mà không làm bệnh nhân bị chướng bụng.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sai lầm đẩy nhanh cái chết</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Niềm tin "Bỏ đói tế bào ung thư":</strong> Rất nhiều người truyền miệng rằng nếu ăn thịt bò, trứng, sữa thì khối u sẽ phát triển to lên. Thế là họ cho bệnh nhân nhịn đói, chỉ ăn gạo lứt muối tiêu hoặc uống nước ép cỏ lúa mì. Sự thật là: Dù bạn nhịn đói, khối u vẫn sẽ <em>ăn thịt chính cơ bắp của bạn</em> để lớn lên. Nhịn đói chính là hành động "tự sát", tước đi vũ khí cuối cùng của hệ miễn dịch. Bệnh nhân sẽ chết vì suy kiệt trước khi u kịp teo!</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

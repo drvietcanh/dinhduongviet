@@ -1,0 +1,55 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-cho-con-bu"];
+if (!art) throw new Error("Article not found: dinh-duong-cho-con-bu");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Tâm mới sinh con được 1 tháng. Sợ con thiếu sữa, ngày nào mẹ chồng cũng ép chị ăn 3 bát cơm to và liên tục ninh móng giò, chân chó cho chị ăn tẩm bổ. Kết quả là chị Tâm tắc tia sữa đau điếng, stress vì vóc dáng sồ sề, trong khi em bé tiêu hóa kém vì sữa mẹ quá nhiều mỡ.</p>
+  <p>Quan niệm "ăn nhiều móng giò để lợi sữa" là một trong những hiểu lầm dai dẳng nhất về dinh dưỡng sau sinh ở Việt Nam.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chìa khóa vàng để có nhiều sữa là <u>CHO CON BÚ THƯỜNG XUYÊN</u> và <u>UỐNG ĐỦ NƯỚC (3 lít/ngày)</u>.
+    Canh móng giò chứa toàn mỡ động vật (Cholesterol xấu), không giúp tạo sữa mà chỉ gây béo phì cho mẹ và làm tắc tia sữa (do mỡ đông lại trong ống dẫn sữa).</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cơ chế sản xuất sữa mẹ (Cung & Cầu)</h2>
+  <p>Sữa mẹ không được tạo ra từ việc "ăn móng giò". Sữa được sản xuất theo nguyên lý cung - cầu nhờ 2 hormone chính: <strong>Prolactin</strong> (tạo sữa) và <strong>Oxytocin</strong> (đẩy sữa ra).</p>
+  <p>Mỗi lần em bé ngậm bắt vú và mút, dây thần kinh ở quầng vú sẽ gửi tín hiệu lên não, kích thích tiết Prolactin. Bé càng bú nhiều, não càng hiểu là "cần sản xuất thêm sữa". Nếu mẹ ăn sơn hào hải vị nhưng không cho con bú hoặc không hút sữa đều đặn, cơ thể sẽ tự động ngừng tiết sữa.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn "Lợi Sữa" Khoa học</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nước ấm (Quan trọng nhất):</strong> 90% thành phần sữa mẹ là nước. Mẹ cần uống 2.5 - 3 lít nước mỗi ngày (nước lọc, sữa ấm, canh rau, chè vằng).</li>
+      <li><strong>Năng lượng:</strong> Mẹ đang cho con bú cần thêm khoảng 500 kcal/ngày (tương đương 1 bát cơm nhỏ + 1 khúc cá + 1 ly sữa). Không cần ăn gấp đôi.</li>
+      <li><strong>Protein & Canxi:</strong> Ăn đa dạng thịt nạc, cá, tôm, đậu phụ, uống sữa ít béo. Em bé sẽ lấy canxi từ xương của mẹ để tạo sữa, nên mẹ rất dễ bị loãng xương nếu không bổ sung Canxi.</li>
+      <li><strong>Ngũ cốc nguyên cám:</strong> Gạo lứt, yến mạch rất tốt cho tiêu hóa và giúp sữa đặc hơn.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những món cần tránh/Hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Caffeine:</strong> Cà phê, trà đặc. Caffeine đi qua sữa mẹ làm em bé cáu kỉnh, khó ngủ. Tối đa chỉ nên dùng 200mg/ngày.</li>
+      <li><strong>Cồn (Rượu bia):</strong> Rượu đi thẳng vào sữa mẹ, ức chế phản xạ tiết sữa và gây hại não bộ em bé. Cấm tuyệt đối.</li>
+      <li><strong>Món ăn mặn, nhiều mỡ:</strong> Canh móng giò, thịt kho tàu mặn. Làm tăng nguy cơ tắc tia sữa và cao huyết áp.</li>
+      <li><strong>Thực phẩm chứa thủy ngân cao:</strong> Cá ngừ mắt to, cá mập, cá kiếm. (Nên ăn cá hồi, cá chép, cá cơm).</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

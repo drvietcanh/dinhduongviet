@@ -5,7 +5,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["viem-mach-dinh-duong"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
   <section class="article-section" data-section="summary">
     <h2>Tóm tắt</h2>
     <p>Viêm mạch (vasculitis) là nhóm bệnh tự miễn gây viêm thành mạch máu, dẫn đến hẹp hoặc tổn thương mạch, giảm tưới máu đến các cơ quan. Có nhiều thể: viêm mạch hệ thống (GPA/Wegener), viêm mạch tế bào khổng lồ, viêm mạch IgA (Henoch-Schönlein)...</p>

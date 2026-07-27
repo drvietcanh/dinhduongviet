@@ -1,0 +1,47 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["gout-khong-chi-kieng-thit-do"];
+if (!art) throw new Error("Article not found: gout-khong-chi-kieng-thit-do");
+---
+
+<ArticleLayout article={art}>
+<div class="article-content">
+
+<section class="section card" style="background:#ede7f6;border:1px solid #ce93d8;">
+  <p>Anh Hùng kiêng thịt đỏ nghiêm ngặt đã 6 tháng, nhưng khớp ngón chân vẫn đau nhức mỗi tuần. Vì sao? Vì anh chưa biết rằng <strong>bia, nước ngọt và hải sản mới là thủ phạm chính</strong> làm axit uric tăng cao!</p>
+</section>
+
+<section class="section card">
+  <h2>1. Gout là gì? Tại sao đau khớp?</h2>
+  <p>Gout xảy ra khi axit uric trong máu quá cao, kết tinh thành các tinh thể sắc nhọn (như vụn thủy tinh) lắng đọng trong khớp. Cơ thể nhận ra "vật lạ" và tấn công → gây đỏ, sưng, nóng, đau dữ dội.</p>
+</section>
+
+<section class="section card">
+  <h2>2. Những thứ ĂN hàng ngày đang làm đau khớp</h2>
+
+  <h3>🍺 Bia — Thủ phạm số 1</h3>
+  <p>Bia không chỉ chứa Purin mà còn chứa Fructose và làm thận giảm thải axit uric. Một lon bia 330ml làm tăng nguy cơ cơn Gout cấp lên gấp 1.7 lần. Rượu cũng tương tự.</p>
+
+  <h3>🥤 Nước ngọt và trái cây nhiều Fructose</h3>
+  <p>Fructose (đường trái cây) được chuyển hóa thành axit uric trực tiếp trong gan. Uống nhiều Coca, Pepsi, nước ép táo, nước ép cam... đều làm tăng axit uric mà không cần ăn thịt!</p>
+
+  <h3>🦞 Hải sản (Tôm, Cua, Sò huyết, Cá cơm)</h3>
+  <p>Hải sản vỏ cứng và cá cơm chứa Purin rất cao — ngang hoặc hơn thịt đỏ. Người Gout cần hạn chế xuống còn 1-2 bữa/tuần, tránh hoàn toàn trong đợt cấp.</p>
+
+  <h3>🥩 Thịt đỏ — Có nhưng không phải tất cả</h3>
+  <p>Thịt đỏ có Purin nhưng chỉ ở mức trung bình, không phải nguyên nhân chính. Bạn có thể ăn 100-150g thịt nạc/ngày — quan trọng hơn là cách chế biến (luộc, hấp thay vì nướng, chiên).</p>
+</section>
+
+<section class="section card">
+  <h2>3. Những thứ giúp GIẢM axit uric tự nhiên</h2>
+  <ul>
+    <li><strong>Nước lọc:</strong> Uống 2.5-3 lít/ngày — cách rẻ tiền và hiệu quả nhất để thận thải axit uric.</li>
+    <li><strong>Cà phê:</strong> Nghiên cứu cho thấy uống 2-4 tách cà phê đen/ngày giảm nguy cơ Gout đến 40%.</li>
+    <li><strong>Anh đào (Cherry):</strong> Anthocyanin trong cherry ức chế enzyme sản xuất axit uric. Ăn 15-20 quả/ngày hoặc uống nước ép cherry.</li>
+    <li><strong>Vitamin C:</strong> 500mg Vitamin C/ngày giúp thận thải axit uric tốt hơn (cam, ổi, ớt chuông).</li>
+  </ul>
+</section>
+
+</div>
+</ArticleLayout>

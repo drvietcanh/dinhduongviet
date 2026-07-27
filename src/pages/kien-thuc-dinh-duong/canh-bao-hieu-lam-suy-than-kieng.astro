@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-suy-than-kieng", title: "Cảnh báo hiểu lầm: Người suy thận không được tự ý kiêng quá mức kali, đạm, phốt pho", description: "Kiêng chưa có chỉ định bisa gây suy dinh dưỡng. Cần xét nghiệm và hướng dẫn bác sĩ.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 7, featured: false, tags: ["myth","ask-doctor","caregiver"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

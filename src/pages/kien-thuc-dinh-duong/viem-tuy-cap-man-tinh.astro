@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-tuy-cap-man-tinh"];
+if (!art) throw new Error("Article not found: viem-tuy-cap-man-tinh");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Phong (45 tuổi) thường xuyên nhậu nhẹt. Một đêm sau chầu nhậu bia kèm thịt chó nhiều mỡ, anh bị đau bụng dữ dội, đau xuyên ra sau lưng và nôn mửa liên tục. Cấp cứu tại viện, bác sĩ chẩn đoán anh bị <strong>Viêm tụy cấp</strong> do rượu và mỡ máu cao. Bác sĩ yêu cầu anh phải nhịn ăn uống hoàn toàn trong những ngày đầu, chỉ truyền dịch tĩnh mạch.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Tuyến tụy là nhà máy sản xuất enzyme tiêu hóa chất béo. Khi bị viêm, tuyến tụy sẽ tự "tiêu hủy" chính nó. Do đó, nguyên tắc số 1 trong viêm tụy là <u>Cắt giảm Chất béo (Mỡ/Dầu) về mức 0</u> trong giai đoạn cấp, và kiêng tuyệt đối rượu bia suốt đời.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Viêm tụy nguy hiểm như thế nào?</h2>
+  <p>Bình thường, tuyến tụy tiết ra các enzyme (men tiêu hóa) ở dạng "chưa kích hoạt", chúng theo ống tụy chảy xuống ruột non rồi mới hoạt động để tiêu hóa thức ăn (đặc biệt là chất béo).</p>
+  <p>Khi bị viêm tụy (do sỏi mật chặn đường ống hoặc do ngộ độc rượu), các enzyme này bị kẹt lại và kích hoạt ngay bên trong tuyến tụy. Chúng bắt đầu ăn mòn và "tiêu hóa" luôn chính tuyến tụy, gây ra cơn đau khủng khiếp và nguy cơ hoại tử, suy đa tạng tử vong rất cao.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chế độ ăn từng giai đoạn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Giai đoạn cấp cứu (Nằm viện):</strong> Nhịn ăn, nhịn uống hoàn toàn (NPO) để tuyến tụy được "ngủ đông" và ngừng tiết enzyme. Dinh dưỡng được truyền qua tĩnh mạch.</li>
+      <li><strong>Giai đoạn phục hồi:</strong> Bắt đầu ăn lại bằng nước đường, nước cháo loãng. Nếu không đau bụng, chuyển sang cơm nát, súp rau củ. <u>Đặc biệt: Hoàn toàn không có dầu mỡ</u>.</li>
+      <li><strong>Giai đoạn mãn tính (Tại nhà):</strong> Chế độ ăn <em>Rất ít béo (Low-Fat)</em>. Sử dụng nguồn đạm siêu nạc: Lòng trắng trứng, ức gà, tôm hấp, đậu phụ.</li>
+      <li><strong>Bổ sung Enzyme:</strong> Bệnh nhân viêm tụy mãn tính thường bị tiêu chảy phân mỡ do tụy đã hỏng không tiết được men. Cần uống thuốc bổ sung enzyme tụy (Creon) ngay trong bữa ăn.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ "Quả bom" kích nổ tuyến tụy</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rượu bia:</strong> Dù chỉ 1 lon bia cũng có thể làm bệnh tái phát và đưa bạn trở lại phòng cấp cứu. Tuyệt đối cấm.</li>
+      <li><strong>Đồ chiên rán, mỡ động vật:</strong> Lòng lợn, thịt ba chỉ, gà rán, phô mai béo. Cứ ăn chất béo là tuyến tụy bị ép phải vắt kiệt sức để sản xuất men tiêu hóa.</li>
+      <li><strong>Bữa ăn quá no:</strong> Không bao giờ được đi ăn buffet hoặc ăn nhồi nhét. Hãy chia thành 5-6 bữa nhỏ/ngày để giảm tải cho tuyến tụy.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

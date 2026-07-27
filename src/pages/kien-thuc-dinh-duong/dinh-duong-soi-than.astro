@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-soi-than"];
+if (!art) throw new Error("Article not found: dinh-duong-soi-than");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chú Dũng (45 tuổi) từng phải đi tán sỏi thận (loại sỏi Canxi Oxalate). Sợ sỏi tái phát, chú cắt bỏ hoàn toàn sữa tươi, tôm cua cá, đậu phụ ra khỏi thực đơn vì nghĩ rằng "sỏi làm từ canxi nên kiêng canxi là chắc ăn nhất". Chú cũng chăm chỉ uống nước trà đá pha lá vối thay nước lọc. Bất ngờ thay, chỉ 1 năm sau, viên sỏi mới to bằng hạt lạc lại xuất hiện chình ình trong đài bể thận, kèm theo triệu chứng đau thắt lưng dữ dội.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Sỏi thận phổ biến nhất là Sỏi Canxi Oxalate. Lời khuyên <u>kiêng tuyệt đối Canxi là một sai lầm chết người!</u> Nếu bạn thiếu Canxi, cơ thể sẽ tự rút Canxi từ xương ra máu, lượng Canxi này đi qua thận và dễ dàng kết tủa thành sỏi.
+    Để chống tạo sỏi, bạn phải <u>Hạn chế thực phẩm giàu Oxalate</u> (trà đen, rau chân vịt, hạt điều) và phải uống > 2.5 lít nước/ngày.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Phản ứng hóa học sinh ra Sỏi Oxalate</h2>
+  <p>Thận giống như một cái màng lọc nước. Nếu trong nước tiểu có nồng độ chất tan quá cao mà lượng nước lại quá ít, các chất này sẽ kết tủa lại giống như muối đọng dưới đáy cốc.</p>
+  <p>Khi chất <strong>Oxalate</strong> (có trong nhiều loại thực vật) gặp <strong>Canxi</strong> trong đường tiết niệu, chúng kết hợp với nhau tạo thành các tinh thể rắn Canxi Oxalate. Các tinh thể này to dần lên, cọ xát vào vách niệu quản gây tiểu buốt, tiểu ra máu, và những cơn đau quặn thận đau đớn không kém gì đau đẻ.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chiến thuật ngăn sỏi tái phát</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Uống nước là Vua:</strong> Mục tiêu sống còn là nước tiểu của bạn phải có <em>màu vàng siêu nhạt, gần như trong suốt</em>. Cần uống 2.5 đến 3 lít nước lọc mỗi ngày. Nước sẽ cuốn trôi mọi tinh thể trước khi chúng kịp dính vào nhau.</li>
+      <li><strong>Ăn Canxi và Oxalate CÙNG LÚC:</strong> Thay vì kiêng Canxi, bạn phải ăn ĐỦ Canxi trong cùng một bữa ăn chứa Oxalate. Mẹo: Khi Canxi gặp Oxalate ở trong DẠ DÀY, chúng sẽ kết tủa ngay tại dạ dày/ruột và bị đẩy ra ngoài qua đường Phân, không kịp đi vào máu để đến Thận! Hãy ăn rau bina kèm phô mai, uống trà kèm sữa chua.</li>
+      <li><strong>Tăng cường nước chanh/cam tươi:</strong> Nước chanh chứa nhiều <em>Citrate</em>. Citrate có tác dụng thần kỳ là "bọc" lấy viên sỏi, ngăn không cho các tinh thể canxi bám thêm vào sỏi.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những thứ "nuôi" viên sỏi to lên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thực phẩm siêu chứa Oxalate:</strong> Trà đen, trà đá đặc, rau chân vịt (spinach), củ dền đỏ, hạt điều, socola đen, măng tây. Hãy hạn chế tối đa.</li>
+      <li><strong>Ăn quá mặn (Nhiều muối Natri):</strong> Thận phải xả Natri ra nước tiểu, nhưng Natri lại "kéo" theo Canxi đi cùng. Nước tiểu càng nhiều Canxi thì tỷ lệ gặp Oxalate tạo sỏi càng cao. Cần ăn nhạt.</li>
+      <li><strong>Lạm dụng Vitamin C liều cao:</strong> Uống viên sủi Vitamin C > 1000mg/ngày kéo dài sẽ khiến cơ thể chuyển hóa phần Vitamin C dư thừa thành Oxalate. Chỉ nên lấy Vitamin C tự nhiên từ trái cây.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

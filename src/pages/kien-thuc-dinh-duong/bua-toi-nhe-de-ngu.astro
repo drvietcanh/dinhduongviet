@@ -4,7 +4,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["bua-toi-nhe-de-ngu"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Bữa tối ảnh hưởng rất lớn đến giấc ngủ. Ăn tối quá no, quá muộn, hoặc sai món có thể gây mất ngủ, trào ngược, tăng cân. Một bữa tối nhẹ, đúng cách vừa giúp ngủ ngon vừa không tăng cân.
 
@@ -268,6 +268,6 @@ Bữa tối ảnh hưởng rất lớn đến giấc ngủ. Ăn tối quá no, q
 </tr>
 </tbody>
 </table>
-> **Mẹo:** Ăn tối trong khung 17h30-19h. Nếu đi làm về muộn: ăn nhẹ lúc 21h (cháo, súp, sữa) — đừng nhịn đói đi ngủ. Tuyệt đối không ăn đồ chiên rán, đồ ngọt, cafe sau 18h.
+> **Mẹo:** Ăn tối trong khung 17h30-19h. Nếu đi làm về muộn: ăn nhẹ lúc 21h (cháo, súp, sữa) — đừng nhịn đói đi ngủ. Nên tránh tối đa đồ chiên rán, đồ ngọt, cafe sau 18h.
 
 </ArticleLayout>

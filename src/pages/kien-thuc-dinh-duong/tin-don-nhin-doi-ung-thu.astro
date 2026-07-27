@@ -1,0 +1,49 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tin-don-nhin-doi-ung-thu"];
+if (!art) throw new Error("Article not found: tin-don-nhin-doi-ung-thu");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Sau khi nhận kết quả K vòm họng, một bệnh nhân kiên quyết từ chối phác đồ hóa xạ trị của bệnh viện. Nghe theo lời khuyên trên mạng, ông chuyển sang chế độ "Thực dưỡng Ohsawa", mỗi ngày chỉ ăn một bát gạo lứt rang với muối mè, kiêng tuyệt đối thịt, cá, sữa, và đường. Ông tin rằng làm như vậy khối u sẽ không có gì ăn và tự chết đói. Sau 4 tháng, khối u không hề teo đi mà di căn khắp cổ, còn ông thì kiệt sức, chỉ còn 35kg và không qua khỏi.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Y khoa thế giới khẳng định: <u>Không có chuyện nhịn ăn sẽ bỏ đói được tế bào ung thư</u>. Khối u là một tổ chức "kí sinh" cực kỳ tinh vi. Nếu bạn không ăn thịt, nó sẽ tiết chất độc ép cơ thể phân hủy chính cơ bắp của bạn (teo cơ) để biến thành axit amin nuôi nó. Người bệnh ung thư <u>CHẾT VÌ ĐÓI</u> trước khi chết vì bệnh.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Khối u lừa gạt cơ thể như thế nào?</h2>
+  <p>Bạn không thể điều khiển dòng chảy dinh dưỡng trong cơ thể theo ý muốn. Khi bạn ăn thức ăn vào bụng (dù là cơm lứt, thịt bò hay rau xanh), dạ dày sẽ cắt vụn tất cả thành phân tử đường, axit amin và mỡ để đưa vào máu.</p>
+  <p>Tế bào ung thư có khả năng sinh sản không kiểm soát, do đó nhu cầu năng lượng của nó lớn gấp hàng chục lần tế bào khỏe mạnh. Nó tự tạo ra mạng lưới mạch máu riêng (Tăng sinh mạch) để cướp giật dinh dưỡng từ máu. Dù bạn có nhịn đói, nồng độ đường và đạm trong máu vẫn luôn phải được cơ thể duy trì ở mức ổn định (nếu máu hết đường, não bạn sẽ chết ngay lập tức). Vậy cơ thể lấy đường/đạm từ đâu để bù vào máu? Đó là tự phá hủy mô mỡ và cơ bắp của chính bạn!</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ "Đạn dược" cho hệ miễn dịch</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Trận chiến với ung thư là trận chiến của <strong>Bạch cầu (Hệ miễn dịch)</strong>. Vũ khí duy nhất để bạch cầu chiến đấu chính là <strong>Protein (Đạm)</strong>. Nếu bạn ăn chay trường hoặc kiêng thịt, bạch cầu sẽ cạn kiệt đạn dược, nằm thoi thóp, mở toang cửa cho tế bào ung thư tự do di căn.</li>
+      <li>Bệnh nhân ung thư <u>BẮT BUỘC phải ăn nhiều đạm hơn người bình thường</u>. Đa dạng hóa đạm từ Cá hồi, trứng gà, thịt lợn, thịt gà nạc, các loại đậu.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Xóa bỏ các tin đồn vô căn cứ</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>"Đường làm khối u phát triển nhanh hơn":</strong> Sự thật là mọi tế bào trong cơ thể đều cần đường (Glucose) để sống, kể cả não bộ. Kiêng đường tinh luyện (bánh kẹo, soda) là rất tốt để giảm viêm, nhưng tuyệt đối không được kiêng tinh bột phức tạp (cơm, khoai, bún, phở, trái cây tươi). Nếu không ăn tinh bột, cơ thể sẽ kiệt sức.</li>
+      <li><strong>"Ăn thịt đỏ thì u to lên":</strong> Thịt bò, lợn, cừu nấu nướng bình thường cung cấp lượng Sắt và Kẽm khổng lồ giúp tạo máu (rất cần sau hóa trị). Chỉ kiêng các loại thịt đỏ <em>nướng cháy đen</em> hoặc thịt đóng hộp (xúc xích, thịt xông khói) vì chúng chứa chất sinh ung thư nitrat/AGEs.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

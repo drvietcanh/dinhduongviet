@@ -1,0 +1,53 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["che-do-an-dia-trung-hai"];
+if (!art) throw new Error("Article not found: che-do-an-dia-trung-hai");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Khi nhắc đến "ăn kiêng", hầu hết mọi người đều nghĩ đến sự kham khổ, đói lả, phải nhịn cơm, nhịn thịt, và tính toán calo từng li từng tí. Nhưng có một chế độ ăn hoàn toàn ngược lại: cho phép bạn ăn no, ăn ngon, thậm chí uống cả rượu vang, mà lại được y khoa bình chọn là <strong>Chế độ ăn tốt nhất thế giới 7 năm liên tiếp</strong> (U.S. News & World Report).</p>
+  <p>Đó chính là <strong>Chế độ ăn Địa Trung Hải (Mediterranean Diet)</strong>.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Đây không phải là phương pháp ép cân nhanh, mà là một lối sống trường thọ. Nguyên tắc cốt lõi: <u>Dùng dầu Oliu làm chất béo chính</u>, ăn rất nhiều rau, quả hạch, các loại đậu và cá (đặc biệt là cá béo giàu Omega-3). Cực kỳ hiếm khi ăn thịt đỏ và đồ ngọt.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bí mật của sự Trường thọ (Blue Zones)</h2>
+  <p>Vào những năm 1950, các nhà khoa học nhận thấy người dân sống ở các quốc gia ven biển Địa Trung Hải (như Hy Lạp, Ý) có tuổi thọ cực cao và tỷ lệ mắc bệnh tim mạch, ung thư thấp nhất thế giới.</p>
+  <p>Bí mật không nằm ở một loại siêu thực phẩm nào, mà nằm ở sự cộng hưởng của toàn bộ hệ sinh thái thực phẩm họ ăn. Dầu Oliu Extra Virgin cung cấp chất béo không bão hòa đơn (Oleic acid) giúp cọ rửa mạch máu. Polyphenol trong rau củ tươi và rượu vang đỏ đóng vai trò là chiếc khiên chống lão hóa và dọn dẹp tế bào ung thư.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Tháp dinh dưỡng Địa Trung Hải</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tầng nền tảng (Mỗi bữa):</strong> Rau củ quả tươi nhiều màu sắc, ngũ cốc nguyên hạt (gạo lứt, yến mạch, bánh mì đen), các loại đậu, quả hạch (hạt điều, óc chó). <u>Sử dụng Dầu Oliu Extra Virgin mỗi ngày</u>.</li>
+      <li><strong>Tầng giữa (Mỗi tuần 2-3 lần):</strong> Cá và hải sản. Đặc biệt là cá hồi, cá trích, cá mòi để lấy Omega-3. Gia cầm (Gà, vịt) và Trứng, Sữa chua, Phô mai ăn với lượng vừa phải.</li>
+      <li><strong>Tầng đỉnh (Rất hiếm khi ăn):</strong> Thịt đỏ (bò, lợn) và đồ ngọt. Chỉ ăn 1-2 lần/tháng.</li>
+      <li><strong>Đồ uống:</strong> Nước lọc là chủ yếu. Người trưởng thành có thể uống 1 ly rượu vang đỏ (tối đa 150ml) trong bữa ăn tối.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🏆 3 Lợi ích Y khoa đã được chứng minh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Bảo vệ Trái tim:</strong> Giảm 30% nguy cơ nhồi máu cơ tim và đột quỵ. Đây là chế độ ăn tiêu chuẩn vàng do Hiệp hội Tim mạch Hoa Kỳ (AHA) khuyến cáo.</li>
+      <li><strong>Ngăn ngừa Suy giảm Trí nhớ:</strong> Bảo vệ tế bào não, giảm nguy cơ mắc bệnh Alzheimer ở người già.</li>
+      <li><strong>Ổn định Đường huyết:</strong> Vì thực phẩm chủ yếu có chỉ số GI thấp, giàu chất xơ, nó giúp kiểm soát bệnh Tiểu đường tuýp 2 vô cùng hiệu quả.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

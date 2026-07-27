@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-giam-can-nhanh", title: "Cảnh báo hiểu lầm: Giảm cân nhanh không đồng nghĩa giảm mỡ tốt", description: "Giảm cân nhanh thường mất nước và cơ bắp. Giảm mỡ bền vững cần chế độ ăn vừa và tập luyện.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

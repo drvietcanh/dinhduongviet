@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["gan-nhiem-mo-nafld-fructose"];
+if (!art) throw new Error("Article not found: gan-nhiem-mo-nafld-fructose");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Tuấn (38 tuổi) là một người ăn chay trường, thân hình mảnh khảnh, hoàn toàn không ăn một giọt mỡ lợn nào và cũng hiếm khi nhậu nhẹt. Thế nhưng, trong đợt khám công ty, kết quả siêu âm báo anh bị Gan nhiễm mỡ độ 2. Anh sốc nặng, mang kết quả lên gặp bác sĩ thắc mắc: "Tôi có ăn mỡ động vật đâu mà gan lại nhiễm mỡ?". Qua khai thác thói quen, bác sĩ phát hiện anh Tuấn cực kỳ ghiền uống nước ép trái cây đóng hộp và ngày nào cũng ăn bánh quy ngọt để lót dạ.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Sự thật gây sốc: Ăn mỡ KHÔNG phải là nguyên nhân chính gây Gan nhiễm mỡ. Thủ phạm số 1 hủy hoại lá gan của bạn chính là <u>Đường FRUCTOSE</u> (có trong nước ngọt, trà sữa, bánh kẹo và trái cây ép bỏ bã). Gan là cơ quan duy nhất trong cơ thể phải xử lý loại đường này, và nó sẽ trực tiếp chuyển hóa Fructose thành những hạt mỡ trắng tích tụ lại ngay bên trong gan.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Fructose: Chất độc ngọt ngào của Gan</h2>
+  <p>Khi bạn ăn tinh bột (Cơm, phở), chúng phân giải thành đường Glucose. Glucose được 100% các tế bào trong cơ thể (Não, Cơ bắp, Tim...) sử dụng làm năng lượng. Nó bay đi khắp nơi.</p>
+  <p>Tuy nhiên, khi bạn nạp đường Fructose (Loại đường tạo ra vị ngọt gắt cho nước ngọt, siro bắp HFCS), các cơ quan khác từ chối nhận loại đường này. Nó đổ dồn 100% về lá Gan. Gan của bạn phải gồng mình xử lý khối lượng Fructose khổng lồ. Quá tải, Gan đành phải thực hiện một phản ứng hóa học (De novo lipogenesis) để biến đống đường Fructose thừa thãi này thành MỠ (Triglyceride). Số mỡ này kẹt lại trong gan, khiến gan sưng to, vàng khè và dần tiến triển thành Viêm gan, Xơ gan (Bệnh NAFLD - Gan nhiễm mỡ không do rượu).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ "Chổi" làm sạch mỡ nội tạng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chất béo tốt (Omega-3, Dầu Oliu):</strong> Rất nghịch lý nhưng để trị gan nhiễm mỡ, bạn phải ĂN MỠ TỐT. Omega-3 trong cá hồi có khả năng "hút" các hạt mỡ Triglyceride ra khỏi gan và phân giải chúng.</li>
+      <li><strong>Choline (Lòng đỏ trứng gà):</strong> Choline là chất vận chuyển vĩ đại, nó giống như chiếc xe tải chở các hạt mỡ đang kẹt trong gan đi ra ngoài máu để tiêu thụ. Rất nhiều người kiêng trứng vì sợ cholesterol mà không biết rằng đang tự tước đi "xe tải" dọn mỡ gan của mình.</li>
+      <li><strong>Cà phê đen (Không đường/sữa):</strong> 2 ly cà phê đen mỗi ngày chứa hàng tá chất chống oxy hóa mạnh, được y khoa chứng minh giúp ngăn chặn sự tiến triển từ gan nhiễm mỡ sang xơ gan.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cắt đứt nguồn cung Fructose</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nước ép trái cây:</strong> Ăn trái cây nguyên miếng (còn chất xơ) thì rất tốt, nhưng nước ép trái cây (bỏ bã) thực chất chỉ là một ly nước đường Fructose nguyên chất. Hãy nhai trái cây, đừng uống!</li>
+      <li><strong>Siro bắp cao phân tử (HFCS):</strong> Thường được ghi dưới tên "High Fructose Corn Syrup" ở mặt sau các chai nước ngọt có gas, trà sữa đóng chai, tương cà chua (Ketchup). Đây là loại độc dược số 1 đối với lá gan, rẻ tiền và siêu ngọt.</li>
+      <li><strong>Rượu bia:</strong> Mặc dù đây là bệnh NAFLD (Không do rượu), nhưng nếu lá gan đang ngập mỡ mà bạn dội thêm cồn vào, phản ứng viêm gan bùng phát sẽ phá hủy tế bào gan nhanh gấp đôi.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

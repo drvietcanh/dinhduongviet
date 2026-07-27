@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "thuc-don-gan-nhiem-mo-nguoi-gia", title: "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản người lớn tuổi", description: "Người già bị gan nhiễm mỡ cần thực đơn nhẹ nhàng nhưng đủ chất. Tránh suy dinh dưỡng đi kèm.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Nhẹ, dễ tiêu, ít đường, đủ dinh dưỡng (~1400 kcal)</p>
 </div>

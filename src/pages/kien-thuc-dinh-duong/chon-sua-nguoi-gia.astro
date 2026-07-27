@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "chon-sua-nguoi-gia", title: "Cách chọn sữa cho người lớn tuổi", description: "Người già nên uống sữa gì? Sữa bột, sữa tươi, sữa hạt, sữa dinh dưỡng — so sánh và hướng dẫn chọn.", emoji: "🥛", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Sữa là nguồn canxi và đạm quan trọng cho người lớn tuổi. Nhưng thị trường có quá nhiều loại sữa — sữa tươi, sữa bột, sữa hạt, sữa dinh dưỡng — khiến người mua dễ bị quảng cáo dẫn dắt.
 

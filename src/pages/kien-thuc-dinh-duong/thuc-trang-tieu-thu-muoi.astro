@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+const article = {
+  slug: "thuc-trang-tieu-thu-muoi",
+  title: "Khủng hoảng tiêu thụ muối ở Việt Nam: Cảnh báo đỏ cho sức khỏe",
+  description: "Người Việt đang tiêu thụ muối gấp rưỡi khuyến cáo của WHO. Hiểu rõ tác hại và cách cắt giảm muối hiệu quả.",
+  emoji: "🧂",
+  category: "disease",
+  categoryName: "Bệnh lý & Sức khỏe",
+  date: "2026-07-08",
+  readTime: 5,
+  featured: false,
+  tags: ["Tim mạch", "Huyết áp", "Sức khỏe cộng đồng"]
+};
+---
+
+<ArticleLayout article={article as any}>
+  <div class="prose">
+    <p class="lead">
+      Bạn có biết, lượng muối trung bình một người Việt Nam trưởng thành tiêu thụ mỗi ngày lên tới <strong>8.5 gram</strong>? Con số này vượt xa mức khuyến cáo của Tổ chức Y tế Thế giới (WHO) là dưới <strong>5 gram/ngày</strong>. Đây thực sự là một "quả bom nổ chậm" đối với sức khỏe cộng đồng.
+    </p>
+
+    <h2>Sự thật về thói quen ăn mặn</h2>
+    <p>
+      Khác với các nước phương Tây nơi muối chủ yếu đến từ thực phẩm chế biến sẵn (như xúc xích, thịt xông khói, phô mai), tại Việt Nam, hơn <strong>80% lượng muối tiêu thụ</strong> đến từ quá trình nấu nướng và chấm gia vị tại mâm cơm. Thói quen sử dụng nước mắm, xì dầu, bột canh, mì chính (hạt nêm) vô tội vạ đã khiến bữa ăn truyền thống của chúng ta vô tình trở thành gánh nặng cho cơ thể.
+    </p>
+
+    <h2>Muối tàn phá cơ thể như thế nào?</h2>
+    <ul>
+      <li><strong>Tăng Huyết Áp:</strong> Natri trong muối giữ nước lại trong máu, làm tăng thể tích máu và tạo áp lực lớn lên thành mạch. Đây là nguyên nhân hàng đầu gây ra bệnh tăng huyết áp.</li>
+      <li><strong>Đột Quỵ và Nhồi Máu Cơ Tim:</strong> Huyết áp cao kéo dài làm tổn thương mạch máu não và tim, dẫn đến các biến cố tim mạch đe dọa tính mạng.</li>
+      <li><strong>Suy Thận:</strong> Thận phải làm việc cật lực để đào thải lượng Natri dư thừa, lâu ngày dẫn đến suy giảm chức năng thận.</li>
+      <li><strong>Nguy Cơ Ung Thư Dạ Dày:</strong> Ăn quá mặn làm tổn thương lớp niêm mạc dạ dày, tạo điều kiện cho vi khuẩn HP phát triển và tăng nguy cơ ung thư.</li>
+    </ul>
+
+    <div class="callout warning">
+      <strong>Lưu ý quan trọng:</strong> Hiện nay có nhiều lời đồn thổi trên mạng khuyên người dùng hãy "detox thải độc" bằng nước muối pha loãng để thanh lọc cơ thể. <strong>Tuyệt đối không làm theo phương pháp này!</strong> Không có bất kỳ bằng chứng y khoa nào chứng minh việc uống nước muối sẽ thanh lọc gan, thận. Ngược lại, điều này có thể gây tăng huyết áp cấp tính, suy thận và phù nề.
+    </div>
+
+    <h2>Chiến lược "Giảm một nửa lượng muối"</h2>
+    <p>Để bảo vệ bản thân và gia đình, hãy áp dụng ngay các mẹo sau:</p>
+    <ol>
+      <li><strong>Nấu nhạt lại:</strong> Giảm dần 1/3 rồi 1/2 lượng nước mắm, hạt nêm khi nấu ăn. Vị giác của bạn sẽ làm quen với sự thay đổi này chỉ sau 1-2 tuần.</li>
+      <li><strong>Chấm nhẹ tay:</strong> Pha loãng nước mắm chấm, hoặc tốt hơn hết là không để sẵn bát nước chấm trên bàn ăn nếu món ăn đã vừa vị.</li>
+      <li><strong>Hạn chế đồ muối chua:</strong> Cà muối, dưa muối, mắm nêm, mắm tôm chứa hàm lượng muối khổng lồ. Chỉ nên ăn thỉnh thoảng như món ăn kèm.</li>
+      <li><strong>Đọc nhãn dinh dưỡng:</strong> Tránh xa các loại mì tôm, đồ hộp có hàm lượng Natri (Sodium) quá cao.</li>
+    </ol>
+
+    <p>
+      Sức khỏe nằm ở ngay đầu đũa của bạn. Hãy bắt đầu kiểm soát lượng muối ngay từ bữa cơm chiều nay!
+    </p>
+  </div>
+</ArticleLayout>

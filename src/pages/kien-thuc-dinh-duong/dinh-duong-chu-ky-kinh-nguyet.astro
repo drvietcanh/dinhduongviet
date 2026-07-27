@@ -1,0 +1,67 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-chu-ky-kinh-nguyet"];
+if (!art) throw new Error("Article not found: dinh-duong-chu-ky-kinh-nguyet");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cứ đến ngày "đèn đỏ", Mai lại vật vã vì đau bụng, nổi mụn, cáu gắt và thèm ngọt điên cuồng. Cô thường ôm một hộp kem socola lớn và uống thuốc giảm đau để vượt qua những ngày này. Tuy nhiên, ăn nhiều đồ ngọt lại khiến cô càng thấy mệt mỏi và chướng bụng hơn.</p>
+  <p>Hội chứng tiền kinh nguyệt (PMS) và đau bụng kinh không phải là "chuyện đương nhiên phải chịu". Dinh dưỡng đóng vai trò rất lớn trong việc điều hòa hormone và làm dịu các cơn co thắt tử cung.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Để giảm đau bụng kinh: Tăng cường <u>Thực phẩm giàu Sắt (bù máu)</u>, <u>Magie (giãn cơ)</u> và <u>Omega-3 (chống viêm)</u>.
+    Tránh xa muối (gây tích nước chướng bụng), đường tinh luyện (gây viêm) và caffeine (làm co thắt tử cung mạnh hơn).</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Dinh dưỡng theo từng giai đoạn -->
+<section class="section card">
+  <h2>🔬 Ăn uống theo 4 giai đoạn của chu kỳ</h2>
+
+  <h3>1. Giai đoạn hành kinh (Menstrual Phase - Ngày 1 đến 5)</h3>
+  <p>Cơ thể đang mất máu và bong tróc niêm mạc tử cung. Hormone Estrogen và Progesterone đều chạm đáy khiến bạn mệt mỏi.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Nên ăn:</strong> Thịt bò sẫm màu, gan, cải bó xôi (Bù Sắt). Uống nước gừng ấm, trà cúc la mã (Làm ấm tử cung, giảm co thắt).</li>
+    <li><strong>Đặc biệt:</strong> Socola đen (trên 70% cacao) chứa lượng Magie khổng lồ, giúp cơ tử cung thư giãn và giải phóng endorphin giảm đau.</li>
+  </ul>
+
+  <h3>2. Giai đoạn nang noãn (Follicular Phase - Ngày 6 đến 14)</h3>
+  <p>Estrogen bắt đầu tăng mạnh, năng lượng dồi dào trở lại.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Nên ăn:</strong> Thực phẩm giàu kẽm và protein nhẹ (cá, trứng, các loại hạt) để hỗ trợ quá trình rụng trứng. Đồ lên men (sữa chua, kim chi) để hỗ trợ chuyển hóa Estrogen.</li>
+  </ul>
+
+  <h3>3. Giai đoạn rụng trứng (Ovulation Phase - Ngày 14)</h3>
+  <p>Estrogen đạt đỉnh, cơ thể nóng hơn bình thường.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Nên ăn:</strong> Rau họ cải (Bông cải xanh, bắp cải) giúp cơ thể đào thải lượng Estrogen dư thừa ra ngoài, tránh đau ngực và tích nước. Bổ sung nhiều trái cây mọng nước.</li>
+  </ul>
+
+  <h3>4. Giai đoạn hoàng thể (Luteal Phase / Tiền kinh nguyệt PMS - Ngày 15 đến 28)</h3>
+  <p>Progesterone tăng cao làm bạn buồn ngủ, chướng bụng, thèm ăn (đặc biệt là carb). Nếu trứng không thụ tinh, hormone sụt giảm đột ngột gây ra tâm trạng cáu gắt (PMS).</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Nên ăn:</strong> Tinh bột phức tạp (Khoai lang, yến mạch, gạo lứt) để giữ đường huyết ổn định, giảm thèm ngọt. Thực phẩm giàu Magie (chuối, hạt bí ngô) và B6 (cá hồi) để ổn định tâm trạng.</li>
+  </ul>
+</section>
+
+<!-- 4️⃣ Cần tránh -->
+<section class="section card">
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>❌ 3 "Kẻ thù" cần tránh xa trong ngày đèn đỏ:</strong>
+    <ul style="margin-top:8px; line-height:1.8; padding-left:18px;">
+      <li><strong>Cà phê, trà đặc:</strong> Caffeine làm mạch máu co lại, kể cả mạch máu ở tử cung, khiến cơn đau bụng kinh dữ dội hơn.</li>
+      <li><strong>Thức ăn mặn (Snack, cá khô, mì tôm):</strong> Natri ngậm nước, làm tình trạng chướng bụng, phù nề nặng nề thêm.</li>
+      <li><strong>Trà sữa, bánh ngọt:</strong> Gây phản ứng viêm trong cơ thể, làm tăng tiết Prostaglandin (chất hóa học gây co thắt tử cung).</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

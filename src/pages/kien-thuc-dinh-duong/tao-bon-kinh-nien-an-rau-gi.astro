@@ -1,0 +1,41 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tao-bon-kinh-nien-an-rau-gi"];
+if (!art) throw new Error("Article not found: tao-bon-kinh-nien-an-rau-gi");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+<h1>Táo bón kinh niên: 5 nhóm thực phẩm giàu xơ dễ tìm ngoài chợ</h1>
+      <p class="meta">Cập nhật lần cuối: 2026-07-08 | Chuyên mục: Dinh dưỡng cho mọi nhà</p>
+
+      <div class="alert tip">
+        <strong>💡 Lời khuyên thực tế:</strong> Táo bón kinh niên là nỗi ám ảnh của cả trẻ em lẫn người lớn. Trước khi tự dùng thuốc nhuận tràng kéo dài, hãy xem lại chất xơ, nước uống và vận động hằng ngày. Nếu táo bón kèm sụt cân, đi ngoài ra máu, đau bụng nhiều hoặc mới xuất hiện ở người lớn tuổi, cần đi khám.
+      </div>
+
+      <h2>1. Khoai lang luộc</h2>
+      <p>Khoai lang cung cấp chất xơ và tinh bột kháng, có thể giúp phân mềm hơn khi ăn kèm đủ nước. Bạn có thể dùng một phần khoai lang luộc trong bữa sáng hoặc bữa phụ, rồi theo dõi đáp ứng của cơ thể.</p>
+
+      <h2>2. Đu đủ chín</h2>
+      <p>Đu đủ chín chứa nhiều nước và chất xơ mềm, có thể hỗ trợ tiêu hóa và làm khẩu phần dễ đi ngoài hơn. Một đĩa nhỏ đu đủ chín sau bữa cơm là lựa chọn tráng miệng hợp lý.</p>
+
+      <h2>3. Canh rau mồng tơi, rau đay</h2>
+      <p>Chất nhầy trong rau mồng tơi và rau đay giúp món canh mềm, dễ ăn và bổ sung chất xơ hòa tan. Hãy nấu canh mồng tơi với cua hoặc tôm băm nhỏ để bữa ăn vừa có rau vừa có đạm.</p>
+
+      <h2>4. Chuối chín kỹ (Có đốm đen)</h2>
+      <div class="alert warning">
+        <strong>⚠️ Lưu ý:</strong> Nên chọn chuối chín kỹ. Chuối xanh hoặc còn chát có nhiều tanin, có thể làm táo bón nặng hơn ở một số người.
+      </div>
+
+      <h2>5. Nước lọc ấm buổi sáng</h2>
+      <p>Nhiều người tăng rau nhưng vẫn táo bón vì uống nước chưa đủ. Chất xơ cần nước để nở ra và làm mềm phân. Mẹo nhỏ: sau khi thức dậy, uống một cốc nước ấm và dành thời gian đi vệ sinh đều đặn có thể giúp tạo thói quen cho ruột.</p>
+
+      <h2>🔥 Món nên KIÊNG KỴ khi đang táo bón</h2>
+      <ul>
+        <li><strong>Trái cây có vị chát:</strong> Ổi xanh, hồng ngâm, chuối xanh... chứa nhiều tanin gây se niêm mạc ruột.</li>
+        <li><strong>Đồ ăn nhiều thịt đỏ, ít rau:</strong> Thịt bò, thịt trâu... rất khó tiêu hóa nếu ăn quá nhiều.</li>
+        <li><strong>Thức ăn nhanh, đồ khô:</strong> Bánh mì thịt nướng, lương khô, xúc xích... sẽ hút hết nước trong ruột của bạn.</li>
+      </ul>
+    </div>
+</ArticleLayout>

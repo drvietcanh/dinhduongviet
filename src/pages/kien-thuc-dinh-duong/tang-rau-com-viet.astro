@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "tang-rau-com-viet", title: "Cách tăng rau trong bữa cơm Việt", description: "Mẹo thêm rau vào bữa ăn hàng ngày mà không cần thay đổi lớn. Luật đĩa 2-1-1, cách chế biến, ý tưởng rau mới.", emoji: "🥗", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 5, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Người Việt trung bình chỉ ăn 100-150g rau/ngày — trong khi khuyến nghị là 300-400g. Làm sao tăng rau mà không cần thay đổi thói quen quá lớn?
 

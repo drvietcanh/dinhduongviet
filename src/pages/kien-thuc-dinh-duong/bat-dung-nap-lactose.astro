@@ -1,0 +1,69 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import HealthAlert from "../../components/HealthAlert.astro";
+
+const art = articleBySlug["bat-dung-nap-lactose"];
+if (!art) throw new Error("Article not found: bat-dung-nap-lactose");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Phương (35 tuổi) than phiền: <em>"Từ hồi sinh viên uống sữa bò bình thường, sao bây giờ cứ uống một ly sữa tươi là bụng râm ran, đầy hơi rồi chạy thẳng vào nhà vệ sinh?"</em>. Chị lo lắng mình mắc bệnh đường ruột nguy hiểm.</p>
+  <p>Thực tế, chị Phương đang gặp tình trạng <strong>Bất dung nạp Lactose (Lactose Intolerance)</strong>. Đây không phải bệnh lý nguy hiểm mà là sự tiến hóa sinh lý bình thường: khoảng <strong>70-90% người châu Á trưởng thành</strong> giảm dần khả năng tiêu hóa sữa bò khi lớn lên.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Bất dung nạp lactose là do cơ thể thiếu men Lactase để tiêu hóa đường trong sữa bò.
+    Không cần tuyệt đối kiêng sữa: bạn có thể chuyển sang <u>sữa hạt</u>, <u>sữa chua</u>, <u>phô mai cứng</u>, hoặc uống sữa bò làm từ công nghệ "Lactose-free" (không chứa lactose).</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Tại sao lớn lên lại không uống được sữa?</h2>
+  <p>Lactose là loại đường tự nhiên có trong sữa động vật (sữa mẹ, sữa bò, dê). Để hấp thu loại đường này, ruột non tiết ra một loại enzyme tên là <strong>Lactase</strong>.</p>
+  <p>Khi còn là trẻ sơ sinh, cơ thể sản xuất dồi dào men lactase để bú mẹ. Tuy nhiên, sau khi cai sữa, gene quy định tiết lactase ở phần lớn người châu Á tự động "tắt dần". Khi đường lactose không được tiêu hóa ở ruột non, nó đi thẳng xuống ruột già — nơi các vi khuẩn lên men nó, sinh ra khí (gây đầy hơi) và hút nước (gây tiêu chảy).</p>
+
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>Phân biệt với dị ứng đạm sữa bò:</strong>
+    <p style="margin-top:8px;">Bất dung nạp lactose (chỉ liên quan đến hệ tiêu hóa) hoàn toàn khác với <strong>Dị ứng đạm sữa bò</strong> (liên quan đến hệ miễn dịch, gây nổi mẩn, ngứa, khó thở). Dị ứng đạm sữa bò thường gặp ở trẻ nhỏ, hiếm gặp ở người lớn.</p>
+  </div>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm an toàn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Sữa chua (Yogurt):</strong> Quá trình lên men đã tiêu thụ phần lớn lactose. Hầu hết người bất dung nạp lactose ăn sữa chua bình thường.</li>
+      <li><strong>Phô mai cứng:</strong> Parmesan, Cheddar, Swiss chứa lượng lactose cực thấp.</li>
+      <li><strong>Sữa hạt (Plant-based milks):</strong> Sữa đậu nành, hạnh nhân, yến mạch, hạt điều (tự nhiên 100% không chứa lactose).</li>
+      <li><strong>Sữa bò "Lactose-Free":</strong> Sữa bò đã được nhà sản xuất tách đường lactose (thường có chữ "Lactose-Free" trên bao bì).</li>
+      <li><strong>Thực phẩm giàu Canxi thay thế:</strong> Rau chân vịt, bông cải xanh, đậu phụ, cá mòi, hải sản.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Thực phẩm cần tránh/Thận trọng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Sữa tươi nguyên bản:</strong> Sữa bò, dê thanh trùng/tiệt trùng.</li>
+      <li><strong>Đồ uống pha sữa bò:</strong> Trà sữa, cà phê sữa đá, sinh tố pha sữa đặc.</li>
+      <li><strong>Kem (Ice cream):</strong> Chứa rất nhiều đường lactose.</li>
+      <li><strong>Phô mai mềm:</strong> Ricotta, Cream cheese (lượng lactose cao hơn phô mai cứng).</li>
+      <li><strong>Bánh kẹo:</strong> Socola sữa, bánh kem (đọc kỹ thành phần).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5️⃣ Mẹo -->
+<section class="section card">
+  <h2>💡 Mẹo để hệ tiêu hóa làm quen lại với sữa</h2>
+  <p>Nếu bạn vẫn muốn uống sữa bò (vì hương vị hoặc dinh dưỡng), đừng uống một lúc quá nhiều. Hãy thử uống <strong>lượng nhỏ (khoảng 100ml) cùng với bữa ăn</strong> (như ăn bánh mì, yến mạch). Việc trộn lẫn thức ăn giúp sữa tiêu hóa chậm hơn, ruột non có thêm thời gian xử lý lactose, từ đó giảm hẳn triệu chứng khó chịu.</p>
+</section>
+
+</ArticleLayout>

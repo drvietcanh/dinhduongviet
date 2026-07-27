@@ -1,0 +1,58 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["sau-phau-thuat-an-gi-lanh-nhanh"];
+if (!art) throw new Error("Article not found: sau-phau-thuat-an-gi-lanh-nhanh");
+---
+
+<ArticleLayout article={art}>
+<div class="article-content">
+
+<section class="section card" style="background:#e8f5e9;border:1px solid #a5d6a7;">
+  <p>Sau phẫu thuật, cơ thể cần rất nhiều nguyên liệu để tái tạo mô, lành vết mổ và chống nhiễm trùng. Ăn đúng có thể rút ngắn thời gian hồi phục từ 4 tuần xuống còn 2 tuần!</p>
+</section>
+
+<section class="section card">
+  <h2>1. Chất Đạm (Protein) — Vật liệu xây dựng vết thương</h2>
+  <p>Sau mổ, nhu cầu Protein tăng gấp 1.5-2 lần bình thường. Thiếu Protein, vết mổ lâu lành, dễ nhiễm trùng và bục chỉ. Hãy ăn đủ đạm mỗi bữa:</p>
+  <ul>
+    <li><strong>Cá hấp, cá trắng luộc:</strong> Dễ tiêu hóa, giàu đạm, phù hợp ngay ngày đầu sau mổ.</li>
+    <li><strong>Trứng gà hấp:</strong> Đạm hoàn chỉnh, mềm mại, không cần nhai nhiều.</li>
+    <li><strong>Đậu phụ non hấp:</strong> Lý tưởng cho người không muốn ăn thịt giai đoạn đầu.</li>
+    <li><strong>Sữa chua, sữa:</strong> Cung cấp đạm và Canxi — giúp xương hồi phục nhanh sau mổ chỉnh hình.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>2. Vitamin C — Xây dựng Collagen cho vết mổ</h2>
+  <p>Vitamin C là nguyên liệu sản xuất Collagen — "sợi chỉ sinh học" giúp kết nối các mô lại với nhau. Thiếu Vitamin C, vết mổ sẽ lâu đóng miệng hơn rất nhiều.</p>
+  <ul>
+    <li>Ổi, cam, kiwi — ăn 1-2 quả/ngày sau bữa ăn</li>
+    <li>Ớt chuông xào mềm — chứa Vitamin C nhiều hơn cam!</li>
+    <li>Bông cải xanh luộc chín kỹ</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>3. Kẽm và Sắt — Chống nhiễm trùng và thiếu máu</h2>
+  <p>Phẫu thuật làm mất máu → nguy cơ thiếu máu. Kẽm tăng cường miễn dịch để chống vi khuẩn xâm nhập qua vết mổ.</p>
+  <ul>
+    <li>Thịt bò, gan bò — giàu cả Sắt và Kẽm</li>
+    <li>Hàu, hải sản có vỏ — giàu Kẽm nhất</li>
+    <li>Rau lá xanh đậm: rau dền, cải bó xôi — Sắt thực vật</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>4. Những thứ nên TRÁNH sau mổ</h2>
+  <div style="background:#ffebee;padding:16px;border-radius:12px;border-left:4px solid #f44336;">
+    <strong>⚠️ Không ăn/uống những thứ này:</strong><br/>
+    - <strong>Rượu bia:</strong> Ức chế miễn dịch, làm chậm lành vết thương và tương tác thuốc kháng sinh.<br/>
+    - <strong>Đồ ăn cứng, dai:</strong> Làm căng vết mổ ở vùng bụng.<br/>
+    - <strong>Thức ăn nhiều chất béo bão hòa:</strong> Gây chướng bụng, táo bón — tạo áp lực cho vết mổ.<br/>
+    - <strong>Thuốc lá:</strong> Co mạch máu → vết mổ không nhận đủ oxy → lâu lành gấp đôi.
+  </div>
+</section>
+
+</div>
+</ArticleLayout>

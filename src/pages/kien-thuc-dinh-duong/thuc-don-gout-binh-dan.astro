@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "thuc-don-gout-binh-dan", title: "Thực đơn 1 ngày cho người gout — Phiên bản bình dân", description: "Thực đơn gout kiểu cơm nhà. Hạn chế purin nhưng không cần bỏ đạm hoàn toàn. Uống nhiều nước.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình, purin dưới 200mg (~1600 kcal)</p>
 </div>

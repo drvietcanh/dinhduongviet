@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "tu-lanh-lanh-manh", title: "Tủ lạnh lành mạnh nên có gì?", description: "Hướng dẫn sắp xếp tủ lạnh cho người bệnh mạn tính. Thực phẩm nên có sẵn, nên tránh, cách bảo quản.", emoji: "🧊", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Một tủ lạnh được sắp xếp tốt là chìa khóa cho chế độ ăn lành mạnh. Khi có sẵn thực phẩm đúng, bạn sẽ không phải suy nghĩ "tối nay ăn gì" — và ít bị cám dỗ bởi đồ ăn nhanh.
 

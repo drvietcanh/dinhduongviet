@@ -1,0 +1,59 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tre-bieng-an-me-can-lam-gi"];
+if (!art) throw new Error("Article not found: tre-bieng-an-me-can-lam-gi");
+---
+
+<ArticleLayout article={art}>
+<div class="article-content">
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p>Bé Minh 3 tuổi, nặng 12kg trong khi bạn bè cùng lứa nặng 15-16kg. Mỗi bữa ăn là một "trận chiến": bé ngậm cơm, quay mặt đi, khóc ăn vạ. Mẹ bé lo sốt vó không biết con thiếu chất gì và cần làm gì ngay bây giờ.</p>
+</section>
+
+<section class="section card">
+  <h2>1. Tại sao trẻ biếng ăn?</h2>
+  <p>Trước khi lo lắng, hãy hiểu nguyên nhân. Biếng ăn ở trẻ thường do:</p>
+  <ul>
+    <li><strong>Thiếu kẽm (Zinc):</strong> Kẽm là vi chất số 1 kích thích vị giác. Thiếu kẽm làm bé không cảm nhận được mùi vị thức ăn → chán ăn vĩnh viễn.</li>
+    <li><strong>Thiếu sắt (Iron):</strong> Gây thiếu máu, mệt mỏi, không muốn vận động cũng không muốn ăn.</li>
+    <li><strong>Ép ăn quá mức:</strong> Tạo ra phản xạ sợ ăn — bé liên kết bữa ăn với sự căng thẳng, khó chịu.</li>
+    <li><strong>Ăn vặt quá nhiều:</strong> Bánh kẹo, nước ngọt trước bữa ăn làm no giả, bé không còn đói.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>2. Bổ sung ngay Kẽm từ thực phẩm tự nhiên</h2>
+  <p>Thay vì mua thuốc bổ đắt tiền, hãy tăng cường các thực phẩm giàu Kẽm tự nhiên nhất:</p>
+  <ul>
+    <li><strong>Hàu tươi hoặc hàu hộp:</strong> Nguồn Kẽm số 1 thế giới — 1 con hàu chứa lượng kẽm cả ngày cho bé.</li>
+    <li><strong>Thịt bò xay:</strong> Dễ nấu thành cháo hoặc soup, rất giàu Kẽm và Sắt.</li>
+    <li><strong>Hạt bí ngô rang:</strong> Bé có thể ăn vặt thay vì bánh kẹo.</li>
+    <li><strong>Trứng gà:</strong> Dễ ăn, dễ tiêu hóa, giàu đủ chất.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>3. Mẹo "Đánh lừa" bé ăn ngon hơn</h2>
+  <ul>
+    <li><strong>Trang trí đĩa ăn đẹp mắt:</strong> Dùng cà rốt tỉa thành ngôi sao, đậu hà lan xếp thành mặt cười. Bé ăn bằng mắt trước khi ăn bằng miệng!</li>
+    <li><strong>Cho bé tự chọn:</strong> Hỏi bé hôm nay muốn ăn rau gì — bé sẽ tự nguyện ăn thứ mình chọn.</li>
+    <li><strong>Ăn cùng bé:</strong> Bé học ăn qua quan sát. Cả nhà cùng ăn vui vẻ quan trọng hơn nhiều so với việc ép bé ngồi một mình.</li>
+    <li><strong>Bỏ điện thoại, tivi:</strong> Bé xem màn hình lúc ăn sẽ không để ý cảm giác no-đói, dễ ăn quá ít hoặc quá nhiều.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>4. Khi nào cần đưa bé đi gặp bác sĩ?</h2>
+  <div style="background:#ffebee;padding:16px;border-radius:12px;border-left:4px solid #f44336;">
+    <strong>⚠️ Đưa bé đi khám ngay nếu:</strong><br/>
+    - Bé sụt cân liên tục trong 3 tháng<br/>
+    - Bé nôn ói sau mỗi bữa ăn<br/>
+    - Bé lờ đờ, không chịu chơi, xanh xao<br/>
+    - Bé dưới 2 tuổi mà tăng cân rất chậm
+  </div>
+</section>
+
+</div>
+</ArticleLayout>

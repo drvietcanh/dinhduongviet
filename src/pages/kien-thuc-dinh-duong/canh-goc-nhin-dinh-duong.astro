@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-goc-nhin-dinh-duong", title: "Một tô canh có giúp đủ rau không?", description: "Phân tích dinh dưỡng các loại canh Việt Nam. Canh có thể là nguồn rau tốt, nhưng cũng có thể là nguồn muối ẩn.", emoji: "🥬", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Canh là món không thể thiếu trong mâm cơm Việt. Nhưng một tô canh có thực sự cung cấp đủ rau? Và liệu canh có phải lúc nào cũng lành mạnh?
 

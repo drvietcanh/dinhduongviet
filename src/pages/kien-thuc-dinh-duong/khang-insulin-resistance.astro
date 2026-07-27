@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["khang-insulin-resistance"];
+if (!art) throw new Error("Article not found: khang-insulin-resistance");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cậu bé Huy (15 tuổi) nặng 85kg, vòng bụng lớn. Dạo gần đây, mẹ Huy phát hiện vùng da quanh cổ và nách của con sẫm màu, sần hơn bình thường. Chà xát không làm hết mà còn gây trầy da. Đưa con đi khám da liễu, bác sĩ giải thích đây có thể là gai đen (Acanthosis nigricans), một dấu hiệu thường liên quan đến kháng insulin và nguy cơ tiền đái tháo đường hoặc đái tháo đường type 2.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Kháng insulin là một mắt xích quan trọng trong béo phì, tiền đái tháo đường, đái tháo đường type 2 và PCOS. Cách hỗ trợ tốt nhất là giảm đường tinh luyện, kiểm soát khẩu phần tinh bột, tăng vận động và ngủ đủ. Nhịn ăn gián đoạn có thể phù hợp với một số người, nhưng không phải lựa chọn bắt buộc cho tất cả.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Tế bào "Đóng sập cửa" vì Bội thực</h2>
+  <p>Insulin là chiếc chìa khóa do Tuyến tụy tiết ra để mở cửa tế bào, cho phép Đường (Glucose) đi vào bên trong để tạo năng lượng.</p>
+  <p>Tuy nhiên, nếu bạn ăn vặt liên tục (sáng bún bò, 9h uống trà sữa, trưa ăn cơm, 3h chiều ăn bánh ngọt), tuyến tụy phải liên tục bơm Insulin ra máu suốt cả ngày. Việc tế bào bị "nhồi nhét" đường quá nhiều khiến chúng quá tải, mệt mỏi và quyết định ĐỔI Ổ KHÓA. Lúc này, chìa khóa Insulin trở nên vô dụng, đường không thể chui vào tế bào mà trôi nổi tự do trong máu.</p>
+  <p>Khi đường huyết và insulin thường xuyên tăng cao, cơ thể dễ tích mỡ hơn và giảm cân cũng khó hơn. Gai đen có thể xuất hiện do kích thích tăng sinh tế bào da trong bối cảnh kháng insulin. Đây là dấu hiệu nên đi khám và làm xét nghiệm chuyển hóa, không nên chỉ xem là vấn đề thẩm mỹ.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Cách cải thiện độ nhạy insulin</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nhịn ăn gián đoạn (Intermittent Fasting 16:8):</strong> Có thể giúp một số người giảm tổng năng lượng nạp vào và bớt ăn vặt. Không phù hợp với phụ nữ mang thai, người có tiền sử rối loạn ăn uống, hạ đường huyết hoặc đang dùng thuốc đường huyết nếu chưa hỏi bác sĩ.</li>
+      <li><strong>Tăng cường Cơ bắp (Tập tạ):</strong> Cơ bắp là thùng chứa đường lớn nhất cơ thể. Càng nhiều cơ bắp, cơ thể càng có nhiều chỗ trống để cất giấu đường, làm giảm áp lực cho Insulin. Đi bộ sau bữa ăn 15 phút là cách tốt nhất để cơ bắp "hút" bớt đường trong máu.</li>
+      <li><strong>Giấm táo pha loãng:</strong> Có thể làm chậm hấp thu tinh bột ở một số bữa ăn, nhưng hiệu quả không thay thế giảm đường, tăng vận động và thuốc khi được chỉ định. Không dùng khi đau dạ dày nặng hoặc trào ngược nhiều.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Thói quen nên giảm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Ăn vặt liên tục:</strong> Bữa phụ nhiều đường hoặc tinh bột tinh chế làm đường huyết dao động nhiều hơn. Nếu cần bữa phụ, chọn sữa chua không đường, hạt vừa lượng, trứng hoặc trái cây nguyên quả.</li>
+      <li><strong>Đường lỏng:</strong> Nước ép, trà sữa, nước ngọt và sinh tố thêm đường dễ làm tăng đường huyết nhanh vì ít chất xơ và uống được nhiều trong thời gian ngắn.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

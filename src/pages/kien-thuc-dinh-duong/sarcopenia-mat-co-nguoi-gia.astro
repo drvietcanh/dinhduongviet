@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["sarcopenia-mat-co-nguoi-gia"];
+if (!art) throw new Error("Article not found: sarcopenia-mat-co-nguoi-gia");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cụ Bình (75 tuổi) dạo này đi lại rất yếu, bắp tay bắp chân lỏng lẻo, nhão nhoẹt. Cụ thường xuyên bị ngã và phàn nàn rằng không thể vặn nổi nắp chai nước. Con cái nghĩ rằng "già rồi nên thế", cho đến khi bác sĩ chẩn đoán cụ mắc <strong>Bệnh Thiểu Cơ (Sarcopenia)</strong> — một căn bệnh âm thầm cướp đi sự tự lập của người già.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Bệnh thiểu cơ là sự sụt giảm khối lượng và sức mạnh cơ bắp do tuổi tác. Để phòng ngừa và đảo ngược, người già cần ăn <u>nhiều chất Đạm (Protein) hơn cả người trẻ</u> (1.0 - 1.2g/kg), kết hợp với <u>tập kháng lực nhẹ nhàng (nâng tạ nhỏ, tập dây thun)</u>. Uống sâm hay yến sào không thể tạo ra cơ bắp!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Tại sao người già lại teo cơ?</h2>
+  <p>Sau tuổi 30, mỗi thập kỷ chúng ta mất đi 3-5% khối lượng cơ bắp. Sau tuổi 60, tốc độ này tăng nhanh kinh hoàng.</p>
+  <p>Nguyên nhân chính gọi là <strong>Đề kháng Anabolic (Anabolic Resistance)</strong>. Ở người trẻ, chỉ cần ăn một miếng thịt gà nhỏ là cơ thể lập tức tổng hợp thành cơ bắp. Ở người già, cơ chế này bị chai lì. Họ phải ăn một lượng thịt gà GẤP ĐÔI người trẻ thì cơ thể mới chịu gửi tín hiệu xây dựng cơ bắp. Tuy nhiên, người già lại thường chán ăn, răng yếu thích ăn cháo (toàn tinh bột, không có đạm), dẫn đến cơ bắp cứ thế teo dần.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Công thức phục hồi khối cơ</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nạp Protein trải đều:</strong> Người già không thể hấp thu một lượng lớn thịt trong 1 bữa. Hãy chia nhỏ: Bữa sáng 1 quả trứng, bữa trưa 1 lạng cá, bữa phụ chiều 1 hộp sữa chua Hy Lạp, bữa tối 1 miếng đậu phụ.</li>
+      <li><strong>Leucine — Chìa khóa vàng:</strong> Là axit amin quan trọng nhất để kích hoạt tạo cơ. Có nhiều trong Sữa tươi, Whey Protein, Đậu nành, Ức gà.</li>
+      <li><strong>Vận động kháng lực:</strong> Ăn đạm mà không tập thì đạm sẽ chuyển thành mỡ. Không cần phải ra phòng gym. Tập đứng lên ngồi xuống ghế (Squat), nâng chai nước khoáng 500ml, kéo dây thun thể lực tại nhà là đủ.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Quan niệm sai lầm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>"Già rồi chỉ nên ăn chay, ăn thanh đạm":</strong> Ăn toàn cơm với rau luộc, xì dầu là nguyên nhân số 1 gây teo cơ ở người già Việt Nam. Dù ăn chay, người già vẫn PHẢI đảm bảo ăn rất nhiều đậu phụ, nấm, các loại hạt để đủ Đạm.</li>
+      <li><strong>Tập dưỡng sinh là đủ:</strong> Đi bộ, tập thái cực quyền rất tốt cho tim mạch, nhưng lại <u>gần như không giúp ích gì cho việc xây dựng cơ bắp</u>. Chỉ có tập kháng lực (nhấc vật nặng) mới ép cơ thể tạo cơ mới.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,64 +1,50 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
+
 const art = articleBySlug["dinh-duong-benh-tri"];
-if (!art) throw new Error("Article not found");
+if (!art) throw new Error("Article not found: dinh-duong-benh-tri");
 ---
 
 <ArticleLayout article={art}>
 
+<!-- 1️⃣ Tình huống -->
 <section class="section card">
-  <p>Chị Lan, 38 tuổi, nhân viên văn phòng, ngồi 8 tiếng/ngày, ít uống nước, hay táo bón. Gần đây chị thấy đi cầu ra máu, ngồi đau rát, sờ thấy cục ở hậu môn. Bác sĩ bảo <strong>bệnh trĩ</strong> độ 2.</p>
-  <p>Trĩ rất phổ biến — gần 1/3 người Việt trưởng thành từng bị. Nguyên nhân số 1: táo bón kéo dài. Tin tốt: tăng chất xơ và nước có thể kiểm soát >80% trường hợp.</p>
+  <p>Anh Hoàng (28 tuổi, nhân viên văn phòng) bị trĩ nội độ 2 nhiều năm nay do đặc thù công việc ngồi máy tính 10 tiếng mỗi ngày. Dạo này, mỗi lần đi đại tiện là một cực hình với anh: phân cứng như đá ong, anh phải rặn rất mạnh khiến búi trĩ sưng vù và chảy máu đỏ tươi rớt tỏng tỏng xuống bồn cầu. Vợ anh thương xót, liền nấu canh rau dền, rau mồng tơi ép anh ăn để nhuận tràng. Nhưng ăn nhiều rau, phân lại to ra và thô ráp hơn, cọ xát vào búi trĩ khiến anh đau điếng không dám đi vệ sinh nữa.</p>
 </section>
 
-<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
-  <p style="font-size:1.05rem;margin:0;">
-    <strong>👉 Vũ khí số 1 chống trĩ: <u>chất xơ 25–30g/ngày</u> và <u>nước 2–2.5 lít/ngày</u>. 
-    Tránh ngồi lâu, đi cầu đúng cách (không rặn), ăn rau trái đủ, hạn chế cay nóng.</strong>
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Kẻ thù số 1 của Bệnh trĩ là sự Cố Rặn do Táo bón. Bí quyết để phân trôi tuột ra ngoài mà không cọ xát làm rách búi trĩ là bổ sung đúng loại <u>Chất xơ Hòa tan (Psyllium, Yến mạch, Mồng tơi) KÈM VỚI RẤT NHIỀU NƯỚC</u>. Nếu bạn chỉ ăn chất xơ thô (rau muống già) mà không uống đủ nước, phân sẽ biến thành một khúc gỗ khô khốc xé toạc hậu môn của bạn.</strong>
   </p>
 </section>
 
+<!-- 3️⃣ Cơ chế -->
 <section class="section card">
-  <h2>🔬 Tại sao táo bón gây trĩ?</h2>
-  <p>Khi phân khô và cứng, bạn phải rặn để đẩy ra. Áp lực rặn làm căng các tĩnh mạch ở hậu môn, chúng sưng lên thành búi trĩ. Chất xơ giúp phân mềm và nở to, đi dễ dàng không cần rặn. Nước giúp chất xơ trương nở — nếu uống ít, chất xơ không phát huy tác dụng.</p>
+  <h2>🔬 Búi trĩ: Quả bóng bay chứa đầy máu</h2>
+  <p>Xung quanh hậu môn có một hệ thống tĩnh mạch rất mỏng manh. Khi bạn rặn mạnh để tống phân cứng ra ngoài, áp lực ổ bụng tăng vọt, dồn lượng máu lớn xuống các tĩnh mạch này làm chúng phình to ra như một quả bóng bay bơm căng. Quả bóng này chính là Búi trĩ.</p>
+  <p>Nếu phân quá khô và thô ráp (như đá ong), khi trượt qua hậu môn, nó sẽ cào xước hoặc làm vỡ luôn "quả bóng" tĩnh mạch đang phình căng này, dẫn đến hiện tượng chảy máu đỏ tươi. Mục tiêu tối thượng của dinh dưỡng bệnh trĩ là làm cho phân MỀM NHŨN, TRƠN TRƯỢT để nó tự động tuột ra mà không cần dùng bất kỳ lực rặn nào.</p>
 </section>
 
+<!-- 4️⃣ Giải pháp -->
 <section class="section grid two">
   <div class="card">
-    <h2>✅ Thực phẩm nên ăn</h2>
+    <h2>✅ Công thức "Làm mềm & Bôi trơn"</h2>
     <ul style="line-height:1.8;padding-left:18px;">
-      <li>Rau xanh: rau ngót, mồng tơi, rau đay, rau dền, bắp cải</li>
-      <li>Trái cây nhuận tràng: đu đủ chín, thanh long, chuối chín, bơ, cam</li>
-      <li>Ngũ cốc nguyên cám: yến mạch, gạo lứt, bánh mì nguyên cám</li>
-      <li>Các loại đậu: đậu xanh, đậu đen, đậu lăng</li>
-      <li>Khoai lang luộc — giàu chất xơ nhất trong các loại củ</li>
-      <li>Uống: nước ấm pha mật ong, nước chanh, nước ép mận</li>
+      <li><strong>Chất xơ Hòa tan (Soluble Fiber):</strong> Có nhiều trong Yến mạch, Bơ, Chuối chín, Đậu bắp, Nha đam và Vỏ hạt mã đề (Psyllium husk). Khi vào ruột, chất xơ này ngậm nước, biến thành một lớp gel nhầy nhụa bọc kín lấy khối phân, giúp phân giữ nước, mềm nhũn và cực kỳ trơn tru.</li>
+      <li><strong>Quy tắc "2 Lít rưỡi Nước":</strong> Đây là điều kiện BẮT BUỘC. Nếu bạn ăn chất xơ mà không uống nước, chất xơ sẽ hút sạch nước còn sót lại trong đại tràng, tạo ra một tảng xi măng tắc nghẽn vô phương cứu chữa. Hãy uống đủ 2-3 lít nước mỗi ngày.</li>
+      <li><strong>Vitamin C và Flavonoid (Trái cây họ cam chanh):</strong> Giúp tăng cường sức bền cho thành tĩnh mạch, làm cho "quả bóng" búi trĩ dẻo dai hơn, khó bị vỡ rách khi phân đi qua.</li>
     </ul>
   </div>
-  <div class="card">
-    <h2>❌ Thực phẩm cần tránh</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li>⛔ Đồ cay nóng: ớt, tiêu, mù tạt — kích thích búi trĩ, đau rát</li>
-      <li>⛔ Rượu bia, cà phê — mất nước, táo bón thêm</li>
-      <li>⛔ Đồ chiên rán, thức ăn nhanh — ít xơ, dễ táo bón</li>
-      <li>⛔ Bánh kẹo ngọt, bim bim — thay thế rau trái</li>
-      <li>⛔ Ngồi lâu trên bồn cầu &gt;5 phút — tăng áp lực hậu môn</li>
-    </ul>
-  </div>
-</section>
 
-<section class="section card">
-  <h2>💡 Mẹo & Khi nào cần khám</h2>
-  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div>
-      <h4>✅ Mẹo</h4>
-      <ul><li>Uống 2 lít nước/ngày — đủ để chất xơ phát huy tác dụng.</li><li>Ngâm nước ấm 10–15 phút/ngày — giảm sưng đau.</li><li>Không ngồi >2h liên tục — đứng dậy đi lại.</li><li>Đi cầu ngay khi có nhu cầu — không nhịn.</li></ul>
-    </div>
-    <div>
-      <h4>🚨 Khám ngay</h4>
-      <ul><li>Chảy máu nhiều, máu đỏ tươi thành tia.</li><li>Búi trĩ sa ra ngoài không đẩy vào được</li><li>Đau dữ dội, sốt — trĩ tắc mạch</li><li>Thay đổi thói quen đi cầu &gt;1 tháng</li></ul>
-    </div>
+  <div class="card">
+    <h2>❌ Sát thủ gây Táo bón & Giãn tĩnh mạch</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Ớt, Tiêu, Đồ ăn siêu cay:</strong> Capsaicin trong ớt không bị tiêu hóa ở dạ dày. Khi đi xuống hậu môn, nó sẽ đốt cháy búi trĩ đang sưng tấy, gây ra cảm giác ngứa ngáy và đau rát phát điên sau khi đại tiện.</li>
+      <li><strong>Thức ăn nhanh, Bánh mì trắng, Thịt nguội:</strong> Hoàn toàn không có một miligram chất xơ nào. Chúng sẽ di chuyển vô cùng chậm chạp trong đại tràng, bị đại tràng hút kiệt nước, cuối cùng tạo thành những cục phân cứng như phân dê cọ xát bục cả hậu môn.</li>
+      <li><strong>Rượu bia:</strong> Gây mất nước toàn thân. Cơ thể sẽ bù nước bằng cách hút lại nước từ phân trong ruột già, làm phân khô quắt lại. Hơn nữa, cồn làm tĩnh mạch hậu môn giãn nở to hơn, khiến búi trĩ dễ sa ra ngoài.</li>
+    </ul>
   </div>
 </section>
 

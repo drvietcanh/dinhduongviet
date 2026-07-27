@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "thuc-don-gout-ban-ron", title: "Thực đơn 1 ngày cho người gout — Phiên bản đi làm", description: "Thực đơn cho người gout bận rộn. Ăn ngoài được — chỉ cần biết tránh món nào.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Dành cho người đi làm, ăn ngoài, kiểm soát purin</p>
 </div>

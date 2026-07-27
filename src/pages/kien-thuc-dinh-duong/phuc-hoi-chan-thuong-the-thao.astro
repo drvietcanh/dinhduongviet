@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["phuc-hoi-chan-thuong-the-thao"];
+if (!art) throw new Error("Article not found: phuc-hoi-chan-thuong-the-thao");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Hùng (32 tuổi) bị đứt dây chằng chéo trước (ACL) khi đá bóng. Sau phẫu thuật nối dây chằng, anh sợ béo lên do phải nằm một chỗ nên ăn kiêng kham khổ, cắt hẳn thịt mỡ và tinh bột. 3 tháng sau, vết thương vẫn chưa lành hẳn, cơ bắp đùi teo tóp khiến anh không thể bước đi vững vàng.</p>
+  <p>Đây là sai lầm thường gặp trong phục hồi thể thao. Giai đoạn phục hồi chấn thương không phải là lúc ăn kiêng khắc nghiệt. Cơ thể cần đủ năng lượng và đạm để tái tạo mô, giữ cơ và lành vết mổ.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Phục hồi chấn thương (gãy xương, đứt dây chằng, rách cơ) đòi hỏi <u>lượng Protein cao gấp 1.5 - 2 lần</u> bình thường.
+    Cần chú ý <u>Vitamin C, kẽm, canxi và vitamin D</u> để hỗ trợ tổng hợp collagen, lành vết thương và xương. Không nên tự cắt calo quá mức trong giai đoạn này.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cơ thể sửa chữa chấn thương như thế nào?</h2>
+  <p>Khi bạn bị rách cơ hay đứt dây chằng, cơ thể sẽ ngay lập tức kích hoạt phản ứng viêm (sưng, nóng, đỏ, đau) để dọn dẹp các tế bào chết. Sau đó, nó bắt đầu quá trình "xây dựng lại" (Tăng sinh).</p>
+  <p>Vật liệu xây dựng chính của cơ bắp là axit amin (từ Protein). Vật liệu xây dựng chính của gân, dây chằng và sụn là <strong>Collagen</strong>. Nếu bạn không nạp đủ nguyên liệu, cơ thể sẽ phá hủy các cơ bắp khỏe mạnh khác (như cơ đùi bên kia) để lấy vật liệu đắp vào chỗ đau, dẫn đến hiện tượng <strong>teo cơ</strong> (Muscle Atrophy).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn Tái tạo mô & Xương</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tăng cường Protein:</strong> Nhiều người phục hồi chấn thương cần khoảng 1.5 - 2g protein/kg thể trọng mỗi ngày, tùy mức độ chấn thương và bệnh nền. Nguồn tốt: trứng, cá, ức gà, sữa chua Hy Lạp, đậu phụ hoặc whey protein nếu phù hợp.</li>
+      <li><strong>Vitamin C (Tổng hợp Collagen):</strong> Cam, chanh, ớt chuông, dâu tây, kiwi. Vitamin C cực kỳ quan trọng để nối lại các sợi gân/dây chằng bị đứt.</li>
+      <li><strong>Kẽm (Lành vết thương):</strong> Thịt bò, hàu, hải sản, hạt bí. Kẽm giúp vết mổ nhanh khép miệng, tránh nhiễm trùng.</li>
+      <li><strong>Canxi & D3 (Gãy xương):</strong> Phô mai, sữa, cá nhỏ ăn cả xương và tắm nắng hợp lý giúp cung cấp vật liệu cho xương đang lành.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sai lầm cản trở phục hồi</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cắt giảm calo quá mức:</strong> Việc nằm một chỗ đúng là ít đốt calo hơn lúc tập luyện, nhưng quá trình lành thương vẫn cần năng lượng. Ăn quá ít có thể làm mất cơ và chậm phục hồi.</li>
+      <li><strong>Rượu bia:</strong> Cồn có thể ảnh hưởng xấu đến tổng hợp protein cơ bắp, giấc ngủ và quá trình lành vết thương.</li>
+      <li><strong>Thực phẩm nhiều đường (Bánh kẹo):</strong> Đường tinh luyện làm tăng phản ứng viêm tiêu cực, khiến vết sưng tấy lâu khỏi và gây đau nhức dai dẳng hơn.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

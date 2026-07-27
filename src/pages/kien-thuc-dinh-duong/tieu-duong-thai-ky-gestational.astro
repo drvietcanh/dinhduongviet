@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tieu-duong-thai-ky-gestational"];
+if (!art) throw new Error("Article not found: tieu-duong-thai-ky-gestational");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Lan (30 tuổi, mang thai tuần 24) đi làm nghiệm pháp dung nạp glucose và bàng hoàng nhận kết quả: Tiểu đường thai kỳ. Lo sợ con sinh ra sẽ bị suy hô hấp và béo phì, chị cắt phăng toàn bộ tinh bột, không ăn cơm, không ăn trái cây, chỉ ăn thịt và rau xanh. Nửa tháng sau, chị liên tục bị hạ đường huyết, bủn rủn chân tay, siêu âm thì em bé bị suy dinh dưỡng bào thai, thai nhi ngừng tăng trưởng. Chị khóc nức nở không biết phải ăn sao cho đúng: Ăn thì sợ con khổng lồ, mà nhịn thì con lại suy dinh dưỡng.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Tiểu đường thai kỳ cực kỳ nguy hiểm, nhưng việc <u>NHỊN ĐÓI (cắt tinh bột) còn nguy hiểm gấp 10 lần</u>, nó sản sinh ra Keton gây độc cho não thai nhi. Mẹ bầu KHÔNG ĐƯỢC NHỊN, mà phải chuyển sang ăn tinh bột hấp thu chậm (Gạo lứt, Yến mạch), và phải áp dụng chiến thuật "Tráng dạ dày bằng rau và thịt TRƯỚC KHI ăn cơm" để hãm đà tăng đường huyết.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Tại sao mang thai lại bị Tiểu đường?</h2>
+  <p>Đây không phải lỗi do bạn ăn quá nhiều đồ ngọt! Khi mang thai, nhau thai tiết ra các hormone để nuôi lớn em bé. Nhưng rắc rối ở chỗ, các hormone nhau thai này lại "đánh nhau" với Insulin (chất dọn đường) của cơ thể mẹ, làm Insulin bị vô hiệu hóa (Kháng Insulin tạm thời).</p>
+  <p>Vì Insulin bị vô hiệu hóa, đường từ thức ăn không thể chui vào tế bào cơ thể mẹ mà trôi tự do trong máu. Lượng máu ngọt lịm này ồ ạt chảy qua nhau thai vào thẳng cơ thể em bé, ép tuyến tụy của em bé phải làm việc gấp 10 lần để xử lý. Kết quả: Bé biến thành "người khổng lồ" (>4kg), phải đẻ mổ, nhưng phổi lại rất non yếu và dễ bị hạ đường huyết đột ngột ngay khi vừa cắt rốn.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chiến thuật "Hãm phanh" Đường huyết</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thứ tự ăn thần thánh (Ăn ngược):</strong> Luôn ăn 1 bát canh rau + Thịt cá TRƯỚC. Sau 15 phút mới được ăn cơm (tinh bột). Lớp chất xơ từ rau và đạm từ thịt sẽ lót sẵn dưới dạ dày, biến thành một chiếc màng lọc, ngăn không cho đường từ cơm hấp thu ồ ạt vào máu. Đỉnh đường huyết có thể giảm tới 40% chỉ nhờ đổi thứ tự ăn!</li>
+      <li><strong>Chia làm 6 bữa nhỏ:</strong> Đừng bắt cơ thể xử lý một lúc lượng lớn thức ăn. Hãy ăn 3 bữa chính nhỏ và 3 bữa phụ (Sữa chua không đường, các loại hạt, 1/2 quả táo).</li>
+      <li><strong>Đi bộ 15 phút sau ăn:</strong> Khi bạn đi bộ, cơ bắp sẽ há miệng "nuốt" trực tiếp đường trong máu mà không cần nhờ đến Insulin. Đây là cách hạ đường huyết tự nhiên và mạnh mẽ nhất.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ: Nhịn ăn và Đường lỏng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cắt hoàn toàn tinh bột (Keto/Low-carb):</strong> Tuyệt đối không! Khi mẹ thiếu tinh bột, cơ thể sẽ đốt cháy mỡ để lấy năng lượng, tạo ra một chất độc hại gọi là Keton. Keton xuyên qua nhau thai và làm tổn thương não bộ của em bé vĩnh viễn.</li>
+      <li><strong>Đường lỏng (Nước ép trái cây, Nước mía):</strong> Nước mía là "liều thuốc độc" đối với đường huyết. Vì ở dạng lỏng, đường sẽ lao thẳng vào máu chỉ trong 5 phút như một cơn lũ quét, làm đường huyết tăng vọt không thể kiểm soát. Chỉ ăn trái cây nguyên miếng, không bao giờ ép nước.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

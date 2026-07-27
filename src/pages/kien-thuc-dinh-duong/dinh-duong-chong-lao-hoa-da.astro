@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-chong-lao-hoa-da"];
+if (!art) throw new Error("Article not found: dinh-duong-chong-lao-hoa-da");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Thu (40 tuổi) rất chăm chỉ bôi serum chống nhăn và kem chống nắng mỗi ngày. Tuy nhiên, da chị vẫn chảy xệ, sạm nám và có nhiều nếp nhăn li ti quanh mắt. Bác sĩ da liễu khám xong liền hỏi: "Chị có hay ăn đồ nướng và thức khuya không?". Chị Thu thừa nhận mình rất nghiện món sườn nướng BBQ và thường xuyên mất ngủ do công việc. Bác sĩ kết luận: "Lão hóa da của chị không phải do thiếu kem, mà do quá trình Đường hóa (Glycation) từ bên trong cơ thể tàn phá mạng lưới Collagen".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chống lão hóa da (Anti-aging) bằng mỹ phẩm chỉ giải quyết được 20% bề mặt. 80% cấu trúc nền da phụ thuộc vào dinh dưỡng! Kẻ thù lớn nhất làm sập giàn giáo Collagen là <u>Đường (Glycation)</u> và <u>Đồ nướng cháy đen (AGEs)</u>. Vũ khí chống lão hóa mạnh nhất không nằm trong hũ kem chục triệu, mà là <u>Vitamin C, Omega-3 và Cà chua nấu chín</u>.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Phản ứng Glycation - Lò thiêu sợi Collagen</h2>
+  <p>Collagen và Elastin là một "giàn giáo" lò xo đan chéo nhau, giữ cho da bạn căng mọng và đàn hồi.</p>
+  <p>Khi bạn ăn nhiều đường tinh luyện (trà sữa, bánh ngọt) hoặc ăn các món thịt nướng ở nhiệt độ cao, cơ thể sinh ra các gốc tự do khét lẹt gọi là <strong>AGEs (Advanced Glycation End-products)</strong>.</p>
+  <p>AGEs giống như những chất keo siêu dính, chúng chạy thẳng dưới da, bám chặt vào sợi dây lò xo Collagen và làm cho sợi lò xo này bị "đông cứng" lại, giòn tan và đứt gãy. Khi giàn giáo sập xuống, bề mặt da sẽ lõm xuống tạo thành NẾP NHĂN vĩnh viễn không kem nào cứu nổi.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn "Trẻ hóa 10 tuổi"</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cà chua nấu chín (Lycopene):</strong> Lycopene là một chất chống nắng tự nhiên cực mạnh, giúp bảo vệ da khỏi tia UV. <em>Lưu ý: Ăn cà chua sống sẽ không hấp thu được Lycopene, bạn bắt buộc phải nấu chín cà chua với một chút dầu ăn (như sốt cà chua).</em></li>
+      <li><strong>Vitamin C liều cao:</strong> Cam, ổi, ớt chuông. Cơ thể cần Vitamin C làm xi măng để gắn kết các axit amin thành sợi Collagen mới. Đừng uống Collagen nước mà thiếu Vitamin C!</li>
+      <li><strong>Chất béo tốt (Omega-3):</strong> Cá hồi, bơ, dầu oliu. Lớp màng tế bào da được làm từ chất béo. Ăn đủ chất béo tốt sẽ giữ nước lại trong tế bào, giúp da luôn ẩm mượt, không bị khô ráp nứt nẻ vào mùa đông.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ nếu không muốn già trước tuổi</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cắt giảm tối đa AGEs:</strong> Đổi phương pháp nấu ăn. Cùng là một miếng thịt bò, nếu bạn Hấp/Luộc thì lượng AGEs sinh ra rất ít. Nhưng nếu bạn Nướng trên lửa than (BBQ) hoặc Chiên ngập dầu, lượng AGEs tăng vọt gấp 100 lần!</li>
+      <li><strong>Chất kích thích (Cồn, Thuốc lá):</strong> Khói thuốc lá phá hủy Vitamin C trong cơ thể với tốc độ khủng khiếp. Rượu bia làm cơ thể mất nước trầm trọng, khiến da nhăn nheo xám xịt chỉ sau một đêm nhậu nhẹt.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

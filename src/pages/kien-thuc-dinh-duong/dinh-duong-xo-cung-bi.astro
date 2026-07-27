@@ -5,7 +5,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["dinh-duong-xo-cung-bi"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
   <section class="article-section" data-section="summary">
     <h2>Tóm tắt</h2>
     <p>Xơ cứng bì hệ thống (scleroderma) là bệnh tự miễn gây xơ hóa da và các cơ quan nội tạng, đặc biệt là thực quản và đường tiêu hóa. Khó nuốt, trào ngược và kém hấp thu là những thách thức dinh dưỡng lớn nhất.</p>

@@ -1,0 +1,53 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-xoang-di-ung-histamine"];
+if (!art) throw new Error("Article not found: viem-xoang-di-ung-histamine");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Hùng (35 tuổi) bị viêm xoang mãn tính. Cứ hễ thời tiết thay đổi là anh lại hắt hơi liên tục, chảy nước mũi ròng ròng và đau nhức vùng trán. Dù đã uống thuốc kháng Histamine đều đặn, nhưng anh nhận thấy những ngày mình nhậu lai rai với bạn bè, ăn nem chua, uống bia thủ công và chấm xì dầu, thì y như rằng đêm về mũi tịt đặc không thở nổi. Bác sĩ giải thích, chính những món ăn "khoái khẩu" đó đang đổ thêm dầu vào ngọn lửa viêm xoang của anh.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Viêm mũi dị ứng và viêm xoang thực chất là phản ứng thái quá của hệ miễn dịch, giải phóng chất Histamine gây sưng phù niêm mạc mũi. Nếu bạn đang bị xoang, phải <u>tuyệt đối tránh xa các thực phẩm chứa sẵn Histamine (Đồ lên men, bia rượu, mắm ruốc)</u>, đồng thời bổ sung <u>Vitamin C và Quercetin</u> (hành tây, táo) để dập tắt phản ứng dị ứng này tự nhiên.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Quả bom Histamine và Niêm mạc mũi</h2>
+  <p>Khi hít phải phấn hoa hoặc bụi mịn, các tế bào miễn dịch trong mũi bạn sẽ vỡ ra, giải phóng một hóa chất gọi là <strong>Histamine</strong>.</p>
+  <p>Histamine làm cho các mạch máu li ti trong mũi giãn nở to ra, khiến niêm mạc mũi sưng phồng (gây nghẹt mũi). Đồng thời, nó kích thích các tuyến nhờn tiết ra một lượng dịch khổng lồ để "rửa trôi" bụi bẩn (gây chảy nước mũi ròng ròng).</p>
+  <p>Vấn đề là, trong tự nhiên, có rất nhiều thực phẩm cũng chứa sẵn một lượng khổng lồ Histamine. Khi mũi bạn đang sưng viêm, nếu bạn ăn thêm thức ăn chứa Histamine, chẳng khác nào bạn đang chở thêm đạn dược cung cấp cho hệ miễn dịch bắn phá mũi của chính bạn!</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>❌ Cảnh báo: Thực phẩm giàu Histamine (Cần Tránh)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thực phẩm lên men:</strong> Nem chua, dưa cà muối chua, phô mai ủ lâu ngày, sữa chua. Quá trình vi khuẩn lên men protein sinh ra cực kỳ nhiều Histamine.</li>
+      <li><strong>Hải sản không tươi:</strong> Cá biển (như cá ngừ, cá thu) nếu không được ướp lạnh ngay khi đánh bắt, vi khuẩn sẽ biến histidine trong thịt cá thành histamine độc hại. Nhiều người ăn cá ươn bị dị ứng nổi mề đay chính là vì lý do này.</li>
+      <li><strong>Nước tương, mắm tôm, mắm nêm:</strong> Các loại nước chấm lên men truyền thống.</li>
+      <li><strong>Bia, Rượu vang:</strong> Chứa nhiều Histamine và Sulfite - chất kích hoạt giãn mạch mạnh mẽ khiến mũi tịt ngay lập tức.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>✅ Thực phẩm "Kháng Histamine" tự nhiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Quercetin (Có trong Hành tây, Táo):</strong> Quercetin là một chất chống oxy hóa tuyệt vời, nó hoạt động như một loại thuốc "bọc" các tế bào miễn dịch lại, không cho chúng vỡ ra và giải phóng Histamine. Người bị xoang nên ăn nhiều hành tây nấu chín.</li>
+      <li><strong>Vitamin C liều cao:</strong> Cam, ổi, kiwi, ớt chuông. Vitamin C không chỉ tăng đề kháng mà còn có khả năng trực tiếp phá hủy phân tử Histamine trôi nổi trong máu.</li>
+      <li><strong>Gừng & Tỏi:</strong> Có tính kháng viêm mạnh, giúp làm ấm đường hô hấp, giảm sưng tấy niêm mạc xoang, giúp dịch nhầy dễ dàng thoát ra ngoài.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -160,7 +160,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "trao-nguoc-da-day-ban-dem-an-gi",
     title: "Trào ngược Dạ dày ban đêm: Ăn gì buổi tối để ngủ ngon, không bị ợ chua?",
-    description: "Không cần thuốc đắt tiền, bí quyết trị dứt điểm trào ngược dạ dày nằm ngay ở mâm cơm tối của bạn.",
+    description: "Cách chọn bữa tối, giờ ăn và tư thế ngủ để giảm ợ chua ban đêm, đồng thời biết khi nào cần đi khám.",
     emoji: "🔥",
     category: "disease",
     categoryName: "Tiêu hóa / Mẹo vặt đời sống",
@@ -173,8 +173,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tao-bon-kinh-nien-an-rau-gi",
-    title: "Táo bón kinh niên: 5 loại rau củ 'thần dược' rẻ tiền ngoài chợ",
-    description: "Chỉ với vài nghìn lẻ mua khoai lang, rau mồng tơi, đu đủ... bạn đã có liều thuốc nhuận tràng tự nhiên tốt nhất.",
+    title: "Táo bón kinh niên: 5 nhóm thực phẩm giàu xơ dễ tìm ngoài chợ",
+    description: "Gợi ý khoai lang, rau mồng tơi, đu đủ, chuối chín và nước uống để hỗ trợ táo bón, kèm dấu hiệu cần đi khám.",
     emoji: "🍠",
     category: "special",
     categoryName: "Dinh dưỡng cho mọi nhà",

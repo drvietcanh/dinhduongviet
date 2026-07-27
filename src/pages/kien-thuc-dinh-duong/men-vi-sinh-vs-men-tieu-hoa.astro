@@ -1,0 +1,69 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["men-vi-sinh-vs-men-tieu-hoa"];
+if (!art) throw new Error("Article not found: men-vi-sinh-vs-men-tieu-hoa");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bé Na (3 tuổi) hơi lười ăn và còi cọc. Nghe hàng xóm mách, mẹ Na ra hiệu thuốc mua "Men tiêu hóa" về cho con uống mỗi ngày để kích thích ăn ngon. Sau 3 tháng uống liên tục, bé Na có ăn tốt hơn đôi chút, nhưng cứ ngừng thuốc là bé bị tiêu chảy, sình bụng, hoàn toàn chán ăn và gầy xọp đi. Bác sĩ nhi khoa khám xong nghiêm khắc khiển trách: "Mẹ đã tự tay phá hỏng tuyến tụy của con vì lạm dụng Men tiêu hóa quá 10 ngày!".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Men vi sinh (Probiotics) là "vi khuẩn sống" giúp cân bằng hệ vi sinh ruột, có thể uống lâu dài. <br>
+    👉 Men tiêu hóa (Enzyme) là "hóa chất do cơ thể tự tiết ra" (từ tuyến nước bọt, dạ dày, tuyến tụy) để cắt vụn thức ăn. <u>Tuyệt đối không uống men tiêu hóa quá 10-14 ngày</u>, nếu không cơ thể sẽ "lười biếng" và vĩnh viễn ngừng tự sản xuất enzyme!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Phân biệt -->
+<section class="section card">
+  <h2>🔬 Bảng Phân biệt Sinh học</h2>
+  <div class="overflow-x">
+    <table style="width:100%; border-collapse: collapse;">
+      <tr style="background:var(--bg-card-alt);">
+        <th style="padding:12px; border:1px solid var(--card-border);">Đặc điểm</th>
+        <th style="padding:12px; border:1px solid var(--card-border);">Men Vi Sinh (Probiotics)</th>
+        <th style="padding:12px; border:1px solid var(--card-border);">Men Tiêu Hóa (Enzymes)</th>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Bản chất</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Các bào tử/vi khuẩn sống có lợi (Lactobacillus, Bifidobacterium).</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Các hợp chất hóa học (Pepsin, Amylase, Lipase) do tụy/dạ dày tiết ra.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Chỉ định dùng</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Bị tiêu chảy, sau khi uống kháng sinh (kháng sinh diệt sạch vi khuẩn ruột), chướng bụng.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Viêm tụy mãn tính, teo đường mật, người già suy giảm chức năng tụy.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Thời gian dùng</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Có thể dùng dài ngày (1-3 tháng) để xây lại hệ vi sinh.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Tối đa 10 - 14 ngày.</strong> (Chỉ dùng theo toa bác sĩ).</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Hậu quả lạm dụng</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Ít tác dụng phụ nguy hiểm. Nếu quá liều có thể gây đầy hơi nhẹ.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Tuyến tụy bị liệt, teo lại, mất hoàn toàn khả năng tiêu hóa thức ăn tự nhiên.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- 4️⃣ Cảnh báo -->
+<section class="section card">
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>❌ Uống Men Vi Sinh sao cho đúng?</strong>
+    <ul style="margin-top:8px; line-height:1.8; padding-left:18px;">
+      <li><strong>Pha nước sôi:</strong> Vi khuẩn sống sẽ chết ngay lập tức ở nhiệt độ > 40 độ C. Mẹ pha men vi sinh vào bình sữa nóng, con uống vào chỉ là xác vi khuẩn. Phải pha với nước nguội.</li>
+      <li><strong>Uống cùng lúc với Kháng sinh:</strong> Kháng sinh là thuốc diệt vi khuẩn. Nếu uống cùng lúc, kháng sinh sẽ giết luôn men vi sinh. Phải uống men vi sinh <strong>cách xa giờ uống kháng sinh ít nhất 2 tiếng</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["lupus-ban-do-he-thong"];
+if (!art) throw new Error("Article not found: lupus-ban-do-he-thong");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Phương (30 tuổi) bị mắc bệnh Lupus ban đỏ hệ thống (SLE). Trên mặt chị nổi ban đỏ hình cánh bướm vắt ngang qua mũi. Chị thường xuyên rụng tóc, đau mỏi toàn thân và xét nghiệm thấy thận đang bắt đầu bị tổn thương. Bác sĩ chỉ định chị dùng thuốc ức chế miễn dịch (Corticosteroid) và dặn dò rất kỹ: "Thuốc sẽ cứu tính mạng chị, nhưng chế độ ăn chống viêm bảo vệ Thận và Tim mới là thứ quyết định chị sống khỏe được bao lâu".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Lupus ban đỏ là căn bệnh hệ miễn dịch tấn công chính các cơ quan nội tạng của cơ thể (Đặc biệt là Thận). Mục tiêu dinh dưỡng cốt lõi: <u>Dập tắt phản ứng viêm bằng Omega-3</u>, <u>Bảo vệ Thận (ăn nhạt, đạm vừa phải)</u>, và chống lại tác dụng phụ của thuốc Corticoid (Bổ sung Canxi & Vitamin D để tránh loãng xương). Tuyệt đối KIÊNG Cỏ linh lăng (Alfalfa) và Tỏi liều cao.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bạo loạn từ bên trong</h2>
+  <p>Lupus ban đỏ hệ thống (SLE) là bệnh tự miễn nguy hiểm nhất. Thay vì tạo ra kháng thể để chống lại virus, hệ miễn dịch lại tạo ra các "tự kháng thể" đi theo dòng máu, bám vào và phá hủy da, khớp, tim, phổi, và đặc biệt là bộ lọc của Thận (Gây Viêm cầu thận Lupus).</p>
+  <p>Để ngăn chặn cuộc bạo loạn này, bệnh nhân buộc phải uống thuốc Corticoid (Prednisone) cả đời để "đánh thuốc mê" hệ miễn dịch. Nhưng thuốc này có tác dụng phụ kinh khủng: Gây giữ nước, tăng huyết áp, tăng đường huyết và làm mục nát xương (loãng xương nặng).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Dinh dưỡng sống chung với Lũ</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Bảo vệ xương (Canxi + Vitamin D):</strong> Thuốc trị Lupus phá hủy xương rất nhanh. Phải uống sữa hạt giàu canxi, ăn sữa chua, phô mai và bổ sung Vitamin D3 (Bệnh nhân Lupus không được phơi nắng vì tia UV sẽ kích hoạt phát ban cánh bướm bùng phát nặng).</li>
+      <li><strong>Chế độ ăn bảo vệ Thận:</strong> Ăn NHẠT (ít muối) để không làm tăng huyết áp và phù nề. Ăn Đạm (protein) vừa đủ, không ăn thừa mứa để tránh tạo gánh nặng cho cầu thận đang bị tổn thương.</li>
+      <li><strong>Chiến binh Omega-3:</strong> Dầu cá biển sâu (Hồi, Trích, Thu) giúp điều hòa lại hệ miễn dịch, giảm đau khớp và ngăn chặn các mảng bám hình thành trong mạch máu (Bệnh nhân Lupus có nguy cơ nhồi máu cơ tim rất cao).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sai lầm chết người cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Mầm Cỏ linh lăng (Alfalfa sprouts):</strong> <em>Cực kỳ nguy hiểm!</em> Cỏ linh lăng chứa một loại axit amin là L-canavanine có khả năng kích thích hệ miễn dịch bùng nổ, gây đợt cấp tính của bệnh Lupus. Bệnh nhân SLE tuyệt đối không được ăn.</li>
+      <li><strong>Tỏi liều cao / TPCN tăng đề kháng:</strong> Tỏi kích thích bạch cầu hoạt động mạnh. Ở người thường thì rất tốt, nhưng ở người bị Lupus, kích thích miễn dịch đồng nghĩa với việc "xúi giục" chúng phá hủy nội tạng nhanh hơn. Tránh dùng viên uống chiết xuất tỏi hoặc Sâm, Echinacea.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "thuc-don-gan-nhiem-mo-binh-dan", title: "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản bình dân", description: "Thực đơn giảm mỡ gan kiểu cơm nhà Việt Nam. Hạn chế đường, tinh bột tinh chế, dầu chiên đi chiên lại.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình, ít đường, ít béo bão hòa (~1500 kcal)</p>
 </div>

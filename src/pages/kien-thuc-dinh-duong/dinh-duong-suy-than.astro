@@ -1,0 +1,55 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-suy-than"];
+if (!art) throw new Error("Article not found: dinh-duong-suy-than");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Minh bị Suy thận mãn giai đoạn 3. Nghe nói ăn nhiều hoa quả rất tốt cho sức khỏe, bác thường xuyên ăn chuối tây và uống nước cam vắt. Một đêm, bác thấy tim đập loạn nhịp, khó thở dữ dội, người nhà phải đưa đi cấp cứu. Bác sĩ cho biết nồng độ Kali trong máu của bác tăng vọt đến mức đe dọa ngừng tim. Bác Minh ngỡ ngàng: "Tôi tưởng trái cây là thuốc bổ tự nhiên cơ mà?"</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chế độ ăn cho người Suy thận mạn tính (chưa chạy thận) cực kỳ khắt khe: Phải <u>ĂN NHẠT TUYỆT ĐỐI</u> (để giảm phù), <u>GIẢM ĐẠM</u> (để giảm ure/creatinin), và đặc biệt phải <u>HẠN CHẾ KALI & PHOTPHO</u>. Trái cây nhiều Kali (Chuối, cam, bơ, mít) là "thuốc độc" với quả thận đang hỏng!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Vì sao màng lọc thận bị hỏng lại sợ Kali và Photpho?</h2>
+  <p>Thận khỏe mạnh là nhà máy lọc rác tuyệt vời, nó sẽ vứt bỏ muối, kali, photpho và ure dư thừa qua nước tiểu. Nhưng khi thận bị suy (chức năng &lt; 60%), lỗ lọc bị tắc nghẽn.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Chất Kali (Potassium):</strong> Giúp cơ bắp và cơ tim co bóp. Nếu nồng độ Kali trong máu quá cao mà không thải được ra ngoài, cơ tim sẽ co bóp loạn nhịp, gây ngừng tim đột ngột (Nguy cơ tử vong rất cao).</li>
+    <li><strong>Chất Photpho (Phosphorus):</strong> Nếu tích tụ nhiều, nó sẽ "hút" canxi từ trong xương ra ngoài máu, khiến xương của bệnh nhân suy thận bị mục nát, giòn gãy, đồng thời gây ngứa ngáy toàn thân kinh khủng.</li>
+  </ul>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn an toàn cho người Suy thận</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Trái cây ít Kali:</strong> Táo tây, lê, dưa hấu, thanh long, việt quất, dứa.</li>
+      <li><strong>Rau củ ít Kali:</strong> Bầu, bí, mướp, dưa chuột, bắp cải. <em>Mẹo luộc rau thải Kali:</em> Thái nhỏ rau, luộc trong nồi nhiều nước, vớt bỏ nước luộc đi, chỉ ăn cái. Nước luộc chứa tới 70% lượng Kali của rau.</li>
+      <li><strong>Tinh bột an toàn (Ít đạm):</strong> Miến dong, bột sắn dây, khoai lang luộc. Tinh bột cung cấp năng lượng mà không sinh ra rác thải Ure.</li>
+      <li><strong>Đạm quý (Lượng ít nhưng chất lượng cao):</strong> Lòng trắng trứng gà (cực kỳ tốt vì không chứa photpho), thịt lợn nạc, ức gà. Nên hấp hoặc luộc.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ "Sát thủ" giấu mặt cần tránh xa</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Quả bom Kali:</strong> Chuối tây, bơ, sầu riêng, mít, cam, chanh, nước dừa non. Bệnh nhân suy thận tuyệt đối KHÔNG ĐƯỢC uống nước dừa!</li>
+      <li><strong>Quả bom Photpho:</strong> Lòng đỏ trứng, phủ tạng động vật (gan, lòng non), phô mai, sữa chua, các loại hạt (hạnh nhân, óc chó), nước ngọt có gas (Cola).</li>
+      <li><strong>Muối (Natri):</strong> Kẻ thù số 1 gây phù nề, cao huyết áp. Cấm dùng nước mắm, xì dầu, bột nêm, dưa cà muối chua, các loại giò chả, mì tôm.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

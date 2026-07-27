@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["che-do-an-chong-viem"];
+if (!art) throw new Error("Article not found: che-do-an-chong-viem");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cô Nga (55 tuổi) bị Viêm khớp dạng thấp (Rheumatoid Arthritis). Suốt nhiều năm, các khớp ngón tay của cô sưng đỏ tấy, cứng đơ vào mỗi buổi sáng, đau nhức thấu xương. Bác sĩ kê cho cô dùng Corticoid liều cao, nhưng mặt cô ngày càng phù nề, sưng húp. Cuối cùng, bác sĩ dinh dưỡng khuyên cô thay đổi toàn bộ chế độ ăn sang <strong>Chế độ ăn Chống Viêm (Anti-inflammatory Diet)</strong>. Thật kỳ diệu, chỉ sau 3 tháng, các khớp của cô xẹp hẳn, hết đau nhức mà không cần tăng liều thuốc.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Bệnh tự miễn (như Viêm khớp, Lupus) là do hệ miễn dịch bị "lỗi", tự nã súng bắn vào cơ thể mình gây ra các ổ viêm. Để dập tắt ngọn lửa viêm này, phải nạp <u>siêu vũ khí dập lửa: Omega-3, Nghệ, Trà Xanh, Dầu Oliu</u>. Và bắt buộc phải ngưng đổ thêm dầu vào lửa bằng cách <u>cắt bỏ hoàn toàn Mỡ bão hòa, Đồ ngọt và Thức ăn chế biến sẵn</u>.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Viêm mãn tính: Căn nguyên của mọi loại bệnh tật</h2>
+  <p>Viêm cấp tính (sưng tấy khi bị đứt tay) là tốt, vì nó giúp gọi bạch cầu đến chữa lành vết thương. Nhưng <strong>Viêm mãn tính</strong> lại là một kẻ giết người thầm lặng.</p>
+  <p>Do thói quen ăn uống đồ công nghiệp, cơ thể chúng ta luôn bị đặt trong trạng thái báo động đỏ (bị vi viêm). Hệ miễn dịch nhả ra hàng loạt chất hóa học gọi là <em>Cytokine</em>. Các Cytokine này rải rác khắp cơ thể, ăn mòn sụn khớp (gây viêm khớp), cào xước mạch máu (gây nhồi máu cơ tim), và làm biến đổi tế bào (gây ung thư).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm dập tắt ngọn lửa Viêm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Omega-3 (Liều cao):</strong> Cá hồi, cá trích, hạt lanh, hạt chia. Omega-3 là chất chống viêm mạnh nhất hành tinh, có thể cạnh tranh và khóa chặt các enzym gây viêm.</li>
+      <li><strong>Gia vị Vàng (Nghệ & Gừng):</strong> Curcumin trong củ nghệ tươi có sức mạnh chống viêm tương đương với nhiều loại thuốc giảm đau tân dược (như Ibuprofen) mà lại không làm loét dạ dày. Mẹo: Phải rắc thêm hạt tiêu đen để cơ thể hấp thu được Curcumin.</li>
+      <li><strong>Rau củ "cầu vồng":</strong> Các loại quả mọng sẫm màu (việt quất, dâu tây) và rau lá xanh đậm chứa chất chống oxy hóa khổng lồ, đi dọn dẹp các gốc tự do sinh ra từ vùng viêm.</li>
+      <li><strong>Dầu Oliu Extra Virgin:</strong> Chứa hợp chất <em>Oleocanthal</em>, hoạt động như một loại thuốc kháng viêm tự nhiên tuyệt vời.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ "Xăng dầu" kích nổ cơn Viêm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chất béo chuyển hóa (Trans Fat):</strong> Khoai tây chiên, gà rán, thức ăn nhanh. Chỉ cần ăn một lượng nhỏ cũng đủ để kích hoạt cơn bão Cytokine trên toàn cơ thể.</li>
+      <li><strong>Đường tinh luyện (Bánh kẹo, soda):</strong> Ăn đường làm lượng Insulin tăng vọt, kéo theo phản ứng viêm hệ thống bùng nổ dữ dội. Bệnh nhân viêm khớp ăn bánh ngọt hôm trước là hôm sau ngón tay sưng đỏ.</li>
+      <li><strong>Thịt đỏ tươi nướng cháy:</strong> Nướng thịt bò trên lửa than tạo ra hợp chất AGEs. Cơ thể nhận diện AGEs là chất độc và phản ứng lại bằng cách tạo ra các ổ viêm sưng tấy.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

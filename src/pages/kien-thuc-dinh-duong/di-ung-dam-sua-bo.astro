@@ -1,0 +1,57 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import HealthAlert from "../../components/HealthAlert.astro";
+
+const art = articleBySlug["di-ung-dam-sua-bo"];
+if (!art) throw new Error("Article not found: di-ung-dam-sua-bo");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Hoa có con nhỏ 4 tháng tuổi. Lần đầu chị dặm thêm sữa công thức cho bé, chỉ sau 15 phút, bé nổi mẩn đỏ quanh miệng, nôn trớ liên tục và khò khè khó thở. Bác sĩ cấp cứu kết luận bé bị <strong>Dị ứng đạm sữa bò (CMPA)</strong>.</p>
+  <p>Đây là loại dị ứng thực phẩm phổ biến nhất ở trẻ sơ sinh và trẻ nhỏ (chiếm khoảng 2-3%). Tuy nhiên, tin vui là hầu hết trẻ sẽ tự khỏi khi lớn lên (khoảng 3-5 tuổi).</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Dị ứng đạm sữa bò liên quan đến hệ miễn dịch, bé <u>tuyệt đối không được dùng sữa bò và các chế phẩm từ sữa bò</u> (phô mai, váng sữa). Sữa thay thế bắt buộc phải là <u>sữa thủy phân hoàn toàn (Extensively Hydrolyzed)</u> hoặc sữa acid amin theo chỉ định của bác sĩ nhi khoa.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Tại sao bé lại dị ứng với sữa?</h2>
+  <p>Hệ miễn dịch của bé nhầm lẫn các protein (đạm) trong sữa bò là những kẻ xâm nhập nguy hiểm (như vi khuẩn). Khi bé uống sữa, cơ thể tiết ra kháng thể Histamin để "chống lại" các protein này, gây ra phản ứng dị ứng.</p>
+
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>Cảnh báo cực kỳ nguy hiểm (Sốc phản vệ):</strong>
+    <p style="margin-top:8px;">Dị ứng đạm sữa bò có thể gây ra sốc phản vệ — tình trạng đe dọa tính mạng (sưng đường thở, tụt huyết áp). Nếu bé có dấu hiệu thở khò khè, tím tái hoặc lịm đi sau khi uống sữa, phải đưa đi cấp cứu ngay lập tức.</p>
+  </div>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Giải pháp dinh dưỡng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nuôi con bằng sữa mẹ:</strong> Đây là lựa chọn tốt nhất. Tuy nhiên, đạm sữa bò có thể đi qua sữa mẹ, do đó <u>người mẹ phải kiêng hoàn toàn sữa bò và chế phẩm từ sữa</u> trong chế độ ăn của mình.</li>
+      <li><strong>Sữa thủy phân hoàn toàn (eHF):</strong> Các phân tử đạm sữa bò đã được "cắt nhỏ" đến mức hệ miễn dịch không nhận ra, không gây dị ứng. Phù hợp cho 90% bé dị ứng.</li>
+      <li><strong>Sữa Amino Acid (AAF):</strong> Đạm được bẻ gãy hoàn toàn thành các acid amin siêu nhỏ. Dành cho 10% bé dị ứng rất nặng không dung nạp được sữa eHF.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sai lầm cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Đổi sang sữa dê, cừu:</strong> Protein trong sữa dê/cừu giống hệt sữa bò. Trẻ dị ứng sữa bò có đến 90% khả năng dị ứng chéo với sữa dê.</li>
+      <li><strong>Dùng sữa đậu nành cho trẻ dưới 6 tháng:</strong> Trẻ dưới 6 tháng không được uống sữa đậu nành vì nguy cơ dị ứng chéo cao.</li>
+      <li><strong>Tự ý dùng sữa "Lactose-free":</strong> Sữa không chứa đường Lactose vẫn chứa đạm sữa bò nguyên vẹn. Nó dùng cho bệnh <em>Bất dung nạp Lactose</em>, không dùng cho dị ứng!</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-tre-tu-ky-adhd"];
+if (!art) throw new Error("Article not found: dinh-duong-tre-tu-ky-adhd");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Gần đây, trên mạng xã hội lan truyền phương pháp "chữa khỏi tự kỷ" bằng cách bắt trẻ nhịn ăn tinh bột, tuyệt đối kiêng đường, kiêng sữa và chỉ uống nước ép cần tây. Rất nhiều cha mẹ có con mắc Phổ tự kỷ (ASD) hoặc Tăng động giảm chú ý (ADHD) đã mù quáng làm theo, dẫn đến việc trẻ bị suy dinh dưỡng nặng, kiệt sức và hành vi rối loạn thêm trầm trọng.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Y khoa khẳng định: Không có chế độ ăn nào CHỮA KHỎI Tự kỷ hay ADHD. Tuy nhiên, dinh dưỡng đúng cách (tăng cường Omega-3, kẽm, magie và cắt giảm đường tinh luyện, phẩm màu nhân tạo) sẽ giúp <u>cải thiện đáng kể hành vi tăng động, giảm cáu gắt và tăng sự tập trung</u> ở trẻ.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Hiểu lầm -->
+<section class="section card">
+  <h2>⚠️ Lật tẩy trào lưu ăn kiêng GFCF (Gluten-Free, Casein-Free)</h2>
+  <p>Chế độ GFCF (kiêng hoàn toàn lúa mì và đạm sữa) thường được rỉ tai nhau là "thần dược" cho trẻ tự kỷ. Giả thuyết cho rằng trẻ tự kỷ không tiêu hóa được Gluten và Casein, các chất này lọt vào não và hoạt động như ma túy gây ảo giác.</p>
+  <p><strong>Sự thật:</strong> Các nghiên cứu quy mô lớn của Viện Y tế Quốc gia Mỹ (NIH) và Viện Nhi khoa Hoa Kỳ (AAP) kết luận: Không có bằng chứng khoa học rõ ràng nào ủng hộ việc bắt TẤT CẢ trẻ tự kỷ ăn GFCF. Chỉ nên áp dụng chế độ này nếu trẻ CÓ KÈM bệnh Celiac hoặc dị ứng đạm sữa bò. Việc tự ý cắt bỏ lúa mì và sữa sẽ khiến trẻ thiếu hụt Canxi, Vitamin D nghiêm trọng.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên tăng cường (Brain Food)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Omega-3 (DHA/EPA):</strong> Cực kỳ quan trọng cho não bộ. Nhiều trẻ ADHD có nồng độ Omega-3 trong máu thấp. Nguồn: Cá hồi, cá trích, hạt chia, quả óc chó.</li>
+      <li><strong>Kẽm & Magie:</strong> Giúp làm dịu hệ thần kinh, giảm hành vi hung hăng bốc đồng. Nguồn: Hạt bí ngô, thịt bò, hải sản, chuối, rau bina.</li>
+      <li><strong>Sắt:</strong> Thiếu sắt liên quan trực tiếp đến sự suy giảm tập trung. Nguồn: Gan, lòng đỏ trứng, rau ngót.</li>
+      <li><strong>Protein vào bữa sáng:</strong> Một bữa sáng giàu đạm (Trứng, đậu phụ, yến mạch) giúp ổn định đường huyết, giữ trẻ tập trung suốt buổi sáng dài.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ "Kẻ thù" gây tăng động (Cần cắt giảm)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Đường tinh luyện:</strong> Bánh kẹo, nước ngọt. Đường làm lượng glucose trong máu tăng vọt rồi rớt thảm hại, khiến trẻ cáu gắt, không thể ngồi yên.</li>
+      <li><strong>Phẩm màu nhân tạo & Chất bảo quản:</strong> Nghiên cứu cho thấy phẩm màu đỏ (Red 40) và vàng (Yellow 5) làm trầm trọng thêm chứng tăng động ở trẻ ADHD. Hãy tránh xa các loại thạch, kẹo màu sắc sặc sỡ.</li>
+      <li><strong>Caffeine:</strong> Nước tăng lực, trà sữa, cà phê... làm rối loạn giấc ngủ và tăng nhịp tim của trẻ.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

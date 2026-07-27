@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-chay-than-nhan-tao"];
+if (!art) throw new Error("Article not found: dinh-duong-chay-than-nhan-tao");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chú Tư (60 tuổi) bị suy thận mạn giai đoạn cuối, tuần nào cũng phải vào viện chạy thận nhân tạo 3 lần. Ghi nhớ lời dặn "suy thận phải kiêng đạm" từ những năm trước, chú ăn toàn cơm trắng với rau củ luộc, tuyệt đối không đụng đến thịt cá. Hậu quả là chỉ sau 2 tháng chạy thận, chú sụt mất 10kg, cơ bắp teo nhão, da bọc xương và kiệt sức không đứng dậy nổi. Khi bác sĩ khám, nồng độ Albumin (đạm) trong máu chú tụt xuống mức báo động đỏ!</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Sai lầm lớn nhất: Đánh đồng chế độ ăn Suy thận (chưa lọc) với Chạy thận (lọc máu). Khi đã phải Chạy thận nhân tạo, máy lọc không chỉ hút chất độc mà còn hút mất một lượng Đạm (Protein) khổng lồ ra khỏi cơ thể. Do đó, người bệnh lúc này phải <u>ĂN NHIỀU ĐẠM CHẤT LƯỢNG CAO (Thịt, trứng, cá) gấp rưỡi người bình thường</u> để chống lại sự suy kiệt tàn khốc.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bộ máy hút đạm "vô tình"</h2>
+  <p>Thận giả (Máy lọc máu) là cứu tinh giúp lọc sạch ure và kali dư thừa khi thận thật đã hỏng hoàn toàn. Nhưng máy lọc rất "mù mờ", nó không phân biệt được đâu là rác, đâu là vàng.</p>
+  <p>Mỗi lần lọc máu (khoảng 4 tiếng), hệ thống sẽ cuốn trôi theo khoảng <strong>10 - 12 gram Axit amin (đạm)</strong> của cơ thể. Nếu bệnh nhân lọc màng bụng (CAPD) thì lượng đạm mất đi mỗi ngày còn khủng khiếp hơn.</p>
+  <p>Nếu không ăn bù thịt cá vào, cơ thể không có nguyên liệu để tự sửa chữa tế bào. Nó buộc phải "ăn thịt chính mình" bằng cách phá hủy cơ bắp và hệ miễn dịch để lấy đạm duy trì sự sống. Đó là lý do bệnh nhân chạy thận kiêng khem mù quáng sẽ chết vì suy kiệt trước khi chết vì bệnh thận!</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ 3 Quy tắc Dinh dưỡng Sống còn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tăng gấp rưỡi chất Đạm:</strong> Ăn nhiều lòng trắng trứng luộc (đây là nguồn đạm chuẩn vàng, nhiều Albumin nhưng lại ít phốt pho). Bổ sung thịt nạc (heo, gà, bò), cá tươi.</li>
+      <li><strong>Hạn chế tuyệt đối Nước:</strong> Thận hỏng không thể tạo nước tiểu. Uống bao nhiêu nước, nó sẽ nằm lại trong máu bấy nhiêu, làm cơ thể trương phù và ép tim đến mức suy tim. <em>Lượng nước uống = Lượng nước tiểu ngày hôm qua + 500ml.</em></li>
+      <li><strong>Luộc 2 lần để khử Kali:</strong> Bệnh nhân vẫn phải kiêng Kali (có trong rau củ) để tránh ngừng tim. Mẹo: Thái nhỏ rau củ, ngâm nước ấm 30 phút, luộc bỏ nước đầu tiên rồi mới chế biến.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cảnh báo tử thần: Photpho</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Máy lọc máu RẤT DỞ trong việc lọc Photpho!</strong> Dù có chạy thận, photpho trong máu vẫn sẽ tăng cao nếu bạn ăn sai. Photpho cao sẽ rút hết Canxi từ xương, làm xương mục nát và gây ngứa ngáy toàn thân kinh khủng.</li>
+      <li><strong>Tránh xa Đạm có lẫn Photpho:</strong> Lòng đỏ trứng, Sữa bò tươi, Phô mai, Nội tạng động vật (Gan, ruột), Xương hầm, Đậu phộng, Đậu nành, Đồ đóng hộp. Hãy chọn ăn Đạm sạch (lòng trắng trứng, thịt nạc nguyên miếng) thay vì ăn nội tạng!</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

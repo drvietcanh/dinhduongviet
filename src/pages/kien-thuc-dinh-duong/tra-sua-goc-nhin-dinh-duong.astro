@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "tra-sua-goc-nhin-dinh-duong", title: "Trà sữa, nước ngọt — Uống một ly, nạp bao nhiêu đường?", description: "Phân tích lượng đường trong trà sữa, nước ngọt, nước ép đóng chai. Ảnh hưởng đến sức khỏe và cách uống ít hại.", emoji: "🧋", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Trà sữa, nước ngọt, nước ép đóng chai là những đồ uống được giới trẻ yêu thích. Vị ngọt hấp dẫn, nhưng lượng đường ẩn bên trong có thể gây sốc.
 

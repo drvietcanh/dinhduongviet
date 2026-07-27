@@ -1,0 +1,77 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-an-dam"];
+if (!art) throw new Error("Article not found: dinh-duong-an-dam");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bé Gấu nhà chị Mai vừa tròn 6 tháng tuổi. Bà nội muốn quấy bột gạo xay nhuyễn với nước hầm xương đút cho cháu. Chị Mai lại muốn cho con tự cầm súp lơ và cà rốt luộc gặm theo phương pháp BLW. Hai mẹ con tranh cãi gay gắt không biết cách nào mới là tốt nhất cho hệ tiêu hóa của bé.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Y khoa không bắt buộc phải theo phương pháp ăn dặm nào (Truyền thống, Kiểu Nhật, hay BLW). Điều quan trọng nhất là: <u>Bắt đầu khi bé tròn 6 tháng</u>, đồ ăn phải giàu Sắt, và <u>tuyệt đối không nêm muối/mắm/đường</u> vào đồ ăn của trẻ dưới 1 tuổi.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ So sánh phương pháp -->
+<section class="section card">
+  <h2>🔬 So sánh 3 phương pháp ăn dặm phổ biến</h2>
+  <div class="overflow-x">
+    <table style="width:100%; border-collapse: collapse;">
+      <tr style="background:var(--bg-card-alt);">
+        <th style="padding:12px; border:1px solid var(--card-border);">Tiêu chí</th>
+        <th style="padding:12px; border:1px solid var(--card-border);">Truyền thống (Xay nhuyễn)</th>
+        <th style="padding:12px; border:1px solid var(--card-border);">Kiểu Nhật (Tách riêng)</th>
+        <th style="padding:12px; border:1px solid var(--card-border);">BLW (Tự chỉ huy)</th>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Đặc điểm</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Xay nhọn tất cả bột, thịt, rau thành một tô cháo. Người lớn đút.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Cháo rây mịn, rau rây mịn, thịt rây mịn. Để riêng từng khay.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Thức ăn thái thanh/khối mềm. Bé tự cầm bốc ăn, không đút.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Ưu điểm</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Bé ăn được lượng nhiều, dễ tăng cân nhanh, mẹ đỡ dọn dẹp.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Giúp bé cảm nhận được mùi vị thật của từng loại thực phẩm.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Luyện kỹ năng nhai nuốt, kỹ năng vận động tinh (bốc nhón). Bé ăn chủ động.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid var(--card-border);"><strong>Nhược điểm</strong></td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Dễ làm bé chán ăn sinh lý, mất phản xạ nhai, hay ngậm.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Mẹ tốn rất nhiều thời gian chuẩn bị và rây lọc.</td>
+        <td style="padding:12px; border:1px solid var(--card-border);">Giai đoạn đầu ăn được ít, mẹ dễ stress, cần học kỹ năng xử lý hóc dị vật.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nguyên tắc Y khoa bắt buộc</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thời điểm vàng:</strong> Tròn 180 ngày (6 tháng tuổi), khi bé đã ngồi vững và hết phản xạ đùn lưỡi.</li>
+      <li><strong>Ưu tiên chất Sắt:</strong> Lượng sắt dự trữ từ mẹ truyền sang đã cạn kiệt ở tháng thứ 6. Bữa ăn đầu tiên nên là ngũ cốc tăng cường sắt hoặc thịt đỏ rây mịn.</li>
+      <li><strong>Nguyên tắc 3 days wait:</strong> Mỗi khi thử món mới, cho ăn liên tục 3 ngày để theo dõi dị ứng (đặc biệt là trứng, hải sản, đậu phộng).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cảnh báo nguy hiểm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nước hầm xương:</strong> Rất ít canxi, thành phần chủ yếu là mỡ động vật gây đầy bụng, khó tiêu cho trẻ.</li>
+      <li><strong>Mật ong:</strong> Tuyệt đối cấm trẻ dưới 1 tuổi vì nguy cơ ngộ độc độc tố Botulinum (gây liệt cơ, tử vong).</li>
+      <li><strong>Nêm gia vị:</strong> Thận của trẻ dưới 1 tuổi rất yếu. Lượng natri tự nhiên trong thực phẩm là đủ. Thêm muối sẽ gây suy thận.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

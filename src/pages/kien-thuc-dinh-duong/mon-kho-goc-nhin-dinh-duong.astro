@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "mon-kho-goc-nhin-dinh-duong", title: "Cá kho, thịt kho — Vấn đề nằm ở muối, đường và nước dùng", description: "Phân tích dinh dưỡng món kho Việt Nam, cách giảm muối, đường, chế biến lành mạnh hơn.", emoji: "🍲", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Cá kho, thịt kho, tép rim — những món kho là linh hồn của mâm cơm Việt. Món kho tiện lợi (nấu một lần ăn nhiều bữa), giữ được lâu, đậm đà. Nhưng món kho cũng là "thủ phạm" chính của muối và đường ẩn trong chế độ ăn.
 

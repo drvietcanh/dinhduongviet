@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-phau-thuat"];
+if (!art) throw new Error("Article not found: dinh-duong-phau-thuat");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Hùng (60 tuổi) vừa trải qua ca phẫu thuật cắt dạ dày. Theo kinh nghiệm dân gian, người nhà chỉ dám cho bác húp nước cháo loãng pha muối suốt 1 tuần đầu vì sợ "nặng bụng" và bắt kiêng tôm, cua, thịt gà, thịt bò vì sợ vết mổ bị phong ngứa, sẹo lồi. Hậu quả là bác Hùng sụt 5kg, vết mổ rỉ dịch mủ không chịu lành và phải tiêm kháng sinh liều cao.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Y học hiện đại (chuẩn ERAS) khuyến khích bệnh nhân ăn lại sớm nhất có thể sau phẫu thuật. <u>Tuyệt đối không kiêng khem tôm, cá, thịt gà, thịt bò</u> (trừ khi có tiền sử dị ứng). Cơ thể cần lượng Protein (đạm) khổng lồ để vá lại vết cắt và tạo tế bào miễn dịch chống nhiễm trùng. Cháo loãng không có dinh dưỡng, chỉ khiến bệnh nhân chết đói trên giường bệnh.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Phẫu thuật làm suy kiệt cơ thể như thế nào?</h2>
+  <p>Phẫu thuật là một "chấn thương có chủ đích". Để đáp ứng với chấn thương này, cơ thể tiết ra hormone Cortisol và kích hoạt trạng thái <strong>Dị hóa (Catabolism)</strong> — tức là tự phân hủy cơ bắp của chính mình để lấy axit amin đem đi vá vết mổ.</p>
+  <p>Nếu bạn không cung cấp đủ đạm (Protein) từ thức ăn, cơ thể sẽ tự "ăn thịt" chính nó (teo cơ bắp tay, cơ đùi, cơ hô hấp). Hậu quả là bệnh nhân không có sức để ho tống đờm, dẫn đến viêm phổi sau mổ.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn Phục hồi nhanh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tăng gấp rưỡi lượng Đạm (Protein):</strong> Thịt lợn nạc, ức gà, cá biển, trứng, đậu phụ. Nếu bệnh nhân chán ăn, hãy xay nhuyễn thịt nấu súp đặc hoặc dùng sữa y tế cao năng lượng (Sữa công thức chuyên biệt cho người bệnh).</li>
+      <li><strong>Vitamin C (Tạo Collagen):</strong> Nước cam, bưởi, kiwi, ớt chuông. Vitamin C là chất keo dính giúp hai mép vết mổ dính chặt lại với nhau.</li>
+      <li><strong>Kẽm (Chống nhiễm trùng):</strong> Thịt bò, hàu, hải sản. Kẽm giúp sản sinh bạch cầu, bảo vệ vết mổ khỏi vi khuẩn. </li>
+      <li><strong>Ăn sớm, chia nhỏ bữa:</strong> Chuyển nhanh từ lỏng (sữa, súp) sang đặc (cháo thịt, cơm nát) theo mức độ dung nạp của dạ dày. 6 bữa nhỏ tốt hơn 3 bữa lớn.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Xóa bỏ các Lời đồn tai hại</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>"Ăn hải sản bị ngứa, ăn thịt gà bị phong nhức":</strong> Sai lầm! Chưa có bất kỳ nghiên cứu y khoa nào chứng minh điều này. Hải sản và gà là nguồn đạm rất dễ tiêu hóa. Chỉ kiêng nếu bệnh nhân bị dị ứng thực sự với món đó.</li>
+      <li><strong>"Ăn thịt bò, rau muống bị sẹo lồi":</strong> Sai lầm! Sẹo lồi hay sẹo lõm 90% là do cơ địa di truyền và kỹ năng khâu của bác sĩ ngoại khoa. Việc kiêng thịt bò chỉ làm bệnh nhân thiếu Sắt và bợt bạt vì thiếu máu.</li>
+      <li><strong>Chỉ uống nước hầm xương:</strong> Nước hầm xương chỉ có mùi thơm và chất béo. 95% đạm và canxi vẫn nằm lại trong xác thịt/xương. Phải ăn cả cái mới có chất.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

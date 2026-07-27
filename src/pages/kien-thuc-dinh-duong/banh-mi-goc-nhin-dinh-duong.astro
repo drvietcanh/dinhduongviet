@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "banh-mi-goc-nhin-dinh-duong", title: "Bánh mì sáng: Tiện nhưng cần thêm gì để đủ chất?", description: "Phân tích dinh dưỡng bánh mì Việt Nam, cách chọn bánh mì lành mạnh, thêm gì để thành bữa sáng đủ chất.", emoji: "🥖", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Bánh mì là bữa sáng quốc dân của người Việt. Nhanh, rẻ, ngon — nhưng nếu ăn sai cách, bánh mì có thể là bữa sáng mất cân bằng.
 

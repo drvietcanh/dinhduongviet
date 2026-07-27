@@ -4,7 +4,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["thuc-don-tang-huyet-ap"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Thực đơn này dành cho người tăng huyết áp, tổng **~1500 kcal/ngày, muối tổng dưới 2g** (khoảng 1/3 mức ăn thông thường của người Việt). Mỗi bữa đều chú ý giảm muối mà vẫn ngon.
 

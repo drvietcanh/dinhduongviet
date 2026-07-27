@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["che-do-an-mind-alzheimer"];
+if (!art) throw new Error("Article not found: che-do-an-mind-alzheimer");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bà Năm (70 tuổi) bắt đầu có dấu hiệu quên trước quên sau, đi chợ quên trả tiền, thi thoảng không nhớ tên cháu nội. Bác sĩ chẩn đoán bà bị suy giảm nhận thức nhẹ, tiền đề của bệnh Alzheimer. Bác sĩ kê đơn thuốc bổ não và yêu cầu gia đình lập tức chuyển bữa ăn của bà sang <strong>Chế độ ăn MIND</strong>. Nửa năm sau, trí nhớ của bà minh mẫn trở lại đáng kể, không còn những cơn nhầm lẫn đáng sợ nữa.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chế độ ăn MIND (lai giữa Địa Trung Hải và DASH) được khoa học chứng minh giúp <u>giảm 53% nguy cơ mắc Alzheimer</u> và làm bộ não trẻ ra tương đương 7.5 tuổi. Cốt lõi của MIND là ăn ngập tràn <u>Quả mọng (Việt quất) & Rau lá xanh</u>, đồng thời cắt bỏ hoàn toàn Bơ thực vật (Margarine) và Thịt đỏ nướng.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Vì sao não bộ bị "teo lại"?</h2>
+  <p>Não là cơ quan ngốn nhiều Oxi nhất (chiếm 20% lượng Oxi toàn cơ thể). Việc sử dụng quá nhiều Oxi sẽ sinh ra các "gốc tự do" - giống như rỉ sét bám vào các tế bào thần kinh.</p>
+  <p>Càng lớn tuổi, các rỉ sét này càng nhiều, kết hợp với các mảng bám mỡ thừa làm tắc nghẽn vi mạch máu não. Tế bào thần kinh không được nuôi dưỡng sẽ chết dần, khiến não bộ thực sự "teo lại". Chế độ ăn MIND cung cấp các chất chống oxy hóa cực mạnh để dọn dẹp các mảng rỉ sét này, đồng thời giữ cho mạch máu não luôn thông suốt.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ 10 Siêu thực phẩm cứu vãn trí nhớ (MIND Diet)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Rau lá xanh đậm (Phải ăn mỗi ngày):</strong> Cải bó xôi, súp lơ xanh, xà lách. Chúng ngập tràn Vitamin K, Folate và Beta-carotene - những chất được chứng minh làm chậm quá trình suy giảm nhận thức.</li>
+      <li><strong>Quả mọng (Ít nhất 2 lần/tuần):</strong> Việt quất, dâu tây. Anthocyanin (tạo nên màu tím/đỏ) trong quả mọng có khả năng vượt qua hàng rào máu não để bảo vệ trực tiếp trung tâm trí nhớ (Hải mã).</li>
+      <li><strong>Hạt & Các loại đậu:</strong> Ăn hạt óc chó, hạnh nhân mỗi ngày để nạp Vitamin E - tấm khiên bảo vệ màng tế bào thần kinh.</li>
+      <li><strong>Cá biển sâu (1 lần/tuần):</strong> Nguồn cung cấp DHA nguyên bản để xây dựng lại chất xám.</li>
+      <li><strong>Dầu Oliu nguyên chất:</strong> Sử dụng làm dầu ăn chính để chống tắc nghẽn mạch máu não.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ 5 Kẻ thù giết chết tế bào não</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Bơ thực vật (Margarine):</strong> Không bao giờ được ăn! Chúng chứa chất béo chuyển hóa (Trans fat) làm tắc nghẽn mạch máu não nhanh nhất.</li>
+      <li><strong>Thịt đỏ (Ăn &lt; 3 lần/tuần):</strong> Thịt bò, lợn ăn quá nhiều sẽ tạo mảng bám Amyloid - "rác thải" đặc trưng trong não bệnh nhân Alzheimer.</li>
+      <li><strong>Phô mai công nghiệp & Đồ chiên rán:</strong> Giới hạn ở mức &lt; 1 lần/tuần.</li>
+      <li><strong>Bánh kẹo ngọt:</strong> Lượng đường cao làm tăng vi viêm toàn cơ thể, bao gồm cả viêm não.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

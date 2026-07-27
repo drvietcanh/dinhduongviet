@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-rung-toc-alopecia"];
+if (!art) throw new Error("Article not found: dinh-duong-rung-toc-alopecia");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Mai (32 tuổi) sau khi sinh bé thứ 2 thì bắt đầu rụng tóc dữ dội. Mỗi lần gội đầu là tóc rụng thành từng mảng, vuốt nhẹ cũng rụng cả nắm khiến chị bị hói cả một mảng đỉnh đầu (Alopecia). Chị mua đủ loại dầu gội mọc tóc đắt tiền nhưng không ăn thua. Khi đi xét nghiệm máu, bác sĩ phát hiện lượng Ferritin (Sắt dự trữ) của chị cực thấp do mất máu sau sinh cộng với chế độ ăn kiêng cữ sai lầm. Bác sĩ yêu cầu chị dừng dầu gội đắt tiền lại, và bắt đầu bổ sung Sắt, Kẽm cùng Biotin từ thực phẩm.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Rụng tóc (đặc biệt ở phụ nữ) 80% đến từ nguyên nhân bên trong: <u>Thiếu máu thiếu Sắt, thiếu Kẽm và suy giảm Protein nang tóc</u>. Dầu gội chỉ làm sạch da đầu chứ không thể "bón phân" cho nang tóc mọc lên. Hãy cứu vãn mái tóc bằng việc ăn nhiều <u>Thịt bò (Sắt Heme), Hàu (Kẽm) và Trứng gà (Biotin)</u>.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Nang tóc - Cơ quan "chịu thiệt thòi" nhất cơ thể</h2>
+  <p>Tóc được cấu tạo từ 95% là một loại protein có tên là Keratin. Tóc là mô phát triển nhanh thứ 2 trong cơ thể (chỉ sau tủy xương).</p>
+  <p>Tuy nhiên, đối với cơ thể, mái tóc không mang tính sống còn (bạn không có tóc vẫn sống được). Do đó, khi cơ thể bị thiếu hụt dinh dưỡng (đặc biệt là Thiếu Sắt và Protein), não bộ sẽ lập tức cắt nguồn cung cấp máu đến nang tóc để ưu tiên dinh dưỡng cho Tim, Gan, Phổi. Nang tóc bị "bỏ đói" sẽ teo lại và đẩy sợi tóc rụng đi để tiết kiệm năng lượng.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ "Phân bón" cho nang tóc</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Sắt Heme (từ động vật):</strong> Thịt bò, gan, tiết lợn. Phụ nữ rất dễ rụng tóc do thiếu sắt qua chu kỳ kinh nguyệt. Sắt Heme giúp tạo hồng cầu, mang oxy và dưỡng chất bơm trực tiếp vào nuôi nang tóc.</li>
+      <li><strong>Kẽm (Hàu, Hạt bí đỏ):</strong> Kẽm là thợ xây tổng hợp Keratin. Kẽm cũng giúp điều hòa hormone DHT ở nam giới (nguyên nhân gây hói đầu chữ M). Thiếu kẽm, tóc sẽ mọc lên rất tơ, mảnh và dễ đứt gãy.</li>
+      <li><strong>Biotin (Vitamin B7) từ Trứng:</strong> Trứng gà chứa lượng Biotin khổng lồ, là "chất keo" gắn kết các phân tử Keratin lại với nhau. <em>Lưu ý: Phải ăn lòng đỏ trứng chín. Ăn lòng trắng trứng sống sẽ ngăn cản cơ thể hấp thụ Biotin.</em></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những thứ hủy hoại nang tóc</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chế độ ăn kiêng khắc nghiệt (Crash Diet):</strong> Giảm cân quá nhanh bằng cách nhịn ăn, bỏ hoàn toàn đạm và chất béo. Cơ thể báo động giả, tóc sẽ rụng tơi tả sau đó 2-3 tháng (Tình trạng Telogen Effluvium).</li>
+      <li><strong>Vitamin A liều quá cao:</strong> Bổ sung quá nhiều Vitamin A (từ thuốc hoặc ăn quá nhiều gan động vật liên tục) thực sự có thể GÂY NGỘ ĐỘC và làm rụng tóc cực kỳ nhanh chóng. Dùng vừa đủ mới tốt.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

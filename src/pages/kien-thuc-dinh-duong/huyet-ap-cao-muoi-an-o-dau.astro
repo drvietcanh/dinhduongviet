@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["huyet-ap-cao-muoi-an-o-dau"];
+if (!art) throw new Error("Article not found: huyet-ap-cao-muoi-an-o-dau");
+---
+
+<ArticleLayout article={art}>
+<div class="article-content">
+
+<section class="section card" style="background:#e8eaf6;border:1px solid #9fa8da;">
+  <p>Bác sĩ dặn ăn nhạt vì cao huyết áp. Bạn đã bỏ muối khi nấu cơm. Nhưng huyết áp vẫn không giảm. Lý do? Vì <strong>80% lượng muối bạn ăn mỗi ngày không đến từ lọ muối trên bàn — chúng ẩn nấp ở khắp nơi trong thực phẩm chế biến!</strong></p>
+</section>
+
+<section class="section card">
+  <h2>1. Muối ẩn đang ở đâu trong mâm cơm của bạn?</h2>
+
+  <h3>🥫 Nước mắm và xì dầu</h3>
+  <p>1 muỗng canh nước mắm chứa tới <strong>900-1000mg Natri</strong> — gần bằng 50% lượng muối cho phép cả ngày! Chấm thức ăn vào nước mắm nguyên chất chính là nguồn muối khổng lồ nhất trong bữa cơm Việt.</p>
+
+  <h3>🍜 Mì ăn liền và các loại gói gia vị</h3>
+  <p>Một gói mì ăn liền chứa <strong>1500-2000mg Natri</strong> — vượt qua lượng muối cho phép cả ngày của người cao huyết áp (1500mg). Gói gia vị kèm theo là thứ nguy hiểm nhất, không phải sợi mì.</p>
+
+  <h3>🍱 Đồ hộp, dưa cải, kim chi, cà muối</h3>
+  <p>Dưa cải muối và kim chi lên men bằng muối — một chén dưa cải nhỏ chứa 500-700mg Natri. Người cao huyết áp nên hạn chế còn 2-3 lần/tuần.</p>
+
+  <h3>🥚 Trứng muối, chả lụa, xúc xích</h3>
+  <p>Thực phẩm chế biến sẵn đều cần muối để bảo quản. 2 lát chả lụa đã chứa 400-500mg Natri.</p>
+</section>
+
+<section class="section card">
+  <h2>2. Giới hạn Muối an toàn mỗi ngày</h2>
+  <div style="background:#e3f2fd;padding:16px;border-radius:12px;">
+    <strong>Người bình thường:</strong> Không quá 5g muối/ngày (tương đương 1 muỗng cà phê).<br/><br/>
+    <strong>Người cao huyết áp:</strong> Không quá 3g muối/ngày (tương đương 2/3 muỗng cà phê).<br/><br/>
+    <strong>Người suy thận:</strong> Không quá 1.5-2g/ngày theo chỉ định bác sĩ.
+  </div>
+</section>
+
+<section class="section card">
+  <h2>3. Cách nấu ăn giảm muối mà vẫn ngon</h2>
+  <ul>
+    <li><strong>Thêm axit để thay muối:</strong> Vài giọt chanh tươi, giấm gạo làm món ăn đậm đà hơn mà không cần nhiều muối.</li>
+    <li><strong>Dùng gia vị thơm:</strong> Gừng, tỏi, tiêu, sả, hành lá, ngò rí — chúng tạo mùi vị hấp dẫn mà không có Natri.</li>
+    <li><strong>Nêm muối vào cuối:</strong> Nêm muối vào lúc gần tắt bếp — vị mặn cảm nhận được rõ hơn khi nêm muộn, cần ít muối hơn.</li>
+    <li><strong>Chọn nước mắm ít muối hoặc pha loãng:</strong> Pha nước mắm với nước lọc và tỏi ớt, vừa ngon vừa giảm 50% lượng Natri.</li>
+  </ul>
+</section>
+
+</div>
+</ArticleLayout>

@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+const article = {
+  slug: "suy-gian-tinh-mach-chi-duoi",
+  title: "Chế Độ Dinh Dưỡng Dành Cho Người Suy Giãn Tĩnh Mạch Chi Dưới",
+  description: "Bệnh suy giãn tĩnh mạch đang ngày càng trẻ hóa. Khám phá thực đơn giúp bền thành mạch, giảm sưng phù và tránh cục máu đông.",
+  emoji: "🦵",
+  category: "disease",
+  categoryName: "Bệnh lý & Sức khỏe",
+  date: "2026-07-08",
+  readTime: 5,
+  featured: false,
+  tags: ["Tĩnh mạch", "Sưng chân", "Lưu thông máu", "Vitamin C"]
+};
+---
+
+<ArticleLayout article={article as any}>
+  <div class="prose">
+    <p class="lead">
+      Suy giãn tĩnh mạch chi dưới là tình trạng máu ở hệ thống tĩnh mạch chân bị ứ đọng, không trở về tim theo đường tĩnh mạch như bình thường. Chế độ dinh dưỡng khoa học không chỉ giúp giảm nhẹ triệu chứng tê nhức, sưng phù mà còn ngăn chặn rủi ro biến chứng nguy hiểm như huyết khối.
+    </p>
+
+    <h2>Những nhóm thực phẩm "vàng" giúp bền thành mạch</h2>
+    <p>Để cải thiện tuần hoàn máu và độ đàn hồi của tĩnh mạch, người bệnh cần ưu tiên 4 nhóm chất sau:</p>
+
+    <ul>
+      <li><strong>Vitamin C (Sản xuất Collagen):</strong> Cam, quýt, ớt chuông, dâu tây. Vitamin C đóng vai trò sống còn trong việc tổng hợp collagen và elastin – 2 protein giúp thành tĩnh mạch săn chắc, không bị đứt gãy dưới áp lực máu.</li>
+      <li><strong>Chất xơ (Phòng ngừa táo bón):</strong> Rau xanh, các loại đậu, ngũ cốc nguyên cám. Táo bón làm tăng áp lực lên ổ bụng, từ đó ép dòng máu ở chân khó di chuyển lên trên. Việc ăn đủ xơ giúp giải quyết gốc rễ của sự chèn ép này.</li>
+      <li><strong>Flavonoid (Kháng viêm tĩnh mạch):</strong> Có nhiều trong quả mọng (việt quất, nho đen), trà xanh và tỏi. Hoạt chất này làm giảm sự rò rỉ của các mao mạch máu và hạn chế sưng viêm.</li>
+      <li><strong>Vitamin E (Chống cục máu đông):</strong> Quả bơ, hạt hạnh nhân. Hỗ trợ làm loãng máu tự nhiên, cải thiện tuần hoàn và ngăn ngừa hình thành huyết khối tĩnh mạch sâu.</li>
+    </ul>
+
+    <div class="callout warning">
+      <strong>Cảnh báo y khoa:</strong> Tuyệt đối không xoa bóp hoặc ngâm chân nước nóng khi tĩnh mạch đang nổi ngoằn ngoèo và sưng đau. Nước nóng làm giãn nở tĩnh mạch mạnh hơn, khiến máu ứ đọng nhiều hơn và làm bệnh diễn biến tồi tệ.
+    </div>
+
+    <h2>Kẻ thù số 1 của người bệnh: MUỐI</h2>
+    <p>
+      Hấp thụ quá nhiều Natri từ muối và đồ ăn chế biến sẵn (xúc xích, mì tôm) sẽ khiến cơ thể giữ nước nặng nề. Lượng chất lỏng tích tụ này dồn xuống chân, làm bắp chân sưng to (phù nề) và khiến tĩnh mạch phải chịu tải trọng gấp nhiều lần. Người bệnh cần áp dụng ngay chế độ <a href="/kien-thuc-dinh-duong/thuc-trang-tieu-thu-muoi">ăn nhạt (dưới 5g muối/ngày)</a>.
+    </p>
+
+    <h2>Các nguyên tắc sinh hoạt cốt lõi</h2>
+    <ol>
+      <li><strong>Kiểm soát cân nặng:</strong> Béo phì là nguyên nhân trực tiếp đè nặng trọng lượng cơ thể lên tĩnh mạch hai chân.</li>
+      <li><strong>Uống đủ 2-2.5 lít nước/ngày:</strong> Máu đặc sẽ di chuyển chậm chạp và dễ đóng cục. Nước giúp duy trì độ nhớt của máu ở mức lý tưởng.</li>
+      <li><strong>Thay đổi tư thế:</strong> Nếu đặc thù công việc phải ngồi hoặc đứng lâu, hãy nhón gót chân lên xuống liên tục để kích hoạt "bơm cơ bắp" đẩy máu về tim. Khi ngủ, hãy kê cao chân hơn tim khoảng 15cm.</li>
+    </ol>
+  </div>
+</ArticleLayout>

@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["nhiem-trung-tiet-nieu-uti"];
+if (!art) throw new Error("Article not found: nhiem-trung-tiet-nieu-uti");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Lan (28 tuổi, nhân viên văn phòng) thường xuyên bị tiểu buốt, tiểu rắt. Cứ vài tháng chị lại bị viêm bàng quang (Nhiễm trùng tiết niệu - UTI) một lần. Mỗi lần như vậy chị phải uống kháng sinh theo đơn. Bác sĩ sản phụ khoa khuyên chị uống đủ nước, đi tiểu sau quan hệ và có thể cân nhắc thêm sản phẩm nam việt quất không đường để hỗ trợ giảm nguy cơ tái phát.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Nhiều ca nhiễm trùng tiết niệu liên quan đến vi khuẩn E.coli từ vùng hậu môn xâm nhập vào đường tiểu. Nam việt quất chứa PAC (Proanthocyanidins) có thể hỗ trợ giảm bám dính của vi khuẩn ở một số người, nhưng không thay thế kháng sinh khi đã nhiễm trùng. Uống đủ nước, không nhịn tiểu và đi khám khi sốt, đau hông lưng, tiểu máu hoặc đang mang thai.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Vi khuẩn E.coli bám dính như thế nào?</h2>
+  <p>Đường tiết niệu của phụ nữ rất ngắn, nên vi khuẩn E.coli từ hậu môn rất dễ xâm nhập ngược lên bàng quang.</p>
+  <p>E.coli có cấu trúc bám dính giúp chúng bám vào niêm mạc đường tiểu. Khi sinh sôi, chúng gây viêm, dẫn đến tiểu buốt, tiểu rắt và đau tức vùng bụng dưới.</p>
+  <p>Kháng sinh đúng chỉ định giúp điều trị nhiễm trùng. Một số người có thể bị rối loạn hệ vi sinh hoặc nhiễm nấm sau kháng sinh, vì vậy không tự mua thuốc và cần dùng đúng toa.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Cách hỗ trợ giảm nguy cơ tái phát</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nam việt quất (Cranberry):</strong> PAC trong cranberry có thể làm giảm khả năng bám dính của E.coli ở một số người. Ưu tiên loại không đường; người đang dùng warfarin hoặc có sỏi thận nên hỏi bác sĩ trước.</li>
+      <li><strong>Lợi khuẩn Probiotics (Lactobacillus):</strong> Sữa chua không đường hoặc men vi sinh có thể hỗ trợ hệ vi sinh, nhưng hiệu quả dự phòng UTI còn tùy từng người.</li>
+      <li><strong>Uống đủ nước:</strong> Mục tiêu thường là nước tiểu vàng nhạt. Không cần ép uống quá nhiều nếu có bệnh tim, thận hoặc đang được bác sĩ giới hạn dịch.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ khi đang bị Tiểu buốt</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Đồ ngọt (Đường):</strong> Đường là thức ăn khoái khẩu của E.coli và nấm Candida. Càng uống trà sữa, ăn bánh ngọt, vi khuẩn sinh sôi càng nhanh.</li>
+      <li><strong>Cà phê & Cồn:</strong> Cà phê và rượu bia gây kích ứng trực tiếp niêm mạc bàng quang, làm bàng quang co thắt mạnh hơn, khiến cảm giác tiểu buốt, tiểu rắt càng thêm tồi tệ. Hãy tạm ngừng cà phê cho đến khi hết viêm hoàn toàn.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

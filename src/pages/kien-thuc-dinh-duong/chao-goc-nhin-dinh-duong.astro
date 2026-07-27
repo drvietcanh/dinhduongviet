@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "chao-goc-nhin-dinh-duong", title: "Cháo dễ ăn nhưng có đủ dinh dưỡng không?", description: "Khi nào cháo là lựa chọn tốt, khi nào cháo thiếu chất. Cách nấu cháo đủ dinh dưỡng cho người ốm, người già, trẻ em.", emoji: "🥣", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Cháo là món ăn đầu tiên trong tâm trí người Việt khi ai đó ốm, mới phẫu thuật, người già ăn kém. Nhưng cháo có thực sự đủ dinh dưỡng?
 

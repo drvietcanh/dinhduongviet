@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "doc-nhan-thuc-pham", title: "Cách đọc nhãn sữa, bánh, ngũ cốc, nước uống — Chống bị marketing dẫn dắt", description: "Hướng dẫn đọc bảng dinh dưỡng và thành phần trên nhãn thực phẩm Việt Nam. Biết ngay sản phẩm nào đáng mua.", emoji: "🏷️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Bao bì thực phẩm thường được thiết kế để **bán hàng**, không phải để **thông tin dinh dưỡng**. "Ít đường" có thể vẫn ngọt. "Giàu canxi" có thể ít đạm. Bài này giúp bạn đọc nhãn thông minh.
 

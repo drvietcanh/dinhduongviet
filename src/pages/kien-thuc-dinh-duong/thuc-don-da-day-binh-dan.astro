@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "thuc-don-da-day-binh-dan", title: "Thực đơn 1 ngày cho người đau dạ dày & trào ngược — Phiên bản bình dân", description: "Thực đơn cho người dạ dày yếu. Chia 5 bữa, món mềm, dễ tiêu, tránh đồ lên men và chua cay.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Mềm, dễ tiêu, chia 5 bữa (~1500 kcal)</p>
 </div>

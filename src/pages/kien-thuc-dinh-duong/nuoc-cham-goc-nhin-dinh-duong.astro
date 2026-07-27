@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "nuoc-cham-goc-nhin-dinh-duong", title: "Nước mắm, xì dầu, tương ớt — Ít nhưng mặn rất nhanh", description: "Phân tích lượng muối và đường trong các loại nước chấm Việt Nam, cách pha nước chấm lành mạnh.", emoji: "🧂", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Nước chấm là linh hồn của ẩm thực Việt. Một món ăn có thể trở nên hoàn hảo nhờ bát nước chấm đúng điệu. Nhưng nước chấm cũng là "bẫy muối" và "bẫy đường" lớn nhất trong bữa ăn.
 

@@ -4,7 +4,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["tieu-chay-o-nguoi-lon"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Tiêu chảy cấp là một trong những bệnh phổ biến nhất, nhất là vào mùa hè. Đa số tự khỏi trong 3-7 ngày, nhưng mất nước do tiêu chảy là nguy hiểm — đặc biệt ở trẻ em và người già.
 

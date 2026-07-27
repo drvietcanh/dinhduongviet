@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "com-tam-goc-nhin-dinh-duong", title: "Cơm tấm sườn bì chả — Ngon nhưng cần chú ý đường, mỡ, muối", description: "Phân tích dinh dưỡng món cơm tấm phổ biến, cách ăn lành mạnh, gọi món thông minh.", emoji: "🍚", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Cơm tấm sườn bì chả là món ăn sáng/trưa yêu thích của hàng triệu người Việt. Ngon, no, rẻ — nhưng ẩn chứa khá nhiều đường, mỡ và muối.
 

@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "thuc-don-tieu-duong-nguoi-gia", title: "Thực đơn 1 ngày cho người tiểu đường — Phiên bản người lớn tuổi", description: "Người già tiểu đường thường ăn ít, răng yếu, nuốt khó. Thực đơn này mềm, thái nhỏ, dễ ăn — nhưng vẫn kiểm soát đường huyết và đủ đạm.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Mềm, dễ nhai, dễ tiêu, đủ đạm (~1500 kcal)</p>
 </div>

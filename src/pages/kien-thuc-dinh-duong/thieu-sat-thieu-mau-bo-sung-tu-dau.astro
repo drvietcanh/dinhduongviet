@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thieu-sat-thieu-mau-bo-sung-tu-dau"];
+if (!art) throw new Error("Article not found: thieu-sat-thieu-mau-bo-sung-tu-dau");
+---
+
+<ArticleLayout article={art}>
+<div class="article-content">
+
+<section class="section card" style="background:#fbe9e7;border:1px solid #ffab91;">
+  <p>Xét nghiệm máu ra Hemoglobin 10g/dL — thấp hơn bình thường. Bác sĩ nói thiếu máu do thiếu Sắt. Bạn nghĩ ngay đến "phải ăn thật nhiều thịt bò". Nhưng có rất nhiều nguồn Sắt rẻ hơn, ngon hơn và cơ thể hấp thu tốt hơn!</p>
+</section>
+
+<section class="section card">
+  <h2>1. Sắt Heme và Sắt Non-Heme — Khác nhau thế nào?</h2>
+  <p>Có 2 loại Sắt trong thực phẩm:</p>
+  <ul>
+    <li><strong>Sắt Heme (từ động vật):</strong> Hấp thu 25-30%. Có trong thịt đỏ, gan, huyết.</li>
+    <li><strong>Sắt Non-Heme (từ thực vật):</strong> Hấp thu chỉ 5-10% — nhưng ăn kèm Vitamin C sẽ tăng lên 3-4 lần!</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>2. Top 7 nguồn Sắt tự nhiên phù hợp người Việt</h2>
+  <ul>
+    <li><strong>🩸 Tiết canh heo/bò luộc:</strong> Nguồn Sắt Heme cực cao và rất rẻ tiền.</li>
+    <li><strong>🐂 Gan bò, gan gà:</strong> 100g gan bò chứa 6.5mg Sắt — gấp 3 lần thịt bò thăn.</li>
+    <li><strong>🐟 Cá cơm khô:</strong> Sắt cao bất ngờ, lại rẻ và dễ tìm ở chợ.</li>
+    <li><strong>🌿 Rau dền đỏ:</strong> Sắt thực vật cao nhất trong các loại rau Việt Nam.</li>
+    <li><strong>🥬 Rau cải bó xôi (Spinach):</strong> Nổi tiếng giàu Sắt — ăn kèm chanh để hấp thu tốt hơn.</li>
+    <li><strong>🫘 Đậu đỏ, đậu đen:</strong> Nấu chè hoặc nấu canh — nguồn Sắt thực vật dồi dào.</li>
+    <li><strong>🌰 Mè đen rang:</strong> Rắc lên cơm hoặc ăn với xôi — giàu Sắt và Canxi.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>3. Bí quyết hấp thu Sắt tốt hơn gấp 3 lần</h2>
+  <div style="background:#e8f5e9;padding:16px;border-radius:12px;border-left:4px solid #4caf50;">
+    <strong>✅ Ăn CÙNG LÚC với Sắt:</strong><br/>
+    - Vitamin C (chanh, cam, ổi, ớt chuông) → tăng hấp thu Sắt gấp 3-4 lần<br/>
+    - Thịt/cá/hải sản → giúp hấp thu Sắt thực vật tốt hơn<br/><br/>
+    <strong>❌ TRÁNH ăn cùng lúc với Sắt:</strong><br/>
+    - Trà, cà phê → Tanin cản hấp thu Sắt đến 60%<br/>
+    - Sữa, phô mai → Canxi cạnh tranh với Sắt<br/>
+    - Hãy uống trà/cà phê cách xa bữa ăn ít nhất 1 tiếng!
+  </div>
+</section>
+
+</div>
+</ArticleLayout>

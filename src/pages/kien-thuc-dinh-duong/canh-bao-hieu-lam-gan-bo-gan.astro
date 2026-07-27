@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-gan-bo-gan", title: "Cảnh báo hiểu lầm: Gan nhiễm mỡ không phải cứ uống thuốc bổ gan là khỏi", description: "Thuốc bổ gan không thay đổi được ăn uống, tập luyện. Cần giảm đường, tinh bột, tăng omega-3.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","before-supplement"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

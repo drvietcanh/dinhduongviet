@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["omega3-phan-biet"];
+if (!art) throw new Error("Article not found: omega3-phan-biet");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chú Hoà bị mỡ máu cao, ra hiệu thuốc mua lọ dầu cá Omega-3 giá 200,000đ/hộp 100 viên to đùng. Uống ròng rã 1 năm trời, bụng thì hay đầy hơi, ợ tanh mà đi xét nghiệm mỡ máu (Triglyceride) không hề thuyên giảm. Bác sĩ cầm lọ thuốc lên xem thành phần rồi lắc đầu: "Chú mua phải Omega-3 dạng Ethyl Ester (EE) giá rẻ rồi, cơ thể người già rất khó hấp thu".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Không phải lọ Omega-3 nào cũng giống nhau! Khi mua, bạn phải nhìn vào tỷ lệ DHA/EPA (chứ không phải tổng hàm lượng viên dầu cá). Đồng thời, hãy tìm chữ <u>TG (Triglyceride)</u> trên nhãn – đây là dạng tự nhiên dễ hấp thu. Tuyệt đối tránh các loại có chữ <u>EE (Ethyl Ester)</u> – dạng tổng hợp công nghiệp siêu rẻ nhưng khó hấp thu và dễ bị ôi thiu.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bí mật của ngành công nghiệp Dầu cá (TG vs. EE)</h2>
+  <p>Omega-3 trong cá tự nhiên luôn tồn tại dưới dạng phân tử <strong>Triglyceride (TG)</strong>. Để chiết xuất và cô đặc EPA/DHA với giá siêu rẻ, các nhà máy dùng cồn để bẻ gãy cấu trúc tự nhiên này, tạo thành dạng <strong>Ethyl Ester (EE)</strong>.</p>
+  <p>Tuy nhiên, ruột người không có men để tiêu hóa cồn. Khi bạn uống viên dầu cá dạng EE, gan và tụy phải làm việc cực nhọc để gắn cấu trúc đó trở lại thành dạng TG mới có thể đưa vào máu. Quá trình này rất chậm chạp, khiến 70% dầu cá bị đào thải ra phân, và lượng cồn dư thừa gây chứng "ợ tanh" khó chịu.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Cách đọc nhãn (Nutrition Facts) như chuyên gia</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Hàm lượng thực tế:</strong> Lọ dầu cá ghi chữ to đùng "1000mg Fish Oil". Nhưng hãy lật mặt sau đọc dòng chữ nhỏ: DHA (120mg), EPA (180mg). Vậy viên đó chỉ chứa 300mg Omega-3 thực sự, còn 700mg là dầu tạp (dầu nành, mỡ động vật)! Một viên dầu cá tốt phải có tổng DHA+EPA > 500mg.</li>
+      <li><strong>Tìm dạng TG (Triglyceride):</strong> Loại dầu cá cao cấp nhất là rTG (re-esterified Triglyceride), hấp thu tốt gấp 3 lần dạng EE và hoàn toàn không gây ợ tanh.</li>
+      <li><strong>Chứng nhận tinh khiết:</strong> Cá biển sâu thường nhiễm thủy ngân. Hãy tìm logo IFOS 5 sao trên vỏ hộp (Chứng nhận dầu cá sạch, không kim loại nặng).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sai lầm khi sử dụng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Uống Omega-3 lúc bụng đói:</strong> Omega-3 là chất béo, nó chỉ tan được và hấp thu tốt nhất khi trong dạ dày có chứa các chất béo khác từ thức ăn. Hãy uống ngay SAU BỮA ĂN CHÍNH (bữa có thịt/cá/dầu mỡ).</li>
+      <li><strong>Mua Omega 3-6-9:</strong> Bạn KHÔNG cần bổ sung Omega-6 và 9. Omega-9 cơ thể tự tổng hợp được. Omega-6 có đầy rẫy trong dầu đậu nành, dầu hướng dương, đồ ăn nhanh. Nạp quá nhiều Omega-6 sẽ gây phản ứng VIÊM dữ dội trong cơ thể. Chỉ cần mua duy nhất Omega-3 nguyên chất!</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

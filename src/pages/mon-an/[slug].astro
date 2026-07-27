@@ -29,12 +29,12 @@ const recipeSchema = {
   "author": { "@type": "Organization", "name": "Dinh Dưỡng Việt" },
   "nutrition": {
     "@type": "NutritionInformation",
-    "calories": Math.round(nutrients.energyKcal) + " kcal",
-    "proteinContent": Math.round(nutrients.proteinG) + " g",
-    "fatContent": Math.round(nutrients.fatG) + " g",
-    "carbohydrateContent": Math.round(nutrients.carbG) + " g",
-    "fiberContent": Math.round(nutrients.fiberG) + " g",
-    "sodiumContent": Math.round(nutrients.sodiumMg) + " mg"
+    "calories": Math.round(nutrients.energyKcal ?? 0) + " kcal",
+    "proteinContent": Math.round(nutrients.proteinG ?? 0) + " g",
+    "fatContent": Math.round(nutrients.fatG ?? 0) + " g",
+    "carbohydrateContent": Math.round(nutrients.carbG ?? 0) + " g",
+    "fiberContent": Math.round(nutrients.fiberG ?? 0) + " g",
+    "sodiumContent": Math.round(nutrients.sodiumMg ?? 0) + " mg"
   },
   "recipeIngredient": recipe.items.map(function(item) {
     var food = foodById(item.foodId);
@@ -45,7 +45,7 @@ const recipeSchema = {
 ---
 
 <BaseLayout title={`${recipe.servingName} ${recipe.name} bao nhiêu calo? - Dinh Dưỡng Việt`}>
-  <script type="application/ld+json" set:html={JSON.stringify(recipeSchema)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(recipeSchema)}></script>
   <section>
     <span class="badge">Món ăn · {confidenceLabel(recipe.confidence)}</span>
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;justify-content:space-between;">

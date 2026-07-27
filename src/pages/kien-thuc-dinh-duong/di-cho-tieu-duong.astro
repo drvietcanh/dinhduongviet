@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "di-cho-tieu-duong", title: "Đi chợ cho người tiểu đường — Nên mua gì trong 30 phút?", description: "Danh sách đi chợ nhanh cho người tiểu đường. Nhóm thực phẩm nên mua, tránh mua, cách đọc nhãn.", emoji: "🛒", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 7, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Đi chợ khi mới bị tiểu đường dễ bối rối: không biết mua gì, mua bao nhiêu, tránh gì. Dưới đây là danh sách đi chợ 30 phút — đơn giản, dễ nhớ.
 

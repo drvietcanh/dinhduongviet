@@ -1,0 +1,55 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-tuoi-day-thi"];
+if (!art) throw new Error("Article not found: dinh-duong-tuoi-day-thi");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Con trai chị Lan năm nay 13 tuổi (lớp 8) nhưng chỉ cao 1m45. Vì lo con lùn hơn bạn bè, chị ép con uống ngày 3 lít sữa, mua đủ các loại "thuốc tăng chiều cao" từ nước ngoài, và bắt con phải ăn 2 bát cơm đầy mỗi bữa. Hậu quả là con không cao thêm bao nhiêu nhưng lại bị thừa cân béo phì.</p>
+  <p>Tuổi dậy thì (8-13 tuổi ở nữ, 9-14 tuổi ở nam) là "cơ hội vàng cuối cùng" để bứt tốc chiều cao. Khoảng 15-20% chiều cao trưởng thành được quyết định trong giai đoạn ngắn ngủi này.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Gen di truyền quyết định 23% chiều cao, nhưng Dinh dưỡng chiếm tới 32%. Để tối ưu, trẻ cần <u>Canxi + Vitamin D3 + Vitamin K2</u> (bộ 3 kéo xương), ngủ trước 10h đêm (để tiết hormone tăng trưởng GH) và chơi thể thao bật nhảy (bóng rổ, bơi lội). Không có loại thuốc thần kỳ nào kéo dài xương được!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Bộ 3 cốt lõi: Canxi, D3 và K2 hoạt động ra sao?</h2>
+  <p>Rất nhiều phụ huynh chỉ chăm chăm nhồi nhét Canxi (sữa, phô mai, thuốc tôm cua). Tuy nhiên, Canxi uống vào bụng sẽ không thể tự đi vào xương nếu thiếu "xe vận chuyển".</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Vitamin D3:</strong> Đóng vai trò như "người mở cửa", giúp ruột hấp thu Canxi vào máu. Thiếu D3, 80% Canxi bị đào thải ra ngoài qua phân và nước tiểu.</li>
+    <li><strong>Vitamin K2 (Menaquinone):</strong> Đóng vai trò như "người dẫn đường", kéo Canxi từ trong máu gắn chặt vào khung xương. Nếu thiếu K2, Canxi sẽ đi lạc, lắng đọng ở mạch máu (gây sỏi thận, vôi hóa động mạch).</li>
+  </ul>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn Bứt tốc</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nguồn Canxi:</strong> Sữa tươi (500ml/ngày), sữa chua, phô mai, cá mòi nguyên xương, đậu phụ, rau họ cải sẫm màu.</li>
+      <li><strong>Nguồn Vitamin D3:</strong> Rất ít trong thức ăn (cá hồi, lòng đỏ trứng). Chủ yếu tổng hợp qua da khi phơi nắng (khung giờ 9h-15h). Thường cần uống bổ sung D3 liều dự phòng.</li>
+      <li><strong>Nguồn Protein (Đạm):</strong> Đạm tạo ra Collagen Type 1 (chiếm 90% chất nền của xương). Trẻ cần ăn đủ thịt bò, ức gà, trứng, các loại đậu.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sát thủ diệt chiều cao</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nước ngọt có gas (Cola):</strong> Chứa nhiều acid phosphoric làm hòa tan canxi từ xương vào máu, gây loãng xương sớm.</li>
+      <li><strong>Thức khuya ôm điện thoại:</strong> Hormone tăng trưởng (GH) tiết ra mạnh nhất vào lúc 11h đêm - 1h sáng, VỚI ĐIỀU KIỆN trẻ phải chìm vào giấc ngủ sâu. Ngủ sau 11h là đánh mất cơ hội cao lên.</li>
+      <li><strong>Béo phì:</strong> Mỡ thừa làm cơ thể tiết ra hormone Estrogen sớm, khiến sụn đầu xương đóng lại trước tuổi. Trẻ béo phì thường cao bọc phát lúc nhỏ nhưng lùn khi trưởng thành.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

@@ -1,86 +1,50 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
+
 const art = articleBySlug["dinh-duong-hen-suyen"];
-if (!art) throw new Error("Article not found");
+if (!art) throw new Error("Article not found: dinh-duong-hen-suyen");
 ---
 
 <ArticleLayout article={art}>
 
+<!-- 1️⃣ Tình huống -->
 <section class="section card">
-  <p>Bé Na, 8 tuổi, cứ mỗi lần thay đổi thời tiết hoặc cảm lạnh là lên cơn hen: khò khè, khó thở, co rút lồng ngực. Mẹ bé cho uống thuốc đều, nhưng muốn biết có thực phẩm nào giúp giảm cơn hen không.</p>
-  <p>Hen suyễn là viêm mạn tính đường thở. Dinh dưỡng không thay thế thuốc, nhưng omega-3, vitamin D, C, magie có thể giảm viêm, tăng chức năng phổi và giảm tần suất cơn hen.</p>
+  <p>Bé Tít (7 tuổi) có tiền sử Hen suyễn. Dạo gần đây bé hay bị lên cơn khò khè, khó thở về đêm dù đã dùng thuốc xịt phòng ngừa đều đặn. Sau khi ghi chép lại nhật ký ăn uống, bác sĩ phát hiện ra thủ phạm: Mỗi chiều đi học về, bé Tít đều ăn xúc xích nướng và uống một chai nước ngọt có ga. Các chất phụ gia bảo quản trong đó chính là "ngòi nổ" kích hoạt cơn co thắt phế quản.</p>
 </section>
 
-<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
-  <p style="font-size:1.05rem;margin:0;">
-    <strong>👉 Người hen suyễn nên <u>tăng omega-3</u> (cá béo 2–3 bữa/tuần), 
-    <u>bổ sung vitamin D</u> (tắm nắng + xét nghiệm), <u>magie</u> (hạt bí, chuối, rau xanh).
-    <u>Tránh sulfite</u> (rượu vang, trái cây sấy, dưa muối), <u>tránh thực phẩm gây dị ứng cá nhân</u>.</strong>
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Hen suyễn bản chất là một <u>tình trạng Viêm mãn tính ở đường thở</u>, cực kỳ nhạy cảm với các chất gây dị ứng. Để kiểm soát hen, bệnh nhân phải <u>tránh tuyệt đối chất bảo quản Sulfite</u> (trong đồ hộp, trái cây sấy), tránh ăn quá mặn, và <u>bổ sung Vitamin D</u> (nắng mặt trời) - một loại hormone tự nhiên có tác dụng giãn phế quản cực tốt.</strong>
   </p>
 </section>
 
+<!-- 3️⃣ Cơ chế -->
 <section class="section card">
-  <h2>🔬 Vì sao thực phẩm ảnh hưởng tới hen?</h2>
-  <p>Hen là viêm mạn tính phế quản. Omega-3 (cá béo) có tác dụng chống viêm tự nhiên. Vitamin D giúp điều hòa miễn dịch — thiếu D liên quan tăng nguy cơ nhập viện vì hen. Magie giúp giãn cơ trơn phế quản. Một số thực phẩm (sulfite, salicylate, thực phẩm gây dị ứng) có thể kích hoạt cơn hen ở người nhạy cảm.</p>
+  <h2>🔬 Vì sao thức ăn lại gây khó thở?</h2>
+  <p>Đường thở (phế quản) của người bệnh hen giống như một vết thương hở luôn tấy đỏ. Khi có tác nhân kích thích xâm nhập vào máu (từ dạ dày hấp thu lên), hệ miễn dịch sẽ phản ứng thái quá, giải phóng ra chất Histamine.</p>
+  <p>Histamine lập tức truyền lệnh đến cơ trơn phế quản, bắt chúng phải <strong>co thắt và siết chặt lại</strong>, đồng thời tiết ra rất nhiều đờm nhầy để "chặn" dị nguyên. Kết quả là đường thở bị bít tắc hoàn toàn, bệnh nhân thở rít lên như tiếng huýt sáo và ngạt thở.</p>
 </section>
 
+<!-- 4️⃣ Giải pháp -->
 <section class="section grid two">
   <div class="card">
-    <h2>✅ Thực phẩm nên ăn</h2>
+    <h2>✅ Thực phẩm bảo vệ đường thở</h2>
     <ul style="line-height:1.8;padding-left:18px;">
-      <li>Cá béo: cá hồi, cá thu, cá mòi — omega-3 chống viêm</li>
-      <li>Trái cây giàu vitamin C: cam, ổi, kiwi, dâu tây</li>
-      <li>Vitamin D: trứng, sữa tăng cường, cá béo + tắm nắng</li>
-      <li>Magie: hạt bí, chuối, cải bó xôi, hạnh nhân</li>
-      <li>Gừng, nghệ, tỏi — chống viêm tự nhiên</li>
-      <li>Trà xanh — EGCG chống oxy hóa</li>
+      <li><strong>Vitamin D - Thần dược cho phổi:</strong> Nghiên cứu cho thấy trẻ em thiếu Vitamin D bị lên cơn hen cao gấp 3 lần. Vitamin D giúp giảm viêm và giúp cơ phế quản bớt nhạy cảm. Cần tắm nắng và ăn cá hồi, lòng đỏ trứng, nấm.</li>
+      <li><strong>Chất chống oxy hóa:</strong> Trái cây giàu Vitamin C (Cam, ổi, kiwi) và Vitamin E (Hạnh nhân, bơ). Chúng giống như chiếc "khiên" bảo vệ tế bào phổi khỏi sự tấn công của các gốc tự do có trong không khí ô nhiễm.</li>
+      <li><strong>Cà phê đen ấm:</strong> Caffeine là một chất có cấu trúc hóa học rất giống với Theophylline (thuốc giãn phế quản trị hen). Uống một ly cà phê ấm có thể mở rộng đường thở nhẹ nhàng trong 1-2 tiếng.</li>
     </ul>
   </div>
+
   <div class="card">
-    <h2>❌ Thực phẩm cần tránh</h2>
+    <h2>❌ "Ngòi nổ" cần tránh xa</h2>
     <ul style="line-height:1.8;padding-left:18px;">
-      <li>⛔ Sulfite: rượu vang đỏ, trái cây sấy khô, dưa muối</li>
-      <li>⛔ Thực phẩm gây dị ứng: tùy từng người (sữa, trứng, hải sản, đậu phộng)</li>
-      <li>⛔ Đồ chiên rán, mỡ bão hòa — tăng viêm</li>
-      <li>⚠️ Rượu bia — có thể kích hoạt cơn hen</li>
-      <li>⚠️ Thực phẩm chế biến sẵn — phụ gia</li>
+      <li><strong>Chất bảo quản Sulfite:</strong> Có rất nhiều trong trái cây sấy dẻo (mơ, nho khô), tôm bóc vỏ đông lạnh, rượu vang, dưa muối chua. Đây là thủ phạm số 1 kích hoạt cơn hen cấp ở đường tiêu hóa.</li>
+      <li><strong>Bột ngọt (Mì chính) & Đồ chế biến sẵn:</strong> Một số bệnh nhân hen cực kỳ nhạy cảm với bột ngọt (Hội chứng nhà hàng Trung Hoa) và chất bảo quản Nitrat trong xúc xích, thịt xông khói.</li>
+      <li><strong>Thực phẩm dễ gây dị ứng chéo:</strong> Sữa bò, tôm cua, đậu phộng. 30% bệnh nhân hen bị dị ứng thực phẩm đi kèm. Nếu ăn vào thấy ngứa họng, mẩn đỏ, phải ngừng ngay lập tức để tránh sốc phản vệ kết hợp lên cơn hen.</li>
     </ul>
-  </div>
-</section>
-
-<section class="section card">
-  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
-  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
-    <tr><td>🌅 Sáng</td><td>Yến mạch nấu + 1 quả trứng + 1 ly cam</td></tr>
-    <tr><td>🌞 Phụ</td><td>Kiwi + vài hạt hạnh nhân</td></tr>
-    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi áp chảo + canh rau ngót + bông cải xanh</td></tr>
-    <tr><td>🌆 Phụ</td><td>Sữa chua + hạt bí</td></tr>
-    <tr><td>🌙 Tối</td><td>Cơm vừa + ức gà xào gừng + rau cải luộc</td></tr>
-  </tbody></table>
-</section>
-
-<section class="section card">
-  <h2>💡 Mẹo & Khi nào cần khám</h2>
-  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div>
-      <h4>✅ Mẹo</h4>
-      <ul style="line-height:1.8;padding-left:18px;">
-        <li>Xét nghiệm vitamin D máu — bổ sung nếu &lt;50 nmol/L.</li>
-        <li>Ghi nhật ký ăn uống + cơn hen — tìm thực phẩm kích hoạt.</li>
-        <li>Tránh ăn quá no — dạ dày đầy đẩy lên cơ hoành, gây khó thở.</li>
-        <li>Vận động nhẹ: yoga, thở sâu — tốt cho phổi.</li>
-      </ul>
-    </div>
-    <div>
-      <h4>🚨 Khám ngay</h4>
-      <ul style="line-height:1.8;padding-left:18px;">
-        <li>Khò khè nhiều hơn, không đáp ứng thuốc xịt.</li>
-        <li>Khó thở khi nói, co kéo cơ liên sườn.</li>
-        <li>Môi tím, đầu ngón tay tím.</li>
-        <li>Cơn hen &gt;3 lần/tuần dù đang dùng thuốc.</li>
-      </ul>
-    </div>
   </div>
 </section>
 

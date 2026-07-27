@@ -4,7 +4,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["mam-com-gia-dinh-benh-nen"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Khi trong nhà có người bị bệnh mạn tính (tiểu đường, tăng huyết áp, gout...), không nhất thiết phải nấu riêng. Một mâm cơm gia đình hoàn toàn có thể vừa ngon cho cả nhà, vừa an toàn cho người bệnh.
 

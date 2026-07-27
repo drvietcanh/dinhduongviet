@@ -1,0 +1,41 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["nguoi-gia-rang-yeu-nau-chao-gi"];
+if (!art) throw new Error("Article not found: nguoi-gia-rang-yeu-nau-chao-gi");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+<h1>Người già răng yếu, chán ăn: Cách nấu súp và cháo đầy đủ chất dinh dưỡng</h1>
+      <p class="meta">Cập nhật lần cuối: 2026-07-08 | Chuyên mục: Dinh dưỡng người cao tuổi</p>
+
+      <div class="alert tip">
+        <strong>💡 Chăm sóc người cao tuổi:</strong> Khi tuổi cao, răng yếu đi và vị giác suy giảm khiến các cụ ăn uống không còn ngon miệng. Ăn mãi cháo trắng thì thiếu chất, mà ăn thịt cá thì khó nhai. Đây là bí quyết giúp con cháu chuẩn bị bữa ăn trọn vẹn yêu thương!
+      </div>
+
+      <h2>1. Sai lầm phổ biến: Chỉ hầm xương lấy nước</h2>
+      <div class="alert warning">
+        Nhiều gia đình ninh xương ống thật lâu, lấy phần nước trong vắt nấu cháo vì nghĩ "bao nhiêu chất bổ ra hết nước rồi". Thực tế, nước hầm xương chủ yếu chỉ có chất béo (mỡ) và vị ngọt, lượng Đạm (Protein) và Canxi thực sự vẫn nằm lại ở phần thịt và tủy xương!
+      </div>
+      <p><strong>Cách làm đúng:</strong> Phải băm nhuyễn hoặc xay nhỏ thịt nạc, tôm, cá để nấu lẫn vào cháo. Người già sẽ ăn được cả "cái" lẫn "nước", đảm bảo đủ chất đạm để không bị teo cơ.</p>
+
+      <h2>2. Bí quyết làm mềm thịt mà không cần nhai nhiều</h2>
+      <ul>
+        <li><strong>Thịt lợn/bò:</strong> Xay nhuyễn, sau đó đánh tan với một ít nước lạnh trước khi cho vào nồi cháo sôi. Làm vậy thịt sẽ không bị vón cục và cực kỳ mềm tơi.</li>
+        <li><strong>Cá/Tôm:</strong> Hấp chín, gỡ thật sạch xương/vỏ rồi giã tơi sào với chút hành khô thơm phức. Cho vào cháo cá sẽ không bị tanh và tan ngay trong miệng.</li>
+        <li><strong>Đậu phụ non và Trứng:</strong> Đây là hai siêu thực phẩm rẻ tiền, cực kỳ giàu Đạm và Canxi mà lại chẳng cần nhai. Đập thêm một quả trứng hoặc thả vài miếng đậu hũ non dầm nát vào tô súp là bữa ăn đã trọn vẹn dinh dưỡng.</li>
+      </ul>
+
+      <h2>3. Cách bổ sung Rau Xanh không lo vướng cổ</h2>
+      <p>Người lớn tuổi rất dễ bị táo bón do hệ tiêu hóa chậm lại, vì vậy rau xanh là bắt buộc. Tuy nhiên, rau nấu cháo nếu thái to sẽ dai và hay bị mắc ở cổ họng.</p>
+      <ul>
+        <li><strong>Thái chỉ, băm vụn:</strong> Rau ngót, rau dền, mồng tơi cần lặt lấy phần lá non nhất, thái thật vụn rồi nấu chín mềm.</li>
+        <li><strong>Củ quả hầm nhừ:</strong> Bí đỏ, cà rốt, khoai tây, củ cải... cắt hạt lựu hầm thật nhừ rồi dùng muỗng dầm nát ra hòa cùng cháo. Các loại củ này có vị ngọt tự nhiên kích thích vị giác rất tốt.</li>
+      </ul>
+
+      <h2>4. Chia nhỏ bữa ăn và Kích thích vị giác</h2>
+      <p>Thay vì ép các cụ ăn một tô cháo lớn (rất dễ gây ngán và ợ hơi), hãy chia làm 4-5 bữa nhỏ trong ngày. Có thể thay đổi luân phiên: sáng ăn cháo yến mạch thịt băm, trưa súp bí đỏ hầm sườn non, chiều xế ăn một hũ sữa chua mềm mại.</p>
+      <p>Và đừng quên nêm nếm một chút gừng, hành hoa, tía tô hoặc tiêu xay (nếu các cụ không bị đau dạ dày). Mùi thơm của gia vị sẽ đánh thức khứu giác, giúp người lớn tuổi cảm thấy thèm ăn hơn rất nhiều!</p>
+    </div>
+</ArticleLayout>

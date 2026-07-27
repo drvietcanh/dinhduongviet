@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["su-that-ve-collagen"];
+if (!art) throw new Error("Article not found: su-that-ve-collagen");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Mai (35 tuổi) chi hàng chục triệu mỗi tháng mua các loại "Collagen uống trắng da, chống lão hóa" từ Nhật Bản và Hàn Quốc. Chị tin rằng uống collagen vào bụng thì nó sẽ chạy thẳng lên mặt, lấp đầy các nếp nhăn. Sự thật dưới góc nhìn sinh hóa học có "màu hồng" như quảng cáo không?</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Collagen là một loại Protein. Khi bạn uống Collagen vào dạ dày, nó sẽ bị axit và men tiêu hóa cắt vụn thành các <u>Axit amin nhỏ lẻ</u> (giống y hệt việc bạn ăn một miếng thịt lợn). Cơ thể sẽ lấy các axit amin này đem đi nuôi cơ bắp, móng tay, tóc... chứ KHÔNG có bất kỳ cơ chế nào ưu tiên đưa nó lên da mặt bạn!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Hành trình của Collagen trong cơ thể</h2>
+  <p>Tưởng tượng Collagen là một bức tường gạch nguyên vẹn. Khi đi vào hệ tiêu hóa, cơ thể bạn không thể hấp thu cả bức tường đó. Dạ dày và ruột non bắt buộc phải "đập vụn" bức tường thành từng viên gạch đơn lẻ (gọi là <em>Axit amin</em> và <em>Peptide</em>).</p>
+  <p>Sau khi các viên gạch này đi vào máu, não bộ sẽ quyết định xây lại bức tường ở đâu. Nếu cơ bắp bạn đang rách vì tập gym, gạch sẽ ưu tiên bù vào cơ bắp. Khái niệm "Uống Collagen để bù đắp chính xác Collagen ở da mặt" là một lời nói dối ngọt ngào của ngành công nghiệp mỹ phẩm.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Làm sao để da thực sự tăng sinh Collagen?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nguyên liệu thô (Đạm):</strong> Thay vì mua Collagen đắt tiền, bạn chỉ cần ăn đủ thịt, cá, trứng, sữa sụn bò, nước hầm xương. Cấu trúc axit amin của chúng là tương đương nhau.</li>
+      <li><strong>Công nhân xây dựng (Vitamin C):</strong> Đây mới là chất quan trọng nhất! Cơ thể KHÔNG THỂ tổng hợp được các viên gạch axit amin thành dải Collagen nếu không có Vitamin C. Hãy ăn thật nhiều ổi, cam, kiwi, ớt chuông.</li>
+      <li><strong>Kích thích cơ học (Retinol/Laser):</strong> Để cơ thể mang gạch lên xây ở mặt, bạn phải tạo ra tổn thương vi điểm trên mặt (như bôi Retinol, phi kim, bắn Laser). Lúc đó não bộ mới nhận tín hiệu và điều quân lên da mặt để sửa chữa.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cảnh báo tiền mất tật mang</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Collagen trộn đường:</strong> Các loại Collagen dạng nước uống cho vị ngọt chua thơm ngon thường chứa lượng đường (Fructose) rất lớn. Đường gây ra hiện tượng <em>Glycation</em> — phản ứng bám chặt vào các sợi Collagen dưới da và làm chúng đứt gãy. Kết quả: Bạn uống Collagen nhưng lại làm da nhăn nheo và nhanh già hơn!</li>
+      <li><strong>Collagen bôi ngoài da:</strong> Phân tử Collagen tự nhiên có kích thước quá lớn, hoàn toàn không thể chui qua được lỗ chân lông để xuống lớp trung bì. Bôi Collagen chỉ có tác dụng tạo màng cấp ẩm trên bề mặt da, rửa mặt là trôi hết.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

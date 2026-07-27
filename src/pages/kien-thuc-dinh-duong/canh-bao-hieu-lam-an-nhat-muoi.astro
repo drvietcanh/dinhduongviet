@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-an-nhat-muoi", title: "Cảnh báo hiểu lầm: Ăn nhạt không phải là bỏ muối hoàn toàn", description: "Muối ẩn trong mì gói, bánh mì, nước chấm. Cách giảm muối đúng mà món vẫn ngon.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","before-shopping"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

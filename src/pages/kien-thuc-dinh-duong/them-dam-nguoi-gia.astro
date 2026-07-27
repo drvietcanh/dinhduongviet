@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "them-dam-nguoi-gia", title: "Cách thêm đạm cho người già ăn ít", description: "Người già thường ăn ít → dễ thiếu đạm → teo cơ, yếu sức. Cách tăng đạm không cần ăn nhiều hơn.", emoji: "💪", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Teo cơ (sarcopenia) là một trong những nguyên nhân chính khiến người già yếu dần, dễ ngã, dù không có bệnh nặng. Nguyên nhân chính: **ăn ít → thiếu đạm**. Cách xử lý: tăng mật độ đạm trong mỗi bữa, thay vì bắt ăn thêm.
 

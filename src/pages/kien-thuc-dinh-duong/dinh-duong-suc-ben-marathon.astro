@@ -1,0 +1,62 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+import HealthAlert from "../../components/HealthAlert.astro";
+
+const art = articleBySlug["dinh-duong-suc-ben-marathon"];
+if (!art) throw new Error("Article not found: dinh-duong-suc-ben-marathon");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Tuấn (28 tuổi) đăng ký giải chạy Half Marathon (21km) đầu tiên trong đời. Vì muốn cơ thể "nhẹ nhàng", sáng hôm thi đấu anh chỉ uống một cốc cà phê đen và nhịn ăn. Đến km thứ 15, anh hoa mắt, chóng mặt, bủn rủn chân tay và buộc phải bỏ cuộc vì "đụng tường" (hit the wall).</p>
+  <p>Sai lầm của anh Tuấn cực kỳ phổ biến. Dinh dưỡng cho thể thao sức bền (chạy bộ, đạp xe, bơi lội đường dài) không giống với dinh dưỡng giảm cân. Chạy đường dài mà không nạp đủ năng lượng cũng giống như lái ô tô lên cao tốc với bình xăng rỗng.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chìa khóa của sức bền là Glycogen (đường dự trữ). Hãy <u>nạp nhiều tinh bột (Carb-loading)</u> 2-3 ngày trước giải,
+    ăn nhẹ trước khi chạy 2 tiếng, và <u>bổ sung gel năng lượng/điện giải</u> mỗi 45-60 phút trong lúc chạy. Tránh xa đồ nhiều mỡ và chất xơ ngay trước giờ G.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Hiện tượng "Đụng Tường" là gì?</h2>
+  <p>Cơ thể lưu trữ năng lượng dưới dạng <strong>Glycogen</strong> trong cơ bắp và gan. Khi bạn chạy cường độ cao, cơ thể ưu tiên đốt glycogen vì nó tạo ra năng lượng nhanh hơn mỡ.</p>
+  <p>Tuy nhiên, "bình xăng" glycogen của con người chỉ chứa đủ năng lượng cho khoảng 90 - 120 phút vận động mạnh. Qua ngưỡng này, nếu không được tiếp tế từ bên ngoài, glycogen sẽ cạn kiệt. Lúc này cơ thể buộc phải chuyển sang đốt mỡ, một quá trình chậm chạp và tốn nhiều oxy. Hậu quả là bạn cảm thấy kiệt sức đột ngột, chân nặng như chì, não đình công — hiện tượng này giới chạy bộ gọi là "Đụng tường" (Hit the wall/Bonking).</p>
+</section>
+
+<!-- 4️⃣ Chiến thuật -->
+<section class="section grid two">
+  <div class="card">
+    <h2>🏃‍♂️ Trước giải chạy (Carb-loading)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>1-3 ngày trước giải:</strong> Tăng tỷ lệ Carbohydrate lên 70% khẩu phần. Ưu tiên cơm trắng, mì ống, khoai tây, bánh mì. Mục đích là bơm đầy "bình xăng" glycogen.</li>
+      <li><strong>2-4 tiếng trước giờ chạy:</strong> Ăn một bữa giàu tinh bột dễ tiêu, ít chất béo, ít xơ (ví dụ: bánh mì chà bông, phở không nước béo, yến mạch).</li>
+      <li><strong>⛔ Tuyệt đối tránh:</strong> Các món nhiều dầu mỡ (thịt nướng, đồ chiên) và đồ nhiều chất xơ (salad) vì chúng tiêu hóa rất chậm, sẽ gây xóc hông hoặc đau bụng khi chạy.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>⚡ Trong & Sau khi chạy</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Trong lúc chạy:</strong> Cứ mỗi 45-60 phút, nạp 30-60g Carb (tương đương 1-2 gói Gel năng lượng, hoặc kẹo thể thao, chuối chín).</li>
+      <li><strong>Bù nước & Điện giải:</strong> Uống từng ngụm nhỏ (150-200ml) mỗi 15-20 phút. Đừng chỉ uống nước lọc, hãy uống nước thể thao (chứa Natri, Kali) để tránh chuột rút và ngộ độc nước (Hạ natri máu).</li>
+      <li><strong>Sau khi chạy (Cửa sổ vàng 30 phút):</strong> Cần nạp ngay kết hợp Tinh bột + Đạm (Tỷ lệ 3:1 hoặc 4:1) để phục hồi cơ bắp. Gợi ý: Sữa socola là một trong những thức uống phục hồi hoàn hảo và rẻ tiền nhất.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5️⃣ Lời khuyên -->
+<section class="section card">
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>Quy tắc vàng: Không thử đồ mới vào ngày thi đấu (Nothing new on race day)</strong>
+    <p style="margin-top:8px;">Dạ dày khi vận động mạnh rất nhạy cảm. Không bao giờ thử một nhãn hiệu Gel năng lượng mới, một đôi giày mới, hay một bữa sáng lạ miệng vào buổi sáng diễn ra giải chạy. Hãy tập nghiệm thu toàn bộ chế độ ăn uống này trong các buổi tập chạy dài (Long Run) cuối tuần.</p>
+  </div>
+</section>
+
+</ArticleLayout>

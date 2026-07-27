@@ -1,0 +1,147 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["roi-loan-dong-mau"];
+if (!art) throw new Error("Article not found: roi-loan-dong-mau");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="tldr-box">
+      <h3>TL;DR: Điểm Cốt Lõi Về Rối Loạn Đông Máu</h3>
+      <ul>
+        <li><strong>Bản chất:</strong> Rối loạn đông máu bao gồm hai thái cực: <strong>Máu khó đông</strong> (như Hemophilia, thiếu yếu tố đông máu, hay bầm tím) và <strong>Máu dễ đông</strong> (huyết khối, cục máu đông).</li>
+        <li><strong>Vai trò của Vitamin K:</strong> Là "chìa khóa" kích hoạt các protein làm đông máu. Thiếu Vitamin K (hoặc dùng thuốc đối kháng) sẽ làm máu khó đông; thừa quá nhiều có thể tăng nguy cơ tạo huyết khối.</li>
+        <li><strong>Chống viêm tự nhiên:</strong> Dầu cá (Omega-3), Tỏi, Nghệ và Vitamin E có đặc tính làm loãng máu nhẹ. Người bệnh máu khó đông cần cẩn trọng khi dùng chung với thuốc Tây.</li>
+      </ul>
+    </div>
+
+    <h2>1. Rối Loạn Đông Máu Là Gì?</h2>
+
+    <p>
+      Hệ thống đông máu của cơ thể giống như một đội phản ứng nhanh cứu hỏa. Khi một mạch máu bị rách (chảy máu), tiểu cầu và các "Yếu tố đông máu" (Coagulation factors) sẽ lập tức lao đến, dính chặt vào nhau tạo thành một tấm lưới bịt kín vết rách.
+    </p>
+
+    <p>
+      Rối loạn đông máu xảy ra khi đội cứu hỏa này hoạt động sai lệch. Nếu chúng <strong>quá yếu ớt</strong> (do thiếu yếu tố đông máu VIII, IX như bệnh Hemophilia, hoặc giảm tiểu cầu), bạn sẽ bị chảy máu cam liên tục, rong kinh, hoặc nổi mảng bầm tím dưới da chỉ sau một va chạm nhẹ. Nếu chúng <strong>quá hung hăng</strong>, chúng sẽ tự động kết dính lại ngay cả khi mạch máu không bị rách, tạo ra những cục máu đông trôi nổi trong dòng máu, có thể gây tắc nghẽn mạch vành (nhồi máu cơ tim) hoặc mạch não (đột quỵ).
+    </p>
+
+    <h2>2. Dinh Dưỡng Cho Người Máu Khó Đông (Hay Bầm Tím)</h2>
+
+    <p>Nếu cơ thể bạn dễ bị bầm tím, chảy máu chân răng hoặc mắc bệnh Hemophilia, mục tiêu dinh dưỡng là củng cố sức bền thành mạch và cung cấp đủ nguyên liệu để gan sản xuất yếu tố đông máu.</p>
+
+    <div class="disease-card info">
+      <div class="dc-header">
+        <h2>Thực phẩm hỗ trợ Cầm máu & Bền thành mạch</h2>
+      </div>
+      <div class="dc-content">
+        <ul>
+          <li>✅ <strong>Vitamin K - Anh hùng đông máu:</strong> Rau họ cải (Bắp cải, Súp lơ xanh, Cải xoăn), Đậu nành lên men (Natto), Lòng đỏ trứng, Gan động vật. Vitamin K là nguyên liệu bắt buộc để gan tổng hợp ra các protein đông máu. <em>(Lưu ý: Nếu đang dùng thuốc Warfarin, bạn KHÔNG ĐƯỢC tự ý tăng lượng rau này).</em></li>
+          <li>✅ <strong>Vitamin C & Rutin:</strong> Trái cây họ cam quýt, Ớt chuông, Quả mọng (Việt quất, dâu tây). Vitamin C giúp tổng hợp Collagen, làm dày và đàn hồi thành mạch máu, ngăn chặn hiện tượng vỡ mao mạch li ti gây vết bầm dưới da.</li>
+          <li>✅ <strong>Sắt & Vitamin B12:</strong> Những người thường xuyên chảy máu rỉ rả (rong kinh, trĩ) rất dễ bị thiếu máu thiếu sắt. Bổ sung ngay Thịt bò nạc, Mộc nhĩ, Rau ngót để tái tạo hồng cầu.</li>
+          <li>❌ <strong>Tránh Dược liệu làm loãng máu:</strong> Tuyệt đối không dùng Bạch quả (Ginkgo Biloba), Nhân sâm, Tỏi đen liều cao, hoặc viên uống Vitamin E liều cao, vì chúng ức chế sự kết tập tiểu cầu, khiến vết thương chảy máu không ngừng.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>3. Dinh Dưỡng Cho Người Có Nguy Cơ Huyết Khối (Cục Máu Đông)</h2>
+
+    <p>Nếu bạn có tiền sử giãn tĩnh mạch sâu, đã từng bị nhồi máu hoặc phải đặt stent, mục tiêu của bạn ngược lại hoàn toàn: Giữ cho dòng máu luôn trơn tru và ngăn chặn tình trạng viêm mạc máu.</p>
+
+    <div class="disease-card warning">
+      <div class="dc-header">
+        <h2>Thực phẩm chống đông tự nhiên & Giảm viêm</h2>
+      </div>
+      <div class="dc-content">
+        <ul>
+          <li>✅ <strong>Omega-3 (Dầu cá):</strong> Cá hồi, cá trích, hạt lanh. Omega-3 làm giảm nồng độ Thromboxane A2 - một chất khiến tiểu cầu bám dính vào nhau. Omega-3 thực sự là một loại "thuốc chống đông" từ thiên nhiên.</li>
+          <li>✅ <strong>Gia vị chống đông máu:</strong> Tỏi sống (chứa Allicin), Gừng, Nghệ (Curcumin) đều có đặc tính làm loãng máu và phá vỡ cục máu đông tự nhiên. Tuy nhiên, nếu bạn đang uống thuốc Aspirin, Warfarin hoặc Clopidogrel, hãy hỏi bác sĩ trước khi ăn quá nhiều các loại gia vị này để tránh bị xuất huyết chéo.</li>
+          <li>✅ <strong>Uống Đủ Nước:</strong> Mất nước khiến máu bị cô đặc, chảy lờ đờ và rất dễ đông lại (đặc biệt khi ngồi máy bay đường dài hoặc thời tiết nắng nóng). Hãy uống đủ 2-2.5 lít nước mỗi ngày.</li>
+          <li>❌ <strong>Tránh Chất béo bão hòa (Trans Fat):</strong> Mỡ động vật, Đồ chiên rán nhiều lần. Chúng làm xơ vữa thành mạch, tạo ra các "gờ" cản trở dòng chảy của máu, là nơi lý tưởng để cục máu đông bám vào và phát triển.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content {
+    line-height: 1.8;
+    color: var(--text-color);
+  }
+
+  .tldr-box {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .tldr-box h3 {
+    margin-top: 0;
+    color: #2980b9;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .disease-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .disease-card.warning .dc-header {
+    background-color: #e74c3c;
+  }
+
+  .disease-card.info .dc-header {
+    background-color: #3498db;
+  }
+
+  .dc-header {
+    background-color: var(--primary);
+    padding: 1rem 1.5rem;
+    color: white;
+  }
+
+  .dc-header h2 {
+    margin: 0;
+    color: white;
+    border: none;
+    padding: 0;
+    font-size: 1.25rem;
+  }
+
+  .dc-content {
+    padding: 1.5rem;
+    background-color: var(--bg-card);
+  }
+
+  .dc-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dc-content li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    text-indent: -1.5rem;
+  }
+
+  .dc-content li:last-child {
+    margin-bottom: 0;
+  }
+</style>

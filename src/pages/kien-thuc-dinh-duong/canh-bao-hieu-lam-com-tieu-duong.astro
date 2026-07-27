@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-com-tieu-duong", title: "Cảnh báo hiểu lầm: Người tiểu đường không cần bỏ hoàn toàn cơm", description: "Người tiểu đường VẪN ăn cơm được. Cách kiểm soát lượng, chọn gạo lứt, thứ tự ăn.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","new-diagnosis"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

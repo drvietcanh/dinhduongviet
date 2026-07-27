@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-an-dam-blw"];
+if (!art) throw new Error("Article not found: dinh-duong-an-dam-blw");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bé My (8 tháng tuổi) được mẹ cho ăn dặm theo phương pháp BLW (Bé tự chỉ huy). Bữa ăn của My trông rất đẹp mắt với đủ loại cà rốt luộc, bông cải xanh, và bơ cắt thanh. Mẹ My cho rằng ở giai đoạn này "sữa vẫn là nguồn dinh dưỡng chính" nên không ép con ăn thịt, chỉ cho con gặm rau củ để tập nhai. Hậu quả là đến 9 tháng tuổi, My bị chẩn đoán thiếu máu thiếu Sắt trầm trọng. Bé luôn xanh xao, quấy khóc đêm, tóc rụng hình vành khăn và chậm biết bò. Mẹ My đã mắc phải một sai lầm chết người mà 90% các bà mẹ nuôi con theo BLW đang gặp phải.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Từ 6 tháng tuổi, lượng Sắt dự trữ từ lúc còn trong bụng mẹ của trẻ đã CẠN KIỆT. Sữa mẹ lúc này hầu như KHÔNG CÓ SẮT. Nếu mẹ cho con ăn dặm chỉ toàn rau củ quả (chỉ có Sắt Non-Heme rất khó hấp thu), não bộ của trẻ sẽ bị thiếu Oxy nghiêm trọng. <u>Thực phẩm ĐẦU TIÊN trẻ cần ăn khi bắt đầu ăn dặm là: Thịt đỏ (Bò lợn xay nhuyễn), Lòng đỏ trứng và Gan (Sắt Heme)</u>.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cơn đói Sắt của Não bộ</h2>
+  <p>Sắt là nguyên liệu duy nhất để tạo ra Hemoglobin (chất chở Oxy trong máu). Não bộ của trẻ sơ sinh phát triển với tốc độ khủng khiếp, nó tiêu thụ tới 50% tổng lượng Oxy của toàn cơ thể.</p>
+  <p>Thiếu Sắt = Thiếu Oxy lên não. Hậu quả là hệ thần kinh trung ương bị tổn thương, trẻ quấy khóc không dỗ được, cáu bẳn, và đặc biệt là chậm phát triển trí tuệ (IQ thấp) một cách vĩnh viễn không thể hồi phục. Sắt Heme (từ động vật) hấp thu cực nhanh và dễ dàng, trong khi Sắt Non-Heme (từ thực vật như rau chân vịt) lại bị ruột của bé "từ chối" hấp thu đến 95%.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Dinh dưỡng "Vàng" 6 tháng tuổi</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thịt đỏ băm/xay nhuyễn (Bò, Lợn, Cừu):</strong> Đây là cứu cánh hoàn hảo. Dù áp dụng Ăn dặm truyền thống hay BLW, mẹ BẮT BUỘC phải làm pate gan lợn hoặc viên thịt bò xay nhỏ nhét vào đồ ăn cho con bốc bóp.</li>
+      <li><strong>Lòng đỏ trứng luộc:</strong> Rất giàu Sắt và Choline (xây dựng tế bào thần kinh). Trẻ từ 6 tháng tuổi hoàn toàn có thể ăn cả lòng đỏ lẫn lòng trắng trứng luộc chín kỹ. Việc giới thiệu trứng sớm sẽ giúp giảm nguy cơ dị ứng thực phẩm sau này.</li>
+      <li><strong>Thần dược Vitamin C (Trái cây):</strong> Để tối đa hóa khả năng hấp thu Sắt, hãy cho trẻ ăn một miếng cam, đu đủ hoặc kiwi nhỏ ngay trong bữa ăn có thịt. Vitamin C sẽ mở khóa cho ruột hút cạn lượng sắt từ thịt.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Nguy hiểm chết người khi ăn dặm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Mật ong (Dưới 1 tuổi):</strong> Chứa nha bào của vi khuẩn Clostridium botulinum. Ruột trẻ sơ sinh chưa có đủ axit để diệt nó. Vi khuẩn này nở ra, tiết độc tố Botulinum gây liệt cơ và có thể gây tử vong trong 24h. <em>Tuyệt đối cấm!</em></li>
+      <li><strong>Nêm Muối / Nước Mắm:</strong> Thận của trẻ dưới 1 tuổi còn cực kỳ non nớt. Nêm gia vị mặn vào thức ăn của trẻ sẽ ép Thận phải làm việc quá tải, nguy cơ suy thận nhi khoa cực kỳ cao. Thức ăn dặm phải NHẠT HOÀN TOÀN.</li>
+      <li><strong>Thực phẩm dễ nghẹn (Hóc dị vật):</strong> Nho nguyên quả, xúc xích cắt khoanh tròn, các loại hạt nguyên hạt (đậu phộng), kẹo cứng. Trẻ chưa mọc đủ răng hàm để nghiền nát, những vật hình tròn trơn láng này có thể chui tọt vào bít kín khí quản gây ngạt thở.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

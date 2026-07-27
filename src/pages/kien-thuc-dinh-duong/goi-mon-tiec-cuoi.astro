@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "goi-mon-tiec-cuoi", title: "Ăn tiệc, ăn cưới với bệnh mạn tính — Cách gọi món", description: "Mẹo ăn tiệc/cưới cho người tiểu đường, tăng huyết áp, gout. Cách chọn món, kiểm soát phần, tránh bia rượu.", emoji: "🎉", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Đi ăn tiệc, ăn cưới là thử thách lớn với người bệnh mạn tính. Mâm cỗ nhiều món, dễ ăn quá tay, rượu bia mời mọc. Nhưng không vì thế mà phải từ chối lời mời.
 

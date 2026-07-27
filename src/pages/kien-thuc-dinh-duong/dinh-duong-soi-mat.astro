@@ -1,0 +1,56 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-soi-mat"];
+if (!art) throw new Error("Article not found: dinh-duong-soi-mat");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cô Hoa (50 tuổi) có một viên sỏi mật kích thước 15mm. Thi thoảng sau khi ăn cỗ (nhều thịt gà luộc, xôi nếp mỡ hành), cô lại bị cơn đau quặn thắt ở vùng sườn phải, đau lăn lộn đổ mồ hôi. Cuối cùng, bác sĩ khuyên cô nên phẫu thuật cắt bỏ túi mật. Cô lo lắng không biết sau khi cắt túi mật thì có ăn uống bình thường được không, hay phải kiêng mỡ suốt đời.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Túi mật chỉ là "kho chứa" dịch mật, còn Gan mới là nơi sản xuất dịch mật.
+    Khi chưa cắt túi mật, ăn đồ nhiều dầu mỡ sẽ làm túi mật co bóp mạnh gây đau quặn. Khi đã cắt túi mật, bạn vẫn tiêu hóa được chất béo, nhưng phải <u>ăn rải rác từng ít một</u> để tránh bị tiêu chảy ồ ạt.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Sỏi mật hình thành thế nào?</h2>
+  <p>Dịch mật do Gan sản xuất ra để làm nhiệm vụ "hòa tan" chất béo (giống như nước rửa bát hòa tan dầu mỡ). Dịch mật được dự trữ tại Túi Mật.</p>
+  <p>Khi bạn ăn quá nhiều Cholesterol (lòng đỏ trứng, óc lợn, mỡ động vật) hoặc do cơ địa, dịch mật sẽ bị cô đặc lại và kết tủa thành những viên sỏi cứng. Khi bạn ăn đồ béo, túi mật co bóp để xịt dịch mật xuống ruột, vô tình đẩy viên sỏi kẹt vào ống dẫn mật, gây ra cơn <strong>Đau quặn mật</strong> cực kỳ khủng khiếp.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chế độ ăn khi ĐANG có sỏi mật</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Giảm ngay mỡ động vật:</strong> Để túi mật không phải co bóp mạnh. Chuyển sang ăn đồ luộc, hấp. Bỏ da gà, vịt.</li>
+      <li><strong>Tăng cường chất xơ:</strong> Rau xanh, trái cây, yến mạch. Chất xơ giúp gắn kết với Cholesterol trong ruột và đào thải nó ra ngoài qua đường phân, ngăn không cho sỏi to thêm.</li>
+      <li><strong>Cà phê đen (Tin vui!):</strong> Nghiên cứu cho thấy uống 1-2 ly cà phê đen mỗi ngày kích thích túi mật co bóp nhẹ nhàng đều đặn, ngăn ngừa dịch mật ứ đọng tạo sỏi.</li>
+    </ul>
+    <h3 style="margin-top:16px;">✅ Chế độ ăn SAU KHI cắt túi mật</h3>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Hội chứng Dumping:</strong> Sau khi cắt túi mật, dịch mật sẽ chảy ri rỉ liên tục từ gan xuống ruột. Nếu bạn ăn một bữa quá nhiều dầu mỡ, lượng dịch mật này không đủ để xử lý, chất béo sẽ lọt xuống ruột già gây tiêu chảy phân mỡ ngay lập tức.</li>
+      <li><strong>Chiến thuật:</strong> Không cần kiêng mỡ hoàn toàn, nhưng phải CHIA NHỎ lượng chất béo ra 5-6 bữa trong ngày. Sau 6 tháng, đường mật sẽ tự giãn nở để chứa dịch mật thay thế túi mật, bạn có thể ăn uống lại như người bình thường.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Sai lầm phổ biến</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nhịn đói bỏ bữa giảm cân:</strong> Sỏi mật rất thích những người nhịn ăn sáng! Khi bạn nhịn đói, túi mật không co bóp, dịch mật bị ứ đọng và cô đặc lại, rất dễ kết tủa thành sỏi. Phải ăn sáng đều đặn để "xả" dịch mật cũ.</li>
+      <li><strong>Uống thuốc tẩy sỏi (Dầu oliu + Chanh):</strong> Đây là trào lưu thải độc cực kỳ nguy hiểm trên mạng. Hỗn hợp này không làm tan sỏi mà chỉ tạo ra các hạt xà phòng hóa trong phân. Nếu viên sỏi thật bị kích thích rớt xuống kẹt ở ống mật chủ, bệnh nhân sẽ bị viêm tụy cấp, nguy hiểm đến tính mạng.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

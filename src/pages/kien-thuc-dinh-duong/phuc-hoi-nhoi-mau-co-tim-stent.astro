@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["phuc-hoi-nhoi-mau-co-tim-stent"];
+if (!art) throw new Error("Article not found: phuc-hoi-nhoi-mau-co-tim-stent");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Minh (62 tuổi) vừa thoát cửa tử sau một cơn Nhồi máu cơ tim cấp và được bác sĩ đặt một ống stent để nong rộng mạch vành bị tắc. Về nhà, bác đi đứng rón rén, ăn uống kiêng khem khổ sở vì sợ ăn sai sẽ làm tắc lại stent. Bác cự tuyệt toàn bộ các loại dầu mỡ, chỉ ăn cơm với nước tương và rau luộc. Kết quả là bác thường xuyên bị tụt huyết áp, chóng mặt, và nhịp tim đập loạn xạ.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Đặt Stent chỉ là sửa chữa phần ngọn, giải phóng chỗ tắc tạm thời. Để ống stent không bị bám cặn và tắc hẹp trở lại, mục tiêu tối thượng là <u>Chống đông máu</u> và <u>Ổn định nhịp tim</u>. Hãy sử dụng Dầu Oliu Extra Virgin, ăn nhiều Cá biển, và TUYỆT ĐỐI HẠN CHẾ ĂN MẶN để giảm áp lực cho trái tim vừa bị tổn thương.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Chuyện gì xảy ra với trái tim sau đặt Stent?</h2>
+  <p>Nhồi máu cơ tim nghĩa là một vùng cơ tim đã bị chết (hoại tử) do thiếu máu nuôi dưỡng. Trái tim lúc này như một cỗ máy vừa bị hỏng một phần động cơ, nó đập yếu ớt hơn và rất dễ bị rối loạn nhịp tim.</p>
+  <p>Ống stent được đặt vào là một vật thể lạ bằng kim loại. Cơ thể luôn có xu hướng tạo ra cục máu đông để bao bọc vật thể lạ này lại. Nếu cục máu đông hình thành bên trong stent, nó sẽ bít kín ống stent, gây ra cơn nhồi máu cơ tim lần 2 nguy hiểm gấp bội. Do đó, người bệnh phải uống thuốc chống đông máu (Aspirin, Plavix) rất dài ngày, và chế độ dinh dưỡng phải phối hợp nhịp nhàng với loại thuốc này.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Dinh dưỡng nuôi dưỡng Trái tim</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Kali & Magie (Chuối, Khoai lang, Rau lá xanh):</strong> Cơ tim rất cần Kali và Magie để co bóp nhịp nhàng, chống lại chứng rối loạn nhịp tim sau nhồi máu.</li>
+      <li><strong>Chế độ ăn Địa Trung Hải:</strong> Được y khoa thế giới công nhận là phác đồ số 1 cho người bệnh mạch vành. Đặc trưng là thay thế hoàn toàn mỡ lợn bằng Dầu Oliu Extra Virgin nguyên chất (chứa polyphenol chống viêm cực tốt), ăn cá biển (Omega-3) và ăn rất nhiều hạt khô.</li>
+      <li><strong>Protein nhẹ nhàng:</strong> Cơ tim cần đạm để tự sửa chữa mô hoại tử. Hãy ăn đậu phụ, cá, ức gà luộc thay vì ăn cháo trắng.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những sát thủ thầm lặng sau mổ</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>ĂN MẶN (Muối):</strong> Muối hút nước vào trong mạch máu, làm tăng thể tích máu. Trái tim vừa bị nhồi máu đang rất yếu ớt, nếu bắt nó phải gồng mình bơm một lượng máu lớn (do ăn mặn) thì nó sẽ bị suy tim nhanh chóng. Không bao giờ ăn dưa muối, mắm tôm hay húp nước lẩu!</li>
+      <li><strong>Can thiệp sai vào thuốc Chống đông:</strong> Thuốc chống đông máu rất dễ bị mất tác dụng nếu ăn quá nhiều rau giàu Vitamin K1 (Bông cải xanh, Cải xoăn) ĐỘT NGỘT. Hãy duy trì lượng rau xanh ổn định mỗi ngày, đừng ngày thì ăn cả rổ, ngày thì không ăn cọng nào.</li>
+      <li><strong>Nước tăng lực & Cafein liều cao:</strong> Ép trái tim đập nhanh quá sức là hành động vô cùng nguy hiểm với một cơ tim đang bị tổn thương.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

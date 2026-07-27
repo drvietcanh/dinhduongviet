@@ -1,0 +1,55 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-tri-mun-acne"];
+if (!art) throw new Error("Article not found: dinh-duong-tri-mun-acne");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Ly (22 tuổi) bị mụn ẩn và mụn bọc sưng đỏ khắp mặt. Cô dùng đủ loại mỹ phẩm đắt tiền, đi spa nặn mụn hàng tuần nhưng mụn vẫn hoàn mụn. Ly không biết rằng, thói quen mỗi sáng uống một ly <strong>Cà phê sữa đá</strong> và chiều ăn <strong>bánh ngọt</strong> của mình chính là "nhà máy" sản xuất bã nhờn, đánh sập mọi nỗ lực bôi thoa bên ngoài.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Mụn nội tiết (Acne) bắt nguồn từ bên trong máu chứ không phải do da bẩn! Hai kẻ thù lớn nhất kích hoạt hormone gây mụn là: <u>Sữa Bò (đặc biệt là sữa tách béo)</u> và <u>Đường Tinh Luyện (thực phẩm có chỉ số GI cao)</u>. Cắt bỏ 2 thứ này, da bạn sẽ tự động ngừng tiết dầu và xẹp mụn viêm sau 4 tuần.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Phản ứng chuỗi: Từ Dạ dày đến Lỗ chân lông</h2>
+
+  <h3>1. Sát thủ mang tên "Đường" (Chỉ số GI)</h3>
+  <p>Khi bạn ăn đồ ngọt (trà sữa, bánh mì trắng), lượng đường trong máu tăng vọt. Cơ thể lập tức bơm <strong>Insulin</strong> để hạ đường huyết. Nhưng sự tăng vọt Insulin này lại kích hoạt một loại hormone có tên là <strong>IGF-1</strong>. IGF-1 chạy thẳng lên mặt, ra lệnh cho tuyến bã nhờn bơm dầu ồ ạt, làm bít tắc lỗ chân lông và sinh ra vi khuẩn P. Acnes.</p>
+
+  <h3>2. Sự thật giật mình về Sữa Bò</h3>
+  <p>Bò sữa mang thai liên tục để cho sữa, do đó sữa bò chứa một lượng khổng lồ hormone sinh dục bò và IGF-1. Khi bạn uống sữa bò tươi (đặc biệt là Whey Protein hoặc Sữa tách béo), bạn đang nạp trực tiếp hormone gây mụn vào người. <em>Nghiên cứu của Harvard chỉ ra những người uống 2 ly sữa/ngày có nguy cơ bị mụn bọc cao gấp 44%.</em></p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn dọn dẹp mụn nội tiết</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chuyển sang Sữa Hạt:</strong> Sữa hạnh nhân, sữa yến mạch, sữa macca không chứa hormone IGF-1, là lựa chọn thay thế hoàn hảo cho sữa bò.</li>
+      <li><strong>Bổ sung Kẽm (Zinc):</strong> Kẽm là chất diệt khuẩn tự nhiên cực mạnh, giúp làm xẹp mụn sưng đỏ. Hãy ăn hàu, hạt bí đỏ, thịt bò nạc, hoặc uống viên bổ sung Kẽm (30mg/ngày) sau bữa ăn.</li>
+      <li><strong>Ăn thực phẩm Low-GI:</strong> Thay cơm trắng/bánh mì trắng bằng khoai lang, yến mạch nguyên cám, gạo lứt. Khi đường huyết ổn định, mặt bạn sẽ ngừng tiết chảo dầu.</li>
+      <li><strong>Trà Xanh & Bạc Hà:</strong> Uống 2 ly trà xanh mỗi ngày hoặc trà bạc hà (Spearmint tea) đã được chứng minh lâm sàng có khả năng ức chế hormone Androgen, giúp giảm mụn nang ở cằm và quai hàm.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những món "đổ dầu vào lửa"</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Whey Protein (Tập Gym):</strong> Rất nhiều bạn nam đi tập gym uống Whey Protein (chiết xuất từ sữa bò) và bị nổi mụn kín lưng, ngực. Hãy chuyển sang Vegan Protein (Protein thực vật từ đậu Hà Lan/gạo lứt).</li>
+      <li><strong>Đồ ăn nhanh chiên rán:</strong> Khoai tây chiên, gà rán KFC. Mỡ chuyển hóa (Trans fat) trong dầu chiên đi vào máu sẽ gây phản ứng viêm toàn thân, làm các nốt mụn sưng tấy, mưng mủ, và rất dễ để lại sẹo rỗ.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

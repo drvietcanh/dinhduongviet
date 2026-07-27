@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-gout-dam", title: "Cảnh báo hiểu lầm: Người gout không cần kiêng tất cả đạm", description: "Gout không phải chỉ do ăn thịt. Đậu hũ, trứng, sữa là nguồn đạm an toàn.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","new-diagnosis"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

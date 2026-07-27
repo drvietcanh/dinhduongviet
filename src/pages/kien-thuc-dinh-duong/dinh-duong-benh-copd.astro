@@ -1,0 +1,57 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-benh-copd"];
+if (!art) throw new Error("Article not found: dinh-duong-benh-copd");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Hùng (65 tuổi, từng hút thuốc lá nhiều năm) bị Bệnh phổi tắc nghẽn mãn tính (COPD). Khổ nỗi, cứ mỗi lần ăn xong bát cơm to hoặc tô phở bự là bác lại thấy ngực tức nặng, thở dốc, phải ngồi thở hổn hển cả tiếng đồng hồ. Bác sĩ dinh dưỡng khuyên bác phải cắt giảm tinh bột và đổi sang ăn nhiều chất béo (như mỡ lợn, bơ, dầu oliu). Bác Hùng rất ngạc nhiên vì cả đời bác được dạy "ăn mỡ là có hại cho tim mạch".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Bệnh nhân COPD có phổi bị mất độ đàn hồi, rất khó thở ra để tống khí CO2 ra ngoài. Khi bạn tiêu hóa <u>Tinh bột (Carb)</u>, cơ thể tạo ra <u>RẤT NHIỀU khí CO2</u>, khiến phổi bị quá tải. Ngược lại, khi tiêu hóa <u>Chất béo (Fat)</u>, cơ thể sinh ra <u>ÍT CO2 NHẤT</u>. Do đó, chế độ ăn tối ưu cho COPD là Ít Tinh bột - Nhiều Béo (Low-Carb, High-Fat).</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Thương số Hô hấp (Respiratory Quotient - RQ)</h2>
+  <p>RQ là tỷ lệ giữa lượng khí CO2 sinh ra so với lượng O2 tiêu thụ khi cơ thể đốt cháy thức ăn.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>RQ của Tinh bột (Carb) = <strong>1.0</strong> (Sinh ra nhiều CO2 nhất).</li>
+    <li>RQ của Đạm (Protein) = <strong>0.8</strong>.</li>
+    <li>RQ của Chất béo (Fat) = <strong>0.7</strong> (Sinh ra ít CO2 nhất).</li>
+  </ul>
+  <p>Phổi của người COPD giống như một quả bóng bay bị dão, bơm khí (O2) vào thì dễ, nhưng xẹp xuống để đẩy khí (CO2) ra thì rất khó. Nếu bắt phổi phải gồng mình thải một lượng CO2 khổng lồ sinh ra từ tô phở bạn vừa ăn, cơ hoành sẽ bị kiệt sức, gây ra cơn khó thở cấp tính sau bữa ăn.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chế độ ăn "Dễ thở" (Pulmocare Diet)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Tăng Béo:</strong> Sử dụng bơ động vật, dầu oliu, quả bơ, phô mai, các loại hạt (hạnh nhân, óc chó). Đừng sợ mỡ máu, lúc này việc thở được là ưu tiên sống còn.</li>
+      <li><strong>Giảm Tinh bột:</strong> Bỏ cơm trắng, phở bún mặn. Chuyển sang ăn lượng rất ít khoai lang hoặc yến mạch.</li>
+      <li><strong>Chia 6 bữa nhỏ:</strong> Dạ dày đầy thức ăn sẽ chèn ép lên cơ hoành (cơ hô hấp chính nằm ngay trên dạ dày), làm phổi không có chỗ để nở ra. Hãy ăn mỗi lần một bát nhỏ thôi.</li>
+      <li><strong>Bổ sung Sữa hô hấp:</strong> Trên thị trường có các dòng sữa chuyên biệt cho bệnh nhân phổi (ví dụ: Pulmocare) với công thức đặc biệt giảm 50% Carb và tăng 50% Fat, giúp giảm khó thở rõ rệt sau khi uống.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những món làm căng tức lồng ngực</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thực phẩm sinh hơi:</strong> Súp lơ, bắp cải, đậu lăng, nước ngọt có ga, bia. Chúng sinh ra bọt khí trong ruột, làm bụng trướng lên và chèn ép dữ dội lên cơ hoành.</li>
+      <li><strong>Ăn quá nhiều Muối:</strong> Muối giữ nước, gây phù nề, trong đó có cả phù nề mạch máu phổi, làm đường thở vốn đã hẹp lại càng hẹp hơn.</li>
+      <li><strong>Đồ dai cứng:</strong> Bệnh nhân COPD thở đã mệt, nếu phải tốn sức nhai thịt bò dai hay sụn, họ sẽ bị thiếu oxy ngay trong bữa ăn (khó thở khi nhai). Hãy ăn đồ ninh nhừ.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

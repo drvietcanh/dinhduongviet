@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-nuoc-ep-trai-cay", title: "Cảnh báo hiểu lầm: Nước ép trái cây không giống trái cây nguyên quả", description: "Nước ép thiếu xơ, cô đặc đường, GI cao hơn. Cách uống ít hại: nguyên quả, ép vặt, không thêm đường.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","before-supplement"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

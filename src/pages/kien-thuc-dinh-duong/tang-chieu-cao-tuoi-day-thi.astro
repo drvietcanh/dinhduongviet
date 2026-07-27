@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tang-chieu-cao-tuoi-day-thi"];
+if (!art) throw new Error("Article not found: tang-chieu-cao-tuoi-day-thi");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cậu bé Tuấn (13 tuổi) lùn nhất lớp dù bố mẹ đều có chiều cao tốt. Sốt ruột, mẹ Tuấn mua hàng thùng sữa ngoại nhập, bắt Tuấn mỗi ngày uống 3 ly, đồng thời mua thêm cả viên uống Canxi hươu cao cổ cho con. Tuấn ăn rất nhiều, mập mạp hẳn lên nhưng chiều cao vẫn không nhích được cm nào. Tuấn có một thói quen xấu: Cậu thức chơi game đến 1h sáng mới ngủ. Bác sĩ khám và kết luận: Canxi bị dư thừa, nhưng lại chạy ra ngoài qua đường nước tiểu, còn nguyên nhân chính khiến Tuấn không cao lên được là do tuyến yên đã bị "đóng băng" vì thức khuya.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 80% phụ huynh lầm tưởng "Chỉ cần uống nhiều sữa và Canxi là sẽ cao". Sai lầm! Canxi chỉ là GẠCH. Để xây được ngôi nhà chiều cao, bạn cần THỢ XÂY (Vitamin D3), XEO CHỞ GẠCH (Vitamin K2), và ĐỐC CÔNG chỉ huy (Hormone HGH tiết ra lúc ngủ sâu). <u>Nếu trẻ thức khuya sau 11h đêm, Hormone HGH không được tiết ra, mọi nỗ lực ăn uống đều đổ sông đổ biển!</u></strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cỗ máy kéo dài sụn xương</h2>
+  <p>Xương của chúng ta không dài ra từ giữa, mà dài ra từ hai đầu sụn xương (Epiphyseal plate).</p>
+  <p>Tuyến yên trong não tiết ra <strong>Hormone tăng trưởng (HGH)</strong>. HGH kích thích sụn xương nhân lên liên tục. Khi sụn mới được tạo ra, cơ thể sẽ đắp Canxi vào để biến đoạn sụn đó thành xương cứng.</p>
+  <p>Tuy nhiên, Canxi rất lười biếng. Uống Canxi vào bụng, nó sẽ nằm chết ở ruột. Cần có <strong>Vitamin D3</strong> đến mở cửa ruột để Canxi đi vào máu. Nhưng khi vào máu rồi, Canxi lại hay "đi lạc", bám bậy bạ vào thận (gây sỏi thận) hoặc mạch máu. Lúc này, ta cần <strong>Vitamin K2</strong> - chiếc xe tải chuyên dụng - chở thẳng Canxi từ máu đắp đúng vào sụn xương.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Bộ tứ "Phép thuật" Tăng Chiều Cao</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Giấc ngủ Vàng (Đốc công HGH):</strong> Hormone HGH tiết ra mạnh nhất vào lúc <strong>11h đêm đến 1h sáng</strong>, nhưng với điều kiện trẻ <u>PHẢI ĐANG NGỦ SÂU GIẤC</u>. Do đó, trẻ em tuổi dậy thì BẮT BUỘC phải lên giường đi ngủ lúc 10h tối. Thức khuya là tự cắt đứt cơ hội cao lớn duy nhất trong đời.</li>
+      <li><strong>Bộ ba Canxi - D3 - K2:</strong> Đừng chỉ uống mỗi Canxi. Hãy bổ sung đồng thời Vitamin D3 (hoặc tắm nắng 15 phút mỗi ngày) và ăn thực phẩm chứa Vitamin K2 (Natto, lòng đỏ trứng, phô mai lên men).</li>
+      <li><strong>Nhảy cao và Bơi lội:</strong> Khi trẻ nhảy dây, chơi bóng rổ, các cơ bắp kéo giãn, tạo một lực tác động cơ học lên sụn xương, ép sụn xương phải nở ra và dài thêm.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những Kẻ Thù Bóp Nghẹt Khớp Xương</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nước ngọt có gas (Cola):</strong> Đây là "Kẻ trộm Canxi". Nước ngọt chứa hàm lượng Phốt-pho cực cao. Khi cơ thể có quá nhiều Phốt-pho, nó sẽ tự động rút Canxi từ trong xương ra để cân bằng lại, khiến xương bị xốp, giòn và lùn đi.</li>
+      <li><strong>Dậy thì sớm (Ăn nhiều gà công nghiệp, đồ ăn nhanh):</strong> Dậy thì sớm làm tăng vọt hormone sinh dục (Estrogen/Testosterone). Hormone này ra lệnh cho sụn xương phải <strong>ĐÓNG KHỚP</strong> ngay lập tức. Đứa trẻ dậy thì sớm sẽ cao vọt lên lúc 8-9 tuổi, nhưng sau 11 tuổi xương đóng chặt và vĩnh viễn không cao thêm được phân nào nữa.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

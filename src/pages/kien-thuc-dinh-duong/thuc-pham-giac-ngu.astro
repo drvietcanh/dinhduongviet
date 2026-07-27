@@ -4,7 +4,7 @@ import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["thuc-pham-giac-ngu"];
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 Giấc ngủ và dinh dưỡng có mối quan hệ hai chiều: ăn gì ảnh hưởng đến giấc ngủ, và ngủ kém ảnh hưởng đến việc ăn gì. Nếu bạn khó ngủ, trằn trọc, hoặc dậy không tỉnh — có thể chế độ ăn là một phần nguyên nhân.
 

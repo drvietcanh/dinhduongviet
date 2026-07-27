@@ -1,0 +1,64 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["di-ung-hai-san"];
+if (!art) throw new Error("Article not found: di-ung-hai-san");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Hưng đi ăn tiệc hải sản, vừa ăn một con tôm nướng, vài phút sau anh thấy ngứa ran vùng miệng, mắt sưng húp, nổi mề đay toàn thân và khó thở. Bạn bè lập tức đưa anh đi cấp cứu kịp thời.</p>
+  <p>Dị ứng hải sản (đặc biệt là động vật có vỏ như tôm, cua) và dị ứng các loại hạt (như đậu phộng) là hai nguyên nhân gây tử vong do sốc phản vệ thực phẩm hàng đầu thế giới. Khác với dị ứng sữa bò ở trẻ em có thể tự hết, dị ứng hải sản và các loại hạt thường <strong>kéo dài suốt đời</strong>.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Phải tuyệt đối tránh món ăn gây dị ứng. Dấu hiệu sốc phản vệ gồm: khó thở, khò khè, sưng phù mặt/cổ họng, nhịp tim nhanh, ngất xỉu. Nếu có tiền sử dị ứng nặng, bệnh nhân nên luôn mang theo bút tiêm Epinephrine (EpiPen) bên mình.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Phân loại -->
+<section class="section card">
+  <h2>🔬 Phân loại dị ứng hải sản & Các loại hạt</h2>
+
+  <h3>1. Dị ứng hải sản</h3>
+  <p>Hải sản được chia làm 2 nhóm: <strong>Động vật có vỏ</strong> (Crustaceans - tôm, cua, ghẹ, tôm hùm) và <strong>Nhuyễn thể</strong> (Mollusks - nghêu, sò, ốc, mực, bạch tuộc). Dị ứng động vật có vỏ phổ biến và nguy hiểm hơn. Protein gây dị ứng chính là <em>Tropomyosin</em>. Lưu ý: Dị ứng tôm/cua KHÔNG có nghĩa là bạn dị ứng với cá biển (như cá hồi, cá ngừ), vì chúng thuộc họ khác nhau.</p>
+
+  <h3>2. Dị ứng đậu phộng (Lạc) & Hạt cây (Tree nuts)</h3>
+  <p>Đậu phộng thực chất là một loại đậu (họ đậu), mọc dưới đất. Còn hạt cây là hạnh nhân, óc chó, hạt điều, hạt phỉ. Rất nhiều người dị ứng đậu phộng cũng bị dị ứng chéo với hạt cây. Dị ứng đậu phộng cực kỳ nhạy cảm: đôi khi chỉ hít phải bụi đậu phộng hoặc dùng chung dao cắt bánh có dính bơ đậu phộng cũng đủ gây sốc phản vệ.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Kỹ năng sống còn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Đọc nhãn mác:</strong> Luôn đọc kỹ thành phần thực phẩm. Đậu phộng thường núp bóng dưới tên "Dầu lạc", "Protein thực vật thủy phân".</li>
+      <li><strong>Thông báo khi ăn ngoài:</strong> Báo ngay cho phục vụ nhà hàng: "Tôi bị dị ứng tôm nặng". Đề nghị họ dùng chảo/dao thớt riêng.</li>
+      <li><strong>Bút tiêm EpiPen:</strong> Bút tiêm Adrenaline tự động. Đây là thuốc duy nhất cứu sống bệnh nhân sốc phản vệ trong vài phút đầu tiên trước khi xe cấp cứu tới.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cảnh báo lây nhiễm chéo (Cross-contamination)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Nhà hàng lẩu nướng/Buffet:</strong> Dùng chung kẹp gắp thịt và gắp hải sản.</li>
+      <li><strong>Quán ăn châu Á:</strong> Dầu ăn đã từng chiên chả giò tôm cua, sau đó dùng lại để chiên khoai tây.</li>
+      <li><strong>Xưởng bánh kẹo:</strong> Socola không chứa hạt điều nhưng được sản xuất trên cùng dây chuyền với bánh hạt điều. Cần chú ý dòng chữ <em>"May contain traces of nuts" (Có thể chứa dấu vết của hạt)</em>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5️⃣ Hiểu lầm -->
+<section class="section card">
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>Lầm tưởng: Nấu chín hải sản sẽ làm mất chất gây dị ứng</strong>
+    <p style="margin-top:8px;"><strong>Sai!</strong> Protein <em>Tropomyosin</em> trong tôm cua chịu nhiệt rất tốt. Dù bạn luộc, hấp, chiên hay nướng cháy, nó vẫn giữ nguyên cấu trúc gây dị ứng. Thậm chí hơi nước bốc lên khi luộc tôm cũng có thể chứa protein gây dị ứng đường hô hấp cho người cực kỳ mẫn cảm.</p>
+  </div>
+</section>
+
+</ArticleLayout>

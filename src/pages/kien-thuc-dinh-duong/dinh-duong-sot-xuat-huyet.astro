@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-sot-xuat-huyet"];
+if (!art) throw new Error("Article not found: dinh-duong-sot-xuat-huyet");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Anh Tuấn bị Sốt xuất huyết Dengue ngày thứ 4. Anh không còn sốt cao nữa nên gia đình mừng rỡ tưởng anh đã khỏi bệnh, liền mua một đĩa tiết canh lợn và thịt bò tái chanh cho anh ăn để "bổ máu". Vài tiếng sau, anh Tuấn nôn ra chất dịch màu đen ngòm, chân tay lạnh toát và tụt huyết áp. Bác sĩ cấp cứu cho biết anh bị xuất huyết tiêu hóa nặng, và đĩa tiết canh chính là "hung thủ" che giấu triệu chứng ban đầu.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Ngày thứ 4-6 của bệnh Sốt xuất huyết (khi vừa hết sốt) mới là <u>giai đoạn nguy hiểm nhất (sốc do thoát huyết tương)</u>. Lúc này tiểu cầu giảm cực thấp. Phải <u>kiêng tuyệt đối thực phẩm có màu Đỏ/Đen/Nâu</u> (Huyết, dưa hấu, củ dền, nước ngọt có màu) để bác sĩ không bị nhầm lẫn khi bệnh nhân nôn hoặc đi ngoài ra máu. Ưu tiên hàng đầu là uống Oresol!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Virus Dengue tàn phá máu như thế nào?</h2>
+  <p>Virus Dengue do muỗi vằn truyền vào cơ thể sẽ làm thành mạch máu của bạn trở nên xốp như một chiếc rây lọc. Nước trong máu (huyết tương) sẽ rỉ qua các lỗ hổng này tràn ra ngoài, khiến máu bị đặc quánh lại, tim không bơm nổi, dẫn đến Tụt huyết áp (Sốc Dengue).</p>
+  <p>Đồng thời, virus cũng tiêu diệt <strong>Tiểu cầu</strong> (chất giúp cầm máu). Khi tiểu cầu tụt quá thấp, bệnh nhân sẽ bị chảy máu cam, chảy máu chân răng, hoặc nguy hiểm nhất là xuất huyết não và xuất huyết dạ dày.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực đơn cứu mạng (Giai đoạn nguy hiểm)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Oresol là Tiên dược:</strong> Không phải nước yến hay nhân sâm. Oresol pha đúng tỷ lệ là thứ duy nhất giúp kéo nước trở lại vào trong mạch máu. Uống từng ngụm nhỏ liên tục cả ngày.</li>
+      <li><strong>Nước dừa & Nước cam:</strong> Cung cấp cực kỳ nhiều Vitamin C và Kali, giúp làm bền thành mạch, giảm độ "xốp" của mạch máu để chống rỉ nước.</li>
+      <li><strong>Thức ăn lỏng, nhạt màu:</strong> Cháo thịt băm nấu loãng, súp ngô, sữa. Dạ dày lúc này đang bị xung huyết (đỏ rực lên), thức ăn cứng có thể cào rách dạ dày.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ tuyệt đối</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Trái cây/Nước uống màu đỏ, đen:</strong> Dưa hấu, thanh long ruột đỏ, nước ép củ dền, Coca, Pepsi. Nếu bệnh nhân nôn ra màu đỏ, bác sĩ sẽ không thể biết đó là nước dưa hấu hay là <u>máu từ dạ dày đang chảy ồ ạt</u>, làm lỡ thời gian vàng cấp cứu.</li>
+      <li><strong>Đồ ăn chua cay, cứng:</strong> Mì tôm cay, bánh mì nướng, ổi xanh cứng. Chúng có thể cào rách lớp niêm mạc đang mỏng manh của đường tiêu hóa, kích hoạt một đợt xuất huyết không thể cầm được do tiểu cầu đang ở mức 0.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

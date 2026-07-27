@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-ruot-crohn-uc"];
+if (!art) throw new Error("Article not found: viem-ruot-crohn-uc");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bạn My (22 tuổi) đang trải qua giai đoạn bùng phát của bệnh Viêm loét đại tràng (Ulcerative Colitis - UC). Suốt 1 tháng nay, cô đi vệ sinh 10 lần/ngày, phân lỏng lẫn máu và chất nhầy, bụng đau quặn thắt. Thương con gái, mẹ My hầm gà ác với nấm hương, táo đỏ và tỏi để bồi bổ. Nhưng thật trớ trêu, cứ ăn canh hầm xong là My lại ôm bụng chạy ngay vào nhà vệ sinh. Bác sĩ giải thích: Nấm, táo đỏ và tỏi là những thực phẩm đại bổ cho người thường, nhưng lại là "thuốc độc" chứa đầy FODMAP kích thích đường ruột vốn đang lở loét của My.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Bệnh Viêm ruột tự miễn (Crohn và Viêm loét đại tràng) khác hoàn toàn với tiêu chảy thông thường. Niêm mạc ruột của bạn đang bị hệ miễn dịch cày nát và lở loét rỉ máu. Trong đợt bùng phát cấp tính, tuyệt đối <u>KHÔNG được ăn chất xơ thô ráp và các thực phẩm sinh hơi (FODMAP cao như tỏi, hành, nấm, táo)</u>. Hãy để ruột nghỉ ngơi bằng <u>Chế độ ăn Mềm, Nhạt, Lỏng (Low-Residue)</u>.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Đường hầm đang rực lửa</h2>
+  <p>Crohn và Viêm loét đại tràng (IBD) là các bệnh tự miễn. Nghĩa là hệ thống bạch cầu của cơ thể "nổi điên" và nhận diện nhầm niêm mạc ruột non/ruột già là kẻ thù cần tiêu diệt. Kết quả là toàn bộ thành ruột bị viêm sưng đỏ rực, lở loét và không còn khả năng hấp thu dinh dưỡng.</p>
+  <p>Lúc này, bề mặt ruột cực kỳ nhạy cảm. Bất kỳ thứ gì thô ráp đi qua (như rau muống, hạt dưa) đều sẽ chà xát làm vết loét chảy máu thêm. Bất kỳ thực phẩm nào lên men sinh khí (như sữa bò, tỏi, đậu nành) đều sẽ làm ruột căng phồng lên như bong bóng, gây ra những cơn đau quặn bụng kinh hoàng và ép ruột co thắt liên tục đẩy phân ra ngoài (tiêu chảy).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Dinh dưỡng "Băng bó" khi bùng phát</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Chế độ ăn Low-Residue (Ít cặn):</strong> Mục tiêu là làm giảm khối lượng phân và giảm số lần đi ngoài. Ăn tinh bột trắng (Cơm trắng, bánh mì trắng, phở), thịt nạc băm nhỏ, cá hấp, trứng chín mềm. Chúng tiêu hóa rất nhanh và để lại rất ít bã trong đại tràng.</li>
+      <li><strong>Rau củ hầm nhừ (Đã gọt vỏ/bỏ hạt):</strong> Cà rốt, khoai tây, bí đỏ nấu súp hoặc hầm thật nhừ. Tuyệt đối gọt sạch vỏ. Lượng chất xơ hòa tan trong các loại củ này rất nhẹ dịu với niêm mạc ruột.</li>
+      <li><strong>Nguồn đạm dễ tiêu:</strong> Bệnh nhân IBD mất rất nhiều đạm qua phân rỉ máu. Hãy uống nước hầm xương nguyên chất (lọc bỏ mỡ), ăn lòng trắng trứng để bù đắp protein cho cơ thể tự hàn gắn vết loét.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ: Chà xát và Sinh Hơi</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Thực phẩm High-FODMAP:</strong> Tỏi, Hành tây, Nấm, Táo, Lê, Bắp cải, Sữa bò tươi (Lactose). Đây là những loại đường khó tiêu hóa. Khi đi vào ruột, vi khuẩn sẽ lên men chúng sinh ra lượng lớn khí gas, làm bụng phình to và kích hoạt cơn tiêu chảy bạo lực.</li>
+      <li><strong>Chất xơ không hòa tan (Thô ráp):</strong> Ngũ cốc nguyên cám, gạo lứt, rau lá xanh đậm già, các loại hạt cứng (hạnh nhân, óc chó nguyên hạt). Chúng giống như chiếc "bàn chải thép" chà xát vào thành ruột đang lở loét. Chỉ được ăn gạo lứt khi bệnh đã lui hoàn toàn (Remission).</li>
+      <li><strong>Đường tinh luyện & Đồ ngọt:</strong> Kéo nước vào trong ruột già, làm tình trạng tiêu chảy tồi tệ hơn gấp bội.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

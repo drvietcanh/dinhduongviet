@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-hoa-tri"];
+if (!art) throw new Error("Article not found: dinh-duong-hoa-tri");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Hoa (45 tuổi) đang trong đợt truyền Hóa chất điều trị ung thư vú. Hóa chất tàn phá các tế bào niêm mạc miệng và dạ dày khiến chị bị lở loét miệng, đắng ngắt khi nhai và buồn nôn liên tục. Dù chồng chị mua toàn đồ ăn đắt tiền như yến sào, bào ngư nhưng cứ ngửi thấy mùi đồ ăn là chị lại nôn ọe, sụt mất 7kg chỉ sau 2 đợt truyền.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Hóa trị và Xạ trị gây tác dụng phụ khủng khiếp lên hệ tiêu hóa (Buồn nôn, lở miệng, đổi vị giác). Chìa khóa để sống sót qua đợt điều trị là: <u>Chia thành 6-8 bữa rất nhỏ</u>, ăn đồ <u>Nguội/Lạnh (để bớt mùi)</u>, và ưu tiên các loại Sữa dinh dưỡng y học cao năng lượng để uống thay cơm.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Vấn đề và Giải pháp -->
+<section class="section card">
+  <h2>🔬 Chiến thuật đối phó với từng Tác dụng phụ</h2>
+
+  <h3>1. Buồn nôn và Nôn (Nausea)</h3>
+  <p>Hóa chất kích thích trực tiếp lên trung khu nôn ở não bộ.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Giải pháp:</strong> Tránh xa các món chiên xào nhiều dầu mỡ, nhiều gia vị hành tỏi. Hãy ăn đồ ăn đã để <strong>Nguội hoặc Lạnh</strong> (như sinh tố, sữa chua, cháo nguội, bánh quy khô). Thức ăn nóng bốc hơi sẽ làm mùi hương xộc vào mũi gây buồn nôn ngay lập tức.</li>
+    <li>Mút kẹo gừng, ngậm lát chanh hoặc uống nước trà gừng ấm để làm dịu dạ dày.</li>
+  </ul>
+
+  <h3>2. Lở loét niêm mạc miệng (Mucositis)</h3>
+  <p>Xạ trị vùng đầu cổ và hóa chất làm rách lớp niêm mạc bên trong miệng, đau xót như bị hàng chục nốt nhiệt miệng cùng lúc.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Giải pháp:</strong> Chuyển sang ăn đồ lỏng, mềm, trơn (Súp xay nhuyễn, bún, phở mềm, thạch pudding). Cấm tuyệt đối thức ăn chua (cam, chanh, dứa), cay (ớt, tiêu) và khô cứng (bánh mì nướng) vì chúng sẽ cào rách vết loét. Đánh răng bằng bàn chải lông siêu mềm và súc miệng bằng nước muối sinh lý loãng.</li>
+  </ul>
+
+  <h3>3. Thay đổi vị giác (Miệng đắng ngắt hoặc có vị kim loại)</h3>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Giải pháp:</strong> Nếu ăn thịt đỏ (bò, lợn) thấy có vị đắng/tanh như kim loại, hãy chuyển sang nguồn đạm khác: Trứng gà, đậu phụ, cá thịt trắng, hoặc sữa. Hãy ướp đồ ăn với một chút nước cốt chanh hoặc gia vị chua ngọt (nếu miệng không bị lở loét) để kích thích lại vị giác. <strong>Sử dụng thìa/đĩa bằng nhựa hoặc gỗ</strong> thay vì thìa inox/kim loại.</li>
+  </ul>
+</section>
+
+<!-- 4️⃣ Công cụ tối thượng -->
+<section class="section card">
+  <div class="disclaimer" style="background:var(--bg-warning);border:1px solid var(--card-border);padding:16px;border-radius:var(--radius);margin-top:16px;">
+    <strong>🔥 Cứu cánh: Sữa Y học Cao năng lượng</strong>
+    <p style="margin-top:8px;">Khi bệnh nhân không thể nhai hay nuốt thức ăn đặc, đừng cố ép ăn. Hãy ra nhà thuốc bệnh viện mua các loại <strong>Sữa dành riêng cho bệnh nhân ung thư (Prosure, Fortimel, Oral Impact...)</strong>. Các loại sữa này có hàm lượng Calo và Protein cực cao, lại chứa EPA (Omega-3 đặc biệt giúp chống teo cơ). Chỉ cần uống 1-2 ly là tương đương với việc ăn một bát phở đầy thịt.</p>
+  </div>
+</section>
+
+</ArticleLayout>

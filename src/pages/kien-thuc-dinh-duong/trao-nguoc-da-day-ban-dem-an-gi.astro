@@ -1,0 +1,45 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["trao-nguoc-da-day-ban-dem-an-gi"];
+if (!art) throw new Error("Article not found: trao-nguoc-da-day-ban-dem-an-gi");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+<h1>Trào ngược Dạ dày ban đêm: Ăn gì buổi tối để ngủ ngon, không bị ợ chua?</h1>
+      <p class="meta">Cập nhật lần cuối: 2026-07-08 | Chuyên mục: Tiêu hóa / Mẹo vặt đời sống</p>
+
+      <div class="alert tip">
+        <strong>💡 Lời khuyên vàng:</strong> Trào ngược dạ dày ban đêm khiến bạn mất ngủ, rát cổ họng và ho khan. Bí quyết không nằm ở thuốc đắt tiền, mà nằm ở chính bữa cơm tối của bạn!
+      </div>
+
+      <h2>1. Quy tắc "Bụng lửng" và "Ngủ muộn"</h2>
+      <p>Dạ dày của chúng ta giống như một chiếc túi. Nếu bạn ăn quá no rồi nằm xuống ngay, thức ăn và dịch vị chua sẽ tràn ngược lên thực quản. Do đó:</p>
+      <ul>
+        <li><strong>Không bao giờ ăn no căng bụng:</strong> Chỉ ăn đến khi cảm thấy lưng lửng dạ (khoảng 70% sức chứa).</li>
+        <li><strong>Quy tắc 3 tiếng:</strong> Ăn tối ít nhất 3 tiếng trước khi đi ngủ. Ví dụ, nếu bạn hay ngủ lúc 10h tối, hãy kết thúc bữa ăn muộn nhất vào 7h tối.</li>
+      </ul>
+
+      <h2>2. Bữa tối "Chữa lành" cho dạ dày</h2>
+      <p>Buổi tối dạ dày cần nghỉ ngơi. Hãy chọn những món ăn mềm, nhạt và dễ tiêu hóa:</p>
+      <ul>
+        <li><strong>Các loại cá trắng, thịt nạc lợn:</strong> Luộc hoặc hấp. Tránh chiên xào ngập dầu mỡ vì mỡ rất khó tiêu.</li>
+        <li><strong>Rau củ luộc nhừ:</strong> Bắp cải, súp lơ xanh, mướp, bầu bí. Chúng vừa có chất xơ vừa trung hòa dịch axit cực tốt.</li>
+        <li><strong>Cơm trắng hoặc yến mạch:</strong> Thấm hút bớt dịch vị dư thừa trong dạ dày rất hiệu quả.</li>
+      </ul>
+
+      <h2>3. Những "Kẻ thù" tuyệt đối tránh xa vào buổi tối</h2>
+      <div class="alert warning">
+        <strong>⚠️ Không ăn những món này nếu không muốn mất ngủ:</strong>
+      </div>
+      <ul>
+        <li><strong>Đồ chua và trái cây có múi:</strong> Cam, chanh, xoài chua, dứa, cóc, ổi chua. Chúng chứa nhiều axit làm dạ dày cồn cào.</li>
+        <li><strong>Gia vị cay nóng:</strong> Tỏi sống, ớt, tiêu, sa tế làm cơ thắt thực quản bị lỏng ra, gây trào ngược.</li>
+        <li><strong>Nước ngọt có gas, cà phê, rượu bia:</strong> Càng làm dạ dày chướng hơi và đẩy thức ăn lên cổ.</li>
+      </ul>
+
+      <h2>4. Mẹo nhỏ khi đi ngủ</h2>
+      <p>Hãy <strong>kê cao đầu giường</strong> (chêm thêm mền dưới nệm để nâng cao phần đầu và lưng lên khoảng 15-20cm), không chỉ kê gối dưới cổ. Nếu bạn nằm nghiêng, hãy <strong>nằm nghiêng sang bên trái</strong> — tư thế này giúp dạ dày nằm thấp hơn thực quản, chặn đứng cơn trào ngược hiệu quả nhất!</p>
+    </div>
+</ArticleLayout>

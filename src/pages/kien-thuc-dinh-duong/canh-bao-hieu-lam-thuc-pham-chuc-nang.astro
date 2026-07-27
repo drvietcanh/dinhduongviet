@@ -3,7 +3,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 const article = { slug: "canh-bao-hieu-lam-thuc-pham-chuc-nang", title: "Cảnh báo hiểu lầm: Thực phẩm chức năng không thay thế bữa ăn và thuốc điều trị", description: "Thuốc và bữa ăn chủ đạo vẫn cần thiết. TPCN chỉ là bổ sung, không thay thế.", emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", date: "2026-06-02", readTime: 6, featured: false, tags: ["myth","ask-doctor"] };
 ---
 
-<ArticleLayout article={article}>
+<ArticleLayout article={article as any}>
 
 ## ❌ Hiểu lầm phổ biến
 

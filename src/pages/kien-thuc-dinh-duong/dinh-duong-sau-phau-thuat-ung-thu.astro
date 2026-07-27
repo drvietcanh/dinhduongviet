@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-sau-phau-thuat-ung-thu"];
+if (!art) throw new Error("Article not found: dinh-duong-sau-phau-thuat-ung-thu");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bác Hưng (58 tuổi) vừa trải qua cuộc đại phẫu thuật cắt bỏ khối u ở dạ dày. Sau mổ, bác sụt 5kg, vết mổ rỉ dịch lâu lành, người mệt mỏi rã rời. Lo sợ ung thư "thích ăn thịt", gia đình chỉ cho bác ăn cháo loãng với rau củ xay, kiêng tuyệt đối thịt đỏ, tôm cua. Một tuần sau, bác sĩ phát hiện vết mổ có dấu hiệu không khép miệng, lượng đạm trong máu bác Hưng sụt giảm nghiêm trọng. Bác sĩ yêu cầu gia đình phải thay đổi thực đơn ngay lập tức, chuyển sang chế độ "siêu cao đạm".</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Phẫu thuật cắt u là một chấn thương khổng lồ. Lúc này, cơ thể cần năng lượng và Đạm (Protein) gấp 2-3 lần bình thường để hàn gắn vết thương và tạo máu mới. Việc <u>Kiêng cữ đạm (thịt cá, hải sản) là hành động "tự sát"</u> khiến vết mổ nhiễm trùng và bệnh nhân không đủ sức bước vào đợt Hóa/Xạ trị tiếp theo. Hãy ăn Đạm, Vitamin C và Kẽm!</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cỗ máy cơ thể xây dựng lại từ đống đổ nát</h2>
+  <p>Khi da thịt bị dao mổ cắt đứt, cơ thể nhận một tín hiệu stress cực mạnh. Nó bật chế độ "Tái thiết khẩn cấp". Để vá liền được vết thương, cơ thể huy động toàn bộ lượng Protein dự trữ trong cơ bắp để biến thành màng collagen đan chéo hàn gắn da thịt. Đồng thời, tủy xương phải hoạt động hết công suất để sản xuất máu bù đắp lượng máu đã mất trên bàn mổ.</p>
+  <p>Nếu lúc này bạn chỉ ăn cháo trắng (Carb) và rau (Chất xơ), cơ thể sẽ KHÔNG CÓ VIÊN GẠCH NÀO (Protein) để xây lại mô phẫu thuật. Vết mổ sẽ ướt, mọng nước, bung chỉ và hoại tử.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ 3 Chất dinh dưỡng Vàng sau mổ</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Protein (Đạm) siêu cấp:</strong> Ưu tiên Cá hồi, Cá thu (giàu Omega-3 giúp giảm viêm sưng), ức gà, trứng gà và đậu hũ. Không cần kiêng thịt bò nạc, thịt bò cung cấp sắt vô giá để tái tạo máu, chỉ cần không ăn thịt nướng cháy là được.</li>
+      <li><strong>Vitamin C liều cao:</strong> Không có Vitamin C, màng Collagen không thể hình thành. Hãy uống nước cam, ăn bưởi, ổi, kiwi để vết mổ mau kéo da non và tránh sẹo lồi.</li>
+      <li><strong>Kẽm (Zinc):</strong> Giúp tăng tốc độ liền sẹo lên gấp rưỡi. Hải sản, hàu, ngao, hạt bí ngô là nguồn kẽm dồi dào. (Không hề có chuyện ăn hải sản gây sưng mủ, đó là quan niệm dân gian sai lầm!).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cấm kỵ khiến vết mổ mưng mủ</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Đường tinh luyện (Trà sữa, bánh kẹo):</strong> Đường làm suy yếu đại thực bào (tế bào dọn dẹp vi khuẩn ở vết mổ). Đường cao trong máu là môi trường lý tưởng cho vi khuẩn sinh sôi, gây nhiễm trùng vết mổ.</li>
+      <li><strong>Ăn quá no một bữa:</strong> Ở bệnh nhân phẫu thuật ổ bụng (như cắt u ruột, dạ dày), hệ tiêu hóa đang tê liệt tạm thời. Phải ăn làm 6-8 bữa cực nhỏ mỗi ngày, dạng lỏng (cháo súp), sau đó mới tăng dần lên đặc để tránh bục vết khâu bên trong ruột.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

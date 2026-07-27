@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["che-do-an-keto"];
+if (!art) throw new Error("Article not found: che-do-an-keto");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Chị Thu (40 tuổi) nghe theo bạn bè áp dụng chế độ ăn Keto để giảm cân nhanh đón Tết. Chị cắt sạch cơm, phở, bánh mì, trái cây; thay vào đó ăn ngập ngụa thịt ba chỉ, mỡ lợn và bơ phô mai. Sau 2 tháng, chị giảm được 5kg thật, nhưng khi đi khám tổng quát, bác sĩ tá hỏa vì chỉ số mỡ máu (LDL Cholesterol) của chị cao chót vót, nguy cơ đột quỵ rất cao.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chế độ Keto (Ketogenic) cắt giảm tinh bột tối đa để ép cơ thể đốt mỡ làm năng lượng. Nó giúp giảm cân rất nhanh trong ngắn hạn.
+    Tuy nhiên, việc ăn <u>quá nhiều chất béo bão hòa (mỡ động vật) sẽ tàn phá hệ tim mạch</u>. Chế độ này không được y khoa khuyến cáo áp dụng lâu dài cho người bình thường.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Cơ chế ép cơ thể đốt mỡ (Ketosis)</h2>
+  <p>Bình thường, cơ thể và não bộ chạy bằng nhiên liệu chính là <strong>Carbohydrate (Tinh bột/Đường)</strong>. Khi bạn cắt gần như 100% tinh bột ra khỏi bữa ăn, cơ thể cạn kiệt nhiên liệu.</p>
+  <p>Lúc này, gan buộc phải chuyển hóa mỡ thừa trong cơ thể thành các thể <strong>Ketone</strong> để thay thế đường nuôi não và cơ bắp. Trạng thái này gọi là <em>Ketosis</em>. Chính vì nó lấy mỡ ra đốt trực tiếp, tốc độ giảm mỡ diễn ra cực kỳ nhanh chóng so với các phương pháp giảm cân khác.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Ai có thể áp dụng Keto?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Bệnh nhi động kinh (Epilepsy):</strong> Bất ngờ thay, Keto vốn được sáng chế ra từ 100 năm trước để làm thuốc chữa bệnh động kinh ở trẻ em, giúp giảm đáng kể các cơn co giật.</li>
+      <li><strong>Béo phì bệnh lý & Tiểu đường tuýp 2:</strong> Áp dụng Keto trong ngắn hạn (3-6 tháng) dưới sự giám sát chặt chẽ của bác sĩ để hạ đường huyết nhanh và ép cân, sau đó phải chuyển về ăn uống bình thường.</li>
+    </ul>
+    <h3 style="margin-top:16px;">Keto "Sạch" (Clean Keto)</h3>
+    <p>Thay vì ăn mỡ lợn và thịt xông khói, hãy nạp chất béo tốt từ quả bơ, dầu oliu, các loại hạt, cá hồi và ăn thật nhiều rau xanh họ cải.</p>
+  </div>
+
+  <div class="card">
+    <h2>❌ Những rủi ro sức khỏe nghiêm trọng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cúm Keto (Keto Flu):</strong> Trong vài tuần đầu, não bị sốc vì thiếu đường, gây ra mệt mỏi rã rời, buồn nôn, chóng mặt, cáu gắt và táo bón nặng (do thiếu chất xơ).</li>
+      <li><strong>Tăng Mỡ máu (Tim mạch):</strong> Keto "Bẩn" (Dirty Keto) với xúc xích, phô mai, thịt mỡ sẽ đẩy LDL-Cholesterol lên ngưỡng báo động, làm xơ vữa động mạch.</li>
+      <li><strong>Quá tải cho Gan và Thận:</strong> Thận phải làm việc hết công suất để lọc ketone ra ngoài, làm tăng nguy cơ sỏi thận.</li>
+      <li><strong>Hiệu ứng Yoyo:</strong> Rất khó duy trì Keto cả đời (vì thèm tinh bột). Ngay khi bạn ăn cơm trở lại, cơ thể sẽ tích nước và mỡ, cân nặng sẽ bật tăng lại như cũ, thậm chí béo hơn.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

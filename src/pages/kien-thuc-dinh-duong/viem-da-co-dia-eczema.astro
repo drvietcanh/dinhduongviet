@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-da-co-dia-eczema"];
+if (!art) throw new Error("Article not found: viem-da-co-dia-eczema");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Bé Tôm (4 tuổi) bị Viêm da cơ địa từ nhỏ. Cứ đến mùa đông, hai má và các nếp gấp ở khuỷu tay bé lại nổi ban đỏ rực, khô ráp, ngứa ngáy khiến bé gãi đến tứa máu. Mẹ bôi kem dưỡng ẩm đắt tiền liên tục, bác sĩ kê cả thuốc mỡ Corticoid bôi thì lặn, nhưng dừng thuốc là tái phát dữ dội hơn. Một bác sĩ dị ứng khuyên mẹ thử cắt hoàn toàn trứng và sữa bò khỏi thực đơn của Tôm. Kỳ diệu thay, chỉ sau 3 tuần, làn da bé láng mịn trở lại mà không cần bôi thuốc.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Viêm da cơ địa (Eczema) không chỉ là bệnh ngoài da, nó phản ánh một hệ miễn dịch đang bị rối loạn. Hơn 30% trẻ em bị Eczema nặng là do <u>Dị ứng Thực phẩm tiềm ẩn</u>. Việc áp dụng "Chế độ ăn loại trừ (Elimination Diet)" (Loại bỏ các dị nguyên như Sữa bò, Lúa mì, Đậu nành) và bổ sung <u>Lợi khuẩn Probiotics</u> là chìa khóa để kiểm soát bệnh và giảm các đợt bùng phát hiệu quả.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Hội chứng "Rò rỉ ruột" (Leaky Gut) và Da</h2>
+  <p>Làn da và đường ruột có mối liên hệ mật thiết (Trục Ruột - Da). Ở người bệnh Eczema, lớp niêm mạc ruột của họ thường bị "thủng lấm tấm" (Rò rỉ ruột).</p>
+  <p>Khi ăn phải các protein khó tiêu hóa (như Casein trong sữa bò, Gluten trong lúa mì), thay vì được tiêu hóa hết, các mảnh protein khổng lồ này sẽ lọt qua các lỗ thủng ở ruột để chui thẳng vào máu. Hệ miễn dịch trong máu thấy "vật thể lạ" liền báo động tấn công ồ ạt, giải phóng ra các chất gây viêm. Ngọn lửa viêm này lan lên trên bề mặt da, phá vỡ lớp màng bảo vệ da, khiến da mất nước, khô nẻ và bùng phát Eczema.</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Chế độ ăn "Chữa Lành" (Elimination Diet)</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Truy tìm Thủ phạm:</strong> Hãy thử loại bỏ HOÀN TOÀN một trong các nhóm sau trong vòng 21 ngày: Sữa bò, Trứng, Lúa mì (Gluten), Đậu nành, Đậu phộng. Theo dõi xem da có cải thiện không. <em>Rất nhiều ca Eczema nặng đã khỏi hoàn toàn chỉ bằng việc ngừng uống sữa bò!</em></li>
+      <li><strong>Bổ sung Probiotics (Men vi sinh):</strong> Hàng tỷ lợi khuẩn (Lactobacillus, Bifidobacterium) sẽ bay vào ruột non, như những người thợ xây vá lại các lỗ thủng (rò rỉ ruột). Hãy uống men vi sinh hoặc ăn sữa chua lên men tự nhiên hàng ngày.</li>
+      <li><strong>Tăng cường Omega-3:</strong> Dầu cá, cá hồi, dầu hạt lanh là loại thuốc mỡ "bôi từ bên trong", giúp dập tắt ngọn lửa viêm đang cháy dưới da.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>❌ Cảnh báo Dị ứng Chéo</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Hội chứng Dị ứng Miệng (OAS):</strong> Bạn có biết cấu trúc protein của hạt phấn hoa (gây viêm mũi dị ứng) lại rất giống với protein trong một số loại trái cây không? Nếu bạn bị Eczema và dị ứng phấn hoa, bạn ăn <strong>Táo sống, Đào, Cherry</strong> cũng sẽ làm miệng ngứa ngáy và da bùng phát mẩn đỏ.</li>
+      <li><strong>Giải pháp:</strong> Gọt vỏ và Nấu chín. Nhiệt độ sẽ phá hủy cấu trúc protein gây dị ứng này. Trẻ bị Eczema có thể bị ngứa khi ăn Táo sống, nhưng ăn bánh Táo nướng hoặc mứt Táo thì lại hoàn toàn an toàn.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>

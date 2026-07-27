@@ -1,0 +1,52 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["chung-do-mat-rosacea"];
+if (!art) throw new Error("Article not found: chung-do-mat-rosacea");
+---
+
+<ArticleLayout article={art}>
+
+<!-- 1️⃣ Tình huống -->
+<section class="section card">
+  <p>Cô Tâm (45 tuổi) luôn khổ sở vì vùng mũi và hai gò má luôn đỏ ửng như người say rượu, thi thoảng còn nổi những nốt mụn mủ nhỏ li ti (Chứng đỏ mặt - Rosacea). Mỗi lần cô đi ăn lẩu thái cay xé lưỡi, hay nhâm nhi một ly rượu vang, thì ngay lập tức khuôn mặt cô bừng bừng sức nóng, các mạch máu dưới da mặt hằn lên rõ rệt và ngứa râm ran. Việc thoa kem dưỡng ẩm dịu nhẹ chỉ giúp giải quyết bề mặt, cơn bùng phát đỏ mặt luôn chực chờ quay lại nếu cô ăn sai cách.</p>
+</section>
+
+<!-- 2️⃣ TL;DR -->
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Rosacea (Chứng đỏ mặt) là một bệnh viêm da mãn tính liên quan mật thiết đến sự giãn nở bất thường của các mao mạch dưới da. Để ngăn ngừa bùng phát, bạn bắt buộc phải tránh xa các "Chất gây giãn mạch": <u>Cồn, Đồ ăn siêu cay nóng (Capsaicin), và Đồ uống nóng rẫy</u>. Hãy làm dịu da từ bên trong bằng chế độ ăn giàu <u>Omega-3 và Kẽm</u>.</strong>
+  </p>
+</section>
+
+<!-- 3️⃣ Cơ chế -->
+<section class="section card">
+  <h2>🔬 Mạch máu giãn nở vô tổ chức</h2>
+  <p>Ở người bình thường, mạch máu dưới da mặt mở ra khi nóng và co lại khi lạnh. Nhưng ở bệnh nhân Rosacea, các mao mạch này cực kỳ nhạy cảm và gần như mất khả năng co lại. Chúng luôn trong trạng thái giãn nở, ứ đọng một lượng máu lớn, khiến da luôn ửng đỏ.</p>
+  <p>Một số loại thực phẩm chứa những hóa chất đặc thù đi vào máu sẽ kích hoạt hệ thống thần kinh giao cảm, gửi tín hiệu sai lệch bắt các mạch máu mặt phải mở rộng hết cỡ, đẩy một lượng máu khổng lồ dồn lên mặt, gây ra cảm giác nóng bừng (flushing).</p>
+</section>
+
+<!-- 4️⃣ Giải pháp -->
+<section class="section grid two">
+  <div class="card">
+    <h2>❌ "Trái bom" kích nổ chứng Đỏ Mặt</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Cồn (Rượu vang đỏ, bia):</strong> Rượu vang đỏ là thủ phạm số 1 thế giới gây bùng phát Rosacea. Cồn giãn mạch máu cực mạnh.</li>
+      <li><strong>Gia vị cay (Ớt, Tiêu đen, Sa tế):</strong> Chứa Capsaicin, kích thích thụ thể nhiệt trên da, khiến cơ thể tưởng bạn đang bị nướng ở nhiệt độ cao và lập tức dồn máu lên da để tản nhiệt.</li>
+      <li><strong>Thực phẩm chứa Cinnamaldehyde:</strong> Cà chua, cam chanh, socola, quế. Đây là những thực phẩm lành mạnh với người thường, nhưng hóa chất cinnamaldehyde trong chúng lại là khắc tinh gây đỏ mặt ở bệnh nhân Rosacea.</li>
+      <li><strong>Đồ ăn/uống NÓNG RẪY:</strong> Nhiệt độ vật lý của súp nóng, trà nóng sẽ làm mặt đỏ bừng. Hãy để đồ ăn nguội bớt (âm ấm) rồi mới ăn.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>✅ Thực phẩm "Làm mát" và Chống viêm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li><strong>Omega-3 dồi dào (Cá hồi, Cá thu, Hạt lanh):</strong> Omega-3 dập tắt các cytokine gây viêm dưới da, giúp thu nhỏ các mạch máu đang sưng tấy, làm da bớt đỏ và bớt nhạy cảm hơn.</li>
+      <li><strong>Chất xơ nuôi Ruột (Prebiotics):</strong> Nhiều nghiên cứu chỉ ra mối liên hệ chặt chẽ giữa Rosacea và chứng SIBO (Vi khuẩn phát triển quá mức ở ruột non). Ăn nhiều rau xanh (Măng tây, yến mạch) giúp cân bằng hệ vi sinh ruột, từ đó giảm phản ứng viêm trên da mặt.</li>
+      <li><strong>Kẽm:</strong> Giúp chữa lành các tổn thương da, hạn chế nổi mụn mủ liên quan đến Rosacea.</li>
+    </ul>
+  </div>
+</section>
+
+</ArticleLayout>
