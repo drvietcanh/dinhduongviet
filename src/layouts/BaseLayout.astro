@@ -451,22 +451,63 @@ if (isArticle) {
         .top-bar .logo {
           grid-column: 1;
           grid-row: 1;
+          min-width: 0;
+          font-size: 1.05rem;
         }
         .theme-toggle {
           grid-column: 2;
           grid-row: 1;
         }
+        .top-bar .logo span {
+          min-width: 0;
+        }
+        .nav-search {
+          grid-column: 1 / -1;
+          grid-row: 2;
+          width: 100%;
+          max-width: none;
+          min-width: 0;
+        }
+        .nav-search:focus-within {
+          max-width: none;
+        }
+        .nav-links {
+          grid-column: 1 / -1;
+          grid-row: 3;
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 8px;
+          padding-top: 8px;
+        }
+        .wrapper.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links a {
+          display: block;
+          padding: 10px 0;
+          white-space: normal;
+        }
         .hamburger {
-        color: var(--ink);
-        border: none;
-        font-size: 1.3rem;
-        cursor: pointer;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-        z-index: 999;
-        display: none;
-        transition: opacity 0.3s;
-        line-height: 44px;
-        text-align: center;
+          grid-column: 3;
+          grid-row: 1;
+          background: var(--bg-soft);
+          border: 1px solid var(--line);
+          color: var(--ink);
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          font-size: 1.1rem;
+          cursor: pointer;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+          z-index: 999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: opacity 0.3s, background 0.2s, transform 0.2s;
+          line-height: 1;
+          text-align: center;
+        }
       }
 
       /* ===================== SKELETON ===================== */
