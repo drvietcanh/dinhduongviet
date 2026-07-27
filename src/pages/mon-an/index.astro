@@ -94,7 +94,7 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   </section>
 </BaseLayout>
 
-<script>
+<script is:inline>
   var recipeSort = document.getElementById('recipe-sort');
   var recipeProfile = document.getElementById('recipe-profile');
   var recipeTag = document.getElementById('recipe-tag');
@@ -201,9 +201,10 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   .filter-panel {
     margin-top: 14px;
     padding: 14px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
     background: var(--card);
+    box-shadow: var(--shadow-sm);
   }
   .filter-row {
     display: grid;
@@ -222,18 +223,32 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   .filter-row input {
     min-height: 44px;
     padding: 0 12px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: inherit;
+    transition: all var(--transition);
+  }
+  .filter-row select:focus,
+  .filter-row input:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    outline: none;
   }
   .numeric-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .recipe-card {
     position: relative;
   }
   .food-thumb {
-    width: 100%;
+    width: calc(100% + 32px);
     height: 120px;
     background-size: cover;
     background-position: center;
-    border-radius: 8px 8px 0 0;
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     margin-top: -16px;
+    margin-left: -16px;
     margin-bottom: 10px;
   }
   .mini-tag {

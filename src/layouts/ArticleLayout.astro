@@ -1,6 +1,7 @@
 ---
 import { marked } from 'marked';
 import BaseLayout from "./BaseLayout.astro";
+import SocialShare from "../components/SocialShare.astro";
 import type { ArticleMeta } from "../data/articles";
 import { getRelatedArticles, articleBySlug, SERIES, SOURCE_ORG, SPECIALTIES } from "../data/articles";
 import practicalQA from "../data/practical-qa";
@@ -56,9 +57,13 @@ const specialtyCTA = {
   'huyet-hoc': '🩸 Duy trì dinh dưỡng tốt với <a href="/cong-cu/bmi">BMI</a> và <a href="/cong-cu/theo-doi-duong-huyet">theo dõi đường huyết</a>.',
   'ung-thu': '🎗️ Dinh dưỡng hỗ trợ điều trị ung thư. Tính <a href="/cong-cu/tinh-nhu-cau-dam">nhu cầu đạm</a> và <a href="/cong-cu/bmi">BMI</a>.',
 };
-const cta = specialtyCTA[article.specialty] || null;
+const cta = article.specialty && article.specialty in specialtyCTA
+  ? specialtyCTA[article.specialty as keyof typeof specialtyCTA]
+  : null;
 
-const toolLinks = (article.specialty && toolMap[article.specialty]) || [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/muc-tieu-can-nang', l: 'Mục tiêu cân nặng' }];
+const toolLinks = article.specialty && article.specialty in toolMap
+  ? toolMap[article.specialty as keyof typeof toolMap]
+  : [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/muc-tieu-can-nang', l: 'Mục tiêu cân nặng' }];
 
 // Render markdown inside slot content
 const rawSlot = await Astro.slots.render("default");
@@ -225,6 +230,9 @@ const jsonLd = {
       </ul>
     </div>
     )}
+
+    <!-- Social Share Component -->
+    <SocialShare title={article.title} url={"https://dinh-duong-viet.pages.dev/kien-thuc-dinh-duong/" + article.slug} />
 
     <!-- Công cụ liên quan -->
     <div class="tool-links-section">

@@ -34,7 +34,7 @@ const timeOptions = [
 
 <BaseLayout title={title} description={desc} canonical="/cong-cu/theo-doi-duong-huyet">
   <main class="glucose-log-shell" aria-labelledby="page-title">
-    <section class="hero-panel">
+    <section class="hero-panel card">
       <p class="eyebrow">Nhật ký an toàn v1</p>
       <h1 id="page-title">Theo dõi đường huyết</h1>
       <p>
@@ -44,7 +44,7 @@ const timeOptions = [
       </p>
     </section>
 
-    <section class="notice-panel" aria-labelledby="scope-title">
+    <section class="notice-panel card" aria-labelledby="scope-title">
       <h2 id="scope-title">Phạm vi hiện tại</h2>
       <p>
         Đường huyết và HbA1c cần được cá thể hóa theo chẩn đoán, thuốc, thai kỳ,
@@ -54,7 +54,7 @@ const timeOptions = [
       </p>
     </section>
 
-    <section class="log-panel" aria-labelledby="log-title">
+    <section class="log-panel card" aria-labelledby="log-title">
       <div class="section-head">
         <p class="eyebrow">Ghi lại để trao đổi</p>
         <h2 id="log-title">Nhật ký đường huyết</h2>
@@ -67,24 +67,24 @@ const timeOptions = [
       <div class="form-card" aria-label="Ghi nhật ký đường huyết">
         <label>
           Thời điểm đo
-          <select id="entry-time">
+          <select id="entry-time" class="cc-input">
             {timeOptions.map(([value, label]) => <option value={value}>{label}</option>)}
           </select>
         </label>
 
         <label>
           Chỉ số trên máy đo
-          <input id="entry-value" type="number" inputmode="decimal" min="0" step="0.1" placeholder="Nhập số đo" />
+          <input id="entry-value" class="cc-input" type="number" inputmode="decimal" min="0" step="0.1" placeholder="Nhập số đo" />
         </label>
 
         <label>
           Ghi chú bữa ăn, thuốc, triệu chứng
-          <textarea id="entry-note" rows="3" placeholder="Ví dụ: sau bữa tối, có đi bộ, đang dùng thuốc theo toa"></textarea>
+          <textarea id="entry-note" class="cc-input" rows="3" placeholder="Ví dụ: sau bữa tối, có đi bộ, đang dùng thuốc theo toa"></textarea>
         </label>
 
         <div class="button-row">
-          <button type="button" class="primary-button" id="add-entry">Thêm vào nhật ký</button>
-          <button type="button" class="secondary-button" id="clear-log">Xóa nhật ký</button>
+          <button type="button" class="cc-btn" id="add-entry">Thêm vào nhật ký</button>
+          <button type="button" class="secondary-button cc-btn" style="background: var(--bg-soft); color: var(--ink);" id="clear-log">Xóa nhật ký</button>
         </div>
       </div>
 
@@ -97,7 +97,7 @@ const timeOptions = [
       <div class="table-card" id="log-table" aria-live="polite"></div>
     </section>
 
-    <section class="situation-panel" aria-labelledby="situation-title">
+    <section class="situation-panel card" aria-labelledby="situation-title">
       <p class="eyebrow">Khi nào cần hỏi chuyên môn?</p>
       <h2 id="situation-title">Các tình huống cần cá thể hóa</h2>
       <div class="situation-grid">
@@ -110,7 +110,7 @@ const timeOptions = [
       </div>
     </section>
 
-    <section class="result-panel" aria-labelledby="result-title">
+    <section class="result-panel card" aria-labelledby="result-title">
       <p class="result-label">Định hướng</p>
       <h2 id="result-title">Không đủ điều kiện đưa khuyến nghị cá nhân ở v1</h2>
       <p>
@@ -121,7 +121,7 @@ const timeOptions = [
       </p>
     </section>
 
-    <section class="prep-panel" aria-labelledby="prep-title">
+    <section class="prep-panel card" aria-labelledby="prep-title">
       <p class="eyebrow">Chuẩn bị thông tin</p>
       <h2 id="prep-title">Nên mang theo khi đi hỏi</h2>
       <ul>
@@ -147,14 +147,11 @@ const timeOptions = [
     .situation-panel,
     .result-panel,
     .prep-panel {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px;
+      /* Card styles inherited from BaseLayout */
     }
 
     .hero-panel {
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(34, 197, 94, 0.08));
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(59, 130, 246, 0.1));
     }
 
     .eyebrow,
@@ -201,9 +198,9 @@ const timeOptions = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-soft);
     }
 
     .form-card label {
@@ -220,18 +217,7 @@ const timeOptions = [
     .form-card input,
     .form-card select,
     .form-card textarea {
-      width: 100%;
-      box-sizing: border-box;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--card);
-      color: var(--ink);
-      font: inherit;
-      padding: 10px 12px;
-    }
-
-    .form-card textarea {
-      resize: vertical;
+      /* Inherited from cc-input */
     }
 
     .button-row {
@@ -241,27 +227,7 @@ const timeOptions = [
       gap: 10px;
     }
 
-    .primary-button,
-    .secondary-button {
-      min-height: 42px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 10px 14px;
-    }
-
-    .primary-button {
-      background: var(--brand);
-      border-color: var(--brand);
-      color: #fff;
-    }
-
-    .secondary-button {
-      background: transparent;
-      color: var(--ink-secondary);
-    }
+    /* Removed old primary and secondary button styles */
 
     .summary-strip {
       display: flex;
@@ -271,8 +237,8 @@ const timeOptions = [
     }
 
     .summary-item {
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
       background: var(--card);
       padding: 10px 12px;
       color: var(--ink-secondary);
@@ -286,11 +252,12 @@ const timeOptions = [
     .chart-card,
     .table-card {
       margin-top: 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
       background: var(--card);
       padding: 14px;
       overflow-x: auto;
+      box-shadow: var(--shadow-sm);
     }
 
     #glucose-chart {
@@ -309,7 +276,7 @@ const timeOptions = [
 
     .log-table th,
     .log-table td {
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--card-border);
       padding: 10px;
       text-align: left;
       vertical-align: top;
@@ -338,10 +305,10 @@ const timeOptions = [
       grid-template-columns: 28px minmax(0, 1fr);
       gap: 10px;
       align-items: start;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
       padding: 12px;
-      background: var(--bg);
+      background: var(--bg-soft);
     }
 
     .situation-card span {
@@ -357,8 +324,8 @@ const timeOptions = [
     }
 
     .result-panel {
-      border-color: rgba(14, 165, 233, 0.24);
-      background: rgba(14, 165, 233, 0.07);
+      border-color: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.05);
     }
 
     .prep-panel ul {
@@ -378,7 +345,7 @@ const timeOptions = [
       .result-panel,
       .prep-panel {
         padding: 16px;
-        border-radius: 8px;
+        border-radius: var(--radius-lg);
       }
 
       .glucose-log-shell h1 {

@@ -26,9 +26,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.7.3",
+    "@vite-pwa/astro": "^1.2.0",
     "astro": "^5.16.4",
     "glob": "^13.0.6",
     "marked": "^18.0.4",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "workbox-window": "^7.4.1"
   }
 }

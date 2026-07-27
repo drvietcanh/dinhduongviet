@@ -178,20 +178,20 @@ const scenarios = [
     .tool-panel,
     .risk-section,
     .prep-section {
-      border: 1px solid #d8e2ee;
-      border-radius: 8px;
-      background: #ffffff;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
     }
 
     .hero {
       padding: 28px;
-      background: linear-gradient(135deg, #f7fbff 0%, #eef7f2 100%);
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
     }
 
     .eyebrow {
       margin: 0 0 8px;
-      color: #0f766e;
+      color: var(--brand);
       font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0;
@@ -207,7 +207,7 @@ const scenarios = [
 
     h1 {
       margin: 0;
-      color: #12324a;
+      color: var(--brand-dark);
       font-size: clamp(2rem, 5vw, 3.25rem);
       line-height: 1.08;
       letter-spacing: 0;
@@ -215,7 +215,7 @@ const scenarios = [
 
     h2 {
       margin: 0;
-      color: #16324a;
+      color: var(--ink);
       font-size: 1.35rem;
       line-height: 1.25;
       letter-spacing: 0;
@@ -223,7 +223,7 @@ const scenarios = [
 
     h3 {
       margin: 4px 0 8px;
-      color: #12324a;
+      color: var(--ink);
       font-size: 1.18rem;
       line-height: 1.25;
       letter-spacing: 0;
@@ -232,21 +232,21 @@ const scenarios = [
     .lead {
       max-width: 760px;
       margin: 14px 0 0;
-      color: #334155;
+      color: var(--ink-secondary);
       font-size: 1.05rem;
       line-height: 1.65;
     }
 
     .warning-band {
       padding: 22px;
-      border-color: #f2c78f;
-      background: #fff8ed;
+      border-color: rgba(245, 158, 11, 0.15);
+      background: rgba(245, 158, 11, 0.05);
     }
 
     .warning-band p,
     .panel-copy p,
     .prep-section p {
-      color: #334155;
+      color: var(--ink-secondary);
       line-height: 1.6;
     }
 
@@ -268,7 +268,7 @@ const scenarios = [
     }
 
     .safety-form label {
-      color: #1f2937;
+      color: var(--ink);
       font-weight: 700;
     }
 
@@ -276,37 +276,54 @@ const scenarios = [
     .safety-form button {
       width: 100%;
       min-height: 46px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       font: inherit;
     }
 
     .safety-form select {
-      border: 1px solid #cbd5e1;
-      background: #fff;
-      color: #111827;
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      color: var(--ink);
       padding: 0 12px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .safety-form select:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
     }
 
     .safety-form button {
       border: 0;
-      background: #0f766e;
+      background: var(--brand);
       color: #ffffff;
       font-weight: 800;
       cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .safety-form button:hover {
+      background: var(--brand-dark);
+      transform: translateY(-1px);
+    }
+
+    .safety-form button:active {
+      transform: translateY(0);
     }
 
     .result-panel {
       grid-column: 1 / -1;
       padding: 18px;
-      border: 1px solid #b7d6ce;
-      border-radius: 8px;
-      background: #f0fdfa;
-      color: #234;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-radius: var(--radius-lg);
+      background: rgba(16, 185, 129, 0.05);
+      color: var(--ink);
     }
 
     .result-label {
       margin: 0;
-      color: #0f766e;
+      color: var(--brand-dark);
       font-size: 0.82rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -321,7 +338,7 @@ const scenarios = [
     .prep-section ul {
       margin: 10px 0 0;
       padding-left: 1.2rem;
-      color: #334155;
+      color: var(--ink-secondary);
       line-height: 1.58;
     }
 
@@ -347,9 +364,9 @@ const scenarios = [
       align-items: start;
       min-height: 86px;
       padding: 14px;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      background: #f8fafc;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--bg-soft);
     }
 
     .risk-card span {

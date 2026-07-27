@@ -113,13 +113,14 @@ const safeNextSteps = [
     .result-panel,
     .prep-panel {
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
       padding: 20px;
+      box-shadow: var(--shadow-sm);
     }
 
     .hero-panel {
-      background: linear-gradient(135deg, rgba(190, 24, 93, 0.08), rgba(2, 132, 199, 0.08));
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(59, 130, 246, 0.05));
     }
 
     .eyebrow,
@@ -171,10 +172,10 @@ const safeNextSteps = [
       grid-template-columns: 28px minmax(0, 1fr);
       gap: 10px;
       align-items: start;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
       padding: 12px;
-      background: var(--bg);
+      background: var(--bg-soft);
     }
 
     .situation-card span {
@@ -190,8 +191,8 @@ const safeNextSteps = [
     }
 
     .result-panel {
-      border-color: rgba(190, 24, 93, 0.24);
-      background: rgba(190, 24, 93, 0.07);
+      border-color: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.05);
     }
 
     .result-panel ul,
@@ -211,7 +212,7 @@ const safeNextSteps = [
       .result-panel,
       .prep-panel {
         padding: 16px;
-        border-radius: 8px;
+        border-radius: var(--radius-lg);
       }
 
       .pregnancy-nutrition-shell h1 {

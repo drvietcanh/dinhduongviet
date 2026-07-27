@@ -2,10 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SearchBox from "../../components/SearchBox.astro";
 import DataSummary from "../../components/DataSummary.astro";
-import FoodCard from "../../components/FoodCard.astro";
-import FoodIcon from "../../components/FoodIcon.astro";
 import { foods } from "../../data/nutrition";
-import { allTags, tagLabel } from "../../lib/nutrition";
+import { tagLabel } from "../../lib/nutrition";
 
 const groups = foods.reduce<Record<string, typeof foods>>((acc, food) => {
   acc[food.category] ??= [];
@@ -100,9 +98,10 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   .filter-panel {
     margin-top: 14px;
     padding: 14px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
     background: var(--card);
+    box-shadow: var(--shadow-sm);
   }
   .filter-row {
     display: grid;
@@ -121,11 +120,23 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   .filter-row input {
     min-height: 44px;
     padding: 0 12px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: inherit;
+    transition: all var(--transition);
+  }
+  .filter-row select:focus,
+  .filter-row input:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    outline: none;
   }
   .numeric-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .filter-btn.active { background: var(--brand); color: white; border-color: var(--brand); }
-  .filter-btn { cursor: pointer; border: 1px solid var(--line); user-select: none; }
+  .filter-btn { cursor: pointer; border: 1px solid var(--card-border); border-radius: var(--radius-lg); user-select: none; transition: all var(--transition); background: var(--card); color: var(--ink-secondary); box-shadow: var(--shadow-sm); }
+  .filter-btn:hover { border-color: var(--brand-light2); color: var(--brand); box-shadow: var(--shadow); transform: translateY(-1px); }
+  .filter-btn.active { background: var(--brand); color: white; border-color: var(--brand); box-shadow: var(--shadow); transform: none; font-weight: 500; }
   .food-group.is-empty { display: none; }
   @media (max-width: 760px) {
     .filter-row,

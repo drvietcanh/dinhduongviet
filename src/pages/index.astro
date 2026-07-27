@@ -27,11 +27,11 @@ const toolCards = [
 
 <BaseLayout title="Dinh Dưỡng Việt - Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam" canonical="/">
   <section class="hero">
-    <span class="hero-badge">🇻🇳 Thực phẩm Việt Nam — Có nguồn gốc</span>
-    <h1>Ăn gì cũng biết <span class="brand-text">bao nhiêu calo</span></h1>
-    <p class="hero-desc">Tra nhanh calo, protein, carb, chất béo của thực phẩm và món ăn Việt Nam theo 100g hoặc khẩu phần.</p>
-    <div class="hero-search"><AutoSearch /></div>
-    <div class="hero-actions">
+    <span class="hero-badge animate-fade-in">🇻🇳 Thực phẩm Việt Nam — Có nguồn gốc</span>
+    <h1 class="animate-fade-in-up">Ăn gì cũng biết <span class="brand-text">bao nhiêu calo</span></h1>
+    <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Tra nhanh calo, protein, carb, chất béo của thực phẩm và món ăn Việt Nam theo 100g hoặc khẩu phần.</p>
+    <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
+    <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
       <a class="cta-btn" href="/thuc-pham">🥬 Tra thực phẩm</a>
       <a class="cta-btn" href="/mon-an">🍜 Tra món ăn</a>
       <a class="cta-btn cta-outline" href="/ban-do-benh">🩺 Bệnh lý</a>
@@ -60,22 +60,22 @@ const toolCards = [
 
   <section class="section entry-grid">
     <div class="entry-cards">
-      <a href="/kien-thuc-dinh-duong" class="entry-card">
+      <a href="/kien-thuc-dinh-duong" class="entry-card card-healthy">
         <div class="entry-icon">🥗</div>
         <div class="entry-title">Tôi muốn ăn lành mạnh hơn</div>
         <div class="entry-desc">Tháp dinh dưỡng, đĩa ăn lành mạnh, giảm muối, giảm đường, đọc nhãn thực phẩm</div>
       </a>
-      <a href="/ban-do-benh" class="entry-card">
+      <a href="/ban-do-benh" class="entry-card card-medical">
         <div class="entry-icon">🩺</div>
         <div class="entry-title">Tôi đang có bệnh</div>
         <div class="entry-desc">Tiểu đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu — ăn gì, kiêng gì?</div>
       </a>
-      <a href="/cong-cu/muc-tieu-can-nang" class="entry-card">
+      <a href="/cong-cu/muc-tieu-can-nang" class="entry-card card-weight">
         <div class="entry-icon">⚖️</div>
         <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
         <div class="entry-desc">Tính BMR, TDEE, mục tiêu calo, kế hoạch giảm cân khoa học, tăng cơ</div>
       </a>
-      <a href="/cong-cu/ke-hoach-bua-an" class="entry-card">
+      <a href="/cong-cu/ke-hoach-bua-an" class="entry-card card-diet">
         <div class="entry-icon">📋</div>
         <div class="entry-title">Tôi cần thực đơn cụ thể</div>
         <div class="entry-desc">Thực đơn 1 ngày, bữa sáng, bữa tối, ăn ngoài hàng, kế hoạch bữa ăn cá nhân</div>
@@ -374,31 +374,89 @@ const toolCards = [
 .brand-text { color:var(--brand); }
 
 /* Hero */
-.hero { padding:48px 0 36px; text-align:center; position:relative; overflow:hidden; background:linear-gradient(180deg, #c8e6c9 0%, var(--bg) 55%); border-radius:var(--radius-lg); }
-[data-theme="dark"] .hero { background:linear-gradient(180deg, #1b5e20 0%, var(--bg) 55%); }
-.hero-badge { display:inline-block; padding:5px 16px; border-radius:999px; background:var(--brand); color:white; font-size:0.83rem; font-weight:600; margin-bottom:14px; letter-spacing:0.3px; }
-[data-theme="dark"] .hero-badge { background:var(--brand-dark); }
-.hero h1 { margin:0 auto; max-width:680px; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.2; color:var(--ink); }
-.hero-desc { margin:12px auto 20px; max-width:520px; color:#4B5563; font-size:0.96rem; line-height:1.6; }
-[data-theme="dark"] .hero-desc { color:var(--ink-secondary); }
-.hero-search { max-width:540px; margin:0 auto; }
-.hero-actions { display:flex; gap:8px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+.hero {
+  padding: 80px 24px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--brand-light2) 0%, var(--bg-soft) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8), var(--shadow-sm); margin-bottom: 24px; }
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.4) 0%, var(--bg) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), var(--shadow-sm);
+}
+.hero-badge { display:inline-block; padding:6px 18px; border-radius:999px; background:var(--brand-light2); color:var(--brand-dark); font-size:0.85rem; font-weight:600; margin-bottom:18px; letter-spacing:0.3px; border: 1px solid rgba(5, 150, 105, 0.15); opacity: 0; }
+[data-theme="dark"] .hero-badge { background:var(--brand-light); color:var(--brand); border-color: rgba(52, 211, 153, 0.15); }
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem); line-height:1.2; color:var(--ink); font-weight: 800; opacity: 0; }
+.hero-desc { margin:14px auto 24px; max-width:520px; color:var(--ink-secondary); font-size:1.02rem; line-height:1.6; opacity: 0; }
+.hero-search { max-width:540px; margin:0 auto; opacity: 0; }
+.hero-actions { display:flex; gap:10px; justify-content:center; margin-top:24px; flex-wrap:wrap; opacity: 0; }
 
 .entry-grid { padding-top:0; }
-.entry-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-.entry-card { display:flex; flex-direction:column; align-items:center; text-align:center; padding:24px 16px; background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius-lg); text-decoration:none; color:inherit; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
-.entry-card:hover { transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--brand-light2); }
-.entry-card:active { transform:translateY(-1px); }
-.entry-icon { font-size:2.2rem; margin-bottom:8px; display:block; }
-.entry-title { font-weight:600; font-size:0.95rem; margin-bottom:6px; color:var(--brand); }
-.entry-desc { font-size:0.78rem; color:var(--ink-secondary); line-height:1.45; max-width:200px; }
+.entry-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.entry-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-bottom: 5px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+}
+.entry-card:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+.entry-icon { font-size:2.4rem; margin-bottom:12px; display:block; }
+.entry-title { font-weight:700; font-size:1.02rem; margin-bottom:8px; color:var(--brand); }
+.entry-desc { font-size:0.82rem; color:var(--ink-secondary); line-height:1.5; max-width:220px; }
+
+/* Entry Card Accent Colors */
+.entry-card.card-healthy { border-bottom-color: #10b981; }
+.entry-card.card-healthy:hover { border-color: #10b981; background: linear-gradient(180deg, rgba(16, 185, 129, 0.02) 0%, rgba(16, 185, 129, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.15); }
+.entry-card.card-medical { border-bottom-color: #ef4444; }
+.entry-card.card-medical:hover { border-color: #ef4444; background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, rgba(239, 68, 68, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.15); }
+.entry-card.card-weight { border-bottom-color: #f59e0b; }
+.entry-card.card-weight:hover { border-color: #f59e0b; background: linear-gradient(180deg, rgba(245, 158, 11, 0.02) 0%, rgba(245, 158, 11, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.15); }
+.entry-card.card-diet { border-bottom-color: #3b82f6; }
+.entry-card.card-diet:hover { border-color: #3b82f6; background: linear-gradient(180deg, rgba(59, 130, 246, 0.02) 0%, rgba(59, 130, 246, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.15); }
+
 @media(max-width:700px){ .entry-cards { grid-template-columns:repeat(2,1fr); } }
 @media(max-width:480px){ .entry-cards { grid-template-columns:1fr; } }
 
-.cta-btn { display:inline-block; padding:10px 22px; border-radius:999px; font-weight:600; font-size:0.92rem; background:var(--brand); color:white; transition:all var(--transition); white-space:nowrap; text-decoration:none; border:none; cursor:pointer; }
-.cta-btn:hover { opacity:0.92; transform:translateY(-2px); text-decoration:none; box-shadow:0 4px 12px rgba(46,125,50,0.25); }
-.cta-outline { background:transparent; color:var(--ink-secondary); border:1.5px solid var(--line); font-weight:500; font-size:0.88rem; padding:9px 18px; }
-.cta-outline:hover { border-color:var(--brand); color:var(--brand); background:var(--brand-light); opacity:1; transform:translateY(-2px); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.cta-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: var(--brand-gradient);
+  color: white;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px -3px rgba(5, 150, 105, 0.3);
+}
+.cta-btn:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  text-decoration: none;
+  box-shadow: 0 12px 25px -5px rgba(5, 150, 105, 0.4);
+}
+.cta-outline { background:transparent; color:var(--ink-secondary); border:1.5px solid var(--line); font-weight:500; font-size:0.9rem; padding:10.5px 20px; }
+.cta-outline:hover { border-color:var(--brand); color:var(--brand); background:var(--brand-light); opacity:1; transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.06); }
 
 /* Health alert cards */
 .ha-card { display:flex; gap:10px; padding:14px; align-items:flex-start; border-left:4px solid; }

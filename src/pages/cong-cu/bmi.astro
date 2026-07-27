@@ -30,6 +30,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <input
           type="text"
           id="weight"
+          class="cc-input"
           inputmode="decimal"
           autocomplete="off"
           placeholder="Ví dụ: 65 hoặc 65,5"
@@ -40,6 +41,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <input
           type="text"
           id="height"
+          class="cc-input"
           inputmode="decimal"
           autocomplete="off"
           placeholder="Ví dụ: 170 hoặc 170,5"
@@ -51,14 +53,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       Hỗ trợ nhập số thập phân bằng dấu chấm hoặc dấu phẩy.
     </p>
 
-    <button type="button" id="calc-btn" class="btn" style="margin-top: 16px;">
+    <button type="button" id="calc-btn" class="cc-btn" style="margin-top: 16px; width: 100%;">
       Tính BMI tham khảo
     </button>
 
     <p id="form-message" class="form-message" hidden></p>
   </section>
 
-  <section id="result-section" class="section card" style="display:none;">
+  <section id="result-section" class="section card animate-result" style="display:none; border: 2px solid var(--brand-light2);">
     <h2>Kết quả tham khảo</h2>
     <div class="grid two">
       <div class="stat">
@@ -104,34 +106,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     margin-bottom: 4px;
   }
 
-  input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    font-size: 1rem;
-    background: var(--bg-elevated);
-    color: var(--ink);
-    box-sizing: border-box;
-  }
-
-  .btn {
-    padding: 12px 28px;
-    background: var(--brand);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .btn:hover {
-    background: var(--brand-dark);
-  }
+  /* Removed old input and btn styles since they are in BaseLayout */
 
   .stat {
     margin-bottom: 8px;
+  }
+
+  .stat span {
+    display: block;
+    margin-bottom: 4px;
   }
 
   .stat strong {
@@ -142,16 +125,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .form-message {
     margin-top: 12px;
     padding: 10px 12px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     background: #fff7ed;
     color: #9a3412;
   }
 
   .result-note {
     margin-top: 16px;
-    padding: 12px;
-    border-radius: 8px;
-    background: var(--soft);
+    padding: 16px;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    line-height: 1.6;
   }
 
   .safe-list {
@@ -162,6 +147,20 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .safe-list li + li {
     margin-top: 8px;
   }
+
+  /* Status badge for Asian BMI */
+  .status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white !important;
+  }
+  .status-blue { background: #3b82f6; }
+  .status-green { background: #10b981; }
+  .status-orange { background: #f59e0b; }
+  .status-red { background: #ef4444; }
 </style>
 
 <script>
@@ -242,10 +241,33 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       return;
     }
 
-    bmiValue.textContent = `${bmi.toFixed(1)} kg/m²`;
-    bmiMeaning.textContent = "Chỉ số sàng lọc tham khảo";
-    bmiNote.textContent =
-      "BMI không thay thế đánh giá lâm sàng. Nếu cần đánh giá cá nhân, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng.";
+    let classification = "";
+    let alertClass = "";
+    let description = "";
+
+    if (bmi < 18.5) {
+      classification = "Cân nặng thấp (Gầy)";
+      alertClass = "status-blue";
+      description = "Bạn đang ở mức cân nặng thấp hơn khuyến nghị. Bạn nên tham khảo ý kiến bác sĩ hoặc chuyên gia dinh dưỡng để kiểm tra nguy cơ thiếu chất và thiết lập một chế độ ăn uống giúp tăng cân lành mạnh.";
+    } else if (bmi < 23.0) {
+      classification = "Bình thường (Đạt)";
+      alertClass = "status-green";
+      description = "Chúc mừng! Cân nặng của bạn nằm trong ngưỡng bình thường và lành mạnh cho người Việt Nam. Hãy tiếp tục duy trì chế độ ăn uống cân đối, giàu rau xanh và duy trì vận động thể chất thường xuyên.";
+    } else if (bmi < 25.0) {
+      classification = "Thừa cân";
+      alertClass = "status-orange";
+      description = "Cân nặng của bạn đang ở ngưỡng thừa cân. Bạn nên điều chỉnh chế độ ăn giảm bớt năng lượng dư thừa, hạn chế đường ngọt, tinh bột tinh chế và tích cực tập thể thao.";
+    } else {
+      const type = bmi < 30.0 ? "Béo phì độ I" : "Béo phì độ II";
+      classification = `Béo phì (${type})`;
+      alertClass = "status-red";
+      description = "Cân nặng của bạn nằm trong phạm vi béo phì, có thể tăng nguy cơ mắc các bệnh mạn tính như tim mạch, tiểu đường và mỡ máu. Hãy tham khảo ý kiến bác sĩ hoặc chuyên khoa dinh dưỡng để nhận hướng dẫn giảm cân khoa học.";
+    }
+
+    bmiValue.textContent = `${bmi.toFixed(1)}`;
+    bmiMeaning.textContent = classification;
+    bmiMeaning.className = `status-badge ${alertClass}`;
+    bmiNote.innerHTML = `<strong>Lời khuyên y khoa:</strong> ${description}<br><br><span class="muted" style="font-size:0.82rem;">*Tiêu chuẩn phân loại theo Hiệp hội Đái tháo đường Tây Thái Bình Dương (IDI/WPRO) dành cho người trưởng thành châu Á.</span>`;
     resultSection.style.display = "block";
     window.scrollTo({
       top: resultSection.offsetTop - 20,

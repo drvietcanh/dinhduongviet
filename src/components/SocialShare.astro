@@ -1,0 +1,107 @@
+---
+export interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+---
+
+<div class="social-share">
+  <p class="share-title">Chia sẻ bài viết này:</p>
+  <div class="share-buttons">
+    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" class="btn-share fb">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      Facebook
+    </a>
+    <a href={`https://zalo.me/share?url=${encodedUrl}&text=${encodedTitle}`} target="_blank" rel="noopener noreferrer" class="btn-share zalo">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.54 11.73C21.54 16.29 17.27 20 12 20c-1.32 0-2.58-.2-3.75-.56l-3.35 1.5c-.34.15-.71-.1-.66-.47l.5-2.73c-1.8-1.57-2.9-3.73-2.9-6 0-4.56 4.27-8.27 9.54-8.27s9.54 3.71 9.54 8.26z"/></svg>
+      Zalo
+    </a>
+    <button id="btn-copy-link" class="btn-share copy" data-url={url}>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      Sao chép
+    </button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('btn-copy-link')?.addEventListener('click', function() {
+    const url = this.getAttribute('data-url');
+    if (url) {
+      navigator.clipboard.writeText(url).then(() => {
+        const originalText = this.innerHTML;
+        this.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Đã chép!`;
+        this.style.background = "#059669";
+        this.style.color = "white";
+        setTimeout(() => {
+          this.innerHTML = originalText;
+          this.style.background = "";
+          this.style.color = "";
+        }, 2000);
+      });
+    }
+  });
+</script>
+
+<style>
+  .social-share {
+    margin: 40px 0;
+    padding: 24px;
+    background: var(--bg-soft);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--card-border);
+    text-align: center;
+  }
+  .share-title {
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--ink);
+    font-size: 1.05rem;
+  }
+  .share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s, background 0.2s, color 0.2s;
+    border: none;
+    font-family: inherit;
+  }
+  .btn-share:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+    text-decoration: none;
+  }
+  .btn-share.fb {
+    background: #1877F2;
+    color: white;
+  }
+  .btn-share.zalo {
+    background: #0068FF;
+    color: white;
+  }
+  .btn-share.copy {
+    background: white;
+    color: var(--ink);
+    border: 1px solid var(--card-border);
+  }
+  [data-theme="dark"] .btn-share.copy {
+    background: var(--card);
+    color: var(--ink);
+    border-color: var(--card-border);
+  }
+</style>
