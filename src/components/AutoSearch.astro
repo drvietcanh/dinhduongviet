@@ -47,10 +47,16 @@ const jsonPayload = JSON.stringify(dataPayload);
 ---
 
 <autocomplete-search>
+  <div class="ac-backdrop" style="display: none;"></div>
   <div class="ac-search-wrapper">
     <div class="ac-search-row">
+      <span class="ac-search-icon">🔍</span>
       <input type="text" class="ac-input" placeholder="Tìm thực phẩm, món ăn, bài viết, công cụ..." aria-label="Tìm kiếm" autocomplete="off" />
-      <button class="ac-submit">🔍</button>
+      <div class="ac-actions">
+        <button class="ac-clear" style="display: none;" aria-label="Xóa">✕</button>
+        <div class="ac-hotkey">Ctrl K</div>
+        <button class="ac-submit" style="display: none;">🔍</button>
+      </div>
     </div>
     <div class="ac-dropdown" style="display: none;"></div>
   </div>
@@ -78,6 +84,48 @@ const jsonPayload = JSON.stringify(dataPayload);
   if (!el) return;
   var input = el.querySelector('.ac-input');
   var dropdown = el.querySelector('.ac-dropdown');
+  var backdrop = el.querySelector('.ac-backdrop');
+  var clearBtn = el.querySelector('.ac-clear');
+
+  // Hotkey Ctrl+K
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      input.focus();
+    }
+  });
+
+  // Clear button logic
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+      input.value = '';
+      dropdown.style.display = 'none';
+      backdrop.style.display = 'none';
+      clearBtn.style.display = 'none';
+      input.focus();
+    });
+  }
+
+  function escapeHtml(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function highlightHtml(text, q) {
+    var safeText = escapeHtml(text);
+    if (!q) return safeText;
+    try {
+      var safeQ = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var regex = new RegExp('(' + safeQ + ')', 'gi');
+      return safeText.replace(regex, '<mark>$1</mark>');
+    } catch (e) {
+      return safeText;
+    }
+  }
 
   function normalize(str) {
     return str.toLowerCase()
@@ -162,21 +210,24 @@ const jsonPayload = JSON.stringify(dataPayload);
       var kcalHtml = r.k > 0 ? '<span class="ac-item-kcal">' + r.k + ' kcal</span>' : '';
       var emojiHtml = r.e ? '<span class="ac-item-emoji">' + r.e + '</span>' : '';
       html += '<a class="ac-item" href="' + r.u + '">' +
-        '<span class="ac-item-name">' + emojiHtml + r.n + '</span>' +
+        '<span class="ac-item-name">' + emojiHtml + highlightHtml(r.n, input.value.trim()) + '</span>' +
         '<span class="ac-item-meta">' +
-          '<span class="ac-item-type ' + (r.t === 'bài viết' ? 'bai-viet' : r.t === 'công cụ' ? 'cong-cu' : '') + '">' + r.t + '</span>' +
+          '<span class="ac-item-type ' + (r.t === 'bài viết' ? 'bai-viet' : r.t === 'công cụ' ? 'cong-cu' : '') + '">' + escapeHtml(r.t) + '</span>' +
           kcalHtml +
         '</span>' +
       '</a>';
     }
     dropdown.innerHTML = html;
     dropdown.style.display = 'block';
+    if (backdrop) backdrop.style.display = 'block';
   }
 
   input.addEventListener('input', function() {
     var q = this.value.trim();
+    if (clearBtn) clearBtn.style.display = q.length > 0 ? 'block' : 'none';
     if (q.length < 1) {
       dropdown.style.display = 'none';
+      if (backdrop) backdrop.style.display = 'none';
       return;
     }
     var results = filterItems(q);
@@ -195,7 +246,10 @@ const jsonPayload = JSON.stringify(dataPayload);
   });
 
   document.addEventListener('click', function(e) {
-    if (!el.contains(e.target)) dropdown.style.display = 'none';
+    if (!el.contains(e.target)) {
+      dropdown.style.display = 'none';
+      if (backdrop) backdrop.style.display = 'none';
+    }
   });
 
   el.querySelectorAll('.ac-chip').forEach(function(chip) {
@@ -213,15 +267,48 @@ const jsonPayload = JSON.stringify(dataPayload);
 <style>
   autocomplete-search { display: block; }
   .ac-search-wrapper { position: relative; }
-  .ac-search-row {
-    display: flex;
-    gap: 0;
-    border: 2px solid var(--brand);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--bg-elevated);
-    transition: box-shadow 0.2s;
+  .ac-backdrop {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+    z-index: 40;
   }
+  .ac-search-wrapper { position: relative; z-index: 50; }
+  .ac-search-row {
+    display: flex; align-items: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4px 8px;
+  }
+  .ac-search-row:focus-within {
+    background: #ffffff;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.15), 0 0 0 3px rgba(59,130,246,0.3);
+    transform: translateY(-2px);
+  }
+  .ac-search-icon { padding: 0 12px; font-size: 1.2rem; color: #666; }
+  .ac-actions { display: flex; align-items: center; gap: 8px; padding-right: 8px; }
+  .ac-hotkey {
+    background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px;
+    padding: 4px 8px; font-size: 0.75rem; font-weight: 600; color: #64748b;
+    pointer-events: none;
+  }
+  .ac-clear {
+    background: #f1f5f9; border: none; border-radius: 50%;
+    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: #64748b; cursor: pointer; transition: background 0.2s;
+  }
+  .ac-clear:hover { background: #e2e8f0; color: #333; }
+  mark { background: rgba(59,130,246,0.2); color: #1d4ed8; border-radius: 3px; padding: 0 2px; font-weight: 700; }
+  .ac-dropdown {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    margin-top: 12px;
+  }
+  .ac-input { padding: 0; min-height: 48px; }
   .ac-search-row:focus-within {
     box-shadow: 0 0 0 4px var(--brand-light);
   }
@@ -251,7 +338,7 @@ const jsonPayload = JSON.stringify(dataPayload);
     left: 0;
     right: 0;
     background: var(--card);
-    border: 1px solid var(--line);
+    border: 1px solid var(--card-border);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
     z-index: 50;
@@ -301,7 +388,7 @@ const jsonPayload = JSON.stringify(dataPayload);
     padding: 8px 14px;
     min-height: 40px;
     border-radius: 999px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--card-border);
     background: var(--bg-elevated);
     color: var(--ink-secondary);
     font-size: 0.82rem;

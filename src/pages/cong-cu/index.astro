@@ -92,18 +92,37 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
     .cc-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
     .cc-group-head h2 { margin: 0; font-size: 1.15rem; }
     .cc-count { color: var(--ink-tertiary); font-size: 0.82rem; white-space: nowrap; }
-    .cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .cc-card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; text-decoration: none; color: inherit; transition: all 0.2s; }
-    .cc-card:hover { border-color: var(--brand); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
-    .cc-card.is-draft { border-style: dashed; background: var(--bg-soft); }
-    .cc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cc-card {
+      display: block;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 24px -6px rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] .cc-card {
+      background: rgba(30, 41, 59, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .cc-card:hover {
+      border-color: var(--brand-light2);
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 32px -4px rgba(5, 150, 105, 0.15);
+    }
+    .cc-card.is-draft { border-style: dashed; background: transparent; }
+    .cc-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
     .cc-icon { font-size: 1.35rem; line-height: 1; }
     .cc-card h3 { margin: 0; font-size: 1rem; font-weight: 700; flex: 1; }
     .cc-card h3 span { color: var(--brand); }
     .cc-card p { margin: 0; font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.5; }
     .cc-status { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 9px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
     .cc-status.is-stable { background: #e8f5ee; color: #217245; }
-    .cc-note { margin-top: 24px; padding: 14px 16px; background: var(--brand-light); border-radius: 10px; font-size: 0.85rem; color: var(--ink-secondary); }
+    .cc-note { margin-top: 24px; padding: 14px 16px; background: var(--brand-light); border-radius: var(--radius-lg); font-size: 0.85rem; color: var(--ink-secondary); }
     .cc-note strong { color: var(--ink); }
     @media(max-width:700px) {
       .cc-grid { grid-template-columns: 1fr; }
@@ -111,12 +130,9 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
       .cc-group-head { align-items: flex-start; flex-direction: column; gap: 2px; }
     }
     @media (max-width: 600px) {
-    .tool-grid { grid-template-columns: 1fr; gap: 10px; }
-    .tool-card { padding: 14px; }
-    .tool-card h3 { font-size: 0.9rem; }
-    .tool-card p { font-size: 0.82rem; }
-    .section-label { font-size: 1.1rem; }
-  }
+      .cc-card h3 { font-size: 0.95rem; }
+      .cc-card p { font-size: 0.82rem; }
+    }
 </style>
 
   <div class="cctools">
