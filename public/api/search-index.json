@@ -1,6 +1,662 @@
 [
   {
     "type": "article",
+    "slug": "tieu-duong-an-com-duoc-khong",
+    "name": "Bệnh Tiểu đường ăn cơm được không? Ăn bao nhiêu là vừa?",
+    "aliases": [],
+    "description": "Sự thật bất ngờ: bỏ hoàn toàn cơm gây hạ đường huyết nguy hiểm hơn ăn cơm đúng cách. Bí quyết ăn cơm không tăng đường huyết.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tre-bieng-an-me-can-lam-gi",
+    "name": "Trẻ con biếng ăn, suy dinh dưỡng: Mẹ cần làm gì ngay bây giờ?",
+    "aliases": [],
+    "description": "Thiếu kẽm là nguyên nhân số 1 gây biếng ăn ở trẻ. Cách bổ sung từ thực phẩm tự nhiên và mẹo làm bé ăn ngon không cần ép.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "mo-mau-cao-7-mon-an-nguy-hiem",
+    "name": "Mỡ máu cao: 7 món ăn hàng ngày đang âm thầm làm hại mạch máu",
+    "aliases": [],
+    "description": "Không phải thịt đỏ — mà trà sữa, nước ngọt và bơ thực vật mới là thủ phạm ẩn nấp nguy hiểm nhất làm tăng cholesterol.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "gout-khong-chi-kieng-thit-do",
+    "name": "Gout không chỉ kiêng thịt đỏ: Những thứ ăn hàng ngày đang làm đau khớp",
+    "aliases": [],
+    "description": "Bia và nước ngọt nguy hiểm hơn thịt đỏ với người Gout. Sự thật về Fructose, hải sản và cách uống cà phê giảm axit uric.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "huyet-ap-cao-muoi-an-o-dau",
+    "name": "Cao huyết áp: Muối đang ẩn náu ở đâu trong mâm cơm nhà bạn?",
+    "aliases": [],
+    "description": "80% lượng muối không đến từ lọ muối trên bàn. Nước mắm, mì ăn liền, chả lụa — những thủ phạm muối ẩn trong bếp người Việt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sau-phau-thuat-an-gi-lanh-nhanh",
+    "name": "Sau phẫu thuật cần ăn gì để vết thương mau lành?",
+    "aliases": [],
+    "description": "Ăn đúng sau mổ có thể rút ngắn thời gian hồi phục từ 4 tuần xuống 2 tuần. Protein, Vitamin C và Kẽm là 3 dưỡng chất then chốt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thieu-sat-thieu-mau-bo-sung-tu-dau",
+    "name": "Thiếu sắt, thiếu máu: Bổ sung sắt từ đâu ngoài thịt đỏ?",
+    "aliases": [],
+    "description": "Gan bò, rau dền đỏ, cá cơm khô là 3 nguồn sắt rẻ nhất Việt Nam. Bí quyết ăn kèm chanh tăng hấp thu sắt gấp 3 lần.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "trao-nguoc-da-day-ban-dem-an-gi",
+    "name": "Trào ngược Dạ dày ban đêm: Ăn gì buổi tối để ngủ ngon, không bị ợ chua?",
+    "aliases": [],
+    "description": "Không cần thuốc đắt tiền, bí quyết trị dứt điểm trào ngược dạ dày nằm ngay ở mâm cơm tối của bạn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tao-bon-kinh-nien-an-rau-gi",
+    "name": "Táo bón kinh niên: 5 loại rau củ ",
+    "aliases": [],
+    "description": "Chỉ với vài nghìn lẻ mua khoai lang, rau mồng tơi, đu đủ... bạn đã có liều thuốc nhuận tràng tự nhiên tốt nhất.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nguoi-gia-rang-yeu-nau-chao-gi",
+    "name": "Người già răng yếu, chán ăn: Cách nấu súp và cháo đầy đủ chất dinh dưỡng",
+    "aliases": [],
+    "description": "Cháo ninh xương lấy nước là sai lầm phổ biến. Hãy học bí quyết nấu cháo mềm tan mà vẫn đủ Đạm, đủ Canxi cho ông bà.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "roi-loan-dong-mau",
+    "name": "Rối loạn đông máu & dinh dưỡng liên quan",
+    "aliases": [],
+    "description": "Cân bằng chế độ ăn cho người máu khó đông (hay bầm tím) và người dễ tạo huyết khối (cục máu đông).",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-benh-gout-axit-uric",
+    "name": "Bệnh Gout & Axit Uric: Giải oan cho rau xanh và thịt",
+    "aliases": [],
+    "description": "Sự thật về Fructose và Rượu bia là thủ phạm chính. Sức mạnh đánh tan tinh thể Urat từ Quả Anh Đào (Cherry).",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "suy-giap-hypothyroidism",
+    "name": "Suy giáp: Cảnh báo ăn sống rau họ cải (Goitrogens)",
+    "aliases": [],
+    "description": "Khi lò hơi năng lượng tắt ngúm. Sai lầm khi ăn sinh tố cải xoăn làm ức chế hấp thu I-ốt và phác đồ Selen phục hồi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cuong-giap-basedow",
+    "name": "Cường giáp (Basedow): Lệnh cấm vận I-ốt tuyệt đối",
+    "aliases": [],
+    "description": "Cỗ máy đốt năng lượng mất phanh. Chế độ ăn Low-Iodine cứu sống bệnh nhân cường giáp tránh bão giáp trạng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "buong-trung-da-nang-pcos",
+    "name": "Buồng trứng đa nang (PCOS): Đảo ngược bằng Low-GI",
+    "aliases": [],
+    "description": "Hé lộ mối liên hệ gốc rễ giữa PCOS và Kháng Insulin. Cách nhịn ăn gián đoạn và bổ sung Inositol giúp trứng rụng tự nhiên.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cao-huyet-ap-dash-diet",
+    "name": "Cao huyết áp & DASH Diet: Sức mạnh của Kali",
+    "aliases": [],
+    "description": "Không chỉ kiêng muối Natri, bạn phải nạp đủ Kali từ thực vật để xả áp lực thành mạch và chống đột quỵ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-thuoc-chong-dong-mau-warfarin",
+    "name": "Thuốc chống đông máu (Warfarin): Lằn ranh sinh tử",
+    "aliases": [],
+    "description": "Cách giữ ổn định lượng Vitamin K từ rau xanh để thuốc không bị mất tác dụng hoặc gây xuất huyết ồ ạt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-vay-nen-psoriasis",
+    "name": "Bệnh Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3",
+    "aliases": [],
+    "description": "Khám phá mối liên hệ giữa béo phì, viêm mạn tính và vảy nến. Chế độ ăn cắt đứt nguồn cung Cytokines gây viêm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "suy-thuong-than-adrenal-fatigue",
+    "name": "Suy thượng thận chức năng (Adrenal Fatigue)",
+    "aliases": [],
+    "description": "Phục hồi tuyến thượng thận kiệt quệ sau chuỗi ngày stress mãn tính bằng Vitamin C, Muối khoáng và cắt Cà phê.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tre-tu-ky-tang-dong-adhd",
+    "name": "Trẻ Tự kỷ & Tăng động (ADHD): Giải mã Trục Ruột Não",
+    "aliases": [],
+    "description": "Ngừng ngay đường tinh luyện và phẩm màu nhân tạo. Chế độ GFCF và sức mạnh xoa dịu thần kinh của Magie, Kẽm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thoai-hoa-diem-vang-duc-thuy-tinh-the",
+    "name": "Bảo vệ Mắt tuổi già: Đục thủy tinh thể & Thoái hóa điểm vàng",
+    "aliases": [],
+    "description": "Tấm khiên Lutein và Zeaxanthin từ rau bina chống lại tác hại thiêu rụi võng mạc của ánh sáng xanh và tia UV.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "xo-vua-dong-mach-vanh",
+    "name": "Xơ vữa động mạch vành: Sát thủ thầm lặng và vai trò của mỡ máu",
+    "aliases": [],
+    "description": "Giải mã cơ chế hình thành mảng bám xơ vữa từ Cholesterol LDL oxy hóa và phác đồ dinh dưỡng dọn dẹp mạch máu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phuc-hoi-nhoi-mau-co-tim-stent",
+    "name": "Phục hồi sau nhồi máu cơ tim & Đặt Stent: Đừng để tái phát",
+    "aliases": [],
+    "description": "Hướng dẫn ăn uống sống còn để ngăn chặn huyết khối bít tắc Stent và bảo vệ phần cơ tim còn sót lại.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "vi-khuan-hp-da-day",
+    "name": "Vi khuẩn HP Dạ dày: Kẻ thù núp dưới màng nhầy và cách tiêu diệt",
+    "aliases": [],
+    "description": "Sức mạnh của Probiotics và Sulforaphane (Bông cải xanh) trong việc bóc trần vỏ bọc của vi khuẩn HP.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-ruot-crohn-uc",
+    "name": "Viêm ruột tự miễn (Crohn & UC): Băng bó ",
+    "aliases": [],
+    "description": "Tuyệt đối kiêng chất xơ thô ráp và thực phẩm High-FODMAP trong đợt bùng phát để ruột lở loét được nghỉ ngơi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-duong-thai-ky-gestational",
+    "name": "Tiểu đường thai kỳ: Sai lầm chết người khi mẹ bầu nhịn đói",
+    "aliases": [],
+    "description": "Cách áp dụng chiến thuật ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-chieu-cao-tuoi-day-thi",
+    "name": "Tăng chiều cao tuổi dậy thì: Đừng chỉ nhồi nhét Canxi",
+    "aliases": [],
+    "description": "Khám phá bộ tứ phép thuật ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-an-dam-blw",
+    "name": "Ăn dặm (BLW): Nguy cơ chậm phát triển trí não do kiêng thịt",
+    "aliases": [],
+    "description": "Sự thật về Sắt Heme từ thịt đỏ quyết định trí thông minh (IQ) và những cấm kỵ cực độc khi trẻ dưới 1 tuổi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "khang-insulin-resistance",
+    "name": "Kháng Insulin (Gai đen): Căn nguyên của béo phì và tiểu đường",
+    "aliases": [],
+    "description": "Khi tế bào đổi ổ khóa và cách ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "gan-nhiem-mo-nafld-fructose",
+    "name": "Gan nhiễm mỡ (NAFLD): ",
+    "aliases": [],
+    "description": "Sự thật gây sốc: Ăn mỡ không gây mỡ gan, chính đường Fructose mới là thứ bị gan ép thành hạt mỡ trắng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-xoang-di-ung-histamine",
+    "name": "Viêm xoang & Viêm mũi dị ứng: Sự thật về chất Histamine",
+    "aliases": [],
+    "description": "Giải mã cơ chế sưng phù niêm mạc mũi do Histamine trong đồ lên men, bia rượu và cách dập tắt bằng Quercetin.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ngung-tho-khi-ngu-sleep-apnea",
+    "name": "Ngưng thở khi ngủ (Sleep Apnea): Hiểm họa đột quỵ từ mỡ cổ",
+    "aliases": [],
+    "description": "Khám phá nguyên nhân gây ngáy to, bít tắc đường thở do mỡ thừa chèn ép và phác đồ giảm mỡ cứu vãn đường thở.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-phe-quan-man-tinh",
+    "name": "Viêm phế quản mãn tính: ",
+    "aliases": [],
+    "description": "Cơ chế bít tắc phế quản do đờm đặc và sức mạnh làm loãng đờm tự nhiên của Enzyme Bromelain trong quả dứa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nhiem-trung-tiet-nieu-uti",
+    "name": "Nhiễm trùng tiết niệu (UTI): Sự thật về Nam việt quất",
+    "aliases": [],
+    "description": "Giải mã cách chất PAC trong Nam việt quất làm vi khuẩn E.coli trơn tuột, không thể bám vào thành bàng quang gây tiểu buốt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-chay-than-nhan-tao",
+    "name": "Chạy thận nhân tạo: Sai lầm chết người khi kiêng đạm",
+    "aliases": [],
+    "description": "Phác đồ tăng đạm sống còn để bù đắp lượng axit amin bị máy lọc máu hút mất, chống suy kiệt teo cơ ở bệnh nhân chạy thận.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-rung-toc-alopecia",
+    "name": "Rụng tóc (Alopecia): Dầu gội đắt tiền không thể cứu nang tóc bị bỏ đói",
+    "aliases": [],
+    "description": "Khám phá nguyên nhân gốc rễ gây rụng tóc ở nữ giới do thiếu máu, thiếu Sắt Heme và cách bổ sung Kẽm, Biotin từ thực phẩm để kích thích mọc tóc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "chung-do-mat-rosacea",
+    "name": "Chứng đỏ mặt (Rosacea): Trái bom nổ chậm từ Cồn và Gia vị cay",
+    "aliases": [],
+    "description": "Giải mã cơ chế mao mạch máu dưới da bị giãn nở vô tổ chức và phác đồ ăn uống Omega-3 làm dịu phản ứng viêm đỏ mặt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-vu-va-dau-nanh",
+    "name": "Giải oan cho Đậu nành: Sự thật về Ung thư vú và Phytoestrogen",
+    "aliases": [],
+    "description": "Vì sao Estrogen thực vật trong đậu nành lại là ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sau-phau-thuat-ung-thu",
+    "name": "Dinh dưỡng sau phẫu thuật Ung thư: Sai lầm khi kiêng thịt đỏ",
+    "aliases": [],
+    "description": "Tại sao kiêng thịt cá sau mổ lại là hành động ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tram-cam-lo-au-truc-ruot-nao",
+    "name": "Trầm cảm & Lo âu: Chữa lành bộ não từ hệ Vi sinh đường ruột",
+    "aliases": [],
+    "description": "Hiểu về Trục Ruột - Não (Gut-Brain Axis) và cách 90% Serotonin được sản xuất tại ruột bởi binh đoàn lợi khuẩn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-khop-dang-thap",
+    "name": "Viêm khớp dạng thấp: Dập tắt ngọn lửa tự miễn bằng Omega-3",
+    "aliases": [],
+    "description": "Khác biệt giữa thoái hóa khớp và viêm khớp dạng thấp. Tại sao uống nước hầm xương vô dụng và cách dầu cá làm ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "lupus-ban-do-he-thong",
+    "name": "Lupus ban đỏ hệ thống: Dinh dưỡng sống chung với ",
+    "aliases": [],
+    "description": "Bảo vệ Thận, ngăn chặn loãng xương do tác dụng phụ của thuốc Corticoid và sai lầm chết người khi ăn mầm Cỏ linh lăng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "che-do-an-mind-alzheimer",
+    "name": "Chế độ ăn MIND: Kích hoạt não bộ trẻ lại 7 tuổi",
+    "aliases": [],
+    "description": "Giải pháp bảo vệ tế bào thần kinh khỏi bệnh Alzheimer bằng sức mạnh dọn dẹp rỉ sét của Quả mọng và Rau xanh đậm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dau-nua-dau-migraine",
+    "name": "Đau nửa đầu Migraine: Điểm mặt sát thủ giấu trong ly Rượu vang",
+    "aliases": [],
+    "description": "Giải mã cơ chế giãn nở mạch máu não mất kiểm soát do Tyramine và Nitrat, và sức mạnh an thần của Magie.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-tri-mun-acne",
+    "name": "Mụn nội tiết: Sự thật giật mình về Sữa Bò và Cà phê sữa đá",
+    "aliases": [],
+    "description": "Khám phá nguyên nhân gây mụn bọc từ hormone IGF-1 trong sữa bò và chế độ ăn Low-GI giúp ngưng đổ dầu nhờn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-da-co-dia-eczema",
+    "name": "Viêm da cơ địa (Eczema): Chữa lành da từ hệ vi sinh đường ruột",
+    "aliases": [],
+    "description": "Giải mã hội chứng ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-chong-lao-hoa-da",
+    "name": "Chống lão hóa da: Đừng bôi kem nếu bạn vẫn ăn đồ nướng!",
+    "aliases": [],
+    "description": "Tìm hiểu phản ứng Glycation phá hủy lò xo Collagen từ bên trong và sức mạnh chống lão hóa của Cà chua nấu chín.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-benh-copd",
+    "name": "Bệnh phổi tắc nghẽn (COPD): Vì sao ăn cơm lại khó thở hơn ăn mỡ?",
+    "aliases": [],
+    "description": "Giải mã cơ chế sinh khí CO2 từ tinh bột khiến bệnh nhân phổi tắc nghẽn mãn tính bị căng tức lồng ngực sau bữa ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-hen-suyen",
+    "name": "Hen suyễn: Điểm mặt các chất kích hoạt cơn co thắt phế quản",
+    "aliases": [],
+    "description": "Khám phá ngòi nổ Histamine từ chất bảo quản Sulfite trong trái cây sấy và vai trò giãn phế quản của Vitamin D.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-hoa-tri",
+    "name": "Dinh dưỡng Hóa trị & Xạ trị: Vượt qua lở loét và buồn nôn",
+    "aliases": [],
+    "description": "Chiến thuật chia nhỏ bữa ăn và sử dụng sữa cao năng lượng để chống lại tác dụng phụ khủng khiếp của hóa chất.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "suy-kiet-ung-thu-cachexia",
+    "name": "Hội chứng Cachexia: Sát thủ thầm lặng teo cơ, sụt cân",
+    "aliases": [],
+    "description": "Vì sao bệnh nhân ung thư tử vong do suy kiệt trước khi khối u di căn, và cách EPA (Omega-3) cứu vãn tình hình.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tin-don-nhin-doi-ung-thu",
+    "name": "Sự thật tàn nhẫn: Bỏ đói tế bào ung thư bằng gạo lứt muối mè?",
+    "aliases": [],
+    "description": "Khối u lừa gạt cơ thể phân hủy cơ bắp của chính bạn như thế nào khi bạn kiêng thịt, cá, sữa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-suy-than",
+    "name": "Suy thận mãn: Vì sao ăn chuối, cà chua lại gây ngừng tim?",
+    "aliases": [],
+    "description": "Nguyên tắc sống còn về việc kiểm soát Kali, Photpho và cắt giảm muối Natri tuyệt đối để cứu lấy chức năng lọc của màng thận.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-soi-than",
+    "name": "Sỏi thận: Sai lầm kinh điển khi kiêng hoàn toàn Canxi",
+    "aliases": [],
+    "description": "Giải mã cơ chế hình thành sỏi Oxalate và chiến thuật uống đủ nước kết hợp ăn Canxi đúng cách để khóa viên sỏi từ trong dạ dày.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nhin-an-gian-doan-16-8",
+    "name": "Nhịn ăn gián đoạn 16:8: Phép màu của sự đói khát",
+    "aliases": [],
+    "description": "Khám phá cơ chế ",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "che-do-an-chong-viem",
+    "name": "Chế độ ăn chống viêm (Anti-inflammatory Diet)",
+    "aliases": [],
+    "description": "Dập tắt ngọn lửa viêm mãn tính gây ung thư và bệnh tự miễn bằng sức mạnh của Omega-3, Nghệ và Trà Xanh.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "su-that-ve-collagen",
+    "name": "Sự thật về Collagen uống: Tiền mất tật mang?",
+    "aliases": [],
+    "description": "Giải mã cơ chế hấp thu Collagen qua đường ruột và lý do vì sao Collagen dạng nước uống có đường lại làm da nhanh lão hóa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "omega3-phan-biet",
+    "name": "Omega-3: Phân biệt dạng TG dễ hấp thu và dạng EE kém chất lượng",
+    "aliases": [],
+    "description": "Bí quyết đọc nhãn dầu cá chuẩn chuyên gia để tránh mua nhầm Omega-3 công nghiệp rẻ tiền gây ợ tanh, đầy bụng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "men-vi-sinh-vs-men-tieu-hoa",
+    "name": "Men vi sinh vs. Men tiêu hóa: 90% cha mẹ nhầm lẫn",
+    "aliases": [],
+    "description": "Sự khác biệt sinh học và hậu quả phá hỏng tuyến tụy vĩnh viễn do lạm dụng men tiêu hóa quá 14 ngày cho trẻ biếng ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sot-xuat-huyet",
+    "name": "Sốt xuất huyết: Sai lầm chết người khi ăn tiết canh để bổ máu",
+    "aliases": [],
+    "description": "Giải mã cơ chế tụt tiểu cầu và lý do tại sao phải kiêng tuyệt đối thực phẩm màu đỏ/đen trong giai đoạn sốc Dengue.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-mien-dich",
+    "name": "Dinh dưỡng tăng cường hệ Miễn dịch: Đừng chỉ uống C sủi!",
+    "aliases": [],
+    "description": "Khám phá cách protein và kẽm đúc ra kháng thể, và sự thật về việc đường tinh luyện làm tê liệt bạch cầu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-tuy-cap-man-tinh",
+    "name": "Viêm tụy cấp và mãn tính: Quả bom nổ chậm do bia rượu",
+    "aliases": [],
+    "description": "Cơ chế tuyến tụy tự tiêu hủy chính mình và lý do bệnh nhân viêm tụy phải kiêng mỡ và rượu bia tuyệt đối.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-soi-mat",
+    "name": "Bệnh Sỏi mật & Chế độ ăn sau khi cắt túi mật",
+    "aliases": [],
+    "description": "Giải mã hội chứng tiêu chảy phân mỡ (Dumping) sau phẫu thuật và thói quen nhịn ăn sáng gây sỏi mật.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sarcopenia-mat-co-nguoi-gia",
+    "name": "Bệnh thiểu cơ (Sarcopenia): Vì sao người già hay vấp ngã?",
+    "aliases": [],
+    "description": "Giải mã nguyên nhân gây teo cơ ở người lớn tuổi và chiến thuật nạp Protein kết hợp kháng lực để phục hồi sinh lực.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "roi-loan-nuot-dysphagia",
+    "name": "Rối loạn nuốt sau tai biến: Phòng chống viêm phổi hít",
+    "aliases": [],
+    "description": "Tuyệt đối không cho người già ăn cháo loãng dễ gây sặc. Hướng dẫn sử dụng bột làm đặc (Thickener) an toàn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phong-chong-loang-xuong",
+    "name": "Phòng chống loãng xương: Đừng chỉ uống Canxi!",
+    "aliases": [],
+    "description": "Bộ ba Canxi - D3 - K2 và tác hại của việc uống Canxi vô tội vạ gây sỏi thận, vôi hóa mạch máu ở người già.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-phau-thuat",
+    "name": "Dinh dưỡng trước và sau phẫu thuật (Chuẩn ERAS)",
+    "aliases": [],
+    "description": "Sự thật về lời đồn kiêng ăn thịt gà, hải sản, rau muống và cách nạp Protein chống suy kiệt sau ca mổ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-bong-loet",
+    "name": "Chăm sóc vết bỏng và loét tỳ đè",
+    "aliases": [],
+    "description": "Chìa khóa dinh dưỡng vàng (Protein, Kẽm, Vitamin C) giúp khép miệng vết loét hoại tử ở người nằm liệt giường.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phuc-hoi-chan-thuong-the-thao",
+    "name": "Dinh dưỡng phục hồi chấn thương thể thao",
+    "aliases": [],
+    "description": "Sai lầm khi ăn kiêng giảm cân lúc bị gãy xương, rách cơ và chiến thuật nạp Collagen phục hồi nhanh.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "che-do-an-keto",
+    "name": "Chế độ Keto & Low-carb: Lợi và hại",
+    "aliases": [],
+    "description": "Sự thật về tốc độ giảm mỡ thần tốc của Keto và những hệ lụy nguy hiểm đến hệ tim mạch nếu lạm dụng lâu dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "che-do-an-dia-trung-hai",
+    "name": "Chế độ ăn Địa Trung Hải (Mediterranean Diet)",
+    "aliases": [],
+    "description": "Khám phá bí mật trường thọ của vùng biển Địa Trung Hải. Chế độ ăn tốt nhất thế giới 7 năm liên tiếp.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-cho-con-bu",
+    "name": "Dinh dưỡng cho bà mẹ đang cho con bú",
+    "aliases": [],
+    "description": "Sự thật về canh móng giò lợi sữa và chiến thuật ăn uống khoa học giúp mẹ nhiều sữa, nhanh về dáng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-chu-ky-kinh-nguyet",
+    "name": "Dinh dưỡng theo chu kỳ kinh nguyệt",
+    "aliases": [],
+    "description": "Giảm đau bụng kinh và mệt mỏi tiền kinh nguyệt (PMS) hiệu quả nhờ ăn uống đúng theo 4 giai đoạn của hormone.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "lac-noi-mac-tu-cung",
+    "name": "Dinh dưỡng hỗ trợ bệnh Lạc nội mạc tử cung",
+    "aliases": [],
+    "description": "Ngăn chặn cơn đau xé ruột bằng chế độ ăn chống viêm và đào thải Estrogen dư thừa ra khỏi cơ thể.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-an-dam",
+    "name": "Dinh dưỡng ăn dặm: Truyền thống vs. BLW",
+    "aliases": [],
+    "description": "Khoa học về ăn dặm, những lầm tưởng tai hại (như nêm muối, hầm xương) và cách bổ sung sắt cho bé 6 tháng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-tuoi-day-thi",
+    "name": "Dinh dưỡng tối ưu chiều cao tuổi dậy thì",
+    "aliases": [],
+    "description": "Bộ ba kéo dài xương Canxi - D3 - K2 và thủ phạm thực sự làm sụn xương đóng sớm ở trẻ béo phì.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-tre-tu-ky-adhd",
+    "name": "Dinh dưỡng cho trẻ tự kỷ/ADHD",
+    "aliases": [],
+    "description": "Giải mã trào lưu kiêng GFCF chữa tự kỷ và các thực phẩm thực sự giúp cải thiện sự tập trung, giảm tăng động.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-dam-sua-bo",
+    "name": "Dị ứng đạm sữa bò ở trẻ em",
+    "aliases": [],
+    "description": "Nhận biết sớm dấu hiệu dị ứng, phân biệt với bất dung nạp lactose và cách chọn sữa thủy phân an toàn cho bé.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "benh-celiac-gluten",
+    "name": "Bệnh Celiac & Chế độ ăn không Gluten",
+    "aliases": [],
+    "description": "Gluten-free không phải là trào lưu giảm cân. Khám phá cơ chế bệnh Celiac và thực đơn an toàn cho người bệnh.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-hai-san",
+    "name": "Dị ứng hải sản và các loại hạt",
+    "aliases": [],
+    "description": "Nguyên nhân hàng đầu gây sốc phản vệ thực phẩm. Kỹ năng sống sót và phòng tránh lây nhiễm chéo tại nhà hàng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-suc-ben-marathon",
+    "name": "Dinh dưỡng sức bền: Chạy bộ Marathon",
+    "aliases": [],
+    "description": "Giải mã hiện tượng đụng tường (hit the wall) và chiến thuật nạp năng lượng (Carb-loading) trước, trong và sau khi chạy bộ đường dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bat-dung-nap-lactose",
+    "name": "Bất dung nạp Lactose ở người lớn",
+    "aliases": [],
+    "description": "Giải mã lý do vì sao người trưởng thành uống sữa bò hay bị đau bụng, tiêu chảy và các giải pháp thay thế an toàn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "thap-dinh-duong-my-nhat",
     "name": "Tháp dinh dưỡng Mỹ & Nhật Bản",
     "aliases": [],
@@ -1381,14 +2037,6 @@
     "name": "PCOS (Buồng trứng đa nang) — Dinh dưỡng cải thiện nội tiết",
     "aliases": [],
     "description": "Chế độ ăn ít GI, chống viêm cho người PCOS. Giảm kháng insulin, cân bằng hormone, cải thiện kinh nguyệt và khả năng sinh sản.",
-    "category": "Bai viet"
-  },
-  {
-    "type": "article",
-    "slug": "dinh-duong-hen-suyen",
-    "name": "Hen suyễn — Ăn gì giảm viêm đường thở, giảm cơn hen",
-    "aliases": [],
-    "description": "Thực phẩm giảm viêm, tăng cường chức năng phổi cho người hen. Omega-3, vitamin C, D, magie. Thực phẩm nên tránh gây co thắt phế quản.",
     "category": "Bai viet"
   },
   {
@@ -9698,8 +10346,8 @@
     "aliases": [
       "ngo sen"
     ],
-    "category": "Củ quả",
-    "kcal": 47
+    "category": "Rau xanh",
+    "kcal": 28
   },
   {
     "type": "food",
@@ -9738,8 +10386,8 @@
     "aliases": [
       "cu hu dua"
     ],
-    "category": "Củ quả",
-    "kcal": 42
+    "category": "Rau xanh",
+    "kcal": 25
   },
   {
     "type": "food",
@@ -9758,8 +10406,8 @@
     "aliases": [
       "cu nen"
     ],
-    "category": "Gia vị",
-    "kcal": 97
+    "category": "Củ quả",
+    "kcal": 45
   },
   {
     "type": "food",
@@ -9768,8 +10416,8 @@
     "aliases": [
       "gung tuoi"
     ],
-    "category": "Gia vị",
-    "kcal": 100
+    "category": "Rau xanh",
+    "kcal": 28
   },
   {
     "type": "food",
@@ -9778,8 +10426,8 @@
     "aliases": [
       "nghe tuoi"
     ],
-    "category": "Gia vị",
-    "kcal": 81
+    "category": "Rau xanh",
+    "kcal": 23
   },
   {
     "type": "food",
@@ -9788,8 +10436,8 @@
     "aliases": [
       "rieng"
     ],
-    "category": "Gia vị",
-    "kcal": 84
+    "category": "Rau xanh",
+    "kcal": 23
   },
   {
     "type": "food",
@@ -9798,8 +10446,8 @@
     "aliases": [
       "sa cay"
     ],
-    "category": "Gia vị",
-    "kcal": 87
+    "category": "Rau xanh",
+    "kcal": 24
   },
   {
     "type": "food",
@@ -9808,8 +10456,8 @@
     "aliases": [
       "ot hiem"
     ],
-    "category": "Gia vị",
-    "kcal": 90
+    "category": "Rau xanh",
+    "kcal": 25
   },
   {
     "type": "food",
@@ -9818,8 +10466,8 @@
     "aliases": [
       "ot sung"
     ],
-    "category": "Gia vị",
-    "kcal": 94
+    "category": "Rau xanh",
+    "kcal": 26
   },
   {
     "type": "food",
@@ -9828,8 +10476,8 @@
     "aliases": [
       "hanh tim"
     ],
-    "category": "Gia vị",
-    "kcal": 97
+    "category": "Rau xanh",
+    "kcal": 27
   },
   {
     "type": "food",
@@ -9908,8 +10556,8 @@
     "aliases": [
       "ca phao muoi"
     ],
-    "category": "Củ quả",
-    "kcal": 47
+    "category": "Gia vị",
+    "kcal": 100
   },
   {
     "type": "food",
@@ -9948,8 +10596,8 @@
     "aliases": [
       "dua gang non"
     ],
-    "category": "Củ quả",
-    "kcal": 42
+    "category": "Thịt",
+    "kcal": 191
   },
   {
     "type": "food",
@@ -10172,8 +10820,8 @@
     "aliases": [
       "mi trung tuoi"
     ],
-    "category": "Tinh bột",
-    "kcal": 175
+    "category": "Trứng sữa",
+    "kcal": 112
   },
   {
     "type": "food",
@@ -10202,8 +10850,8 @@
     "aliases": [
       "banh hoi"
     ],
-    "category": "Tinh bột",
-    "kcal": 194
+    "category": "Bánh kẹo",
+    "kcal": 452
   },
   {
     "type": "food",
@@ -10212,8 +10860,8 @@
     "aliases": [
       "banh uot"
     ],
-    "category": "Tinh bột",
-    "kcal": 200
+    "category": "Bánh kẹo",
+    "kcal": 466
   },
   {
     "type": "food",
@@ -10222,8 +10870,8 @@
     "aliases": [
       "banh da do"
     ],
-    "category": "Tinh bột",
-    "kcal": 162
+    "category": "Bánh kẹo",
+    "kcal": 378
   },
   {
     "type": "food",
@@ -10232,8 +10880,8 @@
     "aliases": [
       "banh trang me"
     ],
-    "category": "Tinh bột",
-    "kcal": 168
+    "category": "Bánh kẹo",
+    "kcal": 393
   },
   {
     "type": "food",
@@ -10274,8 +10922,8 @@
     "aliases": [
       "yen mach can"
     ],
-    "category": "Tinh bột",
-    "kcal": 194
+    "category": "Hải sản",
+    "kcal": 102
   },
   {
     "type": "food",
@@ -10284,8 +10932,8 @@
     "aliases": [
       "ngu coc an sang"
     ],
-    "category": "Tinh bột",
-    "kcal": 200
+    "category": "Hải sản",
+    "kcal": 105
   },
   {
     "type": "food",
@@ -10454,8 +11102,8 @@
     "aliases": [
       "vu sua"
     ],
-    "category": "Trái cây",
-    "kcal": 56
+    "category": "Trứng sữa",
+    "kcal": 112
   },
   {
     "type": "food",
@@ -10514,8 +11162,8 @@
     "aliases": [
       "phuc bon tu"
     ],
-    "category": "Trái cây",
-    "kcal": 54
+    "category": "Rau xanh",
+    "kcal": 23
   },
   {
     "type": "food",
@@ -10668,8 +11316,8 @@
       "Tai lợn",
       "tai lon"
     ],
-    "category": "Thịt",
-    "kcal": 178
+    "category": "Rau xanh",
+    "kcal": 23
   },
   {
     "type": "food",
@@ -10800,8 +11448,8 @@
     "aliases": [
       "la sach bo"
     ],
-    "category": "Thịt",
-    "kcal": 211
+    "category": "Rau xanh",
+    "kcal": 28
   },
   {
     "type": "food",
@@ -10930,8 +11578,8 @@
     "aliases": [
       "ca tram co"
     ],
-    "category": "Cá",
-    "kcal": 129
+    "category": "Hải sản",
+    "kcal": 102
   },
   {
     "type": "food",
@@ -10940,8 +11588,8 @@
     "aliases": [
       "ca tram den"
     ],
-    "category": "Cá",
-    "kcal": 133
+    "category": "Hải sản",
+    "kcal": 105
   },
   {
     "type": "food",
@@ -10950,8 +11598,8 @@
     "aliases": [
       "ca dieu hong"
     ],
-    "category": "Cá",
-    "kcal": 108
+    "category": "Hải sản",
+    "kcal": 86
   },
   {
     "type": "food",
@@ -10960,8 +11608,8 @@
     "aliases": [
       "ca chim trang"
     ],
-    "category": "Cá",
-    "kcal": 112
+    "category": "Hải sản",
+    "kcal": 89
   },
   {
     "type": "food",
@@ -10970,8 +11618,8 @@
     "aliases": [
       "ca chim den"
     ],
-    "category": "Cá",
-    "kcal": 116
+    "category": "Hải sản",
+    "kcal": 92
   },
   {
     "type": "food",
@@ -10980,8 +11628,8 @@
     "aliases": [
       "ca basa phi le"
     ],
-    "category": "Cá",
-    "kcal": 121
+    "category": "Hải sản",
+    "kcal": 95
   },
   {
     "type": "food",
@@ -10990,8 +11638,8 @@
     "aliases": [
       "ca hu"
     ],
-    "category": "Cá",
-    "kcal": 125
+    "category": "Hải sản",
+    "kcal": 99
   },
   {
     "type": "food",
@@ -11000,8 +11648,8 @@
     "aliases": [
       "ca bong"
     ],
-    "category": "Cá",
-    "kcal": 129
+    "category": "Hải sản",
+    "kcal": 102
   },
   {
     "type": "food",
@@ -11010,8 +11658,8 @@
     "aliases": [
       "ca linh"
     ],
-    "category": "Cá",
-    "kcal": 133
+    "category": "Hải sản",
+    "kcal": 105
   },
   {
     "type": "food",
@@ -11020,8 +11668,8 @@
     "aliases": [
       "ca thac lac"
     ],
-    "category": "Cá",
-    "kcal": 108
+    "category": "Hải sản",
+    "kcal": 86
   },
   {
     "type": "food",
@@ -11030,8 +11678,8 @@
     "aliases": [
       "ca chach"
     ],
-    "category": "Cá",
-    "kcal": 112
+    "category": "Hải sản",
+    "kcal": 89
   },
   {
     "type": "food",
@@ -11040,8 +11688,8 @@
     "aliases": [
       "ca ro dong"
     ],
-    "category": "Cá",
-    "kcal": 116
+    "category": "Hải sản",
+    "kcal": 92
   },
   {
     "type": "food",
@@ -11050,8 +11698,8 @@
     "aliases": [
       "ca sac"
     ],
-    "category": "Cá",
-    "kcal": 121
+    "category": "Hải sản",
+    "kcal": 95
   },
   {
     "type": "food",
@@ -11060,8 +11708,8 @@
     "aliases": [
       "ca com tuoi"
     ],
-    "category": "Cá",
-    "kcal": 125
+    "category": "Hải sản",
+    "kcal": 99
   },
   {
     "type": "food",
@@ -11070,8 +11718,8 @@
     "aliases": [
       "ca com kho"
     ],
-    "category": "Cá",
-    "kcal": 129
+    "category": "Hải sản",
+    "kcal": 102
   },
   {
     "type": "food",
@@ -11080,8 +11728,8 @@
     "aliases": [
       "ca trich"
     ],
-    "category": "Cá",
-    "kcal": 133
+    "category": "Hải sản",
+    "kcal": 105
   },
   {
     "type": "food",
@@ -11090,8 +11738,8 @@
     "aliases": [
       "ca doi"
     ],
-    "category": "Cá",
-    "kcal": 108
+    "category": "Hải sản",
+    "kcal": 86
   },
   {
     "type": "food",
@@ -11100,8 +11748,8 @@
     "aliases": [
       "ca tuyet"
     ],
-    "category": "Cá",
-    "kcal": 112
+    "category": "Hải sản",
+    "kcal": 89
   },
   {
     "type": "food",
@@ -11110,8 +11758,8 @@
     "aliases": [
       "ca bon"
     ],
-    "category": "Cá",
-    "kcal": 116
+    "category": "Hải sản",
+    "kcal": 92
   },
   {
     "type": "food",
@@ -11120,8 +11768,8 @@
     "aliases": [
       "ca duoi"
     ],
-    "category": "Cá",
-    "kcal": 121
+    "category": "Hải sản",
+    "kcal": 95
   },
   {
     "type": "food",
@@ -11130,8 +11778,8 @@
     "aliases": [
       "ca ngu dai duong"
     ],
-    "category": "Cá",
-    "kcal": 125
+    "category": "Hải sản",
+    "kcal": 99
   },
   {
     "type": "food",
@@ -11140,8 +11788,8 @@
     "aliases": [
       "ca bac ma"
     ],
-    "category": "Cá",
-    "kcal": 129
+    "category": "Hải sản",
+    "kcal": 102
   },
   {
     "type": "food",
@@ -11150,8 +11798,8 @@
     "aliases": [
       "ca thu ao"
     ],
-    "category": "Cá",
-    "kcal": 133
+    "category": "Hải sản",
+    "kcal": 105
   },
   {
     "type": "food",
@@ -11160,8 +11808,8 @@
     "aliases": [
       "ca ngat"
     ],
-    "category": "Cá",
-    "kcal": 108
+    "category": "Hải sản",
+    "kcal": 86
   },
   {
     "type": "food",
@@ -11460,8 +12108,8 @@
     "aliases": [
       "dau co ve hat"
     ],
-    "category": "Đậu",
-    "kcal": 146
+    "category": "Hạt",
+    "kcal": 543
   },
   {
     "type": "food",
@@ -11584,5 +12232,622 @@
     ],
     "category": "Trứng sữa",
     "kcal": 104
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-tuong",
+    "name": "Nước tương",
+    "aliases": [
+      "nuoc tuong"
+    ],
+    "category": "Gia vị",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "mam-tom",
+    "name": "Mắm tôm",
+    "aliases": [
+      "mam tom"
+    ],
+    "category": "Gia vị",
+    "kcal": 87
+  },
+  {
+    "type": "food",
+    "slug": "mam-ruoc",
+    "name": "Mắm ruốc",
+    "aliases": [
+      "mam ruoc"
+    ],
+    "category": "Gia vị",
+    "kcal": 94
+  },
+  {
+    "type": "food",
+    "slug": "muoi-me",
+    "name": "Muối mè",
+    "aliases": [
+      "muoi me"
+    ],
+    "category": "Gia vị",
+    "kcal": 97
+  },
+  {
+    "type": "food",
+    "slug": "bot-nem",
+    "name": "Bột nêm",
+    "aliases": [
+      "bot nem"
+    ],
+    "category": "Gia vị",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "bot-ngot",
+    "name": "Bột ngọt",
+    "aliases": [
+      "bot ngot"
+    ],
+    "category": "Gia vị",
+    "kcal": 81
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-mia",
+    "name": "Nước mía",
+    "aliases": [
+      "nuoc mia"
+    ],
+    "category": "Đồ uống",
+    "kcal": 41
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-sam",
+    "name": "Nước sâm",
+    "aliases": [
+      "nuoc sam"
+    ],
+    "category": "Đồ uống",
+    "kcal": 42
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-rau-ma",
+    "name": "Nước rau má",
+    "aliases": [
+      "nuoc rau ma"
+    ],
+    "category": "Đồ uống",
+    "kcal": 44
+  },
+  {
+    "type": "food",
+    "slug": "sua-bap",
+    "name": "Sữa bắp",
+    "aliases": [
+      "sua bap",
+      "Sữa ngô",
+      "sua ngo"
+    ],
+    "category": "Đồ uống",
+    "kcal": 45
+  },
+  {
+    "type": "food",
+    "slug": "sua-hat-sen",
+    "name": "Sữa hạt sen",
+    "aliases": [
+      "sua hat sen"
+    ],
+    "category": "Đồ uống",
+    "kcal": 47
+  },
+  {
+    "type": "food",
+    "slug": "sua-dau-xanh",
+    "name": "Sữa đậu xanh",
+    "aliases": [
+      "sua dau xanh"
+    ],
+    "category": "Đồ uống",
+    "kcal": 48
+  },
+  {
+    "type": "food",
+    "slug": "tra-bi-dao",
+    "name": "Trà bí đao",
+    "aliases": [
+      "tra bi dao"
+    ],
+    "category": "Đồ uống",
+    "kcal": 50
+  },
+  {
+    "type": "food",
+    "slug": "tra-atiso",
+    "name": "Trà atiso",
+    "aliases": [
+      "tra atiso"
+    ],
+    "category": "Đồ uống",
+    "kcal": 41
+  },
+  {
+    "type": "food",
+    "slug": "tra-dao",
+    "name": "Trà đào",
+    "aliases": [
+      "tra dao"
+    ],
+    "category": "Đồ uống",
+    "kcal": 42
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-ep-thom",
+    "name": "Nước ép thơm",
+    "aliases": [
+      "nuoc ep thom"
+    ],
+    "category": "Đồ uống",
+    "kcal": 45
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-ep-oi",
+    "name": "Nước ép ổi",
+    "aliases": [
+      "nuoc ep oi"
+    ],
+    "category": "Đồ uống",
+    "kcal": 47
+  },
+  {
+    "type": "food",
+    "slug": "banh-it-la-gai",
+    "name": "Bánh ít lá gai",
+    "aliases": [
+      "banh it la gai"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 407
+  },
+  {
+    "type": "food",
+    "slug": "mut-gung",
+    "name": "Mứt gừng",
+    "aliases": [
+      "mut gung"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 393
+  },
+  {
+    "type": "food",
+    "slug": "mut-dua",
+    "name": "Mứt dừa",
+    "aliases": [
+      "mut dua"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 407
+  },
+  {
+    "type": "food",
+    "slug": "tra-sua-tran-chau-duong-den",
+    "name": "Trà sữa trân châu đường đen",
+    "aliases": [
+      "tra sua tran chau duong den"
+    ],
+    "category": "Đồ uống",
+    "kcal": 45
+  },
+  {
+    "type": "food",
+    "slug": "bac-xiu",
+    "name": "Bạc xỉu",
+    "aliases": [
+      "bac xiu"
+    ],
+    "category": "Đồ uống",
+    "kcal": 47
+  },
+  {
+    "type": "food",
+    "slug": "tra-dao-cam-sa",
+    "name": "Trà đào cam sả",
+    "aliases": [
+      "tra dao cam sa"
+    ],
+    "category": "Đồ uống",
+    "kcal": 50
+  },
+  {
+    "type": "food",
+    "slug": "tra-tac",
+    "name": "Trà tắc",
+    "aliases": [
+      "tra tac"
+    ],
+    "category": "Đồ uống",
+    "kcal": 41
+  },
+  {
+    "type": "food",
+    "slug": "che-thai",
+    "name": "Chè Thái",
+    "aliases": [
+      "che thai"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 393
+  },
+  {
+    "type": "food",
+    "slug": "che-suong-sa-hat-luu",
+    "name": "Chè sương sa hạt lựu",
+    "aliases": [
+      "che suong sa hat luu"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 407
+  },
+  {
+    "type": "food",
+    "slug": "com-chay-cha-bong",
+    "name": "Cơm cháy chà bông",
+    "aliases": [
+      "com chay cha bong"
+    ],
+    "category": "Thịt chế biến",
+    "kcal": 241
+  },
+  {
+    "type": "food",
+    "slug": "banh-bao-nhan-thit-trung-cut",
+    "name": "Bánh bao nhân thịt trứng cút",
+    "aliases": [
+      "banh bao nhan thit trung cut"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 437
+  },
+  {
+    "type": "food",
+    "slug": "xuc-xich-chien",
+    "name": "Xúc xích chiên",
+    "aliases": [
+      "xuc xich chien"
+    ],
+    "category": "Thịt chế biến",
+    "kcal": 258
+  },
+  {
+    "type": "food",
+    "slug": "ha-cao-hap",
+    "name": "Há cảo hấp",
+    "aliases": [
+      "ha cao hap"
+    ],
+    "category": "Tinh bột",
+    "kcal": 200
+  },
+  {
+    "type": "food",
+    "slug": "xiu-mai-nuoc",
+    "name": "Xíu mại nước",
+    "aliases": [
+      "xiu mai nuoc"
+    ],
+    "category": "Thịt chế biến",
+    "kcal": 216
+  },
+  {
+    "type": "food",
+    "slug": "chan-ga-sa-tac",
+    "name": "Chân gà sả tắc",
+    "aliases": [
+      "chan ga sa tac"
+    ],
+    "category": "Thịt",
+    "kcal": 178
+  },
+  {
+    "type": "food",
+    "slug": "da-heo-chien-gion",
+    "name": "Da heo chiên giòn",
+    "aliases": [
+      "da heo chien gion",
+      "Da lợn chiên giòn",
+      "da lon chien gion"
+    ],
+    "category": "Thịt chế biến",
+    "kcal": 233
+  },
+  {
+    "type": "food",
+    "slug": "kem-chuoi",
+    "name": "Kem chuối",
+    "aliases": [
+      "kem chuoi"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 422
+  },
+  {
+    "type": "food",
+    "slug": "sua-chua-tran-chau",
+    "name": "Sữa chua trân châu",
+    "aliases": [
+      "sua chua tran chau"
+    ],
+    "category": "Trứng sữa",
+    "kcal": 120
+  },
+  {
+    "type": "food",
+    "slug": "ca-phe-muoi",
+    "name": "Cà phê muối",
+    "aliases": [
+      "ca phe muoi",
+      "cafe muoi"
+    ],
+    "category": "Đồ uống",
+    "kcal": 48
+  },
+  {
+    "type": "food",
+    "slug": "tra-mang-cau",
+    "name": "Trà mãng cầu",
+    "aliases": [
+      "tra mang cau"
+    ],
+    "category": "Đồ uống",
+    "kcal": 50
+  },
+  {
+    "type": "food",
+    "slug": "tra-dau",
+    "name": "Trà dâu",
+    "aliases": [
+      "tra dau"
+    ],
+    "category": "Đồ uống",
+    "kcal": 41
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-man",
+    "name": "Nước mận",
+    "aliases": [
+      "nuoc man"
+    ],
+    "category": "Đồ uống",
+    "kcal": 42
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-ep-luu",
+    "name": "Nước ép lựu",
+    "aliases": [
+      "nuoc ep luu"
+    ],
+    "category": "Đồ uống",
+    "kcal": 44
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-dua-tuoi",
+    "name": "Nước dừa tươi",
+    "aliases": [
+      "nuoc dua tuoi"
+    ],
+    "category": "Đồ uống",
+    "kcal": 45
+  },
+  {
+    "type": "food",
+    "slug": "qua-sau",
+    "name": "Quả sấu",
+    "aliases": [
+      "qua sau"
+    ],
+    "category": "Rau xanh",
+    "kcal": 26
+  },
+  {
+    "type": "food",
+    "slug": "me-non",
+    "name": "Me non",
+    "aliases": [
+      "me non"
+    ],
+    "category": "Rau xanh",
+    "kcal": 27
+  },
+  {
+    "type": "food",
+    "slug": "bap-chuoi-bao",
+    "name": "Bắp chuối bào",
+    "aliases": [
+      "bap chuoi bao",
+      "ngô chuối bào",
+      "ngo chuoi bao"
+    ],
+    "category": "Rau xanh",
+    "kcal": 28
+  },
+  {
+    "type": "food",
+    "slug": "banh-pia-sau-rieng",
+    "name": "Bánh pía sầu riêng",
+    "aliases": [
+      "banh pia sau rieng"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 407
+  },
+  {
+    "type": "food",
+    "slug": "banh-trung-thu-thap-cam",
+    "name": "Bánh trung thu thập cẩm",
+    "aliases": [
+      "banh trung thu thap cam"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 422
+  },
+  {
+    "type": "food",
+    "slug": "mit-thai",
+    "name": "Mít thái",
+    "aliases": [
+      "mit thai"
+    ],
+    "category": "Trái cây",
+    "kcal": 62
+  },
+  {
+    "type": "food",
+    "slug": "nhan-long",
+    "name": "Nhãn lồng",
+    "aliases": [
+      "nhan long"
+    ],
+    "category": "Trái cây",
+    "kcal": 52
+  },
+  {
+    "type": "food",
+    "slug": "vai-thieu",
+    "name": "Vải thiều",
+    "aliases": [
+      "vai thieu"
+    ],
+    "category": "Trái cây",
+    "kcal": 54
+  },
+  {
+    "type": "food",
+    "slug": "xoai-cat-hoa-loc",
+    "name": "Xoài cát Hòa Lộc",
+    "aliases": [
+      "xoai cat hoa loc"
+    ],
+    "category": "Hải sản",
+    "kcal": 92
+  },
+  {
+    "type": "food",
+    "slug": "trai-bon-bon",
+    "name": "Trái bòn bon",
+    "aliases": [
+      "trai bon bon"
+    ],
+    "category": "Trái cây",
+    "kcal": 58
+  },
+  {
+    "type": "food",
+    "slug": "man-ha-noi",
+    "name": "Mận Hà Nội",
+    "aliases": [
+      "man ha noi"
+    ],
+    "category": "Trái cây",
+    "kcal": 60
+  },
+  {
+    "type": "food",
+    "slug": "trai-coc-non",
+    "name": "Trái cóc non",
+    "aliases": [
+      "trai coc non"
+    ],
+    "category": "Trái cây",
+    "kcal": 62
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-mam-gung",
+    "name": "Nước mắm gừng",
+    "aliases": [
+      "nuoc mam gung"
+    ],
+    "category": "Gia vị",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "nuoc-mam-me",
+    "name": "Nước mắm me",
+    "aliases": [
+      "nuoc mam me"
+    ],
+    "category": "Gia vị",
+    "kcal": 81
+  },
+  {
+    "type": "food",
+    "slug": "mam-ruoc-xao-sa-ot",
+    "name": "Mắm ruốc xào sả ớt",
+    "aliases": [
+      "mam ruoc xao sa ot"
+    ],
+    "category": "Gia vị",
+    "kcal": 84
+  },
+  {
+    "type": "food",
+    "slug": "tuong-ot-bac",
+    "name": "Tương ớt Bắc",
+    "aliases": [
+      "tuong ot bac"
+    ],
+    "category": "Gia vị",
+    "kcal": 90
+  },
+  {
+    "type": "food",
+    "slug": "xot-mayonnaise",
+    "name": "Xốt mayonnaise",
+    "aliases": [
+      "xot mayonnaise"
+    ],
+    "category": "Gia vị",
+    "kcal": 94
+  },
+  {
+    "type": "food",
+    "slug": "xot-me-chua-ngot",
+    "name": "Xốt me chua ngọt",
+    "aliases": [
+      "xot me chua ngot"
+    ],
+    "category": "Gia vị",
+    "kcal": 97
+  },
+  {
+    "type": "food",
+    "slug": "xot-pho-mai",
+    "name": "Xốt phô mai",
+    "aliases": [
+      "xot pho mai"
+    ],
+    "category": "Gia vị",
+    "kcal": 100
+  },
+  {
+    "type": "food",
+    "slug": "quy-linh-cao",
+    "name": "Quy linh cao",
+    "aliases": [
+      "quy linh cao"
+    ],
+    "category": "Bánh kẹo",
+    "kcal": 378
   }
 ]

@@ -1,7 +1,7 @@
 import type { Food, NutrientValues, Recipe } from "./nutrition";
 
-const FOOD_TARGET = 218;
-const RECIPE_TARGET = 149;
+const FOOD_TARGET = 309;
+const RECIPE_TARGET = 211;
 
 type FoodProfile = {
   category: string;
@@ -30,263 +30,315 @@ const profiles: Record<string, FoodProfile> = {
 };
 
 const foodSeedText = `
-Rau cải xoong|Rau
-Rau cải bó xôi|Rau
-Rau cải ngồng|Rau
-Rau cải bẹ trắng|Rau
-Rau cải thìa non|Rau
-Rau cải ngọt|Rau
-Rau cải xoăn|Rau
-Rau xà lách lô lô|Rau
-Rau xà lách romaine|Rau
-Rau cải mầm|Rau
-Rau tần ô|Rau
-Rau cần ta|Rau
-Rau cần tây|Rau
-Rau húng lủi|Rau
-Rau răm|Rau
-Rau mùi ta|Rau
-Rau mùi tàu|Rau
-Rau thì là|Rau
-Rau ngổ|Rau
-Rau sam|Rau
-Rau lang|Rau
-Đọt bí|Rau
-Đọt su su|Rau
-Bông hẹ|Rau
-Bông thiên lý|Rau
-Bông điên điển|Rau
-Bông so đũa|Rau
-Lá lốt|Rau
-Lá giang|Rau
-Lá cách|Rau
-Lá mơ|Rau
-Măng tươi|Củ quả
-Măng khô|Củ quả
-Rau càng cua|Rau
-Ngó sen|Củ quả
-Củ sen|Củ quả
-Củ năng|Củ quả
-Củ sắn|Củ quả
-Củ hũ dừa|Củ quả
-Củ kiệu|Củ quả
-Củ nén|Gia vị
-Gừng tươi|Gia vị
-Nghệ tươi|Gia vị
-Riềng|Gia vị
-Sả cây|Gia vị
-Ớt hiểm|Gia vị
-Ớt sừng|Gia vị
-Hành tím|Gia vị
-Hẹ lá|Rau
-Tỏi tây|Rau
-Bí ngòi|Củ quả
-Bí đao|Củ quả
-Bầu|Củ quả
-Su su|Củ quả
-Khổ qua|Củ quả
-Cà pháo muối|Củ quả
-Cà bát|Củ quả
-Cà chua bi|Củ quả
-Dưa leo baby|Củ quả
-Dưa gang non|Củ quả
-Ớt chuông đỏ|Củ quả
-Ớt chuông vàng|Củ quả
-Bắp non|Củ quả
-Củ cải đỏ|Củ quả
-Cà rốt baby|Củ quả
-Khoai lang tím|Tinh bột
-Khoai lang mật|Tinh bột
-Khoai tây bi|Tinh bột
-Khoai môn cao|Tinh bột
-Khoai sọ|Tinh bột
-Khoai mỡ|Tinh bột
-Khoai từ tím|Tinh bột
-Bắp nếp luộc|Tinh bột
-Bắp Mỹ luộc|Tinh bột
-Gạo nếp|Tinh bột
-Gạo lứt đỏ|Tinh bột
-Gạo lứt đen|Tinh bột
-Bún gạo khô|Tinh bột
-Miến dong khô|Tinh bột
-Mì trứng tươi|Tinh bột
-Nui khô|Tinh bột
-Hủ tiếu khô|Tinh bột
-Bánh hỏi|Tinh bột
-Bánh ướt|Tinh bột
-Bánh đa đỏ|Tinh bột
-Bánh tráng mè|Tinh bột
-Bột bắp|Tinh bột
-Bột sắn dây|Tinh bột
-Bột khoai tây|Tinh bột
-Yến mạch cán|Tinh bột
-Ngũ cốc ăn sáng|Tinh bột
-Táo xanh|Trái cây
-Lê|Trái cây
-Đào|Trái cây
-Mận hậu|Trái cây
-Mận cơm|Trái cây
-Ổi ruột đỏ|Trái cây
-Cam sành|Trái cây
-Quýt|Trái cây
-Chanh|Trái cây
-Chanh dây tươi|Trái cây
-Me chín|Trái cây
-Hồng xiêm|Trái cây
-Sapoche|Trái cây
-Na|Trái cây
-Mãng cầu xiêm|Trái cây
-Mãng cầu ta|Trái cây
-Vú sữa|Trái cây
-Hồng giòn|Trái cây
-Lựu|Trái cây
-Sung Mỹ|Trái cây
-Mâm xôi đen|Trái cây
-Việt quất|Trái cây
-Phúc bồn tử|Trái cây
-Kiwi xanh|Trái cây
-Kiwi vàng|Trái cây
-Chuối cau|Trái cây
-Chuối sứ|Trái cây
-Chuối tiêu|Trái cây
-Dừa cơm non|Trái cây
-Dừa cơm già|Trái cây
-Thịt heo vai|Thịt
-Thịt heo đùi|Thịt
-Thịt heo xay|Thịt
-Thịt heo ba rọi luộc|Thịt
-Sườn non heo|Thịt
-Chân giò heo|Thịt
-Tai heo|Thịt
-Lưỡi heo|Thịt
-Tim heo|Thịt
-Cật heo|Thịt
-Dạ dày heo|Thịt
-Phổi heo|Thịt
-Thịt bò thăn|Thịt
-Thịt bò bắp|Thịt
-Thịt bò gầu|Thịt
-Thịt bò nạm|Thịt
-Đuôi bò|Thịt
-Gân bò|Thịt
-Lá sách bò|Thịt
-Thịt dê|Thịt
-Thịt cừu|Thịt
-Thịt thỏ|Thịt
-Ức vịt|Thịt
-Đùi vịt|Thịt
-Thịt ngan|Thịt
-Thịt ngỗng|Thịt
-Cánh gà|Thịt
-Đùi gà góc tư|Thịt
-Mề gà|Thịt
-Gan gà|Thịt
-Tim gà|Thịt
-Cá trắm cỏ|Cá
-Cá trắm đen|Cá
-Cá diêu hồng|Cá
-Cá chim trắng|Cá
-Cá chim đen|Cá
-Cá basa phi lê|Cá
-Cá hú|Cá
-Cá bống|Cá
-Cá linh|Cá
-Cá thác lác|Cá
-Cá chạch|Cá
-Cá rô đồng|Cá
-Cá sặc|Cá
-Cá cơm tươi|Cá
-Cá cơm khô|Cá
-Cá trích|Cá
-Cá đối|Cá
-Cá tuyết|Cá
-Cá bơn|Cá
-Cá đuối|Cá
-Cá ngừ đại dương|Cá
-Cá bạc má|Cá
-Cá thu ảo|Cá
-Cá ngát|Cá
-Tôm đất|Hải sản
-Tôm càng xanh|Hải sản
-Tép đồng|Hải sản
-Ruốc biển|Hải sản
-Mực ống|Hải sản
-Mực lá|Hải sản
-Bạch tuộc|Hải sản
-Hàu sữa|Hải sản
-Hàu đá|Hải sản
-Sò lông|Hải sản
-Sò điệp|Hải sản
-Sò mai|Hải sản
-Ốc móng tay|Hải sản
-Ốc len|Hải sản
-Ốc giác|Hải sản
-Ốc mỡ|Hải sản
-Ghẹ xanh|Hải sản
-Cù kỳ|Hải sản
-Tôm hùm|Hải sản
-Cá viên|Thịt chế biến
-Bò viên|Thịt chế biến
-Tôm viên|Thịt chế biến
-Đậu hũ non|Đậu
-Đậu hũ chiên|Đậu
-Tàu hũ ky|Đậu
-Tương hột|Đậu
-Chao trắng|Đậu
-Chao đỏ|Đậu
-Đậu lăng|Đậu
-Đậu cô ve hạt|Đậu
-Đậu phộng sống|Hạt
-Hạt điều|Hạt
-Hạnh nhân|Hạt
-Óc chó|Hạt
-Mắc ca|Hạt
-Hạt chia|Hạt
-Hạt lanh|Hạt
-Mè trắng|Hạt
-Mè đen|Hạt
-Sữa chua Hy Lạp|Trứng sữa
-Phô mai con bò cười|Trứng sữa
-Phô mai mozzarella|Trứng sữa
-Phô mai cheddar|Trứng sữa
-Sữa tươi tách béo|Trứng sữa
-Sữa tươi không đường|Trứng sữa
-Sữa bột nguyên kem|Trứng sữa
-Sữa đặc có đường|Trứng sữa
-Nước tương|Gia vị
-Dầu hào|Gia vị
-Sa tế|Gia vị
-Mắm tôm|Gia vị
-Mắm nêm|Gia vị
-Mắm ruốc|Gia vị
-Muối mè|Gia vị
-Bột nêm|Gia vị
-Bột ngọt|Gia vị
-Giấm gạo|Gia vị
-Nước mía|Đồ uống
-Nước sâm|Đồ uống
-Nước rau má|Đồ uống
-Sữa bắp|Đồ uống
-Sữa hạt sen|Đồ uống
-Sữa đậu xanh|Đồ uống
-Trà bí đao|Đồ uống
-Trà atiso|Đồ uống
-Trà đào|Đồ uống
-Nước ép cà rốt|Đồ uống
-Nước ép thơm|Đồ uống
-Nước ép ổi|Đồ uống
-Bánh pía|Bánh kẹo
-Bánh in|Bánh kẹo
-Bánh khảo|Bánh kẹo
-Bánh gai|Bánh kẹo
-Bánh ít lá gai|Bánh kẹo
-Bánh cốm|Bánh kẹo
-Bánh bò|Bánh kẹo
-Bánh da lợn|Bánh kẹo
-Bánh tiêu|Bánh kẹo
-Kẹo dừa|Bánh kẹo
-Mứt gừng|Bánh kẹo
-Mứt dừa|Bánh kẹo
+Rau cải xoong
+Rau cải bó xôi
+Rau cải ngồng
+Rau cải bẹ trắng
+Rau cải thìa non
+Rau cải ngọt
+Rau cải xoăn
+Rau xà lách lô lô
+Rau xà lách romaine
+Rau cải mầm
+Rau tần ô
+Rau cần ta
+Rau cần tây
+Rau húng lủi
+Rau răm
+Rau mùi ta
+Rau mùi tàu
+Rau thì là
+Rau ngổ
+Rau sam
+Rau lang
+Đọt bí
+Đọt su su
+Bông hẹ
+Bông thiên lý
+Bông điên điển
+Bông so đũa
+Lá lốt
+Lá giang
+Lá cách
+Lá mơ
+Măng tươi
+Măng khô
+Rau càng cua
+Ngó sen
+Củ sen
+Củ năng
+Củ sắn
+Củ hũ dừa
+Củ kiệu
+Củ nén
+Gừng tươi
+Nghệ tươi
+Riềng
+Sả cây
+Ớt hiểm
+Ớt sừng
+Hành tím
+Hẹ lá
+Tỏi tây
+Bí ngòi
+Bí đao
+Bầu
+Su su
+Khổ qua
+Cà pháo muối
+Cà bát
+Cà chua bi
+Dưa leo baby
+Dưa gang non
+Ớt chuông đỏ
+Ớt chuông vàng
+Bắp non
+Củ cải đỏ
+Cà rốt baby
+Khoai lang tím
+Khoai lang mật
+Khoai tây bi
+Khoai môn cao
+Khoai sọ
+Khoai mỡ
+Khoai từ tím
+Bắp nếp luộc
+Bắp Mỹ luộc
+Gạo nếp
+Gạo lứt đỏ
+Gạo lứt đen
+Bún gạo khô
+Miến dong khô
+Mì trứng tươi
+Nui khô
+Hủ tiếu khô
+Bánh hỏi
+Bánh ướt
+Bánh đa đỏ
+Bánh tráng mè
+Bột bắp
+Bột sắn dây
+Bột khoai tây
+Yến mạch cán
+Ngũ cốc ăn sáng
+Táo xanh
+Lê
+Đào
+Mận hậu
+Mận cơm
+Ổi ruột đỏ
+Cam sành
+Quýt
+Chanh
+Chanh dây tươi
+Me chín
+Hồng xiêm
+Sapoche
+Na
+Mãng cầu xiêm
+Mãng cầu ta
+Vú sữa
+Hồng giòn
+Lựu
+Sung Mỹ
+Mâm xôi đen
+Việt quất
+Phúc bồn tử
+Kiwi xanh
+Kiwi vàng
+Chuối cau
+Chuối sứ
+Chuối tiêu
+Dừa cơm non
+Dừa cơm già
+Thịt heo vai
+Thịt heo đùi
+Thịt heo xay
+Thịt heo ba rọi luộc
+Sườn non heo
+Chân giò heo
+Tai heo
+Lưỡi heo
+Tim heo
+Cật heo
+Dạ dày heo
+Phổi heo
+Thịt bò thăn
+Thịt bò bắp
+Thịt bò gầu
+Thịt bò nạm
+Đuôi bò
+Gân bò
+Lá sách bò
+Thịt dê
+Thịt cừu
+Thịt thỏ
+Ức vịt
+Đùi vịt
+Thịt ngan
+Thịt ngỗng
+Cánh gà
+Đùi gà góc tư
+Mề gà
+Gan gà
+Tim gà
+Cá trắm cỏ
+Cá trắm đen
+Cá diêu hồng
+Cá chim trắng
+Cá chim đen
+Cá basa phi lê
+Cá hú
+Cá bống
+Cá linh
+Cá thác lác
+Cá chạch
+Cá rô đồng
+Cá sặc
+Cá cơm tươi
+Cá cơm khô
+Cá trích
+Cá đối
+Cá tuyết
+Cá bơn
+Cá đuối
+Cá ngừ đại dương
+Cá bạc má
+Cá thu ảo
+Cá ngát
+Tôm đất
+Tôm càng xanh
+Tép đồng
+Ruốc biển
+Mực ống
+Mực lá
+Bạch tuộc
+Hàu sữa
+Hàu đá
+Sò lông
+Sò điệp
+Sò mai
+Ốc móng tay
+Ốc len
+Ốc giác
+Ốc mỡ
+Ghẹ xanh
+Cù kỳ
+Tôm hùm
+Cá viên
+Bò viên
+Tôm viên
+Đậu hũ non
+Đậu hũ chiên
+Tàu hũ ky
+Tương hột
+Chao trắng
+Chao đỏ
+Đậu lăng
+Đậu cô ve hạt
+Đậu phộng sống
+Hạt điều
+Hạnh nhân
+Óc chó
+Mắc ca
+Hạt chia
+Hạt lanh
+Mè trắng
+Mè đen
+Sữa chua Hy Lạp
+Phô mai con bò cười
+Phô mai mozzarella
+Phô mai cheddar
+Sữa tươi tách béo
+Sữa tươi không đường
+Sữa bột nguyên kem
+Sữa đặc có đường
+Nước tương
+Dầu hào
+Sa tế
+Mắm tôm
+Mắm nêm
+Mắm ruốc
+Muối mè
+Bột nêm
+Bột ngọt
+Chả lụa
+Rau ngót
+Mướp đắng
+Hành lá
+Sả
+Giấm gạo
+Nước mía
+Nước sâm
+Nước rau má
+Sữa bắp
+Sữa hạt sen
+Sữa đậu xanh
+Trà bí đao
+Trà atiso
+Trà đào
+Nước ép cà rốt
+Nước ép thơm
+Nước ép ổi
+Bánh pía
+Bánh in
+Bánh khảo
+Bánh gai
+Bánh ít lá gai
+Bánh cốm
+Bánh bò
+Bánh da lợn
+Bánh tiêu
+Kẹo dừa
+Mứt gừng
+Mứt dừa
+Trà sữa trân châu đường đen
+Bạc xỉu
+Cà phê đen đá
+Trà đào cam sả
+Trà tắc
+Chè Thái
+Chè sương sa hạt lựu
+Cơm cháy chà bông
+Bánh bao nhân thịt trứng cút
+Xúc xích chiên
+Há cảo hấp
+Xíu mại nước
+Chân gà sả tắc
+Da heo chiên giòn
+Kem chuối
+Sữa chua trân châu
+Cà phê muối
+Trà mãng cầu
+Trà dâu
+Nước mận
+Nước ép lựu
+Nước dừa tươi
+Quả sấu
+Me non
+Bắp chuối bào
+Rau đắng
+Rau diếp cá
+Bánh pía sầu riêng
+Bánh trung thu thập cẩm
+Sầu riêng
+Mít thái
+Chôm chôm
+Nhãn lồng
+Vải thiều
+Xoài cát Hòa Lộc
+Trái bòn bon
+Mận Hà Nội
+Trái cóc non
+Nước mắm gừng
+Nước mắm me
+Mắm ruốc xào sả ớt
+Tương đen
+Tương ớt Bắc
+Xốt mayonnaise
+Xốt me chua ngọt
+Xốt phô mai
+Quy linh cao
 `;
 
 const recipeSeedText = `
@@ -304,13 +356,25 @@ Phở tái
 Phở nạm
 Phở sốt vang
 Phở cuốn
+Bánh xèo
+Bún đậu mắm tôm
+Bánh cuốn
+Bún thịt nướng
+Bò kho
+Cơm rang dưa bò
+Miến lươn
+Chè trôi nước
+Bánh chưng
+Bánh tét
+Xôi xéo
+Bánh giò
+Canh khổ qua nhồi thịt
 Phở xào bò
 Bún bò Nam Bộ
 Bún riêu ốc
 Bún mắm
 Bún cá Nha Trang
 Bún cá rô đồng
-Bún đậu mắm tôm
 Bún ngan
 Bún vịt măng
 Bún sườn chua
@@ -346,7 +410,6 @@ Cháo nghêu
 Canh cua rau đay
 Canh mướp mồng tơi
 Canh chua tôm
-Canh khổ qua nhồi thịt
 Canh cải thịt bằm
 Canh bí xanh tôm khô
 Canh khoai mỡ
@@ -434,7 +497,6 @@ Bánh nậm
 Bánh ram ít
 Bánh ít trần
 Bánh đúc nóng
-Bánh giò
 Bánh tằm bì
 Bánh tráng trộn
 Bánh tráng nướng
@@ -442,7 +504,6 @@ Xôi gấc
 Xôi đậu xanh
 Xôi đậu phộng
 Xôi mặn
-Xôi xéo
 Xôi bắp
 Xôi vò
 Chè bắp
@@ -452,9 +513,46 @@ Chè bà ba
 Chè khúc bạch
 Chè hạt sen
 Chè chuối
-Chè trôi nước
 Sâm bổ lượng
 Rau câu dừa
+Bánh mì thịt chả
+Cơm tấm sườn bì chả
+Bún chả Hà Nội
+Bún bò Huế
+Hủ tiếu Nam Vang
+Lẩu Thái tôm mực
+Bò né ốp la
+Bì cuốn
+Bánh chưng rán
+Xôi mặn thập cẩm
+Lẩu bò nhúng dấm
+Lẩu gà lá é
+Lẩu riêu cua bắp bò
+Lẩu cá kèo lá giang
+Lẩu dê
+Bò nướng lá lốt
+Sườn heo nướng
+Vú heo nướng chao
+Gà nướng muối ớt
+Ốc hương rang muối trứng muối
+Càng ghẹ rang muối
+Sò huyết cháy tỏi
+Hàu nướng phô mai
+Bún nấm chay
+Cơm chiên dương châu chay
+Đậu hũ xào sả ớt
+Canh chua chay
+Gỏi ngó sen chay
+Bánh cuốn nhân thịt
+Bánh ướt chả lụa
+Bánh canh chả cá
+Bánh bèo
+Bánh khọt
+Bánh flan
+Tàu hũ nước đường
+Sữa chua nếp cẩm
+Chè thập cẩm
+Chè bưởi
 `;
 
 function normalize(value: string) {
@@ -530,9 +628,32 @@ function vary(nutrients: NutrientValues, index: number): NutrientValues {
 }
 
 const foodSeeds = foodSeedText.trim().split("\n").map((line) => {
-  const [name, category] = line.split("|");
-  return { name: name.trim(), category: category.trim() };
+  const parts = line.split("|");
+  const name = parts[0].trim();
+  const category = parts[1] ? parts[1].trim() : guessCategory(name);
+  return { name, category };
 });
+
+function guessCategory(name: string): string {
+  const n = name.toLowerCase();
+  const has = (...terms: string[]) => terms.some((term) => n.includes(term));
+  if (n.startsWith("rau") || n.startsWith("lá") || n.startsWith("bông") || n.startsWith("đọt") || n.startsWith("ngó") || n.startsWith("củ hũ")) return "Rau";
+  if (has("cà phê", "bạc xỉu")) return "Đồ uống";
+  if (has("mắm", "nước tương", "tương ớt", "xốt", "sốt", "dầu hào", "sa tế", "muối", "bột nêm", "bột ngọt", "giấm", "mayonnaise")) return "Gia vị";
+  if (has("chả", "xúc xích", "viên", "chà bông", "da heo", "khô bò", "khô gà", "xíu mại")) return "Thịt chế biến";
+  if (has("sinh tố", "sữa bắp", "sữa đậu", "sữa hạt", "trà sữa", "nước mía") || n.startsWith("trà ") || n.startsWith("nước ép") || n.startsWith("nước dừa") || n.startsWith("nước sâm") || n.startsWith("nước rau má") || n.startsWith("nước mận")) return "Đồ uống";
+  if (has("chè", "kem", "bánh", "kẹo", "mứt", "quy linh cao", "sương sáo")) return "Bánh kẹo";
+  if (has("thịt", "sườn", "chân", "đuôi", "gan", "gân", "lá sách", "tim", "lưỡi", "mề", "cật", "dạ dày", "phổi", "ức vịt", "đùi vịt", "cánh gà", "đùi gà")) return "Thịt";
+  if (has("cá", "tôm", "mực", "bạch tuộc", "hàu", "sò", "ốc", "ghẹ", "cua", "cù kỳ", "tép", "ruốc")) return "Hải sản";
+  if (has("sữa", "phô mai", "sữa chua", "trứng")) return "Trứng sữa";
+  if (has("hạt", "óc chó", "mắc ca", "hạnh nhân", "điều", "mè", "đậu phộng")) return "Hạt";
+  if (has("bắp chuối")) return "Rau";
+  if (has("táo", "lê", "đào", "mận", "ổi", "cam", "quýt", "chanh", "me chín", "hồng", "sapoche", "na", "mãng cầu", "vú sữa", "lựu", "sung", "mâm xôi", "việt quất", "kiwi", "chuối", "dừa", "sầu riêng", "mít", "chôm chôm", "nhãn", "vải", "xoài", "bòn bon", "cóc", "thanh long", "măng cụt", "dâu", "bưởi", "khóm", "nho", "dưa hấu", "đu đủ")) return "Trái cây";
+  if (has("măng", "củ", "bí", "bầu", "su su", "khổ qua", "cà pháo", "cà bát", "cà chua", "dưa leo", "dưa gang", "ớt chuông", "bắp non", "cà rốt")) return "Củ quả";
+  if (has("gạo", "bún", "miến", "mì", "nui", "bột", "yến mạch", "bánh phở", "bánh hỏi", "bánh ướt", "ngũ cốc", "hủ tiếu", "khoai", "bắp nếp", "bắp mỹ", "cơm cháy", "há cảo")) return "Tinh bột";
+  if (has("đậu", "tàu hũ", "tương", "chao")) return "Đậu";
+  return "Rau";
+}
 
 const foodOverrides: Record<string, Partial<Food>> = {
   "gao-nep": {
@@ -647,6 +768,24 @@ function recipeItems(name: string): Recipe["items"] {
       { foodId: protein, amountG: 90, note: "Đạm chính" },
       { foodId: "dua-leo", amountG: 40, note: "Rau ăn kèm" },
       { foodId: "nuoc-mam", amountG: 6, note: "Nước chấm/gia vị" }
+    ];
+  }
+  if (n.includes("lau")) {
+    return [
+      { foodId: "nuoc-dung-bo", amountG: 500, note: "Nước lẩu (khẩu phần 1 người)" },
+      { foodId: protein, amountG: 150, note: "Thịt/hải sản nhúng" },
+      { foodId: "bun-tuoi", amountG: 150, note: "Bún/mì ăn kèm" },
+      { foodId: "dau-phu", amountG: 50, note: "Đậu hũ" },
+      { foodId: "rau-muong", amountG: 150, note: "Rau nhúng lẩu" },
+      { foodId: "dau-an", amountG: 10, note: "Sa tế/Mỡ lẩu" }
+    ];
+  }
+  if (n.includes("oc") || n.includes("ngheu") || n.includes("so") || n.includes("ghe") || n.includes("hau")) {
+    return [
+      { foodId: protein, amountG: 250, note: "Hải sản có vỏ (tính cả vỏ)" },
+      { foodId: "dau-an", amountG: 15, note: "Dầu/Bơ/Mỡ hành" },
+      { foodId: "duong-trang", amountG: 10, note: "Gia vị sốt (Me, Muối ớt)" },
+      { foodId: "rau-thom-hanh", amountG: 15, note: "Rau răm, sả, hành" }
     ];
   }
   return [
