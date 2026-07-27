@@ -31,11 +31,14 @@ export type NutrientValues = {
   potassiumMg?: number;
   magnesiumMg?: number;
   seleniumMcg?: number;
+  iodineMcg?: number;
   vitaminAUg?: number;
   vitaminCMg?: number;
   vitaminDMcg?: number;
   vitaminEMg?: number;
+  vitaminMg?: number;
   vitaminB12Mcg?: number;
+  folateUg?: number;
   phosphorusMg?: number;
   glycemicIndex?: number;
 };
@@ -46,7 +49,7 @@ export type Food = {
   name: string;
   aliases: string[];
   category: string;
-  state: "raw" | "cooked" | "processed";
+  state: "raw" | "cooked" | "processed" | "dried" | "roasted";
   basis: string;
   edibleNote: string;
   imageUrl?: string;
@@ -1809,7 +1812,7 @@ foods.push(
     ...extraFoods7,
     ...extraFoods8,
     ...bulkFoods
-  ])
+  ] as Food[])
 );
 recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipes4, ...extraRecipes5, ...extraRecipes6, ...bulkRecipes);
 
@@ -1847,11 +1850,14 @@ export const nutrientLabels: Record<keyof NutrientValues, { label: string; unit:
   potassiumMg: { label: "Kali", unit: "mg" },
   magnesiumMg: { label: "Magie", unit: "mg" },
   seleniumMcg: { label: "Selen", unit: "µg" },
+  iodineMcg: { label: "I-ốt", unit: "µg" },
   vitaminAUg: { label: "Vitamin A", unit: "µg" },
   vitaminCMg: { label: "Vitamin C", unit: "mg" },
   vitaminDMcg: { label: "Vitamin D", unit: "µg" },
   vitaminEMg: { label: "Vitamin E", unit: "mg" },
+  vitaminMg: { label: "Vitamin", unit: "mg" },
   vitaminB12Mcg: { label: "Vitamin B12", unit: "µg" },
+  folateUg: { label: "Folate", unit: "µg" },
   phosphorusMg: { label: "Phốt-pho", unit: "mg" },
   glycemicIndex: { label: "GI", unit: "" }
 };

@@ -28,17 +28,17 @@ const config = [
 <BaseLayout title="Bảng sắp xếp dữ liệu dinh dưỡng thực phẩm - Dinh Dưỡng Việt">
   <style>
     .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
-    .badge { display: inline-block; background: var(--bg-info); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    .badge { display: inline-block; background: var(--brand-light); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
     h1 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 0 0 8px; }
     .lead { color: var(--ink-secondary); margin-bottom: 18px; font-size: 1.05rem; }
 
     .safety-shell {
       margin: 0 0 22px;
       padding: 14px 16px;
-      border: 1px solid #bfdbfe;
-      border-radius: 10px;
-      background: #eff6ff;
-      color: #1f2937;
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: var(--radius-lg);
+      background: rgba(59, 130, 246, 0.05);
+      color: var(--ink);
     }
     .safety-shell p { margin: 0; font-size: 0.92rem; line-height: 1.55; }
     .safety-shell p + p { margin-top: 8px; }
@@ -51,30 +51,31 @@ const config = [
 
     .rank-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; max-width: 100%; }
     .rank-nav button {
-      padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px;
-      background: var(--card); cursor: pointer; font-size: 0.88rem; transition: all .2s;
-      color: var(--ink);
+      padding: 8px 14px; border: 1px solid var(--card-border); border-radius: var(--radius);
+      background: var(--card); cursor: pointer; font-size: 0.88rem; transition: all var(--transition);
+      color: var(--ink); font-weight: 600;
     }
-    .rank-nav button:hover { border-color: var(--brand); background: var(--card-hover); }
-    .rank-nav button.active { background: var(--brand); color: var(--ink); border-color: var(--brand); }
+    .rank-nav button:hover { border-color: var(--brand); background: var(--bg-soft); transform: translateY(-1px); }
+    .rank-nav button:active { transform: translateY(0); }
+    .rank-nav button.active { background: var(--brand); color: white; border-color: var(--brand); }
 
     .rank-card { display: none; }
     .rank-card.active { display: block; }
     .rank-card h2 { margin-bottom: 4px; }
     .rank-card .rank-note { margin: 0 0 12px; color: var(--ink-secondary); font-size: 0.88rem; }
 
-    .rank-list { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); }
+    .rank-list { border: 1px solid var(--card-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--card); box-shadow: var(--shadow-sm); }
     .rank-item {
       display: grid;
       grid-template-columns: 44px minmax(0, 1fr) max-content;
       align-items: center;
       gap: 12px;
       padding: 11px 14px;
-      border-bottom: 1px solid var(--line-light);
-      transition: background .15s;
+      border-bottom: 1px solid var(--card-border);
+      transition: background var(--transition);
     }
     .rank-item:last-child { border-bottom: 0; }
-    .rank-item:hover { background: var(--bg-highlight); }
+    .rank-item:hover { background: var(--bg-soft); }
 
     .rank-num {
       width: 32px; height: 32px; border-radius: 50%;
@@ -93,8 +94,8 @@ const config = [
       text-align: center;
       padding: 44px 18px;
       color: var(--ink-tertiary);
-      border: 1px solid var(--line);
-      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
       background: var(--card);
     }
 
@@ -151,7 +152,7 @@ const config = [
     </div>
   </div>
 
-  <script define:vars={{ rankConfig: config }}>
+  <script is:inline define:vars={{ rankConfig: config }}>
     const CATS = Object.freeze(rankConfig);
     const LIMIT = 15;
 

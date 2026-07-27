@@ -32,17 +32,15 @@ const toolItems = [
 ];
 
 const allItems = [
-  ...foods.map(f => ({ slug: f.slug, name: f.name, aliases: f.aliases, type: "thực phẩm", url: `/thuc-pham/${f.slug}`, nutrients: f.nutrients, emoji: "" })),
+  ...foods.map(f => ({ n: f.name, s: f.slug, a: f.aliases ?? [], t: "thực phẩm", u: `/thuc-pham/${f.slug}`, k: Math.round(f.nutrients?.energyKcal ?? 0), e: "" })),
   ...recipes.map(r => {
     const n = calculateRecipe(r);
-    return { slug: r.slug, name: r.name, aliases: r.aliases, type: "món ăn", url: `/mon-an/${r.slug}`, nutrients: n, emoji: "" };
+    return { n: r.name, s: r.slug, a: r.aliases ?? [], t: "món ăn", u: `/mon-an/${r.slug}`, k: Math.round(n?.energyKcal ?? 0), e: "" };
   }),
   ...articleItems,
   ...toolItems,
 ];
-const dataPayload = allItems.map(({ name, slug, aliases, type, url, nutrients, emoji }) => ({
-  n: name, s: slug, a: aliases ?? [], t: type, u: url, k: Math.round(nutrients && nutrients.energyKcal ? nutrients.energyKcal : 0), e: emoji || ""
-}));
+const dataPayload = allItems;
 const jsonPayload = JSON.stringify(dataPayload);
 ---
 

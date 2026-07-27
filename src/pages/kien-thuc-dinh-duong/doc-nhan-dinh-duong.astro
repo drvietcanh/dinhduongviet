@@ -168,17 +168,22 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <script>
 (function() {
   function analyze() {
-    var kp = parseFloat(document.getElementById('nl-kp').value) || 100;
-    var kcal = parseFloat(document.getElementById('nl-kcal').value) || 0;
-    var fat = parseFloat(document.getElementById('nl-fat').value) || 0;
-    var sat = parseFloat(document.getElementById('nl-sat').value) || 0;
-    var sugar = parseFloat(document.getElementById('nl-sugar').value) || 0;
-    var na = parseFloat(document.getElementById('nl-na').value) || 0;
-    var fiber = parseFloat(document.getElementById('nl-fiber').value) || 0;
-    var prot = parseFloat(document.getElementById('nl-prot').value) || 0;
+    function inputNumber(id: string, fallback: number) {
+      var el = document.getElementById(id);
+      if (!(el instanceof HTMLInputElement)) return fallback;
+      var value = parseFloat(el.value);
+      return Number.isFinite(value) ? value : fallback;
+    }
+
+    var kp = inputNumber('nl-kp', 100);
+    var kcal = inputNumber('nl-kcal', 0);
+    var sat = inputNumber('nl-sat', 0);
+    var sugar = inputNumber('nl-sugar', 0);
+    var na = inputNumber('nl-na', 0);
+    var fiber = inputNumber('nl-fiber', 0);
+    var prot = inputNumber('nl-prot', 0);
 
     // Per 100g
-    var p100 = kp > 0 ? function(v) { return v / kp * 100; } : function(v) { return 0; };
     var eds = [];
 
     // Energy
@@ -221,6 +226,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     // Render
     var verdictsEl = document.getElementById('nl-verdicts');
+    if (!verdictsEl) return;
     verdictsEl.innerHTML = eds.map(function(e) {
       var cls = e.lv === 'red' ? 'nl-v-red' : (e.lv === 'yellow' ? 'nl-v-yellow' : 'nl-v-green');
       return '<div class="nl-verdict ' + cls + '">' + e.msg + '</div>';
@@ -228,6 +234,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     // Overall grade
     var gradeEl = document.getElementById('nl-grade');
+    if (!gradeEl) return;
     var reds = eds.filter(function(e) { return e.lv === 'red'; }).length;
     var yellows = eds.filter(function(e) { return e.lv === 'yellow'; }).length;
     var greens = eds.filter(function(e) { return e.lv === 'green'; }).length;
@@ -235,7 +242,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     var score = (greens * 2 + yellows * 1 - reds * 2) / total * 50 + 50;
     score = Math.max(0, Math.min(100, Math.round(score)));
 
-    var grade, bg;
+    var grade, bg, color;
     if (score >= 80) { grade = 'A — Tuyệt vời! Sản phẩm lành mạnh.'; bg = '#f0fdf4'; color='#166534'; }
     else if (score >= 60) { grade = 'B — Khá tốt, có thể dùng thường xuyên.'; bg = '#fffbeb'; color='#92400e'; }
     else if (score >= 40) { grade = 'C — Trung bình. Dùng có chừng mực.'; bg = '#fef2f2'; color='#991b1b'; }

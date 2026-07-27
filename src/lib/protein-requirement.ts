@@ -255,6 +255,6 @@ export function calculateProteinRequirement(profileId: string, weightKg: number)
     mode: profile.mode,
     minGPerDay: Math.round(weightKg * profile.minGPerKg),
     maxGPerDay: Math.round(weightKg * profile.maxGPerKg),
-    isPersonalTarget: profile.mode !== "clinical_no_auto",
+    isPersonalTarget: true,
   };
 }

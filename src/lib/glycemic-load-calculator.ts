@@ -140,7 +140,7 @@ export function calculateGlycemicLoadMeal(
       warningCodes.indexOf("invalid_gi") === -1 &&
       warningCodes.indexOf("estimated_gi_not_used") === -1;
 
-    const gl = canCalculate ? round1((gi * carbItem.carbGrams) / 100) : null;
+    const gl = canCalculate ? round1((gi * (carbItem.carbGrams ?? 0)) / 100) : null;
 
     return {
       foodId: carbItem.foodId,

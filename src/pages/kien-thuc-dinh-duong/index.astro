@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { articles, DISPLAY_CATEGORIES, SPECIALTIES } from "../../data/articles";
+import { articles, SPECIALTIES, type ArticleMeta } from "../../data/articles";
 import ArticleCard from "../../components/ArticleCard.astro";
 
 const title = "Kiến thức dinh dưỡng | Dinh Dưỡng Việt";
@@ -28,7 +28,7 @@ const dcLabel = {
   "thuc-don": { name: "📋 Thực đơn mẫu", desc: "Thực đơn 1 ngày" },
   "dung-tin-ngay": { name: "🔍 Đừng Tin Ngay", desc: "Hiểu lầm thường gặp" },
 };
-const dcKeys = ["bai-viet", "mon-an", "thuc-don", "dung-tin-ngay"];
+const dcKeys = ["bai-viet", "mon-an", "thuc-don", "dung-tin-ngay"] as const;
 
 // Audiences
 const audiences = [
@@ -99,15 +99,15 @@ const audiences = [
     {grouped.map(g => {
       // Sub-group by display category
       const subGroups = dcKeys
-        .map(dc => ({ key: dc, ...dcLabel[dc], items: g.items.filter(a => a.displayCategory === dc) }))
+        .map(dc => ({ key: dc, ...dcLabel[dc], items: g.items.filter((a: ArticleMeta) => a.displayCategory === dc) }))
         .filter(sg => sg.items.length > 0);
 
       // Large sections (>15) start collapsed
-      const defaultOpen = g.items.length > 15 ? "open" : "";
+      const defaultOpen = g.items.length > 15;
 
       return (
         <section id={`sec-${g.key}`} class="ki-section" data-sp-section={g.key}>
-          <details class="ki-details" {defaultOpen}>
+          <details class="ki-details" open={defaultOpen}>
             <summary class="ki-section-title">
               <span class="spec-header">
                 <span class="spec-emoji">{g.meta.emoji}</span>
@@ -122,7 +122,7 @@ const audiences = [
               <div class="ki-subgroup">
                 <h3 class="ki-sub-title">{sg.name} <span class="sub-count">({sg.items.length})</span></h3>
                 <div class="ki-article-grid">
-                  {sg.items.map(a => (
+                  {sg.items.map((a: ArticleMeta) => (
                     <div data-audience={(a.audience||[]).join(',')}>
                       <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
                     </div>
@@ -197,15 +197,16 @@ const audiences = [
     .cta-alt-btn {
       display: inline-block;
       padding: 8px 18px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--card-border);
       border-radius: 999px;
       font-size: 0.88rem;
       color: var(--ink);
       text-decoration: none;
       transition: all 0.15s;
       font-weight: 500;
+      box-shadow: var(--shadow-sm);
     }
-    .cta-alt-btn:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
+    .cta-alt-btn:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; box-shadow: var(--shadow); transform: translateY(-1px); }
 
     /* Specialty tabs */
     .ki-tabs {
@@ -216,7 +217,7 @@ const audiences = [
     }
     .sp-tab {
       padding: 6px 14px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--card-border);
       border-radius: 20px;
       background: var(--card);
       color: var(--ink);
@@ -225,9 +226,10 @@ const audiences = [
       transition: all 0.15s;
       font-family: inherit;
       white-space: nowrap;
+      box-shadow: var(--shadow-sm);
     }
-    .sp-tab:hover { border-color: var(--brand); transform: translateY(-1px); }
-    .sp-tab.sp-active { background: var(--brand); color: white; border-color: var(--brand); }
+    .sp-tab:hover { border-color: var(--brand); transform: translateY(-1px); box-shadow: var(--shadow); color: var(--brand); }
+    .sp-tab.sp-active { background: var(--brand-light); color: var(--brand-dark); border-color: var(--brand-light2); font-weight: 600; box-shadow: none; transform: none; }
     .sp-count {
       display: inline-block;
       margin-left: 4px;
@@ -254,7 +256,7 @@ const audiences = [
     }
     .aud-btn {
       padding: 4px 11px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--card-border);
       border-radius: 20px;
       background: var(--card);
       color: var(--ink-secondary);
@@ -262,9 +264,10 @@ const audiences = [
       cursor: pointer;
       transition: all 0.15s;
       font-family: inherit;
+      box-shadow: var(--shadow-sm);
     }
-    .aud-btn:hover { border-color: var(--brand); color: var(--ink); }
-    .aud-btn.aud-active { background: var(--brand-light); color: var(--brand); border-color: var(--brand-light2); font-weight: 600; }
+    .aud-btn:hover { border-color: var(--brand); color: var(--ink); box-shadow: var(--shadow); transform: translateY(-1px); }
+    .aud-btn.aud-active { background: var(--brand-light); color: var(--brand); border-color: var(--brand-light2); font-weight: 600; box-shadow: none; transform: none; }
 
     /* Sections */
     .ki-section {
@@ -343,7 +346,7 @@ const audiences = [
       text-align: center;
       margin-top: 36px;
       padding-top: 24px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--card-border);
     }
     .ki-footer-links p { margin-bottom: 12px; }
     .ki-footer-links .ki-actions { justify-content: center; }

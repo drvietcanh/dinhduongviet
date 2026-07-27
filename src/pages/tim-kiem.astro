@@ -375,10 +375,12 @@ const query = Astro.url.searchParams.get("q") ?? "";
 
     // Lazy load search index — fetch only when user focuses the input or page is idle
     var searchDataLoaded = false;
-    function loadSearchData() {
+    async function loadSearchData() {
       if (searchDataLoaded) return Promise.resolve();
       searchDataLoaded = true;
-      return fetch(INDEX_URL).then(function(r) { return r.json(); }).then(function(data) {
+      try {
+        var response = await fetch(INDEX_URL);
+        var data = await response.json();
         items = data;
         // Check URL for initial query
         var urlParams = new URLSearchParams(window.location.search);
@@ -388,9 +390,9 @@ const query = Astro.url.searchParams.get("q") ?? "";
         }
         render();
         setTimeout(function() { renderSuggestions($input.value); }, 200);
-      }).catch(function(err) {
+      } catch (err) {
         $results.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">Lỗi tải dữ liệu</div><div class="empty-sub">Vui lòng thử lại sau.</div></div>';
-      });
+      }
     }
 
     // Load immediately if there's a query in URL

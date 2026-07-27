@@ -86,8 +86,8 @@ const recipeData = recipes.map(r => {
     </div>
   </div>
 
-  <script id="mt-foods" type="application/json" set:html={JSON.stringify(foodData)}></script>
-  <script id="mt-recipes" type="application/json" set:html={JSON.stringify(recipeData)}></script>
+  <script is:inline id="mt-foods" type="application/json" set:html={JSON.stringify(foodData)}></script>
+  <script is:inline id="mt-recipes" type="application/json" set:html={JSON.stringify(recipeData)}></script>
 
   <script is:inline>
 (function() {
@@ -832,17 +832,21 @@ const recipeData = recipes.map(r => {
 <style is:global>
   #mt-root { max-width: 720px; margin: 0 auto; padding: 0 0 40px; }
   .mt-nav { display: flex; align-items: center; gap: 4px; margin-bottom: 16px; }
-  .mt-nav input[type=date] { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; font-size: 0.95rem; background: var(--card); color: var(--ink); width: 100%; max-width: 220px; }
-  .mt-btn { padding: 8px 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; font-size: 0.88rem; transition: all var(--transition); white-space: nowrap; }
-  .mt-btn:hover { border-color: var(--brand); background: var(--brand-dim); }
+  .mt-nav input[type=date] { border: 1px solid var(--card-border); border-radius: var(--radius); padding: 8px 12px; font-size: 0.95rem; background: var(--card); color: var(--ink); width: 100%; max-width: 220px; transition: border-color var(--transition); }
+  .mt-nav input[type=date]:focus { outline: none; border-color: var(--brand); }
+  .mt-btn { padding: 8px 16px; border-radius: var(--radius); border: 1px solid var(--card-border); background: var(--card); color: var(--ink); cursor: pointer; font-size: 0.88rem; transition: all var(--transition); white-space: nowrap; font-weight: 600; }
+  .mt-btn:hover { border-color: var(--brand); background: var(--brand-light); color: var(--brand-dark); transform: translateY(-1px); }
+  .mt-btn:active { transform: translateY(0); }
   .mt-btn-icon { font-size: 1.1rem; padding: 8px 10px; }
-  .mt-btn-sm { background: none; border: none; cursor: pointer; padding: 4px 6px; opacity: 0.6; font-size: 0.85rem; }
+  .mt-btn-sm { background: none; border: none; cursor: pointer; padding: 4px 6px; opacity: 0.6; font-size: 0.85rem; transition: opacity var(--transition); }
   .mt-btn-sm:hover { opacity: 1; }
-  .mt-btn-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--ink-tertiary); }
+  .mt-btn-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--ink-tertiary); transition: color var(--transition); }
+  .mt-btn-close:hover { color: #ef4444; }
   .mt-btn-secondary { background: transparent; }
-  .mt-add-btn { width: 100%; padding: 12px; background: var(--brand); color: white; border: none; border-radius: var(--radius); font-size: 1rem; cursor: pointer; }
-  .mt-add-btn:hover { opacity: 0.9; }
-  .mt-summary { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; }
+  .mt-add-btn { width: 100%; padding: 12px; background: var(--brand); color: white; border: none; border-radius: var(--radius); font-size: 1rem; cursor: pointer; font-weight: 700; transition: all var(--transition); }
+  .mt-add-btn:hover { background: var(--brand-dark); transform: translateY(-1px); }
+  .mt-add-btn:active { transform: translateY(0); }
+  .mt-summary { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
   .mt-summary-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px; }
   .mt-summary-date { font-weight: 600; font-size: 1rem; }
   .mt-summary-kcal { font-size: 0.9rem; color: var(--ink-secondary); }
@@ -857,48 +861,48 @@ const recipeData = recipes.map(r => {
   .mt-summary-bars { display: flex; flex-direction: column; gap: 5px; }
   .mt-bar-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; }
   .mt-bar-label { width: 72px; flex-shrink: 0; color: var(--ink-secondary); }
-  .mt-bar-track { flex: 1; height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .mt-bar-track { flex: 1; height: 10px; background: var(--card-border); border-radius: 999px; overflow: hidden; }
   .mt-bar-fill { height: 100%; border-radius: 999px; transition: width 0.3s; }
   .mt-bar-val { width: 130px; text-align: right; flex-shrink: 0; color: var(--ink-tertiary); }
   .mt-bar-val small { font-size: 0.75rem; }
 
-  .mt-suggestions { margin-top: 10px; padding: 10px 12px; background: var(--brand-dim); border-radius: var(--radius); border: 1px solid var(--brand-light); }
+  .mt-suggestions { margin-top: 10px; padding: 10px 12px; background: var(--brand-light); border-radius: var(--radius); border: 1px solid var(--brand-light2); }
   .mt-suggestion { font-size: 0.82rem; padding: 3px 0; color: var(--ink-secondary); line-height: 1.4; }
-  .mt-sug-link { color: var(--brand); font-weight:600; cursor: pointer; border-bottom: 1px dashed var(--brand); }
+  .mt-sug-link { color: var(--brand); font-weight:700; cursor: pointer; border-bottom: 1px dashed var(--brand); }
   .mt-sug-link:hover { opacity: 0.8; }
-  .mt-suggestion-none { margin-top: 10px; font-size: 0.82rem; color: #2e7d32; text-align: center; padding: 6px; }
+  .mt-suggestion-none { margin-top: 10px; font-size: 0.82rem; color: var(--brand-dark); text-align: center; padding: 6px; }
 
-  .mt-meal { margin-bottom: 12px; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+  .mt-meal { margin-bottom: 12px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
   .mt-meal.collapsed .mt-meal-items { display: none; }
   .mt-meal.collapsed .mt-meal-toggle { transform: rotate(-90deg); }
-  .mt-meal-header { display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: var(--card); cursor: pointer; user-select: none; }
-  .mt-meal-header:hover { background: var(--dim); }
+  .mt-meal-header { display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: var(--card); cursor: pointer; user-select: none; transition: background var(--transition); }
+  .mt-meal-header:hover { background: var(--bg-soft); }
   .mt-meal-icon { font-size: 1.2rem; }
-  .mt-meal-name { font-weight: 600; flex: 1; }
+  .mt-meal-name { font-weight: 700; flex: 1; }
   .mt-meal-sum { font-size: 0.82rem; color: var(--ink-tertiary); }
   .mt-meal-toggle { transition: transform 0.2s; font-size: 0.8rem; }
   .mt-meal-items { padding: 0 14px 10px; }
   .mt-empty { color: var(--ink-tertiary); font-size: 0.85rem; padding: 8px 0; text-align: center; }
 
-  .mt-item { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line-dim); }
+  .mt-item { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--card-border); }
   .mt-item:last-child { border-bottom: none; }
   .mt-item-info { flex: 1; }
   .mt-item-info strong { font-size: 0.9rem; display: block; }
-  .mt-item-tag { font-size: 0.72rem; color: var(--ink-tertiary); background: var(--dim); padding: 1px 6px; border-radius: 4px; }
+  .mt-item-tag { font-size: 0.72rem; color: var(--ink-tertiary); background: var(--bg-soft); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--card-border); }
   .mt-item-amount { font-size: 0.78rem; color: var(--ink-tertiary); margin-left: 4px; }
   .mt-item-nutri { font-size: 0.8rem; color: var(--ink-secondary); white-space: nowrap; }
   .mt-item-actions { display: flex; gap: 2px; }
-  .mt-add-small { display: block; width: 100%; padding: 8px; margin-top: 6px; background: none; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--ink-tertiary); cursor: pointer; font-size: 0.85rem; text-align: center; }
-  .mt-add-small:hover { border-color: var(--brand); color: var(--brand); }
+  .mt-add-small { display: block; width: 100%; padding: 8px; margin-top: 6px; background: none; border: 1px dashed var(--card-border); border-radius: var(--radius); color: var(--ink-tertiary); cursor: pointer; font-size: 0.85rem; text-align: center; transition: all var(--transition); }
+  .mt-add-small:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-light); }
 
   .mt-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1000; justify-content: center; align-items: center; }
-  .mt-dialog { background: var(--card); border-radius: var(--radius-lg); padding: 20px; width: 90%; max-width: 480px; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
-  .mt-search-input { width: 100%; padding: 10px 14px; border: 2px solid var(--line); border-radius: var(--radius); font-size: 1rem; background: var(--bg); color: var(--ink); box-sizing: border-box; }
-  .mt-search-input:focus { border-color: var(--brand); outline: none; }
+  .mt-dialog { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 20px; width: 90%; max-width: 480px; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+  .mt-search-input { width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: var(--radius); font-size: 1rem; background: var(--bg); color: var(--ink); box-sizing: border-box; transition: border-color var(--transition), box-shadow var(--transition); }
+  .mt-search-input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15); outline: none; }
   .mt-search-results { margin-top: 8px; }
   .mt-hint { color: var(--ink-tertiary); font-size: 0.88rem; text-align: center; padding: 20px; }
   .mt-search-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius); cursor: pointer; transition: background 0.15s; }
-  .mt-search-item:hover { background: var(--dim); }
+  .mt-search-item:hover { background: var(--bg-soft); }
   .mt-si-icon { font-size: 1.3rem; }
   .mt-si-info { flex: 1; }
   .mt-si-info strong { display: block; font-size: 0.92rem; }
@@ -906,10 +910,10 @@ const recipeData = recipes.map(r => {
   .mt-si-kcal { font-size: 0.82rem; color: var(--ink-tertiary); white-space: nowrap; }
 
   .mt-settings { margin-top: 24px; }
-  .mt-settings-body { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-top: 8px; }
+  .mt-settings-body { padding: 16px; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); margin-top: 8px; }
   .mt-settings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
   .mt-settings-grid label { font-size: 0.82rem; color: var(--ink-secondary); display: flex; flex-direction: column; gap: 4px; }
-  .mt-settings-grid input, .mt-settings-grid select { padding: 6px 10px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.92rem; background: var(--bg); color: var(--ink); }
+  .mt-settings-grid input, .mt-settings-grid select { padding: 6px 10px; border: 1px solid var(--card-border); border-radius: var(--radius); font-size: 0.92rem; background: var(--bg); color: var(--ink); }
 
   @media (max-width: 600px) {
     .mt-nav { flex-wrap: wrap; }

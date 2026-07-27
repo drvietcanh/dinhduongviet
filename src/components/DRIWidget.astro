@@ -14,9 +14,13 @@ export interface Props {
   name?: string;
 }
 const { nutrients, name } = Astro.props;
-const dataAttrs = [
+type NutrientKey = keyof Props["nutrients"];
+const nutrientKeys: NutrientKey[] = [
   'proteinG', 'fiberG', 'calciumMg', 'ironMg', 'vitaminCMg', 'vitaminAIu', 'sodiumMg', 'potassiumMg'
-].map(k => `data-${k}="${nutrients[k] ?? ''}"`).join(' ');
+];
+const dataValues = Object.fromEntries(
+  nutrientKeys.map((k) => [`data-${k}`, nutrients[k] ?? ""])
+);
 ---
 
 <div class="dri-widget card" style="margin-top: 16px;" id="driWidget">
@@ -34,7 +38,7 @@ const dataAttrs = [
   </div>
 </div>
 
-<div id="driData" style="display:none;" {dataAttrs} data-name={name || ''}></div>
+<div id="driData" style="display:none;" {...dataValues} data-name={name || ''}></div>
 
 <script is:inline>
   (function() {
@@ -107,7 +111,7 @@ const dataAttrs = [
 
 <style is:global>
   .dri-gen-btn {
-    padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line);
+    padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--card-border);
     background: var(--bg-elevated); color: var(--ink-secondary); font-size: 0.85rem;
     font-weight: 500; cursor: pointer; transition: all var(--transition);
   }

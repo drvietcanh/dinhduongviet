@@ -13,10 +13,10 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
 ---
 
 <BaseLayout title={title} description={desc} canonical="/cong-cu/tinh-nhu-cau-dam">
-  <script id="protein-profiles" type="application/json" set:html={JSON.stringify(PROTEIN_PROFILES)}></script>
-  <script id="protein-foods" type="application/json" set:html={JSON.stringify(PROTEIN_FOOD_EXAMPLES)}></script>
-  <script id="protein-safety" type="application/json" set:html={JSON.stringify(PROTEIN_GLOBAL_SAFETY_NOTE)}></script>
-  <script id="protein-weight-limits" type="application/json" set:html={JSON.stringify({ min: PROTEIN_WEIGHT_MIN_KG, max: PROTEIN_WEIGHT_MAX_KG })}></script>
+  <script is:inline id="protein-profiles" type="application/json" set:html={JSON.stringify(PROTEIN_PROFILES)}></script>
+  <script is:inline id="protein-foods" type="application/json" set:html={JSON.stringify(PROTEIN_FOOD_EXAMPLES)}></script>
+  <script is:inline id="protein-safety" type="application/json" set:html={JSON.stringify(PROTEIN_GLOBAL_SAFETY_NOTE)}></script>
+  <script is:inline id="protein-weight-limits" type="application/json" set:html={JSON.stringify({ min: PROTEIN_WEIGHT_MIN_KG, max: PROTEIN_WEIGHT_MAX_KG })}></script>
 
   <main class="protein-page">
     <header class="page-header">

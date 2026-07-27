@@ -148,10 +148,10 @@ if (isArticle) {
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
     <!-- Breadcrumb JSON-LD -->
-    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>}
+    {breadcrumbSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>}
     <!-- Organization + WebSite JSON-LD (once per page) -->
-    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
-    {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>}
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
+    {articleSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>}
 
     <!-- Self-hosted fonts (replaces Google Fonts CDN) -->
     <Fonts />
@@ -659,9 +659,7 @@ if (isArticle) {
     <!-- Service Worker Registration (PWA) -->
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').catch(function(err) {
-          console.log('SW reg failed:', err);
-        });
+        navigator.serviceWorker.register('/sw.js').catch(function() {});
       }
     </script>
   </body>

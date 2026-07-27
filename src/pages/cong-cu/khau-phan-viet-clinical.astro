@@ -236,8 +236,8 @@ const quickJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     </details>
   </main>
 
-  <script id="meal-item-data" type="application/json" set:html={itemJson}></script>
-  <script id="meal-quick-data" type="application/json" set:html={quickJson}></script>
+  <script is:inline id="meal-item-data" type="application/json" set:html={itemJson}></script>
+  <script is:inline id="meal-quick-data" type="application/json" set:html={quickJson}></script>
 
   <style>
     .meal-page { max-width: 1040px; margin: 0 auto; padding: 28px 18px 42px; }

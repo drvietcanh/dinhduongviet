@@ -91,10 +91,10 @@ const checklistItems = [
     .safety-shell {
       margin: 0 0 20px;
       padding: 14px 16px;
-      border: 1px solid #bfdbfe;
-      border-radius: 10px;
-      background: #eff6ff;
-      color: #1f2937;
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: var(--radius-lg);
+      background: rgba(59, 130, 246, 0.05);
+      color: var(--ink);
     }
     .safety-shell p {
       margin: 0;
@@ -109,9 +109,10 @@ const checklistItems = [
     }
     .check-item {
       padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
       background: var(--card);
+      box-shadow: var(--shadow-sm);
     }
     .check-item h2 {
       margin: 0 0 6px;
@@ -135,18 +136,24 @@ const checklistItems = [
       align-items: center;
       gap: 7px;
       min-height: 40px;
-      padding: 7px 11px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      padding: 7px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
       background: var(--bg-soft);
       cursor: pointer;
       font-size: 0.9rem;
+      transition: all var(--transition);
+    }
+    .options label:hover {
+      border-color: var(--brand);
+      background: var(--brand-light);
+      color: var(--brand);
     }
     .note {
       display: none;
       margin-top: 12px;
       padding: 10px 12px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--bg-soft);
       color: var(--ink-secondary);
       font-size: 0.86rem;
@@ -161,28 +168,45 @@ const checklistItems = [
     .primary-action,
     .secondary-action {
       min-height: 44px;
-      padding: 10px 16px;
-      border-radius: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius);
       border: 1px solid var(--brand);
       cursor: pointer;
       font: inherit;
       font-weight: 700;
+      transition: all var(--transition);
     }
     .primary-action {
       background: var(--brand);
       color: white;
     }
+    .primary-action:hover {
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
+      transform: translateY(-1px);
+    }
+    .primary-action:active {
+      transform: translateY(0);
+    }
     .secondary-action {
       background: var(--card);
       color: var(--brand);
+    }
+    .secondary-action:hover {
+      background: var(--brand-light);
+      transform: translateY(-1px);
+    }
+    .secondary-action:active {
+      transform: translateY(0);
     }
     .result {
       display: none;
       margin-top: 22px;
       padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
       background: var(--card);
+      box-shadow: var(--shadow-sm);
     }
     .result h2 {
       margin: 0 0 8px;
@@ -203,7 +227,7 @@ const checklistItems = [
     }
     .result-list li {
       padding: 10px 12px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--bg-soft);
       color: var(--ink-secondary);
       overflow-wrap: anywhere;
@@ -267,7 +291,7 @@ const checklistItems = [
   </main>
 </BaseLayout>
 
-<script define:vars={{ checklistItems }}>
+<script is:inline define:vars={{ checklistItems }}>
   const form = document.getElementById("checklist-form");
   const result = document.getElementById("result");
 

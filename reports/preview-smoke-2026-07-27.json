@@ -1,0 +1,98 @@
+[
+    {
+        "route":  "/",
+        "status":  "200",
+        "seconds":  "0.039077",
+        "bytes":  "506346"
+    },
+    {
+        "route":  "/tim-kiem?q=ga",
+        "status":  "200",
+        "seconds":  "0.028527",
+        "bytes":  "30191"
+    },
+    {
+        "route":  "/cong-cu/",
+        "status":  "200",
+        "seconds":  "0.006358",
+        "bytes":  "27437"
+    },
+    {
+        "route":  "/cong-cu/tra-cuu-thuc-pham-viet/",
+        "status":  "200",
+        "seconds":  "0.028744",
+        "bytes":  "23158"
+    },
+    {
+        "route":  "/cong-cu/tinh-nhu-cau-dam/",
+        "status":  "200",
+        "seconds":  "0.015155",
+        "bytes":  "28988"
+    },
+    {
+        "route":  "/cong-cu/tinh-carb/",
+        "status":  "200",
+        "seconds":  "0.032030",
+        "bytes":  "683844"
+    },
+    {
+        "route":  "/cong-cu/tinh-gl-bua-an/",
+        "status":  "200",
+        "seconds":  "0.031295",
+        "bytes":  "832071"
+    },
+    {
+        "route":  "/cong-cu/so-sanh-bua-an/",
+        "status":  "200",
+        "seconds":  "0.019010",
+        "bytes":  "324194"
+    },
+    {
+        "route":  "/cong-cu/nhat-ky/",
+        "status":  "200",
+        "seconds":  "0.015439",
+        "bytes":  "327336"
+    },
+    {
+        "route":  "/thuc-pham/",
+        "status":  "200",
+        "seconds":  "0.027882",
+        "bytes":  "35083"
+    },
+    {
+        "route":  "/thuc-pham/gao-te/",
+        "status":  "200",
+        "seconds":  "0.005477",
+        "bytes":  "41758"
+    },
+    {
+        "route":  "/api/foods-slim.json",
+        "status":  "200",
+        "seconds":  "0.008590",
+        "bytes":  "124461"
+    },
+    {
+        "route":  "/api/foods-full.json",
+        "status":  "200",
+        "seconds":  "0.007940",
+        "bytes":  "107628"
+    },
+    {
+        "route":  "/api/search-index.json",
+        "status":  "200",
+        "seconds":  "0.015413",
+        "bytes":  "297757"
+    },
+    {
+        "route":  "/api/vietnam-foods.json",
+        "status":  "200",
+        "seconds":  "0.012534",
+        "bytes":  "545824"
+    },
+    {
+        "route":  "/vn-crossref.json",
+        "status":  "200",
+        "seconds":  "0.134938",
+        "bytes":  "12866"
+    }
+]

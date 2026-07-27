@@ -6,9 +6,9 @@ export interface ArticleMeta {
   title: string;
   description: string;
   emoji: string;
-  category: 'guidelines' | 'disease' | 'special' | 'education';
+  category: 'guidelines' | 'disease' | 'special' | 'education' | string;
   categoryName: string;
-  displayCategory?: 'an-lanh-manh' | 'dang-co-benh' | 'mon-an' | 'thuc-don' | 'dung-tin-ngay';
+  displayCategory?: 'bai-viet' | 'an-lanh-manh' | 'dang-co-benh' | 'mon-an' | 'thuc-don' | 'dung-tin-ngay';
   date: string; // ISO date
   readTime: number; // minutes
   featured?: boolean;
@@ -17,7 +17,7 @@ export interface ArticleMeta {
   priority?: string;
   specialty?: string;
   series?: string;
-  sources?: { name: string; url: string }[]; // 3-5 nguồn uy tín
+  sources?: { name: string; title?: string; description?: string; url: string; slug?: string }[]; // 3-5 nguồn uy tín
   keywords?: string[];
 }
 
