@@ -1,197 +1,235 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const pageTitle = "Tính macro | Dinh Dưỡng Việt";
-const pageDescription =
-  "Trang định hướng về macro ở mức tham khảo, chưa dùng để tính khẩu phần cá nhân.";
+const pageTitle = "Tính Macro (Đạm - Tinh Bột - Béo) | Dinh Dưỡng Việt";
+const pageDescription = "Công cụ tính toán tỷ lệ các chất đa lượng (Macro: Protein, Carbs, Fat) ra số lượng gram cụ thể cho từng chế độ ăn.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="draft-macro">
-    <p class="eyebrow">Bản nháp định hướng</p>
-    <h1>Tính macro</h1>
+  <section>
+    <span class="badge">📊 Công cụ</span>
+    <h1>Tính Macro (Chất đa lượng)</h1>
     <p class="lead">
-      Trang này đang được chuẩn hóa. Nội dung hiện chỉ giới thiệu khái niệm
-      macro ở mức tham khảo, chưa phải công cụ tính khẩu phần cá nhân.
+      Công cụ này giúp bạn chia nhỏ Tổng số Calo (TDEE) thành số lượng gram cụ thể của 3 chất: <strong>Protein (Đạm)</strong>, <strong>Carbohydrate (Tinh bột)</strong>, và <strong>Fat (Chất béo)</strong> theo từng mục tiêu dinh dưỡng.
     </p>
-
-    <div class="status-chip" aria-label="Trang đang hoàn thiện">Đang hoàn thiện</div>
-
-    <div class="panel">
-      <h2>Macro là gì?</h2>
-      <p>
-        Macro thường nói đến các nhóm chất sinh năng lượng như carbohydrate,
-        protein và chất béo.
-      </p>
-      <p>
-        Tỉ lệ macro thực tế phụ thuộc mục tiêu, bệnh nền, mức vận động, khẩu
-        phần hiện tại và bối cảnh sức khỏe.
-      </p>
-      <p>
-        Công cụ này hiện chưa đưa ra tỉ lệ macro, lượng gram mỗi ngày hoặc mục
-        tiêu cá nhân.
-      </p>
-    </div>
-
-    <div class="panel safety">
-      <h2>Lưu ý an toàn</h2>
-      <ul>
-        <li>Nội dung chỉ để tham khảo và định hướng.</li>
-        <li>Không dùng để tự đặt mục tiêu carbohydrate, protein hoặc chất béo.</li>
-        <li>
-          Không dùng để tự xây dựng chế độ giảm cân, tăng cân, tăng cơ hoặc điều
-          trị.
-        </li>
-        <li>
-          Người có tiểu đường, bệnh thận, gout, bệnh tim mạch, thai kỳ, trẻ em,
-          người cao tuổi, rối loạn ăn uống, ung thư hoặc đang dùng thuốc nên hỏi
-          bác sĩ hoặc chuyên gia dinh dưỡng nếu cần khẩu phần cá nhân.
-        </li>
-        <li>
-          Không tự chỉnh insulin, thuốc hạ đường huyết, lợi tiểu hoặc chế độ
-          điều trị dựa trên nội dung này.
-        </li>
-      </ul>
-    </div>
-
-    <nav class="panel links" aria-label="Điều hướng tham khảo">
-      <h2>Xem thêm</h2>
-      <p>
-        Bạn có thể quay lại danh sách công cụ hoặc xem các công cụ ổn định khác
-        theo nhu cầu hiện tại.
-      </p>
-      <div class="link-row">
-        <a class="link-card" href="/cong-cu/">Xem danh sách công cụ</a>
-        <a class="link-card" href="/cong-cu/tinh-nhu-cau-dam/">Tính nhu cầu đạm</a>
-        <a class="link-card" href="/cong-cu/tinh-carb/">Tính carb trong bữa ăn</a>
-      </div>
-    </nav>
   </section>
 
-  <style>
-    .draft-macro {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 28px 0 40px;
-    }
+  <div class="disclaimer">
+    ⚠️ <strong>Lưu ý:</strong> 1g Protein = 4 kcal | 1g Carb = 4 kcal | 1g Fat = 9 kcal. Hãy tính TDEE của bạn ở công cụ Tính Năng Lượng trước khi sử dụng công cụ này.
+  </div>
 
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--ink-tertiary);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
+  <section class="section card">
+    <h2>Thông số của bạn</h2>
 
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.2;
-    }
+    <div style="margin-top: 15px;">
+      <label for="calories">Tổng năng lượng mục tiêu (kcal/ngày)</label>
+      <input type="number" id="calories" inputmode="numeric" placeholder="Ví dụ: 2000" />
+      <p class="muted" style="margin-top:5px;font-size:0.85rem;">
+        Bạn chưa biết mình cần bao nhiêu calo? <a href="/cong-cu/tinh-nang-luong" style="color:var(--brand);">Tính TDEE tại đây</a>.
+      </p>
+    </div>
 
-    .lead {
-      max-width: 64ch;
-      margin: 12px 0 0;
-      color: var(--ink-secondary);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
+    <div style="margin-top: 20px;">
+      <label for="diet-type">Chọn Chế độ ăn (Tỷ lệ phân bổ)</label>
+      <select id="diet-type" style="width:100%;padding:10px 12px;border:1px solid var(--card-border);border-radius:var(--radius);font-size:1rem;background:var(--bg-elevated);color:var(--ink);">
+        <option value="balanced" selected>Cân bằng y khoa (50% Carb / 20% Protein / 30% Fat) - Tốt cho sức khỏe chung</option>
+        <option value="muscle">Tăng cơ / Ít mỡ (40% Carb / 40% Protein / 20% Fat) - Cho người tập Gym</option>
+        <option value="lowcarb">Giảm mỡ / Low-carb vừa (30% Carb / 40% Protein / 30% Fat) - Giảm cân, tiểu đường</option>
+        <option value="keto">Keto (10% Carb / 20% Protein / 70% Fat) - Giảm béo cực nhanh, trị liệu đặc biệt</option>
+      </select>
+    </div>
 
-    .status-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      margin-top: 16px;
-      padding: 6px 12px;
-      border: 1px solid #e7c27a;
-      border-radius: 999px;
-      background: #fff7e6;
-      color: #8a6116;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
+    <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 25px; text-align: center; border-radius: 12px;">
+      Tính Toán Macro
+    </button>
 
-    .panel {
-      margin-top: 20px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--card);
-    }
+    <p id="form-message" class="form-message" hidden></p>
+  </section>
 
-    .panel h2 {
-      margin: 0 0 10px;
-      font-size: 1.05rem;
-    }
+  <section id="result-section" class="section card" style="display:none; border-color: var(--brand-light2); background: #f8fafc;">
+    <h2>Khẩu phần chi tiết mỗi ngày</h2>
+    <p class="muted" style="margin-top:-5px;margin-bottom:20px;">Để đạt mục tiêu năng lượng đã nhập, mỗi ngày bạn cần ăn đúng số lượng gram của 3 chất sau:</p>
 
-    .panel p,
-    .panel li {
-      color: var(--ink-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+      <!-- Carb -->
+      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #93c5fd;text-align:center;border-top:4px solid #3b82f6;">
+        <span style="display:block;margin-bottom:5px;font-weight:600;color:#1e40af;">🌾 Carbohydrate (Tinh bột)</span>
+        <strong id="carb-result" style="font-size:2.2rem;color:#2563eb;display:block;">0</strong>
+        <span style="font-weight:600;color:#64748b;">gram / ngày</span>
+        <p style="font-size:0.85rem;margin-top:10px;color:var(--ink-secondary);">(Cơm, phở, khoai, trái cây...)</p>
+      </div>
 
-    .panel p:last-child {
-      margin-bottom: 0;
-    }
+      <!-- Protein -->
+      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #fca5a5;text-align:center;border-top:4px solid #ef4444;">
+        <span style="display:block;margin-bottom:5px;font-weight:600;color:#991b1b;">🥩 Protein (Đạm)</span>
+        <strong id="protein-result" style="font-size:2.2rem;color:#dc2626;display:block;">0</strong>
+        <span style="font-weight:600;color:#64748b;">gram / ngày</span>
+        <p style="font-size:0.85rem;margin-top:10px;color:var(--ink-secondary);">(Thịt, cá, trứng, sữa, đậu...)</p>
+      </div>
 
-    .safety {
-      background: var(--brand-light);
-    }
+      <!-- Fat -->
+      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #fde047;text-align:center;border-top:4px solid #eab308;">
+        <span style="display:block;margin-bottom:5px;font-weight:600;color:#854d0e;">🥑 Fat (Chất béo)</span>
+        <strong id="fat-result" style="font-size:2.2rem;color:#ca8a04;display:block;">0</strong>
+        <span style="font-weight:600;color:#64748b;">gram / ngày</span>
+        <p style="font-size:0.85rem;margin-top:10px;color:var(--ink-secondary);">(Dầu oliu, mỡ cá, các loại hạt...)</p>
+      </div>
+    </div>
 
-    .safety ul {
-      margin: 0;
-      padding-left: 18px;
-    }
+    <div style="margin-top: 24px; text-align: center;">
+      <button type="button" id="save-macro-btn" class="cta-btn cta-outline" style="border-radius: 12px; width: 100%;">💾 Lưu Macro làm Mục tiêu vào Nhật Ký</button>
+      <p id="save-msg" style="color: var(--brand); font-size: 0.9rem; margin-top: 10px;" hidden>✅ Đã lưu mục tiêu Macro thành công!</p>
+    </div>
+    <div class="result-note" style="margin-top:20px;">
+      <h3 style="margin-top:0;font-size:1.1rem;color:var(--ink);">💡 Hiểu đúng về số lượng Gram:</h3>
+      <ul class="safe-list">
+        <li><strong>Lưu ý cực kỳ quan trọng:</strong> 100 gram Protein ở bảng trên <u>KHÔNG PHẢI</u> là 100 gram thịt lợn.</li>
+        <li>Ví dụ: 100g Ức gà sống chỉ chứa khoảng 23g Protein nguyên chất. Nếu máy tính yêu cầu bạn ăn 100g Protein, bạn sẽ phải ăn khoảng hơn 4 lạng ức gà!</li>
+        <li>Tương tự, 100g cơm trắng chỉ chứa khoảng 28g Tinh bột (Carb) nguyên chất. Đừng nhầm lẫn giữa trọng lượng thức ăn và trọng lượng chất dinh dưỡng!</li>
+      </ul>
+    </div>
+  </section>
 
-    .links p {
-      margin-top: 0;
-    }
-
-    .link-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .link-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--bg-soft);
-      color: var(--ink);
-      font-weight: 600;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .link-card:hover {
-      border-color: var(--brand);
-      color: var(--brand);
-    }
-
-    @media (max-width: 720px) {
-      .draft-macro {
-        padding: 20px 0 32px;
-      }
-
-      h1 {
-        font-size: 1.7rem;
-      }
-
-      .panel {
-        padding: 16px;
-      }
-
-      .link-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </BaseLayout>
+
+<style>
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background: var(--bg-elevated);
+    color: var(--ink);
+    box-sizing: border-box;
+    transition: border-color var(--transition);
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--brand);
+  }
+
+
+  .form-message {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: #fff7ed;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+  }
+  .result-note {
+    padding: 16px;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    line-height: 1.6;
+  }
+  .safe-list { margin: 10px 0 0; padding-left: 18px; }
+  .safe-list li + li { margin-top: 8px; }
+</style>
+
+<script>
+  const calcBtn = document.getElementById("calc-btn");
+  const formMessage = document.getElementById("form-message");
+  const resultSection = document.getElementById("result-section");
+  const carbResult = document.getElementById("carb-result");
+  const proteinResult = document.getElementById("protein-result");
+  const fatResult = document.getElementById("fat-result");
+
+  function setMessage(msg) {
+    formMessage.textContent = msg;
+    formMessage.hidden = !msg;
+  }
+
+  calcBtn?.addEventListener("click", () => {
+    setMessage("");
+    resultSection.style.display = "none";
+
+    const rawCalories = document.getElementById("calories").value;
+    const dietType = document.getElementById("diet-type").value;
+
+    if (!rawCalories) {
+      setMessage("Vui lòng nhập Tổng lượng Calo mục tiêu của bạn.");
+      return;
+    }
+
+    const calories = parseInt(rawCalories, 10);
+
+    if (!Number.isFinite(calories) || calories < 500 || calories > 10000) {
+      setMessage("Vui lòng nhập lượng Calo hợp lý (từ 500 đến 10000).");
+      return;
+    }
+
+    let pCarb = 0, pPro = 0, pFat = 0;
+
+    switch (dietType) {
+      case "balanced":
+        pCarb = 0.50; pPro = 0.20; pFat = 0.30;
+        break;
+      case "muscle":
+        pCarb = 0.40; pPro = 0.40; pFat = 0.20;
+        break;
+      case "lowcarb":
+        pCarb = 0.30; pPro = 0.40; pFat = 0.30;
+        break;
+      case "keto":
+        pCarb = 0.10; pPro = 0.20; pFat = 0.70;
+        break;
+    }
+
+    // Calculate calories for each macro
+    const calCarb = calories * pCarb;
+    const calPro = calories * pPro;
+    const calFat = calories * pFat;
+
+    // Convert to grams (Carb: 4, Protein: 4, Fat: 9)
+    const gCarb = calCarb / 4;
+    const gPro = calPro / 4;
+    const gFat = calFat / 9;
+
+    carbResult.textContent = Math.round(gCarb).toLocaleString('vi-VN');
+    proteinResult.textContent = Math.round(gPro).toLocaleString('vi-VN');
+    fatResult.textContent = Math.round(gFat).toLocaleString('vi-VN');
+
+    resultSection.style.display = "block";
+
+    window.scrollTo({
+      top: resultSection.offsetTop - 20,
+      behavior: "smooth"
+    });
+
+    // Setup Save button
+    const saveBtn = document.getElementById("save-macro-btn");
+    const saveMsg = document.getElementById("save-msg");
+    saveMsg.hidden = true;
+
+    saveBtn.onclick = () => {
+      const targetData = {
+        kcal: calories,
+        protein: Math.round(gPro),
+        fat: Math.round(gFat),
+        carb: Math.round(gCarb)
+      };
+
+      // Get existing targets if any
+      let existing = {};
+      try {
+        const raw = localStorage.getItem("mt-target-v2");
+        if(raw) existing = JSON.parse(raw);
+      } catch(e){}
+
+      // Merge
+      const merged = { ...existing, ...targetData };
+      localStorage.setItem("mt-target-v2", JSON.stringify(merged));
+
+      saveMsg.hidden = false;
+      setTimeout(() => { saveMsg.hidden = true; }, 3000);
+    };
+  });
+</script>

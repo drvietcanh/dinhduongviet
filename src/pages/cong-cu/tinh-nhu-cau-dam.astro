@@ -32,15 +32,15 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
           <label class="form-row" for="weight">
             <span>Cân nặng hiện tại</span>
             <div class="input-wrap">
-              <input type="number" id="weight" value="60" min={PROTEIN_WEIGHT_MIN_KG} max={PROTEIN_WEIGHT_MAX_KG} step="0.1" inputmode="decimal" />
-              <span class="input-suffix">kg</span>
+              <input type="number" id="weight" class="cc-input" style="padding-right: 30px;" value="60" min={PROTEIN_WEIGHT_MIN_KG} max={PROTEIN_WEIGHT_MAX_KG} step="0.1" inputmode="decimal" />
+              <span class="input-suffix" style="position:absolute; right:12px;">kg</span>
             </div>
           </label>
 
           <label class="form-row" for="profile">
             <span>Tình huống</span>
-            <div class="input-wrap select-wrap">
-              <select id="profile">
+            <div class="input-wrap select-wrap" style="border:none; padding:0;">
+              <select id="profile" class="cc-input">
                 {PROTEIN_PROFILES.map((profile) => (
                   <option value={profile.profileId}>{profile.label}</option>
                 ))}
@@ -50,10 +50,10 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
         </div>
 
         <div id="input-error" class="input-error" role="alert" hidden></div>
-        <button class="btn-calc" type="button" id="calculate-btn">Tính nhu cầu đạm</button>
+        <button class="cc-btn" style="width: 100%; margin-top: 18px;" type="button" id="calculate-btn">Tính nhu cầu đạm</button>
       </div>
 
-      <section id="result" class="result-stack" aria-live="polite">
+      <section id="result" class="result-stack animate-result" aria-live="polite">
         <div class="section-label"><span>2</span> Kết quả</div>
         <div class="result-card" id="result-card">
           <div id="mode-badge" class="mode-badge">Ước tính</div>
@@ -107,31 +107,25 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
     .tool-shell { display: grid; gap: 18px; }
     .form-card,
     .result-card,
-    .info-card,
-    .safety-note {
+    .info-card {
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
       padding: 20px;
+      box-shadow: var(--shadow-sm);
     }
-    .form-card { border-width: 2px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
-    .form-card:focus-within { border-color: var(--brand); }
+    .form-card { transition: border-color var(--transition), box-shadow var(--transition); }
+    .form-card:focus-within { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15); }
     .section-label { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-weight: 800; color: var(--ink); }
     .section-label span { width: 28px; height: 28px; border-radius: 50%; background: var(--brand-light); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; flex-shrink: 0; }
     .section-label.compact { margin-bottom: 12px; font-size: 0.92rem; }
 
     .form-grid { display: grid; grid-template-columns: minmax(160px, 0.7fr) minmax(240px, 1.3fr); gap: 14px 18px; }
     .form-row { display: grid; gap: 6px; font-size: 0.84rem; font-weight: 700; color: var(--ink-secondary); }
-    .input-wrap { display: flex; align-items: center; min-height: 46px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; transition: border-color 0.15s, box-shadow 0.15s; }
-    .input-wrap:focus-within { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(46,125,50,0.1); }
-    .input-wrap input,
-    .input-wrap select { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.94rem; font-weight: 600; }
-    .input-wrap select { cursor: pointer; }
-    .input-suffix { padding-right: 12px; color: var(--ink-tertiary); font-size: 0.8rem; }
-    .input-error { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: #fff3e0; border: 1px solid #ffcc80; color: #8a4b00; font-size: 0.88rem; }
+    .input-wrap { display: flex; align-items: center; position: relative; }
 
-    .btn-calc { width: 100%; min-height: 48px; margin-top: 18px; border: 0; border-radius: 10px; background: var(--brand); color: #fff; font: inherit; font-size: 1rem; font-weight: 800; cursor: pointer; }
-    .btn-calc:hover { background: var(--brand-dark); }
+    .input-suffix { color: var(--ink-tertiary); font-size: 0.8rem; pointer-events: none; }
+    .input-error { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: #fff3e0; border: 1px solid #ffcc80; color: #8a4b00; font-size: 0.88rem; }
 
     .result-stack { display: grid; gap: 10px; }
     .result-card { text-align: center; border-top: 5px solid var(--brand); }
@@ -147,12 +141,12 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
     .result-note { max-width: 680px; margin: 12px auto 0; color: var(--ink-secondary); line-height: 1.6; font-size: 0.9rem; }
 
     .meal-breakdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-    .meal-card { padding: 12px 10px; border: 1px solid var(--line-light); border-radius: 10px; background: var(--bg-soft); text-align: center; }
+    .meal-card { padding: 12px 10px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg-soft); text-align: center; }
     .meal-label { display: block; color: var(--ink-secondary); font-size: 0.78rem; font-weight: 700; }
     .meal-amount { display: block; margin-top: 3px; color: var(--brand); font-size: 1.05rem; font-weight: 900; }
 
     .food-equiv { display: grid; gap: 8px; font-size: 0.9rem; }
-    .food-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-light); align-items: baseline; }
+    .food-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--card-border); align-items: baseline; }
     .food-row:last-child { border-bottom: 0; }
     .food-row strong { color: var(--ink); }
     .food-row span:last-child { color: var(--ink-secondary); font-weight: 700; white-space: nowrap; }
@@ -162,7 +156,7 @@ const desc = "Ước tính nhu cầu protein ban đầu theo cân nặng và tì
     .source-list dt { color: var(--ink-secondary); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
     .source-list dd { margin: 0; color: var(--ink); font-size: 0.9rem; line-height: 1.55; }
 
-    .safety-note { display: grid; gap: 6px; margin-top: 20px; background: var(--bg-soft); color: var(--ink-secondary); font-size: 0.86rem; line-height: 1.6; }
+    .safety-note { display: grid; gap: 6px; margin-top: 20px; padding: 20px; background: var(--bg-soft); border: 1px solid var(--card-border); border-radius: var(--radius); color: var(--ink-secondary); font-size: 0.86rem; line-height: 1.6; }
     .safety-note strong { color: var(--ink); }
 
     @media (max-width: 720px) {

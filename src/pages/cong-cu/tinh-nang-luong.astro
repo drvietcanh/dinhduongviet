@@ -1,199 +1,253 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const pageTitle = "Tính năng lượng | Dinh Dưỡng Việt";
-const pageDescription =
-  "Trang định hướng về năng lượng ở mức tham khảo, chưa dùng để tính nhu cầu năng lượng cá nhân.";
+const pageTitle = "Tính BMR & TDEE (Năng lượng) | Dinh Dưỡng Việt";
+const pageDescription = "Công cụ tính nhu cầu năng lượng cơ bản (BMR) và Tổng năng lượng tiêu hao mỗi ngày (TDEE) theo chuẩn y khoa Mifflin-St Jeor.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="draft-energy">
-    <p class="eyebrow">Bản nháp định hướng</p>
-    <h1>Tính năng lượng</h1>
+  <section>
+    <span class="badge">📊 Công cụ</span>
+    <h1>Tính Nhu Cầu Năng Lượng (BMR & TDEE)</h1>
     <p class="lead">
-      Trang này đang được chuẩn hóa. Nội dung hiện chỉ giới thiệu khái niệm
-      năng lượng trong dinh dưỡng ở mức tham khảo, chưa phải công cụ tính nhu
-      cầu năng lượng cá nhân.
+      Công cụ tính toán năng lượng dựa trên công thức chuẩn y khoa Mifflin-St Jeor, giúp bạn xác định <strong>BMR</strong> (Năng lượng duy trì sự sống) và <strong>TDEE</strong> (Tổng năng lượng tiêu hao mỗi ngày).
     </p>
-
-    <div class="status-chip" aria-label="Trang đang hoàn thiện">Đang hoàn thiện</div>
-
-    <div class="panel">
-      <h2>Năng lượng trong dinh dưỡng là gì?</h2>
-      <p>
-        Năng lượng trong dinh dưỡng thường được biểu thị bằng kcal và được dùng
-        để mô tả mức năng lượng cơ thể nhận từ thực phẩm.
-      </p>
-      <p>
-        Nhu cầu năng lượng thực tế phụ thuộc tuổi, giới, cân nặng, chiều cao,
-        mức vận động, bệnh lý, mục tiêu chăm sóc và bối cảnh sức khỏe.
-      </p>
-      <p>
-        Công cụ này hiện chưa tính BMR, TDEE, calo mỗi ngày, khẩu phần cá nhân
-        hoặc mục tiêu cân nặng.
-      </p>
-    </div>
-
-    <div class="panel safety">
-      <h2>Lưu ý an toàn</h2>
-      <ul>
-        <li>Nội dung chỉ để tham khảo và định hướng.</li>
-        <li>Không dùng để tự đặt mục tiêu calo mỗi ngày.</li>
-        <li>
-          Không dùng để tự xây dựng chế độ giảm cân, tăng cân, ăn bù, thực đơn
-          hoặc điều trị.
-        </li>
-        <li>
-          Người có tiểu đường, bệnh thận, bệnh tim mạch, gout, suy tim, ung
-          thư, thai kỳ, trẻ em, người cao tuổi, rối loạn ăn uống hoặc đang dùng
-          thuốc nên hỏi bác sĩ hoặc chuyên gia dinh dưỡng nếu cần nhu cầu năng
-          lượng cá nhân.
-        </li>
-        <li>
-          Không tự chỉnh insulin, thuốc hạ đường huyết, lợi tiểu, thuốc tim
-          mạch hoặc chế độ điều trị dựa trên nội dung này.
-        </li>
-      </ul>
-    </div>
-
-    <nav class="panel links" aria-label="Điều hướng tham khảo">
-      <h2>Xem thêm</h2>
-      <p>
-        Bạn có thể quay lại danh sách công cụ hoặc xem các công cụ ổn định khác
-        theo nhu cầu hiện tại.
-      </p>
-      <div class="link-row">
-        <a class="link-card" href="/cong-cu/">Xem danh sách công cụ</a>
-        <a class="link-card" href="/cong-cu/tinh-calo-tieu-thu/">Calo tiêu thụ khi tập</a>
-        <a class="link-card" href="/cong-cu/muc-tieu-dinh-duong/">Mục tiêu dinh dưỡng</a>
-      </div>
-    </nav>
   </section>
 
-  <style>
-    .draft-energy {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 28px 0 40px;
-    }
+  <div class="disclaimer">
+    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính chất tham khảo cho người trưởng thành khỏe mạnh. Người có bệnh lý nền, phụ nữ có thai cần tham khảo ý kiến bác sĩ để có phác đồ dinh dưỡng riêng.
+  </div>
 
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--ink-tertiary);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
+  <section class="section card">
+    <h2>Nhập chỉ số cơ thể</h2>
 
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.2;
-    }
+    <div class="grid two" style="margin-top: 15px;">
+      <div>
+        <label>Giới tính</label>
+        <div style="display:flex;gap:15px;padding-top:10px;">
+          <label style="display:flex;align-items:center;font-weight:normal;gap:5px;cursor:pointer;">
+            <input type="radio" name="gender" value="male" checked /> Nam
+          </label>
+          <label style="display:flex;align-items:center;font-weight:normal;gap:5px;cursor:pointer;">
+            <input type="radio" name="gender" value="female" /> Nữ
+          </label>
+        </div>
+      </div>
+      <div>
+        <label for="age">Độ tuổi (năm)</label>
+        <input type="number" id="age" inputmode="numeric" placeholder="Ví dụ: 30" min="15" max="100" />
+      </div>
+    </div>
 
-    .lead {
-      max-width: 64ch;
-      margin: 12px 0 0;
-      color: var(--ink-secondary);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
+    <div class="grid two" style="margin-top: 15px;">
+      <div>
+        <label for="weight">Cân nặng (kg)</label>
+        <input type="text" id="weight" inputmode="decimal" placeholder="Ví dụ: 65.5" />
+      </div>
+      <div>
+        <label for="height">Chiều cao (cm)</label>
+        <input type="number" id="height" inputmode="numeric" placeholder="Ví dụ: 170" />
+      </div>
+    </div>
 
-    .status-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      margin-top: 16px;
-      padding: 6px 12px;
-      border: 1px solid #e7c27a;
-      border-radius: 999px;
-      background: #fff7e6;
-      color: #8a6116;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
+    <div style="margin-top: 15px;">
+      <label for="activity">Mức độ vận động</label>
+      <select id="activity" style="width:100%;padding:10px 12px;border:1px solid var(--card-border);border-radius:var(--radius);font-size:1rem;background:var(--bg-elevated);color:var(--ink);">
+        <option value="1.2">Ít vận động (Làm việc văn phòng, không tập thể dục)</option>
+        <option value="1.375">Vận động nhẹ (Tập thể dục nhẹ nhàng 1-3 ngày/tuần)</option>
+        <option value="1.55" selected>Vận động vừa (Tập thể dục đều đặn 3-5 ngày/tuần)</option>
+        <option value="1.725">Vận động nhiều (Chơi thể thao cường độ cao 6-7 ngày/tuần)</option>
+        <option value="1.9">Vận động rất nặng (Vận động viên, lao động tay chân nặng)</option>
+      </select>
+    </div>
 
-    .panel {
-      margin-top: 20px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--card);
-    }
+    <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 20px; text-align: center; border-radius: 12px;">
+      Tính Năng Lượng
+    </button>
 
-    .panel h2 {
-      margin: 0 0 10px;
-      font-size: 1.05rem;
-    }
+    <p id="form-message" class="form-message" hidden></p>
+  </section>
 
-    .panel p,
-    .panel li {
-      color: var(--ink-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
+  <section id="result-section" class="section card" style="display:none; border-color: var(--brand-light2); background: #f8fafc;">
+    <h2>Kết quả phân tích</h2>
 
-    .panel p:last-child {
-      margin-bottom: 0;
-    }
+    <div class="grid two" style="margin-top:20px;">
+      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid var(--card-border);text-align:center;">
+        <span class="muted" style="display:block;margin-bottom:5px;">Năng lượng nền (BMR)</span>
+        <strong id="bmr-result" style="font-size:2.2rem;color:var(--brand);display:block;">0</strong>
+        <span style="font-weight:600;">kcal / ngày</span>
+        <p class="muted" style="font-size:0.85rem;margin-top:10px;">Là lượng calo cơ thể đốt cháy khi nằm bất động (để thở, bơm máu, duy trì nội tạng).</p>
+      </div>
 
-    .safety {
-      background: var(--brand-light);
-    }
+      <div style="background:var(--brand);color:white;padding:20px;border-radius:var(--radius);text-align:center;">
+        <span style="display:block;margin-bottom:5px;opacity:0.9;">Tổng tiêu hao (TDEE)</span>
+        <strong id="tdee-result" style="font-size:2.2rem;display:block;text-shadow:1px 1px 2px rgba(0,0,0,0.2);">0</strong>
+        <span style="font-weight:600;">kcal / ngày</span>
+        <p style="font-size:0.85rem;margin-top:10px;opacity:0.9;">Là tổng lượng calo bạn thực sự cần mỗi ngày để DUY TRÌ cân nặng hiện tại.</p>
+      </div>
+    </div>
 
-    .safety ul {
-      margin: 0;
-      padding-left: 18px;
-    }
+    <div style="margin-top: 24px; text-align: center;">
+      <button type="button" id="save-target-btn" class="cta-btn cta-outline" style="border-radius: 12px; width: 100%;">💾 Lưu TDEE làm Mục tiêu vào Nhật Ký</button>
+      <p id="save-msg" style="color: var(--brand); font-size: 0.9rem; margin-top: 10px;" hidden>✅ Đã lưu mục tiêu thành công!</p>
+    </div>
+    <div class="result-note" style="margin-top:20px;">
+      <h3 style="margin-top:0;font-size:1.1rem;color:var(--ink);">🎯 Hướng dẫn đặt mục tiêu:</h3>
+      <ul class="safe-list">
+        <li><strong>Để GIẢM CÂN:</strong> Hãy ăn ít hơn TDEE khoảng <strong>300 - 500 kcal</strong> mỗi ngày. Không bao giờ được ăn thấp hơn mức BMR để tránh suy kiệt nội tạng.</li>
+        <li><strong>Để TĂNG CÂN:</strong> Hãy ăn nhiều hơn TDEE khoảng <strong>300 - 500 kcal</strong> mỗi ngày, kết hợp ăn nhiều Đạm (Protein).</li>
+        <li><strong>Để DUY TRÌ:</strong> Ăn đúng bằng mức TDEE của bạn.</li>
+      </ul>
+    </div>
+  </section>
 
-    .links p {
-      margin-top: 0;
-    }
-
-    .link-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .link-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--bg-soft);
-      color: var(--ink);
-      font-weight: 600;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .link-card:hover {
-      border-color: var(--brand);
-      color: var(--brand);
-    }
-
-    @media (max-width: 720px) {
-      .draft-energy {
-        padding: 20px 0 32px;
-      }
-
-      h1 {
-        font-size: 1.7rem;
-      }
-
-      .panel {
-        padding: 16px;
-      }
-
-      .link-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </BaseLayout>
+
+<style>
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background: var(--bg-elevated);
+    color: var(--ink);
+    box-sizing: border-box;
+    transition: border-color var(--transition);
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--brand);
+  }
+
+
+  .form-message {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: #fff7ed;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+  }
+  .result-note {
+    padding: 16px;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    line-height: 1.6;
+  }
+  .safe-list { margin: 10px 0 0; padding-left: 18px; }
+  .safe-list li + li { margin-top: 8px; }
+</style>
+
+<script>
+  const calcBtn = document.getElementById("calc-btn");
+  const formMessage = document.getElementById("form-message");
+  const resultSection = document.getElementById("result-section");
+  const bmrResult = document.getElementById("bmr-result");
+  const tdeeResult = document.getElementById("tdee-result");
+
+  function normalizeNumber(rawValue) {
+    if (typeof rawValue !== "string") return Number.NaN;
+    const normalized = rawValue.trim().replace(",", ".");
+    return normalized ? Number.parseFloat(normalized) : Number.NaN;
+  }
+
+  function setMessage(msg) {
+    formMessage.textContent = msg;
+    formMessage.hidden = !msg;
+  }
+
+  calcBtn?.addEventListener("click", () => {
+    setMessage("");
+    resultSection.style.display = "none";
+
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const rawAge = document.getElementById("age").value;
+    const rawWeight = document.getElementById("weight").value;
+    const rawHeight = document.getElementById("height").value;
+    const activity = document.getElementById("activity").value;
+
+    if (!rawAge || !rawWeight || !rawHeight) {
+      setMessage("Vui lòng nhập đầy đủ Tuổi, Cân nặng và Chiều cao.");
+      return;
+    }
+
+    const age = parseInt(rawAge, 10);
+    const weight = normalizeNumber(rawWeight);
+    const height = normalizeNumber(rawHeight);
+    const actFactor = parseFloat(activity);
+
+    if (!Number.isFinite(age) || !Number.isFinite(weight) || !Number.isFinite(height)) {
+      setMessage("Dữ liệu nhập vào phải là số hợp lệ.");
+      return;
+    }
+
+    if (age < 15 || age > 100) {
+      setMessage("Công cụ này chỉ chính xác cho người từ 15 - 100 tuổi.");
+      return;
+    }
+
+    if (weight <= 0 || weight > 300 || height <= 0 || height > 250) {
+      setMessage("Chỉ số cân nặng hoặc chiều cao không hợp lý.");
+      return;
+    }
+
+    // Formula Mifflin-St Jeor
+    // Nam: 10 * W + 6.25 * H - 5 * A + 5
+    // Nữ: 10 * W + 6.25 * H - 5 * A - 161
+    let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+    if (gender === "male") {
+      bmr += 5;
+    } else {
+      bmr -= 161;
+    }
+
+    const tdee = bmr * actFactor;
+
+    bmrResult.textContent = Math.round(bmr).toLocaleString('vi-VN');
+    tdeeResult.textContent = Math.round(tdee).toLocaleString('vi-VN');
+
+    resultSection.style.display = "block";
+
+    window.scrollTo({
+      top: resultSection.offsetTop - 20,
+      behavior: "smooth"
+    });
+
+    // Setup Save button
+    const saveBtn = document.getElementById("save-target-btn");
+    const saveMsg = document.getElementById("save-msg");
+    saveMsg.hidden = true;
+
+    saveBtn.onclick = () => {
+      const targetData = {
+        kcal: Math.round(tdee),
+        weight: weight,
+        height: height,
+        age: age,
+        sex: gender,
+        activity: actFactor
+      };
+
+      // Get existing targets if any
+      let existing = {};
+      try {
+        const raw = localStorage.getItem("mt-target-v2");
+        if(raw) existing = JSON.parse(raw);
+      } catch(e){}
+
+      // Merge
+      const merged = { ...existing, ...targetData };
+      localStorage.setItem("mt-target-v2", JSON.stringify(merged));
+
+      saveMsg.hidden = false;
+      setTimeout(() => { saveMsg.hidden = true; }, 3000);
+    };
+  });
+</script>

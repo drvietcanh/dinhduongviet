@@ -340,26 +340,38 @@ const plan = mealPlans[condition];
 if (!plan) return;
 ---
 
-<section class="section">
-  <h2 style="margin-bottom: 8px;">🥗 Thực đơn mẫu cho {conditionLabel}</h2>
-  <p class="muted" style="margin-bottom: 16px;">
-    Gợi ý thực đơn ẩm thực Việt, <strong>lưu ý khẩu phần ăn cần cá nhân hóa</strong> theo tình trạng bệnh và thuốc đang dùng.
-  </p>
+<section class="section meal-plan-section">
+  <div class="meal-plan-header">
+    <div class="header-icon">🥗</div>
+    <div class="header-text">
+      <h2>Thực đơn mẫu cho {conditionLabel}</h2>
+      <p class="muted">Gợi ý thực đơn ẩm thực Việt, <strong>lưu ý khẩu phần ăn cần cá nhân hóa</strong> theo tình trạng bệnh và thuốc đang dùng.</p>
+    </div>
+  </div>
 
   <div class="meal-plan-grid">
     {plan.map(day => (
       <div class="meal-plan-day">
-        <h3 class="day-title">{day.day}</h3>
+        <h3 class="day-title">
+          <span class="day-icon">📅</span> {day.day}
+        </h3>
         <div class="meal-list">
-          {day.meals.map(meal => (
-            <a href={`/mon-an/${meal.recipeSlug}`} class="meal-item">
-              <span class="meal-time">{meal.time}</span>
-              <div class="meal-body">
-                <strong class="meal-name">{meal.recipeName}</strong>
-                <span class="meal-note">{meal.note}</span>
-              </div>
-            </a>
-          ))}
+          {day.meals.map(meal => {
+            const timeIcon = meal.time === 'Sáng' ? '🌅' : meal.time === 'Trưa' ? '☀️' : '🌙';
+            return (
+              <a href={`/mon-an/${meal.recipeSlug}`} class="meal-item">
+                <div class="meal-time-badge">
+                  <span class="t-icon">{timeIcon}</span>
+                  <span class="t-text">{meal.time}</span>
+                </div>
+                <div class="meal-body">
+                  <strong class="meal-name">{meal.recipeName}</strong>
+                  <span class="meal-note">{meal.note}</span>
+                </div>
+                <div class="meal-arrow">→</div>
+              </a>
+            );
+          })}
         </div>
       </div>
     ))}
@@ -367,61 +379,146 @@ if (!plan) return;
 </section>
 
 <style>
+  .meal-plan-section {
+    margin-top: 32px;
+    background: linear-gradient(to bottom, var(--bg-soft) 0%, transparent 100%);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--line);
+  }
+  .meal-plan-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .header-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    background: white;
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line-light);
+  }
+  .header-text h2 {
+    margin: 0 0 8px;
+    color: var(--brand-dark);
+    font-size: 1.5rem;
+  }
+  .header-text p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
   .meal-plan-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
+
   .meal-plan-day {
-    background: var(--bg-card, #fff);
-    border: 1px solid var(--border, #e5e7eb);
-    border-radius: 12px;
-    padding: 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
+  .meal-plan-day:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
   .day-title {
-    font-size: 1em;
-    font-weight: 600;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e5e7eb;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed var(--line-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
+
   .meal-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
+
   .meal-item {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: #f9fafb;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: var(--bg);
+    border: 1px solid var(--line-light);
     text-decoration: none;
     color: inherit;
-    transition: background 0.15s;
+    transition: all 0.2s ease;
   }
   .meal-item:hover {
-    background: #e5f0ff;
+    background: var(--brand-subtle);
+    border-color: var(--brand-light2);
   }
-  .meal-time {
-    flex-shrink: 0;
-    font-size: 0.8em;
-    font-weight: 600;
-    color: #6b7280;
-    min-width: 42px;
-    padding-top: 2px;
-  }
-  .meal-body {
+
+  .meal-time-badge {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    min-width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+  .meal-time-badge .t-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .meal-time-badge .t-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink-secondary);
+    margin-top: 2px;
+  }
+
+  .meal-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   .meal-name {
-    font-size: 0.95em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
   }
   .meal-note {
-    font-size: 0.8em;
-    color: #6b7280;
+    font-size: 0.85rem;
+    color: var(--ink-secondary);
+    line-height: 1.4;
+  }
+
+  .meal-arrow {
+    color: var(--line);
+    font-size: 1.2rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .meal-item:hover .meal-arrow {
+    color: var(--brand);
+    transform: translateX(3px);
+  }
+
+  [data-theme="dark"] .meal-plan-section {
+    background: linear-gradient(to bottom, #111827 0%, transparent 100%);
+  }
+  [data-theme="dark"] .header-icon {
+    background: var(--card);
   }
 </style>
