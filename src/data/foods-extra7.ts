@@ -491,27 +491,27 @@ export const extraFoods7 = [
   },
   {
     id: "thit-xong-khoi", slug: "thit-xong-khoi", name: "Thịt hun khói",
-    aliases: ["thit xong khoi", "smoked pork"],
-    category: "Thịt chế biến", state: "cooked", basis: "100g",
-    edibleNote: "Thịt heo hun khói, dùng ăn sáng, sandwich.",
-    nutrients: { energyKcal: 390, proteinG: 14, carbG: 1, fatG: 37, saturatedFatG: 13, sodiumMg: 1200, potassiumMg: 250 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
+    aliases: ["thit xong khoi", "smoked pork", "smoked ham"],
+    category: "Thịt chế biến", state: "processed", basis: "100g",
+    edibleNote: "Thịt heo/ham hun khói ăn liền; thành phần thay đổi nhiều theo sản phẩm.",
+    nutrients: { energyKcal: 122, proteinG: 18, carbG: 7.3, fatG: 2.4, saturatedFatG: 0.87, fiberG: 0, sugarG: 0, cholesterolMg: 22, sodiumMg: 900, potassiumMg: 165 },
+    sourceId: "usda-fdc-174611", confidence: "medium", note: "USDA FDC SR Legacy 174611, ham honey smoked cooked; dùng làm close match cho thịt hun khói ăn liền."
   },
   {
     id: "thit-bacon", slug: "thit-bacon", name: "Bacon",
-    aliases: ["bacon", "thit ba chi hun khoi"],
-    category: "Thịt chế biến", state: "cooked", basis: "100g",
-    edibleNote: "Thịt ba chỉ heo hun khói cắt lát.",
-    nutrients: { energyKcal: 541, proteinG: 37, carbG: 1.4, fatG: 42, saturatedFatG: 14, cholesterolMg: 110, sodiumMg: 1500, potassiumMg: 300 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
+    aliases: ["bacon", "thit ba chi hun khoi", "pork cured bacon"],
+    category: "Thịt chế biến", state: "processed", basis: "100g",
+    edibleNote: "Thịt ba chỉ heo muối/hun khói cắt lát, chưa tính hao hụt khi chiên.",
+    nutrients: { energyKcal: 393, proteinG: 13.7, carbG: 0, fatG: 37.1, saturatedFatG: 12.6, cholesterolMg: 65, sodiumMg: 751, potassiumMg: 201 },
+    sourceId: "usda-fdc-168277", confidence: "medium", note: "USDA FDC SR Legacy 168277, pork cured bacon unprepared."
   },
   {
     id: "thit-bacon-chien", slug: "thit-bacon-chien", name: "Bacon chiên",
     aliases: ["bacon chien", "fried bacon"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Bacon chiên giòn.",
-    nutrients: { energyKcal: 500, proteinG: 35, carbG: 1.5, fatG: 40, saturatedFatG: 13, cholesterolMg: 110, sodiumMg: 1400, potassiumMg: 280 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
+    nutrients: { energyKcal: 468, proteinG: 33.9, carbG: 1.7, fatG: 35.1, saturatedFatG: 11.9, fiberG: 0, sugarG: 0, cholesterolMg: 99, sodiumMg: 1684, potassiumMg: 499 },
+    sourceId: "usda-fdc-168322", confidence: "medium", note: "USDA FDC SR Legacy 168322, pork cured bacon pre-sliced cooked pan-fried."
   },
   {
     id: "xuc-xich-duc", slug: "xuc-xich-duc", name: "Xúc xích Đức (bratwurst)",

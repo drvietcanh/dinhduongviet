@@ -9477,10 +9477,11 @@
     "aliases": [
       "thit xong khoi",
       "smoked pork",
+      "smoked ham",
       "thit hun khoi"
     ],
     "category": "Thịt chế biến",
-    "kcal": 390
+    "kcal": 122
   },
   {
     "type": "food",
@@ -9488,10 +9489,11 @@
     "name": "Bacon",
     "aliases": [
       "bacon",
-      "thit ba chi hun khoi"
+      "thit ba chi hun khoi",
+      "pork cured bacon"
     ],
     "category": "Thịt chế biến",
-    "kcal": 541
+    "kcal": 393
   },
   {
     "type": "food",
@@ -9502,7 +9504,7 @@
       "fried bacon"
     ],
     "category": "Thịt chế biến",
-    "kcal": 500
+    "kcal": 468
   },
   {
     "type": "food",
