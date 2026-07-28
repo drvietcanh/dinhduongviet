@@ -30,6 +30,16 @@ tq-out.txt
 
 # Ad hoc local helper scripts generated during repair sessions
 _*.mjs
+scripts/analyze_specialties.mjs
+scripts/check_specialties.mjs
+
+# Local Codex skills and unrelated copied skill bundles
+.agents/
+xu-ly-van-phong-v2.0/
+
+# One-off audit reports from local repair sessions
+reports/mixed-worktree-scope-audit-2026-07-27.md
+reports/shared-search-ux-regression-audit-v3-rerun.md
 
 # OS/editor noise
 .DS_Store
