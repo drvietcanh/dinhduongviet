@@ -105,21 +105,24 @@ const candidateMap = {
   },
   "thit-xong-khoi": {
     codes: [],
-    fit: "no_match",
-    proposal: "needs_manual_dietitian_review",
-    reason: "Không tìm thấy thịt hun khói/xông khói tương ứng trong VN 2007 local.",
+    candidateNote: "USDA FDC SR Legacy 174611: Ham, honey, smoked, cooked - close_match.",
+    fit: "external_close_match",
+    proposal: "external_source_pending_dietitian_review",
+    reason: "Không tìm thấy match nội bộ VN 2007; dữ liệu chính hiện dùng USDA FDC close match và vẫn cần duyệt.",
   },
   "thit-bacon": {
     codes: [],
-    fit: "no_match",
-    proposal: "needs_manual_dietitian_review",
-    reason: "Không tìm thấy bacon tương ứng trong VN 2007 local; không dùng thịt lợn mỡ để thay trực tiếp.",
+    candidateNote: "USDA FDC SR Legacy 168277: Pork, cured, bacon, unprepared.",
+    fit: "external_close_match",
+    proposal: "external_source_pending_dietitian_review",
+    reason: "Không tìm thấy match nội bộ VN 2007; dữ liệu chính hiện dùng USDA FDC cho bacon chưa chiên.",
   },
   "thit-bacon-chien": {
     codes: [],
-    fit: "no_match",
-    proposal: "needs_manual_dietitian_review",
-    reason: "Không tìm thấy bacon chiên tương ứng trong VN 2007 local.",
+    candidateNote: "USDA FDC SR Legacy 168322: Pork, cured, bacon, pre-sliced, cooked, pan-fried.",
+    fit: "external_close_match",
+    proposal: "external_source_pending_dietitian_review",
+    reason: "Không tìm thấy match nội bộ VN 2007; dữ liệu chính hiện dùng USDA FDC cho bacon chiên áp chảo.",
   },
   "xuc-xich-duc": {
     codes: ["7077"],
@@ -189,6 +192,11 @@ function candidateCell(candidates, sourceByCode) {
   }).join("; ");
 }
 
+function candidateSummary(candidates, config, sourceByCode) {
+  if (config.candidateNote) return config.candidateNote;
+  return candidateCell(candidates, sourceByCode);
+}
+
 function candidateMacroCell(candidates) {
   if (candidates.length === 0) return "-";
   return candidates.map((food) => {
@@ -208,7 +216,7 @@ function row(food, candidates, config, sourceByCode) {
     food.basis,
     sourceId(food),
     food.confidence,
-    candidateCell(candidates, sourceByCode),
+    candidateSummary(candidates, config, sourceByCode),
     candidateMacroCell(candidates),
     config.fit,
     config.proposal,
@@ -256,6 +264,7 @@ for (const nutrient of vietnamNutrients) {
   }
 }
 const slugs = [
+  ...(qaReport.foodQualityMetadata || []).map((item) => item.slug),
   ...(qaReport.riceSourceReview || []).map((item) => item.slug),
   ...(qaReport.cookedHighEnergyReview || []).map((item) => item.slug),
 ];
@@ -296,7 +305,7 @@ Generated from local data only:
 - \`public/api/vietnam-nutrients.json\`
 - SQLite source used by export script: \`data/nutrition/nutrition_final_with_core.sqlite\`
 
-No web sources were used. No nutrition values were changed.
+No web lookup is performed by this generator. It reports local VN candidates plus any external source IDs already present in canonical food data.
 
 ## Tóm Tắt
 
@@ -311,6 +320,7 @@ No web sources were used. No nutrition values were changed.
 
 - \`exact_match\`: cùng món và cùng trạng thái/basis đủ tin cậy để cân nhắc thay sau duyệt.
 - \`close_match\`: cùng nhóm rất gần nhưng còn khác loại/thương phẩm/cách chế biến.
+- \`external_close_match\`: không có match nội bộ, nhưng canonical data đã có nguồn ngoài/candidate ngoài.
 - \`ingredient_only\`: chỉ có nguyên liệu hoặc thành phần chính, không thay trực tiếp cho món chín.
 - \`no_match\`: chưa tìm thấy candidate nội bộ phù hợp.
 
@@ -331,7 +341,7 @@ ${table(cookedRows.map((item) => row(item.food, item.candidates, item.config, so
 - Không có item nào đủ điều kiện \`exact_match\` từ dữ liệu local trong vòng này.
 - Các mục cơm/gạo chỉ có candidate gạo khô trong VN 2007, vì vậy cần nguồn 100g cơm đã nấu chín trước khi sửa.
 - \`lap-xuong-nuong\` và nhóm \`xuc-xich-*\` có candidate nội bộ gần nhất, nhưng cần duyệt vì VN 2007 không phân biệt nướng/loại thịt/thương phẩm.
-- \`thit-xong-khoi\`, \`thit-bacon\`, \`thit-bacon-chien\` chưa có match nội bộ; cần nguồn ngoài hoặc duyệt thủ công trước khi sửa dữ liệu.
+- \`thit-xong-khoi\`, \`thit-bacon\`, \`thit-bacon-chien\` chưa có match nội bộ VN 2007 nhưng đã có nguồn USDA FDC trong canonical data; vẫn cần duyệt độ phù hợp với sản phẩm Việt Nam.
 `;
 
 await mkdir(path.dirname(outputPath), { recursive: true });
