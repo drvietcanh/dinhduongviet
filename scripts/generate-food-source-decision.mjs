@@ -120,24 +120,27 @@ const candidateMap = {
   },
   "thit-xong-khoi": {
     codes: [],
-    fit: "no_match",
-    risk: "high",
-    decision: "needs_external_source",
-    reason: "Không có candidate nội bộ cho thịt hun khói/xông khói.",
+    candidateNote: "USDA FDC SR Legacy 174611: Ham, honey, smoked, cooked - close_match.",
+    fit: "external_close_match",
+    risk: "medium",
+    decision: "external_source_pending_dietitian_review",
+    reason: "Đã có nguồn ngoài close match; vẫn cần duyệt vì thịt hun khói tiếng Việt có thể chỉ nhiều sản phẩm khác nhau.",
   },
   "thit-bacon": {
     codes: [],
-    fit: "no_match",
-    risk: "high",
-    decision: "needs_external_source",
-    reason: "Không có candidate nội bộ cho bacon; không thay bằng thịt lợn mỡ.",
+    candidateNote: "USDA FDC SR Legacy 168277: Pork, cured, bacon, unprepared.",
+    fit: "external_close_match",
+    risk: "medium",
+    decision: "external_source_pending_dietitian_review",
+    reason: "Đã có nguồn ngoài cho bacon muối/hun khói chưa chiên; cần duyệt nếu áp dụng cho nhãn hàng Việt Nam.",
   },
   "thit-bacon-chien": {
     codes: [],
-    fit: "no_match",
-    risk: "high",
-    decision: "needs_external_source",
-    reason: "Không có candidate nội bộ cho bacon chiên.",
+    candidateNote: "USDA FDC SR Legacy 168322: Pork, cured, bacon, pre-sliced, cooked, pan-fried.",
+    fit: "external_close_match",
+    risk: "medium",
+    decision: "external_source_pending_dietitian_review",
+    reason: "Đã có nguồn ngoài cho bacon cắt lát chiên áp chảo; cần duyệt do sai khác hao hụt mỡ và sodium theo sản phẩm.",
   },
   "xuc-xich-duc": {
     codes: ["7077"],
@@ -199,6 +202,11 @@ function candidateCell(candidates, sourceByCode) {
   }).join("; ");
 }
 
+function candidateSummary(candidates, config, sourceByCode) {
+  if (config.candidateNote) return config.candidateNote;
+  return candidateCell(candidates, sourceByCode);
+}
+
 function row(food, candidates, config) {
   return [
     food.slug,
@@ -209,7 +217,7 @@ function row(food, candidates, config) {
     food.basis,
     food.source || food.sourceId,
     food.confidence,
-    candidateCell(candidates, sourceByCode),
+    candidateSummary(candidates, config, sourceByCode),
     config.fit,
     config.risk,
     config.decision,
@@ -286,7 +294,8 @@ for (const nutrient of vietnamNutrients) {
 
 const riceSlugs = [...new Set((qaReport.riceSourceReview || []).map((item) => item.slug))];
 const cookedSlugs = [...new Set((qaReport.cookedHighEnergyReview || []).map((item) => item.slug))];
-const uniqueSlugs = [...new Set([...riceSlugs, ...cookedSlugs])];
+const metadataSlugs = [...new Set((qaReport.foodQualityMetadata || []).map((item) => item.slug))];
+const uniqueSlugs = [...new Set([...metadataSlugs, ...riceSlugs, ...cookedSlugs])];
 
 const decisionItems = uniqueSlugs.map((slug) => {
   const food = foodBySlug.get(slug);
@@ -302,6 +311,7 @@ const cookedItems = decisionItems.filter((item) => cookedSlugs.includes(item.foo
 const priorityItems = decisionItems.filter((item) => prioritySlugs.has(item.food.slug));
 const replaceReady = decisionItems.filter((item) => item.config.decision === "replace_after_dietitian_review");
 const externalSource = decisionItems.filter((item) => item.config.decision === "needs_external_source");
+const externalSourcePendingReview = decisionItems.filter((item) => item.config.decision === "external_source_pending_dietitian_review");
 
 const decisionCounts = countsBy(decisionItems, "decision");
 const riskCounts = countsBy(decisionItems, "risk");
@@ -325,6 +335,7 @@ No nutrition values, slugs, names, sources, or canonical food records were chang
 ## Tóm Tắt
 
 - Unique decision items: ${decisionItems.length}.
+- Food quality metadata items: ${metadataSlugs.length}.
 - Rice source review items: ${riceItems.length}.
 - Cooked high energy review items: ${cookedItems.length}.
 - Note: the 3 rice items also appear inside cooked high energy review, so the combined unique count remains ${decisionItems.length}.
@@ -346,17 +357,22 @@ ${formatCounts(fitCounts)}
 - \`keep_current\`: giữ nguyên hiện tại, chưa cần thay đổi.
 - \`keep_current_add_note\`: giữ số hiện tại, sau duyệt có thể bổ sung basis/note/source note rõ hơn.
 - \`replace_after_dietitian_review\`: có candidate nội bộ gần nhất, chỉ thay sau khi bác sĩ/dinh dưỡng viên duyệt.
+- \`external_source_pending_dietitian_review\`: đã có nguồn ngoài/candidate ngoài, vẫn cần bác sĩ/dinh dưỡng viên duyệt độ phù hợp.
 - \`needs_external_source\`: dữ liệu nội bộ không có candidate đủ gần, cần nguồn ngoài hoặc nguồn chuyên môn.
 - \`recipe_estimate_only\`: chỉ nên xem là ước tính công thức, không thay bằng nguyên liệu đơn lẻ.
 - \`do_not_change_yet\`: chưa đủ căn cứ để sửa bất kỳ metadata chính hoặc số liệu.
 
 ## Item Có Thể Sửa Sau Khi Duyệt
 
-${replaceReady.map((item) => `- \`${item.food.slug}\`: ${item.food.name} -> ${item.config.decision}; candidate: ${candidateCell(item.candidates, sourceByCode)}.`).join("\n")}
+${replaceReady.map((item) => `- \`${item.food.slug}\`: ${item.food.name} -> ${item.config.decision}; candidate: ${candidateSummary(item.candidates, item.config, sourceByCode)}`).join("\n")}
+
+## Item Đã Có Nguồn Ngoài, Chờ Duyệt
+
+${externalSourcePendingReview.length > 0 ? externalSourcePendingReview.map((item) => `- \`${item.food.slug}\`: ${item.food.name}; ${candidateSummary(item.candidates, item.config, sourceByCode)}`).join("\n") : "- Không có mục nào."}
 
 ## Item Bắt Buộc Cần Nguồn Ngoài
 
-${externalSource.map((item) => `- \`${item.food.slug}\`: ${item.food.name}; ${item.config.reason}`).join("\n")}
+${externalSource.length > 0 ? externalSource.map((item) => `- \`${item.food.slug}\`: ${item.food.name}; ${item.config.reason}`).join("\n") : "- Không còn mục nào cần nguồn ngoài bắt buộc."}
 
 ## 5 Mục Ưu Tiên Cao
 
@@ -375,7 +391,7 @@ ${table(decisionItems)}
 - Không có \`exact_match\` trong nguồn nội bộ cho các item này.
 - Các mục cơm/gạo cần nguồn cho 100g cơm đã nấu chín, không dùng gạo khô để thay trực tiếp.
 - Nhóm \`xuc-xich-*\` và \`lap-xuong-nuong\` là nhóm có thể xử lý sớm nhất nếu bác sĩ/dinh dưỡng viên chấp nhận dùng candidate generic VN 2007.
-- \`thit-xong-khoi\`, \`thit-bacon\`, \`thit-bacon-chien\` cần nguồn ngoài trước khi sửa dữ liệu chính.
+- \`thit-xong-khoi\`, \`thit-bacon\`, \`thit-bacon-chien\` đã có nguồn USDA FDC nhưng vẫn cần duyệt độ phù hợp với sản phẩm Việt Nam.
 `;
 
 await mkdir(path.dirname(outputPath), { recursive: true });
@@ -387,5 +403,6 @@ console.log(JSON.stringify({
   riskCounts,
   fitCounts,
   replaceAfterDietitianReview: replaceReady.map((item) => item.food.slug),
+  externalSourcePendingDietitianReview: externalSourcePendingReview.map((item) => item.food.slug),
   needsExternalSource: externalSource.map((item) => item.food.slug),
 }, null, 2));
