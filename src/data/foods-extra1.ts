@@ -159,7 +159,7 @@ export const extraFoods1: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
   {
-    id: "com-gao-lut", slug: "com-gao-lut", name: "Cơm gạo lứt", aliases: ["brown rice", "gao lut", "com gao lut"],
+    id: "com-gao-lut", slug: "com-gao-lut", name: "Cơm gạo lứt", aliases: ["brown rice", "gao lut", "gạo lật", "com gao lut", "com gao lat"],
     category: "Tinh bột", state: "cooked", basis: "100g", edibleNote: "Gạo lứt đã nấu chín.",
     nutrients: { energyKcal: 111, proteinG: 2.6, carbG: 23.0, fatG: 0.9, fiberG: 1.8, calciumMg: 10, ironMg: 0.6, sodiumMg: 4, potassiumMg: 77 , glycemicIndex: 50},
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."

@@ -127,7 +127,7 @@ export const extraFoods6: Food[] = [
   // ── THỊT ──
   {
     id: "thit-heo-bam", slug: "thit-heo-bam", name: "Thịt heo băm",
-    aliases: ["thit heo xay", "thit heo bam", "pork mince"],
+    aliases: ["thit heo xay", "thịt lợn băm", "thit lon bam", "thit heo bam", "pork mince"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Thịt heo băm/xay, nạc mỡ 70/30.",
     nutrients: { energyKcal: 250, proteinG: 16, carbG: 0, fatG: 20, saturatedFatG: 7, cholesterolMg: 70, sodiumMg: 60, potassiumMg: 200, zincMg: 2.0 },
@@ -151,7 +151,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "heo-rung", slug: "heo-rung", name: "Thịt heo rừng",
-    aliases: ["heo rung", "wild boar"],
+    aliases: ["heo rung", "lợn rừng", "lon rung", "wild boar"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Thịt heo rừng nạc hơn heo nhà.",
     nutrients: { energyKcal: 145, proteinG: 22, carbG: 0, fatG: 6, saturatedFatG: 2, cholesterolMg: 60, sodiumMg: 50, potassiumMg: 380, ironMg: 1.5, zincMg: 2.5 },
@@ -324,8 +324,8 @@ export const extraFoods6: Food[] = [
   },
   // ── BÁNH KHÁC ──
   {
-    id: "banh-trung-thu-nhan-thap-cam", slug: "banh-trung-thu-nhan-thap-cam", name: "Bánh trung thu thập cẩm",
-    aliases: ["mooncake assortment"],
+    id: "banh-trung-thu-nhan-thap-cam", slug: "banh-trung-thu-nhan-thap-cam", name: "Bánh trung thu nhân thập cẩm",
+    aliases: ["banh trung thu thap cam", "mooncake assortment"],
     category: "Bánh kẹo", state: "processed", basis: "100g",
     edibleNote: "Bánh trung thu nhân thập cẩm trứng muối.",
     nutrients: { energyKcal: 420, proteinG: 8, carbG: 60, fatG: 17, saturatedFatG: 5, sugarG: 30, cholesterolMg: 80, sodiumMg: 320, calciumMg: 30 },
@@ -342,7 +342,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "xuong-heo", slug: "xuong-heo", name: "Xương heo",
-    aliases: ["xuong heo", "pork bone"],
+    aliases: ["xuong heo", "xương lợn", "xuong lon", "pork bone"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Xương heo dùng hầm nước dùng, gồm tủy và nạc thừa.",
     nutrients: { energyKcal: 200, proteinG: 12, carbG: 0, fatG: 16, saturatedFatG: 6, sodiumMg: 50, potassiumMg: 100, calciumMg: 40, phosphorusMg: 130 },
@@ -358,7 +358,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "thit-ba-chi", slug: "thit-ba-chi", name: "Thịt ba chỉ heo (rút gọn)",
-    aliases: ["ba chi", "thit ba rọi", "pork belly"],
+    aliases: ["ba chi", "thit ba rọi", "thịt ba chỉ lợn", "pork belly"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Thịt ba chỉ tươi, aliases cả ba rọi.",
     nutrients: { energyKcal: 396, proteinG: 14, carbG: 0, fatG: 37, saturatedFatG: 13, cholesterolMg: 72, sodiumMg: 51, potassiumMg: 207 },
@@ -366,7 +366,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "long-heo", slug: "long-heo", name: "Lòng heo",
-    aliases: ["long heo", "pork tripe"],
+    aliases: ["long heo", "lòng lợn", "pork tripe"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Lòng non heo, dùng luộc/xào phổ biến.",
     nutrients: { energyKcal: 85, proteinG: 13, carbG: 0.5, fatG: 3.5, cholesterolMg: 150, sodiumMg: 45, potassiumMg: 60, ironMg: 1.0 },
@@ -474,7 +474,7 @@ export const extraFoods6: Food[] = [
   // ── THỊT & NỘI TẠNG ──
   {
     id: "da-heo", slug: "da-heo", name: "Da heo",
-    aliases: ["da heo", "bì heo", "pork skin"],
+    aliases: ["da heo", "da lợn", "bì heo", "bì lợn", "pork skin"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Da heo luộc thái sợi ăn gỏi hoặc chiên giòn.",
     nutrients: { energyKcal: 230, proteinG: 21, carbG: 0, fatG: 16, saturatedFatG: 5.5, cholesterolMg: 60, sodiumMg: 55, potassiumMg: 50 },
@@ -482,7 +482,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "gio-heo", slug: "gio-heo", name: "Giò heo (móng giò)",
-    aliases: ["gio heo", "mong gio", "pork trotter"],
+    aliases: ["gio heo", "giò lợn", "mong gio", "móng giò lợn", "pork trotter"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Giò heo hầm, nấu canh măng, bung.",
     nutrients: { energyKcal: 200, proteinG: 18, carbG: 0, fatG: 14, saturatedFatG: 5, cholesterolMg: 85, sodiumMg: 60, potassiumMg: 120, calciumMg: 15 },

@@ -167,7 +167,7 @@ export const extraFoods5: Food[] = [
   // ── THỊT ──
   {
     id: "thit-ba-roi", slug: "thit-ba-roi", name: "Thịt ba rọi heo",
-    aliases: ["thit ba chi", "pork belly", "ba rọi", "ba chỉ"],
+    aliases: ["thit ba chi", "thịt ba chỉ lợn", "thit ba chi lon", "pork belly", "ba rọi", "ba chỉ"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Thịt ba rọi tươi cả da/nạc/mỡ.",
     nutrients: { energyKcal: 396, proteinG: 14.0, carbG: 0, fatG: 37.0, saturatedFatG: 13.0, cholesterolMg: 72, sodiumMg: 51, potassiumMg: 207, phosphorusMg: 130 },
@@ -175,7 +175,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "thit-heo-quay", slug: "thit-heo-quay", name: "Thịt heo quay",
-    aliases: ["roasted pork", "heo quay", "thit quay"],
+    aliases: ["roasted pork", "heo quay", "lợn quay", "thit quay"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Thịt heo quay da giòn, loại bỏ xương.",
     nutrients: { energyKcal: 310, proteinG: 20.0, carbG: 1.5, fatG: 25.0, saturatedFatG: 9.0, cholesterolMg: 65, sodiumMg: 780, potassiumMg: 240 },
@@ -300,7 +300,7 @@ export const extraFoods5: Food[] = [
   // ── TÓP MỠ & ĐỒ PHỤ ──
   {
     id: "top-mo", slug: "top-mo", name: "Tóp mỡ",
-    aliases: ["crackling", "top mo heo"],
+    aliases: ["crackling", "top mo heo", "tóp mỡ lợn"],
     category: "Thịt chế biến", state: "processed", basis: "100g",
     edibleNote: "Tóp mỡ heo chiên giòn.",
     nutrients: { energyKcal: 480, proteinG: 18.0, carbG: 1.0, fatG: 44.0, saturatedFatG: 16.0, cholesterolMg: 95, sodiumMg: 850, potassiumMg: 100 },
@@ -308,7 +308,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "doi-truong", slug: "doi-truong", name: "Dồi trường",
-    aliases: ["sausage casing", "long heo non", "doi truong"],
+    aliases: ["sausage casing", "long heo non", "lòng lợn non", "doi truong"],
     category: "Thịt chế biến", state: "processed", basis: "100g",
     edibleNote: "Dồi trường heo luộc/chế biến, dùng bún/tiết canh.",
     nutrients: { energyKcal: 220, proteinG: 14.0, carbG: 2.0, fatG: 17.0, saturatedFatG: 6.0, cholesterolMg: 120, sodiumMg: 520, potassiumMg: 120 },

@@ -3,7 +3,7 @@ export const extraFoods7 = [
   // ── NHÓM NƯỚC DÙNG ──
   {
     id: "nuoc-xuong-heo", slug: "nuoc-xuong-heo", name: "Nước xương heo",
-    aliases: ["nuoc xuong heo", "nước xương lợn", "nuoc xuong lon", "nước hầm xương heo", "nước hầm xương lợn", "pork bone broth"],
+    aliases: ["nuoc xuong heo", "nước dùng xương heo", "nước dùng xương lợn", "nuoc dung xuong heo", "nước xương lợn", "nuoc xuong lon", "nước hầm xương heo", "nước hầm xương lợn", "pork bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương heo, dùng nấu phở, bún, canh.",
     nutrients: { energyKcal: 8, proteinG: 1.2, carbG: 0.5, fatG: 0.3, saturatedFatG: 0.1, sodiumMg: 180, potassiumMg: 60, calciumMg: 8, phosphorusMg: 15 },
@@ -11,7 +11,7 @@ export const extraFoods7 = [
   },
   {
     id: "nuoc-xuong-bo", slug: "nuoc-xuong-bo", name: "Nước xương bò",
-    aliases: ["nuoc xuong bo", "nước hầm xương bò", "nuoc ham xuong bo", "beef bone broth"],
+    aliases: ["nuoc xuong bo", "nước dùng xương bò", "nuoc dung xuong bo", "nước hầm xương bò", "nuoc ham xuong bo", "beef bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương bò, nấu phở bò, lẩu.",
     nutrients: { energyKcal: 10, proteinG: 1.5, carbG: 0.5, fatG: 0.4, saturatedFatG: 0.15, sodiumMg: 200, potassiumMg: 70, calciumMg: 8 },
@@ -116,7 +116,7 @@ export const extraFoods7 = [
   },
   {
     id: "dau-phong", slug: "dau-phong", name: "Dầu phộng (dầu lạc)",
-    aliases: ["dau phong", "dầu lạc", "dau lac", "peanut oil"],
+    aliases: ["dau phong", "dầu đậu phộng", "dau dau phong", "dầu lạc", "dau lac", "peanut oil"],
     category: "Dầu mỡ", state: "processed", basis: "100ml",
     edibleNote: "Dầu ép từ lạc, dùng chiên xào phổ biến.",
     nutrients: { energyKcal: 884, proteinG: 0, carbG: 0, fatG: 100, saturatedFatG: 17, polyunsaturatedFatG: 32, monounsaturatedFatG: 46, vitaminEMg: 15 },
@@ -360,14 +360,6 @@ export const extraFoods7 = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
   {
-    id: "sua-ong-tho", slug: "sua-ong-tho", name: "Sữa đặc (ông Thọ)",
-    aliases: ["sua dac", "sua ong tho", "condensed milk"],
-    category: "Trứng sữa", state: "processed", basis: "100g",
-    edibleNote: "Sữa đặc có đường, dùng pha cà phê, làm bánh.",
-    nutrients: { energyKcal: 321, proteinG: 8, carbG: 55, fatG: 7, saturatedFatG: 4.5, sugarG: 55, calciumMg: 280, sodiumMg: 110, potassiumMg: 370 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
-  },
-  {
     id: "sua-chua-uong", slug: "sua-chua-uong", name: "Sữa chua uống",
     aliases: ["sua chua uong", "drinkable yogurt"],
     category: "Trứng sữa", state: "processed", basis: "100ml",
@@ -555,7 +547,7 @@ export const extraFoods7 = [
   },
   {
     id: "xuc-xich-heo", slug: "xuc-xich-heo", name: "Xúc xích heo",
-    aliases: ["xuc xich heo", "pork sausage"],
+    aliases: ["xuc xich heo", "xúc xích lợn", "xuc xich lon", "pork sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Xúc xích làm từ thịt heo.",
     nutrients: { energyKcal: 270, proteinG: 14, carbG: 3, fatG: 23, saturatedFatG: 8, cholesterolMg: 65, sodiumMg: 750, potassiumMg: 170 },

@@ -19,13 +19,38 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const aliasesFor = (seed: FoodSeed, slug: string) => {
+  const aliases = new Set([slug.replace(/-/g, " ")]);
+  if (seed.category === "Nước dùng") {
+    if (seed.name.includes("Nước hầm")) {
+      aliases.add(seed.name.replace("Nước hầm", "Nước dùng").toLowerCase());
+      aliases.add(slug.replace(/^nuoc-ham/, "nuoc-dung").replace(/-/g, " "));
+    }
+    if (seed.name.includes("Nước dùng")) {
+      aliases.add(seed.name.replace("Nước dùng", "Nước hầm").toLowerCase());
+      aliases.add(slug.replace(/^nuoc-dung/, "nuoc-ham").replace(/-/g, " "));
+    }
+  }
+  if (seed.category !== "Bánh kẹo") {
+    if (seed.name.includes("heo") || seed.edibleNote.includes("heo")) {
+      aliases.add(seed.name.replace(/heo/gi, "lợn").toLowerCase());
+      aliases.add(slug.replace(/heo/g, "lon").replace(/-/g, " "));
+    }
+    if (seed.name.includes("lợn") || seed.edibleNote.includes("lợn")) {
+      aliases.add(seed.name.replace(/lợn/gi, "heo").toLowerCase());
+      aliases.add(slug.replace(/lon/g, "heo").replace(/-/g, " "));
+    }
+  }
+  return [...aliases];
+};
+
 const makeFood = (seed: FoodSeed): Food => {
   const slug = slugify(seed.name);
   return {
     id: slug,
     slug,
     name: seed.name,
-    aliases: [slug.replace(/-/g, " ")],
+    aliases: aliasesFor(seed, slug),
     category: seed.category,
     state: seed.state,
     basis: seed.basis,
@@ -44,7 +69,7 @@ const oilSeeds: FoodSeed[] = [
   ["Dầu đậu nành", 884, 0, 0, 100, "Dầu đậu nành tinh luyện."],
   ["Dầu hướng dương", 884, 0, 0, 100, "Dầu hạt hướng dương tinh luyện."],
   ["Dầu hạt cải", 884, 0, 0, 100, "Dầu canola/hạt cải."],
-  ["Mỡ heo", 902, 0, 0, 100, "Mỡ heo thắng, nhiều chất béo bão hòa."],
+  ["Mỡ heo", 902, 0, 0, 100, "Mỡ heo/lợn thắng, nhiều chất béo bão hòa."],
   ["Bơ lạt", 717, 0.9, 0.1, 81, "Bơ sữa không muối."],
   ["Bơ thực vật", 720, 0.5, 1, 80, "Margarine, thành phần thay đổi theo hãng."],
   ["Nước cốt dừa đặc", 230, 2.3, 6, 24, "Nước cốt dừa đặc dùng nấu chè/cà ri."],

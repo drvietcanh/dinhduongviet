@@ -25,6 +25,19 @@ function hasPhrase(haystack, phrase) {
   return new RegExp(` ${normalizedPhrase} `).test(normalizedHaystack);
 }
 
+function normalizeWithMarks(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+}
+
+function hasPhraseWithMarks(haystack, phrase) {
+  const normalizedHaystack = ` ${normalizeWithMarks(haystack)} `;
+  const normalizedPhrase = normalizeWithMarks(phrase).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(` ${normalizedPhrase} `, "u").test(normalizedHaystack);
+}
+
 async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
 }
@@ -91,8 +104,8 @@ function duplicateSeverity(action) {
 
 function findAliasWarnings(foods, searchFoods) {
   const bySlug = new Map(searchFoods.map((item) => [item.slug, item]));
+  const ignoredRegionalNameSlugs = new Set(["banh-da-lon"]);
   const synonymPairs = [
-    { left: "bắp", right: "ngô", group: "regional-name" },
     { left: "heo", right: "lợn", group: "regional-name" },
     { left: "đậu phộng", right: "lạc", group: "regional-name" },
     { left: "gạo lứt", right: "gạo lật", group: "regional-name" },
@@ -122,10 +135,18 @@ function findAliasWarnings(foods, searchFoods) {
     }
 
     for (const { left, right, group } of synonymPairs) {
-      if (hasPhrase(haystack, left) && !hasPhrase(haystack, right)) {
+      if (group === "regional-name" && ignoredRegionalNameSlugs.has(food.slug)) continue;
+      const phraseMatcher = group === "regional-name" || group === "missing-common-alias"
+        ? hasPhraseWithMarks
+        : hasPhrase;
+      const phraseHaystack = phraseMatcher === hasPhraseWithMarks
+        ? [food.name, food.slug.replace(/-/g, " "), ...aliases].join(" ")
+        : haystack;
+
+      if (phraseMatcher(phraseHaystack, left) && !phraseMatcher(phraseHaystack, right)) {
         warnings.push({ type: group, subtype: "missing_common_alias", slug: food.slug, name: food.name, present: left, suggestedAlias: right });
       }
-      if (hasPhrase(haystack, right) && !hasPhrase(haystack, left)) {
+      if (phraseMatcher(phraseHaystack, right) && !phraseMatcher(phraseHaystack, left)) {
         warnings.push({ type: group, subtype: "missing_common_alias", slug: food.slug, name: food.name, present: right, suggestedAlias: left });
       }
     }

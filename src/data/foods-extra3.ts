@@ -153,7 +153,7 @@ export const extraFoods3: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
   {
-    id: "keo-lac", slug: "keo-lac", name: "Kẹo lạc", aliases: ["peanut candy"],
+    id: "keo-lac", slug: "keo-lac", name: "Kẹo lạc", aliases: ["kẹo đậu phộng", "keo dau phong", "peanut candy"],
     category: "Bánh kẹo", state: "processed", basis: "100g", edibleNote: "Kẹo lạc/đậu phộng truyền thống.",
     nutrients: { energyKcal: 450, proteinG: 10.0, carbG: 55.0, fatG: 22.0, sugarG: 40.0, sodiumMg: 20 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."

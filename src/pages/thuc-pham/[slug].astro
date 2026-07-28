@@ -133,7 +133,7 @@ var foodSchema = {
   <section class="section">
     <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
   </section>
-  <script>
+  <script is:inline>
     function shareRecipe() {
       var title = document.title;
       var url = window.location.href;

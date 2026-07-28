@@ -139,7 +139,7 @@ const recipeSchema = {
       title={`Đổi khẩu phần ${recipe.name}`}
     />
   </section>
-  <script>
+  <script is:inline>
     function shareRecipe() {
       var title = document.title;
       var url = window.location.href;
