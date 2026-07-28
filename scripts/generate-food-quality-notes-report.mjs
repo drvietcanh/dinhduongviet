@@ -95,6 +95,8 @@ const items = decisionSlugs.map((slug) => bySlug.get(slug)).filter(Boolean);
 const missingMetadata = items.filter((food) => !food.dataQuality || !food.sourceReviewStatus || !food.reviewNote);
 const externalSource = items.filter((food) => food.needsExternalSource === true);
 const dietitianReview = items.filter((food) => food.needsDietitianReview === true);
+const needsBetterSource = items.filter((food) => food.sourceReviewStatus === "needs_better_source");
+const sourceBackedPendingReview = items.filter((food) => food.dataQuality === "source_backed" && food.needsDietitianReview === true);
 const dataQualityCounts = countBy(items, "dataQuality");
 const sourceReviewStatusCounts = countBy(items, "sourceReviewStatus");
 
@@ -102,7 +104,7 @@ const markdown = `# Food Quality Notes v1
 
 Generated from \`dist/api-foods.json\` and \`test-results/food-data-qa.json\`.
 
-No nutrition values were changed. This report only summarizes review metadata attached to food records.
+This report summarizes current food quality metadata and the remaining review backlog.
 
 ## Tóm Tắt
 
@@ -110,6 +112,8 @@ No nutrition values were changed. This report only summarizes review metadata at
 - Items with review metadata: ${items.length - missingMetadata.length}.
 - Items still missing required review metadata: ${missingMetadata.length}.
 - Items requiring external source: ${externalSource.length}.
+- Items marked needs_better_source: ${needsBetterSource.length}.
+- Source-backed items still pending dietitian review: ${sourceBackedPendingReview.length}.
 - Items requiring dietitian review: ${dietitianReview.length}.
 
 Data quality counts:
@@ -131,11 +135,25 @@ QA food-data counters:
 
 ## Cần Nguồn Ngoài
 
-${externalSource.map((food) => `- \`${food.slug}\`: ${food.name}`).join("\n")}
+${externalSource.length > 0 ? externalSource.map((food) => `- \`${food.slug}\`: ${food.name}`).join("\n") : "- Không còn mục nào gắn `needsExternalSource`."}
+
+## Cần Nguồn Tốt Hơn
+
+${needsBetterSource.length > 0 ? needsBetterSource.map((food) => `- \`${food.slug}\`: ${food.name} - ${food.reviewNote}`).join("\n") : "- Không còn mục nào gắn `needs_better_source`."}
+
+## Đã Có Nguồn, Chờ Duyệt
+
+${sourceBackedPendingReview.length > 0 ? sourceBackedPendingReview.map((food) => `- \`${food.slug}\`: ${food.name} - ${food.candidateSource}`).join("\n") : "- Không có mục source-backed nào đang chờ duyệt."}
 
 ## Chờ Dietitian Review
 
 ${dietitianReview.map((food) => `- \`${food.slug}\`: ${food.name} (${food.sourceReviewStatus})`).join("\n")}
+
+## Ưu Tiên Tiếp Theo
+
+1. Tìm nguồn nấu chín đáng tin cậy cho \`com-nep\`, \`com-gao-lut-do\`, \`com-gao-lut-den\`; chỉ thay số liệu khi nguồn mô tả rõ cooked/prepared basis.
+2. Với nhóm xúc xích, dùng nguồn riêng theo loại thịt hoặc giữ \`candidate_pending_dietitian_review\` vì VN 2007 chỉ có mục xúc xích chung.
+3. Với \`thit-heo-quay\`, cần công thức chuẩn hoặc nguồn phân tích món quay; không nên tự thay bằng thịt heo sống/nạc/mỡ riêng lẻ.
 
 ## Toàn Bộ Metadata
 

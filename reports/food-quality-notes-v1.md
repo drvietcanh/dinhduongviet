@@ -2,42 +2,54 @@
 
 Generated from `dist/api-foods.json` and `test-results/food-data-qa.json`.
 
-No nutrition values were changed. This report only summarizes review metadata attached to food records.
+This report summarizes current food quality metadata and the remaining review backlog.
 
 ## Tóm Tắt
 
 - Decision table items checked: 23/23.
 - Items with review metadata: 23.
 - Items still missing required review metadata: 0.
-- Items requiring external source: 3.
+- Items requiring external source: 0.
+- Items marked needs_better_source: 3.
+- Source-backed items still pending dietitian review: 3.
 - Items requiring dietitian review: 13.
 
 Data quality counts:
 
-- recipe_estimate: 23
+- recipe_estimate: 20
+- source_backed: 3
 
 Source review status counts:
 
 - needs_better_source: 3
 - reviewed_keep_current: 10
 - recipe_estimate_only: 1
-- candidate_pending_dietitian_review: 6
-- needs_external_source: 3
+- candidate_pending_dietitian_review: 9
 
 QA food-data counters:
 
 - dataQuality: 23
 - sourceReviewStatus: 23
-- needsExternalSource: 3
+- needsExternalSource: 0
 - needsDietitianReview: 13
 - cookedHighEnergyWithoutReviewMetadata: 0
 - decisionTableMissingMetadata: 0
 
 ## Cần Nguồn Ngoài
 
-- `thit-xong-khoi`: Thịt hun khói
-- `thit-bacon`: Bacon
-- `thit-bacon-chien`: Bacon chiên
+- Không còn mục nào gắn `needsExternalSource`.
+
+## Cần Nguồn Tốt Hơn
+
+- `com-nep`: Cơm nếp - Nguồn nội bộ chỉ có gạo nếp khô VN 2007; cần nguồn tốt hơn cho cơm nếp chín trước khi sửa số liệu.
+- `com-gao-lut-do`: Cơm gạo lứt đỏ - Nguồn nội bộ chỉ có gạo lứt khô chung VN 2007; cần nguồn cho cơm gạo lứt đỏ chín.
+- `com-gao-lut-den`: Cơm gạo lứt đen - Nguồn nội bộ chỉ có gạo lứt khô chung VN 2007; cần nguồn cho cơm gạo lứt đen chín.
+
+## Đã Có Nguồn, Chờ Duyệt
+
+- `thit-xong-khoi`: Thịt hun khói - USDA FDC SR Legacy 174611: Ham, honey, smoked, cooked - close_match.
+- `thit-bacon`: Bacon - USDA FDC SR Legacy 168277: Pork, cured, bacon, unprepared.
+- `thit-bacon-chien`: Bacon chiên - USDA FDC SR Legacy 168322: Pork, cured, bacon, pre-sliced, cooked, pan-fried.
 
 ## Chờ Dietitian Review
 
@@ -46,14 +58,20 @@ QA food-data counters:
 - `com-gao-lut-den`: Cơm gạo lứt đen (needs_better_source)
 - `thit-heo-quay`: Thịt heo quay (recipe_estimate_only)
 - `lap-xuong-nuong`: Lạp xưởng nướng (candidate_pending_dietitian_review)
-- `thit-xong-khoi`: Thịt hun khói (needs_external_source)
-- `thit-bacon`: Bacon (needs_external_source)
-- `thit-bacon-chien`: Bacon chiên (needs_external_source)
+- `thit-xong-khoi`: Thịt hun khói (candidate_pending_dietitian_review)
+- `thit-bacon`: Bacon (candidate_pending_dietitian_review)
+- `thit-bacon-chien`: Bacon chiên (candidate_pending_dietitian_review)
 - `xuc-xich-duc`: Xúc xích Đức (bratwurst) (candidate_pending_dietitian_review)
 - `xuc-xich-my`: Xúc xích Mỹ (hot dog) (candidate_pending_dietitian_review)
 - `xuc-xich-bo`: Xúc xích bò (candidate_pending_dietitian_review)
 - `xuc-xich-ga`: Xúc xích gà (candidate_pending_dietitian_review)
 - `xuc-xich-heo`: Xúc xích heo (candidate_pending_dietitian_review)
+
+## Ưu Tiên Tiếp Theo
+
+1. Tìm nguồn nấu chín đáng tin cậy cho `com-nep`, `com-gao-lut-do`, `com-gao-lut-den`; chỉ thay số liệu khi nguồn mô tả rõ cooked/prepared basis.
+2. Với nhóm xúc xích, dùng nguồn riêng theo loại thịt hoặc giữ `candidate_pending_dietitian_review` vì VN 2007 chỉ có mục xúc xích chung.
+3. Với `thit-heo-quay`, cần công thức chuẩn hoặc nguồn phân tích món quay; không nên tự thay bằng thịt heo sống/nạc/mỡ riêng lẻ.
 
 ## Toàn Bộ Metadata
 
@@ -74,9 +92,9 @@ QA food-data counters:
 | banh-mi-cha-lua | Bánh mì chả lụa | 190 | recipe-estimate-v1 | low | recipe_estimate | reviewed_keep_current | - | - | 100g bánh mì chả lụa thành phẩm. | Giữ số ước tính; nguồn nội bộ có bánh mì và giò lụa riêng lẻ, chưa có món hoàn chỉnh. | VN 2007: 1012 Bánh mỳ; 7069 Giò lụa - ingredient_only. |
 | nem-nuong | Nem nướng | 200 | recipe-estimate-v1 | low | recipe_estimate | reviewed_keep_current | - | - | 100g nem nướng thành phẩm. | Giữ số ước tính; nguồn nội bộ có món thịt chế biến gần nhóm nhưng chưa có nem nướng. | VN 2007: 7072 Nem chạo; 7064 Chả lợn - close_match. |
 | lap-xuong-nuong | Lạp xưởng nướng | 320 | recipe-estimate-v1 | low | recipe_estimate | candidate_pending_dietitian_review | - | yes | 100g lạp xưởng nướng thành phẩm. | Có candidate nội bộ gần nhất nhưng chưa thay số; cần duyệt vì VN 2007 không tách trạng thái nướng. | VN 2007: 7071 Lạp xường - close_match. |
-| thit-xong-khoi | Thịt hun khói | 390 | recipe-estimate-v1 | low | recipe_estimate | needs_external_source | yes | yes | 100g thịt hun khói thành phẩm. | Chưa có candidate nội bộ phù hợp; cần nguồn ngoài trước khi sửa dữ liệu chính. | - |
-| thit-bacon | Bacon | 541 | recipe-estimate-v1 | low | recipe_estimate | needs_external_source | yes | yes | 100g bacon thành phẩm. | Chưa có candidate nội bộ phù hợp; không thay trực tiếp bằng thịt lợn mỡ hoặc nguyên liệu khác. | - |
-| thit-bacon-chien | Bacon chiên | 500 | recipe-estimate-v1 | low | recipe_estimate | needs_external_source | yes | yes | 100g bacon chiên thành phẩm. | Chưa có candidate nội bộ phù hợp; cần nguồn ngoài trước khi sửa dữ liệu chính. | - |
+| thit-xong-khoi | Thịt hun khói | 122 | usda-fdc-174611 | medium | source_backed | candidate_pending_dietitian_review | - | yes | 100g thịt heo/ham hun khói ăn liền; không đại diện cho mọi loại ba chỉ hun khói. | Đã thay bằng candidate USDA FDC dạng ham hun khói nấu chín; vẫn cần duyệt vì tên tiếng Việt có thể chỉ nhiều sản phẩm khác nhau. | USDA FDC SR Legacy 174611: Ham, honey, smoked, cooked - close_match. |
+| thit-bacon | Bacon | 393 | usda-fdc-168277 | medium | source_backed | candidate_pending_dietitian_review | - | yes | 100g bacon muối/hun khói chưa chiên; dùng riêng với bản bacon chiên. | Đã thay bằng nguồn USDA FDC cho pork cured bacon unprepared; cần duyệt nếu áp dụng cho nhãn hàng Việt Nam. | USDA FDC SR Legacy 168277: Pork, cured, bacon, unprepared. |
+| thit-bacon-chien | Bacon chiên | 468 | usda-fdc-168322 | medium | source_backed | candidate_pending_dietitian_review | - | yes | 100g bacon chiên thành phẩm. | Đã thay bằng nguồn USDA FDC cho bacon cắt lát chiên áp chảo; sodium/chất béo phụ thuộc hao hụt mỡ và nhãn hàng. | USDA FDC SR Legacy 168322: Pork, cured, bacon, pre-sliced, cooked, pan-fried. |
 | xuc-xich-duc | Xúc xích Đức (bratwurst) | 280 | recipe-estimate-v1 | low | recipe_estimate | candidate_pending_dietitian_review | - | yes | 100g xúc xích Đức/bratwurst thành phẩm. | Có candidate xúc xích generic VN 2007 nhưng chưa thay số; cần duyệt vì khác loại/thương phẩm. | VN 2007: 7077 Xúc xích - close_match. |
 | xuc-xich-my | Xúc xích Mỹ (hot dog) | 290 | recipe-estimate-v1 | low | recipe_estimate | candidate_pending_dietitian_review | - | yes | 100g xúc xích Mỹ/hot dog thành phẩm. | Có candidate xúc xích generic VN 2007 nhưng chưa thay số; cần duyệt vì khác loại/thương phẩm. | VN 2007: 7077 Xúc xích - close_match. |
 | xuc-xich-bo | Xúc xích bò | 260 | recipe-estimate-v1 | low | recipe_estimate | candidate_pending_dietitian_review | - | yes | 100g xúc xích bò thành phẩm. | Có candidate xúc xích generic VN 2007 nhưng chưa thay số; cần duyệt vì không phân biệt loại thịt. | VN 2007: 7077 Xúc xích - close_match. |
