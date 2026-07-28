@@ -181,6 +181,27 @@ result = calculateVietnameseMealAssessment(baseInput({
 assert.equal(result.ok, true);
 assert.ok(result.warnings.some((warning) => /đối chiếu nguồn|chuyên môn/.test(warning)));
 
+result = calculateVietnameseMealAssessment(baseInput({
+  selectedItems: [
+    {
+      name: "Món đã có nguồn ngoài chờ duyệt",
+      grams: 100,
+      energyKcalPer100g: 122,
+      carbGPer100g: 7.3,
+      proteinGPer100g: 18,
+      fatGPer100g: 2.4,
+      fiberGPer100g: 0,
+      sodiumMgPer100g: 900,
+      sugarGPer100g: 0,
+      dataQuality: "source_backed",
+      sourceReviewStatus: "candidate_pending_dietitian_review",
+      needsDietitianReview: true,
+    },
+  ],
+}));
+assert.equal(result.ok, true);
+assert.ok(result.warnings.some((warning) => /đối chiếu nguồn|chuyên môn/.test(warning)));
+
 const forbiddenText = [
   "khẩu phần điều trị chuẩn cho bệnh",
   "bắt buộc ăn",
