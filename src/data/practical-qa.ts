@@ -76,11 +76,11 @@ const qa: Record<string, PracticalQA> = {
     summary: "Người tiểu đường không cần bỏ cơm, chỉ cần giảm lượng và kiểm soát thứ tự ăn (rau → đạm → tinh bột).",
   },
   "tien-dai-thao-duong": {
-    canEat: "Có, nhưng đây là cơ hội vàng để đảo ngược — cần thay đổi ngay từ bây giờ.",
+    canEat: "Có, nhưng đây là giai đoạn rất nên thay đổi sớm để cải thiện đường huyết và giảm nguy cơ tiến triển.",
     howMuch: "Tinh bột: 50% đĩa từ rau, 25% tinh bột, 25% đạm. Mỗi bữa 1 chén cơm là vừa.",
     swapWith: "Gạo lứt, yến mạch, khoai lang. Hạn chế cơm trắng, bánh mì trắng, xôi, nước ngọt.",
     whenDoctor: "Nếu đường huyết đói >6.5 mmol/L dù đã thay đổi ăn uống 3 tháng, hoặc có tiền sử gia đình tiểu đường.",
-    summary: "Tiền đái tháo đường có thể đảo ngược. Giảm 5-7% cân nặng, tập 30 phút/ngày.",
+    summary: "Tiền đái tháo đường có thể cải thiện rõ ở nhiều người. Giảm 5-7% cân nặng và vận động đều giúp giảm nguy cơ tiến triển.",
   },
   "gout": {
     canEat: "Có, nhưng chọn đạm thân thiện: trứng, sữa, đậu hũ. Hạn chế thịt đỏ, nội tạng.",
@@ -108,7 +108,7 @@ const qa: Record<string, PracticalQA> = {
     howMuch: "Giảm 500 kcal/ngày so với nhu cầu. Hạn chế tinh bột trắng còn 1 chén/bữa. Đường: dưới 25g/ngày.",
     swapWith: "Gạo lứt thay gạo trắng. Cá béo (cá hồi, cá thu) thay thịt đỏ. Dầu olive thay mỡ động vật.",
     whenDoctor: "Nếu men gan tăng >2 lần chỉ số bình thường, hoặc siêu âm gan nhiễm mỡ độ 2-3.",
-    summary: "Gan nhiễm mỡ CÓ THỂ đảo ngược bằng giảm đường, giảm tinh bột, tăng rau và tập thể dục.",
+    summary: "Gan nhiễm mỡ có thể cải thiện ở nhiều người khi giảm đường, giảm tinh bột tinh chế, tăng rau và vận động đều.",
   },
   "dau-da-day": {
     canEat: "Có, nhưng món phải mềm, dễ tiêu, chia 5 bữa nhỏ thay 3 bữa lớn.",

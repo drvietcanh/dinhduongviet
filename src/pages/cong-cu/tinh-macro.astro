@@ -1,21 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const pageTitle = "Tính Macro (Đạm - Tinh Bột - Béo) | Dinh Dưỡng Việt";
-const pageDescription = "Công cụ tính toán tỷ lệ các chất đa lượng (Macro: Protein, Carbs, Fat) ra số lượng gram cụ thể cho từng chế độ ăn.";
+const pageTitle = "Tính macro tham khảo (Đạm - Tinh bột - Béo) | Dinh Dưỡng Việt";
+const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành gram carb, đạm và chất béo theo tỷ lệ tham khảo.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <section>
     <span class="badge">📊 Công cụ</span>
-    <h1>Tính Macro (Chất đa lượng)</h1>
+    <h1>Tính macro tham khảo</h1>
     <p class="lead">
-      Công cụ này giúp bạn chia nhỏ Tổng số Calo (TDEE) thành số lượng gram cụ thể của 3 chất: <strong>Protein (Đạm)</strong>, <strong>Carbohydrate (Tinh bột)</strong>, và <strong>Fat (Chất béo)</strong> theo từng mục tiêu dinh dưỡng.
+      Công cụ này giúp quy đổi tổng năng lượng mục tiêu thành gram <strong>protein (đạm)</strong>, <strong>carbohydrate (tinh bột)</strong> và <strong>fat (chất béo)</strong> theo một số tỷ lệ tham khảo.
     </p>
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> 1g Protein = 4 kcal | 1g Carb = 4 kcal | 1g Fat = 9 kcal. Hãy tính TDEE của bạn ở công cụ Tính Năng Lượng trước khi sử dụng công cụ này.
+    ⚠️ <strong>Lưu ý:</strong> 1g protein = 4 kcal | 1g carb = 4 kcal | 1g fat = 9 kcal. Đây là công cụ giáo dục, không dùng để tự đặt chế độ ăn điều trị, giảm cân nhanh, keto điều trị hoặc thay đổi thuốc.
   </div>
 
   <section class="section card">
@@ -25,30 +25,30 @@ const pageDescription = "Công cụ tính toán tỷ lệ các chất đa lượ
       <label for="calories">Tổng năng lượng mục tiêu (kcal/ngày)</label>
       <input type="number" id="calories" inputmode="numeric" placeholder="Ví dụ: 2000" />
       <p class="muted" style="margin-top:5px;font-size:0.85rem;">
-        Bạn chưa biết mình cần bao nhiêu calo? <a href="/cong-cu/tinh-nang-luong" style="color:var(--brand);">Tính TDEE tại đây</a>.
+        Bạn chưa biết mốc năng lượng tham khảo? <a href="/cong-cu/tinh-nang-luong" style="color:var(--brand);">Ước tính TDEE tại đây</a>.
       </p>
     </div>
 
     <div style="margin-top: 20px;">
       <label for="diet-type">Chọn Chế độ ăn (Tỷ lệ phân bổ)</label>
       <select id="diet-type" style="width:100%;padding:10px 12px;border:1px solid var(--card-border);border-radius:var(--radius);font-size:1rem;background:var(--bg-elevated);color:var(--ink);">
-        <option value="balanced" selected>Cân bằng y khoa (50% Carb / 20% Protein / 30% Fat) - Tốt cho sức khỏe chung</option>
-        <option value="muscle">Tăng cơ / Ít mỡ (40% Carb / 40% Protein / 20% Fat) - Cho người tập Gym</option>
-        <option value="lowcarb">Giảm mỡ / Low-carb vừa (30% Carb / 40% Protein / 30% Fat) - Giảm cân, tiểu đường</option>
-        <option value="keto">Keto (10% Carb / 20% Protein / 70% Fat) - Giảm béo cực nhanh, trị liệu đặc biệt</option>
+        <option value="balanced" selected>Cân bằng tham khảo (50% Carb / 20% Protein / 30% Fat)</option>
+        <option value="muscle">Ưu tiên đạm cao hơn (40% Carb / 40% Protein / 20% Fat)</option>
+        <option value="lowcarb">Low-carb vừa tham khảo (30% Carb / 40% Protein / 30% Fat)</option>
+        <option value="keto">Rất thấp carb (10% Carb / 20% Protein / 70% Fat) - chỉ nên dùng khi đã có hướng dẫn chuyên môn</option>
       </select>
     </div>
 
     <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 25px; text-align: center; border-radius: 12px;">
-      Tính Toán Macro
+      Tính macro tham khảo
     </button>
 
     <p id="form-message" class="form-message" hidden></p>
   </section>
 
   <section id="result-section" class="section card" style="display:none; border-color: var(--brand-light2); background: #f8fafc;">
-    <h2>Khẩu phần chi tiết mỗi ngày</h2>
-    <p class="muted" style="margin-top:-5px;margin-bottom:20px;">Để đạt mục tiêu năng lượng đã nhập, mỗi ngày bạn cần ăn đúng số lượng gram của 3 chất sau:</p>
+    <h2>Kết quả quy đổi</h2>
+    <p class="muted" style="margin-top:-5px;margin-bottom:20px;">Các số dưới đây là mốc tham khảo theo tỷ lệ đã chọn, không phải yêu cầu phải ăn đúng từng gram mỗi ngày.</p>
 
     <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
       <!-- Carb -->
@@ -83,8 +83,8 @@ const pageDescription = "Công cụ tính toán tỷ lệ các chất đa lượ
     <div class="result-note" style="margin-top:20px;">
       <h3 style="margin-top:0;font-size:1.1rem;color:var(--ink);">💡 Hiểu đúng về số lượng Gram:</h3>
       <ul class="safe-list">
-        <li><strong>Lưu ý cực kỳ quan trọng:</strong> 100 gram Protein ở bảng trên <u>KHÔNG PHẢI</u> là 100 gram thịt lợn.</li>
-        <li>Ví dụ: 100g Ức gà sống chỉ chứa khoảng 23g Protein nguyên chất. Nếu máy tính yêu cầu bạn ăn 100g Protein, bạn sẽ phải ăn khoảng hơn 4 lạng ức gà!</li>
+        <li><strong>Lưu ý quan trọng:</strong> 100 gram protein ở bảng trên <u>không phải</u> là 100 gram thịt.</li>
+        <li>Ví dụ: 100g ức gà sống chỉ chứa khoảng 23g protein. Nếu kết quả là 100g protein/ngày, lượng thực phẩm thực tế sẽ cao hơn 100g.</li>
         <li>Tương tự, 100g cơm trắng chỉ chứa khoảng 28g Tinh bột (Carb) nguyên chất. Đừng nhầm lẫn giữa trọng lượng thức ăn và trọng lượng chất dinh dưỡng!</li>
       </ul>
     </div>

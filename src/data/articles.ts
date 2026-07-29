@@ -132,7 +132,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "sau-phau-thuat-an-gi-lanh-nhanh",
     title: "Sau phẫu thuật cần ăn gì để vết thương mau lành?",
-    description: "Ăn đúng sau mổ có thể rút ngắn thời gian hồi phục từ 4 tuần xuống 2 tuần. Protein, Vitamin C và Kẽm là 3 dưỡng chất then chốt.",
+    description: "Ăn đủ năng lượng, đạm và vi chất sau mổ có thể hỗ trợ lành vết thương và hồi phục thuận lợi hơn.",
     emoji: "🏥",
     category: "special",
     categoryName: "Dinh dưỡng sau phẫu thuật",
@@ -232,7 +232,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "suy-giap-hypothyroidism",
     title: "Suy giáp: Cảnh báo ăn sống rau họ cải (Goitrogens)",
-    description: "Khi lò hơi năng lượng tắt ngúm. Sai lầm khi ăn sinh tố cải xoăn làm ức chế hấp thu I-ốt và phác đồ Selen phục hồi.",
+    description: "Hiểu đúng về suy giáp, i-ốt, selen và cách dùng rau họ cải hợp lý trong khẩu phần.",
     emoji: "❄️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -261,8 +261,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "buong-trung-da-nang-pcos",
-    title: "Buồng trứng đa nang (PCOS): Đảo ngược bằng Low-GI",
-    description: "Hé lộ mối liên hệ gốc rễ giữa PCOS và Kháng Insulin. Cách nhịn ăn gián đoạn và bổ sung Inositol giúp trứng rụng tự nhiên.",
+    title: "Buồng trứng đa nang (PCOS): Ăn Low-GI để hỗ trợ kiểm soát",
+    description: "Tìm hiểu mối liên hệ giữa PCOS và kháng insulin, cùng cách chọn tinh bột, bữa ăn và lối sống phù hợp hơn.",
     emoji: "🌸",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -367,7 +367,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "xo-vua-dong-mach-vanh",
     title: "Xơ vữa động mạch vành: Sát thủ thầm lặng và vai trò của mỡ máu",
-    description: "Giải mã cơ chế hình thành mảng bám xơ vữa từ Cholesterol LDL oxy hóa và phác đồ dinh dưỡng dọn dẹp mạch máu.",
+    description: "Hiểu vai trò của LDL, mảng xơ vữa và các nguyên tắc ăn uống hỗ trợ kiểm soát nguy cơ tim mạch.",
     emoji: "💔",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -382,7 +382,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "phuc-hoi-nhoi-mau-co-tim-stent",
     title: "Phục hồi sau nhồi máu cơ tim & Đặt Stent: Đừng để tái phát",
-    description: "Hướng dẫn ăn uống sống còn để ngăn chặn huyết khối bít tắc Stent và bảo vệ phần cơ tim còn sót lại.",
+    description: "Nguyên tắc ăn uống sau nhồi máu cơ tim hoặc đặt stent để hỗ trợ kiểm soát mỡ máu, huyết áp và cân nặng.",
     emoji: "❤️‍🩹",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -396,8 +396,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "vi-khuan-hp-da-day",
-    title: "Vi khuẩn HP Dạ dày: Kẻ thù núp dưới màng nhầy và cách tiêu diệt",
-    description: "Sức mạnh của Probiotics và Sulforaphane (Bông cải xanh) trong việc bóc trần vỏ bọc của vi khuẩn HP.",
+    title: "Vi khuẩn HP dạ dày: Ăn uống hỗ trợ khi điều trị",
+    description: "Vai trò hỗ trợ của bữa ăn, probiotic và rau họ cải trong chăm sóc dạ dày, không thay thế phác đồ diệt HP.",
     emoji: "🦠",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -519,7 +519,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "ngung-tho-khi-ngu-sleep-apnea",
     title: "Ngưng thở khi ngủ (Sleep Apnea): Hiểm họa đột quỵ từ mỡ cổ",
-    description: "Khám phá nguyên nhân gây ngáy to, bít tắc đường thở do mỡ thừa chèn ép và phác đồ giảm mỡ cứu vãn đường thở.",
+    description: "Tìm hiểu liên hệ giữa cân nặng, ngưng thở khi ngủ và các nguyên tắc ăn uống hỗ trợ kiểm soát nguy cơ.",
     emoji: "😴",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -570,7 +570,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-chay-than-nhan-tao",
     title: "Chạy thận nhân tạo: Sai lầm chết người khi kiêng đạm",
-    description: "Phác đồ tăng đạm sống còn để bù đắp lượng axit amin bị máy lọc máu hút mất, chống suy kiệt teo cơ ở bệnh nhân chạy thận.",
+    description: "Nguyên tắc bổ sung năng lượng và đạm phù hợp hơn cho người chạy thận, theo hướng dẫn của đơn vị điều trị.",
     emoji: "🩸",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -604,7 +604,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "chung-do-mat-rosacea",
     title: "Chứng đỏ mặt (Rosacea): Trái bom nổ chậm từ Cồn và Gia vị cay",
-    description: "Giải mã cơ chế mao mạch máu dưới da bị giãn nở vô tổ chức và phác đồ ăn uống Omega-3 làm dịu phản ứng viêm đỏ mặt.",
+    description: "Tìm hiểu các yếu tố có thể làm đỏ mặt, kích ứng da và cách ăn uống hỗ trợ sức khỏe da ở mức tham khảo.",
     emoji: "😳",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -638,7 +638,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-sau-phau-thuat-ung-thu",
     title: "Dinh dưỡng sau phẫu thuật Ung thư: Sai lầm khi kiêng thịt đỏ",
-    description: "Tại sao kiêng thịt cá sau mổ lại là hành động 'tự sát' khiến vết mổ không thể lành? Tìm hiểu phác đồ siêu cao đạm và Vitamin C tái tạo mô.",
+    description: "Vì sao kiêng đạm quá mức sau mổ có thể làm chậm hồi phục, và cách bổ sung đạm, vitamin C phù hợp hơn.",
     emoji: "🏥",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -705,8 +705,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "che-do-an-mind-alzheimer",
-    title: "Chế độ ăn MIND: Kích hoạt não bộ trẻ lại 7 tuổi",
-    description: "Giải pháp bảo vệ tế bào thần kinh khỏi bệnh Alzheimer bằng sức mạnh dọn dẹp rỉ sét của Quả mọng và Rau xanh đậm.",
+    title: "Chế độ ăn MIND: Hỗ trợ sức khỏe não bộ khi lớn tuổi",
+    description: "Cách rau xanh, quả mọng, cá, hạt và ngũ cốc nguyên hạt có thể hỗ trợ sức khỏe nhận thức trong lối sống tổng thể.",
     emoji: "🧠",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -842,7 +842,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "suy-kiet-ung-thu-cachexia",
     title: "Hội chứng Cachexia: Sát thủ thầm lặng teo cơ, sụt cân",
-    description: "Vì sao bệnh nhân ung thư tử vong do suy kiệt trước khi khối u di căn, và cách EPA (Omega-3) cứu vãn tình hình.",
+    description: "Dinh dưỡng hỗ trợ người bệnh ung thư duy trì cân nặng, khối cơ và khả năng dung nạp điều trị.",
     emoji: "⚖️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -876,7 +876,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-suy-than",
     title: "Suy thận mãn: Vì sao ăn chuối, cà chua lại gây ngừng tim?",
-    description: "Nguyên tắc sống còn về việc kiểm soát Kali, Photpho và cắt giảm muối Natri tuyệt đối để cứu lấy chức năng lọc của màng thận.",
+    description: "Nguyên tắc kiểm soát natri, kali, phospho và đạm trong bệnh thận mạn theo mức độ bệnh và chỉ định chuyên môn.",
     emoji: "💧",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -910,7 +910,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "nhin-an-gian-doan-16-8",
     title: "Nhịn ăn gián đoạn 16:8: Phép màu của sự đói khát",
-    description: "Khám phá cơ chế 'tự thực bào' (Autophagy) dọn dẹp tế bào già cỗi và cách ép cơ thể đốt mỡ bằng việc kiểm soát Insulin.",
+    description: "Hiểu đúng về nhịn ăn gián đoạn, chuyển hóa năng lượng và những giới hạn an toàn khi áp dụng.",
     emoji: "⏰",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -1531,7 +1531,7 @@ export const articles: ArticleMeta[] = [
     readTime: 6,
     featured: false,
     tags: ["new-diagnosis"],
-    keywords: ["gan nhiễm mỡ", "mỡ gan", "men gan cao", "đảo ngược gan nhiễm mỡ", "chế độ ăn gan nhiễm mỡ"],
+    keywords: ["gan nhiễm mỡ", "mỡ gan", "men gan cao", "cải thiện gan nhiễm mỡ", "chế độ ăn gan nhiễm mỡ"],
     audience: ["fatty-liver"],
     sources: [{ name: "ESPEN — Liver Disease Guidelines", url: "https://www.espen.org/guidelines" }, { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }],
   },
@@ -1660,7 +1660,7 @@ export const articles: ArticleMeta[] = [
       { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
       { name: "MedlinePlus — U.S. National Library of Medicine", url: "https://medlineplus.gov" }
     ],
-    keywords: ["ung thư", "ăn cho người ung thư", "hóa trị", "dinh dưỡng ung thư", "phòng ung thư"],
+    keywords: ["ung thư", "ăn cho người ung thư", "hóa trị", "dinh dưỡng ung thư", "giảm nguy cơ ung thư"],
   },
   {
     slug: "trao-nguoc-da-day",
@@ -3784,7 +3784,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "om-sot-cam-cum",
     title: "Ăn gì khi ốm, sốt, cảm cúm — Thực phẩm phục hồi nhanh",
-    description: "Cháo gà, súp nóng, tỏi, gừng, vitamin C. Thực đơn giúp tăng miễn dịch và rút ngắn thời gian ốm.",
+    description: "Cháo, súp, nước ấm và thực phẩm dễ tiêu giúp bù nước, đủ năng lượng và dễ ăn hơn khi ốm.",
     emoji: "🤧",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3950,7 +3950,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "hoi-chung-chuyen-hoa",
-    title: "Hội chứng chuyển hóa — Đảo ngược bằng dinh dưỡng",
+    title: "Hội chứng chuyển hóa — Cải thiện bằng dinh dưỡng",
     description: "Giảm vòng eo, triglyceride, đường huyết, huyết áp. Thực đơn Metabolic Syndrome.",
     emoji: "⚡",
     category: "disease",
@@ -4153,8 +4153,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tien-dai-thao-duong",
-    title: "Tiền đái tháo đường — Cơ hội vàng để đảo ngược",
-    description: "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống + thực đơn 1 ngày + checklist. Có thể đưa đường huyết về bình thường.",
+    title: "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm",
+    description: "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống, thực đơn 1 ngày và checklist giúp giảm nguy cơ tiến triển.",
     emoji: "🩸",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -4347,7 +4347,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-nuoc-ham-xuong",
     title: "Cảnh báo hiểu lầm: Nước hầm xương không phải nguồn canxi tốt như nhiều người nghĩ",
-    description: "Nước hầm xương có rất ít canxi soluble. Canxi thực sự cần từ rau xanh, đậu, cá kecil với xương.",
+    description: "Nước hầm xương không phải nguồn canxi tốt; nên ưu tiên sữa, đậu, rau xanh và cá nhỏ ăn cả xương khi phù hợp.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",

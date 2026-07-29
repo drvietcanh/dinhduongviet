@@ -71,11 +71,10 @@ const toolGroups = [
     ],
   },
   {
-    title: "Công cụ đang hoàn thiện",
-    draft: true,
+    title: "Năng lượng nâng cao",
     items: [
-      { icon: "🥗", name: "Tính macro", href: "/cong-cu/tinh-macro", desc: "Trang định hướng về macro ở mức tham khảo, chưa dùng để tính khẩu phần cá nhân.", status: "Bản nháp" },
-      { icon: "🔥", name: "Tính năng lượng", href: "/cong-cu/tinh-nang-luong", desc: "Trang định hướng về năng lượng ở mức tham khảo, chưa dùng để tính nhu cầu năng lượng cá nhân.", status: "Bản nháp" },
+      { icon: "🥗", name: "Tính macro tham khảo", href: "/cong-cu/tinh-macro", desc: "Quy đổi năng lượng mục tiêu thành gram carb, đạm và chất béo theo tỷ lệ tham khảo, không thay thế tư vấn cá thể hóa.", status: "Tham khảo v1", statusType: "stable" },
+      { icon: "🔥", name: "Tính năng lượng tham khảo", href: "/cong-cu/tinh-nang-luong", desc: "Ước tính BMR/TDEE cho người trưởng thành ở mức tham khảo, có nhắc giới hạn khi có bệnh nền hoặc nhu cầu điều trị.", status: "Tham khảo v1", statusType: "stable" },
     ],
   },
 ];
@@ -114,7 +113,6 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
       transform: translateY(-4px) scale(1.01);
       box-shadow: 0 12px 32px -4px rgba(5, 150, 105, 0.15);
     }
-    .cc-card.is-draft { border-style: dashed; background: transparent; }
     .cc-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
     .cc-icon { font-size: 1.35rem; line-height: 1; }
     .cc-card h3 { margin: 0; font-size: 1rem; font-weight: 700; flex: 1; }
@@ -138,7 +136,7 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
   <div class="cctools">
     <h1>🛠️ Công cụ</h1>
     <p class="lead">{siteDesc}</p>
-    <p class="cc-summary">Hiện có {totalTools} công cụ, chia theo nhu cầu sử dụng. Các mục bản nháp được tách riêng để không bị hiểu nhầm là công cụ hoàn chỉnh.</p>
+    <p class="cc-summary">Hiện có {totalTools} công cụ, chia theo nhu cầu sử dụng. Kết quả chỉ dùng ở mức tham khảo và cần cá thể hóa khi có bệnh nền, thuốc đang dùng, thai kỳ hoặc mục tiêu điều trị.</p>
 
     {toolGroups.map(group => (
       <section class="cc-group" aria-labelledby={`group-${group.title.replace(/\s+/g, "-").toLowerCase()}`}>
@@ -148,7 +146,7 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
         </div>
         <div class="cc-grid">
           {group.items.map(t => (
-            <a href={t.href} class:list={["cc-card", group.draft && "is-draft"]}>
+            <a href={t.href} class="cc-card">
               <div class="cc-top">
                 <span class="cc-icon">{t.icon}</span>
                 <h3>{t.name} <span>→</span></h3>

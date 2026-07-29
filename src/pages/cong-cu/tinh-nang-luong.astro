@@ -1,21 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const pageTitle = "Tính BMR & TDEE (Năng lượng) | Dinh Dưỡng Việt";
-const pageDescription = "Công cụ tính nhu cầu năng lượng cơ bản (BMR) và Tổng năng lượng tiêu hao mỗi ngày (TDEE) theo chuẩn y khoa Mifflin-St Jeor.";
+const pageTitle = "Tính BMR & TDEE tham khảo | Dinh Dưỡng Việt";
+const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và tổng tiêu hao mỗi ngày (TDEE) theo công thức Mifflin-St Jeor.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <section>
     <span class="badge">📊 Công cụ</span>
-    <h1>Tính Nhu Cầu Năng Lượng (BMR & TDEE)</h1>
+    <h1>Tính năng lượng tham khảo (BMR & TDEE)</h1>
     <p class="lead">
-      Công cụ tính toán năng lượng dựa trên công thức chuẩn y khoa Mifflin-St Jeor, giúp bạn xác định <strong>BMR</strong> (Năng lượng duy trì sự sống) và <strong>TDEE</strong> (Tổng năng lượng tiêu hao mỗi ngày).
+      Công cụ ước tính năng lượng dựa trên công thức Mifflin-St Jeor, giúp bạn tham khảo <strong>BMR</strong> (năng lượng nền) và <strong>TDEE</strong> (tổng năng lượng tiêu hao mỗi ngày).
     </p>
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính chất tham khảo cho người trưởng thành khỏe mạnh. Người có bệnh lý nền, phụ nữ có thai cần tham khảo ý kiến bác sĩ để có phác đồ dinh dưỡng riêng.
+    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo cho người trưởng thành. Người có bệnh nền, đang dùng thuốc, thai kỳ, rối loạn ăn uống, vận động viên hoặc đang cần chế độ ăn điều trị nên hỏi bác sĩ/chuyên gia dinh dưỡng.
   </div>
 
   <section class="section card">
@@ -62,7 +62,7 @@ const pageDescription = "Công cụ tính nhu cầu năng lượng cơ bản (BM
     </div>
 
     <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 20px; text-align: center; border-radius: 12px;">
-      Tính Năng Lượng
+      Tính năng lượng tham khảo
     </button>
 
     <p id="form-message" class="form-message" hidden></p>
@@ -83,7 +83,7 @@ const pageDescription = "Công cụ tính nhu cầu năng lượng cơ bản (BM
         <span style="display:block;margin-bottom:5px;opacity:0.9;">Tổng tiêu hao (TDEE)</span>
         <strong id="tdee-result" style="font-size:2.2rem;display:block;text-shadow:1px 1px 2px rgba(0,0,0,0.2);">0</strong>
         <span style="font-weight:600;">kcal / ngày</span>
-        <p style="font-size:0.85rem;margin-top:10px;opacity:0.9;">Là tổng lượng calo bạn thực sự cần mỗi ngày để DUY TRÌ cân nặng hiện tại.</p>
+        <p style="font-size:0.85rem;margin-top:10px;opacity:0.9;">Là ước tính tổng năng lượng tiêu hao mỗi ngày theo dữ liệu bạn nhập.</p>
       </div>
     </div>
 
@@ -94,9 +94,9 @@ const pageDescription = "Công cụ tính nhu cầu năng lượng cơ bản (BM
     <div class="result-note" style="margin-top:20px;">
       <h3 style="margin-top:0;font-size:1.1rem;color:var(--ink);">🎯 Hướng dẫn đặt mục tiêu:</h3>
       <ul class="safe-list">
-        <li><strong>Để GIẢM CÂN:</strong> Hãy ăn ít hơn TDEE khoảng <strong>300 - 500 kcal</strong> mỗi ngày. Không bao giờ được ăn thấp hơn mức BMR để tránh suy kiệt nội tạng.</li>
-        <li><strong>Để TĂNG CÂN:</strong> Hãy ăn nhiều hơn TDEE khoảng <strong>300 - 500 kcal</strong> mỗi ngày, kết hợp ăn nhiều Đạm (Protein).</li>
-        <li><strong>Để DUY TRÌ:</strong> Ăn đúng bằng mức TDEE của bạn.</li>
+        <li><strong>Duy trì cân nặng:</strong> TDEE là mốc tham khảo ban đầu, cần theo dõi cân nặng, vòng eo, cảm giác đói/no và mức vận động thực tế.</li>
+        <li><strong>Giảm hoặc tăng cân:</strong> Nên điều chỉnh từ từ và tránh thay đổi cực đoan. Người có bệnh nền, thai kỳ, trẻ vị thành niên hoặc rối loạn ăn uống cần được cá thể hóa.</li>
+        <li><strong>Theo dõi:</strong> Nếu cân nặng thay đổi nhanh, mệt nhiều, chóng mặt hoặc có triệu chứng bất thường, hãy dừng tự điều chỉnh và hỏi chuyên gia.</li>
       </ul>
     </div>
   </section>

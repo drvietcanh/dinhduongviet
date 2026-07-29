@@ -44,7 +44,7 @@
     "slug": "sau-phau-thuat-an-gi-lanh-nhanh",
     "name": "Sau phẫu thuật cần ăn gì để vết thương mau lành?",
     "aliases": [],
-    "description": "Ăn đúng sau mổ có thể rút ngắn thời gian hồi phục từ 4 tuần xuống 2 tuần. Protein, Vitamin C và Kẽm là 3 dưỡng chất then chốt.",
+    "description": "Ăn đủ năng lượng, đạm và vi chất sau mổ có thể hỗ trợ lành vết thương và hồi phục thuận lợi hơn.",
     "category": "Bai viet"
   },
   {
@@ -100,7 +100,7 @@
     "slug": "suy-giap-hypothyroidism",
     "name": "Suy giáp: Cảnh báo ăn sống rau họ cải (Goitrogens)",
     "aliases": [],
-    "description": "Khi lò hơi năng lượng tắt ngúm. Sai lầm khi ăn sinh tố cải xoăn làm ức chế hấp thu I-ốt và phác đồ Selen phục hồi.",
+    "description": "Hiểu đúng về suy giáp, i-ốt, selen và cách dùng rau họ cải hợp lý trong khẩu phần.",
     "category": "Bai viet"
   },
   {
@@ -114,9 +114,9 @@
   {
     "type": "article",
     "slug": "buong-trung-da-nang-pcos",
-    "name": "Buồng trứng đa nang (PCOS): Đảo ngược bằng Low-GI",
+    "name": "Buồng trứng đa nang (PCOS): Ăn Low-GI để hỗ trợ kiểm soát",
     "aliases": [],
-    "description": "Hé lộ mối liên hệ gốc rễ giữa PCOS và Kháng Insulin. Cách nhịn ăn gián đoạn và bổ sung Inositol giúp trứng rụng tự nhiên.",
+    "description": "Tìm hiểu mối liên hệ giữa PCOS và kháng insulin, cùng cách chọn tinh bột, bữa ăn và lối sống phù hợp hơn.",
     "category": "Bai viet"
   },
   {
@@ -172,7 +172,7 @@
     "slug": "xo-vua-dong-mach-vanh",
     "name": "Xơ vữa động mạch vành: Sát thủ thầm lặng và vai trò của mỡ máu",
     "aliases": [],
-    "description": "Giải mã cơ chế hình thành mảng bám xơ vữa từ Cholesterol LDL oxy hóa và phác đồ dinh dưỡng dọn dẹp mạch máu.",
+    "description": "Hiểu vai trò của LDL, mảng xơ vữa và các nguyên tắc ăn uống hỗ trợ kiểm soát nguy cơ tim mạch.",
     "category": "Bai viet"
   },
   {
@@ -180,15 +180,15 @@
     "slug": "phuc-hoi-nhoi-mau-co-tim-stent",
     "name": "Phục hồi sau nhồi máu cơ tim & Đặt Stent: Đừng để tái phát",
     "aliases": [],
-    "description": "Hướng dẫn ăn uống sống còn để ngăn chặn huyết khối bít tắc Stent và bảo vệ phần cơ tim còn sót lại.",
+    "description": "Nguyên tắc ăn uống sau nhồi máu cơ tim hoặc đặt stent để hỗ trợ kiểm soát mỡ máu, huyết áp và cân nặng.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "vi-khuan-hp-da-day",
-    "name": "Vi khuẩn HP Dạ dày: Kẻ thù núp dưới màng nhầy và cách tiêu diệt",
+    "name": "Vi khuẩn HP dạ dày: Ăn uống hỗ trợ khi điều trị",
     "aliases": [],
-    "description": "Sức mạnh của Probiotics và Sulforaphane (Bông cải xanh) trong việc bóc trần vỏ bọc của vi khuẩn HP.",
+    "description": "Vai trò hỗ trợ của bữa ăn, probiotic và rau họ cải trong chăm sóc dạ dày, không thay thế phác đồ diệt HP.",
     "category": "Bai viet"
   },
   {
@@ -252,7 +252,7 @@
     "slug": "ngung-tho-khi-ngu-sleep-apnea",
     "name": "Ngưng thở khi ngủ (Sleep Apnea): Hiểm họa đột quỵ từ mỡ cổ",
     "aliases": [],
-    "description": "Khám phá nguyên nhân gây ngáy to, bít tắc đường thở do mỡ thừa chèn ép và phác đồ giảm mỡ cứu vãn đường thở.",
+    "description": "Tìm hiểu liên hệ giữa cân nặng, ngưng thở khi ngủ và các nguyên tắc ăn uống hỗ trợ kiểm soát nguy cơ.",
     "category": "Bai viet"
   },
   {
@@ -276,7 +276,7 @@
     "slug": "dinh-duong-chay-than-nhan-tao",
     "name": "Chạy thận nhân tạo: Sai lầm chết người khi kiêng đạm",
     "aliases": [],
-    "description": "Phác đồ tăng đạm sống còn để bù đắp lượng axit amin bị máy lọc máu hút mất, chống suy kiệt teo cơ ở bệnh nhân chạy thận.",
+    "description": "Nguyên tắc bổ sung năng lượng và đạm phù hợp hơn cho người chạy thận, theo hướng dẫn của đơn vị điều trị.",
     "category": "Bai viet"
   },
   {
@@ -292,7 +292,7 @@
     "slug": "chung-do-mat-rosacea",
     "name": "Chứng đỏ mặt (Rosacea): Trái bom nổ chậm từ Cồn và Gia vị cay",
     "aliases": [],
-    "description": "Giải mã cơ chế mao mạch máu dưới da bị giãn nở vô tổ chức và phác đồ ăn uống Omega-3 làm dịu phản ứng viêm đỏ mặt.",
+    "description": "Tìm hiểu các yếu tố có thể làm đỏ mặt, kích ứng da và cách ăn uống hỗ trợ sức khỏe da ở mức tham khảo.",
     "category": "Bai viet"
   },
   {
@@ -308,7 +308,7 @@
     "slug": "dinh-duong-sau-phau-thuat-ung-thu",
     "name": "Dinh dưỡng sau phẫu thuật Ung thư: Sai lầm khi kiêng thịt đỏ",
     "aliases": [],
-    "description": "Tại sao kiêng thịt cá sau mổ lại là hành động ",
+    "description": "Vì sao kiêng đạm quá mức sau mổ có thể làm chậm hồi phục, và cách bổ sung đạm, vitamin C phù hợp hơn.",
     "category": "Bai viet"
   },
   {
@@ -338,9 +338,9 @@
   {
     "type": "article",
     "slug": "che-do-an-mind-alzheimer",
-    "name": "Chế độ ăn MIND: Kích hoạt não bộ trẻ lại 7 tuổi",
+    "name": "Chế độ ăn MIND: Hỗ trợ sức khỏe não bộ khi lớn tuổi",
     "aliases": [],
-    "description": "Giải pháp bảo vệ tế bào thần kinh khỏi bệnh Alzheimer bằng sức mạnh dọn dẹp rỉ sét của Quả mọng và Rau xanh đậm.",
+    "description": "Cách rau xanh, quả mọng, cá, hạt và ngũ cốc nguyên hạt có thể hỗ trợ sức khỏe nhận thức trong lối sống tổng thể.",
     "category": "Bai viet"
   },
   {
@@ -404,7 +404,7 @@
     "slug": "suy-kiet-ung-thu-cachexia",
     "name": "Hội chứng Cachexia: Sát thủ thầm lặng teo cơ, sụt cân",
     "aliases": [],
-    "description": "Vì sao bệnh nhân ung thư tử vong do suy kiệt trước khi khối u di căn, và cách EPA (Omega-3) cứu vãn tình hình.",
+    "description": "Dinh dưỡng hỗ trợ người bệnh ung thư duy trì cân nặng, khối cơ và khả năng dung nạp điều trị.",
     "category": "Bai viet"
   },
   {
@@ -420,7 +420,7 @@
     "slug": "dinh-duong-suy-than",
     "name": "Suy thận mãn: Vì sao ăn chuối, cà chua lại gây ngừng tim?",
     "aliases": [],
-    "description": "Nguyên tắc sống còn về việc kiểm soát Kali, Photpho và cắt giảm muối Natri tuyệt đối để cứu lấy chức năng lọc của màng thận.",
+    "description": "Nguyên tắc kiểm soát natri, kali, phospho và đạm trong bệnh thận mạn theo mức độ bệnh và chỉ định chuyên môn.",
     "category": "Bai viet"
   },
   {
@@ -436,7 +436,7 @@
     "slug": "nhin-an-gian-doan-16-8",
     "name": "Nhịn ăn gián đoạn 16:8: Phép màu của sự đói khát",
     "aliases": [],
-    "description": "Khám phá cơ chế ",
+    "description": "Hiểu đúng về nhịn ăn gián đoạn, chuyển hóa năng lượng và những giới hạn an toàn khi áp dụng.",
     "category": "Bai viet"
   },
   {
@@ -1604,7 +1604,7 @@
     "slug": "om-sot-cam-cum",
     "name": "Ăn gì khi ốm, sốt, cảm cúm — Thực phẩm phục hồi nhanh",
     "aliases": [],
-    "description": "Cháo gà, súp nóng, tỏi, gừng, vitamin C. Thực đơn giúp tăng miễn dịch và rút ngắn thời gian ốm.",
+    "description": "Cháo, súp, nước ấm và thực phẩm dễ tiêu giúp bù nước, đủ năng lượng và dễ ăn hơn khi ốm.",
     "category": "Bai viet"
   },
   {
@@ -1666,7 +1666,7 @@
   {
     "type": "article",
     "slug": "hoi-chung-chuyen-hoa",
-    "name": "Hội chứng chuyển hóa — Đảo ngược bằng dinh dưỡng",
+    "name": "Hội chứng chuyển hóa — Cải thiện bằng dinh dưỡng",
     "aliases": [],
     "description": "Giảm vòng eo, triglyceride, đường huyết, huyết áp. Thực đơn Metabolic Syndrome.",
     "category": "Bai viet"
@@ -1746,9 +1746,9 @@
   {
     "type": "article",
     "slug": "tien-dai-thao-duong",
-    "name": "Tiền đái tháo đường — Cơ hội vàng để đảo ngược",
+    "name": "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm",
     "aliases": [],
-    "description": "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống + thực đơn 1 ngày + checklist. Có thể đưa đường huyết về bình thường.",
+    "description": "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống, thực đơn 1 ngày và checklist giúp giảm nguy cơ tiến triển.",
     "category": "Bai viet"
   },
   {
@@ -1820,7 +1820,7 @@
     "slug": "canh-bao-hieu-lam-nuoc-ham-xuong",
     "name": "Cảnh báo hiểu lầm: Nước hầm xương không phải nguồn canxi tốt như nhiều người nghĩ",
     "aliases": [],
-    "description": "Nước hầm xương có rất ít canxi soluble. Canxi thực sự cần từ rau xanh, đậu, cá kecil với xương.",
+    "description": "Nước hầm xương không phải nguồn canxi tốt; nên ưu tiên sữa, đậu, rau xanh và cá nhỏ ăn cả xương khi phù hợp.",
     "category": "Bai viet"
   },
   {
