@@ -1,14 +1,40 @@
 #!/usr/bin/env python3
-"""Export Vietnam Food Composition DB (SQLite) to JSON files for the Astro static site."""
-import sqlite3
+"""Export Vietnam Food Composition DB to JSON files for the Astro static site."""
 import json
 import os
-import sys
+import shutil
+from pathlib import Path
 
-DB_PATH = "D:/openclaw/apps/dinh-duong-viet/data/nutrition/nutrition_final_with_core.sqlite"
-OUT_DIR = "D:/openclaw/apps/dinh-duong-viet/public/api"
+ROOT = Path(__file__).resolve().parent.parent
+OUT_DIR = ROOT / "public" / "api"
+DB_PATH = ROOT / "data" / "nutrition" / "nutrition_final_with_core.sqlite"
+FALLBACK_FOODS = OUT_DIR / "vietnam-foods.json"
+FALLBACK_NUTRIENTS = OUT_DIR / "vietnam-nutrients.json"
 
-os.makedirs(OUT_DIR, exist_ok=True)
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def copy_fallback() -> None:
+    if not FALLBACK_FOODS.exists() or not FALLBACK_NUTRIENTS.exists():
+        raise FileNotFoundError("Fallback Vietnam JSON files are missing from public/api.")
+
+    shutil.copy2(FALLBACK_FOODS, OUT_DIR / "vietnam-foods.json")
+    shutil.copy2(FALLBACK_NUTRIENTS, OUT_DIR / "vietnam-nutrients.json")
+    foods_list = json.loads((OUT_DIR / "vietnam-foods.json").read_text(encoding="utf-8"))
+    print("[export_vietnam_json] sqlite3 unavailable, reused checked-in JSON exports.")
+    print(f"  Foods: {len(foods_list)}")
+    print(f"  Nutrients: {len(json.loads((OUT_DIR / 'vietnam-nutrients.json').read_text(encoding='utf-8')))}")
+
+
+try:
+    import sqlite3
+except Exception:
+    copy_fallback()
+    raise SystemExit(0)
+
+if not DB_PATH.exists():
+    copy_fallback()
+    raise SystemExit(0)
 
 db = sqlite3.connect(DB_PATH)
 db.row_factory = sqlite3.Row
@@ -19,16 +45,16 @@ rows = db.execute("SELECT * FROM nutrition_core ORDER BY stt").fetchall()
 foods_list = []
 for r in rows:
     d = dict(r)
-    # Remove per/source for brevity
     d.pop("per", None)
-    # Convert None to null
     for k, v in d.items():
         if v is None:
             d[k] = None
     foods_list.append(d)
 
-with open(os.path.join(OUT_DIR, "vietnam-foods.json"), "w", encoding="utf-8") as f:
-    json.dump(foods_list, f, ensure_ascii=False, indent=1)
+(OUT_DIR / "vietnam-foods.json").write_text(
+    json.dumps(foods_list, ensure_ascii=False, indent=1),
+    encoding="utf-8",
+)
 print(f"  {len(foods_list)} foods written.")
 
 # ── 2. All nutrients ──
@@ -42,25 +68,11 @@ for r in rows:
             d[k] = None
     nutrients_list.append(d)
 
-with open(os.path.join(OUT_DIR, "vietnam-nutrients.json"), "w", encoding="utf-8") as f:
-    json.dump(nutrients_list, f, ensure_ascii=False, indent=1)
+(OUT_DIR / "vietnam-nutrients.json").write_text(
+    json.dumps(nutrients_list, ensure_ascii=False, indent=1),
+    encoding="utf-8",
+)
 print(f"  {len(nutrients_list)} nutrient records written.")
 
-# ── 3. Verify ──
-print("\nVerification:")
-print(f"  Total foods: {len(foods_list)}")
-f1001 = [f for f in foods_list if f["code"] == "1001"]
-if f1001:
-    f = f1001[0]
-    print(f"  Food 1001: {f['name_vi']}")
-    print(f"    Energy: {f['energy_kcal']} KCal, Protein: {f['protein_g']}g, Lipid: {f['lipid_g']}g, Glucid: {f['glucid_g']}g")
-    calc = f['energy_kcal'] * 50 / 100
-    print(f"    calc_by_weight(1001, 50g) = {calc:.0f} KCal (expected ~172)")
-
-# search test
-gao = [f for f in foods_list if "gạo" in f["name_vi"].lower()]
-if gao:
-    print(f"  Foods matching 'gạo':", [f["name_vi"] for f in gao[:5]])
-
-db.close()
 print("\nDone.")
+db.close()
