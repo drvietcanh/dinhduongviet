@@ -1,16 +1,20 @@
-import re, json, os
+import re, json
+from pathlib import Path
 
-os.chdir(r'D:\openclaw\apps\dinh-duong-viet')
-
-# --- Get recipes ---
-recipe_files = [
-    'src/data/recipes-extra.ts', 'src/data/recipes-extra2.ts', 'src/data/recipes-extra3.ts',
-    'src/data/recipes-extra4.ts', 'src/data/recipes-extra5.ts', 'src/data/recipes-extra6.ts'
+ROOT = Path(__file__).resolve().parent.parent
+RECIPE_FILES = [
+    ROOT / 'src/data/recipes-extra.ts',
+    ROOT / 'src/data/recipes-extra2.ts',
+    ROOT / 'src/data/recipes-extra3.ts',
+    ROOT / 'src/data/recipes-extra4.ts',
+    ROOT / 'src/data/recipes-extra5.ts',
+    ROOT / 'src/data/recipes-extra6.ts'
 ]
 
+# --- Get recipes ---
 all_recipes = []
-for fname in recipe_files:
-    with open(fname, 'r', encoding='utf-8') as f:
+for fname in RECIPE_FILES:
+    with fname.open('r', encoding='utf-8') as f:
         content = f.read()
     slugs = re.findall(r"slug:\s*['\"](.+?)['\"]", content)
     names = re.findall(r"name:\s*['\"](.+?)['\"]", content)
@@ -31,7 +35,7 @@ for fname in recipe_files:
 print(f'Recipes: {len(all_recipes)}')
 
 # --- Get articles: parse slug: blocks ---
-with open('src/data/articles.ts', 'r', encoding='utf-8') as f:
+with (ROOT / 'src/data/articles.ts').open('r', encoding='utf-8') as f:
     content = f.read()
 
 # Find all slug occurrences
@@ -88,10 +92,10 @@ for t in TOOLS:
 print(f'Tools: {len(tools)}')
 
 # --- Get foods ---
-with open('public/api/foods-slim.json', 'r', encoding='utf-8') as f:
+with (ROOT / 'public/api/foods-slim.json').open('r', encoding='utf-8') as f:
     food_slim = json.load(f)
 try:
-    with open('public/api/vn-crossref.json', 'r', encoding='utf-8') as f:
+    with (ROOT / 'public/api/vn-crossref.json').open('r', encoding='utf-8') as f:
         xref = json.load(f)
 except:
     xref = {}
@@ -115,7 +119,7 @@ print(f'Foods: {len(foods)}')
 
 # --- Combine ---
 combined = articles + all_recipes + tools + foods
-with open('public/api/search-index.json', 'w', encoding='utf-8') as f:
+with (ROOT / 'public/api/search-index.json').open('w', encoding='utf-8') as f:
     json.dump(combined, f, ensure_ascii=False, indent=2)
 
 types = {}
