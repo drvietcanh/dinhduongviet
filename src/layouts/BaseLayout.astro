@@ -591,6 +591,12 @@ if (isArticle) {
       <div style="max-width: 900px; margin: 30px auto 0; text-align: center; padding: 16px; background: var(--bg-warning); border: 1px solid var(--card-border); border-radius: var(--radius-lg); font-size: 0.85rem; color: var(--ink-secondary);">
         <strong style="color: #c53030;">Tuyên bố Miễn trừ Trách nhiệm Y khoa:</strong> Các thông tin và bài viết trên website <em>Dinh Dưỡng Việt</em> chỉ mang tính chất tham khảo, không nhằm mục đích thay thế cho chẩn đoán, điều trị hay lời khuyên từ bác sĩ. Bạn cần luôn tham vấn ý kiến bác sĩ chuyên khoa hoặc chuyên gia dinh dưỡng trước khi áp dụng bất kỳ chế độ ăn kiêng nào, đặc biệt khi đang điều trị bệnh lý nền.
       </div>
+      <div style="max-width: 900px; margin: 16px auto 0; display: flex; justify-content: center;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--bg-card); font-size: 0.88rem; color: var(--ink-secondary);">
+          <span style="font-weight: 600; color: var(--ink-primary);">Lượt truy cập:</span>
+          <strong data-visitor-counter>Đang tải...</strong>
+        </div>
+      </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Dinh Dưỡng Việt — Dữ liệu chỉ mang tính tham khảo, không thay thế tư vấn y tế.</p>
       </div>
@@ -660,6 +666,26 @@ if (isArticle) {
           apply(next);
           try { localStorage.setItem(key, next); } catch(e) {}
         });
+      })();
+    </script>
+
+    <script is:inline>
+      (function() {
+        var el = document.querySelector('[data-visitor-counter]');
+        if (!el) return;
+
+        var counterKey = 'dinhduongviet-site';
+        var counterUrl = 'https://api.countapi.xyz/hit/' + encodeURIComponent(counterKey) + '/visit';
+
+        fetch(counterUrl)
+          .then(function(res) { return res.ok ? res.json() : Promise.reject(); })
+          .then(function(data) {
+            var value = typeof data.value === 'number' ? data.value : null;
+            el.textContent = value ? value.toLocaleString('vi-VN') : '—';
+          })
+          .catch(function() {
+            el.textContent = '—';
+          });
       })();
     </script>
 
