@@ -7,11 +7,11 @@ Compact format:
 """
 
 import json
-import os
+from pathlib import Path
 
-ROOT = r"D:\openclaw\apps\dinh-duong-viet"
-INPUT = os.path.join(ROOT, "dist", "api-foods.json")
-OUTPUT = os.path.join(ROOT, "public", "api", "foods-full.json")
+ROOT = Path(__file__).resolve().parent.parent
+INPUT = ROOT / "dist" / "api-foods.json"
+OUTPUT = ROOT / "public" / "api" / "foods-full.json"
 
 
 def num(value):
@@ -23,7 +23,7 @@ def num(value):
         return 0
 
 
-with open(INPUT, "r", encoding="utf-8") as f:
+with INPUT.open("r", encoding="utf-8") as f:
     foods = json.load(f)
 
 compact = []
@@ -45,7 +45,7 @@ for food in foods:
         "" if nutrients.get("glycemicIndex") is None else nutrients.get("glycemicIndex"),
     ])
 
-with open(OUTPUT, "w", encoding="utf-8") as f:
+with OUTPUT.open("w", encoding="utf-8") as f:
     json.dump(compact, f, ensure_ascii=False, separators=(",", ":"))
 
-print(f"Written {OUTPUT}: {len(compact)} foods")
+print(f"Written {OUTPUT.relative_to(ROOT)}: {len(compact)} foods")
