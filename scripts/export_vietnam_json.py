@@ -2,7 +2,6 @@
 """Export Vietnam Food Composition DB to JSON files for the Astro static site."""
 import json
 import os
-import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -18,12 +17,11 @@ def copy_fallback() -> None:
     if not FALLBACK_FOODS.exists() or not FALLBACK_NUTRIENTS.exists():
         raise FileNotFoundError("Fallback Vietnam JSON files are missing from public/api.")
 
-    shutil.copy2(FALLBACK_FOODS, OUT_DIR / "vietnam-foods.json")
-    shutil.copy2(FALLBACK_NUTRIENTS, OUT_DIR / "vietnam-nutrients.json")
-    foods_list = json.loads((OUT_DIR / "vietnam-foods.json").read_text(encoding="utf-8"))
+    foods_list = json.loads(FALLBACK_FOODS.read_text(encoding="utf-8"))
+    nutrients_list = json.loads(FALLBACK_NUTRIENTS.read_text(encoding="utf-8"))
     print("[export_vietnam_json] sqlite3 unavailable, reused checked-in JSON exports.")
     print(f"  Foods: {len(foods_list)}")
-    print(f"  Nutrients: {len(json.loads((OUT_DIR / 'vietnam-nutrients.json').read_text(encoding='utf-8')))}")
+    print(f"  Nutrients: {len(nutrients_list)}")
 
 
 try:
