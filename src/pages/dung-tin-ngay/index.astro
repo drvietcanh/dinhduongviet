@@ -12,7 +12,7 @@ const articleHref = (slug: string) => slug.startsWith("canh-bao-hieu-lam-")
   : `/dung-tin-ngay/${slug}`;
 
 function audLabel(aud: string): string {
-  const map: Record<string, string> = { diabetes:"🩸 Tiểu đường", hypertension:"🫗 Tăng huyết áp", gout:"🦶 Gout", kidney:"🫘 Thận", "fatty-liver":"🫁 Gan nhiễm mỡ", "weight-loss":"⚖️ Giảm cân", elderly:"👴 Người già", children:"🧒 Trẻ em", pregnancy:"🤰 Thai kỳ", stomach:"😣 Dạ dày", vegan:"🥬 Ăn chay", caregiver:"👨‍👩‍👧‍👦 Chăm sóc" };
+  const map: Record<string, string> = { diabetes:"🩸 Tiểu đường", hypertension:"🫗 Cao huyết áp", gout:"🦶 Gout", kidney:"🫘 Thận", "fatty-liver":"🫁 Gan nhiễm mỡ", "weight-loss":"⚖️ Giảm cân", elderly:"👴 Người già", children:"🧒 Trẻ em", pregnancy:"🤰 Thai kỳ", stomach:"😣 Dạ dày", vegan:"🥬 Ăn chay", caregiver:"👨‍👩‍👧‍👦 Chăm sóc" };
   return map[aud] || aud;
 }
 ---

@@ -35,6 +35,7 @@ const qualityLabels: Record<string, string> = {
   needs_external_source: "Cần nguồn ngoài để đối chiếu",
 };
 const qualityNote = food.sourceReviewStatus ? qualityLabels[food.sourceReviewStatus] : "";
+const pageDescription = `Tra cứu 100g ${food.name}: khoảng ${Math.round(food.nutrients.energyKcal ?? 0)} kcal, ${Math.round(food.nutrients.proteinG ?? 0)}g đạm, ${Math.round(food.nutrients.carbG ?? 0)}g carb và ${Math.round(food.nutrients.fatG ?? 0)}g chất béo.`;
 
 // JSON-LD Food structured data
 var foodSchema = {
@@ -61,7 +62,11 @@ var foodSchema = {
 };
 ---
 
-<BaseLayout title={`100g ${food.name} bao nhiêu calo? - Dinh Dưỡng Việt`}>
+<BaseLayout
+  title={`100g ${food.name} bao nhiêu calo? - Dinh Dưỡng Việt`}
+  description={pageDescription}
+  canonical={`/thuc-pham/${canonicalSlug}`}
+>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(foodSchema)}></script>
   <section>
     <span class="badge">{food.category} · {confidenceLabel(food.confidence)}</span>

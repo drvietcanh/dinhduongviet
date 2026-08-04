@@ -18,6 +18,7 @@ const recipe = recipeBySlug(Astro.params.slug ?? "");
 if (!recipe) return Astro.redirect("/tim-kiem");
 const nutrients = calculateRecipe(recipe);
 const source = sourceFor(recipe.sourceId);
+const pageDescription = `Tra cứu ${recipe.servingName} ${recipe.name}: khoảng ${Math.round(nutrients.energyKcal ?? 0)} kcal, ${Math.round(nutrients.proteinG ?? 0)}g đạm, ${Math.round(nutrients.carbG ?? 0)}g carb và ${Math.round(nutrients.fatG ?? 0)}g chất béo mỗi khẩu phần.`;
 
 // Build JSON-LD Recipe schema object (will be stringified in template)
 const recipeSchema = {
@@ -44,7 +45,11 @@ const recipeSchema = {
 };
 ---
 
-<BaseLayout title={`${recipe.servingName} ${recipe.name} bao nhiêu calo? - Dinh Dưỡng Việt`}>
+<BaseLayout
+  title={`${recipe.servingName} ${recipe.name} bao nhiêu calo? - Dinh Dưỡng Việt`}
+  description={pageDescription}
+  canonical={`/mon-an/${recipe.slug}`}
+>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(recipeSchema)}></script>
   <section>
     <span class="badge">Món ăn · {confidenceLabel(recipe.confidence)}</span>

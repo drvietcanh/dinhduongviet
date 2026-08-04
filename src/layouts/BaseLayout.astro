@@ -11,7 +11,12 @@ export interface Props {
 const { title, description, image, canonical } = Astro.props;
 const defaultImage = "https://dinh-duong-viet.pages.dev/og-default.png";
 const imageUrl = image || defaultImage;
-const canonicalUrl = canonical ? `https://dinh-duong-viet.pages.dev${canonical}` : null;
+const canonicalPath = canonical ?? Astro.url.pathname;
+const canonicalUrl = canonicalPath
+  ? (canonicalPath.startsWith("http")
+    ? canonicalPath
+    : `https://dinh-duong-viet.pages.dev${canonicalPath}`)
+  : null;
 
 const pathname = Astro.url.pathname;
 const pathParts = pathname.split("/").filter(Boolean);
@@ -25,6 +30,7 @@ var breadcrumbNames = {
   "kien-thuc-dinh-duong": "Kiến thức dinh dưỡng",
   "ban-do-benh": "Theo bệnh",
   "cong-cu": "Công cụ",
+  "tac-gia": "Tác giả",
   "tim-kiem": "Tìm kiếm",
   "phuong-phap": "Phương pháp và dữ liệu",
   "hoi-dap": "Hỏi đáp",
@@ -209,6 +215,13 @@ if (isArticle) {
         --bg-warning: #fef2f2;
         --bg-highlight: #f0fdf4;
         --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --primary: var(--brand);
+        --primary-bg: var(--brand-light);
+        --text-color: var(--ink);
+        --border: var(--line);
+        --border-color: var(--line);
+        --bg-card: var(--card);
+        --ink-primary: var(--ink);
       }
 
       [data-theme="dark"] {
@@ -239,6 +252,13 @@ if (isArticle) {
         --bg-warning: #450a0a;
         --bg-highlight: #022c22;
         --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --primary: var(--brand);
+        --primary-bg: var(--brand-light);
+        --text-color: var(--ink);
+        --border: var(--line);
+        --border-color: var(--line);
+        --bg-card: var(--card);
+        --ink-primary: var(--ink);
       }
 
       /* ===================== UI OVERHAUL (GLASSMORPHISM) ===================== */
@@ -601,6 +621,7 @@ if (isArticle) {
               <a href="/kien-thuc-dinh-duong#sec-than-tiet-nieu">Thận - tiết niệu</a>
               <a href="/kien-thuc-dinh-duong#sec-ung-thu">Ung thư</a>
               <a href="/phuong-phap">Phương pháp - dữ liệu</a>
+              <a href="/tac-gia">Tác giả - kiểm duyệt</a>
             </div>
           </details>
           <a href="/thuc-pham">Thực phẩm</a>
@@ -672,7 +693,7 @@ if (isArticle) {
         </div>
         <div class="footer-col">
           <h4>Tác giả</h4>
-          <p style="margin: 0 0 8px; font-size: 0.92rem; line-height: 1.6;">BSCKII Đỗ Việt Cảnh</p>
+          <a href="/tac-gia" style="font-weight: 600;">BSCKII Đỗ Việt Cảnh</a>
           <a href="mailto:drvietcanh@gmail.com">✉️ drvietcanh@gmail.com</a>
           <a href="tel:0988040484">📞 0988040484</a>
           <p style="margin: 10px 0 0; font-size: 0.82rem; line-height: 1.6; color: var(--ink-tertiary);">Phụ trách nội dung lâm sàng, rà soát và cập nhật bài viết dinh dưỡng.</p>
@@ -682,8 +703,8 @@ if (isArticle) {
         <strong style="color: #c53030;">Tuyên bố Miễn trừ Trách nhiệm Y khoa:</strong> Các thông tin và bài viết trên website <em>Dinh Dưỡng Việt</em> chỉ mang tính chất tham khảo, không nhằm mục đích thay thế cho chẩn đoán, điều trị hay lời khuyên từ bác sĩ. Bạn cần luôn tham vấn ý kiến bác sĩ chuyên khoa hoặc chuyên gia dinh dưỡng trước khi áp dụng bất kỳ chế độ ăn kiêng nào, đặc biệt khi đang điều trị bệnh lý nền.
       </div>
       <div style="max-width: 900px; margin: 16px auto 0; display: flex; justify-content: center;">
-        <div style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--bg-card); font-size: 0.88rem; color: var(--ink-secondary);">
-          <span style="font-weight: 600; color: var(--ink-primary);">Lượt truy cập:</span>
+        <div style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); font-size: 0.88rem; color: var(--ink-secondary);">
+          <span style="font-weight: 600; color: var(--ink);">Lượt truy cập:</span>
           <strong data-visitor-counter>Đang tải...</strong>
         </div>
       </div>

@@ -23,6 +23,57 @@ const specialties = [
 // Helper: get articles by specialty and displayCategory
 const getBy = (sp, dc) => articles.filter(a => a.specialty === sp && a.displayCategory === dc);
 const getArticle = (slug) => articles.find(a => a.slug === slug);
+const specialtyAnchorMap = {
+  "noi-tiet": "sec-noi-tiet",
+  "tim-mach": "sec-tim-mach",
+  "tieu-hoa": "sec-tieu-hoa",
+  "than-tiet-nieu": "sec-than-tiet-nieu",
+  "co-xuong-khop": "sec-co-xuong-khop",
+  "huyet-hoc": "sec-huyet-hoc",
+  "than-kinh": "sec-than-kinh",
+  "ho-hap": "sec-ho-hap",
+  "da-lieu": "sec-da-lieu",
+  "ung-thu": "sec-ung-thu",
+  "phu-nu-nhi": "sec-phu-nu-nhi",
+  "nhi-khoa": "sec-nhi-khoa",
+  "lao-khoa": "sec-lao-khoa",
+  "san-khoa": "sec-san-khoa",
+  "di-ung": "sec-di-ung",
+  "tai-mui-hong": "sec-tai-mui-hong",
+  "phau-thuat": "sec-phau-thuat",
+  "ngoai-khoa": "sec-ngoai-khoa",
+  "truyen-nhiem": "sec-truyen-nhiem",
+  "dinh-duong-the-thao": "sec-dinh-duong-the-thao",
+};
+const quickRoutes = [
+  { label: "Tiểu đường", href: "#tieu-duong" },
+  { label: "Cao huyết áp", href: "#huyet-ap" },
+  { label: "Dạ dày - trào ngược", href: "#da-day" },
+  { label: "Bệnh thận", href: "#suy-than" },
+  { label: "Người cao tuổi", href: "#nguoi-gia" },
+  { label: "Mang thai", href: "#ba-bau" },
+];
+const labelMap = {
+  "Bài nền tảng": "Bài nền tảng",
+  "Kiến thức": "Kiến thức thêm",
+  "Kiến thức chung": "Kiến thức thêm",
+  "Kiến thức chuyên sâu": "Chuyên sâu",
+  "Bài chuyên sâu": "Chuyên sâu",
+  "Cơ chế": "Giải thích cơ chế",
+  "Hiểu đúng": "Hiểu đúng",
+  "Đừng tin ngay": "Đừng tin ngay",
+  "Mẹo": "Mẹo thực hành",
+  "Món ăn": "Món ăn",
+  "Thực đơn": "Thực đơn",
+  "Chăm sóc": "Chăm sóc",
+  "Phục hồi": "Phục hồi",
+  "Chế độ ăn": "Chế độ ăn",
+  "Cẩm nang": "Cẩm nang",
+  "Cảnh báo": "Cảnh báo",
+};
+function normalizeLabel(label) {
+  return labelMap[label] ?? label;
+}
 
 // Disease groups organized by specialty
 const groups = [
@@ -31,10 +82,10 @@ const groups = [
     specialty: "noi-tiet",
     id: "tieu-duong",
     emoji: "🩸",
-    name: "Đái tháo đường • Tiền đái tháo đường",
+    name: "Tiểu đường • Tiền tiểu đường",
     foundation: [
-      { slug: "dai-thao-duong", title: "Tiểu đường — Chế độ ăn cho người đái tháo đường", desc: "Bài nền tảng" },
-      { slug: "tien-dai-thao-duong", title: "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm", desc: "Bài nền tảng" },
+      { slug: "dai-thao-duong", title: "Tiểu đường — Chế độ ăn cho người tiểu đường", desc: "Bài nền tảng" },
+      { slug: "tien-dai-thao-duong", title: "Tiền tiểu đường — Giai đoạn nên thay đổi sớm", desc: "Bài nền tảng" },
       { slug: "khang-insulin-resistance", title: "Kháng Insulin (Gai đen) & Béo phì", desc: "Cơ chế" },
       { slug: "com-trang-tieu-duong", title: "Cơm trắng — Có phải nguyên nhân gây tiểu đường?", desc: "Hiểu đúng" },
       { slug: "sai-lam-tieu-duong-bo-com", title: "Người tiểu đường không cần bỏ hoàn toàn cơm", desc: "Hiểu đúng" },
@@ -123,9 +174,9 @@ const groups = [
     specialty: "tim-mach",
     id: "huyet-ap",
     emoji: "🫗",
-    name: "Tăng huyết áp",
+    name: "Cao huyết áp",
     foundation: [
-      { slug: "tang-huyet-ap", title: "Tăng huyết áp — Chế độ ăn giảm muối", desc: "Bài nền tảng" },
+      { slug: "tang-huyet-ap", title: "Cao huyết áp — Chế độ ăn giảm muối", desc: "Bài nền tảng" },
       { slug: "cao-huyet-ap-dash-diet", title: "Cao huyết áp & DASH Diet: Sức mạnh của Kali", desc: "Kiến thức chuyên sâu" },
       { slug: "che-do-dash-tang-huyet-ap", title: "Chế độ ăn DASH — 3 mức muối", desc: "Bài nền tảng" },
       { slug: "sai-lam-an-nhat", title: "Ăn nhạt — 6 hiểu lầm cần tránh", desc: "Hiểu đúng" },
@@ -134,7 +185,7 @@ const groups = [
       { slug: "muoi-duong-trong-thuc-pham", title: "Muối & đường ẩn trong thực phẩm", desc: "Hiểu đúng" },
       { slug: "phu-chan-giam-muoi", title: "Bị phù, suy tim, suy thận — Có cần giảm muối?", desc: "Bài nền tảng" },
     ],
-    faq: { href: "/hoi-dap#huyet-ap", label: "Tăng huyết áp có phải bỏ muối hoàn toàn?" },
+    faq: { href: "/hoi-dap#huyet-ap", label: "Cao huyết áp có phải bỏ muối hoàn toàn?" },
     menus: [
       { slug: "thuc-don-tang-huyet-ap", title: "Thực đơn — dưới 2g muối" },
       { slug: "thuc-don-huyet-ap-ban-ron", title: "Bản đi làm" },
@@ -626,7 +677,7 @@ const groups = [
 ];
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={desc} canonical="/ban-do-benh">
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">🏠 Trang chủ</a> <span class="breadcrumb-sep">/</span>
     <span class="breadcrumb-current">🗺️ Bản đồ bệnh</span>
@@ -638,6 +689,11 @@ const groups = [
         Tra cứu chế độ dinh dưỡng cho <strong>hơn 20 nhóm bệnh</strong> theo chuyên khoa.
         Mỗi bệnh có <strong>bài nền tảng</strong>, <strong>hỏi đáp</strong>, và <strong>thực đơn mẫu</strong>.
       </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;">
+        {quickRoutes.map((route) => (
+          <a href={route.href} class="quick-route">{route.label}</a>
+        ))}
+      </div>
     </div>
 
     <!-- Specialty tabs -->
@@ -658,8 +714,16 @@ const groups = [
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
       {groups.map(g => {
         const spMeta = specialties.find(s => s.key === g.specialty);
+        const listedSlugs = new Set([
+          ...g.foundation.map(a => a.slug),
+          ...g.menus.map(m => m.slug),
+        ]);
+        const readMore = articles
+          .filter(a => a.specialty === g.specialty && !listedSlugs.has(a.slug) && a.displayCategory !== "mon-an")
+          .slice(0, 4);
+        const specialtyHref = specialtyAnchorMap[g.specialty] ? `/kien-thuc-dinh-duong#${specialtyAnchorMap[g.specialty]}` : "/kien-thuc-dinh-duong";
         return (
-          <div class="disease-card" data-spec={g.specialty}>
+          <div class="disease-card" data-spec={g.specialty} id={g.id}>
             <div class="dc-header" style={`background:${spMeta.color};color:white;padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;`}>
               <span style="font-size:1.6rem;">{g.emoji}</span>
               <h2 style="margin:0;font-size:1.15rem;flex:1;color:#fff;">{g.name}</h2>
@@ -672,7 +736,7 @@ const groups = [
               <ul style="margin:0;padding-left:0;list-style:none;">
                 {g.foundation.map(a => (
                   <li style="margin:0.35rem 0;display:flex;align-items:baseline;gap:6px;">
-                    <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{a.desc}]</span>
+                    <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{normalizeLabel(a.desc)}]</span>
                     <a href={`/kien-thuc-dinh-duong/${a.slug}`} style="color:var(--brand);text-decoration:underline;font-size:0.9rem;">
                       {a.title}
                     </a>
@@ -682,7 +746,7 @@ const groups = [
 
               <div style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1rem;">
                 {g.faq && (
-                  <a href={g.faq.href} style="padding:0.4rem 1rem;background:var(--b1);border-radius:8px;color:var(--fg);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:4px;">
+                  <a href={g.faq.href} style="padding:0.4rem 1rem;background:var(--bg-soft);border-radius:8px;color:var(--ink);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:4px;">
                     ❓ {g.faq.label}
                   </a>
                 )}
@@ -692,9 +756,29 @@ const groups = [
                   </a>
                 ))}
               </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:0.9rem;">
+                <span class="map-meta-chip">📖 {g.foundation.length} bài chính</span>
+                {g.menus.length > 0 && <span class="map-meta-chip">🍽️ {g.menus.length} thực đơn</span>}
+                {readMore.length > 0 && <span class="map-meta-chip">➕ {readMore.length} bài đọc thêm</span>}
+              </div>
+              {readMore.length > 0 && (
+                <div style="margin-top:1rem;padding-top:0.9rem;border-top:1px dashed var(--line);">
+                  <h3 style="margin:0 0 0.5rem;font-size:0.84rem;color:var(--ink-secondary);">📚 Đọc thêm theo nhóm này</h3>
+                  <ul style="margin:0;padding-left:0;list-style:none;">
+                    {readMore.map(item => (
+                      <li style="margin:0.3rem 0;display:flex;align-items:baseline;gap:6px;">
+                        <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{item.displayCategory === "dung-tin-ngay" ? "Đừng tin ngay" : "Bài thêm"}]</span>
+                        <a href={`/kien-thuc-dinh-duong/${item.slug}`} style="color:var(--brand);text-decoration:underline;font-size:0.88rem;">
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
-                <a href={`/kien-thuc-dinh-duong`} class="dc-more-link">
-                  📚 Xem tất cả bài viết →</a>
+                <a href={specialtyHref} class="dc-more-link">
+                  📚 Xem tất cả bài viết cùng chuyên khoa →</a>
               </div>
             </div>
           </div>
@@ -703,7 +787,7 @@ const groups = [
     </div>
 
     <!-- Tools -->
-    <div style="margin-top:2rem;padding:1.2rem;background:var(--b1);border-radius:12px;text-align:center;">
+    <div style="margin-top:2rem;padding:1.2rem;background:var(--bg-soft);border-radius:12px;text-align:center;">
       <h3 style="margin:0 0 0.5rem;">🔧 Công cụ hỗ trợ</h3>
       <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
         {[
@@ -753,6 +837,35 @@ const groups = [
       transition: all var(--transition);
     }
     .dc-more-link:hover { background: var(--bg-soft); color: var(--brand); text-decoration: none; }
+    .quick-route {
+      text-decoration: none;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid var(--card-border);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+    .quick-route:hover {
+      color: var(--brand);
+      border-color: var(--brand-light2);
+      background: var(--brand-light);
+      text-decoration: none;
+    }
+    .map-meta-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid var(--card-border);
+      color: var(--ink-secondary);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
     [data-spec] { transition: opacity 0.2s; }
     @media (max-width:640px) {
       .dc-header { flex-direction: column; align-items: flex-start; }

@@ -78,10 +78,39 @@ const toolGroups = [
     ],
   },
 ];
+const quickStarts = [
+  {
+    title: "Tôi muốn giảm cân an toàn",
+    desc: "Bắt đầu từ mục tiêu cân nặng, năng lượng nền và một công cụ nhìn lại bữa ăn hằng ngày.",
+    links: [
+      { href: "/cong-cu/muc-tieu-can-nang", label: "Mục tiêu cân nặng" },
+      { href: "/cong-cu/tinh-nang-luong", label: "Tính năng lượng" },
+      { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
+    ],
+  },
+  {
+    title: "Tôi cần kiểm soát đường huyết",
+    desc: "Đi theo thứ tự carb, GL bữa ăn rồi mới theo dõi số đo để tránh đoán mò bằng cảm giác.",
+    links: [
+      { href: "/cong-cu/tinh-carb", label: "Tính carb" },
+      { href: "/cong-cu/tinh-gl-bua-an", label: "Tính GL bữa ăn" },
+      { href: "/cong-cu/theo-doi-duong-huyet", label: "Theo dõi đường huyết" },
+    ],
+  },
+  {
+    title: "Tôi muốn tra nhanh thực phẩm Việt",
+    desc: "Phù hợp khi cần so sánh món, xem calo hoặc lên ý tưởng bữa ăn gia đình.",
+    links: [
+      { href: "/cong-cu/tra-cuu-thuc-pham-viet", label: "Tra cứu thực phẩm Việt" },
+      { href: "/cong-cu/so-sanh-thuc-pham", label: "So sánh thực phẩm" },
+      { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
+    ],
+  },
+];
 const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0);
 ---
 
-<BaseLayout title={siteTitle} description={siteDesc}>
+<BaseLayout title={siteTitle} description={siteDesc} canonical="/cong-cu">
   <style is:global>
     .cctools { max-width: 980px; margin: 0 auto; padding: 24px 0; }
     .cctools h1 { font-size: 1.6rem; margin-bottom: 6px; }
@@ -122,8 +151,16 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
     .cc-status.is-stable { background: #e8f5ee; color: #217245; }
     .cc-note { margin-top: 24px; padding: 14px 16px; background: var(--brand-light); border-radius: var(--radius-lg); font-size: 0.85rem; color: var(--ink-secondary); }
     .cc-note strong { color: var(--ink); }
+    .cc-quick-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 28px; }
+    .cc-quick-card { background: var(--bg-soft); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 16px; }
+    .cc-quick-card h2 { margin: 0 0 6px; font-size: 0.98rem; }
+    .cc-quick-card p { margin: 0 0 10px; font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.55; }
+    .cc-quick-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cc-quick-links a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--brand); background: var(--card); border: 1px solid var(--card-border); border-radius: 999px; padding: 6px 10px; }
+    .cc-quick-links a:hover { border-color: var(--brand-light2); background: var(--brand-light); }
     @media(max-width:700px) {
       .cc-grid { grid-template-columns: 1fr; }
+      .cc-quick-grid { grid-template-columns: 1fr; }
       .cc-card { min-height: 44px; padding: 16px; }
       .cc-group-head { align-items: flex-start; flex-direction: column; gap: 2px; }
     }
@@ -137,6 +174,26 @@ const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0
     <h1>🛠️ Công cụ</h1>
     <p class="lead">{siteDesc}</p>
     <p class="cc-summary">Hiện có {totalTools} công cụ, chia theo nhu cầu sử dụng. Kết quả chỉ dùng ở mức tham khảo và cần cá thể hóa khi có bệnh nền, thuốc đang dùng, thai kỳ hoặc mục tiêu điều trị.</p>
+
+    <section aria-labelledby="quick-start-tools">
+      <div class="cc-group-head" style="margin-bottom: 10px;">
+        <h2 id="quick-start-tools">Bắt đầu nhanh</h2>
+        <span class="cc-count">3 lộ trình gợi ý</span>
+      </div>
+      <div class="cc-quick-grid">
+        {quickStarts.map((item) => (
+          <div class="cc-quick-card">
+            <h2>{item.title}</h2>
+            <p>{item.desc}</p>
+            <div class="cc-quick-links">
+              {item.links.map((link) => (
+                <a href={link.href}>{link.label}</a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
     {toolGroups.map(group => (
       <section class="cc-group" aria-labelledby={`group-${group.title.replace(/\s+/g, "-").toLowerCase()}`}>

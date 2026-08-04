@@ -82,18 +82,18 @@ if (gi !== undefined) {
   });
 }
 
-// 3. Tăng huyết áp — natri cao
+// 3. Cao huyết áp — natri cao
 if (sodium > 600) {
   warnings.push({
     icon: "🫀",
-    title: "Cảnh báo Tăng huyết áp",
+    title: "Cảnh báo Cao huyết áp",
     advice: `Rất nhiều natri (${sodium.toFixed(0)}mg). Người cao huyết áp nên tránh hoặc ăn rất hạn chế.`,
     severity: "high",
   });
 } else if (sodium > 200) {
   warnings.push({
     icon: "🫀",
-    title: "Lưu ý Tăng huyết áp",
+    title: "Lưu ý Cao huyết áp",
     advice: `Natri ở mức ${sodium.toFixed(0)}mg. Nếu ăn nhiều khẩu phần có thể vượt ngưỡng 2000mg/ngày.`,
     severity: "medium",
   });

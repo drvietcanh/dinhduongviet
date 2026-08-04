@@ -13,7 +13,11 @@ const groups = foods.reduce<Record<string, typeof foods>>((acc, food) => {
 const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
 ---
 
-<BaseLayout title="Danh sách thực phẩm - Dinh Dưỡng Việt">
+<BaseLayout
+  title="Danh sách thực phẩm - Dinh Dưỡng Việt"
+  description="Tra cứu danh sách thực phẩm theo nhóm, calo, đạm, natri và các tag dinh dưỡng để chọn món phù hợp hơn cho bữa ăn hằng ngày."
+  canonical="/thuc-pham"
+>
   <section>
     <h1>Danh sách thực phẩm</h1>
     <p class="lead">Chọn thực phẩm theo nhóm hoặc dùng ô tìm kiếm.</p>

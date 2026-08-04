@@ -4,7 +4,7 @@
     "slug": "tieu-duong-an-com-duoc-khong",
     "name": "Bệnh Tiểu đường ăn cơm được không? Ăn bao nhiêu là vừa?",
     "aliases": [],
-    "description": "Sự thật bất ngờ: bỏ hoàn toàn cơm gây hạ đường huyết nguy hiểm hơn ăn cơm đúng cách. Bí quyết ăn cơm không tăng đường huyết.",
+    "description": "Giải thích cách ăn cơm phù hợp hơn khi bị tiểu đường, thay vì bỏ hoàn toàn và dễ rơi vào cách kiêng quá mức.",
     "category": "Bai viet"
   },
   {
@@ -12,7 +12,7 @@
     "slug": "tre-bieng-an-me-can-lam-gi",
     "name": "Trẻ con biếng ăn, suy dinh dưỡng: Mẹ cần làm gì ngay bây giờ?",
     "aliases": [],
-    "description": "Thiếu kẽm là nguyên nhân số 1 gây biếng ăn ở trẻ. Cách bổ sung từ thực phẩm tự nhiên và mẹo làm bé ăn ngon không cần ép.",
+    "description": "Gợi ý cách nhìn lại thiếu kẽm, bữa ăn và thói quen sinh hoạt khi trẻ biếng ăn hoặc có nguy cơ suy dinh dưỡng.",
     "category": "Bai viet"
   },
   {
@@ -20,7 +20,7 @@
     "slug": "mo-mau-cao-7-mon-an-nguy-hiem",
     "name": "Mỡ máu cao: 7 món ăn hàng ngày đang âm thầm làm hại mạch máu",
     "aliases": [],
-    "description": "Không phải thịt đỏ — mà trà sữa, nước ngọt và bơ thực vật mới là thủ phạm ẩn nấp nguy hiểm nhất làm tăng cholesterol.",
+    "description": "Nhìn lại những món ăn và đồ uống thường ngày dễ làm tăng cholesterol hoặc triglyceride mà nhiều người vẫn bỏ qua.",
     "category": "Bai viet"
   },
   {
@@ -28,7 +28,7 @@
     "slug": "gout-khong-chi-kieng-thit-do",
     "name": "Gout không chỉ kiêng thịt đỏ: Những thứ ăn hàng ngày đang làm đau khớp",
     "aliases": [],
-    "description": "Bia và nước ngọt nguy hiểm hơn thịt đỏ với người Gout. Sự thật về Fructose, hải sản và cách uống cà phê giảm axit uric.",
+    "description": "Tóm tắt vai trò của bia, nước ngọt, fructose, hải sản và một số thói quen ăn uống thường gặp ở người gout.",
     "category": "Bai viet"
   },
   {
@@ -36,7 +36,7 @@
     "slug": "huyet-ap-cao-muoi-an-o-dau",
     "name": "Cao huyết áp: Muối đang ẩn náu ở đâu trong mâm cơm nhà bạn?",
     "aliases": [],
-    "description": "80% lượng muối không đến từ lọ muối trên bàn. Nước mắm, mì ăn liền, chả lụa — những thủ phạm muối ẩn trong bếp người Việt.",
+    "description": "Chỉ ra những nguồn muối ẩn quen thuộc trong bếp Việt như nước mắm, mì ăn liền, chả lụa và đồ chế biến sẵn.",
     "category": "Bai viet"
   },
   {
@@ -52,7 +52,7 @@
     "slug": "thieu-sat-thieu-mau-bo-sung-tu-dau",
     "name": "Thiếu sắt, thiếu máu: Bổ sung sắt từ đâu ngoài thịt đỏ?",
     "aliases": [],
-    "description": "Gan bò, rau dền đỏ, cá cơm khô là 3 nguồn sắt rẻ nhất Việt Nam. Bí quyết ăn kèm chanh tăng hấp thu sắt gấp 3 lần.",
+    "description": "Gợi ý các nguồn sắt quen thuộc, dễ tìm và cách phối hợp bữa ăn để hỗ trợ hấp thu sắt tốt hơn.",
     "category": "Bai viet"
   },
   {
@@ -76,7 +76,7 @@
     "slug": "nguoi-gia-rang-yeu-nau-chao-gi",
     "name": "Người già răng yếu, chán ăn: Cách nấu súp và cháo đầy đủ chất dinh dưỡng",
     "aliases": [],
-    "description": "Cháo ninh xương lấy nước là sai lầm phổ biến. Hãy học bí quyết nấu cháo mềm tan mà vẫn đủ Đạm, đủ Canxi cho ông bà.",
+    "description": "Gợi ý nấu cháo và súp mềm, dễ ăn mà vẫn giữ đủ đạm và năng lượng hơn cho người lớn tuổi răng yếu hoặc chán ăn.",
     "category": "Bai viet"
   },
   {
@@ -92,7 +92,7 @@
     "slug": "dinh-duong-benh-gout-axit-uric",
     "name": "Bệnh Gout & Axit Uric: Giải oan cho rau xanh và thịt",
     "aliases": [],
-    "description": "Sự thật về Fructose và Rượu bia là thủ phạm chính. Sức mạnh đánh tan tinh thể Urat từ Quả Anh Đào (Cherry).",
+    "description": "Giải thích vai trò của fructose, rượu bia, thực phẩm giàu purin và một số thực phẩm thường được nhắc tới như cherry.",
     "category": "Bai viet"
   },
   {
@@ -108,7 +108,7 @@
     "slug": "cuong-giap-basedow",
     "name": "Cường giáp (Basedow): Lệnh cấm vận I-ốt tuyệt đối",
     "aliases": [],
-    "description": "Cỗ máy đốt năng lượng mất phanh. Chế độ ăn Low-Iodine cứu sống bệnh nhân cường giáp tránh bão giáp trạng.",
+    "description": "Tóm tắt nguyên tắc ăn uống khi cường giáp, bao gồm vai trò của i-ốt và những điểm cần hỏi bác sĩ trước khi tự kiêng.",
     "category": "Bai viet"
   },
   {
@@ -124,7 +124,7 @@
     "slug": "cao-huyet-ap-dash-diet",
     "name": "Cao huyết áp & DASH Diet: Sức mạnh của Kali",
     "aliases": [],
-    "description": "Không chỉ kiêng muối Natri, bạn phải nạp đủ Kali từ thực vật để xả áp lực thành mạch và chống đột quỵ.",
+    "description": "Giải thích vì sao ngoài giảm natri, chế độ DASH còn nhấn mạnh kali, thực phẩm tươi và thói quen ăn uống đều đặn hơn.",
     "category": "Bai viet"
   },
   {
@@ -132,7 +132,7 @@
     "slug": "dinh-duong-thuoc-chong-dong-mau-warfarin",
     "name": "Thuốc chống đông máu (Warfarin): Lằn ranh sinh tử",
     "aliases": [],
-    "description": "Cách giữ ổn định lượng Vitamin K từ rau xanh để thuốc không bị mất tác dụng hoặc gây xuất huyết ồ ạt.",
+    "description": "Tập trung vào cách giữ lượng vitamin K ổn định hơn trong bữa ăn khi đang dùng warfarin.",
     "category": "Bai viet"
   },
   {
@@ -140,7 +140,7 @@
     "slug": "dinh-duong-vay-nen-psoriasis",
     "name": "Bệnh Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3",
     "aliases": [],
-    "description": "Khám phá mối liên hệ giữa béo phì, viêm mạn tính và vảy nến. Chế độ ăn cắt đứt nguồn cung Cytokines gây viêm.",
+    "description": "Tóm tắt mối liên hệ giữa béo phì, viêm mạn tính, omega-3 và các nguyên tắc ăn uống hay được nhắc tới ở người vảy nến.",
     "category": "Bai viet"
   },
   {
@@ -148,7 +148,7 @@
     "slug": "suy-thuong-than-adrenal-fatigue",
     "name": "Suy thượng thận chức năng (Adrenal Fatigue)",
     "aliases": [],
-    "description": "Phục hồi tuyến thượng thận kiệt quệ sau chuỗi ngày stress mãn tính bằng Vitamin C, Muối khoáng và cắt Cà phê.",
+    "description": "Trình bày thận trọng về mệt mỏi kéo dài, stress, bữa ăn đều đặn và những điểm cần phân biệt với bệnh lý nội tiết thật sự.",
     "category": "Bai viet"
   },
   {
@@ -156,7 +156,7 @@
     "slug": "tre-tu-ky-tang-dong-adhd",
     "name": "Trẻ Tự kỷ & Tăng động (ADHD): Giải mã Trục Ruột Não",
     "aliases": [],
-    "description": "Ngừng ngay đường tinh luyện và phẩm màu nhân tạo. Chế độ GFCF và sức mạnh xoa dịu thần kinh của Magie, Kẽm.",
+    "description": "Tóm tắt các hướng tiếp cận dinh dưỡng thường được phụ huynh quan tâm ở trẻ tự kỷ hoặc ADHD, cùng các giới hạn cần lưu ý.",
     "category": "Bai viet"
   },
   {
@@ -164,7 +164,7 @@
     "slug": "thoai-hoa-diem-vang-duc-thuy-tinh-the",
     "name": "Bảo vệ Mắt tuổi già: Đục thủy tinh thể & Thoái hóa điểm vàng",
     "aliases": [],
-    "description": "Tấm khiên Lutein và Zeaxanthin từ rau bina chống lại tác hại thiêu rụi võng mạc của ánh sáng xanh và tia UV.",
+    "description": "Gợi ý cách nhìn vai trò của lutein, zeaxanthin và lối sống hằng ngày trong chăm sóc mắt tuổi lớn.",
     "category": "Bai viet"
   },
   {
@@ -196,7 +196,7 @@
     "slug": "viem-ruot-crohn-uc",
     "name": "Viêm ruột tự miễn (Crohn & UC): Băng bó ",
     "aliases": [],
-    "description": "Tuyệt đối kiêng chất xơ thô ráp và thực phẩm High-FODMAP trong đợt bùng phát để ruột lở loét được nghỉ ngơi.",
+    "description": "Tóm tắt các nguyên tắc ăn uống thường được cân nhắc trong đợt bùng phát Crohn hoặc viêm loét đại tràng.",
     "category": "Bai viet"
   },
   {
@@ -284,7 +284,7 @@
     "slug": "dinh-duong-rung-toc-alopecia",
     "name": "Rụng tóc (Alopecia): Dầu gội đắt tiền không thể cứu nang tóc bị bỏ đói",
     "aliases": [],
-    "description": "Khám phá nguyên nhân gốc rễ gây rụng tóc ở nữ giới do thiếu máu, thiếu Sắt Heme và cách bổ sung Kẽm, Biotin từ thực phẩm để kích thích mọc tóc.",
+    "description": "Rà lại mối liên quan giữa rụng tóc với thiếu máu, thiếu sắt, thiếu kẽm và cách ưu tiên thực phẩm trước khi vội tìm sản phẩm hỗ trợ.",
     "category": "Bai viet"
   },
   {
@@ -300,7 +300,7 @@
     "slug": "ung-thu-vu-va-dau-nanh",
     "name": "Giải oan cho Đậu nành: Sự thật về Ung thư vú và Phytoestrogen",
     "aliases": [],
-    "description": "Vì sao Estrogen thực vật trong đậu nành lại là ",
+    "description": "Tóm tắt bằng chứng về đậu nành, phytoestrogen và những điều người bệnh ung thư vú cần hiểu trước khi tự kiêng quá mức.",
     "category": "Bai viet"
   },
   {
@@ -690,7 +690,7 @@
   {
     "type": "article",
     "slug": "dai-thao-duong",
-    "name": "Tiểu đường — Chế độ ăn cho người đái tháo đường",
+    "name": "Tiểu đường — Chế độ ăn cho người tiểu đường",
     "aliases": [],
     "description": "Kiểm soát carb, chỉ số đường huyết. Thực đơn và nguyên tắc dinh dưỡng.",
     "category": "Bai viet"
@@ -698,7 +698,7 @@
   {
     "type": "article",
     "slug": "tang-huyet-ap",
-    "name": "Tăng huyết áp — Chế độ ăn giảm muối",
+    "name": "Cao huyết áp — Chế độ ăn giảm muối",
     "aliases": [],
     "description": "Giảm natri, tăng kali. Thực đơn DASH cho người Việt.",
     "category": "Bai viet"
@@ -1004,7 +1004,7 @@
     "slug": "thieu-vitamin-d",
     "name": "Thiếu vitamin D — Có cần uống bổ sung không?",
     "aliases": [],
-    "description": "Ánh nắng, thực phẩm giàu D. Ai cần uống bổ sung? Liều bao nhiêu?",
+    "description": "Khi nào nên ưu tiên ánh nắng, thực phẩm giàu vitamin D và lúc nào cần hỏi bác sĩ về việc bổ sung.",
     "category": "Bai viet"
   },
   {
@@ -1100,7 +1100,7 @@
     "slug": "ca-phe-uong-sao-cho-loi",
     "name": "Cà phê — Uống sao cho có lợi, ai nên hạn chế?",
     "aliases": [],
-    "description": "Lợi ích và tác hại. Ai nên hạn chế. Cà phê phin Việt Nam bao nhiêu calo?",
+    "description": "Tóm tắt lợi ích, giới hạn thường gặp và những nhóm nên thận trọng khi uống cà phê, kể cả cà phê phin kiểu Việt.",
     "category": "Bai viet"
   },
   {
@@ -1170,7 +1170,7 @@
   {
     "type": "article",
     "slug": "an-tet-nguoi-benh",
-    "name": "Ăn Tết cho người tiểu đường, gout, tăng huyết áp",
+    "name": "Ăn Tết cho người tiểu đường, gout, cao huyết áp",
     "aliases": [],
     "description": "Bánh chưng, thịt kho, dưa hành, mứt — ăn thế nào? Checklist Tết cho từng bệnh.",
     "category": "Bai viet"
@@ -1274,7 +1274,7 @@
   {
     "type": "article",
     "slug": "thuc-don-huyet-ap-binh-dan",
-    "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân",
+    "name": "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản bình dân",
     "aliases": [],
     "description": "Thực đơn giảm muối kiểu cơm nhà. Pha loãng nước mắm, kho nhạt, dùng gia vị thơm. Dưới 2g muối.",
     "category": "Bai viet"
@@ -1282,7 +1282,7 @@
   {
     "type": "article",
     "slug": "thuc-don-huyet-ap-ban-ron",
-    "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm",
+    "name": "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản đi làm",
     "aliases": [],
     "description": "Thực đơn giảm muối cho người bận rộn. Mẹo gọi món ngoài, đọc nhãn đồ đóng gói.",
     "category": "Bai viet"
@@ -1290,9 +1290,9 @@
   {
     "type": "article",
     "slug": "thuc-don-huyet-ap-nguoi-gia",
-    "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản người lớn tuổi",
+    "name": "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản người lớn tuổi",
     "aliases": [],
-    "description": "Thực đơn mềm, ít muối, dễ ăn cho người già tăng huyết áp. Dùng sả gừng thay muối.",
+    "description": "Thực đơn mềm, ít muối, dễ ăn cho người lớn tuổi bị cao huyết áp. Dùng sả gừng thay muối.",
     "category": "Bai viet"
   },
   {
@@ -1378,7 +1378,7 @@
   {
     "type": "article",
     "slug": "thuc-don-tang-huyet-ap",
-    "name": "Thực đơn 1 ngày cho người tăng huyết áp — dưới 2g muối",
+    "name": "Thực đơn 1 ngày cho người cao huyết áp — dưới 2g muối",
     "aliases": [],
     "description": "Thực đơn 1500 kcal, muối dưới 2g. Mẹo giảm muối không giảm ngon.",
     "category": "Bai viet"
@@ -1546,9 +1546,9 @@
   {
     "type": "article",
     "slug": "an-quan-khi-benh-nen",
-    "name": "Ăn quán khi bị tiểu đường, tăng huyết áp, gout — Cần biết gì?",
+    "name": "Ăn quán khi bị tiểu đường, cao huyết áp, gout — Cần biết gì?",
     "aliases": [],
-    "description": "Hướng dẫn ăn ngoài hàng quán cho người tiểu đường, tăng huyết áp, gout.",
+    "description": "Hướng dẫn ăn ngoài hàng quán cho người tiểu đường, cao huyết áp và gout.",
     "category": "Bai viet"
   },
   {
@@ -1636,7 +1636,7 @@
     "slug": "suy-dinh-duong-nguoi-benh",
     "name": "Suy dinh dưỡng người bệnh — Nhận biết và can thiệp",
     "aliases": [],
-    "description": "Sàng lọc, tăng cường calo và đạm, sữa dinh dưỡng. Khi nào cần truyền ăn?",
+    "description": "Nhận biết sớm suy dinh dưỡng, cách tăng năng lượng và đạm, và thời điểm cần hỗ trợ dinh dưỡng y học.",
     "category": "Bai viet"
   },
   {
@@ -1746,7 +1746,7 @@
   {
     "type": "article",
     "slug": "tien-dai-thao-duong",
-    "name": "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm",
+    "name": "Tiền tiểu đường — Giai đoạn nên thay đổi sớm",
     "aliases": [],
     "description": "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống, thực đơn 1 ngày và checklist giúp giảm nguy cơ tiến triển.",
     "category": "Bai viet"
@@ -2220,7 +2220,7 @@
     "slug": "dinh-duong-viem-gan-c",
     "name": "Viêm gan C mạn tính — Ăn gì để bảo vệ gan sau thời đại thuốc uống đặc hiệu?",
     "aliases": [],
-    "description": "Người viêm gan C vẫn cần dinh dưỡng lành mạnh, tránh rượu bia, kiểm soát cân nặng và không lạm dụng thực phẩm chức năng dù đã có thuốc điều trị rất hiệu quả.",
+    "description": "Người viêm gan C vẫn cần ăn uống lành mạnh, tránh rượu bia, giữ cân nặng hợp lý và không lạm dụng thực phẩm chức năng.",
     "category": "Bai viet"
   },
   {
@@ -2236,7 +2236,7 @@
     "slug": "dinh-duong-loc-mau-chu-ky",
     "name": "Lọc máu chu kỳ — Ăn gì để giữ sức mà vẫn kiểm soát kali, phospho và dịch?",
     "aliases": [],
-    "description": "Người chạy thận nhân tạo thường cần đạm cao hơn trước lọc máu, nhưng phải kiểm soát muối, nước, kali và phospho dựa vào xét nghiệm và chỉ định cá thể hóa.",
+    "description": "Người chạy thận nhân tạo thường cần đủ đạm hơn, nhưng vẫn phải kiểm soát muối, nước, kali và phospho theo xét nghiệm.",
     "category": "Bai viet"
   },
   {
@@ -2252,7 +2252,7 @@
     "slug": "di-ung-sua-bo-o-tre-thuc-hanh",
     "name": "Dị ứng đạm sữa bò ở trẻ — Thực hành chọn sữa thay thế và ăn dặm an toàn",
     "aliases": [],
-    "description": "Bài thực hành cho phụ huynh: khi nào nghĩ tới dị ứng đạm sữa bò, chọn công thức nào, cần tránh gì khi ăn dặm và vì sao không tự đổi sang sữa dê.",
+    "description": "Bài thực hành cho phụ huynh về nhận diện dị ứng đạm sữa bò, chọn công thức thay thế và lưu ý khi cho trẻ ăn dặm.",
     "category": "Bai viet"
   },
   {
@@ -2260,7 +2260,7 @@
     "slug": "di-ung-dau-phong-hat-cay",
     "name": "Dị ứng đậu phộng và hạt cây — Đọc nhãn, tránh lây chéo và xử trí an toàn",
     "aliases": [],
-    "description": "Dị ứng đậu phộng, hạnh nhân, óc chó hay điều có thể gây phản vệ. Trọng tâm là nhận diện thành phần, tránh nhiễm chéo và chuẩn bị kế hoạch xử trí.",
+    "description": "Tập trung vào đọc nhãn, tránh nhiễm chéo và chuẩn bị kế hoạch xử trí an toàn cho người dị ứng đậu phộng và hạt cây.",
     "category": "Bai viet"
   },
   {
@@ -2276,7 +2276,7 @@
     "slug": "chan-an-sau-hoa-tri",
     "name": "Chán ăn sau hóa trị — Làm sao ăn được hơn mà không ép quá sức?",
     "aliases": [],
-    "description": "Người bệnh ung thư ăn kém sau hóa trị cần chiến lược thực tế: chia bữa nhỏ, giảm mùi, tăng năng lượng đậm đặc và biết lúc nào cần hỗ trợ dinh dưỡng y học.",
+    "description": "Gợi ý cách chia bữa nhỏ, giảm mùi, tăng năng lượng đậm đặc và nhận biết lúc cần hỗ trợ dinh dưỡng y học sau hóa trị.",
     "category": "Bai viet"
   },
   {
@@ -2284,7 +2284,7 @@
     "slug": "dinh-duong-khi-dung-glp1",
     "name": "Ăn uống khi dùng GLP-1 giảm cân — Giảm buồn nôn, giữ cơ và tránh thiếu chất",
     "aliases": [],
-    "description": "Người dùng semaglutide hay tirzepatide thường ăn ít hơn nhưng dễ buồn nôn, táo bón và thiếu đạm. Cần chiến lược ăn uống thông minh thay vì chỉ dựa vào thuốc.",
+    "description": "Khi dùng GLP-1 giảm cân, cần giữ đủ đạm, giảm buồn nôn, hạn chế táo bón và tránh lệ thuộc hoàn toàn vào thuốc.",
     "category": "Bai viet"
   },
   {

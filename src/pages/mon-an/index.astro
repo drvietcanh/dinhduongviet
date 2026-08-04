@@ -6,7 +6,11 @@ import { recipes } from "../../data/nutrition";
 import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/nutrition";
 ---
 
-<BaseLayout title="Danh sách món ăn - Dinh Dưỡng Việt">
+<BaseLayout
+  title="Danh sách món ăn - Dinh Dưỡng Việt"
+  description="Tra cứu món ăn Việt theo khẩu phần với ước tính calo, đạm, carb, natri và các tag dinh dưỡng tham khảo."
+  canonical="/mon-an"
+>
   <section>
     <h1>Danh sách món ăn</h1>
     <p class="lead">Mỗi món được tính từ công thức định lượng. Với phở bò, app ghi rõ lượng thịt bò giả định trong tô thường.</p>
@@ -30,8 +34,8 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
           <span>🏥 Phù hợp bệnh</span>
           <select id="recipe-profile" style="font-weight:600;">
             <option value="all">Tất cả</option>
-            <option value="diabetes">🩸 Đái tháo đường</option>
-            <option value="hypertension">❤️ Tăng huyết áp</option>
+            <option value="diabetes">🩸 Tiểu đường</option>
+            <option value="hypertension">❤️ Cao huyết áp</option>
             <option value="gout">🦶 Gout</option>
             <option value="weight">⚖️ Giảm cân</option>
           </select>

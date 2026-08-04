@@ -7,15 +7,37 @@ const title = "Kiến thức dinh dưỡng | Dinh Dưỡng Việt";
 const desc = "Bài viết dinh dưỡng cho người Việt — tra cứu theo chuyên khoa: tim mạch, nội tiết, tiêu hóa, thận, xương khớp...";
 
 // Group articles by specialty
-const specOrder = ["dinh-duong-tong-quat", "noi-tiet", "tieu-hoa", "tim-mach", "than-tiet-nieu", "co-xuong-khop", "huyet-hoc", "than-kinh", "ho-hap", "da-lieu", "phu-nu-nhi", "ung-thu"];
-
-const grouped = specOrder.map(key => ({
+const specOrder = [
+  "dinh-duong-tong-quat",
+  "noi-tiet",
+  "tieu-hoa",
+  "tim-mach",
+  "than-tiet-nieu",
+  "co-xuong-khop",
+  "huyet-hoc",
+  "than-kinh",
+  "ho-hap",
+  "da-lieu",
+  "phu-nu-nhi",
+  "nhi-khoa",
+  "lao-khoa",
+  "san-khoa",
+  "di-ung",
+  "tai-mui-hong",
+  "phau-thuat",
+  "ngoai-khoa",
+  "truyen-nhiem",
+  "dinh-duong-the-thao",
+  "ung-thu"
+];
+const knownOrder = [...new Set([...specOrder, ...Object.keys(SPECIALTIES)])];
+const knownSpecialties = new Set(knownOrder);
+const grouped = knownOrder.map(key => ({
   key,
   meta: SPECIALTIES[key],
   items: articles.filter(a => a.specialty === key),
-})).filter(g => g.items.length > 0);
+})).filter(g => g.meta && g.items.length > 0);
 
-// Articles that don't fit any known specialty (shouldn't happen but safety)
 const unknownItems = articles.filter(a => !a.specialty || a.specialty === "unknown");
 
 // Featured (from any specialty, non-specialty specific)
@@ -33,7 +55,7 @@ const dcKeys = ["bai-viet", "mon-an", "thuc-don", "dung-tin-ngay"] as const;
 // Audiences
 const audiences = [
   { id: "diabetes", label: "🩸 Người tiểu đường" },
-  { id: "hypertension", label: "🫗 Người tăng huyết áp" },
+  { id: "hypertension", label: "🫗 Người cao huyết áp" },
   { id: "gout", label: "🦶 Người gout" },
   { id: "kidney", label: "🫘 Người bệnh thận" },
   { id: "fatty-liver", label: "🫁 Người gan nhiễm mỡ" },
@@ -47,7 +69,7 @@ const audiences = [
 ];
 ---
 
-<BaseLayout title={title} description={desc}>
+<BaseLayout title={title} description={desc} canonical="/kien-thuc-dinh-duong">
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">🏠 Trang chủ</a> <span class="breadcrumb-sep">/</span>
     <span class="breadcrumb-current">📚 Kiến thức dinh dưỡng</span>

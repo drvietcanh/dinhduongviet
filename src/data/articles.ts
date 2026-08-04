@@ -62,7 +62,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "tieu-duong-an-com-duoc-khong",
     title: "Bệnh Tiểu đường ăn cơm được không? Ăn bao nhiêu là vừa?",
-    description: "Sự thật bất ngờ: bỏ hoàn toàn cơm gây hạ đường huyết nguy hiểm hơn ăn cơm đúng cách. Bí quyết ăn cơm không tăng đường huyết.",
+    description: "Giải thích cách ăn cơm phù hợp hơn khi bị tiểu đường, thay vì bỏ hoàn toàn và dễ rơi vào cách kiêng quá mức.",
     emoji: "🍚",
     category: "disease",
     categoryName: "Tiểu đường",
@@ -76,7 +76,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "tre-bieng-an-me-can-lam-gi",
     title: "Trẻ con biếng ăn, suy dinh dưỡng: Mẹ cần làm gì ngay bây giờ?",
-    description: "Thiếu kẽm là nguyên nhân số 1 gây biếng ăn ở trẻ. Cách bổ sung từ thực phẩm tự nhiên và mẹo làm bé ăn ngon không cần ép.",
+    description: "Gợi ý cách nhìn lại thiếu kẽm, bữa ăn và thói quen sinh hoạt khi trẻ biếng ăn hoặc có nguy cơ suy dinh dưỡng.",
     emoji: "👶",
     category: "special",
     categoryName: "Dinh dưỡng trẻ em",
@@ -90,7 +90,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "mo-mau-cao-7-mon-an-nguy-hiem",
     title: "Mỡ máu cao: 7 món ăn hàng ngày đang âm thầm làm hại mạch máu",
-    description: "Không phải thịt đỏ — mà trà sữa, nước ngọt và bơ thực vật mới là thủ phạm ẩn nấp nguy hiểm nhất làm tăng cholesterol.",
+    description: "Nhìn lại những món ăn và đồ uống thường ngày dễ làm tăng cholesterol hoặc triglyceride mà nhiều người vẫn bỏ qua.",
     emoji: "🩸",
     category: "disease",
     categoryName: "Tim mạch / Mỡ máu",
@@ -104,7 +104,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "gout-khong-chi-kieng-thit-do",
     title: "Gout không chỉ kiêng thịt đỏ: Những thứ ăn hàng ngày đang làm đau khớp",
-    description: "Bia và nước ngọt nguy hiểm hơn thịt đỏ với người Gout. Sự thật về Fructose, hải sản và cách uống cà phê giảm axit uric.",
+    description: "Tóm tắt vai trò của bia, nước ngọt, fructose, hải sản và một số thói quen ăn uống thường gặp ở người gout.",
     emoji: "🦶",
     category: "disease",
     categoryName: "Gout / Axit Uric",
@@ -118,7 +118,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "huyet-ap-cao-muoi-an-o-dau",
     title: "Cao huyết áp: Muối đang ẩn náu ở đâu trong mâm cơm nhà bạn?",
-    description: "80% lượng muối không đến từ lọ muối trên bàn. Nước mắm, mì ăn liền, chả lụa — những thủ phạm muối ẩn trong bếp người Việt.",
+    description: "Chỉ ra những nguồn muối ẩn quen thuộc trong bếp Việt như nước mắm, mì ăn liền, chả lụa và đồ chế biến sẵn.",
     emoji: "🧂",
     category: "disease",
     categoryName: "Cao huyết áp",
@@ -146,7 +146,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "thieu-sat-thieu-mau-bo-sung-tu-dau",
     title: "Thiếu sắt, thiếu máu: Bổ sung sắt từ đâu ngoài thịt đỏ?",
-    description: "Gan bò, rau dền đỏ, cá cơm khô là 3 nguồn sắt rẻ nhất Việt Nam. Bí quyết ăn kèm chanh tăng hấp thu sắt gấp 3 lần.",
+    description: "Gợi ý các nguồn sắt quen thuộc, dễ tìm và cách phối hợp bữa ăn để hỗ trợ hấp thu sắt tốt hơn.",
     emoji: "🩺",
     category: "disease",
     categoryName: "Thiếu máu / Thiếu sắt",
@@ -188,7 +188,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "nguoi-gia-rang-yeu-nau-chao-gi",
     title: "Người già răng yếu, chán ăn: Cách nấu súp và cháo đầy đủ chất dinh dưỡng",
-    description: "Cháo ninh xương lấy nước là sai lầm phổ biến. Hãy học bí quyết nấu cháo mềm tan mà vẫn đủ Đạm, đủ Canxi cho ông bà.",
+    description: "Gợi ý nấu cháo và súp mềm, dễ ăn mà vẫn giữ đủ đạm và năng lượng hơn cho người lớn tuổi răng yếu hoặc chán ăn.",
     emoji: "🥣",
     category: "special",
     categoryName: "Dinh dưỡng người cao tuổi",
@@ -217,7 +217,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-benh-gout-axit-uric",
     title: "Bệnh Gout & Axit Uric: Giải oan cho rau xanh và thịt",
-    description: "Sự thật về Fructose và Rượu bia là thủ phạm chính. Sức mạnh đánh tan tinh thể Urat từ Quả Anh Đào (Cherry).",
+    description: "Giải thích vai trò của fructose, rượu bia, thực phẩm giàu purin và một số thực phẩm thường được nhắc tới như cherry.",
     emoji: "🦶",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -247,7 +247,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "cuong-giap-basedow",
     title: "Cường giáp (Basedow): Lệnh cấm vận I-ốt tuyệt đối",
-    description: "Cỗ máy đốt năng lượng mất phanh. Chế độ ăn Low-Iodine cứu sống bệnh nhân cường giáp tránh bão giáp trạng.",
+    description: "Tóm tắt nguyên tắc ăn uống khi cường giáp, bao gồm vai trò của i-ốt và những điểm cần hỏi bác sĩ trước khi tự kiêng.",
     emoji: "🔥",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -277,7 +277,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "cao-huyet-ap-dash-diet",
     title: "Cao huyết áp & DASH Diet: Sức mạnh của Kali",
-    description: "Không chỉ kiêng muối Natri, bạn phải nạp đủ Kali từ thực vật để xả áp lực thành mạch và chống đột quỵ.",
+    description: "Giải thích vì sao ngoài giảm natri, chế độ DASH còn nhấn mạnh kali, thực phẩm tươi và thói quen ăn uống đều đặn hơn.",
     emoji: "🩸",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -292,7 +292,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-thuoc-chong-dong-mau-warfarin",
     title: "Thuốc chống đông máu (Warfarin): Lằn ranh sinh tử",
-    description: "Cách giữ ổn định lượng Vitamin K từ rau xanh để thuốc không bị mất tác dụng hoặc gây xuất huyết ồ ạt.",
+    description: "Tập trung vào cách giữ lượng vitamin K ổn định hơn trong bữa ăn khi đang dùng warfarin.",
     emoji: "💊",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
@@ -307,7 +307,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-vay-nen-psoriasis",
     title: "Bệnh Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3",
-    description: "Khám phá mối liên hệ giữa béo phì, viêm mạn tính và vảy nến. Chế độ ăn cắt đứt nguồn cung Cytokines gây viêm.",
+    description: "Tóm tắt mối liên hệ giữa béo phì, viêm mạn tính, omega-3 và các nguyên tắc ăn uống hay được nhắc tới ở người vảy nến.",
     emoji: "🧴",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -322,7 +322,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "suy-thuong-than-adrenal-fatigue",
     title: "Suy thượng thận chức năng (Adrenal Fatigue)",
-    description: "Phục hồi tuyến thượng thận kiệt quệ sau chuỗi ngày stress mãn tính bằng Vitamin C, Muối khoáng và cắt Cà phê.",
+    description: "Trình bày thận trọng về mệt mỏi kéo dài, stress, bữa ăn đều đặn và những điểm cần phân biệt với bệnh lý nội tiết thật sự.",
     emoji: "🔋",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -337,7 +337,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "tre-tu-ky-tang-dong-adhd",
     title: "Trẻ Tự kỷ & Tăng động (ADHD): Giải mã Trục Ruột Não",
-    description: "Ngừng ngay đường tinh luyện và phẩm màu nhân tạo. Chế độ GFCF và sức mạnh xoa dịu thần kinh của Magie, Kẽm.",
+    description: "Tóm tắt các hướng tiếp cận dinh dưỡng thường được phụ huynh quan tâm ở trẻ tự kỷ hoặc ADHD, cùng các giới hạn cần lưu ý.",
     emoji: "🧩",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
@@ -352,7 +352,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "thoai-hoa-diem-vang-duc-thuy-tinh-the",
     title: "Bảo vệ Mắt tuổi già: Đục thủy tinh thể & Thoái hóa điểm vàng",
-    description: "Tấm khiên Lutein và Zeaxanthin từ rau bina chống lại tác hại thiêu rụi võng mạc của ánh sáng xanh và tia UV.",
+    description: "Gợi ý cách nhìn vai trò của lutein, zeaxanthin và lối sống hằng ngày trong chăm sóc mắt tuổi lớn.",
     emoji: "👁️",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
@@ -412,7 +412,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "viem-ruot-crohn-uc",
     title: "Viêm ruột tự miễn (Crohn & UC): Băng bó 'Đường hầm rực lửa'",
-    description: "Tuyệt đối kiêng chất xơ thô ráp và thực phẩm High-FODMAP trong đợt bùng phát để ruột lở loét được nghỉ ngơi.",
+    description: "Tóm tắt các nguyên tắc ăn uống thường được cân nhắc trong đợt bùng phát Crohn hoặc viêm loét đại tràng.",
     emoji: "🔥",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -587,7 +587,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-rung-toc-alopecia",
     title: "Rụng tóc (Alopecia): Dầu gội đắt tiền không thể cứu nang tóc bị bỏ đói",
-    description: "Khám phá nguyên nhân gốc rễ gây rụng tóc ở nữ giới do thiếu máu, thiếu Sắt Heme và cách bổ sung Kẽm, Biotin từ thực phẩm để kích thích mọc tóc.",
+    description: "Rà lại mối liên quan giữa rụng tóc với thiếu máu, thiếu sắt, thiếu kẽm và cách ưu tiên thực phẩm trước khi vội tìm sản phẩm hỗ trợ.",
     emoji: "👩‍🦲",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -621,7 +621,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "ung-thu-vu-va-dau-nanh",
     title: "Giải oan cho Đậu nành: Sự thật về Ung thư vú và Phytoestrogen",
-    description: "Vì sao Estrogen thực vật trong đậu nành lại là 'chìa khóa giả' giúp bảo vệ bệnh nhân ung thư vú thay vì làm khối u phát triển như lời đồn?",
+    description: "Tóm tắt bằng chứng về đậu nành, phytoestrogen và những điều người bệnh ung thư vú cần hiểu trước khi tự kiêng quá mức.",
     emoji: "🎗️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1469,7 +1469,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dai-thao-duong",
-    title: "Tiểu đường — Chế độ ăn cho người đái tháo đường",
+    title: "Tiểu đường — Chế độ ăn cho người tiểu đường",
     description: "Kiểm soát carb, chỉ số đường huyết. Thực đơn và nguyên tắc dinh dưỡng.",
     emoji: "🩸",
     category: "disease",
@@ -1486,7 +1486,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tang-huyet-ap",
-    title: "Tăng huyết áp — Chế độ ăn giảm muối",
+    title: "Cao huyết áp — Chế độ ăn giảm muối",
     description: "Giảm natri, tăng kali. Thực đơn DASH cho người Việt.",
     emoji: "🫀",
     category: "disease",
@@ -2250,7 +2250,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "thieu-vitamin-d",
     title: "Thiếu vitamin D — Có cần uống bổ sung không?",
-    description: "Ánh nắng, thực phẩm giàu D. Ai cần uống bổ sung? Liều bao nhiêu?",
+    description: "Khi nào nên ưu tiên ánh nắng, thực phẩm giàu vitamin D và lúc nào cần hỏi bác sĩ về việc bổ sung.",
     emoji: "☀️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -2504,7 +2504,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "ca-phe-uong-sao-cho-loi",
     title: "Cà phê — Uống sao cho có lợi, ai nên hạn chế?",
-    description: "Lợi ích và tác hại. Ai nên hạn chế. Cà phê phin Việt Nam bao nhiêu calo?",
+    description: "Tóm tắt lợi ích, giới hạn thường gặp và những nhóm nên thận trọng khi uống cà phê, kể cả cà phê phin kiểu Việt.",
     emoji: "☕",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -2692,7 +2692,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "an-tet-nguoi-benh",
-    title: "Ăn Tết cho người tiểu đường, gout, tăng huyết áp",
+    title: "Ăn Tết cho người tiểu đường, gout, cao huyết áp",
     description: "Bánh chưng, thịt kho, dưa hành, mứt — ăn thế nào? Checklist Tết cho từng bệnh.",
     emoji: "🧧",
     category: "education",
@@ -2960,7 +2960,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "thuc-don-huyet-ap-binh-dan",
-    title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân",
+    title: "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản bình dân",
     description: "Thực đơn giảm muối kiểu cơm nhà. Pha loãng nước mắm, kho nhạt, dùng gia vị thơm. Dưới 2g muối.",
     emoji: "🍽️",
     category: "disease",
@@ -2979,7 +2979,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "thuc-don-huyet-ap-ban-ron",
-    title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm",
+    title: "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản đi làm",
     description: "Thực đơn giảm muối cho người bận rộn. Mẹo gọi món ngoài, đọc nhãn đồ đóng gói.",
     emoji: "🍽️",
     category: "disease",
@@ -2998,8 +2998,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "thuc-don-huyet-ap-nguoi-gia",
-    title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản người lớn tuổi",
-    description: "Thực đơn mềm, ít muối, dễ ăn cho người già tăng huyết áp. Dùng sả gừng thay muối.",
+    title: "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản người lớn tuổi",
+    description: "Thực đơn mềm, ít muối, dễ ăn cho người lớn tuổi bị cao huyết áp. Dùng sả gừng thay muối.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3213,7 +3213,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "thuc-don-tang-huyet-ap",
-    title: "Thực đơn 1 ngày cho người tăng huyết áp — dưới 2g muối",
+    title: "Thực đơn 1 ngày cho người cao huyết áp — dưới 2g muối",
     description: "Thực đơn 1500 kcal, muối dưới 2g. Mẹo giảm muối không giảm ngon.",
     emoji: "🧂",
     category: "education",
@@ -3634,8 +3634,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "an-quan-khi-benh-nen",
-    title: "Ăn quán khi bị tiểu đường, tăng huyết áp, gout — Cần biết gì?",
-    description: "Hướng dẫn ăn ngoài hàng quán cho người tiểu đường, tăng huyết áp, gout.",
+    title: "Ăn quán khi bị tiểu đường, cao huyết áp, gout — Cần biết gì?",
+    description: "Hướng dẫn ăn ngoài hàng quán cho người tiểu đường, cao huyết áp và gout.",
     emoji: "🍽️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3866,7 +3866,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "suy-dinh-duong-nguoi-benh",
     title: "Suy dinh dưỡng người bệnh — Nhận biết và can thiệp",
-    description: "Sàng lọc, tăng cường calo và đạm, sữa dinh dưỡng. Khi nào cần truyền ăn?",
+    description: "Nhận biết sớm suy dinh dưỡng, cách tăng năng lượng và đạm, và thời điểm cần hỗ trợ dinh dưỡng y học.",
     emoji: "⚠️",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
@@ -4153,7 +4153,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tien-dai-thao-duong",
-    title: "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm",
+    title: "Tiền tiểu đường — Giai đoạn nên thay đổi sớm",
     description: "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống, thực đơn 1 ngày và checklist giúp giảm nguy cơ tiến triển.",
     emoji: "🩸",
     category: "disease",
@@ -5330,7 +5330,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-viem-gan-c",
     title: "Viêm gan C mạn tính — Ăn gì để bảo vệ gan sau thời đại thuốc uống đặc hiệu?",
-    description: "Người viêm gan C vẫn cần dinh dưỡng lành mạnh, tránh rượu bia, kiểm soát cân nặng và không lạm dụng thực phẩm chức năng dù đã có thuốc điều trị rất hiệu quả.",
+    description: "Người viêm gan C vẫn cần ăn uống lành mạnh, tránh rượu bia, giữ cân nặng hợp lý và không lạm dụng thực phẩm chức năng.",
     emoji: "🧬",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5372,7 +5372,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-loc-mau-chu-ky",
     title: "Lọc máu chu kỳ — Ăn gì để giữ sức mà vẫn kiểm soát kali, phospho và dịch?",
-    description: "Người chạy thận nhân tạo thường cần đạm cao hơn trước lọc máu, nhưng phải kiểm soát muối, nước, kali và phospho dựa vào xét nghiệm và chỉ định cá thể hóa.",
+    description: "Người chạy thận nhân tạo thường cần đủ đạm hơn, nhưng vẫn phải kiểm soát muối, nước, kali và phospho theo xét nghiệm.",
     emoji: "🩺",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5414,7 +5414,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "di-ung-sua-bo-o-tre-thuc-hanh",
     title: "Dị ứng đạm sữa bò ở trẻ — Thực hành chọn sữa thay thế và ăn dặm an toàn",
-    description: "Bài thực hành cho phụ huynh: khi nào nghĩ tới dị ứng đạm sữa bò, chọn công thức nào, cần tránh gì khi ăn dặm và vì sao không tự đổi sang sữa dê.",
+    description: "Bài thực hành cho phụ huynh về nhận diện dị ứng đạm sữa bò, chọn công thức thay thế và lưu ý khi cho trẻ ăn dặm.",
     emoji: "🍼",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
@@ -5435,7 +5435,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "di-ung-dau-phong-hat-cay",
     title: "Dị ứng đậu phộng và hạt cây — Đọc nhãn, tránh lây chéo và xử trí an toàn",
-    description: "Dị ứng đậu phộng, hạnh nhân, óc chó hay điều có thể gây phản vệ. Trọng tâm là nhận diện thành phần, tránh nhiễm chéo và chuẩn bị kế hoạch xử trí.",
+    description: "Tập trung vào đọc nhãn, tránh nhiễm chéo và chuẩn bị kế hoạch xử trí an toàn cho người dị ứng đậu phộng và hạt cây.",
     emoji: "🥜",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5477,7 +5477,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "chan-an-sau-hoa-tri",
     title: "Chán ăn sau hóa trị — Làm sao ăn được hơn mà không ép quá sức?",
-    description: "Người bệnh ung thư ăn kém sau hóa trị cần chiến lược thực tế: chia bữa nhỏ, giảm mùi, tăng năng lượng đậm đặc và biết lúc nào cần hỗ trợ dinh dưỡng y học.",
+    description: "Gợi ý cách chia bữa nhỏ, giảm mùi, tăng năng lượng đậm đặc và nhận biết lúc cần hỗ trợ dinh dưỡng y học sau hóa trị.",
     emoji: "🍲",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5498,7 +5498,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-khi-dung-glp1",
     title: "Ăn uống khi dùng GLP-1 giảm cân — Giảm buồn nôn, giữ cơ và tránh thiếu chất",
-    description: "Người dùng semaglutide hay tirzepatide thường ăn ít hơn nhưng dễ buồn nôn, táo bón và thiếu đạm. Cần chiến lược ăn uống thông minh thay vì chỉ dựa vào thuốc.",
+    description: "Khi dùng GLP-1 giảm cân, cần giữ đủ đạm, giảm buồn nôn, hạn chế táo bón và tránh lệ thuộc hoàn toàn vào thuốc.",
     emoji: "💉",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5663,4 +5663,13 @@ export const SPECIALTIES: Record<string, { name: string; emoji: string; desc: st
   "phu-nu-nhi": { name: "Phụ nữ, Trẻ em & Người già", emoji: "👨‍👩‍👧‍👦", desc: "Mang thai, mãn kinh, trẻ em, người cao tuổi, suy dinh dưỡng" },
   "ung-thu": { name: "Ung thư", emoji: "🎗️", desc: "Dinh dưỡng cho người ung thư trong và sau điều trị" },
   "dinh-duong-tong-quat": { name: "Dinh dưỡng tổng quát", emoji: "🥗", desc: "Tháp dinh dưỡng, lối sống lành mạnh, mẹo ăn uống" },
+  "nhi-khoa": { name: "Nhi khoa", emoji: "👶", desc: "Biếng ăn, dị ứng sữa, dinh dưỡng theo lứa tuổi trẻ em" },
+  "lao-khoa": { name: "Lão khoa", emoji: "👴", desc: "Người cao tuổi, chán ăn, mất cơ, chăm sóc ăn uống hằng ngày" },
+  "san-khoa": { name: "Sản khoa", emoji: "🤰", desc: "Thai kỳ, sau sinh, thiếu vi chất và chăm sóc mẹ bầu" },
+  "di-ung": { name: "Dị ứng", emoji: "🌿", desc: "Dị ứng thực phẩm, sốc phản vệ và phòng tránh lây nhiễm chéo" },
+  "tai-mui-hong": { name: "Tai mũi họng", emoji: "👂", desc: "Viêm họng, tai mũi họng và lưu ý ăn uống hỗ trợ" },
+  "phau-thuat": { name: "Phẫu thuật", emoji: "🏥", desc: "Ăn uống trước và sau mổ, hồi phục và bảo tồn khối cơ" },
+  "ngoai-khoa": { name: "Ngoại khoa", emoji: "🩹", desc: "Hậu phẫu, vết thương và các tình huống cần ăn uống hỗ trợ hồi phục" },
+  "truyen-nhiem": { name: "Truyền nhiễm", emoji: "🦠", desc: "Dinh dưỡng hỗ trợ hồi phục trong bệnh nhiễm trùng và sau sốt" },
+  "dinh-duong-the-thao": { name: "Dinh dưỡng thể thao", emoji: "🏃", desc: "Ăn uống cho vận động, sức bền, nạp carb và phục hồi" },
 };

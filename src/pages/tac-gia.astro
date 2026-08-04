@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Tác giả và kiểm duyệt nội dung | Dinh Dưỡng Việt"
+  description="Thông tin tác giả, phụ trách nội dung lâm sàng và định hướng biên tập của Dinh Dưỡng Việt."
+  canonical="/tac-gia"
+>
+  <section class="author-page">
+    <div class="author-hero">
+      <span class="badge">Tác giả</span>
+      <h1>BSCKII Đỗ Việt Cảnh</h1>
+      <p class="lead">
+        Phụ trách định hướng nội dung lâm sàng, rà soát tính thực hành và cập nhật
+        các bài viết dinh dưỡng cộng đồng trên Dinh Dưỡng Việt.
+      </p>
+    </div>
+
+    <div class="author-grid">
+      <section class="card author-card">
+        <h2>Thông tin liên hệ</h2>
+        <div class="contact-list">
+          <a href="mailto:drvietcanh@gmail.com">✉️ drvietcanh@gmail.com</a>
+          <a href="tel:0988040484">📞 0988040484</a>
+        </div>
+        <p class="muted">
+          Trang này dùng để minh bạch người phụ trách chuyên môn và giúp người đọc
+          hiểu rõ giới hạn của nội dung trên website.
+        </p>
+      </section>
+
+      <section class="card author-card">
+        <h2>Vai trò trên website</h2>
+        <ul class="author-list">
+          <li>Rà soát ngôn ngữ y khoa để nội dung dễ hiểu với người Việt.</li>
+          <li>Ưu tiên thông tin có tính ứng dụng thực tế cho người bệnh và người chăm sóc.</li>
+          <li>Đánh dấu rõ phần tham khảo cộng đồng và phần cần hỏi bác sĩ trước khi áp dụng.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card scope-card">
+      <h2>Nguyên tắc biên tập</h2>
+      <div class="scope-grid">
+        <div>
+          <h3>Trang này phù hợp để</h3>
+          <ul class="author-list">
+            <li>Tra cứu thực phẩm, món ăn, và mẹo dinh dưỡng đời thường.</li>
+            <li>Đọc tổng quan ban đầu theo từng bệnh hoặc nhóm đối tượng.</li>
+            <li>Chuẩn bị câu hỏi rõ ràng hơn trước khi đi khám hoặc tư vấn dinh dưỡng.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Trang này không thay thế</h3>
+          <ul class="author-list">
+            <li>Chẩn đoán, kê đơn hoặc điều chỉnh thuốc.</li>
+            <li>Phác đồ cá thể hóa cho bệnh thận, tim mạch, ung thư, thai kỳ nguy cơ cao.</li>
+            <li>Đánh giá dinh dưỡng chuyên sâu trong bối cảnh cấp cứu hoặc nội trú.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .author-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+  }
+
+  .author-hero {
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+  }
+
+  .author-hero h1 {
+    margin: 0.75rem 0;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .lead {
+    color: var(--ink-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .author-grid,
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .author-card h2,
+  .scope-card h2,
+  .scope-card h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-list {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-list a {
+    font-weight: 600;
+  }
+
+  .author-list {
+    list-style: disc;
+    padding-left: 1.2rem;
+    color: var(--ink-secondary);
+  }
+
+  .author-list li + li {
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .author-grid,
+    .scope-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

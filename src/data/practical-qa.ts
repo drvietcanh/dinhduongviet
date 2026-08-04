@@ -80,7 +80,7 @@ const qa: Record<string, PracticalQA> = {
     howMuch: "Tinh bột: 50% đĩa từ rau, 25% tinh bột, 25% đạm. Mỗi bữa 1 chén cơm là vừa.",
     swapWith: "Gạo lứt, yến mạch, khoai lang. Hạn chế cơm trắng, bánh mì trắng, xôi, nước ngọt.",
     whenDoctor: "Nếu đường huyết đói >6.5 mmol/L dù đã thay đổi ăn uống 3 tháng, hoặc có tiền sử gia đình tiểu đường.",
-    summary: "Tiền đái tháo đường có thể cải thiện rõ ở nhiều người. Giảm 5-7% cân nặng và vận động đều giúp giảm nguy cơ tiến triển.",
+    summary: "Tiền tiểu đường có thể cải thiện rõ ở nhiều người. Giảm 5-7% cân nặng và vận động đều giúp giảm nguy cơ tiến triển.",
   },
   "gout": {
     canEat: "Có, nhưng chọn đạm thân thiện: trứng, sữa, đậu hũ. Hạn chế thịt đỏ, nội tạng.",
