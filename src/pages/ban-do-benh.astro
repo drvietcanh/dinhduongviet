@@ -696,6 +696,12 @@ const groups = [
       </div>
     </div>
 
+    <div class="disease-search" role="search">
+      <label for="disease-filter">Tìm bệnh hoặc bài viết</label>
+      <input id="disease-filter" type="search" placeholder="Ví dụ: tiểu đường, gout, gan nhiễm mỡ..." autocomplete="off" />
+      <span id="disease-result" aria-live="polite">Đang hiển thị {groups.length} nhóm bệnh</span>
+    </div>
+
     <!-- Specialty tabs -->
     <div id="spec-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;justify-content:center;">
       <button class="st-btn st-active" data-spec="all" onclick="filterSpec('all')">📋 Tất cả ({groups.length})</button>
@@ -723,7 +729,7 @@ const groups = [
           .slice(0, 4);
         const specialtyHref = specialtyAnchorMap[g.specialty] ? `/kien-thuc-dinh-duong#${specialtyAnchorMap[g.specialty]}` : "/kien-thuc-dinh-duong";
         return (
-          <div class="disease-card" data-spec={g.specialty} id={g.id}>
+          <div class="disease-card" data-spec={g.specialty} data-search={`${g.name} ${g.foundation.map(a => a.title).join(" ")} ${g.menus.map(m => m.title).join(" ")}`} id={g.id}>
             <div class="dc-header" style={`background:${spMeta.color};color:white;padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;`}>
               <span style="font-size:1.6rem;">{g.emoji}</span>
               <h2 style="margin:0;font-size:1.15rem;flex:1;color:#fff;">{g.name}</h2>
@@ -785,6 +791,8 @@ const groups = [
         );
       })}
     </div>
+
+    <p id="disease-empty" class="disease-empty" hidden>Chưa tìm thấy nhóm bệnh phù hợp. Hãy thử từ khóa ngắn hơn.</p>
 
     <!-- Tools -->
     <div style="margin-top:2rem;padding:1.2rem;background:var(--bg-soft);border-radius:12px;text-align:center;">
@@ -866,6 +874,13 @@ const groups = [
       font-size: 0.76rem;
       font-weight: 600;
     }
+    .disease-search { max-width: 680px; margin: 0 auto 1.25rem; padding: 0.8rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); }
+    .disease-search label { display: block; margin-bottom: 0.35rem; font-size: 0.82rem; font-weight: 700; color: var(--ink-secondary); }
+    .disease-search input { width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem 0.8rem; font: inherit; background: var(--card); color: var(--ink); }
+    .disease-search input:focus { outline: 3px solid color-mix(in srgb, var(--brand) 22%, transparent); border-color: var(--brand); }
+    .disease-search span { display: block; margin-top: 0.45rem; font-size: 0.78rem; color: var(--ink-tertiary); }
+    .disease-empty { margin: 1rem 0; padding: 1rem; border: 1px dashed var(--line); border-radius: 10px; text-align: center; color: var(--ink-secondary); }
+    .disease-card[hidden] { display: none; }
     [data-spec] { transition: opacity 0.2s; }
     @media (max-width:640px) {
       .dc-header { flex-direction: column; align-items: flex-start; }
@@ -873,13 +888,31 @@ const groups = [
   </style>
 
   <script is:inline>
+    var diseaseInput = document.querySelector('#disease-filter');
+    var diseaseResult = document.querySelector('#disease-result');
+    var diseaseEmpty = document.querySelector('#disease-empty');
+    var diseaseCards = Array.from(document.querySelectorAll('.disease-card'));
+    var selectedSpec = 'all';
+    function updateDiseaseFilter() {
+      var query = (diseaseInput && diseaseInput.value || '').trim().toLocaleLowerCase('vi-VN');
+      var visible = 0;
+      diseaseCards.forEach(function(card) {
+        var matchesSpec = selectedSpec === 'all' || card.getAttribute('data-spec') === selectedSpec;
+        var matchesQuery = !query || (card.getAttribute('data-search') || '').toLocaleLowerCase('vi-VN').indexOf(query) !== -1;
+        var show = matchesSpec && matchesQuery;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (diseaseResult) diseaseResult.textContent = 'Đang hiển thị ' + visible + ' nhóm bệnh';
+      if (diseaseEmpty) diseaseEmpty.hidden = visible !== 0;
+    }
     function filterSpec(spec) {
+      selectedSpec = spec;
       document.querySelectorAll('.st-btn').forEach(b => b.classList.remove('st-active'));
       var btn = document.querySelector('.st-btn[data-spec="' + spec + '"]');
       if (btn) btn.classList.add('st-active');
-      document.querySelectorAll('.disease-card').forEach(function(card) {
-        card.style.display = (spec === 'all' || card.getAttribute('data-spec') === spec) ? '' : 'none';
-      });
+      updateDiseaseFilter();
     }
+    if (diseaseInput) diseaseInput.addEventListener('input', updateDiseaseFilter);
   </script>
 </BaseLayout>

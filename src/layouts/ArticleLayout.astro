@@ -83,6 +83,70 @@ const toolLinks = article.specialty && article.specialty in toolMap
   ? toolMap[article.specialty as keyof typeof toolMap]
   : [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/muc-tieu-can-nang', l: 'Mục tiêu cân nặng' }];
 
+const audienceLabelMap: Record<string, string> = {
+  diabetes: "Tiểu đường",
+  hypertension: "Cao huyết áp",
+  gout: "Gout",
+  kidney: "Bệnh thận",
+  "fatty-liver": "Gan nhiễm mỡ",
+  stomach: "Dạ dày - trào ngược",
+  elderly: "Người cao tuổi",
+  pregnancy: "Mang thai",
+  children: "Trẻ em",
+  "weight-loss": "Giảm cân",
+  vegan: "Ăn chay",
+  caregiver: "Người chăm sóc",
+};
+
+const pathwayMap: Record<string, { label: string; href: string }> = {
+  diabetes: { label: "Lộ trình tiểu đường", href: "/ban-do-benh#tieu-duong" },
+  hypertension: { label: "Lộ trình cao huyết áp", href: "/ban-do-benh#huyet-ap" },
+  gout: { label: "Lộ trình gout", href: "/ban-do-benh#gout" },
+  kidney: { label: "Lộ trình bệnh thận", href: "/ban-do-benh#suy-than" },
+  "fatty-liver": { label: "Lộ trình gan nhiễm mỡ", href: "/ban-do-benh#gan" },
+  stomach: { label: "Lộ trình dạ dày - trào ngược", href: "/ban-do-benh#da-day" },
+  elderly: { label: "Lộ trình người cao tuổi", href: "/ban-do-benh#nguoi-gia" },
+  pregnancy: { label: "Lộ trình mang thai", href: "/ban-do-benh#ba-bau" },
+};
+
+const decisionMap: Record<string, { good: string[]; limit: string[]; when: string }> = {
+  diabetes: {
+    good: ["chia tinh bột đều giữa các bữa", "ưu tiên rau, đạm nạc, đậu", "dùng công cụ tính carb hoặc GL trước khi đổi thực đơn"],
+    limit: ["nước ngọt, trà sữa, bánh kẹo", "ăn dồn nhiều cơm/bún/phở trong một bữa", "tin mẹo chữa khỏi bằng thực phẩm đơn lẻ"],
+    when: "đường huyết tăng kéo dài, sụt cân, khát nhiều, tiểu nhiều, hoặc có thuốc đang dùng cần chỉnh bữa ăn",
+  },
+  hypertension: {
+    good: ["giảm món nhiều nước chấm và thực phẩm chế biến sẵn", "tăng rau, đậu, trái cây phù hợp", "ưu tiên cách nấu hấp, luộc, áp chảo nhạt"],
+    limit: ["mì gói, xúc xích, chả, đồ muối chua mặn", "chan nhiều nước mắm, bột nêm, tương ớt", "tự bỏ muối hoàn toàn nếu đang có chỉ định đặc biệt khác"],
+    when: "huyết áp vẫn cao dù đã ăn nhạt, có phù, khó thở, đau đầu nhiều, hoặc đang kèm suy tim/suy thận",
+  },
+  gout: {
+    good: ["uống đủ nước", "ưu tiên sữa ít béo, đậu hũ, trứng, rau", "giảm rượu bia và kiểm soát cân nặng"],
+    limit: ["nhậu dồn dập, bia rượu", "nội tạng, nước dùng cô đặc, hải sản số lượng lớn trong cơn đau", "kiêng sạch mọi loại đạm quá mức"],
+    when: "đau khớp cấp, acid uric tăng kéo dài, đang có sỏi thận, hoặc dùng thuốc hạ acid uric",
+  },
+  kidney: {
+    good: ["cá thể hóa lượng đạm theo giai đoạn bệnh", "đọc kỹ kali, natri trong thực phẩm đóng gói", "theo dõi phù, cân nặng, huyết áp"],
+    limit: ["tự kiêng đạm cực đoan", "uống thực phẩm bổ sung không rõ thành phần", "áp dụng thực đơn của người khác máy móc"],
+    when: "creatinin tăng nhanh, phù, tiểu ít, kali cao, hoặc đang lọc máu/chạy thận",
+  },
+  "fatty-liver": {
+    good: ["giảm nước ngọt và đồ uống nhiều đường", "ăn đủ đạm, rau, tinh bột vừa phải", "duy trì giảm cân chậm và bền"],
+    limit: ["nhịn ăn rồi ăn bù", "tin rằng chỉ cần bỏ mỡ là đủ", "rượu bia và đồ ngọt thường xuyên"],
+    when: "men gan cao kéo dài, đau tức hạ sườn phải, sụt cân không rõ nguyên nhân, hoặc có đái tháo đường kèm theo",
+  },
+  stomach: {
+    good: ["bữa nhỏ, mềm, dễ tiêu", "ăn chậm và tránh nằm ngay sau ăn", "ghi lại món làm mình khó chịu để loại trừ có chọn lọc"],
+    limit: ["cà phê, rượu, đồ cay chua nếu làm nặng triệu chứng", "ăn quá no về đêm", "kiêng quá nhiều nhóm thực phẩm kéo dài"],
+    when: "đau tăng, nôn, đi ngoài phân đen, sụt cân, nghẹn nuốt, hoặc triệu chứng kéo dài nhiều tuần",
+  },
+};
+
+const normalizedAudiences = Array.isArray(article.audience) ? article.audience.filter((item) => item in audienceLabelMap) : [];
+const focusAudience = normalizedAudiences[0] || null;
+const focusPathway = focusAudience ? pathwayMap[focusAudience] : null;
+const quickDecision = focusAudience ? decisionMap[focusAudience] : null;
+
 // Render markdown inside slot content
 const rawSlot = await Astro.slots.render("default");
 // Normalize: add blank lines after HTML blocks so marked can parse following markdown
@@ -182,6 +246,45 @@ const jsonLd = {
         <li>Có triệu chứng bất thường: sụt cân, mệt nhiều, đau — <strong>nên đi khám</strong> ngay.</li>
       </ul>
     </div>
+
+    {(focusAudience || quickDecision) && (
+      <section class="decision-box">
+        <div class="decision-head">
+          <div>
+            <div class="decision-kicker">Đọc nhanh trước khi áp dụng</div>
+            <h2>{focusAudience ? `Nếu bạn đang quan tâm đến ${audienceLabelMap[focusAudience]}` : "Gợi ý áp dụng an toàn"}</h2>
+          </div>
+          {focusPathway && <a href={focusPathway.href} class="decision-link">{focusPathway.label} →</a>}
+        </div>
+        <div class="decision-grid">
+          <div class="decision-panel ok">
+            <div class="decision-title">Nên ưu tiên</div>
+            <ul>
+              {(quickDecision?.good || ["đọc theo từng bước, không đổi thực đơn quá đột ngột", "giữ bữa ăn đều và ưu tiên thực phẩm ít chế biến"]).map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="decision-panel limit">
+            <div class="decision-title">Nên hạn chế</div>
+            <ul>
+              {(quickDecision?.limit || ["kiêng khem cực đoan", "tin vào mẹo truyền miệng thay cho theo dõi thực tế"]).map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="decision-panel alert">
+            <div class="decision-title">Khi nào nên hỏi bác sĩ</div>
+            <p>{quickDecision?.when || qa?.whenDoctor || "Khi có bệnh nền, đang dùng thuốc, có xét nghiệm bất thường, hoặc triệu chứng kéo dài."}</p>
+          </div>
+        </div>
+        <div class="decision-footer">
+          {toolLinks.slice(0, 3).map((t) => (
+            <a href={t.h} class="decision-chip">🔧 {t.l}</a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Article body -->
       <div class="article-body" set:html={renderedContent} />
@@ -409,6 +512,92 @@ const jsonLd = {
     font-size: 0.92rem;
     color: #155724;
   }
+  .decision-box {
+    margin: 0 0 28px;
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: linear-gradient(180deg, var(--bg-soft) 0%, var(--card) 100%);
+  }
+  .decision-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .decision-kicker {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--brand-dark);
+    margin-bottom: 4px;
+  }
+  .decision-head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+  .decision-link {
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+  .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .decision-panel {
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+  .decision-panel.ok { border-color: #b7ebc6; background: #f3fcf5; }
+  .decision-panel.limit { border-color: #fde0b5; background: #fff8ee; }
+  .decision-panel.alert { border-color: #f5c2c7; background: #fff5f5; }
+  .decision-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .decision-panel ul {
+    list-style: disc;
+    padding-left: 18px;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .decision-panel p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .decision-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .decision-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    padding: 8px 12px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .decision-chip:hover {
+    text-decoration: none;
+    border-color: var(--brand-light2);
+    background: var(--bg-soft);
+  }
   .related-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -486,6 +675,8 @@ const jsonLd = {
     max-width: 300px;
   }
   @media (max-width: 600px) {
+    .decision-head { flex-direction: column; align-items: flex-start; }
+    .decision-grid { grid-template-columns: 1fr; }
     .related-grid { grid-template-columns: repeat(2, 1fr); }
     .bc-current { max-width: 160px; }
   }

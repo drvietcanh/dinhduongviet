@@ -87,6 +87,45 @@ const toolCards = [
     </div>
   </section>
 
+  <section class="section start-here">
+    <div class="section-header">
+      <h2>Bắt đầu từ đây</h2>
+      <a href="/ban-do-benh" class="view-all">Xem lộ trình theo vấn đề →</a>
+    </div>
+    <div class="start-grid">
+      <a href="/ban-do-benh#tieu-duong" class="start-card">
+        <div class="start-title">Tiểu đường</div>
+        <p>Bài nền tảng, thực đơn mẫu, hỏi đáp, và công cụ theo dõi đường huyết.</p>
+        <span>Xem nhanh →</span>
+      </a>
+      <a href="/ban-do-benh#huyet-ap" class="start-card">
+        <div class="start-title">Cao huyết áp</div>
+        <p>Giảm muối đúng cách, DASH, thực đơn 1 ngày, và gợi ý món ăn Việt.</p>
+        <span>Xem nhanh →</span>
+      </a>
+      <a href="/ban-do-benh#gan" class="start-card">
+        <div class="start-title">Gan nhiễm mỡ</div>
+        <p>Hướng dẫn ăn uống thực tế, thực đơn cho người bận rộn, và sai lầm cần tránh.</p>
+        <span>Xem nhanh →</span>
+      </a>
+      <a href="/ban-do-benh#da-day" class="start-card">
+        <div class="start-title">Dạ dày - trào ngược</div>
+        <p>Lựa chọn bữa ăn dễ chịu hơn, món nên tránh, và cách ăn ngoài hàng.</p>
+        <span>Xem nhanh →</span>
+      </a>
+      <a href="/cong-cu/muc-tieu-can-nang" class="start-card">
+        <div class="start-title">Giảm cân an toàn</div>
+        <p>Tính nhu cầu năng lượng, đặt mục tiêu, và lập bữa ăn hợp lý hơn mỗi ngày.</p>
+        <span>Xem nhanh →</span>
+      </a>
+      <a href="/dung-tin-ngay" class="start-card">
+        <div class="start-title">Kiểm chứng thông tin</div>
+        <p>Khi gặp tin đồn về sữa hạt, mật ong, gạo lứt, nước ép, hãy kiểm tra tại đây.</p>
+        <span>Xem nhanh →</span>
+      </a>
+    </div>
+  </section>
+
   <DataSummary />
 
   <!-- Dashboard health alerts -->
@@ -373,6 +412,33 @@ const toolCards = [
 
 <style>
 .section-header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px; }
+.start-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+.start-card {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--card);
+  box-shadow:var(--shadow-sm);
+  color:var(--ink);
+  text-decoration:none;
+  min-height:170px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.start-card:hover {
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
+  border-color:var(--brand-light2);
+  text-decoration:none;
+}
+.start-title { font-size:1.02rem; font-weight:800; color:var(--ink); }
+.start-card p { color:var(--ink-secondary); font-size:.92rem; line-height:1.6; }
+.start-card span { margin-top:auto; font-weight:700; color:var(--brand-dark); }
+@media (max-width: 768px) {
+  .section-header { gap:10px; flex-direction:column; align-items:flex-start; }
+}
 .view-all { font-size:0.88rem; color:var(--brand); font-weight:600; transition:opacity var(--transition); }
 .view-all:hover { opacity:0.7; }
 .brand-text { color:var(--brand); }
