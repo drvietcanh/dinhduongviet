@@ -1,0 +1,44 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["di-ung-sua-bo-o-tre-thuc-hanh"];
+if (!art) throw new Error("Article not found: di-ung-sua-bo-o-tre-thuc-hanh");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều phụ huynh nhầm dị ứng đạm sữa bò với bất dung nạp lactose hoặc "bụng yếu". Kết quả là đổi sữa liên tục, tự dùng sữa dê, hoặc mẹ kiêng quá nhiều món không cần thiết. Bài này tập trung vào phần thực hành: khi nào cần nghĩ đến dị ứng thật sự và lựa chọn thay thế nào thường được dùng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Dị ứng đạm sữa bò ở trẻ cần chẩn đoán bởi bác sĩ. Về dinh dưỡng, trọng tâm là <u>tránh đúng tác nhân</u>, chọn <u>công thức thay thế phù hợp</u> và vẫn phải theo dõi tăng trưởng, không để trẻ thiếu năng lượng hay vi chất.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Điều thường đúng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Sữa mẹ vẫn là nền tảng nếu trẻ bú tốt</li>
+      <li>eHF hoặc AAF là các lựa chọn hay gặp theo chỉ định nhi khoa</li>
+      <li>Ăn dặm nên đi từ từ, đọc kỹ thành phần bánh, cháo, phô mai, sữa chua</li>
+      <li>Theo dõi cân nặng, chiều dài, phân, da và hô hấp của trẻ</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Sai lầm phổ biến</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Tự đổi sang sữa dê hoặc cừu</li>
+      <li>Dùng sữa không lactose để điều trị dị ứng đạm sữa bò</li>
+      <li>Kiêng quá mức khiến trẻ thiếu dinh dưỡng</li>
+      <li>Không tái thử hoặc đánh giá lại theo lịch hẹn của bác sĩ</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Gợi ý đọc nhãn</h2>
+  <p>Phụ huynh nên để ý các từ như casein, whey, milk solids, butter milk, skim milk powder, cheese powder. Với trẻ dị ứng nặng, vấn đề không chỉ là "uống sữa" mà còn là thành phần ẩn trong bánh, snack, kẹo và thực phẩm ăn dặm đóng gói.</p>
+</section>
+</ArticleLayout>

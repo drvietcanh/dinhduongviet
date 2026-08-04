@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["low-fodmap-kieu-viet-cho-ibs"];
+if (!art) throw new Error("Article not found: low-fodmap-kieu-viet-cho-ibs");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người IBS nghe đến low-FODMAP là nản vì tưởng phải bỏ hết món Việt. Thực ra không cần như vậy. Điều khó nhất không phải tên tiếng Anh, mà là nhận ra những "điểm kích hoạt" quen thuộc trong bữa Việt như hành tỏi phi, sữa, táo, lê, đậu và một số loại mì bột mì.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Low-FODMAP là chế độ <u>3 bước</u>: cắt giảm ngắn hạn, thử lại có hệ thống, rồi cá thể hóa. Mục tiêu không phải kiêng cả đời mà là tìm đúng nhóm làm bạn đầy hơi, đau bụng hoặc rối loạn đi tiêu.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Gợi ý kiểu Việt dễ bắt đầu</h2>
+  <table class="table"><thead><tr><th>Thường phù hợp hơn</th><th>Dễ gây triệu chứng hơn</th></tr></thead><tbody>
+    <tr><td>Cơm trắng, cháo trắng, bún gạo đơn giản</td><td>Mì bột mì, bánh mì nhiều lúa mì</td></tr>
+    <tr><td>Thịt, cá, trứng, đậu phụ thường</td><td>Đậu đỗ nhiều, sữa tươi thường</td></tr>
+    <tr><td>Dưa leo, bí, cà rốt, cải thìa</td><td>Hành, tỏi, một số loại nấm</td></tr>
+    <tr><td>Chuối vừa chín, cam, thanh long, dâu</td><td>Táo, lê, xoài chín nhiều, mít, nhãn</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo áp dụng thực tế</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Không cắt cùng lúc quá nhiều thứ nếu chưa được chẩn đoán IBS rõ.</li>
+    <li>Viết nhật ký món ăn và triệu chứng 2-4 tuần đầu.</li>
+    <li>Chú ý nước dùng, hành phi, tỏi phi vì đây là chỗ rất dễ sót.</li>
+    <li>Nếu gầy, ăn kém hoặc lo thiếu chất, nên đi cùng chuyên gia dinh dưỡng.</li>
+  </ul>
+</section>
+</ArticleLayout>

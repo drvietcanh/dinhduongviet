@@ -1,0 +1,66 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-viem-gan-c"];
+if (!art) throw new Error("Article not found: dinh-duong-viem-gan-c");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Anh Quân, 49 tuổi, phát hiện viêm gan C sau khi xét nghiệm vì men gan tăng. Anh nghe nói giờ bệnh này đã có thuốc uống đặc hiệu rất hiệu quả nên nghĩ chắc không cần quan tâm đến ăn uống nữa. Nhưng bác sĩ giải thích: dù điều trị tốt, gan vẫn cần được bảo vệ khỏi rượu bia, gan nhiễm mỡ và suy dinh dưỡng.</p>
+  <p>Viêm gan C ngày nay có thể điều trị khỏi virus ở nhiều người, nhưng dinh dưỡng vẫn quan trọng để giảm gánh nặng cho gan và cải thiện thể trạng trong lúc theo dõi, điều trị hoặc khi đã có xơ gan đi kèm.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người viêm gan C nên <u>tránh rượu bia</u>, giữ cân nặng hợp lý, ăn kiểu lành mạnh nhiều rau quả, đạm nạc và không tự dùng thuốc nam hay thực phẩm chức năng "bổ gan".</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao phải giữ gan "nhẹ gánh" hơn?</h2>
+  <p>Virus HCV có thể gây viêm gan kéo dài, xơ gan và tăng nguy cơ ung thư gan nếu không được kiểm soát. Ngoài virus, các yếu tố như rượu, béo phì, gan nhiễm mỡ, tiểu đường và thuốc không rõ nguồn gốc đều có thể làm gan tổn thương nhanh hơn. Vì vậy, ăn uống đúng giúp giảm thêm các yếu tố đồng phạm này.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên ưu tiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau xanh, trái cây nguyên quả, đậu, ngũ cốc nguyên hạt</li>
+      <li>Đạm nạc: cá, trứng, thịt nạc, đậu phụ, sữa chua ít đường</li>
+      <li>Chất béo tốt: dầu thực vật, hạt, quả bơ</li>
+      <li>Cà phê đen vừa phải nếu không chống chỉ định có thể phù hợp ở một số người</li>
+      <li>Nước lọc, bữa ăn đều đặn, ngủ đủ và vận động phù hợp</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rượu bia: càng tránh càng tốt</li>
+      <li>Nước ngọt, đồ uống nhiều đường, bánh ngọt thường xuyên</li>
+      <li>Đồ chiên ngập dầu, mỡ động vật, thịt chế biến sẵn</li>
+      <li>Thuốc nam, viên uống không rõ thành phần</li>
+      <li>Không cần kiêng trứng hay thịt chỉ vì bị viêm gan C</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Nếu đang điều trị thì ăn sao?</h2>
+  <table class="table"><thead><tr><th>Tình huống</th><th>Gợi ý</th><th>Lưu ý</th></tr></thead><tbody>
+    <tr><td>Chưa xơ gan</td><td>Ăn cân bằng, kiểm soát cân nặng</td><td>Ưu tiên giảm rượu, giảm đường</td></tr>
+    <tr><td>Đang dùng thuốc kháng virus</td><td>Ăn đều bữa, uống thuốc đúng hướng dẫn</td><td>Báo bác sĩ nếu buồn nôn, mệt nhiều</td></tr>
+    <tr><td>Có xơ gan đi kèm</td><td>Cần cá thể hóa hơn</td><td>Theo thêm bài xơ gan/cổ trướng</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Khi nào cần đi khám sớm?</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Vàng da, bụng to nhanh, phù chân</li>
+    <li>Nôn ra máu, đi cầu phân đen</li>
+    <li>Sụt cân nhanh, chán ăn kéo dài</li>
+    <li>Lơ mơ, ngủ gà, đau bụng sốt</li>
+  </ul>
+</section>
+</ArticleLayout>

@@ -1,0 +1,64 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tang-kali-mau-suy-than"];
+if (!art) throw new Error("Article not found: tang-kali-mau-suy-than");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Bác Hùng bị suy thận mạn và xét nghiệm gần đây cho thấy kali máu tăng. Từ hôm đó bác sợ đến mức bỏ hết trái cây và rau xanh. Vấn đề là làm vậy lâu ngày lại dễ táo bón, chán ăn và thiếu chất. Đúng hơn, tăng kali máu cần chọn loại, lượng và cách sơ chế phù hợp chứ không phải cắt sạch mọi thứ.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Tăng kali máu có thể nguy hiểm vì gây loạn nhịp tim. Nhưng quản lý kali nên dựa trên <u>xét nghiệm hiện tại</u>, thuốc đang dùng và khẩu phần thực tế, không nên tự kiêng tuyệt đối mọi rau trái.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Kali cao nguy hiểm ở chỗ nào?</h2>
+  <p>Kali là khoáng chất quan trọng cho hoạt động cơ và tim. Khi thận thải kém hoặc dùng một số thuốc giữ kali, kali có thể tăng trong máu. Mức tăng nhiều có thể gây yếu cơ, tim đập chậm hoặc loạn nhịp, nên đây không phải chuyện "kiêng cho có".</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Có thể chọn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Táo, lê, nho, dưa hấu, dâu tây với lượng phù hợp</li>
+      <li>Bắp cải, dưa leo, bí, cải thảo, su su</li>
+      <li>Luộc rau rồi bỏ nước đầu trong một số trường hợp</li>
+      <li>Chia nhỏ phần trái cây thay vì ăn dồn một lúc</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Hay phải hạn chế hơn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Chuối, cam, nước dừa, khoai tây, khoai lang, cà chua đậm đặc</li>
+      <li>Nước ép, sinh tố đặc vì rất dễ làm nạp kali quá nhanh</li>
+      <li>Muối thay thế có chứa potassium chloride</li>
+      <li>Viên bổ sung kali nếu không có chỉ định</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo thực hành</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Đọc nhãn "muối ăn kiêng" vì nhiều loại dùng kali thay natri.</li>
+    <li>Ghi lại thực phẩm giàu kali đã ăn trước khi đi xét nghiệm.</li>
+    <li>Hỏi bác sĩ về thuốc đang dùng như ACEi, ARB, spironolactone.</li>
+    <li>Nếu được dặn hạn chế kali, ưu tiên ăn nguyên quả lượng nhỏ thay vì nước ép.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>🚨 Đi khám ngay nếu có</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Tim đập chậm, hồi hộp, choáng váng</li>
+    <li>Yếu cơ rõ, nặng chân tay</li>
+    <li>Khó thở hoặc đau ngực</li>
+    <li>Xét nghiệm kali tăng cao theo thông báo bác sĩ</li>
+  </ul>
+</section>
+</ArticleLayout>

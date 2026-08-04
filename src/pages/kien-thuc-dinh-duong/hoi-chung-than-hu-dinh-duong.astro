@@ -1,0 +1,97 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["hoi-chung-than-hu-dinh-duong"];
+if (!art) throw new Error("Article not found: hoi-chung-than-hu-dinh-duong");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Anh Minh, 32 tuổi, tự nhiên phù mi mắt buổi sáng rồi phù chân tăng dần. Xét nghiệm cho thấy protein niệu rất cao, albumin máu thấp và bác sĩ chẩn đoán hội chứng thận hư. Anh nghe người quen khuyên phải ăn thật nhiều thịt để "bù đạm bị mất", nhưng lại càng mệt vì ăn mặn và tăng cân do giữ nước.</p>
+  <p>Với hội chứng thận hư, ăn uống có vai trò hỗ trợ kiểm soát phù, mỡ máu và tình trạng dinh dưỡng. Tuy nhiên, tăng đạm quá mức hay kiêng khem tùy hứng đều có thể làm tình hình xấu hơn.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Điểm chính của hội chứng thận hư là <u>giảm muối</u>, theo dõi dịch nếu bác sĩ dặn, <u>ăn đạm vừa đủ chứ không ăn bù quá mức</u>, và giảm chất béo bão hòa vì nhiều người kèm tăng cholesterol rất cao.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Tại sao lại phù và mỡ máu tăng?</h2>
+  <p>Ở hội chứng thận hư, cầu thận bị rò rỉ làm mất nhiều protein qua nước tiểu. Albumin máu giảm khiến nước thoát ra mô gây phù. Đồng thời, gan tăng sản xuất lipoprotein nên cholesterol và triglycerid có thể tăng rõ. Vì vậy, chế độ ăn vừa phải, cân bằng và ít muối thường hữu ích hơn việc "nhồi" thật nhiều đạm.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên ăn gì?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đạm chất lượng: cá, trứng, ức gà, thịt nạc, đậu phụ với lượng vừa đủ</li>
+      <li>Rau xanh, trái cây tươi nếu kali máu còn bình thường</li>
+      <li>Ngũ cốc, khoai, cơm, bún với khẩu phần hợp lý để đủ năng lượng</li>
+      <li>Dầu thực vật, quả bơ, các loại hạt không tẩm muối</li>
+      <li>Món luộc, hấp, áp chảo thay vì kho mặn hay chiên giòn</li>
+      <li>Nước theo chỉ định nếu đang phù nhiều hoặc tiểu ít</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Cần hạn chế gì?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Muối, nước mắm, hạt nêm, đồ muối chua, mì gói, đồ hộp</li>
+      <li>Da gà, thịt mỡ, nội tạng, bơ thực vật, đồ chiên ngập dầu</li>
+      <li>Ăn quá nhiều thịt đỏ hay bột đạm với mục tiêu "bù albumin"</li>
+      <li>Nước ngọt, bánh ngọt nếu đang tăng cân hoặc dùng corticoid</li>
+      <li>Rượu bia nếu đang dùng thuốc hoặc có rối loạn mỡ máu</li>
+      <li>Không tự ý uống thuốc lợi tiểu hay thực phẩm bổ thận</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Gợi ý khẩu phần</h2>
+  <table class="table"><thead><tr><th>Vấn đề</th><th>Gợi ý chung</th><th>Ghi chú</th></tr></thead><tbody>
+    <tr><td>Muối</td><td>Giảm rõ, thường dưới 2g natri/ngày tương đương khoảng 5g muối</td><td>Giúp kiểm soát phù và huyết áp</td></tr>
+    <tr><td>Đạm</td><td>Khoảng 0.8-1.0 g/kg/ngày nếu chưa suy thận nặng</td><td>Không tự ăn 2-3 g/kg/ngày</td></tr>
+    <tr><td>Dịch</td><td>Theo triệu chứng phù và lượng nước tiểu</td><td>Không phải ai cũng cần hạn chế chặt</td></tr>
+    <tr><td>Chất béo</td><td>Ưu tiên béo không bão hòa</td><td>Giảm mỡ máu đi kèm</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Nếu đang dùng corticoid kéo dài, cần để ý thêm đường huyết, cảm giác thèm ăn và nguy cơ loãng xương.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Thực đơn gợi ý 1 ngày khi đang phù nhẹ</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Cháo yến mạch trứng + dưa leo</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả lê hoặc táo</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm vừa + cá hấp gừng + canh bí nấu nhạt + rau luộc</td></tr>
+    <tr><td>🌆 Phụ</td><td>Sữa chua ít đường hoặc 1 nắm hạt không muối</td></tr>
+    <tr><td>🌙 Tối</td><td>Đậu phụ sốt cà chua nhạt + cải thìa luộc + khoai lang</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo theo dõi tại nhà</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Nên làm</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Cân mỗi sáng, theo dõi độ phù ở mi mắt, cổ chân, cẳng chân.</li>
+        <li>Đọc nhãn thực phẩm để tránh natri ẩn trong xúc xích, đồ hộp, mì ăn liền.</li>
+        <li>Ăn đúng thuốc bác sĩ kê và tái khám xét nghiệm nước tiểu, albumin, creatinine, mỡ máu.</li>
+        <li>Nếu trẻ em mắc bệnh, nên trao đổi kỹ với bác sĩ về lượng uống và lịch theo dõi phù.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Khám sớm nếu có</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Phù tăng nhanh, khó thở, tiểu ít rõ.</li>
+        <li>Đau ngực, đau chân một bên, sưng nóng đỏ.</li>
+        <li>Sốt, đau bụng, tiêu chảy hoặc nhiễm trùng khi đang dùng thuốc ức chế miễn dịch.</li>
+        <li>Tăng cân nhanh vài ngày liền dù ăn không nhiều.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

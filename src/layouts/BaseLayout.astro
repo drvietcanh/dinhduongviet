@@ -23,8 +23,11 @@ var breadcrumbNames = {
   "thuc-pham": "Thực phẩm",
   "mon-an": "Món ăn",
   "kien-thuc-dinh-duong": "Kiến thức dinh dưỡng",
+  "ban-do-benh": "Theo bệnh",
   "cong-cu": "Công cụ",
   "tim-kiem": "Tìm kiếm",
+  "phuong-phap": "Phương pháp và dữ liệu",
+  "hoi-dap": "Hỏi đáp",
   "bmi": "BMI & Vòng eo",
   "muc-tieu-can-nang": "Mục tiêu cân nặng",
   "bang-xep-hang": "Bảng xếp hạng thực phẩm",
@@ -574,19 +577,48 @@ if (isArticle) {
       </div>
         <div class="nav-links" id="main-nav-links" aria-label="Điều hướng chính">
           <a href="/" data-nav-path="/">Trang chủ</a>
-          <a href="/kien-thuc-dinh-duong">Kiến thức</a>
-          <a href="/ban-do-benh">Dinh dưỡng theo bệnh</a>
-          <a href="/dung-tin-ngay">Kiểm chứng</a>
+          <details class="nav-group">
+            <summary>Theo bệnh</summary>
+            <div class="nav-group-menu">
+              <a href="/ban-do-benh">Tất cả nhóm bệnh</a>
+              <a href="/ban-do-benh#tieu-duong">Tiểu đường - Nội tiết</a>
+              <a href="/ban-do-benh#huyet-ap">Tim mạch - Huyết áp</a>
+              <a href="/ban-do-benh#gan">Gan mật</a>
+              <a href="/ban-do-benh#than">Thận - Tiết niệu</a>
+              <a href="/ban-do-benh#da-day">Tiêu hóa</a>
+              <a href="/ban-do-benh#ung-thu">Ung thư</a>
+              <a href="/ban-do-benh#ho-hap">Hô hấp - Dị ứng</a>
+              <a href="/ban-do-benh#nguoi-gia">Phụ nữ - Trẻ em - Người già</a>
+            </div>
+          </details>
+          <details class="nav-group">
+            <summary>Kiến thức</summary>
+            <div class="nav-group-menu">
+              <a href="/kien-thuc-dinh-duong">Tất cả bài viết</a>
+              <a href="/kien-thuc-dinh-duong#sec-dinh-duong-tong-quat">Ăn lành mạnh</a>
+              <a href="/kien-thuc-dinh-duong#sec-noi-tiet">Nội tiết - chuyển hóa</a>
+              <a href="/kien-thuc-dinh-duong#sec-tieu-hoa">Tiêu hóa - gan mật</a>
+              <a href="/kien-thuc-dinh-duong#sec-than-tiet-nieu">Thận - tiết niệu</a>
+              <a href="/kien-thuc-dinh-duong#sec-ung-thu">Ung thư</a>
+              <a href="/phuong-phap">Phương pháp - dữ liệu</a>
+            </div>
+          </details>
           <a href="/thuc-pham">Thực phẩm</a>
           <a href="/mon-an">Món ăn</a>
           <details class="nav-group">
             <summary>Công cụ</summary>
             <div class="nav-group-menu">
               <a href="/cong-cu">Tất cả công cụ</a>
-              <a href="/cong-cu/nhat-ky">📓 Nhật ký ăn uống</a>
-              <a href="/thong-ke">📈 Thống kê</a>
+              <a href="/cong-cu/tinh-carb">Tính carb</a>
+              <a href="/cong-cu/tinh-gl-bua-an">Tính GL bữa ăn</a>
+              <a href="/cong-cu/theo-doi-duong-huyet">Theo dõi đường huyết</a>
+              <a href="/cong-cu/khau-phan-viet-clinical">Khẩu phần Việt Clinical</a>
+              <a href="/cong-cu/ke-hoach-bua-an">Kế hoạch bữa ăn</a>
+              <a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a>
+              <a href="/thong-ke">Thống kê</a>
             </div>
           </details>
+          <a href="/dung-tin-ngay">Kiểm chứng</a>
         </div>
         <button class="theme-toggle" id="theme-toggle" title="Chuyển giao diện sáng/tối">🌓</button>
       </div>
@@ -607,28 +639,36 @@ if (isArticle) {
           <p style="font-size:0.85rem;">Dữ liệu tham khảo từ Bảng thành phần thực phẩm Việt Nam 2007 và các nguồn quốc tế.</p>
         </div>
         <div class="footer-col">
-          <h4>Tra cứu</h4>
-          <a href="/kien-thuc-dinh-duong">📚 Kiến thức dinh dưỡng</a>
-          <a href="/dung-tin-ngay">🔍 Đừng Tin Ngay!</a>
-          <a href="/ban-do-benh">🗺️ Bản đồ bệnh mạn tính</a>
-          <a href="/thuc-pham">🥬 Thực phẩm</a>
-          <a href="/mon-an">🍜 Món ăn Việt</a>
+          <h4>Theo bệnh</h4>
+          <a href="/ban-do-benh#tieu-duong">🩸 Tiểu đường - Nội tiết</a>
+          <a href="/ban-do-benh#huyet-ap">❤️ Tim mạch - Huyết áp</a>
+          <a href="/ban-do-benh#gan">🫁 Gan mật</a>
+          <a href="/ban-do-benh#than">🫘 Thận - Tiết niệu</a>
+          <a href="/ban-do-benh#ung-thu">🎗️ Ung thư</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kiến thức</h4>
+          <a href="/kien-thuc-dinh-duong">📚 Tất cả bài viết</a>
+          <a href="/kien-thuc-dinh-duong#sec-dinh-duong-tong-quat">🥗 Ăn lành mạnh</a>
+          <a href="/kien-thuc-dinh-duong#sec-phu-nu-nhi">👨‍👩‍👧‍👦 Theo giai đoạn sống</a>
+          <a href="/dung-tin-ngay">🔍 Kiểm chứng hiểu lầm</a>
+          <a href="/phuong-phap">📖 Phương pháp - dữ liệu</a>
         </div>
         <div class="footer-col">
           <h4>Công cụ</h4>
-          <a href="/cong-cu/bmi">⚖️ BMI & Vòng eo</a>
-          <a href="/cong-cu/muc-tieu-can-nang">🎯 Mục tiêu cân nặng</a>
-          <a href="/cong-cu/bang-xep-hang">🏆 Bảng xếp hạng</a>
-          <a href="/cong-cu/theo-doi-suc-khoe">📊 Theo dõi sức khỏe</a>
-          <a href="/cong-cu/khau-phan-viet-clinical">🔬 Khẩu phần Clinical</a>
+          <a href="/cong-cu/tinh-carb">🔢 Tính carb</a>
+          <a href="/cong-cu/tinh-gl-bua-an">⚖️ Tính GL bữa ăn</a>
+          <a href="/cong-cu/theo-doi-duong-huyet">🩸 Theo dõi đường huyết</a>
+          <a href="/cong-cu/ke-hoach-bua-an">📋 Kế hoạch bữa ăn</a>
+          <a href="/cong-cu">🛠️ Tất cả công cụ</a>
         </div>
         <div class="footer-col">
           <h4>Hỗ trợ</h4>
+          <a href="/tim-kiem">🔍 Tìm kiếm toàn site</a>
           <a href="/hoi-dap">❓ Hỏi nhanh – đáp gọn</a>
-          <a href="/tim-kiem">🔍 Tìm kiếm</a>
-          <a href="/phuong-phap">📖 Phương pháp & Dữ liệu</a>
-          <a href="/kien-thuc-dinh-duong">📋 Danh sách bài viết</a>
           <a href="/ban-do-benh">🗺️ Bản đồ bệnh mạn tính</a>
+          <a href="/thuc-pham">🥬 Thực phẩm</a>
+          <a href="/mon-an">🍜 Món ăn Việt</a>
         </div>
         <div class="footer-col">
           <h4>Tác giả</h4>

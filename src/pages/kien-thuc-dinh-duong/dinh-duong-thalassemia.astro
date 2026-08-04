@@ -1,0 +1,95 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-thalassemia"];
+if (!art) throw new Error("Article not found: dinh-duong-thalassemia");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Bé Nam, 11 tuổi, bị thalassemia thể nặng và phải truyền máu định kỳ. Gia đình rất lo vì bé xanh xao, chậm lớn, nhưng cũng nghe dặn không nên tự bổ sung sắt. Điều này khiến nhiều phụ huynh bối rối: thiếu máu mà lại không phải lúc nào cũng cần uống sắt.</p>
+  <p>Thalassemia là bệnh tan máu bẩm sinh. Dinh dưỡng không thể thay thế điều trị, nhưng có thể hỗ trợ tăng trưởng, bảo vệ xương, tim, gan và giúp giảm các sai lầm thường gặp như tự dùng sắt hoặc ăn kiêng không cần thiết.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người thalassemia cần <u>ăn đa dạng, đủ năng lượng</u>, không tự bổ sung sắt khi chưa có chỉ định, và chú ý nguy cơ <u>quá tải sắt do truyền máu</u>. Một số trường hợp cần thêm folate, canxi hoặc vitamin D theo bác sĩ.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao thiếu máu nhưng không nên tự uống sắt?</h2>
+  <p>Ở thalassemia, thiếu máu xảy ra do bất thường huyết sắc tố và tan máu kéo dài, không phải lúc nào cũng do thiếu sắt. Nhiều người, nhất là người phải truyền máu định kỳ, có nguy cơ tích lũy sắt trong gan, tim và nội tiết. Uống thêm sắt không đúng chỉ định có thể làm quá tải sắt nặng hơn.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên ưu tiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Bữa ăn đủ năng lượng: cơm, khoai, yến mạch, bún, mì, bánh mì nguyên cám</li>
+      <li>Đạm chất lượng: cá, trứng, ức gà, sữa, sữa chua, đậu phụ</li>
+      <li>Rau xanh, trái cây tươi để bổ sung folate và vi chất tự nhiên</li>
+      <li>Thực phẩm giàu canxi và vitamin D nếu đang chậm lớn hoặc có nguy cơ loãng xương</li>
+      <li>Hoạt động thể lực phù hợp và ngủ đủ để hỗ trợ phát triển</li>
+      <li>Uống thuốc thải sắt, folate hay bổ sung khác đúng đơn</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Cần thận trọng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Viên sắt, siro sắt, đa vitamin có chứa sắt nếu chưa được bác sĩ chỉ định</li>
+      <li>Ngũ cốc, nước trái cây tăng cường sắt dùng thường xuyên mà không đọc nhãn</li>
+      <li>Rượu bia, thuốc lá ở thanh thiếu niên và người lớn vì làm tăng gánh nặng gan tim</li>
+      <li>Chế độ ăn quá nghèo năng lượng do sợ "nóng" hay sợ truyền máu</li>
+      <li>Tự bỏ lịch truyền máu hoặc thuốc thải sắt</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn sao cho thực tế?</h2>
+  <table class="table"><thead><tr><th>Tình huống</th><th>Ưu tiên</th><th>Lưu ý</th></tr></thead><tbody>
+    <tr><td>Trẻ chậm tăng trưởng</td><td>Đủ năng lượng và đạm trong 3 bữa chính + 1-2 bữa phụ</td><td>Có thể cần chuyên gia dinh dưỡng đánh giá tăng trưởng</td></tr>
+    <tr><td>Truyền máu định kỳ</td><td>Theo dõi quá tải sắt, uống thuốc thải sắt đều</td><td>Không tự dùng thêm sắt</td></tr>
+    <tr><td>Đau xương, chậm lớn</td><td>Chú ý canxi, vitamin D, vận động phù hợp</td><td>Hỏi bác sĩ về xét nghiệm và bổ sung</td></tr>
+    <tr><td>Người lớn có tổn thương gan</td><td>Ăn lành mạnh, tránh rượu bia</td><td>Theo dõi men gan và ferritin định kỳ</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Gợi ý thực đơn 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bánh mì trứng + sữa hoặc sữa chua</td></tr>
+    <tr><td>🌞 Phụ</td><td>Chuối hoặc đu đủ + ít hạt không tẩm</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm + cá sốt cà chua + canh rau + đậu phụ</td></tr>
+    <tr><td>🌆 Phụ</td><td>Phô mai hoặc sữa chua + trái cây</td></tr>
+    <tr><td>🌙 Tối</td><td>Bún gà, rau luộc và 1 ly sữa trước ngủ nếu cần tăng năng lượng</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Điều cần nhớ khi chăm sóc lâu dài</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Nên làm</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Giữ lịch truyền máu, thải sắt và tái khám đều.</li>
+        <li>Đọc nhãn thực phẩm bổ sung để tránh sản phẩm có sắt ẩn.</li>
+        <li>Theo dõi chiều cao, cân nặng, dậy thì và sức khỏe xương ở trẻ.</li>
+        <li>Tiêm vaccine và phòng nhiễm trùng theo khuyến cáo bác sĩ.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Cần báo bác sĩ nếu</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Mệt tăng nhanh, khó thở, hồi hộp nhiều hơn bình thường.</li>
+        <li>Đau bụng, vàng da, gan lách to nhanh.</li>
+        <li>Đau xương nhiều, chậm lớn rõ, ăn kém kéo dài.</li>
+        <li>Tác dụng phụ thuốc thải sắt hoặc bỏ truyền máu vì quá mệt.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

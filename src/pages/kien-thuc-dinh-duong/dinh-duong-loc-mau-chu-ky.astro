@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-loc-mau-chu-ky"];
+if (!art) throw new Error("Article not found: dinh-duong-loc-mau-chu-ky");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Cô Lan chạy thận nhân tạo 3 buổi mỗi tuần. Cô nghe quá nhiều lời dặn: phải kiêng nước, kiêng chuối, kiêng sữa, lại còn phải ăn nhiều đạm hơn trước. Càng nghe càng sợ ăn sai. Thực tế, dinh dưỡng khi lọc máu đúng là khó hơn, nhưng nếu nắm đúng nguyên tắc thì vẫn có thể ăn khá đa dạng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Người lọc máu chu kỳ thường cần <u>đạm cao hơn trước khi chạy thận</u>, nhưng vẫn phải kiểm soát <u>muối, nước, kali và phospho</u> theo xét nghiệm. Không nên tự kiêng sạch rau trái hay tự uống sữa bổ thận nếu chưa đọc thành phần.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao chạy thận rồi vẫn phải chú ý ăn uống?</h2>
+  <p>Lọc máu giúp loại bớt chất độc và dịch, nhưng không thay thế hoàn toàn chức năng thận khỏe mạnh. Một phần đạm và acid amin cũng bị mất qua quá trình lọc máu. Vì vậy, nếu ăn quá ít người bệnh sẽ nhanh mất cơ; nhưng nếu ăn bừa thực phẩm giàu kali, phospho hoặc quá nhiều nước muối thì lại dễ phù, khó thở, rối loạn nhịp tim.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên ưu tiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đạm chất lượng: trứng, cá, ức gà, thịt nạc với lượng bác sĩ/chuyên gia dặn</li>
+      <li>Rau quả ít kali hơn như bắp cải, dưa leo, táo, lê nếu xét nghiệm cho phép</li>
+      <li>Món tươi nấu tại nhà, ít phụ gia phosphate</li>
+      <li>Cân sau chạy thận và theo dõi tăng cân giữa hai lần lọc</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nước mắm, mì gói, đồ hộp, món rất mặn</li>
+      <li>Sữa, phô mai, hạt, cola, nội tạng nếu phospho cao</li>
+      <li>Chuối, cam, nước dừa, khoai, cà chua nếu kali cao</li>
+      <li>Uống quá tay trong những ngày giữa hai buổi lọc</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Điểm cần nhớ</h2>
+  <table class="table"><thead><tr><th>Yếu tố</th><th>Nguyên tắc</th><th>Lưu ý</th></tr></thead><tbody>
+    <tr><td>Đạm</td><td>Thường cao hơn trước lọc máu</td><td>Không tự cắt đạm vì sợ tăng urê</td></tr>
+    <tr><td>Nước</td><td>Theo lượng tiểu và mức tăng cân</td><td>Tăng cân giữa hai lần lọc quá nhiều là tín hiệu xấu</td></tr>
+    <tr><td>Kali</td><td>Theo xét nghiệm</td><td>Không phải ai cũng phải kiêng y hệt nhau</td></tr>
+    <tr><td>Phospho</td><td>Giảm thực phẩm chế biến và nguồn quá giàu phospho</td><td>Uống thuốc gắn phospho đúng chỉ định nếu có</td></tr>
+  </tbody></table>
+</section>
+</ArticleLayout>

@@ -2193,6 +2193,102 @@
   },
   {
     "type": "article",
+    "slug": "dinh-duong-viem-gan-b-man-tinh",
+    "name": "Viêm gan B mạn tính — Ăn gì để bảo vệ gan và tránh kiêng quá mức?",
+    "aliases": [],
+    "description": "Người viêm gan B mạn thường không cần chế độ ăn cực đoan. Trọng tâm là tránh rượu, giữ cân nặng hợp lý, ăn đủ đạm và hạn chế thực phẩm siêu chế biến.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hoi-chung-than-hu-dinh-duong",
+    "name": "Hội chứng thận hư — Dinh dưỡng giảm phù, kiểm soát mỡ máu và giữ cơ",
+    "aliases": [],
+    "description": "Người hội chứng thận hư thường cần giảm muối, theo dõi dịch, không tự tăng đạm quá mức và kiểm soát chất béo bão hòa vì dễ rối loạn mỡ máu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-thalassemia",
+    "name": "Thalassemia — Ăn uống thế nào để tránh quá tải sắt và hỗ trợ tạo máu?",
+    "aliases": [],
+    "description": "Người thalassemia cần ăn cân bằng, không tự uống sắt, chú ý nguy cơ quá tải sắt do truyền máu và theo dõi folate, canxi, vitamin D khi có chỉ định.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-viem-gan-c",
+    "name": "Viêm gan C mạn tính — Ăn gì để bảo vệ gan sau thời đại thuốc uống đặc hiệu?",
+    "aliases": [],
+    "description": "Người viêm gan C vẫn cần dinh dưỡng lành mạnh, tránh rượu bia, kiểm soát cân nặng và không lạm dụng thực phẩm chức năng dù đã có thuốc điều trị rất hiệu quả.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "xo-gan-co-truong-an-uong",
+    "name": "Xơ gan có cổ trướng — Ăn uống thế nào để giảm muối mà không kiệt sức?",
+    "aliases": [],
+    "description": "Xơ gan có cổ trướng cần giảm natri, theo dõi dịch đúng chỉ định và vẫn phải giữ đủ năng lượng, đủ đạm để tránh suy dinh dưỡng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-loc-mau-chu-ky",
+    "name": "Lọc máu chu kỳ — Ăn gì để giữ sức mà vẫn kiểm soát kali, phospho và dịch?",
+    "aliases": [],
+    "description": "Người chạy thận nhân tạo thường cần đạm cao hơn trước lọc máu, nhưng phải kiểm soát muối, nước, kali và phospho dựa vào xét nghiệm và chỉ định cá thể hóa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-kali-mau-suy-than",
+    "name": "Tăng kali máu ở người suy thận — Ăn trái cây rau củ thế nào cho an toàn?",
+    "aliases": [],
+    "description": "Tăng kali máu không có nghĩa phải bỏ hết rau trái. Điều quan trọng là chọn loại, lượng, cách sơ chế và đối chiếu với xét nghiệm thực tế.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-sua-bo-o-tre-thuc-hanh",
+    "name": "Dị ứng đạm sữa bò ở trẻ — Thực hành chọn sữa thay thế và ăn dặm an toàn",
+    "aliases": [],
+    "description": "Bài thực hành cho phụ huynh: khi nào nghĩ tới dị ứng đạm sữa bò, chọn công thức nào, cần tránh gì khi ăn dặm và vì sao không tự đổi sang sữa dê.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-dau-phong-hat-cay",
+    "name": "Dị ứng đậu phộng và hạt cây — Đọc nhãn, tránh lây chéo và xử trí an toàn",
+    "aliases": [],
+    "description": "Dị ứng đậu phộng, hạnh nhân, óc chó hay điều có thể gây phản vệ. Trọng tâm là nhận diện thành phần, tránh nhiễm chéo và chuẩn bị kế hoạch xử trí.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "low-fodmap-kieu-viet-cho-ibs",
+    "name": "Low-FODMAP kiểu Việt cho IBS — Bắt đầu sao cho đỡ rối và không thiếu chất?",
+    "aliases": [],
+    "description": "Low-FODMAP không phải kiêng cả đời. Bài này chuyển nguyên tắc Monash sang thực phẩm Việt để người IBS áp dụng thực tế hơn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "chan-an-sau-hoa-tri",
+    "name": "Chán ăn sau hóa trị — Làm sao ăn được hơn mà không ép quá sức?",
+    "aliases": [],
+    "description": "Người bệnh ung thư ăn kém sau hóa trị cần chiến lược thực tế: chia bữa nhỏ, giảm mùi, tăng năng lượng đậm đặc và biết lúc nào cần hỗ trợ dinh dưỡng y học.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-khi-dung-glp1",
+    "name": "Ăn uống khi dùng GLP-1 giảm cân — Giảm buồn nôn, giữ cơ và tránh thiếu chất",
+    "aliases": [],
+    "description": "Người dùng semaglutide hay tirzepatide thường ăn ít hơn nhưng dễ buồn nôn, táo bón và thiếu đạm. Cần chiến lược ăn uống thông minh thay vì chỉ dựa vào thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "muoi-loi-khuyen-dinh-duong-2030",
     "name": "10 Lời Khuyên Dinh Dưỡng Hợp Lý (Cập nhật QĐ 3594/QĐ-BYT)",
     "aliases": [],

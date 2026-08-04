@@ -1,0 +1,49 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["chan-an-sau-hoa-tri"];
+if (!art) throw new Error("Article not found: chan-an-sau-hoa-tri");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Sau vài chu kỳ hóa trị, nhiều người bệnh không còn cảm giác đói như trước. Thấy thức ăn là ngán, ăn vài miếng đã no, hoặc sợ mùi bếp. Đây không phải "khó tính" mà là tác dụng phụ rất thật của điều trị. Mục tiêu lúc này là giúp người bệnh ăn được nhiều hơn một chút theo cách đỡ mệt nhất.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Khi chán ăn sau hóa trị, ưu tiên <u>chia bữa nhỏ</u>, món mềm, ít mùi, đậm độ năng lượng cao hơn và không ép ăn theo suất lớn. Nếu sụt cân, nôn nhiều hoặc không uống được, cần báo bác sĩ sớm.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Cách giúp ăn dễ hơn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Ăn 5-6 bữa nhỏ thay vì chờ 3 bữa lớn</li>
+      <li>Chọn món nguội hoặc ấm nhẹ nếu sợ mùi</li>
+      <li>Tăng năng lượng bằng sữa chua, phô mai mềm, dầu thực vật, bơ hạt nếu phù hợp</li>
+      <li>Ưu tiên đạm dễ ăn: trứng, cá, đậu phụ, sữa dinh dưỡng y học khi bác sĩ đồng ý</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Ép ăn thật nhiều một lúc</li>
+      <li>Để bụng rỗng quá lâu rồi mới cố ăn</li>
+      <li>Tự theo chế độ kiêng cực đoan vì sợ "nuôi ung thư"</li>
+      <li>Bỏ qua thuốc chống nôn hay hỗ trợ triệu chứng đã được kê</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🚨 Cần báo bác sĩ nếu</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Uống không nổi, nôn liên tục</li>
+    <li>Sụt cân nhanh, yếu rõ, choáng</li>
+    <li>Loét miệng nặng làm không nuốt được</li>
+    <li>Sốt hoặc tiêu chảy nhiều</li>
+  </ul>
+</section>
+</ArticleLayout>

@@ -1,0 +1,98 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-viem-gan-b-man-tinh"];
+if (!art) throw new Error("Article not found: dinh-duong-viem-gan-b-man-tinh");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Chị Hương, 41 tuổi, phát hiện viêm gan B mạn khi khám sức khỏe định kỳ. Men gan chỉ tăng nhẹ, bác sĩ dặn tái khám đều và tránh rượu bia. Về nhà chị lại nghe nhiều lời khuyên trái ngược: phải kiêng hết thịt đỏ, không được ăn trứng, chỉ nên uống nước rau má. Càng nghe càng rối.</p>
+  <p>Thực tế, người viêm gan B mạn thường không cần một chế độ ăn thanh lọc gan cực đoan. Điều quan trọng hơn là bảo vệ gan khỏi tổn thương thêm, giữ cân nặng hợp lý, ăn cân bằng và theo dõi định kỳ để phát hiện sớm xơ gan hoặc ung thư gan.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Với viêm gan B mạn, ưu tiên nhất là <u>tránh rượu bia</u>, <u>duy trì cân nặng hợp lý</u>, <u>ăn đủ đạm và rau quả</u>, hạn chế đồ siêu chế biến và không tự dùng thuốc nam, thực phẩm chức năng "bổ gan" khi chưa hỏi bác sĩ.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao dinh dưỡng vẫn quan trọng nếu men gan chưa cao?</h2>
+  <p>Virus viêm gan B có thể gây viêm gan kéo dài nhiều năm. Một số người ít triệu chứng nhưng vẫn có nguy cơ tiến triển xơ gan hoặc ung thư gan. Nếu đồng thời thừa cân, gan nhiễm mỡ, uống rượu hoặc hút thuốc, gánh nặng cho gan càng lớn hơn. Vì vậy, chế độ ăn đúng không thay thuốc kháng virus, nhưng giúp giảm các yếu tố làm gan tổn thương thêm.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thực phẩm nên ưu tiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rau xanh, trái cây tươi đa dạng màu sắc</li>
+      <li>Đạm nạc: cá, ức gà, trứng, đậu phụ, sữa chua ít đường nếu dung nạp tốt</li>
+      <li>Ngũ cốc nguyên hạt hoặc tinh bột ít tinh chế hơn: yến mạch, gạo lứt, khoai, bắp</li>
+      <li>Chất béo tốt: dầu olive, dầu đậu nành, các loại hạt, quả bơ</li>
+      <li>Cà phê đen vừa phải có thể dùng nếu không bị mất ngủ hay chống chỉ định tim mạch</li>
+      <li>Nước lọc đủ nhu cầu hằng ngày</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Thực phẩm cần hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rượu bia: nên tránh hoàn toàn nếu có thể</li>
+      <li>Nước ngọt, trà sữa, bánh kẹo nhiều đường vì làm tăng nguy cơ gan nhiễm mỡ</li>
+      <li>Đồ chiên ngập dầu, thịt chế biến sẵn, nội tạng, mỡ động vật</li>
+      <li>Thực phẩm sống hoặc không bảo đảm vệ sinh nếu gan đã yếu hoặc có xơ gan</li>
+      <li>Thuốc nam, sản phẩm thanh lọc gan, viên uống không rõ nguồn gốc</li>
+      <li>Không cần tự kiêng trứng, thịt, hay hải sản chỉ vì mang virus</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Ăn như thế nào là hợp lý?</h2>
+  <table class="table"><thead><tr><th>Nhóm</th><th>Gợi ý chung</th><th>Lưu ý</th></tr></thead><tbody>
+    <tr><td>Đạm</td><td>Khoảng 1.0-1.2 g/kg/ngày nếu chưa suy gan nặng</td><td>Không tự cắt đạm quá mức vì dễ mất cơ</td></tr>
+    <tr><td>Rau quả</td><td>Ít nhất 400g/ngày</td><td>Ưu tiên dạng tươi, ít đường thêm</td></tr>
+    <tr><td>Tinh bột</td><td>Chia đều các bữa, tránh ăn dồn</td><td>Người thừa cân nên giảm tinh bột tinh chế</td></tr>
+    <tr><td>Chất béo</td><td>Ưu tiên dầu thực vật, hạt, cá</td><td>Giảm mỡ bão hòa và trans fat</td></tr>
+    <tr><td>Muối</td><td>Giữ ở mức vừa phải</td><td>Nếu đã xơ gan, cổ trướng cần giảm muối chặt hơn theo bác sĩ</td></tr>
+  </tbody></table>
+  <p class="muted" style="margin-top:8px;">💡 Chỉ khi đã có xơ gan mất bù, cổ trướng hoặc não gan thì chế độ ăn mới cần chỉnh sâu hơn. Khi đó nên đi cùng bác sĩ và chuyên gia dinh dưỡng.</p>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Gợi ý thực đơn 1 ngày</h2>
+  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
+    <tr><td>🌅 Sáng</td><td>Bún cá ít dầu + rau sống sạch hoặc yến mạch với sữa chua ít đường</td></tr>
+    <tr><td>🌞 Phụ</td><td>1 quả táo hoặc 1 quả ổi</td></tr>
+    <tr><td>🌞 Trưa</td><td>Cơm vừa phải + cá hấp + canh bí + rau luộc</td></tr>
+    <tr><td>🌆 Phụ</td><td>1 hũ sữa chua hoặc 1 nắm hạt nhỏ</td></tr>
+    <tr><td>🌙 Tối</td><td>Ức gà/đậu phụ sốt nhạt + rau xào ít dầu + khoai lang</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>💡 Mẹo sống chung an toàn</h2>
+  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <h4>✅ Nên làm</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Tái khám đúng hẹn, làm xét nghiệm men gan, tải lượng virus và siêu âm theo lịch.</li>
+        <li>Giữ vòng bụng và cân nặng ổn định để giảm nguy cơ gan nhiễm mỡ đi kèm.</li>
+        <li>Hỏi bác sĩ trước khi dùng thuốc giảm đau, thảo dược hay thực phẩm chức năng.</li>
+        <li>Người sống cùng nhà nên kiểm tra và tiêm vaccine nếu chưa có miễn dịch.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>🚨 Đi khám sớm nếu có</h4>
+      <ul style="line-height:1.8;padding-left:18px;">
+        <li>Vàng da, vàng mắt, bụng to nhanh, phù chân.</li>
+        <li>Mệt lả, chán ăn kéo dài, sụt cân không rõ lý do.</li>
+        <li>Nôn ra máu, đi cầu phân đen.</li>
+        <li>Lơ mơ, ngủ gà, thay đổi hành vi.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</ArticleLayout>

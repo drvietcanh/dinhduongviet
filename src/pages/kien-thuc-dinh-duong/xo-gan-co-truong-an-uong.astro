@@ -1,0 +1,65 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["xo-gan-co-truong-an-uong"];
+if (!art) throw new Error("Article not found: xo-gan-co-truong-an-uong");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Bác Nhân bị xơ gan và bụng ngày càng căng do cổ trướng. Cả nhà cố cho bác ăn thật nhạt, nhưng bác lại ăn quá ít vì món nào cũng "không có vị", cơ thể càng yếu hơn. Đây là tình huống rất thường gặp: giảm muối là đúng, nhưng giảm quá mức mà không giữ đủ năng lượng và đạm thì người bệnh dễ kiệt sức.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Xơ gan có cổ trướng thường cần <u>giảm natri khoảng dưới 2g/ngày</u>, không tự siết nước nếu chưa được dặn, vẫn phải <u>ăn đủ năng lượng và đủ đạm</u>, chia nhiều bữa nhỏ và theo dõi cân nặng mỗi ngày.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🔬 Vì sao bụng lại to lên?</h2>
+  <p>Khi gan xơ nặng, áp lực tĩnh mạch cửa tăng và albumin giảm, nước dễ thoát ra ổ bụng gây cổ trướng. Muối làm cơ thể giữ thêm nước nên tình trạng nặng hơn. Tuy nhiên, người xơ gan cũng rất dễ mất cơ, nên dinh dưỡng không chỉ là "bớt mặn" mà còn là giữ được thể trạng để chịu đựng điều trị.</p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên làm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Ưu tiên món hấp, luộc, nấu nhạt từ đầu</li>
+      <li>Dùng chanh, gừng, tiêu, hành lá, rau thơm để tăng vị thay muối</li>
+      <li>Ăn đạm dễ tiêu: cá, trứng, đậu phụ, ức gà, sữa nếu dung nạp được</li>
+      <li>Chia 5-6 bữa nhỏ, có bữa phụ tối muộn nếu bác sĩ không cấm</li>
+      <li>Ghi cân nặng, vòng bụng, lượng tiểu nếu đang theo dõi sát</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Cần tránh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nước mắm, bột canh, mì gói, đồ hộp, xúc xích, chả mặn</li>
+      <li>Tự kiêng sạch đạm vì sợ "não gan"</li>
+      <li>Tự hạn chế nước quá chặt nếu không có hạ natri máu</li>
+      <li>Rượu bia, đồ sống tái, thuốc nam không rõ nguồn gốc</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Gợi ý thực hành</h2>
+  <table class="table"><thead><tr><th>Vấn đề</th><th>Gợi ý chung</th><th>Ghi chú</th></tr></thead><tbody>
+    <tr><td>Muối</td><td>Dưới 2g natri/ngày</td><td>Tương đương khoảng 5g muối</td></tr>
+    <tr><td>Dịch</td><td>Không phải ai cũng cần siết nước</td><td>Thường cân nhắc khi natri máu thấp</td></tr>
+    <tr><td>Đạm</td><td>Thường vẫn cần đủ</td><td>Cá thể hóa nếu có não gan</td></tr>
+    <tr><td>Năng lượng</td><td>Không được để ăn quá ít</td><td>Người xơ gan dễ mất cơ</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section card">
+  <h2>🚨 Báo bác sĩ ngay nếu có</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Bụng to rất nhanh, khó thở, tiểu ít</li>
+    <li>Sốt, đau bụng, lơ mơ</li>
+    <li>Nôn ra máu hoặc đi ngoài phân đen</li>
+    <li>Tăng cân nhanh vài ngày liền</li>
+  </ul>
+</section>
+</ArticleLayout>

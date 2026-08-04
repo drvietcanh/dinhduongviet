@@ -1,0 +1,48 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["di-ung-dau-phong-hat-cay"];
+if (!art) throw new Error("Article not found: di-ung-dau-phong-hat-cay");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Một lượng rất nhỏ đậu phộng hoặc hạt cây cũng có thể gây phản ứng nặng ở người dị ứng. Vì vậy, bài toán dinh dưỡng ở đây không phải là "ăn ít thôi" mà là nhận diện đúng thành phần, tránh lây chéo và chuẩn bị sẵn kế hoạch xử trí khẩn cấp.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Dị ứng đậu phộng và hạt cây có thể gây phản vệ. Người bệnh cần <u>đọc nhãn kỹ</u>, hỏi rõ khi ăn ngoài, tránh nhiễm chéo trong bếp và tuân thủ kế hoạch cấp cứu bác sĩ đã hướng dẫn.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Cần làm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đọc kỹ nhãn thành phần và cảnh báo "may contain"</li>
+      <li>Dùng dụng cụ riêng nếu trong nhà có người khác vẫn ăn hạt</li>
+      <li>Hỏi rõ dầu, sốt, bánh, chè, kem, granola khi ăn ngoài</li>
+      <li>Trẻ đi học nên có kế hoạch thông báo với giáo viên</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Dễ bị bỏ sót</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Bánh ngọt, chocolate, nước sốt, bơ hạt</li>
+      <li>Ngũ cốc ăn sáng, thanh năng lượng, trà sữa topping</li>
+      <li>Nhiễm chéo ở chảo, thớt, dao, máy xay</li>
+      <li>Không phải cứ "hữu cơ" hay "healthy" là an toàn</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🚨 Dấu hiệu nguy hiểm</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Khò khè, khó thở, khàn tiếng</li>
+    <li>Nôn liên tục, lơ mơ, tụt huyết áp</li>
+    <li>Sưng môi lưỡi nhanh, nổi mày đay toàn thân</li>
+  </ul>
+</section>
+</ArticleLayout>

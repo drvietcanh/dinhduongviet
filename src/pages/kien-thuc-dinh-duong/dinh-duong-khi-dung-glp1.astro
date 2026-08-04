@@ -1,0 +1,54 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["dinh-duong-khi-dung-glp1"];
+if (!art) throw new Error("Article not found: dinh-duong-khi-dung-glp1");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người dùng GLP-1 như semaglutide hoặc tirzepatide giảm cân khá tốt, nhưng đổi lại lại buồn nôn, no nhanh, táo bón và ăn ít đến mức không đủ đạm. Cân nặng xuống là điều mong muốn, nhưng nếu xuống cả cơ bắp thì kết quả không đẹp như chúng ta tưởng.</p>
+</section>
+
+<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+  <p style="font-size:1.05rem;margin:0;">
+    <strong>👉 Khi dùng GLP-1, cần ưu tiên <u>đạm trước</u>, ăn chậm, khẩu phần nhỏ, hạn chế đồ quá béo trong giai đoạn buồn nôn và chủ động phòng táo bón. Thuốc không thay thế cho cách ăn uống thông minh.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên làm</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Mỗi bữa ưu tiên một nguồn đạm rõ ràng: trứng, cá, sữa chua Hy Lạp, đậu phụ, ức gà</li>
+      <li>Ăn phần nhỏ hơn nhưng đều hơn trong ngày</li>
+      <li>Uống đủ nước, tăng chất xơ từ từ nếu bị táo bón</li>
+      <li>Chọn món đơn giản, ít dầu trong giai đoạn mới tăng liều</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Hay gặp nếu ăn sai</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Buồn nôn nặng hơn khi ăn quá nhiều dầu mỡ hoặc ăn quá nhanh</li>
+      <li>Mệt, rụng tóc, yếu cơ khi ăn quá ít đạm kéo dài</li>
+      <li>Táo bón do ăn ít rau uống ít nước</li>
+      <li>Hạ đường huyết nếu phối hợp thuốc khác mà không được chỉnh liều</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📏 Gợi ý thực tế</h2>
+  <p>Trong giai đoạn mới dùng hoặc mới tăng liều, có thể chọn cháo thịt nạc, sữa chua, trứng, cá hấp, đậu phụ, chuối, bánh mì nướng khô hoặc soup đặc vừa phải. Khi triệu chứng ổn hơn, tăng dần rau, trái cây, ngũ cốc và vận động để giữ cơ.</p>
+</section>
+
+<section class="section card">
+  <h2>🚨 Cần liên hệ bác sĩ nếu</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Nôn nhiều, không giữ được nước</li>
+    <li>Đau bụng dữ dội kéo dài</li>
+    <li>Táo bón nặng nhiều ngày không cải thiện</li>
+    <li>Chóng mặt, run, nghi ngờ hạ đường huyết</li>
+  </ul>
+</section>
+</ArticleLayout>
