@@ -1,0 +1,81 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["om-nghen-thai-an-gi"];
+if (!art) throw new Error("Article not found: om-nghen-thai-an-gi");
+---
+
+<ArticleLayout article={art}>
+
+<section class="section card">
+  <p>Ốm nghén thường gặp trong 3 tháng đầu thai kỳ và có thể làm mẹ bầu sợ ăn, sụt cân nhẹ hoặc uống nước kém. Phần lớn trường hợp có thể cải thiện bằng cách điều chỉnh bữa ăn, mùi vị và thời điểm ăn uống.</p>
+  <p>Mục tiêu không phải ăn thật nhiều trong một lần, mà là <strong>ăn được từng ít một, uống đủ nước và hạn chế những thứ làm buồn nôn nặng thêm</strong>.</p>
+</section>
+
+<section class="section card" style="background:#fff8e1;border:1px solid #ffe082;">
+  <p style="margin:0;font-size:1.03rem;">
+    <strong>Gợi ý nhanh:</strong> chia 5-6 bữa nhỏ, thử bánh mì khô hoặc bánh quy nhạt trước khi rời giường, ưu tiên món nguội hoặc ít mùi, nhấp nước từng ngụm nhỏ trong ngày.
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Nên ưu tiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Bánh mì nhạt, bánh quy giòn, cơm mềm, cháo đặc vừa</li>
+      <li>Khoai luộc, mì nui đơn giản, yến mạch, chuối chín</li>
+      <li>Sữa chua, sữa ít mùi nếu vẫn dung nạp được</li>
+      <li>Thịt nạc, trứng, đậu phụ chia thành lượng nhỏ trong ngày</li>
+      <li>Nước lọc, nước ấm, oresol theo hướng dẫn nếu nôn nhiều và bác sĩ khuyên dùng</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Nên hạn chế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Món chiên nhiều dầu, quá ngọt hoặc quá cay</li>
+      <li>Đồ có mùi nồng như hành phi, tỏi phi, nước mắm đậm, đồ nướng ám mùi</li>
+      <li>Uống quá nhiều nước trong một lần nếu dễ đầy bụng</li>
+      <li>Để bụng đói quá lâu vì có thể làm cơn buồn nôn nặng hơn</li>
+      <li>Tự ý dùng gừng, vitamin hoặc thuốc chống nôn liều cao khi chưa hỏi bác sĩ</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Cách ăn giúp đỡ nghén hơn</h2>
+  <table class="table">
+    <thead><tr><th>Tình huống</th><th>Cách xử lý</th></tr></thead>
+    <tbody>
+      <tr><td>Sáng ngủ dậy đã buồn nôn</td><td>Để sẵn vài miếng bánh quy nhạt hoặc bánh mì khô cạnh giường, ăn chậm trước khi ngồi dậy.</td></tr>
+      <tr><td>Sợ mùi thức ăn nóng</td><td>Thử món nguội bớt hoặc ít mùi như cơm nắm, khoai luộc, sữa chua, trái cây mềm.</td></tr>
+      <tr><td>Dễ đầy bụng khi uống nước</td><td>Nhấp từng ngụm nhỏ, tách uống nước ra khỏi bữa ăn chính 20-30 phút nếu thấy dễ chịu hơn.</td></tr>
+      <tr><td>Nôn sau bữa lớn</td><td>Chia nhỏ khẩu phần thành 5-6 lần, mỗi lần chỉ ăn vừa phải.</td></tr>
+      <tr><td>Không ăn được thịt cá</td><td>Tạm thay bằng trứng, sữa, sữa chua, đậu phụ hoặc cháo có thêm đạm xay nhỏ.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📌 Một ngày mẫu khi nghén nhẹ</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Sáng sớm:</strong> 2-3 bánh quy nhạt hoặc 1 lát bánh mì khô</li>
+    <li><strong>Bữa sáng:</strong> cháo thịt bằm ít mùi hoặc yến mạch nấu loãng vừa</li>
+    <li><strong>Giữa sáng:</strong> 1 hũ sữa chua hoặc 1 quả chuối chín</li>
+    <li><strong>Bữa trưa:</strong> cơm mềm + đậu phụ sốt nhẹ + rau luộc</li>
+    <li><strong>Xế:</strong> bánh mì nhỏ hoặc khoai lang hấp</li>
+    <li><strong>Bữa tối:</strong> nui nấu thịt nạc bằm hoặc súp gà mềm, lượng vừa</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>🚨 Khi nào cần đi khám sớm?</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Nôn quá nhiều, không giữ được nước hoặc thức ăn trong hơn 24 giờ</li>
+    <li>Tiểu ít, nước tiểu sẫm màu, khô môi, chóng mặt</li>
+    <li>Sụt cân rõ, mệt lả hoặc đánh trống ngực</li>
+    <li>Nôn ra máu, đau bụng nhiều, sốt hoặc có dấu hiệu mất nước</li>
+  </ul>
+  <p>Những trường hợp này có thể cần đánh giá tình trạng mất nước, điện giải và loại trừ nghén nặng.</p>
+</section>
+
+</ArticleLayout>

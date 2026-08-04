@@ -18,6 +18,7 @@ const specialties = [
   { key: "da-lieu", emoji: "🧴", name: "Da liễu", color: "#fd79a8" },
   { key: "ung-thu", emoji: "🎗️", name: "Ung thư", color: "#636e72" },
   { key: "phu-nu-nhi", emoji: "👶", name: "Mẹ & Bé — Người cao tuổi", color: "#e17055" },
+  { key: "ngoai-khoa", emoji: "🩹", name: "Ngoại khoa — Hậu phẫu", color: "#7f8c8d" },
 ];
 
 // Helper: get articles by specialty and displayCategory
@@ -40,14 +41,13 @@ const specialtyAnchorMap = {
   "san-khoa": "sec-san-khoa",
   "di-ung": "sec-di-ung",
   "tai-mui-hong": "sec-tai-mui-hong",
-  "phau-thuat": "sec-phau-thuat",
   "ngoai-khoa": "sec-ngoai-khoa",
   "truyen-nhiem": "sec-truyen-nhiem",
   "dinh-duong-the-thao": "sec-dinh-duong-the-thao",
 };
 const quickRoutes = [
-  { label: "Tiểu đường", href: "#tieu-duong" },
-  { label: "Cao huyết áp", href: "#huyet-ap" },
+  { label: "Đái tháo đường", href: "#tieu-duong" },
+  { label: "Tăng huyết áp", href: "#huyet-ap" },
   { label: "Dạ dày - trào ngược", href: "#da-day" },
   { label: "Bệnh thận", href: "#suy-than" },
   { label: "Người cao tuổi", href: "#nguoi-gia" },
@@ -82,18 +82,18 @@ const groups = [
     specialty: "noi-tiet",
     id: "tieu-duong",
     emoji: "🩸",
-    name: "Tiểu đường • Tiền tiểu đường",
+    name: "Đái tháo đường • Tiền đái tháo đường",
     foundation: [
-      { slug: "dai-thao-duong", title: "Tiểu đường — Chế độ ăn cho người tiểu đường", desc: "Bài nền tảng" },
-      { slug: "tien-dai-thao-duong", title: "Tiền tiểu đường — Giai đoạn nên thay đổi sớm", desc: "Bài nền tảng" },
+      { slug: "dai-thao-duong", title: "Đái tháo đường — Chế độ ăn cho người đái tháo đường", desc: "Bài nền tảng" },
+      { slug: "tien-dai-thao-duong", title: "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm", desc: "Bài nền tảng" },
       { slug: "khang-insulin-resistance", title: "Kháng Insulin (Gai đen) & Béo phì", desc: "Cơ chế" },
-      { slug: "com-trang-tieu-duong", title: "Cơm trắng — Có phải nguyên nhân gây tiểu đường?", desc: "Hiểu đúng" },
-      { slug: "sai-lam-tieu-duong-bo-com", title: "Người tiểu đường không cần bỏ hoàn toàn cơm", desc: "Hiểu đúng" },
+      { slug: "com-trang-tieu-duong", title: "Cơm trắng — Có phải nguyên nhân gây đái tháo đường?", desc: "Hiểu đúng" },
+      { slug: "sai-lam-tieu-duong-bo-com", title: "Người đái tháo đường không cần bỏ hoàn toàn cơm", desc: "Hiểu đúng" },
       { slug: "bun-pho-mi-duong-huyet", title: "Bún, phở, mì, miến — Món nào dễ tăng đường huyết?", desc: "Món ăn" },
-      { slug: "canh-bao-hieu-lam-com-tieu-duong", title: "Tiểu đường không cần bỏ cơm", desc: "Đừng tin ngay" },
-      { slug: "di-cho-tieu-duong", title: "Đi chợ cho người tiểu đường", desc: "Mẹo" },
+      { slug: "canh-bao-hieu-lam-com-tieu-duong", title: "Đái tháo đường không cần bỏ cơm", desc: "Đừng tin ngay" },
+      { slug: "di-cho-tieu-duong", title: "Đi chợ cho người đái tháo đường", desc: "Mẹo" },
     ],
-    faq: { href: "/hoi-dap#tieu-duong", label: "Tiểu đường có được ăn cơm không?" },
+    faq: { href: "/hoi-dap#tieu-duong", label: "Đái tháo đường có được ăn cơm không?" },
     menus: [
       { slug: "thuc-don-tieu-duong", title: "Thực đơn cơ bản" },
       { slug: "thuc-don-tieu-duong-ban-ron", title: "Bản đi làm" },
@@ -174,10 +174,10 @@ const groups = [
     specialty: "tim-mach",
     id: "huyet-ap",
     emoji: "🫗",
-    name: "Cao huyết áp",
+    name: "Tăng huyết áp",
     foundation: [
-      { slug: "tang-huyet-ap", title: "Cao huyết áp — Chế độ ăn giảm muối", desc: "Bài nền tảng" },
-      { slug: "cao-huyet-ap-dash-diet", title: "Cao huyết áp & DASH Diet: Sức mạnh của Kali", desc: "Kiến thức chuyên sâu" },
+      { slug: "tang-huyet-ap", title: "Tăng huyết áp — Chế độ ăn giảm muối", desc: "Bài nền tảng" },
+      { slug: "cao-huyet-ap-dash-diet", title: "Tăng huyết áp & DASH Diet: Sức mạnh của Kali", desc: "Kiến thức chuyên sâu" },
       { slug: "che-do-dash-tang-huyet-ap", title: "Chế độ ăn DASH — 3 mức muối", desc: "Bài nền tảng" },
       { slug: "sai-lam-an-nhat", title: "Ăn nhạt — 6 hiểu lầm cần tránh", desc: "Hiểu đúng" },
       { slug: "canh-bao-hieu-lam-an-nhat-muoi", title: "Ăn nhạt không phải bỏ muối hoàn toàn", desc: "Đừng tin ngay" },
@@ -185,7 +185,7 @@ const groups = [
       { slug: "muoi-duong-trong-thuc-pham", title: "Muối & đường ẩn trong thực phẩm", desc: "Hiểu đúng" },
       { slug: "phu-chan-giam-muoi", title: "Bị phù, suy tim, suy thận — Có cần giảm muối?", desc: "Bài nền tảng" },
     ],
-    faq: { href: "/hoi-dap#huyet-ap", label: "Cao huyết áp có phải bỏ muối hoàn toàn?" },
+    faq: { href: "/hoi-dap#huyet-ap", label: "Tăng huyết áp có phải bỏ muối hoàn toàn?" },
     menus: [
       { slug: "thuc-don-tang-huyet-ap", title: "Thực đơn — dưới 2g muối" },
       { slug: "thuc-don-huyet-ap-ban-ron", title: "Bản đi làm" },
@@ -244,10 +244,10 @@ const groups = [
     emoji: "😣",
     name: "Dạ dày • Trào ngược • Viêm loét",
     foundation: [
-      { slug: "dau-da-day", title: "Đau dạ dày — Thực đơn cho người viêm loét", desc: "Bài nền tảng" },
+      { slug: "dau-da-day", title: "Đau dạ dày — Nguyên tắc ăn uống, HP và thói quen cần sửa", desc: "Bài nền tảng" },
       { slug: "vi-khuan-hp-da-day", title: "Viêm loét dạ dày HP: Ẩn họa và cách diệt", desc: "Kiến thức" },
       { slug: "dinh-duong-da-day-trao-nguoc", title: "Trào ngược dạ dày thực quản (GERD)", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-benh-da-day-nen-an-gi", title: "Đau dạ dày — Ăn gì để nhanh lành?", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-benh-da-day-nen-an-gi", title: "Đau dạ dày — Ăn gì để dịu triệu chứng?", desc: "Thực hành ăn uống" },
       { slug: "trao-nguoc-da-day", title: "Trào ngược — nên ăn gì, kiêng gì?", desc: "Bài nền tảng" },
       { slug: "trao-nguoc-ban-dem", title: "Trào ngược ban đêm", desc: "Bài chuyên sâu" },
       { slug: "day-bung-sau-an", title: "Hay đầy bụng sau ăn", desc: "Bài nền tảng" },
@@ -396,7 +396,6 @@ const groups = [
     name: "Lupus ban đỏ & Bệnh tự miễn",
     foundation: [
       { slug: "lupus-ban-do-he-thong", title: "Lupus ban đỏ hệ thống: Sống chung với Lũ", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-lupus-ban-do", title: "Kiến thức cơ bản về dinh dưỡng Lupus", desc: "Kiến thức" },
     ],
     faq: null,
     menus: [],
@@ -473,7 +472,6 @@ const groups = [
     name: "Bệnh phổi tắc nghẽn (COPD)",
     foundation: [
       { slug: "dinh-duong-benh-copd", title: "Vì sao ăn cơm lại khó thở hơn ăn mỡ?", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-benh-phoi-copd", title: "Bệnh phổi COPD cơ bản", desc: "Kiến thức chung" },
     ],
     faq: null,
     menus: [],
@@ -497,9 +495,9 @@ const groups = [
     emoji: "🤧",
     name: "Viêm xoang • Viêm mũi dị ứng",
     foundation: [
-      { slug: "viem-xoang-di-ung-histamine", title: "Sự thật về chất Histamine trong đồ lên men", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-viem-mui-di-ung", title: "Viêm mũi dị ứng cơ bản", desc: "Kiến thức chung" },
-      { slug: "dinh-duong-viem-xoang", title: "Viêm xoang — Dinh dưỡng giảm viêm", desc: "Kiến thức chung" },
+      { slug: "dinh-duong-viem-mui-di-ung", title: "Viêm mũi dị ứng — Bài nền tảng khi giao mùa", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-viem-xoang", title: "Viêm xoang — Ăn uống và chăm sóc khi nghẹt mũi", desc: "Bài nền tảng" },
+      { slug: "viem-xoang-di-ung-histamine", title: "Histamine trong đồ ăn có làm nặng triệu chứng không?", desc: "Góc nhìn chuyên biệt" },
     ],
     faq: null,
     menus: [],
@@ -523,9 +521,9 @@ const groups = [
     emoji: "🧴",
     name: "Vảy nến • Eczema • Viêm da",
     foundation: [
-      { slug: "dinh-duong-benh-vay-nen-psoriasis", title: "Vảy nến — Ăn chống viêm giảm bong vảy", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-vay-nen-psoriasis", title: "Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3", desc: "Kiến thức chuyên sâu" },
-      { slug: "dinh-duong-eczema-viem-da-co-dia", title: "Eczema & Viêm da cơ địa — Giảm ngứa", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-vay-nen-psoriasis", title: "Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-eczema-viem-da-co-dia", title: "Eczema & Viêm da cơ địa — Bài nền tảng giảm ngứa", desc: "Bài nền tảng" },
+      { slug: "viem-da-co-dia-eczema", title: "Dị ứng thức ăn và loại trừ có hướng dẫn trong eczema", desc: "Góc nhìn chuyên biệt" },
     ],
     faq: null,
     menus: [],
@@ -567,7 +565,7 @@ const groups = [
 
   // --- UNG THƯ ---
   {
-    specialty: "ung-thu",
+    specialty: "ngoai-khoa",
     id: "ung-thu-tong-quat",
     emoji: "🎗️",
     name: "Ung thư — Dinh dưỡng tổng quát",
@@ -643,7 +641,7 @@ const groups = [
     name: "Mang thai & Cho con bú",
     foundation: [
       { slug: "phu-nu-mang-thai", title: "Dinh dưỡng cho phụ nữ mang thai & cho con bú", desc: "Bài nền tảng" },
-      { slug: "tieu-duong-thai-ky-gestational", title: "Tiểu đường thai kỳ: Hãm phanh đường huyết", desc: "Cẩm nang" },
+      { slug: "tieu-duong-thai-ky-gestational", title: "Đái tháo đường thai kỳ: Hãm phanh đường huyết", desc: "Cẩm nang" },
     ],
     faq: { href: "/hoi-dap#mang-thai", label: "Bà bầu có cần uống sắt mỗi ngày?" },
     menus: [],
@@ -698,7 +696,7 @@ const groups = [
 
     <div class="disease-search" role="search">
       <label for="disease-filter">Tìm bệnh hoặc bài viết</label>
-      <input id="disease-filter" type="search" placeholder="Ví dụ: tiểu đường, gout, gan nhiễm mỡ..." autocomplete="off" />
+      <input id="disease-filter" type="search" placeholder="Ví dụ: đái tháo đường, gout, gan nhiễm mỡ..." autocomplete="off" />
       <span id="disease-result" aria-live="polite">Đang hiển thị {groups.length} nhóm bệnh</span>
     </div>
 

@@ -1,87 +1,20 @@
 ---
-import ArticleLayout from "../../layouts/ArticleLayout.astro";
-import { articleBySlug } from "../../data/articles";
-const art = articleBySlug["dinh-duong-benh-vay-nen-psoriasis"];
-if (!art) throw new Error("Article not found");
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const targetSlug = "dinh-duong-vay-nen-psoriasis";
 ---
 
-<ArticleLayout article={art}>
-
-<section class="section card">
-  <p>Anh Trí, 35 tuổi, bị vảy nến 5 năm. Da nổi mảng đỏ, bong vảy trắng, ngứa. Gần đây khớp ngón tay cũng sưng đau — viêm khớp vảy nến. Anh thấy uống thuốc thì đỡ, nhưng cứ ăn bia + hải sản là bùng phát. Anh hỏi: "Có chế độ ăn nào giúp tôi ít phải dùng thuốc không?"</p>
-  <p>Vảy nến là bệnh viêm mạn tính liên quan miễn dịch, da và đôi khi cả khớp. Dinh dưỡng không thay thuốc da liễu, nhưng khẩu phần lành mạnh, kiểm soát cân nặng và hạn chế rượu bia có thể hỗ trợ kiểm soát triệu chứng ở một số người.</p>
-</section>
-
-<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
-  <p style="font-size:1.05rem;margin:0;">
-    <strong>👉 Người vảy nến nên ưu tiên <u>khẩu phần kiểu Địa Trung Hải</u>: cá béo,
-    <u>rau xanh, trái cây, đậu, hạt</u> và vitamin D nếu thiếu. <u>Hạn chế rượu, thịt đỏ, đồ chiên rán</u>.
-    Một số bệnh nhân đỡ khi kiêng gluten thử 4 tuần.</strong>
-  </p>
-</section>
-
-<section class="section card">
-  <h2>🔬 Vì sao ăn uống ảnh hưởng tới vảy nến?</h2>
-  <p>Vảy nến là bệnh viêm mạn tính. Khẩu phần theo hướng lành mạnh, giàu cá, rau quả, chất xơ và chất béo tốt có thể hỗ trợ sức khỏe chuyển hóa. Ngược lại, rượu, dư năng lượng và thừa cân có thể làm bệnh khó kiểm soát hơn ở một số người.</p>
-</section>
-
-<section class="section grid two">
-  <div class="card">
-    <h2>✅ Thực phẩm nên ăn</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li>Cá béo: cá hồi, cá thu, cá mòi — omega-3 (≥2 bữa/tuần)</li>
-      <li>Nghệ, gừng — dùng như gia vị trong bữa ăn nếu dung nạp tốt</li>
-      <li>Rau xanh: bông cải, cải bó xôi, cải xoăn</li>
-      <li>Trái cây: việt quất, dâu tây, cam, lựu</li>
-      <li>Dầu olive, hạt óc chó, hạnh nhân</li>
-      <li>Vitamin D: trứng, cá béo + nắng sáng — thiếu D rất phổ biến ở vảy nến</li>
-    </ul>
+<BaseLayout title="Vảy nến — Dinh dưỡng chống viêm | Dinh Dưỡng Việt" description="Bài viết đã được gộp vào phiên bản chuẩn để tránh trùng lặp nội dung.">
+  <div style="max-width:640px;margin:4rem auto;text-align:center;line-height:1.8;">
+    <h1 style="font-size:2rem;">🔀 Bài viết đã được gộp</h1>
+    <p>Nội dung này đã được hợp nhất vào bài chuẩn để tránh trùng lặp.</p>
+    <a href={`/kien-thuc-dinh-duong/${targetSlug}`} style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--brand);color:white;border-radius:999px;text-decoration:none;font-weight:600;">
+      → Xem bài chuẩn tại đây
+    </a>
   </div>
-  <div class="card">
-    <h2>❌ Thực phẩm cần tránh</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li>⛔ Rượu bia — nguyên nhân số 1 làm bùng phát</li>
-      <li>⛔ Thịt đỏ (bò, heo, cừu) — chứa arachidonic acid gây viêm</li>
-      <li>⛔ Đồ chiên rán, mỡ bão hòa</li>
-      <li>⚠️ Gluten (một số người) — thử kiêng 4 tuần</li>
-      <li>⚠️ Sữa bò (một số người) — thử kiêng 4 tuần</li>
-      <li>⛔ Thuốc lá — tăng nặng vảy nến</li>
-    </ul>
-  </div>
-</section>
+</BaseLayout>
 
-<section class="section card">
-  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
-  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
-    <tr><td>🌅 Sáng</td><td>Yến mạch nấu sữa hạt + 1 muỗng hạt chia + dâu tây</td></tr>
-    <tr><td>🌞 Phụ</td><td>1 quả cam + vài hạt óc chó</td></tr>
-    <tr><td>🌞 Trưa</td><td>Cơm gạo lứt + cá hồi áp chảo + rau bông cải luộc + dầu olive</td></tr>
-    <tr><td>🌆 Phụ</td><td>Sinh tố bơ + nghệ + tiêu đen</td></tr>
-    <tr><td>🌙 Tối</td><td>Cơm gạo lứt + ức gà xào gừng + canh rau ngót</td></tr>
-  </tbody></table>
-</section>
-
-<section class="section card">
-  <h2>💡 Mẹo & Khi nào cần khám</h2>
-  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div>
-      <h4>✅ Mẹo</h4>
-      <ul style="line-height:1.8;padding-left:18px;">
-        <li>Nếu đang thừa cân, giảm cân từ từ có thể hỗ trợ kiểm soát triệu chứng ở một số người.</li>
-        <li>Không tự dùng tinh bột nghệ/curcumin liều cao nếu đang dùng thuốc chống đông, có bệnh gan mật hoặc chuẩn bị phẫu thuật; hãy hỏi bác sĩ trước.</li>
-        <li>Xét nghiệm vitamin D — bổ sung nếu thiếu.</li>
-        <li>Kiêng thử 4 tuần: gluten hoặc sữa — xem có đỡ không.</li>
-      </ul>
-    </div>
-    <div>
-      <h4>🚨 Khám ngay</h4>
-      <ul style="line-height:1.8;padding-left:18px;">
-        <li>Đau khớp sưng nóng (viêm khớp vảy nến).</li>
-        <li>Vảy nến dát vàng toàn thân (erythrodermic).</li>
-        <li>Mụn mủ trên nền da đỏ — cần nhập viện.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-</ArticleLayout>
+<script is:inline>
+  setTimeout(function() {
+    window.location.href = "/kien-thuc-dinh-duong/dinh-duong-vay-nen-psoriasis";
+  }, 1500);
+</script>

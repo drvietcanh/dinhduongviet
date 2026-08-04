@@ -17,10 +17,10 @@ const articleItems = articles
 
 const toolItems = [
   { n: "BMI & Vòng eo", s: "bmi", a: ["cân nặng", "béo phì", "mỡ"], t: "công cụ", u: "/cong-cu/bmi", k: 0, e: "⚖️" },
-  { n: "Chỉ số đường huyết (GI)", s: "chi-so-gi", a: ["glucose", "tiểu đường", "carb"], t: "công cụ", u: "/cong-cu/chi-so-gi", k: 0, e: "📊" },
-  { n: "Tính GL bữa ăn", s: "tinh-gl-bua-an", a: ["đường huyết", "tải lượng", "tiểu đường"], t: "công cụ", u: "/cong-cu/tinh-gl-bua-an", k: 0, e: "🥘" },
+  { n: "Chỉ số đường huyết (GI)", s: "chi-so-gi", a: ["glucose", "đái tháo đường", "tiểu đường", "carb"], t: "công cụ", u: "/cong-cu/chi-so-gi", k: 0, e: "📊" },
+  { n: "Tính GL bữa ăn", s: "tinh-gl-bua-an", a: ["đường huyết", "tải lượng", "đái tháo đường", "tiểu đường"], t: "công cụ", u: "/cong-cu/tinh-gl-bua-an", k: 0, e: "🥘" },
   { n: "Tính nhu cầu đạm", s: "tinh-nhu-cau-dam", a: ["protein", "thận", "cơ"], t: "công cụ", u: "/cong-cu/tinh-nhu-cau-dam", k: 0, e: "🥩" },
-  { n: "Tính carb trong bữa ăn", s: "tinh-carb", a: ["tinh bột", "đường", "tiểu đường"], t: "công cụ", u: "/cong-cu/tinh-carb", k: 0, e: "🔢" },
+  { n: "Tính carb trong bữa ăn", s: "tinh-carb", a: ["tinh bột", "đường", "đái tháo đường", "tiểu đường"], t: "công cụ", u: "/cong-cu/tinh-carb", k: 0, e: "🔢" },
   { n: "Theo dõi đường huyết", s: "theo-doi-duong-huyet", a: ["glucose", "HbA1c"], t: "công cụ", u: "/cong-cu/theo-doi-duong-huyet", k: 0, e: "🩸" },
   { n: "Tính calo tiêu thụ", s: "tinh-calo-tieu-thu", a: ["vận động", "tập", "MET"], t: "công cụ", u: "/cong-cu/tinh-calo-tieu-thu", k: 0, e: "🔥" },
   { n: "Tỷ lệ mỡ cơ thể", s: "ti-le-mo-co-the", a: ["body fat", "WHR", "vòng eo"], t: "công cụ", u: "/cong-cu/ti-le-mo-co-the", k: 0, e: "📏" },
@@ -61,7 +61,7 @@ const jsonPayload = JSON.stringify(dataPayload);
   <div class="ac-suggestions">
     <span class="ac-suggestion-label">Gợi ý nhanh:</span>
     <button class="ac-chip" data-q="bmi">⚖️ BMI</button>
-    <button class="ac-chip" data-q="tiểu đường">🩸 tiểu đường</button>
+    <button class="ac-chip" data-q="đái tháo đường">🩸 đái tháo đường</button>
     <button class="ac-chip" data-q="đạm">🥩 nhu cầu đạm</button>
     <button class="ac-chip" data-q="phở bò">🍜 phở bò</button>
     <button class="ac-chip" data-q="trứng">🥚 trứng</button>

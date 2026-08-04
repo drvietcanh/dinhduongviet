@@ -2,9 +2,9 @@
   {
     "type": "article",
     "slug": "tieu-duong-an-com-duoc-khong",
-    "name": "Bệnh Tiểu đường ăn cơm được không? Ăn bao nhiêu là vừa?",
+    "name": "Người đái tháo đường ăn cơm được không? Ăn bao nhiêu là vừa?",
     "aliases": [],
-    "description": "Giải thích cách ăn cơm phù hợp hơn khi bị tiểu đường, thay vì bỏ hoàn toàn và dễ rơi vào cách kiêng quá mức.",
+    "description": "Giải thích cách ăn cơm phù hợp hơn khi bị đái tháo đường, thay vì bỏ hoàn toàn và rơi vào cách kiêng quá mức.",
     "category": "Bai viet"
   },
   {
@@ -34,7 +34,7 @@
   {
     "type": "article",
     "slug": "huyet-ap-cao-muoi-an-o-dau",
-    "name": "Cao huyết áp: Muối đang ẩn náu ở đâu trong mâm cơm nhà bạn?",
+    "name": "Tăng huyết áp: Muối đang ẩn náu ở đâu trong mâm cơm nhà bạn?",
     "aliases": [],
     "description": "Chỉ ra những nguồn muối ẩn quen thuộc trong bếp Việt như nước mắm, mì ăn liền, chả lụa và đồ chế biến sẵn.",
     "category": "Bai viet"
@@ -122,7 +122,7 @@
   {
     "type": "article",
     "slug": "cao-huyet-ap-dash-diet",
-    "name": "Cao huyết áp & DASH Diet: Sức mạnh của Kali",
+    "name": "Tăng huyết áp & DASH diet: Sức mạnh của kali",
     "aliases": [],
     "description": "Giải thích vì sao ngoài giảm natri, chế độ DASH còn nhấn mạnh kali, thực phẩm tươi và thói quen ăn uống đều đặn hơn.",
     "category": "Bai viet"
@@ -202,7 +202,7 @@
   {
     "type": "article",
     "slug": "tieu-duong-thai-ky-gestational",
-    "name": "Tiểu đường thai kỳ: Sai lầm chết người khi mẹ bầu nhịn đói",
+    "name": "Đái tháo đường thai kỳ: Sai lầm chết người khi mẹ bầu nhịn đói",
     "aliases": [],
     "description": "Cách áp dụng chiến thuật ",
     "category": "Bai viet"
@@ -226,7 +226,7 @@
   {
     "type": "article",
     "slug": "khang-insulin-resistance",
-    "name": "Kháng Insulin (Gai đen): Căn nguyên của béo phì và tiểu đường",
+    "name": "Kháng insulin (gai đen): Căn nguyên của béo phì và đái tháo đường",
     "aliases": [],
     "description": "Khi tế bào đổi ổ khóa và cách ",
     "category": "Bai viet"
@@ -242,9 +242,9 @@
   {
     "type": "article",
     "slug": "viem-xoang-di-ung-histamine",
-    "name": "Viêm xoang & Viêm mũi dị ứng: Sự thật về chất Histamine",
+    "name": "Viêm xoang & Viêm mũi dị ứng: Góc nhìn histamine từ đồ ăn và đồ uống",
     "aliases": [],
-    "description": "Giải mã cơ chế sưng phù niêm mạc mũi do Histamine trong đồ lên men, bia rượu và cách dập tắt bằng Quercetin.",
+    "description": "Tập trung vào histamine trong đồ lên men, bia rượu và cách theo dõi thực phẩm kích hoạt triệu chứng nghẹt mũi, chảy mũi.",
     "category": "Bai viet"
   },
   {
@@ -362,9 +362,9 @@
   {
     "type": "article",
     "slug": "viem-da-co-dia-eczema",
-    "name": "Viêm da cơ địa (Eczema): Chữa lành da từ hệ vi sinh đường ruột",
+    "name": "Viêm da cơ địa (Eczema): Dị ứng thức ăn, probiotics và loại trừ có hướng dẫn",
     "aliases": [],
-    "description": "Giải mã hội chứng ",
+    "description": "Tập trung vào dị ứng thức ăn đi kèm, probiotics và cách loại trừ từng nhóm thực phẩm có kiểm soát ở người viêm da cơ địa.",
     "category": "Bai viet"
   },
   {
@@ -690,17 +690,17 @@
   {
     "type": "article",
     "slug": "dai-thao-duong",
-    "name": "Tiểu đường — Chế độ ăn cho người tiểu đường",
+    "name": "Đái tháo đường — Chế độ ăn cho người đái tháo đường",
     "aliases": [],
-    "description": "Kiểm soát carb, chỉ số đường huyết. Thực đơn và nguyên tắc dinh dưỡng.",
+    "description": "Kiểm soát carbohydrate, đường huyết và khẩu phần. Thực đơn cùng nguyên tắc dinh dưỡng nền tảng.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "tang-huyet-ap",
-    "name": "Cao huyết áp — Chế độ ăn giảm muối",
+    "name": "Tăng huyết áp — Chế độ ăn giảm muối",
     "aliases": [],
-    "description": "Giảm natri, tăng kali. Thực đơn DASH cho người Việt.",
+    "description": "Giảm natri, ưu tiên thực phẩm giàu kali nếu phù hợp. Cách áp dụng kiểu ăn DASH theo bữa cơm Việt.",
     "category": "Bai viet"
   },
   {
@@ -778,9 +778,9 @@
   {
     "type": "article",
     "slug": "dau-da-day",
-    "name": "Đau dạ dày — Thực đơn cho người viêm loét dạ dày",
+    "name": "Đau dạ dày — Nguyên tắc ăn uống, HP và thói quen cần sửa",
     "aliases": [],
-    "description": "HP, nguyên tắc ăn uống, hỗ trợ diệt HP từ thực phẩm, thực đơn mẫu.",
+    "description": "Bài nền tảng về HP, thuốc giảm đau NSAID, rượu bia, cà phê và nguyên tắc ăn uống khi viêm loét dạ dày.",
     "category": "Bai viet"
   },
   {
@@ -938,9 +938,9 @@
   {
     "type": "article",
     "slug": "com-trang-tieu-duong",
-    "name": "Cơm trắng — Có phải nguyên nhân gây tiểu đường?",
+    "name": "Cơm trắng — Có phải nguyên nhân gây đái tháo đường?",
     "aliases": [],
-    "description": "Cơm trắng và tiểu đường: sự thật. 7 cách ăn cơm lành mạnh hơn, so sánh các loại tinh bột.",
+    "description": "Sự thật về cơm trắng và đái tháo đường, kèm 7 cách ăn cơm phù hợp hơn và so sánh các loại tinh bột.",
     "category": "Bai viet"
   },
   {
@@ -1092,7 +1092,7 @@
     "slug": "bun-pho-mi-duong-huyet",
     "name": "Bún, phở, mì, miến — Món nào dễ tăng đường huyết hơn?",
     "aliases": [],
-    "description": "So sánh GI các loại. Cách ăn ít tăng đường huyết. Mẹo gọi món cho người tiểu đường.",
+    "description": "So sánh GI các loại, cách ăn ít làm tăng đường huyết hơn và mẹo gọi món cho người đái tháo đường.",
     "category": "Bai viet"
   },
   {
@@ -1148,7 +1148,7 @@
     "slug": "an-du-lich-benh-nen",
     "name": "Đi du lịch với bệnh nền — Chuẩn bị gì, ăn gì?",
     "aliases": [],
-    "description": "Chuẩn bị trước chuyến đi, ăn uống khi du lịch với tiểu đường/THA/gout. Danh sách cần mang.",
+    "description": "Chuẩn bị trước chuyến đi, ăn uống khi du lịch với đái tháo đường, tăng huyết áp hoặc gout. Danh sách cần mang.",
     "category": "Bai viet"
   },
   {
@@ -1170,7 +1170,7 @@
   {
     "type": "article",
     "slug": "an-tet-nguoi-benh",
-    "name": "Ăn Tết cho người tiểu đường, gout, cao huyết áp",
+    "name": "Ăn Tết cho người đái tháo đường, gout, tăng huyết áp",
     "aliases": [],
     "description": "Bánh chưng, thịt kho, dưa hành, mứt — ăn thế nào? Checklist Tết cho từng bệnh.",
     "category": "Bai viet"
@@ -1186,9 +1186,9 @@
   {
     "type": "article",
     "slug": "sai-lam-tieu-duong-bo-com",
-    "name": "Người tiểu đường không cần bỏ hoàn toàn cơm",
+    "name": "Người đái tháo đường không cần bỏ hoàn toàn cơm",
     "aliases": [],
-    "description": "Người tiểu đường VẪN ăn cơm được. Cách kiểm soát lượng. Luật đĩa, gạo lứt, thứ tự ăn.",
+    "description": "Người đái tháo đường vẫn ăn cơm được. Cách kiểm soát lượng, áp dụng luật đĩa và sắp xếp thứ tự ăn.",
     "category": "Bai viet"
   },
   {
@@ -1250,31 +1250,31 @@
   {
     "type": "article",
     "slug": "thuc-don-tieu-duong-binh-dan",
-    "name": "Thực đơn 1 ngày cho người tiểu đường — Phiên bản bình dân",
+    "name": "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản bình dân",
     "aliases": [],
-    "description": "Bữa cơm gia đình, tiết kiệm. Phở sáng, cơm trưa cá kho, cơm tối gà luộc. Không cần bỏ cơm, chỉ giảm lượng.",
+    "description": "Bữa cơm gia đình tiết kiệm, quen miệng. Không cần bỏ cơm, chỉ cần kiểm soát lượng và phối hợp món hợp lý.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-tieu-duong-ban-ron",
-    "name": "Thực đơn 1 ngày cho người tiểu đường — Phiên bản đi làm bận rộn",
+    "name": "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản đi làm bận rộn",
     "aliases": [],
-    "description": "Người tiểu đường không có thời gian nấu. Sáng nhanh, trưa ăn ngoài, tối đơn giản. Mẹo gọi món.",
+    "description": "Gợi ý cho người đi làm ít thời gian nấu, với mẹo ăn sáng nhanh, gọi món ngoài và giữ đường huyết ổn định hơn.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-tieu-duong-nguoi-gia",
-    "name": "Thực đơn 1 ngày cho người tiểu đường — Phiên bản người lớn tuổi",
+    "name": "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản người lớn tuổi",
     "aliases": [],
-    "description": "Thực đơn mềm, dễ nhai cho người già tiểu đường. Cháo, cá hấp, rau củ nghiền. Đủ đạm, kiểm soát đường huyết.",
+    "description": "Thực đơn mềm, dễ nhai cho người lớn tuổi bị đái tháo đường, vẫn bảo đảm đạm và kiểm soát đường huyết.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-huyet-ap-binh-dan",
-    "name": "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản bình dân",
+    "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân",
     "aliases": [],
     "description": "Thực đơn giảm muối kiểu cơm nhà. Pha loãng nước mắm, kho nhạt, dùng gia vị thơm. Dưới 2g muối.",
     "category": "Bai viet"
@@ -1282,7 +1282,7 @@
   {
     "type": "article",
     "slug": "thuc-don-huyet-ap-ban-ron",
-    "name": "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản đi làm",
+    "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm",
     "aliases": [],
     "description": "Thực đơn giảm muối cho người bận rộn. Mẹo gọi món ngoài, đọc nhãn đồ đóng gói.",
     "category": "Bai viet"
@@ -1290,9 +1290,9 @@
   {
     "type": "article",
     "slug": "thuc-don-huyet-ap-nguoi-gia",
-    "name": "Thực đơn 1 ngày cho người cao huyết áp — Phiên bản người lớn tuổi",
+    "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản người lớn tuổi",
     "aliases": [],
-    "description": "Thực đơn mềm, ít muối, dễ ăn cho người lớn tuổi bị cao huyết áp. Dùng sả gừng thay muối.",
+    "description": "Thực đơn mềm, ít muối, dễ ăn cho người lớn tuổi bị tăng huyết áp, dùng gia vị thơm để bữa ăn vẫn ngon miệng.",
     "category": "Bai viet"
   },
   {
@@ -1370,15 +1370,15 @@
   {
     "type": "article",
     "slug": "thuc-don-tieu-duong",
-    "name": "Thực đơn 1 ngày cho người tiểu đường type 2",
+    "name": "Thực đơn 1 ngày cho người đái tháo đường type 2",
     "aliases": [],
-    "description": "Thực đơn 1500-1600 kcal cho tiểu đường. 4 bữa + thay thế món. Mẹo ăn ngoài.",
+    "description": "Thực đơn khoảng 1500-1600 kcal cho người đái tháo đường type 2, kèm lựa chọn thay món và mẹo ăn ngoài.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-tang-huyet-ap",
-    "name": "Thực đơn 1 ngày cho người cao huyết áp — dưới 2g muối",
+    "name": "Thực đơn 1 ngày cho người tăng huyết áp — dưới 2g muối",
     "aliases": [],
     "description": "Thực đơn 1500 kcal, muối dưới 2g. Mẹo giảm muối không giảm ngon.",
     "category": "Bai viet"
@@ -1514,9 +1514,9 @@
   {
     "type": "article",
     "slug": "di-cho-tieu-duong",
-    "name": "Đi chợ cho người tiểu đường — Nên mua gì trong 30 phút?",
+    "name": "Đi chợ cho người đái tháo đường — Nên mua gì trong 30 phút?",
     "aliases": [],
-    "description": "Danh sách đi chợ 30 phút cho người tiểu đường. Nhóm thực phẩm nên mua, tránh mua, cách đọc nhãn.",
+    "description": "Danh sách đi chợ 30 phút cho người đái tháo đường, gồm nhóm thực phẩm nên mua, nên hạn chế và cách đọc nhãn.",
     "category": "Bai viet"
   },
   {
@@ -1546,9 +1546,9 @@
   {
     "type": "article",
     "slug": "an-quan-khi-benh-nen",
-    "name": "Ăn quán khi bị tiểu đường, cao huyết áp, gout — Cần biết gì?",
+    "name": "Ăn quán khi bị đái tháo đường, tăng huyết áp, gout — Cần biết gì?",
     "aliases": [],
-    "description": "Hướng dẫn ăn ngoài hàng quán cho người tiểu đường, cao huyết áp và gout.",
+    "description": "Hướng dẫn ăn ngoài hàng quán cho người đái tháo đường, tăng huyết áp và gout.",
     "category": "Bai viet"
   },
   {
@@ -1746,9 +1746,9 @@
   {
     "type": "article",
     "slug": "tien-dai-thao-duong",
-    "name": "Tiền tiểu đường — Giai đoạn nên thay đổi sớm",
+    "name": "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm",
     "aliases": [],
-    "description": "Đường huyết cao nhưng chưa phải tiểu đường? 5 nguyên tắc ăn uống, thực đơn 1 ngày và checklist giúp giảm nguy cơ tiến triển.",
+    "description": "Đường huyết đã cao nhưng chưa tới ngưỡng đái tháo đường? Đây là lúc nên thay đổi ăn uống, vận động và theo dõi sát hơn.",
     "category": "Bai viet"
   },
   {
@@ -1762,9 +1762,9 @@
   {
     "type": "article",
     "slug": "canh-bao-hieu-lam-com-tieu-duong",
-    "name": "Cảnh báo hiểu lầm: Người tiểu đường không cần bỏ hoàn toàn cơm",
+    "name": "Cảnh báo hiểu lầm: Người đái tháo đường không cần bỏ hoàn toàn cơm",
     "aliases": [],
-    "description": "Người tiểu đường VẪN ăn cơm được. Cách kiểm soát lượng, chọn gạo lứt, thứ tự ăn.",
+    "description": "Người đái tháo đường vẫn ăn cơm được. Cách kiểm soát lượng, chọn gạo phù hợp và sắp xếp thứ tự ăn.",
     "category": "Bai viet"
   },
   {
@@ -1850,7 +1850,7 @@
   {
     "type": "article",
     "slug": "dung-tin-ngay-gao-lut-tieu-duong",
-    "name": "Ăn gạo lứt chữa được tiểu đường? Không có thực phẩm kỳ diệu nào cả",
+    "name": "Ăn gạo lứt chữa được đái tháo đường? Không có thực phẩm kỳ diệu nào cả",
     "aliases": [],
     "description": "Gạo lứt tốt hơn gạo trắng nhưng vẫn là tinh bột. Kiểm soát lượng, không phải thay thế hoàn toàn.",
     "category": "Bai viet"
@@ -1874,9 +1874,9 @@
   {
     "type": "article",
     "slug": "dung-tin-ngay-mat-ong-tieu-duong",
-    "name": "Mật ong có dùng thoải mái cho người tiểu đường? Không, nó vẫn là đường",
+    "name": "Mật ong có dùng thoải mái cho người đái tháo đường? Không, nó vẫn là đường",
     "aliases": [],
-    "description": "Mật ong có chỉ số đường huyết không thấp hơn đường mía. Người tiểu đường vẫn cần kiểm soát lượng, không dùng thoải mái.",
+    "description": "Mật ong không phải ngoại lệ an toàn cho người đái tháo đường; vẫn cần kiểm soát lượng như các nguồn đường khác.",
     "category": "Bai viet"
   },
   {
@@ -1897,14 +1897,6 @@
   },
   {
     "type": "article",
-    "slug": "dinh-duong-benh-phoi-copd",
-    "name": "Dinh dưỡng cho người bệnh phổi (COPD & viêm phế quản mạn)",
-    "aliases": [],
-    "description": "Chế độ ăn cho người bệnh phổi tắc nghẽn mạn tính: tăng đạm, vitamin D, hạn chế tinh bột nhanh. Thực đơn cho người khó thở, suy kiệt.",
-    "category": "Bai viet"
-  },
-  {
-    "type": "article",
     "slug": "dinh-duong-suy-giap",
     "name": "Dinh dưỡng cho người suy giáp (kém năng tuyến giáp)",
     "aliases": [],
@@ -1917,14 +1909,6 @@
     "name": "Dinh dưỡng cho người bệnh Parkinson",
     "aliases": [],
     "description": "Chế độ ăn cho người Parkinson: tăng chất xơ chống táo bón, kiểm soát đạm liên quan thuốc levodopa, hỗ trợ nuốt.",
-    "category": "Bai viet"
-  },
-  {
-    "type": "article",
-    "slug": "dinh-duong-lupus-ban-do",
-    "name": "Dinh dưỡng cho người lupus ban đỏ hệ thống",
-    "aliases": [],
-    "description": "Chế độ ăn chống viêm cho lupus: omega-3, canxi phòng loãng xương do corticoid, tránh thực phẩm kích hoạt bùng phát.",
     "category": "Bai viet"
   },
   {
@@ -1986,9 +1970,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-viem-mui-di-ung",
-    "name": "Dinh dưỡng cho người viêm mũi dị ứng",
+    "name": "Viêm mũi dị ứng — Thực phẩm hỗ trợ giảm hắt hơi, sổ mũi khi giao mùa",
     "aliases": [],
-    "description": "Thực phẩm chống viêm giảm triệu chứng dị ứng: quercetin, vitamin C, omega-3. Thực phẩm nên tránh khi giao mùa.",
+    "description": "Bài nền tảng về quercetin, vitamin C, omega-3 và các thực phẩm nên hạn chế khi viêm mũi dị ứng bùng phát.",
     "category": "Bai viet"
   },
   {
@@ -2026,9 +2010,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-benh-da-day-nen-an-gi",
-    "name": "Đau dạ dày — Ăn gì để nhanh lành?",
+    "name": "Đau dạ dày — Ăn gì để dịu triệu chứng và dễ hồi phục hơn?",
     "aliases": [],
-    "description": "Thực phẩm giúp dịu niêm mạc dạ dày, giảm tiết acid, hỗ trợ lành ổ loét. Thực đơn cho từng giai đoạn viêm/loét/hồi phục.",
+    "description": "Tập trung vào món mềm, dễ tiêu, thực phẩm nên ăn và nên tránh khi đau dạ dày hoặc viêm loét đang hoạt động.",
     "category": "Bai viet"
   },
   {
@@ -2037,14 +2021,6 @@
     "name": "PCOS (Buồng trứng đa nang) — Dinh dưỡng cải thiện nội tiết",
     "aliases": [],
     "description": "Chế độ ăn ít GI, chống viêm cho người PCOS. Giảm kháng insulin, cân bằng hormone, cải thiện kinh nguyệt và khả năng sinh sản.",
-    "category": "Bai viet"
-  },
-  {
-    "type": "article",
-    "slug": "dinh-duong-benh-vay-nen-psoriasis",
-    "name": "Vảy nến (Psoriasis) — Ăn chống viêm giảm bong vảy",
-    "aliases": [],
-    "description": "Chế độ ăn chống viêm cho người vảy nến. Omega-3, vitamin D, nghệ, tránh gluten, rượu, thịt đỏ — giảm triệu chứng ngoài da và khớp.",
     "category": "Bai viet"
   },
   {
@@ -2130,9 +2106,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-eczema-viem-da-co-dia",
-    "name": "Eczema & Viêm da cơ địa — Dinh dưỡng giảm ngứa, giảm bùng phát",
+    "name": "Eczema & Viêm da cơ địa — Bài nền tảng về ăn uống giảm ngứa, giảm bùng phát",
     "aliases": [],
-    "description": "Viêm da cơ địa (eczema, atopic dermatitis) ở trẻ em và người lớn. Thực phẩm nên tránh và nên ăn để giảm viêm da.",
+    "description": "Bài nền tảng về thực phẩm nên ăn, nên tránh và những nguyên tắc chung giúp giảm ngứa, giảm bùng phát viêm da cơ địa.",
     "category": "Bai viet"
   },
   {
@@ -2146,9 +2122,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-viem-xoang",
-    "name": "Viêm xoang — Dinh dưỡng giảm viêm, giảm triệu chứng",
+    "name": "Viêm xoang — Bài nền tảng về ăn uống giảm viêm và chăm sóc khi nghẹt mũi",
     "aliases": [],
-    "description": "Viêm xoang mạn tính: thực phẩm giảm viêm, tránh sữa (nếu nhạy cảm), tăng omega-3, uống đủ nước.",
+    "description": "Bài nền tảng về uống đủ nước, thực phẩm giảm viêm, thử hạn chế sữa khi nghi nhạy cảm và các mẹo ăn uống khi viêm xoang.",
     "category": "Bai viet"
   },
   {
@@ -2341,6 +2317,38 @@
     "name": "Bỏ bữa sáng để giảm cân? Hiệu quả ảo, hại thật",
     "aliases": [],
     "description": "Nhịn bữa sáng có thể giảm cân ngắn hạn nhưng gây rối loạn đường huyết, mất cơ, tăng cân trở lại.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-hong-amidan-an-gi",
+    "name": "Viêm họng, viêm amidan nên ăn gì để đỡ đau và dễ nuốt hơn?",
+    "aliases": [],
+    "description": "Gợi ý món mềm, nguội hoặc ấm vừa, ưu tiên uống đủ nước và tránh chất kích thích khi đau họng hoặc viêm amidan.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-chay-du-lich-bu-nuoc",
+    "name": "Tiêu chảy du lịch: Bù nước thế nào, ăn gì và khi nào cần đi khám?",
+    "aliases": [],
+    "description": "Tập trung vào bù nước, oresol, ăn nhẹ phù hợp và dấu hiệu báo động khi bị tiêu chảy trong lúc đi du lịch.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hydrat-hoa-phuc-hoi-sau-tap",
+    "name": "Hydrat hóa và ăn sau tập: Cách phục hồi cơ bản cho người vận động",
+    "aliases": [],
+    "description": "Nguyên tắc uống nước, điện giải, carbohydrate và protein sau tập để phục hồi tốt hơn mà không cần dùng thực phẩm bổ sung phức tạp.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "om-nghen-thai-an-gi",
+    "name": "Ốm nghén nên ăn gì để đỡ buồn nôn mà vẫn đủ chất?",
+    "aliases": [],
+    "description": "Gợi ý chia nhỏ bữa, ưu tiên món khô dễ chịu, bù nước hợp lý và nhận biết dấu hiệu cần đi khám khi ốm nghén.",
     "category": "Bai viet"
   },
   {

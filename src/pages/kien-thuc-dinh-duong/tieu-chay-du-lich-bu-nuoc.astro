@@ -1,0 +1,74 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tieu-chay-du-lich-bu-nuoc"];
+if (!art) throw new Error("Article not found: tieu-chay-du-lich-bu-nuoc");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Tiêu chảy khi đi du lịch thường làm người bệnh lo nhất ở hai điểm: <strong>mất nước</strong> và không biết nên ăn gì để đỡ mệt mà không làm bụng khó chịu hơn. Điều cần ưu tiên đầu tiên không phải là "ăn cho khỏe lại ngay", mà là <strong>bù nước đúng cách</strong>.</p>
+    <p>Nếu nôn ói nhiều, tiêu chảy liên tục, khát dữ, tiểu ít, lừ đừ, sốt cao hoặc có máu trong phân, cần đi khám thay vì tự xử kéo dài.</p>
+  </section>
+
+  <section class="section card" style="background:#eef7ff;border:1px solid #b6d4fe;">
+    <p style="margin:0;"><strong>Ý chính:</strong> uống từng ngụm nhỏ nhưng liên tục, ưu tiên oresol pha đúng hướng dẫn; sau đó ăn lại từng ít với món dễ tiêu như cháo, cơm, chuối, bánh mì nướng, súp.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>✅ Nên làm ngay</h2>
+      <ul>
+        <li>Dùng oresol hoặc dung dịch bù nước điện giải đóng gói</li>
+        <li>Uống từng ngụm nhỏ, đều tay nếu đang buồn nôn</li>
+        <li>Ăn lại sớm bằng khẩu phần nhỏ khi có thể dung nạp</li>
+        <li>Chọn cháo, súp, cơm, bánh mì nướng, chuối, khoai</li>
+        <li>Rửa tay kỹ và chú ý vệ sinh nước uống, thực phẩm</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>⚠️ Nên tránh</h2>
+      <ul>
+        <li>Chỉ uống nước lọc số lượng lớn mà không bù điện giải khi mất nước nhiều</li>
+        <li>Nước ngọt, rượu bia, cà phê nếu làm bụng khó chịu hơn</li>
+        <li>Món quá dầu mỡ, cay, quá nhiều sữa nếu đang đầy bụng</li>
+        <li>Pha oresol đặc hơn hoặc loãng hơn hướng dẫn</li>
+        <li>Tự dùng thuốc cầm tiêu chảy trong mọi tình huống, nhất là khi sốt hoặc phân máu</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Bù nước thế nào cho đúng?</h2>
+    <ul>
+      <li>Ưu tiên <strong>oresol pha đúng tỉ lệ</strong> ghi trên gói.</li>
+      <li>Nếu tiêu chảy hoặc nôn nhiều, uống từng ngụm nhỏ mỗi 1-2 phút sẽ dễ giữ lại hơn.</li>
+      <li>CDC lưu ý người lớn có nôn hoặc tiêu chảy có thể cần lượng oresol đáng kể trong ngày; nếu khát nhiều, lừ đừ, không tiểu hoặc không uống nổi, cần đi khám.</li>
+      <li>Không thay thế hoàn toàn oresol bằng nước ngọt, nước tăng lực hoặc nước trái cây quá ngọt.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi bắt đầu ăn lại, nên chọn gì?</h2>
+    <table class="table">
+      <thead><tr><th>Nhóm</th><th>Gợi ý</th><th>Mẹo</th></tr></thead>
+      <tbody>
+        <tr><td>Tinh bột dễ tiêu</td><td>Cháo, cơm trắng, bánh mì nướng, khoai</td><td>Ăn ít một, tăng dần</td></tr>
+        <tr><td>Đạm nhẹ</td><td>Trứng, thịt nạc, cá hấp, đậu phụ</td><td>Tránh chế biến nhiều dầu</td></tr>
+        <tr><td>Trái cây</td><td>Chuối chín, táo nấu mềm</td><td>Ưu tiên lượng nhỏ</td></tr>
+        <tr><td>Nước</td><td>Oresol, nước, canh loãng</td><td>Tiếp tục uống cả khi đã ăn được</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>Dấu hiệu báo động</h2>
+    <ul>
+      <li>Tiêu chảy nặng kèm sốt cao, phân máu, đau bụng dữ dội</li>
+      <li>Khó uống, nôn liên tục, lừ đừ, chóng mặt, tiểu rất ít</li>
+      <li>Người lớn tuổi, thai kỳ, bệnh thận, bệnh tim, đái tháo đường hoặc suy giảm miễn dịch</li>
+      <li>Triệu chứng kéo dài hoặc nặng lên trong chuyến đi</li>
+    </ul>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,66 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-hong-amidan-an-gi"];
+if (!art) throw new Error("Article not found: viem-hong-amidan-an-gi");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Khi đau họng hoặc viêm amidan, nhiều người càng cố ăn đồ nóng, cay hoặc quá khô với hi vọng "sát khuẩn". Thực tế, niêm mạc họng đang viêm thường dễ kích ứng hơn, nên mục tiêu trước hết là <strong>uống đủ nước, chọn món mềm, dễ nuốt và đỡ cọ xát</strong>.</p>
+    <p>Nội dung dưới đây phù hợp với đau họng do cảm lạnh, viêm họng hoặc viêm amidan mức độ nhẹ. Nếu khó thở, sốt cao kéo dài, chảy nước dãi, nuốt đau tăng nhanh hoặc có dấu hiệu mất nước, cần đi khám sớm.</p>
+  </section>
+
+  <section class="section card" style="background:#eefbf3;border:1px solid #b7e4c7;">
+    <p style="margin:0;"><strong>Ý chính:</strong> ưu tiên nước, món mềm hoặc nguội mát, tránh rượu bia, thuốc lá, món quá cay chua hoặc quá cứng; nghỉ ngơi và dùng thuốc giảm đau theo hướng dẫn khi cần.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>✅ Nên ưu tiên</h2>
+      <ul>
+        <li>Nước lọc, nước ấm vừa hoặc nguội mát tùy dễ chịu hơn</li>
+        <li>Cháo đặc, súp, bún mềm, nui mềm, khoai nghiền</li>
+        <li>Sữa chua, pudding mềm, trái cây mềm như chuối chín</li>
+        <li>Canh ấm vừa, trứng hấp, đậu phụ non, cá hấp gỡ kỹ xương</li>
+        <li>Chia nhiều bữa nhỏ nếu nuốt đau</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>⚠️ Nên tránh</h2>
+      <ul>
+        <li>Đồ quá cay, quá chua, nhiều tiêu ớt</li>
+        <li>Đồ chiên giòn, bánh khô, snack, hạt cứng</li>
+        <li>Rượu bia, thuốc lá, môi trường nhiều khói</li>
+        <li>Nước quá nóng nếu làm rát họng hơn</li>
+        <li>Tự dùng kháng sinh hoặc ngậm thuốc quá mức khi chưa được khám</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Gợi ý món ăn 1 ngày khi đau họng</h2>
+    <table class="table">
+      <thead><tr><th>Bữa</th><th>Gợi ý</th><th>Lưu ý</th></tr></thead>
+      <tbody>
+        <tr><td>Sáng</td><td>Cháo thịt bằm hoặc yến mạch nấu mềm</td><td>Ăn ấm vừa, không quá nóng</td></tr>
+        <tr><td>Giữa sáng</td><td>Sữa chua hoặc chuối chín</td><td>Chọn loại dễ nuốt, ít chua</td></tr>
+        <tr><td>Trưa</td><td>Súp gà, nui mềm, đậu phụ non</td><td>Ưu tiên món ẩm, ít dầu</td></tr>
+        <tr><td>Chiều</td><td>Nước, oresol nếu mất nước, trái cây mềm</td><td>Uống từng ngụm nhỏ nếu đau nhiều</td></tr>
+        <tr><td>Tối</td><td>Cháo cá hoặc khoai nghiền với trứng hấp</td><td>Không ép ăn nhiều một lúc</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào cần đi khám sớm?</h2>
+    <ul>
+      <li>Khó thở, nuốt nước bọt cũng rất đau, chảy dãi hoặc há miệng khó</li>
+      <li>Sốt cao kéo dài hơn 2-3 ngày hoặc đau tăng nhanh một bên họng</li>
+      <li>Dấu hiệu mất nước: tiểu ít, khô môi, choáng váng, lừ đừ</li>
+      <li>Người có bệnh nền, suy giảm miễn dịch, thai kỳ hoặc trẻ nhỏ</li>
+    </ul>
+    <p class="muted">Theo khuyến nghị tự chăm sóc của NHS, phần lớn đau họng có thể cải thiện với nghỉ ngơi, nước uống và món mềm. Kháng sinh không phải lúc nào cũng cần.</p>
+  </section>
+</ArticleLayout>

@@ -46,7 +46,6 @@ const toolMap = {
   'san-khoa': [{ h: '/cong-cu/dinh-duong-thai-ky', l: 'Dinh dưỡng thai kỳ' }, { h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }],
   'di-ung': [{ h: '/cong-cu/checklist-an-uong', l: 'Checklist ăn uống' }, { h: '/cong-cu/tuong-tac-thuoc-thuc-pham', l: 'Thuốc - thực phẩm' }],
   'tai-mui-hong': [{ h: '/cong-cu/nuoc-uong', l: 'Tính nhu cầu nước' }, { h: '/cong-cu/checklist-an-uong', l: 'Checklist ăn uống' }],
-  'phau-thuat': [{ h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }, { h: '/cong-cu/khau-phan-viet-clinical', l: 'Khẩu phần Việt Clinical' }],
   'ngoai-khoa': [{ h: '/cong-cu/tinh-nhu-cau-dam', l: 'Nhu cầu đạm' }, { h: '/cong-cu/khau-phan-viet-clinical', l: 'Khẩu phần Việt Clinical' }],
   'truyen-nhiem': [{ h: '/cong-cu/nuoc-uong', l: 'Tính nhu cầu nước' }, { h: '/cong-cu/khau-phan-don-gian', l: 'Khẩu phần tham khảo' }],
   'dinh-duong-the-thao': [{ h: '/cong-cu/tinh-calo-tieu-thu', l: 'Calo tiêu thụ' }, { h: '/cong-cu/tinh-nang-luong', l: 'Tính BMR & TDEE' }],
@@ -70,7 +69,6 @@ const specialtyCTA = {
   'san-khoa': '🤰 Trong thai kỳ và sau sinh, dinh dưỡng cần cá thể hóa theo tuần thai và triệu chứng. Bạn có thể xem <a href="/cong-cu/dinh-duong-thai-ky">công cụ dinh dưỡng thai kỳ</a> để định hướng ban đầu.',
   'di-ung': '🌿 Với dị ứng thực phẩm, điều quan trọng là nhận diện tình huống nguy cơ và tránh lây nhiễm chéo. Bạn có thể dùng <a href="/cong-cu/checklist-an-uong">checklist ăn uống</a> để tự rà nhanh trong ngày.',
   'tai-mui-hong': '👂 Khi khó chịu vùng tai mũi họng, ưu tiên đủ nước và bữa ăn dễ nuốt. Bạn có thể xem <a href="/cong-cu/nuoc-uong">công cụ nhu cầu nước</a> để ước lượng lượng uống hằng ngày.',
-  'phau-thuat': '🏥 Sau phẫu thuật, ưu tiên đủ năng lượng và đủ đạm để hồi phục. Dùng <a href="/cong-cu/tinh-nhu-cau-dam">công cụ nhu cầu đạm</a> để ước lượng ban đầu.',
   'ngoai-khoa': '🩹 Trong giai đoạn hồi phục ngoại khoa, đạm và khẩu phần đầy đủ giúp bảo tồn khối cơ tốt hơn. Bạn có thể xem <a href="/cong-cu/khau-phan-viet-clinical">khẩu phần Việt Clinical</a>.',
   'truyen-nhiem': '🦠 Khi đang hồi phục sau sốt hoặc nhiễm trùng, ưu tiên đủ nước và bữa ăn dễ dung nạp. Có thể xem <a href="/cong-cu/nuoc-uong">công cụ nhu cầu nước</a> để định hướng nhanh.',
   'dinh-duong-the-thao': '🏃 Với vận động và sức bền, tổng năng lượng và thời điểm nạp carb quan trọng hơn việc kiêng khem cực đoan. Xem <a href="/cong-cu/tinh-calo-tieu-thu">công cụ calo tiêu thụ</a> hoặc <a href="/cong-cu/tinh-nang-luong">ước tính BMR & TDEE</a>.',
@@ -84,8 +82,8 @@ const toolLinks = article.specialty && article.specialty in toolMap
   : [{ h: '/cong-cu/bmi', l: 'BMI & Vòng eo' }, { h: '/cong-cu/muc-tieu-can-nang', l: 'Mục tiêu cân nặng' }];
 
 const audienceLabelMap: Record<string, string> = {
-  diabetes: "Tiểu đường",
-  hypertension: "Cao huyết áp",
+  diabetes: "Đái tháo đường",
+  hypertension: "Tăng huyết áp",
   gout: "Gout",
   kidney: "Bệnh thận",
   "fatty-liver": "Gan nhiễm mỡ",
@@ -99,12 +97,12 @@ const audienceLabelMap: Record<string, string> = {
 };
 
 const pathwayMap: Record<string, { label: string; href: string }> = {
-  diabetes: { label: "Lộ trình tiểu đường", href: "/ban-do-benh#tieu-duong" },
-  hypertension: { label: "Lộ trình cao huyết áp", href: "/ban-do-benh#huyet-ap" },
-  gout: { label: "Lộ trình gout", href: "/ban-do-benh#gout" },
-  kidney: { label: "Lộ trình bệnh thận", href: "/ban-do-benh#suy-than" },
-  "fatty-liver": { label: "Lộ trình gan nhiễm mỡ", href: "/ban-do-benh#gan" },
-  stomach: { label: "Lộ trình dạ dày - trào ngược", href: "/ban-do-benh#da-day" },
+  diabetes: { label: "Lộ trình đái tháo đường", href: "/theo-benh/tieu-duong" },
+  hypertension: { label: "Lộ trình tăng huyết áp", href: "/theo-benh/cao-huyet-ap" },
+  gout: { label: "Lộ trình gout", href: "/theo-benh/gout-axit-uric" },
+  kidney: { label: "Lộ trình bệnh thận", href: "/theo-benh/benh-than" },
+  "fatty-liver": { label: "Lộ trình gan nhiễm mỡ", href: "/theo-benh/gan-nhiem-mo" },
+  stomach: { label: "Lộ trình dạ dày - trào ngược", href: "/theo-benh/da-day-trao-nguoc" },
   elderly: { label: "Lộ trình người cao tuổi", href: "/ban-do-benh#nguoi-gia" },
   pregnancy: { label: "Lộ trình mang thai", href: "/ban-do-benh#ba-bau" },
 };

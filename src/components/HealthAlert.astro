@@ -42,19 +42,19 @@ if (protein >= 20) {
   });
 }
 
-// 2. Tiểu đường — GI, GL, carb, sugar
+// 2. Đái tháo đường — GI, GL, carb, sugar
 if (gi !== undefined) {
   if (gi > 70) {
     warnings.push({
       icon: "🩸",
-      title: "Cảnh báo Tiểu đường",
-      advice: `Chỉ số đường huyết GI=${gi} (cao). Làm tăng đường huyết nhanh. Người tiểu đường nên hạn chế hoặc ăn kèm chất xơ/đạm.`,
+      title: "Cảnh báo Đái tháo đường",
+      advice: `Chỉ số đường huyết GI=${gi} (cao). Làm tăng đường huyết nhanh. Người đái tháo đường nên hạn chế hoặc ăn kèm chất xơ/đạm.`,
       severity: "high",
     });
   } else if (gi >= 56) {
     warnings.push({
       icon: "🩸",
-      title: "Lưu ý Tiểu đường",
+      title: "Lưu ý Đái tháo đường",
       advice: `Chỉ số đường huyết GI=${gi} (trung bình). Có thể ăn với lượng vừa phải, kiểm soát khẩu phần.`,
       severity: "medium",
     });
@@ -62,38 +62,38 @@ if (gi !== undefined) {
 } else if (carb > 40 && sugar > 10) {
   warnings.push({
     icon: "🩸",
-    title: "Cảnh báo Tiểu đường",
-    advice: `Nhiều carb (${carb.toFixed(0)}g) và đường (${sugar.toFixed(1)}g)/100g. Người tiểu đường nên hạn chế.`,
+    title: "Cảnh báo Đái tháo đường",
+    advice: `Nhiều carb (${carb.toFixed(0)}g) và đường (${sugar.toFixed(1)}g)/100g. Người đái tháo đường nên hạn chế.`,
     severity: "high",
   });
 } else if (carb > 30 || sugar > 15) {
   warnings.push({
     icon: "🩸",
-    title: "Lưu ý Tiểu đường",
-    advice: `Lượng carb (${carb.toFixed(0)}g/100g) ở mức cần kiểm soát khẩu phần nếu bạn bị tiểu đường.`,
+    title: "Lưu ý Đái tháo đường",
+    advice: `Lượng carb (${carb.toFixed(0)}g/100g) ở mức cần kiểm soát khẩu phần nếu bạn bị đái tháo đường.`,
     severity: "medium",
   });
 } else if (carb <= 10 && sugar <= 3 && fiber >= 2) {
   warnings.push({
     icon: "🩸",
-    title: "Thân thiện với Tiểu đường",
-    advice: `Ít carb (${carb.toFixed(0)}g), ít đường, giàu xơ — phù hợp cho người tiểu đường.`,
+    title: "Thân thiện với Đái tháo đường",
+    advice: `Ít carb (${carb.toFixed(0)}g), ít đường, giàu xơ — phù hợp cho người đái tháo đường.`,
     severity: "info",
   });
 }
 
-// 3. Cao huyết áp — natri cao
+// 3. Tăng huyết áp — natri cao
 if (sodium > 600) {
   warnings.push({
     icon: "🫀",
-    title: "Cảnh báo Cao huyết áp",
-    advice: `Rất nhiều natri (${sodium.toFixed(0)}mg). Người cao huyết áp nên tránh hoặc ăn rất hạn chế.`,
+    title: "Cảnh báo Tăng huyết áp",
+    advice: `Rất nhiều natri (${sodium.toFixed(0)}mg). Người tăng huyết áp nên tránh hoặc ăn rất hạn chế.`,
     severity: "high",
   });
 } else if (sodium > 200) {
   warnings.push({
     icon: "🫀",
-    title: "Lưu ý Cao huyết áp",
+    title: "Lưu ý Tăng huyết áp",
     advice: `Natri ở mức ${sodium.toFixed(0)}mg. Nếu ăn nhiều khẩu phần có thể vượt ngưỡng 2000mg/ngày.`,
     severity: "medium",
   });

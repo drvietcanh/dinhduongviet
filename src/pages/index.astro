@@ -72,7 +72,7 @@ const toolCards = [
       <a href="/ban-do-benh" class="entry-card card-medical">
         <div class="entry-icon">🩺</div>
         <div class="entry-title">Tôi đang có bệnh</div>
-        <div class="entry-desc">Tiểu đường, cao huyết áp, gout, thận, gan, dạ dày, mỡ máu — ăn gì, kiêng gì?</div>
+        <div class="entry-desc">Đái tháo đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu — ăn gì, kiêng gì?</div>
       </a>
       <a href="/cong-cu/muc-tieu-can-nang" class="entry-card card-weight">
         <div class="entry-icon">⚖️</div>
@@ -93,22 +93,22 @@ const toolCards = [
       <a href="/ban-do-benh" class="view-all">Xem lộ trình theo vấn đề →</a>
     </div>
     <div class="start-grid">
-      <a href="/ban-do-benh#tieu-duong" class="start-card">
-        <div class="start-title">Tiểu đường</div>
+        <a href="/theo-benh/tieu-duong" class="start-card">
+        <div class="start-title">Đái tháo đường</div>
         <p>Bài nền tảng, thực đơn mẫu, hỏi đáp, và công cụ theo dõi đường huyết.</p>
         <span>Xem nhanh →</span>
       </a>
-      <a href="/ban-do-benh#huyet-ap" class="start-card">
-        <div class="start-title">Cao huyết áp</div>
+        <a href="/theo-benh/cao-huyet-ap" class="start-card">
+        <div class="start-title">Tăng huyết áp</div>
         <p>Giảm muối đúng cách, DASH, thực đơn 1 ngày, và gợi ý món ăn Việt.</p>
         <span>Xem nhanh →</span>
       </a>
-      <a href="/ban-do-benh#gan" class="start-card">
+        <a href="/theo-benh/gan-nhiem-mo" class="start-card">
         <div class="start-title">Gan nhiễm mỡ</div>
         <p>Hướng dẫn ăn uống thực tế, thực đơn cho người bận rộn, và sai lầm cần tránh.</p>
         <span>Xem nhanh →</span>
       </a>
-      <a href="/ban-do-benh#da-day" class="start-card">
+        <a href="/theo-benh/da-day-trao-nguoc" class="start-card">
         <div class="start-title">Dạ dày - trào ngược</div>
         <p>Lựa chọn bữa ăn dễ chịu hơn, món nên tránh, và cách ăn ngoài hàng.</p>
         <span>Xem nhanh →</span>
@@ -180,7 +180,7 @@ const toolCards = [
 
         // Blood glucose
         if(l.glucose && l.glucose > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"Đường huyết cao",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — nguy cơ đái tháo đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Hạn chế tinh bột tinh chế, tăng chất xơ, khám bác sĩ."});
-        else if(l.glucose && l.glucose >= 5.6 && l.glucose <= 7.0) alerts.push({severity:"vua",icon:"🩸",title:"Đường huyết cao nhẹ",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — tiền tiểu đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Giảm đường, tăng chất xơ, tập thể dục."});
+        else if(l.glucose && l.glucose >= 5.6 && l.glucose <= 7.0) alerts.push({severity:"vua",icon:"🩸",title:"Đường huyết cao nhẹ",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — tiền đái tháo đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Giảm đường, tăng chất xơ, tập thể dục."});
 
         // HbA1c
         if(l.a1c && l.a1c > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"HbA1c > mục tiêu",msg:"<strong>"+l.a1c.toFixed(1)+"%</strong> — cần kiểm soát đường huyết tốt hơn.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Chế độ ăn GI thấp, theo dõi đường huyết hàng ngày."});
@@ -326,12 +326,12 @@ const toolCards = [
   <section class="section">
     <div class="section-header"><h2>🩺 Lối tắt theo mục tiêu sức khỏe</h2><a href="/ban-do-benh" class="view-all">Xem tất cả →</a></div>
     <div class="health-grid">
-      <a class="card health-card" href="/ban-do-benh#tieu-duong"><span class="health-icon">🩸</span><div><h3>Tiểu đường</h3><p class="muted">Chế độ ăn, thực đơn, hiểu lầm</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#huyet-ap"><span class="health-icon">🫀</span><div><h3>Cao huyết áp</h3><p class="muted">Giảm muối, DASH, thực đơn</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#gout"><span class="health-icon">🦶</span><div><h3>Gout</h3><p class="muted">Purin, đạm, thực đơn mẫu</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#mo-mau-suy-tim"><span class="health-icon">❤️</span><div><h3>Mỡ máu • Tim mạch</h3><p class="muted">Giảm mỡ máu, chế độ ăn tim mạch</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#da-day"><span class="health-icon">😣</span><div><h3>Dạ dày • Trào ngược</h3><p class="muted">Thực đơn mềm, tránh đồ chua</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#than"><span class="health-icon">🫘</span><div><h3>Suy thận • Sỏi thận</h3><p class="muted">Kiểm soát kali, phốt pho, đạm</p></div></a>
+      <a class="card health-card" href="/theo-benh/tieu-duong"><span class="health-icon">🩸</span><div><h3>Đái tháo đường</h3><p class="muted">Chế độ ăn, thực đơn, hiểu lầm</p></div></a>
+      <a class="card health-card" href="/theo-benh/cao-huyet-ap"><span class="health-icon">🫀</span><div><h3>Tăng huyết áp</h3><p class="muted">Giảm muối, DASH, thực đơn</p></div></a>
+      <a class="card health-card" href="/theo-benh/gout-axit-uric"><span class="health-icon">🦶</span><div><h3>Gout</h3><p class="muted">Purin, đạm, thực đơn mẫu</p></div></a>
+      <a class="card health-card" href="/theo-benh/mo-mau-tim-mach"><span class="health-icon">❤️</span><div><h3>Mỡ máu • Tim mạch</h3><p class="muted">Giảm mỡ máu, chế độ ăn tim mạch</p></div></a>
+      <a class="card health-card" href="/theo-benh/da-day-trao-nguoc"><span class="health-icon">😣</span><div><h3>Dạ dày • Trào ngược</h3><p class="muted">Thực đơn mềm, tránh đồ chua</p></div></a>
+      <a class="card health-card" href="/theo-benh/benh-than"><span class="health-icon">🫘</span><div><h3>Suy thận • Sỏi thận</h3><p class="muted">Kiểm soát kali, phốt pho, đạm</p></div></a>
     </div>
     <div class="health-grid" style="margin-top:10px;">
       <a class="card health-card" href="/ban-do-benh#beo-phi"><span class="health-icon">⚖️</span><div><h3>Béo phì • Giảm cân</h3><p class="muted">Calo, BMI, kế hoạch giảm cân</p></div></a>

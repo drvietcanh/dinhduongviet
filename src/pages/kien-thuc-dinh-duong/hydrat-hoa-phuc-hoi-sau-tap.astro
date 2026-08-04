@@ -1,0 +1,64 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["hydrat-hoa-phuc-hoi-sau-tap"];
+if (!art) throw new Error("Article not found: hydrat-hoa-phuc-hoi-sau-tap");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Người tập luyện thường để ý rất kỹ đến bài tập, nhưng lại phục hồi khá cảm tính: uống nước khi khát, bỏ bữa sau tập hoặc phụ thuộc quá nhiều vào thực phẩm bổ sung. Với phần lớn người vận động, nền tảng vẫn là <strong>uống đủ nước, ăn lại carbohydrate và protein hợp lý</strong>.</p>
+    <p>Nếu tập kéo dài, ra mồ hôi nhiều hoặc luyện tập trong môi trường nóng ẩm, phần điện giải cũng quan trọng hơn so với một buổi vận động nhẹ ngắn.</p>
+  </section>
+
+  <section class="section card" style="background:#f3fbef;border:1px solid #cce3c2;">
+    <p style="margin:0;"><strong>Ý chính:</strong> buổi tập càng dài, càng nóng, càng mất mồ hôi nhiều thì càng cần chú ý nước và điện giải; sau tập nên có nguồn carbohydrate và protein thay vì chỉ uống nước lọc rồi bỏ bữa.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>✅ Sau tập nên làm gì?</h2>
+      <ul>
+        <li>Uống nước sớm, chia nhiều ngụm thay vì chờ khát dữ</li>
+        <li>Nếu ra mồ hôi nhiều, cân nhắc đồ uống có điện giải hoặc thực phẩm mặn vừa phải</li>
+        <li>Ăn bữa có carbohydrate + protein trong thời gian phù hợp sau tập</li>
+        <li>Ngủ đủ và để cơ có thời gian hồi phục</li>
+        <li>Giữ kế hoạch phục hồi đơn giản, bền vững trước khi mua thêm supplement</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>⚠️ Hay gặp nhưng chưa hợp lý</h2>
+      <ul>
+        <li>Chỉ uống nước lọc dù buổi tập dài và ra mồ hôi nhiều</li>
+        <li>Bỏ bữa sau tập vì sợ tăng cân</li>
+        <li>Dùng rượu bia sau vận động như một cách "thưởng"</li>
+        <li>Uống supplement đắt tiền nhưng khẩu phần chính lại thiếu đạm</li>
+        <li>Ép cân nhanh, mất nước trước thi đấu</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Một khung phục hồi cơ bản, dễ áp dụng</h2>
+    <table class="table">
+      <thead><tr><th>Tình huống</th><th>Nước</th><th>Ăn sau tập</th></tr></thead>
+      <tbody>
+        <tr><td>Buổi nhẹ, dưới 60 phút</td><td>Nước thường thường là đủ</td><td>Bữa chính cân đối hoặc bữa phụ có đạm</td></tr>
+        <tr><td>Buổi dài, nóng, ra mồ hôi nhiều</td><td>Nước + cân nhắc điện giải</td><td>Carbohydrate + protein sớm hơn</td></tr>
+        <tr><td>Tập sức bền hoặc 2 buổi/ngày</td><td>Theo dõi sát nước tiểu, khát, mồ hôi</td><td>Cần phục hồi đều hơn để buổi sau không hụt sức</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card">
+    <h2>Ví dụ đồ ăn sau tập không cần cầu kỳ</h2>
+    <ul>
+      <li>Sữa hoặc sữa chua + chuối</li>
+      <li>Bánh mì + trứng + trái cây</li>
+      <li>Cơm + thịt/cá/đậu phụ + rau</li>
+      <li>Yến mạch + sữa + hạt nếu phù hợp tiêu hóa</li>
+    </ul>
+    <p class="muted">ACSM nhấn mạnh rằng phục hồi không chỉ là một loại đồ uống, mà là kết hợp giữa nước, dinh dưỡng, giấc ngủ và khoảng nghỉ đủ cho cơ thể thích nghi với buổi tập.</p>
+  </section>
+</ArticleLayout>

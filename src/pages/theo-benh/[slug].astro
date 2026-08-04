@@ -1,0 +1,245 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { diseaseHubs, diseaseHubBySlug, getHubSections } from "../../data/disease-hubs";
+
+export function getStaticPaths() {
+  return diseaseHubs.map((hub) => ({
+    params: { slug: hub.id },
+    props: { hub },
+  }));
+}
+
+const { hub } = Astro.props;
+const currentHub = hub ?? diseaseHubBySlug[Astro.params.slug ?? ""];
+if (!currentHub) {
+  throw new Error(`Disease hub not found: ${Astro.params.slug}`);
+}
+
+const { foundation, menus, myths, more } = getHubSections(currentHub);
+const title = `${currentHub.name} | Dinh Dưỡng Việt`;
+const desc = currentHub.description;
+---
+
+<BaseLayout title={title} description={desc} canonical={`/theo-benh/${currentHub.id}`}>
+  <div class="hub-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">🏠 Trang chủ</a> <span class="breadcrumb-sep">/</span>
+      <a href="/theo-benh">🗂️ Theo bệnh</a> <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">{currentHub.emoji} {currentHub.name}</span>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Lối vào ưu tiên</p>
+        <h1>{currentHub.emoji} {currentHub.name}</h1>
+        <p class="desc">{currentHub.intro}</p>
+        <div class="quick-list">
+          {currentHub.heroPoints.map((point) => <span>{point}</span>)}
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>Bắt đầu từ đây</h2>
+        <ol>
+          <li>Đọc bài nền tảng để hiểu nguyên tắc chung.</li>
+          <li>Xem mục hiểu đúng để tránh kiêng sai.</li>
+          <li>Chọn thực đơn hoặc công cụ phù hợp với sinh hoạt hằng ngày.</li>
+        </ol>
+      </aside>
+    </section>
+
+    {foundation.length > 0 && (
+      <section class="hub-section">
+        <div class="section-head">
+          <h2>Bài nền tảng</h2>
+          <p>Đây là những bài nên đọc đầu tiên trước khi đi sâu vào món ăn, thực đơn hay mẹo ngắn.</p>
+        </div>
+        <div class="article-grid">
+          {foundation.map((article) => (
+            <ArticleCard title={article.title} slug={article.slug} emoji={article.emoji} description={article.description} readTime={article.readTime} date={article.date} audience={article.audience} tags={article.tags} series={article.series} />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="two-col">
+      {menus.length > 0 && (
+        <section class="hub-section surface">
+          <div class="section-head">
+            <h2>Thực đơn nên xem</h2>
+            <p>Chọn phiên bản phù hợp với bối cảnh sống thay vì cố áp một mẫu duy nhất cho tất cả mọi người.</p>
+          </div>
+          <div class="article-grid compact">
+            {menus.map((article) => (
+              <ArticleCard title={article.title} slug={article.slug} emoji={article.emoji} description={article.description} readTime={article.readTime} date={article.date} audience={article.audience} tags={article.tags} series={article.series} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="hub-section surface">
+        <div class="section-head">
+          <h2>Công cụ áp dụng ngay</h2>
+          <p>Những công cụ này giúp chuyển nội dung bài viết thành việc làm hằng ngày.</p>
+        </div>
+        <div class="tool-list">
+          {currentHub.toolLinks.map((tool) => (
+            <a href={tool.href} class="tool-card">{tool.label}</a>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    {myths.length > 0 && (
+      <section class="hub-section">
+        <div class="section-head">
+          <h2>Hiểu đúng trước khi kiêng</h2>
+          <p>Phần này đặc biệt hữu ích khi người bệnh đang nghe nhiều lời khuyên trái chiều trên mạng hoặc từ người quen.</p>
+        </div>
+        <div class="article-grid">
+          {myths.map((article) => (
+            <ArticleCard title={article.title} slug={article.slug} emoji={article.emoji} description={article.description} readTime={article.readTime} date={article.date} audience={article.audience} tags={article.tags} series={article.series} />
+          ))}
+        </div>
+      </section>
+    )}
+
+    {more.length > 0 && (
+      <section class="hub-section">
+        <div class="section-head">
+          <h2>Đọc thêm trong cùng mạch</h2>
+          <p>Các bài dưới đây được lấy theo đúng chuyên khoa hoặc đối tượng liên quan để người đọc mở rộng dần khi cần.</p>
+        </div>
+        <div class="article-grid">
+          {more.map((article) => (
+            <ArticleCard title={article.title} slug={article.slug} emoji={article.emoji} description={article.description} readTime={article.readTime} date={article.date} audience={article.audience} tags={article.tags} series={article.series} />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="hub-footer surface">
+      <div>
+        <h2>Cần xem rộng hơn?</h2>
+        <p>Nếu vấn đề của người dùng giao giữa nhiều bệnh lý hoặc chưa chắc thuộc nhóm nào, bản đồ bệnh đầy đủ sẽ dễ định hướng hơn.</p>
+      </div>
+      <div class="hero-actions">
+        <a href="/ban-do-benh" class="cta-btn">🗺️ Mở bản đồ bệnh</a>
+        <a href="/hoi-dap" class="cta-alt-btn">❓ Hỏi nhanh - đáp gọn</a>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .hub-page { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .hero-copy, .hero-panel, .surface {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-copy, .hero-panel, .surface { padding: 20px; }
+    .hero-panel { background: var(--bg-soft); }
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 0.78rem;
+      color: var(--brand);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    h1 { margin: 0 0 10px; font-size: 2rem; }
+    .desc { margin: 0; color: var(--ink-secondary); line-height: 1.68; }
+    .quick-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .quick-list span {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--ink-secondary);
+      font-size: 0.78rem;
+    }
+    .hero-panel h2, .section-head h2, .hub-footer h2 { margin: 0 0 6px; font-size: 1.08rem; }
+    .hero-panel ol {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-secondary);
+      line-height: 1.7;
+    }
+    .hub-section { margin-bottom: 18px; }
+    .section-head { margin-bottom: 12px; }
+    .section-head p, .hub-footer p {
+      margin: 0;
+      color: var(--ink-secondary);
+      line-height: 1.62;
+    }
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .compact { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.9fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .tool-list {
+      display: grid;
+      gap: 8px;
+    }
+    .tool-card {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      background: var(--bg-soft);
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .tool-card:hover { transform: translateY(-1px); border-color: var(--brand-light2); }
+    .hub-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cta-btn, .cta-alt-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .cta-btn { background: var(--brand); color: #fff; }
+    .cta-alt-btn { border: 1px solid var(--card-border); color: var(--ink); }
+    @media (max-width: 860px) {
+      .hero, .two-col, .hub-footer { grid-template-columns: 1fr; display: grid; }
+      .hub-footer { display: block; }
+      .hero-actions { margin-top: 12px; }
+    }
+    @media (max-width: 640px) {
+      .hub-page { padding-inline: 1rem; }
+      h1 { font-size: 1.7rem; }
+      .article-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

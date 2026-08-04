@@ -24,7 +24,6 @@ const specOrder = [
   "san-khoa",
   "di-ung",
   "tai-mui-hong",
-  "phau-thuat",
   "ngoai-khoa",
   "truyen-nhiem",
   "dinh-duong-the-thao",
@@ -54,8 +53,8 @@ const dcKeys = ["bai-viet", "mon-an", "thuc-don", "dung-tin-ngay"] as const;
 
 // Audiences
 const audiences = [
-  { id: "diabetes", label: "🩸 Người tiểu đường" },
-  { id: "hypertension", label: "🫗 Người cao huyết áp" },
+  { id: "diabetes", label: "🩸 Người đái tháo đường" },
+  { id: "hypertension", label: "🫗 Người tăng huyết áp" },
   { id: "gout", label: "🦶 Người gout" },
   { id: "kidney", label: "🫘 Người bệnh thận" },
   { id: "fatty-liver", label: "🫁 Người gan nhiễm mỡ" },
@@ -173,6 +172,7 @@ const audiences = [
     <div class="ki-footer-links">
       <p class="muted">Chưa tìm thấy bài viết phù hợp?</p>
       <div class="ki-actions">
+        <a href="/theo-benh" class="cta-alt-btn">🗂️ Theo bệnh</a>
         <a href="/ban-do-benh" class="cta-alt-btn">🗺️ Bản đồ bệnh lý</a>
         <a href="/tim-kiem" class="cta-alt-btn">🔍 Tìm kiếm toàn bộ</a>
       </div>
