@@ -35,10 +35,10 @@ const recipeCards = recipes.map((recipe) => {
   description="Tra cứu món ăn Việt theo khẩu phần với ước tính calo, đạm, carb, natri và các tag dinh dưỡng tham khảo."
   canonical="/mon-an"
 >
-  <section>
+  <section class="list-hero">
     <h1>Danh sách món ăn</h1>
     <p class="lead">Trang này phù hợp khi bạn muốn nhìn một món ăn trọn phần trước khi quyết định có nên đưa vào bữa ăn của mình hay không.</p>
-    <div style="margin-top: 18px;">
+    <div class="hero-search">
       <SearchBox />
     </div>
     <div class="quick-start-panel">
@@ -80,7 +80,7 @@ const recipeCards = recipes.map((recipe) => {
         </label>
         <label>
           <span>🎯 Gợi ý theo mục tiêu</span>
-          <select id="recipe-profile" style="font-weight:600;">
+          <select id="recipe-profile" class="strong-select">
             <option value="all">Tất cả</option>
             <option value="diabetes">🩸 Đái tháo đường</option>
             <option value="hypertension">❤️ Tăng huyết áp</option>
@@ -107,7 +107,7 @@ const recipeCards = recipes.map((recipe) => {
         <label><span>Natri tối đa</span><input id="recipe-max-sodium" type="number" min="0" step="50" placeholder="mg/phần" /></label>
         <button id="recipe-reset" class="button secondary" type="button">Xóa lọc</button>
       </div>
-      <p class="muted" style="margin:10px 0 0; font-size:0.83rem;">
+      <p class="muted filter-note">
         Nhãn gợi ý chỉ dựa trên thành phần dinh dưỡng ước tính của món, không thay thế kế hoạch ăn điều trị cá thể hóa.
       </p>
       <p class="muted filter-summary" id="recipe-summary"></p>
@@ -192,7 +192,10 @@ const recipeCards = recipes.map((recipe) => {
   var recipeFilterPanel = document.querySelector('.filter-panel');
   var params = new URLSearchParams(window.location.search);
 
-  if (recipeFilterPanel && window.innerWidth <= 760) {
+  var hasInitialRecipeFilters = ['profile', 'tag', 'sort', 'maxKcal', 'minProtein', 'maxSodium']
+    .some(function(key) { return params.has(key); });
+
+  if (recipeFilterPanel && window.innerWidth <= 760 && !hasInitialRecipeFilters) {
     recipeFilterPanel.removeAttribute('open');
   }
 
@@ -291,6 +294,9 @@ const recipeCards = recipes.map((recipe) => {
 </script>
 
 <style>
+  .hero-search {
+    margin-top: 18px;
+  }
   .quick-start-panel {
     margin-top: 14px;
     padding: 14px;
@@ -301,6 +307,9 @@ const recipeCards = recipes.map((recipe) => {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
     align-items: center;
+  }
+  .list-hero {
+    max-width: 100%;
   }
   .quick-start-copy strong { display: block; margin-bottom: 4px; font-size: 0.9rem; }
   .quick-start-copy p { margin: 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.55; }
@@ -375,6 +384,14 @@ const recipeCards = recipes.map((recipe) => {
   .filter-summary {
     margin-top: 10px;
     min-height: 20px;
+  }
+  .filter-note {
+    margin: 10px 0 0;
+    font-size: 0.83rem;
+    line-height: 1.5;
+  }
+  .strong-select {
+    font-weight: 600;
   }
   .filter-row {
     display: grid;
@@ -640,6 +657,13 @@ const recipeCards = recipes.map((recipe) => {
     #recipe-reset { min-height: 44px; }
   }
   @media (max-width: 480px) {
+    .list-hero {
+      padding-inline: 8px;
+    }
+    .list-hero h1 {
+      font-size: 1.68rem;
+      line-height: 1.22;
+    }
     .lead {
       font-size: 0.9rem;
       line-height: 1.5;

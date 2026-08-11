@@ -1,0 +1,173 @@
+---
+import type { ToolMethodology } from "../data/tool-methodology";
+
+interface Props {
+  methodology: ToolMethodology;
+}
+
+const { methodology } = Astro.props;
+---
+
+<section class="tool-methodology-card section card" aria-labelledby="tool-methodology-title">
+  <div class="tool-methodology-head">
+    <p class="tool-methodology-kicker">Phương pháp và nguồn</p>
+    <h2 id="tool-methodology-title">Khung đọc tool này</h2>
+    <span class="tool-methodology-status">{methodology.status}</span>
+  </div>
+
+  <p class="tool-methodology-summary">{methodology.summary}</p>
+
+  {methodology.formulas && methodology.formulas.length > 0 && (
+    <div class="tool-methodology-block">
+      <h3>Công thức hoặc logic đang dùng</h3>
+      <dl class="tool-methodology-list">
+        {methodology.formulas.map((item) => (
+          <>
+            <dt>{item.label}</dt>
+            <dd>{item.value}</dd>
+          </>
+        ))}
+      </dl>
+    </div>
+  )}
+
+  {methodology.guidance && methodology.guidance.length > 0 && (
+    <div class="tool-methodology-block">
+      <h3>Cách hiểu đúng ở v1</h3>
+      <ul class="tool-methodology-points">
+        {methodology.guidance.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  )}
+
+  {methodology.notFor && methodology.notFor.length > 0 && (
+    <div class="tool-methodology-block">
+      <h3>Khi không nên tự dùng</h3>
+      <ul class="tool-methodology-points tool-methodology-points-warning">
+        {methodology.notFor.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  )}
+
+  <div class="tool-methodology-block">
+    <h3>Nguồn tham khảo</h3>
+    <ul class="tool-methodology-sources">
+      {methodology.sources.map((source) => (
+        <li>
+          <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tool-methodology-card {
+    margin-top: 24px;
+    display: grid;
+    gap: 18px;
+  }
+
+  .tool-methodology-head {
+    display: grid;
+    gap: 8px;
+  }
+
+  .tool-methodology-kicker {
+    margin: 0;
+    color: var(--brand-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .tool-methodology-head h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .tool-methodology-status {
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .tool-methodology-summary {
+    margin: 0;
+    color: var(--ink-secondary);
+  }
+
+  .tool-methodology-block {
+    display: grid;
+    gap: 10px;
+  }
+
+  .tool-methodology-block h3 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .tool-methodology-list {
+    display: grid;
+    grid-template-columns: minmax(140px, 180px) 1fr;
+    gap: 8px 14px;
+    margin: 0;
+  }
+
+  .tool-methodology-list dt {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .tool-methodology-list dd {
+    margin: 0;
+    color: var(--ink-secondary);
+  }
+
+  .tool-methodology-points,
+  .tool-methodology-sources {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-secondary);
+  }
+
+  .tool-methodology-points li,
+  .tool-methodology-sources li {
+    margin: 0;
+  }
+
+  .tool-methodology-points-warning li::marker {
+    color: #dc2626;
+  }
+
+  .tool-methodology-sources a {
+    text-decoration: none;
+  }
+
+  .tool-methodology-sources a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .tool-methodology-card {
+      margin-top: 18px;
+      gap: 16px;
+    }
+
+    .tool-methodology-list {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .tool-methodology-head h2 {
+      font-size: 1.12rem;
+    }
+  }
+</style>

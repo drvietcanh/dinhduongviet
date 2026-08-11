@@ -1,7 +1,7 @@
 ---
-// BaseLayout.astro — Layout chính cho toàn bộ trang Dinh Dưỡng Việt
-// Có dark mode, responsive, SEO meta tags, self-hosted fonts, print/PDF style
 import Fonts from "../components/Fonts.astro";
+import ToolMethodologyCard from "../components/ToolMethodologyCard.astro";
+import { getToolMethodology } from "../data/tool-methodology";
 export interface Props {
   title: string;
   description?: string;
@@ -20,6 +20,7 @@ const canonicalUrl = canonicalPath
   : null;
 
 const pathname = Astro.url.pathname;
+const toolMethodology = getToolMethodology(pathname);
 const pathParts = pathname.split("/").filter(Boolean);
 const isArticle = pathname.startsWith("/kien-thuc-dinh-duong/") && pathParts.length >= 2;
 var breadcrumbItems = [
@@ -900,6 +901,7 @@ if (isArticle) {
     <main>
       <div class="content-wrapper">
         <slot />
+        {toolMethodology && <ToolMethodologyCard methodology={toolMethodology} />}
       </div>
     </main>
 

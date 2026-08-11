@@ -9,6 +9,7 @@ dist/
 test-results/
 .playwright-cli/
 playwright-report/
+.codex-mobile-audit/
 
 # Local runtime output
 output/

@@ -10,80 +10,86 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
     <span class="badge">📊 Công cụ</span>
     <h1>Tính macro tham khảo</h1>
     <p class="lead">
-      Công cụ này giúp quy đổi tổng năng lượng mục tiêu thành gram <strong>protein (đạm)</strong>, <strong>carbohydrate (tinh bột)</strong> và <strong>fat (chất béo)</strong> theo một số tỷ lệ tham khảo.
+      Công cụ này quy đổi tổng năng lượng mục tiêu thành gram
+      <strong>protein (đạm)</strong>, <strong>carbohydrate (tinh bột)</strong>
+      và <strong>fat (chất béo)</strong> theo một số preset phổ thông. Đây là
+      bước học cách phân bổ khẩu phần, không phải đơn macro điều trị cá thể.
     </p>
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> 1g protein = 4 kcal | 1g carb = 4 kcal | 1g fat = 9 kcal. Đây là công cụ giáo dục. Các preset bên dưới được giữ trong vùng phân bố tham khảo phổ thông, không dùng để tự đặt chế độ ăn điều trị hoặc thay đổi thuốc.
+    ⚠️ <strong>Lưu ý:</strong> 1g protein = 4 kcal | 1g carb = 4 kcal | 1g fat
+    = 9 kcal. Đây là công cụ giáo dục. Các preset bên dưới được giữ trong vùng
+    phân bố tham khảo phổ thông, không dùng để tự đặt chế độ ăn điều trị, tự
+    chỉnh thuốc hoặc thay thế tư vấn cá thể.
   </div>
 
   <section class="section card">
     <h2>Thông số của bạn</h2>
 
-    <div style="margin-top: 15px;">
+    <div class="macro-input-block">
       <label for="calories">Tổng năng lượng mục tiêu (kcal/ngày)</label>
       <input type="number" id="calories" inputmode="numeric" placeholder="Ví dụ: 2000" />
-      <p class="muted" style="margin-top:5px;font-size:0.85rem;">
-        Bạn chưa biết mốc năng lượng tham khảo? <a href="/cong-cu/tinh-nang-luong" style="color:var(--brand);">Ước tính TDEE tại đây</a>.
+      <p class="muted macro-help">
+        Bạn chưa biết mốc năng lượng tham khảo? <a href="/cong-cu/tinh-nang-luong" class="macro-help-link">Ước tính TDEE tại đây</a>.
       </p>
     </div>
 
-    <div style="margin-top: 20px;">
+    <div class="macro-select-block">
       <label for="diet-type">Chọn Chế độ ăn (Tỷ lệ phân bổ)</label>
-      <select id="diet-type" style="width:100%;padding:10px 12px;border:1px solid var(--card-border);border-radius:var(--radius);font-size:1rem;background:var(--bg-elevated);color:var(--ink);">
+      <select id="diet-type" class="macro-select">
         <option value="balanced" selected>Cân bằng tham khảo (50% Carb / 20% Protein / 30% Fat)</option>
         <option value="higher-protein">Đạm cao hơn vừa phải (40% Carb / 30% Protein / 30% Fat)</option>
         <option value="lower-carb">Carb thấp hơn vừa phải (35% Carb / 30% Protein / 35% Fat)</option>
       </select>
-      <p class="muted" style="margin-top:5px;font-size:0.85rem;">
+      <p class="muted macro-help">
         Công cụ không hiển thị preset keto hoặc tỷ lệ điều trị chuyên biệt ở v1.
       </p>
     </div>
 
-    <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 25px; text-align: center; border-radius: 12px;">
+    <button type="button" id="calc-btn" class="cta-btn macro-submit">
       Tính macro tham khảo
     </button>
 
     <p id="form-message" class="form-message" hidden></p>
   </section>
 
-  <section id="result-section" class="section card" style="display:none; border-color: var(--brand-light2); background: #f8fafc;">
+  <section id="result-section" class="section card macro-result-section" style="display:none;">
     <h2>Kết quả quy đổi</h2>
-    <p class="muted" style="margin-top:-5px;margin-bottom:20px;">Các số dưới đây là mốc tham khảo theo tỷ lệ đã chọn, không phải yêu cầu phải ăn đúng từng gram mỗi ngày.</p>
+    <p class="muted macro-result-copy">Các số dưới đây là mốc tham khảo theo tỷ lệ đã chọn, không phải yêu cầu phải ăn đúng từng gram mỗi ngày hoặc mục tiêu bắt buộc cho bệnh lý.</p>
 
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+    <div class="grid macro-result-grid">
       <!-- Carb -->
-      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #93c5fd;text-align:center;border-top:4px solid #3b82f6;">
-        <span style="display:block;margin-bottom:5px;font-weight:600;color:#1e40af;">🌾 Carbohydrate (Tinh bột)</span>
-        <strong id="carb-result" style="font-size:2.2rem;color:#2563eb;display:block;">0</strong>
-        <span style="font-weight:600;color:#64748b;">gram / ngày</span>
-        <p style="font-size:0.85rem;margin-top:10px;color:var(--ink-secondary);">(Cơm, phở, khoai, trái cây...)</p>
+      <div class="macro-card macro-card-carb">
+        <span class="macro-card-label macro-card-label-carb">🌾 Carbohydrate (Tinh bột)</span>
+        <strong id="carb-result" class="macro-card-value macro-card-value-carb">0</strong>
+        <span class="macro-card-unit">gram / ngày</span>
+        <p class="macro-card-copy">(Cơm, phở, khoai, trái cây...)</p>
       </div>
 
       <!-- Protein -->
-      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #fca5a5;text-align:center;border-top:4px solid #ef4444;">
-        <span style="display:block;margin-bottom:5px;font-weight:600;color:#991b1b;">🥩 Protein (Đạm)</span>
-        <strong id="protein-result" style="font-size:2.2rem;color:#dc2626;display:block;">0</strong>
-        <span style="font-weight:600;color:#64748b;">gram / ngày</span>
-        <p style="font-size:0.85rem;margin-top:10px;color:var(--ink-secondary);">(Thịt, cá, trứng, sữa, đậu...)</p>
+      <div class="macro-card macro-card-protein">
+        <span class="macro-card-label macro-card-label-protein">🥩 Protein (Đạm)</span>
+        <strong id="protein-result" class="macro-card-value macro-card-value-protein">0</strong>
+        <span class="macro-card-unit">gram / ngày</span>
+        <p class="macro-card-copy">(Thịt, cá, trứng, sữa, đậu...)</p>
       </div>
 
       <!-- Fat -->
-      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #fde047;text-align:center;border-top:4px solid #eab308;">
-        <span style="display:block;margin-bottom:5px;font-weight:600;color:#854d0e;">🥑 Fat (Chất béo)</span>
-        <strong id="fat-result" style="font-size:2.2rem;color:#ca8a04;display:block;">0</strong>
-        <span style="font-weight:600;color:#64748b;">gram / ngày</span>
-        <p style="font-size:0.85rem;margin-top:10px;color:var(--ink-secondary);">(Dầu oliu, mỡ cá, các loại hạt...)</p>
+      <div class="macro-card macro-card-fat">
+        <span class="macro-card-label macro-card-label-fat">🥑 Fat (Chất béo)</span>
+        <strong id="fat-result" class="macro-card-value macro-card-value-fat">0</strong>
+        <span class="macro-card-unit">gram / ngày</span>
+        <p class="macro-card-copy">(Dầu oliu, mỡ cá, các loại hạt...)</p>
       </div>
     </div>
 
-    <div style="margin-top: 24px; text-align: center;">
-      <button type="button" id="save-macro-btn" class="cta-btn cta-outline" style="border-radius: 12px; width: 100%;">💾 Lưu Macro làm Mục tiêu vào Nhật Ký</button>
-      <p id="save-msg" style="color: var(--brand); font-size: 0.9rem; margin-top: 10px;" hidden>✅ Đã lưu mục tiêu Macro thành công!</p>
+    <div class="macro-save-block">
+      <button type="button" id="save-macro-btn" class="cta-btn cta-outline macro-save-button">💾 Lưu Macro làm Mục tiêu vào Nhật Ký</button>
+      <p id="save-msg" class="macro-save-message" hidden>✅ Đã lưu mục tiêu Macro thành công!</p>
     </div>
-    <div class="result-note" style="margin-top:20px;">
-      <h3 style="margin-top:0;font-size:1.1rem;color:var(--ink);">💡 Hiểu đúng về số lượng Gram:</h3>
+    <div class="result-note macro-note-block">
+      <h3 class="macro-note-title">💡 Hiểu đúng về số lượng Gram:</h3>
       <ul class="safe-list">
         <li><strong>Lưu ý quan trọng:</strong> 100 gram protein ở bảng trên <u>không phải</u> là 100 gram thịt.</li>
         <li>Ví dụ: 100g ức gà sống chỉ chứa khoảng 23g protein. Nếu kết quả là 100g protein/ngày, lượng thực phẩm thực tế sẽ cao hơn 100g.</li>
@@ -100,6 +106,19 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
     font-weight: 600;
     margin-bottom: 4px;
   }
+  .macro-input-block {
+    margin-top: 15px;
+  }
+  .macro-select-block {
+    margin-top: 20px;
+  }
+  .macro-help {
+    margin-top: 5px;
+    font-size: 0.85rem;
+  }
+  .macro-help-link {
+    color: var(--brand);
+  }
   input[type="number"] {
     width: 100%;
     padding: 10px 12px;
@@ -114,6 +133,100 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
   input:focus, select:focus {
     outline: none;
     border-color: var(--brand);
+  }
+  .macro-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background: var(--bg-elevated);
+    color: var(--ink);
+  }
+  .macro-submit {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+    border-radius: 12px;
+  }
+  .macro-result-section {
+    border-color: var(--brand-light2);
+    background: #f8fafc;
+  }
+  .macro-result-copy {
+    margin-top: -5px;
+    margin-bottom: 20px;
+  }
+  .macro-result-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  .macro-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .macro-card-carb {
+    border: 1px solid #93c5fd;
+    border-top: 4px solid #3b82f6;
+  }
+  .macro-card-protein {
+    border: 1px solid #fca5a5;
+    border-top: 4px solid #ef4444;
+  }
+  .macro-card-fat {
+    border: 1px solid #fde047;
+    border-top: 4px solid #eab308;
+  }
+  .macro-card-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .macro-card-label-carb {
+    color: #1e40af;
+  }
+  .macro-card-label-protein {
+    color: #991b1b;
+  }
+  .macro-card-label-fat {
+    color: #854d0e;
+  }
+  .macro-card-value {
+    font-size: 2.2rem;
+    display: block;
+  }
+  .macro-card-value-carb {
+    color: #2563eb;
+  }
+  .macro-card-value-protein {
+    color: #dc2626;
+  }
+  .macro-card-value-fat {
+    color: #ca8a04;
+  }
+  .macro-card-unit {
+    font-weight: 600;
+    color: #64748b;
+  }
+  .macro-card-copy {
+    font-size: 0.85rem;
+    margin-top: 10px;
+    color: var(--ink-secondary);
+  }
+  .macro-save-block {
+    margin-top: 24px;
+    text-align: center;
+  }
+  .macro-save-button {
+    border-radius: 12px;
+    width: 100%;
+  }
+  .macro-save-message {
+    color: var(--brand);
+    font-size: 0.9rem;
+    margin-top: 10px;
   }
 
 
@@ -131,6 +244,14 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
     background: var(--bg-soft);
     border: 1px solid var(--card-border);
     line-height: 1.6;
+  }
+  .macro-note-block {
+    margin-top: 20px;
+  }
+  .macro-note-title {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--ink);
   }
   .safe-list { margin: 10px 0 0; padding-left: 18px; }
   .safe-list li + li { margin-top: 8px; }

@@ -33,12 +33,6 @@ if (n.sodiumMg !== undefined) {
 if (n.potassiumMg !== undefined) {
   bars.push({ label: "Kali", value: n.potassiumMg, unit: "mg", pct: Math.min((n.potassiumMg) / 4700 * 100, 100), color: "#b088c8" });
 }
-if (n.glycemicIndex !== undefined) {
-  bars.push({ label: "GI", value: n.glycemicIndex, unit: "", pct: Math.min(n.glycemicIndex, 100), color: "#d65f5f" });
-  // GL
-  const gl = (n.glycemicIndex * (n.carbG ?? 0)) / 100;
-  bars.push({ label: "GL", value: Math.round(gl * 10) / 10, unit: "", pct: Math.min(gl / 20 * 100, 100), color: "#e0875a" });
-}
 if (n.phosphorusMg !== undefined) {
   bars.push({ label: "Phốt-pho", value: n.phosphorusMg, unit: "mg", pct: Math.min((n.phosphorusMg) / 700 * 100, 100), color: "#6ba3b8" });
 }

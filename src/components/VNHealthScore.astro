@@ -190,12 +190,16 @@ const stars = "★".repeat(starCount) + "☆".repeat(5 - starCount);
 
     {score < 5 && (
       <div class="vn-score-warning">
-        ⚠️ Món này có điểm dinh dưỡng thấp. Nên cân nhắc giảm khẩu phần hoặc kết hợp với rau xanh, trái cây để cân bằng bữa ăn.
+        ⚠️ Điểm tổng hợp đang thấp. Hãy đọc kỹ lại phần chất xơ, đường, natri,
+        chất béo bão hòa và cân nhắc phối hợp món hoặc khẩu phần cho cân bằng
+        hơn.
       </div>
     )}
     {score >= 8 && (
       <div class="vn-score-tip">
-        💪 Món này giàu dinh dưỡng! Kết hợp thêm rau xanh để có bữa ăn hoàn chỉnh.
+        💪 Điểm tổng hợp đang tốt. Dùng khối này như ảnh chụp nhanh về chất
+        lượng dinh dưỡng tổng thể, rồi đối chiếu thêm cảnh báo bệnh lý nếu bạn
+        cần cá thể hóa.
       </div>
     )}
   </div>

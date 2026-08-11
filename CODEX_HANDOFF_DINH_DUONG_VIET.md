@@ -567,3 +567,45 @@ Codex có thể bắt đầu bằng checklist này:
 - Tránh ký tự `<` raw trong text content Astro.
 - Sau mọi batch edit: build + qa.
 - Dự án phục vụ nội dung sức khỏe: không thêm khuyến cáo y khoa mạnh nếu không có nguồn tốt.
+
+---
+
+## 16) Tiến trình gần nhất cần nhớ
+
+### Đã hoàn tất
+
+- Đã gom lớp phương pháp cho tool trong `src/data/tool-methodology.ts`.
+- Đã thêm component hiển thị chung `src/components/ToolMethodologyCard.astro`.
+- Đã gắn card phương pháp vào shell tool qua `src/layouts/BaseLayout.astro` để các trang `/cong-cu/*` dùng cùng một khung copy, công thức, lưu ý và nguồn.
+- Đã siết copy các tool mỏng nhưng hay bị đọc quá tay:
+  - `bmi`
+  - `tinh-nang-luong`
+  - `tinh-macro`
+  - `tinh-calo-tieu-thu`
+  - `ti-le-mo-co-the`
+  - `muc-tieu-can-nang`
+  - `muc-tieu-dinh-duong`
+  - `duong-do-uong`
+  - `nuoc-muoi-mon-an`
+  - `dinh-duong-thai-ky`
+  - `nhu-cau-dinh-duong-tre-em`
+  - `theo-doi-suc-khoe`
+  - `tuong-tac-thuoc`
+  - `tuong-tac-thuoc-thuc-pham`
+- Đã rà tiếp các trang chi tiết món ăn/thực phẩm để tránh logic lặp kiểu “bảng tĩnh + bộ đổi khẩu phần”:
+  - giữ `PortionCalculator` làm lớp đổi khẩu phần
+  - bỏ các bảng 100g bị lặp logic ở các trang chi tiết
+  - gọt bớt inline style cũ, chuyển sang class để dễ đồng bộ v1
+- Đã tiếp tục siết copy hiển thị của `/ban-do-benh` và `/theo-benh/[slug]` theo logic ưu tiên bệnh cảnh/đối tượng trước specialty.
+
+### Trạng thái kiểm tra
+
+- `npx astro check` đã pass ở vòng gần nhất trước khi chốt batch.
+- Nếu phiên sau có thêm sửa copy/hành vi, vẫn nên chạy lại `npx astro check` ngay sau batch đó.
+
+### Nên tiếp tục ở phiên sau
+
+1. Rà nốt các tool còn mỏng để xem có entry phương pháp nào cần bổ sung cho đồng bộ v1.
+2. Chuẩn hóa thêm câu chữ cảnh báo chung trên toàn bộ `/cong-cu/` nếu còn page nào lệch giọng.
+3. Rà tiếp các trang món ăn/thực phẩm khác xem còn chỗ nào lặp logic giữa bảng tĩnh, khẩu phần và bảng dinh dưỡng.
+4. Nếu mở rộng `ti-le-mo-co-the`, phải giữ rất chặt vì đây là vùng sai số cao.

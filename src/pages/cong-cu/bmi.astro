@@ -11,8 +11,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <span class="badge">📊 Công cụ</span>
     <h1>Tính BMI tham khảo</h1>
     <p class="lead">
-      Nhập chiều cao và cân nặng để tính BMI tham khảo. Đây là chỉ số sàng lọc
-      đơn giản, không thay thế đánh giá lâm sàng hoặc tư vấn cá nhân.
+      Nhập chiều cao và cân nặng để tính BMI tham khảo. Đây là công cụ sàng lọc
+      nhanh cho người lớn, dùng để đọc cùng vòng eo, thành phần cơ thể và bối
+      cảnh sức khỏe, không thay thế đánh giá lâm sàng hoặc tư vấn cá thể.
     </p>
   </section>
 
@@ -28,7 +29,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       cao (m))²</strong>.
     </p>
 
-    <div class="grid two" style="margin-top: 10px;">
+    <div class="grid two form-grid">
       <div>
         <label for="weight">Cân nặng (kg)</label>
         <input
@@ -53,18 +54,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       </div>
     </div>
 
-    <p class="muted" style="margin-top: 10px;">
+    <p class="muted input-note">
       Hỗ trợ nhập số thập phân bằng dấu chấm hoặc dấu phẩy.
     </p>
 
-    <button type="button" id="calc-btn" class="cc-btn" style="margin-top: 16px; width: 100%;">
+    <button type="button" id="calc-btn" class="cc-btn full-width-button">
       Tính BMI tham khảo
     </button>
 
     <p id="form-message" class="form-message" hidden></p>
   </section>
 
-  <section id="result-section" class="section card animate-result" style="display:none; border: 2px solid var(--brand-light2);">
+  <section id="result-section" class="section card animate-result result-card" style="display:none;">
     <h2>Kết quả tham khảo</h2>
     <div class="grid two">
       <div class="stat">
@@ -116,6 +117,23 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     margin-bottom: 8px;
   }
 
+  .form-grid {
+    margin-top: 10px;
+  }
+
+  .input-note {
+    margin-top: 10px;
+  }
+
+  .full-width-button {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .result-card {
+    border: 2px solid var(--brand-light2);
+  }
+
   .stat span {
     display: block;
     margin-bottom: 4px;
@@ -165,6 +183,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .status-green { background: #10b981; }
   .status-orange { background: #f59e0b; }
   .status-red { background: #ef4444; }
+  .bmi-footnote {
+    font-size: 0.82rem;
+  }
 </style>
 
 <script>
@@ -271,7 +292,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     bmiValue.textContent = `${bmi.toFixed(1)}`;
     bmiMeaning.textContent = classification;
     bmiMeaning.className = `status-badge ${alertClass}`;
-    bmiNote.innerHTML = `<strong>Lời khuyên y khoa:</strong> ${description}<br><br><span class="muted" style="font-size:0.82rem;">*Tiêu chuẩn phân loại theo Hiệp hội Đái tháo đường Tây Thái Bình Dương (IDI/WPRO) dành cho người trưởng thành châu Á.</span>`;
+    bmiNote.innerHTML = `<strong>Lời khuyên y khoa:</strong> ${description}<br><br><span class="muted bmi-footnote">*Tiêu chuẩn phân loại theo Hiệp hội Đái tháo đường Tây Thái Bình Dương (IDI/WPRO) dành cho người trưởng thành châu Á.</span>`;
     resultSection.style.display = "block";
     window.scrollTo({
       top: resultSection.offsetTop - 20,

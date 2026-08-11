@@ -684,17 +684,17 @@ const groups = [
     <a href="/">🏠 Trang chủ</a> <span class="breadcrumb-sep">/</span>
     <span class="breadcrumb-current">🗺️ Bản đồ bệnh</span>
   </nav>
-  <main style="max-width:960px;margin:0 auto;padding:2rem 1.5rem;">
-    <div style="text-align:center;margin-bottom:2rem;">
-      <h1 style="font-size:1.8rem;margin-bottom:8px;">🗺️ Bản đồ bệnh đầy đủ</h1>
-      <p style="max-width:640px;margin:0.5rem auto 0;color:var(--ink-secondary);font-size:1rem;">
+  <main class="disease-map-page">
+    <div class="map-hero">
+      <h1>🗺️ Bản đồ bệnh đầy đủ</h1>
+      <p>
         Đây là nơi xem <strong>toàn cảnh theo chuyên khoa</strong> khi bạn chưa chắc nên bắt đầu từ nhóm bệnh nào.
         Mỗi cụm bệnh dẫn tới <strong>bài nền tảng</strong>, <strong>hỏi đáp</strong>, <strong>thực đơn</strong> và các bài đọc thêm.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px;">
-        <a href="/theo-benh" class="quick-route" style="background:var(--brand-light);color:var(--brand-dark);border-color:var(--brand-light2);">🗂️ Muốn đi nhanh? Mở Theo bệnh</a>
+      <div class="route-row primary">
+        <a href="/theo-benh" class="quick-route featured-route">🗂️ Muốn đi nhanh? Mở Theo bệnh</a>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;">
+      <div class="route-row">
         {quickRoutes.map((route) => (
           <a href={route.href} class="quick-route">{route.label}</a>
         ))}
@@ -708,21 +708,21 @@ const groups = [
     </div>
 
     <!-- Specialty tabs -->
-    <div id="spec-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;justify-content:center;">
+    <div id="spec-tabs" class="spec-tabs">
       <button class="st-btn st-active" data-spec="all" onclick="filterSpec('all')">📋 Tất cả ({groups.length})</button>
       {specialties.map(sp => {
         const count = groups.filter(g => g.specialty === sp.key).length;
         if (!count) return null;
         return (
           <button class="st-btn" data-spec={sp.key} onclick={`filterSpec('${sp.key}')`}>
-            {sp.emoji} {sp.name} <span style="opacity:0.6;font-size:0.75rem;">({count})</span>
+            {sp.emoji} {sp.name} <span class="tab-count">({count})</span>
           </button>
         );
       })}
     </div>
 
     <!-- Disease cards -->
-    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+    <div class="disease-list">
       {groups.map(g => {
         const spMeta = specialties.find(s => s.key === g.specialty);
         const listedSlugs = new Set([
@@ -770,39 +770,39 @@ const groups = [
         const specialtyHref = specialtyAnchorMap[g.specialty] ? `/kien-thuc-dinh-duong#${specialtyAnchorMap[g.specialty]}` : "/kien-thuc-dinh-duong";
         return (
           <div class="disease-card" data-spec={g.specialty} data-search={`${g.name} ${g.foundation.map(a => a.title).join(" ")} ${g.menus.map(m => m.title).join(" ")}`} id={g.id}>
-            <div class="dc-header" style={`background:${spMeta.color};color:white;padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;`}>
-              <span style="font-size:1.6rem;">{g.emoji}</span>
-              <h2 style="margin:0;font-size:1.15rem;flex:1;color:#fff;">{g.name}</h2>
-              <span style="font-size:0.75rem;opacity:0.8;background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:999px;">
+            <div class="dc-header" style={`--group-color:${spMeta.color};`}>
+              <span class="dc-emoji">{g.emoji}</span>
+              <h2>{g.name}</h2>
+              <span class="dc-specialty">
                 {spMeta.name}
               </span>
             </div>
-            <div style="padding:1rem 1.2rem;">
-              <h3 style="margin:-0.2rem 0 0.6rem;font-size:0.88rem;color:var(--ink-secondary);">📖 Điểm vào theo nhóm bệnh</h3>
-              <ul style="margin:0;padding-left:0;list-style:none;">
+            <div class="dc-body">
+              <h3 class="dc-section-title">📖 Điểm vào theo nhóm bệnh</h3>
+              <ul class="map-link-list">
                 {primaryFoundation.map(a => (
-                  <li style="margin:0.35rem 0;display:flex;align-items:baseline;gap:6px;">
-                    <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{normalizeLabel(a.desc)}]</span>
-                    <a href={`/kien-thuc-dinh-duong/${a.slug}`} style="color:var(--brand);text-decoration:underline;font-size:0.9rem;">
+                  <li>
+                    <span>[{normalizeLabel(a.desc)}]</span>
+                    <a href={`/kien-thuc-dinh-duong/${a.slug}`}>
                       {a.title}
                     </a>
                   </li>
                 ))}
               </ul>
               {extraFoundationCount > 0 && (
-                <p style="margin:0.55rem 0 0;color:var(--ink-tertiary);font-size:0.8rem;">
+                <p class="map-more-note">
                   + {extraFoundationCount} bài cùng mạch trong nhóm này
                 </p>
               )}
 
-              <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1rem;">
+              <div class="map-action-row">
                 {g.faq && (
-                  <a href={g.faq.href} style="padding:0.4rem 1rem;background:var(--bg-soft);border-radius:8px;color:var(--ink);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:4px;">
+                  <a href={g.faq.href} class="map-action faq">
                     ❓ {g.faq.label}
                   </a>
                 )}
                 {primaryMenus.map(m => (
-                  <a href={`/kien-thuc-dinh-duong/${m.slug}`} style="padding:0.4rem 1rem;background:var(--primary-bg);border-radius:8px;color:var(--brand);text-decoration:none;font-size:0.85rem;font-weight:500;display:flex;align-items:center;gap:4px;">
+                  <a href={`/kien-thuc-dinh-duong/${m.slug}`} class="map-action menu">
                     🍽️ {m.title}
                   </a>
                 ))}
@@ -810,32 +810,32 @@ const groups = [
                   <span class="map-meta-chip">+ {extraMenuCount} thực đơn khác</span>
                 )}
               </div>
-              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:0.9rem;">
+              <div class="map-meta-row">
                 <span class="map-meta-chip">📖 {g.foundation.length} bài chính</span>
                 {g.menus.length > 0 && <span class="map-meta-chip">🍽️ {g.menus.length} thực đơn</span>}
                 {readMore.length > 0 && <span class="map-meta-chip">➕ {readMore.length} bài đọc thêm</span>}
               </div>
               {readMore.length > 0 && (
-                <div style="margin-top:1rem;padding-top:0.9rem;border-top:1px dashed var(--line);">
-                  <h3 style="margin:0 0 0.5rem;font-size:0.84rem;color:var(--ink-secondary);">📚 Đọc thêm theo nhóm này</h3>
-                  <ul style="margin:0;padding-left:0;list-style:none;">
+                <div class="read-more-block">
+                  <h3 class="dc-section-title small">📚 Đọc thêm theo nhóm này</h3>
+                  <ul class="map-link-list compact">
                     {readMore.slice(0, 2).map(item => (
-                      <li style="margin:0.3rem 0;display:flex;align-items:baseline;gap:6px;">
-                        <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{item.displayCategory === "dung-tin-ngay" ? "Đừng tin ngay" : "Bài thêm"}]</span>
-                        <a href={`/kien-thuc-dinh-duong/${item.slug}`} style="color:var(--brand);text-decoration:underline;font-size:0.88rem;">
+                      <li>
+                        <span>[{item.displayCategory === "dung-tin-ngay" ? "Đừng tin ngay" : "Bài thêm"}]</span>
+                        <a href={`/kien-thuc-dinh-duong/${item.slug}`}>
                           {item.title}
                         </a>
                       </li>
                     ))}
                   </ul>
                   {readMore.length > 2 && (
-                    <p style="margin:0.55rem 0 0;color:var(--ink-tertiary);font-size:0.8rem;">
+                    <p class="map-more-note">
                       + {readMore.length - 2} bài đọc thêm gần nhất với nhóm này
                     </p>
                   )}
                 </div>
               )}
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+              <div class="dc-footer-row">
                 <a href={specialtyHref} class="dc-more-link">
                   📚 Xem tất cả bài viết cùng chuyên khoa →</a>
               </div>
@@ -848,9 +848,9 @@ const groups = [
     <p id="disease-empty" class="disease-empty" hidden>Chưa tìm thấy nhóm bệnh phù hợp. Hãy thử từ khóa ngắn hơn.</p>
 
     <!-- Tools -->
-    <div style="margin-top:2rem;padding:1.2rem;background:var(--bg-soft);border-radius:12px;text-align:center;">
-      <h3 style="margin:0 0 0.5rem;">🔧 Công cụ hỗ trợ</h3>
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
+    <div class="map-tools">
+      <h3>🔧 Công cụ hỗ trợ</h3>
+      <div class="tool-row">
         {[
           { href: "/cong-cu/bmi", label: "BMI & Vòng eo" },
           { href: "/cong-cu/chi-so-gi", label: "Chỉ số GI thực phẩm" },
@@ -873,16 +873,169 @@ const groups = [
       </div>
     </div>
 
-    <div style="margin-top:1.5rem;text-align:center;">
-      <a href="/kien-thuc-dinh-duong" style="padding:0.6rem 1.5rem;background:var(--brand);color:white;border-radius:999px;text-decoration:none;font-weight:600;display:inline-block;">
+    <div class="map-final-cta">
+      <a href="/kien-thuc-dinh-duong">
         📚 Xem tất cả bài viết →
       </a>
     </div>
   </main>
 
   <style>
+    .disease-map-page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .map-hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .map-hero h1 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+      line-height: 1.25;
+    }
+    .map-hero p {
+      max-width: 640px;
+      margin: 0.5rem auto 0;
+      color: var(--ink-secondary);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    .route-row,
+    .spec-tabs,
+    .disease-list,
+    .map-action-row,
+    .map-meta-row,
+    .dc-footer-row,
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .route-row {
+      gap: 8px;
+      justify-content: center;
+      margin-top: 14px;
+    }
+    .route-row.primary { gap: 10px; }
+    .spec-tabs {
+      gap: 6px;
+      margin-bottom: 1.5rem;
+      justify-content: center;
+    }
+    .tab-count {
+      opacity: 0.6;
+      font-size: 0.75rem;
+    }
+    .disease-list {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
     .disease-card { border: 1px solid var(--card-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--card); box-shadow: var(--shadow-sm); transition: all var(--transition); }
     .disease-card:hover { border-color: var(--brand-light2); box-shadow: var(--shadow); transform: translateY(-1px); }
+    .dc-header {
+      background: var(--group-color);
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .dc-emoji { font-size: 1.6rem; }
+    .dc-header h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.28;
+      flex: 1;
+      color: #fff;
+    }
+    .dc-specialty {
+      font-size: 0.75rem;
+      opacity: 0.88;
+      background: rgba(255,255,255,0.2);
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+    .dc-body { padding: 1rem 1.2rem; }
+    .dc-section-title {
+      margin: -0.2rem 0 0.6rem;
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+    }
+    .dc-section-title.small {
+      margin: 0 0 0.5rem;
+      font-size: 0.84rem;
+    }
+    .map-link-list {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .map-link-list li {
+      margin: 0.35rem 0;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: baseline;
+      gap: 6px;
+    }
+    .map-link-list.compact li { margin: 0.3rem 0; }
+    .map-link-list span {
+      color: var(--ink-tertiary);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .map-link-list a {
+      min-width: 0;
+      color: var(--brand);
+      text-decoration: underline;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    .map-link-list.compact a { font-size: 0.88rem; }
+    .map-more-note {
+      margin: 0.55rem 0 0;
+      color: var(--ink-tertiary);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .map-action-row {
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .map-action {
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.35;
+    }
+    .map-action.faq {
+      background: var(--bg-soft);
+      color: var(--ink);
+    }
+    .map-action.menu {
+      background: var(--primary-bg);
+      color: var(--brand);
+      font-weight: 500;
+    }
+    .map-action:hover { text-decoration: none; filter: brightness(0.98); }
+    .map-meta-row {
+      gap: 8px;
+      margin-top: 0.9rem;
+    }
+    .read-more-block {
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px dashed var(--line);
+    }
+    .dc-footer-row {
+      margin-top: 8px;
+      gap: 8px;
+    }
     .st-btn { padding: 8px 16px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); color: var(--ink-secondary); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all var(--transition); font-family: inherit; box-shadow: var(--shadow-sm); }
     .st-btn:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-1px); }
     .st-btn.st-active { background: var(--brand-light); color: var(--brand); border-color: var(--brand-light2); font-weight: 600; box-shadow: none; transform: none; }
@@ -908,6 +1061,11 @@ const groups = [
       font-weight: 600;
       transition: all var(--transition);
     }
+    .featured-route {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      border-color: var(--brand-light2);
+    }
     .quick-route:hover {
       color: var(--brand);
       border-color: var(--brand-light2);
@@ -932,10 +1090,126 @@ const groups = [
     .disease-search input:focus { outline: 3px solid color-mix(in srgb, var(--brand) 22%, transparent); border-color: var(--brand); }
     .disease-search span { display: block; margin-top: 0.45rem; font-size: 0.78rem; color: var(--ink-tertiary); }
     .disease-empty { margin: 1rem 0; padding: 1rem; border: 1px dashed var(--line); border-radius: 10px; text-align: center; color: var(--ink-secondary); }
+    .map-tools {
+      margin-top: 2rem;
+      padding: 1.2rem;
+      background: var(--bg-soft);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .map-tools h3 {
+      margin: 0 0 0.5rem;
+    }
+    .tool-row {
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .map-final-cta {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .map-final-cta a {
+      padding: 0.6rem 1.5rem;
+      background: var(--brand);
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+    }
     .disease-card[hidden] { display: none; }
     [data-spec] { transition: opacity 0.2s; }
     @media (max-width:640px) {
-      .dc-header { flex-direction: column; align-items: flex-start; }
+      .disease-map-page {
+        padding: 1rem 0.9rem 2rem;
+      }
+      .map-hero {
+        margin-bottom: 1.25rem;
+      }
+      .map-hero h1 {
+        font-size: 1.48rem;
+      }
+      .map-hero p {
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .route-row {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+      }
+      .quick-route {
+        flex: 0 0 auto;
+        font-size: 0.78rem;
+        padding: 6px 10px;
+      }
+      .disease-search {
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+      }
+      .spec-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        margin-bottom: 1rem;
+        padding-bottom: 2px;
+      }
+      .st-btn {
+        flex: 0 0 auto;
+        padding: 7px 12px;
+        font-size: 0.8rem;
+      }
+      .disease-list {
+        gap: 1rem;
+      }
+      .dc-header {
+        align-items: flex-start;
+        gap: 0.45rem;
+        padding: 0.75rem 0.9rem;
+      }
+      .dc-emoji {
+        font-size: 1.35rem;
+      }
+      .dc-header h2 {
+        flex-basis: calc(100% - 2rem);
+        font-size: 1rem;
+      }
+      .dc-specialty {
+        font-size: 0.7rem;
+      }
+      .dc-body {
+        padding: 0.9rem;
+      }
+      .map-link-list li {
+        grid-template-columns: 1fr;
+        gap: 1px;
+        margin: 0.45rem 0;
+      }
+      .map-link-list span {
+        font-size: 0.7rem;
+      }
+      .map-link-list a,
+      .map-link-list.compact a {
+        font-size: 0.86rem;
+      }
+      .map-action-row,
+      .map-meta-row {
+        gap: 6px;
+      }
+      .map-action,
+      .map-meta-chip,
+      .dc-more-link {
+        font-size: 0.75rem;
+      }
+      .map-tools {
+        margin-top: 1.25rem;
+        padding: 1rem 0.8rem;
+      }
+      .map-final-cta a {
+        width: 100%;
+        padding: 0.7rem 1rem;
+      }
     }
   </style>
 

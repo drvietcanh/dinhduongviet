@@ -1,7 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NutritionTable from "../../components/NutritionTable.astro";
-import NutrientStats from "../../components/NutrientStats.astro";
 import PortionCalculator from "../../components/PortionCalculator.astro";
 import MacroPie from "../../components/MacroPie.astro";
 import NutritionBars from "../../components/NutritionBars.astro";
@@ -139,10 +137,6 @@ var foodSchema = {
   <div id="vn-crossref" class="crossref-shell" data-slug="{food.slug}" data-exkcal="{food.nutrients.energyKcal}"></div>
 
   <section class="section">
-    <NutrientStats nutrients={food.nutrients} />
-  </section>
-
-  <section class="section">
     <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
   </section>
 
@@ -171,19 +165,18 @@ var foodSchema = {
     </section>
   )}
 
-  <section class="section grid two" style="margin-top: 20px;">
+  <section class="section grid two detail-secondary-grid">
     <div class="card">
-      <h3 style="margin-bottom: 16px;">🥧 Phân bố năng lượng</h3>
+      <h3 class="detail-card-title">🥧 Phân bố năng lượng</h3>
       <MacroPie proteinG={food.nutrients.proteinG ?? 0} fatG={food.nutrients.fatG ?? 0} carbG={food.nutrients.carbG ?? 0} />
     </div>
     <div class="card">
-      <h3 style="margin-bottom: 16px;">📊 % RDI tham khảo</h3>
+      <h3 class="detail-card-title">📊 % RDI tham khảo</h3>
       <NutritionBars nutrients={food.nutrients} />
     </div>
   </section>
 
-  <section class="section grid two">
-    <NutritionTable nutrients={food.nutrients} caption={`Thành phần trong ${food.basis}`} />
+  <section class="section">
     <div class="card source-card">
       <div class="section-head">
         <h2>Nguồn dữ liệu</h2>
@@ -430,6 +423,55 @@ var foodSchema = {
 
   .section-head {
     margin-bottom: 12px;
+  }
+  .detail-secondary-grid {
+    margin-top: 20px;
+  }
+  .detail-card-title {
+    margin-bottom: 16px;
+  }
+  .vn-ref-card {
+    padding:14px 16px;
+  }
+  .vn-ref-head {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .vn-ref-source {
+    color:var(--ink-secondary);
+    font-size:0.84rem;
+  }
+  .vn-ref-link {
+    margin-left:auto;
+    color:var(--brand-dark);
+    font-weight:600;
+    white-space:nowrap;
+    transition:color var(--transition);
+  }
+  .vn-ref-meta {
+    margin-top:10px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .vn-ref-meta-label {
+    color:#888;
+  }
+  .vn-ref-diff {
+    color:#e65100;
+    font-weight:600;
+  }
+  .vn-ref-match {
+    color:#2e7d32;
+  }
+  .vn-ref-warning {
+    margin-top:8px;
+    background:#fff3e0;
+    padding:8px 12px;
+    border-radius:6px;
+    font-size:0.85rem;
   }
   .next-step-card { padding: 18px; }
   .next-step-grid {
@@ -781,12 +823,12 @@ var foodSchema = {
       var exKcal = exKcalStr ? parseFloat(exKcalStr) : null;
       var diff = exKcal !== null ? Math.abs(exKcal - vnFood.energy_kcal) : 0;
       var pct = exKcal !== null && vnFood.energy_kcal > 0 ? Math.round(diff / vnFood.energy_kcal * 100) : null;
-      var html = '<div class="card" style="padding:14px 16px;">';
+      var html = '<div class="card vn-ref-card">';
       html += '<div class="section-head"><h2>Nguồn dữ liệu Việt</h2><p>Đối chiếu nhanh với mã tương ứng trong Bảng thành phần thực phẩm Việt Nam 2007.</p></div>';
-      html += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><div><strong>Bảng TP thực phẩm Việt 2007</strong><span style="color:var(--ink-secondary);font-size:0.84rem;"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" style="margin-left:auto;color:var(--brand-dark);font-weight:600;white-space:nowrap;transition:color var(--transition);">Mở bảng Việt →</a></div>';
-      html += '<div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;"><div><span style="color:#888;">Tương ứng:</span> <strong>' + ref.name + '</strong></div><div><span style="color:#888;">Năng lượng VN 2007:</span> <strong>' + vnFood.energy_kcal + ' kcal</strong>' + (pct !== null && pct > 15 ? ' <span style="color:#e65100;font-weight:600;">(lệch ' + pct + '%)</span>' : ' <span style="color:#2e7d32;">Phù hợp</span>') + '</div><div><span style="color:#888;">Mã số:</span> <strong>#' + vnFood.code + '</strong></div></div>';
+      html += '<div class="vn-ref-head"><div><strong>Bảng TP thực phẩm Việt 2007</strong><span class="vn-ref-source"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" class="vn-ref-link">Mở bảng Việt →</a></div>';
+      html += '<div class="vn-ref-meta"><div><span class="vn-ref-meta-label">Tương ứng:</span> <strong>' + ref.name + '</strong></div><div><span class="vn-ref-meta-label">Năng lượng VN 2007:</span> <strong>' + vnFood.energy_kcal + ' kcal</strong>' + (pct !== null && pct > 15 ? ' <span class="vn-ref-diff">(lệch ' + pct + '%)</span>' : ' <span class="vn-ref-match">Phù hợp</span>') + '</div><div><span class="vn-ref-meta-label">Mã số:</span> <strong>#' + vnFood.code + '</strong></div></div>';
       if (pct !== null && pct > 30) {
-        html += '<div style="margin-top:8px;background:#fff3e0;padding:8px 12px;border-radius:6px;font-size:0.85rem;">Số liệu hiện tại vẫn nên xem là ước tính. Khi cần dùng chính thức, ưu tiên đối chiếu lại theo mã #' + vnFood.code + ' của Viện Dinh Dưỡng.</div>';
+        html += '<div class="vn-ref-warning">Số liệu hiện tại vẫn nên xem là ước tính. Khi cần dùng chính thức, ưu tiên đối chiếu lại theo mã #' + vnFood.code + ' của Viện Dinh Dưỡng.</div>';
       }
       html += '</div>';
       container.innerHTML = html;

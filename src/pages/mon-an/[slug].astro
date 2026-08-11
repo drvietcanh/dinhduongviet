@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NutritionTable from "../../components/NutritionTable.astro";
 import NutritionChart from "../../components/NutritionChart.astro";
-import NutrientStats from "../../components/NutrientStats.astro";
 import PortionCalculator from "../../components/PortionCalculator.astro";
 import HealthAlert from "../../components/HealthAlert.astro";
 import GlycemicLoad from "../../components/GlycemicLoad.astro";
@@ -120,10 +118,6 @@ const recipeSchema = {
 
   <HealthAlert nutrients={nutrients} name={recipe.name} />
 
-  <section class="section">
-    <NutrientStats nutrients={nutrients} />
-  </section>
-
   {nutrients.glycemicIndex != null && (
     <section class="section">
       <GlycemicLoad glycemicIndex={nutrients.glycemicIndex} carbG={nutrients.carbG} />
@@ -162,8 +156,7 @@ const recipeSchema = {
     <VNHealthScore nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} isRecipe servingKcal={nutrients.energyKcal} />
   </section>
 
-  <section class="section grid two">
-    <NutritionTable nutrients={nutrients} caption={`Ước tính cho ${recipe.servingName}`} />
+  <section class="section">
     <div class="card">
       <div class="section-head">
         <h2>Cách tính</h2>
@@ -194,14 +187,14 @@ const recipeSchema = {
   {recipe.commonPortions && (
     <section class="section card">
       <h2>Khẩu phần thường gặp</h2>
-      <p class="muted" style="margin: 6px 0 12px;">{recipe.portionNote}</p>
+      <p class="muted portion-note">{recipe.portionNote}</p>
       <div class="grid three">
         {recipe.commonPortions.map((portion) => (
           <div class="stat">
             <span class="muted">{portion.label}</span>
             <strong>{portion.beefAmountG ? `${portion.beefAmountG}g` : "—"}</strong>
             <span class="muted">thịt bò chín</span>
-            <p class="muted" style="margin-top: 8px;">{portion.description}</p>
+            <p class="muted portion-description">{portion.description}</p>
           </div>
         ))}
       </div>
@@ -509,6 +502,12 @@ const recipeSchema = {
     color: var(--ink-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
+  }
+  .portion-note {
+    margin: 6px 0 12px;
+  }
+  .portion-description {
+    margin-top: 8px;
   }
 
   @media (max-width: 900px) {

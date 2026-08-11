@@ -10,25 +10,32 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
     <span class="badge">📊 Công cụ</span>
     <h1>Tính năng lượng tham khảo (BMR & TDEE)</h1>
     <p class="lead">
-      Công cụ ước tính năng lượng dựa trên công thức Mifflin-St Jeor, giúp bạn tham khảo <strong>BMR</strong> (năng lượng nền) và <strong>TDEE</strong> (tổng năng lượng tiêu hao mỗi ngày).
+      Công cụ này ước tính năng lượng nền theo Mifflin-St Jeor rồi nhân hệ số
+      hoạt động để cho ra <strong>BMR</strong> và <strong>TDEE</strong> tham
+      khảo ban đầu. Đây là mốc giáo dục cho người lớn, không phải toa năng
+      lượng điều trị cá thể.
     </p>
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo cho người trưởng thành từ 18 tuổi. Người có bệnh nền, đang dùng thuốc, thai kỳ, rối loạn ăn uống, vận động viên hoặc đang cần chế độ ăn điều trị nên hỏi bác sĩ/chuyên gia dinh dưỡng.
+    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo cho người trưởng
+    thành từ 18 tuổi. Không dùng riêng kết quả này để tự chỉnh thuốc, insulin,
+    lợi tiểu hoặc chế độ điều trị. Người có bệnh nền, đang dùng thuốc, thai kỳ,
+    rối loạn ăn uống hoặc nhu cầu vận động đặc biệt nên hỏi bác sĩ hoặc chuyên
+    gia dinh dưỡng.
   </div>
 
   <section class="section card">
     <h2>Nhập chỉ số cơ thể</h2>
 
-    <div class="grid two" style="margin-top: 15px;">
+    <div class="grid two energy-form-grid">
       <div>
         <label>Giới tính</label>
-        <div style="display:flex;gap:15px;padding-top:10px;">
-          <label style="display:flex;align-items:center;font-weight:normal;gap:5px;cursor:pointer;">
+        <div class="energy-radio-row">
+          <label class="energy-radio-option">
             <input type="radio" name="gender" value="male" checked /> Nam
           </label>
-          <label style="display:flex;align-items:center;font-weight:normal;gap:5px;cursor:pointer;">
+          <label class="energy-radio-option">
             <input type="radio" name="gender" value="female" /> Nữ
           </label>
         </div>
@@ -39,7 +46,7 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       </div>
     </div>
 
-    <div class="grid two" style="margin-top: 15px;">
+    <div class="grid two energy-form-grid">
       <div>
         <label for="weight">Cân nặng (kg)</label>
         <input type="text" id="weight" inputmode="decimal" placeholder="Ví dụ: 65.5" />
@@ -50,9 +57,9 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       </div>
     </div>
 
-    <div style="margin-top: 15px;">
+    <div class="energy-select-block">
       <label for="activity">Mức độ vận động</label>
-      <select id="activity" style="width:100%;padding:10px 12px;border:1px solid var(--card-border);border-radius:var(--radius);font-size:1rem;background:var(--bg-elevated);color:var(--ink);">
+      <select id="activity" class="energy-select">
         <option value="1.2">Ít vận động (Làm việc văn phòng, không tập thể dục)</option>
         <option value="1.375">Vận động nhẹ (Tập thể dục nhẹ nhàng 1-3 ngày/tuần)</option>
         <option value="1.55" selected>Vận động vừa (Tập thể dục đều đặn 3-5 ngày/tuần)</option>
@@ -61,41 +68,41 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       </select>
     </div>
 
-    <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 20px; text-align: center; border-radius: 12px;">
+    <button type="button" id="calc-btn" class="cta-btn energy-submit">
       Tính năng lượng tham khảo
     </button>
 
     <p id="form-message" class="form-message" hidden></p>
   </section>
 
-  <section id="result-section" class="section card" style="display:none; border-color: var(--brand-light2); background: #f8fafc;">
+  <section id="result-section" class="section card energy-result-section" style="display:none;">
     <h2>Kết quả phân tích</h2>
 
-    <div class="grid two" style="margin-top:20px;">
-      <div style="background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid var(--card-border);text-align:center;">
-        <span class="muted" style="display:block;margin-bottom:5px;">Năng lượng nền (BMR)</span>
-        <strong id="bmr-result" style="font-size:2.2rem;color:var(--brand);display:block;">0</strong>
-        <span style="font-weight:600;">kcal / ngày</span>
-        <p class="muted" style="font-size:0.85rem;margin-top:10px;">Là lượng calo cơ thể đốt cháy khi nằm bất động (để thở, bơm máu, duy trì nội tạng).</p>
+    <div class="grid two energy-result-grid">
+      <div class="energy-stat-card">
+        <span class="muted energy-stat-label">Năng lượng nền (BMR)</span>
+        <strong id="bmr-result" class="energy-stat-value energy-stat-value-brand">0</strong>
+        <span class="energy-stat-unit">kcal / ngày</span>
+        <p class="muted energy-stat-copy">Là lượng calo cơ thể đốt cháy khi nằm bất động để thở, bơm máu và duy trì hoạt động nền.</p>
       </div>
 
-      <div style="background:var(--brand);color:white;padding:20px;border-radius:var(--radius);text-align:center;">
-        <span style="display:block;margin-bottom:5px;opacity:0.9;">Tổng tiêu hao (TDEE)</span>
-        <strong id="tdee-result" style="font-size:2.2rem;display:block;text-shadow:1px 1px 2px rgba(0,0,0,0.2);">0</strong>
-        <span style="font-weight:600;">kcal / ngày</span>
-        <p style="font-size:0.85rem;margin-top:10px;opacity:0.9;">Là ước tính tổng năng lượng tiêu hao mỗi ngày theo dữ liệu bạn nhập.</p>
+      <div class="energy-stat-card energy-stat-card-accent">
+        <span class="energy-stat-label energy-stat-label-accent">Tổng tiêu hao (TDEE)</span>
+        <strong id="tdee-result" class="energy-stat-value energy-stat-value-accent">0</strong>
+        <span class="energy-stat-unit">kcal / ngày</span>
+        <p class="energy-stat-copy energy-stat-copy-accent">Là ước tính tổng năng lượng tiêu hao mỗi ngày theo dữ liệu bạn nhập.</p>
       </div>
     </div>
 
-    <div style="margin-top: 24px; text-align: center;">
-      <button type="button" id="save-target-btn" class="cta-btn cta-outline" style="border-radius: 12px; width: 100%;">💾 Lưu TDEE làm Mục tiêu vào Nhật Ký</button>
-      <p id="save-msg" style="color: var(--brand); font-size: 0.9rem; margin-top: 10px;" hidden>✅ Đã lưu mục tiêu thành công!</p>
+    <div class="energy-save-block">
+      <button type="button" id="save-target-btn" class="cta-btn cta-outline energy-save-button">💾 Lưu TDEE làm Mục tiêu vào Nhật Ký</button>
+      <p id="save-msg" class="energy-save-message" hidden>✅ Đã lưu mục tiêu thành công!</p>
     </div>
-    <div class="result-note" style="margin-top:20px;">
-      <h3 style="margin-top:0;font-size:1.1rem;color:var(--ink);">🎯 Hướng dẫn đặt mục tiêu:</h3>
+    <div class="result-note energy-note-block">
+      <h3 class="energy-note-title">🎯 Hướng dẫn đặt mục tiêu:</h3>
       <ul class="safe-list">
-        <li><strong>Duy trì cân nặng:</strong> TDEE là mốc tham khảo ban đầu, cần theo dõi cân nặng, vòng eo, cảm giác đói/no và mức vận động thực tế.</li>
-        <li><strong>Giảm hoặc tăng cân:</strong> Nên điều chỉnh từ từ và tránh thay đổi cực đoan. Người có bệnh nền, thai kỳ, trẻ vị thành niên hoặc rối loạn ăn uống cần được cá thể hóa.</li>
+        <li><strong>Duy trì cân nặng:</strong> Xem TDEE như mốc mở đầu, rồi theo dõi lại cân nặng, vòng eo, cảm giác đói no và mức vận động thực tế.</li>
+        <li><strong>Giảm hoặc tăng cân:</strong> Nên điều chỉnh từ từ. Không dùng riêng công cụ này để tự đặt mức cắt hoặc tăng kcal quá mạnh.</li>
         <li><strong>Theo dõi:</strong> Nếu cân nặng thay đổi nhanh, mệt nhiều, chóng mặt hoặc có triệu chứng bất thường, hãy dừng tự điều chỉnh và hỏi chuyên gia.</li>
       </ul>
     </div>
@@ -108,6 +115,22 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
     display: block;
     font-weight: 600;
     margin-bottom: 4px;
+  }
+  .energy-form-grid,
+  .energy-select-block {
+    margin-top: 15px;
+  }
+  .energy-radio-row {
+    display:flex;
+    gap:15px;
+    padding-top:10px;
+  }
+  .energy-radio-option {
+    display:flex;
+    align-items:center;
+    font-weight:normal;
+    gap:5px;
+    cursor:pointer;
   }
   input[type="text"], input[type="number"] {
     width: 100%;
@@ -123,6 +146,79 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
   input:focus, select:focus {
     outline: none;
     border-color: var(--brand);
+  }
+  .energy-select {
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--card-border);
+    border-radius:var(--radius);
+    font-size:1rem;
+    background:var(--bg-elevated);
+    color:var(--ink);
+  }
+  .energy-submit {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 12px;
+  }
+  .energy-result-section {
+    border-color: var(--brand-light2);
+    background: #f8fafc;
+  }
+  .energy-result-grid {
+    margin-top:20px;
+  }
+  .energy-stat-card {
+    background:var(--card);
+    padding:20px;
+    border-radius:var(--radius);
+    border:1px solid var(--card-border);
+    text-align:center;
+  }
+  .energy-stat-card-accent {
+    background:var(--brand);
+    color:white;
+  }
+  .energy-stat-label {
+    display:block;
+    margin-bottom:5px;
+  }
+  .energy-stat-label-accent {
+    opacity:0.9;
+  }
+  .energy-stat-value {
+    font-size:2.2rem;
+    display:block;
+  }
+  .energy-stat-value-brand {
+    color:var(--brand);
+  }
+  .energy-stat-value-accent {
+    text-shadow:1px 1px 2px rgba(0,0,0,0.2);
+  }
+  .energy-stat-unit {
+    font-weight:600;
+  }
+  .energy-stat-copy {
+    font-size:0.85rem;
+    margin-top:10px;
+  }
+  .energy-stat-copy-accent {
+    opacity:0.9;
+  }
+  .energy-save-block {
+    margin-top: 24px;
+    text-align: center;
+  }
+  .energy-save-button {
+    border-radius: 12px;
+    width: 100%;
+  }
+  .energy-save-message {
+    color: var(--brand);
+    font-size: 0.9rem;
+    margin-top: 10px;
   }
 
 
@@ -140,6 +236,14 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
     background: var(--bg-soft);
     border: 1px solid var(--card-border);
     line-height: 1.6;
+  }
+  .energy-note-block {
+    margin-top:20px;
+  }
+  .energy-note-title {
+    margin-top:0;
+    font-size:1.1rem;
+    color:var(--ink);
   }
   .safe-list { margin: 10px 0 0; padding-left: 18px; }
   .safe-list li + li { margin-top: 8px; }

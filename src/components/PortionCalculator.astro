@@ -20,13 +20,13 @@ const payload = JSON.stringify({ nutrients, labels: nutrientLabels, keys: detail
 
 <div class="card portion-calculator" id={id}>
   <h2>{title}</h2>
-  <p class="muted" style="margin: 6px 0 12px;">Nhập khối lượng khẩu phần để hệ thống quy đổi theo cùng nguồn dữ liệu.</p>
+  <p class="muted portion-copy">Nhập khối lượng khẩu phần để hệ thống quy đổi theo cùng nguồn dữ liệu.</p>
   <div class="search-row">
     <input type="number" min="1" step="1" value={defaultAmountG} aria-label="Khối lượng gram" data-portion-input />
     <button class="button secondary" type="button" data-reset>Đặt lại</button>
   </div>
-  <p class="muted" style="margin-top: 10px;">Đang tính cho <strong data-current-amount>{defaultAmountG}</strong>g.</p>
-  <table class="table" style="margin-top: 12px;">
+  <p class="muted portion-current">Đang tính cho <strong data-current-amount>{defaultAmountG}</strong>g.</p>
+  <table class="table portion-table">
     <thead>
       <tr>
         <th>Chất dinh dưỡng</th>
@@ -77,3 +77,17 @@ const payload = JSON.stringify({ nutrients, labels: nutrientLabels, keys: detail
     render();
   });
 </script>
+
+<style>
+  .portion-copy {
+    margin: 6px 0 12px;
+  }
+
+  .portion-current {
+    margin-top: 10px;
+  }
+
+  .portion-table {
+    margin-top: 12px;
+  }
+</style>

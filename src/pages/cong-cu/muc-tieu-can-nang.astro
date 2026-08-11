@@ -127,6 +127,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <strong>Công cụ không đưa kcal hoặc macro cá nhân dạng số ở v1 vì cần khóa nguồn rõ hơn.</strong>
           <span>Không dùng để tự chỉnh thuốc, insulin, lợi tiểu hoặc thuốc giảm cân.</span>
         </div>
+
+        <div class="wgp-block">
+          <h3>Khóa nguồn v1</h3>
+          <ul id="wgp-source-lock" class="wgp-list"></ul>
+        </div>
       </aside>
     </div>
   </section>
@@ -193,6 +198,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     const proteinBlock = document.getElementById("wgp-protein-block");
     const proteinValue = document.getElementById("wgp-protein-value");
     const proteinSource = document.getElementById("wgp-protein-source");
+    const sourceLockList = document.getElementById("wgp-source-lock");
 
     function num(input) {
       return Number.parseFloat(input.value);
@@ -253,6 +259,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         ...result.reasons.map((item) => reasonLabels[item] ?? item),
         warningText[result.mode],
       ]);
+      sourceLockList.replaceChildren();
 
       if (result.proteinReference && result.shouldShowTargets) {
         proteinBlock.hidden = false;
@@ -267,6 +274,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         proteinValue.textContent = "-";
         proteinSource.textContent = "";
       }
+
+      (result.sourceLabels ?? []).forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        sourceLockList.appendChild(li);
+      });
     }
 
     form?.addEventListener("input", render);

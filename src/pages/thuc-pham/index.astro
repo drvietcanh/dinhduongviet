@@ -18,10 +18,10 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   description="Tra cứu danh sách thực phẩm theo nhóm, calo, đạm, natri và các tag dinh dưỡng để chọn món phù hợp hơn cho bữa ăn hằng ngày."
   canonical="/thuc-pham"
 >
-  <section>
+  <section class="list-hero">
     <h1>Danh sách thực phẩm</h1>
     <p class="lead">Trang này phù hợp khi bạn muốn tra nhanh từng thực phẩm trước khi ghép thành bữa ăn.</p>
-    <div style="margin-top: 18px;">
+    <div class="hero-search">
       <SearchBox />
     </div>
     <div class="quick-start-panel">
@@ -88,14 +88,14 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
         <label><span>Natri tối đa</span><input id="max-sodium" type="number" min="0" step="10" placeholder="mg/100g" /></label>
         <button id="reset-filters" class="button secondary" type="button">Xóa lọc</button>
       </div>
-      <p class="muted" style="margin:10px 0 0; font-size:0.83rem;">
+      <p class="muted filter-note">
         Bộ lọc này chỉ giúp sàng nhanh theo dữ liệu dinh dưỡng. Với bệnh thận hoặc chế độ ăn điều trị, vẫn cần cá thể hóa theo xét nghiệm, thuốc và tư vấn bác sĩ.
       </p>
       <p class="muted filter-summary" id="filter-summary"></p>
       </div>
     </details>
-    <div class="quick-nav" style="margin-top: 12px;">
-      <span class="muted" style="font-size: 0.85rem;">Nhảy nhanh: </span>
+    <div class="quick-nav">
+      <span class="muted quick-nav-label">Nhảy nhanh: </span>
       {Object.entries(groups).map(([category, items]) => (
         <a class="badge" href={`#${encodeURIComponent(category)}`}>{category} · {items.length}</a>
       ))}
@@ -166,7 +166,16 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
 </BaseLayout>
 
 <style>
+  .hero-search {
+    margin-top: 18px;
+  }
   .quick-nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .quick-nav-label {
+    font-size: 0.85rem;
+  }
+  .list-hero {
+    max-width: 100%;
+  }
   .usage-strip {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -274,6 +283,11 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
     margin-top: 10px;
     min-height: 20px;
   }
+  .filter-note {
+    margin: 10px 0 0;
+    font-size: 0.83rem;
+    line-height: 1.5;
+  }
   .filter-row {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -351,10 +365,19 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
     gap: 10px;
     margin-bottom: 4px;
   }
+  :global(.food-group-heading) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
   :global(.food-group-meta) {
     color: var(--ink-tertiary);
     font-size: 0.78rem;
     white-space: nowrap;
+  }
+  :global(.food-grid-spaced) {
+    margin-top: 12px;
   }
   :global(.food-grid) {
     display: grid;
@@ -593,6 +616,13 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
     .filter-btn { padding: 8px 12px; font-size: 0.8rem; min-height: 44px; }
   }
   @media (max-width: 480px) {
+    .list-hero {
+      padding-inline: 8px;
+    }
+    .list-hero h1 {
+      font-size: 1.68rem;
+      line-height: 1.22;
+    }
     .lead {
       font-size: 0.9rem;
       line-height: 1.5;
@@ -648,10 +678,13 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   var tagFilterPanel = document.querySelector('.tag-filter-panel');
   var params = new URLSearchParams(window.location.search);
 
-  if (filterPanel && window.innerWidth <= 760) {
+  var hasInitialFoodFilters = ['profile', 'category', 'tag', 'sort', 'maxKcal', 'minProtein', 'maxCarb', 'maxSodium']
+    .some(function(key) { return params.has(key); });
+
+  if (filterPanel && window.innerWidth <= 760 && !hasInitialFoodFilters) {
     filterPanel.removeAttribute('open');
   }
-  if (tagFilterPanel && window.innerWidth <= 760) {
+  if (tagFilterPanel && window.innerWidth <= 760 && !params.has('tag')) {
     tagFilterPanel.removeAttribute('open');
   }
 
@@ -821,8 +854,8 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
       var catName = cats[c];
       var items = groups[catName];
       html += '<section class="section food-group" id="' + encodeURIComponent(catName) + '" data-category="' + catName + '">';
-      html += '<div class="food-group-title"><h2 style="display:flex;align-items:center;gap:8px;margin:0;"><span class="fi">' + getIcon(catName) + '</span> ' + catName + '</h2><span class="food-group-meta">' + items.length + ' mục</span></div>';
-      html += '<div class="grid three food-grid" style="margin-top:12px;">';
+      html += '<div class="food-group-title"><h2 class="food-group-heading"><span class="fi">' + getIcon(catName) + '</span> ' + catName + '</h2><span class="food-group-meta">' + items.length + ' mục</span></div>';
+      html += '<div class="grid three food-grid food-grid-spaced">';
       for (var i = 0; i < items.length; i++) {
         html += renderCard(items[i]);
       }
@@ -882,7 +915,7 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
       groups[cat]++;
     }
     var cats = Object.keys(groups).sort(function(a,b) { return a.localeCompare(b, 'vi'); });
-    var inner = '<span class="muted" style="font-size:0.85rem;">Nhảy nhanh: </span>';
+    var inner = '<span class="muted quick-nav-label">Nhảy nhanh: </span>';
     for (var c = 0; c < cats.length; c++) {
       inner += '<a class="badge" href="#' + encodeURIComponent(cats[c]) + '">' + cats[c] + ' · ' + groups[cats[c]] + '</a>';
     }
