@@ -1,49 +1,3 @@
----
-import { foods, recipes } from "../data/nutrition";
-import { calculateRecipe } from "../lib/nutrition";
-import { articles } from "../data/articles";
-
-const articleItems = articles
-  .filter(a => a && a.slug && a.title)
-  .map(a => ({
-    n: a.title,
-    s: a.slug,
-    a: (a.keywords || []).concat([a.categoryName || ""]),
-    t: "bài viết",
-    u: `/kien-thuc-dinh-duong/${a.slug}`,
-    k: 0,
-    e: a.emoji || "📄"
-  }));
-
-const toolItems = [
-  { n: "BMI & Vòng eo", s: "bmi", a: ["cân nặng", "béo phì", "mỡ"], t: "công cụ", u: "/cong-cu/bmi", k: 0, e: "⚖️" },
-  { n: "Chỉ số đường huyết (GI)", s: "chi-so-gi", a: ["glucose", "đái tháo đường", "tiểu đường", "carb"], t: "công cụ", u: "/cong-cu/chi-so-gi", k: 0, e: "📊" },
-  { n: "Tính GL bữa ăn", s: "tinh-gl-bua-an", a: ["đường huyết", "tải lượng", "đái tháo đường", "tiểu đường"], t: "công cụ", u: "/cong-cu/tinh-gl-bua-an", k: 0, e: "🥘" },
-  { n: "Tính nhu cầu đạm", s: "tinh-nhu-cau-dam", a: ["protein", "thận", "cơ"], t: "công cụ", u: "/cong-cu/tinh-nhu-cau-dam", k: 0, e: "🥩" },
-  { n: "Tính carb trong bữa ăn", s: "tinh-carb", a: ["tinh bột", "đường", "đái tháo đường", "tiểu đường"], t: "công cụ", u: "/cong-cu/tinh-carb", k: 0, e: "🔢" },
-  { n: "Theo dõi đường huyết", s: "theo-doi-duong-huyet", a: ["glucose", "HbA1c"], t: "công cụ", u: "/cong-cu/theo-doi-duong-huyet", k: 0, e: "🩸" },
-  { n: "Tính calo tiêu thụ", s: "tinh-calo-tieu-thu", a: ["vận động", "tập", "MET"], t: "công cụ", u: "/cong-cu/tinh-calo-tieu-thu", k: 0, e: "🔥" },
-  { n: "Tỷ lệ mỡ cơ thể", s: "ti-le-mo-co-the", a: ["body fat", "WHR", "vòng eo"], t: "công cụ", u: "/cong-cu/ti-le-mo-co-the", k: 0, e: "📏" },
-  { n: "Dinh dưỡng thai kỳ", s: "dinh-duong-thai-ky", a: ["mang thai", "bầu", "thai nhi"], t: "công cụ", u: "/cong-cu/dinh-duong-thai-ky", k: 0, e: "🤰" },
-  { n: "Nhu cầu dinh dưỡng trẻ em", s: "nhu-cau-dinh-duong-tre-em", a: ["trẻ", "thiếu nhi", "tăng trưởng"], t: "công cụ", u: "/cong-cu/nhu-cau-dinh-duong-tre-em", k: 0, e: "👶" },
-  { n: "Tương tác thuốc-thực phẩm", s: "tuong-tac-thuoc-thuc-pham", a: ["thuốc", "kháng sinh", "tương kỵ"], t: "công cụ", u: "/cong-cu/tuong-tac-thuoc-thuc-pham", k: 0, e: "💊" },
-  { n: "Đường trong đồ uống", s: "duong-do-uong", a: ["nước ngọt", "đường", "calo lỏng"], t: "công cụ", u: "/cong-cu/duong-do-uong", k: 0, e: "🥤" },
-  { n: "Lập thực đơn tuần", s: "lap-thuc-don-tuan", a: ["kế hoạch", "bữa ăn", "meal prep"], t: "công cụ", u: "/cong-cu/lap-thuc-don-tuan", k: 0, e: "📋" },
-];
-
-const allItems = [
-  ...foods.map(f => ({ n: f.name, s: f.slug, a: f.aliases ?? [], t: "thực phẩm", u: `/thuc-pham/${f.slug}`, k: Math.round(f.nutrients?.energyKcal ?? 0), e: "" })),
-  ...recipes.map(r => {
-    const n = calculateRecipe(r);
-    return { n: r.name, s: r.slug, a: r.aliases ?? [], t: "món ăn", u: `/mon-an/${r.slug}`, k: Math.round(n?.energyKcal ?? 0), e: "" };
-  }),
-  ...articleItems,
-  ...toolItems,
-];
-const dataPayload = allItems;
-const jsonPayload = JSON.stringify(dataPayload);
----
-
 <autocomplete-search>
   <div class="ac-backdrop" style="display: none;"></div>
   <div class="ac-search-wrapper">
@@ -67,23 +21,47 @@ const jsonPayload = JSON.stringify(dataPayload);
     <button class="ac-chip" data-q="trứng">🥚 trứng</button>
     <button class="ac-chip" data-q="bún">🍜 bún</button>
   </div>
-  <!-- Hidden container with search data - Astro evaluates {expression} in text content -->
-  <div id="search-payload" style="display:none">{jsonPayload}</div>
 </autocomplete-search>
 
 <script is:inline>
 (function() {
-  var payloadEl = document.getElementById('search-payload');
-  if (!payloadEl) return;
-  var raw = payloadEl.textContent;
-  if (!raw) return;
-  var PAYLOAD = JSON.parse(raw);
+  var PAYLOAD = [];
+  var payloadPromise = null;
   var el = document.querySelector('autocomplete-search');
   if (!el) return;
   var input = el.querySelector('.ac-input');
   var dropdown = el.querySelector('.ac-dropdown');
   var backdrop = el.querySelector('.ac-backdrop');
   var clearBtn = el.querySelector('.ac-clear');
+
+  function itemUrl(item) {
+    if (item.type === 'food') return '/thuc-pham/' + item.slug;
+    if (item.type === 'recipe') return '/mon-an/' + item.slug;
+    if (item.type === 'tool') return '/cong-cu/' + item.slug;
+    if (item.slug.indexOf('dung-tin-ngay-') === 0) return '/dung-tin-ngay/' + item.slug;
+    return '/kien-thuc-dinh-duong/' + item.slug;
+  }
+
+  function loadPayload() {
+    if (payloadPromise) return payloadPromise;
+    payloadPromise = fetch('/api/search-index.json')
+      .then(function(res) { if (!res.ok) throw new Error('search-index'); return res.json(); })
+      .then(function(items) {
+        PAYLOAD = items.map(function(item) {
+          return {
+            n: item.name,
+            s: item.slug,
+            a: item.aliases || [],
+            t: item.type === 'food' ? 'thực phẩm' : item.type === 'recipe' ? 'món ăn' : item.type === 'tool' ? 'công cụ' : 'bài viết',
+            u: itemUrl(item),
+            k: Math.round(item.kcal || 0),
+            e: item.type === 'article' ? '📄' : ''
+          };
+        });
+      })
+      .catch(function() { PAYLOAD = []; });
+    return payloadPromise;
+  }
 
   // Hotkey Ctrl+K
   document.addEventListener('keydown', function(e) {
@@ -220,6 +198,7 @@ const jsonPayload = JSON.stringify(dataPayload);
     if (backdrop) backdrop.style.display = 'block';
   }
 
+  input.addEventListener('focus', loadPayload, { once: true });
   input.addEventListener('input', function() {
     var q = this.value.trim();
     if (clearBtn) clearBtn.style.display = q.length > 0 ? 'block' : 'none';
@@ -228,8 +207,7 @@ const jsonPayload = JSON.stringify(dataPayload);
       if (backdrop) backdrop.style.display = 'none';
       return;
     }
-    var results = filterItems(q);
-    showDropdown(results);
+    loadPayload().then(function() { showDropdown(filterItems(q)); });
   });
 
   input.addEventListener('keydown', function(e) {
@@ -290,7 +268,7 @@ const jsonPayload = JSON.stringify(dataPayload);
   .ac-actions { display: flex; align-items: center; gap: 8px; padding-right: 8px; }
   .ac-hotkey {
     background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px;
-    padding: 4px 8px; font-size: 0.75rem; font-weight: 600; color: #64748b;
+    padding: 4px 8px; font-size: 0.75rem; font-weight: 700; color: #475569;
     pointer-events: none;
   }
   .ac-clear {

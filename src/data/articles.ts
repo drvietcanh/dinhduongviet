@@ -19,7 +19,19 @@ export interface ArticleMeta {
   series?: string;
   sources?: { name: string; title?: string; description?: string; url: string; slug?: string }[]; // 3-5 nguồn uy tín
   keywords?: string[];
+  reviewedAt?: string;
+  nextReviewAt?: string;
+  medicalReviewer?: string;
+  evidenceLevel?: 'guideline' | 'systematic-review' | 'clinical-review' | 'general-reference';
 }
+
+export const DEFAULT_MEDICAL_REVIEWER = "BSCKII Đỗ Việt Cảnh";
+export const EVIDENCE_LABELS: Record<NonNullable<ArticleMeta['evidenceLevel']>, string> = {
+  guideline: "Hướng dẫn chuyên môn",
+  "systematic-review": "Tổng quan hệ thống",
+  "clinical-review": "Tổng quan lâm sàng",
+  "general-reference": "Tài liệu tham khảo cộng đồng",
+};
 
 export const SERIES: Record<string, { name: string; emoji: string; description: string }> = {
   'dung-tin-ngay': { name: 'Đừng Tin Ngay', emoji: '🔍', description: 'Những hiểu lầm phổ biến về dinh dưỡng — có căn cứ khoa học hay chỉ là tin đồn?' },
@@ -41,6 +53,30 @@ export const SOURCE_ORG: Record<string, { name: string; url: string; short: stri
   usda: { name: 'USDA — Dietary Guidelines for Americans', url: 'https://www.dietaryguidelines.gov', short: 'USDA' },
   'who-vi': { name: 'WHO Tây Thái Bình Dương (tiếng Việt)', url: 'https://www.who.int/vietnam/vi', short: 'WHO Việt Nam' },
 };
+
+export const SOURCE_FALLBACKS: Record<string, ArticleMeta['sources']> = {
+  "tieu-duong-an-com-duoc-khong": [{ name: "American Diabetes Association", title: "Diabetes Food Hub", url: "https://diabetesfoodhub.org/" }],
+  "tre-bieng-an-me-can-lam-gi": [{ name: "HealthyChildren.org - American Academy of Pediatrics", title: "Nutrition", url: "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/default.aspx" }],
+  "mo-mau-cao-7-mon-an-nguy-hiem": [{ name: "American Heart Association", title: "Dietary Recommendations", url: "https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/nutrition-basics/aha-diet-and-lifestyle-recommendations" }],
+  "gout-khong-chi-kieng-thit-do": [{ name: "American College of Rheumatology", title: "Gout", url: "https://rheumatology.org/patients/gout" }],
+  "huyet-ap-cao-muoi-an-o-dau": [{ name: "WHO", title: "Salt reduction", url: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction" }],
+  "sau-phau-thuat-an-gi-lanh-nhanh": [{ name: "ESPEN", title: "Clinical nutrition in surgery", url: "https://www.espen.org/guidelines-home/espen-guidelines" }],
+  "thieu-sat-thieu-mau-bo-sung-tu-dau": [{ name: "NIH Office of Dietary Supplements", title: "Iron fact sheet", url: "https://ods.od.nih.gov/factsheets/Iron-Consumer/" }],
+  "trao-nguoc-da-day-ban-dem-an-gi": [{ name: "NIDDK", title: "Eating, Diet, & Nutrition for GERD", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults/eating-diet-nutrition" }],
+  "tao-bon-kinh-nien-an-rau-gi": [{ name: "NIDDK", title: "Eating, Diet, & Nutrition for Constipation", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation/eating-diet-nutrition" }],
+  "nguoi-gia-rang-yeu-nau-chao-gi": [{ name: "National Institute on Aging", title: "Healthy Eating As You Age", url: "https://www.nia.nih.gov/health/healthy-eating-nutrition-and-diet/healthy-eating-you-age-know-your-food-groups" }],
+  "muoi-loi-khuyen-dinh-duong-2030": [{ name: "Bộ Y tế", title: "Quyết định 3594/QĐ-BYT", url: "https://moh.gov.vn/" }],
+  "roi-loan-tien-dinh-chong-mat": [{ name: "NHS", title: "Dizziness", url: "https://www.nhs.uk/conditions/dizziness/" }],
+  "suy-gian-tinh-mach-chi-duoi": [{ name: "NHLBI", title: "Varicose Veins", url: "https://www.nhlbi.nih.gov/health/varicose-veins" }],
+  "thuc-trang-tieu-thu-muoi": [{ name: "WHO", title: "Salt reduction", url: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction" }],
+  "dung-tin-ngay-trung-gay-benh-tim": [{ name: "American Heart Association", title: "Dietary fats", url: "https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats" }],
+  "dung-tin-ngay-sua-dau-nanh-ung-thu": [{ name: "American Cancer Society", title: "Soy and cancer", url: "https://www.cancer.org/cancer/risk-prevention/diet-physical-activity/soy-and-cancer-risk.html" }],
+  "dung-tin-ngay-bo-bua-sang": [{ name: "NIDDK", title: "Health Tips for Adults", url: "https://www.niddk.nih.gov/health-information/weight-management/health-tips-adults" }],
+};
+
+export function getEffectiveSources(article: ArticleMeta) {
+  return article.sources?.length ? article.sources : SOURCE_FALLBACKS[article.slug] || [];
+}
 
 export const CATEGORIES: Record<string, { name: string; emoji: string }> = {
   guidelines: { name: 'Tháp dinh dưỡng & Hướng dẫn', emoji: '🏛️' },
@@ -291,7 +327,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-thuoc-chong-dong-mau-warfarin",
-    title: "Thuốc chống đông máu (Warfarin): Lằn ranh sinh tử",
+    title: "Dùng warfarin: Giữ vitamin K ổn định trong bữa ăn",
     description: "Tập trung vào cách giữ lượng vitamin K ổn định hơn trong bữa ăn khi đang dùng warfarin.",
     emoji: "💊",
     category: "special",
@@ -306,7 +342,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-vay-nen-psoriasis",
-    title: "Bệnh Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3",
+    title: "Bệnh vảy nến: Omega-3 và chế độ ăn có vai trò gì?",
     description: "Tóm tắt mối liên hệ giữa béo phì, viêm mạn tính, omega-3 và các nguyên tắc ăn uống hay được nhắc tới ở người vảy nến.",
     emoji: "🧴",
     category: "disease",
@@ -366,7 +402,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "xo-vua-dong-mach-vanh",
-    title: "Xơ vữa động mạch vành: Sát thủ thầm lặng và vai trò của mỡ máu",
+    title: "Xơ vữa động mạch vành: Vai trò của mỡ máu và chế độ ăn",
     description: "Hiểu vai trò của LDL, mảng xơ vữa và các nguyên tắc ăn uống hỗ trợ kiểm soát nguy cơ tim mạch.",
     emoji: "💔",
     category: "disease",
@@ -426,8 +462,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tieu-duong-thai-ky-gestational",
-    title: "Đái tháo đường thai kỳ: Sai lầm chết người khi mẹ bầu nhịn đói",
-    description: "Cách áp dụng chiến thuật 'Ăn ngược' (Rau - Thịt - Cơm) để hãm phanh đường huyết mà vẫn nuôi con béo khỏe.",
+    title: "Đái tháo đường thai kỳ: Vì sao không nên tự nhịn đói?",
+    description: "Gợi ý chia bữa và sắp xếp rau, đạm, tinh bột hợp lý để hỗ trợ kiểm soát đường huyết mà vẫn đáp ứng nhu cầu thai kỳ.",
     emoji: "🤰",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -456,8 +492,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-an-dam-blw",
-    title: "Ăn dặm (BLW): Nguy cơ chậm phát triển trí não do kiêng thịt",
-    description: "Sự thật về Sắt Heme từ thịt đỏ quyết định trí thông minh (IQ) và những cấm kỵ cực độc khi trẻ dưới 1 tuổi.",
+    title: "Ăn dặm BLW: Bổ sung sắt và đạm thế nào cho phù hợp?",
+    description: "Vai trò của sắt và đạm trong ăn dặm, các nguồn thực phẩm phù hợp và lưu ý an toàn cho trẻ dưới 1 tuổi.",
     emoji: "👶",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
@@ -486,8 +522,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "gan-nhiem-mo-nafld-fructose",
-    title: "Gan nhiễm mỡ (NAFLD): 'Trái bom' từ nước ép trái cây và trà sữa",
-    description: "Sự thật gây sốc: Ăn mỡ không gây mỡ gan, chính đường Fructose mới là thứ bị gan ép thành hạt mỡ trắng.",
+    title: "Gan nhiễm mỡ: Nước ép, trà sữa và lượng đường cần lưu ý",
+    description: "Giải thích vai trò của tổng năng lượng, đường tự do, fructose, rượu và chất béo trong nguy cơ gan nhiễm mỡ.",
     emoji: "🧋",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -518,7 +554,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "ngung-tho-khi-ngu-sleep-apnea",
-    title: "Ngưng thở khi ngủ (Sleep Apnea): Hiểm họa đột quỵ từ mỡ cổ",
+    title: "Ngưng thở khi ngủ: Cân nặng và nguy cơ tim mạch",
     description: "Tìm hiểu liên hệ giữa cân nặng, ngưng thở khi ngủ và các nguyên tắc ăn uống hỗ trợ kiểm soát nguy cơ.",
     emoji: "😴",
     category: "disease",
@@ -569,7 +605,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-chay-than-nhan-tao",
-    title: "Chạy thận nhân tạo: Sai lầm chết người khi kiêng đạm",
+    title: "Chạy thận nhân tạo: Vì sao không nên tự kiêng đạm quá mức?",
     description: "Nguyên tắc bổ sung năng lượng và đạm phù hợp hơn cho người chạy thận, theo hướng dẫn của đơn vị điều trị.",
     emoji: "🩸",
     category: "disease",
@@ -603,7 +639,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "chung-do-mat-rosacea",
-    title: "Chứng đỏ mặt (Rosacea): Trái bom nổ chậm từ Cồn và Gia vị cay",
+    title: "Rosacea: Theo dõi rượu bia, gia vị cay và yếu tố kích hoạt",
     description: "Tìm hiểu các yếu tố có thể làm đỏ mặt, kích ứng da và cách ăn uống hỗ trợ sức khỏe da ở mức tham khảo.",
     emoji: "😳",
     category: "disease",
@@ -654,8 +690,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tram-cam-lo-au-truc-ruot-nao",
-    title: "Trầm cảm & Lo âu: Chữa lành bộ não từ hệ Vi sinh đường ruột",
-    description: "Hiểu về Trục Ruột - Não (Gut-Brain Axis) và cách 90% Serotonin được sản xuất tại ruột bởi binh đoàn lợi khuẩn.",
+    title: "Trầm cảm và lo âu: Dinh dưỡng hỗ trợ sức khỏe tâm thần",
+    description: "Tìm hiểu thận trọng về trục ruột - não, chất lượng chế độ ăn và giới hạn của dinh dưỡng trong hỗ trợ điều trị trầm cảm, lo âu.",
     emoji: "🧠",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -671,8 +707,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "viem-khop-dang-thap",
-    title: "Viêm khớp dạng thấp: Dập tắt ngọn lửa tự miễn bằng Omega-3",
-    description: "Khác biệt giữa thoái hóa khớp và viêm khớp dạng thấp. Tại sao uống nước hầm xương vô dụng và cách dầu cá làm 'lính cứu hỏa'.",
+    title: "Viêm khớp dạng thấp: Vai trò hỗ trợ của omega-3 và chế độ ăn",
+    description: "Phân biệt viêm khớp dạng thấp với thoái hóa khớp, đồng thời xem xét bằng chứng và giới hạn của omega-3 trong hỗ trợ triệu chứng.",
     emoji: "🦵",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -689,7 +725,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "lupus-ban-do-he-thong",
     title: "Lupus ban đỏ hệ thống: Dinh dưỡng sống chung với 'Lũ'",
-    description: "Bảo vệ Thận, ngăn chặn loãng xương do tác dụng phụ của thuốc Corticoid và sai lầm chết người khi ăn mầm Cỏ linh lăng.",
+    description: "Lưu ý bảo vệ thận, xương khi dùng corticoid và nguy cơ liên quan đến mầm cỏ linh lăng ở người lupus.",
     emoji: "🦋",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -722,7 +758,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dau-nua-dau-migraine",
-    title: "Đau nửa đầu Migraine: Điểm mặt sát thủ giấu trong ly Rượu vang",
+    title: "Đau nửa đầu migraine: Rượu vang và yếu tố kích hoạt cá nhân",
     description: "Giải mã cơ chế giãn nở mạch máu não mất kiểm soát do Tyramine và Nitrat, và sức mạnh an thần của Magie.",
     emoji: "⚡",
     category: "disease",
@@ -841,7 +877,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "suy-kiet-ung-thu-cachexia",
-    title: "Hội chứng Cachexia: Sát thủ thầm lặng teo cơ, sụt cân",
+    title: "Hội chứng cachexia: Nhận diện sụt cân và mất cơ",
     description: "Dinh dưỡng hỗ trợ người bệnh ung thư duy trì cân nặng, khối cơ và khả năng dung nạp điều trị.",
     emoji: "⚖️",
     category: "disease",
@@ -927,7 +963,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "che-do-an-chong-viem",
     title: "Chế độ ăn chống viêm (Anti-inflammatory Diet)",
-    description: "Dập tắt ngọn lửa viêm mãn tính gây ung thư và bệnh tự miễn bằng sức mạnh của Omega-3, Nghệ và Trà Xanh.",
+    description: "Giải thích thận trọng về viêm mạn tính và bằng chứng hiện có đối với omega-3, nghệ, trà xanh trong chế độ ăn.",
     emoji: "🌿",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -994,8 +1030,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-sot-xuat-huyet",
-    title: "Sốt xuất huyết: Sai lầm chết người khi ăn tiết canh để bổ máu",
-    description: "Giải mã cơ chế tụt tiểu cầu và lý do tại sao phải kiêng tuyệt đối thực phẩm màu đỏ/đen trong giai đoạn sốc Dengue.",
+    title: "Sốt xuất huyết: Ăn uống, bù nước và những hiểu lầm cần tránh",
+    description: "Hướng dẫn ăn uống và bù nước dễ dung nạp, đồng thời làm rõ rằng màu thực phẩm không làm thay đổi tiểu cầu hay điều trị sốt xuất huyết.",
     emoji: "🦟",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",

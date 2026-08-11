@@ -3,7 +3,7 @@ import { marked } from 'marked';
 import BaseLayout from "./BaseLayout.astro";
 import SocialShare from "../components/SocialShare.astro";
 import type { ArticleMeta } from "../data/articles";
-import { getRelatedArticles, articleBySlug, SERIES, SOURCE_ORG, SPECIALTIES } from "../data/articles";
+import { getRelatedArticles, articleBySlug, SERIES, SOURCE_ORG, SPECIALTIES, DEFAULT_MEDICAL_REVIEWER, EVIDENCE_LABELS, getEffectiveSources } from "../data/articles";
 import practicalQA from "../data/practical-qa";
 
 export interface Props {
@@ -23,6 +23,12 @@ const dateStr = new Date(article.date).toLocaleDateString("vi-VN", {
   month: "long",
   day: "numeric",
 });
+const reviewedDateStr = article.reviewedAt
+  ? new Date(article.reviewedAt).toLocaleDateString("vi-VN")
+  : null;
+const reviewer = article.medicalReviewer || DEFAULT_MEDICAL_REVIEWER;
+const evidenceLabel = article.evidenceLevel ? EVIDENCE_LABELS[article.evidenceLevel] : null;
+const effectiveSources = getEffectiveSources(article);
 const seriesInfo = article.series ? SERIES[article.series] : null;
 const backLink = seriesInfo ? "/" + article.series : "/kien-thuc-dinh-duong";
 const backLabel = seriesInfo ? "← Quay lại " + seriesInfo.name : "← Quay lại Kiến thức";
@@ -163,11 +169,16 @@ const jsonLd = {
   headline: article.title,
   description: article.description,
   datePublished: article.date,
+  dateModified: article.reviewedAt || article.date,
   author: {
     "@type": "Person",
     name: "BSCKII Đỗ Việt Cảnh",
     email: "drvietcanh@gmail.com",
   },
+  reviewedBy: article.reviewedAt ? {
+    "@type": "Person",
+    name: reviewer,
+  } : undefined,
 };
 ---
 
@@ -205,6 +216,13 @@ const jsonLd = {
       </div>
       <h1 style="margin: 12px 0 8px; font-size: 1.75rem; line-height: 1.3;">{article.emoji} {article.title}</h1>
       {lead && <p style="color: var(--ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 6px;">{lead}</p>}
+      <div class="editorial-meta" aria-label="Thông tin biên tập">
+        <span>Phụ trách nội dung: <a href="/tac-gia">{reviewer}</a></span>
+        <span>Cập nhật: {dateStr}</span>
+        {reviewedDateStr && <span>Rà soát chuyên môn: {reviewedDateStr}</span>}
+        {evidenceLabel && <span>Mức nguồn: {evidenceLabel}</span>}
+        <a href="/chinh-sach-bien-tap">Chính sách biên tập</a>
+      </div>
       <!-- Priority tags -->
       {article.tags && article.tags.length > 0 && (
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
@@ -363,13 +381,13 @@ const jsonLd = {
     </div>
 
     <!-- Nguồn tham khảo -->
-    {article.sources && article.sources.length > 0 && (
+    {effectiveSources.length > 0 && (
       <div style="margin-top: 28px; padding: 16px 0; border-top: 1px solid var(--line);">
         <details style="font-size: 0.82rem; color: var(--ink-tertiary);">
-          <summary style="cursor: pointer; font-weight: 600; color: var(--ink-secondary);">📚 Nguồn tham khảo ({article.sources.length})</summary>
+          <summary style="cursor: pointer; font-weight: 600; color: var(--ink-secondary);">📚 Nguồn tham khảo ({effectiveSources.length})</summary>
           <ol style="margin: 10px 0 0; padding-left: 1.2rem; line-height: 1.8;">
-            {article.sources.map(s => (
-              <li><a href={s.url} target="_blank" rel="noopener" style="color: var(--brand); text-decoration: none;">{s.name}</a></li>
+            {effectiveSources.map(s => (
+              <li><a href={s.url} target="_blank" rel="noopener" style="color: var(--brand); text-decoration: none;">{s.title ? `${s.name} — ${s.title}` : s.name}</a></li>
             ))}
           </ol>
         </details>
@@ -509,6 +527,18 @@ const jsonLd = {
     margin: 16px 0;
     font-size: 0.92rem;
     color: #155724;
+  }
+  .editorial-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-left: 3px solid var(--brand);
+    background: var(--bg-soft);
+    color: var(--ink-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
   }
   .decision-box {
     margin: 0 0 28px;

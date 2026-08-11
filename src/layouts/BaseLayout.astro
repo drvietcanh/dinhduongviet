@@ -503,6 +503,12 @@ if (isArticle) {
       .theme-toggle:active {
         transform: scale(0.95);
       }
+      .footer-col a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--ink-secondary);
+      }
 
       /* Mobile styles override */
       @media (max-width: 768px) {
@@ -632,19 +638,18 @@ if (isArticle) {
             </div>
           </details>
           <details class="nav-group">
-            <summary>Hiểu đúng</summary>
+            <summary>Bài viết</summary>
             <div class="nav-group-menu">
-              <a href="/dung-tin-ngay">Kiểm chứng hiểu lầm</a>
               <a href="/kien-thuc-dinh-duong">Tất cả bài viết</a>
               <a href="/kien-thuc-dinh-duong#sec-dinh-duong-tong-quat">Ăn lành mạnh</a>
               <a href="/kien-thuc-dinh-duong#sec-noi-tiet">Đái tháo đường - chuyển hóa</a>
               <a href="/kien-thuc-dinh-duong#sec-tim-mach">Tim mạch - tăng huyết áp</a>
               <a href="/kien-thuc-dinh-duong#sec-tieu-hoa">Tiêu hóa - gan mật</a>
+              <a href="/dung-tin-ngay">Kiểm chứng hiểu lầm</a>
               <a href="/hoi-dap">Hỏi nhanh - đáp gọn</a>
             </div>
           </details>
-          <a class="nav-primary" href="/kien-thuc-dinh-duong">Kiến thức</a>
-          <a class="nav-primary" href="/cong-cu/ke-hoach-bua-an">Thực đơn</a>
+          <a class="nav-primary" href="/thuc-don">Thực đơn</a>
           <details class="nav-group">
             <summary>Công cụ</summary>
             <div class="nav-group-menu">
@@ -654,11 +659,12 @@ if (isArticle) {
               <a href="/cong-cu/theo-doi-duong-huyet">Theo dõi đường huyết</a>
               <a href="/cong-cu/khau-phan-viet-clinical">Khẩu phần Việt Clinical</a>
               <a href="/cong-cu/ke-hoach-bua-an">Kế hoạch bữa ăn</a>
+              <a href="/cong-cu/danh-sach-di-cho">Danh sách đi chợ</a>
               <a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a>
               <a href="/thong-ke">Thống kê</a>
             </div>
           </details>
-          <a href="/tac-gia">Tác giả</a>
+          <a href="/tac-gia">Giới thiệu</a>
         </div>
         <button class="theme-toggle" id="theme-toggle" title="Chuyển giao diện sáng/tối">🌓</button>
       </div>
@@ -714,6 +720,7 @@ if (isArticle) {
         <div class="footer-col">
           <h4>Tác giả</h4>
           <a href="/tac-gia" style="font-weight: 600;">BSCKII Đỗ Việt Cảnh</a>
+          <a href="/chinh-sach-bien-tap">Chính sách biên tập</a>
           <a href="mailto:drvietcanh@gmail.com">✉️ drvietcanh@gmail.com</a>
           <a href="tel:0988040484">📞 0988040484</a>
           <p style="margin: 10px 0 0; font-size: 0.82rem; line-height: 1.6; color: var(--ink-tertiary);">Phụ trách nội dung lâm sàng, rà soát và cập nhật bài viết dinh dưỡng.</p>
@@ -724,8 +731,8 @@ if (isArticle) {
       </div>
       <div style="max-width: 900px; margin: 16px auto 0; display: flex; justify-content: center;">
         <div style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); font-size: 0.88rem; color: var(--ink-secondary);">
-          <span style="font-weight: 600; color: var(--ink);">Lượt truy cập:</span>
-          <strong data-visitor-counter>Đang tải...</strong>
+          <span style="font-weight: 600; color: var(--ink);">Kho dữ liệu:</span>
+          <strong>1.600+ trang tra cứu và hướng dẫn</strong>
         </div>
       </div>
       <div class="footer-bottom">
@@ -819,26 +826,6 @@ if (isArticle) {
           apply(next);
           try { localStorage.setItem(key, next); } catch(e) {}
         });
-      })();
-    </script>
-
-    <script is:inline>
-      (function() {
-        var el = document.querySelector('[data-visitor-counter]');
-        if (!el) return;
-
-        var counterKey = 'dinhduongviet-site';
-        var counterUrl = 'https://api.countapi.xyz/hit/' + encodeURIComponent(counterKey) + '/visit';
-
-        fetch(counterUrl)
-          .then(function(res) { return res.ok ? res.json() : Promise.reject(); })
-          .then(function(data) {
-            var value = typeof data.value === 'number' ? data.value : null;
-            el.textContent = value ? value.toLocaleString('vi-VN') : '—';
-          })
-          .catch(function() {
-            el.textContent = '—';
-          });
       })();
     </script>
 

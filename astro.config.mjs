@@ -30,15 +30,20 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,json}'],
-        globIgnores: ['**/vietnam-nutrients.json'],
+        globPatterns: [
+          '_astro/*.{js,css}',
+          '*.{html,svg,png,webmanifest}',
+          'icons/*.{png,svg}',
+          'api/search-index.json'
+        ],
+        globIgnores: ['api-foods.json', 'api-recipes.json', 'sitemap*.xml'],
         navigateFallback: '/index.html'
       }
     })
   ],
   vite: {
     build: {
-      cssMinify: false
+      cssMinify: true
     }
   }
 });

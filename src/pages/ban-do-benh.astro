@@ -1,25 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { articles } from "../data/articles";
+import { articles, SPECIALTIES } from "../data/articles";
 
 const title = "Bản đồ bệnh mạn tính — Dinh dưỡng theo từng bệnh";
 const desc = "Tra cứu chế độ dinh dưỡng cho hơn 20 bệnh mạn tính theo chuyên khoa. Mỗi bệnh có bài nền tảng, hỏi đáp, và thực đơn.";
 
-// Specialty definition
-const specialties = [
-  { key: "noi-tiet", emoji: "🩸", name: "Nội tiết — Chuyển hóa", color: "#e74c3c" },
-  { key: "tim-mach", emoji: "❤️", name: "Tim mạch — Mỡ máu — Huyết áp", color: "#c0392b" },
-  { key: "tieu-hoa", emoji: "🫃", name: "Tiêu hóa — Gan — Dạ dày", color: "#27ae60" },
-  { key: "than-tiet-nieu", emoji: "🫘", name: "Thận — Tiết niệu", color: "#2980b9" },
-  { key: "co-xuong-khop", emoji: "🦴", name: "Cơ — Xương — Khớp", color: "#8e44ad" },
-  { key: "huyet-hoc", emoji: "🩸", name: "Huyết học — Miễn dịch", color: "#d63384" },
-  { key: "than-kinh", emoji: "🧠", name: "Thần kinh — Giấc ngủ", color: "#6c5ce7" },
-  { key: "ho-hap", emoji: "🫁", name: "Hô hấp", color: "#00b894" },
-  { key: "da-lieu", emoji: "🧴", name: "Da liễu", color: "#fd79a8" },
-  { key: "ung-thu", emoji: "🎗️", name: "Ung thư", color: "#636e72" },
-  { key: "phu-nu-nhi", emoji: "👶", name: "Mẹ & Bé — Người cao tuổi", color: "#e17055" },
-  { key: "ngoai-khoa", emoji: "🩹", name: "Ngoại khoa — Hậu phẫu", color: "#7f8c8d" },
-];
+const specialtyColors: Record<string, string> = {
+  "noi-tiet": "#b42318", "tim-mach": "#c0392b", "tieu-hoa": "#18794e",
+  "than-tiet-nieu": "#2463a3", "co-xuong-khop": "#7a3e9d", "huyet-hoc": "#a61e5c",
+  "than-kinh": "#5b4bb7", "ho-hap": "#087f6d", "da-lieu": "#b83280",
+  "ung-thu": "#4b5563", "phu-nu-nhi": "#b54708", "ngoai-khoa": "#59636e",
+};
+const specialties = Object.entries(SPECIALTIES)
+  .filter(([key]) => key !== "dinh-duong-tong-quat")
+  .map(([key, value]) => ({ key, ...value, color: specialtyColors[key] ?? "#475569" }));
 
 // Helper: get articles by specialty and displayCategory
 const getBy = (sp, dc) => articles.filter(a => a.specialty === sp && a.displayCategory === dc);

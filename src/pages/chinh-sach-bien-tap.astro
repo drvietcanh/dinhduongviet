@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Chính sách biên tập và rà soát y khoa | Dinh Dưỡng Việt"
+  description="Nguyên tắc chọn nguồn, viết bài, rà soát y khoa, cập nhật và sửa lỗi nội dung trên Dinh Dưỡng Việt."
+  canonical="/chinh-sach-bien-tap"
+>
+  <article class="policy-page">
+    <header>
+      <p class="eyebrow">Minh bạch nội dung</p>
+      <h1>Chính sách biên tập và rà soát y khoa</h1>
+      <p class="lead">Dinh Dưỡng Việt cung cấp thông tin tham khảo cho cộng đồng. Nội dung không thay thế chẩn đoán, kê đơn hay tư vấn cá thể hóa.</p>
+    </header>
+
+    <section>
+      <h2>Thứ tự ưu tiên nguồn</h2>
+      <ol>
+        <li>Hướng dẫn của Bộ Y tế Việt Nam, WHO và cơ quan y tế quốc gia.</li>
+        <li>Guideline của hội chuyên ngành như ADA, AHA, KDIGO, ESPEN và ACG.</li>
+        <li>Tổng quan hệ thống, đồng thuận chuyên gia và tài liệu giáo dục bệnh nhân của cơ sở học thuật uy tín.</li>
+        <li>Nguồn phổ thông chỉ được dùng để bổ trợ cách diễn đạt, không làm căn cứ duy nhất cho khuyến nghị điều trị.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Quy trình xuất bản</h2>
+      <ol>
+        <li>Xác định đối tượng, câu hỏi thực hành và phạm vi không được vượt quá.</li>
+        <li>Đối chiếu ít nhất một nguồn chuyên môn trực tiếp; chủ đề nguy cơ cao cần nhiều nguồn độc lập.</li>
+        <li>Loại bỏ ngôn ngữ chữa khỏi, cam kết kết quả, suy diễn nhân quả và khuyến nghị tự dừng thuốc.</li>
+        <li>Kiểm tra link, metadata, cảnh báo an toàn và khả năng đọc trên thiết bị di động.</li>
+        <li>Ghi ngày cập nhật; chỉ hiển thị ngày rà soát chuyên môn khi việc rà soát đã thực sự hoàn thành.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Chu kỳ cập nhật</h2>
+      <p>Chủ đề thuốc, thai kỳ, trẻ em, bệnh thận, tim mạch, ung thư và hướng dẫn điều trị được ưu tiên kiểm tra khi guideline thay đổi hoặc tối thiểu mỗi 12 tháng. Nội dung dinh dưỡng cộng đồng ít biến động được kiểm tra tối thiểu mỗi 24 tháng.</p>
+    </section>
+
+    <section>
+      <h2>Sửa lỗi và phản hồi</h2>
+      <p>Khi phát hiện sai sót có thể ảnh hưởng quyết định sức khỏe, nội dung được sửa sớm và rà lại các bài liên quan. Người đọc có thể gửi phản hồi tới <a href="mailto:drvietcanh@gmail.com">drvietcanh@gmail.com</a>.</p>
+    </section>
+  </article>
+
+  <style>
+    .policy-page { max-width: 780px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    header { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 8px; color: var(--brand-dark); font-size: .82rem; font-weight: 700; text-transform: uppercase; }
+    h1 { margin: 0 0 12px; font-size: 2rem; line-height: 1.25; }
+    .lead { color: var(--ink-secondary); font-size: 1.02rem; line-height: 1.7; }
+    section { padding-top: 24px; }
+    h2 { font-size: 1.2rem; }
+    p, li { color: var(--ink-secondary); line-height: 1.75; }
+    li + li { margin-top: 8px; }
+    @media (max-width: 600px) { h1 { font-size: 1.7rem; } }
+  </style>
+</BaseLayout>
