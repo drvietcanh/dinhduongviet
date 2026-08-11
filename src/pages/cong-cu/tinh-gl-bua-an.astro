@@ -339,17 +339,32 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     @media (max-width:720px) {
       .content-page { padding:20px 14px; }
       .h-text { font-size:1.26rem; }
+      .page-desc { font-size:0.88rem; line-height:1.55; }
+      .section-label { margin:20px 0 10px; font-size:0.88rem; }
       .gl-guide { grid-template-columns:1fr; }
+      .gl-card { padding:12px 12px; }
+      .gl-range { font-size:1.04rem; }
+      .gl-desc { font-size:0.74rem; }
+      .info-note { font-size:0.82rem; padding:12px 14px; }
       .builder-layout { grid-template-columns:1fr; }
       .builder-side { position:static; }
       .builder-side-label { display:none; }
       .quick-ref, .safety-note, .related-links { margin-bottom:78px; }
+      .meal-total { padding:16px; }
+      .meal-head h2 { font-size:1rem; }
+      .warning-list { font-size:0.8rem; }
       :global(.food-item) { grid-template-columns:auto minmax(0,1fr); }
+      :global(.food-name) { font-size:0.9rem; }
+      :global(.food-detail) { font-size:0.76rem; }
       :global(.gram-wrap), :global(.food-gl), :global(.food-add) { grid-column:2; justify-self:stretch; }
       :global(.food-gl) { text-align:left; }
       :global(.food-add) { width:100%; }
       :global(.total-item) { grid-template-columns:auto minmax(0,1fr) auto; }
       :global(.ti-share) { grid-column:2 / span 2; text-align:left; }
+      .mobile-summary-bar { left:10px; right:10px; bottom:calc(8px + env(safe-area-inset-bottom, 0px)); max-width:520px; margin:0 auto; }
+      .msb-main { font-size:0.84rem; }
+      .msb-main strong { font-size:0.92rem; }
+      .msb-sub { font-size:0.68rem; }
     }
   </style>
 

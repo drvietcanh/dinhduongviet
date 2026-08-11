@@ -160,15 +160,40 @@ const maxCategoryCount = topCategories.length > 0 ? Math.max(...topCategories.ma
       margin-top: 4px;
       line-height: 1.35;
     }
-    .summary-head,
-    .category-row {
-      grid-template-columns: 1fr;
-    }
     .summary-head {
       align-items: flex-start;
+      gap: 10px;
+    }
+    .summary-head h2 {
+      font-size: 1.22rem;
+      line-height: 1.2;
+    }
+    .summary-head .muted {
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    .summary-head .button.secondary {
+      min-height: 38px;
+      font-size: 0.82rem;
+      padding: 0 12px;
     }
     .category-row {
-      gap: 6px;
+      grid-template-columns: minmax(88px, 108px) minmax(0, 1fr) 52px;
+      gap: 8px;
+      align-items: center;
+    }
+    .category-row span:first-child {
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .category-row strong {
+      font-size: 0.94rem;
+    }
+    .category-row strong small {
+      font-size: 0.64rem;
+    }
+    .bar {
+      height: 10px;
     }
   }
 </style>
