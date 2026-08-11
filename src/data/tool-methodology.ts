@@ -343,6 +343,57 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
     ],
   },
+  "nhat-ky": {
+    slug: "nhat-ky",
+    status: "Nhật ký ăn uống v1",
+    summary:
+      "Trang này chỉ ghi lại bữa ăn và tổng hợp dữ liệu đã nhập theo ngày để người dùng mang đi đối chiếu hoặc trao đổi chuyên môn. Nó không tự diễn giải thành mục tiêu hay phác đồ.",
+    guidance: [
+      "Nên đọc nhật ký theo xu hướng nhiều ngày thay vì chốt từ một bữa đơn lẻ.",
+      "Khi có bệnh nền hoặc thuốc đang dùng, nhật ký chỉ là dữ liệu thô cần người có chuyên môn đọc cùng bối cảnh.",
+    ],
+    notFor: [
+      "Không dùng nhật ký để tự đổi thuốc, tự kết luận khẩu phần an toàn hoặc thay thế hỏi bác sĩ.",
+    ],
+    sources: [
+      { label: "CDC - Healthy Eating", url: "https://www.cdc.gov/healthy-weight-growth/healthy-eating/index.html" },
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "loc-thuc-pham": {
+    slug: "loc-thuc-pham",
+    status: "Lọc dữ liệu thực phẩm v1",
+    summary:
+      "Trang này lọc thực phẩm theo nhóm, trạng thái và chỉ số dinh dưỡng để người dùng tìm dữ liệu nhanh hơn. Nó là công cụ tra cứu, không phải công cụ kết luận phù hợp bệnh lý.",
+    guidance: [
+      "Nên dùng bộ lọc như một cách thu hẹp danh sách, sau đó mở trang chi tiết nếu cần đọc kỹ hơn.",
+      "Các ngưỡng nhập vào chỉ là điều kiện lọc dữ liệu chứ không phải ngưỡng khuyến cáo lâm sàng.",
+    ],
+    notFor: [
+      "Không dùng kết quả lọc để tự kết luận thực phẩm 'an toàn' hay 'nguy hiểm' cho một bệnh nền cụ thể.",
+    ],
+    sources: [
+      { label: "USDA FoodData Central", url: "https://fdc.nal.usda.gov/" },
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "tim-mon-tu-nguyen-lieu": {
+    slug: "tim-mon-tu-nguyen-lieu",
+    status: "Gợi ý món từ nguyên liệu v1",
+    summary:
+      "Trang này gợi ý ý tưởng món ăn từ nguyên liệu đã chọn để hỗ trợ lên bữa ăn tại nhà. Kết quả chỉ là độ khớp nguyên liệu, không phải thực đơn điều trị hay công thức hoàn chỉnh.",
+    guidance: [
+      "Nên kiểm tra lại dị ứng, cách nấu, độ chín và nguyên liệu phụ trước khi áp dụng ý tưởng món.",
+      "Cùng một nguyên liệu có thể cho nhiều món khác nhau, nên kết quả chỉ là gợi mở ban đầu.",
+    ],
+    notFor: [
+      "Không dùng để tự xây thực đơn bệnh lý hoặc thay thế hướng dẫn chuyên môn về an toàn thực phẩm.",
+    ],
+    sources: [
+      { label: "FDA - Food Safety", url: "https://www.fda.gov/food/buy-store-serve-safe-food/food-safety-home" },
+      { label: "USDA FoodKeeper", url: "https://www.foodkeeperapp.com/" },
+    ],
+  },
   "ti-le-mo-co-the": {
     slug: "ti-le-mo-co-the",
     status: "Trang định hướng v1 có nguồn",
