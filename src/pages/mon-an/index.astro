@@ -4,6 +4,29 @@ import SearchBox from "../../components/SearchBox.astro";
 import DataSummary from "../../components/DataSummary.astro";
 import { recipes } from "../../data/nutrition";
 import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/nutrition";
+
+const recipeCards = recipes.map((recipe) => {
+  const nutrients = calculateRecipe(recipe);
+  const tags = allTags({ tags: recipe.tags, nutrients });
+  const quickFits = [];
+
+  if (tags.includes("low-sodium")) quickFits.push({ label: "THA", tone: "green" });
+  if (tags.includes("low-purine")) quickFits.push({ label: "Gout", tone: "red" });
+  if (tags.includes("glycemic-index-low")) quickFits.push({ label: "ĐTĐ", tone: "blue" });
+  if (nutrients.energyKcal <= 300) quickFits.push({ label: "Giảm cân", tone: "amber" });
+
+  return {
+    recipe,
+    nutrients,
+    tags,
+    quickFits,
+    confidence: confidenceLabel(recipe.confidence),
+    shortNote:
+      recipe.portionNote && recipe.portionNote.length > 110
+        ? `${recipe.portionNote.slice(0, 107)}...`
+        : recipe.portionNote,
+  };
+});
 ---
 
 <BaseLayout
@@ -13,9 +36,20 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
 >
   <section>
     <h1>Danh sách món ăn</h1>
-    <p class="lead">Mỗi món được tính từ công thức định lượng. Với phở bò, app ghi rõ lượng thịt bò giả định trong tô thường.</p>
+    <p class="lead">Trang này phù hợp khi bạn muốn nhìn một món ăn trọn phần trước khi quyết định có nên đưa vào bữa ăn của mình hay không.</p>
     <div style="margin-top: 18px;">
       <SearchBox />
+    </div>
+    <div class="quick-start-panel">
+      <div class="quick-start-copy">
+        <strong>Chọn nhanh theo nhu cầu</strong>
+        <p>Nếu đang phân vân giữa nhiều món, hãy lọc theo mục tiêu trước rồi mới so kỹ calo, đạm và natri.</p>
+      </div>
+      <div class="quick-start-links">
+        <a href="/mon-an?profile=diabetes">🩸 Món thân thiện đường huyết</a>
+        <a href="/mon-an?profile=hypertension">❤️ Món ít natri hơn</a>
+        <a href="/mon-an?profile=weight">⚖️ Món nhẹ năng lượng</a>
+      </div>
     </div>
     <div class="filter-panel" aria-label="Bộ lọc món ăn nâng cao">
       <div class="filter-row">
@@ -70,10 +104,7 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
 
   <section class="section">
     <div class="grid two" id="recipe-grid">
-      {recipes.map((recipe) => {
-        const nutrients = calculateRecipe(recipe);
-        const tags = allTags({ tags: recipe.tags, nutrients });
-        return (
+      {recipeCards.map(({ recipe, nutrients, tags, quickFits, confidence, shortNote }) => (
           <a
             class="card result-link recipe-card"
             href={`/mon-an/${recipe.slug}`}
@@ -83,20 +114,27 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
             data-sodium={Math.round(nutrients.sodiumMg ?? 0)}
           >
             {recipe.imageUrl && <div class="food-thumb" style={`background-image: url(${recipe.imageUrl});`}></div>}
-            <span class="badge">{recipe.servingName} · {confidenceLabel(recipe.confidence)}</span>
-            <h2 style="margin-top: 10px;">{recipe.name}</h2>
-            <div style="margin: 6px 0;">
-              {tags.slice(0, 3).map(tag => <span class="mini-tag">{tagLabel(tag)}</span>)}
-              {tags.indexOf('low-sodium') !== -1 && <span class="mini-tag phu-hop" style="background:#e8f5e9;color:#2e7d32;font-weight:500;">❤️ THA</span>}
-              {tags.indexOf('low-purine') !== -1 && <span class="mini-tag phu-hop" style="background:#fce4ec;color:#c62828;font-weight:500;">🦶 Gout</span>}
-              {(tags.indexOf('glycemic-index-low') !== -1) && <span class="mini-tag phu-hop" style="background:#e8eaf6;color:#283593;font-weight:500;">🩸 ĐTĐ</span>}
-              {nutrients.energyKcal <= 300 && <span class="mini-tag phu-hop" style="background:#fff8e1;color:#f57f17;font-weight:500;">⚖️ Giảm cân</span>}
+            <div class="recipe-topline">
+              <span class="badge">{recipe.servingName}</span>
+              <span class="recipe-confidence">{confidence}</span>
             </div>
-            <p class="muted">Ước tính {Math.round(nutrients.energyKcal)} kcal · {nutrients.proteinG.toFixed(1)}g protein</p>
-            {recipe.portionNote && <p class="muted" style="margin-top: 8px;">{recipe.portionNote}</p>}
+            <h2 class="recipe-title">{recipe.name}</h2>
+            <div class="recipe-metrics">
+              <span>{Math.round(nutrients.energyKcal)} kcal</span>
+              <span>{nutrients.proteinG.toFixed(1)}g đạm</span>
+              <span>{Math.round(nutrients.sodiumMg ?? 0)}mg natri</span>
+            </div>
+            <div class="recipe-tag-row">
+              {tags.slice(0, 2).map(tag => <span class="mini-tag">{tagLabel(tag)}</span>)}
+              {quickFits.slice(0, 2).map((fit) => <span class:list={["mini-tag", "fit-tag", `fit-${fit.tone}`]}>{fit.label}</span>)}
+            </div>
+            {shortNote && (
+              <p class="muted recipe-note">
+                {shortNote}
+              </p>
+            )}
           </a>
-        );
-      })}
+      ))}
     </div>
   </section>
 </BaseLayout>
@@ -205,6 +243,34 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
 </script>
 
 <style>
+  .quick-start-panel {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-soft);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .quick-start-copy strong { display: block; margin-bottom: 4px; font-size: 0.9rem; }
+  .quick-start-copy p { margin: 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.55; }
+  .quick-start-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+  .quick-start-links a {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .quick-start-links a:hover { border-color: var(--brand-light2); color: var(--brand-dark); background: var(--brand-light); }
   .filter-panel {
     margin-top: 14px;
     padding: 14px;
@@ -246,6 +312,45 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   .recipe-card {
     position: relative;
   }
+  .recipe-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .recipe-confidence {
+    color: var(--ink-tertiary);
+    font-size: 0.76rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .recipe-title {
+    margin: 0 0 8px;
+    font-size: 1.02rem;
+    line-height: 1.4;
+  }
+  .recipe-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+  }
+  .recipe-metrics span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+  }
+  .recipe-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
   .food-thumb {
     width: calc(100% + 32px);
     height: 120px;
@@ -260,19 +365,32 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
   }
   .mini-tag {
     font-size: 0.7rem;
-    padding: 2px 6px;
-    border-radius: 10px;
+    padding: 4px 8px;
+    border-radius: 999px;
     background: var(--brand-light);
     color: var(--brand);
-    margin-right: 4px;
+  }
+  .fit-tag { font-weight: 600; }
+  .fit-green { background: #e8f5e9; color: #2e7d32; }
+  .fit-red { background: #fce4ec; color: #c62828; }
+  .fit-blue { background: #e8eaf6; color: #283593; }
+  .fit-amber { background: #fff8e1; color: #f57f17; }
+  .recipe-note {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
   @media (max-width: 760px) {
+    .quick-start-panel { grid-template-columns: 1fr; }
+    .quick-start-links { justify-content: flex-start; }
     .filter-row,
     .numeric-row { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .recipe-grid { grid-template-columns: 1fr; gap: 10px; }
     .recipe-card { padding: 12px; }
+    .recipe-topline { align-items: flex-start; flex-direction: column; gap: 6px; }
+    .recipe-metrics { gap: 6px; }
     #recipe-reset { min-height: 44px; }
   }
 </style>

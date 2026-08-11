@@ -20,9 +20,20 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
 >
   <section>
     <h1>Danh sách thực phẩm</h1>
-    <p class="lead">Chọn thực phẩm theo nhóm hoặc dùng ô tìm kiếm.</p>
+    <p class="lead">Trang này phù hợp khi bạn muốn tra nhanh từng thực phẩm trước khi ghép thành bữa ăn.</p>
     <div style="margin-top: 18px;">
       <SearchBox />
+    </div>
+    <div class="quick-start-panel">
+      <div class="quick-start-copy">
+        <strong>Bắt đầu nhanh</strong>
+        <p>Nếu chưa biết lọc từ đâu, hãy chọn một mục tiêu trước rồi mới dùng bộ lọc chi tiết.</p>
+      </div>
+      <div class="quick-start-links">
+        <a href="/thuc-pham?profile=diabetes">🩸 ĐTĐ: ưu tiên GI/GL thấp</a>
+        <a href="/thuc-pham?profile=hypertension">❤️ THA: ưu tiên ít natri</a>
+        <a href="/thuc-pham?profile=weight">⚖️ Giảm cân: kcal thấp, xơ cao</a>
+      </div>
     </div>
     <div class="filter-panel" aria-label="Bộ lọc thực phẩm nâng cao">
       <div class="filter-row">
@@ -102,6 +113,34 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
 
 <style>
   .quick-nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .quick-start-panel {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-soft);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .quick-start-copy strong { display: block; margin-bottom: 4px; font-size: 0.9rem; }
+  .quick-start-copy p { margin: 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.55; }
+  .quick-start-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+  .quick-start-links a {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    color: var(--ink);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .quick-start-links a:hover { border-color: var(--brand-light2); color: var(--brand-dark); background: var(--brand-light); }
   .filter-panel {
     margin-top: 14px;
     padding: 14px;
@@ -146,6 +185,8 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   .filter-btn.active { background: var(--brand); color: white; border-color: var(--brand); box-shadow: var(--shadow); transform: none; font-weight: 500; }
   .food-group.is-empty { display: none; }
   @media (max-width: 760px) {
+    .quick-start-panel { grid-template-columns: 1fr; }
+    .quick-start-links { justify-content: flex-start; }
     .filter-row,
     .numeric-row { grid-template-columns: 1fr; }
   }

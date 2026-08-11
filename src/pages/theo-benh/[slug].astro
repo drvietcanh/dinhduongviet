@@ -19,6 +19,12 @@ if (!currentHub) {
 const { foundation, menus, myths, more } = getHubSections(currentHub);
 const title = `${currentHub.name} | Dinh Dưỡng Việt`;
 const desc = currentHub.description;
+const sectionLinks = [
+  foundation.length > 0 ? { href: "#bai-nen-tang", label: "Đọc trước", count: foundation.length } : null,
+  myths.length > 0 ? { href: "#hieu-dung", label: currentHub.mythTitle ?? "Hiểu đúng", count: myths.length } : null,
+  menus.length > 0 ? { href: "#thuc-don", label: "Thực đơn", count: menus.length } : null,
+  { href: "#cong-cu", label: "Công cụ", count: currentHub.toolLinks.length },
+].filter(Boolean);
 ---
 
 <BaseLayout title={title} description={desc} canonical={`/theo-benh/${currentHub.id}`}>
@@ -37,6 +43,14 @@ const desc = currentHub.description;
         <div class="quick-list">
           {currentHub.heroPoints.map((point) => <span>{point}</span>)}
         </div>
+        <div class="section-pills" aria-label="Đi nhanh tới từng phần">
+          {sectionLinks.map((item) => (
+            <a href={item.href} class="section-pill">
+              <span>{item.label}</span>
+              <strong>{item.count}</strong>
+            </a>
+          ))}
+        </div>
       </div>
       <aside class="hero-panel">
         <h2>Bắt đầu từ đây</h2>
@@ -49,7 +63,7 @@ const desc = currentHub.description;
     </section>
 
     {foundation.length > 0 && (
-      <section class="hub-section">
+      <section class="hub-section" id="bai-nen-tang">
         <div class="section-head">
           <h2>Bài nền tảng</h2>
           <p>Đây là những bài nên đọc đầu tiên trước khi đi sâu vào món ăn, thực đơn hay mẹo ngắn.</p>
@@ -64,7 +78,7 @@ const desc = currentHub.description;
 
     <div class="two-col">
       {menus.length > 0 && (
-        <section class="hub-section surface">
+        <section class="hub-section surface" id="thuc-don">
           <div class="section-head">
             <h2>Thực đơn nên xem</h2>
             <p>Chọn phiên bản phù hợp với bối cảnh sống thay vì cố áp một mẫu duy nhất cho tất cả mọi người.</p>
@@ -77,7 +91,7 @@ const desc = currentHub.description;
         </section>
       )}
 
-      <section class="hub-section surface">
+      <section class="hub-section surface" id="cong-cu">
         <div class="section-head">
           <h2>Công cụ áp dụng ngay</h2>
           <p>Những công cụ này giúp chuyển nội dung bài viết thành việc làm hằng ngày.</p>
@@ -91,10 +105,10 @@ const desc = currentHub.description;
     </div>
 
     {myths.length > 0 && (
-      <section class="hub-section">
+      <section class="hub-section" id="hieu-dung">
         <div class="section-head">
-          <h2>Hiểu đúng trước khi kiêng</h2>
-          <p>Phần này đặc biệt hữu ích khi người bệnh đang nghe nhiều lời khuyên trái chiều trên mạng hoặc từ người quen.</p>
+          <h2>{currentHub.mythTitle ?? "Hiểu đúng trước khi kiêng"}</h2>
+          <p>{currentHub.mythDescription ?? "Phần này đặc biệt hữu ích khi người bệnh đang nghe nhiều lời khuyên trái chiều trên mạng hoặc từ người quen."}</p>
         </div>
         <div class="article-grid">
           {myths.map((article) => (
@@ -105,7 +119,7 @@ const desc = currentHub.description;
     )}
 
     {more.length > 0 && (
-      <section class="hub-section">
+      <section class="hub-section" id="doc-them">
         <div class="section-head">
           <h2>Đọc thêm trong cùng mạch</h2>
           <p>Các bài dưới đây được lấy theo đúng chuyên khoa hoặc đối tượng liên quan để người đọc mở rộng dần khi cần.</p>
@@ -169,6 +183,43 @@ const desc = currentHub.description;
       background: var(--bg-soft);
       color: var(--ink-secondary);
       font-size: 0.78rem;
+    }
+    .section-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 6px 12px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--ink-secondary);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .section-pill strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      font-size: 0.74rem;
+    }
+    .section-pill:hover {
+      border-color: var(--brand-light2);
+      color: var(--brand-dark);
+      text-decoration: none;
     }
     .hero-panel h2, .section-head h2, .hub-footer h2 { margin: 0 0 6px; font-size: 1.08rem; }
     .hero-panel ol {

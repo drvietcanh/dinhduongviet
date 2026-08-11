@@ -13,6 +13,8 @@ export interface DiseaseHubConfig {
   foundationSlugs: string[];
   menuSlugs: string[];
   mythSlugs: string[];
+  mythTitle?: string;
+  mythDescription?: string;
   toolLinks: { href: string; label: string }[];
 }
 
@@ -115,21 +117,23 @@ export const diseaseHubs: DiseaseHubConfig[] = [
   },
   {
     id: "da-day-trao-nguoc",
-    name: "Dạ dày và trào ngược",
-    shortName: "Dạ dày",
+    name: "Dạ dày, tá tràng",
+    shortName: "Dạ dày, tá tràng",
     emoji: "😣",
     specialty: "tieu-hoa",
     audience: ["stomach"],
-    description: "Một điểm vào gọn cho đau dạ dày, viêm loét, trào ngược, khó tiêu và cách sắp xếp bữa ăn cho dễ chịu hơn.",
+    description: "Một điểm vào gọn cho đau dạ dày, viêm loét dạ dày - tá tràng, trào ngược, khó tiêu và cách sắp xếp bữa ăn cho dễ chịu hơn.",
     intro: "Ở nhóm bệnh này, thời điểm ăn, độ mềm, lượng mỗi bữa và khả năng dung nạp cá nhân thường quan trọng gần như bản thân món ăn.",
     heroPoints: [
       "Không có một danh sách cấm tuyệt đối giống nhau cho mọi người.",
       "Bữa nhỏ, đều, ít dầu mỡ và ít kích thích thường dễ chịu hơn.",
-      "Cần tách riêng nhóm đau dạ dày, trào ngược và nhiễm HP khi đọc nội dung.",
+      "Cần tách riêng nhóm đau dạ dày, viêm loét tá tràng, trào ngược và nhiễm HP khi đọc nội dung.",
     ],
-    foundationSlugs: ["dau-da-day", "dau-da-day-hp-ca-phe-thuoc-giam-dau", "dau-da-day-di-lam-dung-thuoc", "trao-nguoc-da-day", "dinh-duong-da-day-trao-nguoc", "dinh-duong-benh-da-day-nen-an-gi", "vi-khuan-hp-da-day"],
+    foundationSlugs: ["dau-da-day", "vi-khuan-hp-da-day", "trao-nguoc-da-day", "dinh-duong-benh-da-day-nen-an-gi"],
     menuSlugs: ["thuc-don-da-day", "thuc-don-da-day-ban-ron", "thuc-don-da-day-binh-dan", "thuc-don-da-day-nguoi-gia"],
-    mythSlugs: ["trao-nguoc-da-day-ban-dem-an-gi"],
+    mythSlugs: ["dinh-duong-da-day-trao-nguoc", "trao-nguoc-da-day-ban-dem-an-gi"],
+    mythTitle: "Tình huống hay gặp",
+    mythDescription: "Nếu triệu chứng thiên về trào ngược, ợ nóng về đêm hoặc khó chịu sau bữa tối, hãy bắt đầu từ các bài này trước khi chỉnh cả thực đơn.",
     toolLinks: [
       { href: "/cong-cu/ke-hoach-bua-an", label: "Lập kế hoạch bữa ăn" },
       { href: "/cong-cu/checklist-an-uong", label: "Checklist ăn uống" },
@@ -151,9 +155,11 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Cần phân biệt suy thận, chạy thận, sỏi thận và tăng kali máu.",
       "Bài phù hợp giúp tránh kiêng sai, sụt cân và thiếu dinh dưỡng.",
     ],
-    foundationSlugs: ["suy-than", "dinh-duong-benh-than-man-ckd", "ckd-kali-phot-pho-muoi-thuc-hanh", "soi-than-dinh-duong", "tang-kali-mau-suy-than", "benh-than-iga-dinh-duong"],
+    foundationSlugs: ["suy-than", "dinh-duong-benh-than-man-ckd", "soi-than-dinh-duong"],
     menuSlugs: [],
-    mythSlugs: ["canh-bao-hieu-lam-suy-than-kieng"],
+    mythSlugs: ["canh-bao-hieu-lam-suy-than-kieng", "ckd-kali-phot-pho-muoi-thuc-hanh", "tang-kali-mau-suy-than", "benh-than-iga-dinh-duong"],
+    mythTitle: "Tình huống cần phân biệt",
+    mythDescription: "Nhóm này hữu ích khi bạn đã biết mình thuộc bệnh thận mạn, tăng kali máu, sỏi thận hay một bệnh cảnh đặc hiệu hơn và cần tránh áp dụng nhầm lời khuyên.",
     toolLinks: [
       { href: "/cong-cu/theo-doi-suc-khoe", label: "Theo dõi sức khỏe" },
       { href: "/cong-cu/doi-don-vi", label: "Đổi đơn vị xét nghiệm" },
@@ -175,9 +181,11 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Cần nhìn đồng thời chất béo, đường, rượu bia và cân nặng.",
       "Ưu tiên mô hình ăn bền vững để giảm nguy cơ lâu dài.",
     ],
-    foundationSlugs: ["roi-loan-mo-mau", "mo-mau-cao-7-mon-an-nguy-hiem", "benh-tim-mach", "dinh-duong-suy-tim", "suy-tim-can-nang-muoi-dich", "phuc-hoi-nhoi-mau-co-tim-stent"],
+    foundationSlugs: ["roi-loan-mo-mau", "benh-tim-mach", "mo-mau-cao-7-mon-an-nguy-hiem"],
     menuSlugs: ["thuc-don-mo-mau"],
-    mythSlugs: ["dung-tin-ngay-chanh-giam-mo-mau"],
+    mythSlugs: ["dung-tin-ngay-chanh-giam-mo-mau", "dinh-duong-suy-tim", "suy-tim-can-nang-muoi-dich", "phuc-hoi-nhoi-mau-co-tim-stent"],
+    mythTitle: "Tình huống cần lưu ý thêm",
+    mythDescription: "Nếu bạn đã có suy tim, từng đặt stent hoặc đang phục hồi sau biến cố tim mạch, hãy đi từ các bài này thay vì áp dụng nguyên xi lời khuyên cho người chỉ tăng mỡ máu đơn thuần.",
     toolLinks: [
       { href: "/cong-cu/theo-doi-suc-khoe", label: "Theo dõi sức khỏe" },
       { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },

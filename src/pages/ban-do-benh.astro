@@ -42,7 +42,7 @@ const specialtyAnchorMap = {
 const quickRoutes = [
   { label: "Đái tháo đường", href: "#tieu-duong" },
   { label: "Tăng huyết áp", href: "#huyet-ap" },
-  { label: "Dạ dày - trào ngược", href: "#da-day" },
+  { label: "Dạ dày, tá tràng", href: "#da-day" },
   { label: "Bệnh thận", href: "#suy-than" },
   { label: "Người cao tuổi", href: "#nguoi-gia" },
   { label: "Mang thai", href: "#ba-bau" },
@@ -243,7 +243,7 @@ const groups = [
     specialty: "tieu-hoa",
     id: "da-day",
     emoji: "😣",
-    name: "Dạ dày • Trào ngược • Viêm loét",
+    name: "Dạ dày • Tá tràng • Trào ngược",
     foundation: [
       { slug: "dau-da-day", title: "Đau dạ dày — Nguyên tắc ăn uống, HP và thói quen cần sửa", desc: "Bài nền tảng" },
       { slug: "dau-da-day-hp-ca-phe-thuoc-giam-dau", title: "HP, cà phê, thuốc giảm đau: đâu là điểm cần sửa trước?", desc: "Thực hành cốt lõi" },
@@ -695,9 +695,12 @@ const groups = [
     <div style="text-align:center;margin-bottom:2rem;">
       <h1 style="font-size:1.8rem;margin-bottom:8px;">🗺️ Bản đồ bệnh mạn tính</h1>
       <p style="max-width:640px;margin:0.5rem auto 0;color:var(--ink-secondary);font-size:1rem;">
-        Tra cứu chế độ dinh dưỡng cho <strong>hơn 20 nhóm bệnh</strong> theo chuyên khoa.
-        Mỗi bệnh có <strong>bài nền tảng</strong>, <strong>hỏi đáp</strong>, và <strong>thực đơn mẫu</strong>.
+        Đây là nơi xem <strong>toàn cảnh theo chuyên khoa</strong> khi bạn chưa chắc nên bắt đầu từ nhóm bệnh nào.
+        Mỗi cụm bệnh dẫn tới <strong>bài nền tảng</strong>, <strong>hỏi đáp</strong>, <strong>thực đơn</strong> và các bài đọc thêm.
       </p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px;">
+        <a href="/theo-benh" class="quick-route" style="background:var(--brand-light);color:var(--brand-dark);border-color:var(--brand-light2);">🗂️ Muốn đi nhanh? Mở Theo bệnh</a>
+      </div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;">
         {quickRoutes.map((route) => (
           <a href={route.href} class="quick-route">{route.label}</a>
@@ -736,6 +739,10 @@ const groups = [
         const readMore = articles
           .filter(a => a.specialty === g.specialty && !listedSlugs.has(a.slug) && a.displayCategory !== "mon-an")
           .slice(0, 4);
+        const primaryFoundation = g.foundation.slice(0, 4);
+        const extraFoundationCount = Math.max(0, g.foundation.length - primaryFoundation.length);
+        const primaryMenus = g.menus.slice(0, 2);
+        const extraMenuCount = Math.max(0, g.menus.length - primaryMenus.length);
         const specialtyHref = specialtyAnchorMap[g.specialty] ? `/kien-thuc-dinh-duong#${specialtyAnchorMap[g.specialty]}` : "/kien-thuc-dinh-duong";
         return (
           <div class="disease-card" data-spec={g.specialty} data-search={`${g.name} ${g.foundation.map(a => a.title).join(" ")} ${g.menus.map(m => m.title).join(" ")}`} id={g.id}>
@@ -747,9 +754,9 @@ const groups = [
               </span>
             </div>
             <div style="padding:1rem 1.2rem;">
-              <h3 style="margin:-0.2rem 0 0.6rem;font-size:0.88rem;color:var(--ink-secondary);">📖 Bài viết nền tảng</h3>
+              <h3 style="margin:-0.2rem 0 0.6rem;font-size:0.88rem;color:var(--ink-secondary);">📖 Điểm vào theo chuyên khoa</h3>
               <ul style="margin:0;padding-left:0;list-style:none;">
-                {g.foundation.map(a => (
+                {primaryFoundation.map(a => (
                   <li style="margin:0.35rem 0;display:flex;align-items:baseline;gap:6px;">
                     <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{normalizeLabel(a.desc)}]</span>
                     <a href={`/kien-thuc-dinh-duong/${a.slug}`} style="color:var(--brand);text-decoration:underline;font-size:0.9rem;">
@@ -758,18 +765,26 @@ const groups = [
                   </li>
                 ))}
               </ul>
+              {extraFoundationCount > 0 && (
+                <p style="margin:0.55rem 0 0;color:var(--ink-tertiary);font-size:0.8rem;">
+                  + {extraFoundationCount} bài cùng nhóm trong trang chuyên khoa này
+                </p>
+              )}
 
-              <div style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1rem;">
                 {g.faq && (
                   <a href={g.faq.href} style="padding:0.4rem 1rem;background:var(--bg-soft);border-radius:8px;color:var(--ink);text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:4px;">
                     ❓ {g.faq.label}
                   </a>
                 )}
-                {g.menus.map(m => (
+                {primaryMenus.map(m => (
                   <a href={`/kien-thuc-dinh-duong/${m.slug}`} style="padding:0.4rem 1rem;background:var(--primary-bg);border-radius:8px;color:var(--brand);text-decoration:none;font-size:0.85rem;font-weight:500;display:flex;align-items:center;gap:4px;">
                     🍽️ {m.title}
                   </a>
                 ))}
+                {extraMenuCount > 0 && (
+                  <span class="map-meta-chip">+ {extraMenuCount} thực đơn khác</span>
+                )}
               </div>
               <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:0.9rem;">
                 <span class="map-meta-chip">📖 {g.foundation.length} bài chính</span>
@@ -780,7 +795,7 @@ const groups = [
                 <div style="margin-top:1rem;padding-top:0.9rem;border-top:1px dashed var(--line);">
                   <h3 style="margin:0 0 0.5rem;font-size:0.84rem;color:var(--ink-secondary);">📚 Đọc thêm theo nhóm này</h3>
                   <ul style="margin:0;padding-left:0;list-style:none;">
-                    {readMore.map(item => (
+                    {readMore.slice(0, 2).map(item => (
                       <li style="margin:0.3rem 0;display:flex;align-items:baseline;gap:6px;">
                         <span style="color:var(--ink-tertiary);font-size:0.75rem;">[{item.displayCategory === "dung-tin-ngay" ? "Đừng tin ngay" : "Bài thêm"}]</span>
                         <a href={`/kien-thuc-dinh-duong/${item.slug}`} style="color:var(--brand);text-decoration:underline;font-size:0.88rem;">
@@ -789,6 +804,11 @@ const groups = [
                       </li>
                     ))}
                   </ul>
+                  {readMore.length > 2 && (
+                    <p style="margin:0.55rem 0 0;color:var(--ink-tertiary);font-size:0.8rem;">
+                      + {readMore.length - 2} bài đọc thêm trong cùng chuyên khoa
+                    </p>
+                  )}
                 </div>
               )}
               <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">

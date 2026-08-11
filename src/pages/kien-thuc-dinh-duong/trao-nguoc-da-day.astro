@@ -6,6 +6,11 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
 ---
 
 <ArticleLayout article={art}>
+<section class="section intro-card">
+      <p><strong>Bài này phù hợp khi:</strong> bạn nổi bật các triệu chứng ợ nóng, ợ chua, nóng rát sau xương ức hoặc khó chịu tăng lên sau bữa tối và khi nằm xuống.</p>
+      <p><strong>Nếu vấn đề chính là đau thượng vị, nghi viêm loét hoặc HP:</strong> nên đọc thêm <a href="/kien-thuc-dinh-duong/dau-da-day">bài đau dạ dày</a> và <a href="/kien-thuc-dinh-duong/vi-khuan-hp-da-day">bài HP dạ dày</a> vì cách tiếp cận sẽ khác đôi chút.</p>
+    </section>
+
 <div class="toc">
       <strong>📑 Nội dung</strong>
       <ul>
@@ -40,7 +45,7 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
             <li><a href="/thuc-pham/rau-muong">Rau muống</a>, <a href="/thuc-pham/bong-cai-xanh">bông cải xanh</a></li>
             <li><a href="/thuc-pham/ca-rot">Cà rốt</a>, <a href="/thuc-pham/khoai-tay">khoai tây</a> (luộc/hấp)</li>
             <li><a href="/thuc-pham/bap-cai">Bắp cải</a>, <a href="/thuc-pham/sup-lo">súp lơ</a></li>
-            <li>Rau má, nước ép rau má (giảm nóng)</li>
+            <li>Rau luộc mềm, món ít dầu mỡ và dễ tiêu</li>
           </ul>
         </div>
         <div class="col-card good">
@@ -80,7 +85,7 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
         <div class="avoid-item"><span class="a-icon">☕</span><strong>Caffeine</strong><br>cà phê, trà đặc, nước tăng lực</div>
         <div class="avoid-item"><span class="a-icon">🍊</span><strong>Trái cây chua</strong><br>cam, chanh, bưởi, quýt, me</div>
         <div class="avoid-item"><span class="a-icon">🍅</span><strong>Thực phẩm acid</strong><br>cà chua, dưa muối, giấm</div>
-        <div class="avoid-item"><span class="a-icon">🌶️</span><strong>Cay nóng</strong><br>ớt, tiêu, gừng, tỏi, hành sống</div>
+        <div class="avoid-item"><span class="a-icon">🌶️</span><strong>Cay nóng</strong><br>ớt, tiêu, hành tỏi sống, sa tế</div>
         <div class="avoid-item"><span class="a-icon">🍟</span><strong>Chiên rán</strong><br>khoai tây chiên, gà rán, nem rán</div>
         <div class="avoid-item"><span class="a-icon">🥫</span><strong>Đồ chế biến</strong><br>thịt nguội, xúc xích, đồ hộp</div>
         <div class="avoid-item"><span class="a-icon">🥛</span><strong>Sữa béo</strong><br>sữa nguyên kem, kem, phô mai béo</div>
@@ -96,7 +101,7 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
         <tr><td>Uống nước giữa các bữa, không uống trong bữa quá nhiều</td><td>Nằm/ngủ ngay sau ăn</td></tr>
         <tr><td>Mặc quần áo rộng sau ăn</td><td>Thắt lưng quá chặt</td></tr>
         <tr><td>Đi bộ nhẹ 10-15 phút sau ăn</td><td>Chạy nhảy, tập nặng sau ăn</td></tr>
-        <tr><td>Giảm cân nếu thừa cân (BMI &gt; 23)</td><td>Hút thuốc, uống rượu bia</td></tr>
+        <tr><td>Giảm cân dần nếu đang thừa cân hoặc vòng bụng cao</td><td>Hút thuốc, uống rượu bia</td></tr>
       </table>
     </section>
 
@@ -134,6 +139,9 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
 
 <style>
 .article-wrapper { max-width: 740px; margin: 0 auto; }
+.intro-card { background: var(--bg-soft); padding: 16px 20px; border-radius: 12px; margin-bottom: 20px; }
+.intro-card p { margin: 0 0 10px; }
+.intro-card p:last-child { margin-bottom: 0; }
 .toc { background: var(--bg-elevated); padding: 16px 20px; border-radius: 12px; margin-bottom: 24px; font-size:0.9rem; }
 .toc ul { margin:8px 0 0; padding-left:20px; }
 .toc a { color:var(--brand); }
