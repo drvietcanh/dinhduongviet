@@ -37,7 +37,6 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     menuSlugs: ["thuc-don-tieu-duong", "thuc-don-tieu-duong-ban-ron", "thuc-don-tieu-duong-binh-dan", "thuc-don-tieu-duong-nguoi-gia"],
     mythSlugs: ["sai-lam-tieu-duong-bo-com", "canh-bao-hieu-lam-com-tieu-duong", "dung-tin-ngay-gao-lut-tieu-duong", "dung-tin-ngay-mat-ong-tieu-duong"],
     toolLinks: [
-      { href: "/cong-cu/theo-doi-duong-huyet", label: "Theo dõi đường huyết" },
       { href: "/cong-cu/tinh-carb", label: "Tính carb" },
       { href: "/cong-cu/tinh-gl-bua-an", label: "Tính GL bữa ăn" },
       { href: "/cong-cu/ke-hoach-bua-an", label: "Lập kế hoạch bữa ăn" },

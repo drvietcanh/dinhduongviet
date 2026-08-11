@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const siteTitle = "Công cụ dinh dưỡng | Dinh Dưỡng Việt";
-const siteDesc = "Công cụ dinh dưỡng đơn giản cho người Việt: tính BMI, nước uống, đường, muối, đĩa ăn lành mạnh.";
+const siteDesc = "Công cụ dinh dưỡng đơn giản cho người Việt: ưu tiên tra cứu thực phẩm, đọc bữa ăn và các ước tính cơ bản dễ áp dụng.";
 
 const toolGroups = [
   {
@@ -13,7 +13,6 @@ const toolGroups = [
       { icon: "⚖️", name: "So sánh dinh dưỡng", href: "/cong-cu/so-sanh", desc: "Hub chọn đúng công cụ để so sánh thực phẩm hoặc bữa ăn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "⚖️", name: "So sánh thực phẩm", href: "/cong-cu/so-sanh-thuc-pham", desc: "So sánh thành phần dinh dưỡng giữa các thực phẩm, không gắn nhãn tốt hay xấu.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🍱", name: "So sánh bữa ăn", href: "/cong-cu/so-sanh-bua-an", desc: "So sánh dữ liệu dinh dưỡng giữa các bữa ăn để nhìn rõ khác biệt khẩu phần.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "📦", name: "Thêm thực phẩm đóng gói", href: "/cong-cu/them-thuc-pham-dong-goi", desc: "Nhập dữ liệu từ nhãn thực phẩm để lưu và tra lại về sau.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
@@ -47,7 +46,6 @@ const toolGroups = [
       { icon: "⚖️", name: "Tính GL từ bữa ăn", href: "/cong-cu/tinh-gl-bua-an", desc: "Ghép nhiều thực phẩm để ước tính tải đường huyết của cả bữa ăn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔢", name: "Tính carb trong bữa ăn", href: "/cong-cu/tinh-carb", desc: "Ước tính lượng carb trong món và khẩu phần Việt.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🧋", name: "Đường trong đồ uống", href: "/cong-cu/duong-do-uong", desc: "Tra cứu lượng đường tham khảo trong một số đồ uống, không dùng để kết luận đồ uống tốt hay xấu.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🩸", name: "Theo dõi đường huyết", href: "/cong-cu/theo-doi-duong-huyet", desc: "Ghi nhật ký đường huyết và nhắc các tình huống cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
@@ -58,8 +56,6 @@ const toolGroups = [
       { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Tra cứu muối ước tính trong món ăn và nhắc các tình huống cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhắc các tình huống cần cá thể hóa khi đánh giá dinh dưỡng trong thai kỳ.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Nhắc các tình huống cần cá thể hóa khi đánh giá nhu cầu dinh dưỡng của trẻ.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "💊", name: "Tương tác thuốc - thực phẩm", href: "/cong-cu/tuong-tac-thuoc-thuc-pham", desc: "Xem nhanh các tình huống cần lưu ý khi dùng thuốc cùng bữa ăn hoặc thực phẩm cụ thể.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "💊", name: "Tương tác thuốc", href: "/cong-cu/tuong-tac-thuoc", desc: "Xem nhanh nguy cơ khi phối hợp nhiều thuốc hoặc dùng thuốc trên nền bệnh mạn.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
@@ -72,7 +68,6 @@ const toolGroups = [
       { icon: "🧪", name: "Đánh giá bữa ăn", href: "/cong-cu/danh-gia-bua-an", desc: "Hub chọn công cụ phù hợp để đánh giá bữa ăn: khẩu phần, carb, GL, đạm, nước và so sánh món.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🗓️", name: "Lập thực đơn tuần", href: "/cong-cu/lap-thuc-don-tuan", desc: "Gợi ý khung thực đơn tuần ở mức tham khảo và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🛒", name: "Danh sách đi chợ", href: "/cong-cu/danh-sach-di-cho", desc: "Tạo danh sách đi chợ tham khảo để nhắc việc mua thực phẩm, không dùng để kết luận khẩu phần đủ chất hay phù hợp cho bệnh.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🧮", name: "Nhật ký ăn uống", href: "/cong-cu/nhat-ky", desc: "Ghi lại bữa ăn và chỉ số ở mức theo dõi cá nhân, kèm nhắc khi cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🍳", name: "Tìm món từ nguyên liệu", href: "/cong-cu/tim-mon-tu-nguyen-lieu", desc: "Gợi ý ý tưởng món ăn từ nguyên liệu bạn nhập ở mức tham khảo, không thay thế tư vấn chuyên môn.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
@@ -97,11 +92,11 @@ const quickStarts = [
   },
   {
     title: "Tôi cần kiểm soát đường huyết",
-    desc: "Đi theo thứ tự carb, GL bữa ăn rồi mới theo dõi số đo để tránh đoán mò bằng cảm giác.",
+    desc: "Đi theo thứ tự carb, GL bữa ăn rồi dùng công cụ theo dõi sức khỏe tổng quát nếu cần ghi nhiều chỉ số cùng lúc.",
     links: [
       { href: "/cong-cu/tinh-carb", label: "Tính carb" },
       { href: "/cong-cu/tinh-gl-bua-an", label: "Tính GL bữa ăn" },
-      { href: "/cong-cu/theo-doi-duong-huyet", label: "Theo dõi đường huyết" },
+      { href: "/cong-cu/theo-doi-suc-khoe", label: "Theo dõi sức khỏe" },
     ],
   },
   {
@@ -120,6 +115,12 @@ const starterLinks = [
   { href: "/cong-cu/tinh-carb", label: "Tính carb" },
   { href: "/cong-cu/bmi", label: "BMI" },
   { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
+];
+const holdBackTools = [
+  { name: "Tương tác thuốc", reason: "Nguy cơ hiểu nhầm cao nếu người dùng tự diễn giải mà không có đơn thuốc, bệnh nền và xác nhận từ bác sĩ." },
+  { name: "Tương tác thuốc - thực phẩm", reason: "Thuộc nhóm cần nguồn khóa chặt và rà soát lâm sàng liên tục hơn công cụ dinh dưỡng phổ thông." },
+  { name: "Nhật ký ăn uống", reason: "Giá trị có nhưng dễ trùng vai với kế hoạch bữa ăn và theo dõi sức khỏe nếu đặt nổi bật ngang hàng." },
+  { name: "Thêm thực phẩm đóng gói", reason: "Phù hợp hơn như tính năng phụ trợ dữ liệu, không nên là công cụ lõi trên bề mặt chính." },
 ];
 ---
 
@@ -168,6 +169,10 @@ const starterLinks = [
     .cc-note-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .cc-note-links a { display: inline-flex; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--brand-light2); background: var(--card); color: var(--brand-dark); font-size: 0.8rem; font-weight: 600; text-decoration: none; }
     .cc-note-links a:hover { background: var(--brand-subtle); }
+    .cc-holdback-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+    .cc-holdback-card { border: 1px dashed var(--card-border); border-radius: 16px; background: var(--bg-soft); padding: 16px; }
+    .cc-holdback-card h3 { margin: 0 0 6px; font-size: 0.95rem; }
+    .cc-holdback-card p { margin: 0; font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.55; }
     .cc-quick-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 28px; }
     .cc-quick-card { background: var(--bg-soft); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 16px; }
     .cc-quick-card h2 { margin: 0 0 6px; font-size: 0.98rem; }
@@ -178,6 +183,7 @@ const starterLinks = [
     @media(max-width:700px) {
       .cc-grid { grid-template-columns: 1fr; }
       .cc-quick-grid { grid-template-columns: 1fr; }
+      .cc-holdback-list { grid-template-columns: 1fr; }
       .cc-card { min-height: 44px; padding: 16px; }
       .cc-group-head { align-items: flex-start; flex-direction: column; gap: 2px; }
     }
@@ -190,7 +196,7 @@ const starterLinks = [
   <div class="cctools">
     <h1>🛠️ Công cụ</h1>
     <p class="lead">{siteDesc}</p>
-    <p class="cc-summary">Hiện có {totalTools} công cụ, chia theo nhu cầu sử dụng. Kết quả chỉ dùng ở mức tham khảo và cần cá thể hóa khi có bệnh nền, thuốc đang dùng, thai kỳ hoặc mục tiêu điều trị.</p>
+    <p class="cc-summary">Hiện có {totalTools} công cụ được ưu tiên hiển thị trên trang chính. Kết quả chỉ dùng ở mức tham khảo và cần cá thể hóa khi có bệnh nền, thuốc đang dùng, thai kỳ hoặc mục tiêu điều trị.</p>
 
     <section aria-labelledby="quick-start-tools">
       <div class="cc-group-head" style="margin-bottom: 10px;">
@@ -240,6 +246,22 @@ const starterLinks = [
         {starterLinks.map((link) => <a href={link.href}>{link.label}</a>)}
       </div>
     </div>
+
+    <section class="cc-group" aria-labelledby="hold-back-tools">
+      <div class="cc-group-head">
+        <h2 id="hold-back-tools">Công cụ không nên đặt nổi bật lúc này</h2>
+        <span class="cc-count">{holdBackTools.length} mục nên để sau</span>
+      </div>
+      <p class="cc-group-summary">Những mục dưới đây không nhất thiết phải xóa vĩnh viễn, nhưng không nên là công cụ lõi trên bề mặt chính cho người dùng phổ thông ở thời điểm hiện tại.</p>
+      <div class="cc-holdback-list">
+        {holdBackTools.map((item) => (
+          <article class="cc-holdback-card">
+            <h3>{item.name}</h3>
+            <p>{item.reason}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   </div>
 </BaseLayout>
 

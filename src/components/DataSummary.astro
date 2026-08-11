@@ -1,6 +1,11 @@
 ---
 import { dataSummary } from "../lib/nutrition";
 
+export interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
 const summary = dataSummary();
 const topCategories = summary.categories.slice(0, 6);
 ---
@@ -24,27 +29,29 @@ const topCategories = summary.categories.slice(0, 6);
     </div>
   </div>
 
-  <div class="card" style="margin-top: 16px;">
-    <div class="summary-head">
-      <div>
-        <h2>Thống kê theo nhóm</h2>
-        <p class="muted">Các nhóm nhiều dữ liệu nhất hiện tại.</p>
+  {!compact && (
+    <div class="card" style="margin-top: 16px;">
+      <div class="summary-head">
+        <div>
+          <h2>Thống kê theo nhóm</h2>
+          <p class="muted">Các nhóm nhiều dữ liệu nhất hiện tại.</p>
+        </div>
+        <a class="button secondary" href="/thong-ke">Xem đầy đủ</a>
       </div>
-      <a class="button secondary" href="/thong-ke">Xem đầy đủ</a>
+      <div class="category-bars">
+        {topCategories.map((item) => {
+          const width = Math.max(12, Math.round((item.count / summary.totalFoods) * 100));
+          return (
+            <a class="category-row" href={`/thuc-pham#${encodeURIComponent(item.category)}`}>
+              <span>{item.category}</span>
+              <div class="bar"><span style={`width: ${width}%`}></span></div>
+              <strong>{item.count}</strong>
+            </a>
+          );
+        })}
+      </div>
     </div>
-    <div class="category-bars">
-      {topCategories.map((item) => {
-        const width = Math.max(12, Math.round((item.count / summary.totalFoods) * 100));
-        return (
-          <a class="category-row" href={`/thuc-pham#${encodeURIComponent(item.category)}`}>
-            <span>{item.category}</span>
-            <div class="bar"><span style={`width: ${width}%`}></span></div>
-            <strong>{item.count}</strong>
-          </a>
-        );
-      })}
-    </div>
-  </div>
+  )}
 </section>
 
 <style>

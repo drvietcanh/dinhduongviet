@@ -52,6 +52,13 @@ const recipeCards = recipes.map((recipe) => {
       </div>
     </div>
     <div class="filter-panel" aria-label="Bộ lọc món ăn nâng cao">
+      <div class="panel-head">
+        <div>
+          <strong>Lọc món ăn theo khẩu phần</strong>
+          <p>Ưu tiên mục tiêu trước, sau đó dùng kcal, đạm và natri để loại nhanh.</p>
+        </div>
+        <span class="panel-base">Theo 1 phần ăn</span>
+      </div>
       <div class="filter-row">
         <label>
           <span>Sắp xếp</span>
@@ -96,13 +103,27 @@ const recipeCards = recipes.map((recipe) => {
       <p class="muted" style="margin:10px 0 0; font-size:0.83rem;">
         Nhãn gợi ý chỉ dựa trên thành phần dinh dưỡng ước tính của món, không thay thế kế hoạch ăn điều trị cá thể hóa.
       </p>
-      <p class="muted" id="recipe-summary"></p>
+      <p class="muted filter-summary" id="recipe-summary"></p>
     </div>
   </section>
 
-  <DataSummary />
+  <DataSummary compact />
 
   <section class="section">
+    <div class="usage-strip">
+      <div class="usage-step">
+        <strong>1. Chọn mục tiêu</strong>
+        <p>Bắt đầu bằng đường huyết, huyết áp hay giảm cân trước.</p>
+      </div>
+      <div class="usage-step">
+        <strong>2. So khẩu phần</strong>
+        <p>Nhìn kcal, đạm và natri trên cùng một hàng để loại nhanh.</p>
+      </div>
+      <div class="usage-step">
+        <strong>3. Mở chi tiết</strong>
+        <p>Vào từng món khi cần xem nguyên liệu, cách tính và ghi chú khẩu phần.</p>
+      </div>
+    </div>
     <div class="grid two" id="recipe-grid">
       {recipeCards.map(({ recipe, nutrients, tags, quickFits, confidence, shortNote }) => (
           <a
@@ -133,8 +154,15 @@ const recipeCards = recipes.map((recipe) => {
                 {shortNote}
               </p>
             )}
+            <div class="recipe-card-footer">
+              <span>Xem chi tiết món</span>
+            </div>
           </a>
       ))}
+    </div>
+    <div class="empty-state" id="recipe-empty-state" hidden>
+      <strong>Không có món nào khớp bộ lọc hiện tại.</strong>
+      <p>Hãy nới giới hạn kcal, natri hoặc quay về một mục tiêu rộng hơn trước.</p>
     </div>
   </section>
 </BaseLayout>
@@ -147,6 +175,7 @@ const recipeCards = recipes.map((recipe) => {
   var recipeMinProtein = document.getElementById('recipe-min-protein');
   var recipeMaxSodium = document.getElementById('recipe-max-sodium');
   var recipeSummary = document.getElementById('recipe-summary');
+  var recipeEmptyState = document.getElementById('recipe-empty-state');
   var params = new URLSearchParams(window.location.search);
 
   function numberValue(el) {
@@ -213,6 +242,7 @@ const recipeCards = recipes.map((recipe) => {
       if (ok) visible += 1;
     });
     if (recipeSummary) recipeSummary.textContent = 'Đang hiển thị ' + visible + ' / ' + document.querySelectorAll('.recipe-card').length + ' món ăn.';
+    if (recipeEmptyState) recipeEmptyState.hidden = visible !== 0;
   }
 
   [recipeSort, recipeProfile, recipeTag, recipeMaxKcal, recipeMinProtein, recipeMaxSodium].forEach(function(el) {
@@ -279,6 +309,39 @@ const recipeCards = recipes.map((recipe) => {
     background: var(--card);
     box-shadow: var(--shadow-sm);
   }
+  .panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .panel-head strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.92rem;
+  }
+  .panel-head p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .panel-base {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--ink-tertiary);
+    font-size: 0.74rem;
+    white-space: nowrap;
+  }
+  .filter-summary {
+    margin-top: 10px;
+    min-height: 20px;
+  }
   .filter-row {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -309,8 +372,32 @@ const recipeCards = recipes.map((recipe) => {
     outline: none;
   }
   .numeric-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .usage-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .usage-step {
+    padding: 12px 14px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: var(--bg-soft);
+  }
+  .usage-step strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.86rem;
+  }
+  .usage-step p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
   .recipe-card {
     position: relative;
+    overflow: hidden;
   }
   .recipe-topline {
     display: flex;
@@ -380,9 +467,42 @@ const recipeCards = recipes.map((recipe) => {
     font-size: 0.82rem;
     line-height: 1.5;
   }
+  .recipe-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+  .recipe-card-footer span {
+    color: var(--brand-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .empty-state {
+    margin-top: 16px;
+    padding: 20px 18px;
+    border: 1px dashed var(--card-border);
+    border-radius: 14px;
+    background: var(--bg-soft);
+    text-align: center;
+  }
+  .empty-state strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+  }
+  .empty-state p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
   @media (max-width: 760px) {
     .quick-start-panel { grid-template-columns: 1fr; }
     .quick-start-links { justify-content: flex-start; }
+    .usage-strip { grid-template-columns: 1fr; }
+    .panel-head { flex-direction: column; }
     .filter-row,
     .numeric-row { grid-template-columns: 1fr; }
   }

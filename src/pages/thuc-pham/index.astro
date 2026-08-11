@@ -36,6 +36,13 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
       </div>
     </div>
     <div class="filter-panel" aria-label="Bộ lọc thực phẩm nâng cao">
+      <div class="panel-head">
+        <div>
+          <strong>Lọc thực phẩm theo dữ liệu nền</strong>
+          <p>Trang này dùng chuẩn theo 100g để so bản chất thực phẩm trước khi chuyển sang khẩu phần thực tế.</p>
+        </div>
+        <span class="panel-base">Chuẩn 100g ăn được</span>
+      </div>
       <div class="filter-row">
         <label>
           <span>Nhóm</span>
@@ -78,7 +85,7 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
       <p class="muted" style="margin:10px 0 0; font-size:0.83rem;">
         Bộ lọc này chỉ giúp sàng nhanh theo dữ liệu dinh dưỡng. Với bệnh thận hoặc chế độ ăn điều trị, vẫn cần cá thể hóa theo xét nghiệm, thuốc và tư vấn bác sĩ.
       </p>
-      <p class="muted" id="filter-summary"></p>
+      <p class="muted filter-summary" id="filter-summary"></p>
     </div>
     <div class="quick-nav" style="margin-top: 12px;">
       <span class="muted" style="font-size: 0.85rem;">Nhảy nhanh: </span>
@@ -89,6 +96,23 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   </section>
 
   <DataSummary compact />
+
+  <section class="section">
+    <div class="usage-strip">
+      <div class="usage-step">
+        <strong>1. Chọn nhóm hoặc mục tiêu</strong>
+        <p>Dùng hồ sơ lọc nhanh nếu bạn đang ưu tiên đường huyết, natri hay cân nặng.</p>
+      </div>
+      <div class="usage-step">
+        <strong>2. So theo 100g</strong>
+        <p>Trang này phù hợp để đối chiếu bản chất thực phẩm trước khi ghép thành món hay khẩu phần.</p>
+      </div>
+      <div class="usage-step">
+        <strong>3. Mở chi tiết khi cần</strong>
+        <p>Đi sâu vào từng thực phẩm nếu bạn cần GI, kali, natri hoặc các tag liên quan bệnh lý.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Tag filter bar -->
   <div class="filter-bar" style="margin: 16px 0;">
@@ -108,11 +132,46 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   </div>
 
   <!-- Foods rendered client-side from JSON -->
-  <div id="foods-container"><p class="muted" id="foods-loading">Đang tải dữ liệu thực phẩm...</p></div>
+  <div id="foods-container">
+    <div class="food-loading-grid" id="foods-loading" aria-hidden="true">
+      <div class="food-loading-card"></div>
+      <div class="food-loading-card"></div>
+      <div class="food-loading-card"></div>
+      <div class="food-loading-card"></div>
+      <div class="food-loading-card"></div>
+      <div class="food-loading-card"></div>
+    </div>
+  </div>
+  <div class="empty-state" id="foods-empty-state" hidden>
+    <strong>Không có thực phẩm nào khớp bộ lọc hiện tại.</strong>
+    <p>Thử bỏ bớt một điều kiện hoặc chuyển sang nhóm rộng hơn để so sánh lại.</p>
+  </div>
 </BaseLayout>
 
 <style>
   .quick-nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .usage-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .usage-step {
+    padding: 12px 14px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: var(--bg-soft);
+  }
+  .usage-step strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.86rem;
+  }
+  .usage-step p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
   .quick-start-panel {
     margin-top: 14px;
     padding: 14px;
@@ -149,6 +208,39 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
     background: var(--card);
     box-shadow: var(--shadow-sm);
   }
+  .panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .panel-head strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.92rem;
+  }
+  .panel-head p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .panel-base {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--ink-tertiary);
+    font-size: 0.74rem;
+    white-space: nowrap;
+  }
+  .filter-summary {
+    margin-top: 10px;
+    min-height: 20px;
+  }
   .filter-row {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -183,16 +275,149 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   .filter-btn { cursor: pointer; border: 1px solid var(--card-border); border-radius: var(--radius-lg); user-select: none; transition: all var(--transition); background: var(--card); color: var(--ink-secondary); box-shadow: var(--shadow-sm); }
   .filter-btn:hover { border-color: var(--brand-light2); color: var(--brand); box-shadow: var(--shadow); transform: translateY(-1px); }
   .filter-btn.active { background: var(--brand); color: white; border-color: var(--brand); box-shadow: var(--shadow); transform: none; font-weight: 500; }
+  .food-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .food-group-meta {
+    color: var(--ink-tertiary);
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .food-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    text-decoration: none;
+    background: var(--card);
+    color: inherit;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .food-card:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--brand-light2);
+  }
+  .food-card-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+  }
+  .food-card-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .food-card-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .food-card-topline h3 {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+  .food-card-base {
+    font-size: 0.74rem;
+    color: var(--ink-tertiary);
+    white-space: nowrap;
+  }
+  .food-card-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .food-card-metrics span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--ink-secondary);
+    font-size: 0.78rem;
+  }
+  .food-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .food-mini-tag {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--brand-light);
+    color: var(--brand);
+  }
+  .food-fit-tag { font-weight: 600; }
+  .food-fit-green { background: #e8f5e9; color: #2e7d32; }
+  .food-fit-red { background: #fce4ec; color: #c62828; }
+  .food-fit-blue { background: #e8eaf6; color: #283593; }
+  .food-fit-amber { background: #fff8e1; color: #f57f17; }
+  .empty-state {
+    margin-top: 16px;
+    padding: 20px 18px;
+    border: 1px dashed var(--card-border);
+    border-radius: 14px;
+    background: var(--bg-soft);
+    text-align: center;
+  }
+  .empty-state strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+  }
+  .empty-state p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .food-loading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .food-loading-card {
+    min-height: 116px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--bg-soft) 25%, var(--bg-elevated) 50%, var(--bg-soft) 75%);
+    background-size: 200% 100%;
+    animation: foodShimmer 1.4s ease-in-out infinite;
+  }
+  @keyframes foodShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
   .food-group.is-empty { display: none; }
   @media (max-width: 760px) {
+    .usage-strip { grid-template-columns: 1fr; }
     .quick-start-panel { grid-template-columns: 1fr; }
     .quick-start-links { justify-content: flex-start; }
+    .panel-head { flex-direction: column; }
     .filter-row,
     .numeric-row { grid-template-columns: 1fr; }
+    .food-loading-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .food-grid { grid-template-columns: 1fr; gap: 10px; }
     .food-card { padding: 12px; }
+    .food-card-topline { align-items: flex-start; flex-direction: column; gap: 4px; }
     .filter-btn { padding: 8px 12px; font-size: 0.8rem; min-height: 44px; }
   }
 </style>
@@ -209,6 +434,7 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
   var maxCarb = document.getElementById('max-carb');
   var maxSodium = document.getElementById('max-sodium');
   var summary = document.getElementById('filter-summary');
+  var foodsEmptyState = document.getElementById('foods-empty-state');
   var params = new URLSearchParams(window.location.search);
 
   function numberValue(el) {
@@ -223,6 +449,23 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
 
   function hasTag(card, tag) {
     return tagsOf(card).indexOf(tag) >= 0;
+  }
+
+  function labelOf(tag) {
+    var map = {
+      'vegan': 'Thuần chay',
+      'high-protein': 'Nhiều đạm',
+      'low-fat': 'Ít béo',
+      'glycemic-index-low': 'GI thấp',
+      'glycemic-index-high': 'GI cao',
+      'low-purine': 'Ít purin',
+      'high-purine': 'Nhiều purin',
+      'low-sodium': 'Ít natri',
+      'high-sodium': 'Nhiều natri',
+      'high-fiber': 'Giàu xơ',
+      'high-calcium': 'Nhiều canxi'
+    };
+    return map[tag] || tag;
   }
 
   function matchesProfile(card, profile) {
@@ -295,6 +538,7 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
       group.classList.toggle('is-empty', !hasVisible);
     });
     if (summary) summary.textContent = 'Đang hiển thị ' + visible + ' / ' + document.querySelectorAll('.food-card').length + ' thực phẩm.';
+    if (foodsEmptyState) foodsEmptyState.hidden = visible !== 0;
   }
 
   document.addEventListener('click', function(e) {
@@ -359,7 +603,7 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
       var catName = cats[c];
       var items = groups[catName];
       html += '<section class="section food-group" id="' + encodeURIComponent(catName) + '" data-category="' + catName + '">';
-      html += '<h2 style="display:flex;align-items:center;gap:8px;"><span class="fi">' + getIcon(catName) + '</span> ' + catName + ' <span class="muted" style="font-size:1rem;">(' + items.length + ')</span></h2>';
+      html += '<div class="food-group-title"><h2 style="display:flex;align-items:center;gap:8px;margin:0;"><span class="fi">' + getIcon(catName) + '</span> ' + catName + '</h2><span class="food-group-meta">' + items.length + ' mục</span></div>';
       html += '<div class="grid three food-grid" style="margin-top:12px;">';
       for (var i = 0; i < items.length; i++) {
         html += renderCard(items[i]);
@@ -381,17 +625,30 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
 
   function renderCard(item) {
     var s = item[0], n = item[1], t = item[10], kcal = item[3], p = item[4], cb = item[5], fat = item[6], fb = item[7];
-    return '<a class="food-card" href="/thuc-pham/' + s + '" data-tags="' + t + '" data-category="' + item[2] + '" data-kcal="' + kcal + '" data-protein="' + p + '" data-carb="' + cb + '" data-fat="' + fat + '" data-fiber="' + fb + '" data-sodium="' + item[8] + '" data-potassium="' + item[9] + '" data-gi="' + item[11] + '" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;background:var(--card);">' +
-      '<div style="flex-shrink:0;width:56px;height:56px;border-radius:12px;background:var(--bg-elevated);display:flex;align-items:center;justify-content:center;font-size:1.8rem;">' + getIcon(item[2]) + '</div>' +
-      '<div style="flex:1;min-width:0;">' +
-        '<h3 style="margin:4px 0 2px;font-size:1rem;">' + n + '</h3>' +
-        '<div style="font-size:0.82rem;color:var(--ink-secondary);display:flex;gap:4px;flex-wrap:wrap;">' +
+    var tagList = (t || '').split(' ').filter(Boolean);
+    var quickFits = [];
+    if (tagList.indexOf('low-sodium') >= 0) quickFits.push({ label: 'THA', tone: 'green' });
+    if (tagList.indexOf('low-purine') >= 0) quickFits.push({ label: 'Gout', tone: 'red' });
+    if (tagList.indexOf('glycemic-index-low') >= 0) quickFits.push({ label: 'ĐTĐ', tone: 'blue' });
+    if (Number(kcal) <= 150) quickFits.push({ label: 'Nhẹ kcal', tone: 'amber' });
+    var tagHtml = tagList.slice(0, 2).map(function(tag) {
+      return '<span class="food-mini-tag">' + labelOf(tag) + '</span>';
+    }).join('');
+    var fitHtml = quickFits.slice(0, 2).map(function(fit) {
+      return '<span class="food-mini-tag food-fit-tag food-fit-' + fit.tone + '">' + fit.label + '</span>';
+    }).join('');
+    return '<a class="food-card" href="/thuc-pham/' + s + '" data-tags="' + t + '" data-category="' + item[2] + '" data-kcal="' + kcal + '" data-protein="' + p + '" data-carb="' + cb + '" data-fat="' + fat + '" data-fiber="' + fb + '" data-sodium="' + item[8] + '" data-potassium="' + item[9] + '" data-gi="' + item[11] + '">' +
+      '<div class="food-card-icon">' + getIcon(item[2]) + '</div>' +
+      '<div class="food-card-body">' +
+        '<div class="food-card-topline"><h3>' + n + '</h3><span class="food-card-base">Theo 100g</span></div>' +
+        '<div class="food-card-metrics">' +
           '<span>' + kcal + ' kcal</span>' +
-          (p > 0 ? '<span class="macro-sep">·</span><span>Đạm ' + p + 'g</span>' : '') +
-          (cb > 0 ? '<span class="macro-sep">·</span><span>Carb ' + cb + 'g</span>' : '') +
-          (fat > 0 ? '<span class="macro-sep">·</span><span>Béo ' + fat + 'g</span>' : '') +
-          (fb > 0 ? '<span class="macro-sep">·</span><span>Xơ ' + fb + 'g</span>' : '') +
+          (p > 0 ? '<span>Đạm ' + p + 'g</span>' : '') +
+          (cb > 0 ? '<span>Carb ' + cb + 'g</span>' : '') +
+          (fb > 0 ? '<span>Xơ ' + fb + 'g</span>' : '') +
+          (Number(item[8]) > 0 ? '<span>Natri ' + item[8] + 'mg</span>' : '') +
         '</div>' +
+        '<div class="food-card-tags">' + tagHtml + fitHtml + '</div>' +
       '</div>' +
     '</a>';
   }
