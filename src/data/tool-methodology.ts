@@ -303,6 +303,46 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
     ],
   },
+  "khau-phan-don-gian": {
+    slug: "khau-phan-don-gian",
+    status: "Khẩu phần tham khảo v1",
+    summary:
+      "Trang này chỉ minh họa cách gọi khẩu phần bằng chén, muỗng, lát, miếng hoặc ly để người đọc hình dung nhanh. Nó không phải bảng khẩu phần điều trị và không đủ để cá thể hóa.",
+    guidance: [
+      "Cùng một tên khẩu phần có thể khác nhau giữa gia đình, quán ăn và nhãn sản phẩm.",
+      "Các ví dụ nên được đọc như ngôn ngữ giao tiếp nhanh, không phải mốc tuyệt đối.",
+    ],
+    notFor: [
+      "Không dùng để tự chốt lượng ăn cho bệnh thận, tim mạch, đái tháo đường, thai kỳ hoặc trẻ em.",
+    ],
+    sources: [
+      { label: "USDA FoodData Central", url: "https://fdc.nal.usda.gov/" },
+      { label: "CDC - Carb Counting", url: "https://www.cdc.gov/diabetes/managing/eat-well/carb-counting.html" },
+    ],
+  },
+  "khau-phan-viet-clinical": {
+    slug: "khau-phan-viet-clinical",
+    status: "Đánh giá khẩu phần v1",
+    summary:
+      "Trang này so khẩu phần món Việt theo dữ liệu có sẵn để xem năng lượng và macro ở mức giáo dục. Nó vẫn cần đọc cùng cờ an toàn vì không thay thế đánh giá lâm sàng.",
+    formulas: [
+      {
+        label: "Quy đổi lõi",
+        value: "chỉ số khẩu phần = dữ liệu/100g x gram thực ăn / 100",
+      },
+    ],
+    guidance: [
+      "Giá trị hiển thị phụ thuộc dữ liệu món, công thức và khối lượng đã nhập.",
+      "Nên xem cùng cờ cần cá thể hóa, nhất là khi có bệnh nền hoặc thuốc đang dùng.",
+    ],
+    notFor: [
+      "Không dùng để tự ra phác đồ ăn điều trị hoặc tự chỉnh thuốc, insulin hay lợi tiểu.",
+    ],
+    sources: [
+      { label: "USDA FoodData Central", url: "https://fdc.nal.usda.gov/" },
+      { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
+    ],
+  },
   "ti-le-mo-co-the": {
     slug: "ti-le-mo-co-the",
     status: "Trang định hướng v1 có nguồn",
