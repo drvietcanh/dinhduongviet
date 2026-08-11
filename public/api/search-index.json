@@ -705,10 +705,26 @@
   },
   {
     "type": "article",
+    "slug": "tang-huyet-ap-natri-an-trong-mon-viet",
+    "name": "Tăng huyết áp — Natri ẩn trong món Việt: nhìn ở đâu và cắt từ đâu trước?",
+    "aliases": [],
+    "description": "Bài thực hành về natri ẩn trong nước chấm, món kho, mì gói, đồ chả và cách đọc nhãn khi bị tăng huyết áp.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "suy-than",
     "name": "Suy thận — Chế độ ăn cho người bệnh thận",
     "aliases": [],
     "description": "Hạn chế kali, phốt pho, đạm. Nguyên tắc dinh dưỡng cho suy thận mạn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ckd-kali-phot-pho-muoi-thuc-hanh",
+    "name": "CKD — Kali, phốt pho, muối: ưu tiên gì trước trong bữa ăn hằng ngày?",
+    "aliases": [],
+    "description": "Bài thực hành cho người bệnh thận mạn: khi nào cần siết muối, khi nào phải để ý kali, phốt pho và vì sao muối thay thế có thể không phù hợp.",
     "category": "Bai viet"
   },
   {
@@ -2001,6 +2017,14 @@
   },
   {
     "type": "article",
+    "slug": "ibs-an-ngoai-low-fodmap-kieu-viet",
+    "name": "IBS — Ăn ngoài và gọi món kiểu low-FODMAP sao cho đỡ đầy bụng?",
+    "aliases": [],
+    "description": "Bài thực hành cho người IBS khi ăn quán: nhận diện điểm kích hoạt thường gặp, cách gọi món và cách giữ low-FODMAP linh hoạt hơn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "dinh-duong-benh-than-man-ckd",
     "name": "Bệnh thận mạn (CKD) — Ăn gì để bảo vệ thận trước khi quá muộn?",
     "aliases": [],
@@ -2277,6 +2301,14 @@
     "name": "Low-FODMAP kiểu Việt cho IBS — Bắt đầu sao cho đỡ rối và không thiếu chất?",
     "aliases": [],
     "description": "Low-FODMAP không phải kiêng cả đời. Bài này chuyển nguyên tắc Monash sang thực phẩm Việt để người IBS áp dụng thực tế hơn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hen-suyen-beo-phi-giam-can",
+    "name": "Hen suyễn kèm béo phì — Vì sao giảm 5-10% cân nặng lại đáng giá?",
+    "aliases": [],
+    "description": "Bài thực hành cho người hen suyễn kèm thừa cân: vì sao béo phì làm hen khó kiểm soát hơn và cách bắt đầu giảm cân mà không cực đoan.",
     "category": "Bai viet"
   },
   {

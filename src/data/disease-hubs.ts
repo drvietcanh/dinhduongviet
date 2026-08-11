@@ -55,7 +55,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Rau, trái cây và món nấu tại nhà giúp kiểm soát huyết áp tốt hơn.",
       "Có thể dùng thực đơn riêng cho người bận rộn hoặc người lớn tuổi.",
     ],
-    foundationSlugs: ["tang-huyet-ap", "huyet-ap-cao-muoi-an-o-dau", "cao-huyet-ap-dash-diet", "che-do-dash-tang-huyet-ap", "giam-muoi-mon-ngon"],
+    foundationSlugs: ["tang-huyet-ap", "tang-huyet-ap-natri-an-trong-mon-viet", "huyet-ap-cao-muoi-an-o-dau", "cao-huyet-ap-dash-diet", "che-do-dash-tang-huyet-ap", "giam-muoi-mon-ngon"],
     menuSlugs: ["thuc-don-tang-huyet-ap", "thuc-don-huyet-ap-ban-ron", "thuc-don-huyet-ap-binh-dan", "thuc-don-huyet-ap-nguoi-gia"],
     mythSlugs: ["sai-lam-an-nhat", "canh-bao-hieu-lam-an-nhat-muoi"],
     toolLinks: [
@@ -151,7 +151,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Cần phân biệt suy thận, chạy thận, sỏi thận và tăng kali máu.",
       "Bài phù hợp giúp tránh kiêng sai, sụt cân và thiếu dinh dưỡng.",
     ],
-    foundationSlugs: ["suy-than", "dinh-duong-benh-than-man-ckd", "soi-than-dinh-duong", "tang-kali-mau-suy-than", "benh-than-iga-dinh-duong"],
+    foundationSlugs: ["suy-than", "dinh-duong-benh-than-man-ckd", "ckd-kali-phot-pho-muoi-thuc-hanh", "soi-than-dinh-duong", "tang-kali-mau-suy-than", "benh-than-iga-dinh-duong"],
     menuSlugs: [],
     mythSlugs: ["canh-bao-hieu-lam-suy-than-kieng"],
     toolLinks: [

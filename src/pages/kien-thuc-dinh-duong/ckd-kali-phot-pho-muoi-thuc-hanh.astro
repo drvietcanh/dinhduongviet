@@ -1,0 +1,73 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["ckd-kali-phot-pho-muoi-thuc-hanh"];
+if (!art) throw new Error("Article not found: ckd-kali-phot-pho-muoi-thuc-hanh");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Người bệnh thận mạn rất hay rơi vào ba nỗi sợ cùng lúc: kali, phốt pho và muối. Kết quả là có người bỏ gần hết rau trái, né cả đạm, rồi ăn ngày càng ít. Điều khó ở CKD không phải nhớ một danh sách cấm tuyệt đối, mà là biết <strong>khi nào cần siết chặt thứ gì</strong> và khi nào chỉ cần chọn thông minh hơn.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Với CKD chưa lọc máu, muối gần như luôn là điểm cần ưu tiên giảm. Kali và phốt pho thì phải cá thể hóa theo xét nghiệm, thuốc và giai đoạn bệnh. Một bẫy rất hay bị bỏ sót là <u>muối thay thế có chứa potassium chloride</u> và các thực phẩm chế biến có phosphate phụ gia.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🧂 Muối: ưu tiên số 1</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Giảm muối giúp hỗ trợ kiểm soát huyết áp, phù và tiến triển bệnh thận.</li>
+      <li>Muối không chỉ đến từ hạt muối mà còn từ nước mắm, xì dầu, bột nêm, đồ hộp, xúc xích, mì gói.</li>
+      <li>Nếu bác sĩ không dặn khác, đừng nghĩ "ăn nhạt" là bỏ hoàn toàn vị mặn; mục tiêu là bớt natri ẩn đi.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Muối thay thế không phải lúc nào cũng an toàn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nhiều loại muối "healthy" thay một phần natri bằng <strong>potassium chloride</strong>.</li>
+      <li>Với người CKD có nguy cơ tăng kali máu, đây có thể là lựa chọn không phù hợp.</li>
+      <li>Nếu đang dùng thuốc giữ kali hoặc từng tăng kali máu, nên hỏi bác sĩ trước khi dùng.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🥤 Phốt pho: cái bẫy nằm ở thực phẩm chế biến</h2>
+  <p>Nhiều người chỉ để ý sữa, phô mai hay lòng đỏ trứng mà quên mất phụ gia phosphate trong thực phẩm đóng gói. Phốt pho từ phụ gia thường dễ hấp thu hơn. Vì vậy với người CKD, một phần quan trọng là <strong>giảm đồ chế biến sẵn</strong> thay vì chỉ chăm chăm cắt món tươi.</p>
+  <table class="table">
+    <thead>
+      <tr><th>Dễ cần chú ý hơn</th><th>Thường dễ kiểm soát hơn</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Xúc xích, chả viên, thịt nguội, phô mai chế biến</td><td>Thịt, cá, trứng, đậu phụ tươi với khẩu phần rõ</td></tr>
+      <tr><td>Nước ngọt cola, bột pha sẵn, đồ ăn công nghiệp</td><td>Món nấu tại nhà, ít phụ gia</td></tr>
+      <tr><td>Nhìn nhãn có từ "phosphate", "phosphoric"</td><td>Danh sách thành phần ngắn, dễ hiểu</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🍎 Kali: không tự cắt hết rau trái</h2>
+  <p>KDIGO nhấn mạnh cách tiếp cận cá thể hóa với tăng kali máu. Nếu kali máu đang bình thường, không phải ai CKD cũng phải né toàn bộ trái cây. Khi kali tăng hoặc nguy cơ cao, nên ưu tiên chọn loại, lượng và cách sơ chế phù hợp hơn là kiêng mù.</p>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Theo dõi rau trái, nước dừa, khoai củ, nước ép đậm đặc và khẩu phần ăn dồn trong một lần.</li>
+    <li>Ưu tiên đánh giá cả thuốc đang dùng, tình trạng táo bón, mất nước và nhiễm trùng vì chúng cũng ảnh hưởng kali.</li>
+    <li>Nếu có tăng kali máu, làm việc với bác sĩ hoặc chuyên gia dinh dưỡng thận sẽ hữu ích hơn nhiều so với tự cắt sạch mọi thứ.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>📌 Cách áp dụng gọn nhất trong bữa Việt</h2>
+  <ol style="line-height:1.8;padding-left:18px;">
+    <li>Giảm natri trước: bớt nước chấm, bột nêm, mì gói, đồ hộp.</li>
+    <li>Ưu tiên món tươi nấu tại nhà để né phosphate phụ gia.</li>
+    <li>Chỉ siết kali mạnh khi xét nghiệm hoặc bác sĩ cho thấy cần làm vậy.</li>
+    <li>Đừng tự giảm đạm quá mức nếu đang gầy, yếu hoặc ăn ít.</li>
+  </ol>
+</section>
+</ArticleLayout>

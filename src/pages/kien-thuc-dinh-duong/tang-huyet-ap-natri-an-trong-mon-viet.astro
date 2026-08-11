@@ -1,0 +1,59 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tang-huyet-ap-natri-an-trong-mon-viet"];
+if (!art) throw new Error("Article not found: tang-huyet-ap-natri-an-trong-mon-viet");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người tăng huyết áp nói rằng mình "không ăn mặn", nhưng bữa nào cũng có nước mắm, món kho, đồ chả, mì gói hoặc cơm tiệm chan sốt. Vấn đề không nằm ở việc có cầm lọ muối hay không, mà nằm ở <strong>natri ẩn trong món Việt quen thuộc</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 WHO hiện vẫn khuyến nghị người lớn giữ lượng natri dưới 2000 mg/ngày, tương đương dưới 5 g muối. Với người tăng huyết áp, cách giảm hiệu quả nhất thường là bớt nước chấm mặn, bớt gói gia vị, bớt thực phẩm chế biến sẵn và đọc nhãn kỹ hơn.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🥢 Những chỗ natri tăng rất nhanh</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nước mắm, xì dầu, mắm nêm, mắm tôm.</li>
+      <li>Món kho, rim, sốt đậm vị; nước chan và nước sốt thường mặn hơn phần cái.</li>
+      <li>Mì ăn liền, cháo gói, súp gói, hạt nêm, bột canh.</li>
+      <li>Xúc xích, chả lụa, thịt nguội, cá viên, đồ hộp.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🛒 Khi đọc nhãn, nhìn gì trước?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Tìm mục <strong>natri/sodium</strong> theo khẩu phần thực tế bạn ăn.</li>
+      <li>Nếu một gói có 2 khẩu phần mà bạn ăn cả gói, natri phải nhân đôi.</li>
+      <li>Đừng để chữ "ít béo", "healthy", "ngũ cốc" đánh lạc hướng khỏi natri.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🍲 Cách chỉnh bữa Việt mà không nhạt nhẽo</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Tình huống</th><th>Điều chỉnh dễ làm</th><th>Ý nghĩa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ăn cơm nhà</td><td>Nêm nhẹ hơn từ đầu, chừa nước chấm ra riêng</td><td>Dễ kiểm soát tổng natri</td></tr>
+      <tr><td>Ăn quán</td><td>Xin ít sốt, ít nước chan, chấm nhạt hơn</td><td>Giảm natri mà vẫn ăn cùng gia đình</td></tr>
+      <tr><td>Ăn sáng nhanh</td><td>Bớt mì gói, xúc xích, chả; tăng món tươi hơn</td><td>Giảm natri nền trong ngày</td></tr>
+      <tr><td>Nấu nhạt sợ khó ăn</td><td>Dùng chanh, giấm, tiêu, gừng, sả, rau thơm vừa phải</td><td>Tăng cảm giác đậm vị mà không cần nhiều muối</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📍 Điểm mấu chốt</h2>
+  <p>Nếu phải chọn một việc để làm ngay trong 1-2 tuần đầu, hãy bắt đầu từ <strong>nước chấm và thực phẩm đóng gói</strong>. Với tăng huyết áp, đây thường là nơi natri ẩn nhiều hơn cả hạt muối bạn nhìn thấy.</p>
+</section>
+</ArticleLayout>

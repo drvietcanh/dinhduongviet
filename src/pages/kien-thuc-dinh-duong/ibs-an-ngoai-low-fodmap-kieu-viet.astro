@@ -1,0 +1,70 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["ibs-an-ngoai-low-fodmap-kieu-viet"];
+if (!art) throw new Error("Article not found: ibs-an-ngoai-low-fodmap-kieu-viet");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người IBS làm được low-FODMAP ở nhà, nhưng ra ngoài ăn là "vỡ trận": nước dùng có hành tỏi, món xào có sốt sẵn, trà sữa có sữa, còn món tưởng vô hại lại làm bụng trướng cả buổi. Vì vậy, kỹ năng quan trọng không chỉ là biết thực phẩm nào FODMAP cao, mà là <strong>gọi món thế nào khi ăn quán</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Theo Monash, low-FODMAP là quy trình 3 bước: giảm ngắn hạn 2-6 tuần, thử lại có hệ thống, rồi cá thể hóa lâu dài. Vì thế khi ăn ngoài, mục tiêu không phải ăn "hoàn hảo tuyệt đối", mà là tránh đúng các điểm kích hoạt hay gặp và giữ bữa ăn đủ nhẹ để bạn sinh hoạt bình thường.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🍜 Những điểm hay gây trượt khi ăn quán</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Hành phi, tỏi phi, sốt ướp, nước dùng ninh với hành tây.</li>
+    <li>Sữa tươi, kem béo, bột kem trong đồ uống.</li>
+    <li>Mì bột mì, bánh mì kèm sốt tỏi bơ hoặc pate đậm vị.</li>
+    <li>Ăn quá no một lúc, dù món đó không quá cao FODMAP.</li>
+  </ul>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Thường dễ bắt đầu hơn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Cơm trắng + thịt/cá/trứng nướng hoặc luộc đơn giản.</li>
+      <li>Phở/bún gạo với yêu cầu ít hành, không hành phi nếu quán hỗ trợ.</li>
+      <li>Rau luộc, dưa leo, bí, cà rốt, canh đơn giản.</li>
+      <li>Nước lọc, trà nhạt; hạn chế đồ uống sữa nếu chưa rõ dung nạp lactose.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Cần dè chừng hơn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Lẩu, nước dùng đậm vị, món xào sốt sẵn.</li>
+      <li>Bánh mì kẹp nhiều sốt, mì Ý sốt kem, mì gói.</li>
+      <li>Trà sữa, sữa tươi, sinh tố nhiều sữa, đồ uống có đường alcohols.</li>
+      <li>Món có nhiều đậu, táo, lê, hành, tỏi.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🧾 Mẫu câu gọi món hữu ích</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Tình huống</th><th>Cách nói ngắn gọn</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bún/phở</td><td>"Cho em ít hành, không hành phi nếu được."</td></tr>
+      <tr><td>Cơm phần</td><td>"Cho ít sốt, ít nước chan, món đơn giản giúp em."</td></tr>
+      <tr><td>Đồ uống</td><td>"Không sữa hoặc đổi sang loại không lactose nếu có."</td></tr>
+      <tr><td>Món xào</td><td>"Cho em món ít tỏi, ít hành."</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📌 Điều quan trọng nhất</h2>
+  <p>Nếu đã qua giai đoạn thử lại và biết rõ mình nhạy với nhóm nào, bạn sẽ ăn ngoài dễ hơn rất nhiều. Đó cũng là tinh thần của bước 3 low-FODMAP: <strong>cá thể hóa</strong>, chứ không ăn kiêng cứng suốt đời.</p>
+</section>
+</ArticleLayout>

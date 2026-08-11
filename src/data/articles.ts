@@ -1502,6 +1502,26 @@ export const articles: ArticleMeta[] = [
     keywords: ["ăn mặn", "tăng huyết áp", "cao huyết áp", "giảm muối", "ăn nhạt", "mắm muối", "ăn ngoài hàng quán", "đau dạ dày uống cà phê"],
   },
   {
+    slug: "tang-huyet-ap-natri-an-trong-mon-viet",
+    title: "Tăng huyết áp — Natri ẩn trong món Việt: nhìn ở đâu và cắt từ đâu trước?",
+    description: "Bài thực hành về natri ẩn trong nước chấm, món kho, mì gói, đồ chả và cách đọc nhãn khi bị tăng huyết áp.",
+    emoji: "🧂",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["tăng huyết áp", "natri", "muối", "món Việt"],
+    audience: ["người tăng huyết áp", "người chăm sóc", "người ăn ngoài thường xuyên"],
+    specialty: "tim-mach",
+    sources: [
+      { name: "WHO — Sodium Reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
+    ],
+    keywords: ["tăng huyết áp", "natri", "muối", "nước mắm", "mì gói", "đọc nhãn"],
+  },
+  {
     slug: "suy-than",
     title: "Suy thận — Chế độ ăn cho người bệnh thận",
     description: "Hạn chế kali, phốt pho, đạm. Nguyên tắc dinh dưỡng cho suy thận mạn.",
@@ -1517,6 +1537,26 @@ export const articles: ArticleMeta[] = [
     keywords: ["suy thận", "bệnh thận mạn", "chế độ ăn suy thận", "kiêng kali", "kiêng đạm"],
     audience: ["kidney"],
     sources: [{ name: "KDIGO — CKD Nutrition", url: "https://kdigo.org/guidelines/" }, { name: "Viện Dinh dưỡng — Suy thận", url: "https://viendinhduong.vn" }],
+  },
+  {
+    slug: "ckd-kali-phot-pho-muoi-thuc-hanh",
+    title: "CKD — Kali, phốt pho, muối: ưu tiên gì trước trong bữa ăn hằng ngày?",
+    description: "Bài thực hành cho người bệnh thận mạn: khi nào cần siết muối, khi nào phải để ý kali, phốt pho và vì sao muối thay thế có thể không phù hợp.",
+    emoji: "🫘",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["CKD", "kali", "phốt pho", "muối", "thực hành"],
+    audience: ["người CKD", "người chăm sóc bệnh thận"],
+    specialty: "than-tiet-nieu",
+    sources: [
+      { name: "KDIGO 2024 CKD Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
+      { name: "KDOQI Commentary on KDIGO 2024 CKD Guideline", url: "https://kdigo.org/wp-content/uploads/2025/01/KDOQI-Commentary_KDIGO-2024-CKD-Guideline.pdf" }
+    ],
+    keywords: ["CKD", "kali", "phốt pho", "muối", "potassium chloride", "phosphate phụ gia"],
   },
   {
     slug: "gan-nhiem-mo",
@@ -4787,6 +4827,26 @@ export const articles: ArticleMeta[] = [
     keywords: ["hội chứng ruột kích thích", "IBS", "FODMAP", "táo bón", "tiêu chảy", "đau bụng"],
   },
   {
+    slug: "ibs-an-ngoai-low-fodmap-kieu-viet",
+    title: "IBS — Ăn ngoài và gọi món kiểu low-FODMAP sao cho đỡ đầy bụng?",
+    description: "Bài thực hành cho người IBS khi ăn quán: nhận diện điểm kích hoạt thường gặp, cách gọi món và cách giữ low-FODMAP linh hoạt hơn.",
+    emoji: "🍜",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["IBS", "low FODMAP", "ăn ngoài", "gọi món"],
+    audience: ["người IBS", "người đầy bụng mạn", "người hay ăn ngoài"],
+    specialty: "tieu-hoa",
+    sources: [
+      { name: "Monash — Starting the Low FODMAP Diet", url: "https://www.monashfodmap.com/ibs-central/i-have-ibs/starting-the-low-fodmap-diet/" },
+      { name: "Monash — High and Low FODMAP Foods", url: "https://www.monashfodmap.com/about-fodmap-and-ibs/high-and-low-fodmap-foods/" }
+    ],
+    keywords: ["IBS", "low FODMAP", "ăn ngoài", "gọi món", "hành tỏi", "đầy bụng"],
+  },
+  {
     slug: "dinh-duong-benh-than-man-ckd",
     title: "Bệnh thận mạn (CKD) — Ăn gì để bảo vệ thận trước khi quá muộn?",
     description: "Chế độ ăn cho người bệnh thận mạn giai đoạn 1–4: giảm đạm, giảm muối, kiểm soát kali/phốt pho, trước khi cần lọc máu.",
@@ -5503,6 +5563,26 @@ export const articles: ArticleMeta[] = [
       { name: "WGO — Irritable Bowel Syndrome Guideline", url: "https://www.worldgastroenterology.org/guidelines/irritable-bowel-syndrome-ibs" }
     ],
     keywords: ["low FODMAP", "IBS", "kiểu Việt", "đầy hơi", "bụng chướng", "hành tỏi", "sữa lactose"],
+  },
+  {
+    slug: "hen-suyen-beo-phi-giam-can",
+    title: "Hen suyễn kèm béo phì — Vì sao giảm 5-10% cân nặng lại đáng giá?",
+    description: "Bài thực hành cho người hen suyễn kèm thừa cân: vì sao béo phì làm hen khó kiểm soát hơn và cách bắt đầu giảm cân mà không cực đoan.",
+    emoji: "⚖️",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["hen suyễn", "béo phì", "giảm cân", "asthma"],
+    audience: ["người hen suyễn", "người thừa cân", "phụ huynh trẻ hen"],
+    specialty: "ho-hap",
+    sources: [
+      { name: "GINA 2026 Summary Guide", url: "https://ginasthma.org/wp-content/uploads/2026/07/GINA-Summary-Guide-2026-WEB-WMS.pdf" },
+      { name: "GINA 2026 Strategy Report", url: "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf" }
+    ],
+    keywords: ["hen suyễn", "béo phì", "giảm cân", "5-10%", "kiểm soát hen"],
   },
   {
     slug: "chan-an-sau-hoa-tri",

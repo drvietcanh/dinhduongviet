@@ -1,0 +1,61 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["hen-suyen-beo-phi-giam-can"];
+if (!art) throw new Error("Article not found: hen-suyen-beo-phi-giam-can");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Không ít người hen suyễn dùng thuốc đều mà vẫn thấy nặng ngực, mau mệt và khó kiểm soát triệu chứng nếu cân nặng tăng dần theo năm tháng. Trong thực hành, béo phì không chỉ làm vận động khó hơn mà còn khiến hen khó kiểm soát hơn. Vì vậy, với người hen kèm thừa cân, dinh dưỡng không chỉ là chuyện "ăn lành mạnh", mà là một phần của chiến lược kiểm soát hen.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 GINA 2026 nhấn mạnh hen ở người béo phì thường khó kiểm soát hơn và nên đưa giảm cân vào kế hoạch điều trị; ngay cả mức giảm khoảng 5-10% cân nặng cũng có thể cải thiện kiểm soát hen. Điều này không thay thuốc, nhưng giúp thuốc phát huy hiệu quả tốt hơn.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🌬️ Vì sao cân nặng lại ảnh hưởng hen?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Khối mỡ nhiều hơn làm thành ngực và cơ hoành vận động kém thuận lợi.</li>
+      <li>Béo phì đi kèm viêm mức thấp, GERD, ngưng thở khi ngủ và ít vận động.</li>
+      <li>Những yếu tố này có thể làm triệu chứng hen dai dẳng hơn.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🍽️ Mục tiêu dinh dưỡng thực tế</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Giảm năng lượng dư thừa một cách bền vững, không nhịn cực đoan.</li>
+      <li>Ưu tiên bữa ăn giàu rau, đạm đủ, giảm đồ uống ngọt và đồ siêu chế biến.</li>
+      <li>Kết hợp vận động đều, theo sức chịu đựng và kế hoạch hen của bác sĩ.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📉 Không cần giảm quá nhiều mới thấy lợi ích</h2>
+  <p>Nhiều người tưởng phải giảm cân rất mạnh mới đáng làm. Thực ra, với hen suyễn, mục tiêu giảm vừa phải nhưng bền vững đã có ý nghĩa. Điều quan trọng là tránh vòng lặp: khó thở nên ít vận động, ít vận động nên tăng cân thêm, rồi hen kiểm soát kém hơn.</p>
+</section>
+
+<section class="section card">
+  <h2>🚩 Những điểm dễ bỏ sót</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Ợ chua, trào ngược, ngủ ngáy hoặc buồn ngủ ban ngày có thể làm hen khó kiểm soát hơn.</li>
+    <li>Đồ uống ngọt, ăn khuya, tăng cân nhanh thường làm vòng xoắn này nặng thêm.</li>
+    <li>Nếu hen chưa ổn, không nên tự bỏ thuốc chỉ vì đang ăn kiêng hay giảm cân.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>📌 Cách bắt đầu gọn nhất</h2>
+  <ol style="line-height:1.8;padding-left:18px;">
+    <li>Cắt bớt đồ uống có đường và bữa ăn rất lớn buổi tối.</li>
+    <li>Tăng vận động đều đặn theo khả năng, tránh đặt mục tiêu quá gắt ngay từ đầu.</li>
+    <li>Theo dõi triệu chứng hen song song với cân nặng, vòng eo và giấc ngủ.</li>
+  </ol>
+</section>
+</ArticleLayout>
