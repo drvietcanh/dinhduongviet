@@ -35,7 +35,7 @@ var breadcrumbNames = {
   "tim-kiem": "Tìm kiếm",
   "phuong-phap": "Phương pháp và dữ liệu",
   "hoi-dap": "Hỏi đáp",
-  "bmi": "BMI & Vòng eo",
+  "bmi": "BMI",
   "muc-tieu-can-nang": "Mục tiêu cân nặng",
   "bang-xep-hang": "Bảng xếp hạng thực phẩm",
   "so-sanh": "So sánh dinh dưỡng",
@@ -607,7 +607,7 @@ if (isArticle) {
       <button class="hamburger" id="hamburger-btn" aria-label="Mở menu điều hướng" aria-controls="main-nav-links" aria-expanded="false">☰</button>
       <div class="nav-search" role="search">
         <span class="search-icon">🔍</span>
-        <input type="search" id="nav-search-input" aria-label="Tìm kiếm trên website" placeholder="Tìm kiếm..." autocomplete="off" />
+        <input type="search" id="nav-search-input" aria-label="Tìm kiếm trên website" placeholder="Món ăn, bệnh, công cụ..." autocomplete="off" />
       </div>
         <div class="nav-links" id="main-nav-links" aria-label="Điều hướng chính">
           <details class="nav-group">
@@ -616,22 +616,22 @@ if (isArticle) {
               <a href="/thuc-pham">Thực phẩm</a>
               <a href="/mon-an">Món ăn Việt</a>
               <a href="/tim-kiem">Tìm kiếm toàn site</a>
+              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Tra cứu thực phẩm Việt</a>
               <a href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
-              <a href="/cong-cu/bang-xep-hang">Bảng xếp hạng thực phẩm</a>
             </div>
           </details>
           <details class="nav-group">
             <summary>Theo bệnh</summary>
             <div class="nav-group-menu">
               <a href="/theo-benh">Lối vào theo bệnh</a>
+              <a href="/ban-do-benh">Danh mục bệnh đầy đủ</a>
               <a href="/theo-benh/tieu-duong">Đái tháo đường</a>
               <a href="/theo-benh/cao-huyet-ap">Tăng huyết áp</a>
-              <a href="/theo-benh/gout-axit-uric">Gout - axit uric</a>
               <a href="/theo-benh/gan-nhiem-mo">Gan nhiễm mỡ</a>
               <a href="/theo-benh/da-day-trao-nguoc">Dạ dày - trào ngược</a>
               <a href="/theo-benh/benh-than">Bệnh thận</a>
               <a href="/theo-benh/mo-mau-tim-mach">Mỡ máu - tim mạch</a>
-              <a href="/ban-do-benh">Mở danh mục bệnh đầy đủ</a>
+              <a href="/theo-benh/gout-axit-uric">Gout - axit uric</a>
             </div>
           </details>
           <details class="nav-group">
@@ -651,14 +651,14 @@ if (isArticle) {
             <summary>Công cụ</summary>
             <div class="nav-group-menu">
               <a href="/cong-cu">Tất cả công cụ</a>
+              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Tra cứu thực phẩm Việt</a>
               <a href="/cong-cu/tinh-carb">Tính carb</a>
               <a href="/cong-cu/tinh-gl-bua-an">Tính GL bữa ăn</a>
               <a href="/cong-cu/theo-doi-duong-huyet">Theo dõi đường huyết</a>
-              <a href="/cong-cu/khau-phan-viet-clinical">Khẩu phần Việt Clinical</a>
               <a href="/cong-cu/ke-hoach-bua-an">Kế hoạch bữa ăn</a>
-              <a href="/cong-cu/danh-sach-di-cho">Danh sách đi chợ</a>
+              <a href="/cong-cu/danh-gia-bua-an">Đánh giá bữa ăn</a>
               <a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a>
-              <a href="/thong-ke">Thống kê</a>
+              <a href="/thong-ke">Thống kê dữ liệu</a>
             </div>
           </details>
           <a href="/tac-gia">Giới thiệu</a>
@@ -683,6 +683,7 @@ if (isArticle) {
         </div>
         <div class="footer-col">
           <h4>Theo bệnh</h4>
+          <a href="/theo-benh">🗂️ Lối vào theo bệnh</a>
           <a href="/theo-benh/tieu-duong">🩸 Đái tháo đường</a>
           <a href="/theo-benh/cao-huyet-ap">❤️ Tăng huyết áp</a>
           <a href="/theo-benh/gan-nhiem-mo">🫁 Gan nhiễm mỡ</a>
@@ -699,20 +700,20 @@ if (isArticle) {
         </div>
         <div class="footer-col">
           <h4>Công cụ</h4>
+          <a href="/cong-cu">🛠️ Tất cả công cụ</a>
+          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Tra cứu thực phẩm Việt</a>
           <a href="/cong-cu/tinh-carb">🔢 Tính carb</a>
           <a href="/cong-cu/tinh-gl-bua-an">⚖️ Tính GL bữa ăn</a>
           <a href="/cong-cu/theo-doi-duong-huyet">🩸 Theo dõi đường huyết</a>
           <a href="/cong-cu/ke-hoach-bua-an">📋 Kế hoạch bữa ăn</a>
-          <a href="/cong-cu">🛠️ Tất cả công cụ</a>
         </div>
         <div class="footer-col">
           <h4>Hỗ trợ</h4>
           <a href="/tim-kiem">🔍 Tìm kiếm toàn site</a>
           <a href="/hoi-dap">❓ Hỏi nhanh – đáp gọn</a>
-          <a href="/theo-benh">🗂️ Theo bệnh</a>
           <a href="/ban-do-benh">🗺️ Bản đồ bệnh mạn tính</a>
-          <a href="/thuc-pham">🥬 Thực phẩm</a>
-          <a href="/mon-an">🍜 Món ăn Việt</a>
+          <a href="/thuc-don">📋 Thực đơn mẫu</a>
+          <a href="/phuong-phap">📖 Phương pháp - dữ liệu</a>
         </div>
         <div class="footer-col">
           <h4>Tác giả</h4>

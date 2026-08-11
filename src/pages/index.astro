@@ -13,15 +13,15 @@ const categories = [...new Set(foods.map((f) => f.category))];
 const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
 const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
 const toolCards = [
-  { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Tính BMR, TDEE, lộ trình giảm/tăng" },
-  { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI & vòng eo", desc: "Đánh giá béo phì châu Á, WHR" },
+  { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu năng lượng và định hướng mục tiêu cân nặng" },
+  { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI", desc: "Đánh giá nhanh tình trạng cân nặng theo ngưỡng châu Á" },
   { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI cơm, bún, phở, trái cây Việt" },
-  { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Biết ngay bữa này có an toàn cho đường huyết" },
+  { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của bữa ăn để tham khảo" },
   { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Huyết áp, đường huyết, mỡ máu" },
-  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Calo, sắt, canxi, DHA từng tam cá nguyệt" },
-  { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Năng lượng, đạm, canxi 0–14 tuổi" },
+  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Gợi ý chỉ số cần theo dõi và khi nào nên cá thể hóa" },
+  { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Mốc nhu cầu dinh dưỡng tham khảo theo nhóm tuổi" },
   { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "26 môn tập, calo tương đương thực phẩm" },
-  { href: "/cong-cu/ti-le-mo-co-the", icon: "📏", name: "Tỷ lệ mỡ cơ thể", desc: "US Navy, WHR, đánh giá mỡ nội tạng" },
+  { href: "/cong-cu/ti-le-mo-co-the", icon: "📏", name: "Tỷ lệ mỡ cơ thể", desc: "Giải thích cách hiểu tỷ lệ mỡ, vòng eo và giới hạn của chỉ số" },
 ];
 ---
 
@@ -39,8 +39,8 @@ const toolCards = [
       <a class="cta-btn" href="/thuc-pham">🥬 Tra thực phẩm</a>
       <a class="cta-btn" href="/mon-an">🍜 Tra món ăn</a>
       <a class="cta-btn cta-outline" href="/ban-do-benh">🩺 Bệnh lý</a>
+      <a class="cta-btn cta-outline" href="/cong-cu">🧮 Công cụ</a>
       <a class="cta-btn cta-outline" href="/dung-tin-ngay">🔍 Đừng Tin Ngay</a>
-      <a class="cta-btn cta-outline" href="/cong-cu/bang-xep-hang">🏆 Xếp hạng</a>
     </div>
   </section>
 
@@ -77,12 +77,12 @@ const toolCards = [
       <a href="/cong-cu/muc-tieu-can-nang" class="entry-card card-weight">
         <div class="entry-icon">⚖️</div>
         <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
-        <div class="entry-desc">Tính BMR, TDEE, mục tiêu calo, kế hoạch giảm cân khoa học, tăng cơ</div>
+        <div class="entry-desc">Ước tính nhu cầu năng lượng, đặt mục tiêu thực tế, và chọn hướng theo dõi phù hợp</div>
       </a>
       <a href="/thuc-don" class="entry-card card-diet">
         <div class="entry-icon">📋</div>
         <div class="entry-title">Tôi cần thực đơn cụ thể</div>
-        <div class="entry-desc">Thực đơn 1 ngày, bữa sáng, bữa tối, ăn ngoài hàng, kế hoạch bữa ăn cá nhân</div>
+        <div class="entry-desc">Thực đơn mẫu theo mục tiêu, món dễ áp dụng tại nhà, và gợi ý ăn ngoài hàng</div>
       </a>
     </div>
   </section>

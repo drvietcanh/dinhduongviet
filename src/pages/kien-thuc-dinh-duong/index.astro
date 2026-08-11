@@ -123,8 +123,8 @@ const audiences = [
         .map(dc => ({ key: dc, ...dcLabel[dc], items: g.items.filter((a: ArticleMeta) => a.displayCategory === dc) }))
         .filter(sg => sg.items.length > 0);
 
-      // Large sections (>15) start collapsed
-      const defaultOpen = g.items.length > 15;
+      // Large sections stay collapsed initially to keep the page scannable.
+      const defaultOpen = !(g.items.length > 15);
 
       return (
         <section id={`sec-${g.key}`} class="ki-section" data-sp-section={g.key}>
