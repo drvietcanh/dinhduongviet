@@ -19,9 +19,9 @@ if (!recipe) return Astro.redirect("/tim-kiem");
 const nutrients = calculateRecipe(recipe);
 const source = sourceFor(recipe.sourceId);
 const nextRecipeLinks = [
-  { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn này" },
-  { href: "#doi-khau-phan", label: "Đổi khẩu phần" },
-  { href: "/thuc-pham", label: "Xem thực phẩm thành phần" },
+  { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn", note: "Đặt món này vào cả bữa để đọc tổng thể hơn." },
+  { href: "#doi-khau-phan", label: "Đổi khẩu phần", note: "Tăng hoặc giảm theo tô, đĩa hay phần ăn thực tế." },
+  { href: "/thuc-pham", label: "Xem thực phẩm thành phần", note: "Đi tiếp sang từng nguyên liệu nếu cần so kỹ." },
 ];
 const pageDescription = `Tra cứu ${recipe.servingName} ${recipe.name}: khoảng ${Math.round(nutrients.energyKcal ?? 0)} kcal, ${Math.round(nutrients.proteinG ?? 0)}g đạm, ${Math.round(nutrients.carbG ?? 0)}g carb và ${Math.round(nutrients.fatG ?? 0)}g chất béo mỗi khẩu phần.`;
 const heroMetrics = [
@@ -30,7 +30,12 @@ const heroMetrics = [
   { label: "Carb", value: `${Math.round(nutrients.carbG ?? 0)} g` },
   { label: "Natri", value: `${Math.round(nutrients.sodiumMg ?? 0)} mg` }
 ];
-const heroTags = allTags({ tags: recipe.tags, nutrients }).slice(0, 5);
+const heroTags = allTags({ tags: recipe.tags, nutrients }).slice(0, 3);
+const detailMeta = [
+  { label: "Khẩu phần", value: recipe.servingName },
+  { label: "Khối lượng ước tính", value: `${recipe.servingWeightG} g` },
+  { label: "Độ tin cậy", value: confidenceLabel(recipe.confidence) },
+];
 
 // Build JSON-LD Recipe schema object (will be stringified in template)
 const recipeSchema = {
@@ -99,9 +104,17 @@ const recipeSchema = {
         {heroTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
       </div>
     )}
+    <div class="detail-meta-strip" aria-label="Thông tin đọc nhanh">
+      {detailMeta.map((item) => (
+        <div class="meta-pill">
+          <span>{item.label}</span>
+          <strong>{item.value}</strong>
+        </div>
+      ))}
+    </div>
     <div class="detail-note-card">
-      <h2>Đọc nhanh trước khi dùng số liệu</h2>
-      <p>Đây là ước tính theo một khẩu phần phổ biến. Giá trị thực tế thay đổi nhiều nhất theo lượng cơm, dầu mỡ, nước sốt và kích thước tô/đĩa.</p>
+      <h2>Đọc nhanh</h2>
+      <p>Đây là ước tính theo một khẩu phần phổ biến. Sai số thường đến từ lượng cơm, dầu mỡ, nước sốt và kích thước tô hoặc đĩa thực tế.</p>
     </div>
   </section>
 
@@ -109,14 +122,6 @@ const recipeSchema = {
 
   <section class="section">
     <NutrientStats nutrients={nutrients} />
-  </section>
-
-  <section class="section">
-    <NutritionChart nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} />
-  </section>
-
-  <section class="section">
-    <VNHealthScore nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} isRecipe servingKcal={nutrients.energyKcal} />
   </section>
 
   {nutrients.glycemicIndex != null && (
@@ -134,12 +139,35 @@ const recipeSchema = {
     />
   </section>
 
+  <section class="section card next-step-card">
+    <div class="section-head">
+      <h2>Bước tiếp theo</h2>
+      <p>Sau khi xem một món riêng lẻ, đây là ba hướng đi rõ nhất để quyết định tiếp.</p>
+    </div>
+    <div class="next-step-grid">
+      {nextRecipeLinks.map((link) => (
+        <a href={link.href} class="next-step-link">
+          <strong>{link.label}</strong>
+          <span>{link.note}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <NutritionChart nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} />
+  </section>
+
+  <section class="section">
+    <VNHealthScore nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} isRecipe servingKcal={nutrients.energyKcal} />
+  </section>
+
   <section class="section grid two">
     <NutritionTable nutrients={nutrients} caption={`Ước tính cho ${recipe.servingName}`} />
     <div class="card">
       <div class="section-head">
-        <h2>Công thức tính</h2>
-        <p>Mỗi nguyên liệu được quy đổi theo khối lượng ăn được rồi cộng lại thành một phần món hoàn chỉnh.</p>
+        <h2>Cách tính</h2>
+        <p>Mỗi nguyên liệu được quy đổi theo phần ăn được rồi cộng lại thành một khẩu phần món.</p>
       </div>
       <table class="table">
         <thead>
@@ -181,20 +209,11 @@ const recipeSchema = {
   )}
 
   <section class="section card">
-    <h2>Nguồn và sai số</h2>
+    <h2>Nguồn dữ liệu</h2>
     <p class="muted"><strong>Nguồn:</strong> {source?.name ?? recipe.sourceId}</p>
     <p class="muted" style="margin-top: 10px;">
-      Đây là giá trị ước tính theo công thức mẫu. Món ăn thực tế có thể thay đổi theo lượng tinh bột, thịt, dầu mỡ, muối/nước mắm và kích thước khẩu phần.
+      <strong>Lưu ý sai số:</strong> Đây là giá trị ước tính theo công thức mẫu. Món thực tế có thể thay đổi theo lượng tinh bột, đạm, dầu mỡ, nước chấm và kích thước khẩu phần.
     </p>
-  </section>
-  <section class="section card next-step-card">
-    <div class="section-head">
-      <h2>Bước tiếp theo</h2>
-      <p>Sau khi xem một phần món ăn, bạn thường sẽ muốn đổi khẩu phần hoặc đặt món đó vào cả bữa ăn.</p>
-    </div>
-    <div class="next-step-links">
-      {nextRecipeLinks.map((link) => <a href={link.href}>{link.label}</a>)}
-    </div>
   </section>
   <script is:inline>
     function shareRecipe() {
@@ -353,6 +372,36 @@ const recipeSchema = {
     line-height: 1.35;
   }
 
+  .detail-meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+  }
+
+  .meta-pill span {
+    color: var(--ink-tertiary);
+    font-size: 0.74rem;
+    line-height: 1.3;
+  }
+
+  .meta-pill strong {
+    margin-top: 3px;
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
   .detail-note-card {
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -376,25 +425,38 @@ const recipeSchema = {
     margin-bottom: 12px;
   }
   .next-step-card { padding: 18px; }
-  .next-step-links {
-    display: flex;
-    flex-wrap: wrap;
+  .next-step-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
   }
-  .next-step-links a {
-    display: inline-flex;
-    min-height: 40px;
-    align-items: center;
-    padding: 8px 12px;
+
+  .next-step-link {
+    display: flex;
+    min-height: 94px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 13px;
     border: 1px solid var(--card-border);
-    border-radius: 999px;
+    border-radius: 8px;
     background: var(--card);
     color: var(--ink);
     text-decoration: none;
-    font-size: 0.84rem;
-    font-weight: 600;
   }
-  .next-step-links a:hover {
+
+  .next-step-link strong {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .next-step-link span {
+    margin-top: 10px;
+    color: var(--ink-secondary);
+    font-size: 0.79rem;
+    line-height: 1.45;
+  }
+
+  .next-step-link:hover {
     border-color: var(--brand-light2);
     background: var(--brand-light);
     color: var(--brand-dark);
@@ -403,6 +465,10 @@ const recipeSchema = {
   @media (max-width: 900px) {
     .detail-heading,
     .detail-metrics {
+      grid-template-columns: 1fr;
+    }
+
+    .next-step-grid {
       grid-template-columns: 1fr;
     }
   }

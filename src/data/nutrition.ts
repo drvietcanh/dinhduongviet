@@ -88,6 +88,7 @@ export type Recipe = {
   servingWeightG: number;
   imageUrl?: string;
   tags?: string[];
+  mealContexts?: ("dinner-light" | "dinner-heavy" | "communal")[];
   portionNote?: string;
   commonPortions?: {
     label: string;
@@ -829,6 +830,7 @@ export const recipes: Recipe[] = [
     aliases: ["pho bo", "phở bò thường"],
     servingName: "1 tô thường",
     servingWeightG: 680,
+    mealContexts: ["dinner-light"],
     portionNote: "Trong bản MVP, 1 tô phở bò thường được giả định có khoảng 70g thịt bò chín. Thực tế thường dao động khoảng 50-100g tùy quán và loại tô.",
     commonPortions: [
       {
@@ -867,6 +869,7 @@ export const recipes: Recipe[] = [
     aliases: ["cơm gà", "com uc ga"],
     servingName: "1 phần",
     servingWeightG: 320,
+    mealContexts: ["dinner-light"],
     sourceId: "recipe-estimate-v1",
     confidence: "low",
     note: "Mẫu món đơn giản để kiểm tra logic tính; chưa đại diện cho mọi cách chế biến.",
@@ -883,6 +886,7 @@ export const recipes: Recipe[] = [
     aliases: ["pho ga", "phở gà thường"],
     servingName: "1 tô thường",
     servingWeightG: 660,
+    mealContexts: ["dinner-light"],
     portionNote: "Trong bản MVP, 1 tô phở gà thường được giả định có khoảng 80g thịt gà/ức gà chín.",
     commonPortions: [
       { label: "Tô ít thịt", description: "Khoảng 60g thịt gà chín.", totalWeightG: 630 },
@@ -906,6 +910,7 @@ export const recipes: Recipe[] = [
     aliases: ["cơm tấm", "com tam", "com tam suon"],
     servingName: "1 đĩa thường",
     servingWeightG: 380,
+    mealContexts: ["dinner-heavy"],
     portionNote: "Một đĩa cơm tấm sườn thường được giả định có 220g cơm và khoảng 100g sườn nướng phần ăn được.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -925,6 +930,7 @@ export const recipes: Recipe[] = [
     aliases: ["banh mi thit", "bánh mì heo", "bánh mì Việt Nam"],
     servingName: "1 ổ thường",
     servingWeightG: 210,
+    mealContexts: ["dinner-light"],
     portionNote: "Một ổ bánh mì thịt thường được giả định có 80g bánh mì, 60g thịt heo, rau dưa và nước sốt.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -945,6 +951,7 @@ export const recipes: Recipe[] = [
     aliases: ["gỏi cuốn tôm thịt", "fresh spring roll", "goi cuon"],
     servingName: "2 cuốn",
     servingWeightG: 220,
+    mealContexts: ["dinner-light"],
     portionNote: "Khẩu phần mẫu gồm 2 cuốn, mỗi cuốn khoảng 1-2 con tôm nhỏ và ít thịt nạc.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -964,6 +971,7 @@ export const recipes: Recipe[] = [
     aliases: ["bun thit nuong", "bún heo nướng"],
     servingName: "1 tô thường",
     servingWeightG: 430,
+    mealContexts: ["dinner-heavy"],
     portionNote: "Một tô thường được giả định có 200g bún và 90g thịt heo nướng.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1229,6 +1237,7 @@ recipes.push(
     aliases: ["bun bo hue", "bún bò"],
     servingName: "1 tô thường",
     servingWeightG: 720,
+    mealContexts: ["dinner-heavy"],
     portionNote: "Tô thường giả định có 200g bún, 80g thịt bò chín và 40g giò/sườn heo phần ăn được.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1248,6 +1257,7 @@ recipes.push(
     aliases: ["chao ga", "cháo thịt gà"],
     servingName: "1 tô",
     servingWeightG: 420,
+    mealContexts: ["dinner-light"],
     portionNote: "Một tô cháo gà thường được giả định có lượng gạo tương đương khoảng 80g cơm và 70g thịt gà.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1557,6 +1567,7 @@ recipes.push(
     servingName: "1 tô thường",
     servingWeightG: 650,
     tags: ["gluten-free", "vietnamese-soup"],
+    mealContexts: ["dinner-light"],
     portionNote: "Một tô thường giả định có 200g bún, 100g cua/gạch và đậu phụ.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1641,6 +1652,7 @@ recipes.push(
     servingName: "1 tô nhỏ",
     servingWeightG: 350,
     tags: ["gluten-free", "low-calorie"],
+    mealContexts: ["dinner-light"],
     portionNote: "Canh chua cá lóc hoặc cá basa phổ biến, với cà chua, bạc hà và giá.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1663,6 +1675,7 @@ recipes.push(
     servingName: "1 phần",
     servingWeightG: 200,
     tags: ["gluten-free", "low-carb"],
+    mealContexts: ["dinner-heavy"],
     portionNote: "Cá chặt khúc kho trong nước mắm, đường và tiêu.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1683,6 +1696,7 @@ recipes.push(
     servingName: "1 phần thường",
     servingWeightG: 450,
     tags: ["gluten-free", "high-protein"],
+    mealContexts: ["dinner-heavy"],
     portionNote: "Phần bún chả Hà Nội gồm 200g bún, 100g chả thịt và rau sống.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1723,6 +1737,7 @@ recipes.push(
     servingName: "1 tô thường",
     servingWeightG: 550,
     tags: ["vietnamese"],
+    mealContexts: ["dinner-heavy"],
     portionNote: "Miến nấu lòng gà măng (Bắc) / tim gan gà (Nam) / thêm tiêu ớt (Huế).",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1741,6 +1756,7 @@ recipes.push(
     servingName: "1 tô",
     servingWeightG: 350,
     tags: ["vietnamese", "street-food"],
+    mealContexts: ["dinner-heavy"],
     portionNote: "Cháo lòng heo + tiết. Bắc thêm dồi, Nam thêm hành phi.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1815,6 +1831,174 @@ foods.push(
   ] as Food[])
 );
 recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipes4, ...extraRecipes5, ...extraRecipes6, ...bulkRecipes);
+
+const communalMealPatterns = [
+  /\blau\b/,
+  /lẩu/,
+  /hotpot/,
+  /buffet/,
+  /\bbbq\b/,
+  /barbecue/,
+  /ban nuong/,
+  /bàn nướng/,
+  /nhung dam/,
+  /nhúng dấm/,
+  /nuong ngoi/,
+  /nướng ngói/,
+  /nuong moi/,
+  /nướng mọi/,
+  /nuong chao/,
+  /nướng chao/,
+  /nuong pho mai/,
+  /nướng phô mai/
+];
+
+const communalSlugs = new Set([
+  "lau-mam-mien-tay",
+  "lau-thai-tom-muc",
+  "lau-bo-nhung-dam",
+  "lau-ga-la-e",
+  "lau-rieu-cua-bap-bo",
+  "lau-ca-keo-la-giang",
+  "lau-de",
+  "thit-bo-nuong-la-lot",
+  "ca-loc-nuong-trui",
+  "ca-keo-nuong-muoi-ot",
+  "ca-tam-nuong",
+  "suon-heo-nuong",
+  "vu-heo-nuong-chao",
+  "ga-nuong-muoi-ot",
+  "ga-nuong-mat-ong",
+  "hau-nuong-pho-mai",
+  "oc-nuong-tieu-xanh",
+  "so-huyet-nuong-mo-hanh",
+  "ngheu-nuong-mo-hanh",
+  "banh-trang-cuon-thit-heo-da-nang",
+  "thit-luoc-cuon-banh-trang",
+  "bi-cuon",
+  "goi-cuon",
+  "goi-cuon-tom-thit",
+  "nem-nuong-nha-trang",
+  "banh-hoi-thit-nuong",
+  "banh-uot-thit-nuong",
+]);
+
+const dinnerHeavySlugs = new Set([
+  "com-tam-suon",
+  "bun-cha",
+  "bun-thit-nuong",
+  "bun-bo-hue",
+  "hu-tieu-nam-vang",
+  "hu-tieu-kho",
+  "cao-lau-hoi-an",
+  "bun-mam-mien-tay",
+  "bun-thit-heo-quay",
+  "bun-bo-que",
+  "mien-lon",
+  "chao-long",
+  "nem-ran",
+  "ca-kho-to",
+  "thit-kho-trung",
+  "suon-kho",
+  "ga-nuong-mat-ong",
+  "thit-bo-nuong-la-lot",
+  "thit-xien-nuong",
+  "vit-nuong-chao",
+  "mi-goi-trung",
+  "mi-xao-gion",
+  "banh-xeo",
+  "banh-khot-vung-tau",
+  "xoi-man",
+  "com-rang-trung",
+  "com-rang-bo",
+  "com-chien-thai",
+  "com-chien-thap-cam",
+  "com-chien-hai-san",
+  "lau-mam-mien-tay",
+  "lau-thai-tom-muc",
+  "lau-bo-nhung-dam",
+  "lau-ga-la-e",
+  "lau-rieu-cua-bap-bo",
+  "lau-ca-keo-la-giang",
+  "lau-de",
+]);
+
+const dinnerLightSlugs = new Set([
+  "pho-bo",
+  "pho-ga",
+  "com-ga-uc-ga",
+  "com-ga-tam-ky",
+  "com-ga-ta",
+  "com-gao-lut-ca-hoi",
+  "banh-mi-thit",
+  "goi-cuon",
+  "goi-ga",
+  "chao-ga",
+  "bun-rieu-cua",
+  "bun-moc",
+  "bun-thang",
+  "bun-ca-thu",
+  "banh-canh-ca-loc-mien-trung",
+  "canh-chua-ca",
+  "canh-rau-ngot-thit-bam",
+  "canh-bi-do-thit-bam",
+  "dau-phu-sot-ca-chua",
+  "com-gao-lut-nam",
+  "tom-hap-sa",
+  "ca-loc-hap",
+]);
+
+function normalizeMealContextText(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d");
+}
+
+function inferMealContexts(recipe: Recipe): Recipe["mealContexts"] {
+  const inferred = new Set(recipe.mealContexts ?? []);
+  const text = normalizeMealContextText(
+    [recipe.slug, recipe.name, ...(recipe.aliases ?? []), ...(recipe.tags ?? [])].join(" ")
+  );
+
+  if (communalSlugs.has(recipe.slug) || communalMealPatterns.some((pattern) => pattern.test(text))) {
+    inferred.add("communal");
+  }
+
+  if (
+    dinnerHeavySlugs.has(recipe.slug) ||
+    /\bcom tam\b|\bbun cha\b|\bbun thit nuong\b|\bbun bo hue\b|\bmien long\b|\bchao long\b|\bnem ran\b|\bcha gio\b|\bcom rang\b|\bcom chien\b|\bxoi\b|\bbanh xeo\b|\bbanh khot\b/.test(text) ||
+    ((recipe.tags ?? []).includes("fried-food") || (recipe.tags ?? []).includes("high-fat")) ||
+    (/nuong/.test(text) && !/\bpho\b|\bgoi cuon\b|\bgoi ga\b/.test(text))
+  ) {
+    inferred.add("dinner-heavy");
+  }
+
+  if (
+    dinnerLightSlugs.has(recipe.slug) ||
+    /\bcanh\b|\bsup\b|\bsalad\b|\bgoi cuon\b|\bgoi ga\b|\bbun rieu\b|\bbun moc\b|\bpho\b|\bchao ga\b|\bhap\b|\bluoc\b/.test(text) ||
+    (recipe.tags ?? []).includes("soup") ||
+    (recipe.tags ?? []).includes("salad") ||
+    (recipe.tags ?? []).includes("appetizer") ||
+    (recipe.tags ?? []).includes("low-calorie")
+  ) {
+    inferred.add("dinner-light");
+  }
+
+  if (inferred.has("communal") || inferred.has("dinner-heavy")) {
+    inferred.delete("dinner-light");
+  }
+
+  return inferred.size ? [...inferred] : undefined;
+}
+
+for (const recipe of recipes) {
+  const mealContexts = inferMealContexts(recipe);
+  if (mealContexts?.length) {
+    recipe.mealContexts = mealContexts;
+  }
+}
 
 const leafyVegetablePattern = /^(Rau|Cải|Bắp cải|Súp lơ|Mồng tơi|Mướp|Đậu que|Đậu bắp|Măng tây|Ngò|Ớt chuông|Cà tím|Bí xanh|Hẹ)/i;
 

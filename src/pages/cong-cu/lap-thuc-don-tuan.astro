@@ -10,6 +10,7 @@ const recipeData = recipes.map(r => {
     slug: r.slug,
     name: r.name,
     tags: r.tags || [],
+    mealContexts: r.mealContexts || [],
     kcal: n.energyKcal || 0,
     protein: n.proteinG || 0,
     fat: n.fatG || 0,
@@ -25,13 +26,31 @@ const recipeData = recipes.map(r => {
 // Meal-type classifier based on recipe name and tags
 function classifyMeal(r) {
   const n = (r.name + " " + (r.tags || []).join(" ")).toLowerCase();
+  const mealContexts = r.mealContexts || [];
+  if (mealContexts.includes("communal") || mealContexts.includes("dinner-heavy")) return "trua";
   // Breakfast
   if (["phở","bún","cháo","bánh mì","xôi","sữa","trứng","bánh cuốn","bánh ướt","bánh hỏi","bánh bèo","bánh giò","bánh đúc","bánh tráng","bánh căn","bánh khọt","bánh xèo","bánh cống","bánh dày","bánh cam","bánh gối","bánh chuối","bánh da lợn","bánh bò","bánh flan","chè bà ba","chè đậu"].some(k => n.includes(k))) return "sang";
   // Drink/dessert
   if (["chè","sinh tố","nước","trà","cà phê","sữa","kem","yaourt","sữa chua","đồ uống"].some(k => n.includes(k))) return "phu";
+  // Lẩu thường là bữa tụ tập, nhiều nước dùng và dễ nặng bụng hơn; không ưu tiên xếp mặc định vào bữa tối.
+  if (["lẩu"].some(k => n.includes(k))) return "trua";
   // Soup/stew for dinner
-  if (["canh","súp","lẩu","tiết canh","cháo lòng","cháo huyết","cháo lươn"].some(k => n.includes(k))) return "toi";
+  if (["canh","súp","tiết canh","cháo lòng","cháo huyết","cháo lươn"].some(k => n.includes(k))) return "toi";
   return "trua"; // default to lunch
+}
+
+function isDinnerFriendly(r) {
+  const mealContexts = r.mealContexts || [];
+  if (mealContexts.includes("communal") || mealContexts.includes("dinner-heavy")) return false;
+  if (mealContexts.includes("dinner-light")) return true;
+  const n = (r.name + " " + (r.tags || []).join(" ")).toLowerCase();
+  if (n.includes("lẩu") || n.includes(" lau ") || n.startsWith("lau ")) return false;
+  if (r.kcal > 520) return false;
+  if (r.fat > 18) return false;
+  if (r.sodium > 700) return false;
+  if (r.satFat > 6) return false;
+  if (["chiên", "rán", "xôi", "nướng", "buffet"].some(k => n.includes(k))) return false;
+  return true;
 }
 
 const MEAL_MAP = { sang: [], trua: [], chieu: [], toi: [], phu: [] };
@@ -190,6 +209,16 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
         var slugs = MEAL_MAP[k] || [];
         mealPools[k] = slugs.map(function(s) { return RECIPES.find(function(r){return r.slug===s;}) }).filter(Boolean);
       });
+      var originalDinnerPool = mealPools.toi.slice();
+      mealPools.toi = mealPools.toi.filter(isDinnerFriendly);
+      if (mealPools.toi.length < 8) {
+        mealPools.toi = originalDinnerPool.filter(function(r) {
+          if ((r.mealContexts || []).includes("communal") || (r.mealContexts || []).includes("dinner-heavy")) return false;
+          if ((r.mealContexts || []).includes("dinner-light")) return true;
+          var n = (r.name + " " + (r.tags || []).join(" ")).toLowerCase();
+          return !n.includes("lẩu") && !n.includes(" lau ") && !n.startsWith("lau ");
+        });
+      }
       // Fallback: recipes not in any meal map → lunch
       var leftover = pool.filter(function(r) {
         return !MEAL_KEYS.some(function(k){return (MEAL_MAP[k]||[]).indexOf(r.slug)!==-1;});

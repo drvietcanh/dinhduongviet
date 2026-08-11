@@ -302,13 +302,12 @@ const groups = [
     specialty: "than-tiet-nieu",
     id: "suy-than",
     emoji: "🫘",
-    name: "Suy thận (Chưa lọc máu) • Thận IgA",
+    name: "Bệnh thận mạn (Chưa lọc máu) • Thận IgA",
     foundation: [
-      { slug: "suy-than", title: "Suy thận — Chế độ ăn cho người bệnh thận", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-benh-than-man-ckd", title: "Bệnh thận mạn (CKD)", desc: "Kiến thức" },
+      { slug: "suy-than", title: "Bệnh thận mạn — Chế độ ăn cho người bệnh thận", desc: "Bài nền tảng" },
       { slug: "ckd-kali-phot-pho-muoi-thuc-hanh", title: "Kali, phốt pho, muối: ưu tiên gì trước?", desc: "Thực hành cốt lõi" },
       { slug: "benh-than-iga-dinh-duong", title: "Bệnh thận IgA — Dinh dưỡng bảo vệ cầu thận", desc: "Bài nền tảng" },
-      { slug: "canh-bao-hieu-lam-suy-than-kieng", title: "Người suy thận không tự ý kiêng kali, phốt pho", desc: "Đừng tin ngay" },
+      { slug: "canh-bao-hieu-lam-suy-than-kieng", title: "Người bệnh thận mạn không tự ý kiêng kali, phốt pho", desc: "Đừng tin ngay" },
       { slug: "phu-chan-giam-muoi", title: "Bị phù, suy thận — Có cần giảm muối?", desc: "Chăm sóc" },
     ],
     faq: { href: "/hoi-dap#than", label: "Suy thận có phải kiêng đạm hoàn toàn?" },
@@ -575,7 +574,7 @@ const groups = [
 
   // --- UNG THƯ ---
   {
-    specialty: "ngoai-khoa",
+    specialty: "ung-thu",
     id: "ung-thu-tong-quat",
     emoji: "🎗️",
     name: "Ung thư — Dinh dưỡng tổng quát",
@@ -611,7 +610,7 @@ const groups = [
     menus: [],
   },
   {
-    specialty: "ung-thu",
+    specialty: "ngoai-khoa",
     id: "sau-phau-thuat",
     emoji: "🏥",
     name: "Hồi phục sau phẫu thuật",
@@ -838,11 +837,11 @@ const groups = [
           { href: "/cong-cu/dinh-duong-thai-ky", label: "Dinh dưỡng thai kỳ" },
           { href: "/cong-cu/tinh-nhu-cau-dam", label: "Tính nhu cầu đạm" },
           { href: "/cong-cu/tinh-calo-tieu-thu", label: "Calo tiêu thụ" },
-          { href: "/cong-cu/ti-le-mo-co-the", label: "Tỷ lệ mỡ cơ thể" },
+          { href: "/cong-cu/so-sanh-thuc-pham", label: "So sánh thực phẩm" },
           { href: "/cong-cu/tinh-carb", label: "Tính carb" },
-          { href: "/cong-cu/tuong-tac-thuoc-thuc-pham", label: "Tương tác thuốc" },
-          { href: "/cong-cu/nhat-ky", label: "Nhật ký ăn uống" },
-          { href: "/cong-cu/khau-phan-don-gian", label: "Khẩu phần" },
+          { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
+          { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
+          { href: "/cong-cu/theo-doi-suc-khoe", label: "Theo dõi sức khỏe" },
         ].map(t => (
           <a href={t.href} class="st-tool">{t.label}</a>
         ))}

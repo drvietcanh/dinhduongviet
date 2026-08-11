@@ -7,8 +7,9 @@ export interface Props {
   description?: string;
   image?: string;
   canonical?: string;
+  robots?: string;
 }
-const { title, description, image, canonical } = Astro.props;
+const { title, description, image, canonical, robots } = Astro.props;
 const defaultImage = "https://dinh-duong-viet.pages.dev/og-default.png";
 const imageUrl = image || defaultImage;
 const canonicalPath = canonical ?? Astro.url.pathname;
@@ -133,6 +134,7 @@ if (isArticle) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description || "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam. Dữ liệu từ Bảng thành phần thực phẩm Việt Nam 2007 và USDA."} />
+    {robots && <meta name="robots" content={robots} />}
     <meta name="theme-color" content="#1b5e20" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -674,7 +676,7 @@ if (isArticle) {
               <a href="/thuc-pham">Thực phẩm</a>
               <a href="/mon-an">Món ăn</a>
               <a href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
-              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Tra cứu thực phẩm Việt</a>
+              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Bảng TP thực phẩm Việt</a>
             </div>
           </details>
           <details class="nav-group">
@@ -723,7 +725,7 @@ if (isArticle) {
               <a href="/cong-cu/tinh-carb">Tính carb</a>
               <a href="/cong-cu/tinh-gl-bua-an">Tính GL bữa ăn</a>
               <a href="/cong-cu/ke-hoach-bua-an">Kế hoạch bữa ăn</a>
-              <a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a>
+              <a href="/cong-cu/theo-doi-suc-khoe">Theo dõi sức khỏe</a>
               <a href="/cong-cu/checklist-an-uong">Checklist ăn uống</a>
             </div>
           </details>
@@ -752,7 +754,7 @@ if (isArticle) {
           <a href="/thuc-pham">🥬 Thực phẩm</a>
           <a href="/mon-an">🍽️ Món ăn</a>
           <a href="/cong-cu/so-sanh-thuc-pham">⚖️ So sánh thực phẩm</a>
-          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Tra cứu thực phẩm Việt</a>
+          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Bảng TP thực phẩm Việt</a>
         </div>
         <div class="footer-col">
           <h4>Theo bệnh</h4>
@@ -783,7 +785,7 @@ if (isArticle) {
           <a href="/cong-cu/tinh-carb">🔢 Tính carb</a>
           <a href="/cong-cu/tinh-gl-bua-an">⚖️ Tính GL bữa ăn</a>
           <a href="/cong-cu/ke-hoach-bua-an">📋 Kế hoạch bữa ăn</a>
-          <a href="/cong-cu/nhat-ky">📓 Nhật ký ăn uống</a>
+          <a href="/cong-cu/theo-doi-suc-khoe">📊 Theo dõi sức khỏe</a>
         </div>
         <div class="footer-col">
           <h4>Thực đơn</h4>
@@ -885,7 +887,7 @@ if (isArticle) {
       })();
     </script>
 
-    <!-- Dark Mode Script -->
+    <!-- Theme Script -->
     <script is:inline>
       (function() {
         var key = 'ddv-theme';
@@ -895,12 +897,7 @@ if (isArticle) {
           document.documentElement.setAttribute('data-theme', theme);
         }
 
-        if (stored) {
-          apply(stored);
-        } else {
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          apply(prefersDark ? 'dark' : 'light');
-        }
+        apply(stored === 'dark' ? 'dark' : 'light');
 
         document.getElementById('theme-toggle')?.addEventListener('click', function() {
           var current = document.documentElement.getAttribute('data-theme');

@@ -115,45 +115,63 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       </div>
     </div>
 
-    <div class="section-label"><span class="sl-num">1</span> Chọn thực phẩm hoặc món ăn</div>
-    <div class="builder">
-      <div class="builder-top">
-        <input id="food-search" type="search" placeholder="Tìm cơm, bún, phở, bánh mì, trái cây, sữa..." class="builder-search cc-input" autocomplete="off" />
-        <div class="filter-chips" id="filter-chips">
-          <button class="chip active" type="button" data-group="all">Tất cả</button>
-          <button class="chip" type="button" data-group="tinh-bot">Tinh bột</button>
-          <button class="chip" type="button" data-group="trai-cay">Trái cây</button>
-          <button class="chip" type="button" data-group="do-uong">Đồ uống</button>
-          <button class="chip" type="button" data-group="banh-keo">Bánh/ngọt</button>
-          <button class="chip" type="button" data-group="khac">Khác</button>
+    <div class="builder-layout">
+      <section class="builder-main">
+        <div class="section-label"><span class="sl-num">1</span> Chọn thực phẩm hoặc món ăn</div>
+        <div class="builder">
+          <div class="builder-top">
+            <input id="food-search" type="search" placeholder="Tìm cơm, bún, phở, bánh mì, trái cây, sữa..." class="builder-search cc-input" autocomplete="off" />
+            <div class="filter-chips" id="filter-chips">
+              <button class="chip active" type="button" data-group="all">Tất cả</button>
+              <button class="chip" type="button" data-group="tinh-bot">Tinh bột</button>
+              <button class="chip" type="button" data-group="trai-cay">Trái cây</button>
+              <button class="chip" type="button" data-group="do-uong">Đồ uống</button>
+              <button class="chip" type="button" data-group="banh-keo">Bánh/ngọt</button>
+              <button class="chip" type="button" data-group="khac">Khác</button>
+            </div>
+          </div>
+          <div class="food-list" id="food-list"></div>
         </div>
-      </div>
-      <div class="food-list" id="food-list"></div>
+      </section>
+
+      <aside class="builder-side">
+        <div class="section-label builder-side-label"><span class="sl-num">2</span> Kết quả bữa ăn</div>
+        <div class="meal-total card animate-result" id="meal-total" style="display:none; padding: 20px;">
+          <div class="meal-head">
+            <h2>Tổng carbohydrate ước tính</h2>
+            <button class="reset-btn" id="reset-btn" type="button">Làm lại</button>
+          </div>
+          <div class="total-items" id="total-items"></div>
+          <div class="total-bar">
+            <div class="total-row">
+              <span>Tổng carb</span>
+              <span class="total-carb" id="total-carb">0 g</span>
+            </div>
+            <div class="total-row">
+              <span>Số phần carb ước tính</span>
+              <span id="carb-servings">0 phần</span>
+            </div>
+            <div class="reference-band">
+              <div class="reference-fill" id="reference-fill"></div>
+            </div>
+            <div class="total-note" id="total-note">Mốc 45-60 g chỉ là ví dụ giáo dục, không phải mục tiêu bắt buộc.</div>
+          </div>
+          <div class="warning-list" id="warning-list" style="display:none;"></div>
+        </div>
+        <div class="meal-total-empty" id="meal-total-empty">
+          <strong>Chưa có món nào</strong>
+          <span>Thêm thực phẩm hoặc món ăn để xem tổng carb ngay tại đây.</span>
+        </div>
+      </aside>
     </div>
 
-    <div class="section-label"><span class="sl-num">2</span> Kết quả bữa ăn</div>
-    <div class="meal-total card animate-result" id="meal-total" style="display:none; padding: 20px;">
-      <div class="meal-head">
-        <h2>Tổng carbohydrate ước tính</h2>
-        <button class="reset-btn" id="reset-btn" type="button">Làm lại</button>
-      </div>
-      <div class="total-items" id="total-items"></div>
-      <div class="total-bar">
-        <div class="total-row">
-          <span>Tổng carb</span>
-          <span class="total-carb" id="total-carb">0 g</span>
-        </div>
-        <div class="total-row">
-          <span>Số phần carb ước tính</span>
-          <span id="carb-servings">0 phần</span>
-        </div>
-        <div class="reference-band">
-          <div class="reference-fill" id="reference-fill"></div>
-        </div>
-        <div class="total-note" id="total-note">Mốc 45-60 g chỉ là ví dụ giáo dục, không phải mục tiêu bắt buộc.</div>
-      </div>
-      <div class="warning-list" id="warning-list" style="display:none;"></div>
-    </div>
+    <button class="mobile-summary-bar" id="mobile-summary-bar" type="button" style="display:none;" aria-label="Xem tổng carbohydrate của bữa ăn">
+      <span class="msb-main">
+        <strong id="mobile-total-carb">0 g</strong>
+        <span id="mobile-item-count">0 món</span>
+      </span>
+      <span class="msb-sub">Chạm để xem</span>
+    </button>
 
     <details class="quick-ref">
       <summary>Bảng tra nhanh từ dữ liệu hiện có</summary>
@@ -196,6 +214,11 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .rec-value { font-size:1.15rem; font-weight:700; color:var(--brand); }
     .rec-note { font-size:0.78rem; color:var(--ink-tertiary); margin-top:4px; line-height:1.4; }
     .builder { margin-bottom:20px; }
+    .builder-layout { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(300px,0.86fr); gap:18px; align-items:start; }
+    .builder-side { position:sticky; top:88px; }
+    .builder-side-label { margin-top:0; }
+    .meal-total-empty { display:flex; flex-direction:column; gap:6px; padding:16px 18px; border:1px dashed var(--card-border); border-radius:var(--radius-lg); background:var(--bg-soft); color:var(--ink-secondary); font-size:0.84rem; line-height:1.5; }
+    .meal-total-empty strong { color:var(--ink); font-size:0.88rem; }
     .builder-top { margin-bottom:14px; }
     .builder-search { /* Inherits from cc-input */ min-height:46px; border-radius:var(--radius-lg); }
     .filter-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
@@ -240,6 +263,10 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .warning-list { margin-top:12px; padding:12px 14px; background:var(--bg-soft); border:1px solid var(--card-border); border-radius:var(--radius-lg); color:var(--ink-secondary); font-size:0.82rem; line-height:1.5; }
     .reset-btn { min-height:38px; padding:8px 16px; border:1px solid var(--card-border); border-radius:var(--radius); background:var(--card); color:var(--ink-secondary); font-size:0.85rem; cursor:pointer; transition:all var(--transition); font-family:inherit; }
     .reset-btn:hover { border-color:var(--brand); color:var(--brand); background:var(--card); box-shadow:var(--shadow-sm); }
+    .mobile-summary-bar { position:fixed; left:12px; right:12px; bottom:calc(10px + env(safe-area-inset-bottom, 0px)); z-index:40; border:none; border-radius:14px; background:rgba(5,150,105,0.96); color:#fff; padding:10px 12px; box-shadow:0 12px 28px rgba(0,0,0,0.14); text-align:left; display:none; }
+    .msb-main { display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:0.88rem; }
+    .msb-main strong { font-size:0.96rem; }
+    .msb-sub { display:block; margin-top:3px; font-size:0.72rem; opacity:0.9; }
     .quick-ref { margin-top:24px; }
     .quick-ref summary { cursor:pointer; font-weight:700; color:var(--ink-secondary); min-height:40px; display:flex; align-items:center; }
     .table-wrap { overflow-x:auto; margin-top:12px; }
@@ -256,6 +283,10 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       .content-page { padding:20px 14px; }
       .h-text { font-size:1.26rem; }
       .rec-box { grid-template-columns:1fr; }
+      .builder-layout { grid-template-columns:1fr; }
+      .builder-side { position:static; }
+      .builder-side-label { display:none; }
+      .quick-ref, .safety-note { margin-bottom:78px; }
       :global(.food-item) { grid-template-columns:auto minmax(0,1fr); }
       :global(.gram-wrap), :global(.food-carb), :global(.food-add) { grid-column:2; justify-self:stretch; }
       :global(.food-carb) { text-align:left; }
@@ -379,8 +410,12 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
 
     function renderTotal() {
       const el = document.getElementById("meal-total");
+      const emptyEl = document.getElementById("meal-total-empty");
       const itemsEl = document.getElementById("total-items");
       const carbEl = document.getElementById("total-carb");
+      const mobileBar = document.getElementById("mobile-summary-bar");
+      const mobileTotalCarb = document.getElementById("mobile-total-carb");
+      const mobileItemCount = document.getElementById("mobile-item-count");
       const servingEl = document.getElementById("carb-servings");
       const fillEl = document.getElementById("reference-fill");
       const noteEl = document.getElementById("total-note");
@@ -389,12 +424,18 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
 
       if (selected.length === 0) {
         el.style.display = "none";
+        if (emptyEl) emptyEl.style.display = "flex";
+        if (mobileBar) mobileBar.style.display = "none";
         return;
       }
       el.style.display = "block";
+      if (emptyEl) emptyEl.style.display = "none";
 
       const result = calculateCarbMeal(selected);
       carbEl.textContent = `${formatNumber(result.totalCarbGrams)} g`;
+      if (mobileTotalCarb) mobileTotalCarb.textContent = `${formatNumber(result.totalCarbGrams)} g carb`;
+      if (mobileItemCount) mobileItemCount.textContent = `${selected.length} món`;
+      if (mobileBar) mobileBar.style.display = window.innerWidth <= 720 ? "block" : "none";
       servingEl.textContent = `${formatNumber(result.carbServings)} phần carb (${result.carbServingGrams} g/phần)`;
 
       itemsEl.innerHTML = result.items.map((item, index) => {
@@ -419,6 +460,12 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
           renderTotal();
         });
       });
+
+      if (window.innerWidth <= 720) {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
 
       fillEl.style.width = `${Math.min(Math.round((result.totalCarbGrams / 60) * 100), 100)}%`;
       if (result.totalCarbGrams >= 45 && result.totalCarbGrams <= 60) {
@@ -482,8 +529,13 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       selected = [];
       renderTotal();
     });
+    document.getElementById("mobile-summary-bar")?.addEventListener("click", () => {
+      document.getElementById("meal-total")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    window.addEventListener("resize", renderTotal);
 
     renderQuickRefs();
     renderFoods(filteredFoods);
+    renderTotal();
   </script>
 </BaseLayout>

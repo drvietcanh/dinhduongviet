@@ -15,9 +15,8 @@ const toolGroups = [
     title: "Bắt đầu với dữ liệu thực phẩm",
     summary: "Dành cho nhu cầu tra nhanh calo, so sánh món và lên ý tưởng bữa ăn từ dữ liệu sẵn có.",
     items: [
-      { icon: "🇻🇳", name: "Tra cứu thực phẩm Việt", href: "/cong-cu/tra-cuu-thuc-pham-viet", desc: "Tra cứu thành phần dinh dưỡng thực phẩm Việt ở mức tham khảo, kèm ghi chú về nguồn và giới hạn dữ liệu.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🇻🇳", name: "Bảng TP thực phẩm Việt", href: "/cong-cu/tra-cuu-thuc-pham-viet", desc: "Xem thành phần dinh dưỡng thực phẩm Việt ở mức tham khảo, kèm nguồn dữ liệu Việt và giới hạn dùng.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔎", name: "Lọc thực phẩm", href: "/cong-cu/loc-thuc-pham", desc: "Lọc thực phẩm theo nhóm và chỉ số dinh dưỡng để thu hẹp lựa chọn nhanh hơn.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "⚖️", name: "So sánh dinh dưỡng", href: "/cong-cu/so-sanh", desc: "Hub chọn đúng công cụ để so sánh thực phẩm hoặc bữa ăn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "⚖️", name: "So sánh thực phẩm", href: "/cong-cu/so-sanh-thuc-pham", desc: "So sánh thành phần dinh dưỡng giữa các thực phẩm, không gắn nhãn tốt hay xấu.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🍱", name: "So sánh bữa ăn", href: "/cong-cu/so-sanh-bua-an", desc: "So sánh dữ liệu dinh dưỡng giữa các bữa ăn để nhìn rõ khác biệt khẩu phần.", status: "Đã kiểm v1", statusType: "stable" },
     ],
@@ -27,10 +26,8 @@ const toolGroups = [
     summary: "Phù hợp khi cần nhìn nhanh cân nặng, vòng eo và các mốc theo dõi cơ bản của bản thân.",
     items: [
       { icon: "⚖️", name: "Tính BMI tham khảo", href: "/cong-cu/bmi", desc: "Tính BMI ở mức tham khảo và nhắc các giới hạn của chỉ số này, không thay thế đánh giá lâm sàng.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "📏", name: "Tìm hiểu tỷ lệ mỡ cơ thể", href: "/cong-cu/ti-le-mo-co-the", desc: "Giải thích cách hiểu tỷ lệ mỡ cơ thể và giới hạn của các phương pháp ước tính, không phải máy tính cá nhân.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🎯", name: "Mục tiêu cân nặng", href: "/cong-cu/muc-tieu-can-nang", desc: "Định hướng mục tiêu cân nặng tham khảo với cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "📊", name: "Theo dõi sức khỏe", href: "/cong-cu/theo-doi-suc-khoe", desc: "Ghi nhật ký chỉ số sức khỏe và nhắc các tình huống cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🏆", name: "Bảng xếp hạng thực phẩm", href: "/cong-cu/bang-xep-hang", desc: "Sắp xếp dữ liệu dinh dưỡng thực phẩm ở mức tham khảo, không kết luận thực phẩm tốt hay xấu.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
@@ -40,7 +37,6 @@ const toolGroups = [
       { icon: "🔥", name: "Calo tiêu thụ khi tập", href: "/cong-cu/tinh-calo-tieu-thu", desc: "Ước tính năng lượng tiêu hao khi vận động ở mức tham khảo, không dùng để đặt mục tiêu giảm cân, ăn bù hoặc điều trị.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🥩", name: "Tính nhu cầu đạm", href: "/cong-cu/tinh-nhu-cau-dam", desc: "Ước tính lượng đạm theo cân nặng, bệnh lý và mục tiêu chính.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🎯", name: "Mục tiêu dinh dưỡng", href: "/cong-cu/muc-tieu-dinh-duong", desc: "Định hướng mục tiêu dinh dưỡng tham khảo với cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🥣", name: "Khẩu phần đơn giản", href: "/cong-cu/khau-phan-don-gian", desc: "Tìm hiểu khẩu phần ở mức tham khảo, không dùng để kết luận bữa ăn đủ chất hay phù hợp cho bệnh.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔬", name: "Đánh giá khẩu phần Việt", href: "/cong-cu/khau-phan-viet-clinical", desc: "Ước tính khẩu phần Việt để giáo dục dinh dưỡng, có cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔁", name: "Đổi đơn vị", href: "/cong-cu/doi-don-vi", desc: "Quy đổi đơn vị thực phẩm ở mức tham khảo, có ghi chú giới hạn khi quy đổi theo dụng cụ hoặc thể tích.", status: "Đã kiểm v1", statusType: "stable" },
     ],
@@ -78,22 +74,14 @@ const toolGroups = [
       { icon: "🍳", name: "Tìm món từ nguyên liệu", href: "/cong-cu/tim-mon-tu-nguyen-lieu", desc: "Gợi ý ý tưởng món ăn từ nguyên liệu bạn nhập ở mức tham khảo, không thay thế tư vấn chuyên môn.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
-  {
-    title: "Năng lượng nâng cao",
-    summary: "Nhóm này hữu ích khi bạn đã quen công cụ cơ bản và cần ước tính sâu hơn về năng lượng hoặc macro.",
-    items: [
-      { icon: "🥗", name: "Tính macro tham khảo", href: "/cong-cu/tinh-macro", desc: "Quy đổi năng lượng mục tiêu thành gram carb, đạm và chất béo theo tỷ lệ tham khảo, không thay thế tư vấn cá thể hóa.", status: "Tham khảo v1", statusType: "stable" },
-      { icon: "🔥", name: "Tính năng lượng tham khảo", href: "/cong-cu/tinh-nang-luong", desc: "Ước tính BMR/TDEE cho người trưởng thành ở mức tham khảo, có nhắc giới hạn khi có bệnh nền hoặc nhu cầu điều trị.", status: "Tham khảo v1", statusType: "stable" },
-    ],
-  },
 ];
 const quickStarts = [
   {
     title: "Tôi muốn giảm cân an toàn",
-    desc: "Bắt đầu từ mục tiêu cân nặng, năng lượng nền và một công cụ nhìn lại bữa ăn hằng ngày.",
+    desc: "Bắt đầu từ mục tiêu cân nặng, khung bữa ăn và một công cụ nhìn lại bữa ăn hằng ngày.",
     links: [
       { href: "/cong-cu/muc-tieu-can-nang", label: "Mục tiêu cân nặng" },
-      { href: "/cong-cu/tinh-nang-luong", label: "Tính năng lượng" },
+      { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
       { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
     ],
   },
@@ -110,7 +98,7 @@ const quickStarts = [
     title: "Tôi muốn tra nhanh thực phẩm Việt",
     desc: "Phù hợp khi cần so sánh món, xem calo hoặc lên ý tưởng bữa ăn gia đình.",
     links: [
-      { href: "/cong-cu/tra-cuu-thuc-pham-viet", label: "Tra cứu thực phẩm Việt" },
+      { href: "/cong-cu/tra-cuu-thuc-pham-viet", label: "Bảng TP thực phẩm Việt" },
       { href: "/cong-cu/so-sanh-thuc-pham", label: "So sánh thực phẩm" },
       { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
     ],
@@ -118,12 +106,18 @@ const quickStarts = [
 ];
 const totalTools = toolGroups.reduce((sum, group) => sum + group.items.length, 0);
 const starterLinks = [
-  { href: "/cong-cu/tra-cuu-thuc-pham-viet", label: "Tra cứu thực phẩm Việt" },
+  { href: "/cong-cu/tra-cuu-thuc-pham-viet", label: "Bảng TP thực phẩm Việt" },
   { href: "/cong-cu/tinh-carb", label: "Tính carb" },
   { href: "/cong-cu/bmi", label: "BMI" },
   { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
 ];
 const holdBackTools = [
+  { name: "So sánh dinh dưỡng", reason: "Chỉ là trang trung gian dẫn sang 2 công cụ so sánh cụ thể, nên làm dài thêm một bước bấm mà không tăng giá trị." },
+  { name: "Bảng xếp hạng thực phẩm", reason: "Dễ tạo cảm giác chấm điểm thực phẩm theo kiểu tốt - xấu, trong khi dữ liệu dinh dưỡng cần đặt trong ngữ cảnh khẩu phần và bệnh cảnh." },
+  { name: "Tỷ lệ mỡ cơ thể", reason: "Nghiêng về giải thích khái niệm hơn là hành động trực tiếp; nên để như bài kiến thức hoặc công cụ phụ thay vì lối vào chính." },
+  { name: "Khẩu phần đơn giản", reason: "Vai trò đang chồng với đánh giá khẩu phần Việt và đĩa ăn lành mạnh, nên không cần nổi bật ngang hàng." },
+  { name: "Tính macro tham khảo", reason: "Chỉ phù hợp khi người dùng đã có nền về năng lượng và mục tiêu rõ; không nên là tool lõi cho số đông." },
+  { name: "Tính năng lượng tham khảo", reason: "Vẫn hữu ích, nhưng nên là công cụ lớp hai sau khi đã xác định mục tiêu cân nặng và bữa ăn cơ bản." },
   { name: "Tương tác thuốc", reason: "Nguy cơ hiểu nhầm cao nếu người dùng tự diễn giải mà không có đơn thuốc, bệnh nền và xác nhận từ bác sĩ." },
   { name: "Tương tác thuốc - thực phẩm", reason: "Thuộc nhóm cần nguồn khóa chặt và rà soát lâm sàng liên tục hơn công cụ dinh dưỡng phổ thông." },
   { name: "Nhật ký ăn uống", reason: "Giá trị có nhưng dễ trùng vai với kế hoạch bữa ăn và theo dõi sức khỏe nếu đặt nổi bật ngang hàng." },

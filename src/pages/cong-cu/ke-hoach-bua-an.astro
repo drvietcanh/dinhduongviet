@@ -150,57 +150,57 @@ const domain = "dinhduongviet.vn";
     // Organized by meal type with nutrition estimates
     const MEAL_POOL = {
       breakfast: [
-        { name: "Phở bò", slug: "pho-bo", cal: 450, pro: 22, fat: 12, carb: 62, tags: ["vietnamese"] },
-        { name: "Phở gà", slug: "pho-ga", cal: 400, pro: 20, fat: 10, carb: 58, tags: ["vietnamese"] },
-        { name: "Bún thịt nướng", slug: "bun-thit-nuong", cal: 480, pro: 18, fat: 14, carb: 68, tags: ["vietnamese"] },
-        { name: "Bún bò Huế", slug: "bun-bo-hue", cal: 460, pro: 22, fat: 12, carb: 64, tags: ["vietnamese"] },
-        { name: "Bánh mì thịt", slug: "banh-mi-thit", cal: 350, pro: 16, fat: 12, carb: 46, tags: ["vietnamese"] },
+        { name: "Phở bò", slug: "pho-bo", cal: 450, pro: 22, fat: 12, carb: 62, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
+        { name: "Phở gà", slug: "pho-ga", cal: 400, pro: 20, fat: 10, carb: 58, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
+        { name: "Bún thịt nướng", slug: "bun-thit-nuong", cal: 480, pro: 18, fat: 14, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
+        { name: "Bún bò Huế", slug: "bun-bo-hue", cal: 460, pro: 22, fat: 12, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
+        { name: "Bánh mì thịt", slug: "banh-mi-thit", cal: 350, pro: 16, fat: 12, carb: 46, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
         { name: "Bánh cuốn", slug: "banh-cuon-nhan-thit", cal: 300, pro: 14, fat: 8, carb: 44, tags: ["vietnamese"] },
-        { name: "Cháo gà", slug: "chao-ga", cal: 280, pro: 15, fat: 6, carb: 44, tags: ["vietnamese"] },
+        { name: "Cháo gà", slug: "chao-ga", cal: 280, pro: 15, fat: 6, carb: 44, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
         { name: "Hủ tiếu Nam Vang", slug: "hu-tieu-nam-vang", cal: 380, pro: 18, fat: 10, carb: 54, tags: ["vietnamese"] },
         { name: "Bánh khọt", slug: "banh-khot-vung-tau", cal: 320, pro: 12, fat: 14, carb: 38, tags: ["vietnamese"] },
         { name: "Bánh tiêu", slug: "banh-tieu-chien", cal: 180, pro: 4, fat: 8, carb: 24, tags: ["vietnamese"] },
         { name: "Xôi mặn", slug: "xoi-man", cal: 380, pro: 10, fat: 10, carb: 64, tags: ["vietnamese"] },
-        { name: "Bún riêu cua", slug: "bun-rieu-cua", cal: 400, pro: 20, fat: 12, carb: 54, tags: ["vietnamese"] },
+        { name: "Bún riêu cua", slug: "bun-rieu-cua", cal: 400, pro: 20, fat: 12, carb: 54, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
         { name: "Mì gõ trứng", slug: "mi-goi-trung", cal: 380, pro: 14, fat: 16, carb: 48, tags: ["vietnamese"] },
-        { name: "Cơm tấm sườn", slug: "com-tam-suon", cal: 520, pro: 24, fat: 16, carb: 68, tags: ["vietnamese"] },
-        { name: "Miến lòng", slug: "mien-lon", cal: 340, pro: 16, fat: 10, carb: 48, tags: ["vietnamese"] },
+        { name: "Cơm tấm sườn", slug: "com-tam-suon", cal: 520, pro: 24, fat: 16, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
+        { name: "Miến lòng", slug: "mien-lon", cal: 340, pro: 16, fat: 10, carb: 48, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
       ],
       lunch: [
-        { name: "Cơm gà", slug: "com-ga-uc-ga", cal: 500, pro: 28, fat: 14, carb: 64, tags: ["vietnamese"] },
-        { name: "Cơm sườn", slug: "com-tam-suon", cal: 520, pro: 24, fat: 16, carb: 68, tags: ["vietnamese"] },
-        { name: "Phở bò", slug: "pho-bo", cal: 450, pro: 22, fat: 12, carb: 62, tags: ["vietnamese"] },
-        { name: "Bún chả", slug: "bun-cha", cal: 480, pro: 20, fat: 14, carb: 64, tags: ["vietnamese"] },
-        { name: "Bún thịt nướng", slug: "bun-thit-nuong", cal: 480, pro: 18, fat: 14, carb: 68, tags: ["vietnamese"] },
+        { name: "Cơm gà", slug: "com-ga-uc-ga", cal: 500, pro: 28, fat: 14, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
+        { name: "Cơm sườn", slug: "com-tam-suon", cal: 520, pro: 24, fat: 16, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
+        { name: "Phở bò", slug: "pho-bo", cal: 450, pro: 22, fat: 12, carb: 62, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
+        { name: "Bún chả", slug: "bun-cha", cal: 480, pro: 20, fat: 14, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
+        { name: "Bún thịt nướng", slug: "bun-thit-nuong", cal: 480, pro: 18, fat: 14, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
         { name: "Bánh tráng trộn", slug: "banh-trang-tron", cal: 320, pro: 8, fat: 14, carb: 42, tags: ["vietnamese"] },
         { name: "Cơm rang dưa bò", slug: "com-rang-bo", cal: 460, pro: 20, fat: 16, carb: 58, tags: ["vietnamese"] },
-        { name: "Bún bò Huế", slug: "bun-bo-hue", cal: 460, pro: 22, fat: 12, carb: 64, tags: ["vietnamese"] },
+        { name: "Bún bò Huế", slug: "bun-bo-hue", cal: 460, pro: 22, fat: 12, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
         { name: "Mì Quảng", slug: "mi-quang", cal: 440, pro: 18, fat: 14, carb: 58, tags: ["vietnamese"] },
         { name: "Cơm gạo lứt thịt luộc", slug: "com-gao-lut-luoc", cal: 400, pro: 22, fat: 10, carb: 56, tags: ["healthy"] },
         { name: "Bún mọc", slug: "bun-moc", cal: 360, pro: 16, fat: 8, carb: 56, tags: ["vietnamese"] },
         { name: "Bánh đa cua", slug: "banh-da-cua", cal: 420, pro: 20, fat: 12, carb: 56, tags: ["vietnamese"] },
         { name: "Cơm cà ri gà", slug: "com-ca-ri-ga", cal: 540, pro: 26, fat: 18, carb: 64, tags: ["vietnamese"] },
-        { name: "Bánh mì thịt", slug: "banh-mi-thit", cal: 350, pro: 16, fat: 12, carb: 46, tags: ["vietnamese"] },
+        { name: "Bánh mì thịt", slug: "banh-mi-thit", cal: 350, pro: 16, fat: 12, carb: 46, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
         { name: "Cơm mực xào", slug: "muc-xao", cal: 420, pro: 24, fat: 14, carb: 48, tags: ["seafood"] },
       ],
       dinner: [
         { name: "Cơm trắng + Thịt kho trứng", slug: "thit-kho-trung", cal: 550, pro: 26, fat: 18, carb: 66, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Cá kho tộ", slug: "ca-kho-to", cal: 480, pro: 28, fat: 14, carb: 58, tags: ["vietnamese"] },
+        { name: "Cơm trắng + Cá kho tộ", slug: "ca-kho-to", cal: 480, pro: 28, fat: 14, carb: 58, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
         { name: "Cơm trắng + Bò xào cần", slug: "thit-bo-xao-can", cal: 460, pro: 26, fat: 14, carb: 54, tags: ["vietnamese"] },
         { name: "Cơm trắng + Sườn kho", slug: "suon-kho", cal: 520, pro: 24, fat: 18, carb: 60, tags: ["vietnamese"] },
         { name: "Cơm trắng + Cá chép kho tương", slug: "ca-chep-kho-tuong", cal: 460, pro: 26, fat: 12, carb: 58, tags: ["vietnamese"] },
         { name: "Cơm trắng + Bò nướng lá lốt", slug: "thit-bo-nuong-la-lot", cal: 480, pro: 28, fat: 16, carb: 52, tags: ["vietnamese"] },
         { name: "Cơm trắng + Gà nướng mật ong", slug: "ga-nuong-mat-ong", cal: 520, pro: 30, fat: 16, carb: 56, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Tôm hấp sả", slug: "tom-hap-sa", cal: 400, pro: 26, fat: 8, carb: 54, tags: ["seafood"] },
-        { name: "Cơm trắng + Cá lóc hấp bầu", slug: "ca-loc-hap", cal: 420, pro: 28, fat: 8, carb: 56, tags: ["fish"] },
+        { name: "Cơm trắng + Tôm hấp sả", slug: "tom-hap-sa", cal: 400, pro: 26, fat: 8, carb: 54, tags: ["seafood"], mealContexts: ["dinner-light"] },
+        { name: "Cơm trắng + Cá lóc hấp bầu", slug: "ca-loc-hap", cal: 420, pro: 28, fat: 8, carb: 56, tags: ["fish"], mealContexts: ["dinner-light"] },
         { name: "Cơm trắng + Thịt heo luộc", slug: "thit-heo-luoc", cal: 480, pro: 22, fat: 18, carb: 54, tags: ["vietnamese"] },
         { name: "Cơm trắng + Rau muống xào + Tàu hủ", slug: "com-rau-muong-dau-huy", cal: 420, pro: 18, fat: 12, carb: 60, tags: ["light"] },
-        { name: "Cơm gạo lứt + Ức gà xào nấm", slug: "com-gao-lut-nam", cal: 380, pro: 28, fat: 8, carb: 48, tags: ["healthy"] },
-        { name: "Cơm trắng + Canh chua cá", slug: "canh-chua-ca", cal: 440, pro: 24, fat: 10, carb: 60, tags: ["vietnamese","soup"] },
-        { name: "Cơm trắng + Đậu phụ sốt cà", slug: "dau-phu-sot-ca-chua", cal: 380, pro: 18, fat: 12, carb: 52, tags: ["vegetarian"] },
-        { name: "Bún chả", slug: "bun-cha", cal: 480, pro: 20, fat: 14, carb: 64, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Canh rau ngót", slug: "canh-rau-ngot-thit-bam", cal: 400, pro: 20, fat: 10, carb: 58, tags: ["vietnamese","soup"] },
-        { name: "Cơm trắng + Canh bí đỏ thịt băm", slug: "canh-bi-do-thit-bam", cal: 420, pro: 20, fat: 12, carb: 56, tags: ["vietnamese","soup"] },
+        { name: "Cơm gạo lứt + Ức gà xào nấm", slug: "com-gao-lut-nam", cal: 380, pro: 28, fat: 8, carb: 48, tags: ["healthy"], mealContexts: ["dinner-light"] },
+        { name: "Cơm trắng + Canh chua cá", slug: "canh-chua-ca", cal: 440, pro: 24, fat: 10, carb: 60, tags: ["vietnamese","soup"], mealContexts: ["dinner-light"] },
+        { name: "Cơm trắng + Đậu phụ sốt cà", slug: "dau-phu-sot-ca-chua", cal: 380, pro: 18, fat: 12, carb: 52, tags: ["vegetarian"], mealContexts: ["dinner-light"] },
+        { name: "Bún chả", slug: "bun-cha", cal: 480, pro: 20, fat: 14, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
+        { name: "Cơm trắng + Canh rau ngót", slug: "canh-rau-ngot-thit-bam", cal: 400, pro: 20, fat: 10, carb: 58, tags: ["vietnamese","soup"], mealContexts: ["dinner-light"] },
+        { name: "Cơm trắng + Canh bí đỏ thịt băm", slug: "canh-bi-do-thit-bam", cal: 420, pro: 20, fat: 12, carb: 56, tags: ["vietnamese","soup"], mealContexts: ["dinner-light"] },
         { name: "Cơm trắng + Nem rán", slug: "nem-ran", cal: 500, pro: 22, fat: 20, carb: 58, tags: ["vietnamese"] },
       ],
       soup: [
@@ -267,6 +267,17 @@ const domain = "dinhduongviet.vn";
       return pool;
     }
 
+    function isDinnerPreferred(meal) {
+      if (!meal) return false;
+      const mealContexts = meal.mealContexts || [];
+      if (mealContexts.includes("communal") || mealContexts.includes("dinner-heavy")) return false;
+      if (mealContexts.includes("dinner-light")) return true;
+      if (meal.cal > 500) return false;
+      if (meal.fat > 16) return false;
+      if (["nem-ran", "bun-cha", "suon-kho", "ga-nuong-mat-ong"].includes(meal.slug)) return false;
+      return true;
+    }
+
     // Generate meal plan
     function generatePlan(data) {
       const { age, sex, weight, height, activity, goal, condition } = data;
@@ -302,7 +313,10 @@ const domain = "dinhduongviet.vn";
       // Pick meals
       const breakfastPool = filterMeal(MEAL_POOL.breakfast, condition);
       const lunchPool = filterMeal(MEAL_POOL.lunch, condition);
-      const dinnerPool = filterMeal(MEAL_POOL.dinner, condition);
+      const dinnerBasePool = filterMeal(MEAL_POOL.dinner, condition);
+      const dinnerPool = dinnerBasePool.filter(isDinnerPreferred).length >= 6
+        ? dinnerBasePool.filter(isDinnerPreferred)
+        : dinnerBasePool;
       const soupPool = filterMeal(MEAL_POOL.soup, condition);
       const dessertPool = filterMeal(MEAL_POOL.dessert, condition);
 
@@ -482,8 +496,8 @@ const domain = "dinhduongviet.vn";
       actions.style.flexWrap = "wrap";
       const goalLink = make("a", "button secondary compact", "🎯 Mục tiêu dinh dưỡng");
       goalLink.href = "/cong-cu/muc-tieu-dinh-duong";
-      const diaryLink = make("a", "button secondary compact", "📓 Nhật ký ăn uống");
-      diaryLink.href = "/cong-cu/nhat-ky";
+      const diaryLink = make("a", "button secondary compact", "📊 Theo dõi sức khỏe");
+      diaryLink.href = "/cong-cu/theo-doi-suc-khoe";
       const reloadBtn = make("button", "button secondary compact", "🔄 Tạo lại");
       reloadBtn.type = "button";
       reloadBtn.addEventListener("click", () => location.reload());

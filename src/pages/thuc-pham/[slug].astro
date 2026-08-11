@@ -36,9 +36,9 @@ const qualityLabels: Record<string, string> = {
 const qualityNote = food.sourceReviewStatus ? qualityLabels[food.sourceReviewStatus] : "";
 const pageDescription = `Tra cứu 100g ${food.name}: khoảng ${Math.round(food.nutrients.energyKcal ?? 0)} kcal, ${Math.round(food.nutrients.proteinG ?? 0)}g đạm, ${Math.round(food.nutrients.carbG ?? 0)}g carb và ${Math.round(food.nutrients.fatG ?? 0)}g chất béo.`;
 const nextFoodLinks = [
-  { href: `/cong-cu/so-sanh-thuc-pham?left=${food.slug}`, label: "So sánh với thực phẩm khác" },
-  { href: "/cong-cu/ke-hoach-bua-an", label: "Đưa vào kế hoạch bữa ăn" },
-  { href: "/mon-an", label: "Xem món ăn liên quan" },
+  { href: `/cong-cu/so-sanh-thuc-pham?left=${food.slug}`, label: "So sánh thực phẩm", note: "Đặt cạnh món khác để nhìn khác biệt nhanh." },
+  { href: "/cong-cu/ke-hoach-bua-an", label: "Đưa vào bữa ăn", note: "Xem thực phẩm này hợp với khung bữa nào." },
+  { href: "/mon-an", label: "Xem món liên quan", note: "Đi tiếp sang các món thường dùng thực phẩm này." },
 ];
 const heroMetrics = [
   { label: "Năng lượng", value: `${Math.round(food.nutrients.energyKcal ?? 0)} kcal` },
@@ -46,7 +46,12 @@ const heroMetrics = [
   { label: "Carb", value: `${Math.round(food.nutrients.carbG ?? 0)} g` },
   { label: "Chất xơ", value: `${Math.round(food.nutrients.fiberG ?? 0)} g` }
 ];
-const heroTags = allTags(food).slice(0, 5);
+const heroTags = allTags(food).slice(0, 3);
+const detailMeta = [
+  { label: "Quy đổi", value: food.basis },
+  { label: "Nguồn", value: source?.name ?? food.sourceId },
+  { label: "Độ tin cậy", value: confidenceLabel(food.confidence) },
+];
 
 // JSON-LD Food structured data
 var foodSchema = {
@@ -115,9 +120,17 @@ var foodSchema = {
         {heroTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
       </div>
     )}
+    <div class="detail-meta-strip" aria-label="Thông tin đọc nhanh">
+      {detailMeta.map((item) => (
+        <div class="meta-pill">
+          <span>{item.label}</span>
+          <strong>{item.value}</strong>
+        </div>
+      ))}
+    </div>
     <div class="detail-note-card">
-      <h2>Cách đọc nhanh trang này</h2>
-      <p>Số liệu mặc định áp theo 100g phần ăn được. Khi dùng để so khẩu phần thực tế, nên quy đổi lại bằng công cụ đổi lượng ở phía dưới.</p>
+      <h2>Đọc nhanh</h2>
+      <p>Số liệu mặc định áp theo 100g phần ăn được. Nếu bạn ăn ít hơn hoặc nhiều hơn mức này, hãy đổi lại khẩu phần trước khi so sánh.</p>
     </div>
   </section>
 
@@ -130,11 +143,26 @@ var foodSchema = {
   </section>
 
   <section class="section">
-    <VNHealthScore nutrients={food.nutrients} name={food.name} />
+    <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
+  </section>
+
+  <section class="section card next-step-card">
+    <div class="section-head">
+      <h2>Bước tiếp theo</h2>
+      <p>Ba hướng đi gọn nhất sau khi đã đọc xong một thực phẩm riêng lẻ.</p>
+    </div>
+    <div class="next-step-grid">
+      {nextFoodLinks.map((link) => (
+        <a href={link.href} class="next-step-link">
+          <strong>{link.label}</strong>
+          <span>{link.note}</span>
+        </a>
+      ))}
+    </div>
   </section>
 
   <section class="section">
-    <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
+    <VNHealthScore nutrients={food.nutrients} name={food.name} />
   </section>
 
   {food.nutrients.glycemicIndex != null && (
@@ -155,11 +183,11 @@ var foodSchema = {
   </section>
 
   <section class="section grid two">
-    <NutritionTable nutrients={food.nutrients} caption={`Thành phần dinh dưỡng trong ${food.basis}`} />
+    <NutritionTable nutrients={food.nutrients} caption={`Thành phần trong ${food.basis}`} />
     <div class="card">
       <div class="section-head">
-        <h2>Nguồn và ghi chú</h2>
-        <p>Ưu tiên đọc nguồn và mức tin cậy trước khi dùng số liệu này để thay đổi khẩu phần hoặc làm tài liệu tư vấn.</p>
+        <h2>Nguồn dữ liệu</h2>
+        <p>Đọc nhanh nguồn, mức tin cậy và lưu ý dùng số liệu.</p>
       </div>
       <p class="muted"><strong>Nguồn:</strong> {source?.name ?? food.sourceId}</p>
       <p class="muted" style="margin-top: 10px;"><strong>Mức tin cậy:</strong> {confidenceLabel(food.confidence)}</p>
@@ -170,22 +198,13 @@ var foodSchema = {
           {food.needsDietitianReview && <p>Cần bác sĩ hoặc chuyên gia dinh dưỡng duyệt trước khi dùng để thay đổi dữ liệu chính.</p>}
         </div>
       )}
-      <p class="muted" style="margin-top: 10px;">{food.note}</p>
-      <p class="muted" style="margin-top: 10px;">Bản phát hành chính thức cần đối chiếu từng chỉ số với nguồn gốc.</p>
+      <p class="muted" style="margin-top: 10px;"><strong>Lưu ý sai số:</strong> {food.note}</p>
+      <p class="muted" style="margin-top: 10px;">Khi cần dùng chặt hơn, nên đối chiếu lại với nguồn gốc.</p>
     </div>
   </section>
 
   <section class="section">
     <DRIWidget nutrients={food.nutrients} name={food.name} />
-  </section>
-  <section class="section card next-step-card">
-    <div class="section-head">
-      <h2>Bước tiếp theo</h2>
-      <p>Đây là 3 hướng đi hữu ích nhất sau khi đã đọc xong một thực phẩm riêng lẻ.</p>
-    </div>
-    <div class="next-step-links">
-      {nextFoodLinks.map((link) => <a href={link.href}>{link.label}</a>)}
-    </div>
   </section>
   <script is:inline>
     function shareRecipe() {
@@ -344,6 +363,36 @@ var foodSchema = {
     line-height: 1.35;
   }
 
+  .detail-meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+  }
+
+  .meta-pill span {
+    color: var(--ink-tertiary);
+    font-size: 0.74rem;
+    line-height: 1.3;
+  }
+
+  .meta-pill strong {
+    margin-top: 3px;
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
   .detail-note-card,
   .crossref-shell:empty {
     display: none;
@@ -373,25 +422,38 @@ var foodSchema = {
     margin-bottom: 12px;
   }
   .next-step-card { padding: 18px; }
-  .next-step-links {
-    display: flex;
-    flex-wrap: wrap;
+  .next-step-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
   }
-  .next-step-links a {
-    display: inline-flex;
-    min-height: 40px;
-    align-items: center;
-    padding: 8px 12px;
+
+  .next-step-link {
+    display: flex;
+    min-height: 94px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 13px;
     border: 1px solid var(--card-border);
-    border-radius: 999px;
+    border-radius: 8px;
     background: var(--card);
     color: var(--ink);
     text-decoration: none;
-    font-size: 0.84rem;
-    font-weight: 600;
   }
-  .next-step-links a:hover {
+
+  .next-step-link strong {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .next-step-link span {
+    margin-top: 10px;
+    color: var(--ink-secondary);
+    font-size: 0.79rem;
+    line-height: 1.45;
+  }
+
+  .next-step-link:hover {
     border-color: var(--brand-light2);
     background: var(--brand-light);
     color: var(--brand-dark);
@@ -427,6 +489,10 @@ var foodSchema = {
   @media (max-width: 900px) {
     .detail-heading,
     .detail-metrics {
+      grid-template-columns: 1fr;
+    }
+
+    .next-step-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -514,8 +580,8 @@ var foodSchema = {
       var diff = exKcal !== null ? Math.abs(exKcal - vnFood.energy_kcal) : 0;
       var pct = exKcal !== null && vnFood.energy_kcal > 0 ? Math.round(diff / vnFood.energy_kcal * 100) : null;
       var html = '<div class="card" style="padding:14px 16px;">';
-      html += '<div class="section-head"><h2>Đối chiếu với bảng Việt Nam 2007</h2><p>Giúp so nhanh dữ liệu hiện tại với mã thực phẩm tương ứng trong Bảng thành phần thực phẩm Việt Nam 2007.</p></div>';
-      html += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><div><strong>Bảng thành phần thực phẩm Việt Nam 2007</strong><span style="color:var(--ink-secondary);font-size:0.84rem;"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" style="margin-left:auto;color:var(--brand-dark);font-weight:600;white-space:nowrap;transition:color var(--transition);">Tra cứu nguồn gốc →</a></div>';
+      html += '<div class="section-head"><h2>Nguồn dữ liệu Việt</h2><p>Đối chiếu nhanh với mã tương ứng trong Bảng thành phần thực phẩm Việt Nam 2007.</p></div>';
+      html += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><div><strong>Bảng TP thực phẩm Việt 2007</strong><span style="color:var(--ink-secondary);font-size:0.84rem;"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" style="margin-left:auto;color:var(--brand-dark);font-weight:600;white-space:nowrap;transition:color var(--transition);">Mở bảng Việt →</a></div>';
       html += '<div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;"><div><span style="color:#888;">Tương ứng:</span> <strong>' + ref.name + '</strong></div><div><span style="color:#888;">Năng lượng VN 2007:</span> <strong>' + vnFood.energy_kcal + ' kcal</strong>' + (pct !== null && pct > 15 ? ' <span style="color:#e65100;font-weight:600;">(lệch ' + pct + '%)</span>' : ' <span style="color:#2e7d32;">Phù hợp</span>') + '</div><div><span style="color:#888;">Mã số:</span> <strong>#' + vnFood.code + '</strong></div></div>';
       if (pct !== null && pct > 30) {
         html += '<div style="margin-top:8px;background:#fff3e0;padding:8px 12px;border-radius:6px;font-size:0.85rem;">Số liệu hiện tại vẫn nên xem là ước tính. Khi cần dùng chính thức, ưu tiên đối chiếu lại theo mã #' + vnFood.code + ' của Viện Dinh Dưỡng.</div>';

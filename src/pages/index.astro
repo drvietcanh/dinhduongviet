@@ -15,13 +15,14 @@ const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean
 const toolCards = [
   { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu năng lượng và định hướng mục tiêu cân nặng" },
   { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI", desc: "Đánh giá nhanh tình trạng cân nặng theo ngưỡng châu Á" },
+  { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", name: "So sánh thực phẩm", desc: "Đặt 2-4 thực phẩm cạnh nhau để chọn nhanh hơn" },
   { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI cơm, bún, phở, trái cây Việt" },
   { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của bữa ăn để tham khảo" },
   { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Huyết áp, đường huyết, mỡ máu" },
+  { href: "/cong-cu/ke-hoach-bua-an", icon: "📋", name: "Kế hoạch bữa ăn", desc: "Gợi ý khung bữa ăn dễ áp dụng hơn mỗi ngày" },
   { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Gợi ý chỉ số cần theo dõi và khi nào nên cá thể hóa" },
   { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Mốc nhu cầu dinh dưỡng tham khảo theo nhóm tuổi" },
   { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "26 môn tập, calo tương đương thực phẩm" },
-  { href: "/cong-cu/ti-le-mo-co-the", icon: "📏", name: "Tỷ lệ mỡ cơ thể", desc: "Giải thích cách hiểu tỷ lệ mỡ, vòng eo và giới hạn của chỉ số" },
 ];
 ---
 
@@ -136,14 +137,6 @@ const toolCards = [
       <div style="font-size:2rem;margin-bottom:6px;">✅</div>
       <div style="font-weight:600;font-size:0.95rem;">Các chỉ số gần đây trong ngưỡng an toàn</div>
       <div style="font-size:0.82rem;color:var(--ink-tertiary);margin-top:4px;">Tiếp tục theo dõi định kỳ tại <a href="/cong-cu/theo-doi-suc-khoe">📊 Theo dõi sức khỏe</a></div>
-    </div>
-  </section>
-
-  <!-- Meal tracker alert banner -->
-  <section class="section" id="mt-banner-root" style="display:none;">
-    <div class="section-header"><h2>📓 Nhật ký ăn uống hôm nay</h2><a href="/cong-cu/nhat-ky" class="view-all">Xem chi tiết →</a></div>
-    <div id="mt-banner" style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;">
-      <div id="mt-banner-content"></div>
     </div>
   </section>
 
@@ -295,30 +288,6 @@ const toolCards = [
     var count = 0;
     Object.values(dayLog).forEach(function(items){count += (items||[]).length;});
 
-    var root = document.getElementById("mt-banner-root");
-    if(!root) return;
-
-    var pctKcal = Math.min(Math.round(kcal/tgtEnergy*100), 999);
-    var pctProtein = Math.min(Math.round(protein/tgtProtein*100), 999);
-
-    root.style.display = "";
-    document.getElementById("mt-banner-content").innerHTML =
-      '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;">'+
-        '<div style="display:flex;align-items:center;gap:10px;">'+
-          '<span style="font-size:1.8rem;">📓</span>'+
-          '<div><div style="font-size:0.95rem;font-weight:600;">Đã ghi '+count+' thực phẩm/món hôm nay</div>'+
-          '<div style="font-size:0.82rem;color:var(--ink-tertiary);">Nhật ký ăn uống cá nhân</div></div>'+
-        '</div>'+
-        '<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">'+
-          '<div style="text-align:center;"><span style="font-size:1.2rem;font-weight:700;color:var(--brand);">'+Math.round(kcal)+'</span><br><span style="font-size:0.75rem;color:var(--ink-tertiary);">/'+tgtEnergy+' kcal</span></div>'+
-          '<div class="mt-banner-ring"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--line)" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="'+Math.min(pctKcal,100)*1.005+',100" stroke-dashoffset="25" stroke-linecap="round"/><text x="20" y="20" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="bold" fill="var(--ink)">'+pctKcal+'%</text></svg></div>'+
-          '<a href="/cong-cu/nhat-ky" class="cta-btn" style="font-size:0.82rem;padding:6px 16px;">📝 Ghi tiếp →</a>'+
-        '</div>'+
-      '</div>'+
-      '<div style="margin-top:10px;font-size:0.82rem;color:var(--ink-secondary);display:flex;gap:16px;flex-wrap:wrap;">'+
-        '<span>🔥 '+Math.round(kcal)+'/'+tgtEnergy+' kcal</span>'+
-        '<span>🥩 Đạm ~'+Math.round(protein)+'/'+tgtProtein+'g</span>'+
-      '</div>';
   } catch(e) {}
 })();
 </script>
