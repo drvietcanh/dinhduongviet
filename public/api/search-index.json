@@ -513,6 +513,14 @@
   },
   {
     "type": "article",
+    "slug": "nguoi-gia-an-it-mat-co-thuc-hanh",
+    "name": "Người lớn tuổi ăn ít, sụt cơ: Tăng đạm thế nào khi mỗi bữa chỉ ăn được rất ít?",
+    "aliases": [],
+    "description": "Cách chia nhỏ bữa, tăng mật độ đạm và năng lượng, chọn món mềm dễ ăn để hạn chế mất cơ ở người lớn tuổi chán ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "roi-loan-nuot-dysphagia",
     "name": "Rối loạn nuốt sau tai biến: Phòng chống viêm phổi hít",
     "aliases": [],
@@ -1721,6 +1729,14 @@
   },
   {
     "type": "article",
+    "slug": "suy-tim-can-nang-muoi-dich",
+    "name": "Suy tim bị phù, tăng cân nhanh: Khi nào do muối, do dịch và khi nào cần gọi bác sĩ?",
+    "aliases": [],
+    "description": "Hướng dẫn theo dõi cân nặng hằng ngày, dấu hiệu giữ dịch, cách giảm natri thực tế và những lúc không nên tự xử ở nhà.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "dinh-duong-viem-gan",
     "name": "Dinh dưỡng bảo vệ gan — Viêm gan & Gan nhiễm mỡ",
     "aliases": [],
@@ -1781,6 +1797,14 @@
     "name": "Tiền đái tháo đường — Giai đoạn nên thay đổi sớm",
     "aliases": [],
     "description": "Đường huyết đã cao nhưng chưa tới ngưỡng đái tháo đường? Đây là lúc nên thay đổi ăn uống, vận động và theo dõi sát hơn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tien-dai-thao-duong-di-lam-ban-ron",
+    "name": "Tiền đái tháo đường ở người đi làm bận rộn: Nên sửa gì trước để đỡ quá tải?",
+    "aliases": [],
+    "description": "Ưu tiên giảm đường lỏng, bữa ăn thất thường và lối sống ngồi nhiều theo cách thực tế cho người đi làm văn phòng hoặc chạy ca.",
     "category": "Bai viet"
   },
   {
@@ -2261,6 +2285,14 @@
     "name": "Xơ gan có cổ trướng — Ăn uống thế nào để giảm muối mà không kiệt sức?",
     "aliases": [],
     "description": "Xơ gan có cổ trướng cần giảm natri, theo dõi dịch đúng chỉ định và vẫn phải giữ đủ năng lượng, đủ đạm để tránh suy dinh dưỡng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "xo-gan-co-truong-muoi-dich-dam",
+    "name": "Xơ gan có cổ trướng: Giảm muối đúng, giữ đạm đủ và khi nào phải cảnh giác hạ natri?",
+    "aliases": [],
+    "description": "Làm rõ ba điểm hay bị hiểu sai ở xơ gan có cổ trướng: cắt muối thế nào, có phải ai cũng phải hạn chế nước và vì sao không nên tự bỏ đạm.",
     "category": "Bai viet"
   },
   {

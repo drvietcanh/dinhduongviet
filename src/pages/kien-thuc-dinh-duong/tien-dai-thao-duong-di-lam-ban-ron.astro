@@ -1,0 +1,63 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tien-dai-thao-duong-di-lam-ban-ron"];
+if (!art) throw new Error("Article not found: tien-dai-thao-duong-di-lam-ban-ron");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người biết mình đang ở giai đoạn tiền đái tháo đường nhưng thấy quá khó để "sống chuẩn" giữa lịch làm việc dày, họp liên tục, ăn ngoài và ít vận động. Tin tốt là bạn không cần làm mọi thứ cùng lúc. Điều hiệu quả hơn là sửa <strong>đúng vài điểm gây tăng nguy cơ nhiều nhất</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chương trình DPP của CDC cho thấy chỉ cần giảm khoảng 5-7% cân nặng và duy trì ít nhất 150 phút hoạt động thể lực mức vừa mỗi tuần đã giúp giảm đáng kể nguy cơ tiến triển thành đái tháo đường típ 2. Vì vậy, mục tiêu đầu tiên là làm những thay đổi đủ thực tế để giữ được lâu.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🥤 Ba điểm nên sửa trước</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đồ uống có đường: trà sữa, nước ngọt, cà phê sữa quá ngọt, nước ép đóng chai.</li>
+      <li>Bỏ bữa rồi ăn dồn: sáng nhịn, trưa ăn nhanh, chiều đói và tối ăn rất nhiều.</li>
+      <li>Ngồi quá lâu: làm việc 8-10 giờ nhưng hầu như không có quãng vận động ngắn.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🍱 Điều gì thực tế hơn "ăn kiêng hoàn hảo"?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Giữ bữa sáng gọn nhưng có đạm: sữa chua không đường, trứng, sữa, bánh mì nguyên cám vừa phải.</li>
+      <li>Ăn trưa đủ rau và đạm để chiều bớt thèm đồ ngọt.</li>
+      <li>Chuẩn bị sẵn món cứu đói như hạt không tẩm đường, sữa không đường, trái cây nguyên quả.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🚶 Nếu quá bận, vận động kiểu nào còn làm được?</h2>
+  <p>Không nhất thiết phải vào phòng gym mỗi ngày. Bạn có thể chia nhỏ: đi bộ nhanh 10-15 phút sau bữa, đứng dậy đi lại sau mỗi 45-60 phút ngồi lâu, đi cầu thang vài tầng hoặc tranh thủ một cuộc gọi lúc đang đi bộ. Với tiền đái tháo đường, <strong>đều đặn</strong> thường quan trọng hơn bùng nổ vài buổi rồi bỏ.</p>
+</section>
+
+<section class="section card">
+  <h2>📋 Mẫu ưu tiên theo tình huống</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Tình huống</th><th>Ưu tiên 1</th><th>Ưu tiên 2</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hay nhịn sáng</td><td>Thêm bữa sáng nhỏ có đạm</td><td>Giảm cà phê sữa quá ngọt lúc đói</td></tr>
+      <tr><td>Hay uống trà sữa/nước ngọt</td><td>Cắt tần suất trước</td><td>Đổi sang ít đường hoặc không đường</td></tr>
+      <tr><td>Ngồi văn phòng cả ngày</td><td>Đặt nhắc đứng dậy mỗi giờ</td><td>Đi bộ ngắn sau ăn</td></tr>
+      <tr><td>Ăn ngoài thường xuyên</td><td>Ưu tiên món có rau + đạm</td><td>Giảm nước ngọt và phần tinh bột quá lớn</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📌 Điều quan trọng nhất</h2>
+  <p>Tiền đái tháo đường là giai đoạn rất đáng để can thiệp vì cơ hội đảo chiều còn tốt. Nếu đang quá tải, hãy bắt đầu từ <strong>đường lỏng, bữa ăn thất thường và ngồi lâu</strong> trước khi nghĩ tới một thực đơn hoàn hảo.</p>
+</section>
+</ArticleLayout>

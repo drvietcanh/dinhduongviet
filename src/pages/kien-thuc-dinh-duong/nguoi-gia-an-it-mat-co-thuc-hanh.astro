@@ -1,0 +1,71 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["nguoi-gia-an-it-mat-co-thuc-hanh"];
+if (!art) throw new Error("Article not found: nguoi-gia-an-it-mat-co-thuc-hanh");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Người lớn tuổi ăn ít không chỉ đơn giản là "ăn kém hơn lúc trẻ". Khi mỗi bữa chỉ ăn được vài thìa cơm hoặc nửa chén cháo, cơ thể rất dễ thiếu đạm và năng lượng, rồi đi vào vòng xoắn yếu cơ, mệt, ngại vận động và càng chán ăn hơn. Vì vậy, mục tiêu không phải bắt ăn thật nhiều, mà là <strong>làm cho từng miếng ăn có giá trị hơn</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Các hướng dẫn lão khoa và dinh dưỡng lâm sàng thường nhấn mạnh người lớn tuổi nên được bảo đảm lượng đạm ít nhất khoảng 1,0-1,2 g/kg/ngày nếu không có chống chỉ định đặc biệt. Với người ăn ít, cách khả thi nhất là chia đạm đều vào nhiều bữa nhỏ và tăng mật độ đạm trong món quen thuộc.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🍳 Nên ưu tiên gì trước?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Mỗi bữa nhỏ đều có nguồn đạm: trứng, sữa, sữa chua, cá, đậu phụ, thịt băm mềm.</li>
+      <li>Món mềm, dễ nhai, ít khô: cháo đặc vừa, súp, trứng hấp, cá kho mềm, đậu hũ non.</li>
+      <li>Tăng năng lượng bằng cách thêm sữa, dầu vừa phải, bột đậu hoặc phô mai mềm nếu phù hợp.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>⚠️ Những bẫy hay gặp</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Chỉ ăn cháo loãng hoặc nước canh nên no bụng nhưng rất ít đạm.</li>
+      <li>Để người bệnh uống trà, nước quá nhiều ngay trước bữa làm nhanh no.</li>
+      <li>Kiêng quá rộng vì sợ bệnh nền, khiến bữa ăn càng đơn điệu và khó đủ chất.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🥣 Làm sao tăng đạm mà không tăng lượng ăn quá nhiều?</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Món quen</th><th>Cách tăng đạm</th><th>Gợi ý thực tế</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cháo/súp</td><td>Thêm trứng, thịt băm, cá xay, sữa</td><td>Mỗi chén nên có một nguồn đạm rõ</td></tr>
+      <tr><td>Bữa phụ</td><td>Dùng sữa, sữa chua, phô mai mềm, đậu hũ</td><td>Ưu tiên loại dễ nuốt và quen miệng</td></tr>
+      <tr><td>Cơm mềm</td><td>Ăn ít cơm hơn nhưng giữ phần cá/trứng/đậu</td><td>Đừng để bữa chỉ còn rau và nước canh</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🏃 Vì sao vẫn nên vận động nhẹ?</h2>
+  <p>Đạm chỉ phát huy tốt nhất khi cơ còn được sử dụng. Ngồi hoặc nằm nhiều kéo dài làm cơ teo nhanh hơn. Tùy sức, có thể bắt đầu bằng đi lại trong nhà, đứng lên ngồi xuống có hỗ trợ, tập tay chân với dây nhẹ hoặc bài tập do nhân viên y tế hướng dẫn.</p>
+</section>
+
+<section class="section card">
+  <h2>🚩 Khi nào cần đánh giá y khoa kỹ hơn?</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Sụt cân không chủ ý, yếu nhanh, hay ngã hoặc đi chậm rõ.</li>
+    <li>Nuốt nghẹn, ho sặc, đau miệng, răng giả lỏng, táo bón kéo dài, trầm buồn hoặc sa sút trí nhớ.</li>
+    <li>Bệnh thận, xơ gan, ung thư hoặc suy tim làm việc tăng đạm cần cá thể hóa hơn.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>📌 Điểm cần nhớ</h2>
+  <p>Với người lớn tuổi ăn ít, điều hữu ích nhất thường không phải "ép ăn thêm", mà là <strong>chia nhỏ bữa, tăng mật độ đạm và xử lý các rào cản như răng miệng, nuốt, táo bón, buồn chán</strong>. Nếu sụt cơ rõ, nên xem đây là tín hiệu cần can thiệp sớm chứ không phải chuyện tuổi già bình thường.</p>
+</section>
+</ArticleLayout>

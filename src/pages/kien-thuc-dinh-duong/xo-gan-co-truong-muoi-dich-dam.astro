@@ -1,0 +1,71 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["xo-gan-co-truong-muoi-dich-dam"];
+if (!art) throw new Error("Article not found: xo-gan-co-truong-muoi-dich-dam");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Khi đã có cổ trướng, người bệnh và gia đình rất dễ đi theo hai cực đoan: hoặc cắt muối quá gắt đến mức ăn kiệt sức, hoặc sợ phù nên tự hạn chế nước và đạm quá mức. Với xơ gan, điều khó không phải là "kiêng thật nhiều", mà là <strong>kiêng đúng thứ và đúng mức</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Hướng dẫn AASLD và BSG/BASL đều nhấn mạnh giảm natri là nền tảng khi có cổ trướng. Hạn chế nước thường chỉ đặt ra khi có hạ natri máu hoặc chỉ định riêng. Ngoài ra, người xơ gan vẫn cần đủ đạm để hạn chế suy dinh dưỡng và mất cơ.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🧂 Giảm muối đúng là giảm gì?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Bớt nước mắm, xì dầu, đồ kho mặn, đồ muối chua mặn, mì gói, xúc xích, chả.</li>
+      <li>Giảm nước chan và nước sốt, vì natri thường nằm nhiều ở phần này.</li>
+      <li>Nấu tại nhà đơn giản thường dễ kiểm soát natri hơn ăn quán.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🥩 Vì sao không nên tự bỏ đạm?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Xơ gan rất dễ đi kèm teo cơ và suy dinh dưỡng.</li>
+      <li>Cắt đạm kéo dài có thể làm yếu thêm và khó hồi phục hơn.</li>
+      <li>Nếu có não gan, cần bác sĩ điều chỉnh toàn bộ kế hoạch chứ không tự bỏ thịt cá hàng loạt.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>💧 Có phải ai có cổ trướng cũng phải uống rất ít nước?</h2>
+  <p>Không. Hạn chế dịch thường không áp dụng cứng cho tất cả mọi người. Nếu natri máu bình thường và bác sĩ không dặn riêng, việc tự siết nước quá tay có thể làm người bệnh mệt hơn, ăn kém hơn và khó tuân thủ hơn. Điểm then chốt vẫn là giảm natri và theo dõi sát cân nặng, vòng bụng, tiểu tiện, xét nghiệm.</p>
+</section>
+
+<section class="section card">
+  <h2>🍚 Mẫu chỉnh bữa ăn thực tế</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Tình huống</th><th>Ưu tiên</th><th>Tránh hiểu sai</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ăn cơm nhà</td><td>Nêm nhạt hơn, dùng món luộc/hấp/canh nhạt, vẫn giữ đạm mỗi bữa</td><td>Không cần ăn cháo trắng kéo dài</td></tr>
+      <tr><td>Ăn quán</td><td>Xin ít nước chan, ít sốt, món đơn giản</td><td>Không nên nghĩ bỏ phần cái là đủ</td></tr>
+      <tr><td>Người ăn kém</td><td>Chia nhiều bữa nhỏ, thêm sữa/sữa chua/đạm mềm nếu phù hợp</td><td>Không nên vì bụng to mà bỏ bữa</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🚩 Dấu hiệu cần báo bác sĩ</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Bụng to nhanh hơn, phù chân tăng, khó thở, tiểu ít rõ.</li>
+    <li>Lú lẫn, ngủ gà, run tay, ăn uống sụt nhanh hoặc nôn nhiều.</li>
+    <li>Chuột rút nhiều, mệt lả, khát quá mức hoặc chóng mặt sau khi tự kiêng nước.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>📌 Điểm mấu chốt</h2>
+  <p>Trong xơ gan có cổ trướng, <strong>giảm natri là trọng tâm</strong>; còn chuyện hạn chế nước và điều chỉnh đạm cần theo bối cảnh cụ thể. Một kế hoạch ăn uống "vừa nhạt vừa đủ chất" thường an toàn hơn nhiều so với tự kiêng quá đà.</p>
+</section>
+</ArticleLayout>

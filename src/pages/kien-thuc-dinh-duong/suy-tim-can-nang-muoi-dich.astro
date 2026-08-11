@@ -1,0 +1,72 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["suy-tim-can-nang-muoi-dich"];
+if (!art) throw new Error("Article not found: suy-tim-can-nang-muoi-dich");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người suy tim thấy chân phù hơn, nặng ngực hơn hoặc cân nặng tăng nhanh trong vài ngày rồi không biết nên nghĩ đến muối, nước hay thuốc. Điều quan trọng là đừng chỉ nhìn vào bữa ăn hôm nay, mà phải nhìn <strong>xu hướng giữ dịch trong vài ngày</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 HFSA khuyên người suy tim nên tự cân mỗi sáng sau khi đi tiểu, trước ăn sáng và mặc quần áo tương tự. Nếu tăng khoảng 2-3 lb trong 24 giờ hoặc 5 lb trong 1 tuần, nên báo đội điều trị vì đó có thể là dấu hiệu giữ dịch, không chỉ là "ăn mặn một bữa".</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>⚖️ Cân nặng tăng kiểu nào đáng chú ý?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Tăng nhanh trong vài ngày, nhất là kèm phù chân, bụng căng, khó thở khi nằm.</li>
+      <li>Nhẫn chật hơn, tất hằn sâu, quần bụng chật nhanh dù ăn không nhiều.</li>
+      <li>Tiểu ít hơn hoặc phải kê gối cao hơn khi ngủ.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🧂 Muối thường ẩn ở đâu?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nước mắm, xì dầu, món kho, món sốt, nước chan.</li>
+      <li>Mì gói, cháo gói, xúc xích, chả viên, đồ hộp.</li>
+      <li>Các bữa ăn quán đậm vị "không thấy hạt muối" nhưng natri vẫn cao.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🥤 Có phải ai suy tim cũng phải kiêng nước chặt?</h2>
+  <p>Không hẳn. Nhiều người chỉ cần ưu tiên giảm natri và dùng thuốc đúng. Hạn chế dịch mức nào phụ thuộc vào mức độ suy tim, natri máu và chỉ định bác sĩ. Vì vậy, đừng tự đặt mục tiêu uống rất ít nước nếu chưa được dặn rõ, nhất là khi đang trời nóng hoặc có nguy cơ mất nước.</p>
+</section>
+
+<section class="section card">
+  <h2>📋 Làm gì ngay trong 1 tuần đầu?</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Việc nên làm</th><th>Cách làm thực tế</th><th>Vì sao quan trọng</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cân buổi sáng</td><td>Ghi vào điện thoại hoặc sổ</td><td>Thấy xu hướng giữ dịch sớm</td></tr>
+      <tr><td>Giảm natri ẩn</td><td>Bớt nước chấm, bớt đồ chế biến sẵn</td><td>Giảm gánh giữ nước</td></tr>
+      <tr><td>Quan sát phù và khó thở</td><td>Để ý mắt cá, bụng, số gối khi ngủ</td><td>Giúp nhận diện đợt xấu đi</td></tr>
+      <tr><td>Uống theo kế hoạch đã được dặn</td><td>Không tự siết nước quá mức</td><td>Tránh vừa phù vừa mất nước</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🚩 Khi nào cần liên hệ bác sĩ sớm?</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Cân nặng tăng nhanh như trên hoặc phù tiến triển rõ.</li>
+    <li>Khó thở hơn, thức giấc vì hụt hơi, phải ngồi dậy mới dễ thở.</li>
+    <li>Ăn uống rất kém, mệt lả, choáng, tụt huyết áp hoặc tiểu rất ít.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>📌 Điểm cần nhớ</h2>
+  <p>Với suy tim, bẫy hay gặp nhất là chỉ nhìn vào "uống bao nhiêu nước" mà bỏ qua <strong>natri ẩn và xu hướng cân nặng</strong>. Cân nặng buổi sáng đều đặn thường cho tín hiệu sớm hơn cảm giác chủ quan.</p>
+</section>
+</ArticleLayout>

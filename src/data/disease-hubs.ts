@@ -31,7 +31,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Ưu tiên kiểm soát khẩu phần, giờ ăn và chất lượng tinh bột.",
       "Kết hợp bài viết, thực đơn và công cụ theo dõi đường huyết.",
     ],
-    foundationSlugs: ["dai-thao-duong", "tien-dai-thao-duong", "tieu-duong-an-com-duoc-khong", "com-trang-tieu-duong", "di-cho-tieu-duong"],
+    foundationSlugs: ["dai-thao-duong", "tien-dai-thao-duong", "tien-dai-thao-duong-di-lam-ban-ron", "tieu-duong-an-com-duoc-khong", "com-trang-tieu-duong", "di-cho-tieu-duong"],
     menuSlugs: ["thuc-don-tieu-duong", "thuc-don-tieu-duong-ban-ron", "thuc-don-tieu-duong-binh-dan", "thuc-don-tieu-duong-nguoi-gia"],
     mythSlugs: ["sai-lam-tieu-duong-bo-com", "canh-bao-hieu-lam-com-tieu-duong", "dung-tin-ngay-gao-lut-tieu-duong", "dung-tin-ngay-mat-ong-tieu-duong"],
     toolLinks: [
@@ -175,7 +175,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Cần nhìn đồng thời chất béo, đường, rượu bia và cân nặng.",
       "Ưu tiên mô hình ăn bền vững để giảm nguy cơ lâu dài.",
     ],
-    foundationSlugs: ["roi-loan-mo-mau", "mo-mau-cao-7-mon-an-nguy-hiem", "benh-tim-mach", "dinh-duong-suy-tim", "phuc-hoi-nhoi-mau-co-tim-stent"],
+    foundationSlugs: ["roi-loan-mo-mau", "mo-mau-cao-7-mon-an-nguy-hiem", "benh-tim-mach", "dinh-duong-suy-tim", "suy-tim-can-nang-muoi-dich", "phuc-hoi-nhoi-mau-co-tim-stent"],
     menuSlugs: ["thuc-don-mo-mau"],
     mythSlugs: ["dung-tin-ngay-chanh-giam-mo-mau"],
     toolLinks: [

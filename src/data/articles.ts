@@ -1078,6 +1078,26 @@ export const articles: ArticleMeta[] = [
     keywords: ["thiểu cơ", "sarcopenia", "teo cơ người già", "protein cho người già", "tập kháng lực"],
   },
   {
+    slug: "nguoi-gia-an-it-mat-co-thuc-hanh",
+    title: "Người lớn tuổi ăn ít, sụt cơ: Tăng đạm thế nào khi mỗi bữa chỉ ăn được rất ít?",
+    description: "Cách chia nhỏ bữa, tăng mật độ đạm và năng lượng, chọn món mềm dễ ăn để hạn chế mất cơ ở người lớn tuổi chán ăn.",
+    emoji: "🥣",
+    category: "special",
+    categoryName: "Đối tượng đặc biệt",
+    displayCategory: "bai-viet",
+    specialty: "lao-khoa",
+    date: "2026-08-11",
+    readTime: 7,
+    featured: false,
+    tags: ["người cao tuổi", "chán ăn", "mất cơ", "sụt cân"],
+    audience: ["elderly"],
+    sources: [
+      { name: "ESPEN Guideline on Clinical Nutrition and Hydration in Geriatrics", url: "https://www.clinicalnutritionjournal.com/article/S0261-5614(21)00568-0/fulltext" },
+      { name: "PROT-AGE Study Group", url: "https://pubmed.ncbi.nlm.nih.gov/23867520/" }
+    ],
+    keywords: ["người già ăn ít", "sụt cơ người già", "tăng đạm người cao tuổi", "chán ăn người già", "sarcopenia thực hành"],
+  },
+  {
     slug: "roi-loan-nuot-dysphagia",
     title: "Rối loạn nuốt sau tai biến: Phòng chống viêm phổi hít",
     description: "Tuyệt đối không cho người già ăn cháo loãng dễ gây sặc. Hướng dẫn sử dụng bột làm đặc (Thickener) an toàn.",
@@ -4093,6 +4113,26 @@ export const articles: ArticleMeta[] = [
     keywords: ["dinh duong suy tim"],
   },
   {
+    slug: "suy-tim-can-nang-muoi-dich",
+    title: "Suy tim bị phù, tăng cân nhanh: Khi nào do muối, do dịch và khi nào cần gọi bác sĩ?",
+    description: "Hướng dẫn theo dõi cân nặng hằng ngày, dấu hiệu giữ dịch, cách giảm natri thực tế và những lúc không nên tự xử ở nhà.",
+    emoji: "⚖️",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "tim-mach",
+    date: "2026-08-11",
+    readTime: 7,
+    featured: false,
+    tags: ["suy tim", "phù", "tăng cân nhanh", "natri", "dịch"],
+    audience: ["hypertension", "elderly"],
+    sources: [
+      { name: "Heart Failure Society of America (HFSA)", url: "https://hfsa.org/managing-heart-failure" },
+      { name: "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure", url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001063" }
+    ],
+    keywords: ["suy tim phù chân", "suy tim tăng cân nhanh", "theo dõi cân nặng suy tim", "hạn chế muối suy tim", "giữ nước suy tim"],
+  },
+  {
     slug: "dinh-duong-viem-gan",
     title: "Dinh dưỡng bảo vệ gan — Viêm gan & Gan nhiễm mỡ",
     description: "Đủ đạm, nghệ, trà xanh. Tránh rượu, mỡ xấu, đường. Dinh dưỡng theo giai đoạn bệnh.",
@@ -4251,6 +4291,26 @@ export const articles: ArticleMeta[] = [
       { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
     ],
     keywords: ["tien dai thao duong"],
+  },
+  {
+    slug: "tien-dai-thao-duong-di-lam-ban-ron",
+    title: "Tiền đái tháo đường ở người đi làm bận rộn: Nên sửa gì trước để đỡ quá tải?",
+    description: "Ưu tiên giảm đường lỏng, bữa ăn thất thường và lối sống ngồi nhiều theo cách thực tế cho người đi làm văn phòng hoặc chạy ca.",
+    emoji: "💼",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "noi-tiet",
+    date: "2026-08-11",
+    readTime: 7,
+    featured: false,
+    tags: ["tiền đái tháo đường", "người bận rộn", "văn phòng", "giảm cân", "vận động"],
+    audience: ["diabetes"],
+    sources: [
+      { name: "CDC Lifestyle Change Program", url: "https://www.cdc.gov/diabetes/hcp/lifestyle-change-program/index.html" },
+      { name: "ADA Standards of Care - Prevention or Delay of Diabetes", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S50/163924/3-Prevention-or-Delay-of-Diabetes-and-Associated" }
+    ],
+    keywords: ["tiền đái tháo đường văn phòng", "prediabetes người bận rộn", "giảm nguy cơ đái tháo đường", "5-7% cân nặng", "150 phút mỗi tuần"],
   },
   {
     slug: "an-ngoai-goi-do-an",
@@ -5458,6 +5518,26 @@ export const articles: ArticleMeta[] = [
       { name: "Gut — Management of Ascites in Cirrhosis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7788190/" }
     ],
     keywords: ["xơ gan cổ trướng", "ascites", "giảm muối", "dịch", "phù", "não gan"],
+  },
+  {
+    slug: "xo-gan-co-truong-muoi-dich-dam",
+    title: "Xơ gan có cổ trướng: Giảm muối đúng, giữ đạm đủ và khi nào phải cảnh giác hạ natri?",
+    description: "Làm rõ ba điểm hay bị hiểu sai ở xơ gan có cổ trướng: cắt muối thế nào, có phải ai cũng phải hạn chế nước và vì sao không nên tự bỏ đạm.",
+    emoji: "🫙",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    date: "2026-08-11",
+    readTime: 8,
+    featured: false,
+    tags: ["xơ gan", "cổ trướng", "natri", "hạ natri máu", "đạm"],
+    audience: ["người xơ gan", "người có cổ trướng"],
+    sources: [
+      { name: "AASLD Practice Guidance on Ascites, SBP and HRS", url: "https://www.aasld.org/practice-guidelines/diagnosis-evaluation-and-management-ascites-spontaneous-bacterial-peritonitis" },
+      { name: "British Society of Gastroenterology/BASL guideline", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7788190/" }
+    ],
+    keywords: ["xơ gan cổ trướng giảm muối", "xơ gan có phải kiêng nước", "đạm trong xơ gan", "hạ natri xơ gan", "ăn uống cổ trướng thực hành"],
   },
   {
     slug: "dinh-duong-loc-mau-chu-ky",
