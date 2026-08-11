@@ -1,0 +1,62 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["eczema-loai-tru-thuc-pham-dung-cach"];
+if (!art) throw new Error("Article not found: eczema-loai-tru-thuc-pham-dung-cach");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Người chăm trẻ eczema rất dễ rơi vào vòng xoáy thử kiêng sữa, kiêng trứng, kiêng tôm, rồi kiêng thêm lúa mì, đồ tanh, đồ ngọt. Vấn đề là <strong>eczema không đồng nghĩa dị ứng thức ăn</strong>. Nếu loại trừ quá rộng mà không có kế hoạch bù dinh dưỡng, trẻ có thể sụt cân, thiếu đạm, thiếu canxi hoặc thiếu vi chất.</p>
+  <p>Bài này dành cho tình huống rất hay gặp: eczema đang bùng phát, gia đình nghi thức ăn là thủ phạm, nhưng chưa biết nên theo dõi và thử loại trừ thế nào cho an toàn.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Chỉ nên nghĩ nhiều đến dị ứng thức ăn khi eczema đi kèm phản ứng rõ sau ăn như nổi mề đay, nôn, khò khè, sưng môi hoặc bùng phát lặp lại với cùng một món. Không nên tự cắt nhiều nhóm thực phẩm cùng lúc. Nếu cần loại trừ, hãy làm từng bước, có thời gian theo dõi và có phương án ăn bù.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🔎 Dấu hiệu gợi ý cần đánh giá dị ứng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Triệu chứng xuất hiện đều sau một thực phẩm cụ thể.</li>
+      <li>Có nổi mề đay, phù môi, nôn, tiêu chảy, khò khè hoặc phản vệ.</li>
+      <li>Eczema khởi phát sớm, khó kiểm soát dù đã dưỡng ẩm và bôi thuốc đúng.</li>
+      <li>Trẻ có thêm hen, viêm mũi dị ứng hoặc tiền sử dị ứng trong gia đình.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🚫 Dấu hiệu không đủ để tự kiêng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nghe truyền miệng rằng "eczema thì phải kiêng tanh".</li>
+      <li>Da đang khô, ngứa hơn vào mùa lạnh nhưng không liên quan rõ với bữa ăn.</li>
+      <li>Xét nghiệm IgG thực phẩm không rõ chỉ định.</li>
+      <li>Chỉ vì một lần ăn món lạ rồi hôm sau da đỏ hơn mà chưa theo dõi lặp lại.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🗂️ Nếu thử loại trừ, nên làm thế nào?</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Bước</th><th>Thực hành</th><th>Lưu ý</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1. Chọn một nghi ngờ chính</td><td>Ví dụ sữa bò hoặc trứng, không loại 4-5 nhóm cùng lúc</td><td>Giúp đọc được kết quả</td></tr>
+      <tr><td>2. Ghi nhật ký</td><td>Ngày ăn, lượng ăn, triệu chứng da và tiêu hóa/hô hấp</td><td>Cần đều tay ít nhất vài tuần</td></tr>
+      <tr><td>3. Ăn bù dinh dưỡng</td><td>Nếu bỏ sữa, cần bù đạm và canxi từ nguồn khác phù hợp</td><td>Đặc biệt quan trọng ở trẻ nhỏ</td></tr>
+      <tr><td>4. Đánh giá lại</td><td>Nếu không thấy lợi ích rõ, không nên tiếp tục kiêng vô thời hạn</td><td>Trao đổi bác sĩ dị ứng/da liễu</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🥗 Ăn gì để không thiếu chất khi đang theo dõi?</h2>
+  <p>Ngay cả khi đang thử loại trừ, khẩu phần vẫn nên giữ đủ <strong>đạm, năng lượng, canxi và chất béo tốt</strong>. Có thể dùng cá, thịt nạc, đậu phụ, đậu nành, hạt nếu phù hợp dung nạp; rau quả đa dạng; chất béo từ cá béo, quả bơ, dầu thực vật. Với trẻ nhỏ, theo dõi cân nặng và chiều cao rất quan trọng.</p>
+  <p>Nền tảng kiểm soát eczema vẫn là dưỡng ẩm, tránh kích ứng và dùng thuốc đúng chỉ định. Dinh dưỡng là phần hỗ trợ thông minh, không nên biến thành cuộc kiêng khem kéo dài làm cả nhà mệt mỏi.</p>
+</section>
+</ArticleLayout>

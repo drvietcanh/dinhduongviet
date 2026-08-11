@@ -1,0 +1,66 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dau-da-day-hp-ca-phe-thuoc-giam-dau"];
+if (!art) throw new Error("Article not found: dau-da-day-hp-ca-phe-thuoc-giam-dau");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Khi đau vùng thượng vị, nhiều người tập trung hết vào chuyện "kiêng đồ chua cay", trong khi ba thủ phạm thật sự lại bị bỏ quên: <strong>HP, thuốc giảm đau NSAID và thói quen cà phê/rượu bia/hút thuốc</strong>. Nếu không sửa các điểm này, việc ăn cháo hay uống nghệ cũng chỉ giúp dễ chịu phần nào chứ khó giải quyết gốc rễ.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Với đau dạ dày hoặc viêm loét, đừng chỉ hỏi "ăn gì". Hãy hỏi thêm: có nhiễm HP không, có đang dùng ibuprofen/diclofenac/naproxen hoặc thuốc giảm đau tương tự không, cà phê và rượu bia có làm triệu chứng tăng lên không, và có dấu hiệu báo động cần đi khám sớm không.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🦠 HP và chuyện ăn uống</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>HP là nguyên nhân quan trọng của nhiều trường hợp viêm loét dạ dày tá tràng.</li>
+      <li>Nếu bác sĩ đã chỉ định phác đồ diệt HP, cần uống đủ và đúng, không bỏ giữa chừng.</li>
+      <li>Thức ăn không thể thay kháng sinh khi đã có chỉ định điều trị HP.</li>
+      <li>Trong giai đoạn điều trị, nên ăn đều, mềm, tránh những món rõ ràng làm đau tăng.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>💊 NSAID và các thuốc giảm đau</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Các thuốc như ibuprofen, diclofenac, naproxen có thể làm tổn thương niêm mạc dạ dày.</li>
+      <li>Không nên tự dùng kéo dài khi đang đau dạ dày hoặc có tiền sử loét.</li>
+      <li>Nếu buộc phải dùng, cần trao đổi bác sĩ về mức độ cần thiết và bảo vệ dạ dày.</li>
+      <li>Đừng quên hỏi cả các thuốc xương khớp, cảm cúm hoặc giảm đau mua sẵn.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>☕ Cà phê, rượu bia và nhịp ăn trong ngày</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Yếu tố</th><th>Vấn đề thường gặp</th><th>Cách xử lý thực tế</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cà phê</td><td>Một số người đau tăng hoặc cồn cào hơn</td><td>Giảm lượng, tránh lúc đói, theo dõi dung nạp cá nhân</td></tr>
+      <tr><td>Rượu bia</td><td>Kích thích niêm mạc và làm lành loét kém thuận lợi hơn</td><td>Hạn chế tối đa khi đang có triệu chứng</td></tr>
+      <tr><td>Bỏ bữa</td><td>Dễ đau lúc đói, ăn bù quá no về sau</td><td>Chia bữa đều hơn, tránh nhịn kéo dài</td></tr>
+      <tr><td>Ăn muộn</td><td>Dễ nặng triệu chứng về đêm, nhất là khi kèm trào ngược</td><td>Ăn tối sớm hơn và không nằm ngay sau ăn</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🚩 Dấu hiệu cần đi khám sớm</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li>Sụt cân không chủ ý, nuốt nghẹn, nôn kéo dài.</li>
+    <li>Nôn ra máu, đi ngoài phân đen, chóng mặt hoặc mệt lả.</li>
+    <li>Đau tăng dần, đau về đêm nhiều, hoặc không đáp ứng với xử trí thông thường.</li>
+    <li>Tuổi lớn hơn, có thiếu máu, đang dùng nhiều thuốc hoặc có tiền sử loét.</li>
+  </ul>
+  <p>Ăn uống đúng giúp niêm mạc dễ chịu hơn, nhưng với đau dạ dày, <strong>đi đúng hướng chẩn đoán</strong> mới là phần quyết định.</p>
+</section>
+</ArticleLayout>

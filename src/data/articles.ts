@@ -1536,6 +1536,26 @@ export const articles: ArticleMeta[] = [
     sources: [{ name: "ESPEN — Liver Disease Guidelines", url: "https://www.espen.org/guidelines" }, { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }],
   },
   {
+    slug: "gan-nhiem-mo-giam-can-vong-eo",
+    title: "Gan nhiễm mỡ — Giảm cân, giảm vòng eo thế nào mới đúng hướng?",
+    description: "Bài thực hành về mục tiêu giảm cân, vòng eo, vận động và cách theo dõi tiến triển khi bị gan nhiễm mỡ.",
+    emoji: "📏",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["fatty-liver", "weight-loss", "metabolic"],
+    keywords: ["gan nhiễm mỡ", "giảm cân", "vòng eo", "mỡ gan", "MASLD", "NAFLD"],
+    audience: ["fatty-liver", "metabolic-risk"],
+    sources: [
+      { name: "AASLD — Clinical Assessment and Management of MASLD", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
+    ],
+  },
+  {
     slug: "loang-xuong",
     title: "Loãng xương — Dinh dưỡng cho xương chắc khỏe",
     description: "Tăng canxi, vitamin D. Phòng ngừa và điều trị loãng xương qua dinh dưỡng.",
@@ -1702,6 +1722,26 @@ export const articles: ArticleMeta[] = [
       { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" }
     ],
     keywords: ["dau da day"],
+  },
+  {
+    slug: "dau-da-day-hp-ca-phe-thuoc-giam-dau",
+    title: "Đau dạ dày — HP, cà phê, thuốc giảm đau: đâu là điểm cần sửa trước?",
+    description: "Bài thực hành giúp nhận ra vai trò của HP, NSAID, cà phê, rượu bia và các dấu hiệu cần đi khám sớm khi đau dạ dày.",
+    emoji: "☕",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["stomach", "hp", "nsaid"],
+    audience: ["stomach", "gerd"],
+    sources: [
+      { name: "ACG Clinical Guideline — GERD", url: "https://pubmed.ncbi.nlm.nih.gov/34807007/" },
+      { name: "NHS (UK) — Stomach Ulcer", url: "https://www.nhs.uk/conditions/stomach-ulcer/" }
+    ],
+    keywords: ["đau dạ dày", "HP", "NSAID", "cà phê", "viêm loét dạ dày"],
   },
   {
     slug: "tao-bon-ibs",
@@ -5068,6 +5108,26 @@ export const articles: ArticleMeta[] = [
     keywords: ["eczema", "viêm da cơ địa", "atopic", "dị ứng thực phẩm", "sữa", "trứng", "hải sản", "ngứa"],
   },
   {
+    slug: "eczema-loai-tru-thuc-pham-dung-cach",
+    title: "Eczema — Loại trừ thực phẩm thế nào để không thiếu chất?",
+    description: "Khi nào nên nghĩ đến dị ứng thức ăn, cách thử loại trừ từng bước và cách tránh thiếu chất ở người bị eczema.",
+    emoji: "🥛",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    tags: ["eczema", "food-allergy", "elimination-diet"],
+    audience: ["người eczema", "trẻ em eczema", "caregiver"],
+    specialty: "da-lieu",
+    sources: [
+      { name: "American Academy of Dermatology — Atopic Dermatitis Guidelines", url: "https://www.aad.org/member/clinical-quality/guidelines/atopic-dermatitis" },
+      { name: "American Academy of Dermatology — Food Fix and Eczema", url: "https://www.aad.org/public/diseases/eczema/childhood/treating/food-fix" }
+    ],
+    keywords: ["eczema", "viêm da cơ địa", "dị ứng thức ăn", "loại trừ thực phẩm", "trẻ eczema"],
+  },
+  {
     slug: "dinh-duong-xo-cung-bi",
     title: "Xơ cứng bì — Dinh dưỡng cho người bệnh mô liên kết",
     description: "Xơ cứng bì hệ thống (scleroderma): khó nuốt, trào ngược, hội chứng malabsorption. Chế độ ăn mềm, chống viêm.",
@@ -5108,6 +5168,26 @@ export const articles: ArticleMeta[] = [
       { name: "Mayo Clinic — Sinusitis Self-care", url: "https://www.mayoclinic.org/diseases-conditions/sinusitis" }
     ],
     keywords: ["viêm xoang", "sinusitis", "chống viêm", "omega-3", "sữa", "hô hấp", "dị ứng"],
+  },
+  {
+    slug: "viem-mui-di-ung-va-viem-xoang-khac-nhau",
+    title: "Viêm mũi dị ứng và viêm xoang khác nhau ở đâu về ăn uống?",
+    description: "Giải thích hai nhóm bệnh dễ bị gọi lẫn, vai trò thực tế của ăn uống và khi nào cần khám đúng chuyên khoa.",
+    emoji: "🌿",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    date: "2026-08-11",
+    readTime: 5,
+    featured: false,
+    tags: ["allergic-rhinitis", "sinusitis", "airway"],
+    audience: ["người viêm mũi dị ứng", "người viêm xoang"],
+    specialty: "ho-hap",
+    sources: [
+      { name: "AAO-HNSF — Adult Sinusitis Guideline", url: "https://www.entnet.org/quality-practice/quality-products/clinical-practice-guidelines/cpg-adult-sinusitis/" },
+      { name: "AAO-HNSF — Adult Sinusitis Update", url: "https://www.entnet.org/resource/cpg-adult-sinusitis-update/" }
+    ],
+    keywords: ["viêm mũi dị ứng", "viêm xoang", "nghẹt mũi", "dị ứng", "histamine"],
   },
   {
     slug: "dinh-duong-benh-thien-sach-hemophilia",

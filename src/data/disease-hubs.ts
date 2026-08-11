@@ -103,7 +103,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Thực đơn nên thực tế để dùng lâu dài, không phải ăn kiêng ngắn ngày.",
       "Người gầy vẫn có thể bị gan nhiễm mỡ và cần cách tiếp cận khác.",
     ],
-    foundationSlugs: ["gan-nhiem-mo", "gan-nhiem-mo-nguoi-gay", "sai-lam-gan-nhiem-mo-an-mo", "mo-mau-cao-7-mon-an-nguy-hiem", "roi-loan-mo-mau"],
+    foundationSlugs: ["gan-nhiem-mo", "gan-nhiem-mo-giam-can-vong-eo", "gan-nhiem-mo-nguoi-gay", "sai-lam-gan-nhiem-mo-an-mo", "mo-mau-cao-7-mon-an-nguy-hiem", "roi-loan-mo-mau"],
     menuSlugs: ["thuc-don-gan-nhiem-mo", "thuc-don-gan-nhiem-mo-ban-ron", "thuc-don-gan-nhiem-mo-binh-dan", "thuc-don-gan-nhiem-mo-nguoi-gia", "thuc-don-mo-mau"],
     mythSlugs: ["dung-tin-ngay-chanh-giam-mo-mau", "sai-lam-gan-nhiem-mo-an-mo"],
     toolLinks: [
@@ -127,7 +127,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Bữa nhỏ, đều, ít dầu mỡ và ít kích thích thường dễ chịu hơn.",
       "Cần tách riêng nhóm đau dạ dày, trào ngược và nhiễm HP khi đọc nội dung.",
     ],
-    foundationSlugs: ["dau-da-day", "trao-nguoc-da-day", "dinh-duong-da-day-trao-nguoc", "dinh-duong-benh-da-day-nen-an-gi", "vi-khuan-hp-da-day"],
+    foundationSlugs: ["dau-da-day", "dau-da-day-hp-ca-phe-thuoc-giam-dau", "trao-nguoc-da-day", "dinh-duong-da-day-trao-nguoc", "dinh-duong-benh-da-day-nen-an-gi", "vi-khuan-hp-da-day"],
     menuSlugs: ["thuc-don-da-day", "thuc-don-da-day-ban-ron", "thuc-don-da-day-binh-dan", "thuc-don-da-day-nguoi-gia"],
     mythSlugs: ["trao-nguoc-da-day-ban-dem-an-gi"],
     toolLinks: [

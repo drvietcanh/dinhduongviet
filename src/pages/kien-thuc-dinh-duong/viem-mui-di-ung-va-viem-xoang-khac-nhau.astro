@@ -1,0 +1,53 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-mui-di-ung-va-viem-xoang-khac-nhau"];
+if (!art) throw new Error("Article not found: viem-mui-di-ung-va-viem-xoang-khac-nhau");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người dùng hai từ "viêm xoang" và "viêm mũi dị ứng" như một, rồi từ đó đi tìm một thực đơn giúp hết hẳn nghẹt mũi. Thực ra đây là <strong>hai tình huống chồng lấp nhưng không giống hệt nhau</strong>. Viêm mũi dị ứng thiên về phản ứng dị ứng ở niêm mạc mũi; viêm xoang thường liên quan viêm ở các xoang cạnh mũi, có thể sau nhiễm virus, dị ứng kéo dài hoặc những yếu tố giải phẫu đi kèm.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Ăn uống không thay thế thuốc xịt mũi, rửa mũi hay điều trị bác sĩ kê. Vai trò của dinh dưỡng ở đây chủ yếu là hỗ trợ: uống đủ nước, tránh các tác nhân cá nhân làm nặng triệu chứng, duy trì bữa ăn chống viêm vừa phải và nhận ra khi nào cần khám tai mũi họng hoặc dị ứng.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🤧 Gợi ý nghiêng về viêm mũi dị ứng</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Hắt hơi từng tràng, ngứa mũi, ngứa mắt, chảy nước mũi trong.</li>
+      <li>Hay nặng lên khi gặp bụi, lông thú, phấn hoa, thay đổi thời tiết.</li>
+      <li>Thường đáp ứng với thuốc kháng histamine hoặc xịt mũi chống viêm.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🤒 Gợi ý nghiêng về viêm xoang</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nghẹt mũi kéo dài, đau tức mặt, dịch mũi đặc, giảm ngửi mùi.</li>
+      <li>Có thể khởi phát sau cảm lạnh hoặc đợt viêm mũi dị ứng kéo dài.</li>
+      <li>Một số trường hợp cần đánh giá bởi tai mũi họng nếu tái phát hoặc dai dẳng.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🍲 Dinh dưỡng nên tập trung vào đâu?</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Đủ nước:</strong> Giúp dịch tiết bớt quánh và người bệnh dễ chịu hơn.</li>
+    <li><strong>Bữa ăn cân bằng:</strong> Rau quả, đạm nạc, cá, đậu và ngũ cốc nguyên hạt giúp duy trì nền ăn chống viêm vừa phải.</li>
+    <li><strong>Theo dõi chất kích hoạt cá nhân:</strong> Rượu bia, món quá cay, thực phẩm lên men hoặc đồ ăn gây triệu chứng ở riêng bạn.</li>
+    <li><strong>Không lạm dụng kiêng:</strong> Chưa có bằng chứng để tất cả người viêm xoang phải bỏ sữa hoặc bỏ hải sản.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>🚩 Khi nào không nên chỉ tự chỉnh ăn uống?</h2>
+  <p>Nếu sốt cao, đau mặt nhiều, dịch mũi hôi, triệu chứng kéo dài hoặc tái phát liên tục, ngủ ngáy nặng, giảm ngửi mùi rõ, hoặc nghi có hen/dị ứng phối hợp, bạn nên được khám đúng chuyên khoa. Với nhóm bệnh này, dinh dưỡng là mảnh ghép hỗ trợ tốt, nhưng không phải mảnh ghép duy nhất.</p>
+</section>
+</ArticleLayout>

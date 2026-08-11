@@ -1,0 +1,75 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["gan-nhiem-mo-giam-can-vong-eo"];
+if (!art) throw new Error("Article not found: gan-nhiem-mo-giam-can-vong-eo");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Rất nhiều người được báo gan nhiễm mỡ rồi lập tức hỏi: "Tôi phải kiêng món gì để hết mỡ gan?". Thực tế, với đa số trường hợp liên quan rối loạn chuyển hóa, câu hỏi quan trọng hơn là <strong>có đang dư năng lượng, béo bụng, ít vận động hay không</strong>. Gan không quan tâm bạn kiêng đúng một món hay chưa; gan phản ứng với cả bức tranh sống hằng ngày.</p>
+  <p>Nếu đang thừa cân hoặc vòng eo tăng, giảm cân từ tốn thường là đòn bẩy hiệu quả nhất. Ngược lại, nhịn ăn cực đoan hoặc chạy theo các liệu trình "làm sạch gan" ngắn hạn dễ làm bạn mệt, mất cơ và bỏ cuộc sớm.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Với gan nhiễm mỡ do rối loạn chuyển hóa, mục tiêu thực tế là giảm dần năng lượng dư thừa, giảm vòng eo, tăng vận động và duy trì lâu dài. Giảm khoảng 5% cân nặng đã có thể giúp mỡ gan cải thiện; nhiều người cần tiến xa hơn nếu có viêm gan nhiễm mỡ hoặc xơ hóa.</strong>
+  </p>
+</section>
+
+<section class="section card">
+  <h2>🎯 Nên theo dõi gì ngoài cân nặng?</h2>
+  <ul style="line-height:1.8;padding-left:18px;">
+    <li><strong>Vòng eo:</strong> Đây là chỉ dấu rất hữu ích vì mỡ bụng liên quan chặt với mỡ trong gan.</li>
+    <li><strong>Thói quen uống đồ ngọt:</strong> Nước ngọt, trà sữa, nước ép thêm đường và cà phê nhiều sữa đặc thường là nguồn năng lượng "trôi tuột" mà ít no.</li>
+    <li><strong>Giờ vận động:</strong> Không cần tập hoàn hảo ngay từ đầu; chỉ cần có nhịp đi bộ, đạp xe, tập sức bền đều hơn trước.</li>
+    <li><strong>Xét nghiệm đi kèm:</strong> Đường huyết, triglycerid, huyết áp và men gan thường cùng nằm trong một cụm nguy cơ.</li>
+  </ul>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>✅ Việc nên làm trước</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Giảm đồ uống có đường xuống mức thấp nhất có thể.</li>
+      <li>Thu nhỏ khẩu phần cơm, bún, mì nếu đang ăn quá nhiều mỗi bữa.</li>
+      <li>Tăng rau và đạm nạc để bữa ăn no lâu hơn.</li>
+      <li>Đi bộ nhanh hoặc vận động cường độ vừa ít nhất vài ngày mỗi tuần, rồi tăng dần.</li>
+      <li>Ngủ đủ và hạn chế thức khuya kéo dài vì dễ kéo theo ăn vặt và kháng insulin.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>❌ Điều dễ làm sai</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Chỉ chăm chăm bỏ mỡ động vật nhưng vẫn uống nhiều nước ngọt và ăn bánh ngọt.</li>
+      <li>Nhịn sáng, nhịn tối để giảm cân nhanh rồi ăn bù vào cuối ngày.</li>
+      <li>Dùng thực phẩm bổ sung hoặc "thuốc mát gan" thay cho thay đổi lối sống.</li>
+      <li>Giảm cân quá gắt khiến mất cơ, mệt và bỏ cuộc sau vài tuần.</li>
+      <li>Nghĩ rằng người gầy thì không cần quan tâm mỡ gan hay vòng eo.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>🍽️ Khung ăn uống thực tế trong 8-12 tuần đầu</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Thành phần</th><th>Gợi ý thực hành</th><th>Mục tiêu</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tinh bột chính</td><td>Giảm khẩu phần nếu đang ăn nhiều; ưu tiên cơm vừa phải, khoai, yến mạch, ngũ cốc nguyên hạt khi phù hợp</td><td>Giảm năng lượng dư</td></tr>
+      <tr><td>Đạm</td><td>Cá, tôm, đậu phụ, trứng, thịt nạc; chia đều các bữa</td><td>Giữ cơ khi giảm cân</td></tr>
+      <tr><td>Rau</td><td>Có mặt ở bữa trưa và tối, tăng thể tích bữa ăn</td><td>No lâu, thêm chất xơ</td></tr>
+      <tr><td>Đồ uống</td><td>Ưu tiên nước lọc, cà phê ít đường; tránh đồ ngọt dạng lỏng</td><td>Giảm fructose và calo rỗng</td></tr>
+      <tr><td>Vận động</td><td>Kết hợp aerobic và 2-3 buổi tăng sức mạnh mỗi tuần nếu làm được</td><td>Giảm mỡ gan, giữ cơ</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🩺 Khi nào cần đi khám kỹ hơn?</h2>
+  <p>Nên tái khám nếu men gan tăng kéo dài, có đái tháo đường, béo phì trung tâm, mỡ máu cao, nghi xơ hóa gan, hoặc đã cố gắng thay đổi mà cân nặng và vòng eo không cải thiện. Một số người cần được bác sĩ đánh giá nguyên nhân khác, mức độ xơ hóa và chỉ định điều trị đi kèm.</p>
+  <p>Bài này không thay thế khám gan mật. Mục tiêu là giúp bạn bắt đầu đúng việc: <strong>giảm năng lượng dư thừa một cách bền vững</strong>, thay vì chạy theo các mẹo giải độc ngắn hạn.</p>
+</section>
+</ArticleLayout>
