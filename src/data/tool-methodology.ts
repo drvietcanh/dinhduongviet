@@ -44,6 +44,146 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       { label: "NHLBI - Calculate Your BMI", url: "https://www.nhlbi.nih.gov/calculate-your-bmi" },
     ],
   },
+  "chi-so-gi": {
+    slug: "chi-so-gi",
+    status: "Trang khái niệm v1 có nguồn",
+    summary:
+      "Trang này giải thích GI như một chỉ dấu tham khảo cho thực phẩm chứa carbohydrate. Nó không phải công cụ chấm điểm cá nhân hay thay thế tư vấn điều trị.",
+    guidance: [
+      "GI chỉ nên được đọc cùng khẩu phần, lượng carb, cách chế biến và bối cảnh ăn uống thực tế.",
+      "Với trẻ em, thai kỳ, bệnh nền hoặc đang dùng thuốc hạ đường huyết, cần ưu tiên câu hỏi lâm sàng hơn là con số GI đơn lẻ.",
+    ],
+    notFor: [
+      "Không dùng GI đơn độc để kết luận món nào 'tốt' hay 'xấu' cho mọi người.",
+    ],
+    sources: [
+      { label: "CDC - Diabetes and Carb Counting", url: "https://www.cdc.gov/diabetes/managing/eat-well/carb-counting.html" },
+      { label: "NIDDK - Eating, Diet, & Nutrition for Diabetes", url: "https://www.niddk.nih.gov/health-information/diabetes/overview/eating-diet-nutrition" },
+    ],
+  },
+  "tinh-carb": {
+    slug: "tinh-carb",
+    status: "Tính carb giáo dục v1",
+    summary:
+      "Trang này cộng carbohydrate theo thực phẩm/món ăn từ dữ liệu hiện có để hỗ trợ học đếm carb. Nó không đổi thành chế độ điều trị và không dùng như mốc bắt buộc cho mọi bữa ăn.",
+    formulas: [
+      {
+        label: "Quy đổi cốt lõi",
+        value: "carb món = carb/100g x khối lượng ăn vào / 100",
+      },
+      {
+        label: "Số phần carb",
+        value: "số phần carb ≈ tổng carb / 15 g",
+      },
+    ],
+    guidance: [
+      "Cùng một món nhưng khẩu phần khác nhau có thể cho tổng carb rất khác.",
+      "Mốc 15 g/phần carb là quy ước giáo dục, không phải mục tiêu bắt buộc cho mọi người.",
+    ],
+    notFor: [
+      "Không dùng số carb này để tự chỉnh insulin hoặc thuốc hạ đường huyết mà chưa được hướng dẫn.",
+    ],
+    sources: [
+      { label: "CDC - Carb Counting", url: "https://www.cdc.gov/diabetes/managing/eat-well/carb-counting.html" },
+      { label: "ADA - Carbohydrate Counting", url: "https://diabetes.org/food-nutrition/understanding-carbs/carb-counting" },
+    ],
+  },
+  "tinh-gl-bua-an": {
+    slug: "tinh-gl-bua-an",
+    status: "Tải lượng đường huyết v1",
+    summary:
+      "Trang này ước tính GL từ GI và lượng carbohydrate trong bữa ăn. Đây là chỉ số học thuật để so sánh tương đối, không phải dự báo chắc chắn đường huyết cá nhân.",
+    formulas: [
+      {
+        label: "Công thức đang dùng",
+        value: "GL = GI x carb (g) / 100",
+      },
+      {
+        label: "Phân loại giáo dục",
+        value: "GL thấp ≤ 10, trung bình 11-19, cao ≥ 20",
+      },
+    ],
+    guidance: [
+      "GL chỉ có ý nghĩa khi GI và lượng carb cùng được đọc đúng bối cảnh khẩu phần.",
+      "Nếu một món không có GI curated, kết quả chỉ nên hiểu là tham khảo rất thận trọng.",
+    ],
+    notFor: [
+      "Không dùng GL để tự đổi thuốc, tự tính ăn bù hoặc thay thế đo đường huyết cá nhân.",
+    ],
+    sources: [
+      { label: "NIDDK - Diabetes and Carb Counting", url: "https://www.niddk.nih.gov/health-information/diabetes/overview/eating-diet-nutrition" },
+      { label: "Harvard T.H. Chan - Glycemic Index and Glycemic Load", url: "https://nutritionsource.hsph.harvard.edu/carbohydrates/glycemic-index/" },
+    ],
+  },
+  "tinh-nhu-cau-dam": {
+    slug: "tinh-nhu-cau-dam",
+    status: "Nhu cầu đạm tham khảo v1",
+    summary:
+      "Trang này ước tính nhu cầu protein ban đầu theo cân nặng và tình huống phổ thông. Nó chỉ là mốc giáo dục, chưa thay thế chỉ định theo bệnh nền hoặc mục tiêu điều trị.",
+    formulas: [
+      {
+        label: "Quy đổi tham khảo",
+        value: "protein/ngày = cân nặng (kg) x mức g/kg theo profile",
+      },
+    ],
+    guidance: [
+      "Mức đạm chỉ có ý nghĩa khi đi cùng profile và bối cảnh lâm sàng đúng.",
+      "Để đọc thực phẩm, nên tách rõ protein trong khẩu phần với gram thịt/cá/đậu thực tế.",
+    ],
+    notFor: [
+      "Không dùng để tự áp dụng cho suy thận, lọc máu, thai kỳ, bệnh cấp hoặc nuôi ăn y học mà chưa được cá thể hóa.",
+    ],
+    sources: [
+      { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "doi-don-vi": {
+    slug: "doi-don-vi",
+    status: "Bộ đổi đơn vị v1 có nguồn",
+    summary:
+      "Trang này quy đổi các đơn vị thông dụng theo giá trị chuẩn tham khảo. Nó hữu ích để đổi nhanh, nhưng không thay thế việc cân đo thực phẩm thật khi cần độ chính xác cao.",
+    formulas: [
+      {
+        label: "Khối lượng / thể tích / năng lượng",
+        value: "Dùng hệ số quy đổi chuẩn giữa g, kg, mg, ml, L, kcal, kJ và các đơn vị U.S. customary",
+      },
+    ],
+    guidance: [
+      "Một số quy đổi trong nấu ăn chỉ là xấp xỉ vì độ đầy muỗng/cốc và mật độ thực phẩm khác nhau.",
+      "Nếu quy đổi sang kcal, cần phân biệt kcal, Calorie viết hoa C và kJ.",
+    ],
+    notFor: [
+      "Không dùng bộ đổi đơn vị để kết luận dinh dưỡng cá nhân, liều thuốc hay khẩu phần điều trị.",
+    ],
+    sources: [
+      { label: "NIST - Appendix B Conversion Factors", url: "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors" },
+      { label: "NIST - Metric Conversion Card", url: "https://www.nist.gov/pml/owm/metric-si/metric-conversion-card-sp-365" },
+    ],
+  },
+  "nuoc-uong": {
+    slug: "nuoc-uong",
+    status: "Nhu cầu nước tham khảo v1",
+    summary:
+      "Trang này ước tính nhu cầu nước uống cho người lớn tương đối ổn định, rồi tự dừng lại khi gặp nhóm cần cá thể hóa. Đây không phải chỉ định dịch hay mục tiêu điều trị.",
+    formulas: [
+      {
+        label: "Logic đang dùng",
+        value: "Nhu cầu cơ bản theo cân nặng, sau đó cộng/trừ theo vận động, thời tiết, mồ hôi và bối cảnh sinh lý",
+      },
+    ],
+    guidance: [
+      "Kết quả chỉ là mốc để hình dung nhu cầu chung, không phải mục tiêu bắt buộc.",
+      "Nhóm có bệnh tim, thận, gan hoặc đang dùng lợi tiểu cần đọc như cảnh báo để hỏi chuyên môn.",
+    ],
+    notFor: [
+      "Không dùng để tự mở rộng hoặc siết dịch ở người bệnh mà chưa có chỉ định.",
+    ],
+    sources: [
+      { label: "NASEM - Dietary Reference Intakes for Water", url: "https://nap.nationalacademies.org/catalog/10925/dietary-reference-intakes-for-water-potassium-sodium-chloride-and-sulfate" },
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
   "tinh-nang-luong": {
     slug: "tinh-nang-luong",
     status: "Đã bổ sung phương pháp v1",
@@ -127,6 +267,40 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     sources: [
       { label: "CDC - Physical Activity Guidelines for Adults", url: "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" },
       { label: "Compendium of Physical Activities", url: "https://pacompendium.com/" },
+    ],
+  },
+  "so-sanh-thuc-pham": {
+    slug: "so-sanh-thuc-pham",
+    status: "So sánh thực phẩm v1",
+    summary:
+      "Trang này đặt 2-4 thực phẩm cạnh nhau theo 100 g để xem khác biệt dinh dưỡng. Nó giúp đọc dữ liệu chứ không xếp hạng tốt-xấu tuyệt đối cho mọi người.",
+    guidance: [
+      "Nên so cùng đơn vị và cùng mức dữ liệu gốc, đặc biệt khi một bên là thực phẩm sống còn một bên là món chế biến.",
+      "Các vi chất có thể thay đổi mạnh theo nguồn, chế biến và độ ẩm của thực phẩm.",
+    ],
+    notFor: [
+      "Không dùng bảng so sánh này để tự chỉnh thuốc, tự đặt chế độ điều trị hoặc quy đổi sang khẩu phần lâm sàng mà chưa cá thể hóa.",
+    ],
+    sources: [
+      { label: "USDA FoodData Central", url: "https://fdc.nal.usda.gov/" },
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "so-sanh-bua-an": {
+    slug: "so-sanh-bua-an",
+    status: "So sánh bữa ăn v1",
+    summary:
+      "Trang này so các bữa ăn/món ăn theo khẩu phần đã chọn để nhìn nhanh khác biệt về năng lượng và macro. Nó hỗ trợ lựa chọn thực đơn, không thay thế tư vấn dinh dưỡng cá thể.",
+    guidance: [
+      "Cùng một món nhưng khẩu phần khác nhau có thể đảo thứ tự so sánh, nên cần xem cả gram thật.",
+      "Nếu một bữa có nhiều nước chấm, topping hoặc món phụ, giá trị hiển thị vẫn chỉ là ước tính theo dữ liệu đầu vào.",
+    ],
+    notFor: [
+      "Không dùng để tự đổi thuốc, tự tính bù năng lượng hay áp cho người bệnh cần thực đơn điều trị chuyên biệt.",
+    ],
+    sources: [
+      { label: "USDA FoodData Central", url: "https://fdc.nal.usda.gov/" },
+      { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
     ],
   },
   "ti-le-mo-co-the": {
