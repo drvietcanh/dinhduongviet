@@ -1,4 +1,5 @@
 import { articleBySlug, articles, type ArticleMeta } from "./articles";
+import { canonicalAudienceList } from "../utils/audience";
 
 export interface DiseaseHubConfig {
   id: string;
@@ -26,7 +27,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     emoji: "🩸",
     specialty: "noi-tiet",
     audience: ["diabetes"],
-    description: "Lộ trình đọc nhanh cho người đái tháo đường: bài nền tảng, hiểu lầm thường gặp, thực đơn mẫu và công cụ áp dụng ngay.",
+    description: "Lộ trình đọc cho người đái tháo đường: bài nền tảng, hiểu lầm thường gặp, thực đơn mẫu và công cụ áp dụng.",
     intro: "Trang này gom các bài quan trọng nhất về ăn uống với đái tháo đường để người mới chẩn đoán hoặc đang muốn điều chỉnh bữa ăn có thể bắt đầu đúng chỗ.",
     heroPoints: [
       "Không cần bỏ hoàn toàn cơm hay trái cây.",
@@ -73,7 +74,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     emoji: "🦶",
     specialty: "noi-tiet",
     audience: ["gout"],
-    description: "Tổng hợp bài cơ bản, phần giải oan hiểu lầm về đạm, thực đơn thấp purin và mẹo ăn uống khi đi làm hoặc lớn tuổi.",
+    description: "Lối vào cho gout và acid uric cao: nền tảng, hiểu lầm về đạm, thực đơn thấp purin và mẹo áp dụng hằng ngày.",
     intro: "Người bệnh gout thường bị kéo vào hai cực: kiêng quá mức hoặc coi nhẹ bia rượu, nước ngọt. Hub này đưa về các điểm thực hành quan trọng nhất.",
     heroPoints: [
       "Không phải mọi cơn gout đều do ăn quá nhiều thịt.",
@@ -121,8 +122,8 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     emoji: "⚖️",
     specialty: "noi-tiet",
     audience: ["weight-loss", "diabetes"],
-    description: "Lối vào trọng điểm cho béo phì, béo bụng, kháng insulin và hội chứng chuyển hóa, nơi dinh dưỡng cần đi cùng giảm cân bền vững.",
-    intro: "Đây là nhóm rất quan trọng vì nhiều người chưa bị đái tháo đường rõ nhưng đã có vòng eo tăng, triglyceride cao, gan nhiễm mỡ hoặc kháng insulin.",
+    description: "Lối vào cho béo phì, béo bụng, kháng insulin và hội chứng chuyển hóa, với trọng tâm giảm cân bền vững.",
+    intro: "Nhóm này phù hợp khi vòng eo tăng, triglyceride cao, gan nhiễm mỡ hoặc nghi kháng insulin dù chưa được chẩn đoán đái tháo đường.",
     heroPoints: [
       "Ưu tiên giảm mỡ nội tạng và cải thiện vòng eo, không chỉ nhìn cân nặng.",
       "Giảm 5-10% cân nặng thường đã có ý nghĩa rõ với đường huyết, mỡ máu và huyết áp.",
@@ -136,7 +137,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     toolLinks: [
       { href: "/cong-cu/muc-tieu-can-nang", label: "Mục tiêu cân nặng" },
       { href: "/cong-cu/bmi", label: "BMI và vòng eo" },
-      { href: "/cong-cu/bmi", label: "BMI và vòng eo" },
+      { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
       { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
     ],
   },
@@ -147,18 +148,18 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     emoji: "😣",
     specialty: "tieu-hoa",
     audience: ["stomach"],
-    description: "Một điểm vào gọn cho đau dạ dày, viêm loét dạ dày - tá tràng, trào ngược, khó tiêu và cách sắp xếp bữa ăn cho dễ chịu hơn.",
+    description: "Điểm vào cho đau dạ dày, viêm loét dạ dày - tá tràng, trào ngược, khó tiêu và cách sắp bữa dễ chịu hơn.",
     intro: "Ở nhóm bệnh này, thời điểm ăn, độ mềm, lượng mỗi bữa và khả năng dung nạp cá nhân thường quan trọng gần như bản thân món ăn.",
     heroPoints: [
       "Không có một danh sách cấm tuyệt đối giống nhau cho mọi người.",
       "Bữa nhỏ, đều, ít dầu mỡ và ít kích thích thường dễ chịu hơn.",
-      "Cần tách riêng nhóm đau dạ dày, viêm loét tá tràng, trào ngược và nhiễm HP khi đọc nội dung.",
+      "Cần tách đau dạ dày, viêm loét tá tràng, trào ngược và nhiễm HP khi chọn bài.",
     ],
     foundationSlugs: ["dau-da-day", "vi-khuan-hp-da-day", "trao-nguoc-da-day", "dinh-duong-benh-da-day-nen-an-gi"],
     menuSlugs: ["thuc-don-da-day", "thuc-don-da-day-ban-ron", "thuc-don-da-day-binh-dan", "thuc-don-da-day-nguoi-gia"],
-    mythSlugs: ["dinh-duong-da-day-trao-nguoc", "trao-nguoc-da-day-ban-dem-an-gi"],
+    mythSlugs: ["dinh-duong-da-day-trao-nguoc", "trao-nguoc-ban-dem", "dau-da-day-hp-ca-phe-thuoc-giam-dau"],
     mythTitle: "Tình huống hay gặp",
-    mythDescription: "Nếu triệu chứng thiên về trào ngược, ợ nóng về đêm hoặc khó chịu sau bữa tối, hãy bắt đầu từ các bài này trước khi chỉnh cả thực đơn.",
+    mythDescription: "Nếu triệu chứng thiên về ợ nóng, trào ngược ban đêm, cà phê, thuốc giảm đau hoặc bữa tối muộn, hãy bắt đầu từ các bài thực hành này.",
     toolLinks: [
       { href: "/cong-cu/ke-hoach-bua-an", label: "Lập kế hoạch bữa ăn" },
       { href: "/cong-cu/checklist-an-uong", label: "Checklist ăn uống" },
@@ -173,18 +174,18 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     emoji: "🫘",
     specialty: "than-tiet-nieu",
     audience: ["kidney"],
-    description: "Điểm khởi đầu cho bệnh thận mạn, lọc máu, sỏi thận và các hiểu lầm thường khiến người bệnh kiêng quá mức.",
-    intro: "Nhóm bệnh thận rất dễ bị tư vấn quá tay. Web nên dẫn người đọc đến đúng giai đoạn bệnh, ưu tiên gọi đúng là bệnh thận mạn khi chưa lọc máu, và nhấn mạnh việc cá thể hóa theo xét nghiệm, thuốc và ý kiến bác sĩ.",
+    description: "Điểm khởi đầu cho bệnh thận mạn, lọc máu, sỏi thận và các hiểu lầm dễ khiến người bệnh kiêng quá mức.",
+    intro: "Nhóm bệnh thận dễ bị tư vấn quá tay. Cần chọn đúng giai đoạn bệnh và cá thể hóa theo xét nghiệm, thuốc, cùng hướng dẫn của bác sĩ.",
     heroPoints: [
       "Không phải ai bị bệnh thận cũng phải kiêng toàn bộ đạm, kali và nước.",
       "Cần phân biệt bệnh thận mạn chưa lọc máu, chạy thận, sỏi thận và tăng kali máu.",
       "Bài phù hợp giúp tránh kiêng sai, sụt cân và thiếu dinh dưỡng.",
     ],
-    foundationSlugs: ["suy-than", "soi-than-dinh-duong"],
+    foundationSlugs: ["suy-than", "dinh-duong-loc-mau-chu-ky", "soi-than-dinh-duong"],
     menuSlugs: [],
     mythSlugs: ["canh-bao-hieu-lam-suy-than-kieng", "ckd-kali-phot-pho-muoi-thuc-hanh", "tang-kali-mau-suy-than", "benh-than-iga-dinh-duong"],
-    mythTitle: "Tình huống cần phân biệt",
-    mythDescription: "Nhóm này hữu ích khi bạn đã biết mình thuộc bệnh thận mạn, tăng kali máu, sỏi thận hay một bệnh cảnh đặc hiệu hơn và cần tránh áp dụng nhầm lời khuyên.",
+    mythTitle: "Tình huống cần tách rõ",
+    mythDescription: "Hãy đọc nhóm này khi cần tách bệnh thận mạn chưa lọc máu, chạy thận, tăng kali máu hoặc một bệnh cảnh thận đặc hiệu để tránh áp dụng nhầm cùng một chế độ ăn.",
     toolLinks: [
       { href: "/cong-cu/theo-doi-suc-khoe", label: "Theo dõi sức khỏe" },
       { href: "/cong-cu/doi-don-vi", label: "Đổi đơn vị xét nghiệm" },
@@ -198,8 +199,8 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     shortName: "Mỡ máu, tim mạch",
     emoji: "❤️",
     specialty: "tim-mach",
-    audience: [],
-    description: "Tập hợp bài về mỡ máu cao, nguy cơ tim mạch, phục hồi sau biến cố tim mạch và chế độ ăn bảo vệ mạch máu.",
+    audience: ["cardio"],
+    description: "Tập hợp bài về mỡ máu cao, nguy cơ tim mạch, suy tim, phục hồi sau biến cố và chế độ ăn bảo vệ mạch máu.",
     intro: "Trang này phù hợp với người xét nghiệm thấy LDL, triglyceride tăng hoặc đã có bệnh tim mạch và cần lối vào dễ hiểu hơn so với đọc từng bài rời.",
     heroPoints: [
       "Không phải cứ ăn mỡ mới làm mỡ máu xấu đi.",
@@ -210,7 +211,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     menuSlugs: ["thuc-don-mo-mau"],
     mythSlugs: ["dung-tin-ngay-chanh-giam-mo-mau", "dinh-duong-suy-tim", "suy-tim-can-nang-muoi-dich", "phuc-hoi-nhoi-mau-co-tim-stent"],
     mythTitle: "Tình huống cần lưu ý thêm",
-    mythDescription: "Nếu bạn đã có suy tim, từng đặt stent hoặc đang phục hồi sau biến cố tim mạch, hãy đi từ các bài này thay vì áp dụng nguyên xi lời khuyên cho người chỉ tăng mỡ máu đơn thuần.",
+    mythDescription: "Nếu đã có suy tim, từng đặt stent hoặc đang phục hồi sau biến cố tim mạch, hãy đọc nhóm này thay vì áp dụng nguyên xi lời khuyên cho mỡ máu đơn thuần.",
     toolLinks: [
       { href: "/cong-cu/theo-doi-suc-khoe", label: "Theo dõi sức khỏe" },
       { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
@@ -224,19 +225,19 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     shortName: "Hô hấp mạn",
     emoji: "🫁",
     specialty: "ho-hap",
-    audience: [],
-    description: "Nhóm trọng điểm cho COPD, hen suyễn, viêm phế quản mạn và các tình huống ăn uống liên quan khó thở, sụt cân hoặc béo phì đi kèm.",
-    intro: "Nếu người đọc có bệnh hô hấp kéo dài, dễ mệt khi ăn, sụt cân hoặc đồng thời thừa cân, đây nên là một lối vào riêng thay vì bị chìm trong bản đồ bệnh lớn.",
+    audience: ["respiratory"],
+    description: "Nhóm cho COPD, hen suyễn, viêm phế quản mạn và các tình huống ăn uống liên quan khó thở, sụt cân hoặc béo phì.",
+    intro: "Nếu bệnh hô hấp kéo dài đi cùng mệt khi ăn, sụt cân hoặc thừa cân, nên bắt đầu từ nhóm này thay vì đọc rải rác từng bài.",
     heroPoints: [
       "Bữa quá no có thể làm khó thở hơn, nhất là ở COPD.",
-      "Người bệnh có thể đi theo hai hướng rất khác: sụt cân mất cơ hoặc thừa cân kèm hen/ngưng thở khi ngủ.",
+      "Người bệnh có thể sụt cân mất cơ hoặc thừa cân kèm hen/ngưng thở khi ngủ.",
       "Nội dung dinh dưỡng hô hấp nên gắn với dung nạp bữa ăn, cân nặng và bệnh kèm theo.",
     ],
     foundationSlugs: ["dinh-duong-benh-copd", "dinh-duong-hen-suyen", "viem-phe-quan-man-tinh"],
     menuSlugs: [],
     mythSlugs: ["hen-suyen-beo-phi-giam-can", "om-sot-cam-cum"],
     mythTitle: "Tình huống nên đọc thêm",
-    mythDescription: "Phần này hữu ích khi triệu chứng hô hấp đi cùng béo phì, nhiễm siêu vi hoặc khó chịu nhiều sau ăn.",
+    mythDescription: "Phần này hữu ích khi triệu chứng hô hấp đi cùng béo phì, nhiễm siêu vi hoặc khó chịu sau ăn.",
     toolLinks: [
       { href: "/cong-cu/bmi", label: "BMI và vòng eo" },
       { href: "/cong-cu/muc-tieu-can-nang", label: "Mục tiêu cân nặng" },
@@ -256,6 +257,7 @@ export function pickArticles(slugs: string[]): ArticleMeta[] {
 }
 
 export function getHubSections(hub: DiseaseHubConfig) {
+  const hubAudience = canonicalAudienceList(hub.audience);
   const foundation = pickArticles(hub.foundationSlugs);
   const menus = pickArticles(hub.menuSlugs);
   const myths = pickArticles(hub.mythSlugs);
@@ -264,21 +266,35 @@ export function getHubSections(hub: DiseaseHubConfig) {
     [...foundation, ...menus, ...myths]
       .map((item) => item.title.trim().toLowerCase()),
   );
-  const more = articles
+  const isArticleLike = (article: ArticleMeta) =>
+    article.displayCategory === "bai-viet" || article.displayCategory === "dung-tin-ngay";
+  const isBaseCandidate = (article: ArticleMeta) =>
+    !listed.has(article.slug)
+    && !featuredTitles.has(article.title.trim().toLowerCase())
+    && isArticleLike(article);
+  const compareMore = (a: ArticleMeta, b: ArticleMeta) => {
+    if (Boolean(a.featured) !== Boolean(b.featured)) return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  };
+
+  const audienceMatches = articles
     .filter((article) => {
-      const matchAudience = hub.audience.some((tag) => article.audience?.includes(tag));
-      const matchSpecialty = article.specialty === hub.specialty;
-      const sameTitle = featuredTitles.has(article.title.trim().toLowerCase());
-      const isArticleLike = article.displayCategory === "bai-viet" || article.displayCategory === "dung-tin-ngay";
-      return !listed.has(article.slug) && !sameTitle && isArticleLike && (matchAudience || matchSpecialty);
+      if (!isBaseCandidate(article)) return false;
+      const articleAudience = canonicalAudienceList(article.audience);
+      return hubAudience.some((tag) => articleAudience.includes(tag));
     })
-    .sort((a, b) => {
-      const aAudience = hub.audience.some((tag) => a.audience?.includes(tag));
-      const bAudience = hub.audience.some((tag) => b.audience?.includes(tag));
-      if (aAudience !== bAudience) return Number(bAudience) - Number(aAudience);
-      return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+    .sort(compareMore);
+
+  const audienceSlugs = new Set(audienceMatches.map((article) => article.slug));
+  const specialtyFallback = articles
+    .filter((article) => {
+      if (!isBaseCandidate(article)) return false;
+      if (audienceSlugs.has(article.slug)) return false;
+      return article.specialty === hub.specialty;
     })
-    .slice(0, 6);
+    .sort(compareMore);
+
+  const more = [...audienceMatches, ...specialtyFallback].slice(0, 6);
 
   return { foundation, menus, myths, more };
 }

@@ -281,13 +281,17 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .safety-text-col p:last-child { margin-bottom:0; }
     @media (max-width:720px) {
       .content-page { padding:20px 14px; }
+      .page-header { margin-bottom:20px; }
+      .page-header h1 { gap:10px; margin-bottom:8px; }
+      .h-icon { font-size:1.45rem; }
       .h-text { font-size:1.26rem; }
       .page-desc { font-size:0.88rem; line-height:1.55; }
+      .rec-box { grid-template-columns:1fr; gap:10px; margin-bottom:20px; }
+      .rec-card { padding:12px 14px; border-radius:16px; }
+      .rec-label { font-size:0.75rem; margin-bottom:4px; }
+      .rec-value { font-size:1rem; }
+      .rec-note { font-size:0.73rem; line-height:1.35; }
       .section-label { margin:20px 0 10px; font-size:0.88rem; }
-      .rec-card { padding:14px 15px; }
-      .rec-value { font-size:1.04rem; }
-      .rec-note { font-size:0.75rem; }
-      .rec-box { grid-template-columns:1fr; }
       .builder-layout { grid-template-columns:1fr; }
       .builder-side { position:static; }
       .builder-side-label { display:none; }
@@ -307,6 +311,19 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       .msb-main { font-size:0.84rem; }
       .msb-main strong { font-size:0.92rem; }
       .msb-sub { font-size:0.68rem; }
+    }
+    @media (max-width:480px) {
+      .content-page { padding:16px 12px; }
+      .page-header { margin-bottom:16px; }
+      .h-text { font-size:1.12rem; line-height:1.16; }
+      .page-desc { font-size:0.84rem; line-height:1.48; }
+      .rec-box { gap:8px; margin-bottom:16px; }
+      .rec-card { padding:11px 12px; }
+      .section-label { margin:16px 0 8px; font-size:0.84rem; gap:8px; }
+      .sl-num { width:26px; height:26px; font-size:0.74rem; }
+      .builder-top { margin-bottom:10px; }
+      .builder-search { min-height:42px; }
+      .chip { min-height:38px; padding:7px 13px; font-size:0.8rem; }
     }
   </style>
 

@@ -41,13 +41,13 @@ const maxCategoryCount = topCategories.length > 0 ? Math.max(...topCategories.ma
       </div>
       <div class="category-bars">
         {topCategories.map((item) => {
-          const width = maxCategoryCount > 0 ? Math.max(8, Math.round((item.count / maxCategoryCount) * 100)) : 0;
-          const pct = maxCategoryCount > 0 ? Math.round((item.count / maxCategoryCount) * 100) : 0;
+          const pct = summary.totalFoods > 0 ? Math.round((item.count / summary.totalFoods) * 100) : 0;
+          const width = maxCategoryCount > 0 ? Math.max(12, Math.round((item.count / maxCategoryCount) * 100)) : 0;
           return (
             <a class="category-row" href={`/thuc-pham#${encodeURIComponent(item.category)}`}>
-              <span>{item.category}</span>
-              <div class="bar"><span style={`width: ${width}%`}></span></div>
-              <strong>{item.count}<small>{pct}%</small></strong>
+              <span class="category-name">{item.category}</span>
+              <div class="bar" aria-hidden="true"><span style={`width: ${width}%`}></span></div>
+              <strong>{item.count}<small>{pct}% dữ liệu</small></strong>
             </a>
           );
         })}
@@ -109,6 +109,9 @@ const maxCategoryCount = topCategories.length > 0 ? Math.max(...topCategories.ma
     align-items: center;
     color: var(--ink);
   }
+  .category-name {
+    font-weight: 600;
+  }
   .category-row strong {
     display: inline-flex;
     flex-direction: column;
@@ -129,13 +132,15 @@ const maxCategoryCount = topCategories.length > 0 ? Math.max(...topCategories.ma
     border-radius: 999px;
     background: #edf1e9;
     overflow: hidden;
+    position: relative;
   }
   .bar span {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: var(--brand);
+    background: linear-gradient(90deg, var(--brand) 0%, #34d399 100%);
     transition: width var(--transition);
+    box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.08) inset;
   }
   @media (max-width: 760px) {
     .summary-compact-section {

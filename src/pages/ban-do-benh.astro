@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { articles, SPECIALTIES } from "../data/articles";
+import { canonicalAudienceList } from "../utils/audience";
 
 const title = "Bản đồ bệnh đầy đủ — Dinh dưỡng theo từng bệnh";
 const desc = "Tra cứu dinh dưỡng theo nhóm bệnh và tình huống sức khỏe, sắp theo chuyên khoa. Mỗi nhóm có bài nền tảng, hỏi đáp và thực đơn liên quan.";
@@ -138,13 +139,13 @@ const groups = [
     specialty: "noi-tiet",
     id: "tuyen-giap",
     emoji: "🦋",
-    name: "Tuyến giáp • Basedow • Suy giáp • PCOS",
+    name: "Tuyến giáp • PCOS",
     foundation: [
       { slug: "dinh-duong-basedow-cuong-giap", title: "Basedow & Cường giáp", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-suy-giap", title: "Suy giáp — Dinh dưỡng kém năng tuyến giáp", desc: "Bài nền tảng" },
-      { slug: "suy-giap-hypothyroidism", title: "Suy giáp: Hiểm họa từ rau họ cải sống", desc: "Kiến thức chuyên sâu" },
-      { slug: "cuong-giap-basedow", title: "Cường giáp Basedow: Lệnh cấm vận I-ốt", desc: "Kiến thức chuyên sâu" },
-      { slug: "buong-trung-da-nang-pcos", title: "Buồng trứng đa nang (PCOS) & Chế độ Low-GI", desc: "Kiến thức chuyên sâu" },
+      { slug: "dinh-duong-suy-giap", title: "Suy giáp — Dinh dưỡng hỗ trợ tuyến giáp", desc: "Bài nền tảng" },
+      { slug: "suy-giap-hypothyroidism", title: "Suy giáp và rau họ cải sống", desc: "Hiểu đúng" },
+      { slug: "cuong-giap-basedow", title: "Cường giáp Basedow và i-ốt", desc: "Hiểu đúng" },
+      { slug: "buong-trung-da-nang-pcos", title: "PCOS và chế độ ăn low-GI", desc: "Kiến thức" },
       { slug: "dinh-duong-pcos-buong-trung-da-nang", title: "PCOS — Dinh dưỡng cải thiện nội tiết", desc: "Bài nền tảng" },
     ],
     faq: { href: "/hoi-dap#tuyen-giap", label: "Cường giáp có cần ăn nhiều hơn không?" },
@@ -193,15 +194,14 @@ const groups = [
     specialty: "tim-mach",
     id: "mo-mau-suy-tim",
     emoji: "❤️",
-    name: "Mỡ máu • Suy tim • Nhồi máu cơ tim",
+    name: "Mỡ máu • Tim mạch • Suy tim",
     foundation: [
       { slug: "roi-loan-mo-mau", title: "Rối loạn mỡ máu — Ăn gì để giảm mỡ máu?", desc: "Bài nền tảng" },
-      { slug: "xo-vua-dong-mach-vanh", title: "Xơ vữa động mạch vành & Mỡ máu", desc: "Kiến thức" },
-      { slug: "phuc-hoi-nhoi-mau-co-tim-stent", title: "Nhồi máu cơ tim & Chế độ ăn bảo vệ Stent", desc: "Phục hồi" },
+      { slug: "xo-vua-dong-mach-vanh", title: "Xơ vữa mạch vành và mỡ máu", desc: "Kiến thức" },
       { slug: "benh-tim-mach", title: "Dinh dưỡng cho người bệnh tim mạch", desc: "Bài nền tảng" },
       { slug: "dinh-duong-suy-tim", title: "Suy tim — Ăn gì để tim khỏe?", desc: "Bài nền tảng" },
       { slug: "suy-tim-can-nang-muoi-dich", title: "Suy tim bị phù, tăng cân nhanh", desc: "Thực hành" },
-      { slug: "dinh-duong-sau-nhau-mau-co-tim", title: "Sau nhồi máu cơ tim — Phục hồi & dự phòng", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-sau-nhau-mau-co-tim", title: "Sau nhồi máu cơ tim — Phục hồi và dự phòng", desc: "Bài nền tảng" },
       { slug: "che-do-trung-hai-viem-khop-tim-mach", title: "Chế độ ăn Địa Trung Hải cho tim mạch", desc: "Chế độ ăn" },
       { slug: "thuc-don-mo-mau", title: "Thực đơn 1 ngày cho người mỡ máu cao", desc: "Thực đơn" },
     ],
@@ -214,22 +214,20 @@ const groups = [
     specialty: "tieu-hoa",
     id: "gan",
     emoji: "🫁",
-    name: "Gan nhiễm mỡ • Men gan cao • Viêm gan • Xơ gan",
+    name: "Gan nhiễm mỡ • Men gan • Xơ gan",
     foundation: [
       { slug: "gan-nhiem-mo", title: "Gan nhiễm mỡ — Ăn gì, kiêng gì?", desc: "Bài nền tảng" },
       { slug: "gan-nhiem-mo-giam-can-vong-eo", title: "Giảm cân, giảm vòng eo thế nào mới đúng hướng?", desc: "Thực hành cốt lõi" },
       { slug: "gan-nhiem-mo-an-ngoai-di-lam", title: "Ăn ngoài, đi làm: sửa bữa nào trước?", desc: "Thực hành" },
-      { slug: "gan-nhiem-mo-nafld-fructose", title: "Gan nhiễm mỡ NAFLD: Thảm họa Fructose", desc: "Hiểu đúng" },
+      { slug: "gan-nhiem-mo-nafld-fructose", title: "Gan nhiễm mỡ và fructose", desc: "Hiểu đúng" },
       { slug: "men-gan-cao", title: "Men gan cao — Nên ăn gì, kiêng gì?", desc: "Bài nền tảng" },
       { slug: "dinh-duong-viem-gan", title: "Dinh dưỡng bảo vệ gan — Viêm gan", desc: "Bài nền tảng" },
       { slug: "dinh-duong-xo-gan", title: "Xơ gan — dinh dưỡng kéo dài bù trừ", desc: "Bài nền tảng" },
-      { slug: "xo-gan-co-truong-an-uong", title: "Xơ gan có cổ trướng — Giảm muối mà không kiệt sức", desc: "Thực hành" },
-      { slug: "xo-gan-co-truong-muoi-dich-dam", title: "Xơ gan có cổ trướng — Giảm muối đúng, giữ đạm đủ", desc: "Thực hành" },
-      { slug: "benh-wilson-dinh-duong", title: "Bệnh Wilson — Dinh dưỡng hạn chế đồng", desc: "Bài nền tảng" },
+      { slug: "xo-gan-co-truong-an-uong", title: "Xơ gan có cổ trướng — Giảm muối mà không kiệt sức", desc: "Thực hành cốt lõi" },
+      { slug: "xo-gan-co-truong-muoi-dich-dam", title: "Xơ gan cổ trướng — Muối, nước và đạm", desc: "Hiểu đúng" },
       { slug: "sai-lam-gan-nhiem-mo-an-mo", title: "Gan nhiễm mỡ không chỉ do ăn mỡ", desc: "Hiểu đúng" },
       { slug: "gan-nhiem-mo-nguoi-gay", title: "Gan nhiễm mỡ ở người gầy", desc: "Hiểu đúng" },
       { slug: "canh-bao-hieu-lam-gan-bo-gan", title: "Gan nhiễm mỡ không phải cứ uống thuốc bổ gan", desc: "Đừng tin ngay" },
-      { slug: "dinh-duong-viem-tuy", title: "Viêm tụy — Dinh dưỡng giúp tụy nghỉ ngơi", desc: "Bài nền tảng" },
     ],
     faq: { href: "/hoi-dap#gan", label: "Gan nhiễm mỡ có phải do ăn mỡ?" },
     menus: [
@@ -243,15 +241,15 @@ const groups = [
     specialty: "tieu-hoa",
     id: "da-day",
     emoji: "😣",
-    name: "Dạ dày, tá tràng và trào ngược",
+    name: "Dạ dày • Tá tràng • Trào ngược",
     foundation: [
-      { slug: "dau-da-day", title: "Đau dạ dày — Nguyên tắc ăn uống, HP và thói quen cần sửa", desc: "Bài nền tảng" },
+      { slug: "dau-da-day", title: "Đau dạ dày — Ăn uống, HP và thói quen", desc: "Bài nền tảng" },
       { slug: "dau-da-day-hp-ca-phe-thuoc-giam-dau", title: "HP, cà phê, thuốc giảm đau: đâu là điểm cần sửa trước?", desc: "Thực hành cốt lõi" },
       { slug: "dau-da-day-di-lam-dung-thuoc", title: "Đi làm, cà phê, bỏ bữa và thuốc giảm đau", desc: "Thực hành" },
-      { slug: "vi-khuan-hp-da-day", title: "Viêm loét dạ dày HP: Ẩn họa và cách diệt", desc: "Kiến thức" },
-      { slug: "dinh-duong-da-day-trao-nguoc", title: "Trào ngược dạ dày thực quản (GERD)", desc: "Bài nền tảng" },
+      { slug: "vi-khuan-hp-da-day", title: "Viêm loét dạ dày do HP", desc: "Kiến thức" },
+      { slug: "dinh-duong-da-day-trao-nguoc", title: "GERD — Tóm tắt nhanh ăn uống và sinh hoạt", desc: "Tóm tắt nhanh" },
       { slug: "dinh-duong-benh-da-day-nen-an-gi", title: "Đau dạ dày — Ăn gì để dịu triệu chứng?", desc: "Thực hành ăn uống" },
-      { slug: "trao-nguoc-da-day", title: "Trào ngược — nên ăn gì, kiêng gì?", desc: "Bài nền tảng" },
+      { slug: "trao-nguoc-da-day", title: "Trào ngược — Ăn uống và thói quen", desc: "Bài nền tảng" },
       { slug: "trao-nguoc-ban-dem", title: "Trào ngược ban đêm", desc: "Bài chuyên sâu" },
       { slug: "day-bung-sau-an", title: "Hay đầy bụng sau ăn", desc: "Bài nền tảng" },
       { slug: "o-nong-nong-rat-nguc", title: "Ợ nóng, nóng rát ngực — 5 thói quen cần sửa", desc: "Bài nền tảng" },
@@ -268,16 +266,15 @@ const groups = [
     specialty: "tieu-hoa",
     id: "dai-trang",
     emoji: "🔬",
-    name: "Viêm đại tràng • IBS • Táo bón • Tiêu chảy",
+    name: "Đại tràng • IBS • Rối loạn đi tiêu",
     foundation: [
       { slug: "viem-dai-trang-tieu-hoa", title: "Viêm đại tràng — Ăn sao cho đỡ đầy bụng?", desc: "Bài nền tảng" },
-      { slug: "viem-ruot-crohn-uc", title: "Viêm ruột tự miễn (Crohn & UC) & Ăn Low-Residue", desc: "Kiến thức" },
+      { slug: "viem-ruot-crohn-uc", title: "Crohn, UC và ăn ít bã", desc: "Kiến thức" },
       { slug: "dinh-duong-hoi-chung-tieu-hoa-ibs", title: "Hội chứng ruột kích thích (IBS)", desc: "Bài nền tảng" },
       { slug: "tao-bon-ibs", title: "Táo bón & IBS", desc: "Bài nền tảng" },
       { slug: "ibs-an-ngoai-low-fodmap-kieu-viet", title: "Ăn ngoài kiểu low-FODMAP sao cho đỡ đầy bụng?", desc: "Thực hành cốt lõi" },
       { slug: "dinh-duong-benh-tri", title: "Dinh dưỡng cho người bị bệnh trĩ", desc: "Bài nền tảng" },
       { slug: "probiotic-va-duong-ruot", title: "Probiotic & Prebiotic — Lợi khuẩn đường ruột", desc: "Bài nền tảng" },
-      { slug: "thuoc-chi-dinh-vitamin-k", title: "Thuốc chỉ định vitamin K & chế độ ăn", desc: "Bài nền tảng" },
       { slug: "tieu-chay-o-nguoi-lon", title: "Tiêu chảy ở người lớn — Bù nước & phục hồi", desc: "Bài nền tảng" },
       { slug: "tieu-chay-mat-nuoc", title: "Tiêu chảy mất nước — Dinh dưỡng bù điện giải", desc: "Bài nền tảng" },
     ],
@@ -302,9 +299,9 @@ const groups = [
     specialty: "than-tiet-nieu",
     id: "suy-than",
     emoji: "🫘",
-    name: "Bệnh thận mạn (Chưa lọc máu) • Thận IgA",
+    name: "Bệnh thận mạn chưa lọc máu",
     foundation: [
-      { slug: "suy-than", title: "Bệnh thận mạn — Chế độ ăn cho người bệnh thận", desc: "Bài nền tảng" },
+      { slug: "suy-than", title: "Bệnh thận mạn — Chế độ ăn nền tảng", desc: "Bài nền tảng" },
       { slug: "ckd-kali-phot-pho-muoi-thuc-hanh", title: "Kali, phốt pho, muối: ưu tiên gì trước?", desc: "Thực hành cốt lõi" },
       { slug: "benh-than-iga-dinh-duong", title: "Bệnh thận IgA — Dinh dưỡng bảo vệ cầu thận", desc: "Bài nền tảng" },
       { slug: "canh-bao-hieu-lam-suy-than-kieng", title: "Người bệnh thận mạn không tự ý kiêng kali, phốt pho", desc: "Đừng tin ngay" },
@@ -319,7 +316,7 @@ const groups = [
     emoji: "🩸",
     name: "Chạy thận nhân tạo (Lọc máu)",
     foundation: [
-      { slug: "dinh-duong-chay-than-nhan-tao", title: "Sai lầm chết người khi kiêng đạm", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-chay-than-nhan-tao", title: "Chạy thận — Không kiêng đạm quá mức", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -330,7 +327,7 @@ const groups = [
     emoji: "🚽",
     name: "Nhiễm trùng tiết niệu (UTI) • Viêm bàng quang",
     foundation: [
-      { slug: "nhiem-trung-tiet-nieu-uti", title: "Sự thật về Nam việt quất (Cranberry)", desc: "Bài nền tảng" },
+      { slug: "nhiem-trung-tiet-nieu-uti", title: "UTI và nam việt quất", desc: "Hiểu đúng" },
     ],
     faq: null,
     menus: [],
@@ -369,7 +366,7 @@ const groups = [
     emoji: "🦵",
     name: "Viêm khớp • Đau thần kinh tọa",
     foundation: [
-      { slug: "viem-khop-dang-thap", title: "Viêm khớp dạng thấp: Dập tắt tự miễn bằng Omega-3", desc: "Bài nền tảng" },
+      { slug: "viem-khop-dang-thap", title: "Viêm khớp dạng thấp và omega-3", desc: "Bài nền tảng" },
       { slug: "dinh-duong-viem-khop", title: "Thoái hóa khớp — Ăn gì để giảm đau?", desc: "Kiến thức" },
       { slug: "dinh-duong-benh-than-kinh-toa", title: "Đau thần kinh tọa & Thoát vị đĩa đệm", desc: "Bài nền tảng" },
       { slug: "che-do-trung-hai-viem-khop-tim-mach", title: "Chế độ ăn Địa Trung Hải chống viêm", desc: "Chế độ ăn" },
@@ -399,7 +396,7 @@ const groups = [
     emoji: "🦋",
     name: "Lupus ban đỏ & Bệnh tự miễn",
     foundation: [
-      { slug: "lupus-ban-do-he-thong", title: "Lupus ban đỏ hệ thống: Sống chung với Lũ", desc: "Bài nền tảng" },
+      { slug: "lupus-ban-do-he-thong", title: "Lupus ban đỏ hệ thống — Ăn uống khi bệnh mạn", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -449,7 +446,7 @@ const groups = [
     emoji: "🌱",
     name: "Trầm cảm • Lo âu",
     foundation: [
-      { slug: "tram-cam-lo-au-truc-ruot-nao", title: "Trầm cảm & Lo âu: Chữa lành từ đường ruột", desc: "Bài nền tảng" },
+      { slug: "tram-cam-lo-au-truc-ruot-nao", title: "Trầm cảm, lo âu và trục ruột - não", desc: "Bài nền tảng" },
       { slug: "dinh-duong-tram-cam", title: "Trầm cảm — Kiến thức chung", desc: "Kiến thức" },
     ],
     faq: null,
@@ -475,7 +472,7 @@ const groups = [
     emoji: "🫁",
     name: "Bệnh phổi tắc nghẽn (COPD)",
     foundation: [
-      { slug: "dinh-duong-benh-copd", title: "Vì sao ăn cơm lại khó thở hơn ăn mỡ?", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-benh-copd", title: "COPD — Ăn sao để đỡ khó thở sau bữa?", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -484,12 +481,11 @@ const groups = [
     specialty: "ho-hap",
     id: "hen-suyen",
     emoji: "🌬️",
-    name: "Hen suyễn • Viêm phế quản",
+    name: "Hen suyễn • Viêm phế quản mạn",
     foundation: [
-      { slug: "dinh-duong-hen-suyen", title: "Điểm mặt các chất kích hoạt cơn co thắt", desc: "Bài nền tảng" },
-      { slug: "hen-suyen-beo-phi-giam-can", title: "Hen suyễn kèm béo phì — Vì sao giảm 5-10% cân nặng lại đáng giá?", desc: "Thực hành cốt lõi" },
-      { slug: "viem-phe-quan-man-tinh", title: "Viêm phế quản mãn tính: 'Thuốc long đờm' từ nhà bếp", desc: "Bài nền tảng" },
-      { slug: "om-sot-cam-cum", title: "Ốm sốt, cảm cúm — Ăn gì mau khỏi?", desc: "Chăm sóc" },
+      { slug: "dinh-duong-hen-suyen", title: "Hen suyễn — Yếu tố kích hoạt qua ăn uống", desc: "Bài nền tảng" },
+      { slug: "hen-suyen-beo-phi-giam-can", title: "Hen kèm béo phì — Giảm cân đúng mức", desc: "Thực hành cốt lõi" },
+      { slug: "viem-phe-quan-man-tinh", title: "Viêm phế quản mạn — Ăn uống hỗ trợ long đờm", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -504,7 +500,7 @@ const groups = [
       { slug: "dinh-duong-viem-xoang", title: "Viêm xoang — Ăn uống và chăm sóc khi nghẹt mũi", desc: "Bài nền tảng" },
       { slug: "viem-mui-di-ung-va-viem-xoang-khac-nhau", title: "Viêm mũi dị ứng và viêm xoang khác nhau ở đâu?", desc: "Hiểu đúng" },
       { slug: "viem-mui-xoang-dot-bung-phat-an-uong", title: "Đợt bùng phát: ăn uống thế nào cho đỡ mệt?", desc: "Thực hành" },
-      { slug: "viem-xoang-di-ung-histamine", title: "Histamine trong đồ ăn có làm nặng triệu chứng không?", desc: "Góc nhìn chuyên biệt" },
+      { slug: "viem-xoang-di-ung-histamine", title: "Histamine trong đồ ăn có làm nặng triệu chứng không?", desc: "Hiểu đúng" },
     ],
     faq: null,
     menus: [],
@@ -515,7 +511,7 @@ const groups = [
     emoji: "😴",
     name: "Ngưng thở khi ngủ (Sleep Apnea)",
     foundation: [
-      { slug: "ngung-tho-khi-ngu-sleep-apnea", title: "Hiểm họa đột quỵ từ lớp mỡ chèn khí quản", desc: "Bài nền tảng" },
+      { slug: "ngung-tho-khi-ngu-sleep-apnea", title: "Ngưng thở khi ngủ và kiểm soát cân nặng", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -528,9 +524,9 @@ const groups = [
     emoji: "🧴",
     name: "Vảy nến • Eczema • Viêm da",
     foundation: [
-      { slug: "dinh-duong-vay-nen-psoriasis", title: "Vảy nến: Dập tắt ngọn lửa tự miễn bằng Omega-3", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-vay-nen-psoriasis", title: "Vảy nến và omega-3", desc: "Bài nền tảng" },
       { slug: "dinh-duong-eczema-viem-da-co-dia", title: "Eczema & Viêm da cơ địa — Bài nền tảng giảm ngứa", desc: "Bài nền tảng" },
-      { slug: "viem-da-co-dia-eczema", title: "Dị ứng thức ăn và loại trừ có hướng dẫn trong eczema", desc: "Góc nhìn chuyên biệt" },
+      { slug: "viem-da-co-dia-eczema", title: "Khi nào mới nên nghi dị ứng thức ăn trong eczema?", desc: "Hiểu đúng" },
       { slug: "eczema-loai-tru-thuc-pham-dung-cach", title: "Loại trừ thực phẩm thế nào để không thiếu chất?", desc: "Thực hành cốt lõi" },
       { slug: "eczema-nhat-ky-kich-hoat-bung-phat", title: "Ghi nhật ký yếu tố kích hoạt khi bùng phát", desc: "Thực hành" },
     ],
@@ -543,7 +539,7 @@ const groups = [
     emoji: "👩‍🦲",
     name: "Rụng tóc (Alopecia)",
     foundation: [
-      { slug: "dinh-duong-rung-toc-alopecia", title: "Dầu gội không thể cứu nang tóc bị bỏ đói", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-rung-toc-alopecia", title: "Rụng tóc — Khi nào nghĩ đến thiếu chất?", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -554,7 +550,7 @@ const groups = [
     emoji: "😳",
     name: "Chứng đỏ mặt (Rosacea)",
     foundation: [
-      { slug: "chung-do-mat-rosacea", title: "Trái bom nổ chậm từ Cồn và Gia vị cay", desc: "Bài nền tảng" },
+      { slug: "chung-do-mat-rosacea", title: "Rosacea — Rượu bia, cay nóng và bùng phát", desc: "Bài nền tảng" },
     ],
     faq: null,
     menus: [],
@@ -615,8 +611,8 @@ const groups = [
     emoji: "🏥",
     name: "Hồi phục sau phẫu thuật",
     foundation: [
-      { slug: "dinh-duong-sau-phau-thuat-ung-thu", title: "Sai lầm chết người khi kiêng thịt đỏ", desc: "Bài nền tảng" },
-      { slug: "dinh-duong-sau-phau-thuat", title: "Dinh dưỡng sau phẫu thuật cơ bản", desc: "Kiến thức" },
+      { slug: "dinh-duong-phau-thuat", title: "Dinh dưỡng trước và sau phẫu thuật (Chuẩn ERAS)", desc: "Bài nền tảng" },
+      { slug: "dinh-duong-sau-phau-thuat", title: "Dinh dưỡng sau phẫu thuật cơ bản", desc: "Thực hành" },
     ],
     faq: null,
     menus: [],
@@ -627,16 +623,14 @@ const groups = [
     specialty: "phu-nu-nhi",
     id: "nguoi-gia",
     emoji: "👴",
-    name: "Người cao tuổi • Suy dinh dưỡng",
+    name: "Người cao tuổi • Ăn ít • Mất cơ",
     foundation: [
       { slug: "dinh-duong-nguoi-cao-tuoi", title: "Dinh dưỡng cho người cao tuổi", desc: "Bài nền tảng" },
-      { slug: "thoai-hoa-diem-vang-duc-thuy-tinh-the", title: "Bảo vệ mắt: Thoái hóa điểm vàng & Đục thủy tinh thể", desc: "Kiến thức chuyên sâu" },
       { slug: "chan-an-nguoi-cao-tuoi", title: "Người lớn tuổi chán ăn — Làm sao đủ chất?", desc: "Bài nền tảng" },
       { slug: "them-dam-nguoi-gia", title: "Cách thêm đạm cho người già ăn ít", desc: "Bài nền tảng" },
       { slug: "nguoi-gia-an-it-mat-co-thuc-hanh", title: "Người lớn tuổi ăn ít, sụt cơ", desc: "Thực hành" },
-      { slug: "tao-bon-nguoi-cao-tuoi", title: "Táo bón kéo dài — Có đơn giản chỉ thiếu rau?", desc: "Bài nền tảng" },
+      { slug: "tao-bon-nguoi-cao-tuoi", title: "Táo bón kéo dài ở người lớn tuổi", desc: "Bài nền tảng" },
       { slug: "chon-sua-nguoi-gia", title: "Cách chọn sữa cho người lớn tuổi", desc: "Bài nền tảng" },
-      { slug: "sai-lam-loang-xuong-chi-canxi", title: "Loãng xương — 5 yếu tố", desc: "Hiểu đúng" },
       { slug: "suy-dinh-duong-nguoi-benh", title: "Suy dinh dưỡng — Nhận biết & can thiệp", desc: "Bài nền tảng" },
     ],
     faq: { href: "/hoi-dap#nguoi-gia", label: "Người già uống sữa gì tốt nhất?" },
@@ -651,7 +645,7 @@ const groups = [
     name: "Mang thai & Cho con bú",
     foundation: [
       { slug: "phu-nu-mang-thai", title: "Dinh dưỡng cho phụ nữ mang thai & cho con bú", desc: "Bài nền tảng" },
-      { slug: "tieu-duong-thai-ky-gestational", title: "Đái tháo đường thai kỳ: Hãm phanh đường huyết", desc: "Cẩm nang" },
+      { slug: "tieu-duong-thai-ky-gestational", title: "Đái tháo đường thai kỳ — Kiểm soát đường huyết", desc: "Cẩm nang" },
     ],
     faq: { href: "/hoi-dap#mang-thai", label: "Bà bầu có cần uống sắt mỗi ngày?" },
     menus: [],
@@ -663,9 +657,9 @@ const groups = [
     name: "Dinh dưỡng trẻ em & thanh thiếu niên",
     foundation: [
       { slug: "dinh-duong-tre-em", title: "Dinh dưỡng cho trẻ em & thanh thiếu niên", desc: "Bài nền tảng" },
-      { slug: "tang-chieu-cao-tuoi-day-thi", title: "Tăng chiều cao tuổi dậy thì & Hormone HGH", desc: "Kiến thức" },
-      { slug: "tre-tu-ky-tang-dong-adhd", title: "Trẻ Tự kỷ & Tăng động (ADHD): Giải mã Trục ruột não", desc: "Kiến thức chuyên sâu" },
-      { slug: "dinh-duong-an-dam-blw", title: "Ăn dặm (BLW): Nguy cơ chậm não bộ do thiếu sắt", desc: "Cảnh báo" },
+      { slug: "tang-chieu-cao-tuoi-day-thi", title: "Tăng chiều cao tuổi dậy thì", desc: "Kiến thức" },
+      { slug: "tre-tu-ky-tang-dong-adhd", title: "Tự kỷ, ADHD và trục ruột - não", desc: "Kiến thức chuyên sâu" },
+      { slug: "dinh-duong-an-dam-blw", title: "Ăn dặm BLW và nguy cơ thiếu sắt", desc: "Cảnh báo" },
       { slug: "dinh-duong-tre-bieng-an-suy-dinh-duong", title: "Trẻ biếng ăn, suy dinh dưỡng — Phục hồi", desc: "Bài nền tảng" },
     ],
     faq: null,
@@ -735,9 +729,40 @@ const groups = [
           ...g.foundation.map(a => a.slug),
           ...g.menus.map(m => m.slug),
         ]);
-        const readMore = articles
-          .filter(a => a.specialty === g.specialty && !listedSlugs.has(a.slug) && a.displayCategory !== "mon-an")
-          .slice(0, 4);
+        const groupAudience = [...new Set(
+          [...g.foundation, ...g.menus]
+            .map((item) => getArticle(item.slug)?.audience ?? [])
+            .flat()
+            .map((tag) => canonicalAudienceList([tag])[0])
+            .filter(Boolean),
+        )];
+        const isArticleLike = (article) =>
+          article.displayCategory === "bai-viet" || article.displayCategory === "dung-tin-ngay";
+        const matchAudience = (article) => {
+          if (!groupAudience.length) return false;
+          const articleAudience = canonicalAudienceList(article.audience);
+          return groupAudience.some((tag) => articleAudience.includes(tag));
+        };
+        const compareReadMore = (a, b) => {
+          const aAudience = matchAudience(a);
+          const bAudience = matchAudience(b);
+          if (aAudience !== bAudience) return Number(bAudience) - Number(aAudience);
+          if (Boolean(a.featured) !== Boolean(b.featured)) return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+          return 0;
+        };
+        const audienceMatches = articles
+          .filter((article) => !listedSlugs.has(article.slug) && isArticleLike(article) && matchAudience(article))
+          .sort(compareReadMore);
+        const audienceMatchedSlugs = new Set(audienceMatches.map((article) => article.slug));
+        const specialtyFallback = articles
+          .filter((article) => (
+            !listedSlugs.has(article.slug)
+            && !audienceMatchedSlugs.has(article.slug)
+            && isArticleLike(article)
+            && article.specialty === g.specialty
+          ))
+          .sort(compareReadMore);
+        const readMore = [...audienceMatches, ...specialtyFallback].slice(0, 4);
         const primaryFoundation = g.foundation.slice(0, 4);
         const extraFoundationCount = Math.max(0, g.foundation.length - primaryFoundation.length);
         const primaryMenus = g.menus.slice(0, 2);
@@ -753,7 +778,7 @@ const groups = [
               </span>
             </div>
             <div style="padding:1rem 1.2rem;">
-              <h3 style="margin:-0.2rem 0 0.6rem;font-size:0.88rem;color:var(--ink-secondary);">📖 Điểm vào theo chuyên khoa</h3>
+              <h3 style="margin:-0.2rem 0 0.6rem;font-size:0.88rem;color:var(--ink-secondary);">📖 Điểm vào theo nhóm bệnh</h3>
               <ul style="margin:0;padding-left:0;list-style:none;">
                 {primaryFoundation.map(a => (
                   <li style="margin:0.35rem 0;display:flex;align-items:baseline;gap:6px;">
@@ -766,7 +791,7 @@ const groups = [
               </ul>
               {extraFoundationCount > 0 && (
                 <p style="margin:0.55rem 0 0;color:var(--ink-tertiary);font-size:0.8rem;">
-                  + {extraFoundationCount} bài cùng nhóm trong trang chuyên khoa này
+                  + {extraFoundationCount} bài cùng mạch trong nhóm này
                 </p>
               )}
 
@@ -805,7 +830,7 @@ const groups = [
                   </ul>
                   {readMore.length > 2 && (
                     <p style="margin:0.55rem 0 0;color:var(--ink-tertiary);font-size:0.8rem;">
-                      + {readMore.length - 2} bài đọc thêm trong cùng chuyên khoa
+                      + {readMore.length - 2} bài đọc thêm gần nhất với nhóm này
                     </p>
                   )}
                 </div>
@@ -850,7 +875,7 @@ const groups = [
 
     <div style="margin-top:1.5rem;text-align:center;">
       <a href="/kien-thuc-dinh-duong" style="padding:0.6rem 1.5rem;background:var(--brand);color:white;border-radius:999px;text-decoration:none;font-weight:600;display:inline-block;">
-        📚 Khám phá tất cả bài viết →
+        📚 Xem tất cả bài viết →
       </a>
     </div>
   </main>

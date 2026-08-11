@@ -338,14 +338,18 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .rl-btn:hover { background:var(--brand-light); border-color:var(--brand); box-shadow:var(--shadow-sm); }
     @media (max-width:720px) {
       .content-page { padding:20px 14px; }
+      .page-header { margin-bottom:18px; }
+      .page-header h1 { gap:10px; margin-bottom:8px; }
+      .h-icon { font-size:1.45rem; }
       .h-text { font-size:1.26rem; }
       .page-desc { font-size:0.88rem; line-height:1.55; }
-      .section-label { margin:20px 0 10px; font-size:0.88rem; }
       .gl-guide { grid-template-columns:1fr; }
-      .gl-card { padding:12px 12px; }
-      .gl-range { font-size:1.04rem; }
-      .gl-desc { font-size:0.74rem; }
-      .info-note { font-size:0.82rem; padding:12px 14px; }
+      .gl-card { padding:11px 12px; border-radius:16px; }
+      .gl-range { font-size:1rem; }
+      .gl-label { font-size:0.94rem; }
+      .gl-desc { font-size:0.72rem; line-height:1.35; }
+      .info-note { font-size:0.8rem; padding:11px 13px; margin-bottom:18px; line-height:1.5; }
+      .section-label { margin:18px 0 10px; font-size:0.88rem; }
       .builder-layout { grid-template-columns:1fr; }
       .builder-side { position:static; }
       .builder-side-label { display:none; }
@@ -365,6 +369,22 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       .msb-main { font-size:0.84rem; }
       .msb-main strong { font-size:0.92rem; }
       .msb-sub { font-size:0.68rem; }
+    }
+    @media (max-width:480px) {
+      .content-page { padding:16px 12px; }
+      .page-header { margin-bottom:14px; }
+      .h-text { font-size:1.12rem; line-height:1.16; }
+      .page-desc { font-size:0.84rem; line-height:1.48; }
+      .gl-guide { gap:8px; margin-bottom:12px; }
+      .gl-card { padding:10px 11px; }
+      .gl-range { font-size:0.96rem; }
+      .gl-label { margin:2px 0; }
+      .info-note { font-size:0.78rem; padding:10px 12px; margin-bottom:14px; }
+      .section-label { margin:16px 0 8px; font-size:0.84rem; gap:8px; }
+      .sl-num { width:26px; height:26px; font-size:0.74rem; }
+      .builder-top { margin-bottom:10px; }
+      .builder-search { min-height:42px; padding:10px 14px; font-size:0.92rem; }
+      .chip { min-height:38px; padding:7px 12px; font-size:0.8rem; }
     }
   </style>
 

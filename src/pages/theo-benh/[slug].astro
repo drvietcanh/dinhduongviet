@@ -122,7 +122,7 @@ const sectionLinks = [
       <section class="hub-section" id="doc-them">
         <div class="section-head">
           <h2>Đọc thêm trong cùng mạch</h2>
-          <p>Các bài dưới đây được lấy theo đúng chuyên khoa hoặc đối tượng liên quan để người đọc mở rộng dần khi cần.</p>
+          <p>Các bài dưới đây ưu tiên đúng bệnh cảnh và đối tượng liên quan trước, rồi mới mở rộng sang nội dung gần nhất khi cần.</p>
         </div>
         <div class="article-grid">
           {more.map((article) => (
@@ -288,9 +288,92 @@ const sectionLinks = [
       .hero-actions { margin-top: 12px; }
     }
     @media (max-width: 640px) {
-      .hub-page { padding-inline: 1rem; }
-      h1 { font-size: 1.7rem; }
-      .article-grid { grid-template-columns: 1fr; }
+      .hub-page {
+        padding: 1rem 0.9rem 2rem;
+      }
+      .hero-copy, .hero-panel, .surface {
+        padding: 16px;
+        border-radius: 14px;
+      }
+      .hero {
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        font-size: 1.55rem;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      .desc,
+      .section-head p,
+      .hub-footer p,
+      .hero-panel ol {
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+      .quick-list {
+        gap: 6px;
+        margin-top: 12px;
+      }
+      .quick-list span {
+        padding: 5px 9px;
+        font-size: 0.74rem;
+      }
+      .section-pills {
+        gap: 6px;
+        margin-top: 14px;
+      }
+      .section-pill {
+        min-height: 34px;
+        padding: 5px 10px;
+        font-size: 0.76rem;
+      }
+      .section-pill strong {
+        min-width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+      }
+      .hero-panel h2,
+      .section-head h2,
+      .hub-footer h2 {
+        font-size: 1rem;
+        margin-bottom: 4px;
+      }
+      .hub-section {
+        margin-bottom: 14px;
+      }
+      .section-head {
+        margin-bottom: 10px;
+      }
+      .article-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .two-col {
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .tool-list {
+        gap: 7px;
+      }
+      .tool-card {
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 0.92rem;
+      }
+      .hub-footer {
+        margin-top: 18px;
+      }
+      .hero-actions {
+        display: grid;
+        gap: 8px;
+      }
+      .cta-btn,
+      .cta-alt-btn {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 0.92rem;
+      }
     }
   </style>
 </BaseLayout>

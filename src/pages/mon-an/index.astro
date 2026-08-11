@@ -570,8 +570,24 @@ const recipeCards = recipes.map((recipe) => {
     line-height: 1.55;
   }
   @media (max-width: 760px) {
-    .quick-start-panel { grid-template-columns: 1fr; }
+    .quick-start-panel {
+      grid-template-columns: 1fr;
+      padding: 12px;
+      gap: 10px;
+    }
+    .quick-start-copy strong {
+      font-size: 0.86rem;
+    }
+    .quick-start-copy p {
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
     .quick-start-links { justify-content: flex-start; }
+    .quick-start-links a {
+      min-height: 36px;
+      padding: 6px 11px;
+      font-size: 0.78rem;
+    }
     .usage-strip { grid-template-columns: 1fr; }
     .panel-head { flex-direction: column; }
     .filter-row,
@@ -586,20 +602,77 @@ const recipeCards = recipes.map((recipe) => {
     .panel-toggle-text { display: inline-flex; }
     .filter-panel[open] .panel-toggle-text::before { content: "Ẩn bộ lọc"; }
     .filter-panel:not([open]) .panel-toggle-text::before { content: "Mở bộ lọc"; }
+    .cross-cta-strip a {
+      min-height: 38px;
+      padding: 7px 11px;
+      font-size: 0.8rem;
+    }
   }
   @media (max-width: 600px) {
     .recipe-grid { grid-template-columns: 1fr; gap: 10px; }
-    .recipe-card { padding: 12px; }
+    .recipe-card { padding: 11px; border-radius: 12px; }
     .recipe-topline { align-items: flex-start; flex-direction: column; gap: 6px; }
-    .recipe-metrics { gap: 6px; }
-    .recipe-title { font-size: 0.94rem; }
-    .recipe-note { font-size: 0.78rem; }
+    .recipe-confidence { font-size: 0.72rem; }
+    .recipe-metrics { gap: 5px; margin-bottom: 5px; }
+    .recipe-metrics span {
+      min-height: 24px;
+      padding: 2px 7px;
+      font-size: 0.72rem;
+    }
+    .recipe-title { font-size: 0.92rem; line-height: 1.34; margin-bottom: 6px; }
+    .recipe-note {
+      font-size: 0.76rem;
+      line-height: 1.4;
+      margin-top: 5px;
+      -webkit-line-clamp: 1;
+    }
+    .recipe-tag-row { gap: 5px; min-height: 24px; }
+    .mini-tag { font-size: 0.66rem; padding: 3px 7px; }
+    .recipe-card-footer { margin-top: 7px; padding-top: 7px; }
+    .recipe-card-footer span { font-size: 0.76rem; }
     .food-thumb {
       width: calc(100% + 24px);
       margin-top: -12px;
       margin-left: -12px;
-      height: 110px;
+      margin-bottom: 8px;
+      height: 102px;
     }
     #recipe-reset { min-height: 44px; }
+  }
+  @media (max-width: 480px) {
+    .lead {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .filter-panel {
+      padding: 11px 12px;
+    }
+    .panel-head strong {
+      font-size: 0.84rem;
+    }
+    .panel-head p,
+    .filter-summary {
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+    .usage-step {
+      padding: 11px 12px;
+    }
+    .usage-step strong {
+      font-size: 0.82rem;
+    }
+    .usage-step p {
+      font-size: 0.76rem;
+      line-height: 1.42;
+    }
+    .cross-cta-strip {
+      gap: 6px;
+    }
+    .cross-cta-strip a {
+      width: 100%;
+      justify-content: center;
+    }
+    .recipe-topline { gap: 4px; }
+    .recipe-title { font-size: 0.9rem; }
   }
 </style>

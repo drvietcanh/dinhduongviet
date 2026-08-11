@@ -106,28 +106,27 @@ if (sodium > 600) {
   });
 }
 
-// 4. Suy thận — kali + protein + natri
-if (potassium > 400) {
+// 4. Bệnh thận mạn — ưu tiên cảnh báo gộp khi vừa kali cao vừa đạm cao
+if (protein >= 20 && potassium > 300) {
   warnings.push({
     icon: "🫘",
-    title: "Cảnh báo Suy thận",
-    advice: `Kali cao (${potassium.toFixed(0)}mg/100g). Người suy thận giai đoạn 3-5 cần hạn chế.`,
+    title: "Cảnh báo Bệnh thận mạn",
+    advice: `Vừa đạm cao (${protein.toFixed(0)}g) vừa kali cao (${potassium.toFixed(0)}mg/100g). Người bệnh thận mạn cần hạn chế hoặc tránh tùy giai đoạn.`,
+    severity: "high",
+  });
+} else if (potassium > 400) {
+  warnings.push({
+    icon: "🫘",
+    title: "Cảnh báo Bệnh thận mạn",
+    advice: `Kali cao (${potassium.toFixed(0)}mg/100g). Người bệnh thận mạn giai đoạn 3-5 thường cần hạn chế.`,
     severity: "high",
   });
 } else if (potassium > 250) {
   warnings.push({
     icon: "🫘",
-    title: "Lưu ý Suy thận",
-    advice: `Kali ở mức trung bình-cao (${potassium.toFixed(0)}mg). Người suy thận nên tham khảo bác sĩ.`,
+    title: "Lưu ý Bệnh thận mạn",
+    advice: `Kali ở mức trung bình-cao (${potassium.toFixed(0)}mg/100g). Nếu bạn bị bệnh thận mạn, nên cân đối khẩu phần theo tư vấn chuyên môn.`,
     severity: "medium",
-  });
-}
-if (protein >= 20 && potassium > 300) {
-  warnings.push({
-    icon: "🫘",
-    title: "Cảnh báo Suy thận (kép)",
-    advice: `Cả đạm cao (${protein.toFixed(0)}g) và kali cao (${potassium.toFixed(0)}mg). Người suy thận cần tránh.`,
-    severity: "high",
   });
 }
 
@@ -268,4 +267,41 @@ if (significantWarnings.length === 0 && warnings.length <= 1) return;
     color: #374151;
   }
   section.section h2 { font-size: 1.25rem; }
+  @media (max-width: 640px) {
+    .health-alerts {
+      gap: 7px;
+    }
+    .alert {
+      padding: 11px 13px;
+      border-radius: 9px;
+    }
+    .alert-header {
+      gap: 7px;
+      margin-bottom: 3px;
+    }
+    .alert-icon {
+      font-size: 1.08em;
+    }
+    .alert-advice {
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+    section.section h2 {
+      font-size: 1.14rem;
+      margin-bottom: 10px !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .alert {
+      padding: 10px 12px;
+    }
+    .alert-header strong {
+      font-size: 0.92rem;
+      line-height: 1.3;
+    }
+    .alert-advice {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+  }
 </style>

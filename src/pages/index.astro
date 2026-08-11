@@ -13,16 +13,16 @@ const categories = [...new Set(foods.map((f) => f.category))];
 const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
 const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
 const toolCards = [
-  { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu năng lượng và định hướng mục tiêu cân nặng" },
-  { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI", desc: "Đánh giá nhanh tình trạng cân nặng theo ngưỡng châu Á" },
-  { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", name: "So sánh thực phẩm", desc: "Đặt 2-4 thực phẩm cạnh nhau để chọn nhanh hơn" },
-  { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI cơm, bún, phở, trái cây Việt" },
-  { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của bữa ăn để tham khảo" },
-  { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Huyết áp, đường huyết, mỡ máu" },
-  { href: "/cong-cu/ke-hoach-bua-an", icon: "📋", name: "Kế hoạch bữa ăn", desc: "Gợi ý khung bữa ăn dễ áp dụng hơn mỗi ngày" },
-  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Gợi ý chỉ số cần theo dõi và khi nào nên cá thể hóa" },
-  { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Mốc nhu cầu dinh dưỡng tham khảo theo nhóm tuổi" },
-  { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "26 môn tập, calo tương đương thực phẩm" },
+  { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu và chọn mục tiêu phù hợp" },
+  { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI", desc: "Đánh giá nhanh cân nặng theo ngưỡng châu Á" },
+  { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", name: "So sánh thực phẩm", desc: "Đặt nhiều thực phẩm cạnh nhau để chọn nhanh" },
+  { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI của cơm, bún, phở và trái cây Việt" },
+  { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của cả bữa ăn" },
+  { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Theo dõi huyết áp, đường huyết và mỡ máu" },
+  { href: "/cong-cu/ke-hoach-bua-an", icon: "📋", name: "Kế hoạch bữa ăn", desc: "Gợi ý khung bữa ăn dễ áp dụng mỗi ngày" },
+  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Nhắc các chỉ số nên theo dõi trong thai kỳ" },
+  { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Xem mốc nhu cầu dinh dưỡng theo nhóm tuổi" },
+  { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "Ước tính calo tiêu hao theo từng môn tập" },
 ];
 ---
 
@@ -68,22 +68,22 @@ const toolCards = [
       <a href="/kien-thuc-dinh-duong" class="entry-card card-healthy">
         <div class="entry-icon">🥗</div>
         <div class="entry-title">Tôi muốn ăn lành mạnh hơn</div>
-        <div class="entry-desc">Tháp dinh dưỡng, đĩa ăn lành mạnh, giảm muối, giảm đường, đọc nhãn thực phẩm</div>
+        <div class="entry-desc">Tháp dinh dưỡng, đĩa ăn, giảm muối, giảm đường, đọc nhãn thực phẩm</div>
       </a>
       <a href="/ban-do-benh" class="entry-card card-medical">
         <div class="entry-icon">🩺</div>
         <div class="entry-title">Tôi đang có bệnh</div>
-        <div class="entry-desc">Đái tháo đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu — ăn gì, kiêng gì?</div>
+        <div class="entry-desc">Đái tháo đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu</div>
       </a>
       <a href="/cong-cu/muc-tieu-can-nang" class="entry-card card-weight">
         <div class="entry-icon">⚖️</div>
         <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
-        <div class="entry-desc">Ước tính nhu cầu năng lượng, đặt mục tiêu thực tế, và chọn hướng theo dõi phù hợp</div>
+        <div class="entry-desc">Ước tính nhu cầu năng lượng và chọn hướng theo dõi phù hợp</div>
       </a>
       <a href="/thuc-don" class="entry-card card-diet">
         <div class="entry-icon">📋</div>
         <div class="entry-title">Tôi cần thực đơn cụ thể</div>
-        <div class="entry-desc">Thực đơn mẫu theo mục tiêu, món dễ áp dụng tại nhà, và gợi ý ăn ngoài hàng</div>
+        <div class="entry-desc">Thực đơn mẫu theo mục tiêu, món dễ áp dụng và gợi ý ăn ngoài hàng</div>
       </a>
     </div>
   </section>
@@ -96,27 +96,27 @@ const toolCards = [
     <div class="start-grid">
         <a href="/theo-benh/tieu-duong" class="start-card">
         <div class="start-title">Đái tháo đường</div>
-        <p>Bài nền tảng, thực đơn mẫu, hỏi đáp, và công cụ theo dõi đường huyết.</p>
+        <p>Bài nền, thực đơn mẫu, hỏi đáp và công cụ theo dõi.</p>
         <span>Xem nhanh →</span>
       </a>
         <a href="/theo-benh/cao-huyet-ap" class="start-card">
         <div class="start-title">Tăng huyết áp</div>
-        <p>Giảm muối đúng cách, DASH, thực đơn 1 ngày, và gợi ý món ăn Việt.</p>
+        <p>Giảm muối đúng cách, DASH và gợi ý món ăn Việt.</p>
         <span>Xem nhanh →</span>
       </a>
         <a href="/theo-benh/gan-nhiem-mo" class="start-card">
         <div class="start-title">Gan nhiễm mỡ</div>
-        <p>Hướng dẫn ăn uống thực tế, thực đơn cho người bận rộn, và sai lầm cần tránh.</p>
+        <p>Hướng dẫn ăn uống thực tế, thực đơn gọn và sai lầm cần tránh.</p>
         <span>Xem nhanh →</span>
       </a>
         <a href="/theo-benh/da-day-trao-nguoc" class="start-card">
         <div class="start-title">Dạ dày, tá tràng</div>
-        <p>Lựa chọn bữa ăn dễ chịu hơn, món nên tránh, và cách ăn ngoài hàng.</p>
+        <p>Lựa chọn bữa ăn dễ chịu hơn, món nên tránh và cách ăn ngoài hàng.</p>
         <span>Xem nhanh →</span>
       </a>
       <a href="/cong-cu/muc-tieu-can-nang" class="start-card">
         <div class="start-title">Giảm cân an toàn</div>
-        <p>Tính nhu cầu năng lượng, đặt mục tiêu, và lập bữa ăn hợp lý hơn mỗi ngày.</p>
+        <p>Tính nhu cầu năng lượng, đặt mục tiêu và lập bữa ăn hợp lý hơn.</p>
         <span>Xem nhanh →</span>
       </a>
       <a href="/dung-tin-ngay" class="start-card">

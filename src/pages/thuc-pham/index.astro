@@ -528,6 +528,22 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
     .usage-strip { grid-template-columns: 1fr; }
     .quick-start-panel { grid-template-columns: 1fr; }
     .quick-start-links { justify-content: flex-start; }
+    .quick-start-panel {
+      padding: 12px;
+      gap: 10px;
+    }
+    .quick-start-copy strong {
+      font-size: 0.86rem;
+    }
+    .quick-start-copy p {
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .quick-start-links a {
+      min-height: 36px;
+      padding: 6px 11px;
+      font-size: 0.78rem;
+    }
     .panel-head { flex-direction: column; }
     .filter-row,
     .numeric-row { grid-template-columns: 1fr; }
@@ -546,16 +562,72 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
     .tag-filter-panel {
       padding: 12px 14px;
     }
+    .cross-cta-strip a {
+      min-height: 38px;
+      padding: 7px 11px;
+      font-size: 0.8rem;
+    }
   }
   @media (max-width: 600px) {
     :global(.food-grid) { grid-template-columns: 1fr; gap: 10px; }
-    :global(.food-card) { padding: 12px; gap: 9px; }
+    :global(.food-card) { padding: 11px; gap: 8px; border-radius: 12px; }
+    :global(.food-card-icon) {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      font-size: 1.25rem;
+    }
     :global(.food-card-topline) { align-items: flex-start; flex-direction: column; gap: 4px; }
-    :global(.food-card-topline h3) { font-size: 0.92rem; }
+    :global(.food-card-topline h3) { font-size: 0.9rem; line-height: 1.3; }
     :global(.food-card-base) { font-size: 0.72rem; }
     :global(.food-card-metrics) { gap: 5px; }
-    :global(.food-card-metrics span) { font-size: 0.74rem; }
+    :global(.food-card-metrics span) {
+      min-height: 24px;
+      padding: 2px 7px;
+      font-size: 0.72rem;
+    }
+    :global(.food-card-tags) { gap: 5px; min-height: 24px; }
+    :global(.food-mini-tag) { font-size: 0.66rem; padding: 3px 7px; }
+    :global(.food-card-cta) { margin-top: 8px; padding-top: 8px; }
+    :global(.food-card-cta span) { font-size: 0.76rem; }
     .filter-btn { padding: 8px 12px; font-size: 0.8rem; min-height: 44px; }
+  }
+  @media (max-width: 480px) {
+    .lead {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .quick-start-panel,
+    .filter-panel,
+    .tag-filter-panel {
+      padding: 11px 12px;
+    }
+    .panel-head strong,
+    .tag-filter-summary strong {
+      font-size: 0.84rem;
+    }
+    .panel-head p,
+    .filter-summary {
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+    .usage-step {
+      padding: 11px 12px;
+    }
+    .usage-step strong {
+      font-size: 0.82rem;
+    }
+    .usage-step p {
+      font-size: 0.76rem;
+      line-height: 1.42;
+    }
+    .cross-cta-strip {
+      gap: 6px;
+    }
+    .cross-cta-strip a {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
 

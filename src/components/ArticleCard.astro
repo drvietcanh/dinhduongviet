@@ -1,4 +1,6 @@
 ---
+import { canonicalAudienceList } from "../utils/audience";
+
 export interface Props {
   title: string;
   slug: string;
@@ -19,6 +21,7 @@ const articlePrefix = series === "dung-tin-ngay" && slug.startsWith("canh-bao-hi
     ? `/${series}`
     : prefix;
 const href = `${articlePrefix}/${slug}`;
+const normalizedAudience = canonicalAudienceList(audience);
 
 const audLabels: Record<string, { emoji: string; label: string }> = {
   diabetes: { emoji: "🩸", label: "Đái tháo đường" },
@@ -27,6 +30,8 @@ const audLabels: Record<string, { emoji: string; label: string }> = {
   kidney: { emoji: "🫘", label: "Thận" },
   "fatty-liver": { emoji: "🫁", label: "Gan nhiễm mỡ" },
   stomach: { emoji: "😣", label: "Dạ dày, tá tràng" },
+  cardio: { emoji: "❤️", label: "Tim mạch" },
+  respiratory: { emoji: "🫁", label: "Hô hấp" },
   elderly: { emoji: "👴", label: "Người cao tuổi" },
   pregnancy: { emoji: "🤰", label: "Thai kỳ" },
   children: { emoji: "🧒", label: "Trẻ em" },
@@ -43,7 +48,7 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
   "ask-doctor": { emoji: "⚕️", label: "Hỏi bác sĩ" },
 };
 const primaryTag = tags?.map((t) => tagLabels[t]).find(Boolean) ?? null;
-const primaryAudience = audience?.map((a) => audLabels[a]).find(Boolean) ?? null;
+const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean) ?? null;
 ---
 
 <a href={href} class="ac-card">
@@ -132,7 +137,7 @@ const primaryAudience = audience?.map((a) => audLabels[a]).find(Boolean) ?? null
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
   .ac-prio-tag {
     display: inline-flex;
@@ -171,8 +176,8 @@ const primaryAudience = audience?.map((a) => audLabels[a]).find(Boolean) ?? null
   .ac-cta {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px dashed var(--line);
   }
   .ac-cta span {

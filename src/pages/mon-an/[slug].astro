@@ -208,12 +208,24 @@ const recipeSchema = {
     </section>
   )}
 
-  <section class="section card">
-    <h2>Nguồn dữ liệu</h2>
-    <p class="muted"><strong>Nguồn:</strong> {source?.name ?? recipe.sourceId}</p>
-    <p class="muted" style="margin-top: 10px;">
-      <strong>Lưu ý sai số:</strong> Đây là giá trị ước tính theo công thức mẫu. Món thực tế có thể thay đổi theo lượng tinh bột, đạm, dầu mỡ, nước chấm và kích thước khẩu phần.
-    </p>
+  <section class="section card source-card">
+    <div class="section-head">
+      <h2>Nguồn dữ liệu</h2>
+      <p>Đọc nhanh nguồn và giới hạn của số liệu ước tính theo công thức mẫu.</p>
+    </div>
+    <div class="source-facts">
+      <div class="source-fact">
+        <span>Nguồn</span>
+        <strong>{source?.name ?? recipe.sourceId}</strong>
+      </div>
+      <div class="source-fact">
+        <span>Loại dữ liệu</span>
+        <strong>Ước tính theo khẩu phần mẫu</strong>
+      </div>
+    </div>
+    <div class="source-copy">
+      <p><strong>Lưu ý sai số:</strong> Giá trị có thể thay đổi theo lượng tinh bột, đạm, dầu mỡ, nước chấm và kích thước khẩu phần thực tế.</p>
+    </div>
   </section>
   <script is:inline>
     function shareRecipe() {
@@ -433,7 +445,7 @@ const recipeSchema = {
 
   .next-step-link {
     display: flex;
-    min-height: 94px;
+    min-height: 88px;
     flex-direction: column;
     justify-content: space-between;
     padding: 12px 13px;
@@ -462,6 +474,43 @@ const recipeSchema = {
     color: var(--brand-dark);
   }
 
+  .source-card {
+    display: grid;
+    gap: 12px;
+  }
+
+  .source-facts {
+    display: grid;
+    gap: 8px;
+  }
+
+  .source-fact {
+    display: grid;
+    gap: 3px;
+    padding: 10px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--bg-soft);
+  }
+
+  .source-fact span {
+    color: var(--ink-tertiary);
+    font-size: 0.74rem;
+    line-height: 1.3;
+  }
+
+  .source-fact strong {
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+
+  .source-copy p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
   @media (max-width: 900px) {
     .detail-heading,
     .detail-metrics {
@@ -474,6 +523,11 @@ const recipeSchema = {
   }
 
   @media (max-width: 640px) {
+    .detail-hero {
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
     .section.grid.two {
       grid-template-columns: 1fr;
     }
@@ -493,26 +547,75 @@ const recipeSchema = {
       line-height: 1.15;
     }
 
+    .detail-actions {
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .action-chip {
+      min-height: 38px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+
     .detail-metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
     }
 
     .metric-card {
-      padding: 10px 12px;
+      padding: 9px 10px;
     }
 
     .metric-card span {
-      font-size: 0.78rem;
-      margin-bottom: 4px;
+      font-size: 0.74rem;
+      margin-bottom: 3px;
     }
 
     .metric-card strong {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+    }
+
+    .detail-meta-strip {
+      gap: 6px;
+    }
+
+    .meta-pill {
+      padding: 7px 9px;
     }
 
     .detail-note-card,
     .next-step-card {
-      padding: 14px;
+      padding: 12px;
+    }
+
+    .source-card {
+      gap: 10px;
+    }
+
+    .source-fact {
+      padding: 9px 10px;
+    }
+
+    .source-copy p {
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .detail-note-card h2,
+    .section-head h2 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .detail-note-card p,
+    .section-head p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .section {
+      margin-top: 14px;
     }
 
     .detail-tags .tag {
@@ -532,5 +635,58 @@ const recipeSchema = {
       text-align: center;
       min-height: 42px;
     }
+
+    .next-step-link {
+      min-height: 78px;
+      padding: 10px 11px;
+    }
+  }
+  @media (max-width: 480px) {
+    .detail-copy h1 {
+      font-size: 1.32rem;
+    }
+
+    .detail-actions {
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .action-chip {
+      min-height: 36px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+    }
+
+    .detail-metrics {
+      gap: 7px;
+    }
+
+    .metric-card {
+      padding: 8px 9px;
+    }
+
+    .metric-card span {
+      font-size: 0.72rem;
+    }
+
+    .metric-card strong {
+      font-size: 0.86rem;
+    }
+
+    .detail-note-card,
+    .next-step-card {
+      padding: 11px;
+    }
+
+    .section-head { margin-bottom: 10px; }
+    .section-head p { font-size: 0.84rem; line-height: 1.45; }
+    .next-step-grid { gap: 6px; }
+    .next-step-link { min-height: 62px; padding: 8px 10px; }
+    .next-step-link strong { font-size: 0.84rem; }
+    .next-step-link span { font-size: 0.74rem; line-height: 1.35; margin-top: 7px; }
+    .source-facts { gap: 7px; }
+    .source-fact span { font-size: 0.72rem; }
+    .source-fact strong { font-size: 0.86rem; }
+    .source-copy p { font-size: 0.82rem; line-height: 1.45; }
   }
 </style>

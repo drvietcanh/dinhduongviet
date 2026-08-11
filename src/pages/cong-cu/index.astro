@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const siteTitle = "Công cụ dinh dưỡng | Dinh Dưỡng Việt";
-const siteDesc = "Công cụ dinh dưỡng đơn giản cho người Việt: ưu tiên tra cứu thực phẩm, đọc bữa ăn và các ước tính cơ bản dễ áp dụng.";
+const siteDesc = "Công cụ dinh dưỡng gọn, dễ dùng cho người Việt: tra cứu thực phẩm, đọc bữa ăn và theo dõi các chỉ số cơ bản.";
 function splitToolCopy(desc) {
   const parts = desc.split(". ");
   return {
@@ -13,65 +13,65 @@ function splitToolCopy(desc) {
 const toolGroups = [
   {
     title: "Bắt đầu với dữ liệu thực phẩm",
-    summary: "Dành cho nhu cầu tra nhanh calo, so sánh món và lên ý tưởng bữa ăn từ dữ liệu sẵn có.",
+    summary: "Dành cho tra nhanh calo, so sánh món và lên ý tưởng bữa ăn từ dữ liệu sẵn có.",
     items: [
-      { icon: "🇻🇳", name: "Bảng TP thực phẩm Việt", href: "/cong-cu/tra-cuu-thuc-pham-viet", desc: "Xem thành phần dinh dưỡng thực phẩm Việt ở mức tham khảo, kèm nguồn dữ liệu Việt và giới hạn dùng.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🔎", name: "Lọc thực phẩm", href: "/cong-cu/loc-thuc-pham", desc: "Lọc thực phẩm theo nhóm và chỉ số dinh dưỡng để thu hẹp lựa chọn nhanh hơn.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "⚖️", name: "So sánh thực phẩm", href: "/cong-cu/so-sanh-thuc-pham", desc: "So sánh thành phần dinh dưỡng giữa các thực phẩm, không gắn nhãn tốt hay xấu.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🍱", name: "So sánh bữa ăn", href: "/cong-cu/so-sanh-bua-an", desc: "So sánh dữ liệu dinh dưỡng giữa các bữa ăn để nhìn rõ khác biệt khẩu phần.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🇻🇳", name: "Bảng TP thực phẩm Việt", href: "/cong-cu/tra-cuu-thuc-pham-viet", desc: "Tra thành phần dinh dưỡng thực phẩm Việt. Có nguồn dữ liệu và giới hạn dùng.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🔎", name: "Lọc thực phẩm", href: "/cong-cu/loc-thuc-pham", desc: "Lọc thực phẩm theo nhóm và chỉ số dinh dưỡng. Dùng khi cần thu hẹp lựa chọn nhanh.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "⚖️", name: "So sánh thực phẩm", href: "/cong-cu/so-sanh-thuc-pham", desc: "So sánh thành phần dinh dưỡng giữa nhiều thực phẩm. Dùng khi cần chọn nhanh giữa các lựa chọn.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🍱", name: "So sánh bữa ăn", href: "/cong-cu/so-sanh-bua-an", desc: "So sánh dữ liệu dinh dưỡng giữa các bữa ăn. Dùng khi cần nhìn rõ khác biệt khẩu phần.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
     title: "Chỉ số cơ thể",
-    summary: "Phù hợp khi cần nhìn nhanh cân nặng, vòng eo và các mốc theo dõi cơ bản của bản thân.",
+    summary: "Phù hợp khi cần nhìn nhanh cân nặng, vòng eo và các mốc theo dõi cơ bản.",
     items: [
-      { icon: "⚖️", name: "Tính BMI tham khảo", href: "/cong-cu/bmi", desc: "Tính BMI ở mức tham khảo và nhắc các giới hạn của chỉ số này, không thay thế đánh giá lâm sàng.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🎯", name: "Mục tiêu cân nặng", href: "/cong-cu/muc-tieu-can-nang", desc: "Định hướng mục tiêu cân nặng tham khảo với cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "📊", name: "Theo dõi sức khỏe", href: "/cong-cu/theo-doi-suc-khoe", desc: "Ghi nhật ký chỉ số sức khỏe và nhắc các tình huống cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "⚖️", name: "Tính BMI tham khảo", href: "/cong-cu/bmi", desc: "Tính BMI ở mức tham khảo. Có nhắc giới hạn của chỉ số này.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🎯", name: "Mục tiêu cân nặng", href: "/cong-cu/muc-tieu-can-nang", desc: "Định hướng mục tiêu cân nặng tham khảo. Dùng khi cần một mốc bắt đầu rõ hơn.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "📊", name: "Theo dõi sức khỏe", href: "/cong-cu/theo-doi-suc-khoe", desc: "Ghi nhật ký chỉ số sức khỏe. Dùng khi cần theo dõi nhiều chỉ số cùng lúc.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
     title: "Năng lượng và khẩu phần",
-    summary: "Dùng khi muốn ước tính nhu cầu năng lượng, đạm và lượng ăn phù hợp hơn với mục tiêu hằng ngày.",
+    summary: "Dùng khi muốn ước tính năng lượng, đạm và lượng ăn phù hợp hơn với mục tiêu hằng ngày.",
     items: [
-      { icon: "🔥", name: "Calo tiêu thụ khi tập", href: "/cong-cu/tinh-calo-tieu-thu", desc: "Ước tính năng lượng tiêu hao khi vận động ở mức tham khảo, không dùng để đặt mục tiêu giảm cân, ăn bù hoặc điều trị.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🔥", name: "Calo tiêu thụ khi tập", href: "/cong-cu/tinh-calo-tieu-thu", desc: "Ước tính năng lượng tiêu hao khi vận động. Không dùng để đặt mục tiêu giảm cân hay ăn bù.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🥩", name: "Tính nhu cầu đạm", href: "/cong-cu/tinh-nhu-cau-dam", desc: "Ước tính lượng đạm theo cân nặng, bệnh lý và mục tiêu chính.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🎯", name: "Mục tiêu dinh dưỡng", href: "/cong-cu/muc-tieu-dinh-duong", desc: "Định hướng mục tiêu dinh dưỡng tham khảo với cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🔬", name: "Đánh giá khẩu phần Việt", href: "/cong-cu/khau-phan-viet-clinical", desc: "Ước tính khẩu phần Việt để giáo dục dinh dưỡng, có cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🔁", name: "Đổi đơn vị", href: "/cong-cu/doi-don-vi", desc: "Quy đổi đơn vị thực phẩm ở mức tham khảo, có ghi chú giới hạn khi quy đổi theo dụng cụ hoặc thể tích.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🎯", name: "Mục tiêu dinh dưỡng", href: "/cong-cu/muc-tieu-dinh-duong", desc: "Định hướng mục tiêu dinh dưỡng tham khảo. Dùng khi cần một mốc bắt đầu rõ hơn.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🔬", name: "Đánh giá khẩu phần Việt", href: "/cong-cu/khau-phan-viet-clinical", desc: "Ước tính khẩu phần Việt để giáo dục dinh dưỡng. Có cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🔁", name: "Đổi đơn vị", href: "/cong-cu/doi-don-vi", desc: "Quy đổi đơn vị thực phẩm ở mức tham khảo. Dùng khi cần đổi theo dụng cụ hoặc thể tích.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
     title: "Carb, đường huyết, GI/GL",
-    summary: "Hữu ích nhất cho người cần kiểm soát đường huyết, chọn tinh bột hợp lý và đọc bữa ăn có hệ thống hơn.",
+    summary: "Hữu ích nhất khi cần kiểm soát đường huyết, chọn tinh bột hợp lý và đọc bữa ăn rõ hơn.",
     items: [
-      { icon: "🌾", name: "Chỉ số GI thực phẩm Việt", href: "/cong-cu/chi-so-gi", desc: "Tìm hiểu ý nghĩa chỉ số GI ở mức tham khảo và các tình huống cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🌾", name: "Chỉ số GI thực phẩm Việt", href: "/cong-cu/chi-so-gi", desc: "Tra chỉ số GI của thực phẩm Việt. Dùng khi cần chọn tinh bột hợp lý hơn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "⚖️", name: "Tính GL từ bữa ăn", href: "/cong-cu/tinh-gl-bua-an", desc: "Ghép nhiều thực phẩm để ước tính tải đường huyết của cả bữa ăn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔢", name: "Tính carb trong bữa ăn", href: "/cong-cu/tinh-carb", desc: "Ước tính lượng carb trong món và khẩu phần Việt.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🧋", name: "Đường trong đồ uống", href: "/cong-cu/duong-do-uong", desc: "Tra cứu lượng đường tham khảo trong một số đồ uống, không dùng để kết luận đồ uống tốt hay xấu.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🧋", name: "Đường trong đồ uống", href: "/cong-cu/duong-do-uong", desc: "Tra lượng đường tham khảo trong một số đồ uống. Dùng khi cần đọc nhanh trước khi chọn.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
     title: "Muối, nước, bệnh mạn",
-    summary: "Tập trung vào những chỉ số cần thận trọng hơn khi có bệnh nền, thai kỳ, trẻ em hoặc đang dùng thuốc.",
+    summary: "Tập trung vào những chỉ số cần thận trọng hơn khi có bệnh nền, thai kỳ hoặc trẻ em.",
     items: [
-      { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Ước tính nước cho người khỏe, có chặn nhóm cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Tra cứu muối ước tính trong món ăn và nhắc các tình huống cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhắc các tình huống cần cá thể hóa khi đánh giá dinh dưỡng trong thai kỳ.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Nhắc các tình huống cần cá thể hóa khi đánh giá nhu cầu dinh dưỡng của trẻ.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Ước tính nước cho người khỏe. Có chặn nhóm cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Tra muối ước tính trong món ăn. Dùng khi cần đọc nhanh cho tăng huyết áp hoặc tim mạch.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhắc các tình huống cần cá thể hóa trong thai kỳ.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Nhắc các tình huống cần cá thể hóa khi đọc nhu cầu dinh dưỡng của trẻ.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
   {
     title: "Thực đơn, đi chợ, nhật ký",
     summary: "Phù hợp khi đã có mục tiêu tương đối rõ và muốn biến nó thành việc làm được mỗi ngày.",
     items: [
-      { icon: "✅", name: "Checklist ăn uống hôm nay", href: "/cong-cu/checklist-an-uong", desc: "Checklist nhắc việc ăn uống ở mức tham khảo, không dùng để kết luận khẩu phần đạt hay chưa đạt.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🍽️", name: "Đĩa ăn lành mạnh", href: "/cong-cu/dia-an-lanh-manh", desc: "Định hướng đĩa ăn chung và nhắc các tình huống cần cá thể hóa khi có bệnh nền.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "📋", name: "Kế hoạch bữa ăn", href: "/cong-cu/ke-hoach-bua-an", desc: "Lập khung bữa ăn tham khảo và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🧪", name: "Đánh giá bữa ăn", href: "/cong-cu/danh-gia-bua-an", desc: "Hub chọn công cụ phù hợp để đánh giá bữa ăn: khẩu phần, carb, GL, đạm, nước và so sánh món.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🗓️", name: "Lập thực đơn tuần", href: "/cong-cu/lap-thuc-don-tuan", desc: "Gợi ý khung thực đơn tuần ở mức tham khảo và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🛒", name: "Danh sách đi chợ", href: "/cong-cu/danh-sach-di-cho", desc: "Tạo danh sách đi chợ tham khảo để nhắc việc mua thực phẩm, không dùng để kết luận khẩu phần đủ chất hay phù hợp cho bệnh.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🍳", name: "Tìm món từ nguyên liệu", href: "/cong-cu/tim-mon-tu-nguyen-lieu", desc: "Gợi ý ý tưởng món ăn từ nguyên liệu bạn nhập ở mức tham khảo, không thay thế tư vấn chuyên môn.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "✅", name: "Checklist ăn uống hôm nay", href: "/cong-cu/checklist-an-uong", desc: "Checklist nhắc việc ăn uống trong ngày. Không dùng để kết luận khẩu phần đã đủ hay chưa.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🍽️", name: "Đĩa ăn lành mạnh", href: "/cong-cu/dia-an-lanh-manh", desc: "Định hướng đĩa ăn chung. Dùng khi cần nhìn nhanh tỷ lệ nhóm thực phẩm.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "📋", name: "Kế hoạch bữa ăn", href: "/cong-cu/ke-hoach-bua-an", desc: "Lập khung bữa ăn tham khảo. Dùng khi cần bắt đầu từ một nhịp ăn rõ hơn.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🧪", name: "Đánh giá bữa ăn", href: "/cong-cu/danh-gia-bua-an", desc: "Chọn đúng công cụ để đọc bữa ăn: khẩu phần, carb, GL, đạm, nước hoặc so sánh món.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🗓️", name: "Lập thực đơn tuần", href: "/cong-cu/lap-thuc-don-tuan", desc: "Gợi ý khung thực đơn tuần tham khảo. Dùng khi cần nhìn cả tuần thay vì từng bữa.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🛒", name: "Danh sách đi chợ", href: "/cong-cu/danh-sach-di-cho", desc: "Tạo danh sách đi chợ tham khảo để nhắc việc mua thực phẩm.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🍳", name: "Tìm món từ nguyên liệu", href: "/cong-cu/tim-mon-tu-nguyen-lieu", desc: "Gợi ý món ăn từ nguyên liệu bạn đang có. Dùng khi cần ý tưởng nấu nhanh.", status: "Đã kiểm v1", statusType: "stable" },
     ],
   },
 ];
@@ -87,7 +87,7 @@ const quickStarts = [
   },
   {
     title: "Tôi cần kiểm soát đường huyết",
-    desc: "Đi theo thứ tự carb, GL bữa ăn rồi dùng công cụ theo dõi sức khỏe tổng quát nếu cần ghi nhiều chỉ số cùng lúc.",
+    desc: "Đi theo thứ tự carb, GL bữa ăn rồi theo dõi sức khỏe nếu cần ghi nhiều chỉ số cùng lúc.",
     links: [
       { href: "/cong-cu/tinh-carb", label: "Tính carb" },
       { href: "/cong-cu/tinh-gl-bua-an", label: "Tính GL bữa ăn" },
@@ -135,7 +135,7 @@ const holdBackTools = [
     .cc-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
     .cc-group-head h2 { margin: 0; font-size: 1.15rem; }
     .cc-count { color: var(--ink-tertiary); font-size: 0.82rem; white-space: nowrap; }
-    .cc-group-summary { margin: -2px 0 12px; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.55; max-width: 760px; }
+    .cc-group-summary { margin: -2px 0 12px; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.5; max-width: 760px; }
     .cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .cc-card {
       display: block;
@@ -165,7 +165,13 @@ const holdBackTools = [
     .cc-card h3 span { color: var(--brand); }
     .cc-card p { margin: 0; font-size: 0.82rem; color: var(--ink-secondary); line-height: 1.5; }
     .cc-card p strong { color: var(--ink); font-size: 0.86rem; }
-    .cc-usewhen { margin-top: 8px; }
+    .cc-usewhen {
+      margin-top: 7px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
     .cc-card-cta {
       display: flex;
       justify-content: flex-end;
