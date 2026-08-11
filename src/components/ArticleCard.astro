@@ -26,7 +26,7 @@ const audLabels: Record<string, { emoji: string; label: string }> = {
   gout: { emoji: "🦶", label: "Gout" },
   kidney: { emoji: "🫘", label: "Thận" },
   "fatty-liver": { emoji: "🫁", label: "Gan nhiễm mỡ" },
-  stomach: { emoji: "😣", label: "Dạ dày" },
+  stomach: { emoji: "😣", label: "Dạ dày, tá tràng" },
   elderly: { emoji: "👴", label: "Người cao tuổi" },
   pregnancy: { emoji: "🤰", label: "Thai kỳ" },
   children: { emoji: "🧒", label: "Trẻ em" },
@@ -42,6 +42,8 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
   caregiver: { emoji: "👨‍👩‍👧‍👦", label: "Người chăm" },
   "ask-doctor": { emoji: "⚕️", label: "Hỏi bác sĩ" },
 };
+const primaryTag = tags?.map((t) => tagLabels[t]).find(Boolean) ?? null;
+const primaryAudience = audience?.map((a) => audLabels[a]).find(Boolean) ?? null;
 ---
 
 <a href={href} class="ac-card">
@@ -53,28 +55,19 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
     </div>
   </div>
   <div class="ac-bottom">
-    <div class="ac-tags">
-      {tags && tags.length > 0 && tags.map(t => {
-        const info = tagLabels[t];
-        return info
-          ? <span class="ac-prio-tag">{info.emoji} {info.label}</span>
-          : null;
-      })}
-    </div>
-    {audience && audience.length > 0 && (
-      <div class="ac-audience">
-        {audience.map(a => {
-          const info = audLabels[a];
-          return info
-            ? <span class="ac-aud-tag" title={info.label}>{info.emoji} {info.label}</span>
-            : null;
-        })}
+    {(primaryTag || primaryAudience) && (
+      <div class="ac-tags">
+        {primaryTag && <span class="ac-prio-tag">{primaryTag.emoji} {primaryTag.label}</span>}
+        {primaryAudience && <span class="ac-aud-tag" title={primaryAudience.label}>{primaryAudience.emoji} {primaryAudience.label}</span>}
       </div>
     )}
     <div class="ac-meta">
       <span>{readTime} phút</span>
       <span class="ac-dot">·</span>
       <span>{new Date(date).toLocaleDateString("vi-VN", { year: "numeric", month: "2-digit", day: "2-digit" })}</span>
+    </div>
+    <div class="ac-cta">
+      <span>Đọc bài</span>
     </div>
   </div>
 </a>
@@ -85,12 +78,13 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
     flex-direction: column;
     background: var(--card);
     border: 1px solid var(--card-border);
-    border-radius: var(--radius-lg);
+    border-radius: 14px;
     padding: 14px 16px;
     text-decoration: none;
     color: inherit;
     transition: all var(--transition);
     box-shadow: var(--shadow-sm);
+    min-height: 100%;
   }
   .ac-card:hover {
     border-color: var(--brand-light2);
@@ -100,7 +94,7 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
   .ac-top {
     display: flex;
     gap: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .ac-emoji {
     font-size: 1.5rem;
@@ -116,6 +110,10 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
     font-size: 0.92rem;
     line-height: 1.4;
     font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .ac-desc {
     margin: 3px 0 0;
@@ -134,13 +132,13 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
   .ac-prio-tag {
     display: inline-flex;
     align-items: center;
     gap: 2px;
-    padding: 2px 7px;
+    padding: 3px 8px;
     border-radius: 4px;
     background: var(--brand-light);
     font-size: 0.7rem;
@@ -148,18 +146,12 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
     color: var(--brand);
     white-space: nowrap;
   }
-  .ac-audience {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    margin-bottom: 4px;
-  }
   .ac-aud-tag {
     display: inline-flex;
     align-items: center;
-    gap: 1px;
-    padding: 1px 6px;
-    border-radius: 3px;
+    gap: 2px;
+    padding: 3px 8px;
+    border-radius: 4px;
     background: var(--bg-elevated);
     font-size: 0.7rem;
     color: var(--ink-secondary);
@@ -169,7 +161,45 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
     font-size: 0.72rem;
     color: var(--ink-tertiary);
     display: flex;
-    gap: 4px;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .ac-meta span:last-child {
+    white-space: nowrap;
+  }
+  .ac-cta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+  .ac-cta span {
+    color: var(--brand-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
   }
   .ac-dot { opacity: 0.4; }
+  @media (max-width: 640px) {
+    .ac-card {
+      padding: 12px 13px;
+    }
+    .ac-title {
+      font-size: 0.88rem;
+    }
+    .ac-desc {
+      font-size: 0.77rem;
+      -webkit-line-clamp: 2;
+    }
+    .ac-tags {
+      margin-bottom: 7px;
+    }
+    .ac-prio-tag,
+    .ac-aud-tag {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 </style>

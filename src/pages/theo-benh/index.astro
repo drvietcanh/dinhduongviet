@@ -4,6 +4,14 @@ import { diseaseHubs } from "../../data/disease-hubs";
 
 const title = "Theo bệnh | Dinh Dưỡng Việt";
 const desc = "Chọn đúng nhóm bệnh để xem bài nền tảng, thực đơn mẫu, hiểu lầm thường gặp và công cụ áp dụng ngay.";
+const quickRoutes = [
+  { href: "/theo-benh/tieu-duong", label: "Mới biết đái tháo đường", note: "Đi từ bài nền, hiểu carb và thực đơn ngày thường." },
+  { href: "/theo-benh/cao-huyet-ap", label: "Huyết áp cao, ăn mặn", note: "Ưu tiên natri ẩn, nước chấm và thực đơn dễ áp dụng." },
+  { href: "/theo-benh/beo-phi-chuyen-hoa", label: "Béo phì, bụng to, kháng insulin", note: "Đi từ vòng eo, năng lượng và giảm cân bền vững thay vì ăn kiêng cực đoan." },
+  { href: "/theo-benh/gan-nhiem-mo", label: "Gan nhiễm mỡ, men gan", note: "Tập trung vào đường lỏng, năng lượng và giảm cân bền." },
+  { href: "/theo-benh/da-day-trao-nguoc", label: "Dạ dày, tá tràng", note: "Chọn bữa nhỏ, mềm, ít kích thích và dễ chịu hơn." },
+  { href: "/theo-benh/ho-hap-man", label: "COPD, hen suyễn, khó thở khi ăn", note: "Ưu tiên dung nạp bữa ăn, cân nặng và các bệnh đi kèm." },
+];
 ---
 
 <BaseLayout title={title} description={desc} canonical="/theo-benh">
@@ -30,6 +38,22 @@ const desc = "Chọn đúng nhóm bệnh để xem bài nền tảng, thực đ�
           <li>Khi muốn đi nhanh vào một lộ trình đọc đã được gom sẵn.</li>
           <li>Nếu chưa chắc bệnh thuộc nhóm nào, hãy mở Bản đồ bệnh để xem toàn cảnh trước.</li>
         </ul>
+      </div>
+    </section>
+
+    <section class="quick-route-section">
+      <div class="section-head">
+        <h2>Đi nhanh theo tình huống</h2>
+        <p>Nếu chưa muốn nhìn hết các nhóm bệnh, bạn có thể bắt đầu từ những tình huống vào web phổ biến nhất.</p>
+      </div>
+      <div class="quick-route-grid">
+        {quickRoutes.map((item) => (
+          <a class="quick-route-card" href={item.href}>
+            <strong>{item.label}</strong>
+            <p>{item.note}</p>
+            <span>Vào lộ trình →</span>
+          </a>
+        ))}
       </div>
     </section>
 
@@ -101,6 +125,42 @@ const desc = "Chọn đúng nhóm bệnh để xem bài nền tảng, thực đ�
     .section-head { margin-bottom: 12px; }
     .section-head h2 { margin: 0 0 4px; font-size: 1.2rem; }
     .section-head p { margin: 0; color: var(--ink-secondary); }
+    .quick-route-section { margin-bottom: 24px; }
+    .quick-route-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .quick-route-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: var(--bg-soft);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .quick-route-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand-light2);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+    }
+    .quick-route-card strong { font-size: 0.95rem; }
+    .quick-route-card p {
+      margin: 0;
+      color: var(--ink-secondary);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+    .quick-route-card span {
+      color: var(--brand-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
     .hub-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -137,6 +197,31 @@ const desc = "Chọn đúng nhóm bệnh để xem bài nền tảng, thực đ�
     @media (max-width: 640px) {
       .hub-page { padding-inline: 1rem; }
       h1 { font-size: 1.7rem; }
+      .hero-copy, .hero-panel, .hub-card, .quick-route-card {
+        border-radius: 14px;
+      }
+      .hero-copy, .hero-panel {
+        padding: 18px;
+      }
+      .hero-actions {
+        flex-direction: column;
+      }
+      .hero-actions a,
+      .quick-route-card,
+      .hub-card {
+        width: 100%;
+      }
+      .quick-route-grid,
+      .hub-grid {
+        grid-template-columns: 1fr;
+      }
+      .hub-tags {
+        gap: 8px;
+      }
+      .hub-tags span {
+        font-size: 0.78rem;
+        line-height: 1.4;
+      }
     }
   </style>
 </BaseLayout>

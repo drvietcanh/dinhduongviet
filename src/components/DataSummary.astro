@@ -10,19 +10,19 @@ const summary = dataSummary();
 const topCategories = summary.categories.slice(0, 6);
 ---
 
-<section class="section">
-  <div class="grid three">
-    <div class="stat">
+<section class:list={["section", compact && "summary-compact-section"]}>
+  <div class:list={["grid", "three", compact && "summary-compact-grid"]}>
+    <div class:list={["stat", compact && "summary-compact-stat"]}>
       <span class="muted">Thực phẩm</span>
       <strong>{summary.totalFoods}</strong>
       <p class="muted">mục theo 100g phần ăn được</p>
     </div>
-    <div class="stat">
+    <div class:list={["stat", compact && "summary-compact-stat"]}>
       <span class="muted">Món ăn</span>
       <strong>{summary.totalRecipes}</strong>
       <p class="muted">món tính từ công thức định lượng</p>
     </div>
-    <div class="stat">
+    <div class:list={["stat", compact && "summary-compact-stat"]}>
       <span class="muted">Nhóm thực phẩm</span>
       <strong>{summary.totalCategories}</strong>
       <p class="muted">nhóm đang có trong dữ liệu</p>
@@ -55,6 +55,33 @@ const topCategories = summary.categories.slice(0, 6);
 </section>
 
 <style>
+  .summary-compact-section {
+    margin-top: 10px;
+  }
+  .summary-compact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .summary-compact-stat {
+    padding: 14px 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: var(--card);
+  }
+  .summary-compact-stat .muted {
+    font-size: 0.76rem;
+  }
+  .summary-compact-stat strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .summary-compact-stat p.muted {
+    margin-top: 6px;
+    line-height: 1.45;
+  }
   .summary-head {
     display: flex;
     justify-content: space-between;
@@ -96,6 +123,28 @@ const topCategories = summary.categories.slice(0, 6);
     background: var(--brand);
   }
   @media (max-width: 760px) {
+    .summary-compact-section {
+      margin-top: 6px;
+    }
+    .summary-compact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .summary-compact-stat {
+      padding: 12px 10px;
+    }
+    .summary-compact-stat .muted {
+      font-size: 0.72rem;
+    }
+    .summary-compact-stat strong {
+      font-size: 1.28rem;
+    }
+    .summary-compact-stat p.muted {
+      font-size: 0.72rem;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
     .summary-head,
     .category-row {
       grid-template-columns: 1fr;

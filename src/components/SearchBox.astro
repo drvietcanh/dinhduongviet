@@ -1,10 +1,67 @@
 ---
-const { value = "" } = Astro.props;
+const { value = "", mobilePlaceholder = "Tìm món ăn, thực phẩm..." } = Astro.props;
 ---
 
 <form class="card" action="/tim-kiem" method="get">
   <div class="search-row">
-    <input name="q" value={value} placeholder="Tìm thực phẩm hoặc món ăn: phở bò, thịt bò, trứng gà..." aria-label="Từ khóa tìm kiếm" />
+    <input name="q" value={value} placeholder="Tìm thực phẩm hoặc món ăn: phở bò, thịt bò, trứng gà..." data-mobile-placeholder={mobilePlaceholder} aria-label="Từ khóa tìm kiếm" />
     <button class="button" type="submit">Tìm kiếm</button>
   </div>
 </form>
+
+<style>
+  .search-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .search-row input {
+    flex: 1 1 240px;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .search-row input:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+  }
+
+  .search-row .button {
+    flex: 0 0 auto;
+    min-height: 44px;
+  }
+
+  @media (max-width: 560px) {
+    .search-row input::placeholder {
+      font-size: 0.95rem;
+    }
+    .search-row .button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var input = document.querySelector('.search-row input[data-mobile-placeholder]');
+    if (!input) return;
+    var desktopPlaceholder = input.getAttribute('placeholder') || '';
+    var mobileValue = input.getAttribute('data-mobile-placeholder') || desktopPlaceholder;
+
+    function syncPlaceholder() {
+      input.setAttribute('placeholder', window.innerWidth <= 560 ? mobileValue : desktopPlaceholder);
+    }
+
+    syncPlaceholder();
+    window.addEventListener('resize', syncPlaceholder);
+  })();
+</script>

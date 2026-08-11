@@ -61,7 +61,7 @@ const toolMap = {
 const specialtyCTA = {
   'noi-tiet': '📊 Muốn biết chỉ số đường huyết của bữa ăn bạn? Dùng ngay <a href="/cong-cu/tinh-gl-bua-an">công cụ tính GL bữa ăn</a> hoặc <a href="/cong-cu/chi-so-gi">tra chỉ số GI thực phẩm</a>.',
   'tim-mach': '❤️ Kiểm tra sức khỏe tim mạch của bạn với <a href="/cong-cu/bmi">máy tính BMI & vòng eo</a> hoặc tính <a href="/cong-cu/tinh-calo-tieu-thu">calo tiêu thụ khi tập</a>.',
-  'tieu-hoa': '🥗 Theo dõi chế độ ăn cho hệ tiêu hoá — tính <a href="/cong-cu/tinh-carb">lượng carb</a> hoặc <a href="/cong-cu/tinh-nhu-cau-dam">nhu cầu đạm</a> của bạn.',
+  'tieu-hoa': '🥗 Theo dõi chế độ ăn cho hệ tiêu hóa. Bạn có thể tính <a href="/cong-cu/tinh-carb">lượng carb</a> hoặc <a href="/cong-cu/tinh-nhu-cau-dam">nhu cầu đạm</a> để sắp bữa dễ chịu hơn.',
   'than-tiet-nieu': '🫘 Bệnh thận cần kiểm soát đạm chặt chẽ. Dùng <a href="/cong-cu/tinh-nhu-cau-dam">công cụ tính nhu cầu đạm</a> và <a href="/cong-cu/bmi">BMI</a>.',
   'co-xuong-khop': '🦴 Duy trì cân nặng hợp lý giảm áp lực lên khớp. Tính thử <a href="/cong-cu/bmi">BMI</a> hoặc <a href="/cong-cu/tinh-calo-tieu-thu">calo tiêu thụ</a> khi vận động.',
   'ho-hap': '🫁 Khi đang mệt vì bệnh hô hấp, ưu tiên đủ nước và năng lượng nền. Có thể xem <a href="/cong-cu/nuoc-uong">công cụ nhu cầu nước</a> hoặc <a href="/cong-cu/tinh-calo-tieu-thu">calo tiêu thụ</a> để định hướng nhanh.',
@@ -150,6 +150,39 @@ const normalizedAudiences = Array.isArray(article.audience) ? article.audience.f
 const focusAudience = normalizedAudiences[0] || null;
 const focusPathway = focusAudience ? pathwayMap[focusAudience] : null;
 const quickDecision = focusAudience ? decisionMap[focusAudience] : null;
+const nextStepMap: Record<string, { href: string; label: string }[]> = {
+  diabetes: [
+    { href: "/cong-cu/tinh-carb", label: "Tính carb" },
+    { href: "/cong-cu/tinh-gl-bua-an", label: "Tính GL bữa ăn" },
+    { href: "/theo-benh/tieu-duong", label: "Xem lộ trình theo bệnh" },
+  ],
+  hypertension: [
+    { href: "/cong-cu/nuoc-muoi-mon-an", label: "Muối trong món ăn" },
+    { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
+    { href: "/theo-benh/cao-huyet-ap", label: "Xem lộ trình theo bệnh" },
+  ],
+  gout: [
+    { href: "/cong-cu/so-sanh-thuc-pham", label: "So sánh thực phẩm" },
+    { href: "/cong-cu/ke-hoach-bua-an", label: "Kế hoạch bữa ăn" },
+    { href: "/theo-benh/gout-axit-uric", label: "Xem lộ trình theo bệnh" },
+  ],
+  kidney: [
+    { href: "/cong-cu/so-sanh-thuc-pham", label: "So sánh thực phẩm" },
+    { href: "/cong-cu/tinh-nhu-cau-dam", label: "Tính nhu cầu đạm" },
+    { href: "/theo-benh/benh-than", label: "Xem lộ trình theo bệnh" },
+  ],
+  "fatty-liver": [
+    { href: "/cong-cu/muc-tieu-can-nang", label: "Mục tiêu cân nặng" },
+    { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
+    { href: "/theo-benh/gan-nhiem-mo", label: "Xem lộ trình theo bệnh" },
+  ],
+  stomach: [
+    { href: "/cong-cu/checklist-an-uong", label: "Checklist ăn uống" },
+    { href: "/cong-cu/tim-mon-tu-nguyen-lieu", label: "Tìm món từ nguyên liệu" },
+    { href: "/theo-benh/da-day-trao-nguoc", label: "Xem lộ trình theo bệnh" },
+  ],
+};
+const nextSteps = focusAudience ? nextStepMap[focusAudience] : null;
 
 // Render markdown inside slot content
 const rawSlot = await Astro.slots.render("default");
@@ -206,16 +239,16 @@ const jsonLd = {
     </nav>
 
     <!-- Header -->
-    <div style="margin-bottom: 24px;">
+    <div class="article-header">
       <a href={backLink} class="back-link">{backLabel}</a>
-      <div style="font-size: 0.85rem; color: var(--ink-tertiary); margin: 8px 0;">
-        <span class="badge" style="margin-right: 8px;">{article.emoji} {article.categoryName}</span>
+      <div class="article-header-meta">
+        <span class="badge article-kind-badge">{article.emoji} {article.categoryName}</span>
         <span>{dateStr}</span>
-        <span style="margin: 0 6px">·</span>
+        <span class="article-meta-sep">·</span>
         <span>{article.readTime} phút đọc</span>
       </div>
-      <h1 style="margin: 12px 0 8px; font-size: 1.75rem; line-height: 1.3;">{article.emoji} {article.title}</h1>
-      {lead && <p style="color: var(--ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 6px;">{lead}</p>}
+      <h1 class="article-title">{article.emoji} {article.title}</h1>
+      {lead && <p class="article-lead">{lead}</p>}
       <div class="editorial-meta" aria-label="Thông tin biên tập">
         <span>Phụ trách nội dung: <a href="/tac-gia">{reviewer}</a></span>
         <span>Cập nhật: {dateStr}</span>
@@ -225,7 +258,7 @@ const jsonLd = {
       </div>
       <!-- Priority tags -->
       {article.tags && article.tags.length > 0 && (
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+        <div class="article-priority-tags">
           {article.tags.map(t => {
             const info = {
               'new-diagnosis': { label: '🆕 Mới chẩn đoán — nên đọc', color: '#2e86de', bg: '#ebf5ff' },
@@ -234,16 +267,16 @@ const jsonLd = {
               'caregiver': { label: '👨‍👩‍👧‍👦 Dành cho người nhà chăm sóc', color: '#8e44ad', bg: '#f4ecf7' },
               'ask-doctor': { label: '⚕️ Cần hỏi bác sĩ trước khi áp dụng', color: '#e74c3c', bg: '#fdedec' },
             }[t] || { label: t, color: '#718093', bg: '#f1f2f6' };
-            return <span style={`display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;background:${info.bg};color:${info.color};font-size:0.8rem;font-weight:500;line-height:1.3;`}>{info.label}</span>;
+            return <span class="article-priority-tag" style={`background:${info.bg};color:${info.color};`}>{info.label}</span>;
           })}
         </div>
       )}
       <!-- Series badge -->
       {seriesInfo && (
-        <a href={"/" + article.series} style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 12px;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:8px;text-decoration:none;color:#ffb74d;font-size:0.85rem;font-weight:600;">
+        <a href={"/" + article.series} class="series-badge">
           <span>{seriesInfo.emoji}</span>
           <span>Series: {seriesInfo.name}</span>
-          <span style="font-size:0.75rem;opacity:0.7;">→</span>
+          <span class="series-badge-arrow">→</span>
         </a>
       )}
     </div>
@@ -369,16 +402,15 @@ const jsonLd = {
     </div>
     )}
 
-    <!-- Social Share Component -->
-    <SocialShare title={article.title} url={"https://dinh-duong-viet.pages.dev/kien-thuc-dinh-duong/" + article.slug} />
-
-    <!-- Công cụ liên quan -->
     <div class="tool-links-section">
-      <h3 class="tool-links-title">🛠️ Công cụ liên quan</h3>
-      {toolLinks.map(t => (
-        <a href={t.h} class="art-btn art-btn-secondary" style="font-size: 0.85rem; margin: 4px;">🔧 {t.l}</a>
+      <h3 class="tool-links-title">🛠️ Bước tiếp theo</h3>
+      {(nextSteps ?? toolLinks.map((t) => ({ href: t.h, label: t.l })).slice(0, 3)).map((t) => (
+        <a href={t.href} class="art-btn art-btn-secondary" style="font-size: 0.85rem; margin: 4px;">🔧 {t.label}</a>
       ))}
     </div>
+
+    <!-- Social Share Component -->
+    <SocialShare title={article.title} url={"https://dinh-duong-viet.pages.dev/kien-thuc-dinh-duong/" + article.slug} />
 
     <!-- Nguồn tham khảo -->
     {effectiveSources.length > 0 && (
@@ -412,8 +444,7 @@ const jsonLd = {
 
     <!-- Article actions -->
     <div style="margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-      <a href="/tim-kiem" class="art-btn art-btn-secondary">🔍 Tìm thực phẩm</a>
-      <a href="/cong-cu/muc-tieu-can-nang" class="art-btn art-btn-secondary">🎯 Mục tiêu cân nặng</a>
+      <a href="/tim-kiem" class="art-btn art-btn-secondary">🔍 Tìm trên site</a>
       <button class="art-btn art-btn-primary" id="art-share" onclick="navigator.share?navigator.share({title:document.title,url:location.href}):(navigator.clipboard.writeText(location.href),alert('Đã copy link'))">📤 Chia sẻ</button>
     </div>
   </div>
@@ -528,6 +559,35 @@ const jsonLd = {
     font-size: 0.92rem;
     color: #155724;
   }
+  .article-header {
+    margin-bottom: 24px;
+  }
+  .article-header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    font-size: 0.85rem;
+    color: var(--ink-tertiary);
+    margin: 8px 0 0;
+  }
+  .article-kind-badge {
+    margin-right: 2px;
+  }
+  .article-meta-sep {
+    opacity: 0.45;
+  }
+  .article-title {
+    margin: 12px 0 8px;
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  .article-lead {
+    color: var(--ink-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
   .editorial-meta {
     display: flex;
     flex-wrap: wrap;
@@ -539,6 +599,45 @@ const jsonLd = {
     color: var(--ink-secondary);
     font-size: 0.8rem;
     line-height: 1.5;
+  }
+  .editorial-meta span,
+  .editorial-meta a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+  }
+  .article-priority-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .article-priority-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .series-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg,#1a1a2e,#16213e);
+    border-radius: 999px;
+    text-decoration: none;
+    color: #ffb74d;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .series-badge-arrow {
+    font-size: 0.75rem;
+    opacity: 0.7;
   }
   .decision-box {
     margin: 0 0 28px;
@@ -652,6 +751,7 @@ const jsonLd = {
   .art-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 8px 18px;
     border-radius: 999px;
@@ -703,10 +803,64 @@ const jsonLd = {
     max-width: 300px;
   }
   @media (max-width: 600px) {
+    .breadcrumb {
+      gap: 4px 6px;
+      font-size: 0.8rem;
+    }
+    .breadcrumb .bc-sep:last-of-type,
+    .breadcrumb .bc-current {
+      display: none;
+    }
+    .article-header-meta {
+      gap: 6px 8px;
+      font-size: 0.8rem;
+    }
+    .article-title {
+      font-size: 1.55rem;
+      line-height: 1.24;
+    }
+    .article-lead {
+      font-size: 0.96rem;
+    }
+    .editorial-meta {
+      display: grid;
+      gap: 6px;
+      padding: 10px 12px;
+    }
+    .article-priority-tags {
+      gap: 6px;
+    }
+    .article-priority-tag,
+    .series-badge {
+      max-width: 100%;
+      font-size: 0.78rem;
+    }
+    .series-badge {
+      width: 100%;
+      justify-content: center;
+    }
     .decision-head { flex-direction: column; align-items: flex-start; }
     .decision-grid { grid-template-columns: 1fr; }
+    .decision-footer {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .decision-chip {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
     .related-grid { grid-template-columns: repeat(2, 1fr); }
     .bc-current { max-width: 160px; }
+    .tool-links-section .art-btn {
+      display: flex;
+      width: 100%;
+      margin: 6px 0 0;
+      min-height: 42px;
+    }
+    .art-btn {
+      min-height: 42px;
+    }
   }
   .tool-links-section { margin-top: 28px; padding: 16px 0; border-top: 1px solid var(--line); }
   .tool-links-title { font-size: 1rem; margin: 0 0 12px; }

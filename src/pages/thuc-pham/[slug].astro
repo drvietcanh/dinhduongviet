@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NutritionTable from "../../components/NutritionTable.astro";
 import NutrientStats from "../../components/NutrientStats.astro";
-import NutritionChart from "../../components/NutritionChart.astro";
 import PortionCalculator from "../../components/PortionCalculator.astro";
 import MacroPie from "../../components/MacroPie.astro";
 import NutritionBars from "../../components/NutritionBars.astro";
@@ -36,6 +35,18 @@ const qualityLabels: Record<string, string> = {
 };
 const qualityNote = food.sourceReviewStatus ? qualityLabels[food.sourceReviewStatus] : "";
 const pageDescription = `Tra cứu 100g ${food.name}: khoảng ${Math.round(food.nutrients.energyKcal ?? 0)} kcal, ${Math.round(food.nutrients.proteinG ?? 0)}g đạm, ${Math.round(food.nutrients.carbG ?? 0)}g carb và ${Math.round(food.nutrients.fatG ?? 0)}g chất béo.`;
+const nextFoodLinks = [
+  { href: `/cong-cu/so-sanh-thuc-pham?left=${food.slug}`, label: "So sánh với thực phẩm khác" },
+  { href: "/cong-cu/ke-hoach-bua-an", label: "Đưa vào kế hoạch bữa ăn" },
+  { href: "/mon-an", label: "Xem món ăn liên quan" },
+];
+const heroMetrics = [
+  { label: "Năng lượng", value: `${Math.round(food.nutrients.energyKcal ?? 0)} kcal` },
+  { label: "Protein", value: `${Math.round(food.nutrients.proteinG ?? 0)} g` },
+  { label: "Carb", value: `${Math.round(food.nutrients.carbG ?? 0)} g` },
+  { label: "Chất xơ", value: `${Math.round(food.nutrients.fiberG ?? 0)} g` }
+];
+const heroTags = allTags(food).slice(0, 5);
 
 // JSON-LD Food structured data
 var foodSchema = {
@@ -68,25 +79,51 @@ var foodSchema = {
   canonical={`/thuc-pham/${canonicalSlug}`}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(foodSchema)}></script>
-  <section>
-    <span class="badge">{food.category} · {confidenceLabel(food.confidence)}</span>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;justify-content:space-between;">
-      <h1 style="flex:1;min-width:200px;">100g {food.name}</h1>
-      <div class="action-btns" style="display:flex;gap:6px;flex-shrink:0;">
-        <button class="btn-outline" onclick="shareRecipe()" title="Chia sẻ">📤 Chia sẻ</button>
-        <button class="btn-outline" onclick="window.print()" title="In / Xuất PDF">🖨️ In / PDF</button>
+  <section class="detail-hero">
+    <div class="detail-topline">
+      <a href="/thuc-pham" class="back-link">Danh sách thực phẩm</a>
+      <span class="badge">{food.category} · {confidenceLabel(food.confidence)}</span>
+    </div>
+    <div class="detail-heading">
+      <div class="detail-copy">
+        <p class="eyebrow">Theo 100g phần ăn được</p>
+        <h1>100g {food.name}</h1>
+        <p class="lead">{food.edibleNote}</p>
+        <div class="detail-actions">
+          <button class="action-chip" onclick="shareRecipe()" title="Chia sẻ">Chia sẻ</button>
+          <button class="action-chip" onclick="window.print()" title="In / Xuất PDF">In / PDF</button>
+        </div>
+      </div>
+      <div class="detail-media">
+        {food.imageUrl && <img src={food.imageUrl} alt={food.name} class="food-img detail-image" loading="lazy" decoding="async" fetchpriority="low" onerror="this.closest('.detail-media')?.classList.add('is-fallback'); this.remove();" />}
+        <div class="detail-media-fallback" aria-hidden="true">
+          <span>🥣</span>
+          <strong>{food.name}</strong>
+        </div>
       </div>
     </div>
-    {food.imageUrl && <img src={food.imageUrl} alt={food.name} class="food-img" loading="lazy" decoding="async" fetchpriority="low" />}
-    <div class="tags" style="margin: 12px 0;">
-      {allTags(food).map(tag => <span class="tag">{tagLabel(tag)}</span>)}
+    <div class="detail-metrics" aria-label="Tóm tắt dinh dưỡng">
+      {heroMetrics.map((metric) => (
+        <div class="metric-card">
+          <span>{metric.label}</span>
+          <strong>{metric.value}</strong>
+        </div>
+      ))}
     </div>
-    <p class="lead">{food.edibleNote}</p>
+    {heroTags.length > 0 && (
+      <div class="detail-tags">
+        {heroTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+      </div>
+    )}
+    <div class="detail-note-card">
+      <h2>Cách đọc nhanh trang này</h2>
+      <p>Số liệu mặc định áp theo 100g phần ăn được. Khi dùng để so khẩu phần thực tế, nên quy đổi lại bằng công cụ đổi lượng ở phía dưới.</p>
+    </div>
   </section>
 
   <HealthAlert nutrients={food.nutrients} name={food.name} category={food.category} />
 
-  <div id="vn-crossref" data-slug="{food.slug}" data-exkcal="{food.nutrients.energyKcal}" style="max-width: 800px; margin: 0 auto;"></div>
+  <div id="vn-crossref" class="crossref-shell" data-slug="{food.slug}" data-exkcal="{food.nutrients.energyKcal}"></div>
 
   <section class="section">
     <NutrientStats nutrients={food.nutrients} />
@@ -94,6 +131,10 @@ var foodSchema = {
 
   <section class="section">
     <VNHealthScore nutrients={food.nutrients} name={food.name} />
+  </section>
+
+  <section class="section">
+    <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
   </section>
 
   {food.nutrients.glycemicIndex != null && (
@@ -116,7 +157,10 @@ var foodSchema = {
   <section class="section grid two">
     <NutritionTable nutrients={food.nutrients} caption={`Thành phần dinh dưỡng trong ${food.basis}`} />
     <div class="card">
-      <h2>Nguồn và ghi chú</h2>
+      <div class="section-head">
+        <h2>Nguồn và ghi chú</h2>
+        <p>Ưu tiên đọc nguồn và mức tin cậy trước khi dùng số liệu này để thay đổi khẩu phần hoặc làm tài liệu tư vấn.</p>
+      </div>
       <p class="muted"><strong>Nguồn:</strong> {source?.name ?? food.sourceId}</p>
       <p class="muted" style="margin-top: 10px;"><strong>Mức tin cậy:</strong> {confidenceLabel(food.confidence)}</p>
       {qualityNote && (
@@ -134,9 +178,14 @@ var foodSchema = {
   <section class="section">
     <DRIWidget nutrients={food.nutrients} name={food.name} />
   </section>
-
-  <section class="section">
-    <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
+  <section class="section card next-step-card">
+    <div class="section-head">
+      <h2>Bước tiếp theo</h2>
+      <p>Đây là 3 hướng đi hữu ích nhất sau khi đã đọc xong một thực phẩm riêng lẻ.</p>
+    </div>
+    <div class="next-step-links">
+      {nextFoodLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
   </section>
   <script is:inline>
     function shareRecipe() {
@@ -154,6 +203,200 @@ var foodSchema = {
 </BaseLayout>
 
 <style>
+  .detail-hero {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 8px;
+  }
+
+  .detail-topline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .back-link {
+    color: var(--ink-secondary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--brand);
+  }
+
+  .detail-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(240px, 360px);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .detail-copy h1 {
+    margin: 4px 0 10px;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .action-chip {
+    min-height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    padding: 9px 14px;
+    color: var(--ink);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .detail-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+
+  .detail-media {
+    width: 100%;
+  }
+
+  .detail-media-fallback {
+    display: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--bg-soft), var(--brand-light));
+    color: var(--ink);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .detail-media-fallback span {
+    font-size: 2rem;
+  }
+
+  .detail-media.is-fallback .detail-media-fallback {
+    display: flex;
+  }
+
+  .detail-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .metric-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    padding: 12px 14px;
+  }
+
+  .metric-card span {
+    display: block;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+  }
+
+  .metric-card strong {
+    font-size: 1rem;
+  }
+
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .detail-tags .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    color: var(--ink-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .detail-note-card,
+  .crossref-shell:empty {
+    display: none;
+  }
+
+  .detail-note-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--brand) 6%, var(--card));
+    padding: 14px 16px;
+    display: block;
+  }
+
+  .detail-note-card h2,
+  .section-head h2 {
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+  }
+
+  .detail-note-card p,
+  .section-head p {
+    margin: 0;
+    color: var(--ink-secondary);
+  }
+
+  .section-head {
+    margin-bottom: 12px;
+  }
+  .next-step-card { padding: 18px; }
+  .next-step-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .next-step-links a {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+  .next-step-links a:hover {
+    border-color: var(--brand-light2);
+    background: var(--brand-light);
+    color: var(--brand-dark);
+  }
+
   .quality-note {
     margin-top: 12px;
     border: 1px solid var(--card-border);
@@ -180,6 +423,75 @@ var foodSchema = {
   .quality-note p {
     margin: 8px 0 0;
   }
+
+  @media (max-width: 900px) {
+    .detail-heading,
+    .detail-metrics {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section.grid.two {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-topline {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .badge {
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .detail-copy h1 {
+      line-height: 1.15;
+    }
+
+    .detail-metrics {
+      gap: 8px;
+    }
+
+    .metric-card {
+      padding: 10px 12px;
+    }
+
+    .metric-card span {
+      font-size: 0.78rem;
+      margin-bottom: 4px;
+    }
+
+    .metric-card strong {
+      font-size: 0.95rem;
+    }
+
+    .detail-note-card,
+    .next-step-card,
+    .quality-note {
+      padding: 14px;
+    }
+
+    .detail-tags .tag {
+      font-size: 0.74rem;
+      min-height: 28px;
+    }
+
+    .next-step-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .next-step-links a {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      min-height: 42px;
+    }
+  }
 </style>
 
 <script is:inline>
@@ -201,11 +513,12 @@ var foodSchema = {
       var exKcal = exKcalStr ? parseFloat(exKcalStr) : null;
       var diff = exKcal !== null ? Math.abs(exKcal - vnFood.energy_kcal) : 0;
       var pct = exKcal !== null && vnFood.energy_kcal > 0 ? Math.round(diff / vnFood.energy_kcal * 100) : null;
-      var html = '<div style="background:var(--brand-light);border:1px solid var(--brand-light2);border-radius:var(--radius-lg);padding:12px 16px;margin-bottom:20px;font-size:0.9rem;box-shadow:var(--shadow-sm);">';
-      html += '<div style="display:flex;align-items:center;gap:10px;"><span style="font-size:1.3rem;">📖</span><div><strong>Bảng thành phần thực phẩm Việt Nam 2007</strong><span style="color:var(--ink-secondary);font-size:0.8rem;"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" style="margin-left:auto;color:var(--brand-dark);font-weight:600;white-space:nowrap;transition:color var(--transition);">Xem thêm →</a></div>';
-      html += '<div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;"><div><span style="color:#888;">Tương ứng:</span> <strong>' + ref.name + '</strong></div><div><span style="color:#888;">Năng lượng VN 2007:</span> <strong>' + vnFood.energy_kcal + ' kcal</strong>' + (pct !== null && pct > 15 ? ' <span style="color:#e65100;font-weight:600;">(khác ' + pct + '% so với số ước tính)</span>' : ' <span style="color:#2e7d32;">✓ tương đương</span>') + '</div><div><span style="color:#888;">Mã số:</span> <strong>#' + vnFood.code + '</strong></div></div>';
+      var html = '<div class="card" style="padding:14px 16px;">';
+      html += '<div class="section-head"><h2>Đối chiếu với bảng Việt Nam 2007</h2><p>Giúp so nhanh dữ liệu hiện tại với mã thực phẩm tương ứng trong Bảng thành phần thực phẩm Việt Nam 2007.</p></div>';
+      html += '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><div><strong>Bảng thành phần thực phẩm Việt Nam 2007</strong><span style="color:var(--ink-secondary);font-size:0.84rem;"> · Viện Dinh Dưỡng</span></div><a href="/cong-cu/tra-cuu-thuc-pham-viet" style="margin-left:auto;color:var(--brand-dark);font-weight:600;white-space:nowrap;transition:color var(--transition);">Tra cứu nguồn gốc →</a></div>';
+      html += '<div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;"><div><span style="color:#888;">Tương ứng:</span> <strong>' + ref.name + '</strong></div><div><span style="color:#888;">Năng lượng VN 2007:</span> <strong>' + vnFood.energy_kcal + ' kcal</strong>' + (pct !== null && pct > 15 ? ' <span style="color:#e65100;font-weight:600;">(lệch ' + pct + '%)</span>' : ' <span style="color:#2e7d32;">Phù hợp</span>') + '</div><div><span style="color:#888;">Mã số:</span> <strong>#' + vnFood.code + '</strong></div></div>';
       if (pct !== null && pct > 30) {
-        html += '<div style="margin-top:8px;background:#fff3e0;padding:8px 12px;border-radius:6px;font-size:0.85rem;">⚠️ Số liệu trong database hiện tại là ước tính. Bảng thành phần VN 2007 (mã #' + vnFood.code + ') là nguồn chính thống từ Viện Dinh Dưỡng.</div>';
+        html += '<div style="margin-top:8px;background:#fff3e0;padding:8px 12px;border-radius:6px;font-size:0.85rem;">Số liệu hiện tại vẫn nên xem là ước tính. Khi cần dùng chính thức, ưu tiên đối chiếu lại theo mã #' + vnFood.code + ' của Viện Dinh Dưỡng.</div>';
       }
       html += '</div>';
       container.innerHTML = html;

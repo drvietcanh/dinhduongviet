@@ -29,7 +29,7 @@ var breadcrumbNames = {
   "mon-an": "Món ăn",
   "kien-thuc-dinh-duong": "Kiến thức dinh dưỡng",
   "theo-benh": "Theo bệnh",
-  "ban-do-benh": "Theo bệnh",
+  "ban-do-benh": "Bản đồ bệnh đầy đủ",
   "cong-cu": "Công cụ",
   "tac-gia": "Tác giả",
   "tim-kiem": "Tìm kiếm",
@@ -446,13 +446,17 @@ if (isArticle) {
       }
 
       .nav-search {
+        display: flex;
+        align-items: center;
         background: var(--bg-soft);
         border-radius: 20px;
         padding: 0 14px;
         gap: 8px;
         min-height: 38px;
         flex-grow: 1;
+        min-width: 0;
         max-width: 240px;
+        overflow: hidden;
         transition: background 0.3s, max-width 0.3s, box-shadow 0.3s;
         border: 1px solid var(--line);
       }
@@ -462,6 +466,9 @@ if (isArticle) {
         box-shadow: 0 0 0 3px var(--brand-light2);
       }
       .nav-search input {
+        min-width: 0;
+        border: 0;
+        background: transparent;
         color: var(--ink);
         font-size: 0.85rem;
         padding: 6px 0;
@@ -512,6 +519,13 @@ if (isArticle) {
 
       /* Mobile styles override */
       @media (max-width: 768px) {
+        .top-bar {
+          top: 8px;
+          margin: 0 10px 20px;
+          padding: 10px 14px;
+          border-radius: 22px;
+          max-width: none;
+        }
         .top-bar .wrapper {
           display: grid;
           grid-template-columns: 1fr auto auto;
@@ -548,19 +562,29 @@ if (isArticle) {
           flex-direction: column;
           align-items: stretch;
           gap: 8px;
-          padding-top: 8px;
+          padding-top: 10px;
         }
-        .nav-group summary { padding: 10px 0; }
+        .nav-group {
+          border-top: 1px solid var(--line-light);
+          padding-top: 2px;
+        }
+        .nav-group summary {
+          padding: 12px 0;
+          font-size: 0.96rem;
+        }
         .nav-group-menu {
           position: static;
           min-width: 0;
-          margin: 0 0 4px 12px;
+          margin: 0 0 6px 10px;
           box-shadow: none;
           background: transparent;
           border: 0;
           border-left: 2px solid var(--line);
           border-radius: 0;
+          padding: 0 0 0 10px;
+          gap: 2px;
         }
+        .nav-group-menu a { padding: 10px 0; }
         .wrapper.nav-open .nav-links {
           display: flex;
         }
@@ -589,6 +613,40 @@ if (isArticle) {
           line-height: 1;
           text-align: center;
         }
+        .footer .wrapper {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .footer-col {
+          padding-bottom: 6px;
+          border-bottom: 1px solid var(--line-light);
+        }
+        .footer-col:last-child {
+          border-bottom: 0;
+        }
+      }
+      @media (max-width: 480px) {
+        .top-bar {
+          margin-inline: 8px;
+          padding: 10px 12px;
+          border-radius: 18px;
+        }
+        .top-bar .logo {
+          font-size: 0.98rem;
+          gap: 7px;
+        }
+        .top-bar .logo img.logo-svg {
+          width: 24px;
+          height: 24px;
+        }
+        .nav-search {
+          min-height: 40px;
+          padding-inline: 12px;
+        }
+        .nav-search input {
+          font-size: 0.9rem;
+        }
       }
 
       /* ===================== SKELETON ===================== */
@@ -614,24 +672,23 @@ if (isArticle) {
             <summary>Tra cứu</summary>
             <div class="nav-group-menu">
               <a href="/thuc-pham">Thực phẩm</a>
-              <a href="/mon-an">Món ăn Việt</a>
-              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Tra cứu thực phẩm Việt</a>
+              <a href="/mon-an">Món ăn</a>
               <a href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
-              <a href="/tim-kiem">Tìm kiếm toàn site</a>
+              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Tra cứu thực phẩm Việt</a>
             </div>
           </details>
           <details class="nav-group">
             <summary>Theo bệnh</summary>
             <div class="nav-group-menu">
               <a href="/theo-benh">Lối vào theo bệnh</a>
-              <a href="/ban-do-benh">Danh mục bệnh đầy đủ</a>
               <a href="/theo-benh/tieu-duong">Đái tháo đường</a>
               <a href="/theo-benh/cao-huyet-ap">Tăng huyết áp</a>
               <a href="/theo-benh/gan-nhiem-mo">Gan nhiễm mỡ</a>
               <a href="/theo-benh/da-day-trao-nguoc">Dạ dày, tá tràng</a>
               <a href="/theo-benh/benh-than">Bệnh thận</a>
-              <a href="/theo-benh/mo-mau-tim-mach">Mỡ máu - tim mạch</a>
-              <a href="/theo-benh/gout-axit-uric">Gout - axit uric</a>
+              <a href="/theo-benh/mo-mau-tim-mach">Mỡ máu, tim mạch</a>
+              <a href="/theo-benh/gout-axit-uric">Gout, axit uric</a>
+              <a href="/ban-do-benh">Bản đồ bệnh đầy đủ</a>
             </div>
           </details>
           <details class="nav-group">
@@ -639,24 +696,35 @@ if (isArticle) {
             <div class="nav-group-menu">
               <a href="/kien-thuc-dinh-duong">Tất cả bài viết</a>
               <a href="/kien-thuc-dinh-duong#sec-dinh-duong-tong-quat">Ăn lành mạnh</a>
-              <a href="/kien-thuc-dinh-duong#sec-noi-tiet">Đái tháo đường - chuyển hóa</a>
-              <a href="/kien-thuc-dinh-duong#sec-tim-mach">Tim mạch - tăng huyết áp</a>
-              <a href="/kien-thuc-dinh-duong#sec-tieu-hoa">Tiêu hóa - gan mật</a>
+              <a href="/kien-thuc-dinh-duong#sec-noi-tiet">Đái tháo đường, chuyển hóa</a>
+              <a href="/kien-thuc-dinh-duong#sec-tim-mach">Tim mạch, tăng huyết áp</a>
+              <a href="/kien-thuc-dinh-duong#sec-tieu-hoa">Tiêu hóa, gan mật</a>
+              <a href="/kien-thuc-dinh-duong#sec-phu-nu-nhi">Theo giai đoạn sống</a>
               <a href="/dung-tin-ngay">Kiểm chứng hiểu lầm</a>
               <a href="/hoi-dap">Hỏi nhanh - đáp gọn</a>
             </div>
           </details>
-          <a class="nav-primary" href="/thuc-don">Thực đơn</a>
+          <details class="nav-group">
+            <summary>Thực đơn</summary>
+            <div class="nav-group-menu">
+              <a href="/thuc-don">Tất cả thực đơn</a>
+              <a href="/thuc-don#group-noi-tiet">Đường huyết, gout</a>
+              <a href="/thuc-don#group-tim-mach">Tim mạch, huyết áp</a>
+              <a href="/thuc-don#group-tieu-hoa">Dạ dày, gan mật</a>
+              <a href="/thuc-don#group-than-tiet-nieu">Thận, tiết niệu</a>
+              <a href="/thuc-don#group-phu-nu-nhi">Gia đình, người cao tuổi</a>
+            </div>
+          </details>
           <details class="nav-group">
             <summary>Công cụ</summary>
             <div class="nav-group-menu">
               <a href="/cong-cu">Tất cả công cụ</a>
+              <a href="/cong-cu/danh-gia-bua-an">Đánh giá bữa ăn</a>
               <a href="/cong-cu/tinh-carb">Tính carb</a>
               <a href="/cong-cu/tinh-gl-bua-an">Tính GL bữa ăn</a>
               <a href="/cong-cu/ke-hoach-bua-an">Kế hoạch bữa ăn</a>
-              <a href="/cong-cu/danh-gia-bua-an">Đánh giá bữa ăn</a>
               <a href="/cong-cu/nhat-ky">Nhật ký ăn uống</a>
-              <a href="/thong-ke">Thống kê dữ liệu</a>
+              <a href="/cong-cu/checklist-an-uong">Checklist ăn uống</a>
             </div>
           </details>
           <a href="/tac-gia">Giới thiệu</a>
@@ -680,6 +748,13 @@ if (isArticle) {
           <p style="font-size:0.85rem;">Dữ liệu tham khảo từ Bảng thành phần thực phẩm Việt Nam 2007 và các nguồn quốc tế.</p>
         </div>
         <div class="footer-col">
+          <h4>Tra cứu</h4>
+          <a href="/thuc-pham">🥬 Thực phẩm</a>
+          <a href="/mon-an">🍽️ Món ăn</a>
+          <a href="/cong-cu/so-sanh-thuc-pham">⚖️ So sánh thực phẩm</a>
+          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Tra cứu thực phẩm Việt</a>
+        </div>
+        <div class="footer-col">
           <h4>Theo bệnh</h4>
           <a href="/theo-benh">🗂️ Lối vào theo bệnh</a>
           <a href="/theo-benh/tieu-duong">🩸 Đái tháo đường</a>
@@ -687,30 +762,42 @@ if (isArticle) {
           <a href="/theo-benh/gan-nhiem-mo">🫁 Gan nhiễm mỡ</a>
           <a href="/theo-benh/da-day-trao-nguoc">🥣 Dạ dày, tá tràng</a>
           <a href="/theo-benh/benh-than">🫘 Bệnh thận</a>
-          <a href="/theo-benh/mo-mau-tim-mach">🫀 Mỡ máu - tim mạch</a>
+          <a href="/theo-benh/mo-mau-tim-mach">🫀 Mỡ máu, tim mạch</a>
+          <a href="/ban-do-benh">🗺️ Bản đồ bệnh đầy đủ</a>
         </div>
         <div class="footer-col">
-          <h4>Kiến thức</h4>
+          <h4>Bài viết</h4>
           <a href="/kien-thuc-dinh-duong">📚 Tất cả bài viết</a>
           <a href="/kien-thuc-dinh-duong#sec-dinh-duong-tong-quat">🥗 Ăn lành mạnh</a>
+          <a href="/kien-thuc-dinh-duong#sec-noi-tiet">🩺 Đái tháo đường, chuyển hóa</a>
+          <a href="/kien-thuc-dinh-duong#sec-tim-mach">🫀 Tim mạch, tăng huyết áp</a>
+          <a href="/kien-thuc-dinh-duong#sec-tieu-hoa">🥣 Tiêu hóa, gan mật</a>
           <a href="/kien-thuc-dinh-duong#sec-phu-nu-nhi">👨‍👩‍👧‍👦 Theo giai đoạn sống</a>
           <a href="/dung-tin-ngay">🔍 Kiểm chứng hiểu lầm</a>
-          <a href="/phuong-phap">📖 Phương pháp - dữ liệu</a>
+          <a href="/hoi-dap">❓ Hỏi nhanh - đáp gọn</a>
         </div>
         <div class="footer-col">
           <h4>Công cụ</h4>
           <a href="/cong-cu">🛠️ Tất cả công cụ</a>
-          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Tra cứu thực phẩm Việt</a>
+          <a href="/cong-cu/danh-gia-bua-an">🍱 Đánh giá bữa ăn</a>
           <a href="/cong-cu/tinh-carb">🔢 Tính carb</a>
           <a href="/cong-cu/tinh-gl-bua-an">⚖️ Tính GL bữa ăn</a>
           <a href="/cong-cu/ke-hoach-bua-an">📋 Kế hoạch bữa ăn</a>
+          <a href="/cong-cu/nhat-ky">📓 Nhật ký ăn uống</a>
+        </div>
+        <div class="footer-col">
+          <h4>Thực đơn</h4>
+          <a href="/thuc-don">🍽️ Tất cả thực đơn</a>
+          <a href="/thuc-don#group-noi-tiet">🩸 Đường huyết, gout</a>
+          <a href="/thuc-don#group-tim-mach">❤️ Tim mạch, huyết áp</a>
+          <a href="/thuc-don#group-phu-nu-nhi">👨‍👩‍👧‍👦 Gia đình, người cao tuổi</a>
         </div>
         <div class="footer-col">
           <h4>Hỗ trợ</h4>
           <a href="/tim-kiem">🔍 Tìm kiếm toàn site</a>
-          <a href="/hoi-dap">❓ Hỏi nhanh – đáp gọn</a>
-          <a href="/ban-do-benh">🗺️ Bản đồ bệnh đầy đủ</a>
           <a href="/phuong-phap">📖 Phương pháp - dữ liệu</a>
+          <a href="/chinh-sach-bien-tap">📝 Chính sách biên tập</a>
+          <a href="/ban-do-benh">🗺️ Bản đồ bệnh đầy đủ</a>
         </div>
         <div class="footer-col">
           <h4>Tác giả</h4>

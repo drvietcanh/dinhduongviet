@@ -28,12 +28,12 @@ const dataValues = Object.fromEntries(
   <div style="font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 10px;">
     Dựa trên 100g <strong>{name || 'thực phẩm'}</strong> — Chọn giới tính để xem %:
   </div>
-  <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+  <div class="dri-gender-row">
     <button class="dri-gen-btn active" data-gen="female" onclick="switchDRIGender('female')">👩 Nữ</button>
     <button class="dri-gen-btn" data-gen="male" onclick="switchDRIGender('male')">👨 Nam</button>
   </div>
-  <div id="driBars" style="display: flex; flex-direction: column; gap: 8px;"></div>
-  <div style="font-size: 0.72rem; color: var(--ink-tertiary); margin-top: 8px;">
+  <div id="driBars" class="dri-bars"></div>
+  <div class="dri-footnote">
     * DRI cho người trưởng thành 19-49 tuổi, lao động nhẹ. Nhu cầu thực tế có thể thay đổi.
   </div>
 </div>
@@ -110,6 +110,22 @@ const dataValues = Object.fromEntries(
 </script>
 
 <style is:global>
+  .dri-gender-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .dri-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dri-footnote {
+    font-size: 0.72rem;
+    color: var(--ink-tertiary);
+    margin-top: 8px;
+  }
   .dri-gen-btn {
     padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--card-border);
     background: var(--bg-elevated); color: var(--ink-secondary); font-size: 0.85rem;
@@ -125,4 +141,33 @@ const dataValues = Object.fromEntries(
   .dri-bar { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
   .dri-pct { min-width: 40px; text-align: right; font-size: 0.82rem; font-weight: 600; color: var(--ink-secondary); }
   [data-theme="dark"] .dri-bar-bg { background: #242a23; }
+  @media (max-width: 640px) {
+    .dri-gender-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .dri-gen-btn {
+      min-height: 40px;
+      width: 100%;
+      text-align: center;
+    }
+    .dri-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 8px;
+      align-items: center;
+    }
+    .dri-label {
+      min-width: 0;
+      grid-column: 1 / -1;
+      font-size: 0.8rem;
+    }
+    .dri-bar-bg {
+      min-width: 0;
+    }
+    .dri-pct {
+      min-width: 34px;
+      font-size: 0.78rem;
+    }
+  }
 </style>

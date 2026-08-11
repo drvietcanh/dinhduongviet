@@ -13,11 +13,11 @@ const menuGroups = [
 const groupedSlugs = new Set(menuGroups.flatMap((group) => menus.filter((article) => article.specialty === group.key).map((article) => article.slug)));
 const otherMenus = menus.filter((article) => !groupedSlugs.has(article.slug));
 const quickFilters = [
-  { href: "#group-noi-tiet", label: "Đường huyết - gout" },
+  { href: "#group-noi-tiet", label: "Đường huyết, gout" },
   { href: "#group-tim-mach", label: "Huyết áp - tim mạch" },
   { href: "#group-tieu-hoa", label: "Dạ dày - gan" },
   { href: "#group-than-tiet-nieu", label: "Bệnh thận" },
-  { href: "#group-phu-nu-nhi", label: "Gia đình - người cao tuổi" },
+  { href: "#group-phu-nu-nhi", label: "Gia đình, người cao tuổi" },
 ];
 ---
 

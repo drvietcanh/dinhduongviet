@@ -196,7 +196,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "trao-nguoc-da-day-ban-dem-an-gi",
     title: "Trào ngược dạ dày ban đêm — Sắp bữa tối thế nào để đỡ ợ chua?",
-    description: "Cách chọn bữa tối, giờ ăn và tư thế ngủ để giảm ợ chua ban đêm, đồng thời biết khi nào cần đi khám.",
+    description: "Bài tập trung vào bữa tối cho người trào ngược về đêm: chọn món gì, ăn lúc nào và sắp khẩu phần ra sao để đỡ ợ chua hơn.",
     emoji: "🔥",
     category: "disease",
     categoryName: "Tiêu hóa / Mẹo vặt đời sống",
@@ -343,7 +343,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-vay-nen-psoriasis",
     title: "Bệnh vảy nến: Omega-3 và chế độ ăn có vai trò gì?",
-    description: "Tóm tắt mối liên hệ giữa béo phì, viêm mạn tính, omega-3 và các nguyên tắc ăn uống hay được nhắc tới ở người vảy nến.",
+    description: "Bài nền về vảy nến: mối liên hệ giữa viêm mạn, cân nặng, sức khỏe chuyển hóa và mô hình ăn uống hỗ trợ điều trị.",
     emoji: "🧴",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -793,7 +793,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "viem-da-co-dia-eczema",
     title: "Viêm da cơ địa (Eczema): Dị ứng thức ăn, probiotics và loại trừ có hướng dẫn",
-    description: "Tập trung vào dị ứng thức ăn đi kèm, probiotics và cách loại trừ từng nhóm thực phẩm có kiểm soát ở người viêm da cơ địa.",
+    description: "Bài tập trung vào dị ứng thức ăn đi kèm, probiotics và vai trò của loại trừ có hướng dẫn ở người viêm da cơ địa.",
     emoji: "👶",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1617,24 +1617,24 @@ export const articles: ArticleMeta[] = [
   {
     slug: "gan-nhiem-mo",
     title: "Gan nhiễm mỡ — Ăn gì, kiêng gì?",
-    description: "Giảm béo, đường tinh chế. Thực phẩm nên ăn và tránh cho người gan nhiễm mỡ.",
+    description: "Bài nền về gan nhiễm mỡ: hiểu đúng nguyên nhân chuyển hóa, nguyên tắc ăn uống chung và các dấu hiệu cần theo dõi thêm.",
     emoji: "🫁",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "noi-tiet",
+    specialty: "tieu-hoa",
     date: "2026-02-20",
     readTime: 6,
     featured: false,
     tags: ["new-diagnosis"],
     keywords: ["gan nhiễm mỡ", "mỡ gan", "men gan cao", "cải thiện gan nhiễm mỡ", "chế độ ăn gan nhiễm mỡ"],
-    audience: ["hypertension", "metabolic-risk"],
+    audience: ["fatty-liver", "metabolic-risk"],
     sources: [{ name: "ESPEN — Liver Disease Guidelines", url: "https://www.espen.org/guidelines" }, { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }],
   },
   {
     slug: "gan-nhiem-mo-giam-can-vong-eo",
     title: "Gan nhiễm mỡ — Giảm cân, giảm vòng eo thế nào mới đúng hướng?",
-    description: "Bài thực hành về mục tiêu giảm cân, vòng eo, vận động và cách theo dõi tiến triển khi bị gan nhiễm mỡ.",
+    description: "Bài đòn bẩy chuyển hóa: mục tiêu giảm cân, vòng eo, vận động và cách theo dõi tiến triển khi bị gan nhiễm mỡ.",
     emoji: "📏",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1781,7 +1781,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "trao-nguoc-da-day",
     title: "Trào ngược dạ dày — Nguyên tắc ăn uống và thói quen cần sửa",
-    description: "Bài nền tảng về GERD: các nguyên tắc ăn uống, nhóm thực phẩm thường gây khó chịu và thói quen cần sửa trước.",
+    description: "Bài nền đầy đủ về GERD: triệu chứng điển hình, nguyên tắc ăn uống, nhóm thực phẩm dễ kích thích và thói quen nên sửa trước.",
     emoji: "🔥",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1802,7 +1802,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dau-da-day",
     title: "Đau dạ dày — Nguyên tắc ăn uống và các điểm cần kiểm tra sớm",
-    description: "Bài nền tảng về HP, thuốc giảm đau NSAID, rượu bia, cà phê và những điểm nên xem lại sớm khi đau dạ dày.",
+    description: "Bài nền cho đau thượng vị và viêm loét dạ dày tá tràng: ăn uống thế nào, khi nào nghĩ tới HP/NSAID và lúc nào cần đi khám sớm.",
     emoji: "🩹",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1812,6 +1812,7 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     tags: ["new-diagnosis"],
+    audience: ["stomach"],
     sources: [
       { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
       { name: "MedlinePlus — U.S. National Library of Medicine", url: "https://medlineplus.gov" },
@@ -1822,7 +1823,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dau-da-day-hp-ca-phe-thuoc-giam-dau",
     title: "Đau dạ dày — HP, cà phê, thuốc giảm đau: nên xem lại điều gì trước?",
-    description: "Bài thực hành giúp nhận ra vai trò của HP, NSAID, cà phê, rượu bia và các dấu hiệu cần đi khám sớm khi đau dạ dày.",
+    description: "Bài checklist nguyên nhân và yếu tố làm nặng: HP, NSAID, cà phê, rượu bia và các dấu hiệu báo động khi đau dạ dày.",
     emoji: "☕",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1832,7 +1833,7 @@ export const articles: ArticleMeta[] = [
     readTime: 6,
     featured: false,
     tags: ["stomach", "hp", "nsaid"],
-    audience: ["stomach", "gerd"],
+    audience: ["stomach"],
     sources: [
       { name: "ACG Clinical Guideline — GERD", url: "https://pubmed.ncbi.nlm.nih.gov/34807007/" },
       { name: "NHS (UK) — Stomach Ulcer", url: "https://www.nhs.uk/conditions/stomach-ulcer/" }
@@ -2365,7 +2366,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "trao-nguoc-ban-dem",
     title: "Trào ngược dạ dày ban đêm — Ăn tối thế nào?",
-    description: "7 nguyên tắc ăn uống, kê cao đầu, thực đơn bữa tối. Khi nào cần nội soi.",
+    description: "Bài thực hành cho giai đoạn buổi tối và lúc ngủ: giờ ăn, khẩu phần, kê cao đầu giường và các thói quen giúp giảm trào ngược ban đêm.",
     emoji: "🌙",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -4788,8 +4789,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-da-day-trao-nguoc",
-    title: "GERD — Dinh dưỡng cho người trào ngược dạ dày thực quản",
-    description: "Tập trung vào lựa chọn thực phẩm, nhịp ăn uống và các mẹo thực hành giúp giảm ợ nóng, ợ chua và khó chịu sau ăn.",
+    title: "GERD — Tóm tắt nhanh dinh dưỡng cho người trào ngược dạ dày thực quản",
+    description: "Bản tóm tắt nhanh về thực phẩm, nhịp ăn uống và các mẹo thực hành cốt lõi cho người trào ngược dạ dày thực quản.",
     emoji: "🔴",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5245,7 +5246,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-eczema-viem-da-co-dia",
     title: "Eczema & Viêm da cơ địa — Bài nền tảng về ăn uống giảm ngứa, giảm bùng phát",
-    description: "Bài nền tảng về thực phẩm nên ăn, nên tránh và những nguyên tắc chung giúp giảm ngứa, giảm bùng phát viêm da cơ địa.",
+    description: "Bài nền về eczema: thực phẩm nên ăn, nên thận trọng và các nguyên tắc chung giúp giảm ngứa, giảm bùng phát.",
     emoji: "🧴",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5266,7 +5267,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "eczema-loai-tru-thuc-pham-dung-cach",
     title: "Eczema — Loại trừ thực phẩm thế nào để không thiếu chất?",
-    description: "Khi nào nên nghĩ đến dị ứng thức ăn, cách thử loại trừ từng bước và cách tránh thiếu chất ở người bị eczema.",
+    description: "Bài thực hành về loại trừ thực phẩm: khi nào nên nghĩ đến dị ứng thức ăn, thử từng bước ra sao và cách tránh thiếu chất.",
     emoji: "🥛",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5307,7 +5308,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-viem-xoang",
     title: "Viêm xoang — Bài nền tảng về ăn uống giảm viêm và chăm sóc khi nghẹt mũi",
-    description: "Bài nền tảng về uống đủ nước, thực phẩm giảm viêm, thử hạn chế sữa khi nghi nhạy cảm và các mẹo ăn uống khi viêm xoang.",
+    description: "Bài nền về viêm xoang: uống đủ nước, thực phẩm hỗ trợ, khi nào nên thử hạn chế sữa và các mẹo tự chăm sóc khi nghẹt mũi.",
     emoji: "👃",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5537,7 +5538,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "xo-gan-co-truong-an-uong",
     title: "Xơ gan có cổ trướng — Ăn uống thế nào để giảm muối mà không kiệt sức?",
-    description: "Xơ gan có cổ trướng cần giảm natri, theo dõi dịch đúng chỉ định và vẫn phải giữ đủ năng lượng, đủ đạm để tránh suy dinh dưỡng.",
+    description: "Bài nền thực hành cho xơ gan có cổ trướng: giảm natri, giữ đủ năng lượng và đạm, chia bữa và theo dõi cân nặng hằng ngày.",
     emoji: "🫗",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5558,7 +5559,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "xo-gan-co-truong-muoi-dich-dam",
     title: "Xơ gan có cổ trướng: Giảm muối đúng, giữ đạm đủ và khi nào phải cảnh giác hạ natri?",
-    description: "Làm rõ ba điểm hay bị hiểu sai ở xơ gan có cổ trướng: cắt muối thế nào, có phải ai cũng phải hạn chế nước và vì sao không nên tự bỏ đạm.",
+    description: "Bài làm rõ hiểu lầm thường gặp: giảm muối thế nào, khi nào mới phải hạn chế nước và vì sao không nên tự bỏ đạm ở người xơ gan có cổ trướng.",
     emoji: "🫙",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5945,7 +5946,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "eczema-nhat-ky-kich-hoat-bung-phat",
     title: "Eczema bùng phát: ghi nhật ký ăn uống và yếu tố kích hoạt thế nào?",
-    description: "Hướng dẫn phân biệt thức ăn, thời tiết, mồ hôi, xà phòng và chăm sóc da khi viêm da cơ địa bùng phát.",
+    description: "Bài theo dõi bùng phát: cách phân biệt thức ăn, thời tiết, mồ hôi, xà phòng và chăm sóc da khi eczema nặng lên.",
     emoji: "🗂️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5964,7 +5965,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "viem-mui-xoang-dot-bung-phat-an-uong",
     title: "Viêm mũi dị ứng, viêm xoang bùng phát: ăn uống thế nào cho đỡ mệt?",
-    description: "Gợi ý uống đủ nước, ăn đủ đạm, tránh rượu bia và theo dõi món cá nhân làm nghẹt mũi nặng hơn.",
+    description: "Bài thực hành cho đợt bùng phát: uống đủ nước, ăn đủ đạm, tránh rượu bia và theo dõi món cá nhân làm nghẹt mũi nặng hơn.",
     emoji: "🤧",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5983,7 +5984,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dau-da-day-di-lam-dung-thuoc",
     title: "Đau dạ dày khi đi làm: cà phê, bỏ bữa và thuốc giảm đau cần sửa gì?",
-    description: "Bài thực hành giúp người đau dạ dày nhận diện lịch ăn, cà phê lúc đói và nguy cơ NSAID/HP.",
+    description: "Bài tình huống đi làm: cách sửa lịch ăn, cà phê lúc đói, thuốc giảm đau và các điểm cần hỏi lại khi đau dạ dày kéo dài.",
     emoji: "💊",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -6026,16 +6027,16 @@ export function getArticlesBySpecialty(specialty: string): ArticleMeta[] {
 }
 
 export const SPECIALTIES: Record<string, { name: string; emoji: string; desc: string }> = {
-  "tim-mach": { name: "Tim mạch & Huyết áp", emoji: "❤️", desc: "Tăng huyết áp, mỡ máu, suy tim, bệnh động mạch vành" },
-  "noi-tiet": { name: "Nội tiết & Chuyển hóa", emoji: "🩸", desc: "Đái tháo đường, gout, béo phì, gan nhiễm mỡ, PCOS, Basedow" },
-  "tieu-hoa": { name: "Tiêu hóa & Gan mật", emoji: "🫁", desc: "Đau dạ dày, viêm đại tràng, IBS, trào ngược, viêm tụy, xơ gan" },
-  "than-tiet-nieu": { name: "Thận & Tiết niệu", emoji: "🫘", desc: "Suy thận, sỏi thận, bệnh thận mạn" },
+  "tim-mach": { name: "Tim mạch, huyết áp", emoji: "❤️", desc: "Tăng huyết áp, mỡ máu, suy tim, bệnh động mạch vành" },
+  "noi-tiet": { name: "Nội tiết, chuyển hóa", emoji: "🩸", desc: "Đái tháo đường, gout, béo phì, gan nhiễm mỡ, PCOS, Basedow" },
+  "tieu-hoa": { name: "Tiêu hóa, gan mật", emoji: "🫁", desc: "Đau dạ dày, viêm đại tràng, IBS, trào ngược, viêm tụy, xơ gan" },
+  "than-tiet-nieu": { name: "Thận, tiết niệu", emoji: "🫘", desc: "Suy thận, sỏi thận, bệnh thận mạn" },
   "co-xuong-khop": { name: "Cơ xương khớp", emoji: "🦴", desc: "Loãng xương, viêm khớp, gout, thoát vị đĩa đệm" },
   "huyet-hoc": { name: "Miễn dịch & Huyết học", emoji: "🧬", desc: "Thiếu máu, thiếu B12/kẽm, lupus, suy giảm miễn dịch" },
-  "than-kinh": { name: "Thần kinh & Tâm lý", emoji: "🧠", desc: "Đột quỵ, Alzheimer, Parkinson, trầm cảm, mất ngủ" },
-  "ho-hap": { name: "Hô hấp & Dị ứng", emoji: "🫁", desc: "COPD, hen suyễn, viêm mũi dị ứng, viêm xoang" },
+  "than-kinh": { name: "Thần kinh, tâm lý", emoji: "🧠", desc: "Đột quỵ, Alzheimer, Parkinson, trầm cảm, mất ngủ" },
+  "ho-hap": { name: "Hô hấp, dị ứng", emoji: "🫁", desc: "COPD, hen suyễn, viêm mũi dị ứng, viêm xoang" },
   "da-lieu": { name: "Da liễu", emoji: "🧴", desc: "Vảy nến, viêm da cơ địa, xơ cứng bì" },
-  "phu-nu-nhi": { name: "Phụ nữ, Trẻ em & Người già", emoji: "👨‍👩‍👧‍👦", desc: "Mang thai, mãn kinh, trẻ em, người cao tuổi, suy dinh dưỡng" },
+  "phu-nu-nhi": { name: "Phụ nữ, trẻ em, người cao tuổi", emoji: "👨‍👩‍👧‍👦", desc: "Mang thai, mãn kinh, trẻ em, người cao tuổi, suy dinh dưỡng" },
   "ung-thu": { name: "Ung thư", emoji: "🎗️", desc: "Dinh dưỡng cho người ung thư trong và sau điều trị" },
   "dinh-duong-tong-quat": { name: "Dinh dưỡng tổng quát", emoji: "🥗", desc: "Tháp dinh dưỡng, lối sống lành mạnh, mẹo ăn uống" },
   "nhi-khoa": { name: "Nhi khoa", emoji: "👶", desc: "Biếng ăn, dị ứng sữa, dinh dưỡng theo lứa tuổi trẻ em" },
@@ -6043,7 +6044,7 @@ export const SPECIALTIES: Record<string, { name: string; emoji: string; desc: st
   "san-khoa": { name: "Sản khoa", emoji: "🤰", desc: "Thai kỳ, sau sinh, thiếu vi chất và chăm sóc mẹ bầu" },
   "di-ung": { name: "Dị ứng", emoji: "🌿", desc: "Dị ứng thực phẩm, sốc phản vệ và phòng tránh lây nhiễm chéo" },
   "tai-mui-hong": { name: "Tai mũi họng", emoji: "👂", desc: "Viêm họng, tai mũi họng và lưu ý ăn uống hỗ trợ" },
-  "ngoai-khoa": { name: "Ngoại khoa & Hậu phẫu", emoji: "🩹", desc: "Ăn uống trước và sau mổ, chăm sóc vết thương, bỏng, loét và hồi phục sau can thiệp" },
+  "ngoai-khoa": { name: "Ngoại khoa, hậu phẫu", emoji: "🩹", desc: "Ăn uống trước và sau mổ, chăm sóc vết thương, bỏng, loét và hồi phục sau can thiệp" },
   "truyen-nhiem": { name: "Truyền nhiễm", emoji: "🦠", desc: "Dinh dưỡng hỗ trợ hồi phục trong bệnh nhiễm trùng và sau sốt" },
   "dinh-duong-the-thao": { name: "Dinh dưỡng thể thao", emoji: "🏃", desc: "Ăn uống cho vận động, sức bền, nạp carb và phục hồi" },
 };

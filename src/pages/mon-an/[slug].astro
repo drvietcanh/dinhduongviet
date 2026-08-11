@@ -18,7 +18,19 @@ const recipe = recipeBySlug(Astro.params.slug ?? "");
 if (!recipe) return Astro.redirect("/tim-kiem");
 const nutrients = calculateRecipe(recipe);
 const source = sourceFor(recipe.sourceId);
+const nextRecipeLinks = [
+  { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn này" },
+  { href: "#doi-khau-phan", label: "Đổi khẩu phần" },
+  { href: "/thuc-pham", label: "Xem thực phẩm thành phần" },
+];
 const pageDescription = `Tra cứu ${recipe.servingName} ${recipe.name}: khoảng ${Math.round(nutrients.energyKcal ?? 0)} kcal, ${Math.round(nutrients.proteinG ?? 0)}g đạm, ${Math.round(nutrients.carbG ?? 0)}g carb và ${Math.round(nutrients.fatG ?? 0)}g chất béo mỗi khẩu phần.`;
+const heroMetrics = [
+  { label: "Năng lượng", value: `${Math.round(nutrients.energyKcal ?? 0)} kcal` },
+  { label: "Protein", value: `${Math.round(nutrients.proteinG ?? 0)} g` },
+  { label: "Carb", value: `${Math.round(nutrients.carbG ?? 0)} g` },
+  { label: "Natri", value: `${Math.round(nutrients.sodiumMg ?? 0)} mg` }
+];
+const heroTags = allTags({ tags: recipe.tags, nutrients }).slice(0, 5);
 
 // Build JSON-LD Recipe schema object (will be stringified in template)
 const recipeSchema = {
@@ -51,20 +63,46 @@ const recipeSchema = {
   canonical={`/mon-an/${recipe.slug}`}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(recipeSchema)}></script>
-  <section>
-    <span class="badge">Món ăn · {confidenceLabel(recipe.confidence)}</span>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;justify-content:space-between;">
-      <h1 style="flex:1;min-width:200px;">{recipe.servingName} {recipe.name}</h1>
-      <div class="action-btns" style="display:flex;gap:6px;flex-shrink:0;">
-        <button class="btn-sm btn-outline" onclick="shareRecipe()" title="Chia sẻ">📤 Chia sẻ</button>
-        <button class="btn-sm btn-outline" onclick="window.print()" title="In / Xuất PDF">🖨️ In / PDF</button>
+  <section class="detail-hero">
+    <div class="detail-topline">
+      <a href="/mon-an" class="back-link">Danh sách món ăn</a>
+      <span class="badge">Món ăn · {confidenceLabel(recipe.confidence)}</span>
+    </div>
+    <div class="detail-heading">
+      <div class="detail-copy">
+        <p class="eyebrow">Theo {recipe.servingName.toLowerCase()}</p>
+        <h1>{recipe.servingName} {recipe.name}</h1>
+        <p class="lead">{recipe.note}</p>
+        <div class="detail-actions">
+          <button class="action-chip" onclick="shareRecipe()" title="Chia sẻ">Chia sẻ</button>
+          <button class="action-chip" onclick="window.print()" title="In / Xuất PDF">In / PDF</button>
+        </div>
+      </div>
+      <div class="detail-media">
+        {recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.name} class="food-img detail-image" loading="lazy" decoding="async" fetchpriority="low" onerror="this.closest('.detail-media')?.classList.add('is-fallback'); this.remove();" />}
+        <div class="detail-media-fallback" aria-hidden="true">
+          <span>🍲</span>
+          <strong>{recipe.name}</strong>
+        </div>
       </div>
     </div>
-    {recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.name} class="food-img" loading="lazy" />}
-    <div class="tags" style="margin: 12px 0;">
-      {allTags({ tags: recipe.tags, nutrients: nutrients }).map(tag => <span class="tag">{tagLabel(tag)}</span>)}
+    <div class="detail-metrics" aria-label="Tóm tắt dinh dưỡng">
+      {heroMetrics.map((metric) => (
+        <div class="metric-card">
+          <span>{metric.label}</span>
+          <strong>{metric.value}</strong>
+        </div>
+      ))}
     </div>
-    <p class="lead">{recipe.note}</p>
+    {heroTags.length > 0 && (
+      <div class="detail-tags">
+        {heroTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+      </div>
+    )}
+    <div class="detail-note-card">
+      <h2>Đọc nhanh trước khi dùng số liệu</h2>
+      <p>Đây là ước tính theo một khẩu phần phổ biến. Giá trị thực tế thay đổi nhiều nhất theo lượng cơm, dầu mỡ, nước sốt và kích thước tô/đĩa.</p>
+    </div>
   </section>
 
   <HealthAlert nutrients={nutrients} name={recipe.name} />
@@ -81,14 +119,28 @@ const recipeSchema = {
     <VNHealthScore nutrients={nutrients} name={`${recipe.servingName} ${recipe.name}`} isRecipe servingKcal={nutrients.energyKcal} />
   </section>
 
-  <section class="section">
-    <GlycemicLoad glycemicIndex={nutrients.glycemicIndex} carbG={nutrients.carbG} />
+  {nutrients.glycemicIndex != null && (
+    <section class="section">
+      <GlycemicLoad glycemicIndex={nutrients.glycemicIndex} carbG={nutrients.carbG} />
+    </section>
+  )}
+
+  <section class="section" id="doi-khau-phan">
+    <PortionCalculator
+      nutrients={nutrients}
+      baseAmountG={recipe.servingWeightG}
+      defaultAmountG={recipe.servingWeightG}
+      title={`Đổi khẩu phần ${recipe.name}`}
+    />
   </section>
 
   <section class="section grid two">
     <NutritionTable nutrients={nutrients} caption={`Ước tính cho ${recipe.servingName}`} />
     <div class="card">
-      <h2>Công thức tính</h2>
+      <div class="section-head">
+        <h2>Công thức tính</h2>
+        <p>Mỗi nguyên liệu được quy đổi theo khối lượng ăn được rồi cộng lại thành một phần món hoàn chỉnh.</p>
+      </div>
       <table class="table">
         <thead>
           <tr>
@@ -135,14 +187,14 @@ const recipeSchema = {
       Đây là giá trị ước tính theo công thức mẫu. Món ăn thực tế có thể thay đổi theo lượng tinh bột, thịt, dầu mỡ, muối/nước mắm và kích thước khẩu phần.
     </p>
   </section>
-
-  <section class="section">
-    <PortionCalculator
-      nutrients={nutrients}
-      baseAmountG={recipe.servingWeightG}
-      defaultAmountG={recipe.servingWeightG}
-      title={`Đổi khẩu phần ${recipe.name}`}
-    />
+  <section class="section card next-step-card">
+    <div class="section-head">
+      <h2>Bước tiếp theo</h2>
+      <p>Sau khi xem một phần món ăn, bạn thường sẽ muốn đổi khẩu phần hoặc đặt món đó vào cả bữa ăn.</p>
+    </div>
+    <div class="next-step-links">
+      {nextRecipeLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
   </section>
   <script is:inline>
     function shareRecipe() {
@@ -158,3 +210,261 @@ const recipeSchema = {
     }
   </script>
 </BaseLayout>
+
+<style>
+  .detail-hero {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 8px;
+  }
+
+  .detail-topline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .back-link {
+    color: var(--ink-secondary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--brand);
+  }
+
+  .detail-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(240px, 360px);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .detail-copy h1 {
+    margin: 4px 0 10px;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .action-chip {
+    min-height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    padding: 9px 14px;
+    color: var(--ink);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .detail-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+
+  .detail-media {
+    width: 100%;
+  }
+
+  .detail-media-fallback {
+    display: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--bg-soft), var(--brand-light));
+    color: var(--ink);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .detail-media-fallback span {
+    font-size: 2rem;
+  }
+
+  .detail-media.is-fallback .detail-media-fallback {
+    display: flex;
+  }
+
+  .detail-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .metric-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    padding: 12px 14px;
+  }
+
+  .metric-card span {
+    display: block;
+    color: var(--ink-secondary);
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+  }
+
+  .metric-card strong {
+    font-size: 1rem;
+  }
+
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .detail-tags .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    border: 1px solid var(--card-border);
+    color: var(--ink-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .detail-note-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--brand) 6%, var(--card));
+    padding: 14px 16px;
+  }
+
+  .detail-note-card h2,
+  .section-head h2 {
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+  }
+
+  .detail-note-card p,
+  .section-head p {
+    margin: 0;
+    color: var(--ink-secondary);
+  }
+
+  .section-head {
+    margin-bottom: 12px;
+  }
+  .next-step-card { padding: 18px; }
+  .next-step-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .next-step-links a {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+  .next-step-links a:hover {
+    border-color: var(--brand-light2);
+    background: var(--brand-light);
+    color: var(--brand-dark);
+  }
+
+  @media (max-width: 900px) {
+    .detail-heading,
+    .detail-metrics {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section.grid.two {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-topline {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .badge {
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .detail-copy h1 {
+      line-height: 1.15;
+    }
+
+    .detail-metrics {
+      gap: 8px;
+    }
+
+    .metric-card {
+      padding: 10px 12px;
+    }
+
+    .metric-card span {
+      font-size: 0.78rem;
+      margin-bottom: 4px;
+    }
+
+    .metric-card strong {
+      font-size: 0.95rem;
+    }
+
+    .detail-note-card,
+    .next-step-card {
+      padding: 14px;
+    }
+
+    .detail-tags .tag {
+      font-size: 0.74rem;
+      min-height: 28px;
+    }
+
+    .next-step-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .next-step-links a {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      min-height: 42px;
+    }
+  }
+</style>

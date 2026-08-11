@@ -4,7 +4,7 @@ import { articles, SPECIALTIES, type ArticleMeta } from "../../data/articles";
 import ArticleCard from "../../components/ArticleCard.astro";
 
 const title = "Kiến thức dinh dưỡng | Dinh Dưỡng Việt";
-const desc = "Bài viết dinh dưỡng cho người Việt — tra cứu theo chuyên khoa: tim mạch, nội tiết, tiêu hóa, thận, xương khớp...";
+const desc = "Bài viết dinh dưỡng cho người Việt — tra cứu theo chuyên khoa như tim mạch, chuyển hóa, tiêu hóa, thận, hô hấp và nhiều nhóm khác.";
 
 // Group articles by specialty
 const specOrder = [
@@ -58,13 +58,19 @@ const audiences = [
   { id: "gout", label: "🦶 Người gout" },
   { id: "kidney", label: "🫘 Người bệnh thận" },
   { id: "fatty-liver", label: "🫁 Người gan nhiễm mỡ" },
-  { id: "stomach", label: "😣 Người bệnh dạ dày" },
+  { id: "stomach", label: "😣 Người bệnh dạ dày, tá tràng" },
   { id: "elderly", label: "👴 Người cao tuổi" },
   { id: "pregnancy", label: "🤰 Phụ nữ mang thai" },
   { id: "children", label: "🧒 Trẻ em" },
-  { id: "weight-loss", label: "🏋️ Giảm cân" },
+  { id: "weight-loss", label: "🏋️ Người cần giảm cân" },
   { id: "vegan", label: "🥬 Ăn chay" },
   { id: "caregiver", label: "👨👩👧👦 Người chăm sóc" },
+];
+const quickStarts = [
+  { href: "/kien-thuc-dinh-duong#sec-noi-tiet", label: "Mới chẩn đoán đái tháo đường", note: "Ưu tiên nhóm chuyển hóa, carb, bữa ăn và hiểu lầm thường gặp." },
+  { href: "/kien-thuc-dinh-duong#sec-tim-mach", label: "Muốn ăn nhạt mà vẫn ngon", note: "Đi vào nhóm tim mạch, huyết áp và các bài giảm natri thực tế." },
+  { href: "/kien-thuc-dinh-duong#sec-tieu-hoa", label: "Đầy bụng, dạ dày, gan mật", note: "Xem trước các bài tiêu hóa, gan mật và cách sắp bữa dễ chịu hơn." },
+  { href: "/dung-tin-ngay", label: "Muốn kiểm tra hiểu lầm", note: "Đi thẳng vào loạt nội dung gỡ nhầm về thực phẩm, đường, mỡ và các xu hướng thanh lọc thiếu bằng chứng." },
 ];
 ---
 
@@ -84,6 +90,16 @@ const audiences = [
         <a href="/hoi-dap" class="cta-alt-btn">❓ Hỏi nhanh – đáp gọn</a>
       </div>
     </div>
+
+    <section class="ki-start-grid" aria-label="Lối vào nhanh">
+      {quickStarts.map((item) => (
+        <a class="ki-start-card" href={item.href}>
+          <strong>{item.label}</strong>
+          <p>{item.note}</p>
+          <span>Đọc theo lối này →</span>
+        </a>
+      ))}
+    </section>
 
     <!-- Specialty Tabs (quick filters) -->
     <div class="ki-tabs">
@@ -203,6 +219,42 @@ const audiences = [
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+    .ki-start-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+    .ki-start-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: var(--bg-soft);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .ki-start-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand-light2);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+    }
+    .ki-start-card strong { font-size: 0.95rem; }
+    .ki-start-card p {
+      margin: 0;
+      color: var(--ink-secondary);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+    .ki-start-card span {
+      color: var(--brand-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
     }
     .cta-btn {
       display: inline-block;
@@ -374,18 +426,63 @@ const audiences = [
     .ki-footer-links .ki-actions { justify-content: center; }
 
     @media (max-width: 640px) {
+      .ki-page { padding-inline: 1rem; }
+      .ki-hero h1 { font-size: 1.6rem; }
+      .ki-actions {
+        flex-direction: column;
+      }
+      .ki-actions a {
+        width: 100%;
+        text-align: center;
+      }
+      .ki-start-grid,
       .ki-article-grid { grid-template-columns: 1fr; }
-      .ki-tabs { gap: 4px; }
-      .sp-tab { font-size: 0.78rem; padding: 5px 10px; }
+      .ki-start-card {
+        border-radius: 12px;
+      }
+      .ki-article-grid { grid-template-columns: 1fr; }
+      .ki-tabs {
+        gap: 6px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+        scroll-snap-type: x proximity;
+      }
+      .ki-tabs::-webkit-scrollbar { display: none; }
+      .sp-tab {
+        font-size: 0.78rem;
+        padding: 6px 10px;
+        min-height: 38px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+      .aud-btn {
+        min-height: 36px;
+        text-align: left;
+      }
+      .ki-section-title {
+        padding: 12px;
+        align-items: flex-start;
+      }
+      .spec-header {
+        align-items: flex-start;
+      }
+      .spec-name {
+        line-height: 1.4;
+      }
       .ki-subgroup { margin-left: 0; }
+      .spec-desc {
+        margin-left: 0;
+        margin-top: -4px;
+      }
     }
     @media (max-width: 600px) {
-    .spec-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; gap: 4px; }
-    .spec-tab { padding: 6px 12px; font-size: 0.8rem; white-space: nowrap; }
-    .article-item { padding: 12px; }
-    .article-item h3 { font-size: 0.9rem; }
-    .article-item p { font-size: 0.82rem; }
-  }
+      .article-item { padding: 12px; }
+      .article-item h3 { font-size: 0.9rem; }
+      .article-item p { font-size: 0.82rem; }
+    }
 </style>
 
   <script is:inline>

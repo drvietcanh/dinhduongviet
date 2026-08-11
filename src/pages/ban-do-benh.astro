@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { articles, SPECIALTIES } from "../data/articles";
 
-const title = "Bản đồ bệnh mạn tính — Dinh dưỡng theo từng bệnh";
-const desc = "Tra cứu chế độ dinh dưỡng cho hơn 20 bệnh mạn tính theo chuyên khoa. Mỗi bệnh có bài nền tảng, hỏi đáp, và thực đơn.";
+const title = "Bản đồ bệnh đầy đủ — Dinh dưỡng theo từng bệnh";
+const desc = "Tra cứu dinh dưỡng theo nhóm bệnh và tình huống sức khỏe, sắp theo chuyên khoa. Mỗi nhóm có bài nền tảng, hỏi đáp và thực đơn liên quan.";
 
 const specialtyColors: Record<string, string> = {
   "noi-tiet": "#b42318", "tim-mach": "#c0392b", "tieu-hoa": "#18794e",
@@ -120,7 +120,7 @@ const groups = [
     specialty: "noi-tiet",
     id: "beo-phi",
     emoji: "⚖️",
-    name: "Béo phì • Hội chứng chuyển hóa",
+    name: "Béo phì và hội chứng chuyển hóa",
     foundation: [
       { slug: "beo-phi", title: "Béo phì — Kiểm soát cân nặng", desc: "Bài nền tảng" },
       { slug: "hoi-chung-chuyen-hoa", title: "Hội chứng chuyển hóa — Cải thiện bằng dinh dưỡng", desc: "Bài nền tảng" },
@@ -243,7 +243,7 @@ const groups = [
     specialty: "tieu-hoa",
     id: "da-day",
     emoji: "😣",
-    name: "Dạ dày • Tá tràng • Trào ngược",
+    name: "Dạ dày, tá tràng và trào ngược",
     foundation: [
       { slug: "dau-da-day", title: "Đau dạ dày — Nguyên tắc ăn uống, HP và thói quen cần sửa", desc: "Bài nền tảng" },
       { slug: "dau-da-day-hp-ca-phe-thuoc-giam-dau", title: "HP, cà phê, thuốc giảm đau: đâu là điểm cần sửa trước?", desc: "Thực hành cốt lõi" },
@@ -693,7 +693,7 @@ const groups = [
   </nav>
   <main style="max-width:960px;margin:0 auto;padding:2rem 1.5rem;">
     <div style="text-align:center;margin-bottom:2rem;">
-      <h1 style="font-size:1.8rem;margin-bottom:8px;">🗺️ Bản đồ bệnh mạn tính</h1>
+      <h1 style="font-size:1.8rem;margin-bottom:8px;">🗺️ Bản đồ bệnh đầy đủ</h1>
       <p style="max-width:640px;margin:0.5rem auto 0;color:var(--ink-secondary);font-size:1rem;">
         Đây là nơi xem <strong>toàn cảnh theo chuyên khoa</strong> khi bạn chưa chắc nên bắt đầu từ nhóm bệnh nào.
         Mỗi cụm bệnh dẫn tới <strong>bài nền tảng</strong>, <strong>hỏi đáp</strong>, <strong>thực đơn</strong> và các bài đọc thêm.
