@@ -1,0 +1,60 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["eczema-nhat-ky-kich-hoat-bung-phat"];
+if (!art) throw new Error("Article not found: eczema-nhat-ky-kich-hoat-bung-phat");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Khi eczema bùng phát, gia đình thường muốn tìm ngay một món ăn "thủ phạm". Nhưng da có thể nặng hơn vì thời tiết khô, mồ hôi, xà phòng, nhiễm trùng, stress, ngủ kém hoặc quên dưỡng ẩm. Nhật ký tốt giúp bạn tách <strong>nghi ngờ có căn cứ</strong> khỏi kiêng khem theo cảm giác.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Eczema không phải lúc nào cũng do thức ăn. Chỉ nên loại trừ thực phẩm khi có phản ứng lặp lại, rõ ràng hoặc được bác sĩ dị ứng/da liễu hướng dẫn. Việc tự bỏ nhiều nhóm như sữa, trứng, hải sản, lúa mì cùng lúc có thể làm thiếu chất, nhất là ở trẻ em.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🗂️ Nhật ký nên ghi gì?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Vị trí da đỏ/ngứa, mức ngứa 0-10 và có rỉ dịch hay nứt da không.</li>
+      <li>Món ăn mới, lượng ăn và thời điểm xuất hiện triệu chứng.</li>
+      <li>Thời tiết, mồ hôi, bơi lội, xà phòng/nước giặt mới, thú cưng, bụi nhà.</li>
+      <li>Dưỡng ẩm, thuốc bôi, thuốc uống và số giờ ngủ.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🥛 Khi nào thức ăn đáng nghi hơn?</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nổi mề đay, sưng môi, nôn, đau bụng, khò khè sau ăn.</li>
+      <li>Bùng phát lặp lại với cùng một món, không phải chỉ một lần.</li>
+      <li>Trẻ eczema mức vừa-nặng, khó kiểm soát dù chăm sóc da đúng.</li>
+      <li>Có tiền sử dị ứng thức ăn, hen hoặc viêm mũi dị ứng đi kèm.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📋 Cách thử thay đổi mà ít rủi ro</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Bước</th><th>Làm gì</th><th>Tránh điều gì</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Ổn định dưỡng ẩm và thuốc bôi theo đơn trước</td><td>Đổ lỗi hết cho thức ăn khi chăm sóc da chưa đều</td></tr>
+      <tr><td>2</td><td>Ghi nhật ký 2-4 tuần</td><td>Đổi quá nhiều thứ cùng lúc</td></tr>
+      <tr><td>3</td><td>Nếu cần, chỉ thử một nhóm nghi ngờ</td><td>Cắt sữa, trứng, hải sản, lúa mì đồng loạt</td></tr>
+      <tr><td>4</td><td>Theo dõi cân nặng, chiều cao, khẩu phần đạm và canxi</td><td>Kiêng kéo dài khi không thấy lợi ích rõ</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📌 Dấu hiệu cần khám sớm</h2>
+  <p>Cần đi khám nếu da rỉ dịch, đóng mài vàng, đau nhiều, sốt, mất ngủ vì ngứa, nghi phản vệ sau ăn hoặc trẻ sụt cân/chậm tăng cân. Dinh dưỡng nên giúp cơ thể đủ chất để da phục hồi, không biến bữa ăn thành danh sách cấm ngày càng dài.</p>
+</section>
+</ArticleLayout>

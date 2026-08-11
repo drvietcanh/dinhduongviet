@@ -1,0 +1,60 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["gan-nhiem-mo-an-ngoai-di-lam"];
+if (!art) throw new Error("Article not found: gan-nhiem-mo-an-ngoai-di-lam");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Gan nhiễm mỡ ở người đi làm thường không hỏng vì một bữa cơm phần, mà vì nhiều ngày lặp lại: nước ngọt, trà sữa, cơm nhiều hơn rau, món chiên xào, ít đi bộ và cuối tuần có bia rượu. Bài này giúp bạn sửa bữa ăn ngoài theo kiểu <strong>giảm gánh cho gan nhưng vẫn sống được với lịch làm việc thật</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Với gan nhiễm mỡ liên quan chuyển hóa, giảm cân vừa phải nếu thừa cân, giảm đồ uống có đường, hạn chế rượu bia, tăng vận động và ăn kiểu Địa Trung Hải/giàu rau, đạm nạc, chất béo tốt là các trụ cột bền vững. Không cần kiêng sạch dầu mỡ hay chỉ ăn rau luộc.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🍱 Khi gọi cơm phần</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Giữ nửa hộp là rau/canh/đồ luộc nếu có thể.</li>
+      <li>Chọn cá, thịt nạc, trứng, đậu phụ; giảm món chiên giòn, kho quá ngọt.</li>
+      <li>Xin bớt cơm hoặc chừa lại một phần nếu suất quá lớn.</li>
+      <li>Đổi nước ngọt sang nước lọc, trà không đường hoặc cà phê ít/ngưng đường.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🍜 Khi ăn bún, phở, mì</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Ưu tiên tô có nhiều rau, giá, hành, rau thơm và nguồn đạm rõ.</li>
+      <li>Hạn chế uống hết nước dùng nếu mặn hoặc nhiều béo.</li>
+      <li>Tránh gọi thêm quẩy, chả chiên, trà sữa sau bữa như một thói quen.</li>
+      <li>Nếu còn đói, thêm rau/đạm tốt hơn thêm đồ ngọt.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📋 Bảng sửa nhanh trong tuần</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Tình huống</th><th>Đổi nhỏ nhưng đáng tiền</th><th>Vì sao giúp gan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cà phê sữa mỗi sáng</td><td>Giảm đường/sữa đặc dần, không uống kèm bánh ngọt</td><td>Giảm đường lỏng và năng lượng dư</td></tr>
+      <tr><td>Cơm văn phòng nhiều dầu</td><td>Chọn món hấp/luộc/kho nhạt hơn 3-4 bữa/tuần</td><td>Giảm năng lượng đậm đặc</td></tr>
+      <tr><td>Hay nhậu cuối tuần</td><td>Đặt số lần và lượng trước khi đi</td><td>Rượu bia có thể làm nặng gan và triglyceride</td></tr>
+      <tr><td>Ngồi cả ngày</td><td>Đi bộ 10 phút sau ăn trưa hoặc tối</td><td>Hỗ trợ kiểm soát đường huyết và mỡ gan</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📌 Theo dõi thế nào để không nản?</h2>
+  <p>Đừng chỉ nhìn men gan từng tuần. Hãy theo dõi <strong>vòng eo, cân nặng, số ngày không uống đồ ngọt, số bữa có rau và số phút vận động</strong>. Nếu men gan tăng cao, đau hạ sườn phải, vàng da, uống rượu nhiều hoặc có viêm gan virus, cần khám để tìm nguyên nhân khác đi kèm.</p>
+</section>
+</ArticleLayout>

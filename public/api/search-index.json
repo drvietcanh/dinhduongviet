@@ -2448,6 +2448,38 @@
     "category": "Bai viet"
   },
   {
+    "type": "article",
+    "slug": "gan-nhiem-mo-an-ngoai-di-lam",
+    "name": "Gan nhiễm mỡ khi ăn ngoài, đi làm: sửa bữa nào trước?",
+    "aliases": [],
+    "description": "Bài thực hành cho người gan nhiễm mỡ ăn cơm văn phòng, bún phở, cà phê sữa và hay ngồi nhiều.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "eczema-nhat-ky-kich-hoat-bung-phat",
+    "name": "Eczema bùng phát: ghi nhật ký ăn uống và yếu tố kích hoạt thế nào?",
+    "aliases": [],
+    "description": "Hướng dẫn phân biệt thức ăn, thời tiết, mồ hôi, xà phòng và chăm sóc da khi viêm da cơ địa bùng phát.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-mui-xoang-dot-bung-phat-an-uong",
+    "name": "Viêm mũi dị ứng, viêm xoang bùng phát: ăn uống thế nào cho đỡ mệt?",
+    "aliases": [],
+    "description": "Gợi ý uống đủ nước, ăn đủ đạm, tránh rượu bia và theo dõi món cá nhân làm nghẹt mũi nặng hơn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dau-da-day-di-lam-dung-thuoc",
+    "name": "Đau dạ dày khi đi làm: cà phê, bỏ bữa và thuốc giảm đau cần sửa gì?",
+    "aliases": [],
+    "description": "Bài thực hành giúp người đau dạ dày nhận diện lịch ăn, cà phê lúc đói và nguy cơ NSAID/HP.",
+    "category": "Bai viet"
+  },
+  {
     "type": "recipe",
     "slug": "cha-o",
     "name": "Cháo ếch",

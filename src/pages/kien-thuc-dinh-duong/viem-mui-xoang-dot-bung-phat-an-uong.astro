@@ -1,0 +1,59 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["viem-mui-xoang-dot-bung-phat-an-uong"];
+if (!art) throw new Error("Article not found: viem-mui-xoang-dot-bung-phat-an-uong");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Đợt viêm mũi dị ứng hoặc viêm xoang làm người bệnh nghẹt mũi, mất ngủ, khô họng và ăn kém. Ăn uống không thay thuốc xịt mũi, rửa mũi hay điều trị nhiễm khuẩn khi cần, nhưng có thể giúp bạn <strong>đỡ khô, đỡ mệt và nhận ra món nào làm triệu chứng nặng hơn</strong>.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Không có bằng chứng để tất cả người viêm xoang phải kiêng sữa, hải sản hay đồ lên men. Cách an toàn hơn là uống đủ nước, ăn đủ chất, tránh rượu bia, khói thuốc và theo dõi cá nhân nếu nghi thực phẩm giàu histamine làm nghẹt mũi rõ hơn.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>🥣 Khi đang nghẹt mũi, nên ưu tiên</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Nước ấm, canh, súp, cháo đặc đủ đạm để dễ ăn khi mệt.</li>
+      <li>Rau quả giàu vitamin C như ổi, cam/quýt vừa phải, bông cải, rau xanh.</li>
+      <li>Cá, trứng, thịt nạc, đậu phụ để giữ sức trong đợt bệnh.</li>
+      <li>Bữa tối nhẹ hơn nếu nghẹt mũi kèm trào ngược hoặc ho đêm.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>🍺 Những thứ hay làm nặng hơn</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Rượu bia: dễ làm giãn mạch, nghẹt mũi và ngủ kém hơn.</li>
+      <li>Đồ quá cay nếu gây chảy mũi, đau dạ dày hoặc trào ngược.</li>
+      <li>Đồ lên men/ủ lâu nếu cá nhân nhạy histamine, nhưng không cần kiêng đại trà.</li>
+      <li>Ăn quá no sát giờ ngủ, nhất là khi có ợ nóng hoặc ho về đêm.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📋 Phân biệt nhanh để xử trí đúng</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Biểu hiện</th><th>Nghiêng về</th><th>Ăn uống hỗ trợ</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hắt hơi, ngứa mũi, trong nước mũi</td><td>Viêm mũi dị ứng</td><td>Giữ nước, tránh rượu bia, theo dõi dị nguyên/thực phẩm cá nhân</td></tr>
+      <tr><td>Đau tức mặt, dịch mũi đặc, sau cảm</td><td>Viêm xoang/viêm mũi xoang</td><td>Ăn mềm ấm, đủ đạm, không tự kiêng quá mức</td></tr>
+      <tr><td>Ho đêm, khàn giọng, ợ nóng</td><td>Có thể kèm trào ngược</td><td>Ăn tối sớm, giảm món béo/cay/chua cá nhân không hợp</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>📌 Khi nào không nên tự xử ở nhà?</h2>
+  <p>Cần khám nếu sốt cao, đau mặt nặng, sưng quanh mắt, đau đầu dữ dội, nhìn mờ, triệu chứng kéo dài hoặc tái phát nhiều lần. Với viêm mũi dị ứng dai dẳng, thuốc xịt mũi và kiểm soát dị nguyên thường quan trọng hơn một danh sách kiêng ăn.</p>
+</section>
+</ArticleLayout>

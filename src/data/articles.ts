@@ -5886,6 +5886,82 @@ export const articles: ArticleMeta[] = [
       { name: "NHS", title: "Morning sickness", url: "https://www.nhs.uk/pregnancy/related-conditions/common-symptoms/morning-sickness/" }
     ],
     keywords: ["ốm nghén", "buồn nôn thai kỳ", "ăn gì", "mang thai 3 tháng đầu", "nghén"]
+  },
+  {
+    slug: "gan-nhiem-mo-an-ngoai-di-lam",
+    title: "Gan nhiễm mỡ khi ăn ngoài, đi làm: sửa bữa nào trước?",
+    description: "Bài thực hành cho người gan nhiễm mỡ ăn cơm văn phòng, bún phở, cà phê sữa và hay ngồi nhiều.",
+    emoji: "🍱",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    sources: [
+      { name: "AASLD", title: "Practice Guidance on NAFLD/MASLD", url: "https://www.aasld.org/practice-guidelines" },
+      { name: "American Liver Foundation", title: "Fatty Liver Disease", url: "https://liverfoundation.org/liver-diseases/fatty-liver-disease/" },
+      { name: "Harvard T.H. Chan", title: "Healthy Eating Plate", url: "https://nutritionsource.hsph.harvard.edu/healthy-eating-plate/" }
+    ],
+    keywords: ["gan nhiễm mỡ", "MASLD", "NAFLD", "ăn ngoài", "cơm văn phòng", "trà sữa", "rượu bia"]
+  },
+  {
+    slug: "eczema-nhat-ky-kich-hoat-bung-phat",
+    title: "Eczema bùng phát: ghi nhật ký ăn uống và yếu tố kích hoạt thế nào?",
+    description: "Hướng dẫn phân biệt thức ăn, thời tiết, mồ hôi, xà phòng và chăm sóc da khi viêm da cơ địa bùng phát.",
+    emoji: "🗂️",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "da-lieu",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    sources: [
+      { name: "American Academy of Dermatology", title: "Atopic Dermatitis Guidelines", url: "https://www.aad.org/member/clinical-quality/guidelines/atopic-dermatitis" },
+      { name: "American Academy of Dermatology", title: "Can food fix eczema?", url: "https://www.aad.org/public/diseases/eczema/childhood/treating/food-fix" },
+      { name: "National Eczema Association", title: "Diet and Eczema", url: "https://nationaleczema.org/eczema/diet/" }
+    ],
+    keywords: ["eczema", "viêm da cơ địa", "nhật ký ăn uống", "dị ứng thức ăn", "bùng phát", "dưỡng ẩm"]
+  },
+  {
+    slug: "viem-mui-xoang-dot-bung-phat-an-uong",
+    title: "Viêm mũi dị ứng, viêm xoang bùng phát: ăn uống thế nào cho đỡ mệt?",
+    description: "Gợi ý uống đủ nước, ăn đủ đạm, tránh rượu bia và theo dõi món cá nhân làm nghẹt mũi nặng hơn.",
+    emoji: "🤧",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "ho-hap",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    sources: [
+      { name: "AAAAI", title: "Allergic Rhinitis", url: "https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/allergic-rhinitis" },
+      { name: "ACAAI", title: "Sinus Infection", url: "https://acaai.org/allergies/allergic-conditions/sinus-infection/" },
+      { name: "NHS", title: "Sinusitis", url: "https://www.nhs.uk/conditions/sinusitis-sinus-infection/" }
+    ],
+    keywords: ["viêm mũi dị ứng", "viêm xoang", "nghẹt mũi", "histamine", "rượu bia", "ăn gì"]
+  },
+  {
+    slug: "dau-da-day-di-lam-dung-thuoc",
+    title: "Đau dạ dày khi đi làm: cà phê, bỏ bữa và thuốc giảm đau cần sửa gì?",
+    description: "Bài thực hành giúp người đau dạ dày nhận diện lịch ăn, cà phê lúc đói và nguy cơ NSAID/HP.",
+    emoji: "💊",
+    category: "disease",
+    categoryName: "Dinh dưỡng & Bệnh lý",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    date: "2026-08-11",
+    readTime: 6,
+    featured: false,
+    sources: [
+      { name: "American College of Gastroenterology", title: "Dyspepsia Guidelines", url: "https://gi.org/guidelines/" },
+      { name: "PubMed", title: "ACG and CAG Clinical Guideline: Management of Dyspepsia", url: "https://pubmed.ncbi.nlm.nih.gov/28631728/" },
+      { name: "NHS", title: "Stomach ulcer", url: "https://www.nhs.uk/conditions/stomach-ulcer/" }
+    ],
+    keywords: ["đau dạ dày", "HP", "NSAID", "cà phê", "bỏ bữa", "viêm loét dạ dày", "đi làm"]
   }
 ];
 

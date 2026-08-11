@@ -1,0 +1,60 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dau-da-day-di-lam-dung-thuoc"];
+if (!art) throw new Error("Article not found: dau-da-day-di-lam-dung-thuoc");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Người đi làm bị đau dạ dày thường vướng ba chuyện: uống cà phê lúc đói, bỏ bữa vì họp, và tự dùng thuốc giảm đau khi nhức đầu/đau lưng. Nếu có HP, viêm loét hoặc trào ngược đi kèm, các thói quen này có thể làm triệu chứng kéo dài hơn.</p>
+</section>
+
+<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
+    <strong>👉 Ăn uống giúp giảm kích thích và hỗ trợ dung nạp thuốc, nhưng không diệt HP và không thay điều trị loét. Người đau dạ dày nên đặc biệt cẩn thận với NSAID như ibuprofen, diclofenac, aspirin liều giảm đau; nếu phải dùng thường xuyên, cần hỏi bác sĩ.</strong>
+  </p>
+</section>
+
+<section class="section grid two">
+  <div class="card">
+    <h2>☕ Sửa lịch ăn trong ngày làm việc</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Không để bụng đói quá lâu rồi uống cà phê đặc.</li>
+      <li>Chuẩn bị bữa nhỏ: sữa chua ít đường, bánh mì mềm, chuối chín, khoai, trứng.</li>
+      <li>Ăn trưa vừa đủ, giảm món chiên nhiều dầu và nước chấm cay.</li>
+      <li>Ăn tối sớm hơn nếu có ợ nóng, ho đêm hoặc trào ngược.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>💊 Các điểm cần hỏi lại về thuốc</h2>
+    <ul style="line-height:1.8;padding-left:18px;">
+      <li>Đang dùng thuốc giảm đau kháng viêm bao lâu và có tự mua không?</li>
+      <li>Có dùng aspirin, thuốc chống đông, corticoid hoặc thuốc xương khớp không?</li>
+      <li>Đã xét nghiệm HP hoặc nội soi khi đau kéo dài chưa?</li>
+      <li>Thuốc dạ dày đang uống trước ăn hay sau ăn có đúng hướng dẫn không?</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>📋 Gợi ý chọn món khi đau âm ỉ</h2>
+  <table class="table">
+    <thead>
+      <tr><th>Bối cảnh</th><th>Chọn dễ chịu hơn</th><th>Nên hạn chế nếu làm đau</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sáng vội</td><td>Cháo đặc, bánh mì mềm + trứng, sữa ấm nếu dung nạp</td><td>Cà phê đặc lúc đói, đồ chua cay</td></tr>
+      <tr><td>Ăn cơm văn phòng</td><td>Cơm mềm, cá/thịt nạc, rau nấu chín, canh ít cay</td><td>Món chiên, kho quá mặn/ngọt, ớt nhiều</td></tr>
+      <tr><td>Chiều đói</td><td>Chuối chín, khoai, sữa chua, bánh mì nhỏ</td><td>Bim bim, nước ngọt có gas, trà sữa quá ngọt</td></tr>
+      <tr><td>Tối có trào ngược</td><td>Bữa nhỏ, ít béo, xong trước ngủ 2-3 giờ</td><td>Ăn no sát giờ nằm</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>🚩 Dấu hiệu cần đi khám</h2>
+  <p>Đi khám sớm nếu đau kéo dài, sụt cân, nôn ra máu, đi cầu phân đen, thiếu máu, nuốt nghẹn, nôn ói nhiều, đau đánh thức ban đêm hoặc mới xuất hiện ở người lớn tuổi. Đừng cố "lót dạ" để chịu đựng nếu nguyên nhân thật là HP, loét do thuốc hoặc bệnh lý cần điều trị.</p>
+</section>
+</ArticleLayout>
