@@ -91,7 +91,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
   },
   {
     id: "gan-nhiem-mo",
-    name: "Gan nhiễm mỡ và mỡ máu",
+    name: "Gan nhiễm mỡ",
     shortName: "Gan nhiễm mỡ",
     emoji: "🫁",
     specialty: "tieu-hoa",
@@ -103,9 +103,9 @@ export const diseaseHubs: DiseaseHubConfig[] = [
       "Thực đơn nên thực tế để dùng lâu dài, không phải ăn kiêng ngắn ngày.",
       "Người gầy vẫn có thể bị gan nhiễm mỡ và cần cách tiếp cận khác.",
     ],
-    foundationSlugs: ["gan-nhiem-mo", "gan-nhiem-mo-giam-can-vong-eo", "gan-nhiem-mo-an-ngoai-di-lam", "gan-nhiem-mo-nguoi-gay", "sai-lam-gan-nhiem-mo-an-mo", "mo-mau-cao-7-mon-an-nguy-hiem", "roi-loan-mo-mau"],
-    menuSlugs: ["thuc-don-gan-nhiem-mo", "thuc-don-gan-nhiem-mo-ban-ron", "thuc-don-gan-nhiem-mo-binh-dan", "thuc-don-gan-nhiem-mo-nguoi-gia", "thuc-don-mo-mau"],
-    mythSlugs: ["dung-tin-ngay-chanh-giam-mo-mau", "sai-lam-gan-nhiem-mo-an-mo"],
+    foundationSlugs: ["gan-nhiem-mo", "gan-nhiem-mo-giam-can-vong-eo", "gan-nhiem-mo-an-ngoai-di-lam", "gan-nhiem-mo-nguoi-gay"],
+    menuSlugs: ["thuc-don-gan-nhiem-mo", "thuc-don-gan-nhiem-mo-ban-ron", "thuc-don-gan-nhiem-mo-binh-dan", "thuc-don-gan-nhiem-mo-nguoi-gia"],
+    mythSlugs: ["sai-lam-gan-nhiem-mo-an-mo"],
     toolLinks: [
       { href: "/cong-cu/muc-tieu-can-nang", label: "Mục tiêu cân nặng" },
       { href: "/cong-cu/tinh-nang-luong", label: "Tính nhu cầu năng lượng" },
@@ -167,7 +167,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     shortName: "Mỡ máu",
     emoji: "❤️",
     specialty: "tim-mach",
-    audience: ["hypertension", "fatty-liver"],
+    audience: ["hypertension"],
     description: "Tập hợp bài về mỡ máu cao, nguy cơ tim mạch, phục hồi sau biến cố tim mạch và chế độ ăn bảo vệ mạch máu.",
     intro: "Trang này phù hợp với người xét nghiệm thấy LDL, triglyceride tăng hoặc đã có bệnh tim mạch và cần lối vào dễ hiểu hơn so với đọc từng bài rời.",
     heroPoints: [
@@ -202,14 +202,25 @@ export function getHubSections(hub: DiseaseHubConfig) {
   const menus = pickArticles(hub.menuSlugs);
   const myths = pickArticles(hub.mythSlugs);
   const listed = new Set([...foundation, ...menus, ...myths].map((item) => item.slug));
+  const featuredTitles = new Set(
+    [...foundation, ...menus, ...myths]
+      .map((item) => item.title.trim().toLowerCase()),
+  );
   const more = articles
     .filter((article) => {
       const matchAudience = hub.audience.some((tag) => article.audience?.includes(tag));
       const matchSpecialty = article.specialty === hub.specialty;
-      return !listed.has(article.slug) && (matchAudience || matchSpecialty);
+      const sameTitle = featuredTitles.has(article.title.trim().toLowerCase());
+      const isArticleLike = article.displayCategory === "bai-viet" || article.displayCategory === "dung-tin-ngay";
+      return !listed.has(article.slug) && !sameTitle && isArticleLike && (matchAudience || matchSpecialty);
     })
-    .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
-    .slice(0, 9);
+    .sort((a, b) => {
+      const aAudience = hub.audience.some((tag) => a.audience?.includes(tag));
+      const bAudience = hub.audience.some((tag) => b.audience?.includes(tag));
+      if (aAudience !== bAudience) return Number(bAudience) - Number(aAudience);
+      return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+    })
+    .slice(0, 6);
 
   return { foundation, menus, myths, more };
 }

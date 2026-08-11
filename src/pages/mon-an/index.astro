@@ -31,7 +31,7 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
           </select>
         </label>
         <label>
-          <span>🏥 Phù hợp bệnh</span>
+          <span>🎯 Gợi ý theo mục tiêu</span>
           <select id="recipe-profile" style="font-weight:600;">
             <option value="all">Tất cả</option>
             <option value="diabetes">🩸 Đái tháo đường</option>
@@ -59,6 +59,9 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
         <label><span>Natri tối đa</span><input id="recipe-max-sodium" type="number" min="0" step="50" placeholder="mg/phần" /></label>
         <button id="recipe-reset" class="button secondary" type="button">Xóa lọc</button>
       </div>
+      <p class="muted" style="margin:10px 0 0; font-size:0.83rem;">
+        Nhãn gợi ý chỉ dựa trên thành phần dinh dưỡng ước tính của món, không thay thế kế hoạch ăn điều trị cá thể hóa.
+      </p>
       <p class="muted" id="recipe-summary"></p>
     </div>
   </section>

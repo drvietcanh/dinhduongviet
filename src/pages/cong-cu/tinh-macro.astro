@@ -15,7 +15,7 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> 1g protein = 4 kcal | 1g carb = 4 kcal | 1g fat = 9 kcal. Đây là công cụ giáo dục, không dùng để tự đặt chế độ ăn điều trị, giảm cân nhanh, keto điều trị hoặc thay đổi thuốc.
+    ⚠️ <strong>Lưu ý:</strong> 1g protein = 4 kcal | 1g carb = 4 kcal | 1g fat = 9 kcal. Đây là công cụ giáo dục. Các preset bên dưới được giữ trong vùng phân bố tham khảo phổ thông, không dùng để tự đặt chế độ ăn điều trị hoặc thay đổi thuốc.
   </div>
 
   <section class="section card">
@@ -33,10 +33,12 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
       <label for="diet-type">Chọn Chế độ ăn (Tỷ lệ phân bổ)</label>
       <select id="diet-type" style="width:100%;padding:10px 12px;border:1px solid var(--card-border);border-radius:var(--radius);font-size:1rem;background:var(--bg-elevated);color:var(--ink);">
         <option value="balanced" selected>Cân bằng tham khảo (50% Carb / 20% Protein / 30% Fat)</option>
-        <option value="muscle">Ưu tiên đạm cao hơn (40% Carb / 40% Protein / 20% Fat)</option>
-        <option value="lowcarb">Low-carb vừa tham khảo (30% Carb / 40% Protein / 30% Fat)</option>
-        <option value="keto">Rất thấp carb (10% Carb / 20% Protein / 70% Fat) - chỉ nên dùng khi đã có hướng dẫn chuyên môn</option>
+        <option value="higher-protein">Đạm cao hơn vừa phải (40% Carb / 30% Protein / 30% Fat)</option>
+        <option value="lower-carb">Carb thấp hơn vừa phải (35% Carb / 30% Protein / 35% Fat)</option>
       </select>
+      <p class="muted" style="margin-top:5px;font-size:0.85rem;">
+        Công cụ không hiển thị preset keto hoặc tỷ lệ điều trị chuyên biệt ở v1.
+      </p>
     </div>
 
     <button type="button" id="calc-btn" class="cta-btn" style="width: 100%; margin-top: 25px; text-align: center; border-radius: 12px;">
@@ -172,14 +174,11 @@ const pageDescription = "Công cụ quy đổi năng lượng mục tiêu thành
       case "balanced":
         pCarb = 0.50; pPro = 0.20; pFat = 0.30;
         break;
-      case "muscle":
-        pCarb = 0.40; pPro = 0.40; pFat = 0.20;
+      case "higher-protein":
+        pCarb = 0.40; pPro = 0.30; pFat = 0.30;
         break;
-      case "lowcarb":
-        pCarb = 0.30; pPro = 0.40; pFat = 0.30;
-        break;
-      case "keto":
-        pCarb = 0.10; pPro = 0.20; pFat = 0.70;
+      case "lower-carb":
+        pCarb = 0.35; pPro = 0.30; pFat = 0.35;
         break;
     }
 

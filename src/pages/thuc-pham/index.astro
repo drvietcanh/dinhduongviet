@@ -46,13 +46,13 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
           </select>
         </label>
         <label>
-          <span>Hồ sơ nhanh</span>
+          <span>Gợi ý lọc nhanh</span>
           <select id="profile-filter">
             <option value="all">Không áp dụng</option>
-            <option value="diabetes">ĐTĐ: GI/GL thấp</option>
-            <option value="hypertension">THA: ít natri</option>
-            <option value="gout">Gout: ít purin</option>
-            <option value="ckd">Suy thận: ít natri/kali</option>
+            <option value="diabetes">ĐTĐ: ưu tiên GI/GL thấp</option>
+            <option value="hypertension">THA: ưu tiên ít natri</option>
+            <option value="gout">Gout: ưu tiên ít purin</option>
+            <option value="ckd">Thận: lọc natri/kali thấp</option>
             <option value="weight">Giảm cân: kcal thấp, xơ cao</option>
           </select>
         </label>
@@ -64,6 +64,9 @@ const categories = Object.keys(groups).sort((a, b) => a.localeCompare(b, "vi"));
         <label><span>Natri tối đa</span><input id="max-sodium" type="number" min="0" step="10" placeholder="mg/100g" /></label>
         <button id="reset-filters" class="button secondary" type="button">Xóa lọc</button>
       </div>
+      <p class="muted" style="margin:10px 0 0; font-size:0.83rem;">
+        Bộ lọc này chỉ giúp sàng nhanh theo dữ liệu dinh dưỡng. Với bệnh thận hoặc chế độ ăn điều trị, vẫn cần cá thể hóa theo xét nghiệm, thuốc và tư vấn bác sĩ.
+      </p>
       <p class="muted" id="filter-summary"></p>
     </div>
     <div class="quick-nav" style="margin-top: 12px;">

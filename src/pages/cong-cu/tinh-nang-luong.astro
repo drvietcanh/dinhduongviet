@@ -15,7 +15,7 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo cho người trưởng thành. Người có bệnh nền, đang dùng thuốc, thai kỳ, rối loạn ăn uống, vận động viên hoặc đang cần chế độ ăn điều trị nên hỏi bác sĩ/chuyên gia dinh dưỡng.
+    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo cho người trưởng thành từ 18 tuổi. Người có bệnh nền, đang dùng thuốc, thai kỳ, rối loạn ăn uống, vận động viên hoặc đang cần chế độ ăn điều trị nên hỏi bác sĩ/chuyên gia dinh dưỡng.
   </div>
 
   <section class="section card">
@@ -35,7 +35,7 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       </div>
       <div>
         <label for="age">Độ tuổi (năm)</label>
-        <input type="number" id="age" inputmode="numeric" placeholder="Ví dụ: 30" min="15" max="100" />
+        <input type="number" id="age" inputmode="numeric" placeholder="Ví dụ: 30" min="18" max="100" />
       </div>
     </div>
 
@@ -188,8 +188,8 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       return;
     }
 
-    if (age < 15 || age > 100) {
-      setMessage("Công cụ này chỉ chính xác cho người từ 15 - 100 tuổi.");
+    if (age < 18 || age > 100) {
+      setMessage("Công cụ này chỉ áp dụng cho người trưởng thành từ 18 - 100 tuổi.");
       return;
     }
 

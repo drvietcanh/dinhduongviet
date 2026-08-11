@@ -125,8 +125,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "mo-mau-cao-7-mon-an-nguy-hiem",
-    title: "Mỡ máu cao: 7 món ăn hàng ngày đang âm thầm làm hại mạch máu",
-    description: "Nhìn lại những món ăn và đồ uống thường ngày dễ làm tăng cholesterol hoặc triglyceride mà nhiều người vẫn bỏ qua.",
+    title: "Mỡ máu cao — 7 nhóm món ăn nên hạn chế thường xuyên",
+    description: "Nhìn lại những nhóm món ăn và đồ uống thường ngày dễ làm tăng cholesterol hoặc triglyceride nếu lặp lại quá nhiều.",
     emoji: "🩸",
     category: "disease",
     categoryName: "Tim mạch / Mỡ máu",
@@ -153,7 +153,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "huyet-ap-cao-muoi-an-o-dau",
-    title: "Tăng huyết áp: Muối đang ẩn náu ở đâu trong mâm cơm nhà bạn?",
+    title: "Tăng huyết áp — Muối ẩn thường gặp trong bữa ăn hằng ngày",
     description: "Chỉ ra những nguồn muối ẩn quen thuộc trong bếp Việt như nước mắm, mì ăn liền, chả lụa và đồ chế biến sẵn.",
     emoji: "🧂",
     category: "disease",
@@ -195,7 +195,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "trao-nguoc-da-day-ban-dem-an-gi",
-    title: "Trào ngược Dạ dày ban đêm: Ăn gì buổi tối để ngủ ngon, không bị ợ chua?",
+    title: "Trào ngược dạ dày ban đêm — Sắp bữa tối thế nào để đỡ ợ chua?",
     description: "Cách chọn bữa tối, giờ ăn và tư thế ngủ để giảm ợ chua ban đêm, đồng thời biết khi nào cần đi khám.",
     emoji: "🔥",
     category: "disease",
@@ -267,7 +267,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "suy-giap-hypothyroidism",
-    title: "Suy giáp: Cảnh báo ăn sống rau họ cải (Goitrogens)",
+    title: "Suy giáp — Rau họ cải sống có đáng lo không?",
     description: "Hiểu đúng về suy giáp, i-ốt, selen và cách dùng rau họ cải hợp lý trong khẩu phần.",
     emoji: "❄️",
     category: "disease",
@@ -282,7 +282,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "cuong-giap-basedow",
-    title: "Cường giáp (Basedow): Lệnh cấm vận I-ốt tuyệt đối",
+    title: "Cường giáp (Basedow) — Lưu ý về i-ốt trong ăn uống",
     description: "Tóm tắt nguyên tắc ăn uống khi cường giáp, bao gồm vai trò của i-ốt và những điểm cần hỏi bác sĩ trước khi tự kiêng.",
     emoji: "🔥",
     category: "disease",
@@ -357,7 +357,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "suy-thuong-than-adrenal-fatigue",
-    title: "Suy thượng thận chức năng (Adrenal Fatigue)",
+    title: "\"Adrenal fatigue\" và suy thượng thận — cần hiểu khác nhau thế nào?",
     description: "Trình bày thận trọng về mệt mỏi kéo dài, stress, bữa ăn đều đặn và những điểm cần phân biệt với bệnh lý nội tiết thật sự.",
     emoji: "🔋",
     category: "disease",
@@ -447,7 +447,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "viem-ruot-crohn-uc",
-    title: "Viêm ruột tự miễn (Crohn & UC): Băng bó 'Đường hầm rực lửa'",
+    title: "Viêm ruột tự miễn (Crohn & UC) — Ăn uống khi bệnh bùng phát và lui bệnh",
     description: "Tóm tắt các nguyên tắc ăn uống thường được cân nhắc trong đợt bùng phát Crohn hoặc viêm loét đại tràng.",
     emoji: "🔥",
     category: "disease",
@@ -522,7 +522,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "gan-nhiem-mo-nafld-fructose",
-    title: "Gan nhiễm mỡ: Nước ép, trà sữa và lượng đường cần lưu ý",
+    title: "Gan nhiễm mỡ — Đồ uống ngọt và đường lỏng cần lưu ý gì?",
     description: "Giải thích vai trò của tổng năng lượng, đường tự do, fructose, rượu và chất béo trong nguy cơ gan nhiễm mỡ.",
     emoji: "🧋",
     category: "disease",
@@ -911,7 +911,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-suy-than",
-    title: "Suy thận mãn: Vì sao ăn chuối, cà chua lại gây ngừng tim?",
+    title: "Suy thận mạn — Vì sao không nên tự kiêng kali theo truyền miệng?",
     description: "Nguyên tắc kiểm soát natri, kali, phospho và đạm trong bệnh thận mạn theo mức độ bệnh và chỉ định chuyên môn.",
     emoji: "💧",
     category: "disease",
@@ -1064,8 +1064,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "viem-tuy-cap-man-tinh",
-    title: "Viêm tụy cấp và mãn tính: Quả bom nổ chậm do bia rượu",
-    description: "Cơ chế tuyến tụy tự tiêu hủy chính mình và lý do bệnh nhân viêm tụy phải kiêng mỡ và rượu bia tuyệt đối.",
+    title: "Viêm tụy cấp và mạn — Vai trò của rượu, mỡ máu và ăn uống",
+    description: "Giải thích vai trò của rượu bia, mỡ máu và cách ăn uống để tụy được nghỉ ngơi tốt hơn sau đợt viêm tụy.",
     emoji: "🍺",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1628,7 +1628,7 @@ export const articles: ArticleMeta[] = [
     featured: false,
     tags: ["new-diagnosis"],
     keywords: ["gan nhiễm mỡ", "mỡ gan", "men gan cao", "cải thiện gan nhiễm mỡ", "chế độ ăn gan nhiễm mỡ"],
-    audience: ["fatty-liver"],
+    audience: ["hypertension", "metabolic-risk"],
     sources: [{ name: "ESPEN — Liver Disease Guidelines", url: "https://www.espen.org/guidelines" }, { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }],
   },
   {
@@ -1780,8 +1780,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "trao-nguoc-da-day",
-    title: "Trào ngược dạ dày — nên ăn gì, kiêng gì?",
-    description: "GERD, 5 nguyên tắc vàng, thực phẩm nên/tránh, thói quen, thực đơn 1600kcal.",
+    title: "Trào ngược dạ dày — Nguyên tắc ăn uống và thói quen cần sửa",
+    description: "Bài nền tảng về GERD: các nguyên tắc ăn uống, nhóm thực phẩm thường gây khó chịu và thói quen cần sửa trước.",
     emoji: "🔥",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1801,8 +1801,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dau-da-day",
-    title: "Đau dạ dày — Nguyên tắc ăn uống, HP và thói quen cần sửa",
-    description: "Bài nền tảng về HP, thuốc giảm đau NSAID, rượu bia, cà phê và nguyên tắc ăn uống khi viêm loét dạ dày.",
+    title: "Đau dạ dày — Nguyên tắc ăn uống và các điểm cần kiểm tra sớm",
+    description: "Bài nền tảng về HP, thuốc giảm đau NSAID, rượu bia, cà phê và những điểm nên xem lại sớm khi đau dạ dày.",
     emoji: "🩹",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -1821,7 +1821,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dau-da-day-hp-ca-phe-thuoc-giam-dau",
-    title: "Đau dạ dày — HP, cà phê, thuốc giảm đau: đâu là điểm cần sửa trước?",
+    title: "Đau dạ dày — HP, cà phê, thuốc giảm đau: nên xem lại điều gì trước?",
     description: "Bài thực hành giúp nhận ra vai trò của HP, NSAID, cà phê, rượu bia và các dấu hiệu cần đi khám sớm khi đau dạ dày.",
     emoji: "☕",
     category: "disease",
@@ -4212,8 +4212,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "che-do-dash-tang-huyet-ap",
-    title: "Chế độ ăn DASH — Hạ huyết áp không cần thuốc",
-    description: "Giảm muối, tăng kali. Phiên bản DASH cho người Việt. Thực đơn 2000 kcal.",
+    title: "Chế độ ăn DASH — Áp dụng thế nào trong bữa cơm Việt?",
+    description: "Giảm muối, tăng kali và ưu tiên thực phẩm tươi. Bài này diễn giải cách áp dụng DASH theo món Việt quen thuộc.",
     emoji: "🫗",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -4336,7 +4336,7 @@ export const articles: ArticleMeta[] = [
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "noi-tiet",
+    specialty: "tieu-hoa",
     date: "2026-08-11",
     readTime: 7,
     featured: false,
@@ -4588,8 +4588,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dung-tin-ngay-chanh-giam-mo-mau",
-    title: "Uống nước chanh giảm mỡ máu? Không có thức uống kỳ diệu đâu",
-    description: "Chanh giàu vitamin C, hỗ trợ chống oxy hóa nhưng không trực tiếp giảm mỡ máu. Hiểu đúng để không lạm dụng.",
+    title: "Uống nước chanh có làm giảm mỡ máu không?",
+    description: "Chanh giàu vitamin C nhưng không trực tiếp làm giảm mỡ máu. Hiểu đúng để không kỳ vọng quá mức vào một loại đồ uống.",
     emoji: "🍋",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -4788,8 +4788,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-da-day-trao-nguoc",
-    title: "Dinh dưỡng cho người trào ngược dạ dày thực quản (GERD)",
-    description: "Ăn gì, kiêng gì khi bị trào ngược. Thực phẩm giảm acid, thực đơn tránh ợ nóng, cách ău uống giúp ngủ ngon.",
+    title: "GERD — Dinh dưỡng cho người trào ngược dạ dày thực quản",
+    description: "Tập trung vào lựa chọn thực phẩm, nhịp ăn uống và các mẹo thực hành giúp giảm ợ nóng, ợ chua và khó chịu sau ăn.",
     emoji: "🔴",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -4995,7 +4995,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-benh-da-day-nen-an-gi",
-    title: "Đau dạ dày — Ăn gì để dịu triệu chứng và dễ hồi phục hơn?",
+    title: "Đau dạ dày — Chọn món gì để dịu triệu chứng và dễ hồi phục hơn?",
     description: "Tập trung vào món mềm, dễ tiêu, thực phẩm nên ăn và nên tránh khi đau dạ dày hoặc viêm loét đang hoạt động.",
     emoji: "🩹",
     category: "disease",
