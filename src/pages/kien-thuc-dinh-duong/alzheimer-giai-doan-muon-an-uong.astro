@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["alzheimer-giai-doan-muon-an-uong"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Ở giai đoạn muộn của Alzheimer hoặc sa sút trí tuệ, vấn đề chính thường là quên ăn, từ chối ăn, nuốt khó, sặc, sụt cân và gánh nặng cho người chăm sóc. Mục tiêu không phải “ăn để cải thiện trí nhớ”, mà là an toàn, đủ năng lượng và giữ chất lượng sống.</p>
+    <p>Thực phẩm bổ sung có thể giúp cải thiện tình trạng dinh dưỡng khi ăn kém, nhưng không có vai trò chữa sa sút trí tuệ. Quyết định nuôi ăn qua ống cần trao đổi kỹ với bác sĩ và gia đình theo mục tiêu chăm sóc.</p>
+  </section>
+
+  <section class="article-section" data-section="care">
+    <h2>Cách chăm bữa ăn</h2>
+    <ul>
+      <li>Giữ giờ ăn quen thuộc, ít tiếng ồn, ít lựa chọn phức tạp.</li>
+      <li>Dùng món mềm, cắt nhỏ, dễ cầm nếu người bệnh còn tự ăn được.</li>
+      <li>Tăng năng lượng trong khẩu phần nhỏ: trứng, sữa, dầu thực vật, đậu hũ, cá mềm.</li>
+      <li>Theo dõi dấu hiệu sặc: ho khi ăn, giọng ướt, chảy nước miếng, sốt tái diễn.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="problems">
+    <h2>Khi người bệnh từ chối ăn</h2>
+    <ul>
+      <li>Kiểm tra đau răng, táo bón, trầm cảm, thuốc gây buồn ngủ hoặc buồn nôn.</li>
+      <li>Không ép nhanh; thử bữa nhỏ, món quen, nhiệt độ dễ chịu.</li>
+      <li>Nếu sụt cân hoặc mất nước, cần đánh giá dinh dưỡng và nuốt.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="caregiver">
+    <h2>Người chăm sóc cũng cần được hỗ trợ</h2>
+    <p>Ghi lại lượng ăn, cân nặng, số lần sặc và món dung nạp tốt giúp buổi khám hiệu quả hơn. Gia đình nên thống nhất trước mục tiêu chăm sóc: kéo dài ăn uống an toàn, giảm khó chịu, hay can thiệp dinh dưỡng tích cực.</p>
+  </section>
+</ArticleLayout>

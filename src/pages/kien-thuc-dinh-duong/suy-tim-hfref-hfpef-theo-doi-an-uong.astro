@@ -1,0 +1,42 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["suy-tim-hfref-hfpef-theo-doi-an-uong"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Suy tim phân suất tống máu giảm (HFrEF) và bảo tồn (HFpEF) khác nhau về cơ chế và thuốc, nhưng ăn uống hằng ngày đều cần chú ý muối, dịch, cân nặng, phù và kali máu.</p>
+    <p>Không tự đổi liều lợi tiểu, thuốc ức chế men chuyển/ARB/ARNI, MRA hoặc SGLT2i chỉ vì thấy cân nặng thay đổi. Hãy dùng kế hoạch theo dõi do bác sĩ tim mạch hướng dẫn.</p>
+  </section>
+
+  <section class="article-section" data-section="daily">
+    <h2>4 việc nên theo dõi mỗi ngày</h2>
+    <ul>
+      <li><strong>Cân buổi sáng:</strong> Cân sau đi vệ sinh, trước ăn sáng, ghi lại để phát hiện giữ nước sớm.</li>
+      <li><strong>Phù và khó thở:</strong> Để ý cổ chân, bụng căng, khó nằm đầu thấp hoặc phải kê thêm gối.</li>
+      <li><strong>Muối:</strong> Giảm nước chấm, đồ kho mặn, mì gói, đồ hộp và thịt chế biến.</li>
+      <li><strong>Kali:</strong> Không tự uống muối kali hoặc viên bổ sung kali; xét nghiệm quyết định cần tăng hay giảm kali.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods">
+    <h2>Bữa ăn thực tế</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Nên chọn</span><span>Cơm vừa lượng, rau nấu nhạt, cá/thịt nạc/đậu hũ, trái cây theo xét nghiệm kali, sữa ít đường nếu dung nạp.</span></div>
+      <div class="food-row"><span class="food-cat">Giảm mạnh</span><span>Nước chấm chan nhiều, dưa cà muối, đồ hộp, xúc xích, mì ăn liền, snack mặn.</span></div>
+      <div class="food-row"><span class="food-cat">Cẩn thận</span><span>Nước dừa, chuối, cam, khoai, muối ăn kiêng chứa kali nếu đang dùng thuốc giữ kali hoặc có bệnh thận.</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="urgent">
+    <h2>Dấu hiệu cần liên hệ bác sĩ</h2>
+    <ul>
+      <li>Tăng cân nhanh trong vài ngày, phù tăng hoặc khó thở tăng.</li>
+      <li>Choáng, tụt huyết áp, hồi hộp, chuột rút nhiều hoặc tiểu rất ít.</li>
+      <li>Không ăn uống được, tiêu chảy/nôn nhiều khi đang dùng lợi tiểu hoặc thuốc tim mạch.</li>
+    </ul>
+  </section>
+</ArticleLayout>

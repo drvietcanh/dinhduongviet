@@ -1,0 +1,37 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["parkinson-nuot-kho-tao-bon-levodopa"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Parkinson có thể làm chậm tiêu hóa, táo bón, sụt cân, run khi ăn và nuốt khó. Levodopa cũng có thể bị ảnh hưởng bởi bữa ăn giàu đạm ở một số người, nhưng không có nghĩa là phải kiêng đạm.</p>
+    <p>Không tự đổi giờ thuốc hoặc giảm đạm mạnh nếu chưa hỏi bác sĩ thần kinh. Mục tiêu là giữ thuốc hiệu quả, đủ dinh dưỡng và phòng sặc.</p>
+  </section>
+
+  <section class="article-section" data-section="levodopa">
+    <h2>Levodopa và bữa ăn</h2>
+    <ul>
+      <li>Nếu thấy thuốc kém tác dụng sau bữa nhiều đạm, hãy ghi nhật ký giờ thuốc, giờ ăn và triệu chứng.</li>
+      <li>Bác sĩ có thể hướng dẫn uống thuốc xa bữa hoặc phân bố đạm nhiều hơn vào bữa tối, tùy từng người.</li>
+      <li>Không tự bỏ thịt cá trứng sữa vì dễ mất cơ và sụt cân.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="constipation">
+    <h2>Táo bón</h2>
+    <ul>
+      <li>Tăng chất xơ từ từ: rau mềm, yến mạch, khoai, đu đủ, hạt chia ngâm nếu nuốt được.</li>
+      <li>Uống nước theo khả năng và bệnh nền tim thận.</li>
+      <li>Đi bộ, tập phục hồi và tạo giờ đi tiêu cố định có thể giúp ruột hoạt động đều hơn.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="swallow">
+    <h2>Nuốt khó</h2>
+    <p>Nếu ho sặc, nghẹn, ăn lâu bất thường hoặc viêm phổi tái diễn, cần đánh giá nuốt. Món mềm, ẩm, có độ kết dính vừa phải thường dễ hơn món khô vụn hoặc nước loãng.</p>
+  </section>
+</ArticleLayout>

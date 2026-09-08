@@ -2569,6 +2569,126 @@
     "category": "Bai viet"
   },
   {
+    "type": "article",
+    "slug": "dinh-duong-sau-dot-quy",
+    "name": "Sau đột quỵ: ăn uống an toàn, phòng tái phát và kiểm soát mỡ máu",
+    "aliases": [],
+    "description": "Hướng dẫn ăn uống sau đột quỵ: nuốt khó, phòng sặc, đủ đạm phục hồi và kiểm soát muối, mỡ máu, đường huyết.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "song-lau-dai-sau-dat-stent",
+    "name": "Sống lâu dài sau đặt stent mạch vành: ăn gì để bảo vệ tim?",
+    "aliases": [],
+    "description": "Bài nền cho người đã đặt stent: ăn kiểu tốt cho tim, giảm LDL, giảm muối, theo dõi huyết áp và không tự ngưng thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "suy-tim-hfref-hfpef-theo-doi-an-uong",
+    "name": "Suy tim HFrEF/HFpEF: theo dõi phù, lợi tiểu, kali và bữa ăn",
+    "aliases": [],
+    "description": "Hướng dẫn thực hành cho suy tim phân suất tống máu giảm/bảo tồn: cân nặng, phù, muối, dịch, kali và thuốc lợi tiểu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "benh-than-do-dai-thao-duong",
+    "name": "Bệnh thận do đái tháo đường: ăn thế nào khi vừa cần kiểm đường vừa giữ thận?",
+    "aliases": [],
+    "description": "Dinh dưỡng cho bệnh thận do đái tháo đường: carb, đạm, natri, kali, phốt pho, albumin niệu và eGFR.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "masld-mash-gan-nhiem-mo-chuyen-hoa",
+    "name": "MASLD/MASH: gan nhiễm mỡ chuyển hóa cần hiểu khác gì NAFLD?",
+    "aliases": [],
+    "description": "Cập nhật thuật ngữ MASLD/MASH, phân tầng nguy cơ xơ hóa và nguyên tắc ăn uống cho gan nhiễm mỡ chuyển hóa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "roi-loan-an-uong-binge-eating",
+    "name": "Rối loạn ăn uống và binge eating: ăn đều, bớt xấu hổ, tìm hỗ trợ đúng",
+    "aliases": [],
+    "description": "Bài thận trọng về binge eating: không đổ lỗi ý chí, tránh nhịn-ăn bù, nhận biết dấu hiệu cần hỗ trợ tâm lý và dinh dưỡng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "copd-suy-dinh-duong-beo-phi-thuc-don",
+    "name": "COPD kèm suy dinh dưỡng hoặc béo phì: thực đơn khi khó thở, ăn ít",
+    "aliases": [],
+    "description": "Thực hành ăn uống cho COPD: chia bữa nhỏ, tăng đạm khi sụt cân, giảm cân giữ cơ khi béo phì và nhận biết đợt cấp.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "alzheimer-giai-doan-muon-an-uong",
+    "name": "Alzheimer giai đoạn muộn: chăm ăn uống, phòng sặc và sụt cân",
+    "aliases": [],
+    "description": "Dinh dưỡng cho Alzheimer/sa sút trí tuệ giai đoạn muộn: từ chối ăn, nuốt khó, sụt cân, thực phẩm bổ sung và người chăm sóc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "parkinson-nuot-kho-tao-bon-levodopa",
+    "name": "Parkinson: nuốt khó, táo bón và cách sắp bữa quanh levodopa",
+    "aliases": [],
+    "description": "Bài thực hành cho Parkinson: tương tác levodopa-protein, táo bón, nuốt khó, giữ đạm và phòng sụt cân.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hoi-chung-ruot-ngan-ostomy",
+    "name": "Hội chứng ruột ngắn và ostomy: ăn uống để giảm mất nước, sụt cân",
+    "aliases": [],
+    "description": "Hướng dẫn thực hành sau mổ tiêu hóa có ruột ngắn/ostomy: bù nước điện giải, chia bữa, theo dõi output và thiếu vi chất.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-sau-cat-tui-mat",
+    "name": "Sau cắt túi mật nên ăn gì? Giảm tiêu chảy nhưng không kiêng dầu tuyệt đối",
+    "aliases": [],
+    "description": "Ăn uống sau cắt túi mật: chia bữa nhỏ, giảm dầu mỡ giai đoạn đầu, tăng xơ từ từ và nhận biết dấu hiệu cần tái khám.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "roi-loan-lipid-mau-gia-dinh",
+    "name": "Rối loạn lipid máu gia đình: vì sao ăn lành mạnh vẫn có thể LDL rất cao?",
+    "aliases": [],
+    "description": "Phân biệt tăng cholesterol gia đình với mỡ máu do lối sống, vai trò ăn uống, thuốc và kiểm tra người thân.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-triglyceride-nang",
+    "name": "Tăng triglyceride nặng: giảm rượu, đường, tinh bột để phòng viêm tụy",
+    "aliases": [],
+    "description": "Bài riêng về triglyceride rất cao: nguy cơ viêm tụy, vai trò rượu bia, đường lỏng, tinh bột dư và kiểm soát đường huyết.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cuong-can-giap-soi-than-canxi",
+    "name": "Cường cận giáp và sỏi thận canxi: vì sao không nên tự cắt hết canxi?",
+    "aliases": [],
+    "description": "Dinh dưỡng cho cường cận giáp/sỏi thận canxi: canxi khẩu phần, oxalate, muối, nước uống, vitamin D và xét nghiệm cần theo dõi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hiv-lao-phoi-suy-dinh-duong",
+    "name": "HIV/AIDS hoặc lao phổi kèm suy dinh dưỡng: ăn gì để chịu điều trị tốt hơn?",
+    "aliases": [],
+    "description": "Dinh dưỡng hỗ trợ HIV/AIDS và lao phổi: đủ năng lượng, đủ đạm, an toàn thực phẩm, xử trí chán ăn và không tự ngưng thuốc.",
+    "category": "Bai viet"
+  },
+  {
     "type": "recipe",
     "slug": "cha-o",
     "name": "Cháo ếch",

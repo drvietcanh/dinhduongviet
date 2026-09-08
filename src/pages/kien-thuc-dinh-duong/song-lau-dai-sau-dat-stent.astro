@@ -1,0 +1,42 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["song-lau-dai-sau-dat-stent"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Đặt stent giúp mở đoạn mạch vành hẹp, nhưng không làm hết xơ vữa toàn thân. Sau stent, ăn uống cần đi cùng thuốc kháng kết tập tiểu cầu, statin, kiểm soát huyết áp, đường huyết và bỏ thuốc lá nếu có.</p>
+    <p>Không tự ý ngưng thuốc sau stent, đặc biệt thuốc chống kết tập tiểu cầu. Nếu muốn dùng thực phẩm chức năng, thảo dược hoặc đổi chế độ ăn lớn, hãy hỏi bác sĩ vì có thể ảnh hưởng nguy cơ chảy máu hoặc hiệu quả thuốc.</p>
+  </section>
+
+  <section class="article-section" data-section="plate">
+    <h2>Ăn thế nào hằng ngày?</h2>
+    <ul>
+      <li><strong>Nửa đĩa rau:</strong> Rau luộc, hấp, canh ít muối, salad ít sốt.</li>
+      <li><strong>Một phần tư tinh bột tốt hơn:</strong> Cơm vừa lượng, gạo lứt nếu hợp, khoai, yến mạch, bánh mì nguyên cám.</li>
+      <li><strong>Một phần tư đạm nạc:</strong> Cá, thịt nạc, đậu hũ, trứng ở lượng phù hợp; ưu tiên cá vài bữa mỗi tuần.</li>
+      <li><strong>Chất béo tốt:</strong> Dầu thực vật, hạt, bơ quả; giảm mỡ heo, bơ động vật, da gà, thịt chế biến.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="limits">
+    <h2>Cần hạn chế</h2>
+    <ul>
+      <li>Muối và natri ẩn: nước mắm, đồ kho mặn, mì gói, đồ hộp, chả lụa, xúc xích.</li>
+      <li>Đường và tinh bột tinh chế: nước ngọt, trà sữa, bánh ngọt, ăn vặt nhiều lần.</li>
+      <li>Rượu bia: hỏi bác sĩ nếu đang dùng nhiều thuốc tim mạch hoặc có triglyceride cao.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="tracking">
+    <h2>Theo dõi tại nhà</h2>
+    <ul>
+      <li>Ghi huyết áp, cân nặng, vòng eo và mức vận động.</li>
+      <li>Tái khám đúng hẹn để kiểm LDL-C, triglyceride, HbA1c nếu có đái tháo đường.</li>
+      <li>Đau ngực kéo dài, khó thở, vã mồ hôi hoặc ngất là dấu hiệu cần cấp cứu.</li>
+    </ul>
+  </section>
+</ArticleLayout>

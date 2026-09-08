@@ -1,0 +1,42 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["hoi-chung-ruot-ngan-ostomy"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Hội chứng ruột ngắn và ostomy sau mổ tiêu hóa có thể gây mất nước, mất điện giải, tiêu chảy, sụt cân và thiếu vi chất. Ăn uống phải cá nhân hóa theo đoạn ruột còn lại, loại stoma, lượng dịch ra túi và bệnh nền.</p>
+    <p>Nếu lượng dịch ra túi tăng nhanh, khát nhiều, chóng mặt, tiểu ít hoặc sụt cân, cần liên hệ bác sĩ. Không tự uống thật nhiều nước lọc vì có thể làm mất muối nhiều hơn ở một số người có output cao.</p>
+  </section>
+
+  <section class="article-section" data-section="principles">
+    <h2>Nguyên tắc thực hành</h2>
+    <ul>
+      <li>Chia nhiều bữa nhỏ, nhai kỹ, tăng khẩu phần từ từ.</li>
+      <li>Dùng dung dịch bù nước điện giải theo hướng dẫn nếu output cao; theo dõi màu nước tiểu.</li>
+      <li>Ưu tiên đạm dễ tiêu: trứng, cá, thịt mềm, đậu hũ nếu dung nạp.</li>
+      <li>Theo dõi thiếu B12, sắt, kẽm, magie, vitamin tan trong dầu khi bác sĩ chỉ định.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods">
+    <h2>Món thường dễ dung nạp hơn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Tinh bột</span><span>Cơm, cháo đặc, bánh mì, khoai, mì mềm tùy dung nạp.</span></div>
+      <div class="food-row"><span class="food-cat">Đạm</span><span>Trứng, cá, gà mềm, đậu hũ; tránh thịt dai khó nhai trong giai đoạn đầu.</span></div>
+      <div class="food-row"><span class="food-cat">Cẩn thận</span><span>Rau sống, vỏ/hạt, nấm dai, bắp, đồ chiên, rượu bia, nước ngọt nhiều đường.</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="warning">
+    <h2>Cần đi khám sớm nếu</h2>
+    <ul>
+      <li>Output stoma tăng nhiều, tiêu chảy liên tục hoặc đau bụng.</li>
+      <li>Tiểu ít, nước tiểu sẫm, choáng, chuột rút.</li>
+      <li>Sụt cân, ăn không vào hoặc nghi tắc stoma.</li>
+    </ul>
+  </section>
+</ArticleLayout>

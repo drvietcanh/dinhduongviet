@@ -44,7 +44,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           </li>
           <li><strong>Chất béo bão hòa</strong> — Nên &lt; 10g/ngày. Hạn chế nếu &gt; 3g/khẩu phần.</li>
           <li><strong>Đường</strong> — WHO khuyến nghị &lt; 25g/ngày. &gt; 10g/khẩu phần là nhiều.</li>
-          <li><strong>Natri</strong> — &lt; 2.300mg/ngày. &gt; 400mg/khẩu phần là cao.</li>
+          <li><strong>Natri</strong> — WHO khuyến nghị dưới 2.000mg/ngày cho người lớn; một số nhãn dùng mốc tham chiếu 2.300mg. &gt; 400mg/khẩu phần là cao.</li>
           <li><strong>Chất xơ</strong> — Nên &ge; 25g/ngày. &gt; 3g/khẩu phần là tốt. &gt; 5g là rất tốt.</li>
         </ol>
       </div>
@@ -135,7 +135,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <tr><td>RDA</td><td>Recommended Dietary Allowance</td><td>Khuyến nghị dinh dưỡng (Mỹ)</td></tr>
         <tr><td>KJ / kcal</td><td>Kilojoules / Kilocalories</td><td>1 kcal = 4,184 kJ. Ở VN hay ghi "Calo" = kcal</td></tr>
         <tr><td>SFA</td><td>Saturated Fatty Acids</td><td>Chất béo bão hòa</td></tr>
-        <tr><td>TSFA</td><td>Trans Saturated Fatty Acids</td><td>Chất béo chuyển hóa (càng ít càng tốt)</td></tr>
+        <tr><td>TFA</td><td>Trans Fatty Acids</td><td>Chất béo chuyển hóa (càng ít càng tốt)</td></tr>
         <tr><td>IMS</td><td>Iodized Marine Salt</td><td>Muối i-ốt biển</td></tr>
       </tbody>
     </table>
@@ -202,7 +202,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     else eds.push({lv:'green', msg:'🟢 Ít béo bão hòa (' + sat + 'g). Tốt cho tim mạch.'});
 
     // Sugar
-    if (sugar > 10) eds.push({lv:'red', msg:'🔴 Nhiều đường (' + sugar + 'g). WHO khuyến nghị <25g/ngày. Hạn chế nghiêm trọng.'});
+    if (sugar > 10) eds.push({lv:'red', msg:'🔴 Nhiều đường (' + sugar + 'g). WHO khuyến nghị giảm đường tự do; mốc <25g/ngày là mục tiêu lý tưởng với khẩu phần 2.000 kcal.'});
     else if (sugar > 5) eds.push({lv:'yellow', msg:'🟡 Đường ở mức trung bình (' + sugar + 'g). Nên kiểm tra nếu là đường tinh chế.'});
     else eds.push({lv:'green', msg:'🟢 Ít đường (' + sugar + 'g). Tốt.'});
 
@@ -253,7 +253,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     else if (score >= 20) { grade = 'D — Kém. Hạn chế sử dụng.'; bg = '#fef2f2'; color='#991b1b'; }
     else { grade = 'F — Rất kém. Nên tránh.'; bg = '#fce4ec'; color='#c62828'; }
 
-    gradeEl.textContent = '🏆 Điểm: ' + score + '/' + score + ' — ' + grade;
+    gradeEl.textContent = '🏆 Điểm: ' + score + '/100 — ' + grade;
     gradeEl.style.background = bg;
     gradeEl.style.color = color;
   }

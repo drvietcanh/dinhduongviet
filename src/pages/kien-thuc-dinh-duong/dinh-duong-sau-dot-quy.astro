@@ -1,0 +1,47 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["dinh-duong-sau-dot-quy"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Sau đột quỵ, ăn uống có hai mục tiêu song song: phòng tái phát bằng kiểm soát huyết áp, mỡ máu, đường huyết; và ăn an toàn khi có yếu tay, nuốt khó hoặc sặc.</p>
+    <p>Bài này không thay thế phục hồi chức năng hoặc điều trị thần kinh. Nếu người bệnh ho sặc khi uống nước, giọng ướt sau ăn, sốt tái diễn hoặc sụt cân nhanh, cần được đánh giá nuốt và kế hoạch ăn cá nhân hóa.</p>
+  </section>
+
+  <section class="article-section" data-section="principles">
+    <h2>Nguyên tắc chính</h2>
+    <ul>
+      <li><strong>Nuốt an toàn trước:</strong> Chọn độ đặc thức ăn theo đánh giá của nhân viên y tế; không tự ép uống nước loãng nếu thường sặc.</li>
+      <li><strong>Giảm tái phát:</strong> Ăn nhạt hơn, tăng rau quả mềm phù hợp, dùng chất béo tốt và hạn chế thịt chế biến, mỡ bão hòa, nước ngọt.</li>
+      <li><strong>Đủ đạm:</strong> Cá, trứng, sữa, đậu hũ, thịt nạc mềm giúp giữ cơ trong giai đoạn tập phục hồi.</li>
+      <li><strong>Nếu dùng thuốc chống đông:</strong> Không tự bỏ rau xanh; giữ lượng vitamin K ổn định và hỏi bác sĩ khi đổi khẩu phần lớn.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods">
+    <h2>Nên ăn và nên hạn chế</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Nên ưu tiên</span><span>Cháo đặc giàu đạm, cá mềm, trứng, đậu hũ, rau củ nấu mềm, trái cây mềm, sữa hoặc sản phẩm dinh dưỡng nếu ăn kém.</span></div>
+      <div class="food-row"><span class="food-cat">Cần thận trọng</span><span>Nước loãng, canh loãng, hạt vụn, rau dai, thịt khô nếu người bệnh nuốt khó hoặc dễ sặc.</span></div>
+      <div class="food-row"><span class="food-cat">Hạn chế lâu dài</span><span>Đồ mặn, mì gói, chả lụa, xúc xích, da/mỡ động vật, nước ngọt, rượu bia.</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="warning">
+    <h2>Khi nào cần đi khám ngay?</h2>
+    <ul>
+      <li>Sặc nhiều, tím tái, khó thở hoặc sốt sau ăn uống.</li>
+      <li>Sụt cân, ăn dưới một nửa khẩu phần trong nhiều ngày.</li>
+      <li>Yếu liệt, nói khó, méo miệng hoặc đau đầu dữ dội tái xuất hiện.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="takeaway">
+    <h2>Nhớ chính</h2>
+    <div class="key-takeaway"><p>Sau đột quỵ, đừng chỉ hỏi “ăn gì bổ não”. Hãy bắt đầu từ nuốt an toàn, đủ đạm để phục hồi, ăn nhạt để kiểm soát huyết áp và giữ thuốc điều trị đều theo bác sĩ.</p></div>
+  </section>
+</ArticleLayout>

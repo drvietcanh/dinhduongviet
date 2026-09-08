@@ -1,0 +1,42 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["hiv-lao-phoi-suy-dinh-duong"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>HIV/AIDS và lao phổi có thể gây sụt cân, chán ăn, sốt kéo dài, tiêu chảy, thiếu máu và mất cơ. Dinh dưỡng tốt giúp người bệnh chịu điều trị tốt hơn, nhưng không thay thuốc kháng virus hoặc thuốc lao.</p>
+    <p>Không tự ngưng thuốc khi buồn nôn hoặc ăn kém. Hãy báo bác sĩ vì có thể đổi thời điểm uống, xử trí tác dụng phụ và đánh giá tương tác thuốc-thức ăn.</p>
+  </section>
+
+  <section class="article-section" data-section="goals">
+    <h2>Mục tiêu dinh dưỡng</h2>
+    <ul>
+      <li>Ăn đủ năng lượng và đạm để hạn chế sụt cân, mất cơ.</li>
+      <li>Chia bữa nhỏ khi sốt, ho nhiều, buồn nôn hoặc nhanh mệt.</li>
+      <li>Ưu tiên an toàn thực phẩm vì nhiễm trùng tiêu hóa dễ làm bệnh nặng hơn.</li>
+      <li>Kiểm thiếu máu, vitamin D, B12, folate, sắt hoặc kẽm khi bác sĩ chỉ định.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="foods">
+    <h2>Món nên ưu tiên</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Đạm</span><span>Trứng chín, cá, thịt mềm, sữa tiệt trùng, đậu hũ, đậu nấu chín kỹ.</span></div>
+      <div class="food-row"><span class="food-cat">Năng lượng</span><span>Cơm/cháo đặc, khoai, dầu thực vật, bơ đậu phộng, sữa chua nếu dung nạp.</span></div>
+      <div class="food-row"><span class="food-cat">An toàn</span><span>Ăn chín uống sôi, tránh tiết canh, đồ tái sống, sữa chưa tiệt trùng, thức ăn để lâu.</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="warning">
+    <h2>Cần đi khám sớm nếu</h2>
+    <ul>
+      <li>Sụt cân nhanh, tiêu chảy kéo dài, sốt không giảm hoặc không ăn uống được.</li>
+      <li>Vàng da, tê bì, nôn nhiều sau thuốc hoặc phát ban.</li>
+      <li>Ho ra máu, khó thở hoặc đau ngực.</li>
+    </ul>
+  </section>
+</ArticleLayout>

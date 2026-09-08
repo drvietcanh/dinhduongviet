@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["roi-loan-lipid-mau-gia-dinh"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Rối loạn lipid máu gia đình, đặc biệt tăng cholesterol máu gia đình, là tình trạng LDL-C rất cao do di truyền. Người bệnh có thể ăn không quá xấu nhưng LDL vẫn cao và nguy cơ bệnh mạch vành sớm tăng rõ.</p>
+    <p>Ăn uống rất quan trọng nhưng thường không đủ thay thuốc. Không tự ngưng statin hoặc thuốc hạ lipid khi thấy ăn uống đã lành mạnh hơn; mọi thay đổi thuốc cần theo chỉ định bác sĩ.</p>
+  </section>
+
+  <section class="article-section" data-section="clues">
+    <h2>Khi nào nên nghĩ đến yếu tố gia đình?</h2>
+    <ul>
+      <li>LDL-C rất cao từ trẻ hoặc người trẻ.</li>
+      <li>Gia đình có người nhồi máu cơ tim, đặt stent hoặc đột quỵ sớm.</li>
+      <li>Có u vàng gân, vòng giác mạc sớm hoặc nhiều người thân mỡ máu cao.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="diet">
+    <h2>Ăn uống hỗ trợ LDL</h2>
+    <ul>
+      <li>Giảm mỡ bão hòa: mỡ heo, da, bơ động vật, thịt chế biến, đồ chiên nhiều dầu.</li>
+      <li>Tăng xơ hòa tan: yến mạch, đậu, rau, trái cây nguyên quả.</li>
+      <li>Chọn cá, đậu hũ, thịt nạc, hạt và dầu thực vật thay cho thịt mỡ.</li>
+      <li>Giữ cân nặng, vận động và không hút thuốc để giảm nguy cơ tim mạch tổng thể.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="family">
+    <h2>Gia đình cũng cần kiểm tra</h2>
+    <p>Nếu nghi rối loạn lipid máu gia đình, người thân bậc một nên được xét nghiệm lipid theo hướng dẫn bác sĩ. Phát hiện sớm giúp phòng nhồi máu cơ tim trước khi có triệu chứng.</p>
+  </section>
+</ArticleLayout>

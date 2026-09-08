@@ -1,0 +1,41 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["copd-suy-dinh-duong-beo-phi-thuc-don"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>COPD có thể đi với hai thái cực: suy dinh dưỡng, mất cơ, ăn kém vì khó thở; hoặc béo phì làm nặng khó thở và giảm vận động. Kế hoạch ăn cần nhìn vào cân nặng, khối cơ, mức khó thở và đợt cấp gần đây.</p>
+    <p>Dinh dưỡng không thay thuốc hít, phục hồi chức năng hô hấp hoặc cai thuốc lá. Nếu khó thở tăng, tím môi, sốt, đờm đổi màu hoặc ăn uống tụt nhanh, cần đi khám.</p>
+  </section>
+
+  <section class="article-section" data-section="malnutrition">
+    <h2>Khi COPD ăn ít, sụt cân</h2>
+    <ul>
+      <li>Chia 5-6 bữa nhỏ, ăn chậm, nghỉ trước bữa.</li>
+      <li>Tăng năng lượng đậm đặc: thêm dầu thực vật, bơ đậu phộng, sữa chua, trứng, đậu hũ, cá mềm.</li>
+      <li>Uống sau bữa nếu uống trước làm nhanh no; hỏi chuyên gia về sữa dinh dưỡng khi sụt cân.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="obesity">
+    <h2>Khi COPD kèm béo phì</h2>
+    <ul>
+      <li>Giảm nước ngọt, bánh kẹo, đồ chiên và khẩu phần tinh bột lớn.</li>
+      <li>Giữ đủ đạm để không mất cơ khi giảm cân.</li>
+      <li>Kết hợp vận động/phục hồi hô hấp theo khả năng, không tự ép tập nặng khi khó thở.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="sample">
+    <h2>Gợi ý bữa dễ thở hơn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Sáng</span><span>Cháo đặc thịt bằm/trứng hoặc bánh mì mềm kèm trứng và sữa không quá ngọt.</span></div>
+      <div class="food-row"><span class="food-cat">Trưa</span><span>Cơm vừa lượng, cá kho nhạt, rau mềm, canh ít nước nếu nhanh no.</span></div>
+      <div class="food-row"><span class="food-cat">Phụ</span><span>Sữa chua, chuối nhỏ, đậu hũ non, sinh tố ít đường tùy mục tiêu cân nặng.</span></div>
+    </div>
+  </section>
+</ArticleLayout>

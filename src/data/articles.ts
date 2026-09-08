@@ -6026,6 +6026,306 @@ export const articles: ArticleMeta[] = [
       { name: "NHS", title: "Stomach ulcer", url: "https://www.nhs.uk/conditions/stomach-ulcer/" }
     ],
     keywords: ["đau dạ dày", "HP", "NSAID", "cà phê", "bỏ bữa", "viêm loét dạ dày", "đi làm"]
+  },
+  {
+    slug: "dinh-duong-sau-dot-quy",
+    title: "Sau đột quỵ: ăn uống an toàn, phòng tái phát và kiểm soát mỡ máu",
+    description: "Hướng dẫn ăn uống sau đột quỵ: nuốt khó, phòng sặc, đủ đạm phục hồi và kiểm soát muối, mỡ máu, đường huyết.",
+    emoji: "🧠",
+    category: "disease",
+    categoryName: "Thần kinh",
+    displayCategory: "bai-viet",
+    specialty: "than-kinh",
+    audience: ["stroke", "caregiver", "elderly"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "AHA/ASA", title: "2021 Guideline for Prevention of Stroke in Patients With Stroke and TIA", url: "https://pubmed.ncbi.nlm.nih.gov/34024117/" },
+      { name: "American Stroke Association", title: "Secondary Stroke Prevention Checklist", url: "https://www.stroke.org/en/professionals/stroke-resource-library/prevention/secondary-stroke-prevention-checklist" },
+      { name: "ESPEN", title: "Clinical nutrition and hydration in geriatrics", url: "https://www.espen.org/guidelines-home/espen-guidelines" }
+    ],
+    keywords: ["đột quỵ", "nuốt khó", "phòng sặc", "mỡ máu", "tăng huyết áp", "phòng tái phát"]
+  },
+  {
+    slug: "song-lau-dai-sau-dat-stent",
+    title: "Sống lâu dài sau đặt stent mạch vành: ăn gì để bảo vệ tim?",
+    description: "Bài nền cho người đã đặt stent: ăn kiểu tốt cho tim, giảm LDL, giảm muối, theo dõi huyết áp và không tự ngưng thuốc.",
+    emoji: "❤️",
+    category: "disease",
+    categoryName: "Tim mạch",
+    displayCategory: "bai-viet",
+    specialty: "tim-mach",
+    audience: ["cardio", "post-stent"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "AHA/ACC", title: "2023 Guideline for Chronic Coronary Disease", url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001168" },
+      { name: "ACC", title: "2023 Multisociety Guideline for Chronic Coronary Disease: Key Points", url: "https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2023/07/17/19/06/2023-guideline-for-chronic-coronary-disease-gl-ccd" },
+      { name: "ESC", title: "2024 Chronic Coronary Syndromes Guidelines", url: "https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/chronic-coronary-syndromes/" }
+    ],
+    keywords: ["đặt stent", "mạch vành", "bệnh tim", "LDL", "statin", "kháng tiểu cầu"]
+  },
+  {
+    slug: "suy-tim-hfref-hfpef-theo-doi-an-uong",
+    title: "Suy tim HFrEF/HFpEF: theo dõi phù, lợi tiểu, kali và bữa ăn",
+    description: "Hướng dẫn thực hành cho suy tim phân suất tống máu giảm/bảo tồn: cân nặng, phù, muối, dịch, kali và thuốc lợi tiểu.",
+    emoji: "🫀",
+    category: "disease",
+    categoryName: "Tim mạch",
+    displayCategory: "bai-viet",
+    specialty: "tim-mach",
+    audience: ["heart-failure", "caregiver", "elderly"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "AHA/ACC/HFSA", title: "2022 Guideline for the Management of Heart Failure", url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001063" },
+      { name: "ESC", title: "2026 Guidelines for the management of heart failure", url: "https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/heart-failure/" },
+      { name: "ACC", title: "HFpEF: Where We Stand in 2025", url: "https://www.acc.org/latest-in-cardiology/articles/2025/06/01/01/focus-on-heart-failure-hfpef" }
+    ],
+    keywords: ["suy tim", "HFrEF", "HFpEF", "lợi tiểu", "phù", "kali", "ăn nhạt"]
+  },
+  {
+    slug: "benh-than-do-dai-thao-duong",
+    title: "Bệnh thận do đái tháo đường: ăn thế nào khi vừa cần kiểm đường vừa giữ thận?",
+    description: "Dinh dưỡng cho bệnh thận do đái tháo đường: carb, đạm, natri, kali, phốt pho, albumin niệu và eGFR.",
+    emoji: "🫘",
+    category: "disease",
+    categoryName: "Thận, tiết niệu",
+    displayCategory: "bai-viet",
+    specialty: "than-tiet-nieu",
+    audience: ["diabetes", "ckd", "elderly"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "KDIGO", title: "2022 Clinical Practice Guideline for Diabetes Management in CKD", url: "https://kdigo.org/guidelines/diabetes-ckd/" },
+      { name: "KDIGO", title: "2024 CKD Evaluation and Management Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
+      { name: "ADA", title: "Standards of Care in Diabetes 2026", url: "https://professional.diabetes.org/standards-of-care" }
+    ],
+    keywords: ["bệnh thận do đái tháo đường", "CKD", "albumin niệu", "eGFR", "kali", "đạm"]
+  },
+  {
+    slug: "masld-mash-gan-nhiem-mo-chuyen-hoa",
+    title: "MASLD/MASH: gan nhiễm mỡ chuyển hóa cần hiểu khác gì NAFLD?",
+    description: "Cập nhật thuật ngữ MASLD/MASH, phân tầng nguy cơ xơ hóa và nguyên tắc ăn uống cho gan nhiễm mỡ chuyển hóa.",
+    emoji: "🟤",
+    category: "disease",
+    categoryName: "Tiêu hóa, gan mật",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    audience: ["metabolic", "fatty-liver", "diabetes"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "AASLD", title: "MASLD: Update and Impact of New Nomenclature", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "AASLD", title: "Practice Guidance on NAFLD", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10735173/" },
+      { name: "EASL-EASD-EASO", title: "2024 MASLD Clinical Practice Guidelines", url: "https://www.journal-of-hepatology.eu/article/S0168-8278(24)00329-5/fulltext" }
+    ],
+    keywords: ["MASLD", "MASH", "NAFLD", "gan nhiễm mỡ", "xơ hóa gan", "triglyceride"]
+  },
+  {
+    slug: "roi-loan-an-uong-binge-eating",
+    title: "Rối loạn ăn uống và binge eating: ăn đều, bớt xấu hổ, tìm hỗ trợ đúng",
+    description: "Bài thận trọng về binge eating: không đổ lỗi ý chí, tránh nhịn-ăn bù, nhận biết dấu hiệu cần hỗ trợ tâm lý và dinh dưỡng.",
+    emoji: "🧩",
+    category: "disease",
+    categoryName: "Thần kinh, tâm lý",
+    displayCategory: "bai-viet",
+    specialty: "than-kinh",
+    audience: ["mental-health", "weight-loss", "young-adult"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "American Psychiatric Association", title: "Eating Disorders Guideline", url: "https://www.psychiatry.org/news-room/news-releases/apa-updated-guideline-on-eating-disorders" },
+      { name: "American Psychiatric Association", title: "What are Eating Disorders?", url: "https://www.psychiatry.org/patients-families/eating-disorders/what-are-eating-disorders" },
+      { name: "AAFP", title: "Guidelines From the American Psychiatric Association", url: "https://www.aafp.org/afp/2024/0200/practice-guidelines-eating-disorders" }
+    ],
+    keywords: ["binge eating", "rối loạn ăn uống", "ăn vô độ", "giảm cân", "tâm lý", "nhịn ăn"]
+  },
+  {
+    slug: "copd-suy-dinh-duong-beo-phi-thuc-don",
+    title: "COPD kèm suy dinh dưỡng hoặc béo phì: thực đơn khi khó thở, ăn ít",
+    description: "Thực hành ăn uống cho COPD: chia bữa nhỏ, tăng đạm khi sụt cân, giảm cân giữ cơ khi béo phì và nhận biết đợt cấp.",
+    emoji: "🫁",
+    category: "disease",
+    categoryName: "Hô hấp",
+    displayCategory: "bai-viet",
+    specialty: "ho-hap",
+    audience: ["respiratory", "elderly", "caregiver"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "GOLD", title: "Global Strategy for COPD", url: "https://goldcopd.org/" },
+      { name: "ESPEN", title: "Clinical nutrition in chronic respiratory diseases", url: "https://www.espen.org/guidelines-home/espen-guidelines" },
+      { name: "American Lung Association", title: "COPD Nutrition", url: "https://www.lung.org/lung-health-diseases/lung-disease-lookup/copd/living-with-copd/nutrition" }
+    ],
+    keywords: ["COPD", "suy dinh dưỡng", "béo phì", "khó thở", "ăn ít", "phục hồi hô hấp"]
+  },
+  {
+    slug: "alzheimer-giai-doan-muon-an-uong",
+    title: "Alzheimer giai đoạn muộn: chăm ăn uống, phòng sặc và sụt cân",
+    description: "Dinh dưỡng cho Alzheimer/sa sút trí tuệ giai đoạn muộn: từ chối ăn, nuốt khó, sụt cân, thực phẩm bổ sung và người chăm sóc.",
+    emoji: "🧠",
+    category: "disease",
+    categoryName: "Thần kinh",
+    displayCategory: "bai-viet",
+    specialty: "than-kinh",
+    audience: ["dementia", "caregiver", "elderly"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "ESPEN", title: "Guideline on nutrition and hydration in dementia", url: "https://www.sciencedirect.com/" },
+      { name: "PubMed", title: "ESPEN guidelines on nutrition in dementia", url: "https://pubmed.ncbi.nlm.nih.gov/" },
+      { name: "National Institute on Aging", title: "Healthy Eating and Alzheimer's", url: "https://www.nia.nih.gov/health/alzheimers-caregiving" }
+    ],
+    keywords: ["Alzheimer", "sa sút trí tuệ", "nuốt khó", "sặc", "sụt cân", "người chăm sóc"]
+  },
+  {
+    slug: "parkinson-nuot-kho-tao-bon-levodopa",
+    title: "Parkinson: nuốt khó, táo bón và cách sắp bữa quanh levodopa",
+    description: "Bài thực hành cho Parkinson: tương tác levodopa-protein, táo bón, nuốt khó, giữ đạm và phòng sụt cân.",
+    emoji: "🧠",
+    category: "disease",
+    categoryName: "Thần kinh",
+    displayCategory: "bai-viet",
+    specialty: "than-kinh",
+    audience: ["parkinson", "caregiver", "elderly"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "Parkinson's Foundation", title: "Nutrition and Parkinson's", url: "https://www.parkinson.org/living-with-parkinsons/management/diet-nutrition" },
+      { name: "NICE", title: "Parkinson's disease in adults", url: "https://www.nice.org.uk/guidance/ng71" },
+      { name: "NIDDK", title: "Constipation", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation" }
+    ],
+    keywords: ["Parkinson", "levodopa", "protein", "nuốt khó", "táo bón", "sụt cân"]
+  },
+  {
+    slug: "hoi-chung-ruot-ngan-ostomy",
+    title: "Hội chứng ruột ngắn và ostomy: ăn uống để giảm mất nước, sụt cân",
+    description: "Hướng dẫn thực hành sau mổ tiêu hóa có ruột ngắn/ostomy: bù nước điện giải, chia bữa, theo dõi output và thiếu vi chất.",
+    emoji: "🩹",
+    category: "disease",
+    categoryName: "Ngoại khoa, hậu phẫu",
+    displayCategory: "bai-viet",
+    specialty: "ngoai-khoa",
+    audience: ["post-surgery", "caregiver"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "ESPEN", title: "Guidelines on chronic intestinal failure", url: "https://www.espen.org/guidelines-home/espen-guidelines" },
+      { name: "NIDDK", title: "Short Bowel Syndrome", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/short-bowel-syndrome" },
+      { name: "United Ostomy Associations of America", title: "Eating with an Ostomy", url: "https://www.ostomy.org/" }
+    ],
+    keywords: ["ruột ngắn", "ostomy", "stoma", "mất nước", "điện giải", "sau mổ tiêu hóa"]
+  },
+  {
+    slug: "an-uong-sau-cat-tui-mat",
+    title: "Sau cắt túi mật nên ăn gì? Giảm tiêu chảy nhưng không kiêng dầu tuyệt đối",
+    description: "Ăn uống sau cắt túi mật: chia bữa nhỏ, giảm dầu mỡ giai đoạn đầu, tăng xơ từ từ và nhận biết dấu hiệu cần tái khám.",
+    emoji: "🟢",
+    category: "disease",
+    categoryName: "Tiêu hóa, gan mật",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    audience: ["post-surgery", "gallbladder"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    sources: [
+      { name: "NHS", title: "Gallbladder removal", url: "https://www.nhs.uk/conditions/gallbladder-removal/" },
+      { name: "Mayo Clinic", title: "Can you recommend a diet after gallbladder removal?", url: "https://www.mayoclinic.org/tests-procedures/cholecystectomy/expert-answers/gallbladder-removal-diet/faq-20057813" },
+      { name: "NIDDK", title: "Gallstones", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/gallstones" }
+    ],
+    keywords: ["cắt túi mật", "sau mổ túi mật", "tiêu chảy", "dầu mỡ", "sỏi mật"]
+  },
+  {
+    slug: "roi-loan-lipid-mau-gia-dinh",
+    title: "Rối loạn lipid máu gia đình: vì sao ăn lành mạnh vẫn có thể LDL rất cao?",
+    description: "Phân biệt tăng cholesterol gia đình với mỡ máu do lối sống, vai trò ăn uống, thuốc và kiểm tra người thân.",
+    emoji: "🧬",
+    category: "disease",
+    categoryName: "Tim mạch",
+    displayCategory: "bai-viet",
+    specialty: "tim-mach",
+    audience: ["cardio", "family-history"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "American Heart Association", title: "Familial Hypercholesterolemia", url: "https://www.heart.org/" },
+      { name: "Family Heart Foundation", title: "Familial Hypercholesterolemia", url: "https://familyheart.org/" },
+      { name: "ACC", title: "Cholesterol Management", url: "https://www.acc.org/" }
+    ],
+    keywords: ["rối loạn lipid máu gia đình", "tăng cholesterol gia đình", "LDL", "statin", "nhồi máu sớm"]
+  },
+  {
+    slug: "tang-triglyceride-nang",
+    title: "Tăng triglyceride nặng: giảm rượu, đường, tinh bột để phòng viêm tụy",
+    description: "Bài riêng về triglyceride rất cao: nguy cơ viêm tụy, vai trò rượu bia, đường lỏng, tinh bột dư và kiểm soát đường huyết.",
+    emoji: "🩸",
+    category: "disease",
+    categoryName: "Tim mạch / Chuyển hóa",
+    displayCategory: "bai-viet",
+    specialty: "noi-tiet",
+    audience: ["metabolic", "pancreatitis", "diabetes"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "Endocrine Society", title: "Hypertriglyceridemia Guideline", url: "https://www.endocrine.org/clinical-practice-guidelines" },
+      { name: "AHA", title: "Triglycerides", url: "https://www.heart.org/" },
+      { name: "NIDDK", title: "Pancreatitis", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/pancreatitis" }
+    ],
+    keywords: ["triglyceride", "tăng triglyceride", "viêm tụy", "rượu bia", "đường", "tinh bột"]
+  },
+  {
+    slug: "cuong-can-giap-soi-than-canxi",
+    title: "Cường cận giáp và sỏi thận canxi: vì sao không nên tự cắt hết canxi?",
+    description: "Dinh dưỡng cho cường cận giáp/sỏi thận canxi: canxi khẩu phần, oxalate, muối, nước uống, vitamin D và xét nghiệm cần theo dõi.",
+    emoji: "🦴",
+    category: "disease",
+    categoryName: "Nội tiết, thận tiết niệu",
+    displayCategory: "bai-viet",
+    specialty: "noi-tiet",
+    audience: ["kidney-stone", "bone-health"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "Endocrine Society", title: "Primary Hyperparathyroidism", url: "https://www.endocrine.org/" },
+      { name: "NIDDK", title: "Eating, Diet, & Nutrition for Kidney Stones", url: "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-stones/eating-diet-nutrition" },
+      { name: "American Urological Association", title: "Kidney Stones: Medical Management Guideline", url: "https://www.auanet.org/guidelines-and-quality/guidelines/kidney-stones-medical-mangement-guideline" }
+    ],
+    keywords: ["cường cận giáp", "sỏi thận canxi", "canxi", "oxalate", "PTH", "vitamin D"]
+  },
+  {
+    slug: "hiv-lao-phoi-suy-dinh-duong",
+    title: "HIV/AIDS hoặc lao phổi kèm suy dinh dưỡng: ăn gì để chịu điều trị tốt hơn?",
+    description: "Dinh dưỡng hỗ trợ HIV/AIDS và lao phổi: đủ năng lượng, đủ đạm, an toàn thực phẩm, xử trí chán ăn và không tự ngưng thuốc.",
+    emoji: "🦠",
+    category: "disease",
+    categoryName: "Truyền nhiễm",
+    displayCategory: "bai-viet",
+    specialty: "truyen-nhiem",
+    audience: ["infection", "malnutrition", "caregiver"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    sources: [
+      { name: "WHO", title: "Nutrient requirements for people living with HIV/AIDS", url: "https://www.who.int/publications/i/item/9241591196" },
+      { name: "WHO", title: "Tuberculosis", url: "https://www.who.int/news-room/fact-sheets/detail/tuberculosis" },
+      { name: "CDC", title: "Tuberculosis", url: "https://www.cdc.gov/tb/" }
+    ],
+    keywords: ["HIV", "AIDS", "lao phổi", "suy dinh dưỡng", "sụt cân", "an toàn thực phẩm"]
   }
 ];
 

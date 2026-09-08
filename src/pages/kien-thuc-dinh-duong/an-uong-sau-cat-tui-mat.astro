@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["an-uong-sau-cat-tui-mat"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Sau cắt túi mật, phần lớn người bệnh vẫn ăn uống gần bình thường sau khi hồi phục. Tuy nhiên vài tuần đầu có thể đầy bụng, tiêu chảy hoặc khó chịu sau bữa nhiều dầu mỡ vì mật không còn được dự trữ như trước.</p>
+    <p>Nếu đau bụng tăng, sốt, vàng da, nôn nhiều hoặc tiêu chảy kéo dài, cần tái khám. Không tự kiêng chất béo tuyệt đối lâu dài vì dễ thiếu năng lượng và vitamin tan trong dầu.</p>
+  </section>
+
+  <section class="article-section" data-section="first-weeks">
+    <h2>Vài tuần đầu nên ăn thế nào?</h2>
+    <ul>
+      <li>Chia bữa nhỏ, ăn chậm, giảm món chiên xào nhiều dầu.</li>
+      <li>Chọn đạm nạc: cá, gà bỏ da, trứng lượng vừa, đậu hũ.</li>
+      <li>Tăng chất xơ từ từ bằng rau nấu mềm, yến mạch, trái cây dễ dung nạp.</li>
+      <li>Uống đủ nước, tránh rượu bia trong giai đoạn hồi phục.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="triggers">
+    <h2>Món dễ gây khó chịu</h2>
+    <ul>
+      <li>Đồ chiên, thịt mỡ, nước cốt dừa nhiều, phô mai béo, kem.</li>
+      <li>Bữa quá lớn hoặc ăn tối quá muộn.</li>
+      <li>Cà phê, rượu bia hoặc đồ cay nếu làm tiêu chảy/đầy bụng rõ hơn.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="long-term">
+    <h2>Dài hạn</h2>
+    <p>Hãy quay lại khẩu phần cân bằng với rau, đạm nạc, tinh bột vừa lượng và chất béo tốt ở mức dung nạp. Mục tiêu là ăn đủ chất, giữ cân nặng hợp lý và phòng sỏi đường mật hoặc rối loạn mỡ máu đi kèm.</p>
+  </section>
+</ArticleLayout>

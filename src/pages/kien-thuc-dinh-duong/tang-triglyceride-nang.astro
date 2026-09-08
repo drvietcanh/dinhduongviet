@@ -1,0 +1,37 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["tang-triglyceride-nang"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Tăng triglyceride nặng không chỉ là “mỡ máu cao”. Khi rất cao, nguy cơ viêm tụy cấp tăng, nhất là nếu có rượu bia, đái tháo đường chưa kiểm soát, béo bụng hoặc ăn nhiều đường/tinh bột tinh chế.</p>
+    <p>Nếu triglyceride rất cao hoặc từng viêm tụy, cần theo bác sĩ. Ăn uống hỗ trợ mạnh, nhưng có thể cần thuốc hạ triglyceride và kiểm soát đường huyết.</p>
+  </section>
+
+  <section class="article-section" data-section="targets">
+    <h2>3 thứ cần giảm trước</h2>
+    <ul>
+      <li><strong>Rượu bia:</strong> Là yếu tố làm triglyceride tăng mạnh ở nhiều người; cần tránh nếu mức rất cao hoặc từng viêm tụy.</li>
+      <li><strong>Đường lỏng:</strong> Nước ngọt, trà sữa, nước ép, cà phê sữa nhiều đường.</li>
+      <li><strong>Tinh bột dư:</strong> Cơm/bún/phở khẩu phần lớn, bánh ngọt, snack, ăn khuya.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="plate">
+    <h2>Đĩa ăn phù hợp hơn</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Nên chọn</span><span>Rau, đạm nạc, cá, đậu hũ, sữa không đường, tinh bột vừa lượng, trái cây nguyên quả.</span></div>
+      <div class="food-row"><span class="food-cat">Cần giảm</span><span>Bia rượu, nước đường, bánh kẹo, cơm quá nhiều, đồ chiên, thịt mỡ.</span></div>
+      <div class="food-row"><span class="food-cat">Theo dõi</span><span>Đường huyết, HbA1c, vòng eo, cân nặng và triglyceride sau can thiệp.</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="urgent">
+    <h2>Cấp cứu nếu</h2>
+    <p>Đau bụng dữ dội vùng thượng vị lan ra sau lưng, nôn nhiều, sốt hoặc mệt lả có thể gợi ý viêm tụy cấp và cần đi cấp cứu.</p>
+  </section>
+</ArticleLayout>

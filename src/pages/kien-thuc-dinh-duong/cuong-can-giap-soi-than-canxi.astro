@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["cuong-can-giap-soi-than-canxi"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Cường cận giáp có thể làm tăng canxi máu, tăng canxi niệu, loãng xương và sỏi thận canxi. Nhiều người nghe “sỏi canxi” rồi tự cắt sạch sữa/canxi, nhưng cách này không phải lúc nào đúng và có thể hại xương.</p>
+    <p>Ăn uống cần dựa trên canxi máu, canxi niệu 24 giờ, PTH, vitamin D, chức năng thận và loại sỏi. Hãy theo bác sĩ nội tiết/tiết niệu, không tự uống canxi hoặc vitamin D liều cao.</p>
+  </section>
+
+  <section class="article-section" data-section="principles">
+    <h2>Nguyên tắc ăn uống</h2>
+    <ul>
+      <li><strong>Không cắt canxi bừa bãi:</strong> Canxi từ bữa ăn ở mức phù hợp có thể giúp giảm hấp thu oxalate trong ruột.</li>
+      <li><strong>Uống nước đủ:</strong> Mục tiêu là nước tiểu loãng hơn, nhưng người suy tim/thận cần hỏi bác sĩ.</li>
+      <li><strong>Giảm muối:</strong> Ăn mặn có thể làm tăng thải canxi qua nước tiểu.</li>
+      <li><strong>Giảm oxalate khi cần:</strong> Rau bina, củ dền, hạt nhiều oxalate, trà đặc hoặc chocolate cần cá nhân hóa theo loại sỏi.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="avoid">
+    <h2>Cần tránh tự làm</h2>
+    <ul>
+      <li>Tự uống viên canxi, vitamin D liều cao hoặc thuốc lợi tiểu.</li>
+      <li>Cắt toàn bộ sữa trong khi khẩu phần vốn thiếu canxi.</li>
+      <li>Chỉ uống nước râu ngô/nước thảo dược thay theo dõi sỏi và canxi máu.</li>
+    </ul>
+  </section>
+</ArticleLayout>

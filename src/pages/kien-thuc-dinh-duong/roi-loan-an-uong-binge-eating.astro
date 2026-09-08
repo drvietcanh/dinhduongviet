@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["roi-loan-an-uong-binge-eating"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Rối loạn ăn uống, bao gồm binge eating, không phải là “thiếu ý chí”. Đây là vấn đề sức khỏe tâm thần và dinh dưỡng, thường đi kèm xấu hổ, ăn quá nhiều trong thời gian ngắn, cảm giác mất kiểm soát và vòng lặp nhịn rồi ăn bù.</p>
+    <p>Bài này không dùng để tự chẩn đoán. Nếu ăn uống gây khổ sở, nôn ói cưỡng bức, dùng thuốc xổ, sụt cân nhanh hoặc có ý nghĩ tự hại, cần gặp bác sĩ/tâm lý lâm sàng càng sớm càng tốt.</p>
+  </section>
+
+  <section class="article-section" data-section="safe-nutrition">
+    <h2>Dinh dưỡng an toàn hơn</h2>
+    <ul>
+      <li><strong>Ăn đều:</strong> 3 bữa chính và 1-2 bữa phụ nếu cần giúp giảm đói cực độ.</li>
+      <li><strong>Không cấm tuyệt đối:</strong> Càng cấm nhiều nhóm, nguy cơ ăn bù càng cao ở một số người.</li>
+      <li><strong>Đủ đạm và xơ:</strong> Mỗi bữa có đạm, rau/trái cây và tinh bột vừa lượng giúp no ổn định hơn.</li>
+      <li><strong>Ghi nhận thay vì phán xét:</strong> Theo dõi giờ ăn, cảm xúc, giấc ngủ, stress và bối cảnh ăn quá mức.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="avoid">
+    <h2>Nên tránh</h2>
+    <ul>
+      <li>Thử detox, nhịn ăn kéo dài hoặc chế độ giảm cân cực thấp năng lượng khi chưa được theo dõi.</li>
+      <li>Tự dùng thuốc giảm cân, thuốc xổ, lợi tiểu hoặc gây nôn.</li>
+      <li>Cân đo quá dày nếu điều đó làm ám ảnh ăn uống nặng hơn.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="care">
+    <h2>Điều trị cần phối hợp</h2>
+    <p>Can thiệp hiệu quả thường gồm trị liệu tâm lý tập trung vào rối loạn ăn uống, đánh giá dinh dưỡng, xử lý trầm cảm/lo âu nếu có và theo dõi biến chứng chuyển hóa. Gia đình nên giảm phán xét ngoại hình và hỗ trợ bữa ăn đều đặn.</p>
+  </section>
+</ArticleLayout>

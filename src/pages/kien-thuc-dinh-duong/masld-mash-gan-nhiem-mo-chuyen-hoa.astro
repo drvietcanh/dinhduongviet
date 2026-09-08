@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["masld-mash-gan-nhiem-mo-chuyen-hoa"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>MASLD là thuật ngữ mới cho gan nhiễm mỡ liên quan rối loạn chuyển hóa; MASH là dạng có viêm gan nhiễm mỡ, có thể tiến tới xơ hóa. Người bệnh thường đi kèm thừa cân, vòng eo lớn, đái tháo đường, tăng triglyceride hoặc tăng huyết áp.</p>
+    <p>Ăn uống có vai trò nền tảng, nhưng cần phân tầng nguy cơ bằng xét nghiệm, siêu âm/đàn hồi gan hoặc thang điểm xơ hóa khi bác sĩ chỉ định. Không nên tự uống thuốc bổ gan hoặc detox thay cho giảm cân, vận động và kiểm soát chuyển hóa.</p>
+  </section>
+
+  <section class="article-section" data-section="risk">
+    <h2>Phân tầng nguy cơ đơn giản</h2>
+    <ul>
+      <li><strong>Nguy cơ thấp:</strong> Mỡ gan nhẹ, men gan bình thường, chưa có đái tháo đường hoặc dấu hiệu xơ hóa.</li>
+      <li><strong>Cần theo dõi sát:</strong> Đái tháo đường típ 2, béo bụng, triglyceride cao, men gan kéo dài hoặc tiền sử gia đình bệnh gan.</li>
+      <li><strong>Cần chuyên khoa gan mật:</strong> Nghi xơ hóa đáng kể, tiểu cầu thấp, albumin giảm, vàng da, cổ trướng hoặc xuất huyết tiêu hóa.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="diet">
+    <h2>Ăn uống nên ưu tiên</h2>
+    <ul>
+      <li>Giảm đồ uống có đường, nước ép, trà sữa, bánh kẹo và ăn vặt nhiều lần.</li>
+      <li>Ưu tiên kiểu Địa Trung Hải: rau, đậu, cá, hạt, dầu thực vật, ngũ cốc nguyên hạt vừa lượng.</li>
+      <li>Giảm rượu bia; nếu đã có MASH hoặc xơ hóa, cần hỏi bác sĩ về mức tránh rượu phù hợp.</li>
+      <li>Giảm 5-10% cân nặng nếu thừa cân có thể giúp cải thiện mỡ gan và viêm gan ở nhiều người.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="takeaway">
+    <h2>Nhớ chính</h2>
+    <div class="key-takeaway"><p>MASLD/MASH không phải chuyện “gan nóng”. Trọng tâm là vòng eo, đường huyết, triglyceride, huyết áp, rượu bia và mức xơ hóa gan.</p></div>
+  </section>
+</ArticleLayout>

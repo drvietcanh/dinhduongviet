@@ -1,0 +1,42 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const article = articleBySlug["benh-than-do-dai-thao-duong"];
+---
+
+<ArticleLayout article={article as any}>
+  <section class="article-section" data-section="summary">
+    <h2>Tóm tắt</h2>
+    <p>Bệnh thận do đái tháo đường là giao điểm giữa đường huyết, huyết áp, albumin niệu và chức năng thận. Ăn uống cần kiểm carb như người đái tháo đường, nhưng cũng phải cá nhân hóa đạm, natri, kali và phốt pho theo eGFR, ACR và xét nghiệm máu.</p>
+    <p>Không tự kiêng hết tinh bột hoặc hết đạm. Kiêng quá mức dễ sụt cân, mất cơ và khó kiểm soát đường huyết hơn.</p>
+  </section>
+
+  <section class="article-section" data-section="principles">
+    <h2>Nguyên tắc ăn uống</h2>
+    <ul>
+      <li><strong>Carb có kế hoạch:</strong> Chia đều cơm/bún/phở/khoai theo bữa, ăn cùng rau và đạm để giảm tăng đường huyết sau ăn.</li>
+      <li><strong>Natri thấp hơn:</strong> Giảm nước mắm, bột nêm, đồ chế biến sẵn để hỗ trợ huyết áp và phù.</li>
+      <li><strong>Đạm vừa đủ:</strong> Lượng đạm phụ thuộc giai đoạn CKD, albumin niệu, chạy thận hay chưa; hỏi bác sĩ/chuyên gia dinh dưỡng.</li>
+      <li><strong>Kali/phốt pho theo xét nghiệm:</strong> Không phải ai cũng phải bỏ toàn bộ rau trái hoặc sữa.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" data-section="plate">
+    <h2>Gợi ý một đĩa cơm</h2>
+    <div class="food-table">
+      <div class="food-row"><span class="food-cat">Tinh bột</span><span>Cơm vừa lượng, ưu tiên phần cố định mỗi bữa; gạo lứt chỉ dùng nếu kali/phốt pho và tiêu hóa phù hợp.</span></div>
+      <div class="food-row"><span class="food-cat">Đạm</span><span>Cá, trứng, thịt nạc, đậu hũ ở khẩu phần được hướng dẫn; tránh tự thêm whey hoặc bột đạm.</span></div>
+      <div class="food-row"><span class="food-cat">Rau</span><span>Chọn loại phù hợp kali; nếu kali cao có thể thái nhỏ, ngâm, luộc bỏ nước theo hướng dẫn.</span></div>
+    </div>
+  </section>
+
+  <section class="article-section" data-section="monitor">
+    <h2>Cần theo dõi</h2>
+    <ul>
+      <li>HbA1c, đường huyết sau ăn, huyết áp tại nhà.</li>
+      <li>eGFR, ACR/albumin niệu, kali, phốt pho, bicarbonate nếu bác sĩ chỉ định.</li>
+      <li>Phù, tiểu ít, sụt cân, chán ăn hoặc mệt tăng.</li>
+    </ul>
+  </section>
+</ArticleLayout>
