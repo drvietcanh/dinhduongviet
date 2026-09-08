@@ -1,0 +1,31 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ngo-doc-thuc-pham-gia-dinh"];
+if (!art) throw new Error("Article not found: ngo-doc-thuc-pham-gia-dinh");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Ngộ độc thực phẩm trong gia đình thường bắt đầu sau bữa ăn chung: đau bụng, nôn, tiêu chảy, sốt. Việc quan trọng nhất là bù nước và nhận ra ai cần đi khám sớm — trẻ nhỏ, người già, phụ nữ mang thai, người bệnh nền hoặc người có dấu hiệu mất nước.</p>
+</section>
+
+<section class="section card">
+  <h2>24 giờ đầu nên ăn uống thế nào?</h2>
+  <ul>
+    <li>Uống từng ngụm nhỏ nước, oresol pha đúng hướng dẫn hoặc nước canh loãng nếu tiêu chảy nhiều.</li>
+    <li>Khi đỡ nôn, ăn nhẹ: cháo, cơm mềm, bánh mì, chuối, khoai, súp, thịt nạc/cá nấu mềm.</li>
+    <li>Tránh rượu bia, món chiên, sữa nhiều béo, nước ngọt và nước ép quá ngọt trong giai đoạn đang tiêu chảy.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Khi nào cần y tế?</h2>
+  <p>Đi khám nếu tiêu chảy ra máu, sốt cao, tiêu chảy trên 3 ngày, nôn nhiều không giữ được nước, chóng mặt khi đứng, tiểu ít, khô miệng nhiều, đau bụng dữ dội hoặc nhiều người cùng bữa bị nặng.</p>
+</section>
+
+<section class="section card">
+  <h2>Phòng tái diễn trong bếp Việt</h2>
+  <p>Tách dao thớt sống-chín, hâm nóng kỹ thức ăn thừa, không để món đã nấu ở nhiệt độ phòng quá lâu, rửa tay trước khi chế biến và cẩn thận với hải sản sống, tiết canh, gỏi tái, pate/đồ nguội khi bảo quản không chắc chắn.</p>
+</section>
+</ArticleLayout>

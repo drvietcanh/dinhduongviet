@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thieu-mau-thai-ky"];
+if (!art) throw new Error("Article not found: thieu-mau-thai-ky");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Thiếu máu thai kỳ rất thường gặp, nhất là khi mẹ ăn ít thịt cá, nghén kéo dài, mang thai dày hoặc đã thiếu sắt trước khi có thai. Tuy nhiên không phải thiếu máu nào cũng do thiếu sắt: có thể liên quan folate, B12, thalassemia hoặc bệnh mạn tính.</p>
+</section>
+
+<section class="section card">
+  <h2>Ăn gì để hỗ trợ tạo máu?</h2>
+  <ul>
+    <li><strong>Sắt heme dễ hấp thu:</strong> thịt nạc, cá, gia cầm, trứng; gan giàu sắt nhưng không nên ăn nhiều vì vitamin A cao.</li>
+    <li><strong>Sắt từ thực vật:</strong> đậu, mè, rau xanh đậm; nên ăn kèm trái cây giàu vitamin C như cam, ổi, dâu, chanh.</li>
+    <li><strong>Folate:</strong> rau lá xanh, đậu, bơ, cam; vẫn cần viên bổ sung theo lịch khám thai nếu bác sĩ kê.</li>
+    <li><strong>B12:</strong> thịt, cá, trứng, sữa; mẹ ăn chay cần hỏi bác sĩ về bổ sung.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Cách uống sắt đỡ táo bón, đỡ buồn nôn</h2>
+  <p>Uống theo chỉ định khám thai. Nếu buồn nôn hoặc táo bón, hỏi bác sĩ để đổi dạng/giờ uống; không tự ngưng. Tránh uống sắt cùng trà đặc, cà phê, canxi hoặc sữa vì có thể giảm hấp thu. Uống đủ nước và tăng chất xơ từ từ giúp giảm táo bón.</p>
+</section>
+
+<section class="section card">
+  <h2>Dấu hiệu cần khám sớm</h2>
+  <p>Mệt lả, hồi hộp, khó thở, chóng mặt, da niêm nhợt, thai máy ít, hoặc Hb giảm nhiều cần được bác sĩ sản khoa đánh giá. Nếu gia đình có thalassemia, cần tư vấn xét nghiệm phù hợp.</p>
+</section>
+</ArticleLayout>

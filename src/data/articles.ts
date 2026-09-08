@@ -6326,6 +6326,342 @@ export const articles: ArticleMeta[] = [
       { name: "CDC", title: "Tuberculosis", url: "https://www.cdc.gov/tb/" }
     ],
     keywords: ["HIV", "AIDS", "lao phổi", "suy dinh dưỡng", "sụt cân", "an toàn thực phẩm"]
+  },
+  {
+    slug: "beo-phi-tre-em-hoc-duong",
+    title: "Thừa cân, béo phì trẻ em tuổi học đường: sửa bữa ăn mà không làm trẻ mặc cảm",
+    description: "Hướng dẫn cho cha mẹ về béo phì trẻ em: đồ uống ngọt, ăn vặt, bữa học đường, vận động và cách nói chuyện an toàn với trẻ.",
+    emoji: "🧒",
+    category: "disease",
+    categoryName: "Nhi khoa",
+    displayCategory: "bai-viet",
+    specialty: "nhi-khoa",
+    audience: ["children", "caregiver", "weight-loss"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "WHO", title: "Assessing and managing children at primary health-care facilities to prevent overweight and obesity", url: "https://www.who.int/publications/i/item/9789241550123" },
+      { name: "CDC", title: "Evidence-Based Guidelines for Child Obesity", url: "https://www.cdc.gov/obesity/child-obesity-strategies/evidence-based-guidelines.html" },
+      { name: "WHO", title: "Obesity and overweight", url: "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" }
+    ],
+    keywords: ["béo phì trẻ em", "thừa cân trẻ em", "ăn vặt", "trà sữa", "học đường"]
+  },
+  {
+    slug: "tao-bon-tre-em",
+    title: "Táo bón ở trẻ em: ăn gì, uống gì và tập thói quen đi cầu ra sao?",
+    description: "Táo bón trẻ em thường cần phối hợp nước, chất xơ, thói quen đi vệ sinh và khám khi có dấu hiệu báo động.",
+    emoji: "🚽",
+    category: "disease",
+    categoryName: "Nhi khoa / Tiêu hóa",
+    displayCategory: "bai-viet",
+    specialty: "nhi-khoa",
+    audience: ["children", "caregiver"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "NIDDK", title: "Eating, Diet, & Nutrition for Constipation in Children", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation-children/eating-diet-nutrition" },
+      { name: "HealthyChildren.org", title: "Constipation", url: "https://www.healthychildren.org/" },
+      { name: "NICE", title: "Constipation in children and young people", url: "https://www.nice.org.uk/guidance/cg99" }
+    ],
+    keywords: ["táo bón trẻ em", "trẻ táo bón", "chất xơ", "uống nước", "đi cầu"]
+  },
+  {
+    slug: "thieu-mau-thai-ky",
+    title: "Thiếu máu thai kỳ: bổ sung sắt, folate, B12 thế nào cho đúng?",
+    description: "Thiếu máu thai kỳ không phải lúc nào cũng chỉ do thiếu sắt; cần ăn uống hỗ trợ và uống bổ sung theo lịch khám thai.",
+    emoji: "🤰",
+    category: "disease",
+    categoryName: "Sản khoa / Huyết học",
+    displayCategory: "bai-viet",
+    specialty: "san-khoa",
+    audience: ["pregnancy"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "ACOG", title: "Anemia in Pregnancy", url: "https://www.acog.org/" },
+      { name: "USPSTF", title: "Iron Deficiency Anemia in Pregnant Persons", url: "https://www.uspreventiveservicestaskforce.org/" },
+      { name: "NIH Office of Dietary Supplements", title: "Iron Fact Sheet", url: "https://ods.od.nih.gov/factsheets/Iron-Consumer/" }
+    ],
+    keywords: ["thiếu máu thai kỳ", "thiếu sắt thai kỳ", "folate", "vitamin B12", "mẹ bầu"]
+  },
+  {
+    slug: "tang-huyet-ap-thai-ky-tien-san-giat",
+    title: "Tăng huyết áp thai kỳ, tiền sản giật: ăn nhạt thôi đã đủ chưa?",
+    description: "Ăn uống trong tăng huyết áp thai kỳ và tiền sản giật: giảm muối hợp lý, đủ đạm, theo dõi dấu hiệu báo động và không tự dùng thuốc.",
+    emoji: "🤰",
+    category: "disease",
+    categoryName: "Sản khoa / Tim mạch",
+    displayCategory: "bai-viet",
+    specialty: "san-khoa",
+    audience: ["pregnancy", "hypertension"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "ACOG", title: "Gestational Hypertension and Preeclampsia", url: "https://www.acog.org/" },
+      { name: "WHO", title: "Recommendations for prevention and treatment of pre-eclampsia and eclampsia", url: "https://www.who.int/publications/i/item/9789241548335" },
+      { name: "NICE", title: "Hypertension in pregnancy", url: "https://www.nice.org.uk/guidance/ng133" }
+    ],
+    keywords: ["tăng huyết áp thai kỳ", "tiền sản giật", "mẹ bầu", "ăn nhạt", "phù thai kỳ"]
+  },
+  {
+    slug: "viem-gan-b-man-tinh",
+    title: "Viêm gan B mạn tính: ăn gì để bảo vệ gan, tránh gì để không hại thêm?",
+    description: "Dinh dưỡng cho viêm gan B mạn: tránh rượu bia, kiểm soát cân nặng, đủ đạm, không dùng detox/thuốc bổ gan thay điều trị.",
+    emoji: "🦠",
+    category: "disease",
+    categoryName: "Truyền nhiễm / Gan mật",
+    displayCategory: "bai-viet",
+    specialty: "truyen-nhiem",
+    audience: ["infection", "fatty-liver"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "WHO", title: "Guidelines for chronic hepatitis B infection", url: "https://www.who.int/publications/i/item/9789240090903" },
+      { name: "Hepatitis B Foundation", title: "WHO Treatment Guidelines", url: "https://www.hepb.org/assets/WHO-Treatment-Guidelines-Final-Simplified-.pdf" },
+      { name: "AASLD", title: "Hepatitis B Guidance", url: "https://www.aasld.org/" }
+    ],
+    keywords: ["viêm gan B", "HBV", "gan B mạn", "xơ gan", "rượu bia", "thuốc bổ gan"]
+  },
+  {
+    slug: "sau-rang-men-rang-tre-em",
+    title: "Sâu răng, men răng yếu ở trẻ: đường nằm ở tần suất, không chỉ số lượng",
+    description: "Góc nhìn dinh dưỡng cho sâu răng trẻ em: đồ uống ngọt, ăn vặt nhiều lần, sữa đêm, canxi, vitamin D và khám nha khoa.",
+    emoji: "🦷",
+    category: "disease",
+    categoryName: "Nhi khoa / Răng miệng",
+    displayCategory: "bai-viet",
+    specialty: "nhi-khoa",
+    audience: ["children", "caregiver"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "general-reference",
+    sources: [
+      { name: "CDC", title: "Children's Oral Health", url: "https://www.cdc.gov/oral-health/prevention/oral-health-tips-for-children.html" },
+      { name: "American Dental Association", title: "MouthHealthy Nutrition", url: "https://www.mouthhealthy.org/" },
+      { name: "WHO", title: "Sugars and dental caries", url: "https://www.who.int/news/item/04-03-2015-who-calls-on-countries-to-reduce-sugars-intake-among-adults-and-children" }
+    ],
+    keywords: ["sâu răng trẻ em", "men răng", "đồ uống ngọt", "ăn vặt", "sữa đêm"]
+  },
+  {
+    slug: "benh-than-do-tang-huyet-ap",
+    title: "Bệnh thận do tăng huyết áp: giảm muối, theo dõi phù và cá thể hóa đạm",
+    description: "Dinh dưỡng cho người tăng huyết áp kèm bệnh thận: muối ẩn, đạm, kali, phốt pho, cân nặng, phù và dấu hiệu cần khám.",
+    emoji: "🫘",
+    category: "disease",
+    categoryName: "Thận tiết niệu / Tim mạch",
+    displayCategory: "bai-viet",
+    specialty: "than-tiet-nieu",
+    audience: ["kidney", "hypertension"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "KDIGO", title: "CKD Evaluation and Management Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
+      { name: "American Heart Association", title: "High Blood Pressure and Kidney Disease", url: "https://www.heart.org/" },
+      { name: "NIDDK", title: "High Blood Pressure & Kidney Disease", url: "https://www.niddk.nih.gov/health-information/kidney-disease/high-blood-pressure" }
+    ],
+    keywords: ["bệnh thận do tăng huyết áp", "tăng huyết áp", "bệnh thận mạn", "giảm muối", "phù"]
+  },
+  {
+    slug: "tang-acid-uric-chua-gout",
+    title: "Tăng acid uric nhưng chưa gout: có cần kiêng sạch thịt cá không?",
+    description: "Bài thực hành cho người acid uric cao chưa có cơn gout: rượu bia, nước ngọt, giảm cân chậm, đạm vừa phải và khi nào cần hỏi bác sĩ.",
+    emoji: "🧪",
+    category: "disease",
+    categoryName: "Nội tiết / Cơ xương khớp",
+    displayCategory: "bai-viet",
+    specialty: "noi-tiet",
+    audience: ["gout", "metabolic-risk"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "American College of Rheumatology", title: "Gout Guideline", url: "https://rheumatology.org/gout-guideline" },
+      { name: "Arthritis Foundation", title: "Gout Diet", url: "https://www.arthritis.org/" },
+      { name: "NIDDK", title: "Kidney Stones and Diet", url: "https://www.niddk.nih.gov/" }
+    ],
+    keywords: ["acid uric cao", "tăng acid uric", "chưa gout", "rượu bia", "fructose", "giảm cân"]
+  },
+  {
+    slug: "sau-sinh-thieu-sua-an-uong",
+    title: "Sau sinh ít sữa, mệt và táo bón: ăn uống thế nào để hồi phục mà không mê tín lợi sữa?",
+    description: "Hướng dẫn ăn uống sau sinh và cho con bú: đủ năng lượng, đủ đạm, nước, rau quả, tránh rượu thuốc và mẹo lợi sữa thiếu bằng chứng.",
+    emoji: "🤱",
+    category: "special",
+    categoryName: "Sản khoa / Sau sinh",
+    displayCategory: "bai-viet",
+    specialty: "san-khoa",
+    audience: ["postpartum", "breastfeeding", "caregiver"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "WHO", title: "Infant and young child feeding", url: "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding" },
+      { name: "WHO", title: "Postnatal care for mothers and newborns", url: "https://www.who.int/publications/i/item/9789240045989" },
+      { name: "UNICEF", title: "Infant and young child feeding", url: "https://data.unicef.org/topic/nutrition/infant-and-young-child-feeding/" }
+    ],
+    keywords: ["sau sinh", "ít sữa", "cho con bú", "lợi sữa", "táo bón sau sinh"]
+  },
+  {
+    slug: "thieu-mau-tuoi-day-thi",
+    title: "Thiếu máu tuổi dậy thì: mệt, chóng mặt, học kém tập trung có thể không chỉ do thức khuya",
+    description: "Dinh dưỡng và dấu hiệu cần khám ở thiếu máu tuổi dậy thì, đặc biệt bạn gái có kinh nguyệt nhiều hoặc ăn uống thất thường.",
+    emoji: "🩸",
+    category: "disease",
+    categoryName: "Nhi khoa / Huyết học",
+    displayCategory: "bai-viet",
+    specialty: "nhi-khoa",
+    audience: ["adolescent", "children"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "WHO", title: "Daily iron supplementation in adult women and adolescent girls", url: "https://www.who.int/publications/i/item/9789241510196" },
+      { name: "AAP", title: "Prevention, Screening, Diagnosis, and Treatment of Iron Deficiency", url: "https://publications.aap.org/pediatrics/article/158/1/e2026077414/207901/Prevention-Screening-Diagnosis-and-Treatment-of" },
+      { name: "NIH Office of Dietary Supplements", title: "Iron Fact Sheet", url: "https://ods.od.nih.gov/factsheets/Iron-Consumer/" }
+    ],
+    keywords: ["thiếu máu tuổi dậy thì", "thiếu sắt", "kinh nguyệt nhiều", "mệt mỏi", "chóng mặt"]
+  },
+  {
+    slug: "tieu-chay-cap-tre-em-bu-nuoc",
+    title: "Tiêu chảy cấp ở trẻ em: bù nước đúng, ăn sớm và tránh tự dùng thuốc cầm tiêu chảy",
+    description: "Bài thực hành cho cha mẹ khi trẻ tiêu chảy cấp: oresol, bú mẹ, ăn nhẹ, dấu hiệu mất nước và khi nào cần đi khám.",
+    emoji: "💧",
+    category: "disease",
+    categoryName: "Nhi khoa / Tiêu hóa",
+    displayCategory: "bai-viet",
+    specialty: "nhi-khoa",
+    audience: ["children", "caregiver"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "CDC", title: "Managing Acute Gastroenteritis Among Children", url: "https://www.cdc.gov/mmwr/preview/mmwrhtml/rr5216a1.htm" },
+      { name: "NIDDK", title: "Treatment for Diarrhea", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/diarrhea/treatment" },
+      { name: "WHO", title: "Diarrhoeal disease", url: "https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease" }
+    ],
+    keywords: ["tiêu chảy trẻ em", "oresol", "mất nước", "bú mẹ", "tiêu chảy cấp"]
+  },
+  {
+    slug: "ngo-doc-thuc-pham-gia-dinh",
+    title: "Ngộ độc thực phẩm trong gia đình: ăn uống, bù nước và dấu hiệu phải đi khám",
+    description: "Hướng dẫn xử trí ăn uống 24 giờ đầu khi nghi ngộ độc thực phẩm, nhấn mạnh bù nước và nhận biết dấu hiệu nặng.",
+    emoji: "🤢",
+    category: "disease",
+    categoryName: "Tiêu hóa / An toàn thực phẩm",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    audience: ["family", "food-safety"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "general-reference",
+    sources: [
+      { name: "CDC", title: "Food Poisoning Symptoms", url: "https://www.cdc.gov/food-safety/signs-symptoms/index.html" },
+      { name: "CDC", title: "Clinician Brief: Food Safety", url: "https://www.cdc.gov/food-safety/hcp/clinical-overview/index.html" },
+      { name: "WHO", title: "Food safety", url: "https://www.who.int/news-room/fact-sheets/detail/food-safety" }
+    ],
+    keywords: ["ngộ độc thực phẩm", "tiêu chảy", "nôn ói", "bù nước", "an toàn thực phẩm"]
+  },
+  {
+    slug: "viem-hong-amidan-tai-phat",
+    title: "Viêm họng, viêm amidan tái phát: ăn gì cho dễ nuốt và khi nào cần test liên cầu?",
+    description: "Dinh dưỡng hỗ trợ khi đau họng, viêm amidan tái phát: món mềm, đủ nước, tránh kích thích và không tự mua kháng sinh.",
+    emoji: "🗣️",
+    category: "disease",
+    categoryName: "Tai mũi họng",
+    displayCategory: "bai-viet",
+    specialty: "tai-mui-hong",
+    audience: ["children", "family"],
+    date: "2026-09-08",
+    readTime: 5,
+    featured: false,
+    evidenceLevel: "general-reference",
+    sources: [
+      { name: "CDC", title: "Sore Throat Basics", url: "https://www.cdc.gov/sore-throat/about/index.html" },
+      { name: "CDC", title: "About Strep Throat", url: "https://www.cdc.gov/group-a-strep/about/strep-throat.html" },
+      { name: "CDC", title: "Clinical Guidance for Group A Streptococcal Pharyngitis", url: "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/strep-throat.html" }
+    ],
+    keywords: ["viêm họng", "viêm amidan", "đau họng", "liên cầu", "kháng sinh"]
+  },
+  {
+    slug: "gan-do-ruou-an-uong",
+    title: "Bệnh gan do rượu: ăn gì để đỡ suy kiệt và vì sao không có món nào giải độc gan?",
+    description: "Dinh dưỡng trong bệnh gan liên quan rượu: ngừng rượu bia, đủ đạm, bữa nhỏ, giảm muối khi phù/cổ trướng và dấu hiệu nguy hiểm.",
+    emoji: "🍺",
+    category: "disease",
+    categoryName: "Tiêu hóa / Gan mật",
+    displayCategory: "bai-viet",
+    specialty: "tieu-hoa",
+    audience: ["liver", "alcohol", "malnutrition"],
+    date: "2026-09-08",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "NIAAA", title: "Alcohol-Associated Liver Disease", url: "https://www.niaaa.nih.gov/publications/alcohol-associated-liver-disease" },
+      { name: "EASL", title: "Clinical Practice Guidelines: Management of alcohol-related liver disease", url: "https://easl.eu/publication/management-of-alcohol-related-liver-disease/" },
+      { name: "NIDDK", title: "Cirrhosis", url: "https://www.niddk.nih.gov/health-information/liver-disease/cirrhosis" }
+    ],
+    keywords: ["bệnh gan do rượu", "rượu bia", "xơ gan", "suy dinh dưỡng", "giải độc gan"]
+  },
+  {
+    slug: "benh-nha-chu-dai-thao-duong",
+    title: "Bệnh nha chu và đái tháo đường: vì sao chảy máu chân răng cũng liên quan đường huyết?",
+    description: "Góc nhìn dinh dưỡng và chăm sóc răng miệng cho người đái tháo đường có viêm nướu, nha chu, sâu răng hoặc ăn uống khó.",
+    emoji: "🦷",
+    category: "disease",
+    categoryName: "Răng miệng / Đái tháo đường",
+    displayCategory: "bai-viet",
+    specialty: "noi-tiet",
+    audience: ["diabetes", "oral-health"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "general-reference",
+    sources: [
+      { name: "CDC", title: "Oral Health and Diabetes", url: "https://www.cdc.gov/diabetes/diabetes-complications/diabetes-and-oral-health.html" },
+      { name: "CDC", title: "Promoting Oral Health for People with Diabetes", url: "https://www.cdc.gov/diabetes/hcp/clinical-guidance/how-to-promote-oral-health-for-people-with-diabetes.html" },
+      { name: "American Dental Association", title: "Diabetes and oral health", url: "https://www.mouthhealthy.org/" }
+    ],
+    keywords: ["nha chu", "đái tháo đường", "chảy máu chân răng", "viêm nướu", "đường huyết"]
+  },
+  {
+    slug: "tien-man-kinh-tang-can",
+    title: "Tiền mãn kinh, mãn kinh và tăng cân: giữ cơ, giữ xương, giảm vòng eo thế nào?",
+    description: "Ăn uống thực tế cho phụ nữ tiền mãn kinh/mãn kinh: đạm, chất xơ, canxi-vitamin D, vận động sức mạnh và tránh nhịn ăn cực đoan.",
+    emoji: "🌷",
+    category: "special",
+    categoryName: "Phụ nữ trung niên",
+    displayCategory: "bai-viet",
+    specialty: "phu-nu-nhi",
+    audience: ["women", "midlife", "weight-loss"],
+    date: "2026-09-08",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "Mayo Clinic", title: "Menopause weight gain", url: "https://www.mayoclinic.org/" },
+      { name: "The Menopause Society", title: "Midlife Weight Gain", url: "https://menopause.org/" },
+      { name: "British Menopause Society", title: "Nutrition and weight gain", url: "https://thebms.org.uk/" }
+    ],
+    keywords: ["tiền mãn kinh", "mãn kinh", "tăng cân", "vòng eo", "canxi", "vitamin D"]
   }
 ];
 

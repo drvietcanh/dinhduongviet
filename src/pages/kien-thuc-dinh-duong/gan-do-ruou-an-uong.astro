@@ -1,0 +1,27 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["gan-do-ruou-an-uong"];
+if (!art) throw new Error("Article not found: gan-do-ruou-an-uong");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Bệnh gan liên quan rượu không thể “giải độc” bằng nước ép, thuốc bổ gan hay vài món mát gan. Nền tảng quan trọng nhất là ngừng rượu bia, đánh giá mức độ tổn thương gan và ăn đủ năng lượng-đạm để tránh suy kiệt, đặc biệt nếu đã có xơ gan.</p>
+</section>
+
+<section class="section card">
+  <h2>Ăn gì để gan và cơ thể có cơ hội hồi phục?</h2>
+  <ul>
+    <li><strong>Đủ đạm:</strong> cá, trứng, thịt nạc, sữa, đậu hũ; người xơ gan cần cá thể hóa theo bác sĩ/dinh dưỡng.</li>
+    <li><strong>Bữa nhỏ:</strong> nếu chán ăn, buồn nôn hoặc nhanh no, chia 4–6 bữa và có bữa phụ tối.</li>
+    <li><strong>Vitamin nhóm B, folate, kẽm:</strong> thường cần được đánh giá vì người uống rượu kéo dài dễ thiếu vi chất.</li>
+    <li><strong>Giảm muối nếu phù/cổ trướng:</strong> hạn chế đồ kho mặn, mắm, dưa cà muối, đồ chế biến sẵn.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Dấu hiệu nguy hiểm</h2>
+  <p>Đi khám/cấp cứu nếu vàng da tăng, bụng to nhanh, nôn ra máu, đi ngoài phân đen, lơ mơ, sốt, đau bụng nhiều hoặc sụt cân nhanh. Không tự ngưng rượu đột ngột một mình nếu từng run tay, co giật, lú lẫn khi cai rượu; cần hỗ trợ y tế.</p>
+</section>
+</ArticleLayout>

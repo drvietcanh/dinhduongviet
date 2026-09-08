@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tieu-chay-cap-tre-em-bu-nuoc"];
+if (!art) throw new Error("Article not found: tieu-chay-cap-tre-em-bu-nuoc");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Tiêu chảy cấp ở trẻ em nguy hiểm nhất ở mất nước, không phải ở chuyện “ăn vào có đi ngoài tiếp không”. Phần lớn trẻ vẫn cần bú mẹ/ăn nhẹ sớm, bù nước đúng cách và theo dõi dấu hiệu nặng.</p>
+</section>
+
+<section class="section card">
+  <h2>Bù nước đúng hơn nước ngọt</h2>
+  <p>Dung dịch oresol pha đúng hướng dẫn là lựa chọn chuẩn khi trẻ tiêu chảy. Không pha đặc hơn cho “nhanh khỏi”, không chia gói nhỏ ước lượng bằng mắt, và không thay bằng nước ngọt, nước thể thao hoặc nước trái cây đóng hộp vì có thể làm tiêu chảy nặng hơn.</p>
+</section>
+
+<section class="section card">
+  <h2>Cho trẻ ăn gì?</h2>
+  <table>
+    <thead><tr><th>Nên</th><th>Hạn chế tạm thời</th></tr></thead>
+    <tbody>
+      <tr><td>Cháo/cơm mềm, khoai, chuối, sữa chua nếu hợp, thịt/cá nạc xé nhỏ.</td><td>Nước ngọt, trà sữa, nước ép nhiều đường, đồ chiên nhiều dầu.</td></tr>
+      <tr><td>Tiếp tục bú mẹ; chia bữa nhỏ nếu trẻ buồn nôn.</td><td>Tự dùng kháng sinh, thuốc cầm tiêu chảy cho trẻ nhỏ khi chưa khám.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>Dấu hiệu cần đi khám ngay</h2>
+  <p>Đưa trẻ đi khám nếu có máu trong phân, sốt cao, nôn liên tục, khát nhiều nhưng uống kém, mắt trũng, lừ đừ, tiểu rất ít, tiêu chảy kéo dài hoặc trẻ dưới 6 tháng tuổi.</p>
+</section>
+</ArticleLayout>

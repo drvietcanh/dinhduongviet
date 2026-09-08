@@ -1,0 +1,27 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tien-man-kinh-tang-can"];
+if (!art) throw new Error("Article not found: tien-man-kinh-tang-can");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Giai đoạn tiền mãn kinh/mãn kinh, nhiều phụ nữ thấy vòng eo tăng dù ăn không khác nhiều. Theo các khuyến nghị sức khỏe mãn kinh, nguyên nhân thường là phối hợp tuổi tác, giảm khối cơ, ngủ kém, stress, ít vận động và thay đổi phân bố mỡ — không phải do “nội tiết hỏng” nên phải nhịn ăn cực đoan. Nếu có bệnh tuyến giáp, đái tháo đường, tăng huyết áp hoặc đang dùng nội tiết, nên cá nhân hóa với bác sĩ.</p>
+</section>
+
+<section class="section card">
+  <h2>Chiến lược ăn uống dễ bền hơn</h2>
+  <ul>
+    <li><strong>Đạm mỗi bữa:</strong> cá, trứng, thịt nạc, đậu, sữa chua không đường để giữ cơ.</li>
+    <li><strong>Rau và đậu:</strong> tăng chất xơ, no lâu, tốt cho mỡ máu và đường huyết.</li>
+    <li><strong>Tinh bột thông minh:</strong> cơm vừa đủ, ưu tiên ngũ cốc ít tinh chế, tránh bánh ngọt/nước ngọt lặp lại hằng ngày.</li>
+    <li><strong>Canxi, vitamin D:</strong> sữa/chế phẩm sữa, cá nhỏ ăn cả xương, đậu hũ; xét nghiệm/bổ sung theo tư vấn nếu nguy cơ loãng xương.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Khi nào nên khám?</h2>
+  <p>Nên khám nếu rong kinh, bốc hỏa mất ngủ nặng, tăng cân nhanh bất thường, phù, mệt lả, trầm buồn kéo dài hoặc có bệnh tuyến giáp, đái tháo đường, tăng huyết áp. Thuốc nội tiết hoặc thực phẩm chức năng cần dùng theo tư vấn, không tự phối nhiều loại.</p>
+</section>
+</ArticleLayout>

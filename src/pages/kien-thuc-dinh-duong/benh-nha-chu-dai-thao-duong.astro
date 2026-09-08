@@ -1,0 +1,27 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["benh-nha-chu-dai-thao-duong"];
+if (!art) throw new Error("Article not found: benh-nha-chu-dai-thao-duong");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Chảy máu chân răng, hôi miệng, răng lung lay không chỉ là chuyện “nóng trong”. Theo CDC, người đái tháo đường dễ bị bệnh nướu hơn khi đường huyết cao, và viêm nha chu kéo dài cũng làm việc kiểm soát đường huyết khó hơn. Dinh dưỡng chỉ hỗ trợ; vẫn cần phối hợp nha sĩ và bác sĩ điều trị đái tháo đường.</p>
+</section>
+
+<section class="section card">
+  <h2>Dinh dưỡng giúp bảo vệ nướu</h2>
+  <ul>
+    <li>Giảm tần suất đồ ngọt dính răng: kẹo, bánh quy, nước ngọt, trà sữa.</li>
+    <li>Ăn đủ đạm, rau quả mềm, vitamin C từ ổi/cam/đu đủ nếu không chống chỉ định.</li>
+    <li>Ưu tiên nước lọc; hạn chế nhâm nhi nước ngọt/cà phê sữa nhiều lần trong ngày.</li>
+    <li>Nếu răng đau, chọn món mềm đủ chất thay vì chỉ húp cháo trắng nhiều ngày.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Cần phối hợp nha khoa</h2>
+  <p>Đánh răng, dùng chỉ nha khoa/tăm nước đúng cách, kiểm tra nha khoa định kỳ và kiểm soát đường huyết là phần điều trị chính. Đi khám nếu nướu sưng đau, mủ, chảy máu kéo dài, răng lung lay hoặc hơi thở hôi không cải thiện.</p>
+</section>
+</ArticleLayout>

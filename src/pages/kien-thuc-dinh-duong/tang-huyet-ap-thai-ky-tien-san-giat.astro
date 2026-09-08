@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tang-huyet-ap-thai-ky-tien-san-giat"];
+if (!art) throw new Error("Article not found: tang-huyet-ap-thai-ky-tien-san-giat");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Tăng huyết áp thai kỳ và tiền sản giật không thể xử trí chỉ bằng ăn nhạt. Dinh dưỡng giúp giảm nguy cơ và hỗ trợ kiểm soát cân nặng, nhưng mẹ bầu cần theo dõi huyết áp, nước tiểu, phù, đau đầu, nhìn mờ và lịch khám thai sát.</p>
+</section>
+
+<section class="section card">
+  <h2>Ăn uống nên ưu tiên</h2>
+  <ul>
+    <li>Ăn đủ bữa, đủ đạm từ cá, thịt nạc, trứng, đậu, sữa phù hợp; không nhịn ăn để “hạ áp”.</li>
+    <li>Giảm món quá mặn: đồ kho mặn, dưa/cà muối, mì gói, chả lụa, nước chấm chan nhiều.</li>
+    <li>Tăng rau, trái cây nguyên miếng, ngũ cốc vừa lượng; kiểm soát tăng cân theo tư vấn sản khoa.</li>
+    <li>Không tự dùng thuốc lợi tiểu, thảo dược hoặc thực phẩm chức năng hạ áp.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Không nên tự cắt muối tuyệt đối</h2>
+  <p>Ăn quá mặn là không tốt, nhưng tự cắt muối cực đoan có thể làm bữa ăn kém ngon, ăn thiếu và mệt hơn. Mục tiêu là giảm thực phẩm mặn, dùng nước chấm có đo lường, không chan nước kho/nước mắm vào cơm.</p>
+</section>
+
+<section class="section card">
+  <h2>Dấu hiệu báo động</h2>
+  <p>Đau đầu dữ dội, nhìn mờ, đau vùng thượng vị/hạ sườn phải, phù tăng nhanh, khó thở, co giật, thai máy ít hoặc huyết áp cao cần đi khám/cấp cứu ngay theo hướng dẫn của bác sĩ.</p>
+</section>
+</ArticleLayout>

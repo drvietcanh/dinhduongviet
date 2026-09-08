@@ -1,0 +1,27 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thieu-mau-tuoi-day-thi"];
+if (!art) throw new Error("Article not found: thieu-mau-tuoi-day-thi");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Thiếu máu thiếu sắt ở tuổi dậy thì rất dễ bị bỏ qua vì biểu hiện giống “mệt do học nhiều”: xanh xao, chóng mặt, hụt hơi khi vận động, móng tóc yếu, học kém tập trung. Ở bạn gái đã có kinh, kinh nhiều hoặc kéo dài là nguyên nhân quan trọng cần hỏi kỹ.</p>
+</section>
+
+<section class="section card">
+  <h2>Ăn để hỗ trợ tạo máu</h2>
+  <ul>
+    <li><strong>Sắt heme:</strong> thịt nạc, cá, trứng, gan dùng vừa phải và bảo đảm an toàn thực phẩm.</li>
+    <li><strong>Sắt thực vật:</strong> đậu, mè, rau xanh đậm; nên ăn cùng trái cây giàu vitamin C như cam, ổi, đu đủ.</li>
+    <li><strong>Folate và B12:</strong> rau xanh, trứng, sữa, cá/thịt; người ăn chay trường cần được tư vấn bổ sung B12.</li>
+    <li><strong>Tránh cản hấp thu:</strong> không uống trà đặc/cà phê sát bữa chính hoặc sát viên sắt.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Khi nào không chỉ chỉnh ăn?</h2>
+  <p>Đi khám nếu trẻ ngất, khó thở, tim đập nhanh, kinh nguyệt ra rất nhiều, đi ngoài phân đen, đau bụng kéo dài hoặc nghi thiếu máu nặng. Không tự uống sắt liều cao kéo dài nếu chưa xét nghiệm, vì thừa sắt cũng có hại.</p>
+</section>
+</ArticleLayout>

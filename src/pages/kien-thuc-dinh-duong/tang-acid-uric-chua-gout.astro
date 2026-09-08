@@ -1,0 +1,27 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tang-acid-uric-chua-gout"];
+if (!art) throw new Error("Article not found: tang-acid-uric-chua-gout");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Nhiều người xét nghiệm thấy acid uric cao nhưng chưa từng đau gout. Không nên hoảng sợ rồi kiêng sạch thịt cá. Điều quan trọng là nhìn toàn cảnh: cân nặng, vòng eo, rượu bia, nước ngọt, bệnh thận, thuốc đang dùng và nguy cơ tim mạch.</p>
+</section>
+
+<section class="section card">
+  <h2>Nên chỉnh gì trước?</h2>
+  <ul>
+    <li>Giảm rượu bia, nhất là bia và các buổi nhậu dồn dập.</li>
+    <li>Giảm nước ngọt, trà sữa, nước trái cây nhiều đường; fructose có thể làm tăng acid uric.</li>
+    <li>Giảm cân chậm nếu thừa cân; tránh nhịn đói, keto cực đoan hoặc giảm cân quá nhanh.</li>
+    <li>Ăn đủ nước, đủ rau, đạm vừa phải; ưu tiên cá, thịt nạc, trứng, đậu hũ theo khẩu phần.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Khi nào cần hỏi bác sĩ?</h2>
+  <p>Nếu acid uric rất cao, có sỏi thận, bệnh thận mạn, cơn đau khớp nghi gout, đang dùng thuốc lợi tiểu hoặc có bệnh tim mạch, nên hỏi bác sĩ. Không tự mua thuốc hạ acid uric hoặc tự ngưng thuốc đang dùng.</p>
+</section>
+</ArticleLayout>

@@ -1,0 +1,39 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tao-bon-tre-em"];
+if (!art) throw new Error("Article not found: tao-bon-tre-em");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Táo bón ở trẻ rất hay gặp: nhịn đi vệ sinh ở trường, uống ít nước, ít rau, sợ đau khi đi cầu, hoặc đổi sữa/đổi lịch sinh hoạt. “Ăn nhiều rau” có ích nhưng thường chưa đủ nếu trẻ đang nứt hậu môn, sợ đi cầu hoặc phân đã quá cứng.</p>
+</section>
+
+<section class="section card">
+  <h2>3 việc nên làm song song</h2>
+  <ul>
+    <li><strong>Nước:</strong> cho trẻ uống đều trong ngày, nhất là khi đi học và vận động.</li>
+    <li><strong>Chất xơ:</strong> tăng từ từ bằng rau mềm, trái cây nguyên miếng, khoai, yến mạch, đậu; tăng quá nhanh có thể đầy bụng.</li>
+    <li><strong>Thói quen:</strong> ngồi bô/toilet 5–10 phút sau bữa sáng hoặc tối, kê chân để tư thế dễ rặn.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Món Việt dễ áp dụng</h2>
+  <table>
+    <thead><tr><th>Bữa</th><th>Gợi ý</th></tr></thead>
+    <tbody>
+      <tr><td>Sáng</td><td>Cháo yến mạch thịt băm + chuối/đu đủ chín.</td></tr>
+      <tr><td>Trưa</td><td>Cơm vừa + canh rau mồng tơi/rau dền + cá/thịt nạc.</td></tr>
+      <tr><td>Phụ</td><td>Sữa chua, trái cây nguyên miếng, khoai lang nhỏ.</td></tr>
+      <tr><td>Tối</td><td>Canh bí đỏ, đậu hũ, rau luộc mềm; hạn chế bánh kẹo sau bữa.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>Khi nào cần khám?</h2>
+  <p>Đi khám nếu trẻ đau bụng nhiều, nôn, bụng chướng, đi ngoài máu, sụt cân, táo bón từ rất nhỏ, hoặc không cải thiện dù đã chỉnh ăn uống và thói quen. Không tự dùng thuốc xổ kéo dài nếu chưa hỏi bác sĩ.</p>
+</section>
+</ArticleLayout>

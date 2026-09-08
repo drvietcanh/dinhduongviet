@@ -2689,6 +2689,134 @@
     "category": "Bai viet"
   },
   {
+    "type": "article",
+    "slug": "beo-phi-tre-em-hoc-duong",
+    "name": "Thừa cân, béo phì trẻ em tuổi học đường: sửa bữa ăn mà không làm trẻ mặc cảm",
+    "aliases": [],
+    "description": "Hướng dẫn cho cha mẹ về béo phì trẻ em: đồ uống ngọt, ăn vặt, bữa học đường, vận động và cách nói chuyện an toàn với trẻ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tao-bon-tre-em",
+    "name": "Táo bón ở trẻ em: ăn gì, uống gì và tập thói quen đi cầu ra sao?",
+    "aliases": [],
+    "description": "Táo bón trẻ em thường cần phối hợp nước, chất xơ, thói quen đi vệ sinh và khám khi có dấu hiệu báo động.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thieu-mau-thai-ky",
+    "name": "Thiếu máu thai kỳ: bổ sung sắt, folate, B12 thế nào cho đúng?",
+    "aliases": [],
+    "description": "Thiếu máu thai kỳ không phải lúc nào cũng chỉ do thiếu sắt; cần ăn uống hỗ trợ và uống bổ sung theo lịch khám thai.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-huyet-ap-thai-ky-tien-san-giat",
+    "name": "Tăng huyết áp thai kỳ, tiền sản giật: ăn nhạt thôi đã đủ chưa?",
+    "aliases": [],
+    "description": "Ăn uống trong tăng huyết áp thai kỳ và tiền sản giật: giảm muối hợp lý, đủ đạm, theo dõi dấu hiệu báo động và không tự dùng thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-gan-b-man-tinh",
+    "name": "Viêm gan B mạn tính: ăn gì để bảo vệ gan, tránh gì để không hại thêm?",
+    "aliases": [],
+    "description": "Dinh dưỡng cho viêm gan B mạn: tránh rượu bia, kiểm soát cân nặng, đủ đạm, không dùng detox/thuốc bổ gan thay điều trị.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sau-rang-men-rang-tre-em",
+    "name": "Sâu răng, men răng yếu ở trẻ: đường nằm ở tần suất, không chỉ số lượng",
+    "aliases": [],
+    "description": "Góc nhìn dinh dưỡng cho sâu răng trẻ em: đồ uống ngọt, ăn vặt nhiều lần, sữa đêm, canxi, vitamin D và khám nha khoa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "benh-than-do-tang-huyet-ap",
+    "name": "Bệnh thận do tăng huyết áp: giảm muối, theo dõi phù và cá thể hóa đạm",
+    "aliases": [],
+    "description": "Dinh dưỡng cho người tăng huyết áp kèm bệnh thận: muối ẩn, đạm, kali, phốt pho, cân nặng, phù và dấu hiệu cần khám.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-acid-uric-chua-gout",
+    "name": "Tăng acid uric nhưng chưa gout: có cần kiêng sạch thịt cá không?",
+    "aliases": [],
+    "description": "Bài thực hành cho người acid uric cao chưa có cơn gout: rượu bia, nước ngọt, giảm cân chậm, đạm vừa phải và khi nào cần hỏi bác sĩ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sau-sinh-thieu-sua-an-uong",
+    "name": "Sau sinh ít sữa, mệt và táo bón: ăn uống thế nào để hồi phục mà không mê tín lợi sữa?",
+    "aliases": [],
+    "description": "Hướng dẫn ăn uống sau sinh và cho con bú: đủ năng lượng, đủ đạm, nước, rau quả, tránh rượu thuốc và mẹo lợi sữa thiếu bằng chứng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thieu-mau-tuoi-day-thi",
+    "name": "Thiếu máu tuổi dậy thì: mệt, chóng mặt, học kém tập trung có thể không chỉ do thức khuya",
+    "aliases": [],
+    "description": "Dinh dưỡng và dấu hiệu cần khám ở thiếu máu tuổi dậy thì, đặc biệt bạn gái có kinh nguyệt nhiều hoặc ăn uống thất thường.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-chay-cap-tre-em-bu-nuoc",
+    "name": "Tiêu chảy cấp ở trẻ em: bù nước đúng, ăn sớm và tránh tự dùng thuốc cầm tiêu chảy",
+    "aliases": [],
+    "description": "Bài thực hành cho cha mẹ khi trẻ tiêu chảy cấp: oresol, bú mẹ, ăn nhẹ, dấu hiệu mất nước và khi nào cần đi khám.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ngo-doc-thuc-pham-gia-dinh",
+    "name": "Ngộ độc thực phẩm trong gia đình: ăn uống, bù nước và dấu hiệu phải đi khám",
+    "aliases": [],
+    "description": "Hướng dẫn xử trí ăn uống 24 giờ đầu khi nghi ngộ độc thực phẩm, nhấn mạnh bù nước và nhận biết dấu hiệu nặng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-hong-amidan-tai-phat",
+    "name": "Viêm họng, viêm amidan tái phát: ăn gì cho dễ nuốt và khi nào cần test liên cầu?",
+    "aliases": [],
+    "description": "Dinh dưỡng hỗ trợ khi đau họng, viêm amidan tái phát: món mềm, đủ nước, tránh kích thích và không tự mua kháng sinh.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "gan-do-ruou-an-uong",
+    "name": "Bệnh gan do rượu: ăn gì để đỡ suy kiệt và vì sao không có món nào giải độc gan?",
+    "aliases": [],
+    "description": "Dinh dưỡng trong bệnh gan liên quan rượu: ngừng rượu bia, đủ đạm, bữa nhỏ, giảm muối khi phù/cổ trướng và dấu hiệu nguy hiểm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "benh-nha-chu-dai-thao-duong",
+    "name": "Bệnh nha chu và đái tháo đường: vì sao chảy máu chân răng cũng liên quan đường huyết?",
+    "aliases": [],
+    "description": "Góc nhìn dinh dưỡng và chăm sóc răng miệng cho người đái tháo đường có viêm nướu, nha chu, sâu răng hoặc ăn uống khó.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tien-man-kinh-tang-can",
+    "name": "Tiền mãn kinh, mãn kinh và tăng cân: giữ cơ, giữ xương, giảm vòng eo thế nào?",
+    "aliases": [],
+    "description": "Ăn uống thực tế cho phụ nữ tiền mãn kinh/mãn kinh: đạm, chất xơ, canxi-vitamin D, vận động sức mạnh và tránh nhịn ăn cực đoan.",
+    "category": "Bai viet"
+  },
+  {
     "type": "recipe",
     "slug": "cha-o",
     "name": "Cháo ếch",

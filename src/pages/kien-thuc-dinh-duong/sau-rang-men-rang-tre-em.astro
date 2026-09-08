@@ -1,0 +1,27 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["sau-rang-men-rang-tre-em"];
+if (!art) throw new Error("Article not found: sau-rang-men-rang-tre-em");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Sâu răng ở trẻ không chỉ do “ăn kẹo” mà còn do tần suất ăn/uống đồ ngọt trong ngày. Một ít nước ngọt, sữa có đường, bánh quy, kẹo dẻo lặp lại nhiều lần làm răng tiếp xúc đường liên tục và tăng nguy cơ sâu răng.</p>
+</section>
+
+<section class="section card">
+  <h2>Sửa thói quen ăn uống bảo vệ răng</h2>
+  <ul>
+    <li>Giữ đồ ngọt vào bữa chính hoặc bữa phụ cố định, tránh nhâm nhi cả ngày.</li>
+    <li>Ưu tiên nước lọc giữa các bữa; hạn chế nước trái cây đóng hộp, nước ngọt, trà sữa.</li>
+    <li>Không cho trẻ ngậm bình sữa khi ngủ, kể cả sữa công thức hoặc sữa có đường.</li>
+    <li>Thêm thực phẩm cần nhai như trái cây nguyên miếng, rau củ mềm, đạm; tránh chỉ ăn cháo/bột quá lâu nếu không có chỉ định.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Canxi có giúp răng chắc hơn không?</h2>
+  <p>Canxi, vitamin D và protein cần cho xương/răng, nhưng không thể bù cho việc đánh răng kém hoặc uống đồ ngọt liên tục. Nếu trẻ sâu răng nhiều, cần khám nha khoa, dùng fluoride theo hướng dẫn và chỉnh thói quen ăn uống.</p>
+</section>
+</ArticleLayout>

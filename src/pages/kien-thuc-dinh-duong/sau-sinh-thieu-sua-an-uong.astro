@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["sau-sinh-thieu-sua-an-uong"];
+if (!art) throw new Error("Article not found: sau-sinh-thieu-sua-an-uong");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Sau sinh, nhiều mẹ lo “ít sữa” nên cố ăn thật nhiều móng giò, uống nước lá hoặc kiêng khem quá mức. Theo khuyến nghị chăm sóc sau sinh và nuôi con bằng sữa mẹ, lượng sữa phụ thuộc nhiều vào trẻ bú/hút sữa đủ thường xuyên, mẹ ngủ nghỉ được phần nào, uống đủ nước và ăn đủ năng lượng — không có một món “gọi sữa” thần kỳ cho mọi người. Nếu mẹ có bệnh nền, sinh non, sinh mổ khó hồi phục hoặc trẻ tăng cân kém, cần cá nhân hóa theo bác sĩ/nữ hộ sinh.</p>
+</section>
+
+<section class="section card">
+  <h2>Mâm cơm sau sinh nên ưu tiên gì?</h2>
+  <ul>
+    <li><strong>Đủ đạm mỗi bữa:</strong> cá, trứng, thịt nạc, đậu hũ, sữa/chế phẩm sữa nếu dung nạp tốt.</li>
+    <li><strong>Tinh bột vừa đủ:</strong> cơm, khoai, bún/phở lượng hợp lý; tránh nhịn tinh bột để giảm cân quá sớm.</li>
+    <li><strong>Rau quả đa dạng:</strong> rau nấu chín mềm, trái cây nguyên miếng để giảm táo bón sau sinh.</li>
+    <li><strong>Nước:</strong> uống theo khát, nước tiểu vàng sậm kéo dài là dấu hiệu cần uống thêm hoặc kiểm tra sức khỏe.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Cẩn thận với “mẹo lợi sữa”</h2>
+  <p>Không tự dùng thuốc nam, viên lợi sữa, rượu thuốc hoặc thảo dược không rõ thành phần, nhất là khi đang dùng thuốc sau sinh, có bệnh gan thận, tăng huyết áp, đái tháo đường hoặc trẻ sinh non. Nếu bé bú ít, ngủ li bì, tiểu ít, vàng da tăng, mẹ đau vú/sốt hoặc vết mổ đau nhiều, cần liên hệ nhân viên y tế.</p>
+</section>
+
+<section class="section card">
+  <h2>Giảm cân sau sinh thế nào cho an toàn?</h2>
+  <p>Trong giai đoạn cho con bú, nên giảm cân từ từ bằng bữa ăn đủ chất và vận động nhẹ khi bác sĩ cho phép. Cắt ăn quá mạnh có thể làm mẹ mệt, táo bón, thiếu vi chất và khó duy trì việc chăm bé.</p>
+</section>
+</ArticleLayout>

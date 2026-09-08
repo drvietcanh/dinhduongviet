@@ -1,0 +1,40 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["beo-phi-tre-em-hoc-duong"];
+if (!art) throw new Error("Article not found: beo-phi-tre-em-hoc-duong");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Trẻ tăng cân nhanh không chỉ là chuyện “ăn nhiều”. Ở Việt Nam, đồ uống ngọt, trà sữa, đồ chiên trước cổng trường, ngủ muộn và ít vận động làm trẻ dễ thừa cân nhưng vẫn thiếu vi chất. Mục tiêu không phải ép trẻ nhịn ăn, mà là chỉnh môi trường ăn uống của cả nhà.</p>
+</section>
+
+<section class="section card">
+  <h2>Nguyên tắc an toàn cho cha mẹ</h2>
+  <ul>
+    <li>Không tự cho trẻ dùng thuốc giảm cân, trà giảm cân hoặc nhịn ăn kéo dài.</li>
+    <li>Theo dõi tăng trưởng bằng biểu đồ BMI theo tuổi/giới, không dùng BMI người lớn để kết luận.</li>
+    <li>Ưu tiên giảm nước ngọt, đồ uống có đường và khẩu phần ăn vặt trước khi cắt bữa chính.</li>
+    <li>Nếu trẻ ngáy to, đau khớp, gan nhiễm mỡ, đường huyết hoặc mỡ máu bất thường, cần khám nhi khoa.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Bữa ăn học đường nên sửa gì trước?</h2>
+  <table>
+    <thead><tr><th>Tình huống</th><th>Cách đổi thực tế</th></tr></thead>
+    <tbody>
+      <tr><td>Sáng chỉ uống sữa ngọt</td><td>Thêm trứng, bánh mì nhỏ hoặc xôi ít; chọn sữa không đường/ít đường nếu phù hợp.</td></tr>
+      <tr><td>Tan học mua trà sữa</td><td>Giới hạn tần suất, chọn size nhỏ, giảm đường; thay bằng nước lọc, sữa chua không đường, trái cây nguyên miếng.</td></tr>
+      <tr><td>Ăn tối nhiều cơm, ít rau</td><td>Giữ 1/2 đĩa là rau/canh rau, 1/4 đạm, 1/4 cơm/khoai/bún.</td></tr>
+      <tr><td>Ăn vặt khi xem màn hình</td><td>Đặt giờ ăn vặt cố định, không để bánh kẹo trong tầm tay.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section card">
+  <h2>Điều nên nói với trẻ</h2>
+  <p>Tránh chê thân hình hoặc gọi trẻ là “béo”. Nên nói về sức khỏe, sức bền, giấc ngủ và cảm giác khỏe khi vận động. Cả nhà cùng thay đổi sẽ hiệu quả hơn bắt một mình trẻ kiêng.</p>
+</section>
+</ArticleLayout>

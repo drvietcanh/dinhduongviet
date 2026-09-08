@@ -1,0 +1,31 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["benh-than-do-tang-huyet-ap"];
+if (!art) throw new Error("Article not found: benh-than-do-tang-huyet-ap");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Tăng huyết áp lâu ngày có thể làm tổn thương thận; ngược lại, bệnh thận cũng làm huyết áp khó kiểm soát hơn. Ăn uống cần nhắm vào hai trục: giảm muối đúng cách và cá thể hóa đạm/kali/phốt pho theo eGFR, albumin niệu và xét nghiệm.</p>
+</section>
+
+<section class="section card">
+  <h2>Ưu tiên số 1: giảm muối ẩn</h2>
+  <ul>
+    <li>Giảm mì gói, đồ hộp, chả/giò/xúc xích, cá khô, dưa cà muối, nước chấm chan nhiều.</li>
+    <li>Nếm nhạt dần, dùng chanh, hành, tỏi, tiêu, rau thơm để tăng vị thay vì tăng nước mắm.</li>
+    <li>Không tự dùng muối ăn kiêng chứa kali nếu có bệnh thận hoặc đang dùng thuốc giữ kali.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Đạm, kali, phốt pho: không tự kiêng cực đoan</h2>
+  <p>Không phải ai bệnh thận cũng phải bỏ trái cây, sữa hoặc đạm. Khi eGFR giảm, kali cao, phốt pho cao hoặc có phù, bác sĩ/chuyên gia dinh dưỡng sẽ điều chỉnh riêng. Kiêng quá mức có thể làm mất cơ và suy dinh dưỡng.</p>
+</section>
+
+<section class="section card">
+  <h2>Theo dõi tại nhà</h2>
+  <p>Ghi huyết áp, cân nặng, phù chân, lượng nước tiểu và kết quả xét nghiệm. Đi khám sớm nếu huyết áp rất cao, đau đầu nhiều, khó thở, phù nhanh, tiểu ít hoặc mệt bất thường.</p>
+</section>
+</ArticleLayout>

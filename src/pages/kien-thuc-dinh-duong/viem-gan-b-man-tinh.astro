@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["viem-gan-b-man-tinh"];
+if (!art) throw new Error("Article not found: viem-gan-b-man-tinh");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Viêm gan B mạn rất phổ biến ở châu Á. Ăn uống không diệt được virus và không thay thuốc kháng virus khi có chỉ định, nhưng có thể giúp giảm gánh nặng cho gan: giữ cân nặng hợp lý, tránh rượu bia, kiểm soát gan nhiễm mỡ và ăn đủ chất. Người bệnh cần theo dõi bác sĩ gan mật định kỳ, không tự ý ngưng thuốc hoặc tự dùng thuốc bổ gan.</p>
+</section>
+
+<section class="section card">
+  <h2>Nên làm gì hằng ngày?</h2>
+  <ul>
+    <li>Tránh rượu bia; đây là ưu tiên lớn nhất để giảm tổn thương gan thêm.</li>
+    <li>Giữ cân nặng và vòng eo hợp lý, vì gan nhiễm mỡ đi kèm có thể làm bệnh gan nặng hơn.</li>
+    <li>Ăn đủ đạm từ cá, trứng, thịt nạc, đậu; không tự kiêng đạm nếu chưa xơ gan mất bù hoặc bệnh não gan.</li>
+    <li>Không dùng thuốc nam, thuốc bổ gan, detox hoặc thực phẩm chức năng không rõ thành phần.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Khi đã xơ gan thì khác gì?</h2>
+  <p>Nếu có xơ gan, cổ trướng, phù, vàng da, ói máu, đi cầu phân đen hoặc lơ mơ, chế độ ăn cần cá thể hóa theo bác sĩ gan mật. Có thể phải điều chỉnh muối, dịch, đạm và theo dõi biến chứng; không áp dụng thực đơn chung máy móc.</p>
+</section>
+
+<section class="section card">
+  <h2>Việc gia đình không nên quên</h2>
+  <p>Người sống chung nên xét nghiệm và tiêm vaccine nếu chưa miễn dịch. Không dùng chung dao cạo, bàn chải. Ăn uống chung mâm không phải đường lây chính, nên không kỳ thị người bệnh.</p>
+</section>
+</ArticleLayout>

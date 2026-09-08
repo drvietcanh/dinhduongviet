@@ -1,0 +1,26 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["viem-hong-amidan-tai-phat"];
+if (!art) throw new Error("Article not found: viem-hong-amidan-tai-phat");
+---
+
+<ArticleLayout article={art}>
+<section class="section card">
+  <p>Viêm họng, viêm amidan tái phát rất hay gặp ở trẻ đi học và người lớn làm việc phòng lạnh. Ăn uống không “diệt” được virus hay liên cầu khuẩn, nhưng có thể giúp người bệnh nuốt dễ hơn, đủ nước và tránh kích thích họng trong vài ngày cấp tính.</p>
+</section>
+
+<section class="section card">
+  <h2>Ăn uống khi đau họng</h2>
+  <ul>
+    <li>Chọn cháo, súp, mì mềm, trứng, đậu hũ, cá mềm; để ấm vừa, không quá nóng.</li>
+    <li>Uống nước ấm, súc miệng nước muối sinh lý; mật ong chỉ dùng cho trẻ trên 1 tuổi.</li>
+    <li>Tránh rượu bia, thuốc lá, món quá cay, quá chua hoặc chiên giòn làm rát họng hơn.</li>
+  </ul>
+</section>
+
+<section class="section card">
+  <h2>Đừng tự mua kháng sinh</h2>
+  <p>Nhiều trường hợp viêm họng là do virus. Nếu sốt cao, đau họng khởi phát nhanh, amidan có mủ, nổi hạch cổ, phát ban, khó thở, khó nuốt, chảy nước dãi ở trẻ nhỏ hoặc triệu chứng không cải thiện, nên khám để được test/điều trị phù hợp.</p>
+</section>
+</ArticleLayout>
