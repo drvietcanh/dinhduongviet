@@ -663,7 +663,10 @@ const foodOverrides: Record<string, Partial<Food>> = {
     state: "cooked",
     basis: "100g cơm đã nấu chín",
     edibleNote: "Cơm nếp đã nấu chín; không dùng thay cho 100g gạo nếp khô/chưa nấu.",
-    note: "Dữ liệu bổ sung ước tính MVP; năng lượng thấp cho thấy mục này phù hợp cơm nếp đã nấu hơn là hạt gạo nếp khô. Không sửa số liệu dinh dưỡng trong vòng này."
+    nutrients: { energyKcal: 97, proteinG: 2.02, carbG: 21.09, fatG: 0.19, saturatedFatG: 0.039, fiberG: 1, cholesterolMg: 0, calciumMg: 2, ironMg: 0.14, sodiumMg: 5, potassiumMg: 10, phosphorusMg: 8 },
+    sourceId: "usda-fdc-169711",
+    confidence: "high",
+    note: "USDA FoodData Central SR Legacy 169711, rice white glutinous unenriched cooked; giá trị trên 100g phần ăn được."
   },
   "gao-lut-do": {
     slug: "com-gao-lut-do",
@@ -702,9 +705,9 @@ export const bulkFoods: Food[] = foodSeeds.slice(0, FOOD_TARGET).map((seed, inde
     basis: override.basis ?? profile.basis,
     edibleNote: override.edibleNote ?? profile.edibleNote,
     tags: profile.tags,
-    nutrients: vary(profile.nutrients, index),
-    sourceId: "recipe-estimate-v1",
-    confidence: "low",
+    nutrients: override.nutrients ?? vary(profile.nutrients, index),
+    sourceId: override.sourceId ?? "recipe-estimate-v1",
+    confidence: override.confidence ?? "low",
     note: override.note ?? "Dữ liệu bổ sung ước tính để mở rộng tra cứu MVP; cần đối chiếu bảng thành phần thực phẩm hoặc nguồn chính thức trước khi dùng tư vấn cá thể."
   };
 });

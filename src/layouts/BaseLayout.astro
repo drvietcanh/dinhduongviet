@@ -219,6 +219,14 @@ if (isArticle) {
         --bg-info: #e0f2fe;
         --bg-warning: #fef2f2;
         --bg-highlight: #f0fdf4;
+        --surface-info: #eafaf1;
+        --surface-info-strong: #d5f5e3;
+        --border-info: #86cfa5;
+        --text-info: #123f2a;
+        --surface-danger: #fdedec;
+        --surface-danger-strong: #fadbd8;
+        --border-danger: #e98b82;
+        --text-danger: #5c1d18;
         --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --primary: var(--brand);
         --primary-bg: var(--brand-light);
@@ -259,6 +267,14 @@ if (isArticle) {
         --bg-info: #0c4a6e;
         --bg-warning: #450a0a;
         --bg-highlight: #022c22;
+        --surface-info: #123b2c;
+        --surface-info-strong: #0f2f25;
+        --border-info: #2f7a59;
+        --text-info: #dcfce7;
+        --surface-danger: #451a1a;
+        --surface-danger-strong: #321515;
+        --border-danger: #8f3f3f;
+        --text-danger: #fee2e2;
         --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --primary: var(--brand);
         --primary-bg: var(--brand-light);
@@ -403,7 +419,7 @@ if (isArticle) {
       }
       .nav-group summary::-webkit-details-marker { display: none; }
       .nav-group summary::after { content: " ▾"; font-size: 0.75em; opacity: 0.7; }
-      .nav-group[open] summary, .nav-group summary:hover { color: var(--brand); }
+      .nav-group[open] summary, .nav-group summary:hover, .nav-group summary[aria-current="location"] { color: var(--brand); }
       .nav-group-menu {
         position: absolute;
         top: calc(100% + 8px);
@@ -530,7 +546,7 @@ if (isArticle) {
       }
 
       /* Mobile styles override */
-      @media (max-width: 768px) {
+      @media (max-width: 1024px) {
         .top-bar {
           top: 8px;
           margin: 0 8px 14px;
@@ -845,6 +861,8 @@ if (isArticle) {
               <a href="/mon-an">Món ăn</a>
               <a href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
               <a href="/cong-cu/tra-cuu-thuc-pham-viet">Bảng TP thực phẩm Việt</a>
+              <a href="/kien-thuc-dinh-duong">Kiến thức dinh dưỡng</a>
+              <a href="/dung-tin-ngay">Kiểm chứng hiểu lầm</a>
             </div>
           </details>
           <details class="nav-group">
@@ -859,19 +877,6 @@ if (isArticle) {
               <a href="/theo-benh/mo-mau-tim-mach">Mỡ máu, tim mạch</a>
               <a href="/theo-benh/gout-axit-uric">Gout, axit uric</a>
               <a href="/ban-do-benh">Bản đồ bệnh đầy đủ</a>
-            </div>
-          </details>
-          <details class="nav-group">
-            <summary>Bài viết</summary>
-            <div class="nav-group-menu">
-              <a href="/kien-thuc-dinh-duong">Tất cả bài viết</a>
-              <a href="/kien-thuc-dinh-duong#sec-dinh-duong-tong-quat">Ăn lành mạnh</a>
-              <a href="/kien-thuc-dinh-duong#sec-noi-tiet">Đái tháo đường, chuyển hóa</a>
-              <a href="/kien-thuc-dinh-duong#sec-tim-mach">Tim mạch, tăng huyết áp</a>
-              <a href="/kien-thuc-dinh-duong#sec-tieu-hoa">Tiêu hóa, gan mật</a>
-              <a href="/kien-thuc-dinh-duong#sec-phu-nu-nhi">Theo giai đoạn sống</a>
-              <a href="/dung-tin-ngay">Kiểm chứng hiểu lầm</a>
-              <a href="/hoi-dap">Hỏi nhanh - đáp gọn</a>
             </div>
           </details>
           <details class="nav-group">
@@ -898,7 +903,6 @@ if (isArticle) {
               <a href="/cong-cu/checklist-an-uong">Checklist ăn uống</a>
             </div>
           </details>
-          <a href="/tac-gia">Giới thiệu</a>
         </div>
         <button class="theme-toggle" id="theme-toggle" title="Chuyển giao diện sáng/tối">🌓</button>
       </div>
@@ -1131,6 +1135,13 @@ if (isArticle) {
         document.querySelectorAll('.nav-links a').forEach(function(link) {
           var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '') || '/';
           if (linkPath === currentPath) link.setAttribute('aria-current', 'page');
+        });
+        document.querySelectorAll('.nav-group').forEach(function(group) {
+          var isCurrentGroup = Array.from(group.querySelectorAll('a')).some(function(link) {
+            var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '') || '/';
+            return linkPath !== '/' && (currentPath === linkPath || currentPath.indexOf(linkPath + '/') === 0);
+          });
+          if (isCurrentGroup) group.querySelector('summary')?.setAttribute('aria-current', 'location');
         });
       })();
     </script>

@@ -3,14 +3,14 @@
   <div class="ac-search-wrapper">
     <div class="ac-search-row">
       <span class="ac-search-icon">🔍</span>
-      <input type="text" class="ac-input" placeholder="Tìm thực phẩm, món ăn, bài viết, công cụ..." aria-label="Tìm kiếm" autocomplete="off" />
+      <input type="text" class="ac-input" placeholder="Tìm thực phẩm, món ăn, bệnh, công cụ..." aria-label="Tìm kiếm" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="home-search-suggestions" aria-expanded="false" />
       <div class="ac-actions">
         <button class="ac-clear" style="display: none;" aria-label="Xóa">✕</button>
         <div class="ac-hotkey">Ctrl K</div>
         <button class="ac-submit" style="display: none;">🔍</button>
       </div>
     </div>
-    <div class="ac-dropdown" style="display: none;"></div>
+    <div class="ac-dropdown" id="home-search-suggestions" role="listbox" aria-label="Gợi ý tìm kiếm" style="display: none;"></div>
   </div>
   <div class="ac-suggestions">
     <span class="ac-suggestion-label">Gợi ý nhanh:</span>
@@ -38,6 +38,7 @@
     if (item.type === 'food') return '/thuc-pham/' + item.slug;
     if (item.type === 'recipe') return '/mon-an/' + item.slug;
     if (item.type === 'tool') return '/cong-cu/' + item.slug;
+    if (item.type === 'hub') return '/theo-benh/' + item.slug;
     if (item.slug.indexOf('dung-tin-ngay-') === 0) return '/dung-tin-ngay/' + item.slug;
     return '/kien-thuc-dinh-duong/' + item.slug;
   }
@@ -52,10 +53,10 @@
             n: item.name,
             s: item.slug,
             a: item.aliases || [],
-            t: item.type === 'food' ? 'thực phẩm' : item.type === 'recipe' ? 'món ăn' : item.type === 'tool' ? 'công cụ' : 'bài viết',
+            t: item.type === 'food' ? 'thực phẩm' : item.type === 'recipe' ? 'món ăn' : item.type === 'tool' ? 'công cụ' : item.type === 'hub' ? 'theo bệnh' : 'bài viết',
             u: itemUrl(item),
             k: Math.round(item.kcal || 0),
-            e: item.type === 'article' ? '📄' : ''
+            e: item.type === 'article' ? '📄' : item.type === 'hub' ? (item.emoji || '🩺') : ''
           };
         });
       })
@@ -76,6 +77,7 @@
     clearBtn.addEventListener('click', function() {
       input.value = '';
       dropdown.style.display = 'none';
+      input.setAttribute('aria-expanded', 'false');
       backdrop.style.display = 'none';
       clearBtn.style.display = 'none';
       input.focus();
@@ -178,6 +180,7 @@
   function showDropdown(results) {
     if (results.length === 0) {
       dropdown.style.display = 'none';
+      input.setAttribute('aria-expanded', 'false');
       return;
     }
     var html = '';
@@ -185,7 +188,7 @@
       var r = results[i];
       var kcalHtml = r.k > 0 ? '<span class="ac-item-kcal">' + r.k + ' kcal</span>' : '';
       var emojiHtml = r.e ? '<span class="ac-item-emoji">' + r.e + '</span>' : '';
-      html += '<a class="ac-item" href="' + r.u + '">' +
+      html += '<a class="ac-item" role="option" href="' + escapeHtml(r.u) + '">' +
         '<span class="ac-item-name">' + emojiHtml + highlightHtml(r.n, input.value.trim()) + '</span>' +
         '<span class="ac-item-meta">' +
           '<span class="ac-item-type ' + (r.t === 'bài viết' ? 'bai-viet' : r.t === 'công cụ' ? 'cong-cu' : '') + '">' + escapeHtml(r.t) + '</span>' +
@@ -195,6 +198,7 @@
     }
     dropdown.innerHTML = html;
     dropdown.style.display = 'block';
+    input.setAttribute('aria-expanded', 'true');
     if (backdrop) backdrop.style.display = 'block';
   }
 
@@ -204,6 +208,7 @@
     if (clearBtn) clearBtn.style.display = q.length > 0 ? 'block' : 'none';
     if (q.length < 1) {
       dropdown.style.display = 'none';
+      input.setAttribute('aria-expanded', 'false');
       if (backdrop) backdrop.style.display = 'none';
       return;
     }
@@ -213,10 +218,12 @@
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       dropdown.style.display = 'none';
+      input.setAttribute('aria-expanded', 'false');
       this.blur();
     }
     if (e.key === 'Enter') {
       dropdown.style.display = 'none';
+      input.setAttribute('aria-expanded', 'false');
       window.location.href = '/tim-kiem?q=' + encodeURIComponent(this.value);
     }
   });

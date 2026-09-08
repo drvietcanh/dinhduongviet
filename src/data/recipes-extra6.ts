@@ -37,7 +37,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "goi-muc-chua-ngot", slug: "goi-muc-chua-ngot", name: "Gỏi mực",
+    id: "goi-muc-chua-ngot", slug: "goi-muc-chua-ngot", name: "Gỏi mực chua ngọt",
     aliases: ["goi muc", "mực trộn"],
     servingName: "1 đĩa", servingWeightG: 200,
     tags: ["vietnamese", "seafood", "salad", "appetizer"],
@@ -381,7 +381,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "che-dau-den-moi", slug: "che-dau-den-moi", name: "Chè đậu đen",
+    id: "che-dau-den-moi", slug: "che-dau-den-moi", name: "Chè đậu đen nấu nhừ",
     aliases: ["che dau den"],
     servingName: "1 bát", servingWeightG: 250,
     tags: ["vietnamese", "dessert", "sweet-soup"],
@@ -412,7 +412,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "banh-tieu-chien", slug: "banh-tieu-chien", name: "Bánh tiêu",
+    id: "banh-tieu-chien", slug: "banh-tieu-chien", name: "Bánh tiêu chiên mè",
     aliases: ["banh tieu"],
     servingName: "1 cái", servingWeightG: 50,
     tags: ["vietnamese", "dessert", "pastry", "breakfast"],
@@ -426,7 +426,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "banh-khot-vung-tau", slug: "banh-khot-vung-tau", name: "Bánh khọt",
+    id: "banh-khot-vung-tau", slug: "banh-khot-vung-tau", name: "Bánh khọt Vũng Tàu",
     aliases: ["banh khot"],
     servingName: "1 phần 10 cái", servingWeightG: 200,
     tags: ["vietnamese", "snack", "savory"],
@@ -442,7 +442,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "banh-cuon-nhan-thit", slug: "banh-cuon-nhan-thit", name: "Bánh cuốn",
+    id: "banh-cuon-nhan-thit", slug: "banh-cuon-nhan-thit", name: "Bánh cuốn nhân thịt",
     aliases: ["banh cuon"],
     servingName: "1 đĩa", servingWeightG: 220,
     tags: ["vietnamese", "breakfast", "savory"],
@@ -526,7 +526,7 @@ export const extraRecipes6: Recipe[] = [
 
   // ─── Đồ uống ────────────────────────────────────
   {
-    id: "sinh-to-bo-v2", slug: "sinh-to-bo-v2", name: "Sinh tố bơ",
+    id: "sinh-to-bo-v2", slug: "sinh-to-bo-v2", name: "Sinh tố bơ sữa đặc",
     aliases: ["sinh to bo"],
     servingName: "1 ly 250ml", servingWeightG: 300,
     tags: ["vietnamese", "drink", "smoothie"],
@@ -540,7 +540,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "sinh-to-dua", slug: "sinh-to-dua", name: "Sinh tố dưa hấu",
+    id: "sinh-to-dua", slug: "sinh-to-dua", name: "Sinh tố dưa hấu tươi",
     aliases: ["sinh to dua hau"],
     servingName: "1 ly 300ml", servingWeightG: 350,
     tags: ["vietnamese", "drink", "smoothie"],
@@ -565,7 +565,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "tra-chanh-tuoi", slug: "tra-chanh-tuoi", name: "Trà chanh",
+    id: "tra-chanh-tuoi", slug: "tra-chanh-tuoi", name: "Trà chanh tươi",
     aliases: ["tra chanh"],
     servingName: "1 ly 300ml", servingWeightG: 320,
     tags: ["vietnamese", "drink"],

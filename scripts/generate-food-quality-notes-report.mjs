@@ -151,8 +151,8 @@ ${dietitianReview.map((food) => `- \`${food.slug}\`: ${food.name} (${food.source
 
 ## Ưu Tiên Tiếp Theo
 
-1. Tìm nguồn nấu chín đáng tin cậy cho \`com-nep\`, \`com-gao-lut-do\`, \`com-gao-lut-den\`; chỉ thay số liệu khi nguồn mô tả rõ cooked/prepared basis.
-2. Với nhóm xúc xích, dùng nguồn riêng theo loại thịt hoặc giữ \`candidate_pending_dietitian_review\` vì VN 2007 chỉ có mục xúc xích chung.
+1. Tìm nguồn nấu chín đáng tin cậy cho ${needsBetterSource.length > 0 ? needsBetterSource.map((food) => `\`${food.slug}\``).join(", ") : "các mục còn thiếu nguồn"}; chỉ thay số liệu khi nguồn mô tả rõ cooked/prepared basis.
+2. Với các mục còn gắn \`candidate_pending_dietitian_review\`, chỉ dùng nguồn riêng khớp loại thịt, trạng thái chế biến và phạm vi tên gọi.
 3. Với \`thit-heo-quay\`, cần công thức chuẩn hoặc nguồn phân tích món quay; không nên tự thay bằng thịt heo sống/nạc/mỡ riêng lẻ.
 
 ## Toàn Bộ Metadata

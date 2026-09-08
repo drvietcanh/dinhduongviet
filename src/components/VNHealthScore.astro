@@ -163,7 +163,7 @@ const stars = "★".repeat(starCount) + "☆".repeat(5 - starCount);
   
   <div class="vn-score-body">
     <div class="vn-score-main">
-      <div class="vn-score-circle" style="--score-pct: {(score / maxScore * 100).toFixed(0)}%; --score-color: {gradeColor};">
+      <div class="vn-score-circle" style={`--score-pct: ${(score / maxScore * 100).toFixed(0)}%; --score-color: ${gradeColor};`}>
         <span class="vn-score-value">{score.toFixed(1)}</span>
         <span class="vn-score-max">/{maxScore}</span>
       </div>
@@ -179,7 +179,7 @@ const stars = "★".repeat(starCount) + "☆".repeat(5 - starCount);
           <div class="vn-score-row-label">{d.label}</div>
           <div class="vn-score-bar-wrapper">
             <div class="vn-score-bar-bg">
-              <div class="vn-score-bar-fill" style="width: {(d.points / d.max * 100).toFixed(0)}%;"></div>
+              <div class="vn-score-bar-fill" style={`width: ${(d.points / d.max * 100).toFixed(0)}%;`}></div>
             </div>
           </div>
           <div class="vn-score-row-pts">{d.points}/{d.max}</div>

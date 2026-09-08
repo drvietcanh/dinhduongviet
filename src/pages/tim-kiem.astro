@@ -11,13 +11,14 @@ const query = Astro.url.searchParams.get("q") ?? "";
       <h1>🔍 Tìm kiếm</h1>
       <div class="search-box">
         <span class="search-icon">🔎</span>
-        <input type="search" id="searchInput" placeholder="Tìm thực phẩm, món ăn, bài viết, công cụ..." autocomplete="off" value={query} />
+        <input type="search" id="searchInput" placeholder="Tìm thực phẩm, món ăn, bệnh, công cụ..." autocomplete="off" value={query} role="combobox" aria-autocomplete="list" aria-controls="suggestionsDropdown" aria-expanded="false" />
         <button class="search-clear" id="searchClear" aria-label="Xóa">✕</button>
-        <div class="suggestions-dropdown" id="suggestionsDropdown"></div>
+        <div class="suggestions-dropdown" id="suggestionsDropdown" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
       </div>
       <div class="filter-row" id="filterRow">
         <button class="chip active" data-filter="all">📋 Tất cả</button>
         <button class="chip" data-filter="article">📖 Bài viết</button>
+        <button class="chip" data-filter="hub">🩺 Theo bệnh</button>
         <button class="chip" data-filter="tool">🛠️ Công cụ</button>
         <button class="chip" data-filter="food">🥬 Thực phẩm</button>
         <button class="chip" data-filter="recipe">🍜 Món ăn</button>
@@ -116,7 +117,8 @@ const query = Astro.url.searchParams.get("q") ?? "";
 
     function matchesFilter(item) {
       if (activeFilter === 'all') return true;
-      if (item.type === 'article') return activeFilter === 'all';
+      if (activeFilter === 'article') return item.type === 'article';
+      if (activeFilter === 'hub') return item.type === 'hub';
       if (activeFilter === 'food') return item.type === 'food';
       if (activeFilter === 'recipe') return item.type === 'recipe';
       if (activeFilter === 'tool') return item.type === 'tool';
@@ -127,10 +129,18 @@ const query = Astro.url.searchParams.get("q") ?? "";
       return true;
     }
 
+    function escapeHtml(text) {
+      return String(text || '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     function highlight(text, q) {
-      if (!q) return text;
-      var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-      return text.replace(re, '<em>$1</em>');
+      var safeText = escapeHtml(text);
+      if (!q) return safeText;
+      var safeQ = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var re = new RegExp('(' + safeQ + ')', 'gi');
+      return safeText.replace(re, '<em>$1</em>');
     }
 
     function getRecentSearches() {
@@ -162,25 +172,34 @@ const query = Astro.url.searchParams.get("q") ?? "";
       return '/kien-thuc-dinh-duong/' + slug;
     }
 
-    function renderSuggestions(q) {
-      if (q.length < 1) { $suggestions.classList.remove('show'); return; }
-      var qn = normalize(q);
-      var recents = getRecentSearches();
-      var html = '';
+    function itemUrl(item) {
+      if (item.type === 'food') return '/thuc-pham/' + item.slug;
+      if (item.type === 'recipe') return '/mon-an/' + item.slug;
+      if (item.type === 'tool') return '/cong-cu/' + item.slug;
+      if (item.type === 'hub') return '/theo-benh/' + item.slug;
+      return articleSlugToUrl(item.slug);
+    }
 
-      // Show recent searches when input is empty
-      if (q.length === 0) {
-        if (recents.length > 0) {
-          html = '<div class="sug-group"><div class="sug-label">🕐 Gần đây</div>';
-          recents.forEach(function(s) { html += '<div class="sug-item" data-q="' + s + '">🔍 ' + s + '</div>'; });
-          html += '</div>';
-        }
-        $suggestions.innerHTML = html;
-        $suggestions.classList.toggle('show', html !== '');
+    function setSuggestionsOpen(open) {
+      $suggestions.classList.toggle('show', open);
+      $input.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    function renderSuggestions(q) {
+      if (q.length < 1) {
+        var recentItems = getRecentSearches();
+        if (recentItems.length === 0) { setSuggestionsOpen(false); return; }
+        var recentHtml = '<div class="sug-group"><div class="sug-label">🕐 Gần đây</div>';
+        recentItems.forEach(function(s) {
+          recentHtml += '<button type="button" role="option" class="sug-item" data-q="' + escapeHtml(s) + '">🔍 ' + escapeHtml(s) + '</button>';
+        });
+        $suggestions.innerHTML = recentHtml + '</div>';
+        setSuggestionsOpen(true);
         return;
       }
-
-      if (items.length === 0) { $suggestions.classList.remove('show'); return; }
+      var qn = normalize(q);
+      var html = '';
+      if (items.length === 0) { setSuggestionsOpen(false); return; }
 
       var rawQ = String(q || '').toLowerCase().trim();
       var top = items.map(function(item) {
@@ -208,23 +227,27 @@ const query = Astro.url.searchParams.get("q") ?? "";
       if (top.length > 0) {
         html = '<div class="sug-group"><div class="sug-label">🔍 Gợi ý nhanh</div>';
         top.forEach(function(item) {
-          var url, tag, emoji;
+          var url = itemUrl(item), tag, emoji;
           if (item.type === 'article') {
-            url = articleSlugToUrl(item.slug);
             tag = 'Bài viết';
             emoji = '📖';
+          } else if (item.type === 'hub') {
+            tag = 'Theo bệnh';
+            emoji = item.emoji || '🩺';
+          } else if (item.type === 'tool') {
+            tag = 'Công cụ';
+            emoji = '🛠️';
           } else {
-            url = item.type === 'food' ? '/thuc-pham/' : '/mon-an/';
             tag = item.type === 'food' ? item.category : 'Món ăn';
             emoji = item.type === 'food' ? getCategoryEmoji(item.category) : '🍽️';
           }
-          html += '<a class="sug-item" href="' + url + item.slug + '">' + emoji + ' <strong>' + item.name + '</strong> <span class="sug-tag">' + tag + '</span></a>';
+          html += '<a role="option" class="sug-item" href="' + escapeHtml(url) + '">' + emoji + ' <strong>' + highlight(item.name, q) + '</strong> <span class="sug-tag">' + escapeHtml(tag) + '</span></a>';
         });
         html += '</div>';
       }
 
       $suggestions.innerHTML = html;
-      $suggestions.classList.toggle('show', html !== '');
+      setSuggestionsOpen(html !== '');
     }
 
     function render() {
@@ -232,11 +255,12 @@ const query = Astro.url.searchParams.get("q") ?? "";
       query = $input.value.trim();
 
       // Hide suggestions on render
-      $suggestions.classList.remove('show');
+      setSuggestionsOpen(false);
 
       // Update URL
       var params = new URLSearchParams(window.location.search);
       if (query) params.set('q', query); else params.delete('q');
+      if (activeFilter !== 'all') params.set('type', activeFilter); else params.delete('type');
       window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
 
       var rawQ = query.toLowerCase();
@@ -279,7 +303,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
         if (q && q.length > 1) {
           var fuzzy = items.filter(function(item) {
             var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
-            return fuzzyMatch(searchText, q);
+            return fuzzyMatch(searchText, q) && matchesFilter(item);
           }).slice(0, 24);
           if (fuzzy.length > 0) {
             $results.innerHTML = '<div class="fuzzy-hint">😕 Không tìm thấy chính xác. Hiển thị kết quả gần đúng:</div>' +
@@ -300,6 +324,13 @@ const query = Astro.url.searchParams.get("q") ?? "";
 
     function renderItems(list) {
       return list.map(function(item) {
+        if (item.type === 'hub') {
+          return '<a class="result-item" href="' + escapeHtml(itemUrl(item)) + '">' +
+            '<span class="result-emoji">' + escapeHtml(item.emoji || '🩺') + '</span>' +
+            '<span class="result-info"><span class="result-name">' + highlight(item.name, query) + '</span>' +
+            (item.description ? '<span class="result-meta">' + highlight(item.description.slice(0, 120), query) + '</span>' : '') +
+            '</span><span class="badge badge-hub">Theo bệnh</span></a>';
+        }
         if (item.type === 'article') {
           var url = articleSlugToUrl(item.slug);
           var nameHtml = highlight(item.name, query);
@@ -343,7 +374,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
           '<span class="result-name">' + nameHtml + '</span>' +
           (meta ? '<span class="result-meta">' + meta + '</span>' : '') +
           '</span>' +
-          '<span class="badge ' + badgeCls + '">' + badgeText + '</span>' +
+          '<span class="badge ' + badgeCls + '">' + escapeHtml(badgeText) + '</span>' +
           '</a>';
       }).join('');
     }
@@ -364,7 +395,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
       if (recent.length > 0) {
         html += '<div class="empty-recent"><div class="empty-cats-label">🕐 Tìm kiếm gần đây:</div>';
         recent.forEach(function(s) {
-          html += '<button class="chip" onclick="document.getElementById(\'searchInput\').value=\'' + s.replace(/'/g,"\\'") + '\';document.getElementById(\'searchInput\').dispatchEvent(new Event(\'input\'))">' + s + '</button>';
+          html += '<button type="button" class="chip recent-search" data-q="' + escapeHtml(s) + '">' + escapeHtml(s) + '</button>';
         });
         html += '</div>';
       }
@@ -385,6 +416,13 @@ const query = Astro.url.searchParams.get("q") ?? "";
         // Check URL for initial query
         var urlParams = new URLSearchParams(window.location.search);
         var urlQ = urlParams.get('q');
+        var urlType = urlParams.get('type');
+        var filterButton = urlType ? document.querySelector('.chip[data-filter="' + CSS.escape(urlType) + '"]') : null;
+        if (filterButton) {
+          document.querySelectorAll('.chip[data-filter]').forEach(function(button) { button.classList.remove('active'); });
+          filterButton.classList.add('active');
+          activeFilter = urlType;
+        }
         if (urlQ) {
           $input.value = urlQ;
         }
@@ -398,7 +436,8 @@ const query = Astro.url.searchParams.get("q") ?? "";
     // Load immediately if there's a query in URL
     var urlParams = new URLSearchParams(window.location.search);
     var urlQ = urlParams.get('q');
-    if (urlQ) {
+    var urlType = urlParams.get('type');
+    if (urlQ || urlType) {
       loadSearchData();
     } else {
       // Lazy: load on first focus/click of input, or when page is idle
@@ -428,13 +467,13 @@ const query = Astro.url.searchParams.get("q") ?? "";
 
     // Focus: show suggestions
     $input.addEventListener('focus', function() {
-      if (this.value) renderSuggestions(this.value);
+      renderSuggestions(this.value);
     });
 
     // Click outside: close suggestions
     document.addEventListener('click', function(e) {
       if (!$input.contains(e.target) && !$suggestions.contains(e.target)) {
-        $suggestions.classList.remove('show');
+        setSuggestionsOpen(false);
       }
     });
 
@@ -443,7 +482,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
       $input.value = '';
       $input.focus();
       $clear.style.display = 'none';
-      $suggestions.classList.remove('show');
+      setSuggestionsOpen(false);
       render();
     });
 
@@ -457,9 +496,24 @@ const query = Astro.url.searchParams.get("q") ?? "";
       });
     });
 
+    $suggestions.addEventListener('click', function(e) {
+      var recent = e.target.closest('button[data-q]');
+      if (!recent) return;
+      $input.value = recent.dataset.q || '';
+      setSuggestionsOpen(false);
+      render();
+    });
+
+    $results.addEventListener('click', function(e) {
+      var recent = e.target.closest('.recent-search[data-q]');
+      if (!recent) return;
+      $input.value = recent.dataset.q || '';
+      render();
+    });
+
     // Keyboard navigation
     $input.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { $suggestions.classList.remove('show'); return; }
+      if (e.key === 'Escape') { setSuggestionsOpen(false); return; }
       var items = $suggestions.querySelectorAll('.sug-item');
       if (!items.length) return;
       if (e.key === 'ArrowDown') {
@@ -478,7 +532,7 @@ const query = Astro.url.searchParams.get("q") ?? "";
         if (a) { window.location.href = a.href; }
         else {
           var q = items[selectedIdx].dataset.q;
-          if (q) { $input.value = q; $suggestions.classList.remove('show'); render(); }
+          if (q) { $input.value = q; setSuggestionsOpen(false); render(); }
         }
       } else {
         selectedIdx = -1;
@@ -553,9 +607,11 @@ const query = Astro.url.searchParams.get("q") ?? "";
 .badge-recipe { background: #dbeafe; color: #1e40af; }
 .badge-article { background: #fef3c7; color: #92400e; }
 .badge-tool { background: #e0e7ff; color: #3730a3; }
+.badge-hub { background: #e0f2fe; color: #075985; }
 [data-theme="dark"] .badge-food { background: #1a2e21; color: #4ade80; }
 [data-theme="dark"] .badge-recipe { background: #1e293b; color: #60a5fa; }
 [data-theme="dark"] .badge-article { background: #2a221a; color: #fbbf24; }
+[data-theme="dark"] .badge-hub { background: #0c4a6e; color: #bae6fd; }
 
 /* Empty state */
 .empty-state { text-align: center; padding: 32px 20px; }

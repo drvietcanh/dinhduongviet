@@ -518,30 +518,30 @@ export const extraFoods7 = [
     aliases: ["xuc xich duc", "bratwurst", "German sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Xúc xích heo kiểu Đức, nướng hoặc luộc.",
-    nutrients: { energyKcal: 280, proteinG: 15, carbG: 3, fatG: 24, saturatedFatG: 9, cholesterolMg: 70, sodiumMg: 780, potassiumMg: 220 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
+    nutrients: { energyKcal: 333, proteinG: 13.72, carbG: 2.85, fatG: 29.18, saturatedFatG: 9.998, fiberG: 0, cholesterolMg: 74, calciumMg: 28, ironMg: 0.53, sodiumMg: 846, potassiumMg: 348, phosphorusMg: 208 },
+    sourceId: "usda-fdc-171620", confidence: "high", note: "USDA FoodData Central SR Legacy 171620, bratwurst pork cooked; giá trị trên 100g phần ăn được."
   },
   {
     id: "xuc-xich-my", slug: "xuc-xich-my", name: "Xúc xích Mỹ (hot dog)",
     aliases: ["xuc xich my", "hot dog", "frankfurter"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
-    edibleNote: "Xúc xích heo/bò kiểu Mỹ.",
-    nutrients: { energyKcal: 290, proteinG: 12, carbG: 4, fatG: 26, saturatedFatG: 10, sodiumMg: 1100, potassiumMg: 150 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
+    edibleNote: "Hot dog kiểu Mỹ làm từ hỗn hợp thịt và gia cầm, đã nướng chín.",
+    nutrients: { energyKcal: 302, proteinG: 10.67, carbG: 5.24, fatG: 26.43, saturatedFatG: 8.218, fiberG: 0, cholesterolMg: 85, calciumMg: 118, ironMg: 1.15, sodiumMg: 1079, potassiumMg: 387, phosphorusMg: 192 },
+    sourceId: "usda-fdc-171634", confidence: "high", note: "USDA FoodData Central SR Legacy 171634, frankfurter meat and poultry cooked grilled; giá trị trên 100g phần ăn được."
   },
   {
     id: "xuc-xich-bo", slug: "xuc-xich-bo", name: "Xúc xích bò",
     aliases: ["xuc xich bo", "beef sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Xúc xích làm từ thịt bò.",
-    nutrients: { energyKcal: 260, proteinG: 16, carbG: 3, fatG: 21, saturatedFatG: 8, cholesterolMg: 65, sodiumMg: 800, potassiumMg: 200 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
+    nutrients: { energyKcal: 332, proteinG: 18.21, carbG: 0.35, fatG: 27.98, saturatedFatG: 10.905, fiberG: 0, cholesterolMg: 82, calciumMg: 11, ironMg: 1.57, sodiumMg: 813, potassiumMg: 258, phosphorusMg: 141 },
+    sourceId: "usda-fdc-174618", confidence: "high", note: "USDA FoodData Central SR Legacy 174618, beef sausage fresh cooked; giá trị trên 100g phần ăn được."
   },
   {
     id: "xuc-xich-ga", slug: "xuc-xich-ga", name: "Xúc xích gà",
     aliases: ["xuc xich ga", "chicken sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
-    edibleNote: "Xúc xích làm từ thịt gà, ít béo hơn xúc xích heo.",
+    edibleNote: "Xúc xích làm từ thịt gà; thành phần và lượng chất béo thay đổi theo công thức, nhãn hàng.",
     nutrients: { energyKcal: 200, proteinG: 18, carbG: 3, fatG: 13, saturatedFatG: 3.5, cholesterolMg: 70, sodiumMg: 750, potassiumMg: 180 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },
@@ -549,7 +549,7 @@ export const extraFoods7 = [
     id: "xuc-xich-heo", slug: "xuc-xich-heo", name: "Xúc xích heo",
     aliases: ["xuc xich heo", "xúc xích lợn", "xuc xich lon", "pork sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
-    edibleNote: "Xúc xích làm từ thịt heo.",
+    edibleNote: "Xúc xích làm từ thịt heo; thành phần và lượng natri thay đổi theo công thức, nhãn hàng.",
     nutrients: { energyKcal: 270, proteinG: 14, carbG: 3, fatG: 23, saturatedFatG: 8, cholesterolMg: 65, sodiumMg: 750, potassiumMg: 170 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP."
   },

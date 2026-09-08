@@ -1,5 +1,94 @@
 [
   {
+    "type": "hub",
+    "slug": "tieu-duong",
+    "name": "Đái tháo đường",
+    "aliases": [],
+    "description": "Lộ trình đọc cho người đái tháo đường: bài nền tảng, hiểu lầm thường gặp, thực đơn mẫu và công cụ áp dụng.",
+    "category": "Theo bệnh",
+    "emoji": "🩸"
+  },
+  {
+    "type": "hub",
+    "slug": "cao-huyet-ap",
+    "name": "Tăng huyết áp",
+    "aliases": [],
+    "description": "Tập trung vào giảm muối thực tế, nhận diện natri ẩn, thực đơn dễ áp dụng và các mẹo ăn ngoài hàng quán.",
+    "category": "Theo bệnh",
+    "emoji": "🫗"
+  },
+  {
+    "type": "hub",
+    "slug": "gout-axit-uric",
+    "name": "Gout và axit uric cao",
+    "aliases": [
+      "Gout"
+    ],
+    "description": "Lối vào cho gout và acid uric cao: nền tảng, hiểu lầm về đạm, thực đơn thấp purin và mẹo áp dụng hằng ngày.",
+    "category": "Theo bệnh",
+    "emoji": "🦶"
+  },
+  {
+    "type": "hub",
+    "slug": "gan-nhiem-mo",
+    "name": "Gan nhiễm mỡ",
+    "aliases": [],
+    "description": "Dành cho người có gan nhiễm mỡ, men gan cao hoặc rối loạn chuyển hóa muốn bắt đầu từ các thay đổi bền vững.",
+    "category": "Theo bệnh",
+    "emoji": "🫁"
+  },
+  {
+    "type": "hub",
+    "slug": "beo-phi-chuyen-hoa",
+    "name": "Béo phì và hội chứng chuyển hóa",
+    "aliases": [
+      "Béo phì, chuyển hóa"
+    ],
+    "description": "Lối vào cho béo phì, béo bụng, kháng insulin và hội chứng chuyển hóa, với trọng tâm giảm cân bền vững.",
+    "category": "Theo bệnh",
+    "emoji": "⚖️"
+  },
+  {
+    "type": "hub",
+    "slug": "da-day-trao-nguoc",
+    "name": "Dạ dày, tá tràng",
+    "aliases": [],
+    "description": "Điểm vào cho đau dạ dày, viêm loét dạ dày - tá tràng, trào ngược, khó tiêu và cách sắp bữa dễ chịu hơn.",
+    "category": "Theo bệnh",
+    "emoji": "😣"
+  },
+  {
+    "type": "hub",
+    "slug": "benh-than",
+    "name": "Bệnh thận",
+    "aliases": [],
+    "description": "Điểm khởi đầu cho bệnh thận mạn, lọc máu, sỏi thận và các hiểu lầm dễ khiến người bệnh kiêng quá mức.",
+    "category": "Theo bệnh",
+    "emoji": "🫘"
+  },
+  {
+    "type": "hub",
+    "slug": "mo-mau-tim-mach",
+    "name": "Mỡ máu và tim mạch",
+    "aliases": [
+      "Mỡ máu, tim mạch"
+    ],
+    "description": "Tập hợp bài về mỡ máu cao, nguy cơ tim mạch, suy tim, phục hồi sau biến cố và chế độ ăn bảo vệ mạch máu.",
+    "category": "Theo bệnh",
+    "emoji": "❤️"
+  },
+  {
+    "type": "hub",
+    "slug": "ho-hap-man",
+    "name": "Hô hấp mạn tính",
+    "aliases": [
+      "Hô hấp mạn"
+    ],
+    "description": "Nhóm cho COPD, hen suyễn, viêm phế quản mạn và các tình huống ăn uống liên quan khó thở, sụt cân hoặc béo phì.",
+    "category": "Theo bệnh",
+    "emoji": "🫁"
+  },
+  {
     "type": "article",
     "slug": "tieu-duong-an-com-duoc-khong",
     "name": "Người đái tháo đường ăn cơm được không? Ăn bao nhiêu là vừa?",
@@ -4012,7 +4101,7 @@
   {
     "type": "recipe",
     "slug": "sinh-to-bo-trai-cay",
-    "name": "Sinh tố bơ",
+    "name": "Sinh tố bơ sữa",
     "aliases": [
       "sinh to bo"
     ],
@@ -4030,7 +4119,7 @@
   {
     "type": "recipe",
     "slug": "ca-phe-sua-da-mon",
-    "name": "Cà phê sữa đá",
+    "name": "Cà phê sữa đá pha phin",
     "aliases": [
       "ca phe sua da"
     ],
@@ -4057,7 +4146,7 @@
   {
     "type": "recipe",
     "slug": "bo-bit-tet",
-    "name": "Bò bít tết",
+    "name": "Bò bít tết kèm khoai tây",
     "aliases": [
       "bo bit tet",
       "bít tết bò"
@@ -4077,7 +4166,7 @@
   {
     "type": "recipe",
     "slug": "khoai-lang-luoc-mon-an",
-    "name": "Khoai lang luộc",
+    "name": "Khoai lang luộc nguyên củ",
     "aliases": [
       "khoai lang luoc"
     ],
@@ -4086,7 +4175,7 @@
   {
     "type": "recipe",
     "slug": "khoai-lang-chien-gion",
-    "name": "Khoai lang chiên",
+    "name": "Khoai lang chiên giòn",
     "aliases": [
       "khoai lang chien"
     ],
@@ -4114,7 +4203,7 @@
   {
     "type": "recipe",
     "slug": "banh-tieu-ran",
-    "name": "Bánh tiêu",
+    "name": "Bánh tiêu chiên giòn",
     "aliases": [
       "banh tieu"
     ],
@@ -4132,7 +4221,7 @@
   {
     "type": "recipe",
     "slug": "che-buoi-dau-xanh",
-    "name": "Chè bưởi",
+    "name": "Chè bưởi đậu xanh",
     "aliases": [
       "che buoi"
     ],
@@ -4141,7 +4230,7 @@
   {
     "type": "recipe",
     "slug": "che-ba-ba-khoai",
-    "name": "Chè bà ba",
+    "name": "Chè bà ba khoai",
     "aliases": [
       "che ba ba"
     ],
@@ -4159,7 +4248,7 @@
   {
     "type": "recipe",
     "slug": "che-dau-den-nau",
-    "name": "Chè đậu đen",
+    "name": "Chè đậu đen nước cốt dừa",
     "aliases": [
       "che dau den"
     ],
@@ -4314,7 +4403,7 @@
   {
     "type": "recipe",
     "slug": "goi-muc-chua-ngot",
-    "name": "Gỏi mực",
+    "name": "Gỏi mực chua ngọt",
     "aliases": [
       "goi muc",
       "mực trộn"
@@ -4528,7 +4617,7 @@
   {
     "type": "recipe",
     "slug": "che-dau-den-moi",
-    "name": "Chè đậu đen",
+    "name": "Chè đậu đen nấu nhừ",
     "aliases": [
       "che dau den"
     ],
@@ -4546,7 +4635,7 @@
   {
     "type": "recipe",
     "slug": "banh-tieu-chien",
-    "name": "Bánh tiêu",
+    "name": "Bánh tiêu chiên mè",
     "aliases": [
       "banh tieu"
     ],
@@ -4555,7 +4644,7 @@
   {
     "type": "recipe",
     "slug": "banh-khot-vung-tau",
-    "name": "Bánh khọt",
+    "name": "Bánh khọt Vũng Tàu",
     "aliases": [
       "banh khot"
     ],
@@ -4564,7 +4653,7 @@
   {
     "type": "recipe",
     "slug": "banh-cuon-nhan-thit",
-    "name": "Bánh cuốn",
+    "name": "Bánh cuốn nhân thịt",
     "aliases": [
       "banh cuon"
     ],
@@ -4611,7 +4700,7 @@
   {
     "type": "recipe",
     "slug": "sinh-to-bo-v2",
-    "name": "Sinh tố bơ",
+    "name": "Sinh tố bơ sữa đặc",
     "aliases": [
       "sinh to bo"
     ],
@@ -4620,7 +4709,7 @@
   {
     "type": "recipe",
     "slug": "sinh-to-dua",
-    "name": "Sinh tố dưa hấu",
+    "name": "Sinh tố dưa hấu tươi",
     "aliases": [
       "sinh to dua hau"
     ],
@@ -4639,7 +4728,7 @@
   {
     "type": "recipe",
     "slug": "tra-chanh-tuoi",
-    "name": "Trà chanh",
+    "name": "Trà chanh tươi",
     "aliases": [
       "tra chanh"
     ],
@@ -4647,99 +4736,299 @@
   },
   {
     "type": "tool",
-    "slug": "bmi",
-    "name": "BMI & Vòng eo",
+    "slug": "bang-xep-hang",
+    "name": "Bảng sắp xếp dữ liệu dinh dưỡng",
     "aliases": [],
-    "description": "Tính BMI, vòng eo theo tieu chuản châu Á",
-    "category": "Cong cu"
+    "description": "Sắp xếp thực phẩm theo đạm, năng lượng, chất xơ, sắt, canxi, vitamin C, đường và béo bão hòa ở mức dữ liệu tham khảo.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
-    "slug": "muc-tieu-can-nang",
-    "name": "Muc tieu cân nặng",
+    "slug": "bmi",
+    "name": "Tính BMI tham khảo",
     "aliases": [],
-    "description": "Xác định cân nặng lý tưởng",
-    "category": "Cong cu"
+    "description": "Tính BMI tham khảo theo chiều cao và cân nặng, kèm lưu ý khi cần đánh giá thêm vòng eo, thành phần cơ thể và bối cảnh lâm sàng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "checklist-an-uong",
+    "name": "Checklist ăn uống hôm nay",
+    "aliases": [],
+    "description": "Checklist nhắc việc ăn uống ở mức tham khảo, không dùng để kết luận khẩu phần đạt hay chưa đạt.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
     "slug": "chi-so-gi",
-    "name": "Chỉ số GI thực phẩm",
+    "name": "Chỉ số GI thực phẩm Việt",
     "aliases": [],
-    "description": "Tra GI của cơm, bún, phở, trái cây",
-    "category": "Cong cu"
+    "description": "Tìm hiểu ý nghĩa chỉ số GI ở mức tham khảo và các tình huống cần hỏi bác sĩ hoặc chuyên gia.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
-    "slug": "tinh-gl-bua-an",
-    "name": "Tính GL từ bữa ăn (mới)",
+    "slug": "danh-gia-bua-an",
+    "name": "Đánh giá bữa ăn",
     "aliases": [],
-    "description": "Ghép nhiều thực phẩm tính tổng GL bữa ăn",
-    "category": "Cong cu"
+    "description": "Hub chọn công cụ phù hợp để ước tính và giáo dục dinh dưỡng về bữa ăn.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
-    "slug": "tinh-carb",
-    "name": "Tính carb trong bữa ăn",
+    "slug": "danh-sach-di-cho",
+    "name": "Danh sách đi chợ",
     "aliases": [],
-    "description": "Tính tổng carb bữa ăn",
-    "category": "Cong cu"
+    "description": "Tạo danh sách nhắc việc đi chợ từ các món bạn chọn, với số lượng nguyên liệu ở mức tham khảo để bạn dễ chỉnh lại theo gia đình và kế hoạch nấu ăn thực tế.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
-    "slug": "tinh-calo-tieu-thu",
-    "name": "Tính calo tiêu thụ khi tập",
+    "slug": "dia-an-lanh-manh",
+    "name": "Đĩa ăn lành mạnh",
     "aliases": [],
-    "description": "26 môn thể thao, MET-based",
-    "category": "Cong cu"
-  },
-  {
-    "type": "tool",
-    "slug": "tinh-nhu-cau-dam",
-    "name": "Tính nhu cầu đạm",
-    "aliases": [],
-    "description": "13 tình trạng sức khỏe",
-    "category": "Cong cu"
-  },
-  {
-    "type": "tool",
-    "slug": "nhu-cau-dinh-duong-tre-em",
-    "name": "Nhu cầu dinh dưỡng trẻ em",
-    "aliases": [],
-    "description": "WHO growth chart",
-    "category": "Cong cu"
+    "description": "Định hướng cách nhìn bữa ăn theo mô hình đĩa ăn, kèm các tình huống cần cá thể hóa với bác sĩ hoặc chuyên gia dinh dưỡng.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
     "slug": "dinh-duong-thai-ky",
-    "name": "Dinh dưỡng thai kỳ",
+    "name": "Dinh dưỡng thai kỳ",
     "aliases": [],
-    "description": "IOM khuyến nghị",
-    "category": "Cong cu"
+    "description": "Định hướng an toàn về các tình huống cần hỏi bác sĩ sản khoa hoặc chuyên gia dinh dưỡng khi xem dinh dưỡng trong thai kỳ và cho con bú.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
-    "slug": "theo-doi-duong-huyet",
-    "name": "Theo dõi dường huyết",
+    "slug": "doi-don-vi",
+    "name": "Bộ đổi đơn vị",
     "aliases": [],
-    "description": "Log + biểu đồ, ADA targets",
-    "category": "Cong cu"
+    "description": "Quy đổi đơn vị đo lường thường gặp ở mức tham khảo, có ghi chú khi giả định quy đổi có thể thay đổi theo dụng cụ và cách đo.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
-    "slug": "tuong-tac-thuoc-thuc-pham",
-    "name": "Tương tác thuốc-thực phẩm",
+    "slug": "duong-do-uong",
+    "name": "🧋 Đường trong đồ uống",
     "aliases": [],
-    "description": "16 loại thuốc",
-    "category": "Cong cu"
+    "description": "Tra cứu lượng đường tham khảo trong một số đồ uống phổ biến, dựa trên dữ liệu nội bộ và khẩu phần hiển thị.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "ke-hoach-bua-an",
+    "name": "🥗 Kế hoạch bữa ăn tham khảo",
+    "aliases": [],
+    "description": "Lập khung bữa ăn tham khảo từ thông tin cơ bản và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "khau-phan-don-gian",
+    "name": "🥣 Khẩu phần tham khảo",
+    "aliases": [],
+    "description": "Tìm hiểu khẩu phần ở mức tham khảo bằng chén, muỗng, lát hoặc miếng, không dùng để kết luận bữa ăn đủ chất hay phù hợp cho bệnh.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "khau-phan-viet-clinical",
+    "name": "Đánh giá khẩu phần Việt",
+    "aliases": [],
+    "description": "Ước tính năng lượng và chất chính từ món Việt đã nhập, dùng cho giáo dục dinh dưỡng và nhận diện trường hợp cần cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "lap-thuc-don-tuan",
+    "name": "🗓️ Lập thực đơn tuần tự động",
+    "aliases": [],
+    "description": "Gợi ý khung thực đơn 7 ngày ở mức tham khảo từ món Việt quen thuộc, giúp bạn sắp xếp bữa ăn nhiều ngày mà không thay thế tư vấn chuyên môn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "loc-thuc-pham",
+    "name": "Lọc thực phẩm nâng cao",
+    "aliases": [],
+    "description": "Lọc thực phẩm theo tên, nhóm và chỉ số dinh dưỡng ở mức dữ liệu tham khảo. Các bộ lọc bên dưới chỉ giúp sắp xếp dữ liệu trung tính, không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "muc-tieu-can-nang",
+    "name": "Mục tiêu cân nặng",
+    "aliases": [],
+    "description": "Định hướng mục tiêu cân nặng tham khảo với cờ cần cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "muc-tieu-dinh-duong",
+    "name": "Mục tiêu dinh dưỡng",
+    "aliases": [],
+    "description": "Công cụ định hướng mục tiêu dinh dưỡng tham khảo, có cờ cần cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "nhat-ky",
+    "name": "📓 Nhật ký ăn uống",
+    "aliases": [],
+    "description": "Ghi chép bữa ăn hằng ngày và tổng hợp dữ liệu dinh dưỡng ở mức tham khảo.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "nhu-cau-dinh-duong-tre-em",
+    "name": "Nhu cầu dinh dưỡng trẻ em",
+    "aliases": [],
+    "description": "Định hướng an toàn về các tình huống cần hỏi bác sĩ hoặc chuyên gia dinh dưỡng khi xem nhu cầu dinh dưỡng cho trẻ em.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "nuoc-muoi-mon-an",
+    "name": "🧂 Tra nhanh lượng muối trong món ăn",
+    "aliases": [],
+    "description": "Xem ước tính muối trong một số món Việt thường gặp và nhắc các tình huống cần hỏi bác sĩ hoặc chuyên gia.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "nuoc-uong",
+    "name": "Tính nhu cầu nước uống",
+    "aliases": [],
+    "description": "Ước tính ban đầu nhu cầu nước cho người trưởng thành tương đối khỏe mạnh, kèm safety gate cho nhóm cần cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "so-sanh-bua-an",
+    "name": "🍽️ So sánh bữa ăn",
+    "aliases": [],
+    "description": "Chọn 2-4 món ăn để xem chênh lệch dữ liệu dinh dưỡng ở mức tham khảo. Công cụ này chỉ so sánh số liệu, không kết luận bữa nào tốt hay xấu.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "so-sanh-thuc-pham",
+    "name": "So sánh dinh dưỡng thực phẩm",
+    "aliases": [],
+    "description": "Chọn 2–4 thực phẩm để so sánh thành phần dinh dưỡng ở mức dữ liệu tham khảo. Công cụ này chỉ giúp nhìn khác biệt số liệu giữa các thực phẩm, không thay thế tư vấn chuyên môn hay quyết định chế độ ăn cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "so-sanh",
+    "name": "So sánh dinh dưỡng",
+    "aliases": [],
+    "description": "Hub chọn công cụ so sánh dinh dưỡng phù hợp: so sánh thực phẩm hoặc so sánh bữa ăn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "them-thuc-pham-dong-goi",
+    "name": "📦 Thêm thực phẩm đóng gói",
+    "aliases": [],
+    "description": "Nhập và lưu dữ liệu từ nhãn thực phẩm đóng gói ở mức tham khảo, không thay thế tư vấn chuyên môn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "theo-doi-suc-khoe",
+    "name": "Theo dõi sức khỏe",
+    "aliases": [],
+    "description": "Ghi nhật ký chỉ số sức khỏe để chuẩn bị thông tin khi trao đổi với bác sĩ hoặc chuyên gia.",
+    "category": "Công cụ"
   },
   {
     "type": "tool",
     "slug": "ti-le-mo-co-the",
-    "name": "Tỷ lệ mỡ cơ thể & WHR",
+    "name": "Tỷ lệ mỡ cơ thể tham khảo",
     "aliases": [],
-    "description": "US Navy formula",
-    "category": "Cong cu"
+    "description": "Giải thích cách hiểu tỷ lệ mỡ cơ thể ở mức tham khảo, không thay thế đo thành phần cơ thể hoặc đánh giá lâm sàng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tim-mon-tu-nguyen-lieu",
+    "name": "Tìm món từ nguyên liệu có sẵn",
+    "aliases": [],
+    "description": "Nhập các nguyên liệu bạn đang có để xem gợi ý ý tưởng món ăn ở mức tham khảo, dựa trên độ khớp nguyên liệu.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-calo-tieu-thu",
+    "name": "🧮 Ước tính năng lượng tiêu hao khi vận động",
+    "aliases": [],
+    "description": "Ước tính kcal tiêu hao từ cân nặng, thời gian và hoạt động ở mức tham khảo, không dùng để đặt mục tiêu giảm cân, ăn bù hoặc điều trị.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-carb",
+    "name": "🔢 Tính carbohydrate trong bữa ăn",
+    "aliases": [],
+    "description": "Ước tính tổng carbohydrate từ thực phẩm và món ăn trong dữ liệu Dinh Dưỡng Việt.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-gl-bua-an",
+    "name": "⚖️ Tính GL bữa ăn",
+    "aliases": [],
+    "description": "Ước tính glycemic load dựa trên GI và tổng carbohydrate của khẩu phần, dùng cho giáo dục dinh dưỡng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-macro",
+    "name": "Tính macro tham khảo",
+    "aliases": [],
+    "description": "Công cụ này quy đổi tổng năng lượng mục tiêu thành gram protein (đạm) , carbohydrate (tinh bột) và fat (chất béo) theo một số preset phổ thông. Đây là bước học cách phân bổ khẩu phần, không phải đơn macro điều trị cá thể.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-nang-luong",
+    "name": "Tính năng lượng tham khảo (BMR & TDEE)",
+    "aliases": [],
+    "description": "Công cụ này ước tính năng lượng nền theo Mifflin-St Jeor rồi nhân hệ số hoạt động để cho ra BMR và TDEE tham khảo ban đầu. Đây là mốc giáo dục cho người lớn, không phải toa năng lượng điều trị cá thể.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-nhu-cau-dam",
+    "name": "Tính nhu cầu đạm mỗi ngày",
+    "aliases": [],
+    "description": "Ước tính nhu cầu protein ban đầu theo cân nặng và tình huống, kèm cảnh báo an toàn cho nhóm cần cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tra-cuu-thuc-pham-viet",
+    "name": "Bảng TP thực phẩm Việt",
+    "aliases": [],
+    "description": "Xem nhanh thành phần dinh dưỡng thực phẩm Việt theo dữ liệu Bảng thành phần thực phẩm Việt Nam 2007 ở mức tham khảo.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tuong-tac-thuoc-thuc-pham",
+    "name": "Tương tác thuốc - thực phẩm",
+    "aliases": [],
+    "description": "Nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ khi dùng thuốc cùng thực phẩm.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tuong-tac-thuoc",
+    "name": "Tương tác thuốc",
+    "aliases": [],
+    "description": "Nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ khi đang dùng thuốc, thực phẩm bổ sung hoặc thay đổi chế độ ăn.",
+    "category": "Công cụ"
   },
   {
     "type": "food",
@@ -9749,7 +10038,7 @@
       "xuc xich duc bratwurst"
     ],
     "category": "Thịt chế biến",
-    "kcal": 280
+    "kcal": 333
   },
   {
     "type": "food",
@@ -9762,7 +10051,7 @@
       "xuc xich my hot dog"
     ],
     "category": "Thịt chế biến",
-    "kcal": 290
+    "kcal": 302
   },
   {
     "type": "food",
@@ -9773,7 +10062,7 @@
       "beef sausage"
     ],
     "category": "Thịt chế biến",
-    "kcal": 260
+    "kcal": 332
   },
   {
     "type": "food",
@@ -11239,7 +11528,7 @@
       "gao nep da nau"
     ],
     "category": "Tinh bột",
-    "kcal": 187
+    "kcal": 97
   },
   {
     "type": "food",

@@ -282,7 +282,7 @@ const jsonLd = {
     </div>
 
     <!-- Tóm tắt nhanh -->
-    <div style="margin-bottom: 24px; background: linear-gradient(135deg, #eafaf1 0%, #d5f5e3 100%); border: 1px solid #a9dfbf; border-radius: 12px; padding: 1rem 1.2rem;">
+    <div class="article-summary-box">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
         <span style="font-size: 1.3rem;">📌</span>
         <strong style="font-size: 1rem;">Tóm tắt nhanh</strong>
@@ -387,7 +387,7 @@ const jsonLd = {
 
     <!-- Cảnh báo an toàn (chỉ hiện với bài bệnh/đối tượng đặc biệt) -->
     {showSafety && (
-    <div style="margin-top: 32px; background: linear-gradient(135deg, #fdedec 0%, #fadbd8 100%); border: 1px solid #f1948a; border-radius: 14px; padding: 1.2rem 1.5rem;">
+    <div class="article-safety-box">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
         <span style="font-size: 1.3rem;">🛑</span>
         <strong style="font-size: 1rem;">Lưu ý an toàn</strong>
@@ -451,6 +451,23 @@ const jsonLd = {
 </BaseLayout>
 
 <style is:global>
+  .article-summary-box,
+  .article-safety-box {
+    border-radius: 14px;
+    padding: 1.2rem 1.5rem;
+  }
+  .article-summary-box {
+    margin-bottom: 24px;
+    color: var(--text-info);
+    background: linear-gradient(135deg, var(--surface-info), var(--surface-info-strong));
+    border: 1px solid var(--border-info);
+  }
+  .article-safety-box {
+    margin-top: 32px;
+    color: var(--text-danger);
+    background: linear-gradient(135deg, var(--surface-danger), var(--surface-danger-strong));
+    border: 1px solid var(--border-danger);
+  }
   .back-link {
     color: var(--brand);
     text-decoration: none;

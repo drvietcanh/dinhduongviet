@@ -61,6 +61,7 @@ export type Food = {
   dataQuality?: "recipe_estimate" | "source_backed" | "needs_review";
   sourceConfidence?: "high" | "medium" | "low";
   sourceReviewStatus?:
+    | "source_verified"
     | "reviewed_keep_current"
     | "recipe_estimate_only"
     | "needs_better_source"
@@ -124,6 +125,62 @@ export const sources: Source[] = [
     name: "Công thức ước tính MVP",
     year: "2026",
     note: "Công thức định lượng để demo cách tính món ăn. Cần chuẩn hóa bằng tài liệu/sách nấu ăn hoặc đo thực tế."
+  },
+  {
+    id: "usda-fdc-169711",
+    name: "USDA FoodData Central — cơm nếp trắng chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/169711/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Rice, white, glutinous, unenriched, cooked."
+  },
+  {
+    id: "usda-fdc-171620",
+    name: "USDA FoodData Central — bratwurst heo chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/171620/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Bratwurst, pork, cooked."
+  },
+  {
+    id: "usda-fdc-171634",
+    name: "USDA FoodData Central — frankfurter nướng chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/171634/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Frankfurter, meat and poultry, cooked, grilled."
+  },
+  {
+    id: "usda-fdc-174618",
+    name: "USDA FoodData Central — xúc xích bò chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/174618/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Beef sausage, fresh, cooked."
+  },
+  {
+    id: "usda-fdc-174611",
+    name: "USDA FoodData Central — ham hun khói chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/174611/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Ham, honey, smoked, cooked."
+  },
+  {
+    id: "usda-fdc-168277",
+    name: "USDA FoodData Central — bacon chưa chiên",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/168277/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Pork, cured, bacon, unprepared."
+  },
+  {
+    id: "usda-fdc-168322",
+    name: "USDA FoodData Central — bacon áp chảo",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/168322/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Pork, cured, bacon, pre-sliced, cooked, pan-fried."
   }
 ];
 

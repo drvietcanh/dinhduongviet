@@ -300,7 +300,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "sinh-to-bo-trai-cay", slug: "sinh-to-bo-trai-cay", name: "Sinh tố bơ",
+    id: "sinh-to-bo-trai-cay", slug: "sinh-to-bo-trai-cay", name: "Sinh tố bơ sữa",
     aliases: ["sinh to bo"],
     servingName: "1 ly", servingWeightG: 300,
     tags: ["vietnamese", "drink", "smoothie"],
@@ -325,7 +325,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "ca-phe-sua-da-mon", slug: "ca-phe-sua-da-mon", name: "Cà phê sữa đá",
+    id: "ca-phe-sua-da-mon", slug: "ca-phe-sua-da-mon", name: "Cà phê sữa đá pha phin",
     aliases: ["ca phe sua da"],
     servingName: "1 ly", servingWeightG: 200,
     tags: ["vietnamese", "drink", "coffee"],
@@ -372,7 +372,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "bo-bit-tet", slug: "bo-bit-tet", name: "Bò bít tết",
+    id: "bo-bit-tet", slug: "bo-bit-tet", name: "Bò bít tết kèm khoai tây",
     aliases: ["bo bit tet", "bít tết bò"],
     servingName: "1 suất", servingWeightG: 350,
     tags: ["vietnamese", "western", "beef"],
@@ -400,7 +400,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "khoai-lang-luoc-mon-an", slug: "khoai-lang-luoc-mon-an", name: "Khoai lang luộc",
+    id: "khoai-lang-luoc-mon-an", slug: "khoai-lang-luoc-mon-an", name: "Khoai lang luộc nguyên củ",
     aliases: ["khoai lang luoc"],
     servingName: "1 củ", servingWeightG: 200,
     tags: ["vietnamese", "snack"],
@@ -411,7 +411,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "khoai-lang-chien-gion", slug: "khoai-lang-chien-gion", name: "Khoai lang chiên",
+    id: "khoai-lang-chien-gion", slug: "khoai-lang-chien-gion", name: "Khoai lang chiên giòn",
     aliases: ["khoai lang chien"],
     servingName: "1 đĩa", servingWeightG: 150,
     tags: ["vietnamese", "snack", "fried"],
@@ -453,7 +453,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "banh-tieu-ran", slug: "banh-tieu-ran", name: "Bánh tiêu",
+    id: "banh-tieu-ran", slug: "banh-tieu-ran", name: "Bánh tiêu chiên giòn",
     aliases: ["banh tieu"],
     servingName: "1 cái", servingWeightG: 40,
     tags: ["vietnamese", "snack", "fried"],
@@ -484,7 +484,7 @@ export const extraRecipes5: Recipe[] = [
   },
   // ─── Chè ──────────────────────────────────────────
   {
-    id: "chebuoi", slug: "che-buoi-dau-xanh", name: "Chè bưởi",
+    id: "chebuoi", slug: "che-buoi-dau-xanh", name: "Chè bưởi đậu xanh",
     aliases: ["che buoi"],
     servingName: "1 chén", servingWeightG: 250,
     tags: ["vietnamese", "dessert"],
@@ -499,7 +499,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "che-ba-ba-khoai", slug: "che-ba-ba-khoai", name: "Chè bà ba",
+    id: "che-ba-ba-khoai", slug: "che-ba-ba-khoai", name: "Chè bà ba khoai",
     aliases: ["che ba ba"],
     servingName: "1 chén", servingWeightG: 250,
     tags: ["vietnamese", "dessert"],
@@ -528,7 +528,7 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "che-dau-den-nau", slug: "che-dau-den-nau", name: "Chè đậu đen",
+    id: "che-dau-den-nau", slug: "che-dau-den-nau", name: "Chè đậu đen nước cốt dừa",
     aliases: ["che dau den"],
     servingName: "1 chén", servingWeightG: 250,
     tags: ["vietnamese", "dessert"],

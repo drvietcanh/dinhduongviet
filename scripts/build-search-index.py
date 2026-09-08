@@ -63,33 +63,77 @@ for m in re.finditer(r"slug:\s*['\"]([^'\"]+)['\"]", content):
     })
 print(f'Articles: {len(articles)}')
 
-# --- Get tools ---
-# Tool metadata
-TOOLS = [
-    {"slug": "bmi", "name": "BMI & Vòng eo", "desc": "Tính BMI, vòng eo theo tieu chuản châu Á"},
-    {"slug": "muc-tieu-can-nang", "name": "Muc tieu cân nặng", "desc": "Xác định cân nặng lý tưởng"},
-    {"slug": "chi-so-gi", "name": "Chỉ số GI thực phẩm", "desc": "Tra GI của cơm, bún, phở, trái cây"},
-    {"slug": "tinh-gl-bua-an", "name": "Tính GL từ bữa ăn (mới)", "desc": "Ghép nhiều thực phẩm tính tổng GL bữa ăn"},
-    {"slug": "tinh-carb", "name": "Tính carb trong bữa ăn", "desc": "Tính tổng carb bữa ăn"},
-    {"slug": "tinh-calo-tieu-thu", "name": "Tính calo tiêu thụ khi tập", "desc": "26 môn thể thao, MET-based"},
-    {"slug": "tinh-nhu-cau-dam", "name": "Tính nhu cầu đạm", "desc": "13 tình trạng sức khỏe"},
-    {"slug": "nhu-cau-dinh-duong-tre-em", "name": "Nhu cầu dinh dưỡng trẻ em", "desc": "WHO growth chart"},
-    {"slug": "dinh-duong-thai-ky", "name": "Dinh dưỡng thai kỳ", "desc": "IOM khuyến nghị"},
-    {"slug": "theo-doi-duong-huyet", "name": "Theo dõi dường huyết", "desc": "Log + biểu đồ, ADA targets"},
-    {"slug": "tuong-tac-thuoc-thuc-pham", "name": "Tương tác thuốc-thực phẩm", "desc": "16 loại thuốc"},
-    {"slug": "ti-le-mo-co-the", "name": "Tỷ lệ mỡ cơ thể & WHR", "desc": "US Navy formula"},
-]
+# --- Get tools directly from the actual routes ---
+# This keeps search in sync whenever a tool page is added, renamed or removed.
+def clean_markup(value):
+    value = re.sub(r'<[^>]+>', ' ', value)
+    value = re.sub(r'\{[^}]+\}', ' ', value)
+    return re.sub(r'\s+', ' ', value).strip()
+
+
+def quoted_constant(source, names):
+    for name in names:
+        match = re.search(
+            rf"const\s+{name}\s*=\s*(['\"])(.*?)\1\s*;",
+            source,
+            re.DOTALL,
+        )
+        if match:
+            return re.sub(r'\s+', ' ', match.group(2)).strip()
+    return ''
+
+
 tools = []
-for t in TOOLS:
+for tool_path in sorted((ROOT / 'src/pages/cong-cu').glob('*.astro')):
+    if tool_path.stem == 'index':
+        continue
+    source = tool_path.read_text(encoding='utf-8')
+    h1_match = re.search(r'<h1[^>]*>(.*?)</h1>', source, re.DOTALL | re.IGNORECASE)
+    name = clean_markup(h1_match.group(1)) if h1_match else ''
+    if not name:
+        name = quoted_constant(source, ['title', 'siteTitle', 'toolTitle'])
+    name = re.sub(r'\s*[-|]\s*Dinh Dưỡng Việt\s*$', '', name).strip()
+
+    description = quoted_constant(source, ['desc', 'siteDesc', 'description', 'toolDesc'])
+    if not description:
+        description_match = re.search(r'description=["\']([^"\']+)["\']', source)
+        description = description_match.group(1).strip() if description_match else ''
+    if not description:
+        lead_match = re.search(r'<p[^>]*class=["\'][^"\']*lead[^"\']*["\'][^>]*>(.*?)</p>', source, re.DOTALL | re.IGNORECASE)
+        description = clean_markup(lead_match.group(1)) if lead_match else ''
+
     tools.append({
         'type': 'tool',
-        'slug': t['slug'],
-        'name': t['name'],
+        'slug': tool_path.stem,
+        'name': name or tool_path.stem.replace('-', ' ').title(),
         'aliases': [],
-        'description': t['desc'],
-        'category': 'Cong cu'
+        'description': description,
+        'category': 'Công cụ'
     })
 print(f'Tools: {len(tools)}')
+
+# --- Get disease/topic hubs ---
+hub_source = (ROOT / 'src/data/disease-hubs.ts').read_text(encoding='utf-8')
+hubs = []
+hub_pattern = re.compile(
+    r'id:\s*"([^"]+)"\s*,\s*'
+    r'name:\s*"([^"]+)"\s*,\s*'
+    r'shortName:\s*"([^"]+)"\s*,\s*'
+    r'emoji:\s*"([^"]+)"\s*,.*?'
+    r'description:\s*"([^"]+)"',
+    re.DOTALL,
+)
+for slug, name, short_name, emoji, description in hub_pattern.findall(hub_source):
+    hubs.append({
+        'type': 'hub',
+        'slug': slug,
+        'name': name,
+        'aliases': [short_name] if short_name != name else [],
+        'description': description,
+        'category': 'Theo bệnh',
+        'emoji': emoji,
+    })
+print(f'Hubs: {len(hubs)}')
 
 # --- Get foods ---
 with (ROOT / 'public/api/foods-slim.json').open('r', encoding='utf-8') as f:
@@ -118,7 +162,7 @@ for item in food_slim:
 print(f'Foods: {len(foods)}')
 
 # --- Combine ---
-combined = articles + all_recipes + tools + foods
+combined = hubs + articles + all_recipes + tools + foods
 with (ROOT / 'public/api/search-index.json').open('w', encoding='utf-8') as f:
     json.dump(combined, f, ensure_ascii=False, indent=2)
 

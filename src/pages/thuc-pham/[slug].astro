@@ -26,6 +26,7 @@ if (!food) return Astro.redirect("/tim-kiem");
 if (requestedSlug !== canonicalSlug) return Astro.redirect(`/thuc-pham/${canonicalSlug}`);
 const source = sourceFor(food.sourceId);
 const qualityLabels: Record<string, string> = {
+  source_verified: "Đã đối chiếu nguồn trực tiếp",
   reviewed_keep_current: "Đã rà soát sơ bộ, giữ số hiện tại",
   recipe_estimate_only: "Dữ liệu ước tính từ công thức",
   needs_better_source: "Cần nguồn tốt hơn",
