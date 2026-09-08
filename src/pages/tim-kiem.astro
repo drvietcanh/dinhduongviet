@@ -88,12 +88,53 @@ const query = Astro.url.searchParams.get("q") ?? "";
       return 0;
     }
 
+    var QUERY_SYNONYMS = {
+      'tieu duong': ['dai thao duong', 'duong huyet', 'an com', 'glucose'],
+      'dai thao duong': ['tieu duong', 'duong huyet', 'glucose'],
+      'cao huyet ap': ['tang huyet ap', 'huyet ap cao', 'giam muoi', 'natri'],
+      'huyet ap cao': ['tang huyet ap', 'cao huyet ap', 'giam muoi'],
+      'mo mau': ['roi loan lipid mau', 'cholesterol', 'triglyceride', 'ldl'],
+      'gan nhiem mo': ['masld', 'mash', 'men gan cao', 'fructose'],
+      'bao tu': ['da day', 'trao nguoc', 'hp', 'o nong'],
+      'da day': ['bao tu', 'trao nguoc', 'hp', 'o nong'],
+      'gout': ['gut', 'acid uric', 'axit uric', 'purin'],
+      'gut': ['gout', 'acid uric', 'axit uric'],
+      'than': ['benh than', 'suy than', 'ckd', 'kali', 'phot pho'],
+      'suy than': ['benh than man', 'ckd', 'kali', 'phot pho'],
+      'ba bau': ['mang thai', 'thai ky', 'tieu duong thai ky', 'tien san giat'],
+      'mang thai': ['ba bau', 'thai ky', 'me bau'],
+      'tre em': ['nhi khoa', 'tre bieng an', 'tao bon tre em', 'beo phi tre em'],
+      'sot xuat huyet': ['dengue', 'bu nuoc', 'tieu cau'],
+      'ngo doc': ['ngo doc thuc pham', 'tieu chay', 'non oi', 'mat nuoc'],
+      'tieu chay': ['mat nuoc', 'oresol', 'bu nuoc', 'ngo doc thuc pham'],
+      'viem gan b': ['hbv', 'gan b', 'xet nghiem gan'],
+      'ruou': ['bia ruou', 'gan do ruou', 'xơ gan', 'xo gan'],
+      'mat sua': ['it sua', 'sau sinh', 'cho con bu', 'loi sua'],
+      'it sua': ['mat sua', 'sau sinh', 'cho con bu'],
+      'rang mieng': ['sau rang', 'nha chu', 'viem nuou', 'men rang'],
+      'viem hong': ['amidan', 'dau hong', 'lien cau'],
+      'man kinh': ['tien man kinh', 'boc hoa', 'tang can', 'loang xuong'],
+    };
+
+    function queryVariants(q) {
+      var variants = [q];
+      Object.keys(QUERY_SYNONYMS).forEach(function(key) {
+        if (q === key || q.indexOf(key) !== -1) {
+          QUERY_SYNONYMS[key].forEach(function(v) { variants.push(v); });
+        }
+      });
+      return variants.filter(function(v, idx, arr) { return v && arr.indexOf(v) === idx; });
+    }
+
     function searchScore(item, q, rawQ) {
       if (!q) return 1;
       var fields = [item.name, item.slug, item.category, item.description || ''].concat(item.aliases || []);
       var best = 0;
-      for (var i = 0; i < fields.length; i++) {
-        best = Math.max(best, fieldScore(fields[i], q, rawQ));
+      var variants = queryVariants(q);
+      for (var vi = 0; vi < variants.length; vi++) {
+        for (var i = 0; i < fields.length; i++) {
+          best = Math.max(best, fieldScore(fields[i], variants[vi], rawQ) - (vi === 0 ? 0 : 12));
+        }
       }
       best += aliasIntentBonus(fields.join(' '), q, rawQ);
       if (item.type === 'food') best += 3;
@@ -205,7 +246,9 @@ const query = Astro.url.searchParams.get("q") ?? "";
       var top = items.map(function(item) {
         var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
         var score = searchScore(item, qn, rawQ);
-        return { item: item, score: score, matched: matchesSearchText(searchText, qn) || score >= 70 };
+        var variants = queryVariants(qn);
+        var synonymMatch = variants.some(function(v) { return matchesSearchText(searchText, v); });
+        return { item: item, score: score, matched: matchesSearchText(searchText, qn) || synonymMatch || score >= 70 };
       }).filter(function(row) {
         return row.matched && row.score > 0;
       }).sort(function(a, b) {
@@ -267,8 +310,9 @@ const query = Astro.url.searchParams.get("q") ?? "";
       var matches = items.map(function(item) {
         var searchText = normalize(item.name + ' ' + (item.aliases || []).join(' ') + ' ' + item.category + ' ' + (item.description || ''));
         var textMatch = matchesSearchText(searchText, q);
+        var synonymMatch = queryVariants(q).some(function(v) { return matchesSearchText(searchText, v); });
         var score = searchScore(item, q, rawQ);
-        return { item: item, score: score, matched: (textMatch || score >= 70) && matchesFilter(item) };
+        return { item: item, score: score, matched: (textMatch || synonymMatch || score >= 70) && matchesFilter(item) };
       }).filter(function(row) {
         return row.matched && row.score > 0;
       }).map(function(row) {

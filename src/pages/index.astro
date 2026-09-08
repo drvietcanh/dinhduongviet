@@ -4,14 +4,17 @@ import AutoSearch from "../components/AutoSearch.astro";
 import FoodIcon from "../components/FoodIcon.astro";
 import DataSummary from "../components/DataSummary.astro";
 import NutrientStats from "../components/NutrientStats.astro";
+import { articles } from "../data/articles";
 import { foods, recipes } from "../data/nutrition";
-import { calculateRecipe, foodBySlug, allTags, tagLabel } from "../lib/nutrition";
+import { calculateRecipe, foodBySlug } from "../lib/nutrition";
 
 const phoRecipe = recipes.find((recipe) => recipe.slug === "pho-bo")!;
 const phoNutrients = calculateRecipe(phoRecipe);
 const categories = [...new Set(foods.map((f) => f.category))];
 const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
 const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
+const toolPageModules = import.meta.glob("./cong-cu/*.astro");
+const toolCount = Object.keys(toolPageModules).filter((path) => !path.endsWith("/index.astro")).length;
 const toolCards = [
   { href: "/cong-cu/nhat-ky", icon: "📓", name: "Nhật ký ăn uống", desc: "Ghi bữa ăn và xem tổng hợp theo ngày, tuần" },
   { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu và chọn mục tiêu phù hợp" },
@@ -43,10 +46,10 @@ const toolCards = [
       <a class="cta-btn cta-outline" href="/cong-cu/nhat-ky">📓 Ghi bữa ăn</a>
     </div>
     <div class="hero-trust animate-fade-in-up" style="animation-delay: 0.38s;" aria-label="Thông tin độ tin cậy">
-      <span>📚 325 bài viết</span>
-      <span>🥬 777 thực phẩm</span>
-      <span>🍜 232 món ăn</span>
-      <span>🛠️ 37 công cụ</span>
+      <span>📚 {articles.length} bài viết</span>
+      <span>🥬 {foods.length} thực phẩm</span>
+      <span>🍜 {recipes.length} món ăn</span>
+      <span>🛠️ {toolCount} công cụ</span>
     </div>
   </section>
 
