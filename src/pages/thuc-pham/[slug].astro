@@ -7,6 +7,7 @@ import DRIWidget from "../../components/DRIWidget.astro";
 import HealthAlert from "../../components/HealthAlert.astro";
 import GlycemicLoad from "../../components/GlycemicLoad.astro";
 import VNHealthScore from "../../components/VNHealthScore.astro";
+import AddToDiary from "../../components/AddToDiary.astro";
 import { foods } from "../../data/nutrition";
 import { confidenceLabel, foodBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
 import { foodSlugAliases } from "../../lib/food-slug-aliases";
@@ -32,6 +33,8 @@ const qualityLabels: Record<string, string> = {
   needs_external_source: "Cần nguồn ngoài để đối chiếu",
 };
 const qualityNote = food.sourceReviewStatus ? qualityLabels[food.sourceReviewStatus] : "";
+const sourceHref = source?.url ?? "/phuong-phap";
+const reviewMailto = `mailto:drvietcanh@gmail.com?subject=${encodeURIComponent(`Rà soát dữ liệu thực phẩm: ${food.name}`)}`;
 const pageDescription = `Tra cứu 100g ${food.name}: khoảng ${Math.round(food.nutrients.energyKcal ?? 0)} kcal, ${Math.round(food.nutrients.proteinG ?? 0)}g đạm, ${Math.round(food.nutrients.carbG ?? 0)}g carb và ${Math.round(food.nutrients.fatG ?? 0)}g chất béo.`;
 const nextFoodLinks = [
   { href: `/cong-cu/so-sanh-thuc-pham?left=${food.slug}`, label: "So sánh thực phẩm", note: "Đặt cạnh món khác để nhìn khác biệt nhanh." },
@@ -130,6 +133,7 @@ var foodSchema = {
       <h2>Đọc nhanh</h2>
       <p>Số liệu mặc định áp theo 100g phần ăn được. Nếu bạn ăn ít hơn hoặc nhiều hơn mức này, hãy đổi lại khẩu phần trước khi so sánh.</p>
     </div>
+    <AddToDiary type="food" itemId={food.id} defaultAmount={100} />
   </section>
 
   <HealthAlert nutrients={food.nutrients} name={food.name} category={food.category} />
@@ -191,6 +195,10 @@ var foodSchema = {
           <span>Mức tin cậy</span>
           <strong>{confidenceLabel(food.confidence)}</strong>
         </div>
+        <div class="source-fact">
+          <span>Cơ sở quy đổi</span>
+          <strong>{food.basis}</strong>
+        </div>
       </div>
       {qualityNote && (
         <div class="quality-note">
@@ -201,7 +209,11 @@ var foodSchema = {
       )}
       <div class="source-copy">
         <p><strong>Lưu ý sai số:</strong> {food.note}</p>
-        <p>Khi cần dùng chặt hơn, nên đối chiếu lại với nguồn gốc.</p>
+        <p>Khi cần dùng chặt hơn, nên đối chiếu lại với nguồn gốc và trạng thái chế biến thực tế.</p>
+      </div>
+      <div class="source-actions">
+        <a href={sourceHref} target={source?.url ? "_blank" : undefined} rel={source?.url ? "noreferrer" : undefined}>{source?.url ? "Mở nguồn gốc dữ liệu" : "Xem phương pháp và nguồn dữ liệu"}</a>
+        <a href={reviewMailto}>Báo dữ liệu cần rà soát</a>
       </div>
     </div>
   </section>
@@ -566,6 +578,18 @@ var foodSchema = {
   .source-fact strong {
     font-size: 0.92rem;
     line-height: 1.4;
+  }
+
+  .source-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .source-actions a {
+    color: var(--brand-dark);
+    font-size: 0.86rem;
+    font-weight: 800;
   }
 
   .source-copy {

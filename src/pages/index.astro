@@ -13,6 +13,7 @@ const categories = [...new Set(foods.map((f) => f.category))];
 const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
 const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
 const toolCards = [
+  { href: "/cong-cu/nhat-ky", icon: "📓", name: "Nhật ký ăn uống", desc: "Ghi bữa ăn và xem tổng hợp theo ngày, tuần" },
   { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu và chọn mục tiêu phù hợp" },
   { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI", desc: "Đánh giá nhanh cân nặng theo ngưỡng châu Á" },
   { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", name: "So sánh thực phẩm", desc: "Đặt nhiều thực phẩm cạnh nhau để chọn nhanh" },
@@ -37,11 +38,9 @@ const toolCards = [
     <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Tra nhanh calo, protein, carb, chất béo của thực phẩm và món ăn Việt Nam theo 100g hoặc khẩu phần.</p>
     <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
     <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
-      <a class="cta-btn" href="/thuc-pham">🥬 Tra thực phẩm</a>
-      <a class="cta-btn" href="/mon-an">🍜 Tra món ăn</a>
+      <a class="cta-btn" href="/tim-kiem">🔎 Tra thực phẩm &amp; món ăn</a>
+      <a class="cta-btn" href="/cong-cu/nhat-ky">📓 Ghi bữa ăn hôm nay</a>
       <a class="cta-btn cta-outline" href="/ban-do-benh">🩺 Bệnh lý</a>
-      <a class="cta-btn cta-outline" href="/cong-cu">🧮 Công cụ</a>
-      <a class="cta-btn cta-outline" href="/dung-tin-ngay">🔍 Đừng Tin Ngay</a>
     </div>
   </section>
 
@@ -80,10 +79,10 @@ const toolCards = [
         <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
         <div class="entry-desc">Ước tính nhu cầu năng lượng và chọn hướng theo dõi phù hợp</div>
       </a>
-      <a href="/thuc-don" class="entry-card card-diet">
-        <div class="entry-icon">📋</div>
-        <div class="entry-title">Tôi cần thực đơn cụ thể</div>
-        <div class="entry-desc">Thực đơn mẫu theo mục tiêu, món dễ áp dụng và gợi ý ăn ngoài hàng</div>
+      <a href="/cong-cu/nhat-ky" class="entry-card card-diet">
+        <div class="entry-icon">📓</div>
+        <div class="entry-title">Tôi muốn ghi lại bữa ăn</div>
+        <div class="entry-desc">Ghi thực phẩm và món ăn theo từng bữa, rồi xem tổng hợp ngày và tuần</div>
       </a>
     </div>
   </section>
@@ -225,69 +224,6 @@ const toolCards = [
         }
       }
     }
-  } catch(e) {}
-})();
-</script>
-
-  <!-- Meal tracker dashboard banner -->
-  <script>
-(function() {
-  try {
-    var raw = localStorage.getItem("mt-diary-v2");
-    if(!raw) return;
-    var log = JSON.parse(raw);
-    if(typeof log !== "object") return;
-    var d = new Date();
-    var y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0"), dd = String(d.getDate()).padStart(2,"0");
-    var today = y+"-"+m+"-"+dd;
-    var dayLog = log[today];
-    if(!dayLog) return;
-
-    // Compute totals
-    var totals = {kcal:0,protein:0,fat:0,carb:0,fiber:0};
-    var hasData = false;
-    Object.values(dayLog).forEach(function(items) {
-      (items||[]).forEach(function() { hasData = true; });
-    });
-    if(!hasData) return;
-
-    // Load targets
-    var tgtEnergy = 2000, tgtProtein = 60, tgtFiber = 25;
-    try {
-      var mt = localStorage.getItem("mt-target-v2");
-      if(mt) {
-        var tgt = JSON.parse(mt);
-        if(tgt && tgt.weight) {
-          var a = tgt.age||30, s = tgt.sex||"male", w = tgt.weight, h = tgt.height||168;
-          var ac = tgt.activity||1.55, gl = tgt.goal||"maintain";
-          var bmr = s==="male" ? 10*w+6.25*h-5*a+5 : 10*w+6.25*h-5*a-161;
-          tgtEnergy = Math.round(bmr*ac);
-          if(gl==="lose") tgtEnergy = Math.round(tgtEnergy*0.85);
-          else if(gl==="gain") tgtEnergy = Math.round(tgtEnergy*1.15);
-          tgtProtein = Math.round(w*(gl==="gain"?2.0:1.4));
-        }
-      }
-    } catch(e){}
-
-    var kcal = 0, protein = 0, fiber = 0, fat = 0, carb = 0;
-    var foodNames = [];
-    Object.keys(dayLog).forEach(function(slot) {
-      (dayLog[slot]||[]).forEach(function(it) {
-        kcal += it.kcal||0;
-        protein += it.protein||0;
-        fiber += it.fiber||0;
-        fat += it.fat||0;
-        carb += it.carb||0;
-        if(it.name) foodNames.push(it.name);
-      });
-    });
-
-    // We don't have full nutrient data in log, only IDs. Use the search approach:
-    // Display just calorie total based on entry counts. More accurate from the actual tool.
-
-    var count = 0;
-    Object.values(dayLog).forEach(function(items){count += (items||[]).length;});
-
   } catch(e) {}
 })();
 </script>

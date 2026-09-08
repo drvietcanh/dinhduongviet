@@ -1,0 +1,180 @@
+---
+interface Props {
+  type: "food" | "recipe";
+  itemId: string;
+  defaultAmount?: number;
+}
+
+const { type, itemId, defaultAmount = 100 } = Astro.props;
+const safeAmount = Number.isFinite(defaultAmount) && defaultAmount > 0 ? defaultAmount : 100;
+---
+
+<details class="diary-add" data-diary-add data-type={type} data-item-id={itemId} data-default-amount={safeAmount}>
+  <summary>＋ Ghi vào nhật ký</summary>
+  <form class="diary-add-form">
+    <label>
+      <span>Khẩu phần (g)</span>
+      <input name="amount" type="number" min="1" step="1" value={safeAmount} inputmode="decimal" required />
+    </label>
+    <label>
+      <span>Bữa ăn</span>
+      <select name="slot">
+        <option value="sang">🌅 Sáng</option>
+        <option value="trua">🌞 Trưa</option>
+        <option value="chieu">🌆 Chiều</option>
+        <option value="toi">🌙 Tối</option>
+        <option value="phu">🍿 Bữa phụ</option>
+      </select>
+    </label>
+    <div class="diary-add-actions">
+      <button type="submit">Thêm hôm nay</button>
+      <a href="/cong-cu/nhat-ky">Mở nhật ký</a>
+    </div>
+    <p class="diary-add-status" role="status" aria-live="polite"></p>
+  </form>
+  <p class="diary-add-note">Nhật ký được lưu riêng trên trình duyệt này.</p>
+</details>
+
+<script>
+  const slots = ["sang", "trua", "chieu", "toi", "phu"];
+
+  function todayKey() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-diary-add]").forEach((root) => {
+    if (root.dataset.ready === "true") return;
+    root.dataset.ready = "true";
+
+    const form = root.querySelector<HTMLFormElement>(".diary-add-form");
+    const status = root.querySelector<HTMLElement>(".diary-add-status");
+    if (!form || !status) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const amountInput = form.elements.namedItem("amount") as HTMLInputElement | null;
+      const slotInput = form.elements.namedItem("slot") as HTMLSelectElement | null;
+      const amount = Number.parseFloat(amountInput?.value ?? "");
+      const slot = slotInput?.value ?? "";
+      const type = root.dataset.type;
+      const itemId = root.dataset.itemId;
+
+      if (!Number.isFinite(amount) || amount <= 0 || !slots.includes(slot) || (type !== "food" && type !== "recipe") || !itemId) {
+        status.textContent = "Hãy nhập khẩu phần lớn hơn 0 g.";
+        return;
+      }
+
+      try {
+        const raw = localStorage.getItem("mt-diary-v2");
+        const parsed = raw ? JSON.parse(raw) : {};
+        const log = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+        const key = todayKey();
+        const dayLog = log[key] && typeof log[key] === "object" && !Array.isArray(log[key]) ? log[key] : {};
+        slots.forEach((slotId) => {
+          if (!Array.isArray(dayLog[slotId])) dayLog[slotId] = [];
+        });
+        dayLog[slot].push({ type, id: itemId, amount: Math.round(amount * 100) / 100 });
+        log[key] = dayLog;
+        localStorage.setItem("mt-diary-v2", JSON.stringify(log));
+        status.textContent = "Đã thêm vào nhật ký hôm nay.";
+      } catch {
+        status.textContent = "Không thể lưu trên trình duyệt này. Hãy thử lại.";
+      }
+    });
+  });
+</script>
+
+<style>
+  .diary-add {
+    border: 1px solid var(--brand-light2);
+    border-radius: var(--radius);
+    background: var(--brand-subtle);
+    color: var(--ink);
+    padding: 0 14px;
+  }
+
+  .diary-add summary {
+    color: var(--brand-dark);
+    cursor: pointer;
+    font-weight: 800;
+    list-style: none;
+    padding: 12px 0;
+  }
+
+  .diary-add summary::-webkit-details-marker { display: none; }
+  .diary-add summary::after { content: "▾"; float: right; }
+  .diary-add[open] summary::after { transform: rotate(180deg); }
+
+  .diary-add-form {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 2px 0 4px;
+  }
+
+  .diary-add-form label {
+    color: var(--ink-secondary);
+    display: grid;
+    font-size: 0.8rem;
+    font-weight: 700;
+    gap: 5px;
+  }
+
+  .diary-add-form input,
+  .diary-add-form select {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--ink);
+    font: inherit;
+    padding: 9px 10px;
+  }
+
+  .diary-add-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    grid-column: 1 / -1;
+  }
+
+  .diary-add-actions button {
+    background: var(--brand);
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    padding: 9px 12px;
+  }
+
+  .diary-add-actions a {
+    color: var(--brand-dark);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .diary-add-status {
+    color: var(--brand-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
+    grid-column: 1 / -1;
+    margin: 0;
+    min-height: 1.25em;
+  }
+
+  .diary-add-note {
+    color: var(--ink-tertiary);
+    font-size: 0.76rem;
+    margin: 6px 0 12px;
+  }
+
+  @media (max-width: 420px) {
+    .diary-add-form { grid-template-columns: 1fr; }
+  }
+</style>

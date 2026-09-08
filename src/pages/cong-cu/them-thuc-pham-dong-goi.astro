@@ -22,6 +22,10 @@ const domain = "dinhduongviet.vn";
   .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 7px 10px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; }
   .form-group input:focus, .form-group select:focus { border-color: #4299e1; outline: none; }
   .form-group .hint { font-size: 0.7rem; color: #a0aec0; }
+  .field-inline { display: flex; gap: 6px; align-items: stretch; }
+  .field-inline input { flex: 1; min-width: 0; }
+  .scan-btn { white-space: nowrap; padding: 7px 10px; border: 1px solid #cbd5e0; border-radius: 6px; background: #f7fafc; color: #2d3748; cursor: pointer; font-size: 0.8rem; }
+  .scan-btn:hover { background: #edf2f7; }
   .btn-primary { background: #4299e1; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
   .btn-primary:hover { background: #3182ce; }
   .btn-secondary { background: #e2e8f0; color: #2d3748; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
@@ -49,6 +53,10 @@ const domain = "dinhduongviet.vn";
   .search-bar { margin-bottom: 12px; }
   .search-bar input { width: 100%; padding: 8px 12px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; }
   .badge { display: inline-block; background: #edf2f7; border-radius: 99px; padding: 1px 8px; font-size: 0.75rem; color: #4a5568; margin-left: 4px; }
+  .trust-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .trust-pill { border-radius: 99px; padding: 2px 8px; font-size: 0.7rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; }
+  .trust-pill.warn { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+  .trust-pill.ok { background: #ecfdf5; border-color: #bbf7d0; color: #166534; }
   .count-bar { font-size: 0.85rem; color: #718096; margin-bottom: 8px; }
   .safety-shell { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #9a3412; margin-bottom: 16px; line-height: 1.6; }
   .data-shell { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #475569; margin-bottom: 16px; line-height: 1.6; }
@@ -103,6 +111,19 @@ const domain = "dinhduongviet.vn";
       <label>Thương hiệu</label>
       <input type="text" id="fBrand" placeholder="VD: Acecook" />
      </div>
+     <div class="form-group">
+      <label>Mã vạch / barcode</label>
+      <div class="field-inline">
+       <input type="text" id="fBarcode" inputmode="numeric" placeholder="VD: 893..." />
+       <button type="button" class="scan-btn" id="scanBarcodeBtn" title="Chọn ảnh có mã vạch để quét">📷 Quét</button>
+       <input type="file" id="barcodeImageInput" accept="image/*" capture="environment" hidden />
+      </div>
+      <span class="hint">Có thể chọn ảnh mã vạch; trình duyệt hỗ trợ BarcodeDetector sẽ tự điền số.</span>
+     </div>
+     <div class="form-group">
+      <label>Ngày đọc nhãn</label>
+      <input type="date" id="fLabelDate" />
+     </div>
      <div class="form-group full-width">
       <label>Danh mục</label>
       <select id="fCategory">
@@ -117,6 +138,15 @@ const domain = "dinhduongviet.vn";
        <option value="Thực phẩm đông lạnh">Thực phẩm đông lạnh</option>
        <option value="Sốt, gia vị chế biến sẵn">Sốt, gia vị chế biến sẵn</option>
        <option value="Khác">Khác</option>
+      </select>
+     </div>
+     <div class="form-group full-width">
+      <label>Trạng thái nguồn</label>
+      <select id="fSourceStatus">
+       <option value="label-entered">Đã nhập từ nhãn sản phẩm</option>
+       <option value="needs-photo-review">Cần đối chiếu lại ảnh nhãn</option>
+       <option value="brand-website">Đối chiếu thêm với website hãng</option>
+       <option value="estimate">Ước tính, chưa đủ nguồn</option>
       </select>
      </div>
     </div>
@@ -235,6 +265,41 @@ const domain = "dinhduongviet.vn";
 
   loadData();
 
+  // Progressive barcode scan: dùng ảnh trên thiết bị, không gửi dữ liệu ra ngoài.
+  const scanBarcodeBtn = document.getElementById('scanBarcodeBtn');
+  const barcodeImageInput = document.getElementById('barcodeImageInput');
+  if (scanBarcodeBtn && barcodeImageInput) {
+   scanBarcodeBtn.addEventListener('click', () => {
+    if (!('BarcodeDetector' in window)) {
+     showToast('ℹ️ Trình duyệt chưa hỗ trợ quét tự động. Bạn có thể nhập barcode thủ công.');
+     return;
+    }
+    barcodeImageInput.click();
+   });
+   barcodeImageInput.addEventListener('change', async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    try {
+     const Detector = window.BarcodeDetector;
+     const detector = new Detector({ formats: ['ean_13', 'ean_8', 'upc_a', 'upc_e', 'code_128'] });
+     const bitmap = await createImageBitmap(file);
+     const codes = await detector.detect(bitmap);
+     bitmap.close();
+     const value = codes?.[0]?.rawValue;
+     if (!value) {
+      showToast('⚠️ Không nhận diện được mã vạch. Thử ảnh rõ hơn hoặc nhập thủ công.');
+      return;
+     }
+     document.getElementById('fBarcode').value = value;
+     showToast('✅ Đã nhận diện barcode: ' + value);
+    } catch (error) {
+     console.warn('Barcode scan failed', error);
+     showToast('⚠️ Không thể quét ảnh này. Bạn có thể nhập barcode thủ công.');
+    }
+   });
+  }
+
   // category emoji
   function catEmoji(cat) {
    const map = {
@@ -320,6 +385,7 @@ const domain = "dinhduongviet.vn";
    info.appendChild(name);
    info.appendChild(brand);
    info.appendChild(stats);
+   info.appendChild(makeTrustRow(f));
 
    const action = document.createElement('div');
    action.className = 'faction';
@@ -338,11 +404,49 @@ const domain = "dinhduongviet.vn";
    delBtn.textContent = '🗑️';
    delBtn.addEventListener('click', () => window.deleteFood(f.id));
 
+   const diaryBtn = document.createElement('button');
+   diaryBtn.className = 'diary-btn';
+   diaryBtn.type = 'button';
+   diaryBtn.title = 'Ghi nhanh 1 khẩu phần vào nhật ký';
+   diaryBtn.textContent = '➕';
+   diaryBtn.addEventListener('click', () => window.addPackagedToDiary(f.id));
+
+   action.appendChild(diaryBtn);
    action.appendChild(editBtn);
    action.appendChild(delBtn);
    item.appendChild(info);
    item.appendChild(action);
    return item;
+  }
+
+  function makeTrustRow(f) {
+   const row = document.createElement('div');
+   row.className = 'trust-row';
+
+   const barcode = document.createElement('span');
+   barcode.className = 'trust-pill';
+   barcode.textContent = f.barcode ? `Barcode ${f.barcode}` : 'Chưa có barcode';
+
+   const labelDate = document.createElement('span');
+   labelDate.className = f.labelDate ? 'trust-pill ok' : 'trust-pill warn';
+   labelDate.textContent = f.labelDate ? `Nhãn ${f.labelDate}` : 'Chưa có ngày nhãn';
+
+   const source = document.createElement('span');
+   source.className = f.sourceStatus === 'label-entered' || f.sourceStatus === 'brand-website' ? 'trust-pill ok' : 'trust-pill warn';
+   source.textContent = sourceStatusLabel(f.sourceStatus);
+
+   row.append(barcode, labelDate, source);
+   return row;
+  }
+
+  function sourceStatusLabel(status) {
+   const map = {
+    'label-entered': 'Nguồn: nhãn',
+    'needs-photo-review': 'Cần so ảnh nhãn',
+    'brand-website': 'Đã đối chiếu hãng',
+    'estimate': 'Ước tính',
+   };
+   return map[status] || 'Nguồn chưa rõ';
   }
 
   // Generate unique ID
@@ -371,7 +475,10 @@ const domain = "dinhduongviet.vn";
   window.saveFood = function() {
    const name = document.getElementById('fName').value.trim();
    const brand = document.getElementById('fBrand').value.trim();
+   const barcode = document.getElementById('fBarcode').value.trim();
+   const labelDate = document.getElementById('fLabelDate').value;
    const category = document.getElementById('fCategory').value;
+   const sourceStatus = document.getElementById('fSourceStatus').value;
    const serving = parseNullableNumber('fServing');
    const kcal = parseNullableNumber('fKcal');
    const protein = parseNullableNumber('fProtein');
@@ -392,19 +499,20 @@ const domain = "dinhduongviet.vn";
    // Validate
    if (!name) { showToast('⚠️ Vui lòng nhập tên sản phẩm'); return; }
    if (kcal === null && protein === null && carb === null && fat === null) { showToast('⚠️ Nhập ít nhất năng lượng hoặc đạm/carb/béo'); return; }
+   if (barcode && !/^[0-9A-Za-z -]{6,32}$/.test(barcode)) { showToast('⚠️ Mã vạch nên gồm 6-32 ký tự số/chữ'); return; }
 
    if (editId) {
     // Update existing
     const idx = foods.findIndex(f => f.id === editId);
     if (idx >= 0) {
-     foods[idx] = { ...foods[idx], name, brand, category, serving, servingUnit: 'g/ml', kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, modified: Date.now() };
+     foods[idx] = { ...foods[idx], name, brand, barcode, labelDate, category, sourceStatus, serving, servingUnit: 'g/ml', kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, modified: Date.now() };
      saveData();
      showToast('✅ Đã cập nhật: ' + name);
     }
    } else {
     // Add new
     const id = genId(name, brand);
-    const food = { id, name, brand, category, serving, servingUnit: 'g/ml', kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, created: Date.now(), modified: Date.now() };
+    const food = { id, name, brand, barcode, labelDate, category, sourceStatus, serving, servingUnit: 'g/ml', kcal, protein, carb, fat, fiber, sugar, satFat, chol, sodium, potassium, calcium, iron, vitC, note, created: Date.now(), modified: Date.now() };
     foods.push(food);
     saveData();
     showToast('✅ Đã thêm: ' + name);
@@ -420,7 +528,10 @@ const domain = "dinhduongviet.vn";
    document.getElementById('editId').value = f.id;
    document.getElementById('fName').value = f.name;
    document.getElementById('fBrand').value = f.brand || '';
+   document.getElementById('fBarcode').value = f.barcode || '';
+   document.getElementById('fLabelDate').value = f.labelDate || '';
    document.getElementById('fCategory').value = f.category || 'Khác';
+   document.getElementById('fSourceStatus').value = f.sourceStatus || 'label-entered';
    document.getElementById('fServing').value = f.serving ?? 100;
    document.getElementById('fKcal').value = f.kcal ?? '';
    document.getElementById('fProtein').value = f.protein ?? '';
@@ -453,7 +564,10 @@ const domain = "dinhduongviet.vn";
    document.getElementById('editId').value = '';
    document.getElementById('fName').value = '';
    document.getElementById('fBrand').value = '';
+   document.getElementById('fBarcode').value = '';
+   document.getElementById('fLabelDate').value = new Date().toISOString().slice(0, 10);
    document.getElementById('fCategory').value = 'Mì, bún, phở ăn liền';
+   document.getElementById('fSourceStatus').value = 'label-entered';
    document.getElementById('fServing').value = '100';
    document.getElementById('fKcal').value = '';
    document.getElementById('fProtein').value = '';
@@ -517,7 +631,10 @@ const domain = "dinhduongviet.vn";
         id: genId(safeName, safeBrand),
         name: safeName,
         brand: safeBrand,
+        barcode: String(f?.barcode || '').trim(),
+        labelDate: String(f?.labelDate || '').trim(),
         category: String(f?.category || 'Khác'),
+        sourceStatus: String(f?.sourceStatus || 'label-entered'),
         serving: Number.isFinite(Number(f?.serving)) ? Number(f.serving) : null,
         servingUnit: 'g/ml',
         kcal: Number.isFinite(Number(f?.kcal)) ? Number(f.kcal) : null,
@@ -558,7 +675,30 @@ const domain = "dinhduongviet.vn";
    setTimeout(() => { $t.style.display = 'none'; }, 2500);
   }
 
+  function todayLocalISO() {
+   const d = new Date();
+   d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+   return d.toISOString().slice(0, 10);
+  }
+
+  window.addPackagedToDiary = function(id) {
+   const food = foods.find(f => f.id === id);
+   if (!food) return;
+   const amount = Number(food.serving) > 0 ? Number(food.serving) : 100;
+
+   const diaryKey = 'mt-diary-v2';
+   let diary = {};
+   try { diary = JSON.parse(localStorage.getItem(diaryKey) || '{}') || {}; } catch(e) { diary = {}; }
+   const dateKey = todayLocalISO();
+   if (!diary[dateKey]) diary[dateKey] = { sang: [], trua: [], chieu: [], toi: [], phu: [] };
+   if (!Array.isArray(diary[dateKey].phu)) diary[dateKey].phu = [];
+   diary[dateKey].phu.push({ type: 'packaged', id: food.id, amount, name: food.name, brand: food.brand || '', nutrients: { energyKcal: food.kcal, proteinG: food.protein, carbG: food.carb, fatG: food.fat, fiberG: food.fiber, sugarG: food.sugar, sodiumMg: food.sodium }, serving: food.serving || 100, sourceStatus: food.sourceStatus || 'label-entered', labelDate: food.labelDate || '' });
+   localStorage.setItem(diaryKey, JSON.stringify(diary));
+   showToast('✅ Đã ghi vào nhật ký hôm nay: ' + food.name);
+  };
+
   // Initial render
+  document.getElementById('fLabelDate').value = new Date().toISOString().slice(0, 10);
   renderList();
  })();
  </script>

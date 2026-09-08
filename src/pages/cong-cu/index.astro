@@ -19,6 +19,7 @@ const toolGroups = [
       { icon: "🔎", name: "Lọc thực phẩm", href: "/cong-cu/loc-thuc-pham", desc: "Lọc thực phẩm theo nhóm và chỉ số dinh dưỡng. Dùng khi cần thu hẹp lựa chọn nhanh.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "⚖️", name: "So sánh thực phẩm", href: "/cong-cu/so-sanh-thuc-pham", desc: "So sánh thành phần dinh dưỡng giữa nhiều thực phẩm. Dùng khi cần chọn nhanh giữa các lựa chọn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🍱", name: "So sánh bữa ăn", href: "/cong-cu/so-sanh-bua-an", desc: "So sánh dữ liệu dinh dưỡng giữa các bữa ăn. Dùng khi cần nhìn rõ khác biệt khẩu phần.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "📦", name: "Thêm thực phẩm đóng gói", href: "/cong-cu/them-thuc-pham-dong-goi", desc: "Nhập dữ liệu từ nhãn sản phẩm và lưu trên thiết bị. Dùng khi món chưa có trong dữ liệu sẵn có.", status: "Bổ trợ", statusType: "support" },
     ],
   },
   {
@@ -65,6 +66,7 @@ const toolGroups = [
     title: "Thực đơn, đi chợ, nhật ký",
     summary: "Phù hợp khi đã có mục tiêu tương đối rõ và muốn biến nó thành việc làm được mỗi ngày.",
     items: [
+      { icon: "📓", name: "Nhật ký ăn uống", href: "/cong-cu/nhat-ky", desc: "Ghi thực phẩm và món ăn theo từng bữa, rồi xem tổng hợp ngày và tuần.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "✅", name: "Checklist ăn uống hôm nay", href: "/cong-cu/checklist-an-uong", desc: "Checklist nhắc việc ăn uống trong ngày. Không dùng để kết luận khẩu phần đã đủ hay chưa.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🍽️", name: "Đĩa ăn lành mạnh", href: "/cong-cu/dia-an-lanh-manh", desc: "Định hướng đĩa ăn chung. Dùng khi cần nhìn nhanh tỷ lệ nhóm thực phẩm.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "📋", name: "Kế hoạch bữa ăn", href: "/cong-cu/ke-hoach-bua-an", desc: "Lập khung bữa ăn tham khảo. Dùng khi cần bắt đầu từ một nhịp ăn rõ hơn.", status: "Đã kiểm v1", statusType: "stable" },
@@ -121,7 +123,6 @@ const holdBackTools = [
   { name: "Tương tác thuốc", reason: "Nguy cơ hiểu nhầm cao nếu người dùng tự diễn giải mà không có đơn thuốc, bệnh nền và xác nhận từ bác sĩ." },
   { name: "Tương tác thuốc - thực phẩm", reason: "Thuộc nhóm cần nguồn khóa chặt và rà soát lâm sàng liên tục hơn công cụ dinh dưỡng phổ thông." },
   { name: "Nhật ký ăn uống", reason: "Giá trị có nhưng dễ trùng vai với kế hoạch bữa ăn và theo dõi sức khỏe nếu đặt nổi bật ngang hàng." },
-  { name: "Thêm thực phẩm đóng gói", reason: "Phù hợp hơn như tính năng phụ trợ dữ liệu, không nên là công cụ lõi trên bề mặt chính." },
 ];
 ---
 

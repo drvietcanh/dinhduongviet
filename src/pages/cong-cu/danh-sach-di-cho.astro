@@ -68,6 +68,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
     .clear-btn:hover { background: var(--bg-soft); transform: translateY(-1px); }
     .clear-btn:active { transform: translateY(0); }
+    .bridge-actions { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .bridge-actions a,
+    .bridge-actions button {
+      display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border-radius:var(--radius);
+      border:1px solid var(--card-border); background:var(--card); color:var(--brand); font-weight:700;
+      text-decoration:none; cursor:pointer; font-size:0.86rem;
+    }
+    .bridge-actions button:hover,
+    .bridge-actions a:hover { background:var(--brand-light); border-color:var(--brand); }
 
     @media (max-width: 768px) {
       .layout { flex-direction: column; }
@@ -93,6 +102,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="layout">
       <!-- Recipe selection panel -->
       <div class="recipe-panel">
+        <div class="bridge-actions">
+          <button type="button" id="load-week-plan">Nạp từ thực đơn tuần</button>
+          <a href="/cong-cu/lap-thuc-don-tuan">Lập thực đơn</a>
+        </div>
         <div class="search-box">
           <input type="text" id="recipe-search" placeholder="🔍 Tìm món ăn...">
         </div>
@@ -123,6 +136,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     let recipes = [];
     let foods = [];
     let selected = new Set();
+    const WEEK_PLAN_KEY = "ddv_week_plan_v1";
 
     const CAT_ORDER = [
       "Rau xanh", "Củ quả", "Nấm", "Trái cây", "Rau gia vị",
@@ -202,7 +216,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       // Only recipes with ingredients
       recipes = r.filter(rec => rec.ingredients && rec.ingredients.length > 0);
       foods = f;
+      maybeLoadWeekPlan();
       renderRecipes();
+      updateList();
     }).catch(() => {
       const container = document.getElementById("recipe-list");
       renderRecipeEmpty(container, "");
@@ -293,6 +309,45 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     document.getElementById("recipe-search").addEventListener("input", function() {
       renderRecipes(this.value);
     });
+
+    document.getElementById("load-week-plan").addEventListener("click", function() {
+      if (loadWeekPlanSelection(true)) {
+        renderRecipes(document.getElementById("recipe-search").value);
+        updateList();
+      }
+    });
+
+    function maybeLoadWeekPlan() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("from") === "week-plan") {
+        loadWeekPlanSelection(false);
+      }
+    }
+
+    function loadWeekPlanSelection(showMessage) {
+      let plan = null;
+      try { plan = JSON.parse(localStorage.getItem(WEEK_PLAN_KEY) || "null"); } catch(e) {}
+      if (!plan || !Array.isArray(plan.days)) {
+        if (showMessage) alert("Chưa có thực đơn tuần đã lưu. Hãy tạo thực đơn trước.");
+        return false;
+      }
+
+      const slugs = new Set();
+      plan.days.forEach(function(day) {
+        (day.recipeSlugs || []).forEach(function(slug) { slugs.add(slug); });
+      });
+      if (!slugs.size) {
+        if (showMessage) alert("Thực đơn tuần chưa có món để tạo danh sách.");
+        return false;
+      }
+
+      selected.clear();
+      recipes.forEach(function(recipe) {
+        if (slugs.has(recipe.slug) || slugs.has(recipe.id)) selected.add(recipe.id);
+      });
+      if (showMessage) alert("Đã nạp " + selected.size + " món từ thực đơn tuần.");
+      return selected.size > 0;
+    }
 
     // Build shopping list
     function updateList() {

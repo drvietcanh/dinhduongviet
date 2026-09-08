@@ -125,6 +125,7 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
     <div class="gen-row">
       <button class="btn-gen" onclick="generatePlan()">✨ Tạo thực đơn tuần</button>
       <button class="btn-outline" onclick="exportPlan()" id="exportBtn" style="display:none;">📤 Xuất văn bản</button>
+      <button class="btn-outline" onclick="openShoppingFromPlan()" id="shoppingBtn" style="display:none;">🛒 Tạo danh sách đi chợ</button>
     </div>
   </section>
 
@@ -145,6 +146,8 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
   var MEAL_VI = { sang:"🌅 Sáng", trua:"🌞 Trưa", chieu:"🌆 Chiều", toi:"🌙 Tối" };
   var MEAL_PCT = { sang:0.25, trua:0.35, chieu:0.10, toi:0.30 };
   var DAY_NAMES = ["Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy","Chủ Nhật"];
+  var PLAN_STORAGE_KEY = "ddv_week_plan_v1";
+  var currentPlan = null;
   var SAFETY_GROUPS = {
     tieuDuong: "Đái tháo đường, tiền đái tháo đường, đang dùng insulin hoặc thuốc hạ đường huyết",
     tangHuyetAp: "Tăng huyết áp, bệnh tim mạch, suy tim hoặc đang dùng thuốc liên quan",
@@ -159,6 +162,19 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
     "nhieu-xo": function(r) { return r.fiber >= 3; },
     "it-do-ngot": function(r) { return r.sugar < 10; },
   };
+
+  function isDinnerFriendly(r) {
+    var mealContexts = r.mealContexts || [];
+    if (mealContexts.indexOf("communal") !== -1 || mealContexts.indexOf("dinner-heavy") !== -1) return false;
+    if (mealContexts.indexOf("dinner-light") !== -1) return true;
+    var n = (r.name + " " + (r.tags || []).join(" ")).toLowerCase();
+    if (n.indexOf("lẩu") !== -1 || n.indexOf(" lau ") !== -1 || n.indexOf("lau ") === 0) return false;
+    if (r.kcal > 520) return false;
+    if (r.fat > 18) return false;
+    if (r.sodium > 700) return false;
+    if (r.satFat > 6) return false;
+    return !["chiên", "rán", "xôi", "nướng", "buffet"].some(function(k) { return n.indexOf(k) !== -1; });
+  }
 
   // Pick recipe closest to target calories from a pool
   function pickBest(pool, targetCal, history) {
@@ -312,11 +328,30 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
         plan.push(dayPlan);
       }
 
+      currentPlan = {
+        createdAt: new Date().toISOString(),
+        calTarget: calTarget,
+        disease: disease,
+        dietMode: dietMode,
+        days: plan.map(function(day, idx) {
+          return {
+            dayIndex: idx,
+            dayName: DAY_NAMES[idx],
+            recipeSlugs: day.meals.reduce(function(acc, meal) {
+              (meal.items || []).forEach(function(item) { acc.push(item.slug); });
+              return acc;
+            }, [])
+          };
+        })
+      };
+      try { localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(currentPlan)); } catch(e) {}
+
       renderPlan(plan, calTarget, disease);
       renderWeekSummary(weekTotals);
       renderTip(disease, dietMode);
 
       document.getElementById('exportBtn').style.display = 'inline-block';
+      document.getElementById('shoppingBtn').style.display = 'inline-block';
       $loading.style.display = 'none';
     }, 100);
   };
@@ -543,6 +578,17 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
       document.body.removeChild(ta);
       alert('✅ Đã sao chép thực đơn!');
     });
+  };
+
+  window.openShoppingFromPlan = function() {
+    if (!currentPlan) {
+      try { currentPlan = JSON.parse(localStorage.getItem(PLAN_STORAGE_KEY) || 'null'); } catch(e) {}
+    }
+    if (!currentPlan) {
+      alert('Hãy tạo thực đơn tuần trước.');
+      return;
+    }
+    window.location.href = '/cong-cu/danh-sach-di-cho?from=week-plan';
   };
 })();
 </script>

@@ -5,6 +5,7 @@ import PortionCalculator from "../../components/PortionCalculator.astro";
 import HealthAlert from "../../components/HealthAlert.astro";
 import GlycemicLoad from "../../components/GlycemicLoad.astro";
 import VNHealthScore from "../../components/VNHealthScore.astro";
+import AddToDiary from "../../components/AddToDiary.astro";
 import { recipes } from "../../data/nutrition";
 import { calculateRecipe, confidenceLabel, foodById, recipeBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
 
@@ -16,6 +17,8 @@ const recipe = recipeBySlug(Astro.params.slug ?? "");
 if (!recipe) return Astro.redirect("/tim-kiem");
 const nutrients = calculateRecipe(recipe);
 const source = sourceFor(recipe.sourceId);
+const sourceHref = source?.url ?? "/phuong-phap";
+const reviewMailto = `mailto:drvietcanh@gmail.com?subject=${encodeURIComponent(`Rà soát dữ liệu món ăn: ${recipe.name}`)}`;
 const nextRecipeLinks = [
   { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn", note: "Đặt món này vào cả bữa để đọc tổng thể hơn." },
   { href: "#doi-khau-phan", label: "Đổi khẩu phần", note: "Tăng hoặc giảm theo tô, đĩa hay phần ăn thực tế." },
@@ -114,6 +117,7 @@ const recipeSchema = {
       <h2>Đọc nhanh</h2>
       <p>Đây là ước tính theo một khẩu phần phổ biến. Sai số thường đến từ lượng cơm, dầu mỡ, nước sốt và kích thước tô hoặc đĩa thực tế.</p>
     </div>
+    <AddToDiary type="recipe" itemId={recipe.slug} defaultAmount={recipe.servingWeightG} />
   </section>
 
   <HealthAlert nutrients={nutrients} name={recipe.name} />
@@ -215,9 +219,17 @@ const recipeSchema = {
         <span>Loại dữ liệu</span>
         <strong>Ước tính theo khẩu phần mẫu</strong>
       </div>
+      <div class="source-fact">
+        <span>Khẩu phần tính</span>
+        <strong>{recipe.servingName} · {recipe.servingWeightG} g</strong>
+      </div>
     </div>
     <div class="source-copy">
       <p><strong>Lưu ý sai số:</strong> Giá trị có thể thay đổi theo lượng tinh bột, đạm, dầu mỡ, nước chấm và kích thước khẩu phần thực tế.</p>
+    </div>
+    <div class="source-actions">
+      <a href={sourceHref} target={source?.url ? "_blank" : undefined} rel={source?.url ? "noreferrer" : undefined}>{source?.url ? "Mở nguồn gốc dữ liệu" : "Xem phương pháp và nguồn dữ liệu"}</a>
+      <a href={reviewMailto}>Báo dữ liệu cần rà soát</a>
     </div>
   </section>
   <script is:inline>
@@ -495,6 +507,18 @@ const recipeSchema = {
   .source-fact strong {
     font-size: 0.92rem;
     line-height: 1.4;
+  }
+
+  .source-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .source-actions a {
+    color: var(--brand-dark);
+    font-size: 0.86rem;
+    font-weight: 800;
   }
 
   .source-copy p {
