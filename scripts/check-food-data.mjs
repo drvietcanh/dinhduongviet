@@ -193,6 +193,7 @@ const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
 const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
 const slimBySlug = new Map(slim.map((item) => [item.slug, item]));
+const compatAliasTargets = new Map(compatAliases.map(({ from, to }) => [from, to]));
 const decisionTableSlugs = [
   "com-nep",
   "com-gao-lut-do",
@@ -425,6 +426,19 @@ function findVnCrossrefSuspiciousEntries(crossref) {
     const markedAppName = normalizeWithMarks(appName);
     const markedMatchedName = normalizeWithMarks(matchedName);
     const overlap = tokenOverlapRatio(appName, matchedName);
+
+    if (!food && compatAliasTargets.has(slug)) {
+      warnings.push(issue("warning", {
+        type: "vn_crossref",
+        subtype: "noncanonical_alias_slug_key",
+        slug,
+        canonicalSlug: compatAliasTargets.get(slug),
+        matchedCode: match?.code,
+        matchedName,
+        suggestion: "move_crossref_mapping_to_canonical_slug",
+      }));
+      continue;
+    }
 
     if (!matchedName || /^\d+$/.test(String(matchedName).trim())) {
       warnings.push(issue("warning", {
