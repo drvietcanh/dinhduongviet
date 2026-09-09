@@ -19,6 +19,10 @@ function fail(message) {
   failures.push(message);
 }
 
+function readJson(relativePath) {
+  return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
+}
+
 function checkDuplicateDataKeys() {
   const dataDir = path.join(root, "src", "data");
   const files = walk(dataDir, (file) => file.endsWith(".ts"));
@@ -99,9 +103,108 @@ function checkInternalLinks() {
   }
 }
 
+function compareSearchSlugs(label, expectedItems, actualItems) {
+  const expected = new Set(expectedItems.map((item) => item.slug));
+  const actual = new Set(actualItems.map((item) => item.slug));
+  const missing = [...expected].filter((slug) => !actual.has(slug));
+  const extra = [...actual].filter((slug) => !expected.has(slug));
+
+  if (missing.length > 0) {
+    fail(`Search index is missing ${missing.length} ${label} slugs: ${missing.slice(0, 12).join(", ")}`);
+  }
+  if (extra.length > 0) {
+    fail(`Search index has ${extra.length} stale ${label} slugs: ${extra.slice(0, 12).join(", ")}`);
+  }
+}
+
+function checkDuplicateSlugs(label, items) {
+  const counts = new Map();
+  for (const item of items) {
+    counts.set(item.slug, (counts.get(item.slug) || 0) + 1);
+  }
+  const duplicates = [...counts.entries()].filter(([, count]) => count > 1).map(([slug]) => slug);
+  if (duplicates.length > 0) {
+    fail(`${label} API has duplicate slugs: ${duplicates.slice(0, 12).join(", ")}`);
+  }
+}
+
+function checkSearchIndexCoverage() {
+  const requiredFiles = [
+    "dist/api-foods.json",
+    "dist/api-recipes.json",
+    "public/api/search-index.json",
+  ];
+
+  for (const file of requiredFiles) {
+    if (!fs.existsSync(path.join(root, file))) {
+      fail(`${file} is missing. Run npm run build before npm run qa.`);
+      return;
+    }
+  }
+
+  const foods = readJson("dist/api-foods.json");
+  const recipes = readJson("dist/api-recipes.json");
+  const searchIndex = readJson("public/api/search-index.json");
+  const searchKeyCounts = new Map();
+
+  checkDuplicateSlugs("Food", foods);
+  checkDuplicateSlugs("Recipe", recipes);
+
+  for (const item of searchIndex) {
+    const key = `${item.type}:${item.slug}`;
+    searchKeyCounts.set(key, (searchKeyCounts.get(key) || 0) + 1);
+  }
+
+  const duplicateKeys = [...searchKeyCounts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([key]) => key);
+  if (duplicateKeys.length > 0) {
+    fail(`Search index has duplicate entries: ${duplicateKeys.slice(0, 12).join(", ")}`);
+  }
+
+  const missingDescriptions = searchIndex
+    .filter((item) => !String(item.description || "").trim())
+    .map((item) => `${item.type}:${item.slug}`);
+  if (missingDescriptions.length > 0) {
+    fail(`Search index items missing descriptions: ${missingDescriptions.slice(0, 12).join(", ")}`);
+  }
+
+  compareSearchSlugs("food", foods, searchIndex.filter((item) => item.type === "food"));
+  compareSearchSlugs("recipe", recipes, searchIndex.filter((item) => item.type === "recipe"));
+}
+
+function checkSitemapFoodAliases() {
+  const sitemapPath = path.join(root, "dist", "sitemap-0.xml");
+  const aliasesPath = path.join(root, "src", "lib", "food-slug-aliases.ts");
+  if (!fs.existsSync(sitemapPath) || !fs.existsSync(aliasesPath)) return;
+
+  const aliasesText = fs.readFileSync(aliasesPath, "utf8");
+  const sitemap = fs.readFileSync(sitemapPath, "utf8");
+  const aliases = [...aliasesText.matchAll(/\["([^"]+)",\s*"([^"]+)"\]/g)].map((match) => ({
+    from: match[1],
+    to: match[2],
+  }));
+
+  const leakedAliases = aliases
+    .filter(({ from }) => sitemap.includes(`/thuc-pham/${from}/`))
+    .map(({ from }) => from);
+  if (leakedAliases.length > 0) {
+    fail(`Food alias URLs should not be in sitemap: ${leakedAliases.join(", ")}`);
+  }
+
+  const missingCanonicals = aliases
+    .filter(({ to }) => !sitemap.includes(`/thuc-pham/${to}/`))
+    .map(({ to }) => to);
+  if (missingCanonicals.length > 0) {
+    fail(`Canonical food URLs missing from sitemap: ${[...new Set(missingCanonicals)].join(", ")}`);
+  }
+}
+
 checkDuplicateDataKeys();
 checkPlaceholders();
 checkInternalLinks();
+checkSearchIndexCoverage();
+checkSitemapFoodAliases();
 
 if (failures.length > 0) {
   console.error("QA failed:");
@@ -109,4 +212,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("QA passed: duplicate data keys, placeholders, and internal links are OK.");
+console.log("QA passed: duplicate data keys, placeholders, internal links, search coverage, and canonical sitemap are OK.");

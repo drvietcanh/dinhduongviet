@@ -2076,6 +2076,29 @@ for (const recipe of recipes) {
   }
 }
 
+function mergeUniqueStrings(...values: Array<readonly string[] | undefined>) {
+  return [...new Set(values.flatMap((value) => value ?? []))];
+}
+
+const dedupedRecipes = new Map<string, Recipe>();
+for (const recipe of recipes) {
+  const existing = dedupedRecipes.get(recipe.slug);
+  if (!existing) {
+    dedupedRecipes.set(recipe.slug, recipe);
+    continue;
+  }
+
+  dedupedRecipes.set(recipe.slug, {
+    ...recipe,
+    ...existing,
+    aliases: mergeUniqueStrings(existing.aliases, recipe.aliases),
+    tags: mergeUniqueStrings(existing.tags, recipe.tags),
+    mealContexts: mergeUniqueStrings(existing.mealContexts, recipe.mealContexts) as Recipe["mealContexts"],
+  });
+}
+
+recipes.splice(0, recipes.length, ...dedupedRecipes.values());
+
 const leafyVegetablePattern = /^(Rau|Cải|Bắp cải|Súp lơ|Mồng tơi|Mướp|Đậu que|Đậu bắp|Măng tây|Ngò|Ớt chuông|Cà tím|Bí xanh|Hẹ)/i;
 
 for (const food of foods) {
