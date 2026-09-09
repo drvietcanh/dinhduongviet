@@ -3,7 +3,7 @@
   "code": "1004",
   "name": "Gạo tẻ máy"
  },
- "gao-nep": {
+ "com-nep": {
   "code": "1001",
   "name": "Gạo nếp cái"
  },
@@ -66,10 +66,6 @@
  "bun-kho": {
   "code": "1010",
   "name": "Bánh đa nem"
- },
- "mien": {
-  "code": "1013",
-  "name": "1141"
  },
  "mien-dong": {
   "code": "1014",
@@ -382,10 +378,6 @@
  "dau-an": {
   "code": "6002",
   "name": "Dầu thảo mộc (Lạc, vừng, cám...)"
- },
- "bo": {
-  "code": "6001",
-  "name": "Bơ"
  },
  "thit-heo": {
   "code": "7017",

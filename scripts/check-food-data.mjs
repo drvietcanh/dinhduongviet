@@ -405,13 +405,16 @@ const intentionallySkippedVnMicronutrientCandidates = [
 const allowedVnCrossrefTransformSlugs = new Set([
   "com-trang",
   "com-gao-lut",
+  "com-nep",
   "gao-te",
-  "gao-nep",
   "gao-lut",
   "bot-gao",
   "bot-mi",
   "bot-nghe",
   "mi-goi",
+  "thit-ga-ta",
+  "thit-lon-nac",
+  "xi-dau",
 ]);
 
 function findVnCrossrefSuspiciousEntries(crossref) {
