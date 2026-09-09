@@ -19,17 +19,30 @@ for fname in RECIPE_FILES:
     slugs = re.findall(r"slug:\s*['\"](.+?)['\"]", content)
     names = re.findall(r"name:\s*['\"](.+?)['\"]", content)
     aliases_blocks = re.findall(r'aliases:\s*\[(.*?)\]', content, re.DOTALL)
+    portion_notes = re.findall(r"portionNote:\s*['\"](.+?)['\"]", content)
+    serving_names = re.findall(r"servingName:\s*['\"](.+?)['\"]", content)
 
     for i in range(len(slugs)):
         aliases = []
         if i < len(aliases_blocks):
             found = re.findall(r"['\"](.+?)['\"]", aliases_blocks[i])
             aliases = found
+        name = names[i] if i < len(names) else slugs[i]
+        portion_note = portion_notes[i] if i < len(portion_notes) else ''
+        serving_name = serving_names[i] if i < len(serving_names) else ''
+        description = portion_note
+        if serving_name and portion_note:
+            description = f'{serving_name}: {portion_note}'
+        elif serving_name:
+            description = f'Tra cứu dinh dưỡng {name} theo khẩu phần {serving_name}.'
+        else:
+            description = f'Tra cứu dinh dưỡng món {name}.'
         all_recipes.append({
             'type': 'recipe',
             'slug': slugs[i],
-            'name': names[i] if i < len(names) else slugs[i],
+            'name': name,
             'aliases': aliases,
+            'description': description,
             'category': 'Mon an'
         })
 print(f'Recipes: {len(all_recipes)}')
@@ -151,6 +164,7 @@ for item in food_slim:
         'slug': slug,
         'name': item['name'],
         'aliases': item.get('aliases', []) + xref.get(slug, {}).get('aliases', []),
+        'description': f"Tra cứu {item['name']}: khoảng {round(item['kcal'])} kcal/100g, nhóm {item['category']}.",
         'category': item['category'],
         'kcal': item['kcal'],
     }

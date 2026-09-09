@@ -2,6 +2,16 @@ import { defineConfig } from "astro/config";
 import sitemap from '@astrojs/sitemap';
 import AstroPWA from '@vite-pwa/astro';
 
+const canonicalOnlyFoodAliases = new Set([
+  '/thuc-pham/ca-pha/',
+  '/thuc-pham/ca-pha-sua-da/',
+  '/thuc-pham/tom-sudo/',
+  '/thuc-pham/sua-ong-tho/',
+  '/thuc-pham/gao-nep/',
+  '/thuc-pham/gao-lut-do/',
+  '/thuc-pham/gao-lut-den/',
+]);
+
 export default defineConfig({
   site: "https://dinh-duong-viet.pages.dev",
   output: "static",
@@ -15,7 +25,11 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/kien-thuc-dinh-duong/dung-tin-ngay-'),
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return !path.includes('/kien-thuc-dinh-duong/dung-tin-ngay-')
+          && !canonicalOnlyFoodAliases.has(path);
+      },
     }),
     AstroPWA({
       registerType: 'autoUpdate',
