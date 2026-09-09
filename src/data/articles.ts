@@ -474,7 +474,7 @@ export const articles: ArticleMeta[] = [
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "san-khoa",
+    specialty: "nhi-khoa",
     date: "2026-07-08",
     readTime: 6,
     featured: true,
@@ -4225,7 +4225,7 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     tags: ["new-diagnosis", "ask-doctor"],
-    audience: ["diabetes"],
+    audience: ["thyroid", "hyperthyroidism"],
     sources: [
       { name: "World Health Organization (WHO)", url: "https://www.who.int" },
       { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
@@ -4364,7 +4364,7 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     tags: ["tiền đái tháo đường", "người bận rộn", "văn phòng", "giảm cân", "vận động"],
-    audience: ["diabetes"],
+    audience: ["thyroid", "hyperthyroidism"],
     sources: [
       { name: "CDC Lifestyle Change Program", url: "https://www.cdc.gov/diabetes/hcp/lifestyle-change-program/index.html" },
       { name: "ADA Standards of Care - Prevention or Delay of Diabetes", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S50/163924/3-Prevention-or-Delay-of-Diabetes-and-Associated" }
@@ -6679,10 +6679,142 @@ export function getFeaturedArticles(): ArticleMeta[] {
   return articles.filter(a => a.featured);
 }
 
+const RELATED_ARTICLE_OVERRIDES: Record<string, string[]> = {
+  "dai-thao-duong": [
+    "tieu-duong-an-com-duoc-khong",
+    "com-trang-tieu-duong",
+    "thuc-don-tieu-duong",
+    "tien-dai-thao-duong",
+  ],
+  "parkinson-nuot-kho-tao-bon-levodopa": [
+    "dinh-duong-parkinson",
+    "roi-loan-nuot-dysphagia",
+    "tao-bon-nguoi-cao-tuoi",
+    "nguoi-gia-an-it-mat-co-thuc-hanh",
+  ],
+  "dinh-duong-parkinson": [
+    "parkinson-nuot-kho-tao-bon-levodopa",
+    "roi-loan-nuot-dysphagia",
+    "tao-bon-nguoi-cao-tuoi",
+    "nguoi-gia-an-it-mat-co-thuc-hanh",
+  ],
+  "tre-bieng-an-me-can-lam-gi": [
+    "dinh-duong-tre-bieng-an-suy-dinh-duong",
+    "dinh-duong-an-dam",
+    "dinh-duong-thieu-ke-kem",
+    "nhu-cau-dinh-duong-khuyen-nghi",
+  ],
+  "song-lau-dai-sau-dat-stent": [
+    "phuc-hoi-nhoi-mau-co-tim-stent",
+    "xo-vua-dong-mach-vanh",
+    "roi-loan-lipid-mau-gia-dinh",
+    "tang-triglyceride-nang",
+  ],
+  "suy-than": [
+    "dinh-duong-benh-than-man-ckd",
+    "ckd-kali-phot-pho-muoi-thuc-hanh",
+    "benh-than-do-dai-thao-duong",
+    "dinh-duong-chay-than-nhan-tao",
+  ],
+};
+
+function normalizeRelatedText(value: string | undefined) {
+  return (value ?? "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function overlapScore(a: string[] | undefined, b: string[] | undefined, weight: number) {
+  if (!a?.length || !b?.length) return 0;
+  const bSet = new Set(b.map(normalizeRelatedText).filter(Boolean));
+  const exactMatches = a
+    .map(normalizeRelatedText)
+    .filter((item) => item && bSet.has(item))
+    .length;
+  const tokenMatches = Math.min(tokenSetOverlap(a, b), 3);
+  return Math.max(exactMatches, tokenMatches) * weight;
+}
+
+function hasOverlap(a: string[] | undefined, b: string[] | undefined) {
+  if (!a?.length || !b?.length) return false;
+  const bSet = new Set(b.map(normalizeRelatedText).filter(Boolean));
+  return a.map(normalizeRelatedText).some((item) => item && bSet.has(item)) || tokenSetOverlap(a, b) > 0;
+}
+
+function tokenSetOverlap(a: string[] | undefined, b: string[] | undefined) {
+  if (!a?.length || !b?.length) return 0;
+  const stopWords = new Set(["nguoi", "benh", "dinh", "duong", "cham", "soc", "cao", "tuoi"]);
+  const toTokens = (values: string[]) => new Set(values
+    .flatMap((value) => normalizeRelatedText(value).split(/[\s-]+/))
+    .filter((token) => token.length >= 4 && !stopWords.has(token)));
+  const bTokens = toTokens(b);
+  return [...toTokens(a)].filter((token) => bTokens.has(token)).length;
+}
+
+function tokenOverlapScore(current: ArticleMeta, candidate: ArticleMeta) {
+  const stopWords = new Set([
+    "dinh", "duong", "cho", "nguoi", "benh", "an", "uong", "thuc", "don", "cach", "nen", "can", "gi", "va", "khi", "sau",
+  ]);
+  const tokens = (article: ArticleMeta) => normalizeRelatedText([
+    article.title,
+    article.description,
+    ...(article.keywords ?? []),
+  ].join(" "))
+    .split(" ")
+    .filter((token) => token.length >= 3 && !stopWords.has(token));
+
+  const currentTokens = new Set(tokens(current));
+  return tokens(candidate).filter((token) => currentTokens.has(token)).length;
+}
+
+function slugOverlapScore(current: ArticleMeta, candidate: ArticleMeta) {
+  const currentTokens = new Set(normalizeRelatedText(current.slug).split("-").filter((token) => token.length >= 4));
+  return normalizeRelatedText(candidate.slug)
+    .split("-")
+    .filter((token) => token.length >= 4 && currentTokens.has(token))
+    .length * 24;
+}
+
 export function getRelatedArticles(slug: string, max: number = 4): ArticleMeta[] {
   const current = articleBySlug[slug];
   if (!current) return [];
-  return articles.filter(a => a.category === current.category && a.slug !== slug).slice(0, max);
+  const curated = (RELATED_ARTICLE_OVERRIDES[slug] ?? [])
+    .map((relatedSlug) => articleBySlug[relatedSlug])
+    .filter((article): article is ArticleMeta => Boolean(article) && article.slug !== slug)
+    .slice(0, max);
+  const curatedSlugs = new Set(curated.map((article) => article.slug));
+
+  const scored = articles
+    .filter((candidate) => candidate.slug !== slug)
+    .filter((candidate) => !curatedSlugs.has(candidate.slug))
+    .map((candidate, index) => {
+      let score = 0;
+      if (candidate.series && candidate.series === current.series) score += 100;
+      if (candidate.specialty && candidate.specialty === current.specialty) score += 42;
+      if (candidate.categoryName === current.categoryName) score += 40;
+      if (candidate.displayCategory && candidate.displayCategory === current.displayCategory) score += 18;
+      if (candidate.category === current.category) score += 12;
+      if (current.specialty && candidate.specialty && candidate.specialty !== current.specialty) score -= 30;
+      if (current.audience?.length && candidate.audience?.length && !hasOverlap(current.audience, candidate.audience)) score -= 45;
+      score += overlapScore(current.audience, candidate.audience, 28);
+      score += overlapScore(current.tags, candidate.tags, 12);
+      score += overlapScore(current.keywords, candidate.keywords, 18);
+      score += slugOverlapScore(current, candidate);
+      score += tokenOverlapScore(current, candidate);
+      if (candidate.featured) score += 2;
+      return { candidate, score, index };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || Date.parse(b.candidate.date) - Date.parse(a.candidate.date) || a.index - b.index)
+    .slice(0, Math.max(0, max - curated.length))
+    .map(({ candidate }) => candidate);
+
+  return [...curated, ...scored];
 }
 
 export function getArticlesBySpecialty(specialty: string): ArticleMeta[] {

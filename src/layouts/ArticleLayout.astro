@@ -18,6 +18,10 @@ const fullData = articleBySlug[articleInput.slug];
 const article = { ...articleInput, ...fullData };
 const qa = practicalQA[article.slug] || null;
 const related = getRelatedArticles(article.slug, 4);
+const getArticlePath = (item: ArticleMeta) =>
+  item.series === "dung-tin-ngay" && item.slug.startsWith("dung-tin-ngay-")
+    ? `/${item.series}/${item.slug}`
+    : `/kien-thuc-dinh-duong/${item.slug}`;
 const dateStr = new Date(article.date).toLocaleDateString("vi-VN", {
   year: "numeric",
   month: "long",
@@ -447,7 +451,7 @@ const jsonLd = {
     </div>
 
     <!-- Social Share Component -->
-    <SocialShare title={article.title} url={"https://dinh-duong-viet.pages.dev/kien-thuc-dinh-duong/" + article.slug} />
+    <SocialShare title={article.title} url={"https://dinh-duong-viet.pages.dev" + getArticlePath(article)} />
 
     <!-- Nguồn tham khảo -->
     {effectiveSources.length > 0 && (
@@ -469,7 +473,7 @@ const jsonLd = {
         <h3 style="font-size: 1.1rem; margin-bottom: 16px;">📖 Bài viết liên quan</h3>
         <div class="related-grid">
           {related.map((r) => (
-            <a href={`/kien-thuc-dinh-duong/${r.slug}`} class="related-card">
+            <a href={getArticlePath(r)} class="related-card">
               <span style="font-size: 1.6rem; display: block; margin-bottom: 6px;">{r.emoji}</span>
               <strong style="font-size: 0.9rem;">{r.title}</strong>
               <span style="font-size: 0.8rem; color: var(--ink-tertiary); margin-top: 4px;">{r.readTime} phút đọc</span>
