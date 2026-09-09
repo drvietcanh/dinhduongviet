@@ -6,6 +6,7 @@ import { extraFoods5 } from "./foods-extra5";
 import { extraFoods6 } from "./foods-extra6";
 import { extraFoods7 } from "./foods-extra7";
 import { extraFoods8 } from "./foods-extra8";
+import { vnMicronutrientOverrides } from "./food-vn-micronutrient-overrides";
 import { foodQualityReviews } from "./food-quality-reviews";
 import { extraRecipes } from "./recipes-extra";
 import { extraRecipes2 } from "./recipes-extra2";
@@ -1887,6 +1888,24 @@ foods.push(
     ...bulkFoods
   ] as Food[])
 );
+
+for (const food of foods) {
+  const overrides = vnMicronutrientOverrides[food.slug];
+  if (!overrides) continue;
+
+  for (const [key, value] of Object.entries(overrides) as [keyof NutrientValues, number][]) {
+    if (food.nutrients[key] == null) {
+      food.nutrients[key] = value;
+    }
+  }
+
+  if (food.sourceId === "recipe-estimate-v1") {
+    food.sourceReviewStatus ??= "reviewed_keep_current";
+    food.dataQuality ??= "source_backed";
+    food.sourceConfidence ??= "medium";
+    food.reviewNote ??= "Một số vi chất được bổ sung từ Bảng thành phần thực phẩm Việt Nam 2007 khi tên đối chiếu đủ gần; macro hiện tại được giữ nguyên nếu đã có.";
+  }
+}
 recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipes4, ...extraRecipes5, ...extraRecipes6, ...bulkRecipes);
 
 const communalMealPatterns = [

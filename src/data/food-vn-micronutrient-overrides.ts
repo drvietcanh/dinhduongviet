@@ -1,0 +1,25 @@
+import type { NutrientValues } from "./nutrition";
+
+export const vnMicronutrientOverrides: Record<string, Partial<NutrientValues>> = {
+  "ca-chep": { cholesterolMg: 70, saturatedFatG: 1.08, sodiumMg: 49, potassiumMg: 397, calciumMg: 17, ironMg: 0.9, zincMg: 1.48, magnesiumMg: 30, seleniumMcg: 12.6, vitaminAUg: 181, vitaminEMg: 0.63, vitaminB12Mcg: 1.53, folateUg: 15, phosphorusMg: 184 },
+  "ca-chua": { fiberG: 0.8, sugarG: 2.63, saturatedFatG: 0.05, sodiumMg: 12, potassiumMg: 275, calciumMg: 12, ironMg: 1.4, zincMg: 0.74, magnesiumMg: 15, seleniumMcg: 0.5, vitaminCMg: 40, vitaminEMg: 0.54, folateUg: 15, phosphorusMg: 26 },
+  "ca-hoi": { cholesterolMg: 45, saturatedFatG: 1.26, sodiumMg: 46, potassiumMg: 423, calciumMg: 13, ironMg: 1.1, zincMg: 0.41, magnesiumMg: 31, seleniumMcg: 36.5, vitaminAUg: 30, vitaminEMg: 0.65, vitaminB12Mcg: 4.17, folateUg: 9, phosphorusMg: 230 },
+  "ca-rot": { fiberG: 1.2, sugarG: 4.54, saturatedFatG: 0.04, sodiumMg: 52, potassiumMg: 266, calciumMg: 43, ironMg: 0.8, zincMg: 1.11, magnesiumMg: 12, seleniumMcg: 0.1, vitaminCMg: 8, folateUg: 19, phosphorusMg: 39 },
+  "ca-thu": { saturatedFatG: 2.42, sodiumMg: 110, potassiumMg: 486, calciumMg: 50, ironMg: 1.3, magnesiumMg: 35, vitaminAUg: 10, phosphorusMg: 90 },
+  "ca-tim": { fiberG: 1.5, calciumMg: 15, ironMg: 0.4, vitaminCMg: 15, phosphorusMg: 34 },
+  "chom-chom": { fiberG: 1.3, calciumMg: 28, ironMg: 0.5, phosphorusMg: 15 },
+  "cu-cai-trang": { fiberG: 1.5, sugarG: 2.5, saturatedFatG: 0.03, sodiumMg: 10, potassiumMg: 242, calciumMg: 40, ironMg: 1.1, zincMg: 0.2, magnesiumMg: 15, seleniumMcg: 3.9, vitaminCMg: 30, folateUg: 28, phosphorusMg: 41 },
+  "dau-phu": { fiberG: 0.4, saturatedFatG: 0.69, sodiumMg: 7, potassiumMg: 121, calciumMg: 24, ironMg: 2.2, zincMg: 0.8, magnesiumMg: 30, seleniumMcg: 8.9, folateUg: 15, phosphorusMg: 85 },
+  "dau-tay": { fiberG: 4, sodiumMg: 37, potassiumMg: 292, calciumMg: 22, ironMg: 0.7, magnesiumMg: 17, vitaminCMg: 60, phosphorusMg: 23 },
+  "dau-xanh": { fiberG: 4.7, saturatedFatG: 0.35, sodiumMg: 6, potassiumMg: 1132, calciumMg: 64, ironMg: 4.8, zincMg: 1.1, magnesiumMg: 270, vitaminCMg: 4, vitaminEMg: 0.51, folateUg: 625, phosphorusMg: 377 },
+  "gao-te": { fiberG: 0.4, saturatedFatG: 0.16, sodiumMg: 5, potassiumMg: 241, calciumMg: 30, ironMg: 1.3, zincMg: 1.5, magnesiumMg: 14, seleniumMcg: 31.8, folateUg: 9, phosphorusMg: 104 },
+  "hanh-la": { fiberG: 0.9, sodiumMg: 16, potassiumMg: 123, calciumMg: 80, ironMg: 1, zincMg: 0.44, magnesiumMg: 23, vitaminCMg: 60, phosphorusMg: 41 },
+  "hanh-tay": { fiberG: 1.1, sugarG: 4.28, saturatedFatG: 0.03, sodiumMg: 8, potassiumMg: 221, calciumMg: 38, ironMg: 0.8, zincMg: 1.43, magnesiumMg: 23, seleniumMcg: 1.5, vitaminCMg: 10, vitaminEMg: 0.02, folateUg: 19, phosphorusMg: 58 },
+  "lap-xuong": { calciumMg: 52, ironMg: 3, phosphorusMg: 175 },
+  "sua-chua": { sugarG: 4.66, cholesterolMg: 13, saturatedFatG: 2.1, sodiumMg: 46, potassiumMg: 155, calciumMg: 120, ironMg: 0.1, zincMg: 0.59, magnesiumMg: 12, seleniumMcg: 2.2, vitaminAUg: 25, vitaminCMg: 1, vitaminB12Mcg: 0.37, folateUg: 7, phosphorusMg: 95 },
+  "sua-dac": { calciumMg: 307, ironMg: 0.6, vitaminAUg: 58, phosphorusMg: 219 },
+  "su-hao": { fiberG: 1.7, sugarG: 2.6, saturatedFatG: 0.01, sodiumMg: 53, potassiumMg: 321, calciumMg: 46, ironMg: 0.6, zincMg: 0.45, magnesiumMg: 19, seleniumMcg: 0.7, vitaminCMg: 40, vitaminEMg: 0.48, folateUg: 16, phosphorusMg: 50 },
+  "thanh-long": { fiberG: 1.8, calciumMg: 11, ironMg: 0.6, vitaminCMg: 10, phosphorusMg: 11 },
+  "tom-kho": { calciumMg: 236, ironMg: 4.6, phosphorusMg: 995 },
+  "trung-ga": { calciumMg: 101, phosphorusMg: 270 },
+};

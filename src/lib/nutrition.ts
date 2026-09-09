@@ -22,6 +22,7 @@ export const detailNutrients: (keyof NutrientValues)[] = [
   "vitaminDMcg",
   "vitaminEMg",
   "vitaminB12Mcg",
+  "folateUg",
   "phosphorusMg",
   "glycemicIndex"
 ];
