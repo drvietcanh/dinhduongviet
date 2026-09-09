@@ -637,6 +637,7 @@ const foodSeeds = foodSeedText.trim().split("\n").map((line) => {
 function guessCategory(name: string): string {
   const n = name.toLowerCase();
   const has = (...terms: string[]) => terms.some((term) => n.includes(term));
+  const hasWord = (...terms: string[]) => terms.some((term) => new RegExp(`(^|\\s)${term}(\\s|$)`, "i").test(n));
   if (n.startsWith("rau") || n.startsWith("lá") || n.startsWith("bông") || n.startsWith("đọt") || n.startsWith("ngó") || n.startsWith("củ hũ")) return "Rau";
   if (has("cà phê", "bạc xỉu")) return "Đồ uống";
   if (has("mắm", "nước tương", "tương ớt", "xốt", "sốt", "dầu hào", "sa tế", "muối", "bột nêm", "bột ngọt", "giấm", "mayonnaise")) return "Gia vị";
@@ -644,7 +645,7 @@ function guessCategory(name: string): string {
   if (has("sinh tố", "sữa bắp", "sữa đậu", "sữa hạt", "trà sữa", "nước mía") || n.startsWith("trà ") || n.startsWith("nước ép") || n.startsWith("nước dừa") || n.startsWith("nước sâm") || n.startsWith("nước rau má") || n.startsWith("nước mận")) return "Đồ uống";
   if (has("chè", "kem", "bánh", "kẹo", "mứt", "quy linh cao", "sương sáo")) return "Bánh kẹo";
   if (has("thịt", "sườn", "chân", "đuôi", "gan", "gân", "lá sách", "tim", "lưỡi", "mề", "cật", "dạ dày", "phổi", "ức vịt", "đùi vịt", "cánh gà", "đùi gà")) return "Thịt";
-  if (has("cá", "tôm", "mực", "bạch tuộc", "hàu", "sò", "ốc", "ghẹ", "cua", "cù kỳ", "tép", "ruốc")) return "Hải sản";
+  if (hasWord("cá", "tôm", "mực", "hàu", "sò", "ốc", "ghẹ", "cua", "tép", "ruốc") || has("bạch tuộc", "cù kỳ")) return "Hải sản";
   if (has("sữa", "phô mai", "sữa chua", "trứng")) return "Trứng sữa";
   if (has("hạt", "óc chó", "mắc ca", "hạnh nhân", "điều", "mè", "đậu phộng")) return "Hạt";
   if (has("bắp chuối")) return "Rau";

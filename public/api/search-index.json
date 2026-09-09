@@ -11941,8 +11941,8 @@
     "aliases": [
       "yen mach can"
     ],
-    "category": "Hải sản",
-    "kcal": 102
+    "category": "Tinh bột",
+    "kcal": 194
   },
   {
     "type": "food",
@@ -11951,8 +11951,8 @@
     "aliases": [
       "ngu coc an sang"
     ],
-    "category": "Hải sản",
-    "kcal": 105
+    "category": "Tinh bột",
+    "kcal": 200
   },
   {
     "type": "food",
@@ -13756,8 +13756,8 @@
     "aliases": [
       "xoai cat hoa loc"
     ],
-    "category": "Hải sản",
-    "kcal": 92
+    "category": "Trái cây",
+    "kcal": 56
   },
   {
     "type": "food",
