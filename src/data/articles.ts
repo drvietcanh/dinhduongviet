@@ -443,7 +443,7 @@ export const articles: ArticleMeta[] = [
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "tieu-hoa",
+    specialty: "noi-tiet",
     audience: ["stomach"],
     date: "2026-07-08",
     readTime: 6,
@@ -4225,7 +4225,7 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     tags: ["new-diagnosis", "ask-doctor"],
-    audience: ["thyroid", "hyperthyroidism"],
+    audience: ["diabetes", "prediabetes"],
     sources: [
       { name: "World Health Organization (WHO)", url: "https://www.who.int" },
       { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
