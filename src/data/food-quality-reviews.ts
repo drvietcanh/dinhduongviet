@@ -128,6 +128,14 @@ export const foodQualityReviews: Record<string, FoodQualityReview> = {
     reviewNote: "Giữ số ước tính; nguồn nội bộ có món thịt chế biến gần nhóm nhưng chưa có nem nướng.",
     candidateSource: "VN 2007: 7072 Nem chạo; 7064 Chả lợn - close_match.",
   },
+  "lap-xuong": {
+    dataQuality: "recipe_estimate",
+    sourceConfidence: "low",
+    sourceReviewStatus: "reviewed_keep_current",
+    basisNote: "100g lạp xưởng heo khô/thành phẩm; năng lượng, đạm, béo và natri thay đổi mạnh theo nhãn hàng, tỷ lệ mỡ và đường.",
+    reviewNote: "Giữ macro/sodium hiện tại như ước tính công thức; chỉ dùng VN 2007 cho một số vi chất đã có trong nguồn, không xem là thay thế phân tích toàn phần.",
+    candidateSource: "VN 2007: 7071 Lạp xường - micronutrient_partial_close_match.",
+  },
   "lap-xuong-nuong": {
     dataQuality: "recipe_estimate",
     sourceConfidence: "low",
