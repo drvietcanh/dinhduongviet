@@ -443,7 +443,7 @@ export const articles: ArticleMeta[] = [
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "noi-tiet",
+    specialty: "tieu-hoa",
     audience: ["stomach"],
     date: "2026-07-08",
     readTime: 6,
@@ -4225,7 +4225,7 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     tags: ["new-diagnosis", "ask-doctor"],
-    audience: ["diabetes", "prediabetes"],
+    audience: ["thyroid", "hyperthyroidism"],
     sources: [
       { name: "World Health Organization (WHO)", url: "https://www.who.int" },
       { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
@@ -4359,12 +4359,12 @@ export const articles: ArticleMeta[] = [
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "tieu-hoa",
+    specialty: "noi-tiet",
     date: "2026-08-11",
     readTime: 7,
     featured: false,
     tags: ["tiền đái tháo đường", "người bận rộn", "văn phòng", "giảm cân", "vận động"],
-    audience: ["thyroid", "hyperthyroidism"],
+    audience: ["diabetes", "prediabetes"],
     sources: [
       { name: "CDC Lifestyle Change Program", url: "https://www.cdc.gov/diabetes/hcp/lifestyle-change-program/index.html" },
       { name: "ADA Standards of Care - Prevention or Delay of Diabetes", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S50/163924/3-Prevention-or-Delay-of-Diabetes-and-Associated" }
