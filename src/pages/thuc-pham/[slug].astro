@@ -177,7 +177,7 @@ var foodSchema = {
 
   <HealthAlert nutrients={food.nutrients} name={food.name} category={food.category} />
 
-  <div id="vn-crossref" class="crossref-shell" data-slug="{food.slug}" data-exkcal="{food.nutrients.energyKcal}"></div>
+  <div id="vn-crossref" class="crossref-shell" data-slug={food.slug} data-name={food.name} data-exkcal={food.nutrients.energyKcal}></div>
 
   <section class="section">
     <PortionCalculator nutrients={food.nutrients} baseAmountG={100} defaultAmountG={100} title={`Đổi khẩu phần ${food.name}`} />
@@ -924,15 +924,50 @@ var foodSchema = {
 
 <script is:inline>
   (async function() {
+    function normalize(value) {
+      return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+    function normalizeWithMarks(value) {
+      return String(value || '')
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, ' ')
+        .trim();
+    }
+    function tokenOverlapRatio(left, right) {
+      var leftTokens = normalize(left).split(' ').filter(function(token){ return token.length >= 2; });
+      var rightTokens = normalize(right).split(' ').filter(function(token){ return token.length >= 2; });
+      if (!leftTokens.length || !rightTokens.length) return 0;
+      var rightSet = new Set(rightTokens);
+      var overlap = leftTokens.filter(function(token){ return rightSet.has(token); }).length;
+      return overlap / Math.min(leftTokens.length, rightTokens.length);
+    }
+    function isPlausibleCrossref(slug, appName, refName) {
+      var allowedTransforms = new Set(['com-trang', 'com-gao-lut', 'gao-te', 'gao-nep', 'gao-lut', 'bot-gao', 'bot-mi', 'bot-nghe', 'mi-goi']);
+      if (allowedTransforms.has(slug)) return true;
+      if (!refName || /^\d+$/.test(String(refName).trim())) return false;
+      var appPlain = normalize(appName);
+      var refPlain = normalize(refName);
+      if (appPlain === refPlain && normalizeWithMarks(appName) !== normalizeWithMarks(refName)) return false;
+      return tokenOverlapRatio(appName, refName) >= 0.5;
+    }
     var container = document.getElementById('vn-crossref');
     if (!container) return;
     var slug = container.getAttribute('data-slug');
+    var appName = container.getAttribute('data-name') || slug;
     if (!slug) return;
     try {
       var crResponse = await fetch('/vn-crossref.json');
       var cr = await crResponse.json();
       var ref = cr[slug];
       if (!ref) return;
+      if (!isPlausibleCrossref(slug, appName, ref.name)) return;
       var vnResponse = await fetch('/api/vietnam-foods.json');
       var vn = await vnResponse.json();
       var vnFood = vn.find(function(f){return f.code===ref.code});

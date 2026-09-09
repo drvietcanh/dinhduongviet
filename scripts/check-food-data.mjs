@@ -38,6 +38,20 @@ function hasPhraseWithMarks(haystack, phrase) {
   return new RegExp(` ${normalizedPhrase} `, "u").test(normalizedHaystack);
 }
 
+function nameTokens(value) {
+  return normalize(value)
+    .split(" ")
+    .filter((token) => token.length >= 2);
+}
+
+function tokenOverlapRatio(left, right) {
+  const leftTokens = new Set(nameTokens(left));
+  const rightTokens = new Set(nameTokens(right));
+  if (leftTokens.size === 0 || rightTokens.size === 0) return 0;
+  const overlap = [...leftTokens].filter((token) => rightTokens.has(token)).length;
+  return overlap / Math.min(leftTokens.size, rightTokens.size);
+}
+
 async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
 }
@@ -172,6 +186,7 @@ const slim = await readJson("public/api/foods-slim.json");
 const fullRows = await readJson("public/api/foods-full.json");
 const searchIndex = await readJson("public/api/search-index.json");
 const sourceFoods = await readJson("dist/api-foods.json");
+const vnCrossref = await readJson("public/api/vn-crossref.json");
 const compatAliases = await readCompatAliases();
 const vnMicronutrientOverrideSlugs = await readVnMicronutrientOverrideSlugs();
 const fullFoods = fullRows.map(fullToFood);
@@ -386,6 +401,78 @@ const intentionallySkippedVnMicronutrientCandidates = [
   action: vnMicronutrientOverrideSlugs.has(item.slug) ? "review_existing_override" : "skip_until_verified",
 }));
 
+const allowedVnCrossrefTransformSlugs = new Set([
+  "com-trang",
+  "com-gao-lut",
+  "gao-te",
+  "gao-nep",
+  "gao-lut",
+  "bot-gao",
+  "bot-mi",
+  "bot-nghe",
+  "mi-goi",
+]);
+
+function findVnCrossrefSuspiciousEntries(crossref) {
+  const entries = Object.entries(crossref || {});
+  const warnings = [];
+  for (const [slug, match] of entries) {
+    const food = slimBySlug.get(slug) || sourceBySlug.get(slug);
+    const appName = food?.name || slug.replace(/-/g, " ");
+    const matchedName = match?.name || "";
+    const normalizedAppName = normalize(appName);
+    const normalizedMatchedName = normalize(matchedName);
+    const markedAppName = normalizeWithMarks(appName);
+    const markedMatchedName = normalizeWithMarks(matchedName);
+    const overlap = tokenOverlapRatio(appName, matchedName);
+
+    if (!matchedName || /^\d+$/.test(String(matchedName).trim())) {
+      warnings.push(issue("warning", {
+        type: "vn_crossref",
+        subtype: "missing_or_numeric_name",
+        slug,
+        name: appName,
+        matchedCode: match?.code,
+        matchedName,
+        suggestion: "verify_vietnam_fct_mapping_before_reuse",
+      }));
+      continue;
+    }
+
+    if (allowedVnCrossrefTransformSlugs.has(slug)) continue;
+
+    if (normalizedAppName === normalizedMatchedName && markedAppName !== markedMatchedName) {
+      warnings.push(issue("warning", {
+        type: "vn_crossref",
+        subtype: "diacritic_near_miss",
+        slug,
+        name: appName,
+        matchedCode: match?.code,
+        matchedName,
+        suggestion: "verify_name_with_tones_marks_species_or_food_part",
+      }));
+      continue;
+    }
+
+    if (overlap < 0.5) {
+      warnings.push(issue("info", {
+        type: "vn_crossref",
+        subtype: "low_name_token_overlap",
+        slug,
+        name: appName,
+        matchedCode: match?.code,
+        matchedName,
+        tokenOverlapRatio: Number(overlap.toFixed(2)),
+        suggestion: "manual_review_before_importing_micronutrients",
+      }));
+    }
+  }
+  return warnings;
+}
+
+const vnCrossrefEntries = Object.entries(vnCrossref || {});
+const vnCrossrefSuspicious = findVnCrossrefSuspiciousEntries(vnCrossref);
+
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
 const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.find((item) => item.slug === slug) || { slug, count: 0, action: "not_found_as_duplicate" });
 
@@ -397,6 +484,7 @@ const sourceNotes = [
   "src/pages/api-foods.json.ts exports full food data from src/data/nutrition.ts at build time.",
   "No nutrition values or source data were changed by this QA script.",
   "Vietnam micronutrient overlays are intentionally conservative; skipped candidates must be verified before import.",
+  "public/api/vn-crossref.json is used as an auxiliary Vietnam FCT mapping; suspicious crossrefs are reported but do not fail QA because some cooked/raw or generic-source transforms are intentional.",
 ];
 
 const allIssues = [
@@ -412,6 +500,7 @@ const allIssues = [
   ...decisionTableMissingMetadata,
   ...cookedHighEnergyWithoutReviewMetadata,
   ...intentionallySkippedVnMicronutrientCandidates,
+  ...vnCrossrefSuspicious,
 ];
 const issuesBySeverity = allIssues.reduce((totals, item) => {
   totals[item.severity] = (totals[item.severity] || 0) + 1;
@@ -441,6 +530,8 @@ const report = {
     decisionTableMissingMetadata: decisionTableMissingMetadata.length,
     vnMicronutrientOverrides: vnMicronutrientOverrideSlugs.size,
     intentionallySkippedVnMicronutrientCandidates: intentionallySkippedVnMicronutrientCandidates.length,
+    vnCrossrefMappings: vnCrossrefEntries.length,
+    vnCrossrefSuspicious: vnCrossrefSuspicious.length,
   },
   dataQualityCounts,
   sourceReviewStatusCounts,
@@ -470,6 +561,7 @@ const report = {
   decisionTableMissingMetadata,
   cookedHighEnergyWithoutReviewMetadata,
   intentionallySkippedVnMicronutrientCandidates,
+  vnCrossrefSuspicious: vnCrossrefSuspicious.slice(0, 200),
   missingCoreNutrients,
   aliasWarnings: aliasWarnings.slice(0, 200),
 };
