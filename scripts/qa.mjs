@@ -200,11 +200,40 @@ function checkSitemapFoodAliases() {
   }
 }
 
+function checkRecipeContentQuality() {
+  const recipesPath = path.join(root, "dist", "api-recipes.json");
+  if (!fs.existsSync(recipesPath)) {
+    fail("dist/api-recipes.json is missing. Run npm run build before npm run qa.");
+    return;
+  }
+
+  const recipes = readJson("dist/api-recipes.json");
+  for (const recipe of recipes) {
+    const missing = ["slug", "name", "servingName", "servingWeightG", "note"]
+      .filter((field) => !recipe[field]);
+    if (missing.length > 0) {
+      fail(`Recipe ${recipe.slug || recipe.name || "(unknown)"} is missing required content fields: ${missing.join(", ")}`);
+    }
+
+    if (!Array.isArray(recipe.ingredients) || recipe.ingredients.length === 0) {
+      fail(`Recipe ${recipe.slug || recipe.name || "(unknown)"} has no ingredients.`);
+      continue;
+    }
+
+    for (const ingredient of recipe.ingredients) {
+      if (!ingredient.foodId || !Number.isFinite(ingredient.amountG) || ingredient.amountG <= 0) {
+        fail(`Recipe ${recipe.slug} has an invalid ingredient entry.`);
+      }
+    }
+  }
+}
+
 checkDuplicateDataKeys();
 checkPlaceholders();
 checkInternalLinks();
 checkSearchIndexCoverage();
 checkSitemapFoodAliases();
+checkRecipeContentQuality();
 
 if (failures.length > 0) {
   console.error("QA failed:");
@@ -212,4 +241,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("QA passed: duplicate data keys, placeholders, internal links, search coverage, and canonical sitemap are OK.");
+console.log("QA passed: duplicate data keys, placeholders, internal links, search coverage, recipe content, and canonical sitemap are OK.");
