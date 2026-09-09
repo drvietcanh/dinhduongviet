@@ -2,49 +2,33 @@ import re, json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RECIPE_FILES = [
-    ROOT / 'src/data/recipes-extra.ts',
-    ROOT / 'src/data/recipes-extra2.ts',
-    ROOT / 'src/data/recipes-extra3.ts',
-    ROOT / 'src/data/recipes-extra4.ts',
-    ROOT / 'src/data/recipes-extra5.ts',
-    ROOT / 'src/data/recipes-extra6.ts'
-]
+# --- Get recipes from generated API ---
+# The recipe catalog is assembled from base recipes, extra recipe files, and
+# generated bulk recipes in src/data/nutrition.ts. Reading the generated API
+# keeps search in sync with every static /mon-an/[slug] page.
+with (ROOT / 'dist/api-recipes.json').open('r', encoding='utf-8') as f:
+    recipe_api = json.load(f)
 
-# --- Get recipes ---
 all_recipes = []
-for fname in RECIPE_FILES:
-    with fname.open('r', encoding='utf-8') as f:
-        content = f.read()
-    slugs = re.findall(r"slug:\s*['\"](.+?)['\"]", content)
-    names = re.findall(r"name:\s*['\"](.+?)['\"]", content)
-    aliases_blocks = re.findall(r'aliases:\s*\[(.*?)\]', content, re.DOTALL)
-    portion_notes = re.findall(r"portionNote:\s*['\"](.+?)['\"]", content)
-    serving_names = re.findall(r"servingName:\s*['\"](.+?)['\"]", content)
-
-    for i in range(len(slugs)):
-        aliases = []
-        if i < len(aliases_blocks):
-            found = re.findall(r"['\"](.+?)['\"]", aliases_blocks[i])
-            aliases = found
-        name = names[i] if i < len(names) else slugs[i]
-        portion_note = portion_notes[i] if i < len(portion_notes) else ''
-        serving_name = serving_names[i] if i < len(serving_names) else ''
-        description = portion_note
-        if serving_name and portion_note:
-            description = f'{serving_name}: {portion_note}'
-        elif serving_name:
-            description = f'Tra cứu dinh dưỡng {name} theo khẩu phần {serving_name}.'
-        else:
-            description = f'Tra cứu dinh dưỡng món {name}.'
-        all_recipes.append({
-            'type': 'recipe',
-            'slug': slugs[i],
-            'name': name,
-            'aliases': aliases,
-            'description': description,
-            'category': 'Mon an'
-        })
+for item in recipe_api:
+    name = item.get('name') or item['slug']
+    serving_name = item.get('servingName') or ''
+    portion_note = item.get('portionNote') or ''
+    description = portion_note
+    if serving_name and portion_note:
+        description = f'{serving_name}: {portion_note}'
+    elif serving_name:
+        description = f'Tra cứu dinh dưỡng {name} theo khẩu phần {serving_name}.'
+    else:
+        description = f'Tra cứu dinh dưỡng món {name}.'
+    all_recipes.append({
+        'type': 'recipe',
+        'slug': item['slug'],
+        'name': name,
+        'aliases': item.get('aliases', []),
+        'description': description,
+        'category': 'Mon an'
+    })
 print(f'Recipes: {len(all_recipes)}')
 
 # --- Get articles: parse slug: blocks ---

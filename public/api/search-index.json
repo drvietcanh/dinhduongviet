@@ -2818,6 +2818,338 @@
   },
   {
     "type": "recipe",
+    "slug": "pho-bo",
+    "name": "Phở bò",
+    "aliases": [
+      "pho bo",
+      "phở bò thường"
+    ],
+    "description": "1 tô thường: Trong bản MVP, 1 tô phở bò thường được giả định có khoảng 70g thịt bò chín. Thực tế thường dao động khoảng 50-100g tùy quán và loại tô.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-ga-uc-ga",
+    "name": "Cơm ức gà",
+    "aliases": [
+      "cơm gà",
+      "com uc ga"
+    ],
+    "description": "Tra cứu dinh dưỡng Cơm ức gà theo khẩu phần 1 phần.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "pho-ga",
+    "name": "Phở gà",
+    "aliases": [
+      "pho ga",
+      "phở gà thường"
+    ],
+    "description": "1 tô thường: Trong bản MVP, 1 tô phở gà thường được giả định có khoảng 80g thịt gà/ức gà chín.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-tam-suon",
+    "name": "Cơm tấm sườn",
+    "aliases": [
+      "cơm tấm",
+      "com tam",
+      "com tam suon"
+    ],
+    "description": "1 đĩa thường: Một đĩa cơm tấm sườn thường được giả định có 220g cơm và khoảng 100g sườn nướng phần ăn được.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-thit",
+    "name": "Bánh mì thịt",
+    "aliases": [
+      "banh mi thit",
+      "bánh mì heo",
+      "bánh mì Việt Nam"
+    ],
+    "description": "1 ổ thường: Một ổ bánh mì thịt thường được giả định có 80g bánh mì, 60g thịt heo, rau dưa và nước sốt.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-cuon",
+    "name": "Gỏi cuốn",
+    "aliases": [
+      "gỏi cuốn tôm thịt",
+      "fresh spring roll",
+      "goi cuon"
+    ],
+    "description": "2 cuốn: Khẩu phần mẫu gồm 2 cuốn, mỗi cuốn khoảng 1-2 con tôm nhỏ và ít thịt nạc.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-thit-nuong",
+    "name": "Bún thịt nướng",
+    "aliases": [
+      "bun thit nuong",
+      "bún heo nướng"
+    ],
+    "description": "1 tô thường: Một tô thường được giả định có 200g bún và 90g thịt heo nướng.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-bo-hue",
+    "name": "Bún bò Huế",
+    "aliases": [
+      "bun bo hue",
+      "bún bò"
+    ],
+    "description": "1 tô thường: Tô thường giả định có 200g bún, 80g thịt bò chín và 40g giò/sườn heo phần ăn được.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-ga",
+    "name": "Cháo gà",
+    "aliases": [
+      "chao ga",
+      "cháo thịt gà"
+    ],
+    "description": "1 tô: Một tô cháo gà thường được giả định có lượng gạo tương đương khoảng 80g cơm và 70g thịt gà.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hu-tieu-nam-vang",
+    "name": "Hủ tiếu Nam Vang",
+    "aliases": [
+      "hu tieu",
+      "hủ tiếu",
+      "hu tieu nam vang"
+    ],
+    "description": "1 tô thường: Tô thường giả định dùng bún/phở gạo đại diện 180g, có tôm và thịt heo.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "thit-kho-trung",
+    "name": "Thịt kho trứng",
+    "aliases": [
+      "thịt kho tàu",
+      "thit kho trung",
+      "thit kho tau"
+    ],
+    "description": "1 phần: Một phần mẫu gồm 100g ba chỉ, 1 trứng khoảng 50g và nước kho/gia vị.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-bi-do-thit-bam",
+    "name": "Canh bí đỏ thịt băm",
+    "aliases": [
+      "canh bi do",
+      "canh bí đỏ",
+      "canh bí đỏ thịt bằm"
+    ],
+    "description": "1 tô nhỏ: Một tô nhỏ giả định gồm 180g bí đỏ và 40g thịt heo nạc băm.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-rang-trung",
+    "name": "Cơm rang trứng",
+    "aliases": [
+      "cơm chiên trứng",
+      "com rang trung",
+      "com chien trung"
+    ],
+    "description": "1 đĩa: Một đĩa mẫu gồm 250g cơm, 1 trứng và khoảng 10g dầu.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-goi-trung",
+    "name": "Mì gói trứng",
+    "aliases": [
+      "mì trứng",
+      "mi goi trung"
+    ],
+    "description": "1 tô: Một tô mẫu gồm 1 gói mì khoảng 75g khô và 1 trứng gà.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-rau-ngot-thit-bam",
+    "name": "Canh rau ngót thịt băm",
+    "aliases": [
+      "canh rau ngot",
+      "canh rau ngót"
+    ],
+    "description": "1 tô nhỏ: Một tô nhỏ giả định gồm 100g rau ngót và 40g thịt heo nạc băm.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-nuc-kho",
+    "name": "Cá nục kho",
+    "aliases": [
+      "cá kho",
+      "ca nuc kho"
+    ],
+    "description": "1 phần: Một phần mẫu gồm khoảng 120g cá nục phần ăn được và nước kho.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "dau-phu-sot-ca-chua",
+    "name": "Đậu phụ sốt cà chua",
+    "aliases": [
+      "đậu sốt cà",
+      "dau phu sot ca chua"
+    ],
+    "description": "1 phần: Một phần mẫu gồm 180g đậu phụ và 80g cà chua/sốt.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-rieu-cua",
+    "name": "Bún riêu cua",
+    "aliases": [
+      "bun rieu",
+      "bún riêu"
+    ],
+    "description": "1 tô thường: Một tô thường giả định có 200g bún, 100g cua/gạch và đậu phụ.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-xeo",
+    "name": "Bánh xèo",
+    "aliases": [
+      "banh xeo"
+    ],
+    "description": "1 cái thường: Một cái bánh xèo miền Trung giả định khoảng 200g với nhân tôm thịt và giá.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "nem-ran",
+    "name": "Nem rán",
+    "aliases": [
+      "chả giò",
+      "spring rolls fried",
+      "nem ran",
+      "cha gio"
+    ],
+    "description": "4 cuốn nhỏ: Bốn cuốn nem nhỏ, giả định nhân thịt + mộc nhĩ + miến.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-ga",
+    "name": "Gỏi gà",
+    "aliases": [
+      "gỏi gà bắp cải",
+      "goi ga"
+    ],
+    "description": "1 phần: Gỏi gà bắp cải phổ biến, trộn với hành tây và rau thơm.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-chua-ca",
+    "name": "Canh chua cá",
+    "aliases": [
+      "canh chua",
+      "canh chua cá lóc"
+    ],
+    "description": "1 tô nhỏ: Canh chua cá lóc hoặc cá basa phổ biến, với cà chua, bạc hà và giá.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-kho-to",
+    "name": "Cá kho tộ",
+    "aliases": [
+      "ca kho",
+      "cá kho",
+      "ca kho to"
+    ],
+    "description": "1 phần: Cá chặt khúc kho trong nước mắm, đường và tiêu.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-cha",
+    "name": "Bún chả",
+    "aliases": [
+      "bun cha",
+      "bún chả Hà Nội"
+    ],
+    "description": "1 phần thường: Phần bún chả Hà Nội gồm 200g bún, 100g chả thịt và rau sống.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-hen",
+    "name": "Cơm hến (Huế)",
+    "aliases": [
+      "cơm hến Huế",
+      "com hen hue"
+    ],
+    "description": "1 tô: Món đặc sản Huế: cơm nguội trộn thịt hến, tóp mỡ và rau sống.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mien-lon",
+    "name": "Miến lòng gà",
+    "aliases": [
+      "miến lòng",
+      "miến măng gà",
+      "miến gà",
+      "mien long ga"
+    ],
+    "description": "1 tô thường: Miến nấu lòng gà măng (Bắc) / tim gan gà (Nam) / thêm tiêu ớt (Huế).",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-long",
+    "name": "Cháo lòng",
+    "aliases": [
+      "cháo lòng heo",
+      "cháo lòng (Bắc)",
+      "cháo lòng tiết (Nam)",
+      "chao long"
+    ],
+    "description": "1 tô: Cháo lòng heo + tiết. Bắc thêm dồi, Nam thêm hành phi.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-dau-xanh",
+    "name": "Chè đậu xanh",
+    "aliases": [
+      "chè đậu xanh đánh",
+      "che dau xanh"
+    ],
+    "description": "1 chén: Chè đậu xanh nấu đường. Miền Nam thêm nước cốt dừa.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "muc-xao",
+    "name": "Mực xào chua ngọt",
+    "aliases": [
+      "mực xào hành",
+      "muc xao"
+    ],
+    "description": "1 phần: Mực xào hành tây và cà chua, phổ biến cả ba miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
     "slug": "cha-o",
     "name": "Cháo ếch",
     "aliases": [
@@ -5212,6 +5544,2116 @@
       "tra chanh"
     ],
     "description": "Tra cứu dinh dưỡng Trà chanh tươi theo khẩu phần 1 ly 300ml.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-ga-hoi-an",
+    "name": "Cơm gà Hội An",
+    "aliases": [
+      "com ga hoi an"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-nieu-ca-kho",
+    "name": "Cơm niêu cá kho",
+    "aliases": [
+      "com nieu ca kho"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-bo-luc-lac",
+    "name": "Cơm bò lúc lắc",
+    "aliases": [
+      "com bo luc lac"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-suon-bi-cha",
+    "name": "Cơm sườn bì chả",
+    "aliases": [
+      "com suon bi cha"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-chien-duong-chau",
+    "name": "Cơm chiên dương châu",
+    "aliases": [
+      "com chien duong chau"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-chien-hai-san",
+    "name": "Cơm chiên hải sản",
+    "aliases": [
+      "com chien hai san"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-chien-ca-man",
+    "name": "Cơm chiên cá mặn",
+    "aliases": [
+      "com chien ca man"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-nam-muoi-me",
+    "name": "Cơm nắm muối mè",
+    "aliases": [
+      "com nam muoi me"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-hen-hue",
+    "name": "Cơm hến Huế",
+    "aliases": [
+      "com hen hue"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-am-phu",
+    "name": "Cơm âm phủ",
+    "aliases": [
+      "com am phu"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "pho-tai",
+    "name": "Phở tái",
+    "aliases": [
+      "pho tai"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "pho-nam",
+    "name": "Phở nạm",
+    "aliases": [
+      "pho nam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "pho-sot-vang",
+    "name": "Phở sốt vang",
+    "aliases": [
+      "pho sot vang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "pho-cuon",
+    "name": "Phở cuốn",
+    "aliases": [
+      "pho cuon"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-xeo",
+    "name": "Bánh xèo",
+    "aliases": [
+      "banh xeo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-dau-mam-tom",
+    "name": "Bún đậu mắm tôm",
+    "aliases": [
+      "bun dau mam tom"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-cuon",
+    "name": "Bánh cuốn",
+    "aliases": [
+      "banh cuon"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-thit-nuong",
+    "name": "Bún thịt nướng",
+    "aliases": [
+      "bun thit nuong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bo-kho",
+    "name": "Bò kho",
+    "aliases": [
+      "bo kho"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-rang-dua-bo",
+    "name": "Cơm rang dưa bò",
+    "aliases": [
+      "com rang dua bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mien-luon",
+    "name": "Miến lươn",
+    "aliases": [
+      "mien luon"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-troi-nuoc",
+    "name": "Chè trôi nước",
+    "aliases": [
+      "che troi nuoc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-chung",
+    "name": "Bánh chưng",
+    "aliases": [
+      "banh chung"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-tet",
+    "name": "Bánh tét",
+    "aliases": [
+      "banh tet"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-xeo",
+    "name": "Xôi xéo",
+    "aliases": [
+      "xoi xeo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-gio",
+    "name": "Bánh giò",
+    "aliases": [
+      "banh gio"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-kho-qua-nhoi-thit",
+    "name": "Canh khổ qua nhồi thịt",
+    "aliases": [
+      "canh kho qua nhoi thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "pho-xao-bo",
+    "name": "Phở xào bò",
+    "aliases": [
+      "pho xao bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-bo-nam-bo",
+    "name": "Bún bò Nam Bộ",
+    "aliases": [
+      "bun bo nam bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-rieu-oc",
+    "name": "Bún riêu ốc",
+    "aliases": [
+      "bun rieu oc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-mam",
+    "name": "Bún mắm",
+    "aliases": [
+      "bun mam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-ca-nha-trang",
+    "name": "Bún cá Nha Trang",
+    "aliases": [
+      "bun ca nha trang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-ca-ro-dong",
+    "name": "Bún cá rô đồng",
+    "aliases": [
+      "bun ca ro dong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-ngan",
+    "name": "Bún ngan",
+    "aliases": [
+      "bun ngan"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-vit-mang",
+    "name": "Bún vịt măng",
+    "aliases": [
+      "bun vit mang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-suon-chua",
+    "name": "Bún sườn chua",
+    "aliases": [
+      "bun suon chua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-ken-phu-quoc",
+    "name": "Bún kèn Phú Quốc",
+    "aliases": [
+      "bun ken phu quoc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-quay",
+    "name": "Bún quậy",
+    "aliases": [
+      "bun quay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-thit-xao",
+    "name": "Bún thịt xào",
+    "aliases": [
+      "bun thit xao"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-nem-nuong",
+    "name": "Bún nem nướng",
+    "aliases": [
+      "bun nem nuong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-long",
+    "name": "Bún lòng",
+    "aliases": [
+      "bun long"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-cha-ca",
+    "name": "Bún chả cá",
+    "aliases": [
+      "bun cha ca"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hu-tieu-my-tho",
+    "name": "Hủ tiếu Mỹ Tho",
+    "aliases": [
+      "hu tieu my tho"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hu-tieu-sa-dec",
+    "name": "Hủ tiếu Sa Đéc",
+    "aliases": [
+      "hu tieu sa dec"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hu-tieu-xao",
+    "name": "Hủ tiếu xào",
+    "aliases": [
+      "hu tieu xao"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hu-tieu-go",
+    "name": "Hủ tiếu gõ",
+    "aliases": [
+      "hu tieu go"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-quang",
+    "name": "Mì Quảng",
+    "aliases": [
+      "mi quang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-quang-ga",
+    "name": "Mì Quảng gà",
+    "aliases": [
+      "mi quang ga"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-quang-tom-thit",
+    "name": "Mì Quảng tôm thịt",
+    "aliases": [
+      "mi quang tom thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-xao-bo",
+    "name": "Mì xào bò",
+    "aliases": [
+      "mi xao bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-xao-hai-san",
+    "name": "Mì xào hải sản",
+    "aliases": [
+      "mi xao hai san"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-vit-tiem",
+    "name": "Mì vịt tiềm",
+    "aliases": [
+      "mi vit tiem"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mi-hoanh-thanh",
+    "name": "Mì hoành thánh",
+    "aliases": [
+      "mi hoanh thanh"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mien-ga",
+    "name": "Miến gà",
+    "aliases": [
+      "mien ga"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mien-ngan",
+    "name": "Miến ngan",
+    "aliases": [
+      "mien ngan"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mien-xao-cua",
+    "name": "Miến xào cua",
+    "aliases": [
+      "mien xao cua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "mien-tron",
+    "name": "Miến trộn",
+    "aliases": [
+      "mien tron"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-trang-hot-vit-muoi",
+    "name": "Cháo trắng hột vịt muối",
+    "aliases": [
+      "chao trang hot vit muoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-suon",
+    "name": "Cháo sườn",
+    "aliases": [
+      "chao suon"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-ca-loc",
+    "name": "Cháo cá lóc",
+    "aliases": [
+      "chao ca loc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-hau",
+    "name": "Cháo hàu",
+    "aliases": [
+      "chao hau"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-tom",
+    "name": "Cháo tôm",
+    "aliases": [
+      "chao tom"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-dau-xanh-thit-bam",
+    "name": "Cháo đậu xanh thịt bằm",
+    "aliases": [
+      "chao dau xanh thit bam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-vit",
+    "name": "Cháo vịt",
+    "aliases": [
+      "chao vit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "chao-ngheu",
+    "name": "Cháo nghêu",
+    "aliases": [
+      "chao ngheu"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-cua-rau-day",
+    "name": "Canh cua rau đay",
+    "aliases": [
+      "canh cua rau day"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-muop-mong-toi",
+    "name": "Canh mướp mồng tơi",
+    "aliases": [
+      "canh muop mong toi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-chua-tom",
+    "name": "Canh chua tôm",
+    "aliases": [
+      "canh chua tom"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-cai-thit-bam",
+    "name": "Canh cải thịt bằm",
+    "aliases": [
+      "canh cai thit bam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-bi-xanh-tom-kho",
+    "name": "Canh bí xanh tôm khô",
+    "aliases": [
+      "canh bi xanh tom kho"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-khoai-mo",
+    "name": "Canh khoai mỡ",
+    "aliases": [
+      "canh khoai mo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-chua-bong-dien-dien",
+    "name": "Canh chua bông điên điển",
+    "aliases": [
+      "canh chua bong dien dien"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-rau-ma-thit-bam",
+    "name": "Canh rau má thịt bằm",
+    "aliases": [
+      "canh rau ma thit bam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-hen-nau-chua",
+    "name": "Canh hến nấu chua",
+    "aliases": [
+      "canh hen nau chua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-loc-kho-to",
+    "name": "Cá lóc kho tộ",
+    "aliases": [
+      "ca loc kho to"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-basa-kho-to",
+    "name": "Cá basa kho tộ",
+    "aliases": [
+      "ca basa kho to"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-nuc-kho-thom",
+    "name": "Cá nục kho thơm",
+    "aliases": [
+      "ca nuc kho thom"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-thu-sot-ca",
+    "name": "Cá thu sốt cà",
+    "aliases": [
+      "ca thu sot ca"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-dieu-hong-chien",
+    "name": "Cá diêu hồng chiên",
+    "aliases": [
+      "ca dieu hong chien"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-ro-kho-tieu",
+    "name": "Cá rô kho tiêu",
+    "aliases": [
+      "ca ro kho tieu"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-keo-kho-rau-ram",
+    "name": "Cá kèo kho rau răm",
+    "aliases": [
+      "ca keo kho rau ram"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-hap-gung",
+    "name": "Cá hấp gừng",
+    "aliases": [
+      "ca hap gung"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-chep-om-dua",
+    "name": "Cá chép om dưa",
+    "aliases": [
+      "ca chep om dua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-hoi-ap-chao",
+    "name": "Cá hồi áp chảo",
+    "aliases": [
+      "ca hoi ap chao"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "tom-rim-thit",
+    "name": "Tôm rim thịt",
+    "aliases": [
+      "tom rim thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "tom-rang-me",
+    "name": "Tôm rang me",
+    "aliases": [
+      "tom rang me"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "tom-hap-nuoc-dua",
+    "name": "Tôm hấp nước dừa",
+    "aliases": [
+      "tom hap nuoc dua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "muc-nhoi-thit",
+    "name": "Mực nhồi thịt",
+    "aliases": [
+      "muc nhoi thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "muc-nuong-sa-te",
+    "name": "Mực nướng sa tế",
+    "aliases": [
+      "muc nuong sa te"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ngheu-hap-sa",
+    "name": "Nghêu hấp sả",
+    "aliases": [
+      "ngheu hap sa"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "oc-len-xao-dua",
+    "name": "Ốc len xào dừa",
+    "aliases": [
+      "oc len xao dua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "oc-mong-tay-xao-rau-muong",
+    "name": "Ốc móng tay xào rau muống",
+    "aliases": [
+      "oc mong tay xao rau muong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ghe-hap-bia",
+    "name": "Ghẹ hấp bia",
+    "aliases": [
+      "ghe hap bia"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "cua-rang-me",
+    "name": "Cua rang me",
+    "aliases": [
+      "cua rang me"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "thit-kho-tieu",
+    "name": "Thịt kho tiêu",
+    "aliases": [
+      "thit kho tieu"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "thit-kho-mam-ruoc",
+    "name": "Thịt kho mắm ruốc",
+    "aliases": [
+      "thit kho mam ruoc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "thit-luoc-cuon-banh-trang",
+    "name": "Thịt luộc cuốn bánh tráng",
+    "aliases": [
+      "thit luoc cuon banh trang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "thit-heo-quay",
+    "name": "Thịt heo quay",
+    "aliases": [
+      "thit heo quay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "thit-bo-xao-can-tay",
+    "name": "Thịt bò xào cần tây",
+    "aliases": [
+      "thit bo xao can tay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bo-la-lot",
+    "name": "Bò lá lốt",
+    "aliases": [
+      "bo la lot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bo-nhung-giam",
+    "name": "Bò nhúng giấm",
+    "aliases": [
+      "bo nhung giam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bo-xao-bong-cai",
+    "name": "Bò xào bông cải",
+    "aliases": [
+      "bo xao bong cai"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ga-kho-gung",
+    "name": "Gà kho gừng",
+    "aliases": [
+      "ga kho gung"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ga-rang-muoi",
+    "name": "Gà rang muối",
+    "aliases": [
+      "ga rang muoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ga-xao-sa-ot",
+    "name": "Gà xào sả ớt",
+    "aliases": [
+      "ga xao sa ot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ga-nuong-mat-ong",
+    "name": "Gà nướng mật ong",
+    "aliases": [
+      "ga nuong mat ong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ga-luoc-la-chanh",
+    "name": "Gà luộc lá chanh",
+    "aliases": [
+      "ga luoc la chanh"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "vit-kho-gung",
+    "name": "Vịt kho gừng",
+    "aliases": [
+      "vit kho gung"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "vit-nau-chao",
+    "name": "Vịt nấu chao",
+    "aliases": [
+      "vit nau chao"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "vit-om-sau",
+    "name": "Vịt om sấu",
+    "aliases": [
+      "vit om sau"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ech-xao-sa-ot",
+    "name": "Ếch xào sả ớt",
+    "aliases": [
+      "ech xao sa ot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "de-tai-chanh",
+    "name": "Dê tái chanh",
+    "aliases": [
+      "de tai chanh"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "nem-nuong-nha-trang",
+    "name": "Nem nướng Nha Trang",
+    "aliases": [
+      "nem nuong nha trang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "cha-ca-la-vong",
+    "name": "Chả cá Lã Vọng",
+    "aliases": [
+      "cha ca la vong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "cha-muc-ha-long",
+    "name": "Chả mực Hạ Long",
+    "aliases": [
+      "cha muc ha long"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "cha-com",
+    "name": "Chả cốm",
+    "aliases": [
+      "cha com"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "gio-heo-ham",
+    "name": "Giò heo hầm",
+    "aliases": [
+      "gio heo ham"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-cuon-tom-thit",
+    "name": "Gỏi cuốn tôm thịt",
+    "aliases": [
+      "goi cuon tom thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-ngo-sen-tom-thit",
+    "name": "Gỏi ngó sen tôm thịt",
+    "aliases": [
+      "goi ngo sen tom thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-xoai-ca-kho",
+    "name": "Gỏi xoài cá khô",
+    "aliases": [
+      "goi xoai ca kho"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-ga-bap-cai",
+    "name": "Gỏi gà bắp cải",
+    "aliases": [
+      "goi ga bap cai"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-bo-bop-thau",
+    "name": "Gỏi bò bóp thấu",
+    "aliases": [
+      "goi bo bop thau"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "nom-hoa-chuoi",
+    "name": "Nộm hoa chuối",
+    "aliases": [
+      "nom hoa chuoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "nom-du-du",
+    "name": "Nộm đu đủ",
+    "aliases": [
+      "nom du du"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "nom-rau-muong",
+    "name": "Nộm rau muống",
+    "aliases": [
+      "nom rau muong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "rau-muong-luoc",
+    "name": "Rau muống luộc",
+    "aliases": [
+      "rau muong luoc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "rau-muong-xao-bo",
+    "name": "Rau muống xào bò",
+    "aliases": [
+      "rau muong xao bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "cai-thia-xao-nam",
+    "name": "Cải thìa xào nấm",
+    "aliases": [
+      "cai thia xao nam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bong-cai-xao-toi",
+    "name": "Bông cải xào tỏi",
+    "aliases": [
+      "bong cai xao toi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "dau-que-xao-thit-bo",
+    "name": "Đậu que xào thịt bò",
+    "aliases": [
+      "dau que xao thit bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "kho-qua-xao-trung",
+    "name": "Khổ qua xào trứng",
+    "aliases": [
+      "kho qua xao trung"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ca-tim-nuong-mo-hanh",
+    "name": "Cà tím nướng mỡ hành",
+    "aliases": [
+      "ca tim nuong mo hanh"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "dau-hu-kho-nam",
+    "name": "Đậu hũ kho nấm",
+    "aliases": [
+      "dau hu kho nam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "dau-hu-chien-sa",
+    "name": "Đậu hũ chiên sả",
+    "aliases": [
+      "dau hu chien sa"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "dau-hu-nhoi-thit",
+    "name": "Đậu hũ nhồi thịt",
+    "aliases": [
+      "dau hu nhoi thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-op-la",
+    "name": "Bánh mì ốp la",
+    "aliases": [
+      "banh mi op la"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-xiu-mai",
+    "name": "Bánh mì xíu mại",
+    "aliases": [
+      "banh mi xiu mai"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-cha-ca",
+    "name": "Bánh mì chả cá",
+    "aliases": [
+      "banh mi cha ca"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-pate",
+    "name": "Bánh mì pate",
+    "aliases": [
+      "banh mi pate"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-heo-quay",
+    "name": "Bánh mì heo quay",
+    "aliases": [
+      "banh mi heo quay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-bo-kho",
+    "name": "Bánh mì bò kho",
+    "aliases": [
+      "banh mi bo kho"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-hoi-thit-nuong",
+    "name": "Bánh hỏi thịt nướng",
+    "aliases": [
+      "banh hoi thit nuong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-hoi-heo-quay",
+    "name": "Bánh hỏi heo quay",
+    "aliases": [
+      "banh hoi heo quay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-canh-cua",
+    "name": "Bánh canh cua",
+    "aliases": [
+      "banh canh cua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-canh-ca-loc",
+    "name": "Bánh canh cá lóc",
+    "aliases": [
+      "banh canh ca loc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-canh-gio-heo",
+    "name": "Bánh canh giò heo",
+    "aliases": [
+      "banh canh gio heo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-xeo-mien-tay",
+    "name": "Bánh xèo miền Tây",
+    "aliases": [
+      "banh xeo mien tay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-xeo-mien-trung",
+    "name": "Bánh xèo miền Trung",
+    "aliases": [
+      "banh xeo mien trung"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-cuon-nong",
+    "name": "Bánh cuốn nóng",
+    "aliases": [
+      "banh cuon nong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-uot-thit-nuong",
+    "name": "Bánh ướt thịt nướng",
+    "aliases": [
+      "banh uot thit nuong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-bot-loc",
+    "name": "Bánh bột lọc",
+    "aliases": [
+      "banh bot loc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-nam",
+    "name": "Bánh nậm",
+    "aliases": [
+      "banh nam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-ram-it",
+    "name": "Bánh ram ít",
+    "aliases": [
+      "banh ram it"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-it-tran",
+    "name": "Bánh ít trần",
+    "aliases": [
+      "banh it tran"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-duc-nong",
+    "name": "Bánh đúc nóng",
+    "aliases": [
+      "banh duc nong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-tam-bi",
+    "name": "Bánh tằm bì",
+    "aliases": [
+      "banh tam bi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-trang-tron",
+    "name": "Bánh tráng trộn",
+    "aliases": [
+      "banh trang tron"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-trang-nuong",
+    "name": "Bánh tráng nướng",
+    "aliases": [
+      "banh trang nuong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-gac",
+    "name": "Xôi gấc",
+    "aliases": [
+      "xoi gac"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-dau-xanh",
+    "name": "Xôi đậu xanh",
+    "aliases": [
+      "xoi dau xanh"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-dau-phong",
+    "name": "Xôi đậu phộng",
+    "aliases": [
+      "xoi dau phong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-man",
+    "name": "Xôi mặn",
+    "aliases": [
+      "xoi man"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-bap",
+    "name": "Xôi bắp",
+    "aliases": [
+      "xoi bap"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-vo",
+    "name": "Xôi vò",
+    "aliases": [
+      "xoi vo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-bap",
+    "name": "Chè bắp",
+    "aliases": [
+      "che bap"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-dau-do",
+    "name": "Chè đậu đỏ",
+    "aliases": [
+      "che dau do"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-dau-den",
+    "name": "Chè đậu đen",
+    "aliases": [
+      "che dau den"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-ba-ba",
+    "name": "Chè bà ba",
+    "aliases": [
+      "che ba ba"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-khuc-bach",
+    "name": "Chè khúc bạch",
+    "aliases": [
+      "che khuc bach"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-hat-sen",
+    "name": "Chè hạt sen",
+    "aliases": [
+      "che hat sen"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-chuoi",
+    "name": "Chè chuối",
+    "aliases": [
+      "che chuoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "sam-bo-luong",
+    "name": "Sâm bổ lượng",
+    "aliases": [
+      "sam bo luong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "rau-cau-dua",
+    "name": "Rau câu dừa",
+    "aliases": [
+      "rau cau dua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-mi-thit-cha",
+    "name": "Bánh mì thịt chả",
+    "aliases": [
+      "banh mi thit cha"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-tam-suon-bi-cha",
+    "name": "Cơm tấm sườn bì chả",
+    "aliases": [
+      "com tam suon bi cha"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-cha-ha-noi",
+    "name": "Bún chả Hà Nội",
+    "aliases": [
+      "bun cha ha noi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-bo-hue",
+    "name": "Bún bò Huế",
+    "aliases": [
+      "bun bo hue"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hu-tieu-nam-vang",
+    "name": "Hủ tiếu Nam Vang",
+    "aliases": [
+      "hu tieu nam vang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "lau-thai-tom-muc",
+    "name": "Lẩu Thái tôm mực",
+    "aliases": [
+      "lau thai tom muc"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bo-ne-op-la",
+    "name": "Bò né ốp la",
+    "aliases": [
+      "bo ne op la"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bi-cuon",
+    "name": "Bì cuốn",
+    "aliases": [
+      "bi cuon"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-chung-ran",
+    "name": "Bánh chưng rán",
+    "aliases": [
+      "banh chung ran"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "xoi-man-thap-cam",
+    "name": "Xôi mặn thập cẩm",
+    "aliases": [
+      "xoi man thap cam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "lau-bo-nhung-dam",
+    "name": "Lẩu bò nhúng dấm",
+    "aliases": [
+      "lau bo nhung dam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "lau-ga-la-e",
+    "name": "Lẩu gà lá é",
+    "aliases": [
+      "lau ga la e"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "lau-rieu-cua-bap-bo",
+    "name": "Lẩu riêu cua bắp bò",
+    "aliases": [
+      "lau rieu cua bap bo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "lau-ca-keo-la-giang",
+    "name": "Lẩu cá kèo lá giang",
+    "aliases": [
+      "lau ca keo la giang"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "lau-de",
+    "name": "Lẩu dê",
+    "aliases": [
+      "lau de"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bo-nuong-la-lot",
+    "name": "Bò nướng lá lốt",
+    "aliases": [
+      "bo nuong la lot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "suon-heo-nuong",
+    "name": "Sườn heo nướng",
+    "aliases": [
+      "suon heo nuong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "vu-heo-nuong-chao",
+    "name": "Vú heo nướng chao",
+    "aliases": [
+      "vu heo nuong chao"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "ga-nuong-muoi-ot",
+    "name": "Gà nướng muối ớt",
+    "aliases": [
+      "ga nuong muoi ot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "oc-huong-rang-muoi-trung-muoi",
+    "name": "Ốc hương rang muối trứng muối",
+    "aliases": [
+      "oc huong rang muoi trung muoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "cang-ghe-rang-muoi",
+    "name": "Càng ghẹ rang muối",
+    "aliases": [
+      "cang ghe rang muoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "so-huyet-chay-toi",
+    "name": "Sò huyết cháy tỏi",
+    "aliases": [
+      "so huyet chay toi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "hau-nuong-pho-mai",
+    "name": "Hàu nướng phô mai",
+    "aliases": [
+      "hau nuong pho mai"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "bun-nam-chay",
+    "name": "Bún nấm chay",
+    "aliases": [
+      "bun nam chay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "com-chien-duong-chau-chay",
+    "name": "Cơm chiên dương châu chay",
+    "aliases": [
+      "com chien duong chau chay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "dau-hu-xao-sa-ot",
+    "name": "Đậu hũ xào sả ớt",
+    "aliases": [
+      "dau hu xao sa ot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "canh-chua-chay",
+    "name": "Canh chua chay",
+    "aliases": [
+      "canh chua chay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "goi-ngo-sen-chay",
+    "name": "Gỏi ngó sen chay",
+    "aliases": [
+      "goi ngo sen chay"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-cuon-nhan-thit",
+    "name": "Bánh cuốn nhân thịt",
+    "aliases": [
+      "banh cuon nhan thit"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-uot-cha-lua",
+    "name": "Bánh ướt chả lụa",
+    "aliases": [
+      "banh uot cha lua"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-canh-cha-ca",
+    "name": "Bánh canh chả cá",
+    "aliases": [
+      "banh canh cha ca"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-beo",
+    "name": "Bánh bèo",
+    "aliases": [
+      "banh beo"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-khot",
+    "name": "Bánh khọt",
+    "aliases": [
+      "banh khot"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "banh-flan",
+    "name": "Bánh flan",
+    "aliases": [
+      "banh flan"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "tau-hu-nuoc-duong",
+    "name": "Tàu hũ nước đường",
+    "aliases": [
+      "tau hu nuoc duong"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "sua-chua-nep-cam",
+    "name": "Sữa chua nếp cẩm",
+    "aliases": [
+      "sua chua nep cam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-thap-cam",
+    "name": "Chè thập cẩm",
+    "aliases": [
+      "che thap cam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
+    "slug": "che-buoi",
+    "name": "Chè bưởi",
+    "aliases": [
+      "che buoi"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
   },
   {
