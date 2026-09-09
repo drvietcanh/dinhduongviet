@@ -50,6 +50,11 @@ async function readCompatAliases() {
   }));
 }
 
+async function readVnMicronutrientOverrideSlugs() {
+  const source = await readFile(path.join(root, "src/data/food-vn-micronutrient-overrides.ts"), "utf8");
+  return new Set([...source.matchAll(/^\s+"([^"]+)":/gm)].map((match) => match[1]));
+}
+
 function groupBy(items, keyFn) {
   const map = new Map();
   for (const item of items) {
@@ -168,6 +173,7 @@ const fullRows = await readJson("public/api/foods-full.json");
 const searchIndex = await readJson("public/api/search-index.json");
 const sourceFoods = await readJson("dist/api-foods.json");
 const compatAliases = await readCompatAliases();
+const vnMicronutrientOverrideSlugs = await readVnMicronutrientOverrideSlugs();
 const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
 const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
@@ -332,6 +338,54 @@ const cookedHighEnergyWithoutReviewMetadata = cookedHighEnergyReview
     reason: "Cooked high energy item has no source review metadata yet.",
   }));
 
+const intentionallySkippedVnMicronutrientCandidates = [
+  {
+    slug: "bo-trai",
+    name: "Bơ",
+    matchedVnName: "Bơ",
+    reason: "Nguồn match có cholesterol/B12 như bơ sữa, không đủ chắc cho quả bơ.",
+  },
+  {
+    slug: "ca-moi",
+    name: "Cá mòi",
+    matchedVnName: "Cá mối",
+    reason: "Khác loài/tên; không dùng dữ liệu cá mối cho cá mòi.",
+  },
+  {
+    slug: "tuong-ot",
+    name: "Tương ớt",
+    matchedVnName: "Tương ớt",
+    reason: "Giá trị natri nguồn không phù hợp kỳ vọng gia vị mặn; cần nguồn nhãn hàng hoặc xác minh lại.",
+  },
+  {
+    slug: "la-lot",
+    name: "Lá lốt",
+    matchedVnName: "Lá lốt",
+    reason: "Phosphorus 980 mg/100g bất thường với rau lá; cần xác minh nguồn trước khi nhập.",
+  },
+  {
+    slug: "luu",
+    name: "Lựu",
+    matchedVnName: "Lùu",
+    reason: "Tên nguồn có lỗi chính tả/mapping nhập nhằng; giữ lại chờ xác minh.",
+  },
+  {
+    slug: "gan-bo",
+    name: "Gân bò",
+    matchedVnName: "Gan bò",
+    reason: "Khác bộ phận; không dùng dữ liệu gan bò cho gân bò.",
+  },
+  {
+    slug: "mut-dua",
+    name: "Mứt dừa",
+    matchedVnName: "Mứt dứa",
+    reason: "Khác thực phẩm; không dùng dữ liệu mứt dứa cho mứt dừa.",
+  },
+].map((item) => issue("info", {
+  ...item,
+  action: vnMicronutrientOverrideSlugs.has(item.slug) ? "review_existing_override" : "skip_until_verified",
+}));
+
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
 const watchedDuplicateStatus = watchedDuplicates.map((slug) => duplicateSlugs.find((item) => item.slug === slug) || { slug, count: 0, action: "not_found_as_duplicate" });
 
@@ -342,6 +396,7 @@ const sourceNotes = [
   "scripts/build-data-all.mjs runs an Astro build before food API generation, then runs a final Astro build to copy regenerated public API files into dist.",
   "src/pages/api-foods.json.ts exports full food data from src/data/nutrition.ts at build time.",
   "No nutrition values or source data were changed by this QA script.",
+  "Vietnam micronutrient overlays are intentionally conservative; skipped candidates must be verified before import.",
 ];
 
 const allIssues = [
@@ -356,6 +411,7 @@ const allIssues = [
   ...riceSourceReview,
   ...decisionTableMissingMetadata,
   ...cookedHighEnergyWithoutReviewMetadata,
+  ...intentionallySkippedVnMicronutrientCandidates,
 ];
 const issuesBySeverity = allIssues.reduce((totals, item) => {
   totals[item.severity] = (totals[item.severity] || 0) + 1;
@@ -383,6 +439,8 @@ const report = {
     needsDietitianReview: foodsNeedingDietitianReview.length,
     cookedHighEnergyWithoutReviewMetadata: cookedHighEnergyWithoutReviewMetadata.length,
     decisionTableMissingMetadata: decisionTableMissingMetadata.length,
+    vnMicronutrientOverrides: vnMicronutrientOverrideSlugs.size,
+    intentionallySkippedVnMicronutrientCandidates: intentionallySkippedVnMicronutrientCandidates.length,
   },
   dataQualityCounts,
   sourceReviewStatusCounts,
@@ -411,6 +469,7 @@ const report = {
   })),
   decisionTableMissingMetadata,
   cookedHighEnergyWithoutReviewMetadata,
+  intentionallySkippedVnMicronutrientCandidates,
   missingCoreNutrients,
   aliasWarnings: aliasWarnings.slice(0, 200),
 };
