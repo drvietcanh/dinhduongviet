@@ -28,6 +28,12 @@ const toolCards = [
   { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Xem mốc nhu cầu dinh dưỡng theo nhóm tuổi" },
   { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "Ước tính calo tiêu hao theo từng môn tập" },
 ];
+const quickJourneys = [
+  { href: "/theo-benh/tieu-duong", icon: "🩸", label: "Đái tháo đường", desc: "carb · GI/GL · thực đơn" },
+  { href: "/theo-benh/cao-huyet-ap", icon: "🫀", label: "Tăng huyết áp", desc: "muối · DASH · món Việt" },
+  { href: "/theo-benh/benh-than", icon: "🫘", label: "Bệnh thận", desc: "đạm · kali · phốt pho" },
+  { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", label: "So sánh nhanh", desc: "18 chỉ số dinh dưỡng" },
+];
 ---
 
 <BaseLayout
@@ -36,21 +42,44 @@ const toolCards = [
   canonical="/"
 >
   <section class="hero">
-    <span class="hero-badge animate-fade-in">🇻🇳 Dữ liệu thực phẩm Việt · Bài viết theo bệnh · Công cụ thực hành</span>
-    <h1 class="animate-fade-in-up">Ăn uống dễ hiểu hơn, <span class="brand-text">quyết định an toàn hơn</span></h1>
-    <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Tra nhanh thực phẩm, món ăn, bệnh lý và công cụ dinh dưỡng — trình bày theo hướng thực tế, có nguồn, dễ áp dụng cho bữa ăn Việt.</p>
-    <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
-    <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
-      <a class="cta-btn" href="/tim-kiem">🔎 Tìm trong toàn site</a>
-      <a class="cta-btn" href="/ban-do-benh">🩺 Xem theo bệnh</a>
-      <a class="cta-btn cta-outline" href="/cong-cu/nhat-ky">📓 Ghi bữa ăn</a>
+    <div class="hero-copy">
+      <span class="hero-badge animate-fade-in">🇻🇳 Dữ liệu thực phẩm Việt · Bài viết theo bệnh · Công cụ thực hành</span>
+      <h1 class="animate-fade-in-up">Ăn uống dễ hiểu hơn, <span class="brand-text">quyết định an toàn hơn</span></h1>
+      <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Tra nhanh thực phẩm, món ăn, bệnh lý và công cụ dinh dưỡng — trình bày theo hướng thực tế, có nguồn, dễ áp dụng cho bữa ăn Việt.</p>
+      <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
+      <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
+        <a class="cta-btn" href="/tim-kiem">🔎 Tìm trong toàn site</a>
+        <a class="cta-btn" href="/ban-do-benh">🩺 Xem theo bệnh</a>
+        <a class="cta-btn cta-outline" href="/cong-cu/nhat-ky">📓 Ghi bữa ăn</a>
+      </div>
+      <div class="hero-trust animate-fade-in-up" style="animation-delay: 0.38s;" aria-label="Thông tin độ tin cậy">
+        <span>📚 {articles.length} bài viết</span>
+        <span>🥬 {foods.length} thực phẩm</span>
+        <span>🍜 {recipes.length} món ăn</span>
+        <span>🛠️ {toolCount} công cụ</span>
+      </div>
     </div>
-    <div class="hero-trust animate-fade-in-up" style="animation-delay: 0.38s;" aria-label="Thông tin độ tin cậy">
-      <span>📚 {articles.length} bài viết</span>
-      <span>🥬 {foods.length} thực phẩm</span>
-      <span>🍜 {recipes.length} món ăn</span>
-      <span>🛠️ {toolCount} công cụ</span>
-    </div>
+    <aside class="hero-panel animate-fade-in-up" style="animation-delay: 0.16s;" aria-label="Điều hướng nhanh">
+      <div class="hero-panel-head">
+        <span>Hôm nay bắt đầu ở đâu?</span>
+        <strong>4 lối vào nhanh</strong>
+      </div>
+      <div class="journey-list">
+        {quickJourneys.map((item) => (
+          <a href={item.href} class="journey-item">
+            <span class="journey-icon">{item.icon}</span>
+            <span>
+              <strong>{item.label}</strong>
+              <small>{item.desc}</small>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="hero-panel-note">
+        <span>✨</span>
+        <p>Ưu tiên thông tin thực hành: nên ăn gì, hạn chế gì, khi nào cần hỏi bác sĩ.</p>
+      </div>
+    </aside>
   </section>
 
   <section class="home-flow" aria-label="Lối vào nhanh">
@@ -876,6 +905,193 @@ const toolCards = [
   .hero-trust span {
     flex: 1 1 calc(50% - 8px);
     justify-content: center;
+  }
+}
+
+/* Inspired by modern healthcare landing pages: search-first, calm dashboard, clearer paths */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+  gap: clamp(22px, 4vw, 42px);
+  align-items: center;
+  text-align: left;
+}
+.hero-copy {
+  max-width: 760px;
+}
+.hero h1,
+.hero-desc,
+.hero-search {
+  margin-left: 0;
+  margin-right: 0;
+}
+.hero-actions,
+.hero-trust {
+  justify-content: flex-start;
+}
+.hero-panel {
+  position: relative;
+  z-index: 1;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, .26);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62)),
+    var(--card);
+  box-shadow: 0 24px 60px -30px rgba(15, 23, 42, .35);
+  backdrop-filter: blur(14px);
+}
+[data-theme="dark"] .hero-panel {
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, .82), rgba(15, 23, 42, .56)),
+    var(--card);
+  box-shadow: 0 24px 70px -34px rgba(0, 0, 0, .7);
+}
+.hero-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 2px 2px 14px;
+  border-bottom: 1px solid rgba(148, 163, 184, .22);
+}
+.hero-panel-head span {
+  color: var(--ink-secondary);
+  font-size: .82rem;
+  font-weight: 750;
+}
+.hero-panel-head strong {
+  color: var(--brand-dark);
+  font-size: .86rem;
+}
+.journey-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.journey-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 16px;
+  background: rgba(255,255,255,.58);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+[data-theme="dark"] .journey-item {
+  background: rgba(15, 23, 42, .38);
+}
+.journey-item:hover {
+  transform: translateX(3px);
+  border-color: var(--brand-light2);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+.journey-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: var(--brand-light);
+  font-size: 1.25rem;
+}
+.journey-item span:last-child {
+  display: grid;
+  gap: 2px;
+}
+.journey-item strong {
+  font-size: .92rem;
+}
+.journey-item small {
+  color: var(--ink-tertiary);
+  font-size: .79rem;
+}
+.hero-panel-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, .12), rgba(14, 165, 233, .1));
+  color: var(--ink-secondary);
+}
+.hero-panel-note p {
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.55;
+}
+.entry-cards {
+  align-items: stretch;
+}
+.entry-card {
+  min-height: 210px;
+  justify-content: flex-start;
+}
+.start-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.38)),
+    var(--card);
+}
+[data-theme="dark"] .start-card {
+  background:
+    linear-gradient(180deg, rgba(15,23,42,.42), rgba(15,23,42,.18)),
+    var(--card);
+}
+.food-card,
+.health-card,
+.tool-card,
+.category-card {
+  border-radius: 18px;
+}
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-copy {
+    max-width: none;
+  }
+  .hero h1,
+  .hero-desc,
+  .hero-search {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions,
+  .hero-trust {
+    justify-content: center;
+  }
+  .hero-panel {
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 520px) {
+  .hero {
+    text-align: left;
+  }
+  .hero-actions,
+  .hero-trust {
+    justify-content: flex-start;
+  }
+  .hero-panel {
+    padding: 14px;
+    border-radius: 20px;
+  }
+  .hero-panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .journey-item:hover {
+    transform: translateY(-1px);
   }
 }
 </style>
