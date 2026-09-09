@@ -9,7 +9,7 @@ import GlycemicLoad from "../../components/GlycemicLoad.astro";
 import VNHealthScore from "../../components/VNHealthScore.astro";
 import AddToDiary from "../../components/AddToDiary.astro";
 import { foods } from "../../data/nutrition";
-import { confidenceLabel, foodBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
+import { confidenceLabel, detailNutrients, foodBySlug, formatValue, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
 import { foodSlugAliases } from "../../lib/food-slug-aliases";
 
 export function getStaticPaths() {
@@ -46,13 +46,51 @@ const heroMetrics = [
   { label: "Năng lượng", value: `${Math.round(food.nutrients.energyKcal ?? 0)} kcal` },
   { label: "Protein", value: `${Math.round(food.nutrients.proteinG ?? 0)} g` },
   { label: "Carb", value: `${Math.round(food.nutrients.carbG ?? 0)} g` },
-  { label: "Chất xơ", value: `${Math.round(food.nutrients.fiberG ?? 0)} g` }
+  { label: "Chất xơ", value: food.nutrients.fiberG == null ? "Chưa có" : `${formatValue(food.nutrients.fiberG)} g` }
 ];
 const heroTags = allTags(food).slice(0, 3);
+const coreNutrientKeys = ["energyKcal", "proteinG", "carbG", "fatG"] as const;
+const presentDetailKeys = detailNutrients.filter((key) => food.nutrients[key] != null);
+const missingDetailKeys = detailNutrients.filter((key) => food.nutrients[key] == null);
+const coreComplete = coreNutrientKeys.every((key) => food.nutrients[key] != null);
+const completenessPct = Math.round((presentDetailKeys.length / detailNutrients.length) * 100);
+const completenessLabel = completenessPct >= 70
+  ? "Rất đầy đủ"
+  : completenessPct >= 45
+    ? "Khá đầy đủ"
+    : "Đủ macro, vi chất còn mỏng";
+const missingPreview = missingDetailKeys
+  .slice(0, 5)
+  .map((key) => ({
+    glycemicIndex: "GI",
+    saturatedFatG: "béo bão hòa",
+    cholesterolMg: "cholesterol",
+    phosphorusMg: "phốt pho",
+    potassiumMg: "kali",
+    calciumMg: "canxi",
+    ironMg: "sắt",
+    zincMg: "kẽm",
+    magnesiumMg: "magie",
+    seleniumMcg: "selen",
+    vitaminAUg: "vitamin A",
+    vitaminCMg: "vitamin C",
+    vitaminDMcg: "vitamin D",
+    vitaminEMg: "vitamin E",
+    vitaminB12Mcg: "vitamin B12",
+    fiberG: "chất xơ",
+    sugarG: "đường",
+    sodiumMg: "natri",
+    energyKcal: "năng lượng",
+    proteinG: "đạm",
+    carbG: "carb",
+    fatG: "béo",
+  }[key] ?? String(key)))
+  .join(", ");
 const detailMeta = [
   { label: "Quy đổi", value: food.basis },
   { label: "Nguồn", value: source?.name ?? food.sourceId },
   { label: "Độ tin cậy", value: confidenceLabel(food.confidence) },
+  { label: "Độ phủ", value: `${presentDetailKeys.length}/${detailNutrients.length} chỉ số` },
 ];
 
 // JSON-LD Food structured data
@@ -200,6 +238,22 @@ var foodSchema = {
           <span>Cơ sở quy đổi</span>
           <strong>{food.basis}</strong>
         </div>
+        <div class="source-fact">
+          <span>Thành phần đã có</span>
+          <strong>{presentDetailKeys.length}/{detailNutrients.length} chỉ số</strong>
+        </div>
+      </div>
+      <div class={`data-completeness-card ${coreComplete ? "is-ok" : "is-warning"}`}>
+        <div>
+          <span class="data-completeness-kicker">Độ đầy đủ dữ liệu</span>
+          <strong>{completenessLabel} · {completenessPct}%</strong>
+        </div>
+        <p>
+          {coreComplete
+            ? "Đã có đủ 4 chỉ số nền tảng: năng lượng, đạm, carb và chất béo."
+            : "Thiếu ít nhất một chỉ số nền tảng, cần kiểm lại trước khi dùng để so sánh khẩu phần."}
+          {missingPreview && ` Một số chỉ số chưa có: ${missingPreview}.`}
+        </p>
       </div>
       {qualityNote && (
         <div class="quality-note">
@@ -579,6 +633,45 @@ var foodSchema = {
   .source-fact strong {
     font-size: 0.92rem;
     line-height: 1.4;
+  }
+
+  .data-completeness-card {
+    display: grid;
+    gap: 8px;
+    margin-top: 4px;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 7%, var(--card)), var(--card));
+  }
+
+  .data-completeness-card.is-warning {
+    border-color: color-mix(in srgb, #f59e0b 45%, var(--line));
+    background: linear-gradient(135deg, color-mix(in srgb, #f59e0b 10%, var(--card)), var(--card));
+  }
+
+  .data-completeness-kicker {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--ink-tertiary);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .data-completeness-card strong {
+    color: var(--ink);
+    font-size: 0.94rem;
+    line-height: 1.4;
+  }
+
+  .data-completeness-card p {
+    margin: 0;
+    color: var(--ink-secondary);
+    font-size: 0.86rem;
+    line-height: 1.55;
   }
 
   .source-actions {
