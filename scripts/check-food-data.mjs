@@ -412,6 +412,7 @@ const allowedVnCrossrefTransformSlugs = new Set([
   "bot-mi",
   "bot-nghe",
   "mi-goi",
+  "lap-xuong",
   "thit-ga-ta",
   "thit-lon-nac",
   "xi-dau",
