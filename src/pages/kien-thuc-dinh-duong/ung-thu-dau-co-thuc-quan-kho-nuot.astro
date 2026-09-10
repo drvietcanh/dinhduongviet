@@ -1,0 +1,36 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-dau-co-thuc-quan-kho-nuot"];
+if (!art) throw new Error("Article not found: ung-thu-dau-co-thuc-quan-kho-nuot");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư vùng đầu-cổ hoặc thực quản, cũng như xạ trị vùng cổ-ngực, có thể gây đau miệng, khô miệng, hẹp đường nuốt hoặc sặc. Dinh dưỡng lúc này cần đi cùng đánh giá nuốt; tự ép ăn cơm khô hoặc uống nước thật nhanh có thể làm nguy cơ sặc cao hơn.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Ưu tiên an toàn đường nuốt</h2>
+    <ul>
+      <li>Ngồi thẳng khi ăn và sau ăn; ăn chậm, từng muỗng nhỏ.</li>
+      <li>Chọn độ đặc phù hợp theo hướng dẫn của bác sĩ/âm ngữ trị liệu: mềm, xay, sệt hoặc đặc hơn nếu dễ sặc nước loãng.</li>
+      <li>Tránh món vụn khô, nhiều hạt, xương dăm, vỏ dai hoặc vừa lỏng vừa rắn như canh có nhiều miếng nhỏ nếu người bệnh hay sặc.</li>
+      <li>Nếu ho sặc, giọng ướt sau ăn, sốt tái diễn hoặc viêm phổi, cần đánh giá nuốt sớm.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Làm món mềm nhưng vẫn đủ chất</h2>
+    <ul>
+      <li>Cháo/súp xay có thịt cá trứng đậu hũ, thêm dầu vừa phải để tăng năng lượng nếu dung nạp được.</li>
+      <li>Sữa chua, custard, trứng hấp, đậu hũ non, khoai nghiền hoặc sinh tố đặc mịn là lựa chọn dễ biến đổi.</li>
+      <li>Chia 5–6 bữa nhỏ; cân nặng giảm nhanh là dấu hiệu cần hỗ trợ dinh dưỡng chuyên sâu.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào cần hỗ trợ nuôi dưỡng?</h2>
+    <p>Nếu ăn uống qua miệng không đủ hoặc nguy cơ sặc cao, bác sĩ có thể cân nhắc hỗ trợ dinh dưỡng qua ống hoặc đường khác trong một giai đoạn. Đây là quyết định y khoa cá thể hóa, không phải thất bại của người bệnh hay gia đình.</p>
+  </section>
+</ArticleLayout>

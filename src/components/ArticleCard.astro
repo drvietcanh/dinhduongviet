@@ -11,10 +11,11 @@ export interface Props {
   audience?: string[];
   tags?: string[];
   series?: string;
+  specialty?: string;
   prefix?: string; // URL prefix, default "/kien-thuc-dinh-duong"
 }
 
-const { title, slug, emoji, description, readTime, date, audience, tags, series, prefix = "/kien-thuc-dinh-duong" } = Astro.props;
+const { title, slug, emoji, description, readTime, date, audience, tags, series, specialty, prefix = "/kien-thuc-dinh-duong" } = Astro.props;
 const articlePrefix = series === "dung-tin-ngay" && slug.startsWith("canh-bao-hieu-lam-")
   ? "/kien-thuc-dinh-duong"
   : series
@@ -47,11 +48,29 @@ const tagLabels: Record<string, { emoji: string; label: string }> = {
   caregiver: { emoji: "👨‍👩‍👧‍👦", label: "Người chăm" },
   "ask-doctor": { emoji: "⚕️", label: "Hỏi bác sĩ" },
 };
+const specialtyLabels: Record<string, { emoji: string; label: string }> = {
+  "ung-thu": { emoji: "🎗️", label: "Ung thư" },
+  "tim-mach": { emoji: "❤️", label: "Tim mạch" },
+  "noi-tiet": { emoji: "🩸", label: "Nội tiết" },
+  "than-tiet-nieu": { emoji: "🫘", label: "Thận" },
+  "tieu-hoa": { emoji: "🫃", label: "Tiêu hóa" },
+  "ho-hap": { emoji: "🫁", label: "Hô hấp" },
+  "nhi-khoa": { emoji: "🧒", label: "Nhi khoa" },
+  "phu-nu-nhi": { emoji: "🤰", label: "Phụ nữ - trẻ em" },
+  "lao-khoa": { emoji: "👵", label: "Lão khoa" },
+  "than-kinh": { emoji: "🧠", label: "Thần kinh" },
+  "co-xuong-khop": { emoji: "🦴", label: "Cơ xương khớp" },
+  "huyet-hoc": { emoji: "🩸", label: "Huyết học" },
+  "truyen-nhiem": { emoji: "🛡️", label: "Truyền nhiễm" },
+  "dinh-duong-tong-quat": { emoji: "🥗", label: "Dinh dưỡng" },
+};
 const primaryTag = tags?.map((t) => tagLabels[t]).find(Boolean) ?? null;
 const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean) ?? null;
+const specialtyBadge = specialty ? specialtyLabels[specialty] : null;
 ---
 
-<a href={href} class="ac-card">
+<a href={href} class="ac-card" data-specialty={specialty || "general"}>
+  {specialtyBadge && <span class="ac-specialty">{specialtyBadge.emoji} {specialtyBadge.label}</span>}
   <div class="ac-top">
     <span class="ac-emoji" aria-hidden="true">{emoji}</span>
     <div class="ac-info">
@@ -80,16 +99,23 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
 
 <style>
   .ac-card {
+    --ac-accent: var(--brand);
+    --ac-accent-2: var(--accent);
+    --ac-soft: color-mix(in srgb, var(--ac-accent) 11%, var(--card));
+    --ac-border: color-mix(in srgb, var(--ac-accent) 24%, var(--card-border));
     display: flex;
     flex-direction: column;
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
+    background:
+      linear-gradient(135deg, var(--ac-soft), transparent 56%),
+      linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.70)),
+      var(--card);
+    border: 1px solid var(--ac-border);
+    border-radius: 18px;
     padding: 16px;
     text-decoration: none;
     color: inherit;
-    transition: all var(--transition);
-    box-shadow: var(--shadow-sm);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    box-shadow: 0 10px 28px -24px rgba(15, 23, 42, 0.36);
     min-height: 100%;
     position: relative;
     overflow: hidden;
@@ -99,12 +125,12 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
     position: absolute;
     inset: 0 0 auto;
     height: 4px;
-    background: linear-gradient(90deg, var(--brand), var(--accent));
-    opacity: 0;
+    background: linear-gradient(90deg, var(--ac-accent), var(--ac-accent-2));
+    opacity: 0.9;
     transition: opacity 0.2s ease;
   }
   .ac-card:hover {
-    border-color: var(--brand-light2);
+    border-color: color-mix(in srgb, var(--ac-accent) 52%, var(--brand-light2));
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
     text-decoration: none;
@@ -116,14 +142,35 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+    padding-top: 2px;
+  }
+  .ac-specialty {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+    margin: 2px 0 10px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ac-accent) 12%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--ac-accent) 22%, transparent);
+    color: color-mix(in srgb, var(--ac-accent) 72%, var(--ink));
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
   .ac-emoji {
     display: inline-grid;
     place-items: center;
     width: 38px;
     height: 38px;
-    border-radius: 12px;
-    background: var(--brand-light);
+    border-radius: 15px;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95), transparent 38%),
+      color-mix(in srgb, var(--ac-accent) 16%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--ac-accent) 20%, transparent);
     font-size: 1.35rem;
     flex-shrink: 0;
     margin-top: 0;
@@ -134,7 +181,7 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
   }
   .ac-title {
     margin: 0;
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     line-height: 1.4;
     font-weight: 800;
     letter-spacing: -0.01em;
@@ -144,8 +191,8 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
     overflow: hidden;
   }
   .ac-desc {
-    margin: 3px 0 0;
-    font-size: 0.78rem;
+    margin: 4px 0 0;
+    font-size: 0.8rem;
     color: var(--ink-secondary);
     line-height: 1.5;
     display: -webkit-box;
@@ -168,10 +215,10 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
     gap: 2px;
     padding: 3px 8px;
     border-radius: 4px;
-    background: var(--brand-light);
+    background: color-mix(in srgb, var(--ac-accent) 13%, var(--card));
     font-size: 0.7rem;
     font-weight: 500;
-    color: var(--brand);
+    color: color-mix(in srgb, var(--ac-accent) 74%, var(--ink));
     white-space: nowrap;
   }
   .ac-aud-tag {
@@ -201,15 +248,35 @@ const primaryAudience = normalizedAudience.map((a) => audLabels[a]).find(Boolean
     justify-content: flex-end;
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px dashed var(--line);
+    border-top: 1px dashed color-mix(in srgb, var(--line) 80%, transparent);
     align-items: center;
     gap: 5px;
   }
   .ac-cta span {
-    color: var(--brand-dark);
+    color: color-mix(in srgb, var(--ac-accent) 82%, var(--ink));
     font-size: 0.78rem;
     font-weight: 800;
   }
+  [data-theme="dark"] .ac-card {
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--ac-accent) 18%, transparent), transparent 58%),
+      linear-gradient(180deg, rgba(30,41,59,0.78), rgba(15,23,42,0.64)),
+      var(--card);
+  }
+  .ac-card[data-specialty="ung-thu"] { --ac-accent: #8b5cf6; --ac-accent-2: #ec4899; }
+  .ac-card[data-specialty="tim-mach"] { --ac-accent: #ef4444; --ac-accent-2: #f97316; }
+  .ac-card[data-specialty="noi-tiet"] { --ac-accent: #2563eb; --ac-accent-2: #06b6d4; }
+  .ac-card[data-specialty="than-tiet-nieu"] { --ac-accent: #0f766e; --ac-accent-2: #14b8a6; }
+  .ac-card[data-specialty="tieu-hoa"] { --ac-accent: #d97706; --ac-accent-2: #facc15; }
+  .ac-card[data-specialty="ho-hap"] { --ac-accent: #0284c7; --ac-accent-2: #38bdf8; }
+  .ac-card[data-specialty="nhi-khoa"],
+  .ac-card[data-specialty="phu-nu-nhi"] { --ac-accent: #f59e0b; --ac-accent-2: #fb7185; }
+  .ac-card[data-specialty="lao-khoa"] { --ac-accent: #7c3aed; --ac-accent-2: #06b6d4; }
+  .ac-card[data-specialty="than-kinh"] { --ac-accent: #4f46e5; --ac-accent-2: #a855f7; }
+  .ac-card[data-specialty="co-xuong-khop"] { --ac-accent: #16a34a; --ac-accent-2: #84cc16; }
+  .ac-card[data-specialty="huyet-hoc"] { --ac-accent: #dc2626; --ac-accent-2: #be123c; }
+  .ac-card[data-specialty="truyen-nhiem"] { --ac-accent: #0891b2; --ac-accent-2: #22c55e; }
+  .ac-card[data-specialty="dinh-duong-tong-quat"] { --ac-accent: #059669; --ac-accent-2: #65a30d; }
   .ac-dot { opacity: 0.4; }
   @media (max-width: 640px) {
     .ac-card {

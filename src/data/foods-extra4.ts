@@ -59,7 +59,7 @@ const makeFood = (seed: FoodSeed): Food => {
     tags: seed.tags,
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cần đối chiếu bảng thành phần chính thức trước khi dùng lâm sàng."
+    note: "Giá trị tham khảo theo công thức; cần đối chiếu bảng thành phần chính thức trước khi dùng lâm sàng."
   };
 };
 

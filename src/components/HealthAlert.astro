@@ -239,19 +239,19 @@ if (significantWarnings.length === 0 && warnings.length <= 1) return;
     padding: 12px 16px;
     border-radius: 10px;
     border-left: 4px solid;
-    background: var(--bg-card, #fff);
+    background: var(--bg-card, var(--card));
   }
   .alert-high {
     border-left-color: #ef4444;
-    background: #fef2f2;
+    background: color-mix(in srgb, #ef4444 10%, var(--card));
   }
   .alert-medium {
     border-left-color: #f59e0b;
-    background: #fffbeb;
+    background: color-mix(in srgb, #f59e0b 11%, var(--card));
   }
   .alert-info {
     border-left-color: #22c55e;
-    background: #f0fdf4;
+    background: color-mix(in srgb, #22c55e 10%, var(--card));
   }
   .alert-header {
     display: flex;
@@ -266,7 +266,7 @@ if (significantWarnings.length === 0 && warnings.length <= 1) return;
     margin: 0;
     font-size: 0.9em;
     line-height: 1.5;
-    color: #374151;
+    color: var(--ink-secondary);
   }
   section.section h2 { font-size: 1.25rem; }
   @media (max-width: 640px) {

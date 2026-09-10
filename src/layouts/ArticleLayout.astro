@@ -473,7 +473,7 @@ const jsonLd = {
         <h3 style="font-size: 1.1rem; margin-bottom: 16px;">📖 Bài viết liên quan</h3>
         <div class="related-grid">
           {related.map((r) => (
-            <a href={getArticlePath(r)} class="related-card">
+            <a href={getArticlePath(r)} class="related-card" data-specialty={r.specialty || "general"}>
               <span style="font-size: 1.6rem; display: block; margin-bottom: 6px;">{r.emoji}</span>
               <strong style="font-size: 0.9rem;">{r.title}</strong>
               <span style="font-size: 0.8rem; color: var(--ink-tertiary); margin-top: 4px;">{r.readTime} phút đọc</span>
@@ -903,13 +903,17 @@ const jsonLd = {
     gap: 12px;
   }
   .related-card {
+    --related-accent: var(--brand);
+    --related-accent-2: var(--accent);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 16px 12px;
-    background: var(--card);
-    border: 1px solid var(--line);
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--related-accent) 11%, var(--card)), transparent 60%),
+      var(--card);
+    border: 1px solid color-mix(in srgb, var(--related-accent) 24%, var(--line));
     border-radius: var(--radius);
     text-decoration: none;
     color: inherit;
@@ -917,11 +921,34 @@ const jsonLd = {
   }
   .related-card:hover {
     box-shadow: var(--shadow);
-    border-color: var(--brand-light2);
+    border-color: color-mix(in srgb, var(--related-accent) 52%, var(--brand-light2));
     transform: translateY(-2px);
     text-decoration: none;
   }
   .related-card strong { display: block; }
+  .related-card::before {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 4px;
+    border-radius: 999px;
+    margin: -4px auto 8px;
+    background: linear-gradient(90deg, var(--related-accent), var(--related-accent-2));
+  }
+  .related-card[data-specialty="ung-thu"] { --related-accent: #8b5cf6; --related-accent-2: #ec4899; }
+  .related-card[data-specialty="tim-mach"] { --related-accent: #ef4444; --related-accent-2: #f97316; }
+  .related-card[data-specialty="noi-tiet"] { --related-accent: #2563eb; --related-accent-2: #06b6d4; }
+  .related-card[data-specialty="than-tiet-nieu"] { --related-accent: #0f766e; --related-accent-2: #14b8a6; }
+  .related-card[data-specialty="tieu-hoa"] { --related-accent: #d97706; --related-accent-2: #facc15; }
+  .related-card[data-specialty="ho-hap"] { --related-accent: #0284c7; --related-accent-2: #38bdf8; }
+  .related-card[data-specialty="nhi-khoa"],
+  .related-card[data-specialty="phu-nu-nhi"] { --related-accent: #f59e0b; --related-accent-2: #fb7185; }
+  .related-card[data-specialty="lao-khoa"] { --related-accent: #7c3aed; --related-accent-2: #06b6d4; }
+  .related-card[data-specialty="than-kinh"] { --related-accent: #4f46e5; --related-accent-2: #a855f7; }
+  .related-card[data-specialty="co-xuong-khop"] { --related-accent: #16a34a; --related-accent-2: #84cc16; }
+  .related-card[data-specialty="huyet-hoc"] { --related-accent: #dc2626; --related-accent-2: #be123c; }
+  .related-card[data-specialty="truyen-nhiem"] { --related-accent: #0891b2; --related-accent-2: #22c55e; }
+  .related-card[data-specialty="dinh-duong-tong-quat"] { --related-accent: #059669; --related-accent-2: #65a30d; }
   .art-btn {
     display: inline-flex;
     align-items: center;
@@ -1056,6 +1083,163 @@ const jsonLd = {
   .tool-links-title { font-size: 1rem; margin: 0 0 12px; }
   .tool-links-section .art-btn { display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--brand); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.15s; margin: 4px; }
   .tool-links-section .art-btn:hover { background: var(--brand-light); border-color: var(--brand); }
+
+  /* Article readability polish: calm clinical surface, clearer hierarchy */
+  .article-shell {
+    max-width: 900px;
+  }
+
+  .article-header,
+  .article-toc,
+  .article-summary-box,
+  .decision-box,
+  .article-safety-box {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-header::after {
+    content: "";
+    position: absolute;
+    inset: auto 22px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, .42), transparent);
+  }
+
+  .article-summary-box,
+  .decision-box,
+  .article-safety-box,
+  .tool-links-section,
+  details {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .article-summary-box {
+    border-color: color-mix(in srgb, #0ea5e9 30%, var(--border-info));
+    background:
+      radial-gradient(circle at 14px 12px, rgba(14, 165, 233, .18), transparent 9rem),
+      linear-gradient(135deg, var(--surface-info), color-mix(in srgb, var(--surface-info-strong) 78%, var(--card)));
+  }
+
+  .article-safety-box {
+    border-color: color-mix(in srgb, #ef4444 28%, var(--border-danger));
+    background:
+      radial-gradient(circle at 18px 16px, rgba(239, 68, 68, .12), transparent 10rem),
+      linear-gradient(135deg, var(--surface-danger), color-mix(in srgb, var(--surface-danger-strong) 80%, var(--card)));
+  }
+
+  .article-body {
+    padding: 2px 4px 0;
+    font-size: 1rem;
+  }
+
+  .article-body h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-left: 0;
+    border-bottom-color: color-mix(in srgb, var(--brand) 18%, var(--line));
+    padding-left: 0;
+  }
+
+  .article-body h2::before {
+    content: "";
+    width: 10px;
+    height: 28px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--brand), var(--brand-dark));
+    box-shadow: 0 8px 18px -10px var(--brand);
+    flex-shrink: 0;
+  }
+
+  .article-body h3 {
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+
+  .article-body p,
+  .article-body li {
+    text-wrap: pretty;
+  }
+
+  .article-body a {
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .article-body table {
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+
+  .article-body th {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--brand) 13%, var(--card)), var(--brand-light));
+    color: var(--brand-dark);
+  }
+
+  .article-body td {
+    color: var(--ink-secondary);
+  }
+
+  .article-body tr:hover td {
+    background: color-mix(in srgb, var(--brand) 5%, transparent);
+    color: var(--ink);
+  }
+
+  .article-body blockquote {
+    font-style: normal;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  }
+
+  .article-toc {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.42)),
+      var(--card);
+  }
+
+  [data-theme="dark"] .article-toc {
+    background:
+      linear-gradient(180deg, rgba(15,23,42,.56), rgba(15,23,42,.28)),
+      var(--card);
+  }
+
+  .article-toc-links a::before {
+    content: "•";
+    color: var(--brand);
+    font-weight: 900;
+  }
+
+  .decision-panel {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.58);
+  }
+
+  .related-card {
+    border-radius: 18px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--related-accent) 12%, transparent), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.34)),
+      var(--card);
+  }
+
+  [data-theme="dark"] .related-card {
+    background:
+      linear-gradient(180deg, rgba(15,23,42,.46), rgba(15,23,42,.18)),
+      var(--card);
+  }
+
+  details {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 12px 14px;
+    background: var(--card);
+  }
+
+  details summary {
+    list-style-position: outside;
+  }
+
   /* Responsive tables on mobile */
   .article-body table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; }
   .article-body td, .article-body th { white-space: nowrap; }

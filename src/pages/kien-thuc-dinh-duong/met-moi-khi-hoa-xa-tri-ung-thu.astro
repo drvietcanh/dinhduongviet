@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["met-moi-khi-hoa-xa-tri-ung-thu"];
+if (!art) throw new Error("Article not found: met-moi-khi-hoa-xa-tri-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Mệt mỏi khi hóa trị hoặc xạ trị không chỉ do “thiếu ý chí”. Nó có thể liên quan thiếu máu, viêm, mất ngủ, đau, chán ăn, mất cơ, mất nước hoặc tác dụng phụ điều trị. Dinh dưỡng không giải quyết hết nguyên nhân, nhưng có thể giúp người bệnh bớt tụt sức.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Ăn theo kiểu “ít nhưng đều”</h2>
+    <ul>
+      <li>Chia thành nhiều lần nhỏ, đặt mục tiêu ăn được một chút mỗi lần thay vì ép một suất lớn.</li>
+      <li>Ưu tiên món mềm, ít mùi, có đạm: cháo cá, súp gà, trứng hấp, đậu hũ, sữa chua, sữa y học nếu có chỉ định.</li>
+      <li>Để sẵn bữa phụ dễ lấy: chuối, bánh mềm, sữa chua, hạt xay mịn, sinh tố đặc hoặc cháo nhỏ.</li>
+      <li>Uống từng ngụm, tránh để khát lâu; nếu nôn, tiêu chảy hoặc tiểu ít cần báo đội điều trị.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Đừng chỉ bồi bổ bằng một món</h2>
+    <p>Yến, nước hầm xương, thuốc bổ hoặc thực phẩm chức năng không thay được khẩu phần đủ năng lượng và protein. Nếu người bệnh chỉ uống nước bổ mà bỏ bữa chính, tổng dinh dưỡng vẫn có thể thiếu. Cũng không nên tự dùng sản phẩm “tăng miễn dịch” khi đang hóa trị nếu chưa hỏi bác sĩ.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Dấu hiệu cần báo bác sĩ</h2>
+    <p>Mệt tăng nhanh, khó thở, choáng, sốt, đau nhiều, nôn không uống được, tiêu chảy nhiều, sụt cân nhanh hoặc ăn rất ít nhiều ngày cần được đánh giá. Có thể cần xét nghiệm thiếu máu, điện giải, nhiễm trùng hoặc điều chỉnh thuốc.</p>
+  </section>
+</ArticleLayout>

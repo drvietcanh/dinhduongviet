@@ -7,7 +7,7 @@ import GlycemicLoad from "../../components/GlycemicLoad.astro";
 import VNHealthScore from "../../components/VNHealthScore.astro";
 import AddToDiary from "../../components/AddToDiary.astro";
 import { nutrientLabels, recipes } from "../../data/nutrition";
-import { calculateRecipe, confidenceLabel, detailNutrients, foodById, recipeBySlug, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
+import { calculateRecipe, confidenceLabel, detailNutrients, foodById, recipeBySlug, sourceFor, allTags, tagLabel, recipePublicNote } from "../../lib/nutrition";
 
 export function getStaticPaths() {
   return recipes.map((recipe) => ({ params: { slug: recipe.slug } }));
@@ -16,6 +16,7 @@ export function getStaticPaths() {
 const recipe = recipeBySlug(Astro.params.slug ?? "");
 if (!recipe) return Astro.redirect("/tim-kiem");
 const nutrients = calculateRecipe(recipe);
+const publicNote = recipePublicNote(recipe, nutrients);
 const source = sourceFor(recipe.sourceId);
 const sourceHref = source?.url ?? "/phuong-phap";
 const reviewMailto = `mailto:drvietcanh@gmail.com?subject=${encodeURIComponent(`Rà soát dữ liệu món ăn: ${recipe.name}`)}`;
@@ -37,6 +38,11 @@ const detailMeta = [
   { label: "Khối lượng ước tính", value: `${recipe.servingWeightG} g` },
   { label: "Độ tin cậy", value: confidenceLabel(recipe.confidence) },
 ];
+const qualityBadge = recipe.confidence === "high"
+  ? { label: "Dữ liệu chắc", tone: "good" }
+  : recipe.confidence === "medium"
+    ? { label: "Cần đối chiếu khẩu phần", tone: "watch" }
+    : { label: "Ước tính theo công thức", tone: "caution" };
 const presentDetailKeys = detailNutrients.filter((key) => nutrients[key] != null);
 const missingDetailKeys = detailNutrients.filter((key) => nutrients[key] == null);
 const completenessPct = Math.round((presentDetailKeys.length / detailNutrients.length) * 100);
@@ -55,7 +61,7 @@ const recipeSchema = {
   "@context": "https://schema.org",
   "@type": "Recipe",
   "name": recipe.servingName + " " + recipe.name,
-  "description": recipe.note || "Thông tin dinh dưỡng cho " + recipe.servingName + " " + recipe.name,
+  "description": publicNote || "Thông tin dinh dưỡng cho " + recipe.servingName + " " + recipe.name,
   "image": recipe.imageUrl || "https://dinh-duong-viet.pages.dev/og-default.png",
   "author": { "@type": "Organization", "name": "Dinh Dưỡng Việt" },
   "nutrition": {
@@ -84,13 +90,16 @@ const recipeSchema = {
   <section class="detail-hero">
     <div class="detail-topline">
       <a href="/mon-an" class="back-link">Danh sách món ăn</a>
-      <span class="badge">Món ăn · {confidenceLabel(recipe.confidence)}</span>
+      <div class="quality-cluster" aria-label="Chất lượng dữ liệu">
+        <span class="badge">Món ăn</span>
+        <span class={`quality-badge ${qualityBadge.tone}`}>{qualityBadge.label}</span>
+      </div>
     </div>
     <div class="detail-heading">
       <div class="detail-copy">
         <p class="eyebrow">Theo {recipe.servingName.toLowerCase()}</p>
         <h1>{recipe.servingName} {recipe.name}</h1>
-        <p class="lead">{recipe.note}</p>
+        <p class="lead">{publicNote}</p>
         <div class="detail-actions">
           <button class="action-chip" onclick="shareRecipe()" title="Chia sẻ">Chia sẻ</button>
           <button class="action-chip" onclick="window.print()" title="In / Xuất PDF">In / PDF</button>
@@ -127,7 +136,7 @@ const recipeSchema = {
     </div>
     <div class="detail-note-card">
       <h2>Đọc nhanh</h2>
-      <p>Đây là ước tính theo một khẩu phần phổ biến. Sai số thường đến từ lượng cơm, dầu mỡ, nước sốt và kích thước tô hoặc đĩa thực tế.</p>
+      <p>Đây là ước tính theo một khẩu phần phổ biến. Sai số thường đến từ lượng cơm, dầu mỡ, nước sốt và kích thước tô hoặc đĩa thực tế. Nếu dùng cho người bệnh mạn tính, hãy xem thêm cảnh báo bên dưới và đối chiếu khẩu phần thật.</p>
     </div>
     <AddToDiary type="recipe" itemId={recipe.slug} defaultAmount={recipe.servingWeightG} />
   </section>
@@ -300,6 +309,46 @@ const recipeSchema = {
 
   .back-link:hover {
     color: var(--brand);
+  }
+
+  .quality-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .quality-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--ink-secondary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .quality-badge.good {
+    border-color: color-mix(in srgb, var(--brand) 28%, var(--card-border));
+    background: color-mix(in srgb, var(--brand) 10%, var(--card));
+    color: var(--brand-dark);
+  }
+
+  .quality-badge.watch {
+    border-color: color-mix(in srgb, #f59e0b 32%, var(--card-border));
+    background: color-mix(in srgb, #f59e0b 12%, var(--card));
+    color: color-mix(in srgb, #92400e 72%, var(--ink));
+  }
+
+  .quality-badge.caution {
+    border-color: color-mix(in srgb, #ef4444 26%, var(--card-border));
+    background: color-mix(in srgb, #ef4444 9%, var(--card));
+    color: color-mix(in srgb, #991b1b 70%, var(--ink));
   }
 
   .detail-heading {
@@ -634,6 +683,10 @@ const recipeSchema = {
     .detail-topline {
       flex-direction: column;
       align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .quality-cluster {
       justify-content: flex-start;
     }
 

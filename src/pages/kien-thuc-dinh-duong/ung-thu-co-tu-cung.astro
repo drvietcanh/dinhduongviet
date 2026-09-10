@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-co-tu-cung"];
+if (!art) throw new Error("Article not found: ung-thu-co-tu-cung");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư cổ tử cung thường được điều trị bằng phẫu thuật, xạ trị vùng chậu, hóa trị hoặc phối hợp. Dinh dưỡng cần tập trung giữ sức, phòng thiếu máu, xử trí tiêu chảy/táo bón và ăn an toàn khi sức đề kháng giảm.</p>
+  </section>
+  <section class="section card">
+    <h2>Khi xạ trị vùng chậu gây rối loạn tiêu hóa</h2>
+    <table class="table"><tbody>
+      <tr><td>Tiêu chảy</td><td>Ăn mềm, ít dầu, tạm giảm sữa thường nếu không dung nạp; bù nước điện giải theo hướng dẫn.</td></tr>
+      <tr><td>Đầy hơi</td><td>Giảm tạm rau sống, đậu nguyên hạt, nước có gas; chuyển sang rau nấu mềm.</td></tr>
+      <tr><td>Táo bón</td><td>Tăng nước, chất xơ hòa tan, đi bộ nhẹ; báo bác sĩ nếu đang dùng thuốc giảm đau opioid.</td></tr>
+      <tr><td>Thiếu máu/mệt</td><td>Đủ đạm; dùng thực phẩm giàu sắt, folate, B12; xét nghiệm để bổ sung đúng.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Không nên</h2>
+    <ul>
+      <li>Không tự nhịn ăn trước/xuyên suốt xạ trị nếu không được dặn.</li>
+      <li>Không uống viên chống oxy hóa liều cao với mục tiêu “bảo vệ tế bào” khi đang xạ trị mà chưa hỏi bác sĩ.</li>
+      <li>Không dùng thuốc nam đặt/uống thay điều trị.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Gợi ý bữa nhẹ</h2>
+    <p>Cháo thịt bằm, súp gà khoai tây, cơm nát cá hấp, trứng hấp, sữa chua nếu dung nạp, chuối chín hoặc đu đủ chín. Khi tiêu chảy nhiều, cần cá thể hóa chất xơ và sữa.</p>
+  </section>
+</ArticleLayout>

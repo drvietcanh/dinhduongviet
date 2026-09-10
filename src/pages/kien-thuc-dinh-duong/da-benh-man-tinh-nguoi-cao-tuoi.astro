@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["da-benh-man-tinh-nguoi-cao-tuoi"];
+if (!art) throw new Error("Article not found: da-benh-man-tinh-nguoi-cao-tuoi");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Nhiều người cao tuổi không chỉ có một bệnh: đái tháo đường đi kèm tăng huyết áp, bệnh thận mạn, mỡ máu cao, suy tim hoặc gout. Khi đó ăn uống cần ưu tiên theo nguy cơ lớn nhất, không áp dụng máy móc từng chế độ kiêng riêng lẻ.</p>
+  </section>
+  <section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+    <p><strong>Nguyên tắc:</strong> giảm muối thường là ưu tiên chung; tinh bột cần chia đều; đạm không tự kiêng quá mức; kali/phốt pho chỉ siết khi xét nghiệm và bác sĩ yêu cầu.</p>
+  </section>
+  <section class="section card">
+    <h2>Xếp ưu tiên thế nào?</h2>
+    <table class="table"><tbody>
+      <tr><td>Tăng huyết áp/suy tim/CKD</td><td>Giảm muối, nước chấm, đồ kho mặn, mì gói, thực phẩm chế biến.</td></tr>
+      <tr><td>Đái tháo đường</td><td>Không bỏ cơm hoàn toàn; chia tinh bột vừa bữa, thêm rau và đạm.</td></tr>
+      <tr><td>CKD</td><td>Theo eGFR, kali, phốt pho, albumin niệu; tránh tự kiêng rau quả toàn bộ.</td></tr>
+      <tr><td>Sụt cân/mất cơ</td><td>Ưu tiên đủ năng lượng và đạm; hỏi chuyên gia nếu đang bệnh thận/suy tim.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Mâm cơm mẫu</h2>
+    <p>Cơm vừa + cá/đậu hũ/thịt nạc mềm + rau nấu chín + canh nhạt. Nước chấm để riêng, chấm đầu đũa. Nếu người bệnh ăn ít, thêm bữa phụ như sữa phù hợp bệnh nền, sữa chua, trứng hấp hoặc cháo đặc giàu đạm.</p>
+  </section>
+  <section class="section card">
+    <h2>Cần cá thể hóa khi</h2>
+    <p>Có phù, tăng cân nhanh, đường huyết thấp, kali cao, suy thận tiến triển, nuốt khó, sụt cân nhanh hoặc đang dùng lợi tiểu/insulin/thuốc chống đông. Khi đó cần hỏi bác sĩ thay vì tự ghép nhiều chế độ kiêng.</p>
+  </section>
+</ArticleLayout>

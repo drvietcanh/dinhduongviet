@@ -1,0 +1,37 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tieu-chay-tao-bon-dieu-tri-ung-thu"];
+if (!art) throw new Error("Article not found: tieu-chay-tao-bon-dieu-tri-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Hóa trị, xạ trị vùng bụng-chậu, thuốc giảm đau, ít vận động hoặc thay đổi khẩu phần đều có thể làm người bệnh ung thư bị tiêu chảy hoặc táo bón. Mục tiêu không phải tự “cầm” hay tự “xổ” thật mạnh, mà là giữ nước, ăn đủ hơn và báo đội điều trị khi có dấu hiệu nặng.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Khi bị tiêu chảy</h2>
+    <ul>
+      <li>Uống từng ngụm nhỏ, lặp lại nhiều lần: nước đun sôi để nguội, oresol pha đúng hướng dẫn, nước canh hoặc cháo loãng.</li>
+      <li>Chọn món mềm, ít béo, ít gia vị: cháo thịt nạc, cơm mềm, chuối chín, khoai tây, bánh mì mềm, sữa chua nếu dung nạp được.</li>
+      <li>Tạm giảm món nhiều dầu mỡ, rượu bia, cà phê đậm, đồ quá ngọt, rau sống và món cay cho đến khi ổn hơn.</li>
+      <li>Nếu nghi không dung nạp sữa sau điều trị, thử đổi sang sữa không lactose hoặc hỏi chuyên gia dinh dưỡng trước khi bỏ hẳn nhóm sữa.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi bị táo bón</h2>
+    <ul>
+      <li>Tăng chất xơ từ từ nếu không bị tắc ruột, đau bụng nhiều hoặc bác sĩ dặn hạn chế xơ.</li>
+      <li>Dùng rau mềm, quả chín, yến mạch, khoai lang, đậu hũ, canh rau; uống đủ nước theo chỉ định, nhất là khi đang dùng thuốc giảm đau opioid.</li>
+      <li>Đi bộ nhẹ, xoa bụng và tập thói quen đi vệ sinh cố định có thể giúp ruột hoạt động tốt hơn.</li>
+      <li>Không tự lạm dụng thuốc xổ, thụt tháo hoặc các bài “thanh lọc ruột” khi đang điều trị ung thư.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào cần báo bác sĩ?</h2>
+    <p>Báo đội điều trị nếu tiêu chảy nhiều lần trong ngày, có sốt, phân máu, đau bụng tăng, chóng mặt, tiểu ít, nôn không uống được, hoặc táo bón kèm đau bụng/chướng bụng/nôn. Người giảm bạch cầu, người cao tuổi, có bệnh thận, suy tim hoặc xơ gan cần được hướng dẫn sớm hơn.</p>
+  </section>
+</ArticleLayout>

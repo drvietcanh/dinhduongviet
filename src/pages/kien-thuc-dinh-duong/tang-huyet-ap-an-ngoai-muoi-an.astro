@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["tang-huyet-ap-an-ngoai-muoi-an"];
+if (!art) throw new Error("Article not found: tang-huyet-ap-an-ngoai-muoi-an");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Người tăng huyết áp ở Việt Nam thường khó giảm muối vì ăn ngoài, nước chấm, món kho, bún phở, mì gói và đồ chế biến sẵn. Tối ưu thực tế là giảm các nguồn muối lớn trước, thay vì chỉ “bỏ hũ muối” ở nhà.</p>
+  </section>
+  <section class="section card">
+    <h2>Muối ẩn khi ăn ngoài</h2>
+    <table class="table"><tbody>
+      <tr><td>Phở/bún/hủ tiếu</td><td>Xin ít nước dùng, hạn chế húp hết nước, không thêm nước mắm/tương ớt mặn.</td></tr>
+      <tr><td>Cơm tấm/cơm văn phòng</td><td>Nước mắm để riêng, giảm đồ kho mặn, thêm rau luộc/canh nhạt.</td></tr>
+      <tr><td>Mì gói</td><td>Dùng ít gói nêm, thêm trứng/rau; không dùng nước mì làm “canh”.</td></tr>
+      <tr><td>Đồ chế biến</td><td>Xúc xích, chả, cá viên, đồ hộp thường nhiều natri; dùng ít và không ăn hằng ngày.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Checklist nhanh trước khi gọi món</h2>
+    <ul>
+      <li>Có xin “ít mặn/ít nước sốt” được không?</li>
+      <li>Nước chấm có thể để riêng không?</li>
+      <li>Có món hấp/luộc/kho nhạt thay món chiên mặn không?</li>
+      <li>Có thêm rau và giảm phần nước dùng/sốt được không?</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <p>Nếu đang suy tim, bệnh thận, phù hoặc dùng lợi tiểu, hãy hỏi bác sĩ về mức muối và lượng nước phù hợp. Không tự dùng muối kali thay thế khi chưa biết kali máu và chức năng thận.</p>
+  </section>
+</ArticleLayout>

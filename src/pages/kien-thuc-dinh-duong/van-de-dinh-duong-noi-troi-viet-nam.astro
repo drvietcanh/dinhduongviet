@@ -1,0 +1,92 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["van-de-dinh-duong-noi-troi-viet-nam"];
+if (!art) throw new Error("Article not found: van-de-dinh-duong-noi-troi-viet-nam");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>📌 Tóm tắt nhanh</h2>
+    <p>Ở Việt Nam hiện nay, dinh dưỡng không còn chỉ là “ăn có đủ no không”. Bức tranh thường gặp hơn là vừa có người thiếu chất, trẻ thấp còi hoặc thiếu vi chất, vừa có người thừa cân, gan nhiễm mỡ, tăng huyết áp, rối loạn mỡ máu và đái tháo đường. Vì vậy, một bữa ăn tốt cần giải quyết cùng lúc 3 việc: đủ chất, không dư năng lượng rỗng và phù hợp bệnh nền.</p>
+  </section>
+
+  <section class="section card">
+    <h2>🇻🇳 6 vấn đề nổi trội trong bữa ăn hiện nay</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Vấn đề</th>
+            <th>Biểu hiện thường gặp</th>
+            <th>Ưu tiên sửa trước</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ăn mặn và nhiều nước chấm</td>
+            <td>Mì gói, đồ kho mặn, nước mắm/nước tương chấm nhiều, thực phẩm chế biến sẵn</td>
+            <td>Giảm từ từ lượng nêm/chấm, đọc nhãn natri, tăng rau và món luộc/hấp</td>
+          </tr>
+          <tr>
+            <td>Đồ uống ngọt</td>
+            <td>Trà sữa, nước ngọt, cà phê sữa, nước ép thêm đường, topping</td>
+            <td>Giảm tần suất, chọn ít/không đường, ưu tiên nước lọc và trái cây nguyên miếng</td>
+          </tr>
+          <tr>
+            <td>Thực phẩm siêu chế biến</td>
+            <td>Snack, xúc xích, bánh kẹo đóng gói, đồ chiên sẵn, mì ăn liền</td>
+            <td>Không cần cấm tuyệt đối, nhưng giảm vai trò “bữa chính” của nhóm này</td>
+          </tr>
+          <tr>
+            <td>Thiếu rau, đậu, hạt và ngũ cốc ít tinh chế</td>
+            <td>Bữa ăn nhiều cơm trắng/thịt, ít rau, ít đậu, trái cây ít đa dạng</td>
+            <td>Đặt mục tiêu thêm rau trước khi cắt bỏ tinh bột quá mạnh</td>
+          </tr>
+          <tr>
+            <td>Thiếu vi chất ẩn</td>
+            <td>Ăn đủ calo nhưng thiếu sắt, kẽm, canxi, vitamin D, folate hoặc B12 ở nhóm nguy cơ</td>
+            <td>Đa dạng thực phẩm; xét nghiệm và bổ sung theo chỉ định khi nghi thiếu</td>
+          </tr>
+          <tr>
+            <td>Ăn kiêng cực đoan</td>
+            <td>Bỏ cơm hoàn toàn, chỉ uống nước ép “thanh lọc”, nhịn ăn kéo dài, kiêng đạm sau bệnh</td>
+            <td>Ưu tiên cân bằng và bền vững; người bệnh nên hỏi bác sĩ/chuyên gia dinh dưỡng</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🥗 Một khung bữa cơm Việt dễ áp dụng</h2>
+    <ul>
+      <li><strong>½ phần đĩa là rau củ và trái cây phù hợp:</strong> rau luộc, canh rau, rau xào ít dầu, trái cây nguyên miếng.</li>
+      <li><strong>¼ phần đĩa là tinh bột:</strong> cơm, bún, phở, khoai, ngô; người đái tháo đường cần cá nhân hóa lượng và theo dõi đường huyết.</li>
+      <li><strong>¼ phần đĩa là đạm:</strong> cá, thịt nạc, trứng, đậu phụ, đậu hạt; người bệnh thận cần theo chỉ định về lượng đạm, kali và phốt pho.</li>
+      <li><strong>Gia vị vừa phải:</strong> giảm muối/natri từ nước chấm, đồ kho, đồ muối chua và thực phẩm đóng gói.</li>
+      <li><strong>Đồ uống:</strong> nước lọc, trà không đường; đồ uống ngọt nên là lựa chọn thỉnh thoảng, không phải thói quen hằng ngày.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🧭 Nên viết/đọc tiếp theo hướng nào?</h2>
+    <p>Nếu xây thư viện dinh dưỡng phổ thông cho người Việt, nên có các cụm bài nền sau:</p>
+    <ol>
+      <li><strong>Tháp dinh dưỡng Việt Nam và cách đổi ra bữa cơm:</strong> giúp người đọc không chỉ nhìn mô hình mà biết đặt cơm, rau, đạm, trái cây vào đĩa.</li>
+      <li><strong>Đồ uống ngọt và trà sữa:</strong> vì đây là nguồn đường dễ bị xem nhẹ, đặc biệt ở học sinh, sinh viên và người làm văn phòng.</li>
+      <li><strong>Thực phẩm siêu chế biến:</strong> giúp phân biệt “đóng gói” với “siêu chế biến”, tránh cực đoan nhưng biết giảm nhóm rủi ro cao.</li>
+      <li><strong>Thiếu vi chất ẩn:</strong> phù hợp phụ nữ, trẻ em, người ăn chay, người cao tuổi và người ăn uống đơn điệu.</li>
+      <li><strong>Ăn uống khi bận rộn/ăn ngoài:</strong> thực tế hơn khẩu hiệu “hãy tự nấu hoàn toàn”.</li>
+    </ol>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Lưu ý cho người có bệnh nền</h2>
+    <p>Các nguyên tắc chung không thay thế tư vấn cá thể. Người đang có đái tháo đường, bệnh thận mạn, suy tim, xơ gan cổ trướng, gout, thai kỳ nguy cơ cao hoặc đang dùng thuốc đặc biệt nên cá nhân hóa khẩu phần theo xét nghiệm, thuốc và hướng dẫn điều trị.</p>
+  </section>
+
+  <div class="key-takeaway">
+    <p><strong>3 việc đáng làm nhất:</strong> thêm rau và thực phẩm ít chế biến, giảm đồ uống ngọt, giảm muối/nước chấm từ từ. Đây là những thay đổi nhỏ nhưng chạm vào nhiều vấn đề lớn: huyết áp, cân nặng, đường huyết, mỡ máu và chất lượng khẩu phần.</p>
+  </div>
+</ArticleLayout>

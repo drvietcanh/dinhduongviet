@@ -7,7 +7,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vietnamese"],
     portionNote: "Cháo ếch rau răm thông dụng.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "com-trang", amountG: 100, note: "Cháo gạo" },
       { foodId: "thit-ech", amountG: 80, note: "Thịt ếch xào" },
@@ -21,7 +21,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["high-protein", "fried-food"],
     portionNote: "Chả gà xay chiên dầu.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "thit-ga-rui", amountG: 60, note: "Thịt gà xay" },
       { foodId: "dau-an", amountG: 10, note: "Dầu chiên" },
@@ -34,7 +34,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["gluten-free"],
     portionNote: "Cá trắm/lóc kho riêu cà chua kiểu Việt.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "ca-chep", amountG: 140, note: "Cá" },
       { foodId: "ca-chua", amountG: 30, note: "Cà chua" },
@@ -49,7 +49,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vietnamese"],
     portionNote: "Bò kho ăn với bánh mì hoặc hủ tiếu.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "banh-pho-chin", amountG: 180, note: "Hủ tiếu" },
       { foodId: "thit-bo-nac", amountG: 80, note: "Thịt bò" },
@@ -64,7 +64,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["gluten-free", "vietnamese"],
     portionNote: "Bánh canh bột lọc nấu giò/cua.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-loc", amountG: 80, note: "Sợi bánh canh" },
       { foodId: "thit-heo-nac", amountG: 40, note: "Giò/thịt" },
@@ -77,7 +77,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["street-food"],
     portionNote: "Bột chiên trứng thường gặp Sài Gòn.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 100, note: "Bột gạo đã hấp" },
       { foodId: "trung-ga", amountG: 30, note: "Trứng" },
@@ -91,7 +91,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vietnamese", "central-vietnam"],
     portionNote: "Bánh bèo Huế chén nhỏ, mỗi chén ~20g.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 80, note: "Bột gạo" },
       { foodId: "tom-kho", amountG: 10, note: "Tôm khô" },
@@ -106,7 +106,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vietnamese"],
     portionNote: "Bánh cuốn nhân thịt mộc nhĩ, nước chấm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 80, note: "Bánh ướt" },
       { foodId: "thit-heo-nac", amountG: 40, note: "Nhân thịt" },
@@ -122,7 +122,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["gluten-free", "vietnamese"],
     portionNote: "Bánh khọt Vũng Tàu nhân tôm, nước chấm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 70, note: "Bột gạo" },
       { foodId: "tom-tuoi", amountG: 50, note: "Tôm" },
@@ -137,7 +137,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["gluten-free", "vietnamese"],
     portionNote: "Bún mọc (thịt viên nấm mọc) thường gặp Bắc.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bun-tuoi", amountG: 200, note: "Bún" },
       { foodId: "thit-heo-nac", amountG: 60, note: "Thịt băm viên" },
@@ -152,7 +152,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["gluten-free", "vietnamese"],
     portionNote: "Đặc sản Hà Nội nhiều nguyên liệu.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bun-tuoi", amountG: 180, note: "Bún" },
       { foodId: "thit-ga-rui", amountG: 30, note: "Thịt gà xé" },
@@ -167,7 +167,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["gluten-free", "high-calcium"],
     portionNote: "Cháo cua đồng với rau răm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "com-trang", amountG: 100, note: "Gạo nấu cháo" },
       { foodId: "cua-dong", amountG: 70, note: "Thịt cua đồng" },
@@ -181,7 +181,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vietnamese"],
     portionNote: "Sườn non chiên xào sốt chua ngọt.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "suon-heo-nuong", amountG: 150, note: "Sườn non chiên" },
       { foodId: "ca-chua", amountG: 30, note: "Sốt cà chua" },
@@ -195,7 +195,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["street-food", "fried-food"],
     portionNote: "Cá viên chiên bột phổ biến ở chợ và trường học.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "ca-thu", amountG: 60, note: "Cá thát lát/basa xay" },
       { foodId: "bot-mi-da", amountG: 15, note: "Bột áo" },
@@ -208,7 +208,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vietnamese"],
     portionNote: "Thịt heo luộc cuốn cải thảo chấm nước mắm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bap-cai-thao", amountG: 80, note: "Lá cải thảo" },
       { foodId: "thit-heo-nac", amountG: 80, note: "Thịt heo luộc thái mỏng" },
@@ -222,7 +222,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["high-protein"],
     portionNote: "Chả viên chiên/mọc thường nấu canh hoặc ăn liền.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "thit-heo-nac", amountG: 100, note: "Thịt heo xay" },
       { foodId: "dau-an", amountG: 10, note: "Dầu chiên" },
@@ -235,7 +235,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["street-food"],
     portionNote: "Trứng vịt lộn luộc.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; rất giàu đạm và sắt.",
+    note: "Giá trị tham khảo theo công thức; rất giàu đạm và sắt.",
     items: [
       { foodId: "trung-vit", amountG: 65, note: "Trứng vịt lộn" },
       { foodId: "rau-thom-hanh", amountG: 5, note: "Rau răm muối tiêu" }
@@ -247,7 +247,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["dessert", "drink"],
     portionNote: "Chè thái đủ loại hạt, trái cây và sữa dừa, ước tính 1 ly.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; lượng đường rất cao.",
+    note: "Giá trị tham khảo theo công thức; lượng đường rất cao.",
     items: [
       { foodId: "dua", amountG: 20, note: "Cơm dừa" },
       { foodId: "hat-sen-tuoi", amountG: 20, note: "Hạt sen" },
@@ -263,7 +263,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vegan", "gluten-free", "low-calorie"],
     portionNote: "Rau muống xào tỏi phổ biến cả ba miền.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "rau-muong", amountG: 150, note: "Rau muống nhặt rửa" },
       { foodId: "toi", amountG: 8, note: "Tỏi" },
@@ -277,7 +277,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vegan", "gluten-free", "low-fat"],
     portionNote: "Bắp nếp hoặc bắp ngọt luộc.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "ngu-sac", amountG: 150, note: "Ngô/bắp nếp" }
     ]
@@ -288,7 +288,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["vegan", "gluten-free", "low-fat", "high-fiber"],
     portionNote: "Khoai lang luộc ăn vỏ/không vỏ.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "khoai-lang", amountG: 130, note: "Khoai lang" }
     ]
@@ -299,7 +299,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["high-fat", "high-sodium"],
     portionNote: "Lạp xưởng xắt lát chiên ăn cơm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP.",
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "lap-xuong", amountG: 70, note: "Lạp xưởng" },
       { foodId: "dau-an", amountG: 8, note: "Dầu chiên" }
@@ -311,7 +311,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["northern-vietnam", "vietnamese-soup"],
     portionNote: "Tô mẫu gồm bánh đa đỏ, cua bể/cua đồng, rau và nước dùng.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; topping chả lá lốt/chả cá làm thay đổi năng lượng và natri.",
+    note: "Giá trị tham khảo theo công thức; topping chả lá lốt/chả cá làm thay đổi năng lượng và natri.",
     items: [
       { foodId: "banh-da-cua-kho", amountG: 75, note: "Bánh đa khô" },
       { foodId: "cua-be-hai-phong", amountG: 70, note: "Thịt cua" },
@@ -326,7 +326,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["northern-vietnam", "high-protein"],
     portionNote: "Một miếng chả rươi với trứng, thịt băm và vỏ quýt.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; lượng dầu rán quyết định năng lượng.",
+    note: "Giá trị tham khảo theo công thức; lượng dầu rán quyết định năng lượng.",
     items: [
       { foodId: "ruoi", amountG: 70, note: "Rươi" },
       { foodId: "trung-ga", amountG: 35, note: "Trứng" },
@@ -341,7 +341,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["northern-vietnam", "dessert"],
     portionNote: "Xôi cốm với đậu xanh, dừa và đường.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; đường và dừa làm năng lượng tăng.",
+    note: "Giá trị tham khảo theo công thức; đường và dừa làm năng lượng tăng.",
     items: [
       { foodId: "com-lang-vong", amountG: 80, note: "Cốm" },
       { foodId: "dau-xanh", amountG: 40, note: "Đậu xanh" },
@@ -355,7 +355,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "high-protein"],
     portionNote: "Miến lươn nước, dùng miến dong và lươn xào nghệ.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; chưa tách riêng lươn nên dùng cá lóc làm proxy đạm.",
+    note: "Giá trị tham khảo theo công thức; chưa tách riêng lươn nên dùng cá lóc làm proxy đạm.",
     items: [
       { foodId: "mien-dong-lang-so", amountG: 75, note: "Miến dong khô" },
       { foodId: "ca-loc", amountG: 90, note: "Proxy cho lươn" },
@@ -370,7 +370,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["northern-vietnam", "high-protein", "high-sodium"],
     portionNote: "Một phần ăn chơi khoảng 60g.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; thực phẩm khô mặn, không phù hợp khẩu phần lớn cho THA/suy thận.",
+    note: "Giá trị tham khảo theo công thức; thực phẩm khô mặn, không phù hợp khẩu phần lớn cho THA/suy thận.",
     items: [
       { foodId: "thit-trau-gac-bep", amountG: 60, note: "Thịt trâu sấy" }
     ]
@@ -381,7 +381,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["northern-vietnam", "seafood"],
     portionNote: "Ba miếng chả mực chiên ăn kèm xôi/bánh cuốn.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; loại chiên lại sẽ nhiều chất béo hơn.",
+    note: "Giá trị tham khảo theo công thức; loại chiên lại sẽ nhiều chất béo hơn.",
     items: [
       { foodId: "cha-muc-ha-long", amountG: 120, note: "Chả mực" }
     ]
@@ -392,7 +392,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam"],
     portionNote: "Cao lầu với sợi mì gạo, thịt heo, rau sống và ít nước xá xíu.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nước sốt và tóp mỡ tạo sai số.",
+    note: "Giá trị tham khảo theo công thức; nước sốt và tóp mỡ tạo sai số.",
     items: [
       { foodId: "banh-pho-chin", amountG: 180, note: "Sợi cao lầu proxy" },
       { foodId: "thit-heo-nac", amountG: 90, note: "Thịt xá xíu" },
@@ -407,7 +407,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "seafood"],
     portionNote: "Biến thể bún hến với rau sống, lạc và mắm ruốc.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; dùng cua bể làm proxy cho thịt hến nếu chưa có hến riêng.",
+    note: "Giá trị tham khảo theo công thức; dùng cua bể làm proxy cho thịt hến nếu chưa có hến riêng.",
     items: [
       { foodId: "bun-tuoi", amountG: 160, note: "Bún tươi" },
       { foodId: "cua-be-hai-phong", amountG: 45, note: "Proxy thịt hến" },
@@ -422,7 +422,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "high-protein"],
     portionNote: "Nem lụi cuốn bánh tráng, rau sống và chấm sốt.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nước chấm đậu phộng có thể làm tăng năng lượng.",
+    note: "Giá trị tham khảo theo công thức; nước chấm đậu phộng có thể làm tăng năng lượng.",
     items: [
       { foodId: "nem-lui", amountG: 150, note: "Nem nướng" },
       { foodId: "banh-trang-dai-loc", amountG: 30, note: "Bánh tráng" },
@@ -436,7 +436,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam"],
     portionNote: "Thịt heo luộc cuốn bánh tráng, rau sống và mắm nêm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; mắm nêm rất nhiều natri.",
+    note: "Giá trị tham khảo theo công thức; mắm nêm rất nhiều natri.",
     items: [
       { foodId: "thit-heo-nac", amountG: 100, note: "Thịt heo luộc" },
       { foodId: "banh-trang-dai-loc", amountG: 45, note: "Bánh tráng" },
@@ -451,7 +451,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam"],
     portionNote: "Cơm vàng nấu nước gà, thịt gà xé và rau răm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; da gà và dầu nghệ làm thay đổi chất béo.",
+    note: "Giá trị tham khảo theo công thức; da gà và dầu nghệ làm thay đổi chất béo.",
     items: [
       { foodId: "com-trang", amountG: 230, note: "Cơm" },
       { foodId: "thit-ga-dui", amountG: 90, note: "Gà xé" },
@@ -466,7 +466,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "low-carb"],
     portionNote: "Cá bống kho tiêu mặn ngọt kiểu Quảng Ngãi.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; lượng nước mắm làm natri cao.",
+    note: "Giá trị tham khảo theo công thức; lượng nước mắm làm natri cao.",
     items: [
       { foodId: "ca-bong-song-tra", amountG: 130, note: "Cá bống" },
       { foodId: "nuoc-mam", amountG: 14, note: "Nước mắm" },
@@ -481,7 +481,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "vietnamese-soup"],
     portionNote: "Bánh canh bột lọc với cá lóc và hành nén.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nước dùng và dầu màu thay đổi natri.",
+    note: "Giá trị tham khảo theo công thức; nước dùng và dầu màu thay đổi natri.",
     items: [
       { foodId: "bot-loc", amountG: 85, note: "Sợi bánh canh" },
       { foodId: "ca-loc", amountG: 100, note: "Cá lóc" },
@@ -496,7 +496,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "high-sodium"],
     portionNote: "Một phần cá nhân từ nồi lẩu mắm gồm cá, tôm, rau đồng và bún.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; mắm cá linh/cá sặc làm natri rất cao.",
+    note: "Giá trị tham khảo theo công thức; mắm cá linh/cá sặc làm natri rất cao.",
     items: [
       { foodId: "bun-tuoi", amountG: 120, note: "Bún" },
       { foodId: "ca-loc", amountG: 80, note: "Cá" },
@@ -512,7 +512,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "high-sodium"],
     portionNote: "Bún mắm với cá, tôm và rau ăn kèm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; natri rất phụ thuộc nước lèo.",
+    note: "Giá trị tham khảo theo công thức; natri rất phụ thuộc nước lèo.",
     items: [
       { foodId: "bun-tuoi", amountG: 180, note: "Bún" },
       { foodId: "ca-loc", amountG: 70, note: "Cá" },
@@ -528,7 +528,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "high-protein", "low-carb"],
     portionNote: "Một phần cá lóc nướng ăn với rau sống và mắm me/nước mắm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nếu cuốn bánh tráng/bún thì carb tăng.",
+    note: "Giá trị tham khảo theo công thức; nếu cuốn bánh tráng/bún thì carb tăng.",
     items: [
       { foodId: "ca-loc", amountG: 180, note: "Cá lóc nướng" },
       { foodId: "banh-trang-dai-loc", amountG: 20, note: "Bánh tráng cuốn" },
@@ -542,7 +542,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "low-calorie"],
     portionNote: "Canh chua cá lóc với bông súng, cà chua và rau thơm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; đường và nước mắm tùy khẩu vị.",
+    note: "Giá trị tham khảo theo công thức; đường và nước mắm tùy khẩu vị.",
     items: [
       { foodId: "ca-loc", amountG: 75, note: "Cá lóc" },
       { foodId: "bong-sung", amountG: 70, note: "Bông súng" },
@@ -557,7 +557,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam"],
     portionNote: "Bánh tằm bì với nước cốt dừa, bì heo và rau.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nước cốt dừa làm tăng chất béo bão hòa.",
+    note: "Giá trị tham khảo theo công thức; nước cốt dừa làm tăng chất béo bão hòa.",
     items: [
       { foodId: "bot-gao", amountG: 100, note: "Sợi bánh tằm" },
       { foodId: "thit-heo-nac", amountG: 50, note: "Bì/thịt heo proxy" },
@@ -572,7 +572,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "vietnamese-soup"],
     portionNote: "Bánh canh với thịt heo, nước dùng và rau sống.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; bánh canh và thịt thay đổi theo quán.",
+    note: "Giá trị tham khảo theo công thức; bánh canh và thịt thay đổi theo quán.",
     items: [
       { foodId: "bot-loc", amountG: 90, note: "Sợi bánh canh" },
       { foodId: "thit-heo-nac", amountG: 90, note: "Thịt heo" },
@@ -587,7 +587,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "salad"],
     portionNote: "Gỏi bồn bồn Cà Mau/Bạc Liêu với tôm thịt.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nước trộn chua ngọt làm tăng đường/natri.",
+    note: "Giá trị tham khảo theo công thức; nước trộn chua ngọt làm tăng đường/natri.",
     items: [
       { foodId: "bon-bon", amountG: 90, note: "Bồn bồn" },
       { foodId: "tom-tuoi", amountG: 50, note: "Tôm" },
@@ -603,7 +603,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "low-carb"],
     portionNote: "Cá kèo nướng muối ớt ăn với rau răm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; muối ớt làm natri tăng.",
+    note: "Giá trị tham khảo theo công thức; muối ớt làm natri tăng.",
     items: [
       { foodId: "ca-keo", amountG: 150, note: "Cá kèo" },
       { foodId: "dau-an", amountG: 5, note: "Dầu phết" },
@@ -617,7 +617,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["southern-vietnam", "tet-food"],
     portionNote: "Hai khoanh bánh tét lá cẩm nhân đậu/thịt.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; nhân mỡ nhiều làm tăng năng lượng.",
+    note: "Giá trị tham khảo theo công thức; nhân mỡ nhiều làm tăng năng lượng.",
     items: [
       { foodId: "banh-tet-la-cam", amountG: 160, note: "Bánh tét" }
     ]
@@ -628,7 +628,7 @@ export const extraRecipes: Recipe[] = [
     tags: ["tet-food", "high-sodium"],
     portionNote: "Dưa món thường ăn kèm bánh chưng/bánh tét.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Ước tính MVP; rất mặn, chỉ nên dùng lượng nhỏ.",
+    note: "Giá trị tham khảo theo công thức; rất mặn, chỉ nên dùng lượng nhỏ.",
     items: [
       { foodId: "dua-mon", amountG: 50, note: "Dưa món" }
     ]

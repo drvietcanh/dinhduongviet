@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-gan-hcc"];
+if (!art) throw new Error("Article not found: ung-thu-gan-hcc");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư gan nguyên phát thường xuất hiện trên nền viêm gan B/C, gan nhiễm mỡ, rượu bia hoặc xơ gan. Vì vậy chế độ ăn cần nhìn cùng chức năng gan, cổ trướng, phù, đường huyết và nguy cơ suy dinh dưỡng.</p>
+  </section>
+  <section class="section card" style="background:#fff8e1;border:1px solid #ffd54f;">
+    <p><strong>Không tự kiêng đạm.</strong> Người xơ gan/ung thư gan rất dễ mất cơ. Chỉ điều chỉnh lượng và loại đạm khi bác sĩ yêu cầu, nhất là nếu có bệnh não gan, suy thận hoặc cổ trướng nặng.</p>
+  </section>
+  <section class="section card">
+    <h2>Nguyên tắc ăn uống</h2>
+    <ul>
+      <li>Chia 4-6 bữa/ngày; có bữa phụ tối nếu ăn ít để giảm dị hóa cơ qua đêm.</li>
+      <li>Đủ đạm từ cá, trứng, thịt nạc mềm, đậu hũ, sữa; cá thể hóa nếu có bệnh não gan.</li>
+      <li>Giảm muối rõ nếu có phù/cổ trướng; hạn chế nước mắm, mắm, đồ kho mặn, mì gói, dưa cà muối.</li>
+      <li>Tránh rượu bia hoàn toàn.</li>
+      <li>Không dùng thuốc bổ gan, thuốc nam, nấm linh chi hoặc viên chống oxy hóa liều cao khi chưa hỏi bác sĩ.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Gợi ý bữa Việt dễ áp dụng</h2>
+    <table class="table"><tbody>
+      <tr><td>Sáng</td><td>Cháo cá/ức gà + rau nấu mềm, nêm nhạt.</td></tr>
+      <tr><td>Trưa</td><td>Cơm vừa + cá hấp/đậu hũ sốt cà nhạt + canh rau.</td></tr>
+      <tr><td>Phụ</td><td>Sữa chua, sữa giàu đạm hoặc chuối nhỏ nếu kali phù hợp.</td></tr>
+      <tr><td>Tối</td><td>Miến/bún mềm với thịt nạc, thêm dầu thực vật vừa đủ.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Dấu hiệu cần khám sớm</h2>
+    <p>Bụng to nhanh, phù chân, vàng da tăng, lơ mơ, nôn ra máu/đi cầu phân đen, sốt, ăn kém rõ hoặc sụt cân nhanh cần được đánh giá y tế, không xử lý bằng ăn kiêng tại nhà.</p>
+  </section>
+</ArticleLayout>

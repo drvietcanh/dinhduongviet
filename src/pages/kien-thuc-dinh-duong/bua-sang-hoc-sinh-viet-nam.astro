@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["bua-sang-hoc-sinh-viet-nam"];
+if (!art) throw new Error("Article not found: bua-sang-hoc-sinh-viet-nam");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Bữa sáng học sinh Việt Nam cần đủ năng lượng để học buổi sáng nhưng không nên quá nhiều đường, nước ngọt hoặc đồ chiên. Một bữa tốt thường có tinh bột, đạm, rau/trái cây và nước uống phù hợp.</p>
+  </section>
+  <section class="section card">
+    <h2>Công thức dễ nhớ</h2>
+    <ul>
+      <li>Tinh bột: cơm, bánh mì, bún/phở, khoai, yến mạch.</li>
+      <li>Đạm: trứng, thịt/cá, đậu hũ, sữa/sữa chua.</li>
+      <li>Rau/trái cây: dưa leo, cà chua, rau trong tô phở, chuối, ổi, cam.</li>
+      <li>Nước: nước lọc hoặc sữa không/ít đường; hạn chế trà sữa, nước ngọt, nước trái cây đóng chai.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Ví dụ bữa sáng</h2>
+    <table class="table"><tbody>
+      <tr><td>Nhanh</td><td>Bánh mì trứng + dưa leo + hộp sữa ít đường.</td></tr>
+      <tr><td>Ở nhà</td><td>Cơm + trứng/đậu hũ + rau + trái cây nhỏ.</td></tr>
+      <tr><td>Ăn ngoài</td><td>Phở/bún ít nước béo, thêm rau, không uống kèm nước ngọt.</td></tr>
+      <tr><td>Trẻ thừa cân</td><td>Giữ bữa sáng đủ đạm; giảm đồ ngọt và topping, không bắt trẻ nhịn.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <p>Trẻ biếng ăn, suy dinh dưỡng, thừa cân, đái tháo đường type 1 hoặc bệnh thận cần kế hoạch riêng. Trọng tâm là tạo thói quen bền vững, không làm trẻ mặc cảm về cân nặng.</p>
+  </section>
+</ArticleLayout>

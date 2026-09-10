@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["buon-non-loet-mieng-ung-thu"];
+if (!art) throw new Error("Article not found: buon-non-loet-mieng-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Buồn nôn, thay đổi vị giác, khô miệng và loét miệng là lý do rất thường gặp khiến người bệnh ung thư ăn kém. Mục tiêu là giảm khó chịu, giữ năng lượng-đạm và tránh mất nước.</p>
+  </section>
+  <section class="section card">
+    <h2>Buồn nôn</h2>
+    <ul>
+      <li>Ăn lượng nhỏ, món ít mùi, nguội bớt; tránh bếp nấu khi mùi làm buồn nôn.</li>
+      <li>Tránh món chiên, béo, quá ngọt hoặc quá nhiều gia vị ngay trước/sau truyền hóa chất.</li>
+      <li>Nhấp nước, oresol hoặc nước canh nếu nôn; dùng thuốc chống nôn đúng đơn, không chờ nôn nặng mới uống nếu bác sĩ đã dặn.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Loét miệng, đau khi nuốt</h2>
+    <ul>
+      <li>Chọn cháo xay, súp, trứng hấp, đậu hũ non, sữa chua, sinh tố không chua gắt.</li>
+      <li>Tránh chanh, ớt, tiêu, đồ giòn sắc cạnh, rượu bia và nước súc miệng chứa cồn.</li>
+      <li>Ăn món nguội bớt; dùng ống hút nếu đau vùng môi/miệng và được bác sĩ cho phép.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Khi nào cần hỗ trợ thêm?</h2>
+    <p>Không ăn uống được, đau miệng nặng, nôn kéo dài, sụt cân nhanh, tiểu ít hoặc chóng mặt là dấu hiệu cần liên hệ đội điều trị. Có thể cần thuốc, truyền dịch hoặc hỗ trợ dinh dưỡng y khoa.</p>
+  </section>
+</ArticleLayout>

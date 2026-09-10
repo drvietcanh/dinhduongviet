@@ -1,0 +1,28 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-mau-lymphoma"];
+if (!art) throw new Error("Article not found: ung-thu-mau-lymphoma");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư máu và lymphoma có thể làm người bệnh thiếu máu, giảm bạch cầu, giảm tiểu cầu, mệt, loét miệng và dễ nhiễm trùng. Dinh dưỡng tập trung vào ăn đủ, an toàn thực phẩm và xử trí tác dụng phụ điều trị.</p>
+  </section>
+  <section class="section card" style="background:#ffebee;border:1px solid #ef9a9a;">
+    <p><strong>Khi bạch cầu trung tính thấp:</strong> cần hỏi đội điều trị về mức độ kiêng đồ sống. Không dùng gỏi, tiết canh, trứng sống, sữa chưa tiệt trùng, rau sống rửa không bảo đảm.</p>
+  </section>
+  <section class="section card">
+    <h2>Nên ăn gì?</h2>
+    <ul>
+      <li>Đạm chín kỹ: thịt/cá/trứng/đậu hũ nấu chín, sữa tiệt trùng, sữa chua còn hạn.</li>
+      <li>Tinh bột dễ ăn: cháo đặc, cơm mềm, khoai, bánh mì mềm.</li>
+      <li>Rau quả: rửa kỹ, nấu chín khi bạch cầu thấp; trái cây gọt vỏ nếu được phép.</li>
+      <li>Loét miệng: chọn món mềm, nguội bớt, tránh chua cay và cạnh sắc.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Không nên tự làm</h2>
+    <p>Không tự dùng vitamin liều cao, nấm, thuốc bắc/thuốc nam, nước lá hoặc thực phẩm chức năng “tăng miễn dịch” khi đang hóa trị hoặc dùng thuốc ức chế miễn dịch. Một số sản phẩm có thể tương tác thuốc hoặc gây độc gan/thận.</p>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["suy-dinh-duong-copd-suy-tim-ckd"];
+if (!art) throw new Error("Article not found: suy-dinh-duong-copd-suy-tim-ckd");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>COPD, suy tim và bệnh thận mạn đều có thể cần giảm muối, nhưng người bệnh cũng rất dễ ăn kém, mất cơ và suy dinh dưỡng. “Ăn nhạt” không có nghĩa là ăn cháo loãng, bỏ đạm hoặc ăn quá ít.</p>
+  </section>
+  <section class="section card">
+    <h2>Dấu hiệu cần chú ý</h2>
+    <ul>
+      <li>Sụt cân không chủ ý, quần áo rộng nhanh.</li>
+      <li>Ăn dưới một nửa khẩu phần thường ngày.</li>
+      <li>Yếu chân, đứng lên khó, đi chậm hơn.</li>
+      <li>Phù/tăng cân nhanh đi cùng ăn kém — có thể là giữ dịch, không phải tăng dinh dưỡng.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Cách tăng dinh dưỡng nhưng vẫn kiểm muối</h2>
+    <table class="table"><tbody>
+      <tr><td>Tăng đạm</td><td>Trứng, cá, thịt nạc, đậu hũ, sữa phù hợp bệnh nền; lượng cụ thể cần cá thể hóa ở CKD.</td></tr>
+      <tr><td>Tăng năng lượng</td><td>Thêm dầu thực vật vào cháo/canh, dùng món đặc thay món quá loãng.</td></tr>
+      <tr><td>Giảm muối</td><td>Giảm nước mắm, hạt nêm, mì gói, đồ hộp; dùng hành, gừng, tiêu, rau thơm để tăng vị.</td></tr>
+      <tr><td>Chia bữa</td><td>Ăn 5-6 bữa nhỏ nếu khó thở, nhanh no hoặc mệt khi ăn.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <p>Người có CKD, suy tim nặng, tăng kali máu hoặc hạn chế dịch cần kế hoạch riêng. Đừng tự mua sữa giàu đạm hoặc bột protein nếu chưa hỏi bác sĩ/chuyên gia dinh dưỡng.</p>
+  </section>
+</ArticleLayout>

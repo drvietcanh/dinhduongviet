@@ -1,0 +1,29 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-tuy-duong-mat"];
+if (!art) throw new Error("Article not found: ung-thu-tuy-duong-mat");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư tụy và ung thư đường mật thường gây sụt cân nhanh, chán ăn, đau, vàng da, tiêu phân mỡ hoặc đường huyết dao động. Người bệnh cần được theo dõi sát vì nguy cơ suy dinh dưỡng rất cao.</p>
+  </section>
+  <section class="section card">
+    <h2>Vấn đề dinh dưỡng thường gặp</h2>
+    <table class="table"><tbody>
+      <tr><td>Kém hấp thu mỡ</td><td>Phân nổi, bóng mỡ, hôi; cần báo bác sĩ để đánh giá men tụy hoặc điều chỉnh điều trị.</td></tr>
+      <tr><td>Sụt cân nhanh</td><td>Chia bữa nhỏ, tăng năng lượng bằng dầu, sữa giàu đạm, món mềm đặc; không ăn kiêng giảm cân.</td></tr>
+      <tr><td>Đường huyết cao</td><td>Không tự bỏ tinh bột; chia lượng tinh bột đều, theo dõi đường huyết và thuốc.</td></tr>
+      <tr><td>Vàng da/tắc mật</td><td>Ăn theo hướng dẫn bệnh viện; tránh rượu bia và thực phẩm chức năng không rõ thành phần.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Gợi ý thực hành</h2>
+    <ul>
+      <li>Ăn mềm, ít mùi, giàu đạm: cháo cá, súp gà, trứng hấp, đậu hũ, sữa y học nếu phù hợp.</li>
+      <li>Nếu tiêu phân mỡ, không tự cắt sạch dầu; cần đánh giá nguyên nhân và cá thể hóa chất béo.</li>
+      <li>Báo bác sĩ nếu đau tăng, sốt, vàng da tăng, nôn nhiều, tiêu chảy kéo dài hoặc không ăn được.</li>
+    </ul>
+  </section>
+</ArticleLayout>

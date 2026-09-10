@@ -1,0 +1,33 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-da-day"];
+if (!art) throw new Error("Article not found: ung-thu-da-day");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư dạ dày và phẫu thuật cắt một phần/toàn bộ dạ dày có thể làm người bệnh nhanh no, sụt cân, thiếu sắt, B12, folate, canxi-vitamin D và gặp hội chứng dumping sau ăn.</p>
+  </section>
+  <section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+    <p><strong>Mục tiêu:</strong> ăn ít nhưng giàu dinh dưỡng, chia bữa nhỏ, tăng đạm, theo dõi thiếu vi chất và tránh uống nhiều nước ngay trong bữa nếu bị dumping.</p>
+  </section>
+  <section class="section card">
+    <h2>Sau mổ nên ăn thế nào?</h2>
+    <ul>
+      <li>Chia 6-8 bữa nhỏ; mỗi bữa ăn chậm, nhai kỹ.</li>
+      <li>Ưu tiên đạm trước: trứng, cá, thịt mềm, đậu hũ, sữa chua, sữa giàu đạm nếu dung nạp.</li>
+      <li>Hạn chế đồ ngọt lỏng như nước ngọt, chè, nước trái cây vì dễ gây dumping ở một số người.</li>
+      <li>Uống nước giữa các bữa; nếu bác sĩ dặn khác thì làm theo hướng dẫn cá thể.</li>
+      <li>Theo dõi thiếu B12, sắt, canxi-vitamin D theo lịch tái khám.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Khi đang hóa trị</h2>
+    <p>Nếu buồn nôn hoặc thay đổi vị giác, thử món ít mùi, nguội bớt, mềm và hơi chua nhẹ nếu không đau dạ dày. Không cố ăn món nhiều dầu hoặc mùi nặng khi đang buồn nôn.</p>
+  </section>
+  <section class="section card">
+    <h2>Cần hỏi đội điều trị khi</h2>
+    <p>Sụt cân nhanh, nôn ói kéo dài, tiêu chảy sau ăn, chóng mặt/vã mồ hôi sau bữa, thiếu máu, tê bì tay chân hoặc ăn dưới một nửa khẩu phần bình thường.</p>
+  </section>
+</ArticleLayout>

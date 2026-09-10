@@ -1,0 +1,31 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["chuan-bi-dinh-duong-truoc-dieu-tri-ung-thu"];
+if (!art) throw new Error("Article not found: chuan-bi-dinh-duong-truoc-dieu-tri-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Trước phẫu thuật, hóa trị hoặc xạ trị, nhiều gia đình chỉ tập trung “kiêng món này, bồi bổ món kia”. Thực tế, điều quan trọng hơn là phát hiện sớm nguy cơ suy dinh dưỡng, giữ cân và giữ cơ để người bệnh bước vào điều trị với nền sức khỏe tốt hơn.</p>
+  </section>
+
+  <section class="section card">
+    <h2>3 việc nên làm trước điều trị lớn</h2>
+    <ul>
+      <li><strong>Cân lại và ghi cân nặng:</strong> sụt cân không chủ ý trong vài tuần/tháng là tín hiệu cần báo bác sĩ.</li>
+      <li><strong>Nhìn lại lượng ăn:</strong> nếu chỉ ăn được dưới một nửa khẩu phần thường ngày trong nhiều ngày, cần được hỗ trợ sớm.</li>
+      <li><strong>Chuẩn bị món dễ ăn:</strong> cháo/súp giàu đạm, trứng hấp, đậu hũ, cá mềm, sữa chua, bữa phụ nhỏ và nước uống an toàn.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Không nên “kiêng cho sạch người”</h2>
+    <p>Không tự nhịn ăn, uống nước lá hoặc bỏ hẳn thịt cá trứng sữa trước điều trị ung thư. Ăn thiếu kéo dài làm mất cơ, chậm lành vết thương và có thể khiến người bệnh kém chịu đựng điều trị hơn. Nếu cần nhịn ăn trước mổ hoặc xét nghiệm, hãy làm đúng thời gian đội điều trị dặn.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào cần hỏi chuyên gia dinh dưỡng?</h2>
+    <p>Nên hỏi sớm nếu người bệnh sụt cân, ăn kém, khó nuốt, tiêu chảy kéo dài, albumin thấp, người cao tuổi, hoặc có bệnh thận, đái tháo đường, suy tim, xơ gan. Đây là nhóm cần kế hoạch cá thể hóa, không nên dùng thực đơn truyền miệng.</p>
+  </section>
+</ArticleLayout>

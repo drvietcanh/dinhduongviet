@@ -1,0 +1,25 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["mi-an-lien-do-che-bien-san"];
+if (!art) throw new Error("Article not found: mi-an-lien-do-che-bien-san");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Mì ăn liền, snack, xúc xích, cá viên, chả lụa, đồ hộp và nhiều món chế biến sẵn tiện lợi nhưng thường nhiều natri, chất béo kém lợi, năng lượng rỗng hoặc ít chất xơ. Vấn đề không phải “cấm tuyệt đối”, mà là tần suất và cách ăn.</p>
+  </section>
+  <section class="section card">
+    <h2>Cách sửa món tiện lợi</h2>
+    <table class="table"><tbody>
+      <tr><td>Mì ăn liền</td><td>Dùng nửa gói nêm, thêm trứng/đậu hũ/rau, không húp hết nước.</td></tr>
+      <tr><td>Xúc xích/cá viên</td><td>Giảm tần suất; ăn cùng rau và tinh bột vừa đủ, không xem là nguồn đạm chính hằng ngày.</td></tr>
+      <tr><td>Snack/bánh ngọt</td><td>Chia phần nhỏ, không để sẵn túi lớn cạnh bàn học/làm việc.</td></tr>
+      <tr><td>Đồ hộp</td><td>Đọc natri/khẩu phần; chọn loại ít muối nếu có, kết hợp rau tươi/nấu.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Ai cần đặc biệt để ý?</h2>
+    <p>Người tăng huyết áp, suy tim, bệnh thận, gan cổ trướng, trẻ thừa cân, người mỡ máu cao hoặc ăn ngoài thường xuyên nên xem đây là nhóm cần giảm tần suất trước tiên.</p>
+  </section>
+</ArticleLayout>

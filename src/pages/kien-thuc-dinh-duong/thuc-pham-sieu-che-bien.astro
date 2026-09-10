@@ -1,0 +1,85 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thuc-pham-sieu-che-bien"];
+if (!art) throw new Error("Article not found: thuc-pham-sieu-che-bien");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>📦 Không phải cứ đóng gói là xấu</h2>
+    <p>“Thực phẩm siêu chế biến” thường là sản phẩm công nghiệp có nhiều thành phần, dễ ăn nhiều, vị rất đậm/ngọt/béo và thường ít chất xơ hoặc vi chất so với thực phẩm nguyên bản. Nhưng không nên đánh đồng mọi thực phẩm đóng gói là xấu: sữa chua không đường, đậu hộp ít muối, cá hộp phù hợp hoặc rau đông lạnh vẫn có thể hữu ích.</p>
+  </section>
+
+  <section class="section card">
+    <h2>🔎 Nhận diện nhanh</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nhóm</th>
+            <th>Ví dụ</th>
+            <th>Cách nhìn thực tế</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ít/không chế biến</td>
+            <td>Rau, trái cây, trứng, cá, thịt tươi, gạo, khoai, đậu</td>
+            <td>Nền tảng của bữa ăn hằng ngày</td>
+          </tr>
+          <tr>
+            <td>Chế biến đơn giản</td>
+            <td>Sữa chua, đậu phụ, cá hộp, rau đông lạnh, bánh mì cơ bản</td>
+            <td>Có thể dùng nếu đọc nhãn và chọn loại ít đường/muối hơn</td>
+          </tr>
+          <tr>
+            <td>Siêu chế biến</td>
+            <td>Snack, bánh kẹo, nước ngọt, mì ăn liền, xúc xích, thịt nguội, đồ chiên đóng gói</td>
+            <td>Nên giảm tần suất và không để thành bữa chính thường xuyên</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Vì sao nhóm này dễ gây vấn đề?</h2>
+    <ul>
+      <li><strong>Dễ dư năng lượng:</strong> vị ngon mạnh, khẩu phần lớn, ăn nhanh và ít no.</li>
+      <li><strong>Nhiều đường, muối hoặc chất béo kém chất lượng:</strong> bất lợi cho huyết áp, cân nặng, mỡ máu và đường huyết nếu dùng thường xuyên.</li>
+      <li><strong>Ít chất xơ và vi chất:</strong> làm bữa ăn “đủ calo nhưng thiếu chất”.</li>
+      <li><strong>Dễ thay thế bữa thật:</strong> nhất là ở người bận rộn, học sinh, sinh viên, người làm ca kíp.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>🛒 Cách chọn khi vẫn phải mua đồ đóng gói</h2>
+    <ol>
+      <li><strong>Đọc 3 dòng trước:</strong> năng lượng, đường/carbohydrate, natri.</li>
+      <li><strong>Nhìn khẩu phần trên nhãn:</strong> một gói có thể chứa nhiều hơn 1 khẩu phần.</li>
+      <li><strong>Chọn phiên bản ít muối/ít đường hơn nếu có:</strong> đặc biệt với mì, snack, sốt, đồ hộp.</li>
+      <li><strong>Ghép với thực phẩm thật:</strong> nếu ăn mì, thêm trứng/đậu phụ và nhiều rau; giảm bớt gói gia vị.</li>
+      <li><strong>Đừng tích trữ quá nhiều ở nhà:</strong> môi trường dễ quyết định hành vi hơn ý chí.</li>
+    </ol>
+  </section>
+
+  <section class="section card">
+    <h2>🍜 Ví dụ sửa bữa ăn kiểu Việt</h2>
+    <ul>
+      <li><strong>Mì gói:</strong> dùng ít gói gia vị, thêm rau cải/cà chua/nấm và trứng; không dùng nước súp quá mặn nếu đang cần giảm natri.</li>
+      <li><strong>Bánh kẹo/snack:</strong> chuyển từ “ăn trong lúc làm việc” sang khẩu phần nhỏ có chủ đích; thay một phần bằng trái cây, hạt vừa lượng hoặc sữa chua không đường.</li>
+      <li><strong>Xúc xích/thịt nguội:</strong> không dùng làm nguồn đạm chính hằng ngày; ưu tiên cá, trứng, thịt tươi, đậu phụ.</li>
+      <li><strong>Nước ngọt/trà đóng chai:</strong> xem như đồ uống thỉnh thoảng, không phải nước uống nền.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>⚠️ Ai cần thận trọng hơn?</h2>
+    <p>Người tăng huyết áp, suy tim, bệnh thận mạn, đái tháo đường, gan nhiễm mỡ, rối loạn mỡ máu, gout hoặc trẻ em thừa cân nên đặc biệt chú ý tần suất dùng nhóm thực phẩm siêu chế biến. Không cần hoảng sợ, nhưng nên xem đây là nhóm “giảm dần”, không phải nền tảng bữa ăn.</p>
+  </section>
+
+  <div class="key-takeaway">
+    <p><strong>Nhớ ngắn gọn:</strong> thực phẩm đóng gói không tự động xấu; vấn đề là khi đồ siêu chế biến chiếm chỗ của rau, đậu, cá, trứng, trái cây, ngũ cốc ít tinh chế và bữa ăn nấu từ thực phẩm thật.</p>
+  </div>
+</ArticleLayout>

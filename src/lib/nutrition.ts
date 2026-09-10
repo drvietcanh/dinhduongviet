@@ -84,6 +84,93 @@ export function calculateRecipe(recipe: Recipe): NutrientValues {
   return sum;
 }
 
+function hasAnyText(text: string, patterns: RegExp[]) {
+  return patterns.some((pattern) => pattern.test(text));
+}
+
+export function recipePublicNote(recipe: Recipe, nutrients = calculateRecipe(recipe)) {
+  const base = recipe.note?.trim() || "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.";
+  const sourceText = [
+    recipe.name,
+    recipe.portionNote,
+    recipe.note,
+    ...recipe.items.map((item) => item.note),
+  ].filter(Boolean).join(" ");
+  const recipeText = [recipe.name, recipe.portionNote, recipe.note].filter(Boolean).join(" ");
+  const additions: string[] = [];
+
+  const isEstimate = recipe.confidence === "low" || recipe.sourceId === "recipe-estimate-v1";
+  const hasVariabilityNote = hasAnyText(base, [/ước tính/i, /tham khảo/i, /dao động/i, /thay đổi/i, /tùy/i, /khẩu phần/i, /công thức/i, /nhãn/i]);
+  if (isEstimate && !hasVariabilityNote) {
+    additions.push("Giá trị chỉ nên xem là tham khảo vì khẩu phần, công thức và cách nêm có thể dao động.");
+  }
+
+  const saltyByName = hasAnyText(recipeText, [/kho/i, /mắm/i, /muối/i, /lẩu/i, /phở/i, /bún/i, /hủ tiếu/i, /mì/i, /miến/i, /nước chấm/i, /xì dầu/i, /nước tương/i]);
+  const saltyByIngredients = hasAnyText(sourceText, [/nước mắm/i, /mắm/i, /xì dầu/i, /nước tương/i, /mắm tôm/i, /dưa muối/i, /cà muối/i, /gia vị mặn/i]);
+  const highSodium = (nutrients.sodiumMg ?? 0) >= 800 || saltyByName || saltyByIngredients;
+  if (highSodium && !hasAnyText(base, [/muối/i, /natri/i, /nước mắm/i, /nước chấm/i, /gia vị mặn/i])) {
+    additions.push("Người cần hạn chế muối/natri nên giảm nước chấm, nước dùng và gia vị mặn.");
+  }
+
+  const friedOrOily = hasAnyText(recipeText, [/chiên/i, /rán/i, /xào/i, /áp chảo/i, /mỡ hành/i, /heo quay/i, /thịt quay/i, /quay/i]);
+  if (friedOrOily && !hasAnyText(base, [/dầu/i, /mỡ/i, /chiên/i, /rán/i, /xào/i, /hấp thụ/i, /thấm dầu/i])) {
+    additions.push("Lượng dầu/mỡ hấp thụ khi chiên, rán hoặc xào có thể làm năng lượng tăng đáng kể.");
+  }
+
+  const diseaseContext = hasAnyText(recipeText, [/đái tháo đường/i, /tiểu đường/i, /\bCKD\b/i, /bệnh thận/i, /suy thận/i, /gout/i, /tăng huyết áp/i, /tim mạch/i]);
+  if (diseaseContext && !hasAnyText(base, [/cá thể/i, /bác sĩ/i, /chuyên gia/i, /xét nghiệm/i, /không thay thế/i, /tư vấn/i])) {
+    additions.push("Nếu dùng cho chế độ ăn điều trị, cần cá thể hóa theo bệnh nền, thuốc và xét nghiệm.");
+  }
+
+  return additions.length > 0 ? `${base} ${additions.join(" ")}` : base;
+}
+
+export function foodPublicNote(food: Food) {
+  const base = food.note?.trim() || "Giá trị tham khảo theo 100g phần ăn được.";
+  const text = [
+    food.name,
+    food.category,
+    food.state,
+    food.basis,
+    food.edibleNote,
+    food.note,
+    food.basisNote,
+    food.reviewNote,
+  ].filter(Boolean).join(" ");
+  const additions: string[] = [];
+
+  const isEstimate =
+    food.confidence === "low" ||
+    food.dataQuality === "recipe_estimate" ||
+    food.sourceId === "recipe-estimate-v1" ||
+    food.sourceReviewStatus === "recipe_estimate_only";
+  if (isEstimate && !hasAnyText(base, [/ước tính/i, /tham khảo/i, /dao động/i, /thay đổi/i, /tùy/i, /khẩu phần/i, /công thức/i, /nhãn/i])) {
+    additions.push("Giá trị nên đọc như tham khảo vì công thức, nhãn hàng, phần ăn được và cách chế biến có thể khác.");
+  }
+
+  const needsReview =
+    food.needsDietitianReview ||
+    food.needsExternalSource ||
+    food.sourceReviewStatus === "needs_better_source" ||
+    food.sourceReviewStatus === "candidate_pending_dietitian_review" ||
+    food.sourceReviewStatus === "needs_external_source";
+  if (needsReview && !hasAnyText(base, [/cần/i, /đối chiếu/i, /rà soát/i, /chuyên gia/i, /nguồn/i, /nhãn/i])) {
+    additions.push("Mục này cần đối chiếu thêm nguồn hoặc chuyên gia trước khi dùng cho tư vấn cá thể.");
+  }
+
+  const highSodium = (food.nutrients.sodiumMg ?? 0) >= 400 || hasAnyText(text, [/mắm/i, /muối/i, /nước tương/i, /xì dầu/i, /đồ hộp/i, /mì gói/i, /snack/i, /xúc xích/i, /lạp xưởng/i]);
+  if (highSodium && !hasAnyText(base, [/muối/i, /natri/i, /mặn/i, /nước chấm/i, /gia vị/i])) {
+    additions.push("Người tăng huyết áp, bệnh thận hoặc suy tim nên chú ý khẩu phần vì natri/muối có thể cao.");
+  }
+
+  const processedFat = food.state === "processed" && ((food.nutrients.saturatedFatG ?? 0) >= 5 || hasAnyText(text, [/xúc xích/i, /lạp xưởng/i, /thịt hộp/i, /pate/i, /paté/i, /heo quay/i, /thịt quay/i]));
+  if (processedFat && !hasAnyText(base, [/béo bão hòa/i, /mỡ/i, /chất béo/i, /cholesterol/i])) {
+    additions.push("Thực phẩm chế biến có thể nhiều chất béo bão hòa; nên đối chiếu nhãn nếu cần kiểm soát mỡ máu.");
+  }
+
+  return additions.length > 0 ? `${base} ${additions.join(" ")}` : base;
+}
+
 export function searchAll(query: string) {
   const normalized = normalize(query);
   if (!normalized) return { foods: foods.slice(0, 6), recipes: recipes.slice(0, 6) };
@@ -216,7 +303,7 @@ export function dataSummary() {
 export function confidenceLabel(confidence: Food["confidence"]) {
   if (confidence === "high") return "Độ tin cậy cao";
   if (confidence === "medium") return "Cần đối chiếu nguồn";
-  return "Ước tính MVP";
+  return "ước tính tham khảo";
 }
 
 export function formatValue(value: number | undefined) {

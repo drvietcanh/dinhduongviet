@@ -1,0 +1,28 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["cham-soc-giam-nhe-ung-thu-dinh-duong"];
+if (!art) throw new Error("Article not found: cham-soc-giam-nhe-ung-thu-dinh-duong");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ở giai đoạn bệnh tiến triển hoặc chăm sóc giảm nhẹ, mục tiêu dinh dưỡng thay đổi: không còn là “ăn thật nhiều bằng mọi giá”, mà là giảm khó chịu, giữ sự thoải mái, tôn trọng mong muốn của người bệnh và hỗ trợ gia đình chăm sóc.</p>
+  </section>
+  <section class="section card" style="background:#f3e5f5;border:1px solid #ce93d8;">
+    <p><strong>Điểm nhân văn quan trọng:</strong> không ép ăn bằng mọi cách khi người bệnh quá mệt, đau, khó thở hoặc buồn nôn. Hãy trao đổi với bác sĩ chăm sóc giảm nhẹ để đặt mục tiêu phù hợp.</p>
+  </section>
+  <section class="section card">
+    <h2>Cách chăm ăn uống nhẹ nhàng</h2>
+    <ul>
+      <li>Hỏi người bệnh muốn ăn gì, ăn lúc nào; ưu tiên món quen, mềm, dễ nuốt.</li>
+      <li>Khẩu phần rất nhỏ nhưng giàu năng lượng: vài muỗng cháo đặc, sữa, sữa chua, kem mềm, trứng hấp.</li>
+      <li>Chăm sóc miệng: làm ẩm môi, súc miệng nhẹ, xử trí khô miệng giúp ăn dễ hơn.</li>
+      <li>Giảm mùi thức ăn nếu buồn nôn; mở thoáng phòng, dùng món nguội bớt.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Gia đình nên tránh</h2>
+    <p>Không trách móc “không chịu ăn”, không ép uống thuốc bổ/thực phẩm chức năng đắt tiền, không tự truyền dịch/đạm tại nhà nếu không có chỉ định. Nhiều trường hợp cần kiểm soát đau, táo bón, buồn nôn, lo âu trước khi người bệnh ăn được hơn.</p>
+  </section>
+</ArticleLayout>

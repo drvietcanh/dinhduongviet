@@ -1,0 +1,91 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["do-uong-ngot-tra-sua-suc-khoe"];
+if (!art) throw new Error("Article not found: do-uong-ngot-tra-sua-suc-khoe");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <h2>🥤 Vì sao đồ uống ngọt đáng có bài riêng?</h2>
+    <p>Đường trong đồ uống rất dễ “lọt qua radar”: uống nhanh, ít no, lại thường đi kèm topping, sữa đặc, kem béo hoặc khẩu phần lớn. Với người Việt, nhóm này không chỉ là nước ngọt đóng chai mà còn có trà sữa, cà phê sữa đá, nước ép thêm đường, nước mía, trà đóng chai và các món “healthy” nhưng ngọt.</p>
+  </section>
+
+  <section class="section card">
+    <h2>🔎 Nhận diện đường trong ly nước</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Loại đồ uống</th>
+            <th>Điểm dễ bị bỏ qua</th>
+            <th>Cách chọn tốt hơn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Trà sữa</td>
+            <td>Đường nền + trân châu/topping + kem béo; cỡ ly thường lớn</td>
+            <td>Chọn ít/không đường, giảm topping, không uống thay bữa chính</td>
+          </tr>
+          <tr>
+            <td>Cà phê sữa đá/bạc xỉu</td>
+            <td>Sữa đặc làm tăng đường và năng lượng nhanh</td>
+            <td>Giảm sữa đặc, chọn ly nhỏ hơn hoặc chuyển dần sang ít ngọt</td>
+          </tr>
+          <tr>
+            <td>Nước ép trái cây</td>
+            <td>Mất bớt chất xơ, đường hấp thu nhanh hơn ăn nguyên quả</td>
+            <td>Ưu tiên trái cây nguyên miếng; nếu uống, dùng khẩu phần nhỏ và không thêm đường</td>
+          </tr>
+          <tr>
+            <td>Nước ngọt/trà đóng chai</td>
+            <td>Đường nằm trong nhãn; uống lạnh dễ uống nhiều</td>
+            <td>Đọc nhãn “đường/carbohydrate”, chọn không đường nếu phù hợp</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🩺 Ai nên đặc biệt chú ý?</h2>
+    <ul>
+      <li><strong>Người thừa cân, gan nhiễm mỡ, mỡ máu cao:</strong> đồ uống ngọt dễ làm dư năng lượng mà không tạo cảm giác no tương xứng.</li>
+      <li><strong>Người đái tháo đường hoặc tiền đái tháo đường:</strong> cần tính đồ uống ngọt vào tổng carbohydrate, không xem “nước ép” là tự do.</li>
+      <li><strong>Trẻ em và học sinh:</strong> thói quen trà sữa, nước ngọt, ăn vặt nhiều lần có thể làm khẩu phần dư đường nhưng thiếu vi chất.</li>
+      <li><strong>Người sâu răng hoặc viêm nha chu:</strong> đồ uống ngọt nhấp nhiều lần trong ngày làm tăng thời gian răng tiếp xúc với đường.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>✅ Cách giảm mà vẫn thực tế</h2>
+    <ol>
+      <li><strong>Giảm tần suất trước:</strong> từ hằng ngày xuống vài lần/tuần thường dễ hơn cắt đột ngột.</li>
+      <li><strong>Giảm độ ngọt theo bậc:</strong> 100% → 70% → 50% → ít đường/không đường nếu hợp khẩu vị.</li>
+      <li><strong>Giữ “ly đặc biệt” đúng nghĩa đặc biệt:</strong> không biến trà sữa/cà phê sữa thành nguồn nước chính trong ngày.</li>
+      <li><strong>Đổi môi trường:</strong> để sẵn nước lọc, trà không đường, trái cây nguyên miếng; hạn chế mua theo combo lớn.</li>
+      <li><strong>Không dùng đồ uống ngọt để xử lý đói:</strong> nếu đói, chọn bữa phụ có đạm/xơ như sữa chua không đường, trứng, đậu, trái cây kèm hạt vừa phải.</li>
+    </ol>
+  </section>
+
+  <section class="section card">
+    <h2>❓ Câu hỏi thường gặp</h2>
+    <details class="faq-item">
+      <summary>Đường nâu, mật ong có tốt hơn đường trắng không?</summary>
+      <p>Không nên xem là “an toàn” cho đường huyết. Chúng vẫn đóng góp đường tự do/năng lượng. Nếu dùng, hãy tính vào tổng lượng đường trong ngày.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Chế độ chỉ uống nước ép có giúp giảm cân an toàn không?</summary>
+      <p>Không có bằng chứng tốt cho cách làm này. Gan, thận và hệ tiêu hóa đã đảm nhiệm chuyển hóa - thải trừ. Nước ép quá nhiều còn dễ làm dư đường và thiếu đạm/xơ.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Nước ngọt không đường có dùng được không?</summary>
+      <p>Có thể là bước chuyển tiếp giúp giảm đường, nhưng không nên xem là nền tảng của chế độ ăn. Nước lọc và đồ uống không ngọt vẫn là lựa chọn chính.</p>
+    </details>
+  </section>
+
+  <div class="key-takeaway">
+    <p><strong>Thông điệp chính:</strong> Không cần “cấm cả đời” trà sữa hay cà phê sữa. Nhưng nếu uống thường xuyên, hãy giảm tần suất, giảm độ ngọt, giảm topping và đừng để đồ uống ngọt thay nước hoặc thay bữa.</p>
+  </div>
+</ArticleLayout>

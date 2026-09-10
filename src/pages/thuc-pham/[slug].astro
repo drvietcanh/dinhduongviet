@@ -9,7 +9,7 @@ import GlycemicLoad from "../../components/GlycemicLoad.astro";
 import VNHealthScore from "../../components/VNHealthScore.astro";
 import AddToDiary from "../../components/AddToDiary.astro";
 import { foods } from "../../data/nutrition";
-import { confidenceLabel, detailNutrients, foodBySlug, formatValue, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
+import { confidenceLabel, detailNutrients, foodBySlug, foodPublicNote, formatValue, sourceFor, allTags, tagLabel } from "../../lib/nutrition";
 import { foodSlugAliases } from "../../lib/food-slug-aliases";
 
 export function getStaticPaths() {
@@ -34,6 +34,26 @@ const qualityLabels: Record<string, string> = {
   needs_external_source: "Cần nguồn ngoài để đối chiếu",
 };
 const qualityNote = food.sourceReviewStatus ? qualityLabels[food.sourceReviewStatus] : "";
+const publicNote = foodPublicNote(food);
+const needsReview = Boolean(
+  food.needsDietitianReview ||
+  food.needsExternalSource ||
+  food.sourceReviewStatus === "needs_better_source" ||
+  food.sourceReviewStatus === "candidate_pending_dietitian_review" ||
+  food.sourceReviewStatus === "needs_external_source"
+);
+const qualityTone = food.confidence === "high" && !needsReview
+  ? "is-verified"
+  : needsReview || food.confidence === "low"
+    ? "is-review"
+    : "is-caution";
+const qualityBadge = food.confidence === "high" && !needsReview
+  ? "Nguồn chắc"
+  : needsReview
+    ? "Cần rà soát"
+    : food.confidence === "low"
+      ? "Ước tính tham khảo"
+      : "Cần đối chiếu";
 const sourceHref = source?.url ?? "/phuong-phap";
 const reviewMailto = `mailto:drvietcanh@gmail.com?subject=${encodeURIComponent(`Rà soát dữ liệu thực phẩm: ${food.name}`)}`;
 const pageDescription = `Tra cứu 100g ${food.name}: khoảng ${Math.round(food.nutrients.energyKcal ?? 0)} kcal, ${Math.round(food.nutrients.proteinG ?? 0)}g đạm, ${Math.round(food.nutrients.carbG ?? 0)}g carb và ${Math.round(food.nutrients.fatG ?? 0)}g chất béo.`;
@@ -127,7 +147,7 @@ var foodSchema = {
   <section class="detail-hero">
     <div class="detail-topline">
       <a href="/thuc-pham" class="back-link">Danh sách thực phẩm</a>
-      <span class="badge">{food.category} · {confidenceLabel(food.confidence)}</span>
+      <span class={`badge quality-badge ${qualityTone}`}>{food.category} · {qualityBadge}</span>
     </div>
     <div class="detail-heading">
       <div class="detail-copy">
@@ -171,6 +191,7 @@ var foodSchema = {
     <div class="detail-note-card">
       <h2>Đọc nhanh</h2>
       <p>Số liệu mặc định áp theo 100g phần ăn được. Nếu bạn ăn ít hơn hoặc nhiều hơn mức này, hãy đổi lại khẩu phần trước khi so sánh.</p>
+      <p class="public-note">{publicNote}</p>
     </div>
     <AddToDiary type="food" itemId={food.id} defaultAmount={100} />
   </section>
@@ -263,7 +284,7 @@ var foodSchema = {
         </div>
       )}
       <div class="source-copy">
-        <p><strong>Lưu ý sai số:</strong> {food.note}</p>
+        <p><strong>Lưu ý sai số:</strong> {publicNote}</p>
         <p>Khi cần dùng chặt hơn, nên đối chiếu lại với nguồn gốc và trạng thái chế biến thực tế.</p>
       </div>
       <div class="source-actions">
@@ -486,6 +507,48 @@ var foodSchema = {
   .section-head p {
     margin: 0;
     color: var(--ink-secondary);
+  }
+
+  .detail-note-card .public-note {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--card-border);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .quality-badge {
+    border: 1px solid var(--card-border);
+  }
+
+  .quality-badge.is-verified {
+    background: color-mix(in srgb, #10b981 13%, var(--card));
+    color: #047857;
+    border-color: color-mix(in srgb, #10b981 32%, var(--card-border));
+  }
+
+  .quality-badge.is-caution {
+    background: color-mix(in srgb, #f59e0b 14%, var(--card));
+    color: #92400e;
+    border-color: color-mix(in srgb, #f59e0b 34%, var(--card-border));
+  }
+
+  .quality-badge.is-review {
+    background: color-mix(in srgb, #ef4444 10%, var(--card));
+    color: #991b1b;
+    border-color: color-mix(in srgb, #ef4444 28%, var(--card-border));
+  }
+
+  [data-theme="dark"] .quality-badge.is-verified {
+    color: #6ee7b7;
+  }
+
+  [data-theme="dark"] .quality-badge.is-caution {
+    color: #fbbf24;
+  }
+
+  [data-theme="dark"] .quality-badge.is-review {
+    color: #fca5a5;
   }
 
   .section-head {

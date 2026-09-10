@@ -1,0 +1,29 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ha-duong-huyet-insulin-sulfonylurea"];
+if (!art) throw new Error("Article not found: ha-duong-huyet-insulin-sulfonylurea");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Người đái tháo đường đang dùng insulin hoặc nhóm sulfonylurea có nguy cơ hạ đường huyết nếu bỏ bữa, ăn quá ít tinh bột, vận động nhiều hơn thường ngày hoặc uống rượu. Đây là nhóm không nên tự nhịn ăn hoặc low-carb quá mức.</p>
+  </section>
+  <section class="section card" style="background:#fff8e1;border:1px solid #ffd54f;">
+    <p><strong>Cảnh báo:</strong> nếu hay vã mồ hôi, run tay, đói cồn cào, lú lẫn hoặc ngất, cần trao đổi bác sĩ để chỉnh thuốc. Bữa ăn hằng ngày chỉ giúp phòng ngừa; khi đã hạ đường huyết cần làm đúng kế hoạch xử trí bác sĩ đã dặn.</p>
+  </section>
+  <section class="section card">
+    <h2>Cách phòng bằng bữa ăn Việt</h2>
+    <ul>
+      <li>Ăn đúng giờ hơn, nhất là sau khi tiêm insulin hoặc uống thuốc hạ đường huyết.</li>
+      <li>Mỗi bữa có tinh bột vừa đủ: cơm, bún/phở, khoai hoặc bánh mì; không chỉ ăn rau và đạm.</li>
+      <li>Luôn mang theo nguồn đường nhanh theo hướng dẫn điều trị, đặc biệt khi đi xa/tập luyện.</li>
+      <li>Không uống rượu bia lúc đói; rượu có thể làm hạ đường huyết muộn.</li>
+      <li>Khi ốm, ăn kém hoặc nôn ói, cần hỏi bác sĩ về thuốc và theo dõi đường huyết sát hơn.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Ví dụ bữa cân bằng</h2>
+    <p>Nửa đến một chén cơm tùy nhu cầu + cá kho nhạt/thịt nạc/đậu hũ + nhiều rau + canh nhạt. Nếu ăn ít cơm, cần có nguồn tinh bột khác thay thế chứ không bỏ trống hoàn toàn.</p>
+  </section>
+</ArticleLayout>

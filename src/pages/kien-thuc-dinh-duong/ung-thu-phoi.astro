@@ -1,0 +1,45 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-phoi"];
+if (!art) throw new Error("Article not found: ung-thu-phoi");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư phổi thường đi kèm ho kéo dài, khó thở, mệt, chán ăn và sụt cân. Dinh dưỡng không điều trị ung thư, nhưng giúp người bệnh giữ cơ, giữ sức và dung nạp hóa trị, xạ trị, miễn dịch hoặc điều trị đích tốt hơn.</p>
+  </section>
+  <section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+    <p><strong>Điểm chính:</strong> ưu tiên đủ năng lượng, đủ đạm, chia bữa nhỏ, chọn món mềm-dễ nuốt khi ho/khó thở, và báo bác sĩ nếu sụt cân nhanh, sốt, nuốt sặc hoặc không ăn uống được.</p>
+  </section>
+  <section class="section card">
+    <h2>Khi khó thở, nên sắp bữa thế nào?</h2>
+    <ul>
+      <li>Ăn 5-6 bữa nhỏ thay vì cố ăn một bữa lớn.</li>
+      <li>Chọn món đặc năng lượng: cháo thịt bằm thêm dầu, súp trứng, sữa y học theo chỉ định, sinh tố sữa chua-bơ-chuối.</li>
+      <li>Ngồi thẳng khi ăn, ăn chậm; nghỉ giữa bữa nếu hụt hơi.</li>
+      <li>Tránh món quá khô, quá cay hoặc nhiều mùi nếu đang ho, buồn nôn hoặc đau họng do xạ trị.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Nên ưu tiên</h2>
+    <table class="table"><tbody>
+      <tr><td>Đạm dễ ăn</td><td>Trứng, cá, thịt nạc mềm, đậu hũ, sữa chua, sữa giàu đạm nếu phù hợp.</td></tr>
+      <tr><td>Tinh bột mềm</td><td>Cháo đặc, cơm nát, khoai, bún/phở mềm; tránh chỉ uống nước cháo loãng kéo dài.</td></tr>
+      <tr><td>Rau quả</td><td>Rau nấu mềm, trái cây chín; khi giảm bạch cầu cần rửa/gọt kỹ và tránh đồ sống không an toàn.</td></tr>
+      <tr><td>Chất béo tốt</td><td>Thêm dầu olive/dầu mè/dầu đậu nành vào cháo, súp để tăng năng lượng khi ăn ít.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="section card">
+    <h2>Cần tránh hiểu lầm</h2>
+    <ul>
+      <li>Không tự nhịn ăn, kiêng đường tuyệt đối hoặc “bỏ đói tế bào ung thư”. Người bệnh dễ mất cơ và suy kiệt hơn.</li>
+      <li>Không dùng thuốc nam, nấm, vitamin liều cao hoặc thực phẩm chức năng thay phác đồ điều trị.</li>
+      <li>Không tự bỏ đạm vì sợ “nuôi ung thư”; thiếu đạm làm chậm phục hồi và tăng nguy cơ nhiễm trùng.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Khi nào cần báo bác sĩ?</h2>
+    <p>Sụt cân không chủ ý, ăn dưới một nửa khẩu phần trong vài ngày, sốt, tiêu chảy kéo dài, nôn nhiều, đau khi nuốt, ho sặc khi ăn uống hoặc khó thở tăng là các dấu hiệu cần liên hệ đội điều trị.</p>
+  </section>
+</ArticleLayout>

@@ -1,0 +1,37 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["thay-doi-vi-giac-kho-mieng-ung-thu"];
+if (!art) throw new Error("Article not found: thay-doi-vi-giac-kho-mieng-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Điều trị ung thư có thể làm thức ăn có vị kim loại, đắng, nhạt hoặc làm miệng khô rát. Khi đó, người bệnh không “lười ăn”; họ đang ăn trong một cơ thể rất khó chịu. Cách nấu nên linh hoạt để món dễ chịu hơn mà vẫn đủ năng lượng và protein.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Khi thức ăn có vị lạ</h2>
+    <ul>
+      <li>Thử món nguội hoặc ấm nhẹ thay vì quá nóng, vì mùi bốc lên có thể làm buồn nôn hơn.</li>
+      <li>Nếu thịt đỏ có vị kim loại, đổi sang cá, trứng, đậu hũ, thịt gà, sữa chua hoặc cháo/súp có xay thịt nạc.</li>
+      <li>Dùng gia vị nhẹ như gừng, hành, rau thơm, nước sốt chua dịu nếu không loét miệng hoặc trào ngược.</li>
+      <li>Dùng muỗng nhựa hoặc đũa sạch nếu dụng cụ kim loại làm vị khó chịu hơn.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi khô miệng</h2>
+    <ul>
+      <li>Chọn món mềm, có nước sốt/canh: cháo, súp, mì mềm, trứng hấp, đậu hũ non.</li>
+      <li>Nhấp nước thường xuyên; có thể dùng đá bào nhỏ nếu không ê buốt và không có chống chỉ định.</li>
+      <li>Tránh rượu bia, thuốc lá, nước súc miệng chứa cồn, món quá mặn hoặc quá cay.</li>
+      <li>Giữ vệ sinh răng miệng nhẹ nhàng; báo bác sĩ nếu đau, nấm miệng, loét hoặc nuốt đau.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Mẹo tăng năng lượng khi ăn ít</h2>
+    <p>Thêm dầu thực vật vừa phải, bơ đậu phộng, sữa, sữa chua, trứng, đậu hũ hoặc bột dinh dưỡng vào món mềm nếu người bệnh dung nạp được. Với đái tháo đường, bệnh thận, suy tim hoặc xơ gan, cách tăng năng lượng cần cá thể hóa theo xét nghiệm và chỉ định điều trị.</p>
+  </section>
+</ArticleLayout>

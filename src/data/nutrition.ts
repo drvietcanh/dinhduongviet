@@ -123,7 +123,7 @@ export const sources: Source[] = [
   },
   {
     id: "recipe-estimate-v1",
-    name: "Công thức ước tính MVP",
+    name: "Công thức ước tính tham khảo",
     year: "2026",
     note: "Công thức định lượng để demo cách tính món ăn. Cần chuẩn hóa bằng tài liệu/sách nấu ăn hoặc đo thực tế."
   },
@@ -216,7 +216,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 110, proteinG: 2.0, carbG: 24.0, fatG: 0.2, fiberG: 0.5, calciumMg: 8, ironMg: 0.3, sodiumMg: 20, potassiumMg: 25 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính để dựng MVP; cần thay bằng dữ liệu chuẩn."
+    note: "Giá trị tham khảo theo công thức; cần đối chiếu nguồn chuẩn trước khi dùng cho tư vấn cá thể."
   },
   {
     id: "thit-bo-nac",
@@ -358,7 +358,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 25, proteinG: 2.0, carbG: 4.0, fatG: 0.3, fiberG: 2.0, calciumMg: 60, ironMg: 1.2, sodiumMg: 20, potassiumMg: 250, vitaminCMg: 20 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính hỗn hợp, chỉ dùng để tính món ăn MVP."
+    note: "Giá trị tham khảo hỗn hợp, chỉ dùng để ước tính món ăn."
   },
   {
     id: "bun-tuoi",
@@ -373,7 +373,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 110, proteinG: 1.7, carbG: 25.0, fatG: 0.2, fiberG: 0.5, calciumMg: 7, ironMg: 0.2, sodiumMg: 12, potassiumMg: 18 , glycemicIndex: 70, phosphorusMg: 20},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; độ ẩm bún thay đổi nhiều theo cơ sở sản xuất."
+    note: "Giá trị tham khảo theo công thức; độ ẩm bún thay đổi nhiều theo cơ sở sản xuất."
   },
   {
     id: "banh-mi",
@@ -388,7 +388,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 265, proteinG: 8.5, carbG: 52.0, fatG: 3.2, fiberG: 2.7, calciumMg: 80, ironMg: 3.0, sodiumMg: 490, potassiumMg: 115 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; mỗi ổ thường khoảng 60-90g tùy tiệm."
+    note: "Giá trị tham khảo theo công thức; mỗi ổ thường khoảng 60-90g tùy tiệm."
   },
   {
     id: "khoai-lang",
@@ -403,7 +403,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 86, proteinG: 1.6, carbG: 20.1, fatG: 0.1, fiberG: 3.0, calciumMg: 30, ironMg: 0.6, sodiumMg: 55, potassiumMg: 337, vitaminAUg: 709, vitaminCMg: 2.4 , glycemicIndex: 54, phosphorusMg: 47},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; giống khoai và cách nấu làm thay đổi năng lượng trên 100g."
+    note: "Giá trị tham khảo theo công thức; giống khoai và cách nấu làm thay đổi năng lượng trên 100g."
   },
   {
     id: "thit-heo-nac",
@@ -418,7 +418,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 143, proteinG: 21.0, carbG: 0, fatG: 6.3, calciumMg: 7, ironMg: 0.9, zincMg: 2.0, sodiumMg: 57, potassiumMg: 340 , phosphorusMg: 230},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cần tách rõ thăn, vai, nạc dăm khi chuẩn hóa chính thức."
+    note: "Giá trị tham khảo theo công thức; cần tách rõ thăn, vai, nạc dăm khi chuẩn hóa chính thức."
   },
   {
     id: "suon-heo-nuong",
@@ -433,7 +433,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 260, proteinG: 24.0, carbG: 2.0, fatG: 17.0, sodiumMg: 430, potassiumMg: 320, ironMg: 1.0, zincMg: 2.6 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; nước ướp và phần mỡ làm sai số lớn."
+    note: "Giá trị tham khảo theo công thức; nước ướp và phần mỡ làm sai số lớn."
   },
   {
     id: "ba-chi-heo",
@@ -448,7 +448,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 518, proteinG: 9.3, carbG: 0, fatG: 53.0, sodiumMg: 32, potassiumMg: 185, ironMg: 0.5, zincMg: 1.0 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; tỉ lệ nạc/mỡ thay đổi rất lớn."
+    note: "Giá trị tham khảo theo công thức; tỉ lệ nạc/mỡ thay đổi rất lớn."
   },
   {
     id: "tom-tuoi",
@@ -463,7 +463,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 99, proteinG: 20.9, carbG: 0.2, fatG: 1.0, calciumMg: 70, ironMg: 0.5, zincMg: 1.3, sodiumMg: 148, potassiumMg: 259 , phosphorusMg: 210},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; khác biệt theo loại tôm và cách sơ chế."
+    note: "Giá trị tham khảo theo công thức; khác biệt theo loại tôm và cách sơ chế."
   },
   {
     id: "ca-thu",
@@ -478,7 +478,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 205, proteinG: 18.6, carbG: 0, fatG: 13.9, calciumMg: 12, ironMg: 1.6, zincMg: 0.6, sodiumMg: 90, potassiumMg: 314 , phosphorusMg: 250},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; hàm lượng béo thay đổi theo mùa và loài."
+    note: "Giá trị tham khảo theo công thức; hàm lượng béo thay đổi theo mùa và loài."
   },
   {
     id: "ca-basa",
@@ -493,7 +493,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 123, proteinG: 15.0, carbG: 0, fatG: 6.8, calciumMg: 10, ironMg: 0.4, sodiumMg: 55, potassiumMg: 280 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cần đối chiếu dữ liệu cá nuôi Việt Nam."
+    note: "Giá trị tham khảo theo công thức; cần đối chiếu dữ liệu cá nuôi Việt Nam."
   },
   {
     id: "sua-tuoi",
@@ -508,7 +508,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 61, proteinG: 3.2, carbG: 4.8, fatG: 3.3, calciumMg: 113, sodiumMg: 43, potassiumMg: 132, vitaminAUg: 46 , phosphorusMg: 95},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; sữa tách béo/ít béo có số khác."
+    note: "Giá trị tham khảo theo công thức; sữa tách béo/ít béo có số khác."
   },
   {
     id: "ca-rot",
@@ -523,7 +523,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 41, proteinG: 0.9, carbG: 9.6, fatG: 0.2, fiberG: 2.8, calciumMg: 33, ironMg: 0.3, sodiumMg: 69, potassiumMg: 320, vitaminAUg: 835, vitaminCMg: 5.9 , glycemicIndex: 71, phosphorusMg: 35},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "ca-chua",
@@ -538,7 +538,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 18, proteinG: 0.9, carbG: 3.9, fatG: 0.2, fiberG: 1.2, calciumMg: 10, ironMg: 0.3, sodiumMg: 5, potassiumMg: 237, vitaminAUg: 42, vitaminCMg: 13.7 , glycemicIndex: 30, phosphorusMg: 24},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "dua-leo",
@@ -553,7 +553,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 15, proteinG: 0.7, carbG: 3.6, fatG: 0.1, fiberG: 0.5, calciumMg: 16, ironMg: 0.3, sodiumMg: 2, potassiumMg: 147, vitaminCMg: 2.8 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "bap-cai",
@@ -568,7 +568,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 25, proteinG: 1.3, carbG: 5.8, fatG: 0.1, fiberG: 2.5, calciumMg: 40, ironMg: 0.5, sodiumMg: 18, potassiumMg: 170, vitaminCMg: 36.6 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "cam",
@@ -582,7 +582,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 47, proteinG: 0.9, carbG: 11.8, fatG: 0.1, fiberG: 2.4, calciumMg: 40, ironMg: 0.1, sodiumMg: 0, potassiumMg: 181, vitaminAUg: 11, vitaminCMg: 53.2 , glycemicIndex: 40, phosphorusMg: 14},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "tao",
@@ -596,7 +596,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 52, proteinG: 0.3, carbG: 13.8, fatG: 0.2, fiberG: 2.4, calciumMg: 6, ironMg: 0.1, sodiumMg: 1, potassiumMg: 107, vitaminCMg: 4.6 , glycemicIndex: 36, phosphorusMg: 11},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "xoai",
@@ -610,7 +610,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 60, proteinG: 0.8, carbG: 15.0, fatG: 0.4, fiberG: 1.6, calciumMg: 11, ironMg: 0.2, sodiumMg: 1, potassiumMg: 168, vitaminAUg: 54, vitaminCMg: 36.4 , glycemicIndex: 56, phosphorusMg: 14},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "du-du",
@@ -624,7 +624,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 43, proteinG: 0.5, carbG: 10.8, fatG: 0.3, fiberG: 1.7, calciumMg: 20, ironMg: 0.3, sodiumMg: 8, potassiumMg: 182, vitaminAUg: 47, vitaminCMg: 60.9 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "dau-an",
@@ -638,7 +638,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 884, proteinG: 0, carbG: 0, fatG: 100.0 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; 1 muỗng canh khoảng 13-14g dầu."
+    note: "Giá trị tham khảo theo công thức; 1 muỗng canh khoảng 13-14g dầu."
   },
   {
     id: "nuoc-mam",
@@ -652,7 +652,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 35, proteinG: 5.0, carbG: 3.6, fatG: 0, sodiumMg: 7800, potassiumMg: 288 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; natri thay đổi rất lớn theo độ đạm và thương hiệu."
+    note: "Giá trị tham khảo theo công thức; natri thay đổi rất lớn theo độ đạm và thương hiệu."
   },
   {
     id: "duong-trang",
@@ -666,7 +666,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 387, proteinG: 0, carbG: 100.0, fatG: 0, sodiumMg: 1, potassiumMg: 2 , glycemicIndex: 65},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "sua-dac",
@@ -681,7 +681,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 321, proteinG: 7.9, carbG: 54.4, fatG: 8.7, sugarG: 54.4, calciumMg: 284, sodiumMg: 128, potassiumMg: 371 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "thit-bo-bam",
@@ -696,7 +696,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 152, proteinG: 20.0, carbG: 0, fatG: 7.0, ironMg: 2.5, zincMg: 3.8, sodiumMg: 60, potassiumMg: 315 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "tom-kho",
@@ -711,7 +711,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 299, proteinG: 62.0, carbG: 0, fatG: 4.5, calciumMg: 360, ironMg: 5.5, sodiumMg: 480, potassiumMg: 600 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; natri rất cao tùy loại."
+    note: "Giá trị tham khảo theo công thức; natri rất cao tùy loại."
   },
   {
     id: "nam-huong",
@@ -726,7 +726,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 296, proteinG: 9.6, carbG: 63.0, fatG: 1.0, fiberG: 11.5, calciumMg: 15, ironMg: 1.8, sodiumMg: 13, potassiumMg: 984 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "moc-nhi",
@@ -741,7 +741,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 263, proteinG: 4.8, carbG: 67.0, fatG: 0.5, fiberG: 32.0, calciumMg: 100, ironMg: 6.9, sodiumMg: 35, potassiumMg: 523 , phosphorusMg: 150},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; giàu chất xơ."
+    note: "Giá trị tham khảo theo công thức; giàu chất xơ."
   },
   {
     id: "hung-que",
@@ -756,7 +756,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 44, proteinG: 3.2, carbG: 6.1, fatG: 0.8, fiberG: 2.0, calciumMg: 177, ironMg: 3.2, sodiumMg: 4, potassiumMg: 295, vitaminAUg: 264, vitaminCMg: 18 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "xa-lach",
@@ -771,7 +771,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 15, proteinG: 1.4, carbG: 2.9, fatG: 0.2, fiberG: 1.3, calciumMg: 36, ironMg: 0.9, sodiumMg: 28, potassiumMg: 194, vitaminAUg: 370, vitaminCMg: 9.2 , phosphorusMg: 29},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "hat-tieu",
@@ -786,7 +786,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 251, proteinG: 10.4, carbG: 64.0, fatG: 3.3, fiberG: 25.0, calciumMg: 443, ironMg: 9.7, sodiumMg: 20, potassiumMg: 1259 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng dùng thực tế rất nhỏ."
+    note: "Giá trị tham khảo theo công thức; lượng dùng thực tế rất nhỏ."
   },
   {
     id: "sua-dau-nanh",
@@ -801,7 +801,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 33, proteinG: 2.9, carbG: 1.2, fatG: 1.8, calciumMg: 120, sodiumMg: 39, potassiumMg: 118, vitaminDMcg: 1.0 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "ca-phe-den",
@@ -816,7 +816,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 2, proteinG: 0.2, carbG: 0, fatG: 0, sodiumMg: 2, potassiumMg: 49 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; thêm sữa/đường làm thay đổi năng lượng đáng kể."
+    note: "Giá trị tham khảo theo công thức; thêm sữa/đường làm thay đổi năng lượng đáng kể."
   },
   {
     id: "tra-xanh",
@@ -831,7 +831,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 1, proteinG: 0, carbG: 0, fatG: 0 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; thêm đường làm thay đổi."
+    note: "Giá trị tham khảo theo công thức; thêm đường làm thay đổi."
   },
   {
     id: "bia",
@@ -846,7 +846,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 43, proteinG: 0.5, carbG: 3.6, fatG: 0, sodiumMg: 4, potassiumMg: 27 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; nồng độ cồn và năng lượng thay đổi theo loại."
+    note: "Giá trị tham khảo theo công thức; nồng độ cồn và năng lượng thay đổi theo loại."
   },
   {
     id: "ruou",
@@ -861,7 +861,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 250, proteinG: 0, carbG: 0, fatG: 0 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; năng lượng từ cồn, thay đổi theo nồng độ."
+    note: "Giá trị tham khảo theo công thức; năng lượng từ cồn, thay đổi theo nồng độ."
   },
   {
     id: "tra-sua",
@@ -876,7 +876,7 @@ export const foods: Food[] = [
     nutrients: { energyKcal: 78, proteinG: 1.0, carbG: 14.5, fatG: 2.0, sugarG: 12.0, sodiumMg: 30, calciumMg: 40 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; một ly trung bình ~400-500ml, thay đổi theo topping và đường."
+    note: "Giá trị tham khảo theo công thức; một ly trung bình ~400-500ml, thay đổi theo topping và đường."
   }
 ];
 
@@ -889,7 +889,7 @@ export const recipes: Recipe[] = [
     servingName: "1 tô thường",
     servingWeightG: 680,
     mealContexts: ["dinner-light"],
-    portionNote: "Trong bản MVP, 1 tô phở bò thường được giả định có khoảng 70g thịt bò chín. Thực tế thường dao động khoảng 50-100g tùy quán và loại tô.",
+    portionNote: "Trong công thức tham khảo, 1 tô phở bò thường được giả định có khoảng 70g thịt bò chín. Thực tế thường dao động khoảng 50-100g tùy quán và loại tô.",
     commonPortions: [
       {
         label: "Tô ít thịt",
@@ -945,7 +945,7 @@ export const recipes: Recipe[] = [
     servingName: "1 tô thường",
     servingWeightG: 660,
     mealContexts: ["dinner-light"],
-    portionNote: "Trong bản MVP, 1 tô phở gà thường được giả định có khoảng 80g thịt gà/ức gà chín.",
+    portionNote: "Trong công thức tham khảo, 1 tô phở gà thường được giả định có khoảng 80g thịt gà/ức gà chín.",
     commonPortions: [
       { label: "Tô ít thịt", description: "Khoảng 60g thịt gà chín.", totalWeightG: 630 },
       { label: "Tô thường", description: "Khoảng 80g thịt gà chín.", totalWeightG: 660 },
@@ -972,7 +972,7 @@ export const recipes: Recipe[] = [
     portionNote: "Một đĩa cơm tấm sườn thường được giả định có 220g cơm và khoảng 100g sườn nướng phần ăn được.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; chưa tính bì, chả trứng, mỡ hành và nước mắm nếu gọi thêm.",
+    note: "Giá trị tham khảo theo công thức; chưa tính bì, chả trứng, mỡ hành và nước mắm nếu gọi thêm.",
     items: [
       { foodId: "com-trang", amountG: 220, note: "Cơm tấm/cơm trắng" },
       { foodId: "suon-heo-nuong", amountG: 100, note: "Sườn nướng phần ăn được" },
@@ -992,7 +992,7 @@ export const recipes: Recipe[] = [
     portionNote: "Một ổ bánh mì thịt thường được giả định có 80g bánh mì, 60g thịt heo, rau dưa và nước sốt.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; pate, bơ, chả lụa và sốt có thể làm năng lượng tăng đáng kể.",
+    note: "Giá trị tham khảo theo công thức; pate, bơ, chả lụa và sốt có thể làm năng lượng tăng đáng kể.",
     items: [
       { foodId: "banh-mi", amountG: 80, note: "Bánh mì" },
       { foodId: "thit-heo-nac", amountG: 60, note: "Thịt heo nạc/chả thịt ước tính" },
@@ -1013,7 +1013,7 @@ export const recipes: Recipe[] = [
     portionNote: "Khẩu phần mẫu gồm 2 cuốn, mỗi cuốn khoảng 1-2 con tôm nhỏ và ít thịt nạc.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; chưa tính nước chấm đậu phộng/tương đen nếu dùng nhiều.",
+    note: "Giá trị tham khảo theo công thức; chưa tính nước chấm đậu phộng/tương đen nếu dùng nhiều.",
     items: [
       { foodId: "bun-tuoi", amountG: 70, note: "Bún trong cuốn" },
       { foodId: "tom-tuoi", amountG: 50, note: "Tôm" },
@@ -1033,7 +1033,7 @@ export const recipes: Recipe[] = [
     portionNote: "Một tô thường được giả định có 200g bún và 90g thịt heo nướng.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; đậu phộng, chả giò và nước mắm ngọt có thể làm năng lượng tăng.",
+    note: "Giá trị tham khảo theo công thức; đậu phộng, chả giò và nước mắm ngọt có thể làm năng lượng tăng.",
     items: [
       { foodId: "bun-tuoi", amountG: 200, note: "Bún tươi" },
       { foodId: "thit-heo-nac", amountG: 90, note: "Thịt heo nướng ước tính" },
@@ -1059,7 +1059,7 @@ foods.push(
     nutrients: { energyKcal: 472, proteinG: 8.5, carbG: 62.0, fatG: 20.0, fiberG: 2.5, calciumMg: 30, ironMg: 3.0, sodiumMg: 1800, potassiumMg: 180 , glycemicIndex: 75, phosphorusMg: 100},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; số liệu thay đổi rất lớn theo thương hiệu và gói gia vị."
+    note: "Giá trị tham khảo theo công thức; số liệu thay đổi rất lớn theo thương hiệu và gói gia vị."
   },
   {
     id: "mien-dong",
@@ -1073,7 +1073,7 @@ foods.push(
     nutrients: { energyKcal: 332, proteinG: 0.5, carbG: 82.0, fatG: 0.1, fiberG: 1.0, calciumMg: 20, ironMg: 1.0, sodiumMg: 20, potassiumMg: 30 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; khi nấu chín khối lượng tăng do hút nước."
+    note: "Giá trị tham khảo theo công thức; khi nấu chín khối lượng tăng do hút nước."
   },
   {
     id: "khoai-tay",
@@ -1087,7 +1087,7 @@ foods.push(
     nutrients: { energyKcal: 77, proteinG: 2.0, carbG: 17.5, fatG: 0.1, fiberG: 2.2, calciumMg: 12, ironMg: 0.8, sodiumMg: 6, potassiumMg: 425, vitaminCMg: 19.7 , glycemicIndex: 78, phosphorusMg: 57},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "thit-ga-dui",
@@ -1101,7 +1101,7 @@ foods.push(
     nutrients: { energyKcal: 177, proteinG: 18.0, carbG: 0, fatG: 11.0, calciumMg: 10, ironMg: 0.9, zincMg: 1.7, sodiumMg: 80, potassiumMg: 240 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; bỏ da sẽ giảm chất béo và năng lượng."
+    note: "Giá trị tham khảo theo công thức; bỏ da sẽ giảm chất béo và năng lượng."
   },
   {
     id: "thit-vit",
@@ -1115,7 +1115,7 @@ foods.push(
     nutrients: { energyKcal: 337, proteinG: 19.0, carbG: 0, fatG: 28.0, calciumMg: 11, ironMg: 2.4, zincMg: 1.9, sodiumMg: 59, potassiumMg: 204 , phosphorusMg: 160},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; bỏ da làm giảm năng lượng đáng kể."
+    note: "Giá trị tham khảo theo công thức; bỏ da làm giảm năng lượng đáng kể."
   },
   {
     id: "cha-lua",
@@ -1129,7 +1129,7 @@ foods.push(
     nutrients: { energyKcal: 230, proteinG: 16.0, carbG: 4.0, fatG: 16.0, sodiumMg: 850, potassiumMg: 220, ironMg: 1.0, zincMg: 1.8 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; natri và tỉ lệ mỡ khác nhau theo cơ sở sản xuất."
+    note: "Giá trị tham khảo theo công thức; natri và tỉ lệ mỡ khác nhau theo cơ sở sản xuất."
   },
   {
     id: "ca-ro-phi",
@@ -1143,7 +1143,7 @@ foods.push(
     nutrients: { energyKcal: 96, proteinG: 20.1, carbG: 0, fatG: 1.7, calciumMg: 10, ironMg: 0.6, zincMg: 0.3, sodiumMg: 52, potassiumMg: 302 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cá chiên sẽ tăng năng lượng do dầu."
+    note: "Giá trị tham khảo theo công thức; cá chiên sẽ tăng năng lượng do dầu."
   },
   {
     id: "muc-tuoi",
@@ -1157,7 +1157,7 @@ foods.push(
     nutrients: { energyKcal: 92, proteinG: 15.6, carbG: 3.1, fatG: 1.4, calciumMg: 32, ironMg: 0.7, zincMg: 1.5, sodiumMg: 44, potassiumMg: 246 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "cai-xanh",
@@ -1171,7 +1171,7 @@ foods.push(
     nutrients: { energyKcal: 27, proteinG: 2.9, carbG: 4.7, fatG: 0.4, fiberG: 3.2, calciumMg: 115, ironMg: 1.6, sodiumMg: 20, potassiumMg: 384, vitaminAUg: 151, vitaminCMg: 70 , phosphorusMg: 37},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "cai-thia",
@@ -1185,7 +1185,7 @@ foods.push(
     nutrients: { energyKcal: 13, proteinG: 1.5, carbG: 2.2, fatG: 0.2, fiberG: 1.0, calciumMg: 105, ironMg: 0.8, sodiumMg: 65, potassiumMg: 252, vitaminAUg: 223, vitaminCMg: 45 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "bi-do",
@@ -1199,7 +1199,7 @@ foods.push(
     nutrients: { energyKcal: 26, proteinG: 1.0, carbG: 6.5, fatG: 0.1, fiberG: 0.5, calciumMg: 21, ironMg: 0.8, sodiumMg: 1, potassiumMg: 340, vitaminAUg: 426, vitaminCMg: 9 , glycemicIndex: 75, phosphorusMg: 44},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "nam-rom",
@@ -1213,7 +1213,7 @@ foods.push(
     nutrients: { energyKcal: 32, proteinG: 3.8, carbG: 4.6, fatG: 0.7, fiberG: 2.5, calciumMg: 3, ironMg: 1.3, sodiumMg: 5, potassiumMg: 318 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "dua-hau",
@@ -1227,7 +1227,7 @@ foods.push(
     nutrients: { energyKcal: 30, proteinG: 0.6, carbG: 7.6, fatG: 0.2, fiberG: 0.4, calciumMg: 7, ironMg: 0.2, sodiumMg: 1, potassiumMg: 112, vitaminAUg: 28, vitaminCMg: 8.1 , glycemicIndex: 72},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "bo-trai",
@@ -1241,7 +1241,7 @@ foods.push(
     nutrients: { energyKcal: 160, proteinG: 2.0, carbG: 8.5, fatG: 14.7, fiberG: 6.7, calciumMg: 12, ironMg: 0.6, sodiumMg: 7, potassiumMg: 485, vitaminCMg: 10 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "sua-chua",
@@ -1255,7 +1255,7 @@ foods.push(
     nutrients: { energyKcal: 95, proteinG: 3.5, carbG: 14.0, fatG: 3.0, calciumMg: 120, sodiumMg: 45, potassiumMg: 155 , phosphorusMg: 90},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; sữa chua không đường thấp carbohydrate hơn."
+    note: "Giá trị tham khảo theo công thức; sữa chua không đường thấp carbohydrate hơn."
   },
   {
     id: "lac-rang",
@@ -1269,7 +1269,7 @@ foods.push(
     nutrients: { energyKcal: 585, proteinG: 24.4, carbG: 21.5, fatG: 49.7, fiberG: 8.0, calciumMg: 58, ironMg: 1.6, zincMg: 3.3, sodiumMg: 18, potassiumMg: 705 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lạc rang muối có natri cao hơn."
+    note: "Giá trị tham khảo theo công thức; lạc rang muối có natri cao hơn."
   },
   {
     id: "dau-xanh",
@@ -1283,7 +1283,7 @@ foods.push(
     nutrients: { energyKcal: 347, proteinG: 23.9, carbG: 62.6, fatG: 1.2, fiberG: 16.3, calciumMg: 132, ironMg: 6.7, zincMg: 2.7, sodiumMg: 15, potassiumMg: 1246 , phosphorusMg: 367},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; khi nấu chè/cháo khối lượng và năng lượng trên 100g thay đổi do nước và đường."
+    note: "Giá trị tham khảo theo công thức; khi nấu chè/cháo khối lượng và năng lượng trên 100g thay đổi do nước và đường."
   }
 );
 
@@ -1299,7 +1299,7 @@ recipes.push(
     portionNote: "Tô thường giả định có 200g bún, 80g thịt bò chín và 40g giò/sườn heo phần ăn được.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; chưa tách riêng mắm ruốc, sa tế và nước béo nên natri/chất béo có thể sai số lớn.",
+    note: "Giá trị tham khảo theo công thức; chưa tách riêng mắm ruốc, sa tế và nước béo nên natri/chất béo có thể sai số lớn.",
     items: [
       { foodId: "bun-tuoi", amountG: 200, note: "Bún sợi to/tươi" },
       { foodId: "thit-bo-chin", amountG: 80, note: "Thịt bò chín" },
@@ -1319,7 +1319,7 @@ recipes.push(
     portionNote: "Một tô cháo gà thường được giả định có lượng gạo tương đương khoảng 80g cơm và 70g thịt gà.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cháo loãng/đặc và lượng dầu hành làm thay đổi năng lượng.",
+    note: "Giá trị tham khảo theo công thức; cháo loãng/đặc và lượng dầu hành làm thay đổi năng lượng.",
     items: [
       { foodId: "com-trang", amountG: 80, note: "Đại diện phần gạo đã nấu nhừ" },
       { foodId: "uc-ga", amountG: 70, note: "Thịt gà xé" },
@@ -1337,7 +1337,7 @@ recipes.push(
     portionNote: "Tô thường giả định dùng bún/phở gạo đại diện 180g, có tôm và thịt heo.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cần thêm nguyên liệu hủ tiếu riêng để chính xác hơn.",
+    note: "Giá trị tham khảo theo công thức; cần thêm nguyên liệu hủ tiếu riêng để chính xác hơn.",
     items: [
       { foodId: "banh-pho-chin", amountG: 180, note: "Tạm đại diện sợi hủ tiếu chín" },
       { foodId: "thit-heo-nac", amountG: 60, note: "Thịt heo nạc" },
@@ -1356,7 +1356,7 @@ recipes.push(
     portionNote: "Một phần mẫu gồm 100g ba chỉ, 1 trứng khoảng 50g và nước kho/gia vị.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng mỡ, đường và nước mắm trong nước kho làm sai số lớn.",
+    note: "Giá trị tham khảo theo công thức; lượng mỡ, đường và nước mắm trong nước kho làm sai số lớn.",
     items: [
       { foodId: "ba-chi-heo", amountG: 100, note: "Thịt ba chỉ" },
       { foodId: "trung-ga", amountG: 50, note: "Một trứng cỡ vừa" },
@@ -1374,7 +1374,7 @@ recipes.push(
     portionNote: "Một tô nhỏ giả định gồm 180g bí đỏ và 40g thịt heo nạc băm.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng nước dùng và gia vị mặn thay đổi theo gia đình.",
+    note: "Giá trị tham khảo theo công thức; lượng nước dùng và gia vị mặn thay đổi theo gia đình.",
     items: [
       { foodId: "bi-do", amountG: 180, note: "Bí đỏ" },
       { foodId: "thit-heo-nac", amountG: 40, note: "Thịt heo nạc băm" },
@@ -1397,7 +1397,7 @@ foods.push(
     nutrients: { energyKcal: 365, proteinG: 7.1, carbG: 80.0, fatG: 0.7, fiberG: 1.3, calciumMg: 28, ironMg: 0.8, sodiumMg: 5, potassiumMg: 115 , glycemicIndex: 75},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; khi nấu thành cơm khối lượng tăng do hấp thu nước."
+    note: "Giá trị tham khảo theo công thức; khi nấu thành cơm khối lượng tăng do hấp thu nước."
   },
   {
     id: "trung-vit",
@@ -1411,7 +1411,7 @@ foods.push(
     nutrients: { energyKcal: 185, proteinG: 12.8, carbG: 1.5, fatG: 13.8, calciumMg: 64, ironMg: 3.9, zincMg: 1.4, sodiumMg: 146, potassiumMg: 222, vitaminAUg: 194 , phosphorusMg: 200},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; trứng muối/trứng lộn có dữ liệu khác."
+    note: "Giá trị tham khảo theo công thức; trứng muối/trứng lộn có dữ liệu khác."
   },
   {
     id: "gan-heo",
@@ -1425,7 +1425,7 @@ foods.push(
     nutrients: { energyKcal: 134, proteinG: 21.4, carbG: 2.5, fatG: 3.7, calciumMg: 9, ironMg: 18.0, zincMg: 4.0, sodiumMg: 87, potassiumMg: 273, vitaminAUg: 6500 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; rất giàu vitamin A và sắt, không nên diễn giải như khuyến nghị ăn thường xuyên."
+    note: "Giá trị tham khảo theo công thức; rất giàu vitamin A và sắt, không nên diễn giải như khuyến nghị ăn thường xuyên."
   },
   {
     id: "cua-dong",
@@ -1439,7 +1439,7 @@ foods.push(
     nutrients: { energyKcal: 89, proteinG: 12.3, carbG: 2.0, fatG: 3.3, calciumMg: 500, ironMg: 4.7, zincMg: 2.0, sodiumMg: 95, potassiumMg: 280 , phosphorusMg: 180},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; canxi phụ thuộc phần mai/vỏ được giã lọc."
+    note: "Giá trị tham khảo theo công thức; canxi phụ thuộc phần mai/vỏ được giã lọc."
   },
   {
     id: "ca-nuc",
@@ -1453,7 +1453,7 @@ foods.push(
     nutrients: { energyKcal: 120, proteinG: 20.2, carbG: 0, fatG: 4.2, calciumMg: 50, ironMg: 1.1, zincMg: 0.8, sodiumMg: 75, potassiumMg: 330 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cá kho/chiên sẽ thay đổi natri và chất béo."
+    note: "Giá trị tham khảo theo công thức; cá kho/chiên sẽ thay đổi natri và chất béo."
   },
   {
     id: "rau-ngot",
@@ -1467,7 +1467,7 @@ foods.push(
     nutrients: { energyKcal: 35, proteinG: 5.3, carbG: 3.4, fatG: 0.6, fiberG: 2.5, calciumMg: 169, ironMg: 2.7, sodiumMg: 25, potassiumMg: 457, vitaminAUg: 665, vitaminCMg: 185 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; cần đối chiếu lại bảng Việt Nam vì rau ngót có vi chất cao."
+    note: "Giá trị tham khảo theo công thức; cần đối chiếu lại bảng Việt Nam vì rau ngót có vi chất cao."
   },
   {
     id: "mong-toi",
@@ -1481,7 +1481,7 @@ foods.push(
     nutrients: { energyKcal: 19, proteinG: 1.8, carbG: 3.4, fatG: 0.3, fiberG: 2.1, calciumMg: 109, ironMg: 1.2, sodiumMg: 24, potassiumMg: 510, vitaminAUg: 400, vitaminCMg: 102 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "gia-do",
@@ -1495,7 +1495,7 @@ foods.push(
     nutrients: { energyKcal: 30, proteinG: 3.0, carbG: 6.0, fatG: 0.2, fiberG: 1.8, calciumMg: 13, ironMg: 0.9, sodiumMg: 6, potassiumMg: 149, vitaminCMg: 13 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "hanh-tay",
@@ -1509,7 +1509,7 @@ foods.push(
     nutrients: { energyKcal: 40, proteinG: 1.1, carbG: 9.3, fatG: 0.1, fiberG: 1.7, calciumMg: 23, ironMg: 0.2, sodiumMg: 4, potassiumMg: 146, vitaminCMg: 7.4 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP."
+    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "toi",
@@ -1523,7 +1523,7 @@ foods.push(
     nutrients: { energyKcal: 149, proteinG: 6.4, carbG: 33.1, fatG: 0.5, fiberG: 2.1, calciumMg: 181, ironMg: 1.7, sodiumMg: 17, potassiumMg: 401, vitaminCMg: 31 , phosphorusMg: 153},
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng dùng thực tế thường rất nhỏ."
+    note: "Giá trị tham khảo theo công thức; lượng dùng thực tế thường rất nhỏ."
   }
 );
 
@@ -1538,7 +1538,7 @@ recipes.push(
     portionNote: "Một đĩa mẫu gồm 250g cơm, 1 trứng và khoảng 10g dầu.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; dầu và topping như xúc xích/chả làm năng lượng tăng nhanh.",
+    note: "Giá trị tham khảo theo công thức; dầu và topping như xúc xích/chả làm năng lượng tăng nhanh.",
     items: [
       { foodId: "com-trang", amountG: 250, note: "Cơm trắng" },
       { foodId: "trung-ga", amountG: 50, note: "Một trứng" },
@@ -1557,7 +1557,7 @@ recipes.push(
     portionNote: "Một tô mẫu gồm 1 gói mì khoảng 75g khô và 1 trứng gà.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; natri phụ thuộc lượng gói gia vị dùng.",
+    note: "Giá trị tham khảo theo công thức; natri phụ thuộc lượng gói gia vị dùng.",
     items: [
       { foodId: "mi-goi", amountG: 75, note: "Một gói mì khô ước tính" },
       { foodId: "trung-ga", amountG: 50, note: "Một trứng" },
@@ -1574,7 +1574,7 @@ recipes.push(
     portionNote: "Một tô nhỏ giả định gồm 100g rau ngót và 40g thịt heo nạc băm.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng nước và gia vị làm thay đổi natri trên khẩu phần.",
+    note: "Giá trị tham khảo theo công thức; lượng nước và gia vị làm thay đổi natri trên khẩu phần.",
     items: [
       { foodId: "rau-ngot", amountG: 100, note: "Rau ngót" },
       { foodId: "thit-heo-nac", amountG: 40, note: "Thịt heo nạc băm" },
@@ -1591,7 +1591,7 @@ recipes.push(
     portionNote: "Một phần mẫu gồm khoảng 120g cá nục phần ăn được và nước kho.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; nước mắm, đường và dầu trong nước kho quyết định natri/năng lượng.",
+    note: "Giá trị tham khảo theo công thức; nước mắm, đường và dầu trong nước kho quyết định natri/năng lượng.",
     items: [
       { foodId: "ca-nuc", amountG: 120, note: "Cá nục" },
       { foodId: "nuoc-mam", amountG: 12, note: "Nước mắm/gia vị" },
@@ -1609,7 +1609,7 @@ recipes.push(
     portionNote: "Một phần mẫu gồm 180g đậu phụ và 80g cà chua/sốt.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; nếu chiên đậu trước khi sốt, năng lượng sẽ cao hơn nhiều.",
+    note: "Giá trị tham khảo theo công thức; nếu chiên đậu trước khi sốt, năng lượng sẽ cao hơn nhiều.",
     items: [
       { foodId: "dau-phu", amountG: 180, note: "Đậu phụ" },
       { foodId: "ca-chua", amountG: 80, note: "Cà chua" },
@@ -1629,7 +1629,7 @@ recipes.push(
     portionNote: "Một tô thường giả định có 200g bún, 100g cua/gạch và đậu phụ.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; nước dùng cà chua và dầu gấc tạo sai số.",
+    note: "Giá trị tham khảo theo công thức; nước dùng cà chua và dầu gấc tạo sai số.",
     items: [
       { foodId: "bun-tuoi", amountG: 200, note: "Bún tươi" },
       { foodId: "cua-dong", amountG: 80, note: "Thịt cua/gạch" },
@@ -1649,7 +1649,7 @@ recipes.push(
     portionNote: "Một cái bánh xèo miền Trung giả định khoảng 200g với nhân tôm thịt và giá.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; bột pha mỡ và dầu chiên làm sai số năng lượng lớn.",
+    note: "Giá trị tham khảo theo công thức; bột pha mỡ và dầu chiên làm sai số năng lượng lớn.",
     items: [
       { foodId: "gao-te", amountG: 50, note: "Bột gạo (khoảng 50g gạo khô)" },
       { foodId: "tom-tuoi", amountG: 40, note: "Tôm" },
@@ -1670,7 +1670,7 @@ recipes.push(
     portionNote: "Bốn cuốn nem nhỏ, giả định nhân thịt + mộc nhĩ + miến.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng dầu ngấm và vỏ bánh tráng tạo sai số rất lớn.",
+    note: "Giá trị tham khảo theo công thức; lượng dầu ngấm và vỏ bánh tráng tạo sai số rất lớn.",
     items: [
       { foodId: "thit-bo-bam", amountG: 80, note: "Thịt băm" },
       { foodId: "moc-nhi", amountG: 10, note: "Mộc nhĩ khô ngâm (trọng lượng khô)" },
@@ -1691,7 +1691,7 @@ recipes.push(
     portionNote: "Gỏi gà bắp cải phổ biến, trộn với hành tây và rau thơm.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng dầu giấm/sốt trộn làm sai số năng lượng.",
+    note: "Giá trị tham khảo theo công thức; lượng dầu giấm/sốt trộn làm sai số năng lượng.",
     items: [
       { foodId: "uc-ga", amountG: 80, note: "Thịt ức gà luộc xé" },
       { foodId: "bap-cai", amountG: 80, note: "Bắp cải thái sợi" },
@@ -1714,7 +1714,7 @@ recipes.push(
     portionNote: "Canh chua cá lóc hoặc cá basa phổ biến, với cà chua, bạc hà và giá.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng dầu và đường thay đổi tùy nêm nếm.",
+    note: "Giá trị tham khảo theo công thức; lượng dầu và đường thay đổi tùy nêm nếm.",
     items: [
       { foodId: "ca-basa", amountG: 80, note: "Cá lóc/basa" },
       { foodId: "ca-chua", amountG: 60, note: "Cà chua" },
@@ -1737,7 +1737,7 @@ recipes.push(
     portionNote: "Cá chặt khúc kho trong nước mắm, đường và tiêu.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng nước mắm và đường quyết định natri/năng lượng.",
+    note: "Giá trị tham khảo theo công thức; lượng nước mắm và đường quyết định natri/năng lượng.",
     items: [
       { foodId: "ca-nuc", amountG: 150, note: "Cá rô đồng/cá nục" },
       { foodId: "nuoc-mam", amountG: 15, note: "Nước mắm" },
@@ -1758,7 +1758,7 @@ recipes.push(
     portionNote: "Phần bún chả Hà Nội gồm 200g bún, 100g chả thịt và rau sống.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng mỡ ở chả, nước mắm ngọt và ướp thịt tạo sai số.",
+    note: "Giá trị tham khảo theo công thức; lượng mỡ ở chả, nước mắm ngọt và ướp thịt tạo sai số.",
     items: [
       { foodId: "bun-tuoi", amountG: 200, note: "Bún tươi" },
       { foodId: "thit-heo-nac", amountG: 100, note: "Chả thịt nướng" },
@@ -1780,7 +1780,7 @@ recipes.push(
     portionNote: "Món đặc sản Huế: cơm nguội trộn thịt hến, tóp mỡ và rau sống.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng tóp mỡ và lạc rang thay đổi nhiều.",
+    note: "Giá trị tham khảo theo công thức; lượng tóp mỡ và lạc rang thay đổi nhiều.",
     items: [
       { foodId: "com-trang", amountG: 200, note: "Cơm nguội" },
       { foodId: "lac-rang", amountG: 8, note: "Lạc rang giã nhỏ" },
@@ -1799,7 +1799,7 @@ recipes.push(
     portionNote: "Miến nấu lòng gà măng (Bắc) / tim gan gà (Nam) / thêm tiêu ớt (Huế).",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lòng gà chứa nhiều cholesterol.",
+    note: "Giá trị tham khảo theo công thức; lòng gà chứa nhiều cholesterol.",
     items: [
       { foodId: "mien-dong", amountG: 80, note: "Miến dong khô ngâm nước" },
       { foodId: "thit-ga-dui", amountG: 50, note: "Thịt gà xé" },
@@ -1818,7 +1818,7 @@ recipes.push(
     portionNote: "Cháo lòng heo + tiết. Bắc thêm dồi, Nam thêm hành phi.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lòng huyết nhiều cholesterol và natri.",
+    note: "Giá trị tham khảo theo công thức; lòng huyết nhiều cholesterol và natri.",
     items: [
       { foodId: "com-trang", amountG: 120, note: "Gạo nấu cháo" },
       { foodId: "thit-heo-nac", amountG: 40, note: "Lòng/thịt heo" },
@@ -1838,7 +1838,7 @@ recipes.push(
     portionNote: "Chè đậu xanh nấu đường. Miền Nam thêm nước cốt dừa.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng đường và nước cốt dừa quyết định năng lượng.",
+    note: "Giá trị tham khảo theo công thức; lượng đường và nước cốt dừa quyết định năng lượng.",
     items: [
       { foodId: "dau-xanh", amountG: 50, note: "Đậu xanh ngâm nấu" },
       { foodId: "duong-trang", amountG: 30, note: "Đường" }
@@ -1855,7 +1855,7 @@ recipes.push(
     portionNote: "Mực xào hành tây và cà chua, phổ biến cả ba miền.",
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Ước tính MVP; lượng dầu xào tạo sai số.",
+    note: "Giá trị tham khảo theo công thức; lượng dầu xào tạo sai số.",
     items: [
       { foodId: "muc-tuoi", amountG: 120, note: "Mực tươi" },
       { foodId: "hanh-tay", amountG: 40, note: "Hành tây" },

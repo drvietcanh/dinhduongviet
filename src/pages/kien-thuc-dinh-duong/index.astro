@@ -127,7 +127,7 @@ const quickStarts = [
       <h2 class="ki-section-title">🌟 Bài viết nổi bật</h2>
       <div class="ki-article-grid">
         {featured.map(a => (
-          <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
+          <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} specialty={a.specialty} />
         ))}
       </div>
     </section>
@@ -161,7 +161,7 @@ const quickStarts = [
                 <div class="ki-article-grid">
                   {sg.items.map((a: ArticleMeta) => (
                     <div data-audience={(a.audience||[]).join(',')}>
-                      <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
+                      <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} specialty={a.specialty} />
                     </div>
                   ))}
                 </div>
@@ -178,7 +178,7 @@ const quickStarts = [
         <div class="ki-article-grid">
           {unknownItems.map(a => (
             <div data-audience={(a.audience||[]).join(',')}>
-              <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} />
+              <ArticleCard title={a.title} slug={a.slug} emoji={a.emoji} description={a.description} readTime={a.readTime} date={a.date} audience={a.audience} tags={a.tags} series={a.series} specialty={a.specialty} />
             </div>
           ))}
         </div>

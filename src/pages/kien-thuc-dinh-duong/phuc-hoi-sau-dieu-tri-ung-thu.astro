@@ -1,0 +1,32 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["phuc-hoi-sau-dieu-tri-ung-thu"];
+if (!art) throw new Error("Article not found: phuc-hoi-sau-dieu-tri-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Sau khi kết thúc một đợt điều trị ung thư, người bệnh thường muốn “ăn thật sạch” để phòng tái phát. Cách tiếp cận an toàn hơn là phục hồi cân nặng hợp lý, khối cơ, sức bền và quay lại chế độ ăn lành mạnh bền vững — không cực đoan, không sợ hãi thức ăn.</p>
+  </section>
+
+  <section class="section card">
+    <h2>4 mục tiêu phục hồi</h2>
+    <ul>
+      <li><strong>Giữ hoặc lấy lại cơ:</strong> có protein trong mỗi bữa, kết hợp vận động phục hồi theo khả năng.</li>
+      <li><strong>Tăng rau, quả, ngũ cốc nguyên hạt:</strong> tăng từ từ nếu ruột còn nhạy cảm sau điều trị.</li>
+      <li><strong>Giảm rượu bia, thịt chế biến sẵn và đồ nướng cháy:</strong> đây là hướng bền vững hơn các chế độ kiêng cực đoan.</li>
+      <li><strong>Theo dõi cân nặng, tiêu hóa và xét nghiệm:</strong> điều chỉnh theo loại ung thư, phẫu thuật và thuốc đang dùng.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi muốn giảm cân sau điều trị</h2>
+    <p>Nếu thừa cân, không nên giảm cân cấp tốc ngay sau hóa trị/phẫu thuật khi cơ thể còn yếu. Ưu tiên phục hồi sức ăn, ngủ, vận động và khối cơ trước; sau đó mới đặt mục tiêu giảm cân chậm, có theo dõi. Người đang sụt cân, ăn kém hoặc mất cơ thì không nên tự ăn kiêng.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Cẩn trọng với lời hứa “ngừa tái phát”</h2>
+    <p>Không có một thực phẩm, nước ép, thảo dược hay thực phẩm chức năng nào bảo đảm ngăn ung thư tái phát. Dinh dưỡng là nền hỗ trợ sức khỏe dài hạn, cần đi cùng tái khám, thuốc nội tiết/đích nếu có chỉ định, vận động, giấc ngủ và không hút thuốc.</p>
+  </section>
+</ArticleLayout>

@@ -677,7 +677,7 @@ const foodOverrides: Record<string, Partial<Food>> = {
     state: "cooked",
     basis: "100g cơm đã nấu chín",
     edibleNote: "Cơm gạo lứt đỏ đã nấu chín; không dùng thay cho 100g gạo lứt đỏ khô/chưa nấu.",
-    note: "Dữ liệu bổ sung ước tính MVP; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đỏ đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
+    note: "Dữ liệu bổ sung Giá trị tham khảo theo công thức; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đỏ đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
   },
   "gao-lut-den": {
     slug: "com-gao-lut-den",
@@ -686,7 +686,7 @@ const foodOverrides: Record<string, Partial<Food>> = {
     state: "cooked",
     basis: "100g cơm đã nấu chín",
     edibleNote: "Cơm gạo lứt đen đã nấu chín; không dùng thay cho 100g gạo lứt đen khô/chưa nấu.",
-    note: "Dữ liệu bổ sung ước tính MVP; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đen đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
+    note: "Dữ liệu bổ sung Giá trị tham khảo theo công thức; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đen đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
   },
 };
 
@@ -710,7 +710,7 @@ export const bulkFoods: Food[] = foodSeeds.slice(0, FOOD_TARGET).map((seed, inde
     nutrients: override.nutrients ?? vary(profile.nutrients, index),
     sourceId: override.sourceId ?? "recipe-estimate-v1",
     confidence: override.confidence ?? "low",
-    note: override.note ?? "Dữ liệu bổ sung ước tính để mở rộng tra cứu MVP; cần đối chiếu bảng thành phần thực phẩm hoặc nguồn chính thức trước khi dùng tư vấn cá thể."
+    note: override.note ?? "Dữ liệu bổ sung ước tính để mở rộng tra cứu tham khảo; cần đối chiếu bảng thành phần thực phẩm hoặc nguồn chính thức trước khi dùng tư vấn cá thể."
   };
 });
 
@@ -817,6 +817,6 @@ export const bulkRecipes: Recipe[] = recipeSeeds.slice(0, RECIPE_TARGET).map((na
     items: recipeItems(name),
     sourceId: "recipe-estimate-v1",
     confidence: "low",
-    note: "Món ăn bổ sung ước tính theo công thức quy đổi MVP; cần chuẩn hóa bằng cân đo thực tế hoặc nguồn chuyên môn."
+    note: "Món ăn bổ sung ước tính theo công thức quy đổi tham khảo; cần chuẩn hóa bằng cân đo thực tế hoặc nguồn chuyên môn."
   };
 });

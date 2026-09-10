@@ -1,0 +1,30 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["giam-bach-cau-an-toan-thuc-pham"];
+if (!art) throw new Error("Article not found: giam-bach-cau-an-toan-thuc-pham");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Giảm bạch cầu, đặc biệt giảm bạch cầu trung tính trong điều trị ung thư, làm nguy cơ nhiễm trùng tăng. “Ăn sạch” ở đây không phải ăn kiêng cực đoan, mà là chọn thực phẩm an toàn, nấu chín, bảo quản đúng.</p>
+  </section>
+  <section class="section card">
+    <h2>Nguyên tắc an toàn</h2>
+    <ul>
+      <li>Rửa tay, dụng cụ, thớt dao; tách sống - chín.</li>
+      <li>Nấu chín thịt, cá, trứng; ăn ngay sau nấu hoặc bảo quản lạnh đúng cách.</li>
+      <li>Tránh sữa chưa tiệt trùng, phô mai mềm không rõ nguồn, trứng lòng đào, sushi/gỏi/tiết canh.</li>
+      <li>Rau sống, giá sống, trái cây cắt sẵn ngoài hàng cần hỏi đội điều trị; khi nguy cơ cao nên chọn rau nấu chín và trái cây tự gọt.</li>
+      <li>Không ăn đồ quá hạn, hộp phồng/rỉ, món để nhiệt độ phòng quá lâu.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Ăn đủ vẫn rất quan trọng</h2>
+    <p>Không nên vì sợ nhiễm trùng mà chỉ ăn cháo trắng hoặc kiêng gần hết thực phẩm. Hãy ưu tiên món chín kỹ, mềm, đủ đạm và năng lượng; nếu ăn kém cần báo bác sĩ hoặc chuyên gia dinh dưỡng.</p>
+  </section>
+  <section class="section card">
+    <h2>Dấu hiệu cần gọi bệnh viện</h2>
+    <p>Sốt, rét run, tiêu chảy nhiều, nôn không uống được, đau họng nặng, tiểu buốt hoặc vết thương đỏ đau cần được hướng dẫn y tế sớm, nhất là khi đang hóa trị.</p>
+  </section>
+</ArticleLayout>

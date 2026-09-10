@@ -1,0 +1,28 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["ung-thu-tuyen-giap"];
+if (!art) throw new Error("Article not found: ung-thu-tuyen-giap");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Ung thư tuyến giáp thường có tiên lượng tốt ở nhiều thể bệnh, nhưng người bệnh hay bối rối về i-ốt, canxi sau mổ và cách uống levothyroxine. Dinh dưỡng cần theo đúng giai đoạn điều trị, không kiêng lan man.</p>
+  </section>
+  <section class="section card" style="background:#fff8e1;border:1px solid #ffd54f;">
+    <p><strong>Quan trọng:</strong> chế độ ăn ít i-ốt chỉ áp dụng khi bác sĩ yêu cầu trước điều trị i-ốt phóng xạ, thường trong thời gian ngắn. Không tự kiêng hải sản, muối i-ốt hay sữa kéo dài.</p>
+  </section>
+  <section class="section card">
+    <h2>Sau phẫu thuật cần lưu ý</h2>
+    <ul>
+      <li>Theo dõi tê quanh miệng, co rút tay chân hoặc chuột rút — có thể liên quan hạ canxi sau mổ, cần báo bác sĩ.</li>
+      <li>Nếu dùng canxi/ sắt, uống cách levothyroxine theo hướng dẫn để tránh giảm hấp thu thuốc.</li>
+      <li>Ăn đủ đạm để lành vết mổ; không cần kiêng trứng, thịt, cá nếu không có chỉ định khác.</li>
+      <li>Giữ cân nặng ổn định, ngủ đủ và tái khám xét nghiệm hormone tuyến giáp đúng lịch.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Hiểu đúng về i-ốt</h2>
+    <p>I-ốt là vi chất cần thiết cho tuyến giáp, nhưng trong một số giai đoạn điều trị bác sĩ có thể yêu cầu giảm i-ốt tạm thời. Hãy dùng danh sách thực phẩm cụ thể từ bệnh viện thay vì tự cắt toàn bộ hải sản/sữa trong nhiều tháng.</p>
+  </section>
+</ArticleLayout>

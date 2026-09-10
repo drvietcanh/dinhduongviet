@@ -1,0 +1,36 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const art = articleBySlug["sua-y-hoc-ons-ung-thu"];
+if (!art) throw new Error("Article not found: sua-y-hoc-ons-ung-thu");
+---
+
+<ArticleLayout article={art}>
+  <section class="section card">
+    <p>Sữa y học hoặc sản phẩm bổ sung dinh dưỡng đường uống (ONS) có thể hữu ích khi người bệnh ung thư ăn không đủ bằng bữa thường. Tuy vậy, ONS không phải “thuốc chữa ung thư”, không thay phác đồ điều trị và không nên dùng theo quảng cáo truyền miệng.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào nên cân nhắc ONS?</h2>
+    <ul>
+      <li>Ăn kém kéo dài, sụt cân, mất cơ hoặc không ăn đủ đạm-năng lượng trong nhiều ngày.</li>
+      <li>Đang hóa trị/xạ trị có buồn nôn, loét miệng, khô miệng, khó nuốt hoặc mệt nhiều.</li>
+      <li>Sau phẫu thuật, trước điều trị lớn hoặc khi bác sĩ/chuyên gia dinh dưỡng đánh giá có nguy cơ suy dinh dưỡng.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Dùng sao cho thực tế?</h2>
+    <ul>
+      <li>Dùng giữa các bữa để không làm no trước bữa chính; chia thành nhiều lần nhỏ nếu dễ ngán.</li>
+      <li>Ướp lạnh hoặc pha thành sinh tố mềm nếu mùi sữa làm khó chịu.</li>
+      <li>Đọc nhãn: năng lượng, protein, đường, chất béo, natri, kali, phốt pho và hướng dẫn bảo quản sau mở nắp.</li>
+      <li>Không pha quá loãng hoặc quá đặc so với hướng dẫn nếu sản phẩm có yêu cầu pha cụ thể.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Nhóm cần hỏi trước khi mua</h2>
+    <p>Người có bệnh thận mạn, suy tim, xơ gan cổ trướng, đái tháo đường, viêm tụy, tiêu chảy kéo dài hoặc đang nuôi ăn qua ống nên hỏi đội điều trị trước. Một sản phẩm “cao đạm” hoặc “tăng miễn dịch” có thể không phù hợp với từng xét nghiệm và thuốc đang dùng.</p>
+  </section>
+</ArticleLayout>

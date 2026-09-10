@@ -1,5 +1,5 @@
 import { foods } from "../data/nutrition";
-import { computeNutrientTags } from "../lib/nutrition";
+import { computeNutrientTags, foodPublicNote } from "../lib/nutrition";
 
 export async function GET() {
   const items = foods.map(f => ({
@@ -8,7 +8,7 @@ export async function GET() {
     edibleNote: f.edibleNote,
     nutrients: Object.fromEntries(Object.entries(f.nutrients).filter(([_, v]) => v !== undefined)),
     tags: computeNutrientTags(f.nutrients),
-    source: f.sourceId, confidence: f.confidence, note: f.note,
+    source: f.sourceId, confidence: f.confidence, note: foodPublicNote(f),
     dataQuality: f.dataQuality,
     sourceConfidence: f.sourceConfidence,
     sourceReviewStatus: f.sourceReviewStatus,

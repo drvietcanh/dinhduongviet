@@ -778,6 +778,214 @@
   },
   {
     "type": "article",
+    "slug": "van-de-dinh-duong-noi-troi-viet-nam",
+    "name": "Các vấn đề dinh dưỡng nổi trội hiện nay ở Việt Nam",
+    "aliases": [],
+    "description": "Tóm tắt những vấn đề thường gặp: ăn mặn, đồ uống ngọt, thực phẩm siêu chế biến, thiếu rau và thiếu vi chất ẩn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "do-uong-ngot-tra-sua-suc-khoe",
+    "name": "Đồ uống ngọt, trà sữa và sức khỏe: giảm thế nào cho thực tế?",
+    "aliases": [],
+    "description": "Cách nhận diện đường trong trà sữa, cà phê sữa, nước ép và nước ngọt; gợi ý giảm dần phù hợp bữa ăn Việt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thuc-pham-sieu-che-bien",
+    "name": "Thực phẩm siêu chế biến: nhận diện và giảm dần trong bữa ăn Việt",
+    "aliases": [],
+    "description": "Phân biệt thực phẩm đóng gói với siêu chế biến, cách đọc nhãn và sửa bữa ăn Việt mà không cực đoan.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "mi-an-lien-do-che-bien-san",
+    "name": "Mì ăn liền, snack, xúc xích: ăn sao cho đỡ hại?",
+    "aliases": [],
+    "description": "Cách giảm muối, tăng đạm và chất xơ khi dùng mì ăn liền, snack, xúc xích, cá viên và đồ chế biến sẵn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-sang-hoc-sinh-viet-nam",
+    "name": "Bữa sáng học sinh Việt Nam: no lâu, ít đường và dễ chuẩn bị",
+    "aliases": [],
+    "description": "Gợi ý bữa sáng cho học sinh: đủ tinh bột, đạm, rau/trái cây và hạn chế đồ uống ngọt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-phoi",
+    "name": "Ung thư phổi: ăn uống khi khó thở, chán ăn và sụt cân",
+    "aliases": [],
+    "description": "Dinh dưỡng hỗ trợ người ung thư phổi giữ sức trong hóa trị, xạ trị, miễn dịch hoặc điều trị đích.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-gan-hcc",
+    "name": "Ung thư gan/HCC: ăn uống khi có xơ gan, cổ trướng hoặc sụt cân",
+    "aliases": [],
+    "description": "Cách nhìn đạm, muối, rượu bia và bữa phụ tối cho người ung thư gan trên nền bệnh gan mạn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-da-day",
+    "name": "Ung thư dạ dày: ăn uống trước và sau phẫu thuật cắt dạ dày",
+    "aliases": [],
+    "description": "Chia bữa nhỏ, phòng dumping, theo dõi thiếu B12, sắt và canxi sau điều trị ung thư dạ dày.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-co-tu-cung",
+    "name": "Ung thư cổ tử cung: dinh dưỡng khi xạ trị vùng chậu",
+    "aliases": [],
+    "description": "Ăn uống khi tiêu chảy, táo bón, thiếu máu hoặc mệt trong điều trị ung thư cổ tử cung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-tuyen-giap",
+    "name": "Ung thư tuyến giáp: i-ốt, canxi và thuốc levothyroxine cần lưu ý gì?",
+    "aliases": [],
+    "description": "Hiểu đúng chế độ ít i-ốt tạm thời, canxi sau mổ và cách tách thuốc tuyến giáp với sắt/canxi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-tuy-duong-mat",
+    "name": "Ung thư tụy/đường mật: ăn uống khi sụt cân, vàng da và kém hấp thu",
+    "aliases": [],
+    "description": "Dinh dưỡng cho người ung thư tụy hoặc đường mật: tiêu phân mỡ, đường huyết dao động, sụt cân nhanh.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-mau-lymphoma",
+    "name": "Ung thư máu và lymphoma: ăn an toàn khi giảm bạch cầu",
+    "aliases": [],
+    "description": "Giữ dinh dưỡng và an toàn thực phẩm cho người ung thư máu/lymphoma trong hóa trị hoặc giảm bạch cầu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "giam-bach-cau-an-toan-thuc-pham",
+    "name": "Giảm bạch cầu khi điều trị ung thư: ăn sao cho an toàn?",
+    "aliases": [],
+    "description": "Nguyên tắc an toàn thực phẩm khi bạch cầu thấp: nấu chín, bảo quản đúng, tránh đồ sống nguy cơ cao.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "buon-non-loet-mieng-ung-thu",
+    "name": "Buồn nôn, loét miệng khi điều trị ung thư: ăn gì cho dễ chịu hơn?",
+    "aliases": [],
+    "description": "Cách chọn món mềm, ít mùi, dễ nuốt khi buồn nôn, khô miệng, loét miệng hoặc thay đổi vị giác.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cham-soc-giam-nhe-ung-thu-dinh-duong",
+    "name": "Chăm sóc giảm nhẹ ung thư: ăn uống thế nào để người bệnh thoải mái hơn?",
+    "aliases": [],
+    "description": "Dinh dưỡng giai đoạn chăm sóc giảm nhẹ: giảm ép ăn, ưu tiên thoải mái, xử trí khô miệng, buồn nôn và chán ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-chay-tao-bon-dieu-tri-ung-thu",
+    "name": "Tiêu chảy, táo bón khi điều trị ung thư: ăn uống thế nào cho an toàn?",
+    "aliases": [],
+    "description": "Hướng dẫn thực hành khi hóa trị/xạ trị gây tiêu chảy hoặc táo bón: bù nước, chọn món mềm và dấu hiệu cần báo bác sĩ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thay-doi-vi-giac-kho-mieng-ung-thu",
+    "name": "Thay đổi vị giác, khô miệng khi điều trị ung thư: nấu sao cho dễ ăn?",
+    "aliases": [],
+    "description": "Mẹo chọn món ít mùi, mềm, đủ năng lượng khi người bệnh thấy vị kim loại, đắng miệng hoặc khô miệng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sua-y-hoc-ons-ung-thu",
+    "name": "Sữa y học/ONS cho người ung thư: khi nào nên dùng, khi nào cần hỏi bác sĩ?",
+    "aliases": [],
+    "description": "Giải thích vai trò của sản phẩm bổ sung dinh dưỡng đường uống khi ăn không đủ, kèm lưu ý cho thận, tim, gan và đái tháo đường.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ung-thu-dau-co-thuc-quan-kho-nuot",
+    "name": "Ung thư đầu-cổ/thực quản bị khó nuốt: ăn mềm thế nào để giảm sặc?",
+    "aliases": [],
+    "description": "Cách chọn độ đặc, món mềm giàu năng lượng và dấu hiệu cần đánh giá nuốt ở người ung thư đầu-cổ hoặc thực quản.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "chuan-bi-dinh-duong-truoc-dieu-tri-ung-thu",
+    "name": "Trước phẫu thuật, hóa trị, xạ trị ung thư: chuẩn bị dinh dưỡng thế nào?",
+    "aliases": [],
+    "description": "Cách nhận diện sụt cân, ăn kém và chuẩn bị bữa mềm giàu đạm trước điều trị lớn, tránh kiêng khem cực đoan.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "met-moi-khi-hoa-xa-tri-ung-thu",
+    "name": "Mệt mỏi khi hóa trị, xạ trị: ăn uống thế nào để bớt tụt sức?",
+    "aliases": [],
+    "description": "Gợi ý chia bữa nhỏ, tăng đạm-năng lượng và nhận biết dấu hiệu cần báo bác sĩ khi mệt nhiều trong điều trị ung thư.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phuc-hoi-sau-dieu-tri-ung-thu",
+    "name": "Sau điều trị ung thư: phục hồi ăn uống, cân nặng và khối cơ thế nào?",
+    "aliases": [],
+    "description": "Hướng dẫn phục hồi sau hóa trị/phẫu thuật/xạ trị: giữ cơ, ăn lành mạnh bền vững và tránh lời hứa ngừa tái phát quá mức.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "da-benh-man-tinh-nguoi-cao-tuoi",
+    "name": "Đa bệnh mạn tính ở người cao tuổi: ăn thế nào khi vừa tiểu đường, huyết áp, thận?",
+    "aliases": [],
+    "description": "Cách xếp ưu tiên khi người cao tuổi có nhiều bệnh: giảm muối, chia tinh bột, giữ cơ và cá thể hóa đạm/kali.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ha-duong-huyet-insulin-sulfonylurea",
+    "name": "Đái tháo đường dùng insulin/sulfonylurea: phòng hạ đường huyết bằng bữa ăn",
+    "aliases": [],
+    "description": "Vì sao người dùng insulin hoặc sulfonylurea không nên tự nhịn ăn, bỏ tinh bột hoặc low-carb quá mức.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-huyet-ap-an-ngoai-muoi-an",
+    "name": "Tăng huyết áp mà hay ăn ngoài: cắt muối ẩn từ đâu trước?",
+    "aliases": [],
+    "description": "Checklist giảm muối khi ăn phở, bún, cơm văn phòng, mì gói và đồ chế biến sẵn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "suy-dinh-duong-copd-suy-tim-ckd",
+    "name": "COPD, suy tim, CKD kèm suy dinh dưỡng: ăn nhạt nhưng không ăn quá ít",
+    "aliases": [],
+    "description": "Cách tăng năng lượng, đạm và chia bữa khi vừa cần giảm muối vừa có nguy cơ mất cơ, sụt cân.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "gout",
     "name": "Gout — Chế độ ăn cho người bệnh Gout",
     "aliases": [],
@@ -2824,7 +3032,7 @@
       "pho bo",
       "phở bò thường"
     ],
-    "description": "1 tô thường: Trong bản MVP, 1 tô phở bò thường được giả định có khoảng 70g thịt bò chín. Thực tế thường dao động khoảng 50-100g tùy quán và loại tô.",
+    "description": "1 tô thường: Trong công thức tham khảo, 1 tô phở bò thường được giả định có khoảng 70g thịt bò chín. Thực tế thường dao động khoảng 50-100g tùy quán và loại tô.",
     "category": "Mon an"
   },
   {
@@ -2846,7 +3054,7 @@
       "pho ga",
       "phở gà thường"
     ],
-    "description": "1 tô thường: Trong bản MVP, 1 tô phở gà thường được giả định có khoảng 80g thịt gà/ức gà chín.",
+    "description": "1 tô thường: Trong công thức tham khảo, 1 tô phở gà thường được giả định có khoảng 80g thịt gà/ức gà chín.",
     "category": "Mon an"
   },
   {

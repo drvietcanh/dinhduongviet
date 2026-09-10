@@ -8,7 +8,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "5 cái", servingWeightG: 150,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh căn chén, trứng cút, tôm, mỡ hành.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 60, note: "Bột gạo pha loãng" },
       { foodId: "trung-cun", amountG: 20, note: "Trứng cút" },
@@ -23,7 +23,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 200,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh hỏi mỏng, ăn với heo quay/lòng.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP; proxy bằng bún.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; proxy bằng bún.",
     items: [
       { foodId: "bun-tuoi", amountG: 100, note: "Bánh hỏi (proxy bún)" },
       { foodId: "thit-heo-quay", amountG: 50, note: "Thịt heo quay" },
@@ -37,7 +37,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 tô", servingWeightG: 400,
     tags: ["vietnamese", "street-food"],
     portionNote: "Hủ tiếu khô Nam Vang, tôm, thịt, lòng.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "mien-dong", amountG: 100, note: "Hủ tiếu (proxy mì)" },
       { foodId: "tom-su", amountG: 25, note: "Tôm" },
@@ -53,7 +53,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "4 cuốn", servingWeightG: 160,
     tags: ["vietnamese", "street-food"],
     portionNote: "Cuốn bánh tráng nhân tôm, củ sắn, xà lách, chấm tương đen.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "banh-trang", amountG: 16, note: "Bánh tráng cuốn" },
       { foodId: "tom-kho", amountG: 15, note: "Tôm khô" },
@@ -70,7 +70,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 chén", servingWeightG: 180,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh đúc bột gạo, ăn với nước mắm chua ngọt.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 50, note: "Bột gạo" },
       { foodId: "hanh-la", amountG: 5, note: "Hành lá" },
@@ -84,7 +84,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "3 cái", servingWeightG: 120,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh bột gạo nở, ngọt nhẹ.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 50, note: "Bột gạo" },
       { foodId: "duong-trang", amountG: 20, note: "Đường" },
@@ -97,7 +97,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 miếng", servingWeightG: 150,
     tags: ["vietnamese", "street-food"],
     portionNote: "Chuối trộn bột nếp, hấp/nướng.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "chuoi", amountG: 70, note: "Chuối chín" },
       { foodId: "bot-gao", amountG: 30, note: "Bột gạo" },
@@ -112,7 +112,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 miếng", servingWeightG: 120,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh bột nếp nhiều lớp, nhân đậu xanh, dừa.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-gao", amountG: 40, note: "Bột gạo" },
       { foodId: "dau-xanh-hat", amountG: 20, note: "Đậu xanh nhân" },
@@ -126,7 +126,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "3 cái", servingWeightG: 90,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh bột mì chiên phồng, rỗng ruột.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "banh-mi", amountG: 40, note: "Bột mì" },
       { foodId: "duong-trang", amountG: 8, note: "Đường" },
@@ -139,7 +139,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 50,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh phồng tôm chiên giòn.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "banh-trang", amountG: 30, note: "Bánh phồng (proxy)" },
       { foodId: "dau-an", amountG: 10, note: "Dầu chiên" }
@@ -151,7 +151,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 300,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh tằm, bì heo, nước cốt dừa.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bun-tuoi", amountG: 120, note: "Bánh tằm (proxy bún)" },
       { foodId: "thit-heo-nac", amountG: 40, note: "Thịt heo luộc thái sợi" },
@@ -168,7 +168,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 cái", servingWeightG: 100,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh dẻo trung thu nhân đậu xanh.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "gao-nep", amountG: 35, note: "Bột nếp dẻo" },
       { foodId: "dau-xanh-hat", amountG: 20, note: "Đậu xanh nhân" },
@@ -182,7 +182,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 cái", servingWeightG: 100,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh nướng thập cẩm, trứng muối.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-mi-da", amountG: 30, note: "Bột bánh" },
       { foodId: "trung-ga", amountG: 10, note: "Trứng muối" },
@@ -198,7 +198,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "2 cái", servingWeightG: 80,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh cốm tươi/nướng.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP; cốm non proxy.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; cốm non proxy.",
     items: [
       { foodId: "gao-nep", amountG: 30, note: "Cốm non (proxy)" },
       { foodId: "dau-xanh-hat", amountG: 15, note: "Đậu xanh" },
@@ -212,7 +212,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 miếng (80g)", servingWeightG: 80,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh bông lan trứng sữa.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-mi-da", amountG: 25, note: "Bột mì" },
       { foodId: "trung-ga", amountG: 30, note: "Trứng gà" },
@@ -226,7 +226,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 cái", servingWeightG: 100,
     tags: ["vietnamese", "street-food"],
     portionNote: "Trứng sữa hấp caramen.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "trung-ga", amountG: 40, note: "Trứng" },
       { foodId: "sua-dac", amountG: 20, note: "Sữa đặc" },
@@ -240,7 +240,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 cái", servingWeightG: 120,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh bột mì nhiều lớp, nhân sầu riêng/đậu xanh.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "bot-mi-da", amountG: 30, note: "Vỏ bánh" },
       { foodId: "sau-rieng", amountG: 25, note: "Sầu riêng nhân" },
@@ -255,7 +255,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 cái (50g)", servingWeightG: 50,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh đậu xanh Hải Dương, dạng khối/khuôn.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "dau-xanh-hat", amountG: 30, note: "Đậu xanh xay nhuyễn" },
       { foodId: "duong-trang", amountG: 12, note: "Đường" },
@@ -270,7 +270,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 250,
     tags: ["vietnamese", "drink"],
     portionNote: "Đậu nành xay, nấu chín.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "dau-nanh", amountG: 25, note: "Đậu nành khô" },
       { foodId: "duong-trang", amountG: 10, note: "Đường" }
@@ -282,7 +282,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 350,
     tags: ["vietnamese", "drink"],
     portionNote: "Trà đen sữa đặc, trân châu đường đen.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "tra-xanh", amountG: 5, note: "Trà đen (proxy)" },
       { foodId: "sua-dac", amountG: 25, note: "Sữa đặc" },
@@ -297,7 +297,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 200,
     tags: ["vietnamese", "drink"],
     portionNote: "Cà phê phin pha sữa đặc, uống đá.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "ca-phe-den", amountG: 10, note: "Cà phê pha (proxy)" },
       { foodId: "sua-dac", amountG: 20, note: "Sữa đặc" }
@@ -309,7 +309,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 200,
     tags: ["vietnamese", "drink"],
     portionNote: "Cà phê phin không sữa, uống đá.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "ca-phe-den-da", amountG: 10, note: "Cà phê pha" }
     ]
@@ -320,7 +320,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 250,
     tags: ["vietnamese", "drink"],
     portionNote: "Trà xanh/trà đen pha chanh đường.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "tra-xanh", amountG: 5, note: "Trà" },
       { foodId: "chanh", amountG: 15, note: "Nước cốt chanh" },
@@ -333,7 +333,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 250,
     tags: ["vietnamese", "drink"],
     portionNote: "Trà xanh/quất pha đường.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "tra-xanh", amountG: 5, note: "Trà" },
       { foodId: "quyt", amountG: 20, note: "Quất (proxy quýt)" },
@@ -346,7 +346,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 250,
     tags: ["vietnamese", "drink"],
     portionNote: "Chanh tươi đường/đá.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "chanh", amountG: 20, note: "Chanh vắt" },
       { foodId: "duong-trang", amountG: 12, note: "Đường" }
@@ -360,7 +360,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 que", servingWeightG: 80,
     tags: ["vietnamese", "street-food"],
     portionNote: "Kem que đậu xanh nước dừa.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "dau-xanh-hat", amountG: 15, note: "Đậu xanh" },
       { foodId: "nuoc-dua", amountG: 20, note: "Nước cốt dừa" },
@@ -374,7 +374,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 ly", servingWeightG: 100,
     tags: ["vietnamese", "street-food"],
     portionNote: "Kem dâu tây dạng ly.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "sua-tuoi", amountG: 50, note: "Sữa tươi" },
       { foodId: "dau-tay", amountG: 20, note: "Dâu tây" },
@@ -389,7 +389,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 200,
     tags: ["vietnamese", "street-food"],
     portionNote: "Sườn non rim chua ngọt.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "xuong-heo", amountG: 120, note: "Sườn heo" },
       { foodId: "nuoc-mam", amountG: 8, note: "Nước mắm" },
@@ -404,7 +404,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 100,
     tags: ["vietnamese", "street-food"],
     portionNote: "Hột me khô xào dầm đường ớt.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP; me tươi proxy.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; me tươi proxy.",
     items: [
       { foodId: "me", amountG: 60, note: "Cơm me" },
       { foodId: "duong-trang", amountG: 15, note: "Đường" },
@@ -417,7 +417,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 350,
     tags: ["vietnamese", "street-food"],
     portionNote: "Cơm chiên với tôm, thịt, rau củ kiểu Thái.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "com-trang", amountG: 200, note: "Cơm nguội" },
       { foodId: "tom-su", amountG: 30, note: "Tôm" },
@@ -433,7 +433,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 tô", servingWeightG: 300,
     tags: ["vietnamese", "street-food"],
     portionNote: "Súp gà, ngô, trứng non.",
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Ước tính MVP.",
+    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "com-trang", amountG: 30, note: "Bột/cháo" },
       { foodId: "thit-ga-rui", amountG: 30, note: "Thịt gà" },

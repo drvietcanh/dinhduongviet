@@ -34,6 +34,11 @@ const quickJourneys = [
   { href: "/theo-benh/benh-than", icon: "🫘", label: "Bệnh thận", desc: "đạm · kali · phốt pho" },
   { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", label: "So sánh nhanh", desc: "18 chỉ số dinh dưỡng" },
 ];
+const homepageHighlights = [
+  { value: articles.length, label: "bài viết", note: "theo bệnh, lối sống và hiểu lầm thường gặp" },
+  { value: foods.length, label: "thực phẩm", note: "có khẩu phần, vi chất và nguồn dữ liệu" },
+  { value: recipes.length, label: "món Việt", note: "ước tính theo công thức, có cảnh báo thực hành" },
+];
 ---
 
 <BaseLayout
@@ -43,9 +48,9 @@ const quickJourneys = [
 >
   <section class="hero">
     <div class="hero-copy">
-      <span class="hero-badge animate-fade-in">🇻🇳 Dữ liệu thực phẩm Việt · Bài viết theo bệnh · Công cụ thực hành</span>
+      <span class="hero-badge animate-fade-in">🇻🇳 Dữ liệu thực phẩm Việt · Biên tập theo bệnh · Không cổ vũ mẹo cực đoan</span>
       <h1 class="animate-fade-in-up">Ăn uống dễ hiểu hơn, <span class="brand-text">quyết định an toàn hơn</span></h1>
-      <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Tra nhanh thực phẩm, món ăn, bệnh lý và công cụ dinh dưỡng — trình bày theo hướng thực tế, có nguồn, dễ áp dụng cho bữa ăn Việt.</p>
+      <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Một bản đồ dinh dưỡng cho bữa ăn Việt: tra số liệu khi cần, đọc theo bệnh khi cần an toàn, và đổi lời khuyên thành khẩu phần có thể làm ngay.</p>
       <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
       <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
         <a class="cta-btn" href="/tim-kiem">🔎 Tìm trong toàn site</a>
@@ -61,8 +66,8 @@ const quickJourneys = [
     </div>
     <aside class="hero-panel animate-fade-in-up" style="animation-delay: 0.16s;" aria-label="Điều hướng nhanh">
       <div class="hero-panel-head">
-        <span>Hôm nay bắt đầu ở đâu?</span>
-        <strong>4 lối vào nhanh</strong>
+        <span>Sổ tay hôm nay</span>
+        <strong>Chọn một việc nhỏ</strong>
       </div>
       <div class="journey-list">
         {quickJourneys.map((item) => (
@@ -77,9 +82,19 @@ const quickJourneys = [
       </div>
       <div class="hero-panel-note">
         <span>✨</span>
-        <p>Ưu tiên thông tin thực hành: nên ăn gì, hạn chế gì, khi nào cần hỏi bác sĩ.</p>
+        <p>Thiết kế theo hướng phòng khám đời thường: ít khẩu hiệu, nhiều “nên ăn gì, tránh gì, khi nào cần hỏi bác sĩ”.</p>
       </div>
     </aside>
+  </section>
+
+  <section class="home-proof-strip" aria-label="Tóm tắt dữ liệu trên trang">
+    {homepageHighlights.map((item) => (
+      <div class="proof-card">
+        <strong>{item.value.toLocaleString("vi-VN")}</strong>
+        <span>{item.label}</span>
+        <small>{item.note}</small>
+      </div>
+    ))}
   </section>
 
   <section class="home-flow" aria-label="Lối vào nhanh">
@@ -98,6 +113,36 @@ const quickJourneys = [
       <span><strong>Nguồn & phương pháp</strong><small>Dữ liệu, giới hạn và cách biên tập</small></span>
       <b>Đọc thêm →</b>
     </a>
+  </section>
+
+  <section class="clinical-lens" aria-label="Chọn theo tình huống">
+    <div class="lens-copy">
+      <span class="section-kicker">Đọc theo tình huống</span>
+      <h2>Không chỉ “bao nhiêu calo”, mà là “có hợp với mình không?”</h2>
+      <p>Trang được sắp như một bàn hướng dẫn nhỏ: tra thực phẩm khi cần số liệu, đọc theo bệnh khi cần an toàn, dùng công cụ khi muốn đổi thành khẩu phần cụ thể.</p>
+    </div>
+    <div class="lens-grid">
+      <a href="/thuc-pham" class="lens-card">
+        <span>🥬</span>
+        <strong>Tra thực phẩm</strong>
+        <small>100g, khẩu phần, vi chất, độ tin cậy dữ liệu</small>
+      </a>
+      <a href="/mon-an" class="lens-card">
+        <span>🍜</span>
+        <strong>Xem món Việt</strong>
+        <small>Ước tính theo công thức, có cảnh báo muối/dầu</small>
+      </a>
+      <a href="/kien-thuc-dinh-duong" class="lens-card">
+        <span>📚</span>
+        <strong>Đọc bài theo chủ đề</strong>
+        <small>Nên ăn, hạn chế, khi nào cần hỏi bác sĩ</small>
+      </a>
+      <a href="/cong-cu" class="lens-card">
+        <span>🛠️</span>
+        <strong>Dùng công cụ</strong>
+        <small>Carb, GL, đạm, nước, nhật ký, theo dõi sức khỏe</small>
+      </a>
+    </div>
   </section>
 
   <section class="section entry-grid">
@@ -818,6 +863,86 @@ const quickJourneys = [
 .flow-card b { color: var(--brand-dark); font-size: .8rem; white-space: nowrap; }
 .flow-primary small,
 .flow-primary b { color: rgba(255,255,255,.86); }
+.clinical-lens {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr);
+  gap: 18px;
+  align-items: stretch;
+  margin: 0 0 30px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(16, 185, 129, .1), transparent 14rem),
+    linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.34)),
+    var(--card);
+  box-shadow: var(--shadow-sm);
+}
+[data-theme="dark"] .clinical-lens {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(52, 211, 153, .12), transparent 14rem),
+    linear-gradient(135deg, rgba(15,23,42,.48), rgba(15,23,42,.18)),
+    var(--card);
+}
+.lens-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 10px;
+}
+.lens-copy h2 {
+  margin: 4px 0 8px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+.lens-copy p {
+  margin: 0;
+  color: var(--ink-secondary);
+  line-height: 1.65;
+}
+.lens-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.lens-card {
+  display: grid;
+  gap: 6px;
+  min-height: 132px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+.lens-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-light2);
+  background: color-mix(in srgb, var(--brand) 5%, var(--card));
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+.lens-card span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--brand-light);
+  font-size: 1.35rem;
+}
+.lens-card strong {
+  font-size: .96rem;
+  line-height: 1.25;
+}
+.lens-card small {
+  color: var(--ink-secondary);
+  font-size: .8rem;
+  line-height: 1.45;
+}
 .entry-card {
   position: relative;
   overflow: hidden;
@@ -886,10 +1011,17 @@ const quickJourneys = [
 }
 @media (max-width: 820px) {
   .home-flow { grid-template-columns: 1fr; }
+  .clinical-lens { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
   .flow-card { align-items: flex-start; }
   .flow-card b { display: none; }
+  .clinical-lens {
+    padding: 14px;
+    border-radius: 20px;
+  }
+  .lens-grid { grid-template-columns: 1fr; }
+  .lens-card { min-height: auto; }
 }
 @media (max-width: 480px) {
   .hero {
@@ -915,6 +1047,8 @@ const quickJourneys = [
   gap: clamp(22px, 4vw, 42px);
   align-items: center;
   text-align: left;
+  isolation: isolate;
+  overflow: hidden;
 }
 .hero-copy {
   max-width: 760px;
@@ -940,6 +1074,16 @@ const quickJourneys = [
     var(--card);
   box-shadow: 0 24px 60px -30px rgba(15, 23, 42, .35);
   backdrop-filter: blur(14px);
+}
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: auto 22px -24px 22px;
+  height: 42px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  filter: blur(22px);
+  z-index: -1;
 }
 [data-theme="dark"] .hero-panel {
   background:
@@ -987,6 +1131,7 @@ const quickJourneys = [
 .journey-item:hover {
   transform: translateX(3px);
   border-color: var(--brand-light2);
+  background: color-mix(in srgb, var(--brand) 5%, var(--card));
   box-shadow: var(--shadow-sm);
   text-decoration: none;
 }
@@ -1026,12 +1171,70 @@ const quickJourneys = [
   font-size: .82rem;
   line-height: 1.55;
 }
+.home-proof-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: -4px 0 28px;
+}
+.proof-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 118px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, .26);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.34)),
+    var(--card);
+  box-shadow: var(--shadow-sm);
+}
+.proof-card::after {
+  content: "";
+  position: absolute;
+  right: -38px;
+  top: -42px;
+  width: 118px;
+  height: 118px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+}
+[data-theme="dark"] .proof-card {
+  background:
+    linear-gradient(135deg, rgba(15,23,42,.48), rgba(15,23,42,.18)),
+    var(--card);
+}
+.proof-card strong {
+  display: block;
+  color: var(--brand-dark);
+  font-size: clamp(1.8rem, 4vw, 2.55rem);
+  line-height: .95;
+  letter-spacing: -.06em;
+}
+.proof-card span {
+  display: block;
+  margin-top: 7px;
+  color: var(--ink);
+  font-weight: 900;
+}
+.proof-card small {
+  display: block;
+  margin-top: 6px;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+}
 .entry-cards {
   align-items: stretch;
 }
 .entry-card {
   min-height: 210px;
   justify-content: flex-start;
+  border-radius: 24px;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+}
+.entry-card:hover {
+  box-shadow: 0 24px 55px -36px rgba(15, 23, 42, .55);
 }
 .start-card {
   background:
@@ -1072,6 +1275,9 @@ const quickJourneys = [
     width: 100%;
     margin: 0 auto;
   }
+  .home-proof-strip {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 520px) {
   .hero {
@@ -1084,6 +1290,14 @@ const quickJourneys = [
   .hero-panel {
     padding: 14px;
     border-radius: 20px;
+  }
+  .home-proof-strip {
+    gap: 10px;
+  }
+  .proof-card {
+    min-height: auto;
+    padding: 15px;
+    border-radius: 18px;
   }
   .hero-panel-head {
     align-items: flex-start;
