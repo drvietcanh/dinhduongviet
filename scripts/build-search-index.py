@@ -89,7 +89,7 @@ for tool_path in sorted((ROOT / 'src/pages/cong-cu').glob('*.astro')):
     name = clean_markup(h1_match.group(1)) if h1_match else ''
     if not name:
         name = quoted_constant(source, ['title', 'siteTitle', 'toolTitle'])
-    name = re.sub(r'\s*[-|]\s*Dinh Dưỡng Việt\s*$', '', name).strip()
+    name = re.sub(r'\s*[-|]\s*Dinh dưỡng Việt\s*$', '', name).strip()
 
     description = quoted_constant(source, ['desc', 'siteDesc', 'description', 'toolDesc'])
     if not description:

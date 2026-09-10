@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const siteTitle = "Tìm kiếm thực phẩm và món ăn Việt Nam | Dinh Dưỡng Việt";
+const siteTitle = "Tìm kiếm thực phẩm và món ăn Việt Nam | Dinh dưỡng Việt";
 const siteDesc = "Tìm kiếm nhanh thực phẩm, món ăn Việt Nam theo tên, dinh dưỡng, hoặc danh mục.";
 const query = Astro.url.searchParams.get("q") ?? "";
 const searchIntents = [
@@ -13,7 +13,7 @@ const searchIntents = [
 ];
 ---
 
-<BaseLayout title={query ? `"${query}" - Tìm kiếm | Dinh Dưỡng Việt` : siteTitle} description={siteDesc}>
+<BaseLayout title={query ? `"${query}" - Tìm kiếm | Dinh dưỡng Việt` : siteTitle} description={siteDesc}>
   <div class="search-page">
     <div class="search-hero">
       <h1>🔍 Tìm kiếm</h1>

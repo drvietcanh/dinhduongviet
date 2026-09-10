@@ -1,4 +1,4 @@
-# ✅ Quy trình kiểm duyệt bài viết — Dinh Dưỡng Việt
+# ✅ Quy trình kiểm duyệt bài viết — Dinh dưỡng Việt
 
 Trước khi đăng bất kỳ bài viết nào lên web, chạy 5 tiêu chí dưới đây.
 

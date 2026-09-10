@@ -171,7 +171,7 @@ export const extraFoods6: Food[] = [
     aliases: ["melon", "dua luoi"],
     category: "Trái cây", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Dưa lưới chín, ngọt mát.",
-    nutrients: { energyKcal: 36, proteinG: 0.8, carbG: 8.2, fatG: 0.2, fiberG: 0.9, calciumMg: 9, ironMg: 0.2, sodiumMg: 18, potassiumMg: 267, vitaminCMg: 37, vitaminAUg: 169, glycemicIndex: 55 },
+    nutrients: { energyKcal: 36, proteinG: 0.8, carbG: 8.2, fatG: 0.2, fiberG: 0.9, sugarG: 7.86, calciumMg: 9, ironMg: 0.2, sodiumMg: 18, potassiumMg: 267, phosphorusMg: 15, vitaminCMg: 37, vitaminAUg: 169, glycemicIndex: 55 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
@@ -295,7 +295,7 @@ export const extraFoods6: Food[] = [
     aliases: ["oyster sauce", "dau hao"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Dầu hào dùng xào/tẩm ướp.",
-    nutrients: { energyKcal: 60, proteinG: 1.5, carbG: 12, fatG: 0.5, sugarG: 8, sodiumMg: 4500, potassiumMg: 90 },
+    nutrients: { energyKcal: 60, proteinG: 1.5, carbG: 12, fatG: 0.5, sugarG: 8, calciumMg: 17, ironMg: 1.1, sodiumMg: 4500, potassiumMg: 90, phosphorusMg: 32 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; natri cao."
   },
   {

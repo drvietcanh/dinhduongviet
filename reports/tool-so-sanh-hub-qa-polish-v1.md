@@ -42,7 +42,7 @@ Kết quả:
 
 - HTTP route hoạt động qua preview.
 - URL sau load: `http://localhost:4321/cong-cu/so-sanh/`.
-- Title: `So sánh dinh dưỡng - Dinh Dưỡng Việt`.
+- Title: `So sánh dinh dưỡng - Dinh dưỡng Việt`.
 - H1: `So sánh dinh dưỡng`.
 - Không redirect.
 - Không meta refresh.

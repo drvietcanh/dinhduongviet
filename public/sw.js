@@ -1,4 +1,4 @@
-// Dinh Dưỡng Việt - Service Worker v1
+// Dinh dưỡng Việt - Service Worker v1
 const CACHE = "ddv-v1";
 const FALLBACK = "/404.html";
 

@@ -7853,7 +7853,7 @@
     "slug": "tinh-carb",
     "name": "🔢 Tính carbohydrate trong bữa ăn",
     "aliases": [],
-    "description": "Ước tính tổng carbohydrate từ thực phẩm và món ăn trong dữ liệu Dinh Dưỡng Việt.",
+    "description": "Ước tính tổng carbohydrate từ thực phẩm và món ăn trong dữ liệu Dinh dưỡng Việt.",
     "category": "Công cụ"
   },
   {
@@ -7935,9 +7935,9 @@
       "banh pho",
       "banh pho chin"
     ],
-    "description": "Tra cứu Bánh phở chín: khoảng 110 kcal/100g, nhóm Tinh bột.",
+    "description": "Tra cứu Bánh phở chín: khoảng 146 kcal/100g, nhóm Tinh bột.",
     "category": "Tinh bột",
-    "kcal": 110
+    "kcal": 146
   },
   {
     "type": "food",
@@ -8015,9 +8015,9 @@
       "water spinach",
       "rau muong"
     ],
-    "description": "Tra cứu Rau muống: khoảng 30 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Rau muống: khoảng 28 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 30
+    "kcal": 28
   },
   {
     "type": "food",
@@ -8027,9 +8027,9 @@
       "banana",
       "chuoi"
     ],
-    "description": "Tra cứu Chuối: khoảng 89 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Chuối: khoảng 66 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 89
+    "kcal": 66
   },
   {
     "type": "food",
@@ -8094,9 +8094,9 @@
       "sweet potato",
       "khoai lang"
     ],
-    "description": "Tra cứu Khoai lang: khoảng 86 kcal/100g, nhóm Tinh bột.",
+    "description": "Tra cứu Khoai lang: khoảng 124 kcal/100g, nhóm Tinh bột.",
     "category": "Tinh bột",
-    "kcal": 86
+    "kcal": 124
   },
   {
     "type": "food",
@@ -8201,9 +8201,9 @@
       "carrot",
       "ca rot"
     ],
-    "description": "Tra cứu Cà rốt: khoảng 41 kcal/100g, nhóm Củ quả.",
+    "description": "Tra cứu Cà rốt: khoảng 44 kcal/100g, nhóm Củ quả.",
     "category": "Củ quả",
-    "kcal": 41
+    "kcal": 44
   },
   {
     "type": "food",
@@ -8238,9 +8238,9 @@
       "cabbage",
       "bap cai"
     ],
-    "description": "Tra cứu Bắp cải: khoảng 25 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Bắp cải: khoảng 36 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 25
+    "kcal": 36
   },
   {
     "type": "food",
@@ -8251,9 +8251,9 @@
       "cam tuoi",
       "cam"
     ],
-    "description": "Tra cứu Cam: khoảng 47 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Cam: khoảng 43 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 47
+    "kcal": 43
   },
   {
     "type": "food",
@@ -8263,9 +8263,9 @@
       "apple",
       "tao"
     ],
-    "description": "Tra cứu Táo: khoảng 52 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Táo: khoảng 50 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 52
+    "kcal": 50
   },
   {
     "type": "food",
@@ -8275,9 +8275,9 @@
       "mango",
       "xoai"
     ],
-    "description": "Tra cứu Xoài: khoảng 60 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Xoài: khoảng 69 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 60
+    "kcal": 69
   },
   {
     "type": "food",
@@ -8287,9 +8287,9 @@
       "papaya",
       "du du"
     ],
-    "description": "Tra cứu Đu đủ: khoảng 43 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Đu đủ: khoảng 38 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 43
+    "kcal": 38
   },
   {
     "type": "food",
@@ -8338,9 +8338,9 @@
       "condensed milk",
       "sua dac"
     ],
-    "description": "Tra cứu Sữa đặc: khoảng 321 kcal/100g, nhóm Trứng sữa.",
+    "description": "Tra cứu Sữa đặc: khoảng 336 kcal/100g, nhóm Trứng sữa.",
     "category": "Trứng sữa",
-    "kcal": 321
+    "kcal": 336
   },
   {
     "type": "food",
@@ -8387,9 +8387,9 @@
       "wood ear",
       "moc nhi"
     ],
-    "description": "Tra cứu Mộc nhĩ: khoảng 263 kcal/100g, nhóm Nấm.",
+    "description": "Tra cứu Mộc nhĩ: khoảng 332 kcal/100g, nhóm Nấm.",
     "category": "Nấm",
-    "kcal": 263
+    "kcal": 332
   },
   {
     "type": "food",
@@ -8425,9 +8425,9 @@
       "tieu",
       "hat tieu"
     ],
-    "description": "Tra cứu Hạt tiêu: khoảng 251 kcal/100g, nhóm Gia vị.",
+    "description": "Tra cứu Hạt tiêu: khoảng 365 kcal/100g, nhóm Gia vị.",
     "category": "Gia vị",
-    "kcal": 251
+    "kcal": 365
   },
   {
     "type": "food",
@@ -8623,9 +8623,9 @@
       "mustard greens",
       "cai xanh"
     ],
-    "description": "Tra cứu Cải xanh: khoảng 27 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Cải xanh: khoảng 23 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 27
+    "kcal": 23
   },
   {
     "type": "food",
@@ -8672,9 +8672,9 @@
       "watermelon",
       "dua hau"
     ],
-    "description": "Tra cứu Dưa hấu: khoảng 30 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Dưa hấu: khoảng 18 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 30
+    "kcal": 18
   },
   {
     "type": "food",
@@ -8685,9 +8685,9 @@
       "bo trai",
       "bo"
     ],
-    "description": "Tra cứu Bơ: khoảng 160 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Bơ: khoảng 103 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 160
+    "kcal": 103
   },
   {
     "type": "food",
@@ -8799,9 +8799,9 @@
       "katuk",
       "rau ngot"
     ],
-    "description": "Tra cứu Rau ngót: khoảng 35 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Rau ngót: khoảng 45 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 35
+    "kcal": 45
   },
   {
     "type": "food",
@@ -8811,9 +8811,9 @@
       "malabar spinach",
       "mong toi"
     ],
-    "description": "Tra cứu Mồng tơi: khoảng 19 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Mồng tơi: khoảng 24 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 19
+    "kcal": 24
   },
   {
     "type": "food",
@@ -8860,9 +8860,9 @@
       "amaranth",
       "rau den"
     ],
-    "description": "Tra cứu Rau dền: khoảng 23 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Rau dền: khoảng 47 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 23
+    "kcal": 47
   },
   {
     "type": "food",
@@ -8908,9 +8908,9 @@
       "zucchini",
       "bi xanh"
     ],
-    "description": "Tra cứu Bí xanh: khoảng 17 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Bí xanh: khoảng 16 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 17
+    "kcal": 16
   },
   {
     "type": "food",
@@ -8921,9 +8921,9 @@
       "green beans",
       "dau que"
     ],
-    "description": "Tra cứu Đậu que: khoảng 31 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Đậu que: khoảng 77 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 31
+    "kcal": 77
   },
   {
     "type": "food",
@@ -8959,9 +8959,9 @@
       "bông cải xanh",
       "sup lo xanh"
     ],
-    "description": "Tra cứu Súp lơ xanh: khoảng 34 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Súp lơ xanh: khoảng 39 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 34
+    "kcal": 39
   },
   {
     "type": "food",
@@ -8972,9 +8972,9 @@
       "bông cải trắng",
       "sup lo trang"
     ],
-    "description": "Tra cứu Súp lơ trắng: khoảng 25 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Súp lơ trắng: khoảng 34 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 25
+    "kcal": 34
   },
   {
     "type": "food",
@@ -9085,9 +9085,9 @@
       "asparagus",
       "mang tay"
     ],
-    "description": "Tra cứu Măng tây: khoảng 20 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Măng tây: khoảng 24 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 20
+    "kcal": 24
   },
   {
     "type": "food",
@@ -9097,9 +9097,9 @@
       "sour bamboo shoot",
       "mang chua"
     ],
-    "description": "Tra cứu Măng chua: khoảng 27 kcal/100g, nhóm Củ quả.",
+    "description": "Tra cứu Măng chua: khoảng 28 kcal/100g, nhóm Củ quả.",
     "category": "Củ quả",
-    "kcal": 27
+    "kcal": 28
   },
   {
     "type": "food",
@@ -9200,9 +9200,9 @@
       "cải thảo",
       "bap cai thao"
     ],
-    "description": "Tra cứu Bắp cải thảo: khoảng 12 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Bắp cải thảo: khoảng 14 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 12
+    "kcal": 14
   },
   {
     "type": "food",
@@ -9298,9 +9298,9 @@
       "durian",
       "sau rieng"
     ],
-    "description": "Tra cứu Sầu riêng: khoảng 147 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Sầu riêng: khoảng 138 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 147
+    "kcal": 138
   },
   {
     "type": "food",
@@ -9310,9 +9310,9 @@
       "jackfruit",
       "mit"
     ],
-    "description": "Tra cứu Mít: khoảng 95 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Mít: khoảng 54 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 95
+    "kcal": 54
   },
   {
     "type": "food",
@@ -9334,9 +9334,9 @@
       "dragon fruit",
       "thanh long"
     ],
-    "description": "Tra cứu Thanh long: khoảng 60 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Thanh long: khoảng 47 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 60
+    "kcal": 47
   },
   {
     "type": "food",
@@ -9346,9 +9346,9 @@
       "mangosteen",
       "mang cut"
     ],
-    "description": "Tra cứu Măng cụt: khoảng 73 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Măng cụt: khoảng 65 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 73
+    "kcal": 65
   },
   {
     "type": "food",
@@ -9358,9 +9358,9 @@
       "rambutan",
       "chom chom"
     ],
-    "description": "Tra cứu Chôm chôm: khoảng 82 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Chôm chôm: khoảng 77 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 82
+    "kcal": 77
   },
   {
     "type": "food",
@@ -9371,9 +9371,9 @@
       "vai thieu",
       "vai"
     ],
-    "description": "Tra cứu Vải: khoảng 66 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Vải: khoảng 49 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 66
+    "kcal": 49
   },
   {
     "type": "food",
@@ -9383,9 +9383,9 @@
       "longan",
       "nhan"
     ],
-    "description": "Tra cứu Nhãn: khoảng 60 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Nhãn: khoảng 52 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 60
+    "kcal": 52
   },
   {
     "type": "food",
@@ -9395,9 +9395,9 @@
       "strawberry",
       "dau tay"
     ],
-    "description": "Tra cứu Dâu tây: khoảng 32 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Dâu tây: khoảng 59 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 32
+    "kcal": 59
   },
   {
     "type": "food",
@@ -9408,9 +9408,9 @@
       "grapefruit",
       "buoi"
     ],
-    "description": "Tra cứu Bưởi: khoảng 38 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Bưởi: khoảng 33 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 38
+    "kcal": 33
   },
   {
     "type": "food",
@@ -9457,9 +9457,9 @@
       "coconut water",
       "nuoc dua"
     ],
-    "description": "Tra cứu Nước dừa: khoảng 19 kcal/100g, nhóm Đồ uống.",
+    "description": "Tra cứu Nước dừa: khoảng 21 kcal/100g, nhóm Đồ uống.",
     "category": "Đồ uống",
-    "kcal": 19
+    "kcal": 21
   },
   {
     "type": "food",
@@ -9507,9 +9507,9 @@
       "pineapple",
       "khom"
     ],
-    "description": "Tra cứu Khóm: khoảng 50 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Khóm: khoảng 40 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 50
+    "kcal": 40
   },
   {
     "type": "food",
@@ -9519,9 +9519,9 @@
       "grapes",
       "nho"
     ],
-    "description": "Tra cứu Nho: khoảng 69 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Nho: khoảng 71 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 69
+    "kcal": 71
   },
   {
     "type": "food",
@@ -9794,9 +9794,9 @@
       "pumpkin seeds",
       "hat bi"
     ],
-    "description": "Tra cứu Hạt bí: khoảng 559 kcal/100g, nhóm Hạt.",
+    "description": "Tra cứu Hạt bí: khoảng 528 kcal/100g, nhóm Hạt.",
     "category": "Hạt",
-    "kcal": 559
+    "kcal": 528
   },
   {
     "type": "food",
@@ -9806,9 +9806,9 @@
       "sunflower seeds",
       "hat huong duong"
     ],
-    "description": "Tra cứu Hạt hướng dương: khoảng 584 kcal/100g, nhóm Hạt.",
+    "description": "Tra cứu Hạt hướng dương: khoảng 652 kcal/100g, nhóm Hạt.",
     "category": "Hạt",
-    "kcal": 584
+    "kcal": 652
   },
   {
     "type": "food",
@@ -9818,9 +9818,9 @@
       "green pea",
       "dau ha lan"
     ],
-    "description": "Tra cứu Đậu Hà Lan: khoảng 352 kcal/100g, nhóm Đậu.",
+    "description": "Tra cứu Đậu Hà Lan: khoảng 75 kcal/100g, nhóm Đậu.",
     "category": "Đậu",
-    "kcal": 352
+    "kcal": 75
   },
   {
     "type": "food",
@@ -9834,9 +9834,9 @@
       "peanut",
       "dau phong"
     ],
-    "description": "Tra cứu Đậu phộng: khoảng 567 kcal/100g, nhóm Đậu.",
+    "description": "Tra cứu Đậu phộng: khoảng 583 kcal/100g, nhóm Đậu.",
     "category": "Đậu",
-    "kcal": 567
+    "kcal": 583
   },
   {
     "type": "food",
@@ -10193,9 +10193,9 @@
       "guava",
       "oi"
     ],
-    "description": "Tra cứu Ổi: khoảng 68 kcal/100g, nhóm Trái cây.",
+    "description": "Tra cứu Ổi: khoảng 61 kcal/100g, nhóm Trái cây.",
     "category": "Trái cây",
-    "kcal": 68
+    "kcal": 61
   },
   {
     "type": "food",
@@ -10585,9 +10585,9 @@
     "aliases": [
       "trung cut"
     ],
-    "description": "Tra cứu Trứng cút: khoảng 158 kcal/100g, nhóm Trứng sữa.",
+    "description": "Tra cứu Trứng cút: khoảng 157 kcal/100g, nhóm Trứng sữa.",
     "category": "Trứng sữa",
-    "kcal": 158
+    "kcal": 157
   },
   {
     "type": "food",
@@ -14152,6 +14152,190 @@
   },
   {
     "type": "food",
+    "slug": "sua-de-tuoi-vdd",
+    "name": "Sữa dê tươi",
+    "aliases": [
+      "sua de tuoi",
+      "goat milk fresh",
+      "milk goat fresh"
+    ],
+    "description": "Tra cứu Sữa dê tươi: khoảng 69 kcal/100g, nhóm Trứng sữa.",
+    "category": "Trứng sữa",
+    "kcal": 69
+  },
+  {
+    "type": "food",
+    "slug": "sua-me-vdd",
+    "name": "Sữa mẹ",
+    "aliases": [
+      "sua me",
+      "sua nguoi",
+      "human milk",
+      "breast milk"
+    ],
+    "description": "Tra cứu Sữa mẹ: khoảng 61 kcal/100g, nhóm Trứng sữa.",
+    "category": "Trứng sữa",
+    "kcal": 61
+  },
+  {
+    "type": "food",
+    "slug": "sua-chua-dac-co-duong-vdd",
+    "name": "Sữa chua đặc có đường",
+    "aliases": [
+      "sua chua dac co duong",
+      "sweetened yogurt",
+      "yogurt sweetened"
+    ],
+    "description": "Tra cứu Sữa chua đặc có đường: khoảng 65 kcal/100g, nhóm Trứng sữa.",
+    "category": "Trứng sữa",
+    "kcal": 65
+  },
+  {
+    "type": "food",
+    "slug": "sua-chua-dac-khong-duong-vdd",
+    "name": "Sữa chua đặc không đường",
+    "aliases": [
+      "sua chua dac khong duong",
+      "plain yogurt",
+      "unsweetened yogurt"
+    ],
+    "description": "Tra cứu Sữa chua đặc không đường: khoảng 61 kcal/100g, nhóm Trứng sữa.",
+    "category": "Trứng sữa",
+    "kcal": 61
+  },
+  {
+    "type": "food",
+    "slug": "sua-chua-uong-co-duong-vdd",
+    "name": "Sữa chua uống có đường",
+    "aliases": [
+      "sua chua uong co duong",
+      "sweetened drinking yogurt",
+      "yogurt drink"
+    ],
+    "description": "Tra cứu Sữa chua uống có đường: khoảng 62 kcal/100g, nhóm Trứng sữa.",
+    "category": "Trứng sữa",
+    "kcal": 62
+  },
+  {
+    "type": "food",
+    "slug": "gao-te-xat-may-song-vdd",
+    "name": "Gạo tẻ trắng xát máy (sống)",
+    "aliases": [
+      "gao te trang xat may song",
+      "gao te song",
+      "white rice raw milled"
+    ],
+    "description": "Tra cứu Gạo tẻ trắng xát máy (sống): khoảng 346 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 346
+  },
+  {
+    "type": "food",
+    "slug": "gao-nep-cai-song-vdd",
+    "name": "Gạo nếp cái trắng (sống)",
+    "aliases": [
+      "gao nep cai song",
+      "gao nep song",
+      "glutinous rice raw",
+      "gao nep cai trang song"
+    ],
+    "description": "Tra cứu Gạo nếp cái trắng (sống): khoảng 348 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 348
+  },
+  {
+    "type": "food",
+    "slug": "gao-lut-te-song-vdd",
+    "name": "Gạo lứt tẻ sống",
+    "aliases": [
+      "gao lut te song",
+      "gao te chua xat",
+      "brown rice raw"
+    ],
+    "description": "Tra cứu Gạo lứt tẻ sống: khoảng 359 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 359
+  },
+  {
+    "type": "food",
+    "slug": "bot-gao-nep-vdd",
+    "name": "Bột gạo nếp",
+    "aliases": [
+      "bot gao nep",
+      "bot nep",
+      "glutinous rice flour"
+    ],
+    "description": "Tra cứu Bột gạo nếp: khoảng 365 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 365
+  },
+  {
+    "type": "food",
+    "slug": "banh-da-nem-vdd",
+    "name": "Bánh đa nem",
+    "aliases": [
+      "banh da nem",
+      "rice paper spring roll wrapper",
+      "banh trang cuon nem"
+    ],
+    "description": "Tra cứu Bánh đa nem: khoảng 335 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 335
+  },
+  {
+    "type": "food",
+    "slug": "mi-soi-kho-vdd",
+    "name": "Mì sợi khô",
+    "aliases": [
+      "mi soi kho",
+      "dry wheat noodles",
+      "mi kho"
+    ],
+    "description": "Tra cứu Mì sợi khô: khoảng 350 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 350
+  },
+  {
+    "type": "food",
+    "slug": "mi-an-lien-lua-mi-luoc-vdd",
+    "name": "Mì ăn liền lúa mì luộc",
+    "aliases": [
+      "mi an lien lua mi luoc",
+      "instant noodle cooked",
+      "mi goi luoc"
+    ],
+    "description": "Tra cứu Mì ăn liền lúa mì luộc: khoảng 102 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 102
+  },
+  {
+    "type": "food",
+    "slug": "ngo-vang-hat-kho-vdd",
+    "name": "Ngô vàng hạt khô",
+    "aliases": [
+      "ngo vang hat kho",
+      "bap hat kho",
+      "dry yellow corn"
+    ],
+    "description": "Tra cứu Ngô vàng hạt khô: khoảng 362 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 362
+  },
+  {
+    "type": "food",
+    "slug": "ngo-tuoi-ca-bap-vdd",
+    "name": "Ngô tươi cả bắp",
+    "aliases": [
+      "ngo tuoi ca bap",
+      "bap tuoi",
+      "fresh corn cob"
+    ],
+    "description": "Tra cứu Ngô tươi cả bắp: khoảng 200 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
+    "kcal": 200
+  },
+  {
+    "type": "food",
     "slug": "rau-cai-xoong",
     "name": "Rau cải xoong",
     "aliases": [
@@ -14212,9 +14396,9 @@
     "aliases": [
       "rau cai ngot"
     ],
-    "description": "Tra cứu Rau cải ngọt: khoảng 27 kcal/100g, nhóm Rau xanh.",
+    "description": "Tra cứu Rau cải ngọt: khoảng 17 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
-    "kcal": 27
+    "kcal": 17
   },
   {
     "type": "food",
@@ -14729,9 +14913,9 @@
     "aliases": [
       "bau"
     ],
-    "description": "Tra cứu Bầu: khoảng 42 kcal/100g, nhóm Củ quả.",
+    "description": "Tra cứu Bầu: khoảng 18 kcal/100g, nhóm Củ quả.",
     "category": "Củ quả",
-    "kcal": 42
+    "kcal": 18
   },
   {
     "type": "food",

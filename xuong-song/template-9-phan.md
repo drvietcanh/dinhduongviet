@@ -1,6 +1,6 @@
 # 📐 Template bài viết chuẩn — 9 phần
 
-Áp dụng cho mọi bài viết trên Dinh Dưỡng Việt. Mỗi bài gồm đúng 9 section, theo thứ tự dưới đây.
+Áp dụng cho mọi bài viết trên Dinh dưỡng Việt. Mỗi bài gồm đúng 9 section, theo thứ tự dưới đây.
 
 ---
 

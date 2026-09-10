@@ -5,7 +5,7 @@ import { articles, SERIES } from "../../data/articles";
 const series = SERIES["dung-tin-ngay"];
 const dungTinNgayArticles = articles.filter(a => a.series === "dung-tin-ngay").sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 const fmtDate = (d: string) => new Date(d).toLocaleDateString("vi-VN", { year: "numeric", month: "long", day: "numeric" });
-const title = `${series.emoji} ${series.name} — Phân tích hiểu lầm | Dinh Dưỡng Việt`;
+const title = `${series.emoji} ${series.name} — Phân tích hiểu lầm | Dinh dưỡng Việt`;
 const desc = series.description;
 const articleHref = (slug: string) => slug.startsWith("canh-bao-hieu-lam-")
   ? `/kien-thuc-dinh-duong/${slug}`

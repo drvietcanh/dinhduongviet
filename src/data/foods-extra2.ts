@@ -29,7 +29,7 @@ export const extraFoods2: Food[] = [
   {
     id: "mang-cut", slug: "mang-cut", name: "Măng cụt", aliases: ["mangosteen"],
     category: "Trái cây", state: "raw", basis: "100g phần ăn được", edibleNote: "Múi măng cụt chín.",
-    nutrients: { energyKcal: 73, proteinG: 0.4, carbG: 18.0, fatG: 0.6, fiberG: 2.0, calciumMg: 6, ironMg: 0.3, sodiumMg: 1, potassiumMg: 48, vitaminCMg: 12 , glycemicIndex: 55},
+    nutrients: { energyKcal: 73, proteinG: 0.4, carbG: 18.0, fatG: 0.6, fiberG: 2.0, calciumMg: 6, ironMg: 0.3, sodiumMg: 1, potassiumMg: 48, phosphorusMg: 13, vitaminCMg: 12 , glycemicIndex: 55},
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {

@@ -85,7 +85,7 @@ for a in articles:
   <text x="76" y="195" font-size="18" fill="rgba(255,255,255,0.9)" font-family="system-ui, sans-serif" font-weight="600">{esc(a['cat'])}</text>
 {title_svg}  <text x="60" y="{270 + len(title_lines) * (font_size + 8) + 40}" font-size="24" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif">{esc(short_desc)}</text>
   <rect x="60" y="540" width="1080" height="2" fill="rgba(255,255,255,0.2)"/>
-  <text x="60" y="585" font-size="28" fill="white" font-family="system-ui, sans-serif" font-weight="700">🌿 Dinh Dưỡng Việt</text>
+  <text x="60" y="585" font-size="28" fill="white" font-family="system-ui, sans-serif" font-weight="700">🌿 Dinh dưỡng Việt</text>
   <text x="60" y="610" font-size="16" fill="rgba(255,255,255,0.5)" font-family="system-ui, sans-serif">dinh-duong-viet.pages.dev</text>
 </svg>'''
 
@@ -101,7 +101,7 @@ default_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="6
   <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1b5e20"/><stop offset="50%" stop-color="#2e7d32"/><stop offset="100%" stop-color="#388e3c"/></linearGradient></defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <text x="60" y="200" font-size="80" fill="white" font-family="Apple Color Emoji, Segoe UI Emoji" text-anchor="start">🥗</text>
-  <text x="60" y="320" font-size="64" fill="white" font-family="system-ui, sans-serif" font-weight="700">Dinh Dưỡng Việt</text>
+  <text x="60" y="320" font-size="64" fill="white" font-family="system-ui, sans-serif" font-weight="700">Dinh dưỡng Việt</text>
   <text x="60" y="380" font-size="28" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif">Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam</text>
   <text x="60" y="585" font-size="22" fill="rgba(255,255,255,0.5)" font-family="system-ui, sans-serif">dinh-duong-viet.pages.dev</text>
 </svg>'''

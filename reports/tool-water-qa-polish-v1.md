@@ -60,7 +60,7 @@ Preview URL used:
 
 Browser checks completed:
 
-- Page loads with title `Tính nhu cầu nước uống - Dinh Dưỡng Việt`.
+- Page loads with title `Tính nhu cầu nước uống - Dinh dưỡng Việt`.
 - Initial healthy 60 kg result renders with total water and drinking-water cards.
 - Desktop layout had no horizontal overflow at 1280px viewport.
 - Warning/source cards include the acute safety warning for dehydration, vomiting, severe diarrhea, altered consciousness, dyspnea, or rapidly worsening edema.

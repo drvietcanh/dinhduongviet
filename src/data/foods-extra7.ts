@@ -128,7 +128,7 @@ export const extraFoods7 = [
     aliases: ["nuoc ep dua hau", "watermelon juice"],
     category: "Đồ uống", state: "processed", basis: "100ml",
     edibleNote: "Nước ép dưa hấu tươi, không đường.",
-    nutrients: { energyKcal: 30, proteinG: 0.6, carbG: 7.5, fatG: 0.1, sugarG: 6, fiberG: 0.3, potassiumMg: 100, vitaminCMg: 8, vitaminAUg: 569, lycopeneMg: 4.5 },
+    nutrients: { energyKcal: 30, proteinG: 0.6, carbG: 7.5, fatG: 0.1, sugarG: 6, fiberG: 0.3, calciumMg: 7, ironMg: 0.24, sodiumMg: 1, potassiumMg: 100, phosphorusMg: 11, vitaminCMg: 8, vitaminAUg: 569, lycopeneMg: 4.5 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {

@@ -23,6 +23,6 @@
     <text x="60" y="270" font-size="56" fill="white" font-family="system-ui, -apple-system, sans-serif" font-weight="700">Tủ lạnh lành mạnh nên có gì?</text>
   <text x="60" y="374" font-size="24" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif">Hướng dẫn sắp xếp tủ lạnh cho người — bệnh. Thực phẩm nên có sẵn ở ngăn</text>
   <rect x="60" y="540" width="1080" height="2" fill="rgba(255,255,255,0.2)"/>
-  <text x="60" y="585" font-size="28" fill="white" font-family="system-ui, sans-serif" font-weight="700">🌿 Dinh Dưỡng Việt</text>
+  <text x="60" y="585" font-size="28" fill="white" font-family="system-ui, sans-serif" font-weight="700">🌿 Dinh dưỡng Việt</text>
   <text x="60" y="610" font-size="16" fill="rgba(255,255,255,0.5)" font-family="system-ui, sans-serif">dinh-duong-viet.pages.dev</text>
 </svg>

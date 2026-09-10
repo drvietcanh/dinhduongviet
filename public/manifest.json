@@ -1,5 +1,5 @@
 {
-  "name": "Dinh Dưỡng Việt",
+  "name": "Dinh dưỡng Việt",
   "short_name": "DD Việt",
   "description": "Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam. Theo dõi sức khỏe, nhật ký ăn uống, công cụ tính toán dinh dưỡng.",
   "start_url": "/",
@@ -21,7 +21,7 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Trang chủ Dinh Dưỡng Việt"
+      "label": "Trang chủ Dinh dưỡng Việt"
     }
   ],
   "shortcuts": [

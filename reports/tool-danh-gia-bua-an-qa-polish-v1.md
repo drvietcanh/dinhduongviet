@@ -56,7 +56,7 @@ Route results:
 - Page stayed on `/cong-cu/danh-gia-bua-an/`.
 - No automatic navigation.
 - No meta refresh tag.
-- Browser title: `Đánh giá bữa ăn | Dinh Dưỡng Việt`.
+- Browser title: `Đánh giá bữa ăn | Dinh dưỡng Việt`.
 - H1: `Đánh giá bữa ăn`.
 
 Desktop layout:

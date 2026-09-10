@@ -23,6 +23,46 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 }
 
+function checkBrandConsistency() {
+  const allowedExtensions = new Set([
+    ".astro",
+    ".css",
+    ".js",
+    ".json",
+    ".md",
+    ".mjs",
+    ".py",
+    ".svg",
+    ".ts",
+  ]);
+  const ignoredDirs = new Set([".git", "dist", "node_modules"]);
+  const forbiddenBrandPhrases = [
+    ["Dinh", "Dưỡng", "Việt"].join(" "),
+    ["Dinh", "Duong", "Viet"].join(" "),
+  ];
+  const files = [];
+
+  function collect(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory() && ignoredDirs.has(entry.name)) continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) collect(full);
+      else if (allowedExtensions.has(path.extname(entry.name))) files.push(full);
+    }
+  }
+
+  collect(root);
+
+  for (const file of files) {
+    const text = fs.readFileSync(file, "utf8");
+    for (const phrase of forbiddenBrandPhrases) {
+      if (text.includes(phrase)) {
+        fail(`Outdated brand spelling "${phrase}" found in ${path.relative(root, file)}`);
+      }
+    }
+  }
+}
+
 function checkDuplicateDataKeys() {
   const dataDir = path.join(root, "src", "data");
   const files = walk(dataDir, (file) => file.endsWith(".ts"));
@@ -337,6 +377,7 @@ function checkHighRiskRecipeNotes() {
   }
 }
 
+checkBrandConsistency();
 checkDuplicateDataKeys();
 checkPlaceholders();
 checkInternalLinks();
@@ -352,4 +393,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("QA passed: duplicate data keys, placeholders, internal links, search coverage, food/recipe content, and canonical sitemap are OK.");
+console.log("QA passed: brand consistency, duplicate data keys, placeholders, internal links, search coverage, food/recipe content, and canonical sitemap are OK.");

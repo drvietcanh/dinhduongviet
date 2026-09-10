@@ -63,7 +63,7 @@ const recipeSchema = {
   "name": recipe.servingName + " " + recipe.name,
   "description": publicNote || "Thông tin dinh dưỡng cho " + recipe.servingName + " " + recipe.name,
   "image": recipe.imageUrl || "https://dinh-duong-viet.pages.dev/og-default.png",
-  "author": { "@type": "Organization", "name": "Dinh Dưỡng Việt" },
+  "author": { "@type": "Organization", "name": "Dinh dưỡng Việt" },
   "nutrition": {
     "@type": "NutritionInformation",
     "calories": Math.round(nutrients.energyKcal ?? 0) + " kcal",
@@ -82,7 +82,7 @@ const recipeSchema = {
 ---
 
 <BaseLayout
-  title={`${recipe.servingName} ${recipe.name} bao nhiêu calo? - Dinh Dưỡng Việt`}
+  title={`${recipe.servingName} ${recipe.name} bao nhiêu calo? - Dinh dưỡng Việt`}
   description={pageDescription}
   canonical={`/mon-an/${recipe.slug}`}
 >

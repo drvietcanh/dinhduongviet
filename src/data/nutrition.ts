@@ -6,7 +6,9 @@ import { extraFoods5 } from "./foods-extra5";
 import { extraFoods6 } from "./foods-extra6";
 import { extraFoods7 } from "./foods-extra7";
 import { extraFoods8 } from "./foods-extra8";
+import { extraFoods9 } from "./foods-extra9";
 import { vnMicronutrientOverrides } from "./food-vn-micronutrient-overrides";
+import { vddSourceReplacements } from "./food-vdd-source-replacements";
 import { foodQualityReviews } from "./food-quality-reviews";
 import { extraRecipes } from "./recipes-extra";
 import { extraRecipes2 } from "./recipes-extra2";
@@ -126,6 +128,13 @@ export const sources: Source[] = [
     name: "Công thức ước tính tham khảo",
     year: "2026",
     note: "Công thức định lượng để demo cách tính món ăn. Cần chuẩn hóa bằng tài liệu/sách nấu ăn hoặc đo thực tế."
+  },
+  {
+    id: "vdd-food-portal-2026",
+    name: "Viện Dinh dưỡng — công cụ tra cứu giá trị dinh dưỡng thực phẩm",
+    year: "2026",
+    url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/gia-tri-dinh-duong-thuc-pham",
+    note: "Nguồn chính thức dùng để đối chiếu/bổ sung các mục có tên và trạng thái thực phẩm rõ; không dùng để ghi đè tự động các món chế biến hoặc mục dễ khớp nhầm."
   },
   {
     id: "usda-fdc-169711",
@@ -1885,9 +1894,27 @@ foods.push(
     ...extraFoods6,
     ...extraFoods7,
     ...extraFoods8,
+    ...extraFoods9,
     ...bulkFoods
   ] as Food[])
 );
+
+for (const food of foods) {
+  const replacement = vddSourceReplacements[food.slug];
+  if (!replacement) continue;
+
+  Object.assign(food.nutrients, replacement.nutrients);
+  food.sourceId = "vdd-food-portal-2026";
+  food.confidence = replacement.hasCompleteCoreMacros && replacement.sourceConfidence === "high" ? "high" : "medium";
+  food.dataQuality = "source_backed";
+  food.sourceConfidence = replacement.sourceConfidence;
+  food.sourceReviewStatus = replacement.hasCompleteCoreMacros ? "source_verified" : "reviewed_keep_current";
+  food.candidateSource = `Viện Dinh dưỡng ${replacement.sourceCode}: ${replacement.sourceName}.`;
+  food.reviewNote = replacement.sourceNote;
+  food.note = replacement.hasCompleteCoreMacros
+    ? "Số liệu theo công cụ tra cứu giá trị dinh dưỡng thực phẩm của Viện Dinh dưỡng; giá trị thực tế có thể thay đổi theo giống, mùa và phần ăn được."
+    : "Một phần số liệu đã đối chiếu theo công cụ tra cứu giá trị dinh dưỡng thực phẩm của Viện Dinh dưỡng; các chỉ số nguồn không cung cấp được giữ theo dữ liệu hiện có.";
+}
 
 for (const food of foods) {
   const overrides = vnMicronutrientOverrides[food.slug];

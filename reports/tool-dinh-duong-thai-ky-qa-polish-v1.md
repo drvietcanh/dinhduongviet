@@ -54,7 +54,7 @@ Console:
 Desktop checks passed:
 
 - H1: `Dinh dưỡng thai kỳ`.
-- Route title: `Dinh dưỡng thai kỳ | Dinh Dưỡng Việt`.
+- Route title: `Dinh dưỡng thai kỳ | Dinh dưỡng Việt`.
 - No horizontal overflow at `1280 x 720`.
 - No route-level form.
 - No route-level input/select/textarea.

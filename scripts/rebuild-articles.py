@@ -67,7 +67,7 @@ slug_specialty = {
 }
 
 # Now extract clean field data from each article block
-HEADER = """// Article metadata registry for Dinh Dưỡng Việt
+HEADER = """// Article metadata registry for Dinh dưỡng Việt
 // Single source of truth for all knowledge articles
 
 export interface ArticleMeta {

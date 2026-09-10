@@ -1,4 +1,4 @@
-# Báo cáo cải thiện UI — Dinh Dưỡng Việt
+# Báo cáo cải thiện UI — Dinh dưỡng Việt
 
 ## Hiện trạng
 - ✅ CSS custom properties (good)
@@ -22,7 +22,7 @@
 ### 2. 🔝 Navigation — Cần nâng cấp
 - **Thiếu search bar** trên nav (không phải ai cũng biết /tim-kiem)
 - **Thiếu hamburger menu** trên mobile — nav links rất dài
-- **Logo "🇻🇳 Dinh Dưỡng Việt"** — emoji flag không hiển thị đẹp trên mọi nền tảng
+- **Logo "🇻🇳 Dinh dưỡng Việt"** — emoji flag không hiển thị đẹp trên mọi nền tảng
 
 ### 3. 📱 Responsive — Còn yếu
 - **768px** mới break — cần break sớm hơn (600px)

@@ -1,4 +1,4 @@
-﻿# Dinh Dưỡng Việt — Handoff cho Codex
+# Dinh dưỡng Việt — Handoff cho Codex
 
 Cập nhật: Tue 2026-06-09 09:01 GMT+7  
 Mục đích: gom toàn bộ bối cảnh kỹ thuật, cấu trúc, trạng thái, quy tắc và việc cần làm để Codex có thể tiếp tục ngay.
@@ -42,7 +42,7 @@ npm run preview
 
 ## 2) Tóm tắt hiện trạng dự án
 
-Dinh Dưỡng Việt là website kiến thức dinh dưỡng tiếng Việt dạng static, tập trung vào:
+Dinh dưỡng Việt là website kiến thức dinh dưỡng tiếng Việt dạng static, tập trung vào:
 
 - Bài kiến thức dinh dưỡng/bệnh mạn/lối sống.
 - Công cụ tính toán dinh dưỡng, chỉ số sức khỏe, khẩu phần.

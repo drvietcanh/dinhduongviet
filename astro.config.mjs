@@ -34,7 +34,7 @@ export default defineConfig({
     AstroPWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Dinh Dưỡng Việt',
+        name: 'Dinh dưỡng Việt',
         short_name: 'DD Việt',
         description: 'Tra cứu dinh dưỡng thực phẩm và bệnh lý',
         theme_color: '#059669',

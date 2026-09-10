@@ -10,7 +10,7 @@ Nhanh git hien tai:
 
 Muc tieu chinh cua chuoi phien gan day:
 
-- Ra soat noi dung va bo cuc tong the cua web Dinh Duong Viet
+- Ra soat noi dung va bo cuc tong the cua web Dinh dưỡng Việt
 - Chuan hoa thuat ngu y khoa tieng Viet
 - Gop, sap xep lai cac cum benh va menu de de tim hon
 - Bo sung bai viet dinh duong theo benh theo huong phong phu, thuc hanh, bot trung lap

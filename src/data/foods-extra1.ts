@@ -95,7 +95,7 @@ export const extraFoods1: Food[] = [
   {
     id: "nam-kim-cham", slug: "nam-kim-cham", name: "Nấm kim châm", aliases: ["enoki mushroom", "nam kim cham"],
     category: "Nấm", state: "raw", basis: "100g phần ăn được", edibleNote: "Nấm kim châm tươi.",
-    nutrients: { energyKcal: 37, proteinG: 2.7, carbG: 8.0, fatG: 0.3, fiberG: 2.7, calciumMg: 0, ironMg: 0.4, sodiumMg: 3, potassiumMg: 359 },
+    nutrients: { energyKcal: 37, proteinG: 2.7, carbG: 8.0, fatG: 0.3, fiberG: 2.7, sugarG: 0.22, calciumMg: 0, ironMg: 0.4, sodiumMg: 3, potassiumMg: 359, phosphorusMg: 105 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {

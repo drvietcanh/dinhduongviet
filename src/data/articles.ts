@@ -1,4 +1,4 @@
-// Article metadata registry for Dinh Dưỡng Việt
+// Article metadata registry for Dinh dưỡng Việt
 // Single source of truth for all knowledge articles
 
 export interface ArticleMeta {

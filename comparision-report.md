@@ -16,7 +16,7 @@ Báo cáo đã sẵn sàng. Tôi sẽ so sánh toàn diện và ghi ra file.
 | **FatSecret** | 12.9M/th | 1.9M verified | 18 năm, 24 ngôn ngữ, API cho developer | Quảng cáo + API |
 | **Lifesum** | 60M+ | Global | Multimodal tracking (snap/speak/type/scan), gamification | Freemium |
 | **Nutritionix** | 20K+ apps API | 1M+ foods | API cho business, restaurant platform | B2B licensing |
-| **Dinh Dưỡng Việt** | *(new)* | 671 foods + 410+ recipes | **Dữ liệu Việt Nam chuẩn, 22 tools, PWA, không cần đăng nhập** | *(free)* |
+| **Dinh dưỡng Việt** | *(new)* | 671 foods + 410+ recipes | **Dữ liệu Việt Nam chuẩn, 22 tools, PWA, không cần đăng nhập** | *(free)* |
 
 ---
 
@@ -24,7 +24,7 @@ Báo cáo đã sẵn sàng. Tôi sẽ so sánh toàn diện và ghi ra file.
 
 ### 1. Food Database / Tra cứu thực phẩm
 
-| Tính năng | MFP | Crono | Yazio | FatS | Dinh Dưỡng Việt |
+| Tính năng | MFP | Crono | Yazio | FatS | Dinh dưỡng Việt |
 |-----------|:---:|:-----:|:----:|:----:|:--------------:|
 | Số lượng thực phẩm | 20M+ | 1M+ | Global | 1.9M | **671** |
 | Dữ liệu Việt Nam | ❌ | ❌ | ❌ | ❌ | ✅ **Bảng TP VN 2007** |
@@ -40,11 +40,11 @@ Báo cáo đã sẵn sàng. Tôi sẽ so sánh toàn diện và ghi ra file.
 | Dinh dưỡng 1 khẩu phần | ❌ | ❌ | ❌ | ❌ | ✅ **tinh-nang-luong** |
 | Đổi đơn vị | ❌ | ❌ | ❌ | ❌ | ✅ **doi-don-vi** |
 
-> **Nhận xét**: Dinh Dưỡng Việt thua xa về **số lượng dữ liệu** (671 vs 1-20 triệu) nhưng THẮNG về **dữ liệu Việt Nam độc quyền**. Các công cụ tra cứu chuyên sâu (đổi đơn vị, so sánh, xếp hạng, lọc) là **unique selling point (USP)** — không app nào có.
+> **Nhận xét**: Dinh dưỡng Việt thua xa về **số lượng dữ liệu** (671 vs 1-20 triệu) nhưng THẮNG về **dữ liệu Việt Nam độc quyền**. Các công cụ tra cứu chuyên sâu (đổi đơn vị, so sánh, xếp hạng, lọc) là **unique selling point (USP)** — không app nào có.
 
 ### 2. Tracking / Nhật ký ăn uống
 
-| Tính năng | MFP | Crono | Yazio | FatS | Lifesum | Dinh Dưỡng Việt |
+| Tính năng | MFP | Crono | Yazio | FatS | Lifesum | Dinh dưỡng Việt |
 |-----------|:---:|:-----:|:----:|:----:|:-------:|:--------------:|
 | Daily food diary | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Meal slots (sáng/trưa/...) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ **5 bữa** |
@@ -124,7 +124,7 @@ Báo cáo đã sẵn sàng. Tôi sẽ so sánh toàn diện và ghi ra file.
 
 ## 🏆 Bảng điểm tổng quát
 
-| Tiêu chí | Dinh Dưỡng Việt | MyFitnessPal | Cronometer | Yazio | FatSecret |
+| Tiêu chí | Dinh dưỡng Việt | MyFitnessPal | Cronometer | Yazio | FatSecret |
 |----------|:--------------:|:-----------:|:---------:|:----:|:--------:|
 | 🥇 Dữ liệu VN | **A+** | F | F | F | F |
 | 📊 Tra cứu thực phẩm | **A** | A+ | A | A | A+ |
@@ -274,7 +274,7 @@ Báo cáo đã sẵn sàng. Tôi sẽ so sánh toàn diện và ghi ra file.
 
 ## 💡 Kết luận
 
-### Điểm mạnh tuyệt đối của Dinh Dưỡng Việt
+### Điểm mạnh tuyệt đối của Dinh dưỡng Việt
 - **Là web/app dinh dưỡng duy nhất có dữ liệu thực phẩm + món ăn Việt Nam đầy đủ**
 - **22 công cụ — nhiều nhất trong tất cả các app dinh dưỡng**
 - **Drug-food checker — không app nào có**
@@ -292,4 +292,4 @@ Báo cáo đã sẵn sàng. Tôi sẽ so sánh toàn diện và ghi ra file.
 - **Trung hạn**: AI food recognition bằng Gemini API (chi phí thấp)
 - **Dài hạn**: Native app + community + B2B
 
-> **Bottom line**: Dinh Dưỡng Việt đã vượt xa app Việt Nam hiện có và đang cạnh tranh sòng phẳng với quốc tế ở mảng dữ liệu Việt + công cụ chuyên sâu + y học. Không app nước ngoài nào có data VN. Cần mở rộng database + làm app mobile để đạt scale.
+> **Bottom line**: Dinh dưỡng Việt đã vượt xa app Việt Nam hiện có và đang cạnh tranh sòng phẳng với quốc tế ở mảng dữ liệu Việt + công cụ chuyên sâu + y học. Không app nước ngoài nào có data VN. Cần mở rộng database + làm app mobile để đạt scale.
