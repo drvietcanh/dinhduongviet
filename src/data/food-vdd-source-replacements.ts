@@ -10,6 +10,106 @@ export type VddSourceReplacement = {
 };
 
 export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
+  "cat-heo": {
+    sourceName: "Bầu dục lợn, tươi",
+    sourceCode: "7030",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp bầu dục/cật lợn tươi; không áp dụng cho bầu dục bò, lòng heo hoặc món xào có thêm dầu.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 81, proteinG: 13, carbG: 0.3, fatG: 3.1, saturatedFatG: 1.04,
+      calciumMg: 8, ironMg: 8, zincMg: 2.75, sodiumMg: 121, potassiumMg: 390, magnesiumMg: 17, phosphorusMg: 223,
+      vitaminAUg: 150, vitaminCMg: 5, seleniumMcg: 190, folateUg: 42
+    }
+  },
+  "dau-co-ve-hat": {
+    sourceName: "Đậu cô ve, hạt, khô",
+    sourceCode: "3003",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp hạt đậu cô ve khô; không áp dụng cho quả đậu cô ve non.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 335, proteinG: 21.8, carbG: 58.4, fatG: 1.6, fiberG: 3.5, calciumMg: 96, phosphorusMg: 360
+    }
+  },
+  "dua": {
+    sourceName: "Cùi dừa già, tươi",
+    sourceCode: "3001",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp cùi/cơm dừa già tươi; không áp dụng cho nước dừa, nước cốt dừa hoặc dừa non.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 385, proteinG: 4.8, carbG: 10.4, fatG: 36, fiberG: 4.2,
+      calciumMg: 30, ironMg: 30, zincMg: 5, sodiumMg: 7, potassiumMg: 555, magnesiumMg: 160, phosphorusMg: 154, vitaminCMg: 2
+    }
+  },
+  "trung-vit-lon": {
+    sourceName: "Trứng vịt lộn",
+    sourceCode: "9010",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp trứng vịt lộn; giá trị không áp dụng cho trứng vịt thường hoặc trứng chiên thêm dầu.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 182, proteinG: 13.6, fatG: 12.4, carbG: 4,
+      calciumMg: 81, ironMg: 3, sodiumMg: 94, potassiumMg: 131, magnesiumMg: 15, phosphorusMg: 212,
+      vitaminAUg: 911.25, vitaminCMg: 3
+    }
+  },
+  "long-trang-trung": {
+    sourceName: "Lòng trắng trứng gà",
+    sourceCode: "9003",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp lòng trắng trứng gà; không áp dụng cho lòng trắng đã chiên với dầu hoặc pha chế.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 46, proteinG: 10.3, fatG: 0.1, carbG: 1,
+      calciumMg: 19, ironMg: 0.3, sodiumMg: 215, potassiumMg: 172, phosphorusMg: 16, zincMg: 0.2
+    }
+  },
+  "long-do-trung": {
+    sourceName: "Lòng đỏ trứng gà",
+    sourceCode: "9002",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp lòng đỏ trứng gà; không áp dụng cho lòng đỏ chiên với dầu hoặc sốt mayonnaise.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 327, proteinG: 13.6, fatG: 29.8, carbG: 1, cholesterolMg: 1085,
+      calciumMg: 134, ironMg: 7, sodiumMg: 108, potassiumMg: 169, phosphorusMg: 532, zincMg: 3.7, vitaminAUg: 970.29
+    }
+  },
+  "long-den-trung-ga": {
+    sourceName: "Lòng đỏ trứng gà",
+    sourceCode: "9002",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp trực tiếp lòng đỏ trứng gà; không áp dụng cho lòng đỏ chiên với dầu hoặc sốt mayonnaise.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 327, proteinG: 13.6, fatG: 29.8, carbG: 1, cholesterolMg: 1085,
+      calciumMg: 134, ironMg: 7, sodiumMg: 108, potassiumMg: 169, phosphorusMg: 532, zincMg: 3.7, vitaminAUg: 970.29
+    }
+  },
+  "be-be": {
+    sourceName: "Tôm tít (bề bề)",
+    sourceCode: "8093",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp bề bề/tôm tít tươi; không áp dụng cho bề bề rang muối, nướng phô mai hoặc có sốt.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 82, proteinG: 17.6, fatG: 0.9, carbG: 0.9,
+      calciumMg: 79, ironMg: 1.6, sodiumMg: 148, potassiumMg: 185, phosphorusMg: 184, zincMg: 1.11, vitaminAUg: 20.42
+    }
+  },
+  "dau-rong": {
+    sourceName: "Đậu rồng, quả non, tươi",
+    sourceCode: "4032",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp đậu rồng quả non tươi; không áp dụng cho hạt đậu rồng già, món xào nhiều dầu hoặc đậu muối.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 40, proteinG: 1.9, fatG: 0.1, carbG: 7.9,
+      calciumMg: 63, ironMg: 1.3, phosphorusMg: 60, vitaminCMg: 22, vitaminAUg: 22.5
+    }
+  },
   "sua-tuoi": {
     sourceName: "Sữa bò tươi",
     sourceCode: "10001",
@@ -113,7 +213,7 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
     sourceName: "Quả bơ vỏ xanh, tươi",
     sourceCode: "5042",
     sourceNote: "Nguồn Viện Dinh dưỡng khớp bơ vỏ xanh tươi; các giống bơ khác có thể khác đáng kể về chất béo và năng lượng.",
-    sourceConfidence: "medium",
+    sourceConfidence: "high",
     hasCompleteCoreMacros: true,
     nutrients: {
       energyKcal: 103,
@@ -536,7 +636,7 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
       folateUg: 240
     }
   },
-  "hat-bi": {
+  "hat-bi-rang": {
     sourceName: "Hạt bí đỏ, rang",
     sourceCode: "3028",
     sourceNote: "Nguồn Viện Dinh dưỡng khớp hạt bí đỏ rang; không áp dụng cho hạt bí tẩm muối/đường hoặc hỗn hợp hạt.",
@@ -557,7 +657,7 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
       vitaminAUg: 19.58
     }
   },
-  "hat-huong-duong": {
+  "hat-huong-duong-rang": {
     sourceName: "Hạt hướng dương rang",
     sourceCode: "3041011",
     sourceNote: "Nguồn Viện Dinh dưỡng khớp hạt hướng dương rang; không áp dụng cho loại rang muối nhiều hoặc tẩm vị.",
@@ -585,31 +685,27 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
     }
   },
   "dau-ha-lan": {
-    sourceName: "Đậu Hà Lan, quả, tươi",
-    sourceCode: "4031",
-    sourceNote: "Nguồn Viện Dinh dưỡng khớp đậu Hà Lan quả tươi; mục app hiện ghi chung 'Đậu Hà Lan' nên đánh thận trọng, không áp dụng cho hạt khô/đậu hộp.",
-    sourceConfidence: "medium",
+    sourceName: "Đậu Hà lan, hạt, khô",
+    sourceCode: "3006",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp hạt đậu Hà Lan khô; không áp dụng cho quả đậu non/tươi hoặc đậu hộp.",
+    sourceConfidence: "high",
     hasCompleteCoreMacros: true,
     nutrients: {
-      energyKcal: 75,
-      proteinG: 6.5,
-      fatG: 0.29,
-      carbG: 11.71,
-      fiberG: 1,
-      sugarG: 5.67,
-      saturatedFatG: 0.07,
+      energyKcal: 342,
+      proteinG: 22.2,
+      fatG: 1.4,
+      carbG: 60.1,
+      fiberG: 6,
       calciumMg: 57,
-      ironMg: 0.8,
-      sodiumMg: 5,
-      potassiumMg: 244,
-      zincMg: 1.24,
-      magnesiumMg: 33,
-      phosphorusMg: 43,
-      seleniumMcg: 1.8,
-      vitaminCMg: 27,
-      vitaminAUg: 41.21,
-      vitaminEMg: 0.13,
-      folateUg: 65
+      ironMg: 4.4,
+      sodiumMg: 9,
+      potassiumMg: 135,
+      zincMg: 4,
+      magnesiumMg: 145,
+      phosphorusMg: 303,
+      seleniumMcg: 0.4,
+      vitaminCMg: 2,
+      vitaminAUg: 5.83
     }
   },
   "rau-ngot": {
@@ -1636,10 +1732,10 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
     sourceName: "Đậu phụ, sống",
     sourceCode: "3025",
     sourceNote: "Nguồn Viện Dinh dưỡng khớp đậu phụ sống theo 100g; không áp dụng cho đậu phụ chiên hoặc sốt.",
-    sourceConfidence: "medium",
-    hasCompleteCoreMacros: false,
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
     nutrients: {
-      proteinG: 10.9,
+      energyKcal: 97, proteinG: 10.9,
       fatG: 5.4,
       carbG: 1.1,
       fiberG: 0.4,
@@ -1985,26 +2081,15 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
     }
   },
   "me-vung": {
-    sourceName: "Vừng (đen, trắng), hạt, khô",
-    sourceCode: "3020",
-    sourceNote: "Nguồn Viện Dinh dưỡng gộp vừng đen và trắng; dùng cho mục mè/vừng tổng quát.",
-    sourceConfidence: "medium",
-    hasCompleteCoreMacros: false,
+    sourceName: "Vừng rang",
+    sourceCode: "3020011",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp vừng/mè rang; không áp dụng cho dầu mè hoặc muối vừng.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
     nutrients: {
-      proteinG: 20.1,
-      fatG: 46.4,
-      carbG: 21.1,
-      fiberG: 3.5,
-      sugarG: 0.3,
-      calciumMg: 975,
-      ironMg: 14.55,
-      sodiumMg: 11,
-      potassiumMg: 468,
-      zincMg: 7.75,
-      magnesiumMg: 351,
-      phosphorusMg: 629,
-      seleniumMcg: 5.7,
-      folateUg: 97
+      energyKcal: 607, proteinG: 20.94, carbG: 21.98, fatG: 48.33, fiberG: 3.65,
+      calciumMg: 1015.63, ironMg: 15.16, zincMg: 8.07, sodiumMg: 11.46, potassiumMg: 487.5,
+      magnesiumMg: 365.63, phosphorusMg: 655.21, vitaminAUg: 1.3, seleniumMcg: 5.94
     }
   },
   "me-trang": {
@@ -3385,6 +3470,27 @@ export const vddSourceReplacements: Record<string, VddSourceReplacement> = {
       seleniumMcg: 36.5,
       vitaminAUg: 20,
       folateUg: 5
+    }
+  },
+  "cua-be-hai-phong": {
+    sourceName: "Cua bể, tươi",
+    sourceCode: "8033",
+    sourceNote: "Nguồn Viện Dinh dưỡng khớp cua bể tươi, phần ăn được; không xác nhận xuất xứ địa phương hoặc món cua có thêm sốt.",
+    sourceConfidence: "high",
+    hasCompleteCoreMacros: true,
+    nutrients: {
+      energyKcal: 103,
+      proteinG: 17.5,
+      fatG: 0.6,
+      carbG: 7,
+      calciumMg: 141,
+      ironMg: 3.8,
+      zincMg: 1.4,
+      sodiumMg: 316,
+      potassiumMg: 322,
+      magnesiumMg: 48,
+      phosphorusMg: 191,
+      vitaminAUg: 35.8
     }
   },
   "cu-san": {

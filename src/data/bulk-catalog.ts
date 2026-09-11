@@ -658,6 +658,14 @@ function guessCategory(name: string): string {
 }
 
 const foodOverrides: Record<string, Partial<Food>> = {
+  "cat-heo": {
+    name: "Bầu dục lợn tươi",
+    aliases: ["cật heo", "cật lợn", "cat heo", "cat lon", "bầu dục heo", "bau duc lon", "pork kidney"],
+    category: "Thịt",
+    state: "raw",
+    basis: "100g phần ăn được",
+    edibleNote: "Bầu dục/cật lợn tươi, phần ăn được; khác với bầu dục bò, lòng non và lòng già."
+  },
   "gao-nep": {
     slug: "com-nep",
     name: "Cơm nếp",
@@ -688,6 +696,22 @@ const foodOverrides: Record<string, Partial<Food>> = {
     edibleNote: "Cơm gạo lứt đen đã nấu chín; không dùng thay cho 100g gạo lứt đen khô/chưa nấu.",
     note: "Dữ liệu bổ sung Giá trị tham khảo theo công thức; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đen đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
   },
+  "dau-co-ve-hat": {
+    name: "Đậu cô ve hạt khô",
+    aliases: ["dau co ve hat kho", "hat dau co ve kho", "dried common bean seeds"],
+    category: "Đậu",
+    state: "dried",
+    basis: "100g hạt khô",
+    edibleNote: "Hạt đậu cô ve khô; khác với quả đậu cô ve non dùng làm rau."
+  },
+  "cua-be-hai-phong": {
+    name: "Cua bể tươi",
+    aliases: ["cua be tuoi", "cua be", "cua be hai phong", "thit cua be tuoi"],
+    category: "Hải sản",
+    state: "raw",
+    basis: "100g phần ăn được",
+    edibleNote: "Cua bể tươi, phần thịt ăn được; nguồn không định danh địa phương nên không khẳng định xuất xứ Hải Phòng."
+  },
 };
 
 export const bulkFoods: Food[] = foodSeeds.slice(0, FOOD_TARGET).map((seed, index) => {
@@ -716,6 +740,7 @@ export const bulkFoods: Food[] = foodSeeds.slice(0, FOOD_TARGET).map((seed, inde
 
 function pickProtein(name: string) {
   const n = normalize(name);
+  if (n.includes("luon")) return "luon-tuoi-vdd";
   if (n.includes("bo")) return "thit-bo-nac";
   if (n.includes("ga")) return "uc-ga";
   if (n.includes("vit") || n.includes("ngan")) return "thit-vit";

@@ -355,10 +355,10 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "high-protein"],
     portionNote: "Miến lươn nước, dùng miến dong và lươn xào nghệ.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; chưa tách riêng lươn nên dùng cá lóc làm proxy đạm.",
+    note: "Giá trị tham khảo theo công thức; dùng lươn tươi theo dữ liệu nguồn Viện Dinh dưỡng, còn dầu xào nghệ và nước dùng vẫn thay đổi theo quán.",
     items: [
       { foodId: "mien-dong-lang-so", amountG: 75, note: "Miến dong khô" },
-      { foodId: "ca-loc", amountG: 90, note: "Proxy cho lươn" },
+      { foodId: "luon-tuoi-vdd", amountG: 90, note: "Lươn tươi" },
       { foodId: "nghe-tuoi", amountG: 5, note: "Nghệ" },
       { foodId: "dau-an", amountG: 8, note: "Dầu xào" },
       { foodId: "nuoc-dung-bo", amountG: 360, note: "Nước dùng" }
@@ -407,10 +407,10 @@ export const extraRecipes: Recipe[] = [
     tags: ["central-vietnam", "seafood"],
     portionNote: "Biến thể bún hến với rau sống, lạc và mắm ruốc.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; dùng cua bể làm proxy cho thịt hến nếu chưa có hến riêng.",
+    note: "Giá trị tham khảo theo công thức; dùng hến tươi theo dữ liệu nguồn Viện Dinh dưỡng, nhưng lượng lạc, tóp mỡ và mắm ruốc vẫn thay đổi theo hàng quán.",
     items: [
       { foodId: "bun-tuoi", amountG: 160, note: "Bún tươi" },
-      { foodId: "cua-be-hai-phong", amountG: 45, note: "Proxy thịt hến" },
+      { foodId: "hen-tuoi-vdd", amountG: 45, note: "Thịt hến" },
       { foodId: "lac-rang", amountG: 10, note: "Lạc rang" },
       { foodId: "mam-ruoc-hue", amountG: 5, note: "Mắm ruốc" },
       { foodId: "rau-thom-hanh", amountG: 30, note: "Rau thơm" }

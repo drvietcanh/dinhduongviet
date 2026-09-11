@@ -53,7 +53,7 @@ export const extraFoods6: Food[] = [
   // ── HẢI SẢN ──
   {
     id: "be-be", slug: "be-be", name: "Bề bề",
-    aliases: ["tom huyet", "mantis shrimp", "be be"],
+    aliases: ["tom tit", "tom tich", "mantis shrimp", "be be"],
     category: "Hải sản", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Bề bề (tôm tích) tươi, luộc/nướng.",
     nutrients: { energyKcal: 95, proteinG: 17, carbG: 0, fatG: 2.5, cholesterolMg: 130, calciumMg: 80, sodiumMg: 180, potassiumMg: 200, phosphorusMg: 190 },
@@ -365,10 +365,10 @@ export const extraFoods6: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "long-heo", slug: "long-heo", name: "Lòng heo",
-    aliases: ["long heo", "lòng lợn", "pork tripe"],
+    id: "long-heo", slug: "long-heo", name: "Lòng non heo",
+    aliases: ["lòng heo", "long heo", "lòng non lợn", "ruột non heo", "ruot non heo", "pork small intestine"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
-    edibleNote: "Lòng non heo, dùng luộc/xào phổ biến.",
+    edibleNote: "Lòng non/ruột non heo, dùng luộc/xào phổ biến; không phải lòng già hoặc dạ dày heo.",
     nutrients: { energyKcal: 85, proteinG: 13, carbG: 0.5, fatG: 3.5, cholesterolMg: 150, sodiumMg: 45, potassiumMg: 60, ironMg: 1.0 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },

@@ -426,7 +426,7 @@ export const extraRecipes3: Recipe[] = [
       { foodId: "mi-trung-tuoi", amountG: 80, note: "Mì trứng" },
       { foodId: "tom-su", amountG: 30, note: "Tôm" },
       { foodId: "muc-tuoi", amountG: 30, note: "Mực" },
-      { foodId: "bong-cai-xanh", amountG: 30, note: "Bông cải" },
+      { foodId: "sup-lo", amountG: 30, note: "Bông cải" },
       { foodId: "ca-rot", amountG: 20, note: "Cà rốt" },
       { foodId: "dau-an", amountG: 15, note: "Dầu chiên" },
       { foodId: "dau-hao", amountG: 8, note: "Dầu hào" }

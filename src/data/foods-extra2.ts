@@ -75,8 +75,8 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "dua", slug: "dua", name: "Dừa", aliases: ["coconut", "cơm dừa"],
-    category: "Trái cây", state: "raw", basis: "100g cơm dừa", edibleNote: "Cơm dừa già.",
+    id: "dua", slug: "dua", name: "Cùi dừa già tươi", aliases: ["dừa", "cùi dừa", "cơm dừa", "dừa khô", "coconut"],
+    category: "Hạt", state: "raw", basis: "100g phần ăn được", edibleNote: "Cùi/cơm dừa già tươi; không áp dụng cho nước dừa hoặc nước cốt dừa.",
     nutrients: { energyKcal: 354, proteinG: 3.3, carbG: 15.2, fatG: 33.5, fiberG: 9.0, calciumMg: 14, ironMg: 2.4, sodiumMg: 20, potassiumMg: 356 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
@@ -243,8 +243,8 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "me-vung", slug: "me-vung", name: "Mè/vừng", aliases: ["vừng", "sesame", "me"],
-    category: "Hạt và đậu", state: "raw", basis: "100g hạt khô", edibleNote: "Mè/vừng trắng rang.",
+    id: "me-vung", slug: "me-vung", name: "Vừng rang", aliases: ["vừng", "mè", "me rang", "mè rang", "sesame", "roasted sesame seeds"],
+    category: "Hạt", state: "processed", basis: "100g hạt rang", edibleNote: "Vừng/mè đã rang; không áp dụng cho dầu mè hoặc muối vừng.",
     nutrients: { energyKcal: 573, proteinG: 17.7, carbG: 23.5, fatG: 49.7, fiberG: 11.8, calciumMg: 975, ironMg: 14.6, sodiumMg: 11, potassiumMg: 468 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
@@ -261,8 +261,8 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "dau-ha-lan", slug: "dau-ha-lan", name: "Đậu Hà Lan", aliases: ["green pea", "dau ha lan"],
-    category: "Hạt và đậu", state: "raw", basis: "100g hạt khô", edibleNote: "Đậu Hà Lan hạt khô.",
+    id: "dau-ha-lan", slug: "dau-ha-lan", name: "Đậu Hà Lan hạt khô", aliases: ["dau ha lan hat kho", "dau ha lan kho", "dried peas"],
+    category: "Đậu", state: "dried", basis: "100g hạt khô", edibleNote: "Hạt đậu Hà Lan khô; khác với đậu Hà Lan non/tươi.",
     nutrients: { energyKcal: 352, proteinG: 24.6, carbG: 60.4, fatG: 1.4, fiberG: 15.5, calciumMg: 55, ironMg: 4.3, sodiumMg: 15, potassiumMg: 875 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },

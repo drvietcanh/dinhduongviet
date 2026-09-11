@@ -214,7 +214,7 @@ export const extraFoods9: Food[] = [
     id: "gao-lut-te-song-vdd",
     slug: "gao-lut-te-song-vdd",
     name: "Gạo lứt tẻ sống",
-    aliases: ["gao lut te song", "gao te chua xat", "brown rice raw"],
+    aliases: ["gao lut te song", "gao te chua xat", "gạo lật", "gao lat", "brown rice raw"],
     category: "Tinh bột",
     state: "raw",
     basis: "100g gạo sống",

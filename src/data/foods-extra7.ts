@@ -230,18 +230,18 @@ export const extraFoods7 = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "hat-bi-rang", slug: "hat-bi-rang", name: "Hạt bí rang",
-    aliases: ["hat bi rang", "roasted pumpkin seeds"],
-    category: "Hạt", state: "roasted", basis: "100g",
-    edibleNote: "Hạt bí rang muối, ăn vặt.",
+    id: "hat-bi-rang", slug: "hat-bi-rang", name: "Hạt bí đỏ rang",
+    aliases: ["hat bi do rang", "hat bi rang", "roasted pumpkin seeds"],
+    category: "Hạt", state: "processed", basis: "100g hạt rang",
+    edibleNote: "Hạt bí đỏ rang; không áp dụng cho hạt bí sống hoặc hạt tẩm đường/muối khác công thức.",
     nutrients: { energyKcal: 560, proteinG: 30, carbG: 15, fatG: 46, saturatedFatG: 8, fiberG: 6, sodiumMg: 350, potassiumMg: 800, magnesiumMg: 260, zincMg: 7.5, ironMg: 8 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
     id: "hat-huong-duong-rang", slug: "hat-huong-duong-rang", name: "Hạt hướng dương rang",
-    aliases: ["hat huong duong rang", "sunflower seeds roasted"],
-    category: "Hạt", state: "roasted", basis: "100g",
-    edibleNote: "Hạt hướng dương rang muối, ăn vặt.",
+    aliases: ["hat huong duong rang", "hat huong duong", "sunflower seeds roasted"],
+    category: "Hạt", state: "processed", basis: "100g hạt rang",
+    edibleNote: "Hạt hướng dương rang; không áp dụng cho hạt tẩm vị/muối có công thức khác.",
     nutrients: { energyKcal: 585, proteinG: 19, carbG: 25, fatG: 50, saturatedFatG: 5, fiberG: 8, sodiumMg: 380, potassiumMg: 680, vitaminEMg: 26, magnesiumMg: 130 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },

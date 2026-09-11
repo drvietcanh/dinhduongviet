@@ -71,7 +71,7 @@ export const extraRecipes5: Recipe[] = [
       { foodId: "bong-dien-dien", amountG: 80, note: "Bông điên điển" },
       { foodId: "tom-kho", amountG: 20, note: "Tôm khô" },
       { foodId: "ca-loc", amountG: 60, note: "Cá lóc" },
-      { foodId: "gia-tuoi", amountG: 30, note: "Giá" },
+      { foodId: "gia-do", amountG: 30, note: "Giá" },
       { foodId: "me", amountG: 10, note: "Me vắt" },
       { foodId: "hanh-la", amountG: 5, note: "Ngò om" },
       { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" }
@@ -740,7 +740,7 @@ export const extraRecipes5: Recipe[] = [
     items: [
       { foodId: "dau-phu", amountG: 60, note: "Đậu hũ chiên" },
       { foodId: "ca-chua", amountG: 50, note: "Cà chua" },
-      { foodId: "gia-tuoi", amountG: 40, note: "Giá" },
+      { foodId: "gia-do", amountG: 40, note: "Giá" },
       { foodId: "me", amountG: 10, note: "Me" },
       { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
       { foodId: "rau-thom-hanh", amountG: 10, note: "Ngò gai" }

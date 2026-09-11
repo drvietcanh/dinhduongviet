@@ -33,8 +33,21 @@ export type NutritionGoalResult = {
   bmiCategory?: string;
   isPersonalPrescription: false;
   shouldShowTargets: boolean;
-  energyEstimateStatus: "not_enabled_v1" | "needs_source_lock";
-  macroTargetStatus: "not_enabled_v1" | "needs_source_lock";
+  energyEstimateStatus: "available_adult_reference" | "not_enabled_v1" | "needs_source_lock";
+  macroTargetStatus: "available_adult_reference" | "not_enabled_v1" | "needs_source_lock";
+  energyReference?: {
+    bmrKcal: number;
+    maintenanceKcal: number;
+    activityFactor: number;
+    label: string;
+    sourceLabel: string;
+  };
+  macroReference?: {
+    carbohydrate: { minGrams: number; maxGrams: number; percentRange: string };
+    fat: { minGrams: number; maxGrams: number; percentRange: string };
+    label: string;
+    sourceLabel: string;
+  };
   proteinReference?: {
     mode: string;
     minGrams?: number;
@@ -55,8 +68,9 @@ const VALID_WEIGHT_MAX_KG = 300;
 const VALID_HEIGHT_MIN_CM = 100;
 const VALID_HEIGHT_MAX_CM = 250;
 
-const ENERGY_STATUS: NutritionGoalResult["energyEstimateStatus"] = "needs_source_lock";
-const MACRO_STATUS: NutritionGoalResult["macroTargetStatus"] = "needs_source_lock";
+const ENERGY_STATUS: NutritionGoalResult["energyEstimateStatus"] = "not_enabled_v1";
+const MACRO_STATUS: NutritionGoalResult["macroTargetStatus"] = "not_enabled_v1";
+const AVAILABLE_STATUS: NutritionGoalResult["energyEstimateStatus"] = "available_adult_reference";
 
 const GUARD_TEXT = "Wording guard passed: output uses estimate, reference, uncertainty, individualization, and no medication-adjustment language.";
 
@@ -64,8 +78,9 @@ const CLINICAL_MESSAGE =
   "Nhóm này cần cá thể hóa với bác sĩ hoặc dinh dưỡng viên; công cụ không hiển thị mục tiêu kcal, macro hoặc protein cá nhân.";
 
 const SOURCE_LABELS = [
-  "nutrition-goal-source-lock-v1: energy and macro targets are disabled until source-lock is complete.",
-  "tool-protein-source-lock-v1 and protein-requirement.ts are reused for protein references when safe.",
+  "NIDDK Body Weight Planner: phạm vi người lớn, không áp dụng cho thai kỳ hoặc cho con bú; BMR là ước tính theo Mifflin-St Jeor.",
+  "National Academies DRI: AMDR carbohydrate 45–65% và chất béo 20–35% năng lượng cho người lớn.",
+  "protein-requirement.ts: khoảng đạm chỉ được hiện khi bộ lọc an toàn cho phép.",
 ];
 
 function invalidResult(error: string): NutritionGoalResult {
@@ -91,6 +106,51 @@ function isValidNumber(value: number, min: number, max: number): boolean {
 export function calculateAdultBmi(weightKg: number, heightCm: number): number {
   const heightM = heightCm / 100;
   return Math.round((weightKg / (heightM * heightM)) * 10) / 10;
+}
+
+function roundKcal(value: number): number {
+  return Math.round(value);
+}
+
+export function calculateMifflinStJeorBmr(input: Pick<NutritionGoalInput, "sex" | "weightKg" | "heightCm" | "age">): number {
+  const sexAdjustment = input.sex === "male" ? 5 : -161;
+  return roundKcal(10 * input.weightKg + 6.25 * input.heightCm - 5 * input.age + sexAdjustment);
+}
+
+export function getActivityFactor(activityLevel: NutritionGoalInput["activityLevel"]): number {
+  if (activityLevel === "high") return 1.725;
+  if (activityLevel === "moderate") return 1.55;
+  return 1.2;
+}
+
+function getEnergyReference(input: NutritionGoalInput): NutritionGoalResult["energyReference"] {
+  const bmrKcal = calculateMifflinStJeorBmr(input);
+  const activityFactor = getActivityFactor(input.activityLevel);
+
+  return {
+    bmrKcal,
+    maintenanceKcal: roundKcal(bmrKcal * activityFactor),
+    activityFactor,
+    label: "Ước tính BMR và mức duy trì cho người lớn tương đối khỏe; không phải mức ăn bắt buộc.",
+    sourceLabel: "Mifflin-St Jeor; hệ số hoạt động chỉ là quy ước tham khảo (thấp 1,20; vừa 1,55).",
+  };
+}
+
+function getMacroReference(maintenanceKcal: number): NutritionGoalResult["macroReference"] {
+  return {
+    carbohydrate: {
+      minGrams: Math.round((maintenanceKcal * 0.45) / 4),
+      maxGrams: Math.round((maintenanceKcal * 0.65) / 4),
+      percentRange: "45–65% năng lượng",
+    },
+    fat: {
+      minGrams: Math.round((maintenanceKcal * 0.2) / 9),
+      maxGrams: Math.round((maintenanceKcal * 0.35) / 9),
+      percentRange: "20–35% năng lượng",
+    },
+    label: "Khoảng phân bố năng lượng đa lượng (AMDR), không phải macro tối ưu hoặc kế hoạch điều trị cá nhân.",
+    sourceLabel: "National Academies DRI (AMDR cho người lớn): carbohydrate 45–65%, chất béo 20–35% năng lượng.",
+  };
 }
 
 function getBmiCategory(bmi: number): string {
@@ -198,9 +258,15 @@ export function planNutritionGoal(input: NutritionGoalInput): NutritionGoalResul
     mode === "caution"
       ? [
           "Kết quả là tham khảo và có sai số; không dùng để hứa tốc độ thay đổi cân nặng.",
-          "Năng lượng, deficit, surplus và macro dạng số chưa bật vì còn cần khóa nguồn.",
+          "Năng lượng và macro cá thể hóa vẫn không hiển thị khi có yếu tố cần thận trọng.",
         ]
-      : ["Kết quả là tham khảo cho người trưởng thành tương đối khỏe; không thay thế tư vấn cá thể."];
+      : [
+          "BMR, mức duy trì và khoảng carbohydrate/chất béo là tham khảo cho người trưởng thành tương đối khỏe; không thay thế tư vấn cá thể.",
+          "Công cụ không tạo deficit, surplus, tốc độ giảm/tăng cân hoặc hướng dẫn chỉnh thuốc.",
+        ];
+
+  const energyReference = mode === "auto" ? getEnergyReference(input) : undefined;
+  const macroReference = energyReference ? getMacroReference(energyReference.maintenanceKcal) : undefined;
 
   return {
     ok: true,
@@ -209,8 +275,10 @@ export function planNutritionGoal(input: NutritionGoalInput): NutritionGoalResul
     bmiCategory,
     isPersonalPrescription: false,
     shouldShowTargets: true,
-    energyEstimateStatus: ENERGY_STATUS,
-    macroTargetStatus: MACRO_STATUS,
+    energyEstimateStatus: energyReference ? AVAILABLE_STATUS : ENERGY_STATUS,
+    macroTargetStatus: macroReference ? AVAILABLE_STATUS : MACRO_STATUS,
+    energyReference,
+    macroReference,
     proteinReference: getSafeProteinReference(input, cautionReasons),
     warnings,
     reasons: mode === "caution" ? cautionReasons : ["healthy_adult_reference"],

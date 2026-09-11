@@ -396,10 +396,14 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "ti-le-mo-co-the": {
     slug: "ti-le-mo-co-the",
-    status: "Trang định hướng v1 có nguồn",
+    status: "Chỉ số vòng eo/chiều cao có nguồn",
     summary:
-      "Trang này chưa phải máy tính % mỡ. Mục tiêu hiện tại là giúp người đọc hiểu vì sao các công thức và thiết bị ước tính thành phần cơ thể có thể cho kết quả khác nhau.",
+      "Trang tính vòng eo ÷ chiều cao như một chỉ số sàng lọc đơn giản, đồng thời giải thích vì sao không suy diễn chỉ số này thành % mỡ cơ thể.",
+    formulas: [
+      { label: "Vòng eo/chiều cao", value: "Vòng eo (cm) ÷ chiều cao (cm)" },
+    ],
     guidance: [
+      "Chỉ số vòng eo/chiều cao không phải % mỡ và không được dùng để chẩn đoán.",
       "Các phương pháp chu vi cơ thể, cân điện trở sinh học và kẹp mỡ đều có sai số và phụ thuộc cách đo.",
       "Nếu cần theo dõi thay đổi theo thời gian, nên giữ cùng một phương pháp và điều kiện đo thay vì so chéo quá nhiều thiết bị.",
     ],
@@ -409,16 +413,24 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     sources: [
       { label: "NIH/NCBI - Body Composition In The Military Services", url: "https://www.ncbi.nlm.nih.gov/books/NBK235939/" },
       { label: "PMC - Circumference-Based Predictions of Body Fat Revisited", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9008774/" },
+      { label: "Health.mil - Body Composition Testing", url: "https://www.health.mil/Reference-Center/Reports/2023/08/24/Body-Composition-Testing" },
     ],
   },
   "muc-tieu-can-nang": {
     slug: "muc-tieu-can-nang",
-    status: "Bộ lọc an toàn v1 có nguồn",
+    status: "Bộ lọc an toàn và ước tính tham khảo",
     summary:
-      "Tool này đang làm nhiệm vụ phân tầng an toàn và cho khoảng đạm tham khảo khi đủ điều kiện. Các số kcal, deficit hoặc surplus vẫn chủ động khóa ở v1.",
+      "Tool phân tầng an toàn, sau đó hiện BMR/Mức duy trì và khoảng carbohydrate/chất béo theo AMDR cho người lớn tương đối khỏe; deficit và surplus vẫn không tự động tạo.",
+    formulas: [
+      { label: "BMR Mifflin-St Jeor nam", value: "10 × kg + 6,25 × cm − 5 × tuổi + 5" },
+      { label: "BMR Mifflin-St Jeor nữ", value: "10 × kg + 6,25 × cm − 5 × tuổi − 161" },
+      { label: "Mức duy trì", value: "BMR × hệ số hoạt động (thấp 1,20; vừa 1,55)" },
+      { label: "Carbohydrate AMDR", value: "45–65% năng lượng ÷ 4 kcal/g" },
+      { label: "Chất béo AMDR", value: "20–35% năng lượng ÷ 9 kcal/g" },
+    ],
     guidance: [
       "BMI và các cờ lâm sàng chỉ dùng để sàng lọc xem có nên dừng tự dùng công cụ hay không.",
-      "Khi chỉ còn nhóm tham khảo cơ bản, khoảng đạm hiển thị vẫn là khoảng giáo dục chứ không phải toa cá nhân.",
+      "Chỉ người lớn không có cờ nguy cơ và không có mục tiêu giảm/tăng cân mới nhận BMR, mức duy trì và AMDR; khoảng đạm vẫn là khoảng giáo dục.",
     ],
     notFor: [
       "Không dùng tool này để tự đặt tốc độ giảm cân, tự chỉnh thuốc hoặc tự xây chế độ điều trị cho bệnh nền phức tạp.",
@@ -431,12 +443,18 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "muc-tieu-dinh-duong": {
     slug: "muc-tieu-dinh-duong",
-    status: "Bộ lọc an toàn v1 có nguồn",
+    status: "Bộ lọc an toàn và ước tính tham khảo",
     summary:
-      "Tool này ưu tiên phân tầng an toàn trước, sau đó chỉ bật khoảng đạm tham khảo khi bối cảnh đủ đơn giản. Năng lượng và macro cá nhân vẫn chưa được mở ở v1.",
+      "Tool ưu tiên phân tầng an toàn, rồi hiện BMR/mức duy trì và khoảng carbohydrate/chất béo AMDR chỉ trong bối cảnh người lớn tương đối khỏe.",
+    formulas: [
+      { label: "BMR Mifflin-St Jeor nam", value: "10 × kg + 6,25 × cm − 5 × tuổi + 5" },
+      { label: "BMR Mifflin-St Jeor nữ", value: "10 × kg + 6,25 × cm − 5 × tuổi − 161" },
+      { label: "Mức duy trì", value: "BMR × hệ số hoạt động (thấp 1,20; vừa 1,55)" },
+      { label: "Carbohydrate/chất béo", value: "AMDR: 45–65% và 20–35% năng lượng" },
+    ],
     guidance: [
       "Mục tiêu hiện tại là chặn bớt các tình huống dễ bị hiểu quá tay, nhất là khi có CKD, lọc máu, thai kỳ, sụt cân nhanh hoặc thuốc phức tạp.",
-      "Nếu mục tiêu là ăn lành mạnh hoặc duy trì, nên dùng thêm các tool bữa ăn và nhật ký thay vì cố ép mọi thứ về một con số.",
+      "Nếu mục tiêu là ăn lành mạnh hoặc duy trì, các con số là điểm khởi đầu để theo dõi; không phải kế hoạch điều trị hoặc macro tối ưu cho mọi người.",
     ],
     notFor: [
       "Không dùng tool này như hệ thống kê đơn kcal, macro, dịch hay muối cho người bệnh.",
@@ -571,6 +589,109 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     sources: [
       { label: "MedlinePlus - Medicines", url: "https://medlineplus.gov/medicines.html" },
       { label: "MedlinePlus - Drug Reactions and Interactions", url: "https://medlineplus.gov/drugreactions.html" },
+    ],
+  },
+  "bang-xep-hang": {
+    slug: "bang-xep-hang",
+    status: "Tra cứu và sắp xếp dữ liệu",
+    summary: "Trang sắp xếp các thực phẩm theo một dưỡng chất trên mỗi 100 g; không tính ra chỉ số sức khỏe hay khuyến nghị lượng ăn.",
+    guidance: [
+      "Thứ hạng chỉ có ý nghĩa trong cùng một dưỡng chất, cùng đơn vị 100 g và cùng phạm vi dữ liệu đang hiển thị.",
+      "Thực phẩm đứng đầu một dưỡng chất không tự động phù hợp với mọi chế độ ăn hoặc bệnh nền.",
+    ],
+    notFor: ["Không dùng thứ hạng thay cho khẩu phần cá thể, chẩn đoán hoặc thực đơn điều trị."],
+    sources: [
+      { label: "Viện Dinh dưỡng - Giá trị dinh dưỡng thực phẩm", url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/gia-tri-dinh-duong-thuc-pham" },
+    ],
+  },
+  "checklist-an-uong": {
+    slug: "checklist-an-uong",
+    status: "Checklist hành vi tự theo dõi",
+    summary: "Trang ghi lại các lựa chọn ăn uống trong ngày để hỗ trợ tự quan sát; không dùng công thức điểm hóa sức khỏe hay chấm điểm bệnh lý.",
+    guidance: ["Nên xem xu hướng nhiều ngày và điều chỉnh từng thói quen nhỏ thay vì suy diễn từ một ngày đơn lẻ."],
+    notFor: ["Không dùng checklist để chẩn đoán, thay thế nhật ký điều trị hoặc tự thay đổi thuốc."],
+    sources: [
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "danh-gia-bua-an": {
+    slug: "danh-gia-bua-an",
+    status: "Trang chọn công cụ",
+    summary: "Đây là hub dẫn tới công cụ tính carb, GL, đạm, nước và đánh giá khẩu phần; bản thân trang không tính chỉ số dinh dưỡng.",
+    guidance: ["Mỗi công cụ con có công thức, nguồn và giới hạn riêng; cần đọc đúng phạm vi của công cụ đã chọn."],
+    notFor: ["Không xem hub như một máy tính tổng hợp hay khuyến nghị điều trị."],
+    sources: [
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "danh-sach-di-cho": {
+    slug: "danh-sach-di-cho",
+    status: "Lập danh sách theo lựa chọn",
+    summary: "Trang tổng hợp danh sách mua sắm từ món hoặc thực phẩm người dùng chọn; không tính nhu cầu dinh dưỡng hay khẩu phần điều trị.",
+    guidance: ["Cần kiểm tra lại dị ứng, nhãn thực phẩm, lượng dùng thực tế và an toàn bảo quản trước khi mua."],
+    notFor: ["Không dùng danh sách này để thay thế thực đơn điều trị hoặc hướng dẫn dị ứng cá thể."],
+    sources: [
+      { label: "FDA - Food Safety", url: "https://www.fda.gov/food/buy-store-serve-safe-food/food-safety-home" },
+    ],
+  },
+  "dia-an-lanh-manh": {
+    slug: "dia-an-lanh-manh",
+    status: "Khung bữa ăn giáo dục",
+    summary: "Trang minh họa cách cân đối nhóm thực phẩm trong bữa ăn; không tạo tỷ lệ macro hoặc khẩu phần bắt buộc theo bệnh lý.",
+    guidance: ["Nên điều chỉnh món, lượng ăn, văn hóa ẩm thực và tình trạng sức khỏe theo từng người."],
+    notFor: ["Không dùng sơ đồ đĩa ăn như đơn điều trị cho bệnh thận, đái tháo đường, thai kỳ hoặc trẻ em."],
+    sources: [
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "ke-hoach-bua-an": {
+    slug: "ke-hoach-bua-an",
+    status: "Gợi ý kế hoạch bữa ăn",
+    summary: "Trang ghép món để người dùng lên ý tưởng bữa ăn; giá trị dinh dưỡng, nếu có, được lấy từ dữ liệu món/thực phẩm chứ không tạo mục tiêu điều trị mới.",
+    guidance: ["Kiểm tra lại khẩu phần, thành phần phụ, dị ứng và cách nấu trước khi dùng trong thực tế."],
+    notFor: ["Không dùng kế hoạch này thay cho thực đơn cá thể hóa cho bệnh nền hoặc điều trị."],
+    sources: [
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "lap-thuc-don-tuan": {
+    slug: "lap-thuc-don-tuan",
+    status: "Gợi ý thực đơn tuần",
+    summary: "Trang sắp xếp gợi ý món theo ngày; không suy diễn thành nhu cầu kcal, macro hoặc chỉ định bệnh lý cá nhân.",
+    guidance: ["Nên xem thực đơn như điểm khởi đầu và điều chỉnh theo khẩu phần, ngân sách, mùa vụ, dị ứng và tình trạng sức khỏe."],
+    notFor: ["Không dùng thực đơn tuần như phác đồ giảm cân hay dinh dưỡng điều trị."],
+    sources: [
+      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+    ],
+  },
+  "so-sanh": {
+    slug: "so-sanh",
+    status: "Trang chọn công cụ so sánh",
+    summary: "Đây là hub dẫn tới so sánh thực phẩm hoặc bữa ăn; bản thân trang không thực hiện phép tính hoặc xếp hạng sức khỏe.",
+    guidance: ["Kết quả ở các công cụ con phải được đọc cùng đơn vị, khối lượng và trạng thái chế biến."],
+    notFor: ["Không dùng hub để kết luận thực phẩm phù hợp bệnh lý."],
+    sources: [
+      { label: "Viện Dinh dưỡng - Giá trị dinh dưỡng thực phẩm", url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/gia-tri-dinh-duong-thuc-pham" },
+    ],
+  },
+  "them-thuc-pham-dong-goi": {
+    slug: "them-thuc-pham-dong-goi",
+    status: "Nhập nhãn thực phẩm có kiểm soát",
+    summary: "Trang hỗ trợ ghi thực phẩm đóng gói từ nhãn; không thay đổi số liệu dinh dưỡng bằng công thức suy diễn.",
+    guidance: ["Cần ưu tiên thông tin trên nhãn, khẩu phần ghi bởi nhà sản xuất và ngày cập nhật sản phẩm."],
+    notFor: ["Không dùng dữ liệu tự nhập thay cho thông tin sản phẩm khi nhãn đã thay đổi hoặc có yêu cầu dị ứng."],
+    sources: [
+      { label: "FDA - Nutrition Facts Label", url: "https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label" },
+    ],
+  },
+  "tra-cuu-thuc-pham-viet": {
+    slug: "tra-cuu-thuc-pham-viet",
+    status: "Tra cứu dữ liệu thực phẩm",
+    summary: "Trang tra cứu thực phẩm theo dữ liệu thư viện, tên gọi và alias đã kiểm duyệt; không tính khẩu phần hoặc đưa ra kết luận bệnh lý.",
+    guidance: ["Cần đối chiếu trạng thái tươi, luộc, khô hoặc chế biến và phần ăn trước khi dùng số liệu."],
+    notFor: ["Không dùng kết quả tìm kiếm thay cho khuyến nghị điều trị hoặc nhãn của một sản phẩm thương mại cụ thể."],
+    sources: [
+      { label: "Viện Dinh dưỡng - Giá trị dinh dưỡng thực phẩm", url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/gia-tri-dinh-duong-thuc-pham" },
     ],
   },
 };

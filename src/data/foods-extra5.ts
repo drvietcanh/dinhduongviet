@@ -150,7 +150,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "hat-nem", slug: "hat-nem", name: "Hạt nêm",
-    aliases: ["seasoning powder", "bot ngot", "hat nem"],
+    aliases: ["seasoning powder", "hat nem"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Hạt nêm heo/gà, mỗi hãng khác nhau.",
     nutrients: { energyKcal: 220, proteinG: 6, carbG: 40, fatG: 3, sodiumMg: 12000, potassiumMg: 80 },
@@ -316,7 +316,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "ca-tim-dep", slug: "ca-tim-dep", name: "Cà tím dẹp",
-    aliases: ["ca tim dep", "cà pháo dẹp", "ca bong"],
+    aliases: ["ca tim dep", "cà pháo dẹp"],
     category: "Rau xanh", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Cà tím dẹp kiểu Nam Bộ, dùng muối xổi hoặc luộc.",
     nutrients: { energyKcal: 25, proteinG: 1.0, carbG: 5.9, fatG: 0.2, fiberG: 3.1, calciumMg: 9, ironMg: 0.3, sodiumMg: 3, potassiumMg: 230, vitaminCMg: 5, glycemicIndex: 15 },

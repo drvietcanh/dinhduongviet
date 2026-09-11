@@ -323,3 +323,89 @@ Một số mục lệch lớn do khả năng khác định nghĩa thực phẩm,
 
 - `sua-tuoi` ← mã VDD `10001` (Sữa bò tươi): cập nhật năng lượng, đạm, béo, carbohydrate, đường, chất béo bão hòa, canxi, sắt, natri, kali, magie, phospho, selen, vitamin A/C/E và folate.
 - Không áp dụng cho sữa có đường, sữa hương vị hoặc sản phẩm thương mại khác công thức.
+
+## Batch tiếp tục — củ, hạt, trứng và thủy sản Việt (2026-09-11)
+
+Đã rà lại endpoint công cụ Viện Dinh dưỡng và chỉ nhập mục đơn thành phần có tên/trạng thái rõ ràng cùng đủ bốn chỉ số năng lượng, protein, carbohydrate và chất béo. Các payload thiếu một macro như củ dong, khoai riềng, rạm và rươi không được tự điền số hoặc ghi đè trong batch này.
+
+| Loại thay đổi | Slug | Mã Viện | Tên nguồn | Ghi chú |
+| --- | --- | --- | --- | --- |
+| Thêm mới | `cu-au-tuoi-vdd` | 2001 | Củ ấu, tươi | Phân biệt với củ ấu luộc/sấy hoặc món thêm đường. |
+| Thêm mới | `cu-san-day-tuoi-vdd` | 2005 | Củ sắn dây, tươi | Phân biệt với bột sắn dây đã lọc. |
+| Thêm mới | `khoai-nuoc-tuoi-vdd` | 2011 | Khoai nước, tươi | Ghi rõ cần nấu chín. |
+| Thêm mới | `hat-dua-hau-rang-vdd` | 3029 | Hạt dưa hấu, rang | Tính theo nhân hạt; hạt rang muối có natri cao hơn. |
+| Thêm mới | `hai-sam-tuoi-vdd` | 8036 | Hải sâm, tươi | Không áp dụng cho hải sâm khô đã ngâm nở. |
+| Thêm mới | `hen-tuoi-vdd` | 8037 | Hến, tươi | Sử dụng cho công thức bún hến/cơm hến; tính theo thịt ăn được. |
+| Thêm mới | `luon-tuoi-vdd` | 8038 | Lươn, tươi | Sử dụng cho công thức miến lươn; không thay cho món đã thêm miến/dầu/nước dùng. |
+| Thêm mới | `trai-nuoc-ngot-tuoi-vdd` | 8054 | Trai, nước ngọt, tươi | Tính theo thịt ăn được; nguồn có canxi cao. |
+| Thêm mới | `tu-hai-vdd` | 8094 | Tu hài | Nguồn công bố ít vi chất nhưng đủ macro. |
+| Ghi đè có kiểm soát | `trung-vit-lon` | 9010 | Trứng vịt lộn | Khớp trực tiếp; không áp dụng cho trứng chiên thêm dầu. |
+| Ghi đè có kiểm soát | `long-trang-trung` | 9003 | Lòng trắng trứng gà | Khớp mô tả hiện có là lòng trắng trứng gà. |
+| Ghi đè có kiểm soát | `long-do-trung`, `long-den-trung-ga` | 9002 | Lòng đỏ trứng gà | Đồng bộ hai bản ghi đang có, cùng phần ăn và trạng thái nguồn. |
+| Ghi đè có kiểm soát | `be-be` | 8093 | Tôm tít (bề bề) | Khớp trực tiếp tên đồng nghĩa bề bề/tôm tít tươi. |
+
+Hai công thức đã thôi dùng proxy đạm: `bun-hen-hue` và `com-hen` dùng hến tươi; `mien-luon-nghe-an` và recipe seed có chữ “lươn” dùng lươn tươi. Các món vẫn giữ `recipe-estimate-v1` vì lượng dầu, nước dùng và gia vị không có công thức chuẩn chung.
+
+## Batch mở rộng rau/củ/quả theo giống và trạng thái (2026-09-11)
+
+Thêm 15 thực phẩm đơn thành phần theo nguồn Viện Dinh dưỡng: khoai lang nghệ; cải bắp đỏ tươi/luộc; chuối xanh tươi/luộc; giá đậu tương; quả gấc tươi; quả khế tươi; măng tre khô; rau câu tươi; rau dền cơm; rau dền trắng; cải chíp; cà rốt luộc; mướp luộc. Mỗi bản ghi ghi rõ trạng thái để không lấy số liệu rau tươi cho món luộc hay nguyên liệu khô.
+
+`dau-rong` cũng được chuẩn hóa theo mã `4032` (đậu rồng quả non tươi), nhưng không tăng số lượng vì slug đã có. Không dùng nguồn này cho hạt đậu rồng già hoặc món xào.
+
+Chỉ mục tìm kiếm vùng miền được bổ sung riêng trong `food-search-alias-index.ts`. Ví dụ: bề bề ↔ tôm tít/tôm tích; cá lóc ↔ cá quả/cá chuối; khổ qua ↔ mướp đắng; rau ngổ ↔ ngò om. Alias “tôm huyết” đã được gỡ khỏi bề bề vì khác thực phẩm.
+
+## Batch 12 — đậu, hạt và trạng thái chế biến (2026-09-11)
+
+| Loại thay đổi | Slug | Mã Viện | Tên nguồn | Ghi chú |
+| --- | --- | ---: | --- | --- |
+| Bổ sung | `dau-dua-hat-kho-vdd`, `dau-tuong-hat-kho-vdd`, `dau-tay-trang-hat-kho-vdd` | 3005, 3007, 3008 | Đậu đũa/đậu tương/đậu tây trắng hạt khô | Phân biệt rõ hạt khô với đậu quả. |
+| Bổ sung | `hat-de-tuoi-vdd`, `hat-mit-tuoi-vdd`, `hat-dieu-chien-dau-vdd` | 3012, 3016, 3030 | Hạt dẻ, hạt mít, hạt điều khô chiên dầu | Giữ trạng thái tươi/chiên dầu của nguồn. |
+| Bổ sung | `dau-phu-luoc-vdd`, `dau-phu-nuong-vdd`, `hat-sen-tuoi-luoc-vdd`, `dau-ngu-luoc-vdd` | 3025002, 3027, 3039002, 3036002 | Thực phẩm luộc/nướng | Không gộp với nguyên liệu sống. |
+| Bổ sung | `hat-oc-cho-rang-vdd`, `hat-macca-rang-vdd`, `hat-de-cuoi-rang-vdd`, `hat-hanh-nhan-rang-vdd`, `bot-dau-xanh-vdd` | 3043011, 3044011, 3046011, 3042011, 3023 | Hạt rang và bột đậu xanh | Nêu rõ dạng chế biến trong tên/basis. |
+| Chuẩn hóa | `dau-co-ve-hat`, `dau-ha-lan`, `hat-bi-rang`, `me-vung` | 3003, 3006, 3028, 3020011 | Đậu/hạt khô, hạt bí đỏ rang, vừng rang | Sửa tên, nhóm và trạng thái; không tạo bản ghi cùng thực phẩm. |
+| Hiệu chỉnh | `dua`, `dau-phu`, `hat-huong-duong-rang` | 3001, 3025, 3029011 | Cùi dừa già tươi, đậu phụ sống, hạt hướng dương rang | Dừa chuyển sang nhóm Hạt; không gán alias “hạt dưa” cho hạt hướng dương. |
+
+Kết quả Batch 12: 830 thực phẩm; tất cả các mục nêu trên dùng số liệu từ cổng dữ liệu Viện Dinh dưỡng, đủ macro lõi và không tạo trùng slug/tên hiển thị.
+
+## Batch 13–14 — trái cây và hải sản có định danh (2026-09-11)
+
+| Batch | Phạm vi | Mã nguồn Viện | Kiểm soát tên/nhóm |
+| --- | --- | --- | --- |
+| 13 | Trái cây theo giống/dạng khô | 5010, 5012, 5020, 5027, 5028, 5032, 5033, 5036, 5041, 5045, 5053, 5058, 4105, 4106, 3018 | Muỗm ↔ quéo, táo mèo ↔ sơn tra; bơ vỏ tím tách bơ vỏ xanh; quả cọ xếp Hạt theo phân nhóm dinh dưỡng nguồn. |
+| 14 | Hải sản theo loài/trạng thái | 8042, 8044, 8044002, 8058, 8059, 8065, 8070002, 8074002, 8075002, 8076003, 8079002, 8080002, 8080014, 8081003, 8060 | Không gộp ốc/sò khác loài; tách luộc–hấp–nướng; cá chim nguồn không phân loài không thay cho cá chim trắng/đen. |
+
+`cua-be-hai-phong` được dùng mã 8033 của Cua bể tươi, nhưng tên hiển thị đã bỏ phần địa danh để tránh gán xuất xứ không có trong nguồn. Các trạng thái hải sản chín chỉ áp dụng cho phần thịt sau chế biến không thêm sốt/dầu.
+
+## Batch 15 — đạm động vật, phủ tạng và trứng (2026-09-11)
+
+| Loại thay đổi | Slug | Mã Viện | Tên nguồn | Kiểm soát tên/phạm vi |
+| --- | --- | ---: | --- | --- |
+| Thêm mới | `thit-ga-tay-tuoi-vdd`, `thit-trau-tuoi-vdd` | 7014, 7023 | Thịt gà tây; thịt trâu, tươi | Tách loài và trạng thái tươi; không dùng cho thịt quay hoặc thịt trâu gác bếp. |
+| Thêm mới | `bau-duc-bo-tuoi-vdd`, `gan-vit-tuoi-vdd`, `luoi-bo-tuoi-vdd`, `tim-bo-tuoi-vdd` | 7029, 7042, 7044, 7055 | Bầu dục bò, gan vịt, lưỡi bò, tim bò tươi | Tách phủ tạng theo loài/phần ăn; bầu dục ↔ cật nhưng không gộp cơ quan khác. |
+| Thêm mới | `long-gia-lon-tuoi-vdd`, `tiet-bo-tuoi-vdd`, `tiet-lon-tuoi-vdd`, `long-ga-ca-bo-tuoi-vdd` | 7046, 7058, 7060, 7082 | Ruột già lợn; tiết bò/lợn; lòng gà cả bộ | Lòng già khác lòng non; tiết ↔ huyết; bộ lòng không đại diện từng phủ tạng riêng. |
+| Thêm mới | `long-do-trung-vit-vdd`, `long-trang-trung-vit-vdd`, `trung-ca-muoi-vdd`, `trung-ga-cong-nghiep-vdd`, `bot-trung-vdd` | 9005, 9006, 9009, 9012, 9011 | Phần trứng vịt, trứng cá muối, trứng gà công nghiệp, bột trứng | Không gộp loài/phần trứng; trứng cá muối giữ natri cao đúng trạng thái muối; bột trứng không suy ra tỷ lệ pha hoàn nguyên. |
+| Chuẩn hóa mục có sẵn | `cat-heo` | 7030 | Bầu dục lợn, tươi | Không tạo bản ghi trùng: đổi tên hiển thị từ Cật heo, bổ sung alias lợn/heo và thay macro/vi chất bằng nguồn khớp trực tiếp. |
+| Sửa chỉ mục | `long-heo` | — | — | Đổi tên thành Lòng non heo; gỡ `pork tripe` vì nghĩa là dạ dày, không phải ruột non. |
+
+Kết quả: 875 thực phẩm; `qa:food-data` không ghi nhận trùng slug/tên, thiếu macro lõi hoặc alias cần cảnh báo; `qa:data-consistency` đạt cho cả ba API thực phẩm.
+
+## Batch 16 — ngũ cốc, củ và bột theo trạng thái (2026-09-11)
+
+| Phạm vi | Slug | Mã Viện | Kiểm soát tên/trạng thái |
+| --- | --- | --- | --- |
+| Ngũ cốc | `ke-hat-song-vdd`, `ngo-te-nuong-vdd`, `ngo-nep-nuong-vdd`, `bong-ngo-vdd`, `xoi-nep-cam-vdd` | 1006, 1007014, 1027014, 1015, 1024002 | Tách kê hạt sống, ngô tẻ/nếp nướng, bỏng ngô không phủ vị và xôi không topping. |
+| Củ chế biến | `cu-san-nuong-vdd`, `cu-sung-boc-vo-kho-vdd`, `khoai-lang-luoc-vdd`, `khoai-lang-nuong-vdd`, `khoai-so-luoc-vdd` | 2004014, 2006, 2008002, 2008014, 2013002 | Tách nướng/luộc/khô và phần ăn; củ súng không gộp với củ sen/ngó sen. |
+| Dạng khô/bột | `khoai-tay-kho-vdd`, `khoai-tay-lat-chien-vdd`, `san-cu-kho-vdd`, `bot-khoai-lang-vdd`, `bot-san-vdd` | 2023, 2024, 2025, 2017, 2020 | Không dùng giá trị khoai lát chiên cho khoai tươi; không đồng nhất bột sắn với bột sắn dây hay bột năng nhãn cụ thể. |
+
+Kết quả: 890 thực phẩm; tất cả mục mới có năng lượng, protein, carbohydrate và chất béo từ mục nguồn trực tiếp; `qa:food-data` và `qa:data-consistency` đạt.
+
+## Batch 17–24 — hoàn thành mốc 1.000 (2026-09-11)
+
+| Phạm vi | Mã Viện đại diện | Kiểm soát chỉ mục |
+| --- | --- | --- |
+| Đồ hộp, gia vị và thực phẩm nền bếp | 11002, 11003, 11016, 11022, 11023, 13001, 13002, 13006, 13008, 13010, 13013, 13019, 13020, 13044, 13067 | Dạng hộp/khô/chế biến không thay thế thực phẩm tươi, sốt hay nhãn khác. |
+| Trái cây, rau/củ/nấm | 5002–5056, 4003002–4130 | Giữ giống/phần ăn và trạng thái tươi, luộc hoặc khô theo chính tên nguồn. |
+| Thịt và phủ tạng đã nấu | 7040002, 7041002, 7043006, 7044002, 7045002, 7048002, 7049002, 7050002, 7054002, 7055002, 7057002, 7058002, 7085002, 7108002, 7123002 | Không gộp với phủ tạng sống hoặc thịt khác loài/phần cắt. |
+| Đậu/hạt, sữa, bánh kẹo và đồ uống | 3004, 3009, 3011, 3013, 3014, 3019–3022, 3024, 3026, 3031, 3033, 3038, 10006, 10007, 10015, 10048, 12001–12085, 14005, 14007, 14009, 14026, 14054 | Chỉ nhập mục có đủ bốn macro; lợn ↔ heo và lạc ↔ đậu phộng là alias cùng thực phẩm, các dạng khác vẫn tách riêng. |
+
+Đợt QA chốt ở mốc 1.000: 0 slug/tên hiển thị trùng, 0 thiếu macro lõi và 0 alias warning; APIs thực phẩm nhất quán.

@@ -7,6 +7,17 @@ import { extraFoods6 } from "./foods-extra6";
 import { extraFoods7 } from "./foods-extra7";
 import { extraFoods8 } from "./foods-extra8";
 import { extraFoods9 } from "./foods-extra9";
+import { extraFoods10 } from "./foods-extra10";
+import { extraFoods11 } from "./foods-extra11";
+import { extraFoods12 } from "./foods-extra12";
+import { extraFoods13 } from "./foods-extra13";
+import { extraFoods14 } from "./foods-extra14";
+import { extraFoods15 } from "./foods-extra15";
+import { extraFoods16 } from "./foods-extra16";
+import { extraFoods17 } from "./foods-extra17";
+import { extraFoods18 } from "./foods-extra18";
+import { extraFoods19 } from "./foods-extra19";
+import { foodSearchAliasIndex } from "./food-search-alias-index";
 import { vnMicronutrientOverrides } from "./food-vn-micronutrient-overrides";
 import { vddSourceReplacements } from "./food-vdd-source-replacements";
 import { foodQualityReviews } from "./food-quality-reviews";
@@ -1241,12 +1252,12 @@ foods.push(
   {
     id: "bo-trai",
     slug: "bo-trai",
-    name: "Bơ",
-    aliases: ["avocado", "bo trai"],
+    name: "Bơ vỏ xanh tươi",
+    aliases: ["avocado", "bo trai", "bơ", "bo", "bo vo xanh", "bo vo xanh tuoi"],
     category: "Trái cây",
     state: "raw",
-    basis: "100g phần ăn được",
-    edibleNote: "Quả bơ chín, phần thịt quả.",
+    basis: "100g phần thịt ăn được",
+    edibleNote: "Bơ vỏ xanh tươi, phần thịt quả ăn được; không dùng thay cho bơ vỏ tím hoặc bơ sáp.",
     nutrients: { energyKcal: 160, proteinG: 2.0, carbG: 8.5, fatG: 14.7, fiberG: 6.7, calciumMg: 12, ironMg: 0.6, sodiumMg: 7, potassiumMg: 485, vitaminCMg: 10 },
     sourceId: "recipe-estimate-v1",
     confidence: "low",
@@ -1367,7 +1378,7 @@ recipes.push(
     confidence: "low",
     note: "Giá trị tham khảo theo công thức; lượng mỡ, đường và nước mắm trong nước kho làm sai số lớn.",
     items: [
-      { foodId: "ba-chi-heo", amountG: 100, note: "Thịt ba chỉ" },
+      { foodId: "thit-ba-roi", amountG: 100, note: "Thịt ba chỉ" },
       { foodId: "trung-ga", amountG: 50, note: "Một trứng cỡ vừa" },
       { foodId: "nuoc-mam", amountG: 10, note: "Nước mắm/gia vị mặn" },
       { foodId: "duong-trang", amountG: 8, note: "Đường/nước màu" }
@@ -1792,6 +1803,7 @@ recipes.push(
     note: "Giá trị tham khảo theo công thức; lượng tóp mỡ và lạc rang thay đổi nhiều.",
     items: [
       { foodId: "com-trang", amountG: 200, note: "Cơm nguội" },
+      { foodId: "hen-tuoi-vdd", amountG: 45, note: "Thịt hến" },
       { foodId: "lac-rang", amountG: 8, note: "Lạc rang giã nhỏ" },
       { foodId: "dau-an", amountG: 3, note: "Tóp mỡ và dầu" }
     ]
@@ -1895,9 +1907,47 @@ foods.push(
     ...extraFoods7,
     ...extraFoods8,
     ...extraFoods9,
+    ...extraFoods10,
+    ...extraFoods11,
+    ...extraFoods12,
+    ...extraFoods13,
+    ...extraFoods14,
+    ...extraFoods15,
+    ...extraFoods16,
+    ...extraFoods17,
+    ...extraFoods18,
+    ...extraFoods19,
     ...bulkFoods
   ] as Food[])
 );
+
+// Các slug này là bản ghi cũ trùng cùng thực phẩm với mục chuẩn hơn theo tên,
+// trạng thái và/hoặc nguồn. Chúng được thay bằng `extraFoods19` để thư viện
+// vẫn có đúng 1.000 mục nhưng không công bố nhiều bản ghi cho cùng một thực phẩm.
+const duplicateFoodSlugsExcludedFromLibrary = new Set([
+  "ba-chi-heo",
+  "thit-ba-chi",
+  "cam-tuoi-vdd-5002",
+  "sua-dac-co-duong",
+  "thit-bo-xay",
+  "nam-meo",
+  "nam-rong",
+  "ngo-que",
+  "ngo-om",
+  "gia-tuoi",
+  "bong-cai-xanh",
+  "thit-nguoi-thuong",
+]);
+
+for (let index = foods.length - 1; index >= 0; index -= 1) {
+  if (duplicateFoodSlugsExcludedFromLibrary.has(foods[index].slug)) foods.splice(index, 1);
+}
+
+for (const food of foods) {
+  const searchIndexEntry = foodSearchAliasIndex[food.slug];
+  if (!searchIndexEntry) continue;
+  food.aliases = [...new Set([...food.aliases, ...searchIndexEntry.aliases])];
+}
 
 for (const food of foods) {
   const replacement = vddSourceReplacements[food.slug];

@@ -124,13 +124,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <p id="ngp-protein-source" class="ngp-muted"></p>
         </div>
 
-        <div class="ngp-alert">
-          <strong>Năng lượng và macro dạng số chưa bật ở v1 vì cần khóa nguồn rõ hơn.</strong>
-          <span>Công cụ hiện không đưa kcal hoặc macro cá nhân dạng số.</span>
+        <div id="ngp-energy-block" class="ngp-block" hidden>
+          <h3>Năng lượng tham khảo</h3>
+          <p id="ngp-energy-value" class="ngp-protein-value">-</p>
+          <p id="ngp-energy-detail" class="ngp-muted"></p>
+          <p id="ngp-energy-source" class="ngp-muted"></p>
+        </div>
+
+        <div id="ngp-macro-block" class="ngp-block" hidden>
+          <h3>Khoảng carbohydrate và chất béo</h3>
+          <p id="ngp-macro-value" class="ngp-protein-value">-</p>
+          <p id="ngp-macro-detail" class="ngp-muted"></p>
+          <p id="ngp-macro-source" class="ngp-muted"></p>
+        </div>
+
+        <div id="ngp-reference-note" class="ngp-alert">
+          <strong>Các số chỉ là ước tính tham khảo; không dùng để tự chỉnh thuốc, insulin, lợi tiểu hoặc thuốc giảm cân.</strong>
+          <span>Khi có cờ cần thận trọng hoặc cá thể hóa, công cụ sẽ không hiển thị năng lượng và macro dạng số.</span>
         </div>
 
         <div class="ngp-block">
-          <h3>Khóa nguồn v1</h3>
+          <h3>Nguồn và phạm vi</h3>
           <ul id="ngp-source-lock" class="ngp-list"></ul>
         </div>
       </aside>
@@ -199,6 +213,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     const proteinBlock = document.getElementById("ngp-protein-block");
     const proteinValue = document.getElementById("ngp-protein-value");
     const proteinSource = document.getElementById("ngp-protein-source");
+    const energyBlock = document.getElementById("ngp-energy-block");
+    const energyValue = document.getElementById("ngp-energy-value");
+    const energyDetail = document.getElementById("ngp-energy-detail");
+    const energySource = document.getElementById("ngp-energy-source");
+    const macroBlock = document.getElementById("ngp-macro-block");
+    const macroValue = document.getElementById("ngp-macro-value");
+    const macroDetail = document.getElementById("ngp-macro-detail");
+    const macroSource = document.getElementById("ngp-macro-source");
+    const referenceNote = document.getElementById("ngp-reference-note");
     const sourceLockList = document.getElementById("ngp-source-lock");
 
     function num(input) {
@@ -216,8 +239,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
 
     const warningText = {
-      auto: "Kết quả là tham khảo cho người trưởng thành tương đối khỏe.",
-      caution: "Các chỉ số dạng số về năng lượng và macro chưa bật vì cần khóa nguồn rõ hơn.",
+      auto: "BMR, mức duy trì và macro đều là khoảng tham khảo; không tạo kế hoạch giảm hay tăng cân.",
+      caution: "Có yếu tố cần thận trọng nên công cụ không hiển thị năng lượng và macro dạng số.",
       clinical_no_auto: "Nhóm này cần cá thể hóa với bác sĩ hoặc chuyên gia dinh dưỡng.",
     };
 
@@ -275,6 +298,32 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         proteinValue.textContent = "-";
         proteinSource.textContent = "";
       }
+
+      if (result.energyReference) {
+        energyBlock.hidden = false;
+        energyValue.textContent = `${result.energyReference.maintenanceKcal} kcal/ngày`;
+        energyDetail.textContent = `BMR ước tính: ${result.energyReference.bmrKcal} kcal/ngày · hệ số hoạt động: ${result.energyReference.activityFactor.toFixed(2).replace(".", ",")}. ${result.energyReference.label}`;
+        energySource.textContent = result.energyReference.sourceLabel;
+      } else {
+        energyBlock.hidden = true;
+        energyValue.textContent = "-";
+        energyDetail.textContent = "";
+        energySource.textContent = "";
+      }
+
+      if (result.macroReference) {
+        macroBlock.hidden = false;
+        const { carbohydrate, fat } = result.macroReference;
+        macroValue.textContent = `Carb ${carbohydrate.minGrams}-${carbohydrate.maxGrams} g · Chất béo ${fat.minGrams}-${fat.maxGrams} g/ngày`;
+        macroDetail.textContent = `Carb ${carbohydrate.percentRange}; chất béo ${fat.percentRange}. ${result.macroReference.label}`;
+        macroSource.textContent = result.macroReference.sourceLabel;
+      } else {
+        macroBlock.hidden = true;
+        macroValue.textContent = "-";
+        macroDetail.textContent = "";
+        macroSource.textContent = "";
+      }
+      referenceNote.hidden = Boolean(result.energyReference || result.macroReference);
 
       (result.sourceLabels ?? []).forEach((item) => {
         const li = document.createElement("li");

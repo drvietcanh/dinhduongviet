@@ -12,9 +12,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <h1>Tỷ lệ mỡ cơ thể tham khảo</h1>
     <p class="lead">
       Đây là trang định hướng để hiểu tỷ lệ mỡ cơ thể là gì, vì sao các công
-      thức ước tính có thể cho kết quả khác nhau, và khi nào nên hỏi bác sĩ
-      hoặc chuyên gia dinh dưỡng. Trang này không dùng để chẩn đoán hoặc tự đặt
-      mục tiêu điều trị.
+      thức ước tính có thể cho kết quả khác nhau. Bạn cũng có thể tính chỉ số
+      vòng eo/chiều cao để theo dõi một số đo sàng lọc đơn giản, không phải %
+      mỡ cơ thể hay chẩn đoán.
     </p>
   </section>
 
@@ -25,12 +25,36 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </div>
 
   <section class="section card">
-    <h2>Phạm vi hiện tại của tool</h2>
+    <h2>Chỉ số vòng eo/chiều cao</h2>
     <p class="muted">
-      Ở v1, trang này chủ động giữ vai trò giải thích và định hướng an toàn.
-      Công thức % mỡ từ vòng eo, vòng cổ hoặc cân điện trở chưa được bật như một
-      máy tính cá nhân vì sai số có thể tăng rõ ở người nhiều cơ, người cao
-      tuổi, thai kỳ, trẻ em hoặc khi cách đo không ổn định.
+      Công thức: vòng eo (cm) ÷ chiều cao (cm). Chỉ số này là một tham chiếu
+      sàng lọc dựa trên chu vi cơ thể; không quy đổi thành phần trăm mỡ và không
+      thay thế đánh giá thành phần cơ thể.
+    </p>
+    <form id="whtr-form" class="whtr-form">
+      <label>
+        <span>Vòng eo (cm)</span>
+        <input id="whtr-waist" type="number" min="30" max="250" step="0.1" value="80" inputmode="decimal" />
+      </label>
+      <label>
+        <span>Chiều cao (cm)</span>
+        <input id="whtr-height" type="number" min="100" max="250" step="0.1" value="160" inputmode="decimal" />
+      </label>
+      <button type="submit">Tính chỉ số</button>
+    </form>
+    <div id="whtr-result" class="whtr-result" aria-live="polite">
+      <strong id="whtr-value">-</strong>
+      <p id="whtr-formula"></p>
+      <p id="whtr-note"></p>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Phạm vi của công cụ</h2>
+    <p class="muted">
+      Công cụ chủ động không ước tính % mỡ từ vòng eo, vòng cổ hoặc cân điện
+      trở vì sai số có thể tăng rõ ở người nhiều cơ, người cao tuổi, thai kỳ,
+      trẻ em hoặc khi cách đo không ổn định.
     </p>
   </section>
 
@@ -112,6 +136,34 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       pháp đo và tư vấn chuyên môn thay vì chỉ dựa vào một công thức ước tính.
     </p>
   </section>
+
+  <script>
+    import { calculateWaistToHeightRatio } from "../../lib/waist-to-height";
+
+    const form = document.getElementById("whtr-form");
+    const waistInput = document.getElementById("whtr-waist");
+    const heightInput = document.getElementById("whtr-height");
+    const value = document.getElementById("whtr-value");
+    const formula = document.getElementById("whtr-formula");
+    const note = document.getElementById("whtr-note");
+
+    function render() {
+      const result = calculateWaistToHeightRatio(
+        Number.parseFloat(waistInput.value),
+        Number.parseFloat(heightInput.value),
+      );
+      value.textContent = result.ok && typeof result.ratio === "number" ? result.ratio.toFixed(2) : "-";
+      formula.textContent = result.ok ? result.formula ?? "" : result.error ?? "";
+      note.textContent = result.interpretation;
+    }
+
+    form?.addEventListener("input", render);
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      render();
+    });
+    render();
+  </script>
 </BaseLayout>
 
 <style>
@@ -123,6 +175,55 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .safe-list li + li {
     margin-top: 8px;
   }
+
+  .whtr-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+    gap: 12px;
+    align-items: end;
+    margin-top: 16px;
+  }
+
+  .whtr-form label span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--ink-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .whtr-form input {
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    color: var(--ink);
+  }
+
+  .whtr-form button {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .whtr-result {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-elevated);
+  }
+
+  .whtr-result strong { font-size: 1.35rem; color: var(--brand); }
+  .whtr-result p { margin: 5px 0 0; color: var(--ink-secondary); line-height: 1.5; font-size: 0.9rem; }
 
   .mini-card {
     padding: 14px;
@@ -141,5 +242,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     color: var(--ink-secondary);
     line-height: 1.6;
     font-size: 0.92rem;
+  }
+
+  @media (max-width: 620px) {
+    .whtr-form { grid-template-columns: 1fr; }
   }
 </style>

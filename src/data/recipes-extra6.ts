@@ -111,7 +111,7 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Bông cải xanh (súp lơ) xào tỏi thơm, có thể thêm nấm.",
     items: [
-      { foodId: "bong-cai-xanh", amountG: 180, note: "Bông cải xanh" },
+      { foodId: "sup-lo", amountG: 180, note: "Bông cải xanh" },
       { foodId: "toi", amountG: 5, note: "Tỏi băm" },
       { foodId: "dau-an", amountG: 5, note: "Dầu ăn" },
       { foodId: "nuoc-mam", amountG: 3, note: "Nêm" },
@@ -220,7 +220,7 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Thịt ba chỉ kho trứng vịt, nước màu, tiêu.",
     items: [
-      { foodId: "thit-ba-chi", amountG: 100, note: "Thịt ba chỉ" },
+      { foodId: "thit-ba-roi", amountG: 100, note: "Thịt ba chỉ" },
       { foodId: "trung-vit", amountG: 80, note: "Trứng vịt luộc" },
       { foodId: "nuoc-dung-bo", amountG: 100, note: "Nước dừa/nước" },
       { foodId: "nuoc-mam", amountG: 10, note: "Nước mắm" },
@@ -316,7 +316,7 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Thịt ba chỉ luộc chín tới, chấm nước mắm mặn.",
     items: [
-      { foodId: "thit-ba-chi", amountG: 150, note: "Thịt ba chỉ" },
+      { foodId: "thit-ba-roi", amountG: 150, note: "Thịt ba chỉ" },
       { foodId: "rau-thom-hanh", amountG: 10, note: "Rau thơm trang trí" },
     ]
   },
@@ -498,7 +498,7 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Rau củ các loại xào tỏi, thanh đạm.",
     items: [
-      { foodId: "bong-cai-xanh", amountG: 60, note: "Bông cải xanh" },
+      { foodId: "sup-lo", amountG: 60, note: "Bông cải xanh" },
       { foodId: "ca-rot", amountG: 40, note: "Cà rốt" },
       { foodId: "sup-lo-trang", amountG: 40, note: "Súp lơ trắng" },
       { foodId: "nam-huong", amountG: 20, note: "Nấm hương" },

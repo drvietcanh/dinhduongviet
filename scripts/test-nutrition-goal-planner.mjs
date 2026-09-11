@@ -71,11 +71,11 @@ function expectClinical(overrides, reason) {
   assert.ok(result.reasons.includes(reason), `${reason} reason should be present`);
 }
 
-function assertNoDisabledNumericTargets(result) {
+function assertNoRestrictedNumericTargets(result) {
   const serialized = JSON.stringify(result);
   for (const forbiddenKey of [
-    "bmr",
-    "tdee",
+    "energyReference",
+    "macroReference",
     "kcalDeficit",
     "kcalSurplus",
     "dailyDeficit",
@@ -88,11 +88,11 @@ function assertNoDisabledNumericTargets(result) {
     assert.equal(
       serialized.includes(forbiddenKey),
       false,
-      `serialized output must not include disabled numeric target key ${forbiddenKey}`,
+      `restricted output must not include numeric reference key ${forbiddenKey}`,
     );
   }
-  assert.equal(result.energyEstimateStatus, "needs_source_lock");
-  assert.equal(result.macroTargetStatus, "needs_source_lock");
+  assert.equal(result.energyEstimateStatus, "not_enabled_v1");
+  assert.equal(result.macroTargetStatus, "not_enabled_v1");
 }
 
 function assertNoForbiddenWording(result) {
@@ -120,6 +120,21 @@ try {
   assert.equal(maintain.bmiCategory, "adult_reference_range");
   assert.ok(maintain.proteinReference, "healthy adult should get safe protein reference");
   assert.equal(maintain.proteinReference.mode, "auto");
+  assert.equal(maintain.energyEstimateStatus, "available_adult_reference");
+  assert.equal(maintain.macroTargetStatus, "available_adult_reference");
+  assert.deepEqual(maintain.energyReference, {
+    bmrKcal: 1295,
+    maintenanceKcal: 2007,
+    activityFactor: 1.55,
+    label: "Ước tính BMR và mức duy trì cho người lớn tương đối khỏe; không phải mức ăn bắt buộc.",
+    sourceLabel: "Mifflin-St Jeor; hệ số hoạt động chỉ là quy ước tham khảo (thấp 1,20; vừa 1,55).",
+  });
+  assert.deepEqual(maintain.macroReference, {
+    carbohydrate: { minGrams: 226, maxGrams: 326, percentRange: "45–65% năng lượng" },
+    fat: { minGrams: 45, maxGrams: 78, percentRange: "20–35% năng lượng" },
+    label: "Khoảng phân bố năng lượng đa lượng (AMDR), không phải macro tối ưu hoặc kế hoạch điều trị cá nhân.",
+    sourceLabel: "National Academies DRI (AMDR cho người lớn): carbohydrate 45–65%, chất béo 20–35% năng lượng.",
+  });
 
   const healthyEating = plan({ goal: "healthy_eating" });
   expectMode(healthyEating, "auto");
@@ -127,6 +142,7 @@ try {
   const mildLoss = plan({ goal: "mild_weight_loss" });
   expectMode(mildLoss, "caution");
   assert.ok(mildLoss.reasons.includes("mild_weight_loss"));
+  assertNoRestrictedNumericTargets(mildLoss);
   assert.equal("kcalDeficit" in mildLoss, false, "mild loss should not output deficit data");
   assert.equal("dailyDeficit" in mildLoss, false, "mild loss should not output daily deficit data");
   assert.equal(JSON.stringify(mildLoss).includes("kg/tuần"), false, "mild loss should not promise weekly speed");
@@ -134,6 +150,7 @@ try {
   const mildGain = plan({ goal: "mild_weight_gain" });
   expectMode(mildGain, "caution");
   assert.ok(mildGain.reasons.includes("mild_weight_gain"));
+  assertNoRestrictedNumericTargets(mildGain);
   assert.equal("kcalSurplus" in mildGain, false, "mild gain should not output surplus data");
   assert.equal("dailySurplus" in mildGain, false, "mild gain should not output daily surplus data");
 
@@ -186,7 +203,7 @@ try {
     plan({ redFlags: { chronicKidneyDisease: true } }),
   ]) {
     assertNoForbiddenWording(result);
-    assertNoDisabledNumericTargets(result);
+    if (result.mode !== "auto") assertNoRestrictedNumericTargets(result);
     assert.equal(result.isPersonalPrescription, false);
   }
 
