@@ -58,22 +58,24 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     </div>
   </div>
 
-  <div class="library-search-panel">
-    <label class="library-search-label" for="food-library-search">Tìm trong toàn bộ thư viện</label>
-    <div class="library-search-field">
-      <span class="search-symbol" aria-hidden="true">⌕</span>
-      <input id="food-library-search" type="search" autocomplete="off" placeholder="Ví dụ: bề bề, tôm tít, rau muống, sữa chua..." />
-      <button id="clear-library-search" class="search-clear" type="button" hidden aria-label="Xóa từ khóa">×</button>
-    </div>
-    <p id="library-search-hint" class="library-search-hint">Tên khác và cách gọi địa phương cũng được dò tìm.</p>
-    <div class="search-presets" aria-label="Gợi ý tìm nhanh">
-      <button type="button" data-search-preset="bề bề">Bề bề / tôm tít</button>
-      <button type="button" data-search-preset="rau xanh">Rau xanh</button>
-      <button type="button" data-search-tag="low-sodium">Ít natri</button>
-      <button type="button" data-search-tag="high-protein">Giàu đạm</button>
-    </div>
-  </div>
 </section>
+
+<div class="library-search-panel">
+  <label class="library-search-label" for="food-library-search">Tìm trong toàn bộ thư viện</label>
+  <div class="library-search-field">
+    <span class="search-symbol" aria-hidden="true">⌕</span>
+    <input id="food-library-search" type="search" autocomplete="off" placeholder="Ví dụ: bề bề, tôm tít, rau muống, sữa chua..." aria-controls="food-search-suggestions" aria-autocomplete="list" />
+    <button id="clear-library-search" class="search-clear" type="button" hidden aria-label="Xóa từ khóa">×</button>
+  </div>
+  <div id="food-search-suggestions" class="food-search-suggestions" role="listbox" hidden></div>
+  <p id="library-search-hint" class="library-search-hint">Tên khác và cách gọi địa phương cũng được dò tìm.</p>
+  <div class="search-presets" aria-label="Gợi ý tìm nhanh">
+    <button type="button" data-search-preset="bề bề">Bề bề / tôm tít</button>
+    <button type="button" data-search-preset="rau xanh">Rau xanh</button>
+    <button type="button" data-search-tag="low-sodium">Ít natri</button>
+    <button type="button" data-search-tag="high-protein">Giàu đạm</button>
+  </div>
+</div>
 
 <section class="library-overview" aria-labelledby="food-group-title">
   <div class="overview-heading">
@@ -97,6 +99,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
           <small>{category.description}</small>
         </span>
         <span class="category-tile-count"><b>{category.count}</b><em>{category.share}%</em></span>
+        <span class="category-tile-bar" aria-hidden="true"><i style={`width:${Math.max(8, category.share)}%`}></i></span>
       </button>
     ))}
   </div>
@@ -166,6 +169,8 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     </div>
   </details>
 
+  <div id="active-filter-chips" class="active-filter-chips" aria-label="Bộ lọc đang áp dụng" hidden></div>
+
   <div id="food-library-grid" class="food-library-grid" aria-live="polite">
     <div class="food-card-skeleton"></div><div class="food-card-skeleton"></div><div class="food-card-skeleton"></div>
   </div>
@@ -188,7 +193,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   .hero-orb { position: absolute; pointer-events: none; border-radius: 999px; filter: blur(1px); }
   .hero-orb-one { width: 270px; height: 270px; top: -170px; right: 6%; background: rgba(16, 185, 129, .16); }
   .hero-orb-two { width: 180px; height: 180px; bottom: -125px; left: 37%; background: rgba(250, 204, 21, .14); }
-  .library-hero-copy, .library-search-panel { position: relative; z-index: 1; }
+  .library-hero-copy { position: relative; z-index: 1; }
   .library-hero-copy { max-width: 760px; }
   .library-eyebrow, .section-kicker { margin: 0 0 8px; color: var(--brand-dark); font-size: .72rem; font-weight: 850; letter-spacing: .12em; }
   .library-hero h1 { max-width: 720px; margin: 0; font-size: clamp(2rem, 4vw, 3.35rem); line-height: 1.08; letter-spacing: -.045em; }
@@ -197,7 +202,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   .hero-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
   .hero-facts span { display: inline-flex; align-items: center; gap: 5px; min-height: 34px; padding: 6px 11px; border: 1px solid rgba(5, 150, 105, .16); border-radius: 999px; background: rgba(255,255,255,.68); color: var(--ink-secondary); font-size: .78rem; }
   .hero-facts strong { color: var(--brand-dark); font-size: .9rem; }
-  .library-search-panel { max-width: 760px; margin-top: 24px; padding: 15px; border: 1px solid rgba(5, 150, 105, .2); border-radius: 18px; background: rgba(255,255,255,.82); box-shadow: 0 18px 45px rgba(5, 150, 105, .08); }
+  .library-search-panel { position: sticky; top: 12px; z-index: 20; max-width: 760px; margin: -30px auto 0; padding: 15px; border: 1px solid rgba(5, 150, 105, .2); border-radius: 18px; background: rgba(255,255,255,.92); box-shadow: 0 18px 45px rgba(5, 150, 105, .12); backdrop-filter: blur(12px); }
   .library-search-label { display: block; margin-bottom: 8px; color: var(--ink); font-size: .82rem; font-weight: 800; }
   .library-search-field { display: flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 12px; border: 1px solid var(--card-border); border-radius: 14px; background: var(--card); transition: border-color .2s ease, box-shadow .2s ease; }
   .library-search-field:focus-within { border-color: var(--brand); box-shadow: 0 0 0 4px rgba(5,150,105,.13); }
@@ -206,6 +211,12 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   .library-search-field input::placeholder { color: var(--ink-tertiary); }
   .search-clear { width: 28px; height: 28px; border: 0; border-radius: 999px; background: var(--bg-soft); color: var(--ink-secondary); cursor: pointer; font-size: 1.3rem; line-height: 1; }
   .search-clear:hover { background: var(--brand-light); color: var(--brand-dark); }
+  .food-search-suggestions { overflow: hidden; margin-top: 7px; border: 1px solid var(--card-border); border-radius: 13px; background: var(--card); box-shadow: var(--shadow-sm); }
+  .food-search-suggestion { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 42px; padding: 7px 10px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; font: inherit; text-align: left; }
+  .food-search-suggestion:last-child { border-bottom: 0; }
+  .food-search-suggestion:hover, .food-search-suggestion:focus-visible { background: var(--brand-light); outline: 0; }
+  .food-search-suggestion strong { overflow: hidden; font-size: .8rem; text-overflow: ellipsis; white-space: nowrap; }
+  .food-search-suggestion small { flex: 0 0 auto; color: var(--ink-tertiary); font-size: .68rem; }
   .library-search-hint { margin: 8px 0 0; color: var(--ink-tertiary); font-size: .76rem; }
   .search-presets { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
   .search-presets button { min-height: 30px; padding: 4px 9px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--bg-soft); color: var(--ink-secondary); cursor: pointer; font: inherit; font-size: .75rem; font-weight: 700; }
@@ -228,6 +239,8 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   .category-tile-count { display: grid; justify-items: end; gap: 2px; }
   .category-tile-count b { color: var(--brand-dark); font-size: 1.05rem; }
   .category-tile-count em { color: var(--ink-tertiary); font-size: .66rem; font-style: normal; }
+  .category-tile-bar { grid-column: 2 / -1; display: block; height: 4px; overflow: hidden; border-radius: 999px; background: var(--bg-soft); }
+  .category-tile-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-light2), var(--brand)); }
   .catalog-section { scroll-margin-top: 92px; padding-top: 4px; }
   .catalog-summary { min-height: 22px; }
   .reset-library-filters { min-height: 36px; padding: 6px 10px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font: inherit; font-size: .76rem; font-weight: 750; }
@@ -248,6 +261,10 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   .tag-filter:hover { border-color: var(--brand-light2); color: var(--brand-dark); }
   .tag-filter.active { border-color: var(--brand); background: var(--brand); color: white; }
   .advanced-filter-note { margin: 11px 0 0; color: var(--ink-tertiary); font-size: .75rem; line-height: 1.5; }
+  .active-filter-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .active-filter-chip { display: inline-flex; align-items: center; gap: 5px; min-height: 29px; padding: 4px 8px 4px 10px; border: 1px solid var(--brand-light2); border-radius: 999px; background: var(--brand-light); color: var(--brand-dark); cursor: pointer; font: inherit; font-size: .71rem; font-weight: 750; }
+  .active-filter-chip span { display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 99px; background: rgba(5,150,105,.14); font-size: .86rem; line-height: 1; }
+  .active-filter-chip:hover { border-color: var(--brand); background: #d1fae5; }
   .food-library-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
   :global(.food-library-card) { display: grid; grid-template-columns: 43px minmax(0, 1fr); gap: 11px; min-height: 164px; padding: 13px; border: 1px solid var(--card-border); border-radius: 16px; background: var(--card); color: var(--ink); text-decoration: none; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
   :global(.food-library-card:hover) { transform: translateY(-2px); border-color: var(--brand-light2); box-shadow: var(--shadow-sm); }
@@ -257,6 +274,11 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   :global(.food-library-card h3) { margin: 0; font-size: .92rem; line-height: 1.35; }
   :global(.food-library-card-base) { flex: 0 0 auto; color: var(--ink-tertiary); font-size: .67rem; white-space: nowrap; }
   :global(.food-library-category) { display: inline-block; max-width: 100%; overflow: hidden; margin-top: 4px; color: var(--brand-dark); font-size: .69rem; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+  :global(.food-library-card-meta) { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  :global(.food-library-card-meta span) { display: inline-flex; align-items: center; min-height: 21px; padding: 2px 6px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-secondary); font-size: .64rem; font-weight: 700; }
+  :global(.food-library-card-meta .food-state) { background: #fff7ed; color: #9a3412; }
+  :global(.food-library-card-meta .food-trust.is-verified) { background: var(--brand-light); color: var(--brand-dark); }
+  :global(.food-library-card-meta .food-trust.is-review) { background: #fffbeb; color: #92400e; }
   :global(.food-library-metrics) { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
   :global(.food-library-metrics span), :global(.food-library-tag) { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 7px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-secondary); font-size: .68rem; }
   :global(.food-library-tags) { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
@@ -277,7 +299,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   .load-more-button:hover { background: var(--brand-dark); }
   .show-all-button:hover { border-color: var(--brand-light2); color: var(--brand-dark); }
   @media (max-width: 900px) { .category-directory, .food-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .numeric-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 680px) { .library-hero { padding: 22px 16px; border-radius: 20px; } .library-hero h1 { font-size: 2rem; } .library-lead { font-size: .9rem; } .library-search-panel { margin-top: 20px; padding: 12px; } .overview-heading, .catalog-heading { align-items: flex-start; flex-direction: column; gap: 10px; } .catalog-controls { grid-template-columns: 1fr; } .data-status { white-space: normal; } }
+  @media (max-width: 680px) { .library-hero { padding: 22px 16px; border-radius: 20px; } .library-hero h1 { font-size: 2rem; } .library-lead { font-size: .9rem; } .library-search-panel { top: 8px; margin: -18px 8px 0; padding: 12px; } .overview-heading, .catalog-heading { align-items: flex-start; flex-direction: column; gap: 10px; } .catalog-controls { grid-template-columns: 1fr; } .data-status { white-space: normal; } }
   @media (max-width: 520px) { .hero-facts { gap: 6px; } .hero-facts span { min-height: 30px; padding: 4px 8px; font-size: .7rem; } .search-presets { gap: 5px; } .search-presets button { font-size: .7rem; } .category-directory, .food-library-grid { grid-template-columns: 1fr; } .category-tile { min-height: 72px; } .advanced-filter-panel summary small { display: none; } .numeric-controls { grid-template-columns: 1fr; } :global(.food-library-card) { min-height: 145px; } }
 </style>
 
@@ -288,6 +310,8 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     var visibleLimit = BATCH_SIZE;
     var activeTag = 'all';
     var foodSearch = document.getElementById('food-library-search');
+    var suggestionBox = document.getElementById('food-search-suggestions');
+    var suggestionIndex = -1;
     var clearSearch = document.getElementById('clear-library-search');
     var categoryFilter = document.getElementById('category-filter');
     var sortSelect = document.getElementById('sort-select');
@@ -303,9 +327,13 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     var loadMore = document.getElementById('load-more-foods');
     var showAll = document.getElementById('show-all-foods');
     var reset = document.getElementById('reset-library-filters');
+    var activeFilterChips = document.getElementById('active-filter-chips');
     var params = new URLSearchParams(window.location.search);
     var tagLabels = { vegan: 'Thuần chay', 'high-protein': 'Nhiều đạm', 'low-fat': 'Ít béo', 'glycemic-index-low': 'GI thấp', 'glycemic-index-high': 'GI cao', 'low-purine': 'Ít purin', 'high-purine': 'Nhiều purin', 'low-sodium': 'Ít natri', 'high-sodium': 'Nhiều natri', 'high-fiber': 'Giàu xơ', 'high-calcium': 'Nhiều canxi' };
     var categoryIcons = { 'Tinh bột': '🍚', 'Rau xanh': '🥬', 'Củ quả': '🥕', 'Rau gia vị': '🌿', 'Trái cây': '🍊', 'Thịt': '🥩', 'Thịt chế biến': '🍖', 'Cá': '🐟', 'Hải sản': '🦐', 'Trứng sữa': '🥚', 'Đậu': '🫘', 'Hạt': '🥜', 'Dầu mỡ': '🫒', 'Gia vị': '🧂', 'Đồ uống': '🥤', 'Bánh kẹo': '🍪', 'Nước dùng': '🍲', 'Nấm': '🍄' };
+    var stateLabels = { raw: 'Tươi/sống', cooked: 'Đã nấu', processed: 'Chế biến', dried: 'Sấy/khô', roasted: 'Rang/nướng' };
+    var profileLabels = { diabetes: 'Mục tiêu: đái tháo đường', hypertension: 'Mục tiêu: huyết áp', gout: 'Mục tiêu: gout', ckd: 'Mục tiêu: bệnh thận', weight: 'Mục tiêu: cân nặng' };
+    var reviewedStatuses = { source_verified: true, reviewed_keep_current: true };
 
     function normalize(value) {
       return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -329,6 +357,60 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     }
     function escapeHtml(value) { return String(value || '').replace(/[&<>'"]/g, function(character) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]; }); }
     function queryOf(item) { return normalize([item[0], item[1], item[2], item[12] || ''].join(' ')); }
+    function hideSuggestions() { suggestionIndex = -1; if (suggestionBox) { suggestionBox.hidden = true; suggestionBox.innerHTML = ''; } }
+    function suggestionMatches(query) {
+      var normalizedQuery = normalize(query);
+      if (normalizedQuery.length < 2) return [];
+      return foods.map(function(item) {
+        var name = normalize(item[1]), aliases = normalize(item[12] || ''), score = 99;
+        if (name === normalizedQuery) score = 0;
+        else if (name.indexOf(normalizedQuery) === 0) score = 1;
+        else if (aliases.indexOf(normalizedQuery) === 0) score = 2;
+        else if (name.indexOf(normalizedQuery) >= 0) score = 3;
+        else if (aliases.indexOf(normalizedQuery) >= 0) score = 4;
+        return { item: item, score: score };
+      }).filter(function(entry) { return entry.score < 99; }).sort(function(a, b) { return a.score - b.score || String(a.item[1]).localeCompare(String(b.item[1]), 'vi'); }).slice(0, 6);
+    }
+    function renderSuggestions() {
+      if (!suggestionBox || !foodSearch) return;
+      var matches = suggestionMatches(foodSearch.value);
+      suggestionIndex = -1;
+      if (!matches.length) { hideSuggestions(); return; }
+      suggestionBox.innerHTML = matches.map(function(entry) {
+        var item = entry.item;
+        return '<button type="button" class="food-search-suggestion" role="option" aria-selected="false" data-suggestion-slug="' + escapeHtml(item[0]) + '" data-suggestion-value="' + escapeHtml(item[1]) + '"><strong>' + (categoryIcons[item[2]] || '🍽️') + ' ' + escapeHtml(item[1]) + '</strong><small>' + escapeHtml(item[2]) + '</small></button>';
+      }).join('');
+      suggestionBox.hidden = false;
+    }
+    function setSuggestionActive(nextIndex) {
+      if (!suggestionBox || suggestionBox.hidden) return;
+      var options = suggestionBox.querySelectorAll('.food-search-suggestion');
+      if (!options.length) return;
+      suggestionIndex = Math.max(0, Math.min(nextIndex, options.length - 1));
+      options.forEach(function(option, index) { option.setAttribute('aria-selected', String(index === suggestionIndex)); });
+    }
+    function selectSuggestion(button) {
+      if (!button || !foodSearch) return;
+      foodSearch.value = button.getAttribute('data-suggestion-value') || '';
+      hideSuggestions();
+      foodSearch.focus();
+      refresh(true, true);
+      focusResults();
+    }
+    function renderFilterChips() {
+      if (!activeFilterChips) return;
+      var chips = [];
+      var query = foodSearch && foodSearch.value.trim();
+      var category = categoryFilter && categoryFilter.value || 'all';
+      var profile = profileFilter && profileFilter.value || 'all';
+      if (query) chips.push({ key: 'query', label: 'Từ khóa: ' + query });
+      if (category !== 'all') chips.push({ key: 'category', label: 'Nhóm: ' + category });
+      if (profile !== 'all') chips.push({ key: 'profile', label: profileLabels[profile] || profile });
+      if (activeTag !== 'all') chips.push({ key: 'tag', label: tagLabels[activeTag] || activeTag });
+      [['max-kcal', maxKcal, '≤ '], ['min-protein', minProtein, 'Đạm ≥ '], ['max-carb', maxCarb, 'Carb ≤ '], ['max-sodium', maxSodium, 'Natri ≤ ']].forEach(function(pair) { if (pair[1] && pair[1].value) chips.push({ key: pair[0], label: pair[2] + pair[1].value }); });
+      activeFilterChips.innerHTML = chips.map(function(chip) { return '<button type="button" class="active-filter-chip" data-clear-filter="' + chip.key + '">' + escapeHtml(chip.label) + '<span aria-hidden="true">×</span></button>'; }).join('');
+      activeFilterChips.hidden = chips.length === 0;
+    }
     function filteredFoods() {
       var query = normalize(foodSearch && foodSearch.value);
       var category = categoryFilter && categoryFilter.value || 'all';
@@ -361,7 +443,13 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       if (Number(item[5]) > 0) metrics.push('<span>Carb ' + escapeHtml(item[5]) + 'g</span>');
       else if (Number(item[7]) > 0) metrics.push('<span>Xơ ' + escapeHtml(item[7]) + 'g</span>');
       var tagHtml = featuredTags.map(function(tag) { return '<span class="food-library-tag">' + escapeHtml(tagLabels[tag]) + '</span>'; }).join('');
-      return '<a class="food-library-card" href="/thuc-pham/' + encodeURIComponent(item[0]) + '"><span class="food-library-card-icon" aria-hidden="true">' + (categoryIcons[item[2]] || '🍽️') + '</span><span class="food-library-card-body"><span class="food-library-card-topline"><h3>' + escapeHtml(item[1]) + '</h3><small class="food-library-card-base">100g</small></span><span class="food-library-category">' + escapeHtml(item[2]) + '</span><span class="food-library-metrics">' + metrics.join('') + '</span><span class="food-library-tags">' + tagHtml + '</span><span class="food-library-card-cta">Xem thông tin chi tiết →</span></span></a>';
+      var state = stateLabels[item[13]] || '';
+      var status = item[16] || '';
+      var verified = reviewedStatuses[status] && item[15] === 'source_backed';
+      var trustLabel = verified ? '✓ Đã đối chiếu' : '△ Tham khảo';
+      var trustClass = verified ? 'is-verified' : 'is-review';
+      var metaHtml = (state ? '<span class="food-state">' + escapeHtml(state) + '</span>' : '') + '<span class="food-trust ' + trustClass + '" title="' + escapeHtml(status || (item[14] ? 'Độ tin cậy ' + item[14] : 'Chưa có trạng thái rà soát')) + '">' + trustLabel + '</span>';
+      return '<a class="food-library-card" href="/thuc-pham/' + encodeURIComponent(item[0]) + '"><span class="food-library-card-icon" aria-hidden="true">' + (categoryIcons[item[2]] || '🍽️') + '</span><span class="food-library-card-body"><span class="food-library-card-topline"><h3>' + escapeHtml(item[1]) + '</h3><small class="food-library-card-base">100g</small></span><span class="food-library-category">' + escapeHtml(item[2]) + '</span><span class="food-library-card-meta">' + metaHtml + '</span><span class="food-library-metrics">' + metrics.join('') + '</span><span class="food-library-tags">' + tagHtml + '</span><span class="food-library-card-cta">Xem thông tin chi tiết →</span></span></a>';
     }
     function hasFilters() {
       return Boolean(normalize(foodSearch && foodSearch.value) || activeTag !== 'all' || categoryFilter && categoryFilter.value !== 'all' || profileFilter && profileFilter.value !== 'all' || numberValue(maxKcal) !== null || numberValue(minProtein) !== null || numberValue(maxCarb) !== null || numberValue(maxSodium) !== null);
@@ -372,6 +460,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       document.querySelectorAll('.tag-filter').forEach(function(button) { var selected = button.getAttribute('data-filter') === activeTag; button.classList.toggle('active', selected); button.setAttribute('aria-pressed', String(selected)); });
       if (clearSearch) clearSearch.hidden = !normalize(foodSearch && foodSearch.value);
       if (reset) reset.hidden = !hasFilters();
+      renderFilterChips();
     }
     function render() {
       var matched = filteredFoods();
@@ -410,27 +499,49 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       if (categoryFilter) categoryFilter.value = 'all';
       if (profileFilter) profileFilter.value = 'all';
       [maxKcal, minProtein, maxCarb, maxSodium].forEach(function(input) { if (input) input.value = ''; });
-      activeTag = 'all'; refresh(true, true);
+      activeTag = 'all'; hideSuggestions(); refresh(true, true);
     }
     function start(data) { foods = Array.isArray(data) ? data : []; applyUrlState(); render(); }
 
-    foodSearch && foodSearch.addEventListener('input', function() { refresh(true, true); });
-    clearSearch && clearSearch.addEventListener('click', function() { if (foodSearch) { foodSearch.value = ''; foodSearch.focus(); } refresh(true, true); });
+    foodSearch && foodSearch.addEventListener('input', function() { renderSuggestions(); refresh(true, true); });
+    clearSearch && clearSearch.addEventListener('click', function() { if (foodSearch) { foodSearch.value = ''; foodSearch.focus(); } hideSuggestions(); refresh(true, true); });
     [categoryFilter, sortSelect, profileFilter, maxKcal, minProtein, maxCarb, maxSodium].forEach(function(input) { input && input.addEventListener('input', function() { refresh(true, true); }); input && input.addEventListener('change', function() { refresh(true, true); }); });
     document.addEventListener('click', function(event) {
+      var suggestion = event.target.closest('[data-suggestion-slug]');
+      if (suggestion) { selectSuggestion(suggestion); return; }
+      var clearFilter = event.target.closest('[data-clear-filter]');
+      if (clearFilter) {
+        var clearKey = clearFilter.getAttribute('data-clear-filter');
+        if (clearKey === 'query' && foodSearch) foodSearch.value = '';
+        if (clearKey === 'category' && categoryFilter) categoryFilter.value = 'all';
+        if (clearKey === 'profile' && profileFilter) profileFilter.value = 'all';
+        if (clearKey === 'tag') activeTag = 'all';
+        if (clearKey === 'max-kcal' && maxKcal) maxKcal.value = '';
+        if (clearKey === 'min-protein' && minProtein) minProtein.value = '';
+        if (clearKey === 'max-carb' && maxCarb) maxCarb.value = '';
+        if (clearKey === 'max-sodium' && maxSodium) maxSodium.value = '';
+        hideSuggestions(); refresh(true, true); return;
+      }
       var category = event.target.closest('[data-category-choice]');
-      if (category) { if (categoryFilter) categoryFilter.value = category.getAttribute('data-category-choice'); refresh(true, true); focusResults(); return; }
+      if (category) { if (categoryFilter) categoryFilter.value = category.getAttribute('data-category-choice'); hideSuggestions(); refresh(true, true); focusResults(); return; }
       var tag = event.target.closest('.tag-filter');
       if (tag) { activeTag = tag.getAttribute('data-filter') || 'all'; refresh(true, true); return; }
       var preset = event.target.closest('[data-search-preset]');
-      if (preset) { if (foodSearch) { foodSearch.value = preset.getAttribute('data-search-preset') || ''; foodSearch.focus(); } refresh(true, true); focusResults(); }
+      if (preset) { if (foodSearch) { foodSearch.value = preset.getAttribute('data-search-preset') || ''; foodSearch.focus(); } hideSuggestions(); refresh(true, true); focusResults(); return; }
       var presetTag = event.target.closest('[data-search-tag]');
-      if (presetTag) { activeTag = presetTag.getAttribute('data-search-tag') || 'all'; refresh(true, true); focusResults(); }
+      if (presetTag) { activeTag = presetTag.getAttribute('data-search-tag') || 'all'; hideSuggestions(); refresh(true, true); focusResults(); return; }
+      if (suggestionBox && !event.target.closest('.library-search-panel')) hideSuggestions();
     });
     reset && reset.addEventListener('click', resetAll);
     loadMore && loadMore.addEventListener('click', function() { visibleLimit += BATCH_SIZE; render(); });
     showAll && showAll.addEventListener('click', function() { visibleLimit = foods.length; render(); });
-    document.addEventListener('keydown', function(event) { if (event.key === '/' && document.activeElement !== foodSearch && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)) { event.preventDefault(); foodSearch && foodSearch.focus(); } if (event.key === 'Escape' && document.activeElement === foodSearch && foodSearch.value) { foodSearch.value = ''; refresh(true, true); } });
+    foodSearch && foodSearch.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowDown' && suggestionBox && !suggestionBox.hidden) { event.preventDefault(); setSuggestionActive(suggestionIndex + 1); }
+      if (event.key === 'ArrowUp' && suggestionBox && !suggestionBox.hidden) { event.preventDefault(); setSuggestionActive(suggestionIndex - 1); }
+      if (event.key === 'Enter' && suggestionBox && !suggestionBox.hidden) { var active = suggestionBox.querySelector('.food-search-suggestion[aria-selected="true"]') || suggestionBox.querySelector('.food-search-suggestion'); if (active) { event.preventDefault(); selectSuggestion(active); } }
+      if (event.key === 'Escape') { hideSuggestions(); if (foodSearch.value) { foodSearch.value = ''; refresh(true, true); } }
+    });
+    document.addEventListener('keydown', function(event) { if (event.key === '/' && document.activeElement !== foodSearch && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)) { event.preventDefault(); foodSearch && foodSearch.focus(); } });
     fetch('/api/foods-full.json').then(function(response) { if (!response.ok) throw new Error('Không tải được dữ liệu thực phẩm'); return response.json(); }).then(start).catch(function() { if (summary) summary.textContent = 'Không tải được thư viện thực phẩm. Vui lòng thử lại.'; grid.innerHTML = ''; });
   })();
 </script>
