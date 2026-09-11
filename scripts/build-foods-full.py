@@ -3,7 +3,7 @@ Build foods-full.json with all data needed for client-side filtering/rendering.
 
 Source of truth: dist/api-foods.json generated from src/data/nutrition.ts.
 Compact format:
-[[slug, name, category, kcal, protein, carb, fat, fiber, sodium, potassium, tags_str, gi]]
+[[slug, name, category, kcal, protein, carb, fat, fiber, sodium, potassium, tags_str, gi, aliases_str]]
 """
 
 import json
@@ -43,6 +43,7 @@ for food in foods:
         num(nutrients.get("potassiumMg")),
         " ".join(tags),
         "" if nutrients.get("glycemicIndex") is None else nutrients.get("glycemicIndex"),
+        " ".join(str(alias).strip() for alias in (food.get("aliases") or []) if str(alias).strip()),
     ])
 
 with OUTPUT.open("w", encoding="utf-8") as f:
