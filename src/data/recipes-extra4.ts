@@ -128,7 +128,7 @@ export const extraRecipes4: Recipe[] = [
     portionNote: "Bánh bột mì chiên phồng, rỗng ruột.",
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
-      { foodId: "banh-mi", amountG: 40, note: "Bột mì" },
+      { foodId: "bot-mi-da", amountG: 40, note: "Bột mì" },
       { foodId: "duong-trang", amountG: 8, note: "Đường" },
       { foodId: "dau-an", amountG: 10, note: "Dầu chiên" }
     ]
@@ -391,7 +391,7 @@ export const extraRecipes4: Recipe[] = [
     portionNote: "Sườn non rim chua ngọt.",
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
-      { foodId: "xuong-heo", amountG: 120, note: "Sườn heo" },
+      { foodId: "suon-heo-nuong", amountG: 120, note: "Sườn heo (quy đổi từ sườn chín)" },
       { foodId: "nuoc-mam", amountG: 8, note: "Nước mắm" },
       { foodId: "duong-trang", amountG: 10, note: "Đường" },
       { foodId: "toi", amountG: 3, note: "Tỏi" },

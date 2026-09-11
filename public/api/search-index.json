@@ -4462,9 +4462,9 @@
   {
     "type": "recipe",
     "slug": "com-chay",
-    "name": "Cơm cháy (cơm cháy)",
+    "name": "Cơm cháy",
     "aliases": [
-      "com chay",
+      "cơm cháy Ninh Bình",
       "cơm cháy"
     ],
     "description": "1 đĩa: Cơm cháy giòn, chan nước thịt kho/quẹt.",
@@ -5474,13 +5474,14 @@
   },
   {
     "type": "recipe",
-    "slug": "canh-oc-buou",
-    "name": "Canh ốc bươu",
+    "slug": "oc-buou-nau-chuoi-dau",
+    "name": "Ốc bươu nấu chuối đậu",
     "aliases": [
-      "canh oc buou",
+      "oc buou nau chuoi dau",
+      "canh ốc bươu",
       "canh ốc"
     ],
-    "description": "Tra cứu dinh dưỡng Canh ốc bươu theo khẩu phần 1 bát.",
+    "description": "Tra cứu dinh dưỡng Ốc bươu nấu chuối đậu theo khẩu phần 1 bát.",
     "category": "Mon an"
   },
   {
@@ -5614,16 +5615,6 @@
   },
   {
     "type": "recipe",
-    "slug": "che-ba-ba-moi",
-    "name": "Chè ba ba",
-    "aliases": [
-      "che ba ba"
-    ],
-    "description": "Tra cứu dinh dưỡng Chè ba ba theo khẩu phần 1 bát.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "che-dau-den-moi",
     "name": "Chè đậu đen nấu nhừ",
     "aliases": [
@@ -5737,10 +5728,11 @@
   },
   {
     "type": "recipe",
-    "slug": "nuoc-sa-xuong",
+    "slug": "nuoc-san-day",
     "name": "Nước sắn dây",
     "aliases": [
       "nuoc san day",
+      "nuoc sa xuong",
       "sắn dây pha"
     ],
     "description": "Tra cứu dinh dưỡng Nước sắn dây theo khẩu phần 1 ly 250ml.",
@@ -5828,10 +5820,10 @@
   },
   {
     "type": "recipe",
-    "slug": "com-hen-hue",
-    "name": "Cơm hến Huế",
+    "slug": "thit-bam-rang-chay-canh",
+    "name": "Thịt băm rang cháy cạnh",
     "aliases": [
-      "com hen hue"
+      "thit bam rang chay canh"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
@@ -5958,10 +5950,10 @@
   },
   {
     "type": "recipe",
-    "slug": "banh-gio",
-    "name": "Bánh giò",
+    "slug": "trung-chien-ca-chua",
+    "name": "Trứng chiên cà chua",
     "aliases": [
-      "banh gio"
+      "trung chien ca chua"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
@@ -6828,10 +6820,10 @@
   },
   {
     "type": "recipe",
-    "slug": "goi-ngo-sen-tom-thit",
-    "name": "Gỏi ngó sen tôm thịt",
+    "slug": "rau-cai-xao-toi",
+    "name": "Rau cải xào tỏi",
     "aliases": [
-      "goi ngo sen tom thit"
+      "rau cai xao toi"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
@@ -6948,10 +6940,10 @@
   },
   {
     "type": "recipe",
-    "slug": "ca-tim-nuong-mo-hanh",
-    "name": "Cà tím nướng mỡ hành",
+    "slug": "canh-bi-xanh-thit-bam",
+    "name": "Canh bí xanh thịt bằm",
     "aliases": [
-      "ca tim nuong mo hanh"
+      "canh bi xanh thit bam"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
@@ -7288,6 +7280,16 @@
   },
   {
     "type": "recipe",
+    "slug": "dau-hu-sot-nam",
+    "name": "Đậu hũ sốt nấm",
+    "aliases": [
+      "dau hu sot nam"
+    ],
+    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "category": "Mon an"
+  },
+  {
+    "type": "recipe",
     "slug": "che-khuc-bach",
     "name": "Chè khúc bạch",
     "aliases": [
@@ -7458,10 +7460,10 @@
   },
   {
     "type": "recipe",
-    "slug": "bo-nuong-la-lot",
-    "name": "Bò nướng lá lốt",
+    "slug": "ca-hap-hanh-gung",
+    "name": "Cá hấp hành gừng",
     "aliases": [
-      "bo nuong la lot"
+      "ca hap hanh gung"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"

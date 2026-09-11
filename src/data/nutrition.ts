@@ -1985,6 +1985,80 @@ for (const food of foods) {
 }
 recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipes4, ...extraRecipes5, ...extraRecipes6, ...bulkRecipes);
 
+// Cân lại khối lượng thành phẩm sau khi gộp các công thức cũ và công thức mở rộng.
+// Nhiều món canh/đồ uống ghi khẩu phần đã pha loãng nhưng chưa ghi nước/đá trong
+// items; bổ sung hoặc điều chỉnh đúng phần chất lỏng giúp tổng nguyên liệu khớp
+// servingWeightG mà không làm thay đổi các thành phần tạo năng lượng chính.
+const liquidFoodIds = new Set([
+  "nuoc-khoang-tinh-khiet",
+  "nuoc-dung-bo",
+  "nuoc-dung-ga",
+  "nuoc-dung-ca",
+  "nuoc-dung-tom",
+  "nuoc-dung-nam",
+  "nuoc-dua",
+  "nuoc-cot-dua-dac",
+  "nuoc-luoc-rau",
+  "tra-xanh-nguyen-chat"
+]);
+
+function balanceRecipeIngredientWeight(recipe: Recipe): Recipe {
+  const target = Math.round(recipe.servingWeightG);
+  const items = recipe.items.map((item) => ({ ...item }));
+  const total = items.reduce((sum, item) => sum + item.amountG, 0);
+  const delta = target - total;
+  if (delta === 0) return recipe;
+
+  const liquidIndexes = items
+    .map((item, index) => (liquidFoodIds.has(item.foodId) ? index : -1))
+    .filter((index) => index >= 0);
+  const recipeText = `${recipe.name} ${recipe.slug}`.toLowerCase();
+  const isLiquidDish = (recipe.tags ?? []).some((tag) =>
+    ["drink", "soup", "noodle", "dessert", "sweet-soup", "congee", "porridge"].includes(tag)
+  ) || /bún|bun |phở|pho |hủ tiếu|hu tieu|mì |mi-|cháo|chao-|canh|súp|sup |lẩu|lau |nước |nuoc |bánh đúc|banh duc|bánh bèo|banh beo/i.test(recipeText);
+  const inferredLiquidFoodId = /bún mắm|bun mam|lẩu mắm|lau mam/i.test(recipeText)
+    ? "nuoc-lau-mam"
+    : /cháo gà|chao ga|canh gà|canh ga|bún gà|bun ga/i.test(recipeText)
+      ? "nuoc-dung-ga"
+      : /cháo tôm|chao tom|canh tôm|canh tom|bún tôm|bun tom/i.test(recipeText)
+        ? "nuoc-dung-tom"
+        : /hủ tiếu bò|hu tieu bo|phở bò|pho bo|bún bò|bun bo/i.test(recipeText)
+          ? "nuoc-dung-bo"
+          : /cháo cá|chao ca|canh cá|canh ca|bún cá|bun ca|bún riêu|bun rieu|hủ tiếu|hu tieu/i.test(recipeText)
+            ? "nuoc-dung-ca"
+          : /lẩu thái|lau thai/i.test(recipeText)
+            ? "nuoc-lau-thai"
+            : /chay|vegetarian/i.test(recipeText)
+              ? "nuoc-dung-nam"
+              : "nuoc-khoang-tinh-khiet";
+
+  if (delta > 0) {
+    const index = liquidIndexes[0];
+    if (index != null) {
+      items[index].amountG += delta;
+    } else if (isLiquidDish) {
+      items.push({ foodId: inferredLiquidFoodId, amountG: delta, note: "Nước/nước dùng để đủ khẩu phần" });
+    } else {
+      return recipe;
+    }
+  } else {
+    let remaining = -delta;
+    for (const index of liquidIndexes.slice().reverse()) {
+      const removable = Math.min(items[index].amountG, remaining);
+      items[index].amountG -= removable;
+      remaining -= removable;
+      if (remaining === 0) break;
+    }
+    if (remaining > 5) return recipe;
+  }
+
+  return { ...recipe, items: items.filter((item) => item.amountG > 0) };
+}
+
+for (let index = 0; index < recipes.length; index += 1) {
+  recipes[index] = balanceRecipeIngredientWeight(recipes[index]);
+}
+
 const communalMealPatterns = [
   /\blau\b/,
   /lẩu/,

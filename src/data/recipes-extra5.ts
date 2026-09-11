@@ -12,7 +12,7 @@ export const extraRecipes5: Recipe[] = [
     items: [
       { foodId: "rau-dan", amountG: 150, note: "Rau dền tươi" },
       { foodId: "thit-heo-bam", amountG: 40, note: "Thịt heo băm" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 300, note: "Nước nấu canh" },
       { foodId: "hanh-la", amountG: 5, note: "Hành ngò" },
       { foodId: "nuoc-mam", amountG: 5, note: "Nêm" }
     ]
@@ -28,7 +28,7 @@ export const extraRecipes5: Recipe[] = [
       { foodId: "mong-toi", amountG: 150, note: "Rau mồng tơi" },
       { foodId: "gach-cua", amountG: 30, note: "Gạch cua đồng" },
       { foodId: "cua-dong", amountG: 30, note: "Thịt cua" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 300, note: "Nước nấu canh" },
       { foodId: "hanh-la", amountG: 5, note: "Hành ngò" }
     ]
   },
@@ -42,7 +42,7 @@ export const extraRecipes5: Recipe[] = [
     items: [
       { foodId: "muop-huong", amountG: 180, note: "Mướp hương" },
       { foodId: "tom-kho", amountG: 15, note: "Tôm khô" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 300, note: "Nước nấu canh" },
       { foodId: "hanh-la", amountG: 5, note: "Hành ngò" }
     ]
   },
@@ -56,7 +56,7 @@ export const extraRecipes5: Recipe[] = [
     items: [
       { foodId: "bi-xanh", amountG: 200, note: "Bí xanh" },
       { foodId: "tom-kho", amountG: 15, note: "Tôm khô" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 300, note: "Nước nấu canh" },
       { foodId: "hanh-la", amountG: 5, note: "Hành" }
     ]
   },
@@ -74,7 +74,7 @@ export const extraRecipes5: Recipe[] = [
       { foodId: "gia-do", amountG: 30, note: "Giá" },
       { foodId: "me", amountG: 10, note: "Me vắt" },
       { foodId: "hanh-la", amountG: 5, note: "Ngò om" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" }
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 300, note: "Nước nấu canh" }
     ]
   },
   {
@@ -87,7 +87,7 @@ export const extraRecipes5: Recipe[] = [
     items: [
       { foodId: "cai-xanh", amountG: 150, note: "Cải xanh" },
       { foodId: "nam-rom", amountG: 50, note: "Nấm rơm" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 300, note: "Nước nấu canh" },
       { foodId: "toi", amountG: 3, note: "Tỏi" }
     ]
   },
@@ -379,7 +379,7 @@ export const extraRecipes5: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Bò bít tết sốt vang ăn kèm khoai tây chiên, rau xà lách.",
     items: [
-      { foodId: "thit-bo-thit-thit", amountG: 150, note: "Bò thăn" },
+      { foodId: "thit-bo-than", amountG: 150, note: "Bò thăn" },
       { foodId: "khoai-tay", amountG: 100, note: "Khoai tây chiên" },
       { foodId: "xa-lach", amountG: 50, note: "Xà lách" },
       { foodId: "ca-chua", amountG: 30, note: "Cà chua" },
@@ -477,7 +477,7 @@ export const extraRecipes5: Recipe[] = [
       { foodId: "bot-mi-da", amountG: 50, note: "Vỏ bánh" },
       { foodId: "hat-sen-kho", amountG: 30, note: "Hạt sen" },
       { foodId: "duong-trang", amountG: 30, note: "Đường" },
-      { foodId: "thit-nguoi-kho", amountG: 15, note: "Lạp xưởng" },
+      { foodId: "lap-xuong", amountG: 15, note: "Lạp xưởng" },
       { foodId: "hanh-la", amountG: 5, note: "Hành phi" },
       { foodId: "dau-an", amountG: 5, note: "Dầu" }
     ]
@@ -727,7 +727,7 @@ export const extraRecipes5: Recipe[] = [
       { foodId: "ca-chua", amountG: 80, note: "Cà chua" },
       { foodId: "dau-an", amountG: 8, note: "Dầu" },
       { foodId: "hanh-la", amountG: 10, note: "Hành lá" },
-      { foodId: "nuoc-mam", amountG: 5, note: "Nước tương" }
+      { foodId: "nuoc-tuong", amountG: 5, note: "Nước tương" }
     ]
   },
   {
@@ -742,7 +742,7 @@ export const extraRecipes5: Recipe[] = [
       { foodId: "ca-chua", amountG: 50, note: "Cà chua" },
       { foodId: "gia-do", amountG: 40, note: "Giá" },
       { foodId: "me", amountG: 10, note: "Me" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
+      { foodId: "nuoc-dung-nam", amountG: 300, note: "Nước dùng nấm" },
       { foodId: "rau-thom-hanh", amountG: 10, note: "Ngò gai" }
     ]
   }

@@ -122,7 +122,7 @@ export const extraRecipes2: Recipe[] = [
       { foodId: "atiso", amountG: 80, note: "Atisô cắt miếng" },
       { foodId: "bong-he", amountG: 30, note: "Bông hẹ" },
       { foodId: "tom-tuoi", amountG: 20, note: "Tôm nõn" },
-      { foodId: "nuoc-dung-bo", amountG: 200, note: "Nước dùng" },
+      { foodId: "nuoc-dung-tom", amountG: 200, note: "Nước dùng tôm" },
       { foodId: "dau-an", amountG: 3, note: "Dầu" }
     ]
   },
@@ -181,9 +181,10 @@ export const extraRecipes2: Recipe[] = [
     note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "gao-nep", amountG: 100, note: "Xôi nếp" },
-      { foodId: "thit-ga-rui", amountG: 30, note: "Ruốc gà" },
+      { foodId: "thit-ga-rui", amountG: 30, note: "Ruốc gà (quy đổi từ thịt gà)" },
       { foodId: "lap-xuong", amountG: 25, note: "Lạp xưởng chiên" },
-      { foodId: "hanh-la", amountG: 10, note: "Mỡ hành" }
+      { foodId: "hanh-la", amountG: 10, note: "Hành lá" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu/mỡ hành" }
     ]
   },
   {
@@ -196,9 +197,9 @@ export const extraRecipes2: Recipe[] = [
     note: "Giá trị tham khảo theo công thức; topping đa dạng.",
     items: [
       { foodId: "banh-mi", amountG: 75, note: "Bánh mì" },
-      { foodId: "thit-nguoi", amountG: 30, note: "Thịt nguội" },
+      { foodId: "thit-nguoi-kho", amountG: 30, note: "Thịt nguội" },
       { foodId: "cha-lua", amountG: 25, note: "Chả lụa" },
-      { foodId: "thit-ga-rui", amountG: 20, note: "Xá xíu" },
+      { foodId: "thit-heo-quay", amountG: 20, note: "Xá xíu" },
       { foodId: "dua-leo", amountG: 30, note: "Đồ chua" },
       { foodId: "xa-lach", amountG: 20, note: "Rau sống" },
       { foodId: "sot-mayonnaise", amountG: 8, note: "Mayonnaise" }
@@ -299,7 +300,7 @@ export const extraRecipes2: Recipe[] = [
       { foodId: "thit-ga-xay", amountG: 60, note: "Gà xay viên" },
       { foodId: "ngai-cuu", amountG: 25, note: "Ngải cứu" },
       { foodId: "com-trang", amountG: 60, note: "Gạo nấu cháo" },
-      { foodId: "nuoc-dung-bo", amountG: 200, note: "Nước dùng" },
+      { foodId: "nuoc-dung-ga", amountG: 200, note: "Nước dùng gà" },
       { foodId: "nuoc-mam", amountG: 5, note: "Nước mắm" }
     ]
   },

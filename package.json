@@ -13,6 +13,7 @@
     "data:search": "node scripts/run-python.mjs scripts/build-search-index.py",
     "data:all": "node scripts/build-data-all.mjs",
     "qa": "node scripts/qa.mjs",
+    "qa:recipes": "node scripts/check-recipe-data.mjs",
     "qa:food-data": "node scripts/check-food-data.mjs",
     "qa:data-consistency": "node scripts/check-data-consistency.mjs",
     "test:protein": "node scripts/test-protein-requirement.mjs",

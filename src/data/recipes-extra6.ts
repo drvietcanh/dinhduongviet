@@ -166,18 +166,19 @@ export const extraRecipes6: Recipe[] = [
 
   // ─── Canh ────────────────────────────────────────
   {
-    id: "canh-oc-buou", slug: "canh-oc-buou", name: "Canh ốc bươu",
-    aliases: ["canh oc buou", "canh ốc"],
+    id: "oc-buou-nau-chuoi-dau", slug: "oc-buou-nau-chuoi-dau", name: "Ốc bươu nấu chuối đậu",
+    aliases: ["oc buou nau chuoi dau", "canh ốc bươu", "canh ốc"],
     servingName: "1 bát", servingWeightG: 350,
     tags: ["vietnamese", "soup"],
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Ốc bươu nấu chuối đậu, món ăn dân dã miền Bắc.",
     items: [
       { foodId: "oc-buou", amountG: 150, note: "Ốc bươu" },
-      { foodId: "chuoi", amountG: 80, note: "Chuối xanh" },
+      { foodId: "chuoi-xanh-tuoi-vdd", amountG: 80, note: "Chuối xanh" },
       { foodId: "dau-phu", amountG: 60, note: "Đậu phụ chiên" },
       { foodId: "nghe-tuoi", amountG: 10, note: "Nghệ" },
-      { foodId: "hang-the", amountG: 5, note: "Hành thì là" },
+      { foodId: "hanh-la", amountG: 3, note: "Hành lá" },
+      { foodId: "rau-thi-la", amountG: 2, note: "Thì là" },
     ]
   },
   {
@@ -207,7 +208,7 @@ export const extraRecipes6: Recipe[] = [
       { foodId: "bi-do", amountG: 100, note: "Bí đỏ" },
       { foodId: "ca-rot", amountG: 40, note: "Cà rốt" },
       { foodId: "nam-rom", amountG: 30, note: "Nấm rơm" },
-      { foodId: "nuoc-xuong-ga", amountG: 300, note: "Nước dùng gà" },
+      { foodId: "nuoc-dung-ga", amountG: 300, note: "Nước dùng gà" },
     ]
   },
 
@@ -222,7 +223,7 @@ export const extraRecipes6: Recipe[] = [
     items: [
       { foodId: "thit-ba-roi", amountG: 100, note: "Thịt ba chỉ" },
       { foodId: "trung-vit", amountG: 80, note: "Trứng vịt luộc" },
-      { foodId: "nuoc-dung-bo", amountG: 100, note: "Nước dừa/nước" },
+      { foodId: "nuoc-dua", amountG: 100, note: "Nước dừa" },
       { foodId: "nuoc-mam", amountG: 10, note: "Nước mắm" },
       { foodId: "duong-trang", amountG: 8, note: "Đường" },
       { foodId: "hanh-cu", amountG: 5, note: "Hành tím" },
@@ -253,7 +254,7 @@ export const extraRecipes6: Recipe[] = [
     note: "Sườn non kho mềm, nước màu, hạt tiêu.",
     items: [
       { foodId: "suon-heo-nuong", amountG: 150, note: "Sườn non chặt miếng" },
-      { foodId: "nuoc-dung-bo", amountG: 100, note: "Nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 100, note: "Nước kho" },
       { foodId: "nuoc-mam", amountG: 10, note: "Nước mắm" },
       { foodId: "duong-trang", amountG: 8, note: "Đường" },
       { foodId: "hanh-cu", amountG: 5, note: "Hành tím" },
@@ -329,9 +330,9 @@ export const extraRecipes6: Recipe[] = [
     note: "Cá lóc hấp bầu, gừng, rau thì là.",
     items: [
       { foodId: "ca-loc", amountG: 200, note: "Cá lóc" },
-      { foodId: "bi-do", amountG: 100, note: "Bầu thái lát" },
-      { foodId: "ngai-cuu", amountG: 5, note: "Thì là" },
-      { foodId: "gung", amountG: 5, note: "Gừng" },
+      { foodId: "bau", amountG: 100, note: "Bầu thái lát" },
+      { foodId: "rau-thi-la", amountG: 5, note: "Thì là" },
+      { foodId: "gung-tuoi", amountG: 5, note: "Gừng tươi" },
       { foodId: "nuoc-mam", amountG: 5, note: "Nước mắm" },
     ]
   },
@@ -365,22 +366,6 @@ export const extraRecipes6: Recipe[] = [
 
   // ─── Chè / Tráng miệng ──────────────────────────
   {
-    id: "che-ba-ba-moi", slug: "che-ba-ba-moi", name: "Chè ba ba",
-    aliases: ["che ba ba"],
-    servingName: "1 bát", servingWeightG: 250,
-    tags: ["vietnamese", "dessert", "sweet-soup"],
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Chè bột lọc, khoai môn, đậu xanh, nước cốt dừa.",
-    items: [
-      { foodId: "khoai-mon", amountG: 50, note: "Khoai môn" },
-      { foodId: "dau-xanh-hat", amountG: 30, note: "Đậu xanh" },
-      { foodId: "bot-loc", amountG: 20, note: "Bột lọc" },
-      { foodId: "dua-quan", amountG: 30, note: "Nước cốt dừa" },
-      { foodId: "duong-trang", amountG: 20, note: "Đường" },
-      { foodId: "nuoc-dung-bo", amountG: 200, note: "Nước" },
-    ]
-  },
-  {
     id: "che-dau-den-moi", slug: "che-dau-den-moi", name: "Chè đậu đen nấu nhừ",
     aliases: ["che dau den"],
     servingName: "1 bát", servingWeightG: 250,
@@ -390,8 +375,8 @@ export const extraRecipes6: Recipe[] = [
     items: [
       { foodId: "dau-den-hat", amountG: 60, note: "Đậu đen" },
       { foodId: "duong-trang", amountG: 20, note: "Đường" },
-      { foodId: "dua-quan", amountG: 30, note: "Nước cốt dừa" },
-      { foodId: "nuoc-dung-bo", amountG: 200, note: "Nước" },
+      { foodId: "nuoc-cot-dua-dac", amountG: 30, note: "Nước cốt dừa" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 200, note: "Nước nấu chè" },
     ]
   },
   {
@@ -407,8 +392,8 @@ export const extraRecipes6: Recipe[] = [
       { foodId: "dau-trang-hat", amountG: 20, note: "Đậu trắng" },
       { foodId: "khoai-lang", amountG: 30, note: "Khoai lang" },
       { foodId: "duong-trang", amountG: 25, note: "Đường" },
-      { foodId: "dua-quan", amountG: 30, note: "Nước cốt dừa" },
-      { foodId: "nuoc-dung-bo", amountG: 200, note: "Nước" },
+      { foodId: "nuoc-cot-dua-dac", amountG: 30, note: "Nước cốt dừa" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 200, note: "Nước nấu chè" },
     ]
   },
   {
@@ -419,10 +404,10 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Bánh tiêu chiên giòn, rỗng ruột, ăn sáng hoặc xế.",
     items: [
-      { foodId: "banh-mi", amountG: 40, note: "Bột mì đã lên men" },
+      { foodId: "bot-mi-da", amountG: 40, note: "Bột mì đã lên men" },
       { foodId: "duong-trang", amountG: 5, note: "Đường" },
       { foodId: "dau-an", amountG: 5, note: "Dầu chiên" },
-      { foodId: "hat-mè", amountG: 2, note: "Mè rang" },
+      { foodId: "me-vung", amountG: 2, note: "Mè rang" },
     ]
   },
   {
@@ -438,7 +423,7 @@ export const extraRecipes6: Recipe[] = [
       { foodId: "hanh-la", amountG: 5, note: "Hành lá" },
       { foodId: "dau-an", amountG: 10, note: "Dầu" },
       { foodId: "nuoc-mam", amountG: 5, note: "Nước mắm chấm" },
-      { foodId: "dua-kao", amountG: 20, note: "Giá đỗ" },
+      { foodId: "gia-do", amountG: 20, note: "Giá đỗ" },
     ]
   },
   {
@@ -471,8 +456,8 @@ export const extraRecipes6: Recipe[] = [
       { foodId: "su-hao", amountG: 50, note: "Su hào" },
       { foodId: "nam-rom", amountG: 50, note: "Nấm rơm" },
       { foodId: "mong-toi", amountG: 50, note: "Mồng tơi" },
-      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước" },
-      { foodId: "nuoc-mam", amountG: 5, note: "Hạt nêm chay" },
+      { foodId: "nuoc-dung-nam", amountG: 300, note: "Nước dùng nấm" },
+      { foodId: "nuoc-tuong", amountG: 5, note: "Gia vị chay" },
     ]
   },
   {
@@ -533,10 +518,10 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Sinh tố bơ sữa đặc, đá bào.",
     items: [
-      { foodId: "sinh-to-bo", amountG: 100, note: "Bơ chín" },
+      { foodId: "bo-trai", amountG: 100, note: "Bơ chín" },
       { foodId: "sua-dac", amountG: 20, note: "Sữa đặc" },
       { foodId: "sua-tuoi", amountG: 100, note: "Sữa tươi" },
-      { foodId: "nuoc-dung-bo", amountG: 80, note: "Đá/đường" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 80, note: "Đá/nước" },
     ]
   },
   {
@@ -549,18 +534,19 @@ export const extraRecipes6: Recipe[] = [
     items: [
       { foodId: "dua-hau", amountG: 250, note: "Dưa hấu cắt miếng" },
       { foodId: "duong-trang", amountG: 10, note: "Đường" },
-      { foodId: "nuoc-dung-bo", amountG: 100, note: "Nước lọc" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 100, note: "Nước lọc" },
     ]
   },
   {
-    id: "nuoc-sa-xuong", slug: "nuoc-sa-xuong", name: "Nước sắn dây",
-    aliases: ["nuoc san day", "sắn dây pha"],
-    servingName: "1 ly 250ml", servingWeightG: 280,
+    id: "nuoc-san-day", slug: "nuoc-san-day", name: "Nước sắn dây",
+    aliases: ["nuoc san day", "nuoc sa xuong", "sắn dây pha"],
+    servingName: "1 ly 250ml", servingWeightG: 287,
     tags: ["vietnamese", "drink"],
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Bột sắn dây pha đường, có thể thêm nước cốt chanh.",
     items: [
-      { foodId: "nuoc-dung-bo", amountG: 250, note: "Nước sôi" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 250, note: "Nước sôi" },
+      { foodId: "bot-san-day", amountG: 25, note: "Bột sắn dây" },
       { foodId: "duong-trang", amountG: 12, note: "Đường" },
     ]
   },
@@ -573,9 +559,9 @@ export const extraRecipes6: Recipe[] = [
     note: "Trà xanh pha loãng thêm chanh, đường, đá.",
     items: [
       { foodId: "tra-xanh-nguyen-chat", amountG: 200, note: "Nước trà" },
-      { foodId: "chanh-day", amountG: 15, note: "Nước cốt chanh" },
+      { foodId: "chanh", amountG: 15, note: "Nước cốt chanh" },
       { foodId: "duong-trang", amountG: 15, note: "Đường" },
-      { foodId: "nuoc-dung-bo", amountG: 100, note: "Đá/ nước" },
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 100, note: "Đá/nước" },
     ]
   },
 ];

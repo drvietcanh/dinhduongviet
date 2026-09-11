@@ -514,9 +514,9 @@ export const extraRecipes3: Recipe[] = [
     tags: ["vietnamese", "drink"],
     portionNote: "Nước mía ép tươi, uống với đá.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; chưa có foodId cho mía nên dùng đường proxy.",
+    note: "Giá trị tham khảo theo 1 ly 250ml; độ ngọt và lượng đá có thể thay đổi theo quán.",
     items: [
-      { foodId: "duong-thot-not", amountG: 20, note: "Nước mía (proxy)" }
+      { foodId: "nuoc-mia", amountG: 250, note: "Nước mía ép" }
     ]
   },
   {
@@ -526,11 +526,12 @@ export const extraRecipes3: Recipe[] = [
     tags: ["vietnamese", "drink"],
     portionNote: "Nấm tuyết, táo tàu, kỷ tử, long nhãn, đường phèn.",
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; các nguyên liệu quý tây dùng food proxy.",
+    note: "Giá trị tham khảo theo ly 300ml; táo tàu và kỷ tử chưa có mã riêng trong kho nên chưa tính riêng.",
     items: [
-      { foodId: "sua-dac", amountG: 10, note: "Đường phèn (proxy)" },
-      { foodId: "nam-mo", amountG: 10, note: "Nấm tuyết proxy" },
-      { foodId: "nhan", amountG: 20, note: "Long nhãn" }
+      { foodId: "nuoc-khoang-tinh-khiet", amountG: 255, note: "Nước nấu và đá" },
+      { foodId: "nam-tuyet", amountG: 10, note: "Nấm tuyết" },
+      { foodId: "nhan-kho-vdd", amountG: 20, note: "Long nhãn khô" },
+      { foodId: "duong-trang", amountG: 15, note: "Đường phèn quy đổi" }
     ]
   },
   {
@@ -549,8 +550,8 @@ export const extraRecipes3: Recipe[] = [
 
   // ===== MÓN CƠM ĐẶC SẢN =====
   {
-    id: "com-chay", slug: "com-chay", name: "Cơm cháy (cơm cháy)",
-    aliases: ["com chay", "cơm cháy"],
+    id: "com-chay", slug: "com-chay", name: "Cơm cháy",
+    aliases: ["cơm cháy Ninh Bình", "cơm cháy"],
     servingName: "1 đĩa", servingWeightG: 120,
     tags: ["vietnamese", "street-food"],
     portionNote: "Cơm cháy giòn, chan nước thịt kho/quẹt.",
