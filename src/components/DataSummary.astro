@@ -44,7 +44,7 @@ const maxCategoryCount = topCategories.length > 0 ? Math.max(...topCategories.ma
           const pct = summary.totalFoods > 0 ? Math.round((item.count / summary.totalFoods) * 100) : 0;
           const width = maxCategoryCount > 0 ? Math.max(12, Math.round((item.count / maxCategoryCount) * 100)) : 0;
           return (
-            <a class="category-row" href={`/thuc-pham#${encodeURIComponent(item.category)}`}>
+            <a class="category-row" href={`/thuc-pham?category=${encodeURIComponent(item.category)}#food-results`}>
               <span class="category-name">{item.category}</span>
               <div class="bar" aria-hidden="true"><span style={`width: ${width}%`}></span></div>
               <strong>{item.count}<small>{pct}% dữ liệu</small></strong>

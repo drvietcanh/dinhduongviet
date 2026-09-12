@@ -103,7 +103,7 @@ export const extraFoods3: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "nuoc-cam", slug: "nuoc-cam", name: "Nước cam", aliases: ["orange juice"],
+    id: "nuoc-cam", slug: "nuoc-cam", name: "Nước cam", aliases: [],
     category: "Đồ uống", state: "processed", basis: "100ml", edibleNote: "Nước cam tươi vắt không đường.",
     nutrients: { energyKcal: 45, proteinG: 0.7, carbG: 10.4, fatG: 0.2, sugarG: 8.0, calciumMg: 11, potassiumMg: 200, vitaminCMg: 50 },
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."

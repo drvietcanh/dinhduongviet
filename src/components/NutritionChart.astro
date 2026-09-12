@@ -6,7 +6,7 @@ const fat = nutrients.fatG || 0;
 const carb = nutrients.carbG || 0;
 const fiber = nutrients.fiberG || 0;
 const sugar = nutrients.sugarG || 0;
-const satFat = nutrients.satFatG || 0;
+const satFat = nutrients.saturatedFatG || 0;
 const sodium = nutrients.sodiumMg || 0;
 
 // Calorie contribution: protein 4 kcal/g, carb 4 kcal/g, fat 9 kcal/g
@@ -23,7 +23,7 @@ const DRI = {
   protein: { value: 60, label: "g", color: "#e53935" },  // ~15% of 2000 kcal
   fiber: { value: 25, label: "g", color: "#43a047" },
   satFat: { value: 20, label: "g", color: "#f4511e" }, // max
-  sugar: { value: 50, label: "g", color: "#fb8c00" }, // max added sugar
+  sugar: { value: 50, label: "g", color: "#fb8c00" }, // reference ceiling for free sugar; source may report total sugar
   sodium: { value: 2300, label: "mg", color: "#5c6bc0" },
   fat: { value: 65, label: "g", color: "#fdd835" },
   carb: { value: 300, label: "g", color: "#8e24aa" },
@@ -32,7 +32,7 @@ const DRI = {
 const bars = [
   { label: "Đạm", key: "protein", val: protein, max: DRI.protein.value, unit: "g", color: "#e53935" },
   { label: "Chất xơ", key: "fiber", val: fiber, max: DRI.fiber.value, unit: "g", color: "#43a047" },
-  { label: "Đường", key: "sugar", val: sugar, max: DRI.sugar.value, unit: "g", color: "#fb8c00" },
+  { label: "Đường tổng*", key: "sugar", val: sugar, max: DRI.sugar.value, unit: "g", color: "#fb8c00" },
   { label: "Béo bão hòa", key: "satFat", val: satFat, max: DRI.satFat.value, unit: "g", color: "#f4511e" },
   { label: "Natri", key: "sodium", val: sodium, max: DRI.sodium.value, unit: "mg", color: "#5c6bc0" },
 ];
@@ -61,7 +61,7 @@ const barHeight = 18;
 
   <!-- Nutrient bars vs daily reference -->
   <div class="chart-block">
-    <h3>So với nhu cầu hàng ngày*</h3>
+    <h3>So với mốc đọc nhanh*</h3>
     {bars.map(b => {
       const pct = Math.min(100, (b.val / b.max * 100));
       const displayVal = b.val < 10 ? b.val.toFixed(1) : Math.round(b.val);
@@ -81,7 +81,7 @@ const barHeight = 18;
     })}
   </div>
 
-  <p class="chart-footnote">*DRI người trưởng thành (~2000 kcal). Giá trị thực tế thay đổi theo tuổi, giới, vận động.</p>
+  <p class="chart-footnote">*Mốc đọc nhanh cho người trưởng thành (~2000 kcal). Dữ liệu “đường” có thể là đường tổng, không đồng nhất với đường tự do; giá trị thực tế thay đổi theo tuổi, giới và vận động.</p>
 </section>
 
 <style>

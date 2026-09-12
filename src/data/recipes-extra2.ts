@@ -177,6 +177,7 @@ export const extraRecipes2: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 240,
     tags: ["vietnamese"],
     portionNote: "Xôi nếp/gao nếp với mỡ hành, ruốc, lạp xưởng.",
+    weightNote: "Khối lượng đĩa là phần xôi đã chín; nước hấp và phần hao hụt khi chế biến không được liệt kê như nguyên liệu riêng.",
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
@@ -355,6 +356,7 @@ export const extraRecipes2: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 180,
     tags: ["vietnamese", "low-calorie"],
     portionNote: "Rong biển trộn tôm luộc, dầu mè.",
+    weightNote: "Rong biển được cân ở dạng khô rồi ngâm nở; khối lượng thành phẩm gồm phần nước giữ lại sau ngâm.",
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Giá trị tham khảo theo công thức; rong biển khô ngâm nở.",
     items: [

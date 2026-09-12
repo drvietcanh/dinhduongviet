@@ -425,7 +425,7 @@ const homepageHighlights = [
       {categories.slice(0, 10).map((cat) => {
         const items = foods.filter((f) => f.category === cat);
         return (
-          <a class="card category-card" href={`/thuc-pham#${encodeURIComponent(cat)}`}>
+          <a class="card category-card" href={`/thuc-pham?category=${encodeURIComponent(cat)}#food-results`}>
             <h3>{cat}</h3>
             <span class="count-badge">{items.length}</span>
           </a>

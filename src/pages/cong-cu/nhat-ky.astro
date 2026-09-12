@@ -8,7 +8,7 @@ const foodData = foods.map(f => ({
   kcal: f.nutrients.energyKcal || 0, protein: f.nutrients.proteinG || 0,
   fat: f.nutrients.fatG || 0, carb: f.nutrients.carbG || 0,
   fiber: f.nutrients.fiberG || 0, sodium: f.nutrients.sodiumMg || 0,
-  cholesterol: f.nutrients.cholesterolMg || 0, satFat: f.nutrients.satFatG || 0,
+  cholesterol: f.nutrients.cholesterolMg || 0, satFat: f.nutrients.saturatedFatG || 0,
   sugar: f.nutrients.sugarG || 0, calcium: f.nutrients.calciumMg || 0,
   iron: f.nutrients.ironMg || 0, potassium: f.nutrients.potassiumMg || 0,
 }));
@@ -19,7 +19,7 @@ const recipeData = recipes.map(r => {
     slug: r.slug, name: r.name, servingName: r.servingName || "", servingWeightG: r.servingWeightG || 0,
     kcal: n.energyKcal || 0, protein: n.proteinG || 0, fat: n.fatG || 0,
     carb: n.carbG || 0, fiber: n.fiberG || 0, sodium: n.sodiumMg || 0,
-    sugar: n.sugarG || 0, satFat: n.satFatG || 0, cholesterol: n.cholesterolMg || 0,
+    sugar: n.sugarG || 0, satFat: n.saturatedFatG || 0, cholesterol: n.cholesterolMg || 0,
   };
 });
 ---

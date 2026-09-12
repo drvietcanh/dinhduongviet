@@ -159,7 +159,7 @@ export const extraFoods1: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "com-gao-lut", slug: "com-gao-lut", name: "Cơm gạo lứt", aliases: ["brown rice", "gao lut", "gạo lật", "com gao lut", "com gao lat"],
+    id: "com-gao-lut", slug: "com-gao-lut", name: "Cơm gạo lứt", aliases: ["brown rice", "gao lut", "com gao lut", "com gao lat"],
     category: "Tinh bột", state: "cooked", basis: "100g", edibleNote: "Gạo lứt đã nấu chín.",
     nutrients: { energyKcal: 111, proteinG: 2.6, carbG: 23.0, fatG: 0.9, fiberG: 1.8, calciumMg: 10, ironMg: 0.6, sodiumMg: 4, potassiumMg: 77 , glycemicIndex: 50},
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
@@ -171,7 +171,7 @@ export const extraFoods1: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "cai-bong", slug: "cai-bong", name: "Cải bẹ xanh", aliases: ["mustard greens", "cai be xanh"],
+    id: "cai-bong", slug: "cai-bong", name: "Cải bẹ xanh", aliases: ["cai be xanh"],
     category: "Rau củ", state: "raw", basis: "100g phần ăn được", edibleNote: "Cải bẹ xanh tươi.",
     nutrients: { energyKcal: 28, proteinG: 2.9, carbG: 4.5, fatG: 0.3, fiberG: 2.0, calciumMg: 130, ironMg: 1.5, sodiumMg: 20, potassiumMg: 350, vitaminCMg: 60 , glycemicIndex: 15},
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."

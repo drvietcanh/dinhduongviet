@@ -146,7 +146,9 @@ function aliasesFor(name: string) {
   if (name === "Magi") aliases.push("Maggi");
   if (name === "Nước quít tươi") aliases.push("nước quýt tươi");
   if (name === "Bánh chocopie") aliases.push("ChocoPie", "choco pie");
-  if (name.startsWith("Vừng ")) aliases.push("mè");
+  // Giữ “mè” cho bản ghi vừng rang/đã chế biến; mục nguồn “Vừng … hạt, khô”
+  // có tên trạng thái riêng và không nên chia sẻ alias chung trong tìm kiếm.
+  if (name.startsWith("Vừng ") && !name.includes("hạt, khô")) aliases.push("mè");
   return aliases;
 }
 

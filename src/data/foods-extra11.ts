@@ -78,7 +78,7 @@ export const extraFoods11: Food[] = [
   },
   {
     id: "mang-tre-kho-vdd", slug: "mang-tre-kho-vdd", name: "Măng tre khô",
-    aliases: ["mang tre kho", "mang kho", "dried bamboo shoots"],
+    aliases: ["mang tre kho", "dried bamboo shoots"],
     category: "Rau xanh", state: "dried", basis: "100g măng khô",
     edibleNote: "Măng tre khô trước khi ngâm/nấu; không so trực tiếp với măng tươi hoặc măng đã ngâm nở.",
     nutrients: { energyKcal: 301, proteinG: 13, carbG: 57.5, fatG: 2.1, calciumMg: 100, ironMg: 5, phosphorusMg: 200, vitaminCMg: 1, vitaminAUg: 1.67 },

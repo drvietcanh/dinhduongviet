@@ -274,6 +274,20 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     status: "So sánh thực phẩm v1",
     summary:
       "Trang này đặt 2-4 thực phẩm cạnh nhau theo 100 g để xem khác biệt dinh dưỡng. Nó giúp đọc dữ liệu chứ không xếp hạng tốt-xấu tuyệt đối cho mọi người.",
+    formulas: [
+      {
+        label: "Cơ sở so sánh",
+        value: "Mỗi chỉ số được đọc trên cùng cơ sở 100 g phần ăn được; không cộng dồn các thực phẩm.",
+      },
+      {
+        label: "Tải lượng đường huyết (nếu có GI)",
+        value: "GL tham khảo = GI × glucid (g/100 g) / 100",
+      },
+      {
+        label: "Đánh dấu cao/thấp",
+        value: "Cao/thấp = giá trị lớn nhất/nhỏ nhất trong nhóm đang chọn; không phải ngưỡng bệnh lý.",
+      },
+    ],
     guidance: [
       "Nên so cùng đơn vị và cùng mức dữ liệu gốc, đặc biệt khi một bên là thực phẩm sống còn một bên là món chế biến.",
       "Các vi chất có thể thay đổi mạnh theo nguồn, chế biến và độ ẩm của thực phẩm.",
@@ -291,6 +305,16 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     status: "So sánh bữa ăn v1",
     summary:
       "Trang này so các bữa ăn/món ăn theo khẩu phần đã chọn để nhìn nhanh khác biệt về năng lượng và macro. Nó hỗ trợ lựa chọn thực đơn, không thay thế tư vấn dinh dưỡng cá thể.",
+    formulas: [
+      {
+        label: "Tổng dưỡng chất món",
+        value: "dưỡng chất món = Σ (dưỡng chất nguyên liệu/100 g × khối lượng nguyên liệu g)",
+      },
+      {
+        label: "Đọc chênh lệch",
+        value: "chênh lệch = giá trị món A − giá trị món B, trên cùng dữ liệu khẩu phần",
+      },
+    ],
     guidance: [
       "Cùng một món nhưng khẩu phần khác nhau có thể đảo thứ tự so sánh, nên cần xem cả gram thật.",
       "Nếu một bữa có nhiều nước chấm, topping hoặc món phụ, giá trị hiển thị vẫn chỉ là ước tính theo dữ liệu đầu vào.",
@@ -348,6 +372,16 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     status: "Nhật ký ăn uống v1",
     summary:
       "Trang này chỉ ghi lại bữa ăn và tổng hợp dữ liệu đã nhập theo ngày để người dùng mang đi đối chiếu hoặc trao đổi chuyên môn. Nó không tự diễn giải thành mục tiêu hay phác đồ.",
+    formulas: [
+      {
+        label: "Quy đổi khẩu phần",
+        value: "dưỡng chất khẩu phần = giá trị/100 g × lượng ăn thực tế (g) / 100",
+      },
+      {
+        label: "Tổng theo ngày",
+        value: "tổng ngày = Σ dưỡng chất của các món/thực phẩm đã ghi",
+      },
+    ],
     guidance: [
       "Nên đọc nhật ký theo xu hướng nhiều ngày thay vì chốt từ một bữa đơn lẻ.",
       "Khi có bệnh nền hoặc thuốc đang dùng, nhật ký chỉ là dữ liệu thô cần người có chuyên môn đọc cùng bối cảnh.",
@@ -382,6 +416,16 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     status: "Gợi ý món từ nguyên liệu v1",
     summary:
       "Trang này gợi ý ý tưởng món ăn từ nguyên liệu đã chọn để hỗ trợ lên bữa ăn tại nhà. Kết quả chỉ là độ khớp nguyên liệu, không phải thực đơn điều trị hay công thức hoàn chỉnh.",
+    formulas: [
+      {
+        label: "Điểm khớp",
+        value: "điểm khớp = số nguyên liệu đã chọn xuất hiện trong món; tỷ lệ khớp = điểm khớp / tổng nguyên liệu món",
+      },
+      {
+        label: "Thứ tự gợi ý",
+        value: "xếp điểm khớp giảm dần, sau đó ưu tiên tỷ lệ khớp cao hơn và tên món theo thứ tự chữ cái",
+      },
+    ],
     guidance: [
       "Nên kiểm tra lại dị ứng, cách nấu, độ chín và nguyên liệu phụ trước khi áp dụng ý tưởng món.",
       "Cùng một nguyên liệu có thể cho nhiều món khác nhau, nên kết quả chỉ là gợi mở ban đầu.",
@@ -653,6 +697,12 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "bang-xep-hang",
     status: "Tra cứu và sắp xếp dữ liệu",
     summary: "Trang sắp xếp các thực phẩm theo một dưỡng chất trên mỗi 100 g; không tính ra chỉ số sức khỏe hay khuyến nghị lượng ăn.",
+    formulas: [
+      {
+        label: "Thứ hạng",
+        value: "xếp hạng = sắp xếp giá trị dưỡng chất/100 g theo chiều tăng hoặc giảm được chọn; giá trị bằng nhau giữ đồng hạng",
+      },
+    ],
     guidance: [
       "Thứ hạng chỉ có ý nghĩa trong cùng một dưỡng chất, cùng đơn vị 100 g và cùng phạm vi dữ liệu đang hiển thị.",
       "Thực phẩm đứng đầu một dưỡng chất không tự động phù hợp với mọi chế độ ăn hoặc bệnh nền.",
@@ -686,6 +736,12 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "danh-sach-di-cho",
     status: "Lập danh sách theo lựa chọn",
     summary: "Trang tổng hợp danh sách mua sắm từ món hoặc thực phẩm người dùng chọn; không tính nhu cầu dinh dưỡng hay khẩu phần điều trị.",
+    formulas: [
+      {
+        label: "Khối lượng cần mua",
+        value: "tổng cần mua = Σ khối lượng nguyên liệu của các món đã chọn, gộp theo foodId",
+      },
+    ],
     guidance: ["Cần kiểm tra lại dị ứng, nhãn thực phẩm, lượng dùng thực tế và an toàn bảo quản trước khi mua."],
     notFor: ["Không dùng danh sách này để thay thế thực đơn điều trị hoặc hướng dẫn dị ứng cá thể."],
     sources: [
@@ -706,9 +762,24 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "ke-hoach-bua-an",
     status: "Gợi ý kế hoạch bữa ăn",
     summary: "Trang ghép món để người dùng lên ý tưởng bữa ăn; giá trị dinh dưỡng, nếu có, được lấy từ dữ liệu món/thực phẩm chứ không tạo mục tiêu điều trị mới.",
+    formulas: [
+      {
+        label: "BMR và TDEE",
+        value: "BMR Mifflin-St Jeor; TDEE = BMR × hệ số hoạt động",
+      },
+      {
+        label: "Mục tiêu năng lượng",
+        value: "giảm cân ≈ TDEE × 0,80; duy trì = TDEE; tăng cân ≈ TDEE × 1,15",
+      },
+      {
+        label: "Phân bổ bữa",
+        value: "sáng 25%, trưa 35%, tối 30%, phụ 10% mục tiêu kcal/ngày",
+      },
+    ],
     guidance: ["Kiểm tra lại khẩu phần, thành phần phụ, dị ứng và cách nấu trước khi dùng trong thực tế."],
     notFor: ["Không dùng kế hoạch này thay cho thực đơn cá thể hóa cho bệnh nền hoặc điều trị."],
     sources: [
+      { label: "NIDDK - Body Weight Planner", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
       { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
     ],
   },
@@ -716,6 +787,16 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "lap-thuc-don-tuan",
     status: "Gợi ý thực đơn tuần",
     summary: "Trang sắp xếp gợi ý món theo ngày; không suy diễn thành nhu cầu kcal, macro hoặc chỉ định bệnh lý cá nhân.",
+    formulas: [
+      {
+        label: "Phân bổ năng lượng ngày",
+        value: "sáng 25%, trưa 35%, chiều 10%, tối 30% mục tiêu kcal đã chọn",
+      },
+      {
+        label: "Tổng tuần",
+        value: "trung bình/ngày = tổng dinh dưỡng của kế hoạch / 7 ngày",
+      },
+    ],
     guidance: ["Nên xem thực đơn như điểm khởi đầu và điều chỉnh theo khẩu phần, ngân sách, mùa vụ, dị ứng và tình trạng sức khỏe."],
     notFor: ["Không dùng thực đơn tuần như phác đồ giảm cân hay dinh dưỡng điều trị."],
     sources: [
@@ -746,6 +827,16 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "tra-cuu-thuc-pham-viet",
     status: "Tra cứu dữ liệu thực phẩm",
     summary: "Trang tra cứu thực phẩm theo dữ liệu thư viện, tên gọi và alias đã kiểm duyệt; không tính khẩu phần hoặc đưa ra kết luận bệnh lý.",
+    formulas: [
+      {
+        label: "Quy đổi khẩu phần",
+        value: "Dưỡng chất khẩu phần = giá trị trên 100 g × khối lượng nhập (g) / 100",
+      },
+      {
+        label: "Làm tròn hiển thị",
+        value: "Số nguyên giữ nguyên; số thập phân hiển thị tối đa 1 chữ số để đọc nhanh.",
+      },
+    ],
     guidance: ["Cần đối chiếu trạng thái tươi, luộc, khô hoặc chế biến và phần ăn trước khi dùng số liệu."],
     notFor: ["Không dùng kết quả tìm kiếm thay cho khuyến nghị điều trị hoặc nhãn của một sản phẩm thương mại cụ thể."],
     sources: [

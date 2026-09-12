@@ -110,7 +110,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "ngo-sen-tuoi", slug: "ngo-sen-tuoi", name: "Ngó sen tươi",
-    aliases: ["ngo sen"],
+    aliases: [],
     category: "Rau xanh", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Ngó sen tươi, thường làm gỏi.",
     nutrients: { energyKcal: 20, proteinG: 1.5, carbG: 4.2, fatG: 0.1, fiberG: 2.0, calciumMg: 16, ironMg: 0.5, sodiumMg: 6, potassiumMg: 150, vitaminCMg: 15, glycemicIndex: 20 },
@@ -118,7 +118,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "trang-tu-bap", slug: "trang-tu-bap", name: "Trái bắp non baby",
-    aliases: ["bap non", "baby corn"],
+    aliases: ["baby corn"],
     category: "Rau xanh", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Bắp non luộc/xào.",
     nutrients: { energyKcal: 28, proteinG: 2.0, carbG: 5.0, fatG: 0.3, fiberG: 1.7, calciumMg: 3, ironMg: 0.3, sodiumMg: 5, potassiumMg: 140, vitaminCMg: 6, glycemicIndex: 15 },
@@ -127,7 +127,7 @@ export const extraFoods6: Food[] = [
   // ── THỊT ──
   {
     id: "thit-heo-bam", slug: "thit-heo-bam", name: "Thịt heo băm",
-    aliases: ["thit heo xay", "thịt lợn băm", "thit lon bam", "thit heo bam", "pork mince"],
+    aliases: ["thịt lợn băm", "thit lon bam", "thit heo bam", "pork mince"],
     category: "Thịt", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Thịt heo băm/xay, nạc mỡ 70/30.",
     nutrients: { energyKcal: 250, proteinG: 16, carbG: 0, fatG: 20, saturatedFatG: 7, cholesterolMg: 70, sodiumMg: 60, potassiumMg: 200, zincMg: 2.0 },
@@ -276,7 +276,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "ho-tieu", slug: "ho-tieu", name: "Hồ tiêu đen",
-    aliases: ["tieu", "tieu den", "black pepper", "ho tieu"],
+    aliases: ["tieu den", "black pepper", "ho tieu"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Hạt tiêu đen xay/nguyên hạt.",
     nutrients: { energyKcal: 255, proteinG: 11, carbG: 64, fatG: 3, fiberG: 25, calciumMg: 440, ironMg: 9.7, sodiumMg: 20, potassiumMg: 1250, vitaminCMg: 21, glycemicIndex: 5 },
@@ -284,7 +284,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "sa-te-tom", slug: "sa-te-tom", name: "Sa tế tôm",
-    aliases: ["sa te tom", "sa te"],
+    aliases: ["sa te tom"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Sa tế tôm chưng dầu, pha bún/hủ tiếu.",
     nutrients: { energyKcal: 380, proteinG: 8, carbG: 6, fatG: 36, saturatedFatG: 6, sodiumMg: 2800, potassiumMg: 100 },
@@ -316,7 +316,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "thi-la-kho-x", slug: "thi-la-kho-x", name: "Thì là (rau)",
-    aliases: ["thia la", "dill herb", "thi la"],
+    aliases: ["thia la", "dill herb"],
     category: "Rau gia vị", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Rau thì là tươi dùng tẩm ướp cá.",
     nutrients: { energyKcal: 43, proteinG: 3.5, carbG: 7, fatG: 1.1, fiberG: 2.1, calciumMg: 208, ironMg: 6.6, sodiumMg: 61, potassiumMg: 738, vitaminCMg: 85 },
@@ -325,7 +325,7 @@ export const extraFoods6: Food[] = [
   // ── BÁNH KHÁC ──
   {
     id: "banh-trung-thu-nhan-thap-cam", slug: "banh-trung-thu-nhan-thap-cam", name: "Bánh trung thu nhân thập cẩm",
-    aliases: ["banh trung thu thap cam", "mooncake assortment"],
+    aliases: ["mooncake assortment"],
     category: "Bánh kẹo", state: "processed", basis: "100g",
     edibleNote: "Bánh trung thu nhân thập cẩm trứng muối.",
     nutrients: { energyKcal: 420, proteinG: 8, carbG: 60, fatG: 17, saturatedFatG: 5, sugarG: 30, cholesterolMg: 80, sodiumMg: 320, calciumMg: 30 },
@@ -430,7 +430,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "sa-te", slug: "sa-te", name: "Sa tế",
-    aliases: ["sa te", "sate", "chili oil"],
+    aliases: ["sate", "chili oil"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Sa tế tôm/sả ớt, dầu thực vật, ớt bột, gia vị.",
     nutrients: { energyKcal: 520, proteinG: 3, carbG: 10, fatG: 50, saturatedFatG: 8, sodiumMg: 1800, potassiumMg: 80 },
@@ -463,7 +463,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "muop-dang", slug: "muop-dang", name: "Mướp đắng (khổ qua)",
-    aliases: ["muop dang", "kho qua", "bitter gourd"],
+    aliases: ["bitter gourd"],
     category: "Rau xanh", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Mướp đắng vị đắng, mát, thường nhồi thịt nấu canh.",
     nutrients: { energyKcal: 19, proteinG: 1.1, carbG: 3.7, fatG: 0.2, fiberG: 2.8, calciumMg: 22, potassiumMg: 210, vitaminCMg: 52, vitaminAUg: 90, folateUg: 51 },
@@ -499,7 +499,7 @@ export const extraFoods6: Food[] = [
   },
   {
     id: "diep-bien", slug: "diep-bien", name: "Điệp biển",
-    aliases: ["diep bien", "scallop", "sò điệp"],
+    aliases: ["diep bien", "scallop"],
     category: "Hải sản", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Điệp biển (scallop), nướng mỡ hành, hấp, xào.",
     nutrients: { energyKcal: 88, proteinG: 17, carbG: 2, fatG: 0.8, saturatedFatG: 0.1, fiberG: 0, cholesterolMg: 35, sodiumMg: 180, potassiumMg: 310, calciumMg: 26, ironMg: 0.5 },

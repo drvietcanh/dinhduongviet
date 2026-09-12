@@ -269,6 +269,7 @@ export const extraRecipes6: Recipe[] = [
     servingName: "1 phần (8 cuốn)", servingWeightG: 180,
     tags: ["vietnamese", "grilled"],
     sourceId: "recipe-estimate-v1", confidence: "low",
+    weightNote: "Khối lượng phần gồm lá lốt và gia vị bao ngoài; lá lốt chưa được tách thành nguyên liệu định lượng trong công thức hiện tại.",
     note: "Thịt bò băm gói lá lốt nướng, món nhậu phổ biến.",
     items: [
       { foodId: "thit-bo-bam", amountG: 100, note: "Thịt bò băm" },
@@ -416,6 +417,7 @@ export const extraRecipes6: Recipe[] = [
     servingName: "1 phần 10 cái", servingWeightG: 200,
     tags: ["vietnamese", "snack", "savory"],
     sourceId: "recipe-estimate-v1", confidence: "low",
+    weightNote: "Khối lượng phần gồm bột đã pha và phần rau/nước chấm; nước pha bột chưa được liệt kê như nguyên liệu tạo năng lượng.",
     note: "Bánh khọt Vũng Tàu, đúc khuôn, nước chấm.",
     items: [
       { foodId: "bot-gao", amountG: 50, note: "Bột gạo" },

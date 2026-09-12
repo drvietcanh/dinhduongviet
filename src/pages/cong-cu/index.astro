@@ -1,13 +1,23 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getToolMethodology } from "../../data/tool-methodology";
 const siteTitle = "Công cụ dinh dưỡng | Dinh dưỡng Việt";
 const siteDesc = "Công cụ dinh dưỡng gọn, dễ dùng cho người Việt: tra cứu thực phẩm, đọc bữa ăn và theo dõi các chỉ số cơ bản.";
 function splitToolCopy(desc) {
   const parts = desc.split(". ");
+  const actionText = (parts.shift() ?? desc).trim().replace(/[.!?]+$/, "");
+  const useWhenText = parts.join(". ").trim().replace(/^Dùng khi:?\s*/i, "").replace(/[.!?]+$/, "");
   return {
-    action: parts[0] ? `${parts[0]}.` : desc,
-    useWhen: parts[1] ?? "Dùng khi cần áp dụng ngay vào bữa ăn hoặc chỉ số hằng ngày.",
+    action: actionText ? `${actionText}.` : desc,
+    useWhen: useWhenText || "cần áp dụng ngay vào bữa ăn hoặc chỉ số hằng ngày",
   };
+}
+
+function displayToolStatus(tool) {
+  const methodology = getToolMethodology(tool.href);
+  if (!methodology || !/v1/i.test(methodology.status)) return tool.status;
+  if (methodology.formulas && methodology.formulas.length > 0) return "Đã kiểm công thức";
+  return methodology.status.replace(/\s*v1\b/gi, "").replace(/\s{2,}/g, " ").trim();
 }
 
 const toolGroups = [
@@ -129,7 +139,6 @@ const holdBackTools = [
   { name: "Tính macro tham khảo", reason: "Chỉ phù hợp khi người dùng đã có nền về năng lượng và mục tiêu rõ; không nên là tool lõi cho số đông." },
   { name: "Tính năng lượng tham khảo", reason: "Vẫn hữu ích, nhưng nên là công cụ lớp hai sau khi đã xác định mục tiêu cân nặng và bữa ăn cơ bản." },
   { name: "Tương tác thuốc", reason: "Khung nhắc việc chung không có danh sách thuốc và nguồn theo từng hoạt chất; giữ ở lớp phụ để tránh người dùng nhầm là máy kiểm tra đơn thuốc." },
-  { name: "Nhật ký ăn uống", reason: "Giá trị có nhưng dễ trùng vai với kế hoạch bữa ăn và theo dõi sức khỏe nếu đặt nổi bật ngang hàng." },
 ];
 ---
 
@@ -260,7 +269,7 @@ const holdBackTools = [
               <div class="cc-top">
                 <span class="cc-icon">{t.icon}</span>
                 <h3>{t.name}</h3>
-                {t.status && <span class:list={["cc-status", t.statusType === "stable" && "is-stable"]}>{t.status}</span>}
+                {t.status && <span class:list={["cc-status", t.statusType === "stable" && "is-stable"]}>{displayToolStatus(t)}</span>}
               </div>
               <p><strong>{splitToolCopy(t.desc).action}</strong></p>
               <p class="cc-usewhen">Dùng khi: {splitToolCopy(t.desc).useWhen}</p>

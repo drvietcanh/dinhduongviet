@@ -294,6 +294,7 @@ export const extraRecipes5: Recipe[] = [
     servingName: "1 ly", servingWeightG: 300,
     tags: ["vietnamese", "drink", "juice"],
     sourceId: "recipe-estimate-v1", confidence: "low",
+    weightNote: "Khoảng 400g dưa hấu cho 300g nước ép sau lọc bã; số liệu dinh dưỡng tính theo lượng dưa hấu đầu vào.",
     note: "Dưa hấu ép nguyên chất.",
     items: [
       { foodId: "dua-hau", amountG: 400, note: "Dưa hấu (xay ép)" }
@@ -416,6 +417,7 @@ export const extraRecipes5: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 150,
     tags: ["vietnamese", "snack", "fried"],
     sourceId: "recipe-estimate-v1", confidence: "low",
+    weightNote: "200g khoai sống cho khoảng 150g thành phẩm sau mất nước; 15g dầu là lượng thêm vào, không nhất thiết được hấp thu hết.",
     note: "Khoai lang chiên giòn.",
     items: [
       { foodId: "khoai-lang", amountG: 200, note: "Khoai lang" },
@@ -429,6 +431,7 @@ export const extraRecipes5: Recipe[] = [
     servingName: "1 cái", servingWeightG: 150,
     tags: ["vietnamese", "cake"],
     sourceId: "recipe-estimate-v1", confidence: "low",
+    weightNote: "Khối lượng cái bánh gồm phần nước trong bột và lá gói; nước hấp không được ghi như nguyên liệu tạo năng lượng.",
     note: "Bánh giò nhân thịt hấp, lá gói tam giác.",
     items: [
       { foodId: "bot-gao", amountG: 40, note: "Bột gạo" },
@@ -576,6 +579,7 @@ export const extraRecipes5: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 150,
     tags: ["vietnamese", "pork"],
     sourceId: "recipe-estimate-v1", confidence: "low",
+    weightNote: "Khối lượng đĩa là ước tính thành phẩm; danh sách hiện chỉ tách phần thịt và dầu, chưa tách nước sốt hoặc hao hụt khi áp chảo.",
     note: "Thịt nguội thái lát, chiên hoặc xào.",
     items: [
       { foodId: "thit-nguoi-kho", amountG: 100, note: "Thịt nguội" },

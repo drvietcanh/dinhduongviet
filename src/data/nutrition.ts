@@ -111,6 +111,8 @@ export type Recipe = {
     beefAmountG?: number;
     totalWeightG?: number;
   }[];
+  /** Giải thích khi khối lượng thành phẩm khác tổng khối lượng nguyên liệu liệt kê. */
+  weightNote?: string;
   items: RecipeItem[];
   sourceId: string;
   confidence: "high" | "medium" | "low";
@@ -1281,7 +1283,7 @@ foods.push(
     id: "lac-rang",
     slug: "lac-rang",
     name: "Lạc rang",
-    aliases: ["đậu phộng rang", "dau phong rang", "lạc rang", "peanut", "lac rang"],
+    aliases: ["đậu phộng rang", "dau phong rang", "lạc rang", "lac rang"],
     category: "Hạt và đậu",
     state: "processed",
     basis: "100g",

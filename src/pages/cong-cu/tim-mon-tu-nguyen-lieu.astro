@@ -131,10 +131,10 @@ const catData = [
         return { slug, score, matchRatio, totalIngs: ings.length, matched };
       });
 
-      // Sort: by matched count desc, then match ratio asc (prioritizes recipes that use selected ings)
+      // Sort: by matched count desc, then match ratio desc (prioritizes recipes that use selected ings)
       scored.sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
-        if (a.matchRatio !== b.matchRatio) return a.matchRatio - b.matchRatio;
+        if (a.matchRatio !== b.matchRatio) return b.matchRatio - a.matchRatio;
         return (data.recipeNames[a.slug] || a.slug).localeCompare(data.recipeNames[b.slug] || b.slug, 'vi');
       });
 

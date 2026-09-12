@@ -2,6 +2,8 @@
 import Fonts from "../components/Fonts.astro";
 import ToolMethodologyCard from "../components/ToolMethodologyCard.astro";
 import { getToolMethodology } from "../data/tool-methodology";
+import { foods, recipes } from "../data/nutrition";
+import { articles } from "../data/articles";
 export interface Props {
   title: string;
   description?: string;
@@ -21,6 +23,11 @@ const canonicalUrl = canonicalPath
 
 const pathname = Astro.url.pathname;
 const toolMethodology = getToolMethodology(pathname);
+const libraryStats = {
+  foods: foods.length,
+  recipes: recipes.length,
+  articles: articles.length,
+};
 const pathParts = pathname.split("/").filter(Boolean);
 const isArticle = pathname.startsWith("/kien-thuc-dinh-duong/") && pathParts.length >= 2;
 var breadcrumbItems = [
@@ -1213,7 +1220,7 @@ if (isArticle) {
       <div class="footer-data-badge">
         <div class="footer-data-badge-inner">
           <span>Kho dữ liệu:</span>
-          <strong>1.600+ trang tra cứu và hướng dẫn</strong>
+          <strong>{libraryStats.foods.toLocaleString("vi-VN")} thực phẩm · {libraryStats.recipes.toLocaleString("vi-VN")} món ăn · {libraryStats.articles.toLocaleString("vi-VN")} bài viết</strong>
         </div>
       </div>
       <div class="footer-bottom">

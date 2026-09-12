@@ -6,13 +6,14 @@ interface Props {
 }
 
 const { methodology } = Astro.props;
+const displayStatus = methodology.status.replace(/\bv1\b/gi, "").replace(/\s{2,}/g, " ").trim();
 ---
 
 <section class="tool-methodology-card section card" aria-labelledby="tool-methodology-title">
   <div class="tool-methodology-head">
     <p class="tool-methodology-kicker">Phương pháp và nguồn</p>
     <h2 id="tool-methodology-title">Khung đọc tool này</h2>
-    <span class="tool-methodology-status">{methodology.status}</span>
+    <span class="tool-methodology-status">{displayStatus}</span>
   </div>
 
   <p class="tool-methodology-summary">{methodology.summary}</p>
@@ -31,9 +32,16 @@ const { methodology } = Astro.props;
     </div>
   )}
 
+  {(!methodology.formulas || methodology.formulas.length === 0) && (
+    <div class="tool-methodology-block tool-methodology-no-formula">
+      <h3>Phạm vi kết quả</h3>
+      <p>Công cụ này tra cứu, ghi nhận hoặc gợi ý từ dữ liệu đầu vào; không có công thức định lượng riêng để suy diễn thành chỉ số cá nhân.</p>
+    </div>
+  )}
+
   {methodology.guidance && methodology.guidance.length > 0 && (
     <div class="tool-methodology-block">
-      <h3>Cách hiểu đúng ở v1</h3>
+      <h3>Cách hiểu đúng</h3>
       <ul class="tool-methodology-points">
         {methodology.guidance.map((item) => <li>{item}</li>)}
       </ul>
@@ -101,6 +109,19 @@ const { methodology } = Astro.props;
   .tool-methodology-summary {
     margin: 0;
     color: var(--ink-secondary);
+  }
+
+  .tool-methodology-no-formula {
+    padding: 12px 14px;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--bg-soft);
+  }
+
+  .tool-methodology-no-formula p {
+    margin: 0;
+    color: var(--ink-secondary);
+    line-height: 1.55;
   }
 
   .tool-methodology-block {

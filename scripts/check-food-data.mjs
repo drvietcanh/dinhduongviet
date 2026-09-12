@@ -123,7 +123,10 @@ function duplicateSeverity(action) {
 
 function findAliasWarnings(foods, searchFoods) {
   const bySlug = new Map(searchFoods.map((item) => [item.slug, item]));
-  const ignoredRegionalNameSlugs = new Set(["banh-da-lon"]);
+  // “Gạo lật” is retained on the raw VDD entry. The cooked entry already
+  // carries an explicit “cơm gạo lứt” descriptor so the alias is intentionally
+  // not duplicated across raw/cooked states in the search index.
+  const ignoredRegionalNameSlugs = new Set(["banh-da-lon", "com-gao-lut"]);
   const synonymPairs = [
     { left: "heo", right: "lợn", group: "regional-name" },
     { left: "đậu phộng", right: "lạc", group: "regional-name" },
@@ -170,6 +173,33 @@ function findAliasWarnings(foods, searchFoods) {
       }
     }
   }
+
+  // A search alias must identify one canonical food only. Keep this check
+  // separate from the regional-name warnings above: a shared alias can be
+  // valid in natural language, but it is ambiguous for the search index.
+  const aliasOwners = new Map();
+  for (const item of searchFoods) {
+    const candidates = Array.isArray(item.aliases) ? item.aliases : [];
+    for (const alias of candidates) {
+      // Preserve Vietnamese tone marks here. The search index may accept an
+      // unaccented query, but `dừa` and `dứa` are different foods and should
+      // not be reported as the same editorial alias.
+      const key = normalizeWithMarks(alias);
+      if (!key) continue;
+      const owners = aliasOwners.get(key) || new Map();
+      owners.set(item.slug, alias);
+      aliasOwners.set(key, owners);
+    }
+  }
+  for (const [key, owners] of aliasOwners) {
+    if (owners.size < 2) continue;
+    warnings.push({
+      type: "ambiguous-alias",
+      subtype: "shared_search_term",
+      normalizedTerm: key,
+      entries: [...owners.entries()].map(([slug, alias]) => ({ slug, alias })),
+    });
+  }
   return warnings;
 }
 
@@ -187,6 +217,7 @@ const fullRows = await readJson("public/api/foods-full.json");
 const searchIndex = await readJson("public/api/search-index.json");
 const sourceFoods = await readJson("dist/api-foods.json");
 const vnCrossref = await readJson("public/api/vn-crossref.json");
+const vietnamFoods = await readJson("public/api/vietnam-foods.json");
 const compatAliases = await readCompatAliases();
 const vnMicronutrientOverrideSlugs = await readVnMicronutrientOverrideSlugs();
 const fullFoods = fullRows.map(fullToFood);
@@ -283,6 +314,7 @@ const missingCoreNutrients = fullFoods
   .map((food) => issue("error", { slug: food.slug, name: food.name, category: food.category, kcal: food.kcal, protein: food.protein, lipid: food.lipid, glucid: food.glucid }));
 
 const aliasWarnings = findAliasWarnings(fullFoods, searchFoods).map((warning) => issue("info", warning));
+const aliasCollisions = aliasWarnings.filter((warning) => warning.type === "ambiguous-alias");
 const aliasWarningsByType = aliasWarnings.reduce((totals, item) => {
   totals[item.type] = (totals[item.type] || 0) + 1;
   return totals;
@@ -407,15 +439,13 @@ const allowedVnCrossrefTransformSlugs = new Set([
   "com-gao-lut",
   "com-nep",
   "gao-te",
-  "gao-lut",
   "bot-gao",
-  "bot-mi",
   "bot-nghe",
-  "mi-goi",
   "lap-xuong",
   "thit-ga-ta",
   "thit-lon-nac",
   "xi-dau",
+  "cha-bong",
 ]);
 
 function findVnCrossrefSuspiciousEntries(crossref) {
@@ -489,6 +519,58 @@ function findVnCrossrefSuspiciousEntries(crossref) {
 }
 
 const vnCrossrefEntries = Object.entries(vnCrossref || {});
+const vietnamFoodCodes = new Set(vietnamFoods.map((item) => String(item.code)));
+const vietnamFoodMalformedNames = vietnamFoods
+  .filter((item) => {
+    const name = String(item?.name_vi || "").trim();
+    return !name || /^\d+$/.test(name);
+  })
+  .map((item) => issue("info", {
+    type: "vietnam_source",
+    subtype: "malformed_display_name",
+    code: String(item?.code || ""),
+    stt: item?.stt,
+    name: item?.name_vi || "",
+    action: "hide_from_lookup_ui_until_source_name_is_repaired",
+  }));
+const vietnamFoodDuplicateCodes = groupBy(vietnamFoods, (item) => String(item?.code || ""))
+  .map(([code, entries]) => issue("info", {
+    type: "vietnam_source",
+    subtype: "duplicate_source_code",
+    code,
+    entries: entries.map((item) => ({ stt: item?.stt, name: item?.name_vi || "" })),
+    action: "keep_first_named_row_in_lookup_ui",
+  }));
+const vnCrossrefInvalid = vnCrossrefEntries.flatMap(([slug, match]) => {
+  const issues = [];
+  if (!slimBySlug.has(slug) && !sourceBySlug.has(slug)) {
+    issues.push(issue("error", {
+      type: "vn_crossref",
+      subtype: "noncanonical_slug",
+      slug,
+      suggestion: "remove_or_move_mapping_to_canonical_food_slug",
+    }));
+  }
+  if (!match?.code || !vietnamFoodCodes.has(String(match.code))) {
+    issues.push(issue("error", {
+      type: "vn_crossref",
+      subtype: "unknown_source_code",
+      slug,
+      matchedCode: match?.code,
+      suggestion: "use_a_code_present_in_vietnam_foods_json",
+    }));
+  }
+  if (!String(match?.name || "").trim()) {
+    issues.push(issue("error", {
+      type: "vn_crossref",
+      subtype: "missing_source_name",
+      slug,
+      matchedCode: match?.code,
+      suggestion: "include_the_vietnamese_source_name",
+    }));
+  }
+  return issues;
+});
 const vnCrossrefSuspicious = findVnCrossrefSuspiciousEntries(vnCrossref);
 
 const watchedDuplicates = ["nuoc-dung-ga", "nuoc-dung-nam", "nam-bao-ngu", "nam-linh-chi-nau", "vu-sua", "bo-vien", "bi-dao", "bot-san-day"];
@@ -502,7 +584,8 @@ const sourceNotes = [
   "src/pages/api-foods.json.ts exports full food data from src/data/nutrition.ts at build time.",
   "No nutrition values or source data were changed by this QA script.",
   "Vietnam micronutrient overlays are intentionally conservative; skipped candidates must be verified before import.",
-  "public/api/vn-crossref.json is used as an auxiliary Vietnam FCT mapping; suspicious crossrefs are reported but do not fail QA because some cooked/raw or generic-source transforms are intentional.",
+  "public/api/vn-crossref.json is an auxiliary, canonical-only Vietnam FCT mapping; ambiguous mappings are removed until a code/name match is verified.",
+  "Malformed or duplicate rows in the upstream Vietnam FCT export are reported separately; the lookup UI applies curated display-name corrections where the source record is unambiguous and hides unresolved rows, while the raw API is preserved for provenance.",
 ];
 
 const allIssues = [
@@ -518,6 +601,9 @@ const allIssues = [
   ...decisionTableMissingMetadata,
   ...cookedHighEnergyWithoutReviewMetadata,
   ...intentionallySkippedVnMicronutrientCandidates,
+  ...vietnamFoodMalformedNames,
+  ...vietnamFoodDuplicateCodes,
+  ...vnCrossrefInvalid,
   ...vnCrossrefSuspicious,
 ];
 const issuesBySeverity = allIssues.reduce((totals, item) => {
@@ -537,6 +623,7 @@ const report = {
     rawCookedAmbiguity: rawCookedAmbiguity.length,
     missingCoreNutrients: missingCoreNutrients.length,
     aliasWarnings: aliasWarnings.length,
+    aliasCollisions: aliasCollisions.length,
     compatAliases: compatAliasStatus.length,
     cookedHighEnergyReview: cookedHighEnergyReview.length,
     riceSourceReview: riceSourceReview.length,
@@ -549,7 +636,10 @@ const report = {
     vnMicronutrientOverrides: vnMicronutrientOverrideSlugs.size,
     intentionallySkippedVnMicronutrientCandidates: intentionallySkippedVnMicronutrientCandidates.length,
     vnCrossrefMappings: vnCrossrefEntries.length,
+    vnCrossrefInvalid: vnCrossrefInvalid.length,
     vnCrossrefSuspicious: vnCrossrefSuspicious.length,
+    vietnamSourceMalformedNames: vietnamFoodMalformedNames.length,
+    vietnamSourceDuplicateCodes: vietnamFoodDuplicateCodes.length,
   },
   dataQualityCounts,
   sourceReviewStatusCounts,
@@ -579,9 +669,13 @@ const report = {
   decisionTableMissingMetadata,
   cookedHighEnergyWithoutReviewMetadata,
   intentionallySkippedVnMicronutrientCandidates,
+  vietnamSourceMalformedNames: vietnamFoodMalformedNames,
+  vietnamSourceDuplicateCodes: vietnamFoodDuplicateCodes,
+  vnCrossrefInvalid,
   vnCrossrefSuspicious: vnCrossrefSuspicious.slice(0, 200),
   missingCoreNutrients,
   aliasWarnings: aliasWarnings.slice(0, 200),
+  aliasCollisions,
 };
 
 await mkdir(path.dirname(reportPath), { recursive: true });

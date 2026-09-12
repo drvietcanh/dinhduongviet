@@ -389,6 +389,7 @@ export const extraRecipes4: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 200,
     tags: ["vietnamese", "street-food"],
     portionNote: "Sườn non rim chua ngọt.",
+    weightNote: "Khối lượng đĩa là ước tính sau rim, gồm phần sốt; nước sốt chưa được tách riêng trong danh sách nguyên liệu.",
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [
       { foodId: "suon-heo-nuong", amountG: 120, note: "Sườn heo (quy đổi từ sườn chín)" },

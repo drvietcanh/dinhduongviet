@@ -449,7 +449,7 @@ const searchIntents = [
       var cats = ['Tinh bột','Thịt','Cá','Hải sản','Rau xanh','Củ quả','Trái cây','Đậu','Nấm'];
       html += '<div class="empty-cats"><div class="empty-cats-label">Hoặc duyệt theo danh mục:</div>';
       cats.forEach(function(c) {
-        html += '<a class="chip" href="/thuc-pham#' + encodeURIComponent(c) + '">' + getCategoryEmoji(c) + ' ' + c + '</a>';
+        html += '<a class="chip" href="/thuc-pham?category=' + encodeURIComponent(c) + '#food-results">' + getCategoryEmoji(c) + ' ' + c + '</a>';
       });
       html += '</div>';
 

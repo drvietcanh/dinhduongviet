@@ -193,6 +193,19 @@ var foodSchema = {
       <p>Số liệu mặc định áp theo 100g phần ăn được. Nếu bạn ăn ít hơn hoặc nhiều hơn mức này, hãy đổi lại khẩu phần trước khi so sánh.</p>
       <p class="public-note">{publicNote}</p>
     </div>
+    {needsReview && (
+      <aside class={`food-review-alert ${food.needsDietitianReview ? "is-specialist" : ""}`} role="note">
+        <div class="food-review-alert-icon" aria-hidden="true">!</div>
+        <div>
+          <strong>{food.needsDietitianReview ? "Cần thẩm định chuyên gia" : "Số liệu cần đối chiếu"}</strong>
+          <p>
+            {food.needsDietitianReview
+              ? "Giá trị hiện là ước tính hoặc đối chiếu gần; không dùng làm căn cứ duy nhất để thay đổi chế độ điều trị."
+              : "Hãy xem trạng thái nguồn bên dưới và đối chiếu với trạng thái chế biến, nhãn sản phẩm hoặc khẩu phần thực tế."}
+          </p>
+        </div>
+      </aside>
+    )}
     <AddToDiary type="food" itemId={food.id} defaultAmount={100} />
   </section>
 
@@ -514,6 +527,51 @@ var foodSchema = {
     padding-top: 8px;
     border-top: 1px dashed var(--card-border);
     font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .food-review-alert {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 11px;
+    align-items: start;
+    padding: 13px 15px;
+    border: 1px solid rgba(180, 83, 9, .24);
+    border-radius: 15px;
+    background: #fff8ed;
+    color: #7c4514;
+  }
+
+  .food-review-alert.is-specialist {
+    border-color: rgba(185, 28, 28, .24);
+    background: #fff4f3;
+    color: #8f2424;
+  }
+
+  .food-review-alert-icon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: #b45309;
+    color: #fff;
+    font-weight: 850;
+  }
+
+  .food-review-alert.is-specialist .food-review-alert-icon {
+    background: #b91c1c;
+  }
+
+  .food-review-alert strong {
+    display: block;
+    font-size: .86rem;
+  }
+
+  .food-review-alert p {
+    margin: 4px 0 0;
+    color: inherit;
+    font-size: .8rem;
     line-height: 1.55;
   }
 
@@ -846,7 +904,8 @@ var foodSchema = {
 
     .detail-note-card,
     .next-step-card,
-    .quality-note {
+    .quality-note,
+    .food-review-alert {
       padding: 12px;
     }
 
@@ -1012,7 +1071,7 @@ var foodSchema = {
       return overlap / Math.min(leftTokens.length, rightTokens.length);
     }
     function isPlausibleCrossref(slug, appName, refName) {
-      var allowedTransforms = new Set(['com-trang', 'com-gao-lut', 'gao-te', 'gao-nep', 'gao-lut', 'bot-gao', 'bot-mi', 'bot-nghe', 'mi-goi']);
+      var allowedTransforms = new Set(['com-trang', 'com-gao-lut', 'com-nep', 'gao-te', 'bot-gao', 'bot-nghe', 'cha-bong']);
       if (allowedTransforms.has(slug)) return true;
       if (!refName || /^\d+$/.test(String(refName).trim())) return false;
       var appPlain = normalize(appName);

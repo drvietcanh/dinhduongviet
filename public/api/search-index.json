@@ -8713,7 +8713,6 @@
       "đậu phộng rang",
       "dau phong rang",
       "lạc rang",
-      "peanut",
       "lac rang"
     ],
     "description": "Tra cứu Lạc rang: khoảng 585 kcal/100g, nhóm Đậu.",
@@ -9104,9 +9103,9 @@
       "cassava",
       "khoai mi"
     ],
-    "description": "Tra cứu Khoai mì: khoảng 160 kcal/100g, nhóm Tinh bột.",
+    "description": "Tra cứu Khoai mì: khoảng 152 kcal/100g, nhóm Tinh bột.",
     "category": "Tinh bột",
-    "kcal": 160
+    "kcal": 152
   },
   {
     "type": "food",
@@ -9163,7 +9162,6 @@
     "aliases": [
       "brown rice",
       "gao lut",
-      "gạo lật",
       "com gao lut",
       "com gao lat"
     ],
@@ -9189,7 +9187,6 @@
     "slug": "cai-bong",
     "name": "Cải bẹ xanh",
     "aliases": [
-      "mustard greens",
       "cai be xanh"
     ],
     "description": "Tra cứu Cải bẹ xanh: khoảng 28 kcal/100g, nhóm Rau xanh.",
@@ -9354,7 +9351,6 @@
     "name": "Vải",
     "aliases": [
       "lychee",
-      "vai thieu",
       "vai"
     ],
     "description": "Tra cứu Vải: khoảng 49 kcal/100g, nhóm Trái cây.",
@@ -9467,7 +9463,6 @@
     "slug": "oi-ruot-trang",
     "name": "Ổi ruột trắng",
     "aliases": [
-      "guava",
       "oi ruot trang"
     ],
     "description": "Tra cứu Ổi ruột trắng: khoảng 68 kcal/100g, nhóm Trái cây.",
@@ -10037,7 +10032,6 @@
     "slug": "nuoc-cam",
     "name": "Nước cam",
     "aliases": [
-      "orange juice",
       "nuoc cam"
     ],
     "description": "Tra cứu Nước cam: khoảng 45 kcal/100g, nhóm Đồ uống.",
@@ -11235,7 +11229,6 @@
     "slug": "rau-diep",
     "name": "Rau diếp",
     "aliases": [
-      "lettuce",
       "rau diep"
     ],
     "description": "Tra cứu Rau diếp: khoảng 15 kcal/100g, nhóm Rau xanh.",
@@ -11299,7 +11292,6 @@
     "name": "Mận",
     "aliases": [
       "plum",
-      "mận hậu",
       "man"
     ],
     "description": "Tra cứu Mận: khoảng 46 kcal/100g, nhóm Trái cây.",
@@ -11375,9 +11367,8 @@
     "slug": "bot-nghe",
     "name": "Bột nghệ",
     "aliases": [
-      "turmeric powder",
-      "bot nghe",
-      "nghệ bột"
+      "nghệ bột",
+      "bot nghe"
     ],
     "description": "Tra cứu Bột nghệ: khoảng 354 kcal/100g, nhóm Gia vị.",
     "category": "Gia vị",
@@ -11426,8 +11417,6 @@
     "name": "Chao",
     "aliases": [
       "fermented tofu",
-      "chao trang",
-      "chao do",
       "chao"
     ],
     "description": "Tra cứu Chao: khoảng 120 kcal/100g, nhóm Gia vị.",
@@ -11521,7 +11510,6 @@
     "name": "Trứng cút (thường)",
     "aliases": [
       "quail egg",
-      "trung cut",
       "trung cut thuong"
     ],
     "description": "Tra cứu Trứng cút (thường): khoảng 158 kcal/100g, nhóm Trứng sữa.",
@@ -11840,7 +11828,6 @@
     "slug": "ngo-sen-tuoi",
     "name": "Ngó sen tươi",
     "aliases": [
-      "ngo sen",
       "ngo sen tuoi"
     ],
     "description": "Tra cứu Ngó sen tươi: khoảng 20 kcal/100g, nhóm Rau xanh.",
@@ -11852,7 +11839,6 @@
     "slug": "trang-tu-bap",
     "name": "Trái bắp non baby",
     "aliases": [
-      "bap non",
       "baby corn",
       "trai bap non baby"
     ],
@@ -11865,7 +11851,6 @@
     "slug": "thit-heo-bam",
     "name": "Thịt heo băm",
     "aliases": [
-      "thit heo xay",
       "thịt lợn băm",
       "thit lon bam",
       "thit heo bam",
@@ -12094,7 +12079,6 @@
     "slug": "ho-tieu",
     "name": "Hồ tiêu đen",
     "aliases": [
-      "tieu",
       "tieu den",
       "black pepper",
       "ho tieu",
@@ -12109,8 +12093,7 @@
     "slug": "sa-te-tom",
     "name": "Sa tế tôm",
     "aliases": [
-      "sa te tom",
-      "sa te"
+      "sa te tom"
     ],
     "description": "Tra cứu Sa tế tôm: khoảng 380 kcal/100g, nhóm Gia vị.",
     "category": "Gia vị",
@@ -12160,7 +12143,6 @@
     "aliases": [
       "thia la",
       "dill herb",
-      "thi la",
       "thi la rau"
     ],
     "description": "Tra cứu Thì là (rau): khoảng 43 kcal/100g, nhóm Rau gia vị.",
@@ -12172,7 +12154,6 @@
     "slug": "banh-trung-thu-nhan-thap-cam",
     "name": "Bánh trung thu nhân thập cẩm",
     "aliases": [
-      "banh trung thu thap cam",
       "mooncake assortment",
       "banh trung thu nhan thap cam"
     ],
@@ -12322,9 +12303,9 @@
     "slug": "sa-te",
     "name": "Sa tế",
     "aliases": [
-      "sa te",
       "sate",
-      "chili oil"
+      "chili oil",
+      "sa te"
     ],
     "description": "Tra cứu Sa tế: khoảng 520 kcal/100g, nhóm Gia vị.",
     "category": "Gia vị",
@@ -12372,8 +12353,6 @@
     "slug": "muop-dang",
     "name": "Mướp đắng (khổ qua)",
     "aliases": [
-      "muop dang",
-      "kho qua",
       "bitter gourd",
       "muop dang kho qua"
     ],
@@ -12430,8 +12409,7 @@
     "name": "Điệp biển",
     "aliases": [
       "diep bien",
-      "scallop",
-      "sò điệp"
+      "scallop"
     ],
     "description": "Tra cứu Điệp biển: khoảng 88 kcal/100g, nhóm Hải sản.",
     "category": "Hải sản",
@@ -12479,13 +12457,8 @@
     "name": "Nước xương heo",
     "aliases": [
       "nuoc xuong heo",
-      "nước dùng xương heo",
-      "nước dùng xương lợn",
-      "nuoc dung xuong heo",
       "nước xương lợn",
       "nuoc xuong lon",
-      "nước hầm xương heo",
-      "nước hầm xương lợn",
       "pork bone broth"
     ],
     "description": "Tra cứu Nước xương heo: khoảng 8 kcal/100g, nhóm Nước dùng.",
@@ -12498,10 +12471,6 @@
     "name": "Nước xương bò",
     "aliases": [
       "nuoc xuong bo",
-      "nước dùng xương bò",
-      "nuoc dung xuong bo",
-      "nước hầm xương bò",
-      "nuoc ham xuong bo",
       "beef bone broth"
     ],
     "description": "Tra cứu Nước xương bò: khoảng 10 kcal/100g, nhóm Nước dùng.",
@@ -12668,7 +12637,6 @@
     "slug": "dau-phong",
     "name": "Dầu phộng (dầu lạc)",
     "aliases": [
-      "dau phong",
       "dầu đậu phộng",
       "dau dau phong",
       "dầu lạc",
@@ -12757,8 +12725,6 @@
     "slug": "tra-xanh-nguyen-chat",
     "name": "Trà xanh (nguyên chất)",
     "aliases": [
-      "tra xanh",
-      "green tea",
       "tra xanh nguyen chat"
     ],
     "description": "Tra cứu Trà xanh (nguyên chất): khoảng 1 kcal/100g, nhóm Đồ uống.",
@@ -12795,8 +12761,6 @@
     "name": "Cà phê đen đá",
     "aliases": [
       "cà phê đen đá",
-      "ca phe",
-      "cafe",
       "ca phe den da",
       "cafe den da",
       "iced black coffee"
@@ -12810,9 +12774,10 @@
     "slug": "ruou-nep-than",
     "name": "Rượu nếp",
     "aliases": [
-      "ruou nep",
+      "ruou nep than",
       "ruou gao",
-      "rice wine"
+      "rice wine",
+      "ruou nep"
     ],
     "description": "Tra cứu Rượu nếp: khoảng 200 kcal/100g, nhóm Đồ uống.",
     "category": "Đồ uống",
@@ -12863,7 +12828,6 @@
     "name": "Hạt hướng dương rang",
     "aliases": [
       "hat huong duong rang",
-      "hat huong duong",
       "sunflower seeds roasted"
     ],
     "description": "Tra cứu Hạt hướng dương rang: khoảng 652 kcal/100g, nhóm Hạt.",
@@ -12936,8 +12900,7 @@
     "slug": "dau-den-hat",
     "name": "Đậu đen (hạt)",
     "aliases": [
-      "dau den hat",
-      "black bean"
+      "dau den hat"
     ],
     "description": "Tra cứu Đậu đen (hạt): khoảng 341 kcal/100g, nhóm Đậu.",
     "category": "Đậu",
@@ -12973,7 +12936,6 @@
     "name": "Đậu đỏ (hạt)",
     "aliases": [
       "dau do hat",
-      "red bean",
       "azuki bean"
     ],
     "description": "Tra cứu Đậu đỏ (hạt): khoảng 329 kcal/100g, nhóm Đậu.",
@@ -13162,7 +13124,6 @@
     "aliases": [
       "gio lua",
       "gio song",
-      "Vietnamese pork sausage",
       "gio lua gio song"
     ],
     "description": "Tra cứu Giò lụa (giò sống): khoảng 160 kcal/100g, nhóm Thịt chế biến.",
@@ -13186,8 +13147,7 @@
     "slug": "gio-bo",
     "name": "Giò bò",
     "aliases": [
-      "gio bo",
-      "beef sausage"
+      "gio bo"
     ],
     "description": "Tra cứu Giò bò: khoảng 170 kcal/100g, nhóm Thịt chế biến.",
     "category": "Thịt chế biến",
@@ -13402,7 +13362,6 @@
     "name": "Sữa đặc Ông Thọ",
     "aliases": [
       "ong tho condensed milk",
-      "sữa đặc có đường",
       "sua dac ong tho"
     ],
     "description": "Tra cứu Sữa đặc Ông Thọ: khoảng 320 kcal/100g, nhóm Sữa.",
@@ -13708,9 +13667,7 @@
     "slug": "tra-sua-tran-chau-extra8",
     "name": "Trà sữa trân châu (ly)",
     "aliases": [
-      "bubble tea",
       "milk tea",
-      "trà sữa",
       "tra sua tran chau ly"
     ],
     "description": "Tra cứu Trà sữa trân châu (ly): khoảng 370 kcal/100g, nhóm Đồ uống.",
@@ -13868,7 +13825,6 @@
     "slug": "banh-trang-mi-bien",
     "name": "Bánh tráng mít biên hòa",
     "aliases": [
-      "bánh tráng",
       "bánh tráng muối",
       "bánh tráng hàn quốc",
       "banh trang mit bien hoa"
@@ -13994,7 +13950,6 @@
     "slug": "ca-phe-sua-da-extra8",
     "name": "Cà phê sữa đá (ly)",
     "aliases": [
-      "cà phê sữa",
       "cafe sữa đá",
       "cafe sữa",
       "ca phe sua da ly"
@@ -14008,9 +13963,7 @@
     "slug": "ca-phe-den-da-extra8",
     "name": "Cà phê đen đá (ly)",
     "aliases": [
-      "cafe đen",
       "cafe đen đá",
-      "cà phê đen",
       "ca phe den da ly"
     ],
     "description": "Tra cứu Cà phê đen đá (ly): khoảng 5 kcal/100g, nhóm Đồ uống.",
@@ -14144,8 +14097,8 @@
     "aliases": [
       "gao lut te song",
       "gao te chua xat",
-      "gạo lật",
       "gao lat",
+      "gạo lật",
       "brown rice raw"
     ],
     "description": "Tra cứu Gạo lứt tẻ sống: khoảng 359 kcal/100g, nhóm Tinh bột.",
@@ -14454,7 +14407,6 @@
     "name": "Măng tre khô",
     "aliases": [
       "mang tre kho",
-      "mang kho",
       "dried bamboo shoots"
     ],
     "description": "Tra cứu Măng tre khô: khoảng 301 kcal/100g, nhóm Rau xanh.",
@@ -15619,7 +15571,6 @@
     "slug": "nghe-kho-bot-vdd",
     "name": "Nghệ khô bột",
     "aliases": [
-      "bot nghe",
       "turmeric powder",
       "nghe kho bot"
     ],
@@ -16351,7 +16302,6 @@
     "slug": "vung-den-trang-hat-kho-vdd-3020",
     "name": "Vừng (đen, trắng), hạt, khô",
     "aliases": [
-      "mè",
       "vung den trang hat kho"
     ],
     "description": "Tra cứu Vừng (đen, trắng), hạt, khô: khoảng 582 kcal/100g, nhóm Hạt.",
@@ -16872,8 +16822,7 @@
     "slug": "com-tuoi-vdd",
     "name": "Cốm tươi",
     "aliases": [
-      "com tuoi",
-      "cốm làng Vòng"
+      "com tuoi"
     ],
     "description": "Tra cứu Cốm tươi: khoảng 307 kcal/100g, nhóm Tinh bột.",
     "category": "Tinh bột",
@@ -17344,14 +17293,12 @@
     "name": "Củ sắn",
     "aliases": [
       "cu san",
-      "khoai mì",
       "sắn mì",
-      "khoai mi",
       "san mi"
     ],
-    "description": "Tra cứu Củ sắn: khoảng 41 kcal/100g, nhóm Củ quả.",
+    "description": "Tra cứu Củ sắn: khoảng 152 kcal/100g, nhóm Củ quả.",
     "category": "Củ quả",
-    "kcal": 41
+    "kcal": 152
   },
   {
     "type": "food",

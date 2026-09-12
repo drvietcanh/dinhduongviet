@@ -569,6 +569,7 @@ export const extraRecipes3: Recipe[] = [
     servingName: "1 đĩa", servingWeightG: 180,
     tags: ["vietnamese", "street-food"],
     portionNote: "Xôi gạo nếp trộn mè đen rang.",
+    weightNote: "Khối lượng đĩa là phần xôi đã chín; nước hấp không được liệt kê như nguyên liệu tạo năng lượng.",
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [

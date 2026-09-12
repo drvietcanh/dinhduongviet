@@ -354,6 +354,7 @@ export const articles: ArticleMeta[] = [
     date: "2026-09-12",
     readTime: 8,
     featured: false,
+    specialty: "dinh-duong-tong-quat",
     reviewedAt: "2026-09-12",
     evidenceLevel: "clinical-review",
     sources: [

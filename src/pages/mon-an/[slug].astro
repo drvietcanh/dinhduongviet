@@ -137,6 +137,7 @@ const recipeSchema = {
     <div class="detail-note-card">
       <h2>Đọc nhanh</h2>
       <p>Đây là ước tính theo một khẩu phần phổ biến. Sai số thường đến từ lượng cơm, dầu mỡ, nước sốt và kích thước tô hoặc đĩa thực tế. Nếu dùng cho người bệnh mạn tính, hãy xem thêm cảnh báo bên dưới và đối chiếu khẩu phần thật.</p>
+      {recipe.weightNote && <p class="muted weight-note"><strong>Ghi chú khối lượng:</strong> {recipe.weightNote}</p>}
     </div>
     <AddToDiary type="recipe" itemId={recipe.slug} defaultAmount={recipe.servingWeightG} />
   </section>

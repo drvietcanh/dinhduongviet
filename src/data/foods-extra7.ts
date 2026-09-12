@@ -3,7 +3,7 @@ export const extraFoods7 = [
   // ── NHÓM NƯỚC DÙNG ──
   {
     id: "nuoc-xuong-heo", slug: "nuoc-xuong-heo", name: "Nước xương heo",
-    aliases: ["nuoc xuong heo", "nước dùng xương heo", "nước dùng xương lợn", "nuoc dung xuong heo", "nước xương lợn", "nuoc xuong lon", "nước hầm xương heo", "nước hầm xương lợn", "pork bone broth"],
+    aliases: ["nuoc xuong heo", "nước xương lợn", "nuoc xuong lon", "pork bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương heo, dùng nấu phở, bún, canh.",
     nutrients: { energyKcal: 8, proteinG: 1.2, carbG: 0.5, fatG: 0.3, saturatedFatG: 0.1, sodiumMg: 180, potassiumMg: 60, calciumMg: 8, phosphorusMg: 15 },
@@ -11,7 +11,7 @@ export const extraFoods7 = [
   },
   {
     id: "nuoc-xuong-bo", slug: "nuoc-xuong-bo", name: "Nước xương bò",
-    aliases: ["nuoc xuong bo", "nước dùng xương bò", "nuoc dung xuong bo", "nước hầm xương bò", "nuoc ham xuong bo", "beef bone broth"],
+    aliases: ["nuoc xuong bo", "beef bone broth"],
     category: "Nước dùng", state: "cooked", basis: "100ml",
     edibleNote: "Nước hầm xương bò, nấu phở bò, lẩu.",
     nutrients: { energyKcal: 10, proteinG: 1.5, carbG: 0.5, fatG: 0.4, saturatedFatG: 0.15, sodiumMg: 200, potassiumMg: 70, calciumMg: 8 },
@@ -116,7 +116,7 @@ export const extraFoods7 = [
   },
   {
     id: "dau-phong", slug: "dau-phong", name: "Dầu phộng (dầu lạc)",
-    aliases: ["dau phong", "dầu đậu phộng", "dau dau phong", "dầu lạc", "dau lac", "peanut oil"],
+    aliases: ["dầu đậu phộng", "dau dau phong", "dầu lạc", "dau lac", "peanut oil"],
     category: "Dầu mỡ", state: "processed", basis: "100ml",
     edibleNote: "Dầu ép từ lạc, dùng chiên xào phổ biến.",
     nutrients: { energyKcal: 884, proteinG: 0, carbG: 0, fatG: 100, saturatedFatG: 17, polyunsaturatedFatG: 32, monounsaturatedFatG: 46, vitaminEMg: 15 },
@@ -173,7 +173,7 @@ export const extraFoods7 = [
   },
   {
     id: "tra-xanh-nguyen-chat", slug: "tra-xanh-nguyen-chat", name: "Trà xanh (nguyên chất)",
-    aliases: ["tra xanh", "green tea"],
+    aliases: ["tra xanh nguyen chat"],
     category: "Đồ uống", state: "cooked", basis: "100ml",
     edibleNote: "Trà xanh pha từ lá chè tươi hoặc khô, không đường.",
     nutrients: { energyKcal: 1, proteinG: 0.1, carbG: 0, fatG: 0, caffeineMg: 20, potassiumMg: 8, sodiumMg: 1, vitaminCMg: 0.3, folateUg: 5, catechinsMg: 50 },
@@ -198,7 +198,7 @@ export const extraFoods7 = [
   
   {
     id: "ca-phe-den-da", slug: "ca-phe-den-da", name: "Cà phê đen đá",
-    aliases: ["cà phê đen đá", "ca phe", "cafe", "ca phe den da", "cafe den da", "iced black coffee"],
+    aliases: ["cà phê đen đá", "ca phe den da", "cafe den da", "iced black coffee"],
     category: "Đồ uống", state: "cooked", basis: "100ml",
     edibleNote: "Cà phê phin không đường, không sữa, thêm đá.",
     nutrients: { energyKcal: 2, proteinG: 0.1, carbG: 0.3, fatG: 0, caffeineMg: 80, sodiumMg: 2, potassiumMg: 50 },
@@ -206,7 +206,7 @@ export const extraFoods7 = [
   },
   {
     id: "ruou-nep-than", slug: "ruou-nep-than", name: "Rượu nếp",
-    aliases: ["ruou nep", "ruou gao", "rice wine"],
+    aliases: ["ruou nep than", "ruou gao", "rice wine"],
     category: "Đồ uống", state: "processed", basis: "100ml",
     edibleNote: "Rượu nếp truyền thống Việt Nam, nồng độ ~30%.",
     nutrients: { energyKcal: 200, proteinG: 0.1, carbG: 5, fatG: 0, sugarG: 1, sodiumMg: 1, potassiumMg: 10 },
@@ -239,7 +239,7 @@ export const extraFoods7 = [
   },
   {
     id: "hat-huong-duong-rang", slug: "hat-huong-duong-rang", name: "Hạt hướng dương rang",
-    aliases: ["hat huong duong rang", "hat huong duong", "sunflower seeds roasted"],
+    aliases: ["hat huong duong rang", "sunflower seeds roasted"],
     category: "Hạt", state: "processed", basis: "100g hạt rang",
     edibleNote: "Hạt hướng dương rang; không áp dụng cho hạt tẩm vị/muối có công thức khác.",
     nutrients: { energyKcal: 585, proteinG: 19, carbG: 25, fatG: 50, saturatedFatG: 5, fiberG: 8, sodiumMg: 380, potassiumMg: 680, vitaminEMg: 26, magnesiumMg: 130 },
@@ -288,7 +288,7 @@ export const extraFoods7 = [
   // ── NHÓM ĐẬU ──
   {
     id: "dau-den-hat", slug: "dau-den-hat", name: "Đậu đen (hạt)",
-    aliases: ["dau den hat", "black bean"],
+    aliases: ["dau den hat"],
     category: "Đậu", state: "dried", basis: "100g",
     edibleNote: "Đậu đen hạt khô, nấu chè, nấu xôi.",
     nutrients: { energyKcal: 341, proteinG: 21, carbG: 62, fatG: 1.4, saturatedFatG: 0.4, fiberG: 15, calciumMg: 140, ironMg: 5.5, potassiumMg: 1500, folateUg: 450 },
@@ -312,7 +312,7 @@ export const extraFoods7 = [
   },
   {
     id: "dau-do-hat", slug: "dau-do-hat", name: "Đậu đỏ (hạt)",
-    aliases: ["dau do hat", "red bean", "azuki bean"],
+    aliases: ["dau do hat", "azuki bean"],
     category: "Đậu", state: "dried", basis: "100g",
     edibleNote: "Đậu đỏ hạt khô, nấu chè, xôi.",
     nutrients: { energyKcal: 329, proteinG: 20, carbG: 63, fatG: 0.5, fiberG: 12, calciumMg: 66, ironMg: 4, potassiumMg: 1250, folateUg: 300, magnesiumMg: 120 },
@@ -451,7 +451,7 @@ export const extraFoods7 = [
   // ── NHÓM THỊT CHẾ BIẾN ──
   {
     id: "gio-lua", slug: "gio-lua", name: "Giò lụa (giò sống)",
-    aliases: ["gio lua", "gio song", "Vietnamese pork sausage"],
+    aliases: ["gio lua", "gio song"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Giò lụa truyền thống, ăn với bánh mì, bún, cơm tấm.",
     nutrients: { energyKcal: 160, proteinG: 14, carbG: 4, fatG: 10, saturatedFatG: 3.5, fiberG: 0, cholesterolMg: 55, sodiumMg: 620, potassiumMg: 140, calciumMg: 20 },
@@ -467,7 +467,7 @@ export const extraFoods7 = [
   },
   {
     id: "gio-bo", slug: "gio-bo", name: "Giò bò",
-    aliases: ["gio bo", "beef sausage"],
+    aliases: ["gio bo"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Giò bò, giò làm từ thịt bò.",
     nutrients: { energyKcal: 170, proteinG: 16, carbG: 4, fatG: 10, saturatedFatG: 4, sodiumMg: 650, potassiumMg: 180 },

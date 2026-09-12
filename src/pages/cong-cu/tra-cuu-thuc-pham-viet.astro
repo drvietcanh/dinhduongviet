@@ -12,7 +12,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
     .badge { display: inline-block; background: var(--brand-light); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
     h1 { font-size: 1.8rem; margin: 0 0 4px; }
-    .subtitle { color: var(--ink-secondary); margin-bottom: 20px; font-size: 0.95rem; }
+    .subtitle { color: var(--ink-secondary); margin-bottom: 8px; font-size: 0.95rem; }
+    .source-quality-note { color: var(--ink-tertiary); margin: 0 0 20px; font-size: 0.82rem; line-height: 1.5; }
 
     .search-row { display: flex; gap: 8px; margin-bottom: 20px; }
     .search-row input {
@@ -120,7 +121,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <span class="badge">📖 Dữ liệu chính thức</span>
     <h1>Bảng TP thực phẩm Việt</h1>
     <p class="subtitle">
-      Nguồn dữ liệu Việt từ <strong>Bảng thành phần thực phẩm Việt Nam 2007</strong> với 526 thực phẩm và hơn 45.000 chỉ số.
+      Nguồn dữ liệu Việt từ <strong>Bảng thành phần thực phẩm Việt Nam 2007</strong> với
+      <strong id="named-food-count">518</strong> mục có tên định danh và hơn 45.000 chỉ số.
+    </p>
+    <p class="source-quality-note" id="source-quality-note">
+      Một số lỗi OCR chắc chắn đã được chuẩn hóa ở lớp hiển thị; các dòng chưa đủ căn cứ vẫn được giữ trong API gốc nhưng ẩn khỏi danh sách tra cứu.
     </p>
     <div class="safety-note">
       <strong>Phạm vi v1:</strong> Chỉ dùng để xem dữ liệu nguồn ở mức tham khảo. Không thay thế tư vấn bệnh lý hay quyết định điều trị cá thể hóa.
@@ -194,6 +199,43 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     let foods = [];
     let nutrientsMap = {};
 
+    // Một số tên trong bản trích xuất 2007 bị lỗi OCR/encoding nhưng có thể
+    // đối chiếu chắc chắn với tên thực phẩm ngay trong bản ghi nguồn. Chỉ
+    // chuẩn hóa ở lớp hiển thị; API gốc vẫn giữ nguyên để bảo toàn provenance.
+    const sourceNameCorrections = Object.freeze({
+      "1020": "Bún",
+      "1021": "Cốm",
+      "2013": "Khoai sọ",
+      "2017": "Bột khoai lang",
+      "4019": "Chuối xanh",
+      "4043": "Hoa chuối",
+      "4059": "Ngó sen",
+      "4077": "Rau kinh giới",
+      "4083": "Rau muống",
+      "4086": "Rau ngót",
+      "4089": "Rau rút",
+      "4103": "Tỏi ta",
+      "4109": "Cà muối nén",
+      "4110": "Cà muối xổi",
+      "5018": "Hồng bì",
+      "5024": "Lựu",
+      "5037": "Nho ngọt",
+      "5039": "Nhãn",
+      "12012": "Bột ca cao",
+      "13001": "Cà ri bột",
+      "13005": "Muối",
+      "13023": "Sốt mayonnaise",
+      "14003": "Cốc tai (cồn 13 g)",
+      "14009": "Nước quýt tươi",
+      // Sáu dòng nguồn bị lệch cột nhưng tên có thể đọc rõ trong bản ghi gốc.
+      "1243": "Dầu dừa",
+      "1278": "Mề gà",
+      "1321": "Mỡ lợn nước",
+      "1492": "Thịt ngựa",
+      "1548": "Thịt bê nạc",
+      "2290": "Quả bơ vỏ xanh",
+    });
+
     let loading = false;
     let loadPromise = null;
 
@@ -205,7 +247,41 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           fetch("/api/vietnam-foods.json").then(r => r.json()),
           fetch("/api/vietnam-nutrients.json").then(r => r.json()),
         ]);
-        foods = f;
+        const seenCodes = new Set();
+        foods = (Array.isArray(f) ? f : []).map((item) => {
+          const code = String(item?.code || "").trim();
+          const rawName = String(item?.name_vi || "").trim();
+          const correctedName = sourceNameCorrections[code];
+          if (correctedName && correctedName !== rawName) {
+            return { ...item, name_vi: correctedName, _sourceNameCorrected: true };
+          }
+          return item;
+        }).filter((item) => {
+          const name = String(item?.name_vi || "").trim();
+          const code = String(item?.code || "").trim();
+          // Một số dòng trích xuất nguồn bị lệch cột, chỉ còn tên dạng số;
+          // mã lặp cũng không được hiển thị hai lần trong danh sách.
+          if (!name || /^\d+$/.test(name) || !code || seenCodes.has(code)) return false;
+          seenCodes.add(code);
+          return true;
+        });
+        const namedCount = document.getElementById("named-food-count");
+        if (namedCount) namedCount.textContent = String(foods.length);
+        const qualityNote = document.getElementById("source-quality-note");
+        const omittedCount = (Array.isArray(f) ? f.length : 0) - foods.length;
+        const correctedCount = foods.filter((item) => item._sourceNameCorrected).length;
+        if (qualityNote) {
+          const notes = [];
+          if (correctedCount > 0) {
+            notes.push(`${correctedCount} tên bị lỗi OCR chắc chắn đã chuẩn hóa ở lớp hiển thị`);
+          }
+          if (omittedCount > 0) {
+            notes.push(`${omittedCount} dòng nguồn chưa có tên định danh chuẩn hoặc trùng mã được giữ trong API gốc nhưng ẩn khỏi danh sách tra cứu`);
+          }
+          qualityNote.textContent = notes.length
+            ? `${notes.join("; ")}. API gốc vẫn giữ nguyên để đối chiếu nguồn.`
+            : "Tên hiển thị được giữ theo bản ghi nguồn; API gốc vẫn là nguồn đối chiếu.";
+        }
         for (const rec of n) {
           if (!nutrientsMap[rec.code]) nutrientsMap[rec.code] = [];
           nutrientsMap[rec.code].push(rec);

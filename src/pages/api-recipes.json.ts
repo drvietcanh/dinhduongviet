@@ -7,7 +7,7 @@ export async function GET() {
     return {
       id: r.id, slug: r.slug, name: r.name, aliases: r.aliases,
       servingName: r.servingName, servingWeightG: r.servingWeightG,
-      tags: r.tags, portionNote: r.portionNote,
+      tags: r.tags, portionNote: r.portionNote, weightNote: r.weightNote,
       nutrients: Object.fromEntries(Object.entries(nutrients).filter(([_, v]) => v !== undefined)),
       ingredients: r.items.map(i => ({ foodId: i.foodId, amountG: i.amountG, note: i.note })),
       source: r.sourceId, confidence: r.confidence, note: recipePublicNote(r, nutrients),

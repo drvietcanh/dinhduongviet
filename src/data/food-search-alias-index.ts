@@ -28,9 +28,9 @@ export const foodSearchAliasIndex: Record<string, FoodSearchAliasEntry> = {
   },
   "cu-san": {
     acceptedName: "Củ sắn",
-    aliases: ["khoai mì", "sắn mì", "khoai mi", "san mi"],
+    aliases: ["sắn mì", "san mi"],
     scientificScope: "Củ sắn/khoai mì (cassava).",
-    indexingNote: "Không thêm alias 'củ đậu' vì đó là thực phẩm khác."
+    indexingNote: "Tên khoai mì được giữ ở bản ghi canonical Khoai mì; không tạo alias kép gây trùng kết quả. Không thêm alias 'củ đậu' vì đó là thực phẩm khác."
   },
   "cu-nang": {
     acceptedName: "Củ năng",

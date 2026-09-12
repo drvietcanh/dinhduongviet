@@ -39,7 +39,7 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "vai", slug: "vai", name: "Vải", aliases: ["lychee", "vai thieu"],
+    id: "vai", slug: "vai", name: "Vải", aliases: ["lychee"],
     category: "Trái cây", state: "raw", basis: "100g phần ăn được", edibleNote: "Quả vải chín bóc vỏ.",
     nutrients: { energyKcal: 66, proteinG: 0.8, carbG: 16.5, fatG: 0.4, fiberG: 1.3, calciumMg: 5, ironMg: 0.3, sodiumMg: 1, potassiumMg: 171, vitaminCMg: 71 , glycemicIndex: 55},
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
@@ -93,7 +93,7 @@ export const extraFoods2: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "oi-ruot-trang", slug: "oi-ruot-trang", name: "Ổi ruột trắng", aliases: ["guava", "oi ruot trang"],
+    id: "oi-ruot-trang", slug: "oi-ruot-trang", name: "Ổi ruột trắng", aliases: ["oi ruot trang"],
     category: "Trái cây", state: "raw", basis: "100g phần ăn được", edibleNote: "Ổi ruột trắng tươi ăn cả vỏ.",
     nutrients: { energyKcal: 68, proteinG: 2.6, carbG: 14.3, fatG: 1.0, fiberG: 5.4, calciumMg: 18, ironMg: 0.3, sodiumMg: 2, potassiumMg: 417, vitaminCMg: 228 , glycemicIndex: 45},
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; rất giàu vitamin C."

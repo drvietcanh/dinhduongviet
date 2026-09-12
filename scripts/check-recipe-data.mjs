@@ -30,6 +30,7 @@ const duplicateNames = [];
 const nameIndex = new Map();
 const slugIndex = new Map();
 let ingredientTotalMismatches = 0;
+let documentedWeightMismatches = 0;
 
 for (const recipe of recipes) {
   if (!recipe.id || !recipe.slug || !recipe.name) errors.push(`${recipe.id ?? "<unknown>"}: thiếu id/slug/name`);
@@ -52,7 +53,10 @@ for (const recipe of recipes) {
   // Nước/độ ẩm thường không được ghi như một thực phẩm có năng lượng,
   // vì vậy đây là chỉ số cảnh báo để rà soát thủ công, không phải lỗi build.
   const delta = Math.abs(ingredientTotal - recipe.servingWeightG);
-  if (delta > Math.max(40, recipe.servingWeightG * 0.25)) ingredientTotalMismatches += 1;
+  if (delta > Math.max(40, recipe.servingWeightG * 0.25)) {
+    ingredientTotalMismatches += 1;
+    if (recipe.weightNote) documentedWeightMismatches += 1;
+  }
 }
 
 for (const [name, ids] of nameIndex) {
@@ -63,7 +67,7 @@ for (const [slug, ids] of slugIndex) {
 }
 
 console.log(`[qa:recipes] ${recipes.length} món, ${foods.length} thực phẩm tham chiếu`);
-console.log(`[qa:recipes] ${ingredientTotalMismatches} món cần rà soát thêm phần nước/độ ẩm giữa tổng ingredients và servingWeightG`);
+console.log(`[qa:recipes] ${ingredientTotalMismatches} món có chênh lệch khối lượng thành phẩm/nguyên liệu; ${documentedWeightMismatches} món đã có ghi chú giải thích nước, độ ẩm hoặc hao hụt`);
 if (duplicateNames.length) console.log(`[qa:recipes] Trùng tên chuẩn hóa: ${duplicateNames.map((item) => `${item.name} [${item.ids.join(", ")}]`).join("; ")}`);
 
 if (duplicateNames.length || errors.length) {

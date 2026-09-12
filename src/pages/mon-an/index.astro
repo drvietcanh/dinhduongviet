@@ -147,7 +147,7 @@ const recipeCards = recipes.map((recipe) => {
             data-protein={nutrients.proteinG.toFixed(1)}
             data-sodium={Math.round(nutrients.sodiumMg ?? 0)}
           >
-            {recipe.imageUrl && <div class="food-thumb" style={`background-image: url(${recipe.imageUrl});`}></div>}
+            {recipe.imageUrl && <div class="food-thumb" aria-hidden="true" style={`background-image: url(${recipe.imageUrl});`}></div>}
             <div class="recipe-topline">
               <span class="badge">{recipe.servingName}</span>
               {showConfidence && <span class="recipe-confidence">{confidence}</span>}

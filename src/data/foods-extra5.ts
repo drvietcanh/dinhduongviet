@@ -28,7 +28,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "rau-diep", slug: "rau-diep", name: "Rau diếp",
-    aliases: ["lettuce", "rau diep"],
+    aliases: ["rau diep"],
     category: "Rau xanh", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Rau diếp tươi các loại.",
     nutrients: { energyKcal: 15, proteinG: 1.4, carbG: 2.9, fatG: 0.2, fiberG: 1.3, calciumMg: 36, ironMg: 0.9, sodiumMg: 28, potassiumMg: 194, vitaminAUg: 370, vitaminCMg: 9 },
@@ -52,7 +52,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "thi-la-kho", slug: "thi-la-kho", name: "Thì là",
-    aliases: ["thìa là", "dill", "thi la"],
+    aliases: ["thìa là", "dill"],
     category: "Rau gia vị", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Lá thì là tươi, dùng tẩm ướp hoặc nấu canh cá.",
     nutrients: { energyKcal: 43, proteinG: 3.5, carbG: 7.0, fatG: 1.1, fiberG: 2.1, calciumMg: 208, ironMg: 6.6, sodiumMg: 61, potassiumMg: 738, vitaminCMg: 85, vitaminAUg: 771 },
@@ -69,7 +69,7 @@ export const extraFoods5: Food[] = [
   // ── TRÁI CÂY VN ──
   {
     id: "man", slug: "man", name: "Mận",
-    aliases: ["plum", "mận hậu"],
+    aliases: ["plum"],
     category: "Trái cây", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Mận chín ngọt (mận hậu hoặc mận gai).",
     nutrients: { energyKcal: 46, proteinG: 0.7, carbG: 11.4, fatG: 0.3, fiberG: 1.4, calciumMg: 6, ironMg: 0.2, sodiumMg: 0, potassiumMg: 157, vitaminCMg: 10, glycemicIndex: 40 },
@@ -118,7 +118,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "bot-nghe", slug: "bot-nghe", name: "Bột nghệ",
-    aliases: ["turmeric powder", "bot nghe", "nghệ bột"],
+    aliases: ["nghệ bột"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Bột nghệ khô màu vàng.",
     nutrients: { energyKcal: 354, proteinG: 7.8, carbG: 64.9, fatG: 9.9, fiberG: 21.1, calciumMg: 183, ironMg: 41.4, sodiumMg: 38, potassiumMg: 2525, vitaminCMg: 26 },
@@ -158,7 +158,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "chao", slug: "chao", name: "Chao",
-    aliases: ["fermented tofu", "chao trang", "chao do"],
+    aliases: ["fermented tofu"],
     category: "Gia vị", state: "processed", basis: "100g",
     edibleNote: "Đậu phụ lên men kiểu Việt, dùng nấu lẩu/chấm.",
     nutrients: { energyKcal: 120, proteinG: 7.5, carbG: 5.0, fatG: 7.5, sodiumMg: 3200, calciumMg: 80, ironMg: 1.0 },
@@ -225,7 +225,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "trung-cun", slug: "trung-cun", name: "Trứng cút (thường)",
-    aliases: ["quail egg", "trung cut"],
+    aliases: ["quail egg"],
     category: "Trứng sữa", state: "processed", basis: "100g",
     edibleNote: "Trứng cút nguyên quả luộc.",
     nutrients: { energyKcal: 158, proteinG: 13.0, carbG: 0.4, fatG: 11.0, cholesterolMg: 844, calciumMg: 60, ironMg: 3.5, sodiumMg: 140, potassiumMg: 120, zincMg: 1.5 },

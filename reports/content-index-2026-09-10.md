@@ -1,14 +1,14 @@
 # Chỉ mục nội dung & lộ trình mở rộng bài viết dinh dưỡng
 
-Ngày rà soát: 2026-09-10  
+Ngày rà soát: 2026-09-12
 Phạm vi: `src/data/articles.ts`, `src/pages/kien-thuc-dinh-duong/`, `src/pages/dung-tin-ngay/`
 
 ## 1. Kết quả quét nhanh
 
-- Tổng metadata bài viết trong `articles.ts`: 343 bài.
-- Scanner y khoa quét: 351 file.
+- Tổng metadata bài viết trong `articles.ts`: 368 bài.
+- Scanner y khoa quét: 375 file.
 - Critical/High/Medium: 0.
-- Review: 340 điểm, chủ yếu là số liệu, liều lượng, ngữ cảnh cảnh báo “không thay thế thuốc”, hoặc cụm phản khoa học nằm trong câu phủ định.
+- Review: 342 điểm, chủ yếu là số liệu, liều lượng, ngữ cảnh cảnh báo “không thay thế thuốc”, hoặc cụm phản khoa học nằm trong câu phủ định.
 - Nhận định: chưa thấy lỗi chuyên môn nguy hiểm cấp cao; phần cần làm tiếp là chuẩn hóa nguồn cho các con số, làm giàu chuyên khoa còn mỏng, và tổ chức chỉ mục biên tập tốt hơn.
 
 ## 2. Chỉ mục theo nhóm bài
@@ -111,7 +111,7 @@ Mỗi bài nên được gắn đủ các trường quản lý sau trong metadat
 | `audience` | `elderly`, `pregnancy`, `children`, `caregiver` | Cá thể hóa trải nghiệm đọc |
 | `riskFlags` | `ckd`, `warfarin`, `neutropenia`, `dysphagia` | Nhắc cảnh báo an toàn |
 | `sourceTier` | `guideline`, `review`, `estimate`, `expert-review-needed` | Quản lý độ chắc của nguồn |
-| `lastMedicalReview` | `2026-09-10` | Dễ lên lịch kiểm tra lại |
+| `lastMedicalReview` | `2026-09-12` | Dễ lên lịch kiểm tra lại |
 
 ## 6. Chỉ mục “pillar/cluster” nên dùng cho SEO và menu
 
@@ -154,4 +154,3 @@ Mỗi bài nên được gắn đủ các trường quản lý sau trong metadat
 3. P0-C: Bổ sung bài đa bệnh mạn tính người cao tuổi và hội chứng chuyển hóa.
 4. P1: Bổ sung nhi khoa học đường, sản khoa sau sinh, sốt xuất huyết/lao/viêm gan.
 5. Sau mỗi cụm: chạy scanner y khoa, kiểm internal links, cập nhật `RELATED_ARTICLE_OVERRIDES`, build lại search-index.
-
