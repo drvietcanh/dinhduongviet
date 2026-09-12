@@ -1280,6 +1280,20 @@ if (isArticle) {
             }
           });
         });
+        document.addEventListener('click', function(e) {
+          if (!wrapper || wrapper.contains(e.target)) return;
+          wrapper.classList.remove('nav-open');
+          if (ham) {
+            ham.setAttribute('aria-expanded', 'false');
+            ham.setAttribute('aria-label', 'Mở menu điều hướng');
+          }
+          document.querySelectorAll('.nav-group[open]').forEach(function(group) {
+            group.removeAttribute('open');
+          });
+        });
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 1024 && wrapper) wrapper.classList.remove('nav-open');
+        });
         var searchInput = document.getElementById('nav-search-input');
         if (searchInput) {
           searchInput.addEventListener('keydown', function(e) {

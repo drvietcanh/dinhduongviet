@@ -44,3 +44,4 @@
 - Trang `/mon-an` có lọc tên món tức thì, dùng chung chuẩn bỏ dấu với thư viện thực phẩm và giữ tương thích các bộ lọc khẩu phần hiện có.
 - Hai ô tìm cục bộ đều có trạng thái `role="status"`/`aria-live` để người dùng bàn phím và trình đọc màn hình nhận biết số kết quả.
 - Phím Escape trên thư viện thực phẩm chỉ đóng gợi ý, không xóa từ khóa người dùng đang nhập; nút Xóa vẫn là thao tác xóa rõ ràng.
+- Trạng thái tìm công cụ được giữ trong tham số `q` để có thể sao chép/chia sẻ đường dẫn; menu đóng khi bấm ra ngoài và tự thu gọn khi chuyển khỏi chế độ mobile.

@@ -249,7 +249,7 @@ const holdBackTools = [
     <div class="cc-search-panel" role="search" aria-label="Tìm công cụ dinh dưỡng">
       <label class="cc-search-label" for="tool-library-search">Tìm nhanh trong {totalTools} công cụ</label>
       <div class="cc-search-row">
-        <input id="tool-library-search" type="search" placeholder="Ví dụ: carb, huyết áp, thai kỳ, đi chợ…" autocomplete="off" />
+        <input id="tool-library-search" type="search" placeholder="Ví dụ: carb, huyết áp, thai kỳ, đi chợ…" autocomplete="off" aria-describedby="tool-search-summary" />
         <button id="tool-search-clear" class="cc-search-clear" type="button" hidden>Xóa tìm kiếm</button>
       </div>
       <p id="tool-search-summary" class="cc-search-summary" role="status" aria-live="polite">Đang hiển thị toàn bộ công cụ theo nhóm nhu cầu.</p>
@@ -284,7 +284,7 @@ const holdBackTools = [
         <p class="cc-group-summary">{group.summary}</p>
         <div class="cc-grid">
           {group.items.map(t => (
-            <a href={t.href} class="cc-card" data-tool-card data-tool-search={`${group.title} ${t.name} ${t.desc}`}>
+            <a href={t.href} class="cc-card" data-tool-card data-tool-search={`${group.title} ${t.name} ${t.desc} ${t.status ?? ""} ${t.href}`}>
               <div class="cc-top">
                 <span class="cc-icon">{t.icon}</span>
                 <h3>{t.name}</h3>
@@ -331,6 +331,10 @@ const holdBackTools = [
     var summary = document.getElementById('tool-search-summary');
     var groups = Array.from(document.querySelectorAll('[data-tool-group]'));
     if (!input || !groups.length) return;
+    var params = new URLSearchParams(window.location.search);
+    var initialQuery = params.get('q') || '';
+    var allCards = Array.from(document.querySelectorAll('[data-tool-card]'));
+    if (initialQuery) input.value = initialQuery;
 
     function normalize(value) {
       return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -351,12 +355,20 @@ const holdBackTools = [
       });
       if (clear) clear.hidden = !query;
       if (summary) summary.textContent = query
-        ? ('Tìm thấy ' + visible.toLocaleString('vi-VN') + ' / ' + document.querySelectorAll('[data-tool-card]').length.toLocaleString('vi-VN') + ' công cụ phù hợp.')
+        ? ('Tìm thấy ' + visible.toLocaleString('vi-VN') + ' / ' + allCards.length.toLocaleString('vi-VN') + ' công cụ phù hợp.')
         : 'Đang hiển thị toàn bộ công cụ theo nhóm nhu cầu.';
     }
 
-    input.addEventListener('input', applyToolSearch);
-    clear && clear.addEventListener('click', function() { input.value = ''; input.focus(); applyToolSearch(); });
+    function syncUrl() {
+      var next = new URLSearchParams(window.location.search);
+      var value = input.value.trim();
+      if (value) next.set('q', value); else next.delete('q');
+      var nextUrl = window.location.pathname + (next.toString() ? '?' + next.toString() : '') + window.location.hash;
+      window.history.replaceState({}, '', nextUrl);
+    }
+
+    input.addEventListener('input', function() { applyToolSearch(); syncUrl(); });
+    clear && clear.addEventListener('click', function() { input.value = ''; input.focus(); applyToolSearch(); syncUrl(); });
     applyToolSearch();
   })();
 </script>

@@ -28,6 +28,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Cập nhật lại báo cáo chất lượng, chỉ mục tìm kiếm và API public sau build.
 - Tinh gọn trang chủ và điều hướng theo [báo cáo UI riêng](./home-navigation-audit-2026-09-12.md): menu 3 nhóm, tìm kiếm mô tả rõ phạm vi, loại bỏ lối vào trùng.
 - Bổ sung tìm cục bộ theo tên/nhóm cho trang công cụ và theo tên món cho trang món ăn; nhóm không có kết quả tự ẩn và có thông báo số kết quả.
+- Giữ truy vấn trang công cụ trong URL, bổ sung từ khóa trạng thái/đường dẫn cho tìm kiếm và đóng menu điều hướng khi bấm ra ngoài.
 
 ## Các cờ còn lại có chủ đích
 
