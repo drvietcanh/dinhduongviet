@@ -31,6 +31,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Giữ truy vấn trang công cụ trong URL, bổ sung từ khóa trạng thái/đường dẫn cho tìm kiếm và đóng menu điều hướng khi bấm ra ngoài.
 - Bổ sung tìm kiếm cục bộ cho thư viện 368 bài kiến thức, kết hợp nhất quán với lọc chuyên khoa và đối tượng.
 - Chuẩn hóa tìm kiếm bản đồ bệnh không dấu, mở rộng trường dò tìm và giữ truy vấn trong URL.
+- Bổ sung tìm kiếm không dấu và khả năng thao tác bàn phím cho 18 câu hỏi thường gặp trên trang Hỏi–đáp.
 
 ## Các cờ còn lại có chủ đích
 
