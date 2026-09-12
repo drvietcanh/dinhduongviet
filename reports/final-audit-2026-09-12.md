@@ -28,7 +28,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 ## Các cờ còn lại có chủ đích
 
 - 8 thực phẩm cần chuyên gia dinh dưỡng duyệt: lá sách bò, cơm gạo lứt đỏ/đen, thịt heo quay, lạp xưởng nướng, thịt hun khói, xúc xích gà/heo.
-- 14 dòng nguồn Viện Dinh dưỡng có tên trống/dạng số và 1 mã lặp; giao diện đã chuẩn hóa 32 tên có căn cứ, ẩn 6 dòng chưa đủ căn cứ và giữ nguyên API gốc để bảo toàn provenance.
+- 14 dòng nguồn Viện Dinh dưỡng có tên trống/dạng số và 1 mã lặp; giao diện đã chuẩn hóa 37 tên có căn cứ, chỉ ẩn 1 dòng trùng mã và giữ nguyên API gốc để bảo toàn provenance.
 - 409 mục `REVIEW` của scanner là số liệu hoặc câu cảnh báo cần đọc ngữ cảnh; không phải lỗi tự động kết luận.
 
 Không tự thay số liệu ở các mục chỉ có nguồn gần nghĩa hoặc công thức biến thiên theo nhãn hàng.

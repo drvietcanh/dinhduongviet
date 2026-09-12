@@ -122,7 +122,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <h1>Bảng TP thực phẩm Việt</h1>
     <p class="subtitle">
       Nguồn dữ liệu Việt từ <strong>Bảng thành phần thực phẩm Việt Nam 2007</strong> với
-      <strong id="named-food-count">520</strong> mục có tên định danh và hơn 45.000 chỉ số.
+      <strong id="named-food-count">525</strong> mục có tên định danh và hơn 45.000 chỉ số.
     </p>
     <p class="source-quality-note" id="source-quality-note">
       Một số lỗi OCR chắc chắn đã được chuẩn hóa ở lớp hiển thị; các dòng chưa đủ căn cứ vẫn được giữ trong API gốc nhưng ẩn khỏi danh sách tra cứu.
@@ -237,6 +237,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       // Hai dòng tên tiếng Anh xác nhận rõ thực phẩm dù tên Việt bị lệch số.
       "1346": "Dầu lạc",
       "1465": "Táo tây",
+      // Năm dòng còn lại được đối chiếu theo STT, mã và tên trong bản PDF
+      // Bảng thành phần thực phẩm Việt Nam 2007; chỉ sửa nhãn hiển thị.
+      "1025": "Lá sắn tươi",
+      "1283": "Nhãn",
+      "1399": "Quả cóc",
+      "1295": "Tiết lợn sống",
+      "1073": "Bánh phồng tôm, rán",
     });
 
     let loading = false;
