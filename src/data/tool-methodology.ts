@@ -506,36 +506,80 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       { label: "MedlinePlus - Food Labeling", url: "https://medlineplus.gov/foodlabeling.html" },
     ],
   },
+  "tra-cuu-nhu-cau-dinh-duong": {
+    slug: "tra-cuu-nhu-cau-dinh-duong",
+    status: "Có bảng RNI Việt Nam 2026",
+    summary:
+      "Công cụ tra cứu snapshot từ bảng nhu cầu dinh dưỡng khuyến nghị của Viện Dinh dưỡng Quốc gia, lọc theo nhóm tuổi, giới, mức lao động và tình trạng sinh lý.",
+    formulas: [
+      {
+        label: "Logic tra cứu",
+        value: "Khóa theo nhóm tuổi × giới × mức lao động × tình trạng sinh lý; hiển thị nguyên giá trị RNI và đơn vị từ nguồn, không nội suy thành mục tiêu cá nhân.",
+      },
+      {
+        label: "Phạm vi",
+        value: "15 nhóm tuổi từ 0–5 tháng đến ≥75 tuổi; năng lượng, đạm, béo, bột đường, vitamin, khoáng chất, natri và muối tương đương khi nguồn có công bố.",
+      },
+    ],
+    guidance: [
+      "Dùng để tham khảo và đối chiếu khẩu phần của người khỏe mạnh; dấu “–” là nguồn không công bố, không phải giá trị bằng 0.",
+      "Khi cần BMR/TDEE, macro theo cân nặng hoặc khẩu phần điều trị, chuyển sang công cụ chuyên biệt và trao đổi với chuyên gia.",
+    ],
+    notFor: [
+      "Không dùng bảng RNI để tự ép ăn, giảm cân, đổi sữa/thuốc hoặc điều trị bệnh nền.",
+      "Trẻ nhỏ, thai kỳ nguy cơ cao, đa thai, suy dinh dưỡng, bệnh thận/tim và rối loạn chuyển hóa cần cá thể hóa lâm sàng.",
+    ],
+    sources: [
+      { label: "Viện Dinh dưỡng Quốc gia - Tra cứu nhu cầu dinh dưỡng", url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/nhu-cau-dinh-duong" },
+      { label: "Viện Dinh dưỡng Quốc gia - Cập nhật khuyến nghị 2026", url: "https://viendinhduong.vn/vi/article/tin-tuc/6a70094d06fb0c475f0ac123" },
+    ],
+  },
   "dinh-duong-thai-ky": {
     slug: "dinh-duong-thai-ky",
-    status: "Khung an toàn v1 có nguồn",
+    status: "Có công thức tham khảo và cổng an toàn",
     summary:
-      "Trang thai kỳ hiện đóng vai trò định hướng an toàn và chuẩn bị câu hỏi khi đi khám; chưa đưa số kcal, macro hay vi chất cá nhân hóa.",
+      "Trang thai kỳ tính BMI trước thai kỳ, khoảng tăng cân theo nhóm BMI, mốc năng lượng bổ sung cho một thai và DRI vi chất; đa thai, tuổi vị thành niên và yếu tố nguy cơ được chuyển sang cá thể hóa.",
+    formulas: [
+      { label: "BMI trước thai kỳ", value: "BMI = cân nặng trước thai kỳ (kg) / [chiều cao (m)]²" },
+      { label: "Khoảng tăng cân", value: "Tra theo BMI trước thai kỳ và loại thai; thai đôi dùng bảng riêng, không nội suy thành mục tiêu cá nhân." },
+      { label: "Năng lượng bổ sung", value: "Một thai: tam cá nguyệt 1 = 0 kcal/ngày; tam cá nguyệt 2 = +340 kcal/ngày; tam cá nguyệt 3 = +450 kcal/ngày." },
+      { label: "Tăng cân theo tuần", value: "Mốc tuần 14 trở đi = 0,5–2 kg trong tam cá nguyệt 1 + số tuần sau tuần 13 × tốc độ theo nhóm BMI; chỉ hiển thị cho người lớn, thai đơn không có cờ lâm sàng." },
+    ],
     guidance: [
-      "Đọc như checklist để nhận diện tình huống cần bác sĩ sản khoa hoặc chuyên gia dinh dưỡng thai kỳ.",
+      "Dùng khoảng tăng cân và năng lượng như mốc giáo dục, không coi là mục tiêu bắt buộc hay đơn thuốc.",
       "Các quyết định về tăng cân thai kỳ, bổ sung sắt, acid folic, canxi hoặc kiểm soát đường huyết phải bám hồ sơ thai và xét nghiệm.",
     ],
     notFor: [
       "Không tự dùng tool này để tăng giảm ăn mạnh, tự bổ sung liều cao hoặc thay đổi thuốc trong thai kỳ.",
     ],
     sources: [
+      { label: "CDC - Weight Gain During Pregnancy", url: "https://www.cdc.gov/maternal-infant-health/pregnancy-weight/index.html" },
+      { label: "ACOG - How much weight should I gain during pregnancy?", url: "https://www.acog.org/womens-health/experts-and-stories/ask-acog/how-much-weight-should-i-gain-during-pregnancy" },
+      { label: "NIH ODS - Pregnancy fact sheet for health professionals", url: "https://ods.od.nih.gov/factsheets/Pregnancy-HealthProfessional/" },
       { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
       { label: "WHO - Breastfeeding", url: "https://www.who.int/health-topics/breastfeeding" },
     ],
   },
   "nhu-cau-dinh-duong-tre-em": {
     slug: "nhu-cau-dinh-duong-tre-em",
-    status: "Khung an toàn v1 có nguồn",
+    status: "Có bảng kcal tham khảo và cổng an toàn",
     summary:
-      "Trang trẻ em hiện chỉ là điểm vào giáo dục và định hướng; nhu cầu thật cần khóa theo tuổi, giới, tăng trưởng, bệnh nền và kiểu nuôi dưỡng.",
+      "Trang trẻ em đưa khoảng năng lượng theo nhóm tuổi 2–18, giới và mức vận động; trẻ dưới 2 tuổi hoặc có yếu tố lâm sàng không bị gán một con số tự động.",
+    formulas: [
+      { label: "Khoảng năng lượng", value: "Tra bảng NHLBI/NIH theo nhóm tuổi × giới × mức vận động (ít, vừa, năng động); đây là khoảng tham khảo, không phải phép nội suy cá nhân." },
+      { label: "BMI thô (nếu nhập đủ số đo)", value: "BMI thô = cân nặng (kg) / [chiều cao (m)]²; chỉ hiển thị để đối chiếu, không phân loại bằng ngưỡng BMI người lớn." },
+      { label: "Cổng an toàn", value: "Trẻ dưới 2 tuổi hoặc có cờ tăng trưởng/bệnh lý được chuyển sang theo dõi biểu đồ WHO và chuyên gia, không tự gán kcal." },
+    ],
     guidance: [
-      "Ưu tiên đọc cùng biểu đồ tăng trưởng, tiền sử ăn uống và mốc phát triển của trẻ.",
+      "Đọc khoảng kcal cùng biểu đồ tăng trưởng, tiền sử ăn uống và mốc phát triển của trẻ.",
       "Trẻ 6-23 tháng cần tiếp cận theo nguyên tắc ăn bổ sung, đa dạng thực phẩm và tần suất bữa phù hợp tuổi.",
     ],
     notFor: [
       "Không dùng như bảng số cá nhân hóa cho trẻ suy dinh dưỡng, dị ứng, bệnh mạn, sinh non hoặc đang điều trị nội trú.",
     ],
     sources: [
+      { label: "NHLBI/NIH - Integrated Guidelines (energy needs table)", url: "https://www.nhlbi.nih.gov/health-topics/integrated-guidelines-for-cardiovascular-health-and-risk-reduction-in-children-and-adolescents/integrated-guidelines-for-cardiovascular-health-and-risk-reduction-in-children-and-adolescents-full-report" },
+      { label: "WHO - Child Growth Standards", url: "https://www.who.int/tools/child-growth-standards" },
       { label: "WHO - Infant and Young Child Feeding", url: "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding" },
       { label: "NIH/NCBI - Dietary Reference Intakes Reference Tables", url: "https://www.ncbi.nlm.nih.gov/books/NBK208874/" },
     ],
@@ -576,19 +620,33 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tuong-tac-thuoc-thuc-pham": {
     slug: "tuong-tac-thuoc-thuc-pham",
-    status: "Công cụ an toàn v1 có nguồn",
+    status: "Bảng tra cứu có nguồn, không cá thể hóa",
     summary:
-      "Trang tương tác thuốc - thực phẩm hiện chỉ giúp định hướng câu hỏi về thời điểm dùng thuốc, bưởi, rượu bia, thảo dược và thực phẩm bổ sung.",
+      "Tra 10 nhóm tương tác thuốc - thực phẩm thường gặp bằng từ khóa; nội dung giúp chuẩn bị câu hỏi, không chấm mức độ nguy cơ cho một đơn thuốc cụ thể.",
+    formulas: [
+      {
+        label: "Công thức nguy cơ",
+        value: "Không chấm điểm nguy cơ; hệ thống chỉ lọc theo từ khóa trên 10 thẻ tương tác đã được rà soát nguồn.",
+      },
+      {
+        label: "Khoảng cách dùng",
+        value: "Chỉ nêu khoảng cách uống hoặc lượng thực phẩm khi nguồn chính thức có hướng dẫn; nhãn chế phẩm và dược sĩ là ưu tiên cuối cùng.",
+      },
+    ],
     guidance: [
-      "Cần hỏi lại với toa thuốc thật hoặc nhãn chính thức nếu thuốc có cửa sổ điều trị hẹp.",
-      "Đặc biệt thận trọng khi có warfarin, insulin, thuốc hạ đường huyết, statin, thuốc chống động kinh hoặc thực phẩm bổ sung nhiều thành phần.",
+      "Tìm theo hoạt chất và thực phẩm, sau đó đối chiếu đúng tên thuốc, hàm lượng và dạng bào chế trên toa.",
+      "Đặc biệt thận trọng khi có warfarin, insulin, thuốc hạ đường huyết, statin, thuốc tuyến giáp, thuốc ghép tạng hoặc bệnh thận.",
+      "Nếu có triệu chứng bất thường như chảy máu, ngất, đau ngực, đau đầu dữ dội hoặc khó thở, cần liên hệ y tế khẩn cấp.",
     ],
     notFor: [
-      "Không dùng trang này để tự kết luận an toàn khi phối hợp thuốc với đồ uống, thực phẩm chức năng hay rượu bia.",
+      "Không dùng trang này để tự ngừng thuốc, đổi liều, tự áp dụng khoảng cách uống cho một thuốc khác hoặc tự điều trị bệnh mạn tính.",
     ],
     sources: [
       { label: "MedlinePlus - Medicines", url: "https://medlineplus.gov/medicines.html" },
-      { label: "MedlinePlus - Drug Reactions and Interactions", url: "https://medlineplus.gov/drugreactions.html" },
+      { label: "MedlinePlus - Warfarin instructions", url: "https://medlineplus.gov/ency/patientinstructions/000292.htm" },
+      { label: "MedlinePlus - Levothyroxine", url: "https://medlineplus.gov/druginfo/meds/a682461.html" },
+      { label: "NHS - Statins", url: "https://www.nhs.uk/medicines/statins/" },
+      { label: "FDA - Potassium chloride food labeling", url: "https://www.fda.gov/food/hfp-constituent-updates/fda-issues-final-guidance-potassium-chloride-food-labeling" },
     ],
   },
   "bang-xep-hang": {

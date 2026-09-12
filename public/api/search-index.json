@@ -226,6 +226,14 @@
   },
   {
     "type": "article",
+    "slug": "tuong-tac-thuoc-thuc-pham-thuong-gap",
+    "name": "Thuốc và thực phẩm: 10 tương tác thường gặp người Việt cần nhớ",
+    "aliases": [],
+    "description": "Hướng dẫn đọc các tương tác thuốc - thực phẩm thường gặp trong đái tháo đường, tim mạch, bệnh thận, tuyến giáp và các bệnh mạn tính khác.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
     "slug": "dinh-duong-vay-nen-psoriasis",
     "name": "Bệnh vảy nến: Omega-3 và chế độ ăn có vai trò gì?",
     "aliases": [],
@@ -7679,7 +7687,7 @@
     "slug": "dinh-duong-thai-ky",
     "name": "Dinh dưỡng thai kỳ",
     "aliases": [],
-    "description": "Định hướng an toàn về các tình huống cần hỏi bác sĩ sản khoa hoặc chuyên gia dinh dưỡng khi xem dinh dưỡng trong thai kỳ và cho con bú.",
+    "description": "Tính khoảng tham khảo tăng cân và năng lượng theo tam cá nguyệt dựa trên BMI trước thai kỳ, kèm cổng an toàn và nhu cầu vi chất tham khảo.",
     "category": "Công cụ"
   },
   {
@@ -7767,7 +7775,7 @@
     "slug": "nhu-cau-dinh-duong-tre-em",
     "name": "Nhu cầu dinh dưỡng trẻ em",
     "aliases": [],
-    "description": "Định hướng an toàn về các tình huống cần hỏi bác sĩ hoặc chuyên gia dinh dưỡng khi xem nhu cầu dinh dưỡng cho trẻ em.",
+    "description": "Ước tính khoảng năng lượng theo nhóm tuổi, giới và mức vận động cho trẻ 2–18 tuổi, kèm cổng an toàn theo dõi tăng trưởng.",
     "category": "Công cụ"
   },
   {
@@ -7888,6 +7896,14 @@
     "name": "Tính nhu cầu đạm mỗi ngày",
     "aliases": [],
     "description": "Ước tính nhu cầu protein ban đầu theo cân nặng và tình huống, kèm cảnh báo an toàn cho nhóm cần cá thể hóa.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tra-cuu-nhu-cau-dinh-duong",
+    "name": "📐 Nhu cầu dinh dưỡng khuyến nghị",
+    "aliases": [],
+    "description": "Tra cứu nhu cầu năng lượng, đạm, béo, bột đường, vitamin và khoáng chất theo nhóm tuổi, giới, mức lao động và tình trạng sinh lý.",
     "category": "Công cụ"
   },
   {

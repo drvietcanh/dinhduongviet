@@ -1,0 +1,159 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["tuong-tac-thuoc-thuc-pham-thuong-gap"];
+if (!art) throw new Error("Article not found: tuong-tac-thuoc-thuc-pham-thuong-gap");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="tldr-box">
+      <h3>Đọc nhanh</h3>
+      <ul>
+        <li>Thực phẩm có thể làm thay đổi hấp thu, chuyển hóa hoặc tác dụng của một số thuốc; mức ảnh hưởng phụ thuộc hoạt chất, liều, dạng bào chế và bệnh nền.</li>
+        <li>Không tự ngừng thuốc, đổi liều hay kiêng cả một nhóm thực phẩm chỉ vì đọc một ví dụ trên mạng.</li>
+        <li>Khi hỏi dược sĩ, hãy mang tên hoạt chất, tên thương mại, hàm lượng, giờ uống, thực phẩm bổ sung và thói quen rượu bia/cà phê/trà.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Phạm vi:</strong> Đây là bài giáo dục cộng đồng, tập trung vào các tình huống thường gặp ở Việt Nam. Không phải danh mục đầy đủ và không thay thế tờ hướng dẫn chính thức của thuốc.</p>
+
+    <h2>10 nhóm tương tác cần nhớ</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Thuốc/nhóm thuốc</th>
+            <th>Thực phẩm hoặc đồ uống</th>
+            <th>Cách xử trí an toàn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Warfarin (Sintrom)</strong></td>
+            <td>Rau muống, rau ngót, cải xanh, bông cải và rau lá xanh giàu vitamin K</td>
+            <td>Không cần loại bỏ hoàn toàn. Giữ lượng ăn tương đối ổn định giữa các ngày và báo nơi theo dõi chống đông nếu thay đổi lớn; kiểm tra INR theo lịch.</td>
+          </tr>
+          <tr>
+            <td><strong>Simvastatin; một số liều atorvastatin</strong></td>
+            <td>Bưởi chùm (grapefruit) và nước ép grapefruit</td>
+            <td>Kiểm tra đúng statin trên toa. Không suy ra mọi statin đều phải tránh; rosuvastatin có hướng dẫn khác. Nếu không chắc loại bưởi, hỏi dược sĩ.</td>
+          </tr>
+          <tr>
+            <td><strong>Levothyroxine</strong></td>
+            <td>Canxi, sắt, multivitamin, thuốc kháng acid; cà phê, đậu nành hoặc bữa rất giàu chất xơ</td>
+            <td>Uống theo hướng dẫn, thường lúc đói. Canxi và sắt thường cần cách ít nhất 4 giờ; nhãn chế phẩm và dược sĩ là quyết định cuối cùng.</td>
+          </tr>
+          <tr>
+            <td><strong>Ciprofloxacin</strong></td>
+            <td>Sữa/sữa chua dùng riêng, nước tăng cường canxi; viên sắt, kẽm, magiê hoặc nhôm</td>
+            <td>Không uống cùng một ly sữa hoặc đồ uống bổ sung canxi. Khoảng cách với khoáng chất phụ thuộc nhãn thuốc; không tự áp dụng cho kháng sinh khác.</td>
+          </tr>
+          <tr>
+            <td><strong>ACEi, ARB hoặc spironolactone</strong></td>
+            <td>Muối thay thế chứa kali, viên kali và sản phẩm điện giải</td>
+            <td>Không tự dùng kali, nhất là khi có bệnh thận. Chuối/cà chua không nên bị cấm máy móc; cần dựa vào kali máu, eGFR và toa thuốc.</td>
+          </tr>
+          <tr>
+            <td><strong>Insulin và một số thuốc hạ đường huyết</strong></td>
+            <td>Rượu bia, nhất là khi uống lúc đói hoặc bỏ bữa</td>
+            <td>Rượu có thể làm đường huyết hạ hoặc tăng. Không uống lúc đói; hỏi người đang theo dõi về kế hoạch an toàn riêng.</td>
+          </tr>
+          <tr>
+            <td><strong>Tacrolimus/cyclosporine</strong></td>
+            <td>Grapefruit và nước ép grapefruit</td>
+            <td>Thường cần tránh grapefruit theo hướng dẫn đội ghép tạng. Uống thuốc cùng hoặc không cùng thức ăn nhất quán mỗi ngày; không tự đổi chế phẩm.</td>
+          </tr>
+          <tr>
+            <td><strong>MAOI hoặc linezolid</strong></td>
+            <td>Một số thực phẩm lên men/ủ lâu, phô mai già, thịt cá lên men hoặc quá chín (giàu tyramine)</td>
+            <td>Chỉ áp dụng danh sách hạn chế do bác sĩ/dược sĩ cung cấp cho đúng thuốc. Không dùng danh sách chung cho mọi thuốc chống trầm cảm.</td>
+          </tr>
+          <tr>
+            <td><strong>Viên sắt</strong></td>
+            <td>Sữa/canxi, trà, cà phê và bữa rất giàu chất xơ</td>
+            <td>Không dùng cùng thời điểm với sữa/canxi hoặc kháng acid; thường cần cách khoảng 2 giờ theo hướng dẫn. Không tự tăng liều sắt khi chưa xác định nguyên nhân thiếu máu.</td>
+          </tr>
+          <tr>
+            <td><strong>Metformin</strong></td>
+            <td>Uống nhiều rượu bia, nhất là khi mất nước hoặc bỏ bữa</td>
+            <td>Rượu làm tăng nguy cơ tác dụng phụ nghiêm trọng ở một số người. Trao đổi với bác sĩ nếu có bệnh thận, gan, tim hoặc đang mất nước.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Hiểu đúng các ví dụ quen thuộc ở Việt Nam</h2>
+    <div class="tip-grid">
+      <article class="tip-card">
+        <h3>Rau xanh và warfarin</h3>
+        <p>Điều cần giữ ổn định là <strong>lượng vitamin K trong thói quen ăn</strong>, không phải cấm rau. Nếu muốn chuyển từ ít rau sang ăn nhiều rau, hãy báo nơi theo dõi để cân nhắc lịch INR.</p>
+      </article>
+      <article class="tip-card">
+        <h3>Bưởi Việt và grapefruit</h3>
+        <p>Trong tài liệu thuốc, “grapefruit” là một loại quả cụ thể. Bưởi da xanh hay bưởi năm roi không mặc nhiên có cùng mức tương tác, nhưng nếu không phân biệt được thì nên hỏi dược sĩ thay vì tự thử.</p>
+      </article>
+      <article class="tip-card">
+        <h3>Sữa, trà, cà phê</h3>
+        <p>Đây là các đồ uống dễ xuất hiện trong ngày và có thể ảnh hưởng một số thuốc hoặc khoáng chất. Tách thời điểm chỉ có ý nghĩa khi áp dụng đúng hoạt chất và đúng nhãn thuốc.</p>
+      </article>
+      <article class="tip-card">
+        <h3>Muối thay thế chứa kali</h3>
+        <p>Người bệnh thận hoặc đang dùng thuốc ảnh hưởng kali không nên tự đổi sang muối kali. Hãy chụp cả nhãn gia vị, viên điện giải và thực phẩm bổ sung để bác sĩ kiểm tra.</p>
+      </article>
+    </div>
+
+    <h2>Ba câu hỏi nên hỏi dược sĩ</h2>
+    <ol class="question-list">
+      <li>Thuốc của tôi là hoạt chất nào, dạng viên nào và có cần uống lúc đói hay cùng bữa ăn không?</li>
+      <li>Tôi cần cách thuốc với sữa, canxi, sắt, trà/cà phê, bưởi hoặc thực phẩm bổ sung bao lâu?</li>
+      <li>Nếu tôi đổi chế độ ăn, có cần kiểm tra INR, đường huyết, kali máu, chức năng thận hoặc xét nghiệm khác không?</li>
+    </ol>
+
+    <div class="urgent-box">
+      <h3>Khi nào cần đi khám ngay?</h3>
+      <p>Chảy máu không cầm, đi ngoài phân đen, ngất hoặc lú lẫn, khó thở, đau ngực, đau đầu dữ dội kèm nôn, tim đập loạn nhịp hoặc sưng môi/lưỡi sau khi dùng thuốc là các dấu hiệu cần liên hệ cấp cứu. Đừng chờ xem thay đổi món ăn có tự hết hay không.</p>
+    </div>
+
+    <h2>Nguồn tham khảo chính</h2>
+    <ul class="source-list">
+      <li><a href="https://medlineplus.gov/ency/patientinstructions/000292.htm" rel="noopener noreferrer">MedlinePlus: hướng dẫn dùng warfarin</a> — giữ lượng vitamin K ổn định và trao đổi khi thay đổi lớn.</li>
+      <li><a href="https://www.nhs.uk/medicines/statins/" rel="noopener noreferrer">NHS: statin</a> và <a href="https://www.nhs.uk/medicines/atorvastatin/" rel="noopener noreferrer">atorvastatin</a> — lưu ý grapefruit tùy hoạt chất.</li>
+      <li><a href="https://medlineplus.gov/druginfo/meds/a682461.html" rel="noopener noreferrer">MedlinePlus: levothyroxine</a> và <a href="https://medlineplus.gov/druginfo/meds/a688016.html" rel="noopener noreferrer">ciprofloxacin</a> — thời điểm với khoáng chất, sữa và đồ uống.</li>
+      <li><a href="https://medlineplus.gov/druginfo/meds/a601117.html" rel="noopener noreferrer">MedlinePlus: tacrolimus</a> — grapefruit và tính nhất quán khi dùng cùng thức ăn.</li>
+      <li><a href="https://medlineplus.gov/ency/patientinstructions/000968.htm" rel="noopener noreferrer">MedlinePlus: đái tháo đường và rượu</a>; <a href="https://medlineplus.gov/druginfo/meds/a696005.html" rel="noopener noreferrer">metformin</a> — nguy cơ khi uống rượu.</li>
+      <li><a href="https://medlineplus.gov/medicines.html" rel="noopener noreferrer">MedlinePlus: Medicines</a> — thuốc có thể tương tác với thức ăn, rượu và thực phẩm bổ sung; cần hỏi dược sĩ.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2.4rem; color: var(--primary); border-bottom: 2px solid var(--border-color); padding-bottom: .45rem; }
+  .article-content h3 { margin-top: 0; color: var(--primary); }
+  .tldr-box, .medical-note, .urgent-box { padding: 1.2rem 1.35rem; border-radius: 12px; margin: 1.4rem 0; }
+  .tldr-box { background: linear-gradient(135deg, rgba(52, 152, 219, .1), rgba(16, 185, 129, .08)); border: 1px solid rgba(52, 152, 219, .2); }
+  .tldr-box ul { margin: 0; padding-left: 1.2rem; }
+  .medical-note { background: var(--bg-soft); border-left: 4px solid var(--primary); }
+  .table-wrap { overflow-x: auto; margin: 1.25rem 0; border: 1px solid var(--border-color); border-radius: 12px; }
+  table { width: 100%; min-width: 760px; border-collapse: collapse; background: var(--bg-card); }
+  th, td { padding: .85rem .9rem; border-bottom: 1px solid var(--border-color); vertical-align: top; text-align: left; }
+  th { background: var(--bg-soft); color: var(--primary); font-size: .92rem; }
+  td { line-height: 1.55; }
+  tr:last-child td { border-bottom: 0; }
+  .tip-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .tip-card { padding: 1rem 1.1rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card); }
+  .tip-card p { margin: 0; }
+  .question-list { padding-left: 1.35rem; }
+  .question-list li { margin: .5rem 0; }
+  .urgent-box { background: rgba(239, 68, 68, .08); border: 1px solid rgba(239, 68, 68, .25); }
+  .urgent-box p { margin-bottom: 0; }
+  .source-list { padding-left: 1.25rem; }
+  .source-list li { margin: .55rem 0; }
+  .source-list a { color: var(--primary); font-weight: 700; }
+  @media (max-width: 700px) {
+    .tip-grid { grid-template-columns: 1fr; }
+    th, td { padding: .7rem; }
+  }
+</style>

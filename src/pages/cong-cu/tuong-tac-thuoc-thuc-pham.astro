@@ -21,31 +21,109 @@ const prepItems = [
   "Bệnh nền, thai kỳ/cho con bú, dị ứng thuốc và triệu chứng mới xuất hiện",
 ];
 
-const scenarios = [
-  ["general", "Chỉ muốn đọc lưu ý chung"],
-  ["prescription", "Đang dùng thuốc theo toa"],
-  ["many", "Dùng nhiều thuốc cùng lúc"],
-  ["blood", "Thuốc chống đông hoặc thuốc tim mạch"],
-  ["diabetes", "Thuốc đái tháo đường hoặc đường huyết"],
-  ["fluid", "Thuốc huyết áp, lợi tiểu hoặc điện giải"],
-  ["seizure", "Thuốc chống động kinh"],
-  ["cancer", "Thuốc ung thư"],
-  ["organ", "Bệnh thận, gan hoặc tim mạch"],
-  ["pregnancy", "Mang thai hoặc cho con bú"],
-  ["age", "Trẻ em, người cao tuổi hoặc người dễ suy kiệt"],
-  ["symptom", "Có triệu chứng bất thường sau khi dùng thuốc"],
+const interactionCards = [
+  {
+    id: "warfarin-vitamin-k",
+    index: "01",
+    title: "Warfarin (Sintrom) × rau giàu vitamin K",
+    medicines: "Warfarin/acenocoumarol",
+    foods: "Rau muống, rau ngót, cải xanh, bông cải và các rau lá xanh",
+    action: "Không tự kiêng hoàn toàn. Cố gắng giữ lượng rau xanh tương đối ổn định giữa các ngày và báo nơi theo dõi chống đông nếu thay đổi nhiều; INR cần được kiểm tra theo lịch.",
+    caution: "Không tự tăng/giảm liều chỉ vì một bữa ăn.",
+  },
+  {
+    id: "statin-grapefruit",
+    index: "02",
+    title: "Một số statin × bưởi chùm (grapefruit)",
+    medicines: "Đặc biệt simvastatin; atorvastatin cũng cần xem lượng dùng",
+    foods: "Bưởi chùm/grapefruit và nước ép grapefruit",
+    action: "Kiểm tra đúng tên statin và tờ hướng dẫn. Không suy ra rằng mọi loại statin đều phải tránh; rosuvastatin có hướng dẫn khác.",
+    caution: "Bưởi Việt Nam không mặc nhiên đồng nhất với grapefruit; nếu không chắc loại quả, hỏi dược sĩ.",
+  },
+  {
+    id: "levothyroxine-minerals",
+    index: "03",
+    title: "Levothyroxine × canxi, sắt, cà phê và đậu nành",
+    medicines: "Levothyroxine (thuốc tuyến giáp)",
+    foods: "Viên canxi/sắt, multivitamin, thuốc kháng acid; cà phê, đậu nành hoặc chất xơ cao",
+    action: "Uống theo đúng hướng dẫn, thường là lúc đói. Canxi và sắt thường cần cách ít nhất 4 giờ; kiểm tra lại với nhãn thuốc và dược sĩ vì chế phẩm có thể khác nhau.",
+    caution: "Không tự đổi giờ uống hoặc nghiền thuốc trộn vào sữa/công thức đậu nành.",
+  },
+  {
+    id: "ciprofloxacin-minerals",
+    index: "04",
+    title: "Ciprofloxacin × sữa, canxi và khoáng chất",
+    medicines: "Ciprofloxacin",
+    foods: "Sữa/sữa chua dùng riêng, nước tăng cường canxi; viên sắt, kẽm, magiê hoặc nhôm",
+    action: "Không uống ciprofloxacin cùng một ly sữa hoặc đồ uống bổ sung canxi. Khoảng cách với khoáng chất phụ thuộc nhãn chế phẩm; dược sĩ cần xác nhận lịch dùng cụ thể.",
+    caution: "Không tự áp dụng một khoảng cách cho mọi kháng sinh hoặc mọi dạng thuốc.",
+  },
+  {
+    id: "acei-potassium",
+    index: "05",
+    title: "ACEi/ARB/spironolactone × kali bổ sung",
+    medicines: "Một số thuốc ức chế men chuyển, chẹn thụ thể angiotensin hoặc spironolactone",
+    foods: "Muối thay thế chứa kali, viên kali và sản phẩm bổ sung điện giải",
+    action: "Không tự dùng muối kali hay viên kali, nhất là khi có bệnh thận. Việc ăn chuối/cà chua không nên bị cấm máy móc; cần dựa vào xét nghiệm và toa thuốc.",
+    caution: "Hỏi bác sĩ về kali máu, eGFR và mọi sản phẩm có chữ potassium/kali trên nhãn.",
+  },
+  {
+    id: "diabetes-alcohol",
+    index: "06",
+    title: "Insulin/thuốc hạ đường huyết × rượu bia hoặc bỏ bữa",
+    medicines: "Insulin và một số thuốc hạ đường huyết",
+    foods: "Rượu bia, đặc biệt khi uống lúc đói hoặc bỏ bữa",
+    action: "Rượu có thể làm đường huyết hạ hoặc tăng tùy tình huống. Không uống lúc đói; trao đổi kế hoạch an toàn với người đang theo dõi, nhất là khi dùng insulin.",
+    caution: "Run, vã mồ hôi, lú lẫn hoặc ngất cần được xử trí y tế khẩn cấp.",
+  },
+  {
+    id: "tacrolimus-grapefruit",
+    index: "07",
+    title: "Tacrolimus/cyclosporine × grapefruit",
+    medicines: "Tacrolimus, cyclosporine và một số thuốc ghép tạng",
+    foods: "Bưởi chùm/grapefruit và nước ép grapefruit",
+    action: "Tránh grapefruit nếu đội ghép tạng đã dặn như vậy và uống thuốc theo cùng một cách với hoặc không cùng thức ăn mỗi ngày. Mọi thay đổi phải báo đội ghép.",
+    caution: "Không tự đổi nhãn hiệu, dạng bào chế hoặc thực phẩm bổ sung.",
+  },
+  {
+    id: "maoi-tyramine",
+    index: "08",
+    title: "MAOI/linezolid × thực phẩm giàu tyramine",
+    medicines: "Thuốc ức chế monoamine oxidase (MAOI) hoặc linezolid",
+    foods: "Một số thực phẩm lên men/ủ lâu, phô mai già, thịt cá lên men hoặc quá chín",
+    action: "Chỉ dùng danh sách hạn chế do bác sĩ/dược sĩ cung cấp cho đúng thuốc. Không tự áp dụng danh sách chung cho mọi thuốc chống trầm cảm.",
+    caution: "Đau đầu dữ dội, đau ngực, hồi hộp hoặc huyết áp tăng đột ngột cần cấp cứu.",
+  },
+  {
+    id: "iron-calcium-tea",
+    index: "09",
+    title: "Viên sắt × sữa, trà, cà phê và chất xơ cao",
+    medicines: "Sắt bổ sung",
+    foods: "Sữa/canxi, trà, cà phê và bữa rất giàu chất xơ",
+    action: "Không dùng cùng thời điểm với sữa/canxi hoặc thuốc kháng acid; thường cần cách khoảng 2 giờ theo hướng dẫn. Hỏi dược sĩ nếu đang dùng nhiều thuốc.",
+    caution: "Không tự tăng liều sắt khi chưa xác định nguyên nhân thiếu máu.",
+  },
+  {
+    id: "metformin-alcohol",
+    index: "10",
+    title: "Metformin × uống nhiều rượu bia",
+    medicines: "Metformin",
+    foods: "Rượu bia, đặc biệt uống nhiều hoặc kèm bỏ bữa",
+    action: "Rượu làm tăng nguy cơ tác dụng phụ nghiêm trọng ở một số người. Trao đổi với bác sĩ, nhất là khi có bệnh thận, gan, tim hoặc đang mất nước.",
+    caution: "Không tự ngừng metformin để uống rượu; hãy hỏi người kê đơn.",
+  },
 ] as const;
 ---
 
 <BaseLayout title={title} description={description} canonical="/cong-cu/tuong-tac-thuoc-thuc-pham" robots="noindex,follow">
   <main class="drug-food-page">
     <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">Công cụ an toàn v1</p>
+      <p class="eyebrow">Bảng tra cứu có nguồn</p>
       <h1 id="page-title">Tương tác thuốc - thực phẩm</h1>
       <p class="lead">
-        Công cụ này chỉ giúp nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ.
-        Không dùng để tự thay đổi thuốc, liều dùng hoặc tự kết luận một thuốc
-        dùng chung với thực phẩm là phù hợp cho cá nhân bạn.
+        Tra nhanh các cặp thuốc - thực phẩm thường gặp ở người bệnh mạn tính Việt Nam.
+        Nội dung giúp bạn chuẩn bị câu hỏi, không chấm nguy cơ cá nhân và không thay thế
+        tờ hướng dẫn thuốc, bác sĩ hoặc dược sĩ.
       </p>
     </section>
 
@@ -53,43 +131,68 @@ const scenarios = [
       <h2>Khi nào cần hỏi chuyên môn?</h2>
       <p>
         Nếu bạn đang dùng thuốc theo toa, thuốc dùng dài ngày cho bệnh mạn tính, thuốc
-        chống đông, thuốc đái tháo đường, thuốc huyết áp, thuốc lợi tiểu, thuốc
-        chống động kinh, thuốc ung thư, hoặc đang mang thai/cho con bú,
-        hãy hỏi bác sĩ hoặc dược sĩ trước khi thay đổi cách dùng thuốc hay chế
-        độ ăn.
+        chống đông, thuốc đái tháo đường, thuốc huyết áp, thuốc lợi tiểu, thuốc ghép tạng,
+        hoặc đang mang thai/cho con bú, hãy hỏi bác sĩ hoặc dược sĩ trước khi thay đổi
+        cách dùng thuốc, thực phẩm bổ sung hay chế độ ăn.
       </p>
     </section>
 
     <section class="tool-panel" aria-labelledby="check-title">
       <div class="panel-copy">
-        <p class="eyebrow">Định hướng an toàn</p>
-        <h2 id="check-title">Chọn tình huống gần nhất</h2>
+        <p class="eyebrow">Tra cứu nhanh</p>
+        <h2 id="check-title">Tìm theo thuốc hoặc thực phẩm</h2>
         <p>
-          V1 không tra cứu tương tác cá nhân và không phân mức độ tương tác. Kết quả
-          chỉ là lời nhắc để chuẩn bị thông tin trước khi hỏi bác sĩ hoặc dược sĩ.
+          Gõ tên thuốc, món ăn hoặc nhóm bệnh để lọc các thẻ bên dưới. Kết quả là
+          thông tin giáo dục có nguồn; chế phẩm, liều và bệnh nền có thể làm hướng dẫn khác đi.
         </p>
       </div>
 
       <form class="safety-form" id="interaction-form">
-        <label for="scenario">Tình huống</label>
-        <select id="scenario" name="scenario">
-          {scenarios.map(([value, label]) => <option value={value}>{label}</option>)}
-        </select>
-        <button type="submit">Xem nhắc nhở</button>
+        <label for="interaction-search">Từ khóa</label>
+        <input id="interaction-search" name="interaction-search" type="search" placeholder="Ví dụ: warfarin, bưởi, canxi, kali" autocomplete="off" />
+        <div class="form-actions">
+          <button type="submit">Lọc tương tác</button>
+          <button type="button" class="secondary-button" id="clear-interaction-search">Xóa lọc</button>
+        </div>
       </form>
 
       <div class="result-panel" id="safety-result" aria-live="polite">
         <p class="result-label">Định hướng</p>
-        <h3>Cần hỏi bác sĩ hoặc dược sĩ</h3>
+        <h3><span id="interaction-count">{interactionCards.length}</span> nhóm tương tác đang hiển thị</h3>
         <p>
-          Không đủ điều kiện đưa kết luận cá nhân ở v1. Hãy mang danh sách thuốc,
-          thực phẩm bổ sung và thói quen ăn uống để hỏi người phụ trách chuyên môn.
+          Chọn đúng tên thuốc và dạng bào chế trên toa trước khi áp dụng bất kỳ khoảng
+          cách uống nào. Nếu không thấy cặp bạn cần, hãy hỏi dược sĩ thay vì suy đoán.
         </p>
         <ul>
           <li>Không tự thay đổi cách dùng thuốc hoặc liều dùng dựa trên trang này.</li>
           <li>Nếu có triệu chứng bất thường sau khi dùng thuốc, hãy liên hệ cơ sở y tế hoặc người đang theo dõi cho bạn.</li>
         </ul>
       </div>
+    </section>
+
+    <section class="interaction-section" aria-labelledby="interaction-title">
+      <div class="section-head">
+        <p class="eyebrow">Các cặp thường gặp</p>
+        <h2 id="interaction-title">Đọc lưu ý theo nhóm thuốc</h2>
+        <p class="section-intro">Các ví dụ dưới đây được chọn vì liên quan đến đái tháo đường, tăng huyết áp, bệnh thận, rối loạn mỡ máu, tuyến giáp, ghép tạng và thiếu máu.</p>
+      </div>
+      <div class="interaction-grid" id="interaction-grid">
+        {interactionCards.map((item) => (
+          <article class="interaction-card" data-search={`${item.title} ${item.medicines} ${item.foods} ${item.action} ${item.caution}`}>
+            <div class="interaction-card-head">
+              <span class="interaction-index" aria-hidden="true">{item.index}</span>
+              <h3>{item.title}</h3>
+            </div>
+            <dl>
+              <div><dt>Thuốc</dt><dd>{item.medicines}</dd></div>
+              <div><dt>Thực phẩm/đồ uống</dt><dd>{item.foods}</dd></div>
+            </dl>
+            <p class="action-copy"><strong>Nên làm:</strong> {item.action}</p>
+            <p class="caution-copy"><strong>Cần nhớ:</strong> {item.caution}</p>
+          </article>
+        ))}
+      </div>
+      <p class="no-results" id="interaction-empty" hidden>Chưa có thẻ khớp từ khóa. Tên hoạt chất, tên thương mại và dạng bào chế có thể khác nhau — hãy gửi ảnh/toa thuốc cho dược sĩ.</p>
     </section>
 
     <section class="risk-section" aria-labelledby="risk-title">
@@ -105,6 +208,21 @@ const scenarios = [
           </article>
         ))}
       </div>
+    </section>
+
+    <section class="sources-section" aria-labelledby="sources-title">
+      <div>
+        <p class="eyebrow">Đọc thêm có kiểm chứng</p>
+        <h2 id="sources-title">Nguồn và bài viết liên quan</h2>
+      </div>
+      <p>
+        Xem bài <a href="/kien-thuc-dinh-duong/tuong-tac-thuoc-thuc-pham-thuong-gap">Thuốc và thực phẩm: 10 tương tác thường gặp</a>
+        để hiểu cách chuẩn bị câu hỏi cho bác sĩ/dược sĩ. Các nguồn chính gồm
+        <a href="https://medlineplus.gov/druginfo/meds/a682461.html" rel="noopener noreferrer">MedlinePlus về levothyroxine</a>,
+        <a href="https://medlineplus.gov/druginfo/meds/a688016.html" rel="noopener noreferrer">ciprofloxacin</a>,
+        <a href="https://medlineplus.gov/druginfo/meds/a601117.html" rel="noopener noreferrer">tacrolimus</a> và
+        <a href="https://www.nhs.uk/medicines/statins/" rel="noopener noreferrer">NHS về statin</a>.
+      </p>
     </section>
 
     <section class="prep-section" aria-labelledby="prep-title">
@@ -124,42 +242,39 @@ const scenarios = [
 
   <script is:inline>
     (() => {
-      const messages = {
-        general: "Hãy dùng trang này như danh sách nhắc việc. Khi có thuốc đang dùng hoặc bệnh nền, cần hỏi bác sĩ hoặc dược sĩ.",
-        prescription: "Thuốc theo toa cần được xem cùng bệnh nền, liều dùng và lịch dùng thực tế. Hãy hỏi bác sĩ hoặc dược sĩ trước khi thay đổi chế độ ăn liên quan.",
-        many: "Dùng nhiều thuốc cùng lúc làm nguy cơ nhầm lẫn cao hơn. Hãy chuẩn bị đầy đủ tên thuốc và thực phẩm bổ sung để được rà soát.",
-        blood: "Nhóm thuốc tim mạch hoặc chống đông cần được cá thể hóa theo hồ sơ đang theo dõi. Trang này không đưa kết luận dùng chung cho từng thuốc.",
-        diabetes: "Thuốc đường huyết cần được theo dõi theo bữa ăn, triệu chứng và chỉ dẫn chuyên môn. Hãy hỏi người đang theo dõi nếu muốn đổi chế độ ăn.",
-        fluid: "Thuốc huyết áp, lợi tiểu hoặc điện giải cần xem kèm xét nghiệm và tình trạng bệnh nền. Không tự thay đổi thuốc dựa trên nội dung này.",
-        seizure: "Thuốc chống động kinh cần được xem theo hồ sơ dùng thuốc, triệu chứng và lịch theo dõi. Hãy hỏi bác sĩ hoặc dược sĩ trước khi đổi thực phẩm bổ sung hay chế độ ăn.",
-        cancer: "Thuốc ung thư cần được theo dõi cá thể theo phác đồ và tình trạng ăn uống. Hãy hỏi đội ngũ đang chăm sóc trước khi đổi thực phẩm bổ sung hay chế độ ăn.",
-        organ: "Bệnh thận, gan hoặc tim mạch cần đánh giá cá thể. Hãy hỏi bác sĩ hoặc dược sĩ trước khi thay đổi thực phẩm hay thực phẩm bổ sung.",
-        pregnancy: "Thai kỳ và cho con bú cần được tư vấn riêng. Hãy hỏi bác sĩ hoặc dược sĩ trước khi dùng thêm thực phẩm bổ sung hoặc thay đổi thuốc.",
-        age: "Trẻ em, người cao tuổi hoặc người dễ suy kiệt cần được xem theo hồ sơ sức khỏe, bệnh nền và thuốc đang dùng.",
-        symptom: "Nếu có triệu chứng bất thường sau khi dùng thuốc, hãy liên hệ cơ sở y tế hoặc người đang theo dõi cho bạn.",
-      };
-
       const form = document.getElementById("interaction-form");
-      const select = document.getElementById("scenario");
-      const result = document.getElementById("safety-result");
+      const search = document.getElementById("interaction-search");
+      const clear = document.getElementById("clear-interaction-search");
+      const count = document.getElementById("interaction-count");
+      const empty = document.getElementById("interaction-empty");
+      const cards = Array.from(document.querySelectorAll(".interaction-card"));
 
-      if (!(form instanceof HTMLFormElement) || !(select instanceof HTMLSelectElement) || !result) {
+      if (!(form instanceof HTMLFormElement) || !(search instanceof HTMLInputElement) || !(clear instanceof HTMLButtonElement) || !count || !empty) {
         return;
       }
 
+      const applyFilter = () => {
+        const query = search.value.trim().toLocaleLowerCase("vi");
+        let visible = 0;
+        cards.forEach((card) => {
+          const text = (card.getAttribute("data-search") || card.textContent || "").toLocaleLowerCase("vi");
+          const match = !query || text.includes(query);
+          card.toggleAttribute("hidden", !match);
+          if (match) visible += 1;
+        });
+        count.textContent = String(visible);
+        empty.toggleAttribute("hidden", visible !== 0);
+      };
+
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const key = select.value;
-        const message = messages[key] || messages.general;
-        result.innerHTML = `
-          <p class="result-label">Định hướng</p>
-          <h3>Cần hỏi bác sĩ hoặc dược sĩ</h3>
-          <p>${message}</p>
-          <ul>
-            <li>Không đủ điều kiện đưa kết luận cá nhân ở v1.</li>
-            <li>Không tự thay đổi cách dùng thuốc hoặc liều dùng dựa trên trang này.</li>
-          </ul>
-        `;
+        applyFilter();
+      });
+      search.addEventListener("input", applyFilter);
+      clear.addEventListener("click", () => {
+        search.value = "";
+        applyFilter();
+        search.focus();
       });
     })();
   </script>
@@ -272,7 +387,7 @@ const scenarios = [
       font-weight: 700;
     }
 
-    .safety-form select,
+    .safety-form input,
     .safety-form button {
       width: 100%;
       min-height: 46px;
@@ -280,18 +395,24 @@ const scenarios = [
       font: inherit;
     }
 
-    .safety-form select {
+    .safety-form input {
       border: 1px solid var(--card-border);
       background: var(--card);
       color: var(--ink);
-      padding: 0 12px;
+      padding: 0 14px;
       transition: border-color var(--transition), box-shadow var(--transition);
     }
 
-    .safety-form select:focus {
+    .safety-form input:focus {
       outline: none;
       border-color: var(--brand);
       box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    }
+
+    .form-actions {
+      display: grid;
+      grid-template-columns: 1fr 110px;
+      gap: 8px;
     }
 
     .safety-form button {
@@ -303,6 +424,12 @@ const scenarios = [
       transition: all var(--transition);
     }
 
+    .safety-form .secondary-button {
+      border: 1px solid var(--card-border);
+      background: transparent;
+      color: var(--ink-secondary);
+    }
+
     .safety-form button:hover {
       background: var(--brand-dark);
       transform: translateY(-1px);
@@ -310,6 +437,125 @@ const scenarios = [
 
     .safety-form button:active {
       transform: translateY(0);
+    }
+
+    .interaction-section,
+    .sources-section {
+      padding: 24px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-intro,
+    .sources-section p {
+      margin: 8px 0 0;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+
+    .sources-section a {
+      color: var(--brand-dark);
+      font-weight: 700;
+    }
+
+    .interaction-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .interaction-card {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--bg-soft);
+    }
+
+    .interaction-card[hidden] {
+      display: none;
+    }
+
+    .interaction-card-head {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .interaction-index {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(5, 150, 105, 0.12);
+      color: var(--brand-dark);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .interaction-card h3 {
+      margin: 0;
+      font-size: 1.04rem;
+    }
+
+    .interaction-card dl {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .interaction-card dl div {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .interaction-card dt {
+      color: var(--ink-tertiary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .interaction-card dd,
+    .interaction-card p {
+      margin: 0;
+      color: var(--ink-secondary);
+      line-height: 1.52;
+    }
+
+    .interaction-card dd {
+      color: var(--ink);
+    }
+
+    .action-copy strong {
+      color: var(--brand-dark);
+    }
+
+    .caution-copy {
+      padding-top: 10px;
+      border-top: 1px dashed var(--card-border);
+      font-size: 0.92rem;
+    }
+
+    .caution-copy strong {
+      color: #9a3412;
+    }
+
+    .no-results {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--ink-secondary);
+      line-height: 1.55;
     }
 
     .result-panel {
@@ -408,6 +654,8 @@ const scenarios = [
       .hero,
       .warning-band,
       .tool-panel,
+      .interaction-section,
+      .sources-section,
       .risk-section,
       .prep-section {
         padding: 18px;
@@ -419,6 +667,19 @@ const scenarios = [
       }
 
       .risk-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .interaction-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .interaction-card dl div {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .form-actions {
         grid-template-columns: 1fr;
       }
     }

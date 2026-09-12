@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const title = "Dinh dưỡng thai kỳ | Dinh dưỡng Việt";
 const description =
-  "Định hướng an toàn về các tình huống cần hỏi bác sĩ sản khoa hoặc chuyên gia dinh dưỡng khi xem dinh dưỡng trong thai kỳ và cho con bú.";
+  "Tính khoảng tham khảo tăng cân và năng lượng theo tam cá nguyệt dựa trên BMI trước thai kỳ, kèm cổng an toàn và nhu cầu vi chất tham khảo.";
 
 const situations = [
   "Đang mang thai, chuẩn bị mang thai hoặc đang cho con bú và muốn đặt nhu cầu dinh dưỡng riêng",
@@ -14,7 +14,6 @@ const situations = [
   "BMI trước thai kỳ quá thấp, béo phì, rối loạn ăn uống hoặc tiền sử phẫu thuật tiêu hóa",
   "Đang dùng thuốc dài ngày, thuốc chống đông, thuốc tuyến giáp, thuốc chống động kinh hoặc nhiều thực phẩm bổ sung",
   "Ăn chay nghiêm ngặt, dị ứng nhiều nhóm thực phẩm hoặc khó tiếp cận thực phẩm đa dạng",
-  "Muốn tự đặt năng lượng, tăng cân, đạm, sắt, canxi, folate, DHA hoặc vitamin theo từng giai đoạn",
 ];
 
 const prepItems = [
@@ -23,205 +22,119 @@ const prepItems = [
   "Bệnh nền, thuốc đang dùng, tiền sử thai kỳ và triệu chứng mới xuất hiện",
   "Kết quả xét nghiệm, siêu âm, chẩn đoán và hướng dẫn đã nhận từ bác sĩ sản khoa",
 ];
-
-const safeNextSteps = [
-  "Dùng trang này như danh sách nhắc việc trước khi hỏi chuyên môn.",
-  "Không tự đặt năng lượng, tăng cân, đạm hoặc vi chất cho thai kỳ chỉ từ một công cụ trực tuyến.",
-  "Nếu có dấu hiệu bất thường, hãy liên hệ cơ sở y tế hoặc bác sĩ đang theo dõi thai kỳ.",
-];
 ---
 
 <BaseLayout title={title} description={description} canonical="/cong-cu/dinh-duong-thai-ky">
-  <main class="pregnancy-nutrition-shell" aria-labelledby="page-title">
-    <section class="hero-panel">
-      <p class="eyebrow">Công cụ an toàn v1</p>
-      <h1 id="page-title">Dinh dưỡng thai kỳ</h1>
-      <p>
-        Công cụ này chỉ giúp định hướng các tình huống cần hỏi bác sĩ sản khoa
-        hoặc chuyên gia dinh dưỡng. V1 không tính năng lượng, tăng cân, đạm,
-        sắt, canxi, folate, DHA hay vitamin riêng cho từng thai kỳ.
-      </p>
-    </section>
+  <main class="pregnancy-nutrition-shell" aria-labelledby="pregnancy-page-title">
+    <header class="pregnancy-hero">
+      <p class="pregnancy-eyebrow">Công cụ tham khảo có cổng an toàn</p>
+      <h1 id="pregnancy-page-title">Dinh dưỡng thai kỳ</h1>
+      <p>{description}</p>
+    </header>
 
-    <section class="notice-panel" aria-labelledby="scope-title">
-      <h2 id="scope-title">Phạm vi hiện tại</h2>
-      <p>
-        Dinh dưỡng khi mang thai và cho con bú phụ thuộc vào tuổi thai, số thai,
-        cân nặng trước thai kỳ, bệnh nền, thuốc, xét nghiệm, triệu chứng và kế
-        hoạch theo dõi sản khoa. Vì chưa có source-lock và quy trình duyệt sản
-        khoa riêng, trang này không đưa số dinh dưỡng cá nhân hoặc khuyến nghị
-        tăng cân theo từng người.
-      </p>
-    </section>
-
-    <section class="situation-panel" aria-labelledby="situation-title">
-      <div class="section-head">
-        <p class="eyebrow">Khi nào cần hỏi chuyên môn?</p>
-        <h2 id="situation-title">Các tình huống cần cá thể hóa</h2>
-        <p>
-          Nếu có một hoặc nhiều tình huống dưới đây, hãy chuẩn bị thông tin và
-          trao đổi trực tiếp với bác sĩ sản khoa hoặc chuyên gia dinh dưỡng.
-        </p>
+    <section class="pregnancy-calculator" aria-labelledby="pregnancy-calculator-title">
+      <div class="pregnancy-section-head">
+        <div><p class="pregnancy-eyebrow">Bước 1</p><h2 id="pregnancy-calculator-title">Nhập thông tin cơ bản</h2></div>
+        <span class="pregnancy-pill">Không thay thế khám thai</span>
       </div>
 
-      <div class="situation-grid">
-        {situations.map((item) => (
-          <article class="situation-card">
-            <span aria-hidden="true">!</span>
-            <p>{item}</p>
-          </article>
-        ))}
+      <div class="pregnancy-form-grid">
+        <label class="pregnancy-field" for="pregnancy-age"><span>Tuổi (năm)</span><input id="pregnancy-age" type="number" min="14" max="50" step="1" value="30" inputmode="numeric" /></label>
+        <label class="pregnancy-field" for="pregnancy-height"><span>Chiều cao</span><div class="pregnancy-input-with-unit"><input id="pregnancy-height" type="number" min="120" max="230" step="0.1" value="160" inputmode="decimal" /><small>cm</small></div></label>
+        <label class="pregnancy-field" for="pregnancy-pre-weight"><span>Cân nặng trước thai kỳ</span><div class="pregnancy-input-with-unit"><input id="pregnancy-pre-weight" type="number" min="30" max="250" step="0.1" value="55" inputmode="decimal" /><small>kg</small></div></label>
+        <label class="pregnancy-field" for="pregnancy-week"><span>Tuổi thai</span><div class="pregnancy-input-with-unit"><input id="pregnancy-week" type="number" min="0" max="42" step="1" value="20" inputmode="numeric" /><small>tuần</small></div></label>
+        <label class="pregnancy-field" for="pregnancy-type"><span>Số thai</span><select id="pregnancy-type"><option value="singleton">Một thai</option><option value="twins">Đa thai (song thai trở lên)</option></select></label>
+        <label class="pregnancy-field" for="pregnancy-current-weight"><span>Cân nặng hiện tại <em>(không bắt buộc)</em></span><div class="pregnancy-input-with-unit"><input id="pregnancy-current-weight" type="number" min="30" max="330" step="0.1" placeholder="Ví dụ 60" inputmode="decimal" /><small>kg</small></div></label>
       </div>
+
+      <label class="pregnancy-check" for="pregnancy-risk"><input id="pregnancy-risk" type="checkbox" /><span>Có yếu tố nguy cơ hoặc đang được theo dõi đặc biệt (đái tháo đường thai kỳ, tăng huyết áp/tiền sản giật, bệnh tim/thận, nôn nhiều…)</span></label>
+      <p id="pregnancy-input-error" class="pregnancy-input-error" role="alert" hidden></p>
+      <button id="pregnancy-calculate" class="pregnancy-button" type="button">Tính khoảng tham khảo</button>
     </section>
 
-    <section class="result-panel" aria-labelledby="result-title">
-      <p class="result-label">Định hướng</p>
-      <h2 id="result-title">Cần hỏi bác sĩ sản khoa hoặc chuyên gia dinh dưỡng</h2>
-      <p>
-        Không đủ điều kiện đưa khuyến nghị cá nhân ở v1. Hãy mang theo thông
-        tin thai kỳ, khẩu phần, thuốc, thực phẩm bổ sung và xét nghiệm để được
-        đánh giá phù hợp với từng người.
-      </p>
-      <ul>
-        {safeNextSteps.map((item) => <li>{item}</li>)}
-      </ul>
+    <section id="pregnancy-result" class="pregnancy-result" aria-labelledby="pregnancy-result-title" aria-live="polite">
+      <div class="pregnancy-result-head"><div><p class="pregnancy-eyebrow">Bước 2</p><h2 id="pregnancy-result-title">Kết quả tham khảo</h2></div><span id="pregnancy-mode" class="pregnancy-mode">Đang chờ dữ liệu</span></div>
+      <div id="pregnancy-result-body" class="pregnancy-result-body"><p class="pregnancy-muted">Nhập thông tin và bấm “Tính khoảng tham khảo” để xem kết quả.</p></div>
     </section>
 
-    <section class="prep-panel" aria-labelledby="prep-title">
-      <p class="eyebrow">Chuẩn bị thông tin</p>
-      <h2 id="prep-title">Nên mang theo khi đi hỏi</h2>
-      <ul>
-        {prepItems.map((item) => <li>{item}</li>)}
-      </ul>
-    </section>
+    <section class="pregnancy-notice" aria-labelledby="pregnancy-scope-title"><h2 id="pregnancy-scope-title">Cách đọc kết quả</h2><p>Khoảng tăng cân được đối chiếu theo BMI trước thai kỳ. Năng lượng bổ sung chỉ là mốc trung bình cho một thai; khẩu phần thật cần xét đến triệu chứng, xét nghiệm, hoạt động và hướng dẫn của bác sĩ. Không tự dùng số này để giảm cân, “ăn bù” hay đổi thuốc.</p></section>
+
+    <section class="pregnancy-situation" aria-labelledby="pregnancy-situation-title"><div class="pregnancy-section-head"><div><p class="pregnancy-eyebrow">Khi nào cần hỏi chuyên môn?</p><h2 id="pregnancy-situation-title">Các tình huống cần cá thể hóa</h2></div></div><div class="pregnancy-situation-grid">{situations.map((item) => <article class="pregnancy-situation-card"><span aria-hidden="true">!</span><p>{item}</p></article>)}</div></section>
+
+    <section class="pregnancy-prep" aria-labelledby="pregnancy-prep-title"><p class="pregnancy-eyebrow">Chuẩn bị thông tin</p><h2 id="pregnancy-prep-title">Nên mang theo khi đi hỏi</h2><ul>{prepItems.map((item) => <li>{item}</li>)}</ul></section>
   </main>
 
   <style is:global>
-    .pregnancy-nutrition-shell {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 24px 0 44px;
-    }
-
-    .pregnancy-nutrition-shell section {
-      margin-bottom: 18px;
-    }
-
-    .hero-panel,
-    .notice-panel,
-    .situation-panel,
-    .result-panel,
-    .prep-panel {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .hero-panel {
-      background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(59, 130, 246, 0.05));
-    }
-
-    .eyebrow,
-    .result-label {
-      margin: 0 0 8px;
-      color: var(--brand);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .pregnancy-nutrition-shell h1,
-    .pregnancy-nutrition-shell h2 {
-      margin: 0 0 10px;
-      line-height: 1.25;
-    }
-
-    .pregnancy-nutrition-shell h1 {
-      font-size: 1.75rem;
-    }
-
-    .pregnancy-nutrition-shell h2 {
-      font-size: 1.16rem;
-    }
-
-    .pregnancy-nutrition-shell p,
-    .pregnancy-nutrition-shell li {
-      color: var(--ink-secondary);
-      line-height: 1.65;
-    }
-
-    .pregnancy-nutrition-shell p {
-      margin: 0;
-    }
-
-    .section-head {
-      margin-bottom: 16px;
-    }
-
-    .situation-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .situation-card {
-      display: grid;
-      grid-template-columns: 28px minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 12px;
-      background: var(--bg-soft);
-    }
-
-    .situation-card span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: #fff3cd;
-      color: #7a4b00;
-      font-weight: 900;
-    }
-
-    .result-panel {
-      border-color: rgba(16, 185, 129, 0.15);
-      background: rgba(16, 185, 129, 0.05);
-    }
-
-    .result-panel ul,
-    .prep-panel ul {
-      margin: 10px 0 0;
-      padding-left: 20px;
-    }
-
-    @media (max-width: 640px) {
-      .pregnancy-nutrition-shell {
-        padding: 12px 0 34px;
-      }
-
-      .hero-panel,
-      .notice-panel,
-      .situation-panel,
-      .result-panel,
-      .prep-panel {
-        padding: 16px;
-        border-radius: var(--radius-lg);
-      }
-
-      .pregnancy-nutrition-shell h1 {
-        font-size: 1.45rem;
-      }
-
-      .situation-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .pregnancy-nutrition-shell { max-width: 960px; margin: 0 auto; padding: 26px 0 48px; }
+    .pregnancy-nutrition-shell section, .pregnancy-hero { margin-bottom: 18px; }
+    .pregnancy-hero, .pregnancy-calculator, .pregnancy-result, .pregnancy-notice, .pregnancy-situation, .pregnancy-prep { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
+    .pregnancy-hero { background: linear-gradient(135deg, rgba(5,150,105,.08), rgba(59,130,246,.06)); }
+    .pregnancy-eyebrow { margin: 0 0 7px; color: var(--brand); font-size: .76rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+    .pregnancy-nutrition-shell h1, .pregnancy-nutrition-shell h2 { margin: 0 0 10px; line-height: 1.25; }
+    .pregnancy-nutrition-shell h1 { font-size: 1.8rem; }
+    .pregnancy-nutrition-shell h2 { font-size: 1.18rem; }
+    .pregnancy-nutrition-shell p, .pregnancy-nutrition-shell li { color: var(--ink-secondary); line-height: 1.65; }
+    .pregnancy-nutrition-shell p { margin: 0; }
+    .pregnancy-section-head, .pregnancy-result-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+    .pregnancy-pill, .pregnancy-mode { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 10px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: .76rem; font-weight: 800; white-space: nowrap; }
+    .pregnancy-mode.clinical { background: #fef2f2; color: #b91c1c; }
+    .pregnancy-form-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .pregnancy-field { display: grid; gap: 6px; color: var(--ink-secondary); font-size: .84rem; font-weight: 750; }
+    .pregnancy-field em { color: var(--ink-tertiary); font-size: .76rem; font-style: normal; font-weight: 500; }
+    .pregnancy-field input, .pregnancy-field select { width: 100%; min-height: 42px; box-sizing: border-box; border: 1px solid var(--card-border); border-radius: 10px; background: var(--bg-soft); color: var(--ink); padding: 9px 11px; font: inherit; }
+    .pregnancy-field input:focus, .pregnancy-field select:focus { outline: 3px solid rgba(5,150,105,.16); border-color: var(--brand); }
+    .pregnancy-input-with-unit { position: relative; }
+    .pregnancy-input-with-unit input { padding-right: 40px; }
+    .pregnancy-input-with-unit small { position: absolute; top: 50%; right: 11px; transform: translateY(-50%); color: var(--ink-tertiary); font-size: .78rem; pointer-events: none; }
+    .pregnancy-check { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; color: var(--ink-secondary); font-size: .86rem; line-height: 1.5; }
+    .pregnancy-check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--brand); }
+    .pregnancy-input-error { margin-top: 12px !important; padding: 10px 12px; border: 1px solid #fed7aa; border-radius: 9px; background: #fff7ed; color: #9a3412 !important; font-size: .86rem; }
+    .pregnancy-button { width: 100%; min-height: 45px; margin-top: 17px; border: 0; border-radius: 11px; background: var(--brand); color: #fff; font: inherit; font-weight: 850; cursor: pointer; transition: transform .16s ease, box-shadow .16s ease; }
+    .pregnancy-button:hover { transform: translateY(-1px); box-shadow: 0 7px 18px rgba(5,150,105,.22); }
+    .pregnancy-result { border-top: 5px solid var(--brand); }
+    .pregnancy-result.clinical { border-top-color: #dc2626; }
+    .pregnancy-result-body { display: grid; gap: 13px; }
+    .pregnancy-muted { color: var(--ink-tertiary) !important; }
+    .pregnancy-metric-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .pregnancy-metric, .pregnancy-info-card { padding: 14px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg-soft); }
+    .pregnancy-metric small { display: block; color: var(--ink-tertiary); font-size: .76rem; font-weight: 750; }
+    .pregnancy-metric strong { display: block; margin-top: 4px; color: var(--brand); font-size: 1.35rem; line-height: 1.25; }
+    .pregnancy-metric span { display: block; margin-top: 3px; color: var(--ink-secondary); font-size: .8rem; line-height: 1.45; }
+    .pregnancy-info-card h3 { margin: 0 0 8px; color: var(--ink); font-size: .98rem; }
+    .pregnancy-info-card p { font-size: .88rem; }
+    .pregnancy-warning-list, .pregnancy-source-list { display: grid; gap: 5px; margin: 8px 0 0; padding-left: 19px; }
+    .pregnancy-warning-list li { color: #92400e; font-size: .86rem; }
+    .pregnancy-source-list li { font-size: .8rem; }
+    .pregnancy-nutrient-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    .pregnancy-nutrient-table th, .pregnancy-nutrient-table td { padding: 8px 6px; border-bottom: 1px solid var(--card-border); text-align: left; vertical-align: top; }
+    .pregnancy-nutrient-table th { color: var(--ink-secondary); font-size: .75rem; text-transform: uppercase; }
+    .pregnancy-notice { background: rgba(59,130,246,.055); border-color: rgba(59,130,246,.18); }
+    .pregnancy-situation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .pregnancy-situation-card { display: grid; grid-template-columns: 27px minmax(0,1fr); gap: 9px; align-items: start; padding: 12px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg-soft); }
+    .pregnancy-situation-card span { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; border-radius: 50%; background: #fff3cd; color: #7a4b00; font-weight: 900; }
+    .pregnancy-situation-card p { font-size: .86rem; }
+    .pregnancy-prep ul { margin: 8px 0 0; padding-left: 20px; }
+    @media (max-width: 720px) { .pregnancy-nutrition-shell { padding: 14px 0 34px; } .pregnancy-hero, .pregnancy-calculator, .pregnancy-result, .pregnancy-notice, .pregnancy-situation, .pregnancy-prep { padding: 17px; } .pregnancy-form-grid, .pregnancy-metric-grid, .pregnancy-situation-grid { grid-template-columns: 1fr; } .pregnancy-section-head, .pregnancy-result-head { display: grid; } .pregnancy-pill, .pregnancy-mode { width: fit-content; white-space: normal; } .pregnancy-nutrition-shell h1 { font-size: 1.5rem; } }
   </style>
+
+  <script>
+    import { calculatePregnancyNutrition } from "../../lib/pregnancy-nutrition";
+
+    const get = (id) => document.getElementById(id);
+    const ageEl = get("pregnancy-age"); const heightEl = get("pregnancy-height"); const preWeightEl = get("pregnancy-pre-weight"); const weekEl = get("pregnancy-week"); const typeEl = get("pregnancy-type"); const currentWeightEl = get("pregnancy-current-weight"); const riskEl = get("pregnancy-risk"); const errorEl = get("pregnancy-input-error"); const resultEl = get("pregnancy-result"); const modeEl = get("pregnancy-mode"); const bodyEl = get("pregnancy-result-body");
+    const fmt = (value, digits = 1) => Number(value).toLocaleString("vi-VN", { maximumFractionDigits: digits });
+    const range = (item) => item ? `${fmt(item.min)}–${fmt(item.max)} ${item.unit}` : "Chưa hiển thị";
+    const clear = (el) => { while (el.firstChild) el.removeChild(el.firstChild); };
+    const addText = (tag, text, parent, className) => { const node = document.createElement(tag); if (className) node.className = className; node.textContent = text; parent.appendChild(node); return node; };
+    function metric(parent, label, value, note) { const card = document.createElement("div"); card.className = "pregnancy-metric"; addText("small", label, card); addText("strong", value, card); if (note) addText("span", note, card); parent.appendChild(card); }
+    function render(result) {
+      clear(bodyEl); resultEl.classList.toggle("clinical", result.mode === "clinical_no_auto"); modeEl.className = "pregnancy-mode " + (result.mode === "clinical_no_auto" ? "clinical" : ""); modeEl.textContent = result.mode === "clinical_no_auto" ? "Cần cá thể hóa" : "Khoảng tham khảo";
+      const metrics = document.createElement("div"); metrics.className = "pregnancy-metric-grid"; metric(metrics, "BMI trước thai kỳ", result.prePregnancyBmi ? fmt(result.prePregnancyBmi) : "—", result.prePregnancyBmiLabel || ""); metric(metrics, "Tam cá nguyệt", result.gestationalTrimesterLabel || "—", "Theo tuổi thai đã nhập"); if (result.currentGainKg !== undefined) metric(metrics, "Đã tăng cân", `${fmt(result.currentGainKg)} kg`, result.currentGainStatus === "within_reference" ? "Trong khoảng tham khảo tại tuần này" : result.currentGainStatus === "below_reference" ? "Thấp hơn khoảng tham khảo; nên trao đổi" : "Cao hơn khoảng tham khảo; nên trao đổi"); bodyEl.appendChild(metrics);
+      const gain = document.createElement("div"); gain.className = "pregnancy-info-card"; addText("h3", "Khoảng tăng cân và năng lượng", gain); if (result.totalWeightGainKg) addText("p", `Tổng thai kỳ: ${range(result.totalWeightGainKg)}${result.firstTrimesterGainKg ? `. Tam cá nguyệt 1: ${range(result.firstTrimesterGainKg)}.` : "."}`, gain); else addText("p", "Không hiển thị mục tiêu tăng cân tự động vì có yếu tố cần cá thể hóa.", gain); if (result.secondThirdTrimesterRateKgPerWeek) addText("p", `Từ tam cá nguyệt 2–3: khoảng ${range(result.secondThirdTrimesterRateKgPerWeek)} mỗi tuần.`, gain); if (result.currentGainReferenceKg && result.currentGainKg !== undefined) addText("p", `Khoảng ước tính đến tuần ${fmt(Number(weekEl.value), 0)}: ${range(result.currentGainReferenceKg)}. Đây chỉ là cách đọc xu hướng, không phải “đạt/không đạt”.`, gain); if (result.extraCaloriesPerDay !== undefined) addText("p", result.extraCaloriesPerDay === 0 ? "Năng lượng bổ sung tham khảo: 0 kcal/ngày trong tam cá nguyệt 1 (nhu cầu mỗi người vẫn khác nhau)." : `Năng lượng bổ sung tham khảo: khoảng ${fmt(result.extraCaloriesPerDay, 0)} kcal/ngày trong ${result.gestationalTrimester === 2 ? "tam cá nguyệt 2" : "tam cá nguyệt 3"}.`, gain); bodyEl.appendChild(gain);
+      const nutrient = document.createElement("div"); nutrient.className = "pregnancy-info-card"; addText("h3", "Mốc vi chất thai kỳ (DRI tham khảo)", nutrient); const table = document.createElement("table"); table.className = "pregnancy-nutrient-table"; const thead = document.createElement("thead"); const head = document.createElement("tr"); ["Vi chất", "Mức tham khảo", "Ghi chú"].forEach((text) => addText("th", text, head)); thead.appendChild(head); table.appendChild(thead); const tbody = document.createElement("tbody"); result.nutrientReferences.forEach((item) => { const row = document.createElement("tr"); addText("td", item.nutrient, row); addText("td", item.amount, row); addText("td", item.note || "", row); tbody.appendChild(row); }); table.appendChild(tbody); nutrient.appendChild(table); bodyEl.appendChild(nutrient);
+      const warnings = document.createElement("div"); warnings.className = "pregnancy-info-card"; addText("h3", "Lưu ý an toàn", warnings); const list = document.createElement("ul"); list.className = "pregnancy-warning-list"; result.warnings.forEach((item) => addText("li", item, list)); warnings.appendChild(list); bodyEl.appendChild(warnings); const sources = document.createElement("div"); sources.className = "pregnancy-info-card"; addText("h3", "Nguồn và phạm vi", sources); const sourceList = document.createElement("ul"); sourceList.className = "pregnancy-source-list"; result.sourceLabels.forEach((item) => addText("li", item, sourceList)); sources.appendChild(sourceList); bodyEl.appendChild(sources);
+    }
+    function calculate() { const current = currentWeightEl.value.trim() === "" ? undefined : Number(currentWeightEl.value); const result = calculatePregnancyNutrition({ ageYears: Number(ageEl.value), heightCm: Number(heightEl.value), prePregnancyWeightKg: Number(preWeightEl.value), gestationalWeek: Number(weekEl.value), pregnancyType: typeEl.value, currentWeightKg: current, clinicalFlags: { highRiskPregnancy: riskEl.checked } }); errorEl.hidden = result.ok; errorEl.textContent = result.ok ? "" : result.error || "Dữ liệu chưa hợp lệ."; if (result.ok) render(result); }
+    get("pregnancy-calculate").addEventListener("click", calculate); [ageEl, heightEl, preWeightEl, weekEl, typeEl, currentWeightEl, riskEl].forEach((el) => el.addEventListener("change", calculate)); calculate();
+  </script>
 </BaseLayout>

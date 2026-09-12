@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const title = "Nhu cầu dinh dưỡng trẻ em | Dinh dưỡng Việt";
 const description =
-  "Định hướng an toàn về các tình huống cần hỏi bác sĩ hoặc chuyên gia dinh dưỡng khi xem nhu cầu dinh dưỡng cho trẻ em.";
+  "Ước tính khoảng năng lượng theo nhóm tuổi, giới và mức vận động cho trẻ 2–18 tuổi, kèm cổng an toàn theo dõi tăng trưởng.";
 
 const situations = [
   "Trẻ dưới 2 tuổi, sinh non, nhẹ cân khi sinh hoặc có vấn đề bú/ăn kéo dài",
@@ -14,7 +14,6 @@ const situations = [
   "Trẻ đang dùng thuốc dài ngày, thực phẩm bổ sung liều cao hoặc nhiều sản phẩm cùng lúc",
   "Trẻ có triệu chứng như mệt nhiều, phù, nôn ói kéo dài, tiêu chảy kéo dài hoặc sốt",
   "Gia đình muốn tính khẩu phần cụ thể, sữa, ăn dặm hoặc bữa ăn học đường",
-  "Có kết quả xét nghiệm, chẩn đoán hoặc khuyến cáo y tế cần được giải thích",
 ];
 
 const prepItems = [
@@ -23,204 +22,102 @@ const prepItems = [
   "Bệnh nền, dị ứng, thuốc đang dùng, thực phẩm bổ sung và triệu chứng mới",
   "Kết quả xét nghiệm, chẩn đoán hoặc hướng dẫn đã nhận từ cơ sở y tế",
 ];
-
-const safeNextSteps = [
-  "Dùng trang này như danh sách nhắc việc trước khi hỏi chuyên môn.",
-  "Không tự đặt khẩu phần, năng lượng hay vi chất cho trẻ chỉ từ một công cụ trực tuyến.",
-  "Nếu trẻ có triệu chứng bất thường hoặc thay đổi tăng trưởng nhanh, hãy liên hệ cơ sở y tế.",
-];
 ---
 
 <BaseLayout title={title} description={description} canonical="/cong-cu/nhu-cau-dinh-duong-tre-em">
-  <main class="child-nutrition-shell" aria-labelledby="page-title">
-    <section class="hero-panel">
-      <p class="eyebrow">Công cụ an toàn v1</p>
-      <h1 id="page-title">Nhu cầu dinh dưỡng trẻ em</h1>
-      <p>
-        Công cụ này chỉ giúp định hướng các tình huống cần hỏi bác sĩ hoặc
-        chuyên gia dinh dưỡng. V1 không tính nhu cầu năng lượng, đạm, chất béo,
-        carb hay vi chất riêng cho từng trẻ.
-      </p>
-    </section>
+  <main class="child-nutrition-shell" aria-labelledby="child-page-title">
+    <header class="child-hero">
+      <p class="child-eyebrow">Công cụ tham khảo có cổng an toàn</p>
+      <h1 id="child-page-title">Nhu cầu dinh dưỡng trẻ em</h1>
+      <p>{description}</p>
+    </header>
 
-    <section class="notice-panel" aria-labelledby="scope-title">
-      <h2 id="scope-title">Phạm vi hiện tại</h2>
-      <p>
-        Trẻ em cần được xem theo tuổi, tốc độ tăng trưởng, bệnh nền, thuốc đang
-        dùng, khẩu phần thực tế và bối cảnh gia đình. Vì chưa có source-lock và
-        quy trình duyệt nhi khoa riêng, trang này không đưa số dinh dưỡng cá
-        nhân hay đánh giá tăng trưởng tự động.
-      </p>
-    </section>
-
-    <section class="situation-panel" aria-labelledby="situation-title">
-      <div class="section-head">
-        <p class="eyebrow">Khi nào cần hỏi chuyên môn?</p>
-        <h2 id="situation-title">Các tình huống cần cá thể hóa</h2>
-        <p>
-          Nếu có một hoặc nhiều tình huống dưới đây, hãy chuẩn bị thông tin và
-          trao đổi trực tiếp với bác sĩ hoặc chuyên gia dinh dưỡng.
-        </p>
+    <section class="child-calculator" aria-labelledby="child-calculator-title">
+      <div class="child-section-head"><div><p class="child-eyebrow">Bước 1</p><h2 id="child-calculator-title">Nhập thông tin cơ bản</h2></div><span class="child-pill">Không dùng ngưỡng BMI người lớn</span></div>
+      <div class="child-form-grid">
+        <label class="child-field" for="child-age"><span>Tuổi</span><div class="child-input-with-unit"><input id="child-age" type="number" min="0" max="18" step="0.1" value="8" inputmode="decimal" /><small>năm</small></div></label>
+        <label class="child-field" for="child-sex"><span>Giới</span><select id="child-sex"><option value="female">Bé gái</option><option value="male">Bé trai</option></select></label>
+        <label class="child-field" for="child-activity"><span>Mức vận động thường ngày</span><select id="child-activity"><option value="sedentary">Ít vận động</option><option value="moderate" selected>Vận động vừa</option><option value="active">Năng động</option></select></label>
+        <label class="child-field" for="child-weight"><span>Cân nặng <em>(không bắt buộc)</em></span><div class="child-input-with-unit"><input id="child-weight" type="number" min="2" max="250" step="0.1" placeholder="Ví dụ 26" inputmode="decimal" /><small>kg</small></div></label>
+        <label class="child-field" for="child-height"><span>Chiều cao <em>(không bắt buộc)</em></span><div class="child-input-with-unit"><input id="child-height" type="number" min="45" max="230" step="0.1" placeholder="Ví dụ 128" inputmode="decimal" /><small>cm</small></div></label>
       </div>
-
-      <div class="situation-grid">
-        {situations.map((item) => (
-          <article class="situation-card">
-            <span aria-hidden="true">!</span>
-            <p>{item}</p>
-          </article>
-        ))}
-      </div>
+      <label class="child-check" for="child-risk"><input id="child-risk" type="checkbox" /><span>Có vấn đề tăng trưởng, bệnh nền, dị ứng nặng, đang điều trị hoặc cần tính khẩu phần riêng</span></label>
+      <p id="child-input-error" class="child-input-error" role="alert" hidden></p>
+      <button id="child-calculate" class="child-button" type="button">Tính khoảng năng lượng</button>
     </section>
 
-    <section class="result-panel" aria-labelledby="result-title">
-      <p class="result-label">Định hướng</p>
-      <h2 id="result-title">Cần hỏi bác sĩ hoặc chuyên gia dinh dưỡng</h2>
-      <p>
-        Không đủ điều kiện đưa khuyến nghị cá nhân ở v1. Hãy mang theo thông
-        tin tăng trưởng, khẩu phần, thuốc và xét nghiệm để được đánh giá phù
-        hợp với từng trẻ.
-      </p>
-      <ul>
-        {safeNextSteps.map((item) => <li>{item}</li>)}
-      </ul>
+    <section id="child-result" class="child-result" aria-labelledby="child-result-title" aria-live="polite">
+      <div class="child-result-head"><div><p class="child-eyebrow">Bước 2</p><h2 id="child-result-title">Kết quả tham khảo</h2></div><span id="child-mode" class="child-mode">Đang chờ dữ liệu</span></div>
+      <div id="child-result-body" class="child-result-body"><p class="child-muted">Nhập thông tin và bấm “Tính khoảng năng lượng” để xem kết quả.</p></div>
     </section>
 
-    <section class="prep-panel" aria-labelledby="prep-title">
-      <p class="eyebrow">Chuẩn bị thông tin</p>
-      <h2 id="prep-title">Nên mang theo khi đi hỏi</h2>
-      <ul>
-        {prepItems.map((item) => <li>{item}</li>)}
-      </ul>
-    </section>
+    <section class="child-notice" aria-labelledby="child-scope-title"><h2 id="child-scope-title">Cách đọc kết quả</h2><p>Đây là khoảng theo nhóm tuổi, giới và mức vận động từ bảng tham khảo, không phải mức ăn bắt buộc của một trẻ cụ thể. Trẻ dưới 2 tuổi hoặc có yếu tố nguy cơ cần đọc biểu đồ tăng trưởng WHO và trao đổi với bác sĩ/chuyên gia dinh dưỡng.</p></section>
+
+    <section class="child-situation" aria-labelledby="child-situation-title"><div class="child-section-head"><div><p class="child-eyebrow">Khi nào cần hỏi chuyên môn?</p><h2 id="child-situation-title">Các tình huống cần cá thể hóa</h2></div></div><div class="child-situation-grid">{situations.map((item) => <article class="child-situation-card"><span aria-hidden="true">!</span><p>{item}</p></article>)}</div></section>
+
+    <section class="child-prep" aria-labelledby="child-prep-title"><p class="child-eyebrow">Chuẩn bị thông tin</p><h2 id="child-prep-title">Nên mang theo khi đi hỏi</h2><ul>{prepItems.map((item) => <li>{item}</li>)}</ul></section>
   </main>
 
   <style is:global>
-    .child-nutrition-shell {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 24px 0 44px;
-    }
-
-    .child-nutrition-shell section {
-      margin-bottom: 18px;
-    }
-
-    .hero-panel,
-    .notice-panel,
-    .situation-panel,
-    .result-panel,
-    .prep-panel {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .hero-panel {
-      background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(59, 130, 246, 0.05));
-    }
-
-    .eyebrow,
-    .result-label {
-      margin: 0 0 8px;
-      color: var(--brand);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .child-nutrition-shell h1,
-    .child-nutrition-shell h2 {
-      margin: 0 0 10px;
-      line-height: 1.25;
-    }
-
-    .child-nutrition-shell h1 {
-      font-size: 1.75rem;
-    }
-
-    .child-nutrition-shell h2 {
-      font-size: 1.16rem;
-    }
-
-    .child-nutrition-shell p,
-    .child-nutrition-shell li {
-      color: var(--ink-secondary);
-      line-height: 1.65;
-    }
-
-    .child-nutrition-shell p {
-      margin: 0;
-    }
-
-    .section-head {
-      margin-bottom: 16px;
-    }
-
-    .situation-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .situation-card {
-      display: grid;
-      grid-template-columns: 28px minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 12px;
-      background: var(--bg-soft);
-    }
-
-    .situation-card span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: #fff3cd;
-      color: #7a4b00;
-      font-weight: 900;
-    }
-
-    .result-panel {
-      border-color: rgba(16, 185, 129, 0.15);
-      background: rgba(16, 185, 129, 0.05);
-    }
-
-    .result-panel ul,
-    .prep-panel ul {
-      margin: 10px 0 0;
-      padding-left: 20px;
-    }
-
-    @media (max-width: 640px) {
-      .child-nutrition-shell {
-        padding: 12px 0 34px;
-      }
-
-      .hero-panel,
-      .notice-panel,
-      .situation-panel,
-      .result-panel,
-      .prep-panel {
-        padding: 16px;
-        border-radius: var(--radius-lg);
-      }
-
-      .child-nutrition-shell h1 {
-        font-size: 1.45rem;
-      }
-
-      .situation-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .child-nutrition-shell { max-width: 960px; margin: 0 auto; padding: 26px 0 48px; }
+    .child-nutrition-shell section, .child-hero { margin-bottom: 18px; }
+    .child-hero, .child-calculator, .child-result, .child-notice, .child-situation, .child-prep { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
+    .child-hero { background: linear-gradient(135deg, rgba(59,130,246,.08), rgba(5,150,105,.06)); }
+    .child-eyebrow { margin: 0 0 7px; color: var(--brand); font-size: .76rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+    .child-nutrition-shell h1, .child-nutrition-shell h2 { margin: 0 0 10px; line-height: 1.25; }
+    .child-nutrition-shell h1 { font-size: 1.8rem; }
+    .child-nutrition-shell h2 { font-size: 1.18rem; }
+    .child-nutrition-shell p, .child-nutrition-shell li { color: var(--ink-secondary); line-height: 1.65; }
+    .child-nutrition-shell p { margin: 0; }
+    .child-section-head, .child-result-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+    .child-pill, .child-mode { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 10px; border-radius: 999px; background: var(--brand-light); color: var(--brand); font-size: .76rem; font-weight: 800; white-space: nowrap; }
+    .child-mode.clinical { background: #fef2f2; color: #b91c1c; }
+    .child-form-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .child-field { display: grid; gap: 6px; color: var(--ink-secondary); font-size: .84rem; font-weight: 750; }
+    .child-field em { color: var(--ink-tertiary); font-size: .76rem; font-style: normal; font-weight: 500; }
+    .child-field input, .child-field select { width: 100%; min-height: 42px; box-sizing: border-box; border: 1px solid var(--card-border); border-radius: 10px; background: var(--bg-soft); color: var(--ink); padding: 9px 11px; font: inherit; }
+    .child-field input:focus, .child-field select:focus { outline: 3px solid rgba(5,150,105,.16); border-color: var(--brand); }
+    .child-input-with-unit { position: relative; }
+    .child-input-with-unit input { padding-right: 40px; }
+    .child-input-with-unit small { position: absolute; top: 50%; right: 11px; transform: translateY(-50%); color: var(--ink-tertiary); font-size: .78rem; pointer-events: none; }
+    .child-check { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; color: var(--ink-secondary); font-size: .86rem; line-height: 1.5; }
+    .child-check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--brand); }
+    .child-input-error { margin-top: 12px !important; padding: 10px 12px; border: 1px solid #fed7aa; border-radius: 9px; background: #fff7ed; color: #9a3412 !important; font-size: .86rem; }
+    .child-button { width: 100%; min-height: 45px; margin-top: 17px; border: 0; border-radius: 11px; background: var(--brand); color: #fff; font: inherit; font-weight: 850; cursor: pointer; transition: transform .16s ease, box-shadow .16s ease; }
+    .child-button:hover { transform: translateY(-1px); box-shadow: 0 7px 18px rgba(5,150,105,.22); }
+    .child-result { border-top: 5px solid var(--brand); }
+    .child-result.clinical { border-top-color: #dc2626; }
+    .child-result-body { display: grid; gap: 13px; }
+    .child-muted { color: var(--ink-tertiary) !important; }
+    .child-energy-card, .child-info-card { padding: 17px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg-soft); }
+    .child-energy-card small { display: block; color: var(--ink-tertiary); font-size: .76rem; font-weight: 750; }
+    .child-energy-card strong { display: block; margin-top: 3px; color: var(--brand); font-size: 2.35rem; line-height: 1.15; }
+    .child-energy-card p { margin-top: 6px; font-size: .86rem; }
+    .child-info-card h3 { margin: 0 0 8px; color: var(--ink); font-size: .98rem; }
+    .child-info-card p { font-size: .88rem; }
+    .child-warning-list, .child-source-list { display: grid; gap: 5px; margin: 8px 0 0; padding-left: 19px; }
+    .child-warning-list li { color: #92400e; font-size: .86rem; }
+    .child-source-list li { font-size: .8rem; }
+    .child-notice { background: rgba(59,130,246,.055); border-color: rgba(59,130,246,.18); }
+    .child-situation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .child-situation-card { display: grid; grid-template-columns: 27px minmax(0,1fr); gap: 9px; align-items: start; padding: 12px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg-soft); }
+    .child-situation-card span { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; border-radius: 50%; background: #fff3cd; color: #7a4b00; font-weight: 900; }
+    .child-situation-card p { font-size: .86rem; }
+    .child-prep ul { margin: 8px 0 0; padding-left: 20px; }
+    @media (max-width: 720px) { .child-nutrition-shell { padding: 14px 0 34px; } .child-hero, .child-calculator, .child-result, .child-notice, .child-situation, .child-prep { padding: 17px; } .child-form-grid, .child-situation-grid { grid-template-columns: 1fr; } .child-section-head, .child-result-head { display: grid; } .child-pill, .child-mode { width: fit-content; white-space: normal; } .child-nutrition-shell h1 { font-size: 1.5rem; } }
   </style>
+
+  <script>
+    import { calculateChildNutrition } from "../../lib/child-nutrition";
+
+    const get = (id) => document.getElementById(id); const ageEl = get("child-age"); const sexEl = get("child-sex"); const activityEl = get("child-activity"); const weightEl = get("child-weight"); const heightEl = get("child-height"); const riskEl = get("child-risk"); const errorEl = get("child-input-error"); const resultEl = get("child-result"); const modeEl = get("child-mode"); const bodyEl = get("child-result-body");
+    const fmt = (value) => Number(value).toLocaleString("vi-VN", { maximumFractionDigits: 0 }); const clear = (el) => { while (el.firstChild) el.removeChild(el.firstChild); }; const addText = (tag, text, parent, className) => { const node = document.createElement(tag); if (className) node.className = className; node.textContent = text; parent.appendChild(node); return node; };
+    function render(result) { clear(bodyEl); resultEl.classList.toggle("clinical", result.mode === "clinical_no_auto"); modeEl.className = "child-mode " + (result.mode === "clinical_no_auto" ? "clinical" : ""); modeEl.textContent = result.mode === "clinical_no_auto" ? "Cần cá thể hóa" : "Khoảng tham khảo";
+      if (result.energyReference) { const energy = document.createElement("div"); energy.className = "child-energy-card"; addText("small", `${result.ageBandLabel} · ${result.activityLabel}`, energy); addText("strong", `${fmt(result.energyReference.minKcal)}–${fmt(result.energyReference.maxKcal)} kcal/ngày`, energy); addText("p", "Khoảng tham khảo theo nhóm tuổi, giới và mức vận động; không phải mục tiêu ăn bắt buộc.", energy); bodyEl.appendChild(energy); } else { const info = document.createElement("div"); info.className = "child-info-card"; addText("h3", `${result.ageBandLabel || "Trẻ em"}: chưa tự động tính kcal`, info); addText("p", "Hãy dùng biểu đồ tăng trưởng WHO và trao đổi với bác sĩ/chuyên gia dinh dưỡng để đặt khẩu phần phù hợp.", info); bodyEl.appendChild(info); }
+      const warnings = document.createElement("div"); warnings.className = "child-info-card"; addText("h3", "Lưu ý an toàn", warnings); const list = document.createElement("ul"); list.className = "child-warning-list"; result.warnings.forEach((item) => addText("li", item, list)); warnings.appendChild(list); bodyEl.appendChild(warnings); const sources = document.createElement("div"); sources.className = "child-info-card"; addText("h3", "Nguồn và phạm vi", sources); const sourceList = document.createElement("ul"); sourceList.className = "child-source-list"; result.sourceLabels.forEach((item) => addText("li", item, sourceList)); sources.appendChild(sourceList); bodyEl.appendChild(sources);
+      if (result.rawBmi !== undefined) { const bmi = document.createElement("p"); bmi.className = "child-muted"; bmi.textContent = `BMI thô từ dữ liệu nhập: ${result.rawBmi}. Chỉ số này không được phân loại bằng ngưỡng BMI người lớn; cần BMI theo tuổi/giới.`; bodyEl.appendChild(bmi); }
+    }
+    function calculate() { const weight = weightEl.value.trim() === "" ? undefined : Number(weightEl.value); const height = heightEl.value.trim() === "" ? undefined : Number(heightEl.value); const result = calculateChildNutrition({ ageYears: Number(ageEl.value), sex: sexEl.value, activity: activityEl.value, weightKg: weight, heightCm: height, clinicalConcern: riskEl.checked }); errorEl.hidden = result.ok; errorEl.textContent = result.ok ? "" : result.error || "Dữ liệu chưa hợp lệ."; if (result.ok) render(result); }
+    get("child-calculate").addEventListener("click", calculate); [ageEl, sexEl, activityEl, weightEl, heightEl, riskEl].forEach((el) => el.addEventListener("change", calculate)); calculate();
+  </script>
 </BaseLayout>

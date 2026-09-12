@@ -1,0 +1,375 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Tra cứu nhu cầu dinh dưỡng | Dinh dưỡng Việt";
+const description =
+  "Tra cứu nhu cầu năng lượng, đạm, béo, bột đường, vitamin và khoáng chất theo nhóm tuổi, giới, mức lao động và tình trạng sinh lý.";
+const sourceUrl = "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/nhu-cau-dinh-duong";
+
+const ageGroups = [
+  ["6911522202a3d8e4d7051be8", "0–5 tháng"],
+  ["6911523e02a3d8e4d7051be9", "6–8 tháng"],
+  ["691152fb02a3d8e4d7051bea", "9–11 tháng"],
+  ["6911532702a3d8e4d7051beb", "1–2 tuổi"],
+  ["6911533c02a3d8e4d7051bec", "3–5 tuổi"],
+  ["6911943a02a3d8e4d7051c02", "6–7 tuổi"],
+  ["6911944d02a3d8e4d7051c03", "8–9 tuổi"],
+  ["6911547302a3d8e4d7051bed", "10–11 tuổi"],
+  ["691156b402a3d8e4d7051bf0", "12–14 tuổi"],
+  ["691156ca02a3d8e4d7051bf1", "15–17 tuổi"],
+  ["69be14649facd5ce4b081512", "18–29 tuổi"],
+  ["6911574e02a3d8e4d7051bf5", "30–49 tuổi"],
+  ["6911577502a3d8e4d7051bf6", "50–64 tuổi"],
+  ["6911b2f0df2ad491160d708c", "65–74 tuổi"],
+  ["6911582702a3d8e4d7051bfa", "≥75 tuổi"],
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/cong-cu/tra-cuu-nhu-cau-dinh-duong">
+  <main class="needs-tool">
+    <section class="needs-hero">
+      <p class="eyebrow">Tra cứu chuẩn Việt Nam · bản dữ liệu 2026</p>
+      <h1>📐 Nhu cầu dinh dưỡng khuyến nghị</h1>
+      <p class="lead">
+        Chọn đúng nhóm tuổi, giới, mức lao động và tình trạng sinh lý để xem bảng năng lượng,
+        chất sinh năng lượng, vitamin và khoáng chất tham khảo.
+      </p>
+    </section>
+
+    <section class="query-card card" aria-labelledby="query-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Bước 1</p>
+          <h2 id="query-title">Chọn đối tượng tra cứu</h2>
+        </div>
+        <span class="data-badge">RNI Việt Nam 2026</span>
+      </div>
+
+      <form id="needs-form" class="needs-form">
+        <label>
+          <span>Nhóm tuổi</span>
+          <select id="age-group" required>
+            <option value="">Chọn nhóm tuổi</option>
+            {ageGroups.map(([value, label]) => <option value={value}>{label}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>Giới tính</span>
+          <select id="gender" required>
+            <option value="m">Nam</option>
+            <option value="f">Nữ</option>
+          </select>
+        </label>
+        <label>
+          <span>Mức độ lao động</span>
+          <select id="labor-level" required>
+            <option value="0">Nhẹ</option>
+            <option value="1" selected>Trung bình</option>
+            <option value="2">Nặng</option>
+          </select>
+        </label>
+        <label>
+          <span>Tình trạng sinh lý</span>
+          <select id="physiology" required>
+            <option value="not-pregnant">Không có thai</option>
+            <option value="women-in-the-first-trimester-of-pregnancy">Có thai · 3 tháng đầu</option>
+            <option value="women-in-the-second-trimester-of-pregnancy">Có thai · 3 tháng giữa</option>
+            <option value="women-in-the-third-trimester-of-pregnancy">Có thai · 3 tháng cuối</option>
+            <option value="breastfeeding-mothers">Đang cho con bú</option>
+          </select>
+        </label>
+        <div class="form-actions">
+          <button class="primary-btn" type="submit">Tra cứu nhu cầu</button>
+          <button class="secondary-btn" id="reset-btn" type="button">Làm mới</button>
+        </div>
+      </form>
+      <p id="form-status" class="form-status" role="status" aria-live="polite">
+        Dữ liệu được tải từ bản snapshot nội bộ để công cụ vẫn hoạt động khi mất mạng.
+      </p>
+    </section>
+
+    <section id="result-card" class="result-card card" aria-labelledby="result-title" hidden>
+      <div class="result-heading">
+        <div>
+          <p class="section-kicker">Kết quả tra cứu</p>
+          <h2 id="result-title">Nhu cầu tham khảo</h2>
+        </div>
+        <span id="result-badge" class="result-badge">Bảng RNI</span>
+      </div>
+      <div id="result-meta" class="result-meta"></div>
+      <div id="result-table" class="table-wrap"></div>
+      <div class="result-note">
+        <strong>Cách đọc:</strong> đây là mức khuyến nghị cho nhóm người khỏe mạnh, không phải đơn ăn cá nhân.
+        Dấu “–” nghĩa là nguồn không công bố giá trị cho lựa chọn đó; không tự quy đổi thành 0.
+      </div>
+    </section>
+
+    <section class="safety-grid" aria-label="Lưu ý an toàn">
+      <article class="safety-card">
+        <span class="safety-icon">🧭</span>
+        <div>
+          <h2>Tra cứu khác với tính cá nhân hóa</h2>
+          <p>
+            Bảng này không dùng cân nặng, bệnh nền hay xét nghiệm để đặt mục tiêu riêng. Khi cần tính
+            BMR/TDEE, macro hoặc khẩu phần điều trị, hãy dùng công cụ chuyên biệt và đọc cùng chuyên gia.
+          </p>
+        </div>
+      </article>
+      <article class="safety-card warning">
+        <span class="safety-icon">⚠️</span>
+        <div>
+          <h2>Khi nên hỏi chuyên môn?</h2>
+          <p>
+            Trẻ dưới 2 tuổi, thai kỳ nguy cơ cao, đa thai, bệnh thận/tim, đái tháo đường, suy dinh dưỡng,
+            béo phì hoặc đang điều trị cần được cá thể hóa; không tự ép ăn, giảm cân hay đổi thuốc theo bảng.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <p class="source-note">
+      Nguồn dữ liệu: <a href={sourceUrl} target="_blank" rel="noopener noreferrer">Viện Dinh dưỡng Quốc gia – Tra cứu nhu cầu dinh dưỡng</a>.
+      Snapshot nội bộ cập nhật ngày 12/09/2026; kiểm tra nguồn gốc khi tài liệu chính thức thay đổi.
+    </p>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  const DATA_URL = "/api/vietnamese-nutrition-needs-2026.json";
+  const form = document.getElementById("needs-form");
+  const ageSelect = document.getElementById("age-group");
+  const genderSelect = document.getElementById("gender");
+  const laborSelect = document.getElementById("labor-level");
+  const physiologySelect = document.getElementById("physiology");
+  const resetButton = document.getElementById("reset-btn");
+  const formStatus = document.getElementById("form-status");
+  const resultCard = document.getElementById("result-card");
+  const resultTitle = document.getElementById("result-title");
+  const resultBadge = document.getElementById("result-badge");
+  const resultMeta = document.getElementById("result-meta");
+  const resultTable = document.getElementById("result-table");
+  let needsData = null;
+
+  const laborLabels = { "0": "Nhẹ", "1": "Trung bình", "2": "Nặng" };
+  const genderLabels = { m: "Nam", f: "Nữ" };
+
+  function text(value) {
+    return value == null ? "" : String(value);
+  }
+
+  function showMessage(message, kind = "") {
+    formStatus.textContent = message;
+    formStatus.className = `form-status ${kind}`.trim();
+  }
+
+  function findRecord(ageGroupId, gender, laborLevel, physiology) {
+    if (!needsData) return null;
+    const core = needsData.core.find((record) =>
+      record[0] === ageGroupId && record[1] === gender && String(record[2]) === String(laborLevel) && record[3] === physiology,
+    );
+    const profile = needsData.profiles.find((record) =>
+      record[0] === ageGroupId && record[1] === gender && record[2] === physiology,
+    );
+    if (!core || !profile) return null;
+    return { coreRows: core[4], nutrientRows: profile[1] };
+  }
+
+  function createMeta(label, value) {
+    const item = document.createElement("div");
+    item.className = "meta-item";
+    const dt = document.createElement("span");
+    dt.className = "meta-label";
+    dt.textContent = label;
+    const dd = document.createElement("strong");
+    dd.textContent = value;
+    item.append(dt, dd);
+    return item;
+  }
+
+  function renderTable(record) {
+    const table = document.createElement("table");
+    table.className = "needs-table";
+    const caption = document.createElement("caption");
+    caption.textContent = "Nhu cầu dinh dưỡng khuyến nghị trong ngày";
+    table.append(caption);
+
+    const thead = document.createElement("thead");
+    const header = document.createElement("tr");
+    ["Nhu cầu", "Đơn vị", "Giá trị tham khảo"].forEach((label) => {
+      const cell = document.createElement("th");
+      cell.textContent = label;
+      header.append(cell);
+    });
+    thead.append(header);
+    table.append(thead);
+
+    const tbody = document.createElement("tbody");
+    const rows = [...record.coreRows, ...record.nutrientRows];
+    rows.forEach(([name, unit, value], index) => {
+      if (index === 0 || index === 4) {
+        const group = document.createElement("tr");
+        group.className = "group-row";
+        const groupCell = document.createElement("th");
+        groupCell.colSpan = 3;
+        groupCell.textContent = index === 0 ? "Năng lượng và chất sinh năng lượng" : "Vitamin và khoáng chất thiết yếu";
+        group.append(groupCell);
+        tbody.append(group);
+      }
+      const row = document.createElement("tr");
+      const nameCell = document.createElement("th");
+      nameCell.scope = "row";
+      nameCell.textContent = text(name);
+      const unitCell = document.createElement("td");
+      unitCell.textContent = text(unit);
+      const valueCell = document.createElement("td");
+      valueCell.className = value === "-" ? "muted-value" : "value-cell";
+      valueCell.textContent = text(value);
+      row.append(nameCell, unitCell, valueCell);
+      tbody.append(row);
+    });
+    table.append(tbody);
+    resultTable.replaceChildren(table);
+  }
+
+  function renderResult() {
+    const ageGroupId = ageSelect.value;
+    const gender = genderSelect.value;
+    const laborLevel = laborSelect.value;
+    const physiology = physiologySelect.value;
+    if (!ageGroupId) {
+      showMessage("Hãy chọn nhóm tuổi trước khi tra cứu.", "error");
+      resultCard.hidden = true;
+      return;
+    }
+    if (gender === "m" && physiology !== "not-pregnant") {
+      showMessage("Tình trạng thai kỳ/cho con bú chỉ áp dụng cho lựa chọn Nữ trong bảng tra cứu.", "error");
+      resultCard.hidden = true;
+      return;
+    }
+    const record = findRecord(ageGroupId, gender, laborLevel, physiology);
+    if (!record) {
+      showMessage("Nguồn chưa có dữ liệu cho tổ hợp lựa chọn này. Hãy chọn Không có thai hoặc mức lao động khác.", "error");
+      resultCard.hidden = true;
+      return;
+    }
+
+    const age = needsData.ages.find((item) => item.id === ageGroupId);
+    const physiological = needsData.physiology.find((item) => item.code === physiology);
+    resultTitle.textContent = `Nhu cầu tham khảo · ${age?.label || "Nhóm tuổi"}`;
+    resultBadge.textContent = needsData.fetched ? `Snapshot ${needsData.fetched}` : "Bảng RNI";
+    resultMeta.replaceChildren(
+      createMeta("Nhóm tuổi", age?.label || "—"),
+      createMeta("Giới", genderLabels[gender] || "—"),
+      createMeta("Lao động", laborLabels[laborLevel] || "—"),
+      createMeta("Sinh lý", physiological?.label || "Không có thai"),
+    );
+    renderTable(record);
+    resultCard.hidden = false;
+    showMessage("Đã cập nhật bảng nhu cầu tham khảo.", "success");
+    resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function updatePhysiologyOptions() {
+    if (!needsData) return;
+    const age = needsData.ages.find((item) => item.id === ageSelect.value);
+    const ageAllowsPhysiology = Number(age?.ord) >= 9;
+    [...physiologySelect.options].forEach((option) => {
+      const isSpecial = option.value !== "not-pregnant";
+      option.disabled = isSpecial && (genderSelect.value !== "f" || !ageAllowsPhysiology);
+    });
+    if (physiologySelect.selectedOptions[0]?.disabled) physiologySelect.value = "not-pregnant";
+  }
+
+  async function loadData() {
+    try {
+      const response = await fetch(DATA_URL, { cache: "no-cache" });
+      if (!response.ok) throw new Error("data_unavailable");
+      needsData = await response.json();
+      updatePhysiologyOptions();
+      showMessage(`Đã sẵn sàng tra cứu ${needsData.ages.length} nhóm tuổi và dữ liệu RNI 2026.`, "success");
+    } catch (error) {
+      showMessage("Không tải được snapshot dữ liệu. Hãy thử tải lại trang hoặc mở nguồn Viện Dinh dưỡng.", "error");
+    }
+  }
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    renderResult();
+  });
+
+  resetButton?.addEventListener("click", () => {
+    form?.reset();
+    laborSelect.value = "1";
+    physiologySelect.value = "not-pregnant";
+    updatePhysiologyOptions();
+    resultCard.hidden = true;
+    showMessage("Đã làm mới lựa chọn.");
+  });
+
+  ageSelect?.addEventListener("change", updatePhysiologyOptions);
+  genderSelect?.addEventListener("change", updatePhysiologyOptions);
+
+  loadData();
+</script>
+
+<style>
+  .needs-tool { max-width: 980px; margin: 0 auto; padding: 28px 16px 56px; }
+  .needs-hero { margin-bottom: 24px; }
+  .eyebrow, .section-kicker { margin: 0 0 8px; color: var(--brand-dark); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .needs-hero h1 { margin: 0 0 10px; font-size: clamp(1.8rem, 4vw, 2.45rem); line-height: 1.18; }
+  .lead { max-width: 760px; margin: 0; color: var(--ink-secondary); line-height: 1.7; }
+  .query-card, .result-card { padding: clamp(18px, 3vw, 28px); }
+  .section-heading, .result-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+  .section-heading h2, .result-heading h2 { margin: 0; font-size: 1.25rem; }
+  .data-badge, .result-badge { flex: 0 0 auto; border-radius: 999px; background: var(--brand-light); color: var(--brand-dark); padding: 7px 11px; font-size: 0.78rem; font-weight: 800; }
+  .needs-form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: end; }
+  .needs-form label { display: grid; gap: 7px; }
+  .needs-form label span { color: var(--ink-secondary); font-size: 0.82rem; font-weight: 700; }
+  .needs-form select { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-elevated); color: var(--ink); padding: 9px 11px; font: inherit; }
+  .needs-form select:focus { outline: 3px solid color-mix(in srgb, var(--brand) 25%, transparent); border-color: var(--brand); }
+  .form-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+  .primary-btn, .secondary-btn { min-height: 44px; border-radius: 10px; padding: 10px 16px; font: inherit; font-weight: 800; cursor: pointer; }
+  .primary-btn { border: 1px solid var(--brand); background: var(--brand); color: #fff; }
+  .primary-btn:hover { filter: brightness(0.95); }
+  .secondary-btn { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+  .secondary-btn:hover { border-color: var(--brand); color: var(--brand-dark); }
+  .form-status { min-height: 1.4em; margin: 16px 0 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.5; }
+  .form-status.success { color: #16734a; }
+  .form-status.error { color: #b42318; }
+  .result-card { margin-top: 20px; scroll-margin-top: 18px; }
+  .result-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .meta-item { display: grid; gap: 5px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft); padding: 12px; }
+  .meta-label { color: var(--ink-tertiary); font-size: 0.74rem; }
+  .meta-item strong { font-size: 0.9rem; line-height: 1.3; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+  .needs-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.88rem; }
+  .needs-table caption { padding: 14px; background: var(--bg-soft); color: var(--ink); font-weight: 800; text-align: left; }
+  .needs-table th, .needs-table td { border-top: 1px solid var(--line); padding: 10px 12px; vertical-align: top; text-align: left; }
+  .needs-table thead th { border-top: 0; background: var(--brand-light); color: var(--ink); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .needs-table tbody th { width: 45%; font-weight: 700; }
+  .needs-table tbody td:nth-child(2) { width: 18%; color: var(--ink-secondary); white-space: nowrap; }
+  .needs-table .group-row th { width: auto; background: var(--line-light); color: var(--brand-dark); font-size: 0.8rem; }
+  .value-cell { font-weight: 800; color: var(--brand-dark); }
+  .muted-value { color: var(--ink-tertiary); }
+  .result-note { margin-top: 16px; color: var(--ink-secondary); font-size: 0.82rem; line-height: 1.6; }
+  .safety-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+  .safety-card { display: flex; gap: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); padding: 18px; }
+  .safety-card.warning { border-color: #f2c6c2; background: #fff8f6; }
+  [data-theme="dark"] .safety-card.warning { border-color: #713d39; background: #321d1b; }
+  .safety-icon { font-size: 1.35rem; line-height: 1; }
+  .safety-card h2 { margin: 0 0 6px; font-size: 1rem; }
+  .safety-card p { margin: 0; color: var(--ink-secondary); font-size: 0.84rem; line-height: 1.6; }
+  .source-note { margin: 20px 0 0; color: var(--ink-tertiary); font-size: 0.78rem; line-height: 1.6; }
+  .source-note a { color: var(--brand-dark); }
+  @media (max-width: 760px) {
+    .needs-form { grid-template-columns: 1fr 1fr; }
+    .result-meta, .safety-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .needs-tool { padding-top: 20px; }
+    .needs-form, .result-meta, .safety-grid { grid-template-columns: 1fr; }
+    .section-heading, .result-heading { display: grid; gap: 10px; }
+    .data-badge, .result-badge { justify-self: start; }
+    .form-actions > button { flex: 1; }
+  }
+</style>

@@ -23,7 +23,10 @@
     "test:meal-assessment": "node scripts/test-vietnamese-meal-assessment.mjs",
     "test:nutrition-goal": "node scripts/test-nutrition-goal-planner.mjs",
     "test:waist-to-height": "node scripts/test-waist-to-height.mjs",
-    "test:tools": "npm run test:protein && npm run test:carb && npm run test:gl && npm run test:water && npm run test:meal-assessment && npm run test:nutrition-goal && npm run test:waist-to-height",
+    "test:pregnancy": "node scripts/test-pregnancy-nutrition.mjs",
+    "test:child": "node scripts/test-child-nutrition.mjs",
+    "test:needs": "node scripts/test-vietnamese-nutrition-needs.mjs",
+    "test:tools": "npm run test:protein && npm run test:carb && npm run test:gl && npm run test:water && npm run test:meal-assessment && npm run test:nutrition-goal && npm run test:waist-to-height && npm run test:pregnancy && npm run test:child && npm run test:needs",
     "preview": "astro preview --host 0.0.0.0"
   },
   "dependencies": {

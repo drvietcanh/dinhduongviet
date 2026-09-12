@@ -40,6 +40,7 @@ const toolGroups = [
       { icon: "🎯", name: "Mục tiêu dinh dưỡng", href: "/cong-cu/muc-tieu-dinh-duong", desc: "Định hướng mục tiêu dinh dưỡng tham khảo. Dùng khi cần một mốc bắt đầu rõ hơn.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔬", name: "Đánh giá khẩu phần Việt", href: "/cong-cu/khau-phan-viet-clinical", desc: "Ước tính khẩu phần Việt để giáo dục dinh dưỡng. Có cờ cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🔁", name: "Đổi đơn vị", href: "/cong-cu/doi-don-vi", desc: "Quy đổi đơn vị thực phẩm ở mức tham khảo. Dùng khi cần đổi theo dụng cụ hoặc thể tích.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "📐", name: "Tra cứu nhu cầu dinh dưỡng", href: "/cong-cu/tra-cuu-nhu-cau-dinh-duong", desc: "Tra năng lượng, đạm, béo, bột đường, vitamin và khoáng chất theo nhóm tuổi, giới, lao động và sinh lý.", status: "Có bảng RNI 2026", statusType: "stable" },
     ],
   },
   {
@@ -58,8 +59,15 @@ const toolGroups = [
     items: [
       { icon: "💧", name: "Nhu cầu nước mỗi ngày", href: "/cong-cu/nuoc-uong", desc: "Ước tính nước cho người khỏe. Có chặn nhóm cần cá thể hóa.", status: "Đã kiểm v1", statusType: "stable" },
       { icon: "🧂", name: "Muối trong món ăn", href: "/cong-cu/nuoc-muoi-mon-an", desc: "Tra muối ước tính trong món ăn. Dùng khi cần đọc nhanh cho tăng huyết áp hoặc tim mạch.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Nhắc các tình huống cần cá thể hóa trong thai kỳ.", status: "Đã kiểm v1", statusType: "stable" },
-      { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Nhắc các tình huống cần cá thể hóa khi đọc nhu cầu dinh dưỡng của trẻ.", status: "Đã kiểm v1", statusType: "stable" },
+      { icon: "🤰", name: "Dinh dưỡng thai kỳ", href: "/cong-cu/dinh-duong-thai-ky", desc: "Tính BMI trước thai kỳ, khoảng tăng cân, năng lượng theo tam cá nguyệt và mốc vi chất tham khảo.", status: "Có công thức tham khảo", statusType: "stable" },
+      { icon: "👶", name: "Nhu cầu dinh dưỡng trẻ em", href: "/cong-cu/nhu-cau-dinh-duong-tre-em", desc: "Tra khoảng năng lượng theo tuổi, giới và mức vận động cho trẻ 2–18 tuổi; có cổng an toàn tăng trưởng.", status: "Có bảng kcal tham khảo", statusType: "stable" },
+    ],
+  },
+  {
+    title: "Thuốc, thực phẩm & bệnh mạn",
+    summary: "Tra các cặp tương tác thường gặp để chuẩn bị câu hỏi cho bác sĩ hoặc dược sĩ; không phải máy kiểm tra đơn thuốc cá nhân.",
+    items: [
+      { icon: "💊", name: "Tương tác thuốc - thực phẩm", href: "/cong-cu/tuong-tac-thuoc-thuc-pham", desc: "Tra cứu có nguồn về warfarin, statin, thuốc tuyến giáp, kháng sinh, thuốc huyết áp, thuốc đái tháo đường và thực phẩm thường gặp.", status: "Có nguồn lâm sàng", statusType: "stable" },
     ],
   },
   {
@@ -120,8 +128,7 @@ const holdBackTools = [
   { name: "Khẩu phần đơn giản", reason: "Vai trò đang chồng với đánh giá khẩu phần Việt và đĩa ăn lành mạnh, nên không cần nổi bật ngang hàng." },
   { name: "Tính macro tham khảo", reason: "Chỉ phù hợp khi người dùng đã có nền về năng lượng và mục tiêu rõ; không nên là tool lõi cho số đông." },
   { name: "Tính năng lượng tham khảo", reason: "Vẫn hữu ích, nhưng nên là công cụ lớp hai sau khi đã xác định mục tiêu cân nặng và bữa ăn cơ bản." },
-  { name: "Tương tác thuốc", reason: "Nguy cơ hiểu nhầm cao nếu người dùng tự diễn giải mà không có đơn thuốc, bệnh nền và xác nhận từ bác sĩ." },
-  { name: "Tương tác thuốc - thực phẩm", reason: "Thuộc nhóm cần nguồn khóa chặt và rà soát lâm sàng liên tục hơn công cụ dinh dưỡng phổ thông." },
+  { name: "Tương tác thuốc", reason: "Khung nhắc việc chung không có danh sách thuốc và nguồn theo từng hoạt chất; giữ ở lớp phụ để tránh người dùng nhầm là máy kiểm tra đơn thuốc." },
   { name: "Nhật ký ăn uống", reason: "Giá trị có nhưng dễ trùng vai với kế hoạch bữa ăn và theo dõi sức khỏe nếu đặt nổi bật ngang hàng." },
 ];
 ---
