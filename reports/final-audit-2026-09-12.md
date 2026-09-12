@@ -24,6 +24,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Bổ sung alias vùng miền/tiếng Anh và nguồn USDA FDC cho hai mục; lá sách bò vẫn giữ cờ close-match để chuyên gia duyệt.
 - Thêm luật QA kiểm tra tên phụ phẩm động vật so với nhóm thực phẩm, ngăn lỗi tái diễn.
 - Rà soát metadata bài viết, tách mô tả trùng của trang cảnh báo ăn nhạt và thêm kiểm tra QA chống trùng tiêu đề/mô tả trong chỉ mục bài viết.
+- Đồng bộ lại chỉ mục nội dung theo `articles.ts`: 368 bài, 430 file được scanner quét và 409 điểm `REVIEW`; số liệu theo nhóm/chuyên khoa đã cập nhật.
 - Cập nhật lại báo cáo chất lượng, chỉ mục tìm kiếm và API public sau build.
 
 ## Các cờ còn lại có chủ đích

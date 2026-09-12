@@ -6,38 +6,38 @@ Phạm vi: `src/data/articles.ts`, `src/pages/kien-thuc-dinh-duong/`, `src/pages
 ## 1. Kết quả quét nhanh
 
 - Tổng metadata bài viết trong `articles.ts`: 368 bài.
-- Scanner y khoa quét: 375 file.
+- Scanner y khoa quét: 430 file.
 - Critical/High/Medium: 0.
-- Review: 342 điểm, chủ yếu là số liệu, liều lượng, ngữ cảnh cảnh báo “không thay thế thuốc”, hoặc cụm phản khoa học nằm trong câu phủ định.
+- Review: 409 điểm, chủ yếu là số liệu, liều lượng, ngữ cảnh cảnh báo “không thay thế thuốc”, hoặc cụm phản khoa học nằm trong câu phủ định.
 - Nhận định: chưa thấy lỗi chuyên môn nguy hiểm cấp cao; phần cần làm tiếp là chuẩn hóa nguồn cho các con số, làm giàu chuyên khoa còn mỏng, và tổ chức chỉ mục biên tập tốt hơn.
 
 ## 2. Chỉ mục theo nhóm bài
 
 | Nhóm | Số bài | Nhận xét quản lý |
 |---|---:|---|
-| Bệnh lý | 198 | Là lõi của website; đã phủ rộng bệnh mạn tính, tiêu hóa, nội tiết, tim mạch. |
-| Giáo dục dinh dưỡng | 110 | Nhiều bài nền tảng và “đừng tin ngay”; tốt cho SEO phổ thông. |
-| Đối tượng/tình huống đặc biệt | 28 | Có thai kỳ, người già, đi làm, đi du lịch, sau phẫu thuật. |
+| Bệnh lý | 219 | Là lõi của website; đã phủ rộng bệnh mạn tính, tiêu hóa, nội tiết, tim mạch. |
+| Giáo dục dinh dưỡng | 112 | Nhiều bài nền tảng và “đừng tin ngay”; tốt cho SEO phổ thông. |
+| Đối tượng/tình huống đặc biệt | 30 | Có thai kỳ, người già, đi làm, đi du lịch, sau phẫu thuật. |
 | Hướng dẫn/tháp dinh dưỡng | 7 | Còn mỏng; nên tăng bài nền về khuyến nghị Việt Nam, khẩu phần, đồ uống, thực phẩm siêu chế biến. |
 
 ## 3. Chỉ mục theo chuyên khoa hiện có
 
 | Chuyên khoa | Số bài | Mức độ phủ |
 |---|---:|---|
-| Dinh dưỡng tổng quát | 60 | Mạnh |
+| Dinh dưỡng tổng quát | 62 | Mạnh |
 | Tiêu hóa/gan mật | 58 | Mạnh |
-| Nội tiết/chuyển hóa | 46 | Mạnh |
-| Tim mạch | 29 | Khá mạnh |
+| Nội tiết/chuyển hóa | 47 | Mạnh |
+| Tim mạch | 30 | Khá mạnh |
 | Thận - tiết niệu | 15 | Khá |
-| Nhi khoa | 14 | Khá, nên tăng bài thực hành gia đình |
+| Nhi khoa | 15 | Khá, nên tăng bài thực hành gia đình |
 | Thần kinh | 14 | Khá |
 | Huyết học/miễn dịch | 13 | Khá |
 | Hô hấp | 12 | Khá |
 | Cơ xương khớp | 11 | Trung bình |
-| Lão khoa | 11 | Trung bình |
+| Lão khoa | 13 | Trung bình |
 | Da liễu | 11 | Trung bình |
-| Phụ nữ/nhi & đời sống | 11 | Trung bình |
-| Ung thư | 10 | Cần ưu tiên mở rộng |
+| Phụ nữ/nhi & đời sống | 12 | Trung bình |
+| Ung thư | 27 | Khá; tiếp tục bổ sung theo giai đoạn điều trị và triệu chứng |
 | Sản khoa | 9 | Cần mở rộng chọn lọc |
 | Ngoại khoa/hậu phẫu | 5 | Mỏng |
 | Truyền nhiễm | 5 | Mỏng |
