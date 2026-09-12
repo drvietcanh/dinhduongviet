@@ -64,7 +64,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
   <label class="library-search-label" for="food-library-search">Tìm trong toàn bộ thư viện</label>
   <div class="library-search-field">
     <span class="search-symbol" aria-hidden="true">⌕</span>
-    <input id="food-library-search" type="search" autocomplete="off" placeholder="Ví dụ: bề bề, tôm tít, rau muống, sữa chua..." aria-controls="food-search-suggestions" aria-autocomplete="list" />
+    <input id="food-library-search" type="search" role="combobox" autocomplete="off" placeholder="Ví dụ: bề bề, tôm tít, rau muống, sữa chua..." aria-controls="food-search-suggestions" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" />
     <button id="clear-library-search" class="search-clear" type="button" hidden aria-label="Xóa từ khóa">×</button>
   </div>
   <div id="food-search-suggestions" class="food-search-suggestions" role="listbox" hidden></div>
@@ -92,7 +92,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
 
   <div class="category-directory">
     {categoryStats.map((category) => (
-      <button class="category-tile" type="button" data-category-choice={category.name} aria-label={`Lọc ${category.count} thực phẩm nhóm ${category.name}`}>
+      <button class="category-tile" type="button" data-category-choice={category.name} aria-pressed="false" aria-label={`Lọc ${category.count} thực phẩm nhóm ${category.name}`}>
         <span class="category-tile-icon" aria-hidden="true">{category.icon}</span>
         <span class="category-tile-copy">
           <strong>{category.name}</strong>
@@ -357,7 +357,14 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     }
     function escapeHtml(value) { return String(value || '').replace(/[&<>'"]/g, function(character) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]; }); }
     function queryOf(item) { return normalize([item[0], item[1], item[2], item[12] || ''].join(' ')); }
-    function hideSuggestions() { suggestionIndex = -1; if (suggestionBox) { suggestionBox.hidden = true; suggestionBox.innerHTML = ''; } }
+    function hideSuggestions() {
+      suggestionIndex = -1;
+      if (foodSearch) {
+        foodSearch.setAttribute('aria-expanded', 'false');
+        foodSearch.removeAttribute('aria-activedescendant');
+      }
+      if (suggestionBox) { suggestionBox.hidden = true; suggestionBox.innerHTML = ''; }
+    }
     function suggestionMatches(query) {
       var normalizedQuery = normalize(query);
       if (normalizedQuery.length < 2) return [];
@@ -376,18 +383,23 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       var matches = suggestionMatches(foodSearch.value);
       suggestionIndex = -1;
       if (!matches.length) { hideSuggestions(); return; }
-      suggestionBox.innerHTML = matches.map(function(entry) {
+      suggestionBox.innerHTML = matches.map(function(entry, index) {
         var item = entry.item;
-        return '<button type="button" class="food-search-suggestion" role="option" aria-selected="false" data-suggestion-slug="' + escapeHtml(item[0]) + '" data-suggestion-value="' + escapeHtml(item[1]) + '"><strong>' + (categoryIcons[item[2]] || '🍽️') + ' ' + escapeHtml(item[1]) + '</strong><small>' + escapeHtml(item[2]) + '</small></button>';
+        return '<button type="button" id="food-search-option-' + index + '" class="food-search-suggestion" role="option" aria-selected="false" data-suggestion-slug="' + escapeHtml(item[0]) + '" data-suggestion-value="' + escapeHtml(item[1]) + '"><strong>' + (categoryIcons[item[2]] || '🍽️') + ' ' + escapeHtml(item[1]) + '</strong><small>' + escapeHtml(item[2]) + '</small></button>';
       }).join('');
       suggestionBox.hidden = false;
+      foodSearch.setAttribute('aria-expanded', 'true');
     }
     function setSuggestionActive(nextIndex) {
       if (!suggestionBox || suggestionBox.hidden) return;
       var options = suggestionBox.querySelectorAll('.food-search-suggestion');
       if (!options.length) return;
       suggestionIndex = Math.max(0, Math.min(nextIndex, options.length - 1));
-      options.forEach(function(option, index) { option.setAttribute('aria-selected', String(index === suggestionIndex)); });
+      options.forEach(function(option, index) {
+        option.setAttribute('aria-selected', String(index === suggestionIndex));
+      });
+      var active = options[suggestionIndex];
+      if (foodSearch && active) foodSearch.setAttribute('aria-activedescendant', active.id);
     }
     function selectSuggestion(button) {
       if (!button || !foodSearch) return;
@@ -456,7 +468,11 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     }
     function syncUi() {
       var selectedCategory = categoryFilter && categoryFilter.value || 'all';
-      document.querySelectorAll('[data-category-choice]').forEach(function(button) { button.classList.toggle('is-active', button.getAttribute('data-category-choice') === selectedCategory); });
+      document.querySelectorAll('[data-category-choice]').forEach(function(button) {
+        var selected = button.getAttribute('data-category-choice') === selectedCategory;
+        button.classList.toggle('is-active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
       document.querySelectorAll('.tag-filter').forEach(function(button) { var selected = button.getAttribute('data-filter') === activeTag; button.classList.toggle('active', selected); button.setAttribute('aria-pressed', String(selected)); });
       if (clearSearch) clearSearch.hidden = !normalize(foodSearch && foodSearch.value);
       if (reset) reset.hidden = !hasFilters();
@@ -481,6 +497,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       if (categoryFilter && categoryFilter.value !== 'all') next.set('category', categoryFilter.value);
       if (profileFilter && profileFilter.value !== 'all') next.set('profile', profileFilter.value);
       if (activeTag !== 'all') next.set('tag', activeTag);
+      if (sortSelect && sortSelect.value !== 'name-asc') next.set('sort', sortSelect.value);
       [['maxKcal', maxKcal], ['minProtein', minProtein], ['maxCarb', maxCarb], ['maxSodium', maxSodium]].forEach(function(pair) { if (pair[1] && pair[1].value) next.set(pair[0], pair[1].value); });
       var url = window.location.pathname + (next.toString() ? '?' + next.toString() : '') + (window.location.hash === '#food-results' ? '#food-results' : '');
       window.history.replaceState({}, '', url);
@@ -490,6 +507,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       if (foodSearch && params.get('q')) foodSearch.value = params.get('q');
       if (categoryFilter && params.get('category') && categoryFilter.querySelector('option[value="' + CSS.escape(params.get('category')) + '"]')) categoryFilter.value = params.get('category');
       if (profileFilter && params.get('profile')) profileFilter.value = params.get('profile');
+      if (sortSelect && params.get('sort') && sortSelect.querySelector('option[value="' + CSS.escape(params.get('sort')) + '"]')) sortSelect.value = params.get('sort');
       if (params.get('tag') && document.querySelector('.tag-filter[data-filter="' + CSS.escape(params.get('tag')) + '"]')) activeTag = params.get('tag');
       [['maxKcal', maxKcal], ['minProtein', minProtein], ['maxCarb', maxCarb], ['maxSodium', maxSodium]].forEach(function(pair) { if (pair[1] && params.get(pair[0])) pair[1].value = params.get(pair[0]); });
     }

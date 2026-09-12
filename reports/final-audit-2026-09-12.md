@@ -33,6 +33,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Chuẩn hóa tìm kiếm bản đồ bệnh không dấu, mở rộng trường dò tìm và giữ truy vấn trong URL.
 - Bổ sung tìm kiếm không dấu và khả năng thao tác bàn phím cho 18 câu hỏi thường gặp trên trang Hỏi–đáp.
 - Bổ sung tìm kiếm cục bộ cho thư viện thực đơn mẫu, dò theo nhóm bệnh/mô tả/tag/đối tượng, giữ truy vấn trong URL và ẩn các nhóm không có kết quả.
+- Chuẩn hóa trợ năng thư viện thực phẩm: ô gợi ý có trạng thái combobox/listbox đầy đủ, nút nhóm phản ánh `aria-pressed`, và URL chia sẻ giữ cả kiểu sắp xếp.
 
 ## Các cờ còn lại có chủ đích
 
