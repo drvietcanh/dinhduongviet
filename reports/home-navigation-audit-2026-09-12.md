@@ -46,3 +46,4 @@
 - Phím Escape trên thư viện thực phẩm chỉ đóng gợi ý, không xóa từ khóa người dùng đang nhập; nút Xóa vẫn là thao tác xóa rõ ràng.
 - Trạng thái tìm công cụ được giữ trong tham số `q` để có thể sao chép/chia sẻ đường dẫn; menu đóng khi bấm ra ngoài và tự thu gọn khi chuyển khỏi chế độ mobile.
 - Trang `/kien-thuc-dinh-duong` có tìm cục bộ trên 368 bài theo tiêu đề, mô tả, chuyên khoa, tag và đối tượng; bộ lọc chuyên khoa/đối tượng được hợp nhất, có trạng thái rỗng rõ ràng.
+- `/ban-do-benh` được chuẩn hóa tìm kiếm không dấu theo mã nhóm, tên chuyên khoa, tiêu đề bài và FAQ; có nút xóa, bộ đếm x/tổng và URL `?q=`.

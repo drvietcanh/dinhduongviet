@@ -718,10 +718,13 @@ const groups = [
       </div>
     </div>
 
-    <div class="disease-search" role="search">
+    <div class="disease-search" role="search" aria-label="Tìm nhóm bệnh">
       <label for="disease-filter">Tìm bệnh hoặc bài viết</label>
-      <input id="disease-filter" type="search" placeholder="Ví dụ: đái tháo đường, gout, gan nhiễm mỡ..." autocomplete="off" />
-      <span id="disease-result" aria-live="polite">Đang hiển thị {groups.length} nhóm bệnh</span>
+      <div class="disease-search-field">
+        <input id="disease-filter" type="search" placeholder="Ví dụ: đái tháo đường, gout, gan nhiễm mỡ..." autocomplete="off" aria-describedby="disease-result" />
+        <button id="disease-search-clear" type="button" hidden aria-label="Xóa từ khóa">×</button>
+      </div>
+      <span id="disease-result" role="status" aria-live="polite">Đang hiển thị {groups.length} nhóm bệnh</span>
     </div>
 
     <!-- Specialty tabs -->
@@ -786,7 +789,7 @@ const groups = [
         const extraMenuCount = Math.max(0, g.menus.length - primaryMenus.length);
         const specialtyHref = specialtyAnchorMap[g.specialty] ? `/kien-thuc-dinh-duong#${specialtyAnchorMap[g.specialty]}` : "/kien-thuc-dinh-duong";
         return (
-          <div class="disease-card" data-spec={g.specialty} data-search={`${g.name} ${g.foundation.map(a => a.title).join(" ")} ${g.menus.map(m => m.title).join(" ")}`} id={g.id}>
+          <div class="disease-card" data-spec={g.specialty} data-search={`${g.id} ${g.name} ${spMeta.name} ${g.faq?.label ?? ""} ${g.foundation.map(a => a.title).join(" ")} ${g.menus.map(m => m.title).join(" ")}`} id={g.id}>
             <div class="dc-header" style={`--group-color:${spMeta.color};`}>
               <span class="dc-emoji">{g.emoji}</span>
               <h2>{g.name}</h2>
@@ -1103,8 +1106,11 @@ const groups = [
     }
     .disease-search { max-width: 680px; margin: 0 auto 1.25rem; padding: 0.8rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); }
     .disease-search label { display: block; margin-bottom: 0.35rem; font-size: 0.82rem; font-weight: 700; color: var(--ink-secondary); }
-    .disease-search input { width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem 0.8rem; font: inherit; background: var(--card); color: var(--ink); }
+    .disease-search-field { display: flex; align-items: center; gap: 8px; }
+    .disease-search input { flex: 1; min-width: 0; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem 0.8rem; font: inherit; background: var(--card); color: var(--ink); }
     .disease-search input:focus { outline: 3px solid color-mix(in srgb, var(--brand) 22%, transparent); border-color: var(--brand); }
+    .disease-search-field button { width: 32px; height: 32px; border: 0; border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font-size: 1.2rem; line-height: 1; }
+    .disease-search-field button:hover { background: var(--brand-light); color: var(--brand-dark); }
     .disease-search span { display: block; margin-top: 0.45rem; font-size: 0.78rem; color: var(--ink-tertiary); }
     .disease-empty { margin: 1rem 0; padding: 1rem; border: 1px dashed var(--line); border-radius: 10px; text-align: center; color: var(--ink-secondary); }
     .map-tools {
@@ -1232,22 +1238,40 @@ const groups = [
 
   <script is:inline>
     var diseaseInput = document.querySelector('#disease-filter');
+    var diseaseClear = document.querySelector('#disease-search-clear');
     var diseaseResult = document.querySelector('#disease-result');
     var diseaseEmpty = document.querySelector('#disease-empty');
     var diseaseCards = Array.from(document.querySelectorAll('.disease-card'));
     var selectedSpec = 'all';
+    var diseaseParams = new URLSearchParams(window.location.search);
+    if (diseaseInput && diseaseParams.get('q')) diseaseInput.value = diseaseParams.get('q');
+
+    function normalizeDiseaseSearch(value) {
+      return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+
+    function syncDiseaseUrl() {
+      var next = new URLSearchParams(window.location.search);
+      var query = diseaseInput && diseaseInput.value.trim();
+      if (query) next.set('q', query); else next.delete('q');
+      var nextUrl = window.location.pathname + (next.toString() ? '?' + next.toString() : '') + window.location.hash;
+      window.history.replaceState({}, '', nextUrl);
+    }
+
     function updateDiseaseFilter() {
-      var query = (diseaseInput && diseaseInput.value || '').trim().toLocaleLowerCase('vi-VN');
+      var query = normalizeDiseaseSearch(diseaseInput && diseaseInput.value);
       var visible = 0;
       diseaseCards.forEach(function(card) {
         var matchesSpec = selectedSpec === 'all' || card.getAttribute('data-spec') === selectedSpec;
-        var matchesQuery = !query || (card.getAttribute('data-search') || '').toLocaleLowerCase('vi-VN').indexOf(query) !== -1;
+        var matchesQuery = !query || normalizeDiseaseSearch(card.getAttribute('data-search')).indexOf(query) !== -1;
         var show = matchesSpec && matchesQuery;
         card.hidden = !show;
         if (show) visible += 1;
       });
-      if (diseaseResult) diseaseResult.textContent = 'Đang hiển thị ' + visible + ' nhóm bệnh';
+      if (diseaseClear) diseaseClear.hidden = !query;
+      if (diseaseResult) diseaseResult.textContent = 'Đang hiển thị ' + visible.toLocaleString('vi-VN') + ' / ' + diseaseCards.length.toLocaleString('vi-VN') + ' nhóm bệnh';
       if (diseaseEmpty) diseaseEmpty.hidden = visible !== 0;
+      syncDiseaseUrl();
     }
     function filterSpec(spec) {
       selectedSpec = spec;
@@ -1257,5 +1281,11 @@ const groups = [
       updateDiseaseFilter();
     }
     if (diseaseInput) diseaseInput.addEventListener('input', updateDiseaseFilter);
+    if (diseaseClear) diseaseClear.addEventListener('click', function() {
+      if (diseaseInput) diseaseInput.value = '';
+      diseaseInput && diseaseInput.focus();
+      updateDiseaseFilter();
+    });
+    updateDiseaseFilter();
   </script>
 </BaseLayout>
