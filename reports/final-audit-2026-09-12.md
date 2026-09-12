@@ -23,6 +23,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Chuẩn hóa “Tai heo” và “Lá sách bò” về nhóm **Thịt**, không còn rơi vào nhóm rau với bộ số liệu rau.
 - Bổ sung alias vùng miền/tiếng Anh và nguồn USDA FDC cho hai mục; lá sách bò vẫn giữ cờ close-match để chuyên gia duyệt.
 - Thêm luật QA kiểm tra tên phụ phẩm động vật so với nhóm thực phẩm, ngăn lỗi tái diễn.
+- Rà soát metadata bài viết, tách mô tả trùng của trang cảnh báo ăn nhạt và thêm kiểm tra QA chống trùng tiêu đề/mô tả trong chỉ mục bài viết.
 - Cập nhật lại báo cáo chất lượng, chỉ mục tìm kiếm và API public sau build.
 
 ## Các cờ còn lại có chủ đích

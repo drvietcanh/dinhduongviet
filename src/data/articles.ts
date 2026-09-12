@@ -5065,7 +5065,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-an-nhat-muoi",
     title: "Cảnh báo hiểu lầm: Ăn nhạt không phải là bỏ muối hoàn toàn",
-    description: "Muối ẩn trong mì gói, bánh mì, nước chấm. Cách giảm muối đúng mà món vẫn ngon.",
+    description: "Bản tóm tắt nhanh về muối ẩn, natri trên nhãn và cách giảm mặn an toàn mà không tự ý thay đổi điều trị.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",

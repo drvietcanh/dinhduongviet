@@ -163,6 +163,23 @@ function compareSearchSlugs(label, expectedItems, actualItems) {
   }
 }
 
+function checkArticleMetadataUniqueness(searchIndex) {
+  const articles = searchIndex.filter((item) => item.type === "article");
+  for (const field of ["name", "description"]) {
+    const values = new Map();
+    for (const article of articles) {
+      const value = String(article[field] || "").trim().toLocaleLowerCase("vi");
+      if (!value) continue;
+      if (!values.has(value)) values.set(value, []);
+      values.get(value).push(article.slug);
+    }
+    const duplicates = [...values.entries()].filter(([, slugs]) => slugs.length > 1);
+    for (const [value, slugs] of duplicates) {
+      fail(`Article search metadata duplicates ${field} "${value.slice(0, 100)}": ${slugs.join(", ")}`);
+    }
+  }
+}
+
 function checkDuplicateSlugs(label, items) {
   const counts = new Map();
   for (const item of items) {
@@ -217,6 +234,7 @@ function checkSearchIndexCoverage() {
 
   compareSearchSlugs("food", foods, searchIndex.filter((item) => item.type === "food"));
   compareSearchSlugs("recipe", recipes, searchIndex.filter((item) => item.type === "recipe"));
+  checkArticleMetadataUniqueness(searchIndex);
 }
 
 function checkSitemapFoodAliases() {
