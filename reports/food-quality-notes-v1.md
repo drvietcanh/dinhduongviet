@@ -29,8 +29,8 @@ Source review status counts:
 
 QA food-data counters:
 
-- dataQuality: 23
-- sourceReviewStatus: 23
+- dataQuality: 470
+- sourceReviewStatus: 470
 - needsExternalSource: 0
 - needsDietitianReview: 7
 - cookedHighEnergyWithoutReviewMetadata: 0
