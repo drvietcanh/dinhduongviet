@@ -190,6 +190,18 @@ const relatedTools = [
       color: var(--ink);
     }
 
+    .source-note {
+      margin: 12px 0 0;
+      color: var(--ink-tertiary);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .source-note strong,
+    .source-note a {
+      color: var(--brand-dark);
+    }
+
     @media (max-width: 700px) {
       .meal-hub {
         padding-top: 20px;
@@ -255,5 +267,8 @@ const relatedTools = [
     <div class="safety-note">
       <strong>Lưu ý:</strong> Nếu bạn có bệnh thận, đái tháo đường dùng insulin/sulfonylurea, suy tim/hạn chế dịch, thai kỳ, trẻ em, ung thư/suy dinh dưỡng, rối loạn ăn uống hoặc sụt cân nhanh, hãy ưu tiên tư vấn cá thể. Kết quả phụ thuộc dữ liệu món ăn và khối lượng nhập.
     </div>
+    <p class="source-note">
+      <strong>Nguồn dữ liệu:</strong> Các công cụ con dùng dữ liệu thực phẩm/món ăn của thư viện và ghi nguồn riêng; nguyên tắc ăn uống tổng quát tham khảo <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener noreferrer">WHO Healthy Diet</a>.
+    </p>
   </main>
 </BaseLayout>
