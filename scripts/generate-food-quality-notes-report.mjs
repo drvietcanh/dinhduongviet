@@ -4,6 +4,8 @@ import path from "node:path";
 const root = process.cwd();
 const outputPath = path.join(root, "reports", "food-quality-notes-v1.md");
 const decisionSlugs = [
+  "tai-heo",
+  "la-sach-bo",
   "com-nep",
   "com-gao-lut-do",
   "com-gao-lut-den",

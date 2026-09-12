@@ -13,6 +13,23 @@ export type FoodQualityReview = Pick<
 >;
 
 export const foodQualityReviews: Record<string, FoodQualityReview> = {
+  "tai-heo": {
+    dataQuality: "source_backed",
+    sourceConfidence: "high",
+    sourceReviewStatus: "source_verified",
+    basisNote: "100g tai heo sống, phần ăn được; khác với tai heo luộc/ngâm hoặc món trộn.",
+    reviewNote: "Đã thay dữ liệu fallback kiểu rau bằng hồ sơ USDA cho tai heo sống; trạng thái raw khớp, nhưng cách luộc/ngâm và tỷ lệ da-sụn có thể làm thay đổi giá trị.",
+    candidateSource: "USDA FDC SR Legacy 167857: Pork, fresh, variety meats and by-products, ears, frozen, raw.",
+  },
+  "la-sach-bo": {
+    dataQuality: "source_backed",
+    sourceConfidence: "medium",
+    sourceReviewStatus: "candidate_pending_dietitian_review",
+    basisNote: "100g lá sách/omasum bò sống, phần ăn được; không phải rau lá.",
+    reviewNote: "Đã sửa nhóm và dùng hồ sơ USDA tripe sống làm close match; USDA không tách riêng omasum nên vẫn cần chuyên gia duyệt trước khi dùng cho tư vấn cá thể.",
+    candidateSource: "USDA FDC SR Legacy 170599: Beef, variety meats and by-products, tripe, raw (close match).",
+    needsDietitianReview: true,
+  },
   "com-nep": {
     dataQuality: "source_backed",
     sourceConfidence: "high",

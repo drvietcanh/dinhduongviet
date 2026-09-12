@@ -226,6 +226,8 @@ const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
 const slimBySlug = new Map(slim.map((item) => [item.slug, item]));
 const compatAliasTargets = new Map(compatAliases.map(({ from, to }) => [from, to]));
 const decisionTableSlugs = [
+  "tai-heo",
+  "la-sach-bo",
   "com-nep",
   "com-gao-lut-do",
   "com-gao-lut-den",
@@ -308,6 +310,30 @@ for (const food of fullFoods) {
 }
 
 const mainFoodCategories = new Set(["Tinh bột", "Rau xanh", "Củ quả", "Trái cây", "Thịt", "Cá", "Hải sản", "Trứng sữa", "Sữa", "Đậu", "Hạt", "Nấm"]);
+const categoryNameRules = [
+  {
+    names: new Set(["tai heo", "tai lon", "la sach bo", "sach bo"]),
+    expectedCategories: new Set(["Thịt"]),
+    reason: "Phụ phẩm động vật bị rơi vào nhóm rau do tên không có tiền tố thịt hoặc bắt đầu bằng 'lá'.",
+  },
+];
+const categoryNameMismatches = fullFoods
+  .filter((food) => {
+    const normalizedName = normalize(food.name);
+    return categoryNameRules.some((rule) => rule.names.has(normalizedName) && !rule.expectedCategories.has(food.category));
+  })
+  .map((food) => {
+    const rule = categoryNameRules.find((candidate) => candidate.names.has(normalize(food.name)));
+    return issue("error", {
+      type: "category-name",
+      slug: food.slug,
+      name: food.name,
+      category: food.category,
+      expectedCategory: [...(rule?.expectedCategories ?? [])],
+      reason: rule?.reason,
+      suggestion: "fix_category_or_add_explicit_food_override",
+    });
+  });
 const missingCoreNutrients = fullFoods
   .filter((food) => mainFoodCategories.has(food.category))
   .filter((food) => [food.kcal, food.protein, food.lipid, food.glucid].some((value) => value === null || value === undefined || value === ""))
@@ -593,6 +619,7 @@ const allIssues = [
   ...duplicateDisplayNames,
   ...suspiciousSlugs,
   ...rawCookedAmbiguity,
+  ...categoryNameMismatches,
   ...missingCoreNutrients,
   ...aliasWarnings,
   ...compatAliasStatus,
@@ -621,6 +648,7 @@ const report = {
     duplicateDisplayNames: duplicateDisplayNames.length,
     suspiciousSlugs: suspiciousSlugs.length,
     rawCookedAmbiguity: rawCookedAmbiguity.length,
+    categoryNameMismatches: categoryNameMismatches.length,
     missingCoreNutrients: missingCoreNutrients.length,
     aliasWarnings: aliasWarnings.length,
     aliasCollisions: aliasCollisions.length,
@@ -652,6 +680,7 @@ const report = {
   duplicateDisplayNames,
   suspiciousSlugs,
   rawCookedAmbiguity,
+  categoryNameMismatches,
   cookedHighEnergyReview,
   riceSourceReview,
   foodQualityMetadata: foodsWithSourceReviewStatus.map((food) => ({

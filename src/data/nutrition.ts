@@ -190,6 +190,22 @@ export const sources: Source[] = [
     note: "SR Legacy: Ham, honey, smoked, cooked."
   },
   {
+    id: "usda-fdc-167857",
+    name: "USDA FoodData Central — tai heo sống",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/167857/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Pork, fresh, variety meats and by-products, ears, frozen, raw."
+  },
+  {
+    id: "usda-fdc-170599",
+    name: "USDA FoodData Central — tripe bò sống",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/170599/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Beef, variety meats and by-products, tripe, raw; dùng làm close match cho lá sách/omasum."
+  },
+  {
     id: "usda-fdc-168277",
     name: "USDA FoodData Central — bacon chưa chiên",
     year: "2018",

@@ -569,7 +569,16 @@ function slugify(value: string) {
 }
 
 function unique(values: string[]) {
-  return [...new Set(values.map((value) => value.trim()).filter(Boolean))];
+  const seen = new Set<string>();
+  return values
+    .map((value) => value.trim())
+    .filter((value) => {
+      if (!value) return false;
+      const key = value.toLocaleLowerCase("vi-VN");
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 }
 
 function commonAliasesFor(name: string) {
@@ -638,6 +647,11 @@ function guessCategory(name: string): string {
   const n = name.toLowerCase();
   const has = (...terms: string[]) => terms.some((term) => n.includes(term));
   const hasWord = (...terms: string[]) => terms.some((term) => new RegExp(`(^|\\s)${term}(\\s|$)`, "i").test(n));
+  // Some animal by-products begin with a plant-like word ("lá sách") or
+  // omit the usual "thịt" prefix ("tai heo"). Keep these out of the
+  // vegetable fallback category so search filters and meal tools classify
+  // them as meat from the start.
+  if (has("tai heo", "tai lợn", "lá sách bò")) return "Thịt";
   if (n.startsWith("rau") || n.startsWith("lá") || n.startsWith("bông") || n.startsWith("đọt") || n.startsWith("ngó") || n.startsWith("củ hũ")) return "Rau";
   if (has("cà phê", "bạc xỉu")) return "Đồ uống";
   if (has("mắm", "nước tương", "tương ớt", "xốt", "sốt", "dầu hào", "sa tế", "muối", "bột nêm", "bột ngọt", "giấm", "mayonnaise")) return "Gia vị";
@@ -658,6 +672,30 @@ function guessCategory(name: string): string {
 }
 
 const foodOverrides: Record<string, Partial<Food>> = {
+  "tai-heo": {
+    name: "Tai heo",
+    aliases: ["tai heo", "tai lợn", "tai lon", "pig ear", "pork ear"],
+    category: "Thịt",
+    state: "raw",
+    basis: "100g phần ăn được",
+    edibleNote: "Tai heo tươi, phần ăn được; loại bỏ phần không ăn được và làm sạch trước chế biến.",
+    nutrients: { energyKcal: 234, proteinG: 22.4, carbG: 0.6, fatG: 15.1, saturatedFatG: 5.39, cholesterolMg: 82, fiberG: 0, sodiumMg: 191 },
+    sourceId: "usda-fdc-167857",
+    confidence: "high",
+    note: "USDA FoodData Central SR Legacy 167857, pork ears frozen raw; giá trị trên 100g phần ăn được. Sản phẩm đã luộc/ngâm có thể khác.",
+  },
+  "la-sach-bo": {
+    name: "Lá sách bò",
+    aliases: ["lá sách bò", "sách bò", "la sach bo", "omasum bò", "beef omasum"],
+    category: "Thịt",
+    state: "raw",
+    basis: "100g phần ăn được",
+    edibleNote: "Lá sách (dạ tổ ong/omasum) bò tươi, làm sạch trước chế biến; không phải rau lá.",
+    nutrients: { energyKcal: 85, proteinG: 12.1, carbG: 0, fatG: 3.69, saturatedFatG: 1.29, fiberG: 0, sodiumMg: 97 },
+    sourceId: "usda-fdc-170599",
+    confidence: "medium",
+    note: "USDA FoodData Central SR Legacy 170599, beef tripe raw; dùng làm close match cho lá sách/omasum nên cần thẩm định thêm theo phần thịt cụ thể.",
+  },
   "cat-heo": {
     name: "Bầu dục lợn tươi",
     aliases: ["cật heo", "cật lợn", "cat heo", "cat lon", "bầu dục heo", "bau duc lon", "pork kidney"],

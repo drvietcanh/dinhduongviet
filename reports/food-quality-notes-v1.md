@@ -6,33 +6,33 @@ This report summarizes current food quality metadata and the remaining review ba
 
 ## Tóm Tắt
 
-- Decision table items checked: 23/23.
-- Items with review metadata: 23.
+- Decision table items checked: 25/25.
+- Items with review metadata: 25.
 - Items still missing required review metadata: 0.
 - Items requiring external source: 0.
 - Items marked needs_better_source: 2.
-- Source-backed items still pending dietitian review: 1.
-- Items requiring dietitian review: 7.
+- Source-backed items still pending dietitian review: 2.
+- Items requiring dietitian review: 8.
 
 Data quality counts:
 
-- source_backed: 7
+- source_backed: 9
 - recipe_estimate: 16
 
 Source review status counts:
 
-- source_verified: 6
+- source_verified: 7
+- candidate_pending_dietitian_review: 5
 - needs_better_source: 2
 - reviewed_keep_current: 10
 - recipe_estimate_only: 1
-- candidate_pending_dietitian_review: 4
 
 QA food-data counters:
 
-- dataQuality: 470
-- sourceReviewStatus: 470
+- dataQuality: 472
+- sourceReviewStatus: 472
 - needsExternalSource: 0
-- needsDietitianReview: 7
+- needsDietitianReview: 8
 - cookedHighEnergyWithoutReviewMetadata: 0
 - decisionTableMissingMetadata: 0
 
@@ -47,10 +47,12 @@ QA food-data counters:
 
 ## Đã Có Nguồn, Chờ Duyệt
 
+- `la-sach-bo`: Lá sách bò - USDA FDC SR Legacy 170599: Beef, variety meats and by-products, tripe, raw (close match).
 - `thit-xong-khoi`: Thịt hun khói - USDA FDC SR Legacy 174611: Ham, honey, smoked, cooked - close_match.
 
 ## Chờ Dietitian Review
 
+- `la-sach-bo`: Lá sách bò (candidate_pending_dietitian_review)
 - `com-gao-lut-do`: Cơm gạo lứt đỏ (needs_better_source)
 - `com-gao-lut-den`: Cơm gạo lứt đen (needs_better_source)
 - `thit-heo-quay`: Thịt heo quay (recipe_estimate_only)
@@ -69,6 +71,8 @@ QA food-data counters:
 
 | slug | name | kcal | source | confidence | dataQuality | sourceReviewStatus | needsExternalSource | needsDietitianReview | basisNote | reviewNote | candidateSource |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| tai-heo | Tai heo | 234 | usda-fdc-167857 | high | source_backed | source_verified | - | - | 100g tai heo sống, phần ăn được; khác với tai heo luộc/ngâm hoặc món trộn. | Đã thay dữ liệu fallback kiểu rau bằng hồ sơ USDA cho tai heo sống; trạng thái raw khớp, nhưng cách luộc/ngâm và tỷ lệ da-sụn có thể làm thay đổi giá trị. | USDA FDC SR Legacy 167857: Pork, fresh, variety meats and by-products, ears, frozen, raw. |
+| la-sach-bo | Lá sách bò | 85 | usda-fdc-170599 | medium | source_backed | candidate_pending_dietitian_review | - | yes | 100g lá sách/omasum bò sống, phần ăn được; không phải rau lá. | Đã sửa nhóm và dùng hồ sơ USDA tripe sống làm close match; USDA không tách riêng omasum nên vẫn cần chuyên gia duyệt trước khi dùng cho tư vấn cá thể. | USDA FDC SR Legacy 170599: Beef, variety meats and by-products, tripe, raw (close match). |
 | com-nep | Cơm nếp | 97 | usda-fdc-169711 | high | source_backed | source_verified | - | - | Diễn giải là 100g cơm nếp đã nấu chín, không phải 100g gạo nếp khô. | Đã thay số ước tính bằng hồ sơ USDA cho cơm nếp trắng đã nấu chín, khớp trạng thái và cơ sở 100g. | USDA FDC SR Legacy 169711: Rice, white, glutinous, unenriched, cooked. |
 | com-gao-lut-do | Cơm gạo lứt đỏ | 194 | recipe-estimate-v1 | low | recipe_estimate | needs_better_source | - | yes | Diễn giải là 100g cơm gạo lứt đỏ đã nấu chín, không phải 100g gạo khô. | Nguồn nội bộ chỉ có gạo lứt khô chung VN 2007; cần nguồn cho cơm gạo lứt đỏ chín. | VN 2007: 1005 Gạo lứt - ingredient_only. |
 | com-gao-lut-den | Cơm gạo lứt đen | 200 | recipe-estimate-v1 | low | recipe_estimate | needs_better_source | - | yes | Diễn giải là 100g cơm gạo lứt đen đã nấu chín, không phải 100g gạo khô. | Nguồn nội bộ chỉ có gạo lứt khô chung VN 2007; cần nguồn cho cơm gạo lứt đen chín. | VN 2007: 1005 Gạo lứt - ingredient_only. |

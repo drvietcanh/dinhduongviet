@@ -17728,7 +17728,6 @@
       "com gao lat do",
       "com gao lut do",
       "cơm gạo lứt đỏ",
-      "cơm gạo lật đỏ",
       "gao-lut-do",
       "gạo lứt đỏ đã nấu",
       "gao lut do da nau"
@@ -17746,7 +17745,6 @@
       "com gao lat den",
       "com gao lut den",
       "cơm gạo lứt đen",
-      "cơm gạo lật đen",
       "gao-lut-den",
       "gạo lứt đen đã nấu",
       "gao lut den da nau"
@@ -18324,13 +18322,15 @@
     "slug": "tai-heo",
     "name": "Tai heo",
     "aliases": [
-      "tai heo",
       "Tai lợn",
-      "tai lon"
+      "tai lon",
+      "tai heo",
+      "pig ear",
+      "pork ear"
     ],
-    "description": "Tra cứu Tai heo: khoảng 23 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
-    "kcal": 23
+    "description": "Tra cứu Tai heo: khoảng 234 kcal/100g, nhóm Thịt.",
+    "category": "Thịt",
+    "kcal": 234
   },
   {
     "type": "food",
@@ -18477,11 +18477,15 @@
     "slug": "la-sach-bo",
     "name": "Lá sách bò",
     "aliases": [
-      "la sach bo"
+      "lá sách bò",
+      "sách bò",
+      "la sach bo",
+      "omasum bò",
+      "beef omasum"
     ],
-    "description": "Tra cứu Lá sách bò: khoảng 28 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
-    "kcal": 28
+    "description": "Tra cứu Lá sách bò: khoảng 85 kcal/100g, nhóm Thịt.",
+    "category": "Thịt",
+    "kcal": 85
   },
   {
     "type": "food",
