@@ -20,6 +20,6 @@
 
 - 8 thực phẩm vẫn mang cờ `needsDietitianReview` (món ước tính, lạp xưởng/thịt hun khói/xúc xích, cơm gạo lứt đỏ/đen và lá sách bò — nguồn tripe chỉ là close match).
 - Rà soát nhóm phát hiện và sửa hai bản ghi phụ phẩm động vật từng rơi vào nhóm rau: `tai-heo` (USDA FDC 167857) và `la-sach-bo` (USDA FDC 170599 close match).
-- Bảng nguồn Việt gốc còn 14 tên lỗi/mất cột và 1 mã trùng; giao diện tra cứu đã sửa 30 tên chắc chắn, hiển thị 518/526 dòng và giữ API gốc để đối chiếu.
+- Bảng nguồn Việt gốc còn 14 tên lỗi/mất cột và 1 mã trùng; giao diện tra cứu đã sửa 32 tên chắc chắn, hiển thị 520/526 dòng và giữ API gốc để đối chiếu.
 
 Các cờ trên là giới hạn nguồn hoặc cần thẩm định chuyên môn, không phải lỗi biên dịch. Không tự gán số liệu thay thế khi chưa có nguồn khớp trực tiếp.

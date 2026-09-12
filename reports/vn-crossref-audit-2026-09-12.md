@@ -29,7 +29,7 @@ Các mapping mới vẫn là tham chiếu 100 g theo bảng nguồn; không dùn
 - Đổi nhãn biểu đồ đường thành “đường tổng” và ghi chú rõ giới hạn khi đối chiếu với mốc đường tự do, tránh gọi mọi giá trị đường là “nhu cầu” hàng ngày.
 - Chạy lại kiểm tra alias sau chuẩn hóa Unicode: không còn alias chia sẻ giữa các slug khác nhau (`aliasCollisions: 0`); các tên địa phương như “bề bề/tôm tít”, “lợn/heo”, “lạc/đậu phộng” và “gạo lứt/gạo lật” vẫn tìm đúng trạng thái thực phẩm.
 - Đối chiếu lại mã 2004 cho cả “Củ sắn” và “Khoai mì”: cập nhật về 152 kcal, glucid 36,4 g và sắt 0,07 mg/100 g; bỏ trạng thái `reviewed_keep_current` khi đã đủ bốn chất đa lượng lõi từ nguồn.
-- Rà soát bảng nguồn phụ: 14 dòng trích xuất có tên trống/dạng số và 1 mã nguồn lặp. Trang tra cứu chuẩn hóa 30 tên OCR chắc chắn ở lớp hiển thị, khôi phục 6 dòng bị lệch cột có tên đọc rõ, còn 8 dòng chưa đủ căn cứ vẫn ẩn khỏi danh sách; API gốc giữ nguyên để không mất provenance.
+- Rà soát bảng nguồn phụ: 14 dòng trích xuất có tên trống/dạng số và 1 mã nguồn lặp. Trang tra cứu chuẩn hóa 32 tên OCR chắc chắn ở lớp hiển thị, khôi phục 8 dòng bị lệch cột có tên đọc rõ, còn 6 dòng chưa đủ căn cứ vẫn ẩn khỏi danh sách; API gốc giữ nguyên để không mất provenance.
 
 ## Hạng mục còn chờ chuyên gia
 
