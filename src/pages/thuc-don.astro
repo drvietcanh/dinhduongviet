@@ -57,20 +57,28 @@ const quickFilters = [
           <p>Sau khi chọn mẫu phù hợp, mới chuyển sang kế hoạch bữa ăn, danh sách đi chợ hoặc nhật ký.</p>
         </div>
       </div>
+      <div class="meal-search" role="search" aria-label="Tìm thực đơn mẫu">
+        <label for="meal-search-input">Tìm nhanh trong {menus.length.toLocaleString("vi-VN")} thực đơn</label>
+        <div class="meal-search-field">
+          <input id="meal-search-input" type="search" placeholder="Ví dụ: tiểu đường, bình dân, người cao tuổi…" autocomplete="off" aria-describedby="meal-search-summary" />
+          <button id="meal-search-clear" type="button" hidden aria-label="Xóa từ khóa">×</button>
+        </div>
+        <p id="meal-search-summary" role="status" aria-live="polite">Đang hiển thị thực đơn theo nhóm nhu cầu.</p>
+      </div>
     </header>
 
     {menuGroups.map((group) => {
       const items = menus.filter((article) => article.specialty === group.key);
       if (!items.length) return null;
       return (
-        <section class="meal-section" id={`group-${group.key}`}>
+        <section class="meal-section" id={`group-${group.key}`} data-menu-section>
           <div class="meal-section-head">
             <h2><span aria-hidden="true">{group.emoji}</span> {group.title}</h2>
             <p>{group.summary}</p>
           </div>
           <div class="meal-grid">
             {items.map((article) => (
-              <a class="meal-card" href={`/kien-thuc-dinh-duong/${article.slug}`}>
+              <a class="meal-card" href={`/kien-thuc-dinh-duong/${article.slug}`} data-menu-card data-menu-search={`${group.title} ${article.title} ${article.description} ${(article.tags ?? []).join(" ")} ${(article.audience ?? []).join(" ")}`}>
                 <h3>{article.title}</h3>
                 <p>{article.description}</p>
                 <div class="meal-meta">
@@ -85,14 +93,14 @@ const quickFilters = [
     })}
 
     {otherMenus.length > 0 && (
-      <section class="meal-section">
+      <section class="meal-section" id="group-other" data-menu-section>
         <div class="meal-section-head">
           <h2>Thực đơn khác</h2>
           <p>Các lựa chọn này phù hợp khi bạn cần thêm biến thể ngoài những nhóm bệnh hoặc hoàn cảnh chính ở trên.</p>
         </div>
         <div class="meal-grid">
           {otherMenus.map((article) => (
-            <a class="meal-card" href={`/kien-thuc-dinh-duong/${article.slug}`}>
+            <a class="meal-card" href={`/kien-thuc-dinh-duong/${article.slug}`} data-menu-card data-menu-search={`Thực đơn khác ${article.title} ${article.description} ${(article.tags ?? []).join(" ")} ${(article.audience ?? []).join(" ")} `}>
               <h3>{article.title}</h3>
               <p>{article.description}</p>
               <div class="meal-meta">
@@ -104,6 +112,7 @@ const quickFilters = [
         </div>
       </section>
     )}
+    <p id="meal-search-empty" class="meal-search-empty" hidden role="status">Chưa tìm thấy thực đơn phù hợp. Thử từ khóa ngắn hơn hoặc bỏ dấu.</p>
   </div>
 
   <style>
@@ -123,6 +132,15 @@ const quickFilters = [
     .step-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); }
     .step-card strong { display: block; margin-bottom: 6px; font-size: .9rem; }
     .step-card p { margin: 0; color: var(--ink-secondary); font-size: .84rem; line-height: 1.55; }
+    .meal-search { margin-top: 20px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-soft); }
+    .meal-search > label { display: block; margin-bottom: 7px; color: var(--ink); font-size: .82rem; font-weight: 800; }
+    .meal-search-field { display: flex; align-items: center; gap: 8px; }
+    .meal-search-field input { flex: 1; min-width: 0; min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 11px; background: var(--card); color: var(--ink); font: inherit; }
+    .meal-search-field input:focus { border-color: var(--brand); outline: 0; box-shadow: 0 0 0 3px rgba(5,150,105,.12); }
+    .meal-search-field button { width: 32px; height: 32px; border: 0; border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font-size: 1.2rem; line-height: 1; }
+    .meal-search-field button:hover { background: var(--brand-light); color: var(--brand-dark); }
+    .meal-search-summary { margin: 7px 0 0; color: var(--ink-tertiary); font-size: .76rem; }
+    .meal-search-empty { margin: 20px 0 0; padding: 14px; border: 1px dashed var(--brand-light2); border-radius: 12px; background: var(--brand-subtle); color: var(--ink-secondary); font-size: .84rem; }
     .meal-section { padding-top: 28px; }
     .meal-section-head { margin-bottom: 14px; }
     .meal-section h2 { margin: 0 0 6px; font-size: 1.2rem; }
@@ -138,6 +156,57 @@ const quickFilters = [
       .meal-page { padding-inline: 1rem; }
       h1 { font-size: 1.7rem; }
       .meal-meta { flex-direction: column; gap: 4px; }
+      .meal-search-field { align-items: stretch; flex-direction: column; }
+      .meal-search-field button { width: 100%; }
     }
   </style>
 </BaseLayout>
+
+<script is:inline>
+  (function() {
+    var input = document.getElementById('meal-search-input');
+    var clear = document.getElementById('meal-search-clear');
+    var summary = document.getElementById('meal-search-summary');
+    var sections = Array.from(document.querySelectorAll('[data-menu-section]'));
+    var cards = Array.from(document.querySelectorAll('[data-menu-card]'));
+    var params = new URLSearchParams(window.location.search);
+    if (!input || !cards.length) return;
+    if (params.get('q')) input.value = params.get('q');
+
+    function normalize(value) {
+      return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+
+    function syncUrl() {
+      var next = new URLSearchParams(window.location.search);
+      var query = input.value.trim();
+      if (query) next.set('q', query); else next.delete('q');
+      var nextUrl = window.location.pathname + (next.toString() ? '?' + next.toString() : '') + window.location.hash;
+      window.history.replaceState({}, '', nextUrl);
+    }
+
+    function applySearch() {
+      var query = normalize(input.value);
+      var visible = 0;
+      cards.forEach(function(card) {
+        var matches = !query || normalize(card.getAttribute('data-menu-search')).indexOf(query) !== -1;
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+      sections.forEach(function(section) {
+        section.hidden = section.querySelectorAll('[data-menu-card]:not([hidden])').length === 0;
+      });
+      if (clear) clear.hidden = !query;
+      if (summary) summary.textContent = query
+        ? 'Tìm thấy ' + visible.toLocaleString('vi-VN') + ' / ' + cards.length.toLocaleString('vi-VN') + ' thực đơn phù hợp.'
+        : 'Đang hiển thị thực đơn theo nhóm nhu cầu.';
+      var empty = document.getElementById('meal-search-empty');
+      if (empty) empty.hidden = visible !== 0;
+      syncUrl();
+    }
+
+    input.addEventListener('input', applySearch);
+    clear && clear.addEventListener('click', function() { input.value = ''; input.focus(); applySearch(); });
+    applySearch();
+  })();
+</script>

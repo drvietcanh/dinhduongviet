@@ -48,3 +48,4 @@
 - Trang `/kien-thuc-dinh-duong` có tìm cục bộ trên 368 bài theo tiêu đề, mô tả, chuyên khoa, tag và đối tượng; bộ lọc chuyên khoa/đối tượng được hợp nhất, có trạng thái rỗng rõ ràng.
 - `/ban-do-benh` được chuẩn hóa tìm kiếm không dấu theo mã nhóm, tên chuyên khoa, tiêu đề bài và FAQ; có nút xóa, bộ đếm x/tổng và URL `?q=`.
 - Trang `/hoi-dap` có tìm kiếm không dấu, bộ đếm và trạng thái rỗng; từng câu hỏi hỗ trợ thao tác bàn phím với `aria-expanded`/`aria-controls`.
+- Trang `/thuc-don` có tìm kiếm cục bộ không dấu theo nhóm bệnh, mô tả, tag và đối tượng; nhóm trống tự ẩn, có bộ đếm, trạng thái rỗng và URL `?q=`.

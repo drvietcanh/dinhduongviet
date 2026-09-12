@@ -32,6 +32,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Bổ sung tìm kiếm cục bộ cho thư viện 368 bài kiến thức, kết hợp nhất quán với lọc chuyên khoa và đối tượng.
 - Chuẩn hóa tìm kiếm bản đồ bệnh không dấu, mở rộng trường dò tìm và giữ truy vấn trong URL.
 - Bổ sung tìm kiếm không dấu và khả năng thao tác bàn phím cho 18 câu hỏi thường gặp trên trang Hỏi–đáp.
+- Bổ sung tìm kiếm cục bộ cho thư viện thực đơn mẫu, dò theo nhóm bệnh/mô tả/tag/đối tượng, giữ truy vấn trong URL và ẩn các nhóm không có kết quả.
 
 ## Các cờ còn lại có chủ đích
 
