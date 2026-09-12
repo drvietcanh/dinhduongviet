@@ -38,3 +38,9 @@
 - Tìm kiếm: Enter từ ô tìm kiếm điều hướng tới `/tim-kiem?q=...`; `AutoSearch` vẫn giữ autocomplete và chip gợi ý.
 - Trợ năng: giữ `aria-label`, `aria-expanded`, `aria-current`; Escape đóng nhóm menu đang mở.
 
+## Hoàn thiện luồng tìm kiếm sau trang chủ
+
+- Trang `/cong-cu` có ô tìm cục bộ theo tên, nhóm và mô tả; nhóm không có kết quả tự ẩn và có bộ đếm kết quả.
+- Trang `/mon-an` có lọc tên món tức thì, dùng chung chuẩn bỏ dấu với thư viện thực phẩm và giữ tương thích các bộ lọc khẩu phần hiện có.
+- Hai ô tìm cục bộ đều có trạng thái `role="status"`/`aria-live` để người dùng bàn phím và trình đọc màn hình nhận biết số kết quả.
+- Phím Escape trên thư viện thực phẩm chỉ đóng gợi ý, không xóa từ khóa người dùng đang nhập; nút Xóa vẫn là thao tác xóa rõ ràng.

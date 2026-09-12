@@ -539,7 +539,7 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       if (event.key === 'ArrowDown' && suggestionBox && !suggestionBox.hidden) { event.preventDefault(); setSuggestionActive(suggestionIndex + 1); }
       if (event.key === 'ArrowUp' && suggestionBox && !suggestionBox.hidden) { event.preventDefault(); setSuggestionActive(suggestionIndex - 1); }
       if (event.key === 'Enter' && suggestionBox && !suggestionBox.hidden) { var active = suggestionBox.querySelector('.food-search-suggestion[aria-selected="true"]') || suggestionBox.querySelector('.food-search-suggestion'); if (active) { event.preventDefault(); selectSuggestion(active); } }
-      if (event.key === 'Escape') { hideSuggestions(); if (foodSearch.value) { foodSearch.value = ''; refresh(true, true); } }
+      if (event.key === 'Escape') { hideSuggestions(); }
     });
     document.addEventListener('keydown', function(event) { if (event.key === '/' && document.activeElement !== foodSearch && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement && document.activeElement.tagName)) { event.preventDefault(); foodSearch && foodSearch.focus(); } });
     fetch('/api/foods-full.json').then(function(response) { if (!response.ok) throw new Error('Không tải được dữ liệu thực phẩm'); return response.json(); }).then(start).catch(function() { if (summary) summary.textContent = 'Không tải được thư viện thực phẩm. Vui lòng thử lại.'; grid.innerHTML = ''; });

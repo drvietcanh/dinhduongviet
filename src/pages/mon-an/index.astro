@@ -52,6 +52,10 @@ const recipeCards = recipes.map((recipe) => {
         <a href="/mon-an?profile=weight">⚖️ Món nhẹ năng lượng</a>
       </div>
     </div>
+    <label class="recipe-name-filter">
+      <span>Tìm nhanh theo tên món</span>
+      <input id="recipe-query" type="search" placeholder="Ví dụ: phở, bún, canh chua…" autocomplete="off" />
+    </label>
     <details class="filter-panel" aria-label="Bộ lọc món ăn nâng cao" open>
       <summary class="filter-panel-summary">
         <div class="panel-head">
@@ -187,12 +191,13 @@ const recipeCards = recipes.map((recipe) => {
   var recipeMaxKcal = document.getElementById('recipe-max-kcal');
   var recipeMinProtein = document.getElementById('recipe-min-protein');
   var recipeMaxSodium = document.getElementById('recipe-max-sodium');
+  var recipeQuery = document.getElementById('recipe-query');
   var recipeSummary = document.getElementById('recipe-summary');
   var recipeEmptyState = document.getElementById('recipe-empty-state');
   var recipeFilterPanel = document.querySelector('.filter-panel');
   var params = new URLSearchParams(window.location.search);
 
-  var hasInitialRecipeFilters = ['profile', 'tag', 'sort', 'maxKcal', 'minProtein', 'maxSodium']
+  var hasInitialRecipeFilters = ['q', 'profile', 'tag', 'sort', 'maxKcal', 'minProtein', 'maxSodium']
     .some(function(key) { return params.has(key); });
 
   if (recipeFilterPanel && window.innerWidth <= 760 && !hasInitialRecipeFilters) {
@@ -211,6 +216,10 @@ const recipeCards = recipes.map((recipe) => {
 
   function hasTag(card, tag) {
     return tagsOf(card).indexOf(tag) >= 0;
+  }
+
+  function normalizeRecipeQuery(value) {
+    return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
   }
 
   function matchesProfile(card, profile) {
@@ -248,12 +257,15 @@ const recipeCards = recipes.map((recipe) => {
     var maxKcal = numberValue(recipeMaxKcal);
     var minProtein = numberValue(recipeMinProtein);
     var maxSodium = numberValue(recipeMaxSodium);
+    var query = normalizeRecipeQuery(recipeQuery?.value);
     var visible = 0;
     document.querySelectorAll('.recipe-card').forEach(function(card) {
+      var name = normalizeRecipeQuery(card.querySelector('.recipe-title')?.textContent);
       var kcal = Number(card.getAttribute('data-kcal') || 0);
       var protein = Number(card.getAttribute('data-protein') || 0);
       var sodium = Number(card.getAttribute('data-sodium') || 0);
       var ok = true;
+      if (query && name.indexOf(query) === -1) ok = false;
       if (tag !== 'all' && !hasTag(card, tag)) ok = false;
       if (maxKcal !== null && kcal > maxKcal) ok = false;
       if (minProtein !== null && protein < minProtein) ok = false;
@@ -273,13 +285,16 @@ const recipeCards = recipes.map((recipe) => {
     });
     el?.addEventListener('input', applyRecipeFilters);
   });
+  recipeQuery?.addEventListener('input', applyRecipeFilters);
   document.getElementById('recipe-reset')?.addEventListener('click', function() {
+    if (recipeQuery) recipeQuery.value = '';
     if (recipeProfile) recipeProfile.value = 'all';
     if (recipeTag) recipeTag.value = 'all';
     [recipeMaxKcal, recipeMinProtein, recipeMaxSodium].forEach(function(el) { if (el) el.value = ''; });
     applyRecipeFilters();
   });
   function applyUrlPresets() {
+    if (params.get('q') && recipeQuery) recipeQuery.value = params.get('q');
     var profile = params.get('profile');
     var tag = params.get('tag');
     if (profile && recipeProfile?.querySelector('option[value="' + CSS.escape(profile) + '"]')) recipeProfile.value = profile;
@@ -339,6 +354,10 @@ const recipeCards = recipes.map((recipe) => {
   .filter-panel-summary { cursor: pointer; list-style: none; }
   .filter-panel-summary::-webkit-details-marker { display: none; }
   .filter-panel-body { margin-top: 12px; }
+  .recipe-name-filter { display: grid; gap: 5px; margin-bottom: 12px; }
+  .recipe-name-filter span { color: var(--ink-secondary); font-size: .74rem; font-weight: 750; }
+  .recipe-name-filter input { width: 100%; min-height: 42px; padding: 0 10px; border: 1px solid var(--card-border); border-radius: 11px; background: var(--card); color: var(--ink); font: inherit; font-size: .84rem; }
+  .recipe-name-filter input:focus { border-color: var(--brand); outline: 0; box-shadow: 0 0 0 3px rgba(5,150,105,.12); }
   .panel-head {
     display: flex;
     align-items: flex-start;
