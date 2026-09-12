@@ -53,7 +53,6 @@ const homepageHighlights = [
       <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Một bản đồ dinh dưỡng cho bữa ăn Việt: tra số liệu khi cần, đọc theo bệnh khi cần an toàn, và đổi lời khuyên thành khẩu phần có thể làm ngay.</p>
       <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
       <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
-        <a class="cta-btn" href="/tim-kiem">🔎 Tìm trong toàn site</a>
         <a class="cta-btn" href="/ban-do-benh">🩺 Xem theo bệnh</a>
         <a class="cta-btn cta-outline" href="/cong-cu/nhat-ky">📓 Ghi bữa ăn</a>
       </div>
@@ -97,29 +96,11 @@ const homepageHighlights = [
     ))}
   </section>
 
-  <section class="home-flow" aria-label="Lối vào nhanh">
-    <a href="/ban-do-benh" class="flow-card flow-primary">
-      <span class="flow-icon">🗺️</span>
-      <span><strong>Bản đồ bệnh đầy đủ</strong><small>Tra dinh dưỡng theo 21 nhóm chuyên khoa</small></span>
-      <b>Khám phá →</b>
-    </a>
-    <a href="/dung-tin-ngay" class="flow-card">
-      <span class="flow-icon">🔍</span>
-      <span><strong>Đừng Tin Ngay</strong><small>Kiểm chứng hiểu lầm phổ biến về ăn uống</small></span>
-      <b>Xem nhanh →</b>
-    </a>
-    <a href="/phuong-phap" class="flow-card">
-      <span class="flow-icon">🔬</span>
-      <span><strong>Nguồn & phương pháp</strong><small>Dữ liệu, giới hạn và cách biên tập</small></span>
-      <b>Đọc thêm →</b>
-    </a>
-  </section>
-
   <section class="clinical-lens" aria-label="Chọn theo tình huống">
     <div class="lens-copy">
-      <span class="section-kicker">Đọc theo tình huống</span>
-      <h2>Không chỉ “bao nhiêu calo”, mà là “có hợp với mình không?”</h2>
-      <p>Trang được sắp như một bàn hướng dẫn nhỏ: tra thực phẩm khi cần số liệu, đọc theo bệnh khi cần an toàn, dùng công cụ khi muốn đổi thành khẩu phần cụ thể.</p>
+      <span class="section-kicker">Bắt đầu nhanh</span>
+      <h2>Chọn đúng lối vào cho việc bạn cần làm</h2>
+      <p>Tra số liệu, xem món Việt, đọc theo chủ đề hoặc mở công cụ — mọi lối đi chính đều tập trung ở đây.</p>
     </div>
     <div class="lens-grid">
       <a href="/thuc-pham" class="lens-card">
@@ -817,52 +798,6 @@ const homepageHighlights = [
   box-shadow: var(--shadow-sm);
 }
 [data-theme="dark"] .hero-trust span { background: rgba(15,23,42,.44); }
-.home-flow {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
-  gap: 12px;
-  margin: 0 0 28px;
-}
-.flow-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--card);
-  color: var(--ink);
-  text-decoration: none;
-  box-shadow: var(--shadow-sm);
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.flow-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  border-color: var(--brand-light2);
-  text-decoration: none;
-}
-.flow-primary {
-  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
-  color: #fff;
-}
-.flow-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--brand-light);
-  font-size: 1.45rem;
-  flex-shrink: 0;
-}
-.flow-primary .flow-icon { background: rgba(255,255,255,.16); }
-.flow-card span:nth-child(2) { display: grid; gap: 2px; flex: 1; min-width: 0; }
-.flow-card strong { font-size: .94rem; line-height: 1.25; }
-.flow-card small { color: var(--ink-secondary); font-size: .8rem; line-height: 1.35; }
-.flow-card b { color: var(--brand-dark); font-size: .8rem; white-space: nowrap; }
-.flow-primary small,
-.flow-primary b { color: rgba(255,255,255,.86); }
 .clinical-lens {
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr);
@@ -1010,12 +945,9 @@ const homepageHighlights = [
   border-color: rgba(148, 163, 184, .28);
 }
 @media (max-width: 820px) {
-  .home-flow { grid-template-columns: 1fr; }
   .clinical-lens { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
-  .flow-card { align-items: flex-start; }
-  .flow-card b { display: none; }
   .clinical-lens {
     padding: 14px;
     border-radius: 20px;

@@ -576,6 +576,8 @@ if (isArticle) {
         border: 1px solid var(--line);
         border-radius: 16px;
         box-shadow: 0 18px 42px -18px rgba(15, 23, 42, 0.34);
+        max-height: min(70vh, 460px);
+        overflow-y: auto;
       }
       .nav-group-menu a {
         padding: 10px 11px;
@@ -1003,7 +1005,7 @@ if (isArticle) {
       <button class="hamburger" id="hamburger-btn" aria-label="Mở menu điều hướng" aria-controls="main-nav-links" aria-expanded="false">☰</button>
       <div class="nav-search" role="search">
         <span class="search-icon">🔍</span>
-        <input type="search" id="nav-search-input" aria-label="Tìm kiếm trên website" placeholder="Món ăn, bệnh, công cụ..." autocomplete="off" />
+        <input type="search" id="nav-search-input" aria-label="Tìm món, thực phẩm, bệnh hoặc công cụ trên website" placeholder="Tìm món, thực phẩm, bệnh hoặc công cụ…" autocomplete="off" />
       </div>
         <div class="nav-links" id="main-nav-links" aria-label="Điều hướng chính">
           <details class="nav-group">
@@ -1011,6 +1013,7 @@ if (isArticle) {
             <div class="nav-group-menu">
               <a href="/thuc-pham">Thực phẩm</a>
               <a href="/mon-an">Món ăn</a>
+              <a href="/thuc-don">Thực đơn</a>
               <a href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
               <a href="/cong-cu/tra-cuu-thuc-pham-viet">Bảng TP thực phẩm Việt</a>
               <a href="/kien-thuc-dinh-duong">Kiến thức dinh dưỡng</a>
@@ -1032,17 +1035,6 @@ if (isArticle) {
             </div>
           </details>
           <details class="nav-group">
-            <summary>Thực đơn</summary>
-            <div class="nav-group-menu">
-              <a href="/thuc-don">Tất cả thực đơn</a>
-              <a href="/thuc-don#group-noi-tiet">Đường huyết, gout</a>
-              <a href="/thuc-don#group-tim-mach">Tim mạch, huyết áp</a>
-              <a href="/thuc-don#group-tieu-hoa">Dạ dày, gan mật</a>
-              <a href="/thuc-don#group-than-tiet-nieu">Thận, tiết niệu</a>
-              <a href="/thuc-don#group-phu-nu-nhi">Gia đình, người cao tuổi</a>
-            </div>
-          </details>
-          <details class="nav-group">
             <summary>Công cụ</summary>
             <div class="nav-group-menu">
               <a href="/cong-cu">Tất cả công cụ</a>
@@ -1052,7 +1044,7 @@ if (isArticle) {
               <a href="/cong-cu/tinh-gl-bua-an">Tính GL bữa ăn</a>
               <a href="/cong-cu/ke-hoach-bua-an">Kế hoạch bữa ăn</a>
               <a href="/cong-cu/theo-doi-suc-khoe">Theo dõi sức khỏe</a>
-              <a href="/cong-cu/checklist-an-uong">Checklist ăn uống</a>
+              <a href="/cong-cu/tra-cuu-nhu-cau-dinh-duong">Tra nhu cầu dinh dưỡng</a>
             </div>
           </details>
         </div>
@@ -1265,10 +1257,26 @@ if (isArticle) {
           });
         }
         document.querySelectorAll('.nav-group').forEach(function(group) {
+          group.addEventListener('toggle', function() {
+            if (!group.open) return;
+            document.querySelectorAll('.nav-group').forEach(function(other) {
+              if (other !== group) other.removeAttribute('open');
+            });
+          });
           group.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
               group.removeAttribute('open');
               group.querySelector('summary').focus();
+            }
+          });
+        });
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            if (!wrapper) return;
+            wrapper.classList.remove('nav-open');
+            if (ham) {
+              ham.setAttribute('aria-expanded', 'false');
+              ham.setAttribute('aria-label', 'Mở menu điều hướng');
             }
           });
         });

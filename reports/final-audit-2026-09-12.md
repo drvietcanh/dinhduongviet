@@ -26,6 +26,7 @@ Rà lại mã nguồn Astro/TypeScript, build tĩnh, dữ liệu thực phẩm�
 - Rà soát metadata bài viết, tách mô tả trùng của trang cảnh báo ăn nhạt và thêm kiểm tra QA chống trùng tiêu đề/mô tả trong chỉ mục bài viết.
 - Đồng bộ lại chỉ mục nội dung theo `articles.ts`: 368 bài, 430 file được scanner quét và 409 điểm `REVIEW`; số liệu theo nhóm/chuyên khoa đã cập nhật.
 - Cập nhật lại báo cáo chất lượng, chỉ mục tìm kiếm và API public sau build.
+- Tinh gọn trang chủ và điều hướng theo [báo cáo UI riêng](./home-navigation-audit-2026-09-12.md): menu 3 nhóm, tìm kiếm mô tả rõ phạm vi, loại bỏ lối vào trùng.
 
 ## Các cờ còn lại có chủ đích
 

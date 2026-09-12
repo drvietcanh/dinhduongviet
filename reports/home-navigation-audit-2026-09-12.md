@@ -1,0 +1,40 @@
+# Rà soát trang chủ và điều hướng — 2026-09-12
+
+## Mục tiêu
+
+- Giúp người dùng đi tới ba việc chính trong vài giây: tìm dữ liệu, đọc theo bệnh, hoặc mở công cụ.
+- Giảm lặp lại giữa thanh menu, hero và các khối lối vào.
+- Giữ tìm kiếm dễ thấy trên desktop/mobile, đồng thời không làm mất các đường dẫn chuyên sâu.
+
+## Cơ sở thiết kế
+
+- Trang chủ nên đóng vai trò “bảng điều hướng”, ưu tiên các tác vụ tìm thông tin thay vì dồn quá nhiều nội dung lên màn hình đầu ([Nielsen Norman Group — Homepage usability](https://www.nngroup.com/articles/113-design-guidelines-homepage-usability/)).
+- Ô tìm kiếm nên luôn dễ nhận biết; menu lớn phù hợp khi có nhiều nội dung nhưng phải được chia nhóm rõ và tránh hiển thị lựa chọn lặp lại ([Nielsen Norman Group — Mega menus](https://www.nngroup.com/articles/mega-menus-work-well/)).
+- Nhãn và placeholder nên mô tả trực tiếp phạm vi dịch vụ tìm kiếm ([GOV.UK Design System — Navigate a service](https://design-system.service.gov.uk/patterns/navigate-a-service/)).
+- Thanh đầu trang được giữ theo mô hình app bar: thương hiệu, tìm kiếm và nhóm tác vụ chính nằm cùng một vùng dễ nhận biết ([Material Design — Top app bar](https://m2.material.io/components/app-bars-top)).
+
+## Thay đổi đã áp dụng
+
+### Thanh điều hướng toàn site
+
+- Gộp 4 nhóm thành 3 nhóm: `Tra cứu`, `Theo bệnh`, `Công cụ`.
+- Đưa `Thực đơn` vào nhóm `Tra cứu` để tránh một nhóm cấp cao chỉ có một chủ đề.
+- Đưa `Tra nhu cầu dinh dưỡng` vào nhóm `Công cụ`, vì đây là công cụ tham khảo quan trọng cho người dùng Việt.
+- Đổi placeholder thành “Tìm món, thực phẩm, bệnh hoặc công cụ…” để người dùng hiểu ngay phạm vi tìm kiếm.
+- Khi mở một nhóm menu, nhóm khác tự đóng; khi chọn liên kết trên mobile, menu tự đóng và trả lại trạng thái aria chính xác.
+- Giới hạn chiều cao dropdown và cho phép cuộn để menu không che toàn bộ màn hình nhỏ.
+
+### Trang chủ
+
+- Bỏ nút “Tìm trong toàn site” trùng chức năng với ô tìm kiếm lớn và các chip gợi ý của `AutoSearch`.
+- Bỏ hàng `home-flow` lặp lại các đường dẫn đã có trong hero/menu.
+- Giữ một khối “Bắt đầu nhanh” với bốn lối vào: thực phẩm, món Việt, bài theo chủ đề và công cụ.
+- Giữ các lối vào theo bệnh và theo mục tiêu ở các phần chuyên biệt phía dưới, để người dùng không mất khả năng khám phá sâu.
+
+## Kiểm tra chấp nhận
+
+- Desktop: thanh đầu trang có logo, ô tìm kiếm, 3 nhóm menu và nút giao diện; không có nhóm menu trùng.
+- Mobile: menu hamburger hiển thị theo cột, dropdown cuộn được, chọn liên kết sẽ đóng menu.
+- Tìm kiếm: Enter từ ô tìm kiếm điều hướng tới `/tim-kiem?q=...`; `AutoSearch` vẫn giữ autocomplete và chip gợi ý.
+- Trợ năng: giữ `aria-label`, `aria-expanded`, `aria-current`; Escape đóng nhóm menu đang mở.
+
