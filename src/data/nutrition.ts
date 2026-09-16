@@ -17,6 +17,7 @@ import { extraFoods16 } from "./foods-extra16";
 import { extraFoods17 } from "./foods-extra17";
 import { extraFoods18 } from "./foods-extra18";
 import { extraFoods19 } from "./foods-extra19";
+import { extraFoods20 } from "./foods-extra20";
 import { foodSearchAliasIndex } from "./food-search-alias-index";
 import { vnMicronutrientOverrides } from "./food-vn-micronutrient-overrides";
 import { vddSourceReplacements } from "./food-vdd-source-replacements";
@@ -158,6 +159,22 @@ export const sources: Source[] = [
     note: "SR Legacy: Rice, white, glutinous, unenriched, cooked."
   },
   {
+    id: "usda-fdc-169704",
+    name: "USDA FoodData Central — gạo lứt nâu hạt dài chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/169704/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Rice, brown, long-grain, cooked."
+  },
+  {
+    id: "usda-fdc-168875",
+    name: "USDA FoodData Central — gạo lứt nâu hạt vừa chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/168875/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Rice, brown, medium-grain, cooked."
+  },
+  {
     id: "usda-fdc-171620",
     name: "USDA FoodData Central — bratwurst heo chín",
     year: "2018",
@@ -180,6 +197,22 @@ export const sources: Source[] = [
     url: "https://fdc.nal.usda.gov/food-details/174618/nutrients",
     license: "CC0 / public domain",
     note: "SR Legacy: Beef sausage, fresh, cooked."
+  },
+  {
+    id: "usda-fdc-172957",
+    name: "USDA FoodData Central — xúc xích gà chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/172957/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Bratwurst, chicken, cooked; dùng làm close match cho xúc xích gà Việt Nam."
+  },
+  {
+    id: "usda-fdc-173876",
+    name: "USDA FoodData Central — xúc xích heo chín",
+    year: "2018",
+    url: "https://fdc.nal.usda.gov/food-details/173876/nutrients",
+    license: "CC0 / public domain",
+    note: "SR Legacy: Pork sausage, link/patty, fully cooked, unheated; dùng làm close match cho xúc xích heo Việt Nam."
   },
   {
     id: "usda-fdc-174611",
@@ -1935,6 +1968,7 @@ foods.push(
     ...extraFoods17,
     ...extraFoods18,
     ...extraFoods19,
+    ...extraFoods20,
     ...bulkFoods
   ] as Food[])
 );

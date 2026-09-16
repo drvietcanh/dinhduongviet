@@ -216,6 +216,9 @@ const slim = await readJson("public/api/foods-slim.json");
 const fullRows = await readJson("public/api/foods-full.json");
 const searchIndex = await readJson("public/api/search-index.json");
 const sourceFoods = await readJson("dist/api-foods.json");
+const nutritionSourceText = await readFile(path.join(root, "src", "data", "nutrition.ts"), "utf8");
+const registeredSourceIds = new Set([...nutritionSourceText.matchAll(/id:\s*["']([^"']+)["']/g)].map((match) => match[1]));
+const unregisteredSourceIds = [...new Set(sourceFoods.map((food) => food.source).filter((source) => source && source !== "label" && !registeredSourceIds.has(source)))];
 const vnCrossref = await readJson("public/api/vn-crossref.json");
 const vietnamFoods = await readJson("public/api/vietnam-foods.json");
 const compatAliases = await readCompatAliases();
@@ -230,8 +233,6 @@ const decisionTableSlugs = [
   "tai-heo",
   "la-sach-bo",
   "com-nep",
-  "com-gao-lut-do",
-  "com-gao-lut-den",
   "suon-heo-nuong",
   "nem-lui",
   "thit-heo-quay",
@@ -413,6 +414,9 @@ const cookedHighEnergyReview = sourceFoods
 const riceSourceReview = ["com-nep", "com-gao-lut-do", "com-gao-lut-den"]
   .map((slug) => sourceBySlug.get(slug))
   .filter(Boolean)
+  // Chỉ đưa vào cảnh báo các mục chưa có nguồn cooked-100g. Cơm nếp đã
+  // được đối chiếu trực tiếp với USDA FDC 169711 và không còn là mục cần rà.
+  .filter((food) => food.sourceId === "recipe-estimate-v1" || food.source === "recipe-estimate-v1")
   .map((food) => issue("info", {
     slug: food.slug,
     id: food.id,
@@ -662,6 +666,11 @@ const sourceNotes = [
 ];
 
 const allIssues = [
+  ...unregisteredSourceIds.map((source) => issue("error", {
+    source,
+    reason: "Food source is not registered in src/data/nutrition.ts.",
+    action: "register_source_before_release",
+  })),
   ...duplicateSlugs,
   ...duplicateDisplayNames,
   ...suspiciousSlugs,
@@ -706,6 +715,7 @@ const report = {
     riceSourceReview: riceSourceReview.length,
     dataQuality: foodsWithDataQuality.length,
     sourceReviewStatus: foodsWithSourceReviewStatus.length,
+    unregisteredSourceIds: unregisteredSourceIds.length,
     needsExternalSource: foodsNeedingExternalSource.length,
     needsDietitianReview: foodsNeedingDietitianReview.length,
     cookedHighEnergyWithoutReviewMetadata: cookedHighEnergyWithoutReviewMetadata.length,

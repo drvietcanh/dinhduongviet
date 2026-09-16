@@ -1,0 +1,42 @@
+import type { Food } from "./nutrition";
+
+/** USDA SR Legacy cooked brown-rice records used to restore two removed,
+ * previously ambiguous catalog slots with explicit cooked-100 g provenance. */
+export const extraFoods20: Food[] = [
+  {
+    id: "gao-lut-nau-dai-chin-usda",
+    slug: "gao-lut-nau-dai-chin-usda",
+    name: "Gạo lứt nâu hạt dài, chín",
+    aliases: ["gao lut nau hat dai chin", "gạo lật hạt dài chín", "brown rice long grain cooked"],
+    category: "Tinh bột",
+    state: "cooked",
+    basis: "100g cơm đã nấu chín",
+    edibleNote: "Gạo lứt nâu hạt dài đã nấu chín; không đại diện cho gạo lứt đỏ/đen theo giống địa phương.",
+    nutrients: { energyKcal: 123, proteinG: 2.74, carbG: 25.58, fatG: 0.97, fiberG: 1.6, sodiumMg: 4, potassiumMg: 86, phosphorusMg: 103, magnesiumMg: 39 },
+    sourceId: "usda-fdc-169704",
+    confidence: "high",
+    dataQuality: "source_backed",
+    sourceConfidence: "high",
+    sourceReviewStatus: "source_verified",
+    candidateSource: "USDA FoodData Central SR Legacy 169704: Rice, brown, long-grain, cooked.",
+    reviewNote: "Khớp trực tiếp trạng thái cooked và cơ sở 100 g; giữ riêng với gạo lứt đỏ/đen.",
+  },
+  {
+    id: "gao-lut-nau-vua-chin-usda",
+    slug: "gao-lut-nau-vua-chin-usda",
+    name: "Gạo lứt nâu hạt vừa, chín",
+    aliases: ["gao lut nau hat vua chin", "gạo lật hạt vừa chín", "brown rice medium grain cooked"],
+    category: "Tinh bột",
+    state: "cooked",
+    basis: "100g cơm đã nấu chín",
+    edibleNote: "Gạo lứt nâu hạt vừa đã nấu chín; không đại diện cho gạo lứt đỏ/đen theo giống địa phương.",
+    nutrients: { energyKcal: 112, proteinG: 2.32, carbG: 23.51, fatG: 0.83, fiberG: 1.8, sodiumMg: 1, potassiumMg: 79, phosphorusMg: 77, magnesiumMg: 43 },
+    sourceId: "usda-fdc-168875",
+    confidence: "high",
+    dataQuality: "source_backed",
+    sourceConfidence: "high",
+    sourceReviewStatus: "source_verified",
+    candidateSource: "USDA FoodData Central SR Legacy 168875: Rice, brown, medium-grain, cooked.",
+    reviewNote: "Khớp trực tiếp trạng thái cooked và cơ sở 100 g; giữ riêng với gạo lứt đỏ/đen.",
+  },
+];

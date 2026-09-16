@@ -1,4 +1,8 @@
-t = open('articles.ts', encoding='utf-8').read()
+from pathlib import Path
+
+repo_root = Path(__file__).resolve().parents[1]
+articles_path = repo_root / "src" / "data" / "articles.ts"
+t = articles_path.read_text(encoding="utf-8")
 
 # The duplicate CATEGORIES + DISPLAY_CATEGORIES after the articles array
 # starts at position 170839. Find the end of DISPLAY_CATEGORIES
@@ -23,7 +27,7 @@ if dc2 > 0:
         print(f'Removing duplicate export blocks from {start} to {end_brace2+2}')
         t2 = t[:start] + t[end_brace2+2:]
         print(f'New length: {len(t2)}')
-        open('articles.ts', 'w', encoding='utf-8').write(t2)
+        articles_path.write_text(t2, encoding='utf-8')
         print('Done!')
 else:
     print('Second DISPLAY_CATEGORIES not found')

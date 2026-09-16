@@ -1,6 +1,15 @@
 import re
+import sys
+from pathlib import Path
 
-with open(r'D:\openclaw\apps\dinh-duong-viet\src\data\articles.ts', 'r', encoding='utf-8') as f:
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+# Resolve from the repository root so the audit works after the project moves
+# between machines (the old absolute OpenClaw path no longer exists).
+repo_root = Path(__file__).resolve().parents[1]
+articles_path = repo_root / "src" / "data" / "articles.ts"
+with articles_path.open("r", encoding="utf-8") as f:
     content = f.read()
 
 blocks = re.split(r'\n\s*\{', content)

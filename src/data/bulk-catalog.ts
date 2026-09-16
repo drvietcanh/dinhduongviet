@@ -105,8 +105,6 @@ Khoai từ tím
 Bắp nếp luộc
 Bắp Mỹ luộc
 Gạo nếp
-Gạo lứt đỏ
-Gạo lứt đen
 Bún gạo khô
 Miến dong khô
 Mì trứng tươi
@@ -714,24 +712,6 @@ const foodOverrides: Record<string, Partial<Food>> = {
     sourceId: "usda-fdc-169711",
     confidence: "high",
     note: "USDA FoodData Central SR Legacy 169711, rice white glutinous unenriched cooked; giá trị trên 100g phần ăn được."
-  },
-  "gao-lut-do": {
-    slug: "com-gao-lut-do",
-    name: "Cơm gạo lứt đỏ",
-    aliases: ["com gao lut do", "cơm gạo lứt đỏ", "com gao lat do", "cơm gạo lật đỏ", "gao-lut-do", "gạo lứt đỏ đã nấu", "gao lut do da nau"],
-    state: "cooked",
-    basis: "100g cơm đã nấu chín",
-    edibleNote: "Cơm gạo lứt đỏ đã nấu chín; không dùng thay cho 100g gạo lứt đỏ khô/chưa nấu.",
-    note: "Dữ liệu bổ sung Giá trị tham khảo theo công thức; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đỏ đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
-  },
-  "gao-lut-den": {
-    slug: "com-gao-lut-den",
-    name: "Cơm gạo lứt đen",
-    aliases: ["com gao lut den", "cơm gạo lứt đen", "com gao lat den", "cơm gạo lật đen", "gao-lut-den", "gạo lứt đen đã nấu", "gao lut den da nau"],
-    state: "cooked",
-    basis: "100g cơm đã nấu chín",
-    edibleNote: "Cơm gạo lứt đen đã nấu chín; không dùng thay cho 100g gạo lứt đen khô/chưa nấu.",
-    note: "Dữ liệu bổ sung Giá trị tham khảo theo công thức; năng lượng thấp cho thấy mục này phù hợp cơm gạo lứt đen đã nấu hơn là hạt gạo khô. Không sửa số liệu dinh dưỡng trong vòng này."
   },
   "dau-co-ve-hat": {
     name: "Đậu cô ve hạt khô",
