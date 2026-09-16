@@ -1,6 +1,6 @@
 ﻿---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
-const article = { slug: "thuc-don-huyet-ap-ban-ron", title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm", description: "Thực đơn giảm muối cho người bận rộn, kèm mẹo gọi món ngoài và chọn đồ đóng gói ít natri hơn.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
+const article = { slug: "thuc-don-huyet-ap-ban-ron", title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm", description: "Gợi ý ăn ngoài và chọn thực phẩm đóng gói ít natri hơn; mục tiêu cá nhân cần theo điều trị và bệnh kèm.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false, sources: [{ name: "WHO — Sodium reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" }] };
 ---
 
 <ArticleLayout article={article as any}>
@@ -8,35 +8,29 @@ const article = { slug: "thuc-don-huyet-ap-ban-ron", title: "Thực đơn 1 ngà
   <p style="margin:0;font-size:1.1rem;font-weight:600;">Dành cho người đi làm, ăn ngoài, giảm muối và natri</p>
 </div>
 
+Các gợi ý này tập trung vào cách chọn món, không phải đơn thực đơn hay mục tiêu natri riêng. WHO khuyến nghị người trưởng thành nói chung dùng dưới 2.000 mg natri/ngày (tương đương dưới 5 g muối từ mọi nguồn); kế hoạch cho người bệnh thận/suy tim, người dùng một số thuốc hoặc được hạn chế dịch cần cá thể hóa.
+
 ## 🍜 Bữa sáng
 
-🍜 Sáng (7:00): 1 ly cà phê đen (không đường, không sữa) + 1 lát bánh mì nướng không muối + 1 quả chuối. Hoặc 1 hộp sữa không đường + 1 bánh mì trứng ốp la.
-
-**Muối:** 0.4-0.6g.
+🍜 Sáng: Có thể chọn cà phê không đường kèm bánh mì và trứng, hoặc sữa không đường với món ăn sáng phù hợp. Đọc nhãn vì bánh mì và sản phẩm đóng gói có thể chứa natri.
 
 ---
 
 ## 🥪 Bữa trưa
 
-🍚 Trưa (12:00): Cơm văn phòng: gọi "nhạt, canh riêng, không chan mỡ". Tránh món kho/rim. Nếu ăn phở: gọi riêng, không uống hết nước. Mang theo nước chấm pha sẵn ở nhà (1:4).
-
-**Muối:** 0.8-1.2g.
+🍚 Trưa: Khi ăn cơm văn phòng/phở, có thể nhờ nêm nhạt, xin nước chấm riêng và dùng ít nước dùng. Món kho/rim không cần loại bỏ tuyệt đối; lưu ý lượng gia vị và tần suất.
 
 ---
 
 ## 🥜 Bữa xế (phụ)
 
-🥛 Xế (15:00): 1 hộp sữa chua không đường + 1 quả táo. Hoặc 1 nắm hạt hạnh nhân (không muối).
-
-**Muối:** 0.05g.
+🥛 Bữa phụ nếu phù hợp nhu cầu: sữa chua không đường và trái cây, hoặc một lượng hạt không tẩm muối.
 
 ---
 
 ## 🌙 Bữa tối
 
-🌙 Tối (19:00): Gà nướng/ức gà áp chảo (không muối, chỉ tiêu chanh) + salad xà lách dầu olive chanh. Hoặc mua rau luộc sẵn ngoài chợ + cá hộp (rửa nước để bớt muối).
-
-**Muối:** 0.5-0.7g.
+🌙 Tối: Gà nướng/áp chảo và rau; nếu dùng cá hộp, so sánh nhãn, chọn loại ít natri hơn khi có thể và để ráo. Rửa thực phẩm không đảm bảo loại bỏ được lượng natri đã có.
 
 ---
 
@@ -78,5 +72,5 @@ const article = { slug: "thuc-don-huyet-ap-ban-ron", title: "Thực đơn 1 ngà
 </table>
 ## ⚠️ Lưu ý
 
-Khi ăn ngoài: luôn nói "cho nhạt". Tự mang nước chấm pha sẵn. Đọc nhãn đồ đóng gói chọn loại dưới 200mg natri/phần. Uống đủ nước theo cảm giác khát và chỉ định bệnh nền. Mức natri/muối mục tiêu nên cá thể hóa theo huyết áp, thuốc và bệnh tim-thận.
+Khi ăn ngoài, có thể yêu cầu nêm nhạt, xin nước chấm riêng và dùng lượng nhỏ. Khi đọc nhãn, so sánh cùng cỡ khẩu phần giữa các sản phẩm thay vì áp một ngưỡng natri/phần cho mọi món. Pha nước chấm không làm giảm natri tổng; nhu cầu dịch và mục tiêu natri cần theo bệnh nền/điều trị.
 </ArticleLayout>

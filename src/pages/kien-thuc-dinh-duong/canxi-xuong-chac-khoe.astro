@@ -6,6 +6,7 @@ if (!art) throw new Error("Article not found: canxi-xuong-chac-khoe");
 ---
 
 <ArticleLayout article={art}>
+<div class="article-wrapper">
 <div class="toc">
       <strong>📑 Nội dung</strong>
       <ul>
@@ -98,7 +99,7 @@ if (!art) throw new Error("Article not found: canxi-xuong-chac-khoe");
       <a href="/thuc-pham" class="cta-btn cta-alt">🥬 Tra thực phẩm</a>
     </div>
   </div>
-</BaseLayout>
+</ArticleLayout>
 
 <style>
 .article-wrapper { max-width: 740px; margin: 0 auto; }
@@ -124,4 +125,3 @@ p, li { line-height:1.7; }
 .cta-alt { background:var(--ink-tertiary); }
 @media (max-width:600px) { .two-col { grid-template-columns:1fr; } }
 </style>
-</ArticleLayout>

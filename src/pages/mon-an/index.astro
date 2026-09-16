@@ -8,11 +8,11 @@ import { calculateRecipe, confidenceLabel, allTags, tagLabel } from "../../lib/n
 const recipeCards = recipes.map((recipe) => {
   const nutrients = calculateRecipe(recipe);
   const tags = allTags({ tags: recipe.tags, nutrients });
+  const clinicallyReviewed = recipe.confidence === "high" && recipe.sourceId !== "recipe-estimate-v1";
   const quickFits = [];
 
-  if (tags.includes("low-sodium")) quickFits.push({ label: "THA", tone: "green" });
-  if (tags.includes("low-purine")) quickFits.push({ label: "Gout", tone: "red" });
-  if (tags.includes("glycemic-index-low")) quickFits.push({ label: "ĐTĐ", tone: "blue" });
+  if (clinicallyReviewed && tags.includes("low-sodium")) quickFits.push({ label: "THA", tone: "green" });
+  if (clinicallyReviewed && tags.includes("glycemic-index-low")) quickFits.push({ label: "ĐTĐ", tone: "blue" });
   if (nutrients.energyKcal <= 300) quickFits.push({ label: "Giảm cân", tone: "amber" });
 
   return {
@@ -20,6 +20,7 @@ const recipeCards = recipes.map((recipe) => {
     nutrients,
     tags,
     quickFits,
+    clinicallyReviewed,
     confidence: confidenceLabel(recipe.confidence),
     showConfidence: recipe.confidence !== "high",
     shortNote:
@@ -88,7 +89,6 @@ const recipeCards = recipes.map((recipe) => {
             <option value="all">Tất cả</option>
             <option value="diabetes">🩸 Đái tháo đường</option>
             <option value="hypertension">❤️ Tăng huyết áp</option>
-            <option value="gout">🦶 Gout</option>
             <option value="weight">⚖️ Giảm cân</option>
           </select>
         </label>
@@ -98,8 +98,6 @@ const recipeCards = recipes.map((recipe) => {
             <option value="all">Tất cả tag</option>
             <option value="low-sodium">Ít natri</option>
             <option value="high-sodium">Nhiều natri</option>
-            <option value="low-purine">Ít purin</option>
-            <option value="high-purine">Nhiều purin</option>
             <option value="glycemic-index-low">GI thấp</option>
             <option value="high-fat">Nhiều béo</option>
           </select>
@@ -112,7 +110,7 @@ const recipeCards = recipes.map((recipe) => {
         <button id="recipe-reset" class="button secondary" type="button">Xóa lọc</button>
       </div>
       <p class="muted filter-note">
-        Nhãn gợi ý chỉ dựa trên thành phần dinh dưỡng ước tính của món, không thay thế kế hoạch ăn điều trị cá thể hóa.
+        Nhãn gợi ý chỉ dựa trên thành phần dinh dưỡng ước tính của món. Kho chưa có số liệu purin đo trực tiếp nên chưa lọc món theo gout; các nhãn không thay thế kế hoạch ăn điều trị cá thể hóa.
       </p>
       <p class="muted filter-summary" id="recipe-summary"></p>
       </div>
@@ -142,14 +140,15 @@ const recipeCards = recipes.map((recipe) => {
       <a href="/thuc-pham">Quay về tra từng thực phẩm →</a>
     </div>
     <div class="grid two" id="recipe-grid">
-      {recipeCards.map(({ recipe, nutrients, tags, quickFits, confidence, shortNote, showConfidence }) => (
+      {recipeCards.map(({ recipe, nutrients, tags, quickFits, confidence, shortNote, showConfidence, clinicallyReviewed }) => (
           <a
             class="card result-link recipe-card"
             href={`/mon-an/${recipe.slug}`}
             data-tags={tags.join(" ")}
             data-kcal={Math.round(nutrients.energyKcal)}
             data-protein={nutrients.proteinG.toFixed(1)}
-            data-sodium={Math.round(nutrients.sodiumMg ?? 0)}
+            data-sodium={nutrients.sodiumMg == null ? "" : Math.round(nutrients.sodiumMg)}
+            data-clinically-reviewed={clinicallyReviewed ? "true" : "false"}
           >
             {recipe.imageUrl && <div class="food-thumb" aria-hidden="true" style={`background-image: url(${recipe.imageUrl});`}></div>}
             <div class="recipe-topline">
@@ -160,7 +159,7 @@ const recipeCards = recipes.map((recipe) => {
             <div class="recipe-metrics">
               <span>{Math.round(nutrients.energyKcal)} kcal</span>
               <span>{nutrients.proteinG.toFixed(1)}g đạm</span>
-              <span>{Math.round(nutrients.sodiumMg ?? 0)}mg natri</span>
+              <span>{nutrients.sodiumMg == null ? "Chưa có dữ liệu natri" : `${Math.round(nutrients.sodiumMg)}mg natri`}</span>
             </div>
             <div class="recipe-tag-row">
               {tags.slice(0, 2).map(tag => <span class="mini-tag">{tagLabel(tag)}</span>)}
@@ -224,10 +223,11 @@ const recipeCards = recipes.map((recipe) => {
 
   function matchesProfile(card, profile) {
     var kcal = Number(card.getAttribute('data-kcal') || 0);
-    var sodium = Number(card.getAttribute('data-sodium') || 0);
-    if (profile === 'diabetes') return hasTag(card, 'glycemic-load-low') || hasTag(card, 'glycemic-index-low');
-    if (profile === 'hypertension') return sodium <= 600 || hasTag(card, 'low-sodium');
-    if (profile === 'gout') return hasTag(card, 'low-purine');
+    var clinicallyReviewed = card.getAttribute('data-clinically-reviewed') === 'true';
+    var rawSodium = card.getAttribute('data-sodium');
+    var sodium = rawSodium === null || rawSodium === '' ? null : Number(rawSodium);
+    if (profile === 'diabetes') return clinicallyReviewed && (hasTag(card, 'glycemic-load-low') || hasTag(card, 'glycemic-index-low'));
+    if (profile === 'hypertension') return clinicallyReviewed && sodium !== null && Number.isFinite(sodium) && sodium <= 600;
     if (profile === 'weight') return kcal <= 500;
     return true;
   }
@@ -245,7 +245,12 @@ const recipeCards = recipes.map((recipe) => {
       if (val === 'calo-asc') return (parseFloat(a.getAttribute('data-kcal') || '0')) - (parseFloat(b.getAttribute('data-kcal') || '0'));
       if (val === 'calo-desc') return (parseFloat(b.getAttribute('data-kcal') || '0')) - (parseFloat(a.getAttribute('data-kcal') || '0'));
       if (val === 'protein-desc') return (parseFloat(b.getAttribute('data-protein') || '0')) - (parseFloat(a.getAttribute('data-protein') || '0'));
-      if (val === 'sodium-asc') return (parseFloat(a.getAttribute('data-sodium') || '0')) - (parseFloat(b.getAttribute('data-sodium') || '0'));
+      if (val === 'sodium-asc') {
+        var aSodium = a.getAttribute('data-sodium'), bSodium = b.getAttribute('data-sodium');
+        if (aSodium === null || aSodium === '') return bSodium === null || bSodium === '' ? 0 : 1;
+        if (bSodium === null || bSodium === '') return -1;
+        return Number(aSodium) - Number(bSodium);
+      }
       return 0;
     });
     cards.forEach(function(card) { grid.appendChild(card); });
@@ -263,13 +268,14 @@ const recipeCards = recipes.map((recipe) => {
       var name = normalizeRecipeQuery(card.querySelector('.recipe-title')?.textContent);
       var kcal = Number(card.getAttribute('data-kcal') || 0);
       var protein = Number(card.getAttribute('data-protein') || 0);
-      var sodium = Number(card.getAttribute('data-sodium') || 0);
+      var rawSodium = card.getAttribute('data-sodium');
+      var sodium = rawSodium === null || rawSodium === '' ? null : Number(rawSodium);
       var ok = true;
       if (query && name.indexOf(query) === -1) ok = false;
       if (tag !== 'all' && !hasTag(card, tag)) ok = false;
       if (maxKcal !== null && kcal > maxKcal) ok = false;
       if (minProtein !== null && protein < minProtein) ok = false;
-      if (maxSodium !== null && sodium > maxSodium) ok = false;
+      if (maxSodium !== null && (sodium === null || !Number.isFinite(sodium) || sodium > maxSodium)) ok = false;
       if (!matchesProfile(card, profile)) ok = false;
       card.style.display = ok ? '' : 'none';
       if (ok) visible += 1;

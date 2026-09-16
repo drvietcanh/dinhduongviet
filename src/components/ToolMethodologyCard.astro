@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { methodology } = Astro.props;
-const displayStatus = methodology.status.replace(/\bv1\b/gi, "").replace(/\s{2,}/g, " ").trim();
+const displayStatus = methodology.status;
 ---
 
 <section class="tool-methodology-card section card" aria-labelledby="tool-methodology-title">

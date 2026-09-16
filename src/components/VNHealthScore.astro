@@ -1,5 +1,5 @@
 ---
-// VNHealthScore.astro — Bảng điểm dinh dưỡng Việt (theo khuyến nghị Bộ Y Tế)
+// VNHealthScore.astro — Điểm tóm tắt tham khảo, không phải thang điểm lâm sàng.
 
 interface Props {
   nutrients: {
@@ -32,33 +32,38 @@ const details: { label: string; points: number; max: number; reason: string }[] 
 
 // 1. Chất xơ (+2 tối đa)
 let fiberPoints = 0;
-const fiber = nutrients.fiberG ?? 0;
-if (fiber >= 6) { fiberPoints = 2; }
-else if (fiber >= 4) { fiberPoints = 1.5; }
-else if (fiber >= 2) { fiberPoints = 1; }
-else if (fiber > 0) { fiberPoints = 0.5; }
+const fiber = nutrients.fiberG;
+if (fiber != null && fiber >= 6) { fiberPoints = 2; }
+else if (fiber != null && fiber >= 4) { fiberPoints = 1.5; }
+else if (fiber != null && fiber >= 2) { fiberPoints = 1; }
+else if (fiber != null && fiber > 0) { fiberPoints = 0.5; }
 score += fiberPoints;
-details.push({ label: "Chất xơ", points: fiberPoints, max: 2, reason: fiber >= 2 
-  ? `✅ ${fiber.toFixed(1)}g — tốt cho tiêu hóa, ổn định đường huyết`
-  : fiber > 0 ? `🟡 Chỉ ${fiber.toFixed(1)}g — nên bổ sung thêm rau, củ` 
-  : `❌ Không có chất xơ` });
+details.push({ label: "Chất xơ", points: fiberPoints, max: 2, reason: fiber == null
+  ? `⚪ Chưa có dữ liệu — không được xem là 0g`
+  : fiber >= 2 ? `✅ ${fiber.toFixed(1)}g — có thể đóng góp chất xơ cho khẩu phần`
+  : fiber > 0 ? `🟡 Chỉ ${fiber.toFixed(1)}g — cân nhắc thêm nguồn chất xơ khác`
+  : `Không ghi nhận chất xơ trong dữ liệu nguồn` });
 
 // 2. Đạm vừa phải (+1.5)
 let proteinPoints = 0;
-const protein = nutrients.proteinG ?? 0;
+const protein = nutrients.proteinG;
 if (isRecipe) {
-  const kcal = servingKcal || nutrients.energyKcal || 0;
-  const pct = kcal > 0 ? (protein * 4 / kcal) * 100 : 0;
-  if (pct >= 15 && pct <= 30) proteinPoints = 1.5;
-  else if (pct >= 10 && pct <= 35) proteinPoints = 1;
-  else if (pct > 0) proteinPoints = 0.5;
-} else {
+  const kcal = servingKcal || nutrients.energyKcal;
+  if (protein != null && kcal != null && kcal > 0) {
+    const pct = (protein * 4 / kcal) * 100;
+    if (pct >= 15 && pct <= 30) proteinPoints = 1.5;
+    else if (pct >= 10 && pct <= 35) proteinPoints = 1;
+    else if (pct > 0) proteinPoints = 0.5;
+  }
+} else if (protein != null) {
   if (protein >= 10 && protein <= 25) proteinPoints = 1.5;
   else if (protein >= 5 && protein <= 30) proteinPoints = 1;
   else if (protein > 0) proteinPoints = 0.5;
 }
 score += proteinPoints;
-details.push({ label: "Đạm", points: proteinPoints, max: 1.5, reason: proteinPoints >= 1.5
+details.push({ label: "Đạm", points: proteinPoints, max: 1.5, reason: protein == null
+  ? `⚪ Chưa có dữ liệu — không được xem là 0g`
+  : proteinPoints >= 1.5
   ? `✅ ${protein.toFixed(1)}g — tỷ lệ hợp lý`
   : proteinPoints >= 1 ? `🟡 ${protein.toFixed(1)}g — tạm ổn`
   : protein > 0 ? `🟡 ${protein.toFixed(1)}g — thấp, thiếu đạm`
@@ -66,75 +71,81 @@ details.push({ label: "Đạm", points: proteinPoints, max: 1.5, reason: protein
 
 // 3. Ít đường (+1.5)
 let sugarPoints = 0;
-const sugar = nutrients.sugarG ?? 0;
-if (sugar <= 2) sugarPoints = 1.5;
-else if (sugar <= 5) sugarPoints = 1;
-else if (sugar <= 10) sugarPoints = 0.5;
+const sugar = nutrients.sugarG;
+if (sugar != null && sugar <= 2) sugarPoints = 1.5;
+else if (sugar != null && sugar <= 5) sugarPoints = 1;
+else if (sugar != null && sugar <= 10) sugarPoints = 0.5;
 score += sugarPoints;
 details.push({ label: "Đường", points: sugarPoints, max: 1.5, reason: sugarPoints >= 1
-  ? `✅ Chỉ ${sugar.toFixed(1)}g đường — an toàn`
+  ? `✅ ${sugar.toFixed(1)}g — thấp theo ngưỡng tham khảo, không đồng nghĩa an toàn cho mọi người`
   : sugarPoints > 0 ? `🟡 ${sugar.toFixed(1)}g — hơi nhiều đường`
-  : sugar > 0 ? `🔴 ${sugar.toFixed(1)}g — nhiều đường, cần hạn chế`
-  : `✅ Không chứa đường` });
+  : sugar == null ? `⚪ Chưa có dữ liệu — không được xem là 0g`
+  : sugar > 10 ? `🔴 ${sugar.toFixed(1)}g — lượng đường cao trong dữ liệu tham khảo`
+  : `Không ghi nhận đường trong dữ liệu nguồn` });
 
 // 4. Ít natri (+1.5)
 let sodiumPoints = 0;
-const sodium = nutrients.sodiumMg ?? 0;
-if (sodium <= 120) sodiumPoints = 1.5;
-else if (sodium <= 300) sodiumPoints = 1;
-else if (sodium <= 600) sodiumPoints = 0.5;
+const sodium = nutrients.sodiumMg;
+if (sodium != null && sodium <= 120) sodiumPoints = 1.5;
+else if (sodium != null && sodium <= 300) sodiumPoints = 1;
+else if (sodium != null && sodium <= 600) sodiumPoints = 0.5;
 score += sodiumPoints;
 details.push({ label: "Muối (Natri)", points: sodiumPoints, max: 1.5, reason: sodiumPoints >= 1
-  ? `✅ ${sodium.toFixed(0)}mg — lượng muối thấp`
-  : sodiumPoints > 0 ? `🟡 ${sodium.toFixed(0)}mg — muối trung bình`
+  ? `✅ ${sodium?.toFixed(0)}mg — lượng muối thấp`
+  : sodiumPoints > 0 ? `🟡 ${sodium?.toFixed(0)}mg — muối trung bình`
+  : sodium == null ? `⚪ Chưa có dữ liệu natri — chưa thể chấm tiêu chí này`
   : `🔴 ${sodium.toFixed(0)}mg — nhiều muối (nguy cơ THA)` });
 
 // 5. Ít chất béo bão hòa (+1)
 let satPoints = 0;
-const satFat = nutrients.saturatedFatG ?? 0;
-if (satFat <= 1.5) satPoints = 1;
-else if (satFat <= 3) satPoints = 0.5;
+const satFat = nutrients.saturatedFatG;
+if (satFat != null && satFat <= 1.5) satPoints = 1;
+else if (satFat != null && satFat <= 3) satPoints = 0.5;
 score += satPoints;
 details.push({ label: "Chất béo bão hòa", points: satPoints, max: 1, reason: satPoints >= 1
   ? `✅ ${satFat.toFixed(1)}g — rất ít`
   : satPoints > 0 ? `🟡 ${satFat.toFixed(1)}g — mức vừa`
-  : `🔴 ${satFat.toFixed(1)}g — nhiều mỡ bão hòa` });
+  : satFat == null ? `⚪ Chưa có dữ liệu — không được xem là 0g`
+  : `🔴 ${satFat.toFixed(1)}g — lượng cao theo ngưỡng tham khảo` });
 
 // 6. Giàu vi chất (canxi + sắt + vitamin C + A) (+1.5)
 let microPoints = 0;
-const calcium = nutrients.calciumMg ?? 0;
-const iron = nutrients.ironMg ?? 0;
-const vitC = nutrients.vitaminCMg ?? 0;
-const vitA = nutrients.vitaminAUg ?? 0;
+const calcium = nutrients.calciumMg;
+const iron = nutrients.ironMg;
+const vitC = nutrients.vitaminCMg;
+const vitA = nutrients.vitaminAUg;
 const micros = [
   { val: calcium, threshold: 100, label: "Canxi" },
   { val: iron, threshold: 1.5, label: "Sắt" },
   { val: vitC, threshold: 10, label: "Vit C" },
   { val: vitA, threshold: 100, label: "Vit A" },
 ];
-const richMicros = micros.filter(m => m.val >= m.threshold);
+const richMicros = micros.filter(m => m.val != null && m.val >= m.threshold);
+const knownMicros = micros.filter(m => m.val != null);
+const missingMicros = micros.filter(m => m.val == null);
 microPoints = Math.min(richMicros.length * 0.375, 1.5);
 score += microPoints;
 details.push({ label: "Vi chất", points: microPoints, max: 1.5, reason: microPoints >= 1
   ? `✅ Giàu ${richMicros.map(m => m.label).join(", ")}`
   : microPoints > 0
-  ? `🟡 Có ${richMicros.map(m => m.label).join(", ")}, thiếu ${micros.filter(m => m.val < m.threshold).map(m => m.label).join(", ")}`
-  : `🟡 Nghèo vi chất` });
+  ? `🟡 Có ${richMicros.map(m => m.label).join(", ")}${missingMicros.length ? `; chưa có số liệu ${missingMicros.map(m => m.label).join(", ")}` : ""}`
+  : knownMicros.length === 0 ? `⚪ Chưa có dữ liệu vi chất — không được xem là bằng 0`
+  : `Chưa ghi nhận mức giàu theo ngưỡng tham khảo${missingMicros.length ? `; chưa có số liệu ${missingMicros.map(m => m.label).join(", ")}` : ""}` });
 
 // 7. Tỷ lệ calo từ chất béo hợp lý (+1)
 let fatPctPoints = 0;
-const fat = nutrients.fatG ?? 0;
-const kcal = nutrients.energyKcal ?? 0;
-if (kcal > 0) {
+const fat = nutrients.fatG;
+const kcal = nutrients.energyKcal;
+if (fat != null && kcal != null && kcal > 0) {
   const fatPct = (fat * 9 / kcal) * 100;
   if (fatPct >= 15 && fatPct <= 30) fatPctPoints = 1;
   else if (fatPct >= 10 && fatPct <= 35) fatPctPoints = 0.5;
   if (fatPct < 5 && fatPctPoints > 0) fatPctPoints = 0.3; // quá ít béo cũng không tốt
-} else {
-  fatPctPoints = 0.5;
 }
 score += fatPctPoints;
-details.push({ label: "% calo từ béo", points: fatPctPoints, max: 1, reason: fatPctPoints >= 0.5
+details.push({ label: "% calo từ béo", points: fatPctPoints, max: 1, reason: fat == null || kcal == null || kcal <= 0
+  ? `⚪ Chưa đủ dữ liệu chất béo/năng lượng để tính`
+  : fatPctPoints >= 0.5
   ? `✅ Tỷ lệ hợp lý`
   : `🟡 Chưa cân đối` });
 
@@ -143,7 +154,13 @@ score = Math.round(score * 10) / 10;
 
 // Phân loại
 let grade = "", gradeColor = "", gradeIcon = "";
-if (score >= 9) { grade = "Xuất sắc"; gradeColor = "#16a34a"; gradeIcon = "🏆"; }
+const scoreInputsComplete = [fiber, protein, sugar, sodium, satFat, calcium, iron, vitC, vitA, fat, kcal].every((value) => value != null);
+const scoreMissingLabels = [
+  [fiber, "chất xơ"], [sugar, "đường"], [sodium, "natri"], [satFat, "béo bão hòa"],
+  [protein, "đạm"], [fat, "chất béo"], [kcal, "năng lượng"], [calcium, "canxi"], [iron, "sắt"], [vitC, "vitamin C"], [vitA, "vitamin A"],
+].filter(([value]) => value == null).map(([, label]) => label);
+if (!scoreInputsComplete) { grade = "Chưa đủ dữ liệu"; gradeColor = "#64748b"; gradeIcon = "⚪"; }
+else if (score >= 9) { grade = "Xuất sắc"; gradeColor = "#16a34a"; gradeIcon = "🏆"; }
 else if (score >= 8) { grade = "Rất tốt"; gradeColor = "#22c55e"; gradeIcon = "🌟"; }
 else if (score >= 6.5) { grade = "Tốt"; gradeColor = "#65a30d"; gradeIcon = "👍"; }
 else if (score >= 5) { grade = "Trung bình"; gradeColor = "#d97706"; gradeIcon = "🫤"; }
@@ -157,7 +174,7 @@ const stars = "★".repeat(starCount) + "☆".repeat(5 - starCount);
 <div class="vn-score-widget">
   <div class="vn-score-header">
     <span class="vn-score-icon">🇻🇳</span>
-    <span class="vn-score-title">VN Health Score</span>
+    <span class="vn-score-title">Điểm dinh dưỡng tham khảo</span>
     <span class="vn-score-badge">{gradeIcon} {grade}</span>
   </div>
   
@@ -188,20 +205,28 @@ const stars = "★".repeat(starCount) + "☆".repeat(5 - starCount);
       ))}
     </div>
 
-    {score < 5 && (
+    {!scoreInputsComplete && (
+      <div class="vn-score-warning">
+        Chưa thể xếp hạng đầy đủ vì thiếu: {scoreMissingLabels.join(", ")}. Những trường này không được xem là 0; điểm tạm tính không dùng để kết luận thực phẩm tốt/xấu hay phù hợp với bệnh lý.
+      </div>
+    )}
+    {scoreInputsComplete && score < 5 && (
       <div class="vn-score-warning">
         ⚠️ Điểm tổng hợp đang thấp. Hãy đọc kỹ lại phần chất xơ, đường, natri,
         chất béo bão hòa và cân nhắc phối hợp món hoặc khẩu phần cho cân bằng
         hơn.
       </div>
     )}
-    {score >= 8 && (
+    {scoreInputsComplete && score >= 8 && (
       <div class="vn-score-tip">
         💪 Điểm tổng hợp đang tốt. Dùng khối này như ảnh chụp nhanh về chất
         lượng dinh dưỡng tổng thể, rồi đối chiếu thêm cảnh báo bệnh lý nếu bạn
         cần cá thể hóa.
       </div>
     )}
+    <p class="muted" style="margin: 10px 0 0; font-size: 0.78rem; line-height: 1.5;">
+      Đây là thang điểm tham khảo nội bộ, không phải thang điểm chính thức của Bộ Y tế, công cụ sàng lọc hay khuyến nghị điều trị. Thực phẩm tính theo 100 g; món ăn tính theo khẩu phần.
+    </p>
   </div>
 </div>
 

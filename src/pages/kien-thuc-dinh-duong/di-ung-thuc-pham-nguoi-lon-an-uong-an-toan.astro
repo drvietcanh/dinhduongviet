@@ -1,0 +1,80 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["di-ung-thuc-pham-nguoi-lon-an-uong-an-toan"];
+if (!art) throw new Error("Article not found: di-ung-thuc-pham-nguoi-lon-an-uong-an-toan");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>Nguyên tắc an toàn</h2>
+      <ul>
+        <li>Triệu chứng sau ăn chưa đủ để kết luận dị ứng. Chẩn đoán cần đối chiếu bệnh sử với đánh giá của bác sĩ dị ứng/miễn dịch.</li>
+        <li>Không tự kiêng hàng loạt thực phẩm, không dùng xét nghiệm IgG thực phẩm hoặc “test không dung nạp” thương mại để tự chẩn đoán.</li>
+        <li>Khi dị ứng được xác nhận, tránh đúng tác nhân và phòng lẫn chéo; nếu phải bỏ nhóm thực phẩm lớn, cần lên phương án thay thế dinh dưỡng.</li>
+        <li>Khó thở, khàn tiếng, sưng lưỡi/họng, choáng hoặc ngất sau ăn là dấu hiệu cấp cứu.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Không tự thử lại tại nhà:</strong> thử thách thức ăn đường miệng để xác nhận dị ứng chỉ được thực hiện dưới giám sát y tế khi bác sĩ thấy phù hợp, vì phản ứng có thể nghiêm trọng.</p>
+
+    <h2>Dị ứng thức ăn khác gì “ăn vào thấy khó chịu”?</h2>
+    <p>Dị ứng thực phẩm là phản ứng của hệ miễn dịch với một thành phần của thức ăn. Một số phản ứng có thể xuất hiện nhanh như mày đay, phù môi, khò khè, nôn; có phản ứng biểu hiện muộn và cần bác sĩ đánh giá. Đầy bụng sau sữa, ợ nóng, đau bụng do thức ăn ôi hoặc triệu chứng không lặp lại theo cùng một tác nhân có thể có nguyên nhân khác, không tự động là dị ứng.</p>
+    <p>Xét nghiệm da hoặc IgE đặc hiệu có thể hỗ trợ khi phù hợp với bệnh sử, nhưng kết quả dương tính đơn độc không chứng minh người đó sẽ có triệu chứng khi ăn món ấy. Tránh thức ăn chỉ dựa vào một xét nghiệm thương mại dễ dẫn đến chế độ ăn quá hạn chế và thiếu chất.</p>
+
+    <h2>Đường đi hợp lý khi nghi dị ứng</h2>
+    <ol>
+      <li>Ghi lại món ăn, thành phần nghi ngờ, thời điểm khởi phát, triệu chứng, mức độ và phản ứng khi ăn lại ngoài ý muốn; chụp nhãn sản phẩm nếu có.</li>
+      <li>Đưa thông tin này cho bác sĩ. Không tự làm panel xét nghiệm rộng hoặc kiêng nhiều tuần/tháng trước khi được hướng dẫn.</li>
+      <li>Nếu cần loại trừ tạm thời, xác định rõ món nào, trong bao lâu và cách đánh giá lại; không tự thử lại nếu từng có khò khè, phù họng, tụt huyết áp hoặc phản ứng toàn thân.</li>
+      <li>Sau khi xác nhận, xin kế hoạch tránh tác nhân, phòng lẫn chéo và phương án xử trí phản ứng cho gia đình/cơ quan.</li>
+    </ol>
+
+    <h2>Ăn đủ chất khi phải loại trừ một món</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Nhóm phải tránh</th><th>Việc nên trao đổi để thay thế</th></tr></thead>
+        <tbody>
+          <tr><td>Sữa bò/đạm sữa</td><td>Chọn nguồn đạm, canxi và vitamin D phù hợp với tuổi, bệnh nền và khả năng dung nạp. Đồ uống thực vật không mặc nhiên tương đương sữa; kiểm tra đạm và vi chất trên nhãn.</td></tr>
+          <tr><td>Cá, tôm cua hoặc nhuyễn thể</td><td>Hỏi bác sĩ về phạm vi cần tránh; không tự suy rộng dị ứng một loài sang mọi loài nếu chưa được đánh giá. Thay đạm bằng thực phẩm khác an toàn với chính người bệnh.</td></tr>
+          <tr><td>Đậu phộng/hạt cây, đậu nành hoặc trứng</td><td>Duy trì nguồn đạm, chất béo tốt và vi chất từ món ăn phù hợp; chú ý gia vị, dầu, sốt và đồ ăn chế biến sẵn có thể chứa thành phần gây dị ứng.</td></tr>
+          <tr><td>Nhiều nhóm thức ăn cùng lúc</td><td>Nên có bác sĩ/chuyên gia dinh dưỡng hỗ trợ, nhất là trẻ nhỏ, người nhẹ cân, phụ nữ mang thai hoặc người có bệnh mạn tính.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Đi ăn ngoài ở Việt Nam: hỏi cả nguyên liệu lẫn cách chế biến</h2>
+    <p>Nước chấm, mắm tôm, mắm ruốc, sa tế, dầu chiên dùng chung, chảo/wok, dao thớt hoặc muỗng múc chung đều có thể làm món ăn tiếp xúc với tác nhân dị ứng. Nói rõ tên thực phẩm gây dị ứng và mức độ phản ứng; nếu quán không thể xác nhận nguyên liệu hoặc tách dụng cụ an toàn, chọn món khác hoặc địa điểm khác. Với thực phẩm đóng gói, đọc danh sách thành phần và cảnh báo trên chính sản phẩm đang mua; quy định ghi nhãn của mỗi nước có thể khác nhau.</p>
+
+    <div class="warning-box">
+      <h2>Dấu hiệu phản vệ cần cấp cứu</h2>
+      <p>Khó thở/khò khè, khàn tiếng hoặc cảm giác nghẹn họng, sưng lưỡi, choáng/ngất, tím tái hoặc nổi mày đay kèm nôn nhiều sau khi ăn cần được xử trí khẩn cấp. Gọi cấp cứu; nếu người bệnh đã được kê bút tiêm adrenaline và có kế hoạch cấp cứu, thực hiện đúng kế hoạch đó. Không chờ thuốc kháng histamine tự làm hết phản vệ.</p>
+    </div>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://acaai.org/allergies/testing-diagnosis/food-allergy-testing-and-diagnosis/" rel="noopener noreferrer">American College of Allergy, Asthma &amp; Immunology — Food Allergy Testing and Diagnosis</a>: kết hợp bệnh sử và đánh giá chuyên môn; cảnh báo test thương mại có thể gây kiêng ăn không cần thiết.</li>
+      <li><a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies" rel="noopener noreferrer">U.S. FDA — Food Allergies</a>: nhận biết tác nhân, đọc thành phần và giảm nguy cơ lẫn chéo trong thực phẩm đóng gói.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note, .warning-box { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .summary-box ul { margin-bottom: 0; padding-left: 1.2rem; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .warning-box { background: rgba(239, 68, 68, .08); border: 1px solid rgba(239, 68, 68, .25); }
+  .warning-box h2 { margin-top: 0; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 12px; }
+  table { width: 100%; min-width: 620px; border-collapse: collapse; background: var(--bg-card); }
+  th, td { text-align: left; vertical-align: top; padding: .8rem; border-bottom: 1px solid var(--border-color); }
+  th { background: var(--bg-soft); color: var(--primary); }
+  tr:last-child td { border-bottom: 0; }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

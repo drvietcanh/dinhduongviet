@@ -7,10 +7,10 @@ const foodData = foods.map(f => ({
   id: f.id, slug: f.slug, name: f.name, category: f.category,
   kcal: f.nutrients.energyKcal || 0, protein: f.nutrients.proteinG || 0,
   fat: f.nutrients.fatG || 0, carb: f.nutrients.carbG || 0,
-  fiber: f.nutrients.fiberG || 0, sodium: f.nutrients.sodiumMg || 0,
-  cholesterol: f.nutrients.cholesterolMg || 0, satFat: f.nutrients.saturatedFatG || 0,
-  sugar: f.nutrients.sugarG || 0, calcium: f.nutrients.calciumMg || 0,
-  iron: f.nutrients.ironMg || 0, potassium: f.nutrients.potassiumMg || 0,
+  fiber: f.nutrients.fiberG ?? null, sodium: f.nutrients.sodiumMg ?? null,
+  cholesterol: f.nutrients.cholesterolMg ?? null, satFat: f.nutrients.saturatedFatG ?? null,
+  sugar: f.nutrients.sugarG ?? null, calcium: f.nutrients.calciumMg ?? null,
+  iron: f.nutrients.ironMg ?? null, potassium: f.nutrients.potassiumMg ?? null,
 }));
 
 const recipeData = recipes.map(r => {
@@ -18,8 +18,8 @@ const recipeData = recipes.map(r => {
   return {
     slug: r.slug, name: r.name, servingName: r.servingName || "", servingWeightG: r.servingWeightG || 0,
     kcal: n.energyKcal || 0, protein: n.proteinG || 0, fat: n.fatG || 0,
-    carb: n.carbG || 0, fiber: n.fiberG || 0, sodium: n.sodiumMg || 0,
-    sugar: n.sugarG || 0, satFat: n.saturatedFatG || 0, cholesterol: n.cholesterolMg || 0,
+    carb: n.carbG || 0, fiber: n.fiberG ?? null, sodium: n.sodiumMg ?? null,
+    sugar: n.sugarG ?? null, satFat: n.saturatedFatG ?? null, cholesterol: n.cholesterolMg ?? null,
   };
 });
 ---
@@ -188,7 +188,10 @@ const recipeData = recipes.map(r => {
   }
 
   function getN(it) {
-    var r = { kcal:0, protein:0, fat:0, carb:0, fiber:0, sodium:0, satFat:0, sugar:0, chol:0, ca:0, fe:0, k:0 };
+    var r = { kcal:0, protein:0, fat:0, carb:0, fiber:null, sodium:null, satFat:null, sugar:null, chol:null, ca:null, fe:null, k:null };
+    function scaleOptional(value, ratio) {
+      return value == null || !Number.isFinite(Number(value)) ? null : Number(value) * ratio;
+    }
     if (it.type === "packaged") {
       var pn = it.nutrients || {};
       var base = Number(it.serving) || 100;
@@ -197,9 +200,14 @@ const recipeData = recipes.map(r => {
       r.protein = (Number(pn.proteinG) || 0) * ratio;
       r.fat = (Number(pn.fatG) || 0) * ratio;
       r.carb = (Number(pn.carbG) || 0) * ratio;
-      r.fiber = (Number(pn.fiberG) || 0) * ratio;
-      r.sodium = (Number(pn.sodiumMg) || 0) * ratio;
-      r.sugar = (Number(pn.sugarG) || 0) * ratio;
+      r.fiber = scaleOptional(pn.fiberG, ratio);
+      r.sodium = scaleOptional(pn.sodiumMg, ratio);
+      r.sugar = scaleOptional(pn.sugarG, ratio);
+      r.satFat = scaleOptional(pn.saturatedFatG, ratio);
+      r.chol = scaleOptional(pn.cholesterolMg, ratio);
+      r.ca = scaleOptional(pn.calciumMg, ratio);
+      r.fe = scaleOptional(pn.ironMg, ratio);
+      r.k = scaleOptional(pn.potassiumMg, ratio);
       return r;
     }
     if (it.type === "food") {
@@ -210,13 +218,14 @@ const recipeData = recipes.map(r => {
       r.protein = f.protein * ratio;
       r.fat = f.fat * ratio;
       r.carb = f.carb * ratio;
-      r.fiber = (f.fiber || 0) * ratio;
-      r.sodium = (f.sodium || 0) * ratio;
-      r.satFat = (f.satFat || 0) * ratio;
-      r.sugar = (f.sugar || 0) * ratio;
-      r.ca = (f.calcium || 0) * ratio;
-      r.fe = (f.iron || 0) * ratio;
-      r.k = (f.potassium || 0) * ratio;
+      r.fiber = scaleOptional(f.fiber, ratio);
+      r.sodium = scaleOptional(f.sodium, ratio);
+      r.satFat = scaleOptional(f.satFat, ratio);
+      r.sugar = scaleOptional(f.sugar, ratio);
+      r.chol = scaleOptional(f.cholesterol, ratio);
+      r.ca = scaleOptional(f.calcium, ratio);
+      r.fe = scaleOptional(f.iron, ratio);
+      r.k = scaleOptional(f.potassium, ratio);
       return r;
     }
     var rec = lookupItem(it);
@@ -226,33 +235,48 @@ const recipeData = recipes.map(r => {
     r.protein = rec.protein * p;
     r.fat = rec.fat * p;
     r.carb = rec.carb * p;
-    r.fiber = (rec.fiber || 0) * p;
-    r.sodium = (rec.sodium || 0) * p;
-    r.satFat = (rec.satFat || 0) * p;
-    r.sugar = (rec.sugar || 0) * p;
+    r.fiber = scaleOptional(rec.fiber, p);
+    r.sodium = scaleOptional(rec.sodium, p);
+    r.satFat = scaleOptional(rec.satFat, p);
+    r.sugar = scaleOptional(rec.sugar, p);
+    r.chol = scaleOptional(rec.cholesterol, p);
     return r;
   }
 
   function sumDay(dayLog) {
     var t = { kcal:0, protein:0, fat:0, carb:0, fiber:0, sodium:0, satFat:0, sugar:0, chol:0, ca:0, fe:0, k:0 };
+    var requiredKeys = ["kcal", "protein", "fat", "carb"];
+    var optionalKeys = ["fiber", "sodium", "satFat", "sugar", "chol", "ca", "fe", "k"];
+    var incomplete = Object.fromEntries(optionalKeys.map(function(key) { return [key, false]; }));
     Object.keys(dayLog).forEach(function(slot) {
       (dayLog[slot] || []).forEach(function(it) {
         var n = getN(it);
-        Object.keys(t).forEach(function(key) { t[key] += n[key] || 0; });
+        requiredKeys.forEach(function(key) { t[key] += n[key] || 0; });
+        optionalKeys.forEach(function(key) {
+          if (n[key] == null) incomplete[key] = true;
+          else t[key] += n[key];
+        });
       });
     });
     t.kcal = Math.round(t.kcal);
     t.protein = Math.round(t.protein);
     t.fat = Math.round(t.fat);
     t.carb = Math.round(t.carb);
-    t.fiber = Math.round(t.fiber * 10) / 10;
-    t.sodium = Math.round(t.sodium);
-    t.satFat = Math.round(t.satFat * 10) / 10;
-    t.sugar = Math.round(t.sugar * 10) / 10;
-    t.ca = Math.round(t.ca);
-    t.fe = Math.round(t.fe * 10) / 10;
-    t.k = Math.round(t.k);
+    optionalKeys.forEach(function(key) {
+      if (incomplete[key]) t[key] = null;
+      else t[key] = Math.round(t[key] * 10) / 10;
+    });
     return t;
+  }
+
+  function displayNutrient(value, unit) {
+    return value == null ? "Chưa đủ dữ liệu" : value + unit;
+  }
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function(character) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character];
+    });
   }
 
   function metricChip(icon, label, value) {
@@ -317,8 +341,8 @@ const recipeData = recipes.map(r => {
     body.appendChild(metricChip("🥩", "Đạm", totals.protein + "g"));
     body.appendChild(metricChip("🧈", "Béo", totals.fat + "g"));
     body.appendChild(metricChip("🍚", "Carb", totals.carb + "g"));
-    body.appendChild(metricChip("🌿", "Chất xơ", totals.fiber.toFixed(1) + "g"));
-    body.appendChild(metricChip("🧂", "Natri", totals.sodium + "mg"));
+    body.appendChild(metricChip("🌿", "Chất xơ", displayNutrient(totals.fiber == null ? null : totals.fiber.toFixed(1), "g")));
+    body.appendChild(metricChip("🧂", "Natri", displayNutrient(totals.sodium, "mg")));
 
     var note = document.createElement("div");
     note.className = "mt-summary-note";
@@ -873,8 +897,8 @@ const recipeData = recipes.map(r => {
             protein: Math.round(n.protein),
             fat: Math.round(n.fat),
             carb: Math.round(n.carb),
-            fiber: n.fiber.toFixed(1),
-            sodium: Math.round(n.sodium),
+            fiber: displayNutrient(n.fiber == null ? null : n.fiber.toFixed(1), "g"),
+            sodium: displayNutrient(n.sodium == null ? null : Math.round(n.sodium), "mg"),
           });
         });
       });
@@ -889,7 +913,12 @@ const recipeData = recipes.map(r => {
       rows.push([r.date, r.meal, r.name, r.type, r.amount, r.kcal, r.protein, r.fat, r.carb, r.fiber, r.sodium]);
     });
     var csv = rows.map(function(r) {
-      return r.map(function(v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(",");
+      return r.map(function(v, index) {
+        var value = String(v == null ? "" : v);
+        // Product names and labels can be user-entered; prevent spreadsheet formulas.
+        if (index < 5 && /^\s*[=+@-]/.test(value)) value = "'" + value;
+        return '"' + value.replace(/"/g, '""') + '"';
+      }).join(",");
     }).join("\n");
     var blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
     var a = document.createElement("a");
@@ -912,11 +941,11 @@ const recipeData = recipes.map(r => {
       h += '<table><tr><th>Tên</th><th>Loại</th><th>Khẩu phần</th><th>Kcal</th><th>Đạm</th><th>Béo</th><th>Carb</th></tr>';
       items.forEach(function(it) {
         var n = getN(it);
-        h += '<tr><td>' + getName(it) + '</td><td>' + getTypeLabel(it) + '</td><td>' + it.amount + 'g</td><td>' + Math.round(n.kcal) + '</td><td>' + Math.round(n.protein) + 'g</td><td>' + Math.round(n.fat) + 'g</td><td>' + Math.round(n.carb) + 'g</td></tr>';
+      h += '<tr><td>' + escapeHtml(getName(it)) + '</td><td>' + escapeHtml(getTypeLabel(it)) + '</td><td>' + escapeHtml(it.amount) + 'g</td><td>' + Math.round(n.kcal) + '</td><td>' + Math.round(n.protein) + 'g</td><td>' + Math.round(n.fat) + 'g</td><td>' + Math.round(n.carb) + 'g</td></tr>';
       });
       h += '</table>';
     });
-    h += '<div class="sum"><b>Tổng hợp dữ liệu đã nhập:</b> 🔥 ' + totals.kcal + ' kcal | 🥩 Đạm ' + totals.protein + 'g | 🧈 Béo ' + totals.fat + 'g | 🍚 Carb ' + totals.carb + 'g | 🌿 Chất xơ ' + totals.fiber.toFixed(1) + 'g | 🧂 Natri ' + totals.sodium + 'mg</div>';
+    h += '<div class="sum"><b>Tổng hợp dữ liệu đã nhập:</b> 🔥 ' + totals.kcal + ' kcal | 🥩 Đạm ' + totals.protein + 'g | 🧈 Béo ' + totals.fat + 'g | 🍚 Carb ' + totals.carb + 'g | 🌿 Chất xơ ' + displayNutrient(totals.fiber == null ? null : totals.fiber.toFixed(1), 'g') + ' | 🧂 Natri ' + displayNutrient(totals.sodium, 'mg') + '</div>';
     h += '<div style="margin-top:12px;font-size:11px;color:#666;">' + SAFETY_MESSAGE + '</div>';
     h += '</body></html>';
 
@@ -960,6 +989,8 @@ const recipeData = recipes.map(r => {
   });
 })();
 </script>
+
+</BaseLayout>
 
 <style is:global>
   #mt-root { max-width: 720px; margin: 0 auto; padding: 0 0 40px; }

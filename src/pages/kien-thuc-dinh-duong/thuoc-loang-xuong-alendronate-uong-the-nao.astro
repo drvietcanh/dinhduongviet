@@ -1,0 +1,60 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["thuoc-loang-xuong-alendronate-uong-the-nao"];
+if (!art) throw new Error("Article not found: thuoc-loang-xuong-alendronate-uong-the-nao");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>Quy tắc dùng alendronate dạng uống</h2>
+      <ul>
+        <li>Uống vào buổi sáng ngay sau khi thức dậy, trước ăn/uống, với một cốc nước lọc thường.</li>
+        <li>Chờ ít nhất 30 phút trước khi ăn, uống trà/cà phê/sữa, dùng canxi, vitamin hoặc thuốc khác; giữ tư thế ngồi/đứng thẳng ít nhất 30 phút.</li>
+        <li>Không uống cùng sữa, trà, cà phê, nước trái cây hay nước khoáng; chúng có thể làm thuốc hấp thu kém.</li>
+        <li>Thực hiện đúng tờ hướng dẫn của đúng chế phẩm; không suy rộng mốc 30 phút cho mọi thuốc loãng xương đường uống.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Phạm vi:</strong> Bài này nói về alendronate uống. Một số thuốc bisphosphonate khác, dạng sủi/dung dịch hoặc chế phẩm phối hợp có hướng dẫn khác. Nếu tờ hướng dẫn tại Việt Nam khác, ưu tiên đơn và nhãn của chính sản phẩm, hỏi dược sĩ khi chưa rõ.</p>
+
+    <h2>Vì sao thời điểm uống lại quan trọng?</h2>
+    <p>Thức ăn, đồ uống và khoáng chất như canxi có thể làm alendronate hấp thu rất kém. Uống sai cách vừa làm giảm lượng thuốc được hấp thu, vừa có thể kích ứng hoặc làm tổn thương thực quản. Vì vậy, đây là thuốc cần gắn với một trình tự buổi sáng rõ ràng, không phải viên uống kèm bữa ăn.</p>
+
+    <h2>Trình tự buổi sáng dễ nhớ</h2>
+    <ol>
+      <li>Để thuốc cạnh một cốc nước lọc thường, ở nơi dễ nhớ nhưng xa tầm tay trẻ em.</li>
+      <li>Sau khi thức dậy, nuốt nguyên viên với khoảng 180–240 ml nước lọc; không nằm lại.</li>
+      <li>Trong ít nhất 30 phút, không ăn, không uống thứ khác và không dùng canxi, vitamin, thuốc kháng acid hay thuốc uống khác.</li>
+      <li>Ngồi hoặc đứng thẳng trong ít nhất 30 phút và cho đến sau bữa ăn đầu tiên trong ngày; sau thời gian chờ mới dùng bữa sáng và các thuốc khác theo hướng dẫn.</li>
+    </ol>
+    <p>Không nghiền, nhai hoặc ngậm viên nếu nhãn thuốc không cho phép. Nếu khó nhớ lịch hằng tuần, hãy dùng lịch nhắc và xác nhận cách xử trí liều quên với dược sĩ; không tự uống gấp đôi.</p>
+
+    <h2>Canxi, vitamin D và bữa ăn</h2>
+    <p>Điều trị loãng xương thường đi cùng mục tiêu đủ canxi, vitamin D và đạm, nhưng liều bổ sung cần cá thể hóa. Có thể ưu tiên thực phẩm như sữa/chế phẩm phù hợp, đậu phụ kết tủa bằng canxi, cá nhỏ ăn cả xương và rau; người bệnh thận, có sỏi thận, tăng canxi máu hoặc đang dùng nhiều thuốc nên hỏi bác sĩ trước khi uống viên bổ sung.</p>
+    <p>Đặt viên canxi/vitamin sau khoảng chờ của alendronate và theo đúng toa. Không tự bỏ canxi hoặc tự tăng liều chỉ vì đã được kê thuốc loãng xương; bác sĩ có thể điều chỉnh dựa trên khẩu phần, xét nghiệm, chức năng thận và nguy cơ gãy xương.</p>
+
+    <h2>Ai cần hỏi bác sĩ trước khi tiếp tục dùng?</h2>
+    <p>Báo cho bác sĩ nếu khó nuốt, đau khi nuốt, viêm loét thực quản/dạ dày, không thể ngồi hoặc đứng thẳng 30 phút, hạ canxi máu, bệnh thận đáng kể hoặc đang mang thai/cho con bú. Đau ngực, ợ nóng mới xuất hiện hoặc nặng lên, đau khi nuốt hay khó nuốt cần được đánh giá sớm.</p>
+    <p>Không tự ngưng thuốc chống loãng xương hoặc đổi sang thực phẩm chức năng. Nếu có lịch nhổ răng/phẫu thuật răng, báo cả bác sĩ điều trị và nha sĩ đang dùng alendronate.</p>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://medlineplus.gov/druginfo/meds/a601011.html" rel="noopener noreferrer">MedlinePlus — Alendronate Drug Information</a>: cách uống lúc đói với nước lọc, thời gian chờ, tư thế thẳng, tương tác canxi/thuốc uống và chế độ ăn canxi-vitamin D.</li>
+      <li><a href="https://www.nhs.uk/medicines/alendronic-acid/" rel="noopener noreferrer">NHS — Alendronic acid</a>: hướng dẫn sử dụng và các lưu ý an toàn cho người bệnh.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .summary-box ul { margin-bottom: 0; padding-left: 1.2rem; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

@@ -1,59 +1,43 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
-
 const article = articleBySlug["dinh-duong-ung-thu-vu"];
+if (!article) throw new Error("Article not found: dinh-duong-ung-thu-vu");
 ---
 
-<ArticleLayout article={article as any}>
-  <section class="article-section" data-section="summary">
-    <h2>Tóm tắt</h2>
-    Ung thư vú là loại ung thư phổ biến nhất ở phụ nữ. Dinh dưỡng có vai trò hỗ trợ trong quá trình điều trị, phục hồi và kiểm soát các yếu tố nguy cơ sau điều trị.
-
-<p>Bài này dành cho <strong>người đang điều trị</strong> và <strong>người đã hoàn thành điều trị</strong> — hai giai đoạn có mục tiêu dinh dưỡng khác nhau.</p>
+<ArticleLayout article={article}>
+  <section class="section card">
+    <p>Dinh dưỡng khi ung thư vú phụ thuộc vào giai đoạn bệnh, phẫu thuật/hóa trị/xạ trị/nội tiết, triệu chứng và tình trạng dinh dưỡng. Trong điều trị, ưu tiên thường là ăn uống an toàn, đủ năng lượng và duy trì cơ thể; sau điều trị, có thể hướng tới kiểu ăn lành mạnh lâu dài. Không có món ăn nào thay thế thuốc, phẫu thuật hay điều trị ung thư.</p>
   </section>
-
-  <section class="article-section" data-section="diet-principles">
-    <h2>Nguyên tắc dinh dưỡng</h2>
+  <section class="section card">
+    <h2>Trong quá trình điều trị</h2>
     <ul>
-<li><strong>Duy trì cân nặng khỏe mạnh:</strong> Thừa cân, đặc biệt sau mãn kinh, có liên quan với tiên lượng kém hơn ở một số nhóm. Nếu đang hóa trị, ưu tiên giữ cân và đủ dinh dưỡng — không tự giảm cân.</li>
-<li><strong>Hạn chế rượu bia:</strong> Rượu là yếu tố nguy cơ rõ rệt cho ung thư vú. An toàn nhất là không uống; nếu vẫn uống, nên trao đổi với bác sĩ và giữ ở mức thấp nhất có thể.</li>
-<li><strong>Khẩu phần giàu thực vật:</strong> Rau xanh, trái cây mọng, đậu, ngũ cốc nguyên hạt và cá béo nếu phù hợp.</li>
-<li><strong>Đủ đạm:</strong> 1.2–1.5g/kg/ngày trong hóa trị/xạ trị để giữ cơ.</li>
-<li><strong>Hạn chế đường tinh luyện & thịt chế biến sẵn.</strong></li>
-</ul>
+      <li>Nhu cầu protein và năng lượng thay đổi theo từng người; không áp một con số g/kg cho tất cả người đang hóa trị/xạ trị.</li>
+      <li>Nếu sụt cân, ăn kém, buồn nôn, tiêu chảy, táo bón, loét miệng hoặc khó nuốt, báo nhóm ung bướu sớm; bác sĩ/dinh dưỡng viên có thể điều chỉnh thức ăn hoặc hỗ trợ triệu chứng.</li>
+      <li>Không tự nhịn ăn, theo chế độ keto/“chống ung thư”, cắt toàn bộ đường/tinh bột hoặc dùng sản phẩm “tăng miễn dịch” để cải thiện đáp ứng điều trị.</li>
+      <li>Không cần kiêng rau quả tươi một cách thường quy chỉ vì đang hóa trị; tuân thủ hướng dẫn vệ sinh an toàn thực phẩm và chỉ dẫn riêng của nhóm điều trị nếu miễn dịch suy giảm hoặc có tình trạng đặc biệt.</li>
+      <li>Không tự dùng vitamin/chất chống oxy hóa liều cao, thảo dược hoặc thực phẩm bổ sung khi chưa rà soát với bác sĩ/dược sĩ ung bướu vì nguy cơ tương tác.</li>
+    </ul>
   </section>
-
-  <section class="article-section" data-section="foods-to-eat">
-    <h2>Thực phẩm nên ăn</h2>
-    <div class="food-table">
-<div class="food-row"><span class="food-cat">🥦 Rau họ cải</span><span>Bông cải xanh, bắp cải, cải xoăn, cải thìa — chứa sulforaphane và các hợp chất thực vật có thể hỗ trợ sức khỏe tế bào</span></div>
-<div class="food-row"><span class="food-cat">🫐 Trái cây mọng</span><span>Việt quất, dâu tây, mâm xôi — giàu anthocyanin và polyphenol</span></div>
-<div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu, cá saba — nguồn omega-3 trong khẩu phần</span></div>
-<div class="food-row"><span class="food-cat">🫘 Đậu nành</span><span>Đậu hũ, sữa đậu nành, edamame — isoflavone an toàn, thậm chí có lợi (trừ khi đang dùng tamoxifen và có chỉ định kiêng)</span></div>
-<div class="food-row"><span class="food-cat">🫒 Dầu olive</span><span>Dầu olive nguyên chất — nguồn chất béo không bão hòa</span></div>
-</div>
+  <section class="section grid two">
+    <div class="card">
+      <h2>Đậu nành và tamoxifen</h2>
+      <p>Đậu phụ, sữa đậu nành và các món đậu nành nguyên thực phẩm thường không cần kiêng chỉ vì đã chẩn đoán ung thư vú hoặc đang dùng tamoxifen. Dữ liệu quan sát ở người sống sau ung thư vú không cho thấy thực phẩm đậu nành làm tăng tái phát; tuy nhiên, điều đó không chứng minh đậu nành điều trị ung thư.</p>
+      <p>Viên isoflavone/chiết xuất đậu nành đậm đặc khác với thức ăn và chưa rõ lợi ích-an toàn; nên hỏi nhóm ung bướu trước khi dùng. Không ngừng hoặc đổi tamoxifen theo lời khuyên trên mạng.</p>
+    </div>
+    <div class="card">
+      <h2>Ăn uống sau điều trị</h2>
+      <ul>
+        <li>Ưu tiên cách ăn đa dạng với rau, trái cây, đậu, ngũ cốc phù hợp, cá và các nguồn đạm khác; điều chỉnh theo sở thích, bệnh nền và khả năng duy trì.</li>
+        <li>Hạn chế đồ uống có cồn và trao đổi với bác sĩ về ảnh hưởng tới nguy cơ sức khỏe, thuốc đang dùng và bệnh gan; nếu không uống thì không nên bắt đầu vì lợi ích sức khỏe.</li>
+        <li>Nếu muốn quản lý cân nặng sau điều trị, chọn mục tiêu thực tế, tránh giảm cân khi còn suy dinh dưỡng hoặc đang có tác dụng phụ; có thể xin tư vấn chuyên môn.</li>
+        <li>Không cần loại bỏ hoàn toàn đậu nành, đường, thịt hoặc một nhóm thực phẩm duy nhất để ngăn tái phát. Bằng chứng về chế độ ăn đặc hiệu giúp ngăn ung thư vú tái phát còn hạn chế.</li>
+      </ul>
+    </div>
   </section>
-
-  <section class="article-section" data-section="foods-to-limit">
-    <h2>Thực phẩm cần hạn chế</h2>
-    <ul>
-<li><strong>Rượu bia:</strong> Có liên quan với nguy cơ ung thư vú và nên hạn chế tối đa, đặc biệt sau điều trị</li>
-<li><strong>Thịt đỏ & thịt chế biến sẵn:</strong> Xúc xích, thịt xông khói, đồ hộp</li>
-<li><strong>Đường tinh luyện:</strong> Bánh ngọt, nước ngọt, thức uống có đường</li>
-<li><strong>Chất béo chuyển hóa:</strong> Đồ chiên rán công nghiệp</li>
-<li><strong>Thuốc bổ sung liều cao:</strong> Tránh dùng liều cao beta-carotene, vitamin E mà không hỏi bác sĩ</li>
-</ul>
-  </section>
-
-  <section class="article-section" data-section="faq">
-    <h2>Câu hỏi thường gặp</h2>
-    <details class="faq-item"><summary>Ăn đậu nành có gây ung thư vú không?</summary><p>Đậu nành nguyên thực phẩm thường không cần kiêng hoàn toàn. Có thể dùng lượng vừa phải như đậu hũ, sữa đậu nành không đường hoặc edamame; tránh viên isoflavone liều cao nếu chưa có chỉ định.</p></details>
-<details class="faq-item"><summary>Có nên uống nước ép trái cây để thanh lọc cơ thể?</summary><p>Không khuyến khích. Nước ép mất chất xơ, làm tăng đường huyết nhanh. Tốt nhất ăn trái cây nguyên quả. Không có bằng chứng cho thấy cách này giúp điều trị ung thư.</p></details>
-  </section>
-
-  <section class="article-section" data-section="summary-reminder">
-    <h2>💡 Nhớ chính</h2>
-    <div class="key-takeaway"><p><strong>3 điều quan trọng nhất:</strong> (1) Duy trì cân nặng khỏe theo giai đoạn điều trị, (2) hạn chế rượu — không rượu nếu có thể, (3) không tin các trào lưu thanh lọc cơ thể, không uống thuốc bổ liều cao mà không hỏi bác sĩ. Đậu nành nguyên thực phẩm có thể dùng vừa phải.</p></div>
+  <section class="section card">
+    <h2>Khi nào cần được hỗ trợ dinh dưỡng?</h2>
+    <p>Hãy đề nghị đánh giá dinh dưỡng nếu cân nặng giảm ngoài ý muốn, ăn/uống không đủ, mất cơ hoặc triệu chứng làm cản trở ăn uống. Người bị ung thư tiến triển và chán ăn/sụt cân cần được tư vấn thực tế, thay vì chạy theo chế độ cực đoan. Đi khám khẩn theo hướng dẫn của đội điều trị nếu sốt, mất nước, nôn kéo dài hoặc có tác dụng phụ nặng.</p>
+    <p><strong>Thông điệp chính:</strong> thực phẩm hỗ trợ sức khỏe và khả năng dung nạp điều trị; không có “siêu thực phẩm” hay thực đơn chung chữa được ung thư vú.</p>
   </section>
 </ArticleLayout>

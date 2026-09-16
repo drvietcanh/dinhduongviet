@@ -26,6 +26,8 @@ export interface CarbMealItemResult {
 
 export interface CarbMealResult {
   ok: boolean;
+  /** False when the displayed subtotal excludes one or more selected foods. */
+  totalCarbComplete: boolean;
   totalCarbGrams: number;
   carbServings: number | null;
   carbServingGrams: number;
@@ -104,6 +106,7 @@ export function calculateCarbMeal(
   });
 
   const totalCarbGrams = round1(items.reduce((sum, item) => sum + (item.carbGrams ?? 0), 0));
+  const totalCarbComplete = items.every((item) => item.carbGrams != null);
   items.forEach((item) => {
     item.contributionPercent = totalCarbGrams > 0 && item.carbGrams != null
       ? round1((item.carbGrams / totalCarbGrams) * 100)
@@ -114,8 +117,11 @@ export function calculateCarbMeal(
 
   return {
     ok: errors.length === 0,
+    totalCarbComplete,
     totalCarbGrams,
-    carbServings: includeCarbServings && carbServingGrams > 0 ? round1(totalCarbGrams / carbServingGrams) : null,
+    carbServings: totalCarbComplete && includeCarbServings && carbServingGrams > 0
+      ? round1(totalCarbGrams / carbServingGrams)
+      : null,
     carbServingGrams,
     items,
     warnings,

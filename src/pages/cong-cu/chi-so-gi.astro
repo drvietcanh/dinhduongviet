@@ -17,7 +17,7 @@ const limits = [
   "GI chỉ mô tả tốc độ làm tăng đường huyết của thực phẩm chứa carbohydrate trong điều kiện thử nghiệm.",
   "GI không đủ để quyết định một món có phù hợp cho từng người hay từng bệnh nền hay không.",
   "Khẩu phần, lượng carbohydrate thực tế, cách chế biến, món ăn đi kèm, vận động và thuốc đang dùng đều có thể làm thay đổi đáp ứng sau ăn.",
-  "V1 không đặt mốc GI, carb hoặc chỉ số theo dõi cá nhân.",
+  "Trang không đặt ngưỡng GI, lượng carbohydrate hay chỉ số theo dõi cá nhân.",
 ];
 
 const prepareItems = [
@@ -36,7 +36,7 @@ const relatedLinks = [
   {
     href: "/cong-cu/tinh-gl-bua-an",
     title: "Tính GL từ bữa ăn",
-    desc: "Ước tính tải đường huyết của bữa ăn trong phạm vi đã kiểm v1.",
+    desc: "Ước tính tải đường huyết theo GI và carbohydrate khả dụng khi dữ liệu phù hợp.",
   },
   {
     href: "/cong-cu/khau-phan-viet-clinical",
@@ -101,7 +101,7 @@ const relatedLinks = [
       </article>
 
       <article class="info-panel">
-        <h2>Công cụ liên quan đã kiểm</h2>
+      <h2>Công cụ liên quan</h2>
         <div class="link-list">
           {relatedLinks.map((link) => (
             <a href={link.href} class="tool-link">

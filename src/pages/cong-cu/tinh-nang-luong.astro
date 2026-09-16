@@ -1,25 +1,24 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const pageTitle = "Tính BMR & TDEE tham khảo | Dinh dưỡng Việt";
-const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và tổng tiêu hao mỗi ngày (TDEE) theo công thức Mifflin-St Jeor.";
+const pageTitle = "Ước tính năng lượng nghỉ & TDEE | Dinh dưỡng Việt";
+const pageDescription = "Ước tính năng lượng nghỉ theo Mifflin-St Jeor và mức tiêu hao theo hoạt động cho người lớn.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <section>
     <span class="badge">📊 Công cụ</span>
-    <h1>Tính năng lượng tham khảo (BMR & TDEE)</h1>
+    <h1>Ước tính năng lượng nghỉ và TDEE</h1>
     <p class="lead">
-      Công cụ này ước tính năng lượng nền theo Mifflin-St Jeor rồi nhân hệ số
-      hoạt động để cho ra <strong>BMR</strong> và <strong>TDEE</strong> tham
-      khảo ban đầu. Đây là mốc giáo dục cho người lớn, không phải toa năng
-      lượng điều trị cá thể.
+      Công cụ ước tính năng lượng nghỉ (REE) theo Mifflin-St Jeor rồi nhân hệ số
+      hoạt động để tham khảo tổng tiêu hao mỗi ngày (TDEE). Đây là mốc giáo dục,
+      không phải toa năng lượng điều trị cá thể.
     </p>
   </section>
 
   <div class="disclaimer">
-    ⚠️ <strong>Lưu ý:</strong> Kết quả chỉ mang tính tham khảo cho người trưởng
-    thành từ 18 tuổi. Không dùng riêng kết quả này để tự chỉnh thuốc, insulin,
+    ⚠️ <strong>Lưu ý:</strong> Phương trình Mifflin-St Jeor được xây dựng từ người
+    trưởng thành; trang này chỉ nhận tuổi 19–78. Không dùng riêng kết quả này để tự chỉnh thuốc, insulin,
     lợi tiểu hoặc chế độ điều trị. Người có bệnh nền, đang dùng thuốc, thai kỳ,
     rối loạn ăn uống hoặc nhu cầu vận động đặc biệt nên hỏi bác sĩ hoặc chuyên
     gia dinh dưỡng.
@@ -42,7 +41,7 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       </div>
       <div>
         <label for="age">Độ tuổi (năm)</label>
-        <input type="number" id="age" inputmode="numeric" placeholder="Ví dụ: 30" min="18" max="100" />
+        <input type="number" id="age" inputmode="numeric" placeholder="Ví dụ: 30" min="19" max="78" />
       </div>
     </div>
 
@@ -80,10 +79,10 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
 
     <div class="grid two energy-result-grid">
       <div class="energy-stat-card">
-        <span class="muted energy-stat-label">Năng lượng nền (BMR)</span>
+        <span class="muted energy-stat-label">Năng lượng nghỉ ước tính (REE)</span>
         <strong id="bmr-result" class="energy-stat-value energy-stat-value-brand">0</strong>
         <span class="energy-stat-unit">kcal / ngày</span>
-        <p class="muted energy-stat-copy">Là lượng calo cơ thể đốt cháy khi nằm bất động để thở, bơm máu và duy trì hoạt động nền.</p>
+        <p class="muted energy-stat-copy">Ước tính năng lượng tiêu hao lúc nghỉ; phương trình có sai số và không thay thế đo chuyển hóa gián tiếp.</p>
       </div>
 
       <div class="energy-stat-card energy-stat-card-accent">
@@ -292,8 +291,8 @@ const pageDescription = "Công cụ ước tính năng lượng nền (BMR) và 
       return;
     }
 
-    if (age < 18 || age > 100) {
-      setMessage("Công cụ này chỉ áp dụng cho người trưởng thành từ 18 - 100 tuổi.");
+    if (age < 19 || age > 78) {
+      setMessage("Phương trình này chỉ được dùng tham khảo trong phạm vi tuổi 19–78.");
       return;
     }
 

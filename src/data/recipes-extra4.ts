@@ -79,8 +79,8 @@ export const extraRecipes4: Recipe[] = [
     ]
   },
   {
-    id: "banh-bo", slug: "banh-bo", name: "Bánh bò (bánh bò hấp)",
-    aliases: ["banh bo hap", "bánh bò hấp"],
+    id: "banh-bo", slug: "banh-bo", name: "Bánh bò hấp",
+    aliases: ["banh bo", "bánh bò", "banh bo hap", "bánh bò hấp"],
     servingName: "3 cái", servingWeightG: 120,
     tags: ["vietnamese", "street-food"],
     portionNote: "Bánh bột gạo nở, ngọt nhẹ.",

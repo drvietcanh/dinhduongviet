@@ -2,112 +2,41 @@
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["sai-lam-gan-nhiem-mo-an-mo"];
+if (!article) throw new Error("Article not found: sai-lam-gan-nhiem-mo-an-mo");
 ---
 
-<ArticleLayout article={article as any}>
-
-Bệnh nhân gan nhiễm mỡ thường tự kết luận: "chắc tại mình ăn nhiều mỡ quá" — rồi bỏ hẳn mỡ, ăn toàn rau luộc. Thực tế, gan nhiễm mỡ thường liên quan tổng năng lượng dư thừa, thừa cân, đề kháng insulin, rượu bia và khẩu phần nhiều đường/tinh bột tinh chế; không chỉ do ăn mỡ.
-
-## 🔬 Cơ chế: Tại sao gan nhiễm mỡ không do ăn mỡ?
-
-Mỡ trong gan đến từ 2 nguồn chính:
-1. **Mỡ từ thức ăn** — nhưng được xử lý qua ruột, không trực tiếp vào gan
-2. **Mỡ do gan tự tổng hợp từ năng lượng dư thừa, đặc biệt khi khẩu phần nhiều đường và tinh bột tinh chế**
-
-Khi bạn ăn dư năng lượng, nhất là từ nước ngọt, đồ ngọt và tinh bột tinh chế, insulin và chuyển hóa tại gan có thể thúc đẩy tổng hợp triglyceride, góp phần làm mỡ tích tụ trong gan.
-
-## 🚫 Sai lầm: "Bỏ mỡ, ăn nhiều rau là hết gan nhiễm mỡ"
-
-**Sự thật:** Nếu bạn bỏ mỡ nhưng vẫn ăn nhiều cơm trắng, bún, phở, bánh mì, nước ngọt — gan vẫn tổng hợp mỡ từ đường.
-
-## ✅ Thủ phạm thực sự
-
-<table>
-<thead>
-<tr>
-<th>Yếu tố</th>
-<th>Mức độ ảnh hưởng</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>**Đường, nước ngọt**</td>
-<td>⭐⭐⭐ Rất cao</td>
-</tr>
-<tr>
-<td>**Tinh bột tinh chế (cơm trắng, bánh mì, bún phở)**</td>
-<td>⭐⭐⭐ Cao</td>
-</tr>
-<tr>
-<td>**Béo phì, mỡ nội tạng**</td>
-<td>⭐⭐⭐ Rất cao</td>
-</tr>
-<tr>
-<td>**Ít vận động**</td>
-<td>⭐⭐ Cao</td>
-</tr>
-<tr>
-<td>**Chất béo bão hòa, chất béo chuyển hóa**</td>
-<td>⭐⭐ Trung bình</td>
-</tr>
-<tr>
-<td>**Chất béo lành mạnh (olive, omega-3)**</td>
-<td>🟢 Có lợi</td>
-</tr>
-</tbody>
-</table>
-> **Không nên cắt sạch chất béo lành mạnh; điều quan trọng là giảm năng lượng dư thừa, đường/nước ngọt, tinh bột tinh chế và rượu bia nếu có.**
-
-## 🥗 Ăn gì để cải thiện gan nhiễm mỡ?
-
-### Cần giảm
-
-- Nước ngọt, trà sữa, nước ép đóng chai
-- Cơm trắng (giảm 1/2), bún phở, bánh mì trắng
-- Đồ nướng, chiên với dầu tái sử dụng
-- Rượu bia (nếu có viêm gan do rượu)
-
-### Cần tăng
-
-- Rau xanh (đặc biệt rau họ cải: bông cải, cải xoăn)
-- Chất béo lành mạnh (dầu olive, cá béo, hạt, bơ)
-- Đạm nạc (cá, gà bỏ da, đậu hũ)
-- Chất xơ hòa tan (yến mạch, đậu, táo)
-
-## ⚖️ So sánh: Ăn mỡ vs Ăn đường
-
-<table>
-<thead>
-<tr>
-<th>Ăn mỡ</th>
-<th>Ăn đường/tinh bột dư</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tác động lên gan</td>
-<td>Ít (nếu mỡ lành)</td>
-</tr>
-<tr>
-<td>Tác động lên insulin</td>
-<td>Thấp</td>
-</tr>
-<tr>
-<td>Tích tụ mỡ gan</td>
-<td>Nhẹ</td>
-</tr>
-<tr>
-<td>Ví dụ điển hình</td>
-<td>Dầu olive, cá hồi</td>
-</tr>
-</tbody>
-</table>
-> **Kết luận:** Gan nhiễm mỡ thường liên quan đề kháng insulin, thừa cân, rượu bia, ít vận động và khẩu phần dư năng lượng. Bỏ mỡ nhưng vẫn uống nước ngọt, ăn nhiều tinh bột tinh chế hoặc dư calo thì khó cải thiện. Thay đổi chính: giảm đường/tinh bột tinh chế, tăng chất xơ, chọn chất béo lành mạnh, tập thể dục và giảm cân nếu thừa cân.
-
-## 🥗 Tóm tắt nhanh
-
-- ❌ Sai: "Bỏ mỡ là hết gan nhiễm mỡ"
-- ✅ Đúng: "Giảm đường, giảm tinh bột tinh chế, bỏ nước ngọt và kiểm soát tổng năng lượng mới là chính"
-- Thực tế: khẩu phần nhiều cơm/bún/phở kèm nước ngọt, ít vận động và thừa cân có thể góp phần lớn vào gan nhiễm mỡ ở nhiều người
-
+<ArticleLayout article={article}>
+  <section class="section card">
+    <p>Gan nhiễm mỡ không thể quy về “ăn nhiều mỡ” hay “ăn nhiều đường” riêng lẻ. Tổng thể lối sống, chuyển hóa, cân nặng/phân bố mỡ, rượu bia, bệnh nền và một số thuốc đều có thể liên quan. Vì vậy, bỏ hết dầu mỡ nhưng vẫn dùng nhiều nước ngọt không phải kế hoạch điều trị đầy đủ.</p>
+  </section>
+  <section class="section card">
+    <h2>Chất béo không phải một nhóm đồng nhất</h2>
+    <p>Cơ thể cần chất béo trong khẩu phần. Nên hạn chế dùng thường xuyên món chiên ngập dầu, mỡ bão hòa và thực phẩm chế biến nhiều năng lượng; có thể thay một phần bằng cá, các loại hạt hoặc dầu thực vật tùy khả năng và khẩu phần. Điều này hỗ trợ chất lượng bữa ăn nhưng không phải “thuốc trị gan”.</p>
+    <p>Tương tự, tinh bột không bị cấm: cơm, bún, phở và khoai có thể nằm trong bữa ăn cân đối. Lượng ăn nên phù hợp nhu cầu, hoạt động, đường huyết và điều trị đi kèm. Ưu tiên giảm đồ uống có đường, đồ ăn thêm đường và khẩu phần dư năng lượng thường hữu ích hơn việc cấm hẳn một món.</p>
+  </section>
+  <section class="section grid two">
+    <div class="card">
+      <h2>Điều có thể thử trước</h2>
+      <ul>
+        <li>Thay dần nước ngọt/trà sữa bằng thức uống ít hoặc không đường.</li>
+        <li>Ăn đủ rau, đậu và trái cây nguyên quả; không loại bỏ trái cây chỉ vì có vị ngọt.</li>
+        <li>Đa dạng cá, trứng, đậu phụ, thịt nạc và cách chế biến; bớt món chiên, nước sốt nhiều đường.</li>
+        <li>Nếu thừa cân, đặt mục tiêu thay đổi bền vững cùng nhân viên y tế thay vì nhịn ăn hoặc giảm cân cấp tốc.</li>
+        <li>Vận động đều theo thể trạng; không cần theo một bài tập hoặc số phút cố định mới có ích.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Điều không nên tự làm</h2>
+      <ul>
+        <li>Không kiêng sạch dầu mỡ, cơm, bún, phở hoặc mọi loại trái cây.</li>
+        <li>Không uống dầu ô liu, nghệ, omega-3 hay “mát gan” với kỳ vọng làm tan mỡ gan.</li>
+        <li>Không ngừng thuốc kê đơn hoặc trì hoãn đánh giá xơ hóa chỉ vì men gan giảm.</li>
+        <li>Không tự áp thực đơn cắt năng lượng cho người già, nhẹ cân, suy dinh dưỡng, xơ gan hoặc đang mang thai.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section card">
+    <h2>Thông điệp chính</h2>
+    <p>Thay đổi có hiệu quả thường đến từ cả kiểu ăn và thói quen theo thời gian, kết hợp xử trí đái tháo đường, mỡ máu, huyết áp và các yếu tố nguy cơ khác. Gan nhiễm mỡ cần được đánh giá y khoa; chế độ ăn không xác định được mức độ xơ hóa.</p>
+  </section>
 </ArticleLayout>

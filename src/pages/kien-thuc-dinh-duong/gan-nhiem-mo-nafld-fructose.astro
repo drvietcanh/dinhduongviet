@@ -1,51 +1,40 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
-
 const art = articleBySlug["gan-nhiem-mo-nafld-fructose"];
 if (!art) throw new Error("Article not found: gan-nhiem-mo-nafld-fructose");
 ---
 
 <ArticleLayout article={art}>
-
-<!-- 1️⃣ Tình huống -->
-<section class="section card">
-  <p>Anh Tuấn (38 tuổi) là một người ăn chay trường, thân hình mảnh khảnh, hầu như không ăn mỡ lợn và cũng hiếm khi nhậu nhẹt. Thế nhưng, trong đợt khám công ty, kết quả siêu âm báo anh bị Gan nhiễm mỡ độ 2. Anh sốc nặng, mang kết quả lên gặp bác sĩ thắc mắc: "Tôi có ăn mỡ động vật đâu mà gan lại nhiễm mỡ?". Qua khai thác thói quen, bác sĩ phát hiện anh Tuấn thường xuyên uống nước ép trái cây đóng hộp và ngày nào cũng ăn bánh quy ngọt để lót dạ.</p>
-</section>
-
-<!-- 2️⃣ TL;DR -->
-<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
-  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
-    <strong>👉 Gan nhiễm mỡ không chỉ đến từ ăn mỡ. Dư năng lượng, tăng cân, kháng insulin, rượu bia và đồ uống/đồ ngọt nhiều đường đều có thể góp phần. <u>Fructose từ nước ngọt, siro, bánh kẹo và nước ép bỏ bã</u> dễ làm khẩu phần dư đường, từ đó bất lợi cho gan nếu dùng thường xuyên.</strong>
-  </p>
-</section>
-
-<!-- 3️⃣ Cơ chế -->
-<section class="section card">
-  <h2>🔬 Fructose: Chất độc ngọt ngào của Gan</h2>
-  <p>Khi bạn ăn tinh bột (cơm, phở), chúng phân giải thành glucose và được nhiều mô trong cơ thể sử dụng làm năng lượng.</p>
-  <p>Fructose được chuyển hóa chủ yếu ở gan. Khi khẩu phần thường xuyên dư đường và dư năng lượng, gan có thể tăng tạo triglyceride, góp phần tích mỡ trong gan, nhất là khi đi kèm ít vận động, thừa cân hoặc kháng insulin.</p>
-</section>
-
-<!-- 4️⃣ Giải pháp -->
-<section class="section grid two">
-  <div class="card">
-    <h2>✅ Thực phẩm hỗ trợ kiểm soát mỡ gan</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>Chất béo tốt (Omega-3, dầu oliu):</strong> Thay mỡ bão hòa bằng chất béo không bão hòa từ cá, hạt và dầu oliu có thể cải thiện chất lượng khẩu phần và hỗ trợ kiểm soát triglyceride.</li>
-      <li><strong>Choline (lòng đỏ trứng gà):</strong> Choline tham gia chuyển hóa lipid ở gan. Có thể dùng trứng với lượng vừa phải nếu không có chống chỉ định riêng, thay vì kiêng tuyệt đối vì sợ cholesterol.</li>
-      <li><strong>Cà phê đen không đường:</strong> Một số nghiên cứu quan sát ghi nhận cà phê có liên quan với sức khỏe gan tốt hơn, nhưng không thay thế giảm cân khi thừa cân, vận động và kiểm soát đường/rượu bia.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>❌ Cắt đứt nguồn cung Fructose</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>Nước ép trái cây:</strong> Ăn trái cây nguyên miếng (còn chất xơ) thì rất tốt, nhưng nước ép trái cây (bỏ bã) thực chất chỉ là một ly nước đường Fructose nguyên chất. Hãy nhai trái cây, đừng uống!</li>
-      <li><strong>Siro bắp cao phân tử (HFCS):</strong> Thường được ghi dưới tên "High Fructose Corn Syrup" ở mặt sau các chai nước ngọt có gas, trà sữa đóng chai, tương cà chua (Ketchup). Đây là loại độc dược số 1 đối với lá gan, rẻ tiền và siêu ngọt.</li>
-      <li><strong>Rượu bia:</strong> Mặc dù đây là bệnh NAFLD (Không do rượu), nhưng nếu lá gan đang ngập mỡ mà bạn dội thêm cồn vào, phản ứng viêm gan bùng phát sẽ phá hủy tế bào gan nhanh gấp đôi.</li>
-    </ul>
-  </div>
-</section>
-
+  <section class="section card">
+    <p>Fructose là một loại đường có trong trái cây và cũng có thể được thêm vào đồ uống/thực phẩm. Nên phân biệt <strong>đường tự do</strong> trong nước ngọt, siro, nước ép và đồ thêm đường với lượng đường nằm trong trái cây nguyên quả; không nên gọi fructose là “độc” hay cấm toàn bộ trái cây.</p>
+  </section>
+  <section class="section card">
+    <h2>Vì sao nên để ý đồ uống có đường?</h2>
+    <p>Fructose được chuyển hóa đáng kể ở gan. Khi thường xuyên dùng nhiều đồ uống có đường và tổng năng lượng vượt nhu cầu, điều đó có thể góp phần làm tăng mỡ gan và nguy cơ chuyển hóa, nhất là khi đi kèm tăng cân, ít vận động hoặc kháng insulin. Tác động không thể quy về một phân tử hay một thực phẩm duy nhất.</p>
+    <p>Đồ uống ngọt thường dễ uống nhanh và ít tạo no bằng thức ăn nguyên dạng. Giảm trà sữa, nước ngọt, nước tăng lực, siro và nước ép đóng chai là bước thực tế; có thể giảm dần lượng đường, kích cỡ ly hoặc tần suất nếu cần.</p>
+  </section>
+  <section class="section grid two">
+    <div class="card">
+      <h2>Chọn gì thay thế?</h2>
+      <ul>
+        <li>Uống nước lọc hoặc trà/cà phê ít hay không đường nếu phù hợp với sức khỏe và thuốc đang dùng.</li>
+        <li>Chọn trái cây nguyên quả đa dạng theo khẩu vị và bệnh nền. Không cần loại bỏ trái cây chỉ vì vị ngọt; người đái tháo đường nên cá thể hóa khẩu phần với kế hoạch kiểm soát đường huyết.</li>
+        <li>Nước ép không phải “nước đường nguyên chất”, nhưng có thể cung cấp nhiều đường tự do và ít no hơn quả nguyên; nên dùng ít hơn quả nguyên, không cần ép uống để “bổ gan”.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Những điều chưa nên khẳng định</h2>
+      <ul>
+        <li>Không có cơ sở gọi siro bắp giàu fructose là “độc dược số 1”; điều cần xem là tổng đường tự do, năng lượng và tần suất sử dụng.</li>
+        <li>Không có bằng chứng rằng một thìa dầu ô liu, trứng, nghệ, trà xanh hay omega-3 tự điều trị được MASLD.</li>
+        <li>Rượu có nguy cơ riêng đối với gan; không dùng việc “không do rượu” trong tên cũ NAFLD để xem rượu là vô hại. Nếu có xơ hóa/xơ gan, nên tránh và hỏi bác sĩ.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section card">
+    <h2>Thông điệp thực hành</h2>
+    <p>Ưu tiên giảm đồ uống có đường và duy trì kiểu ăn cân đối; nếu thừa cân, trao đổi mục tiêu giảm cân bền vững. Không tự loại bỏ trái cây, tinh bột hoặc chất béo cần thiết, và không dùng chế độ detox thay đánh giá nguyên nhân gan nhiễm mỡ.</p>
+    <p>Đây là nội dung giáo dục, không thay thế chẩn đoán. Siêu âm hay men gan đơn lẻ không cho biết đầy đủ mức độ xơ hóa; hãy trao đổi với bác sĩ về xét nghiệm và theo dõi phù hợp.</p>
+  </section>
 </ArticleLayout>

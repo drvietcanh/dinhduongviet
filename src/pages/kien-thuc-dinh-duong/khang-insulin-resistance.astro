@@ -1,51 +1,44 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
-
 const art = articleBySlug["khang-insulin-resistance"];
 if (!art) throw new Error("Article not found: khang-insulin-resistance");
 ---
 
 <ArticleLayout article={art}>
-
-<!-- 1️⃣ Tình huống -->
-<section class="section card">
-  <p>Cậu bé Huy (15 tuổi) nặng 85kg, vòng bụng lớn. Dạo gần đây, mẹ Huy phát hiện vùng da quanh cổ và nách của con sẫm màu, sần hơn bình thường. Chà xát không làm hết mà còn gây trầy da. Đưa con đi khám da liễu, bác sĩ giải thích đây có thể là gai đen (Acanthosis nigricans), một dấu hiệu thường liên quan đến kháng insulin và nguy cơ tiền đái tháo đường hoặc đái tháo đường type 2.</p>
-</section>
-
-<!-- 2️⃣ TL;DR -->
-<section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
-  <p style="font-size:1.05rem;margin:0;color:var(--ink);">
-    <strong>👉 Kháng insulin là một mắt xích quan trọng trong béo phì, tiền đái tháo đường, đái tháo đường type 2 và PCOS. Các cách hỗ trợ nền tảng gồm giảm đường tinh luyện, kiểm soát khẩu phần tinh bột, tăng vận động và ngủ đủ. Nhịn ăn gián đoạn có thể phù hợp với một số người, nhưng không phải lựa chọn bắt buộc cho tất cả.</strong>
-  </p>
-</section>
-
-<!-- 3️⃣ Cơ chế -->
-<section class="section card">
-  <h2>🔬 Tế bào "Đóng sập cửa" vì Bội thực</h2>
-  <p>Insulin là chiếc chìa khóa do Tuyến tụy tiết ra để mở cửa tế bào, cho phép Đường (Glucose) đi vào bên trong để tạo năng lượng.</p>
-  <p>Tuy nhiên, nếu bạn ăn vặt liên tục (sáng bún bò, 9h uống trà sữa, trưa ăn cơm, 3h chiều ăn bánh ngọt), insulin có thể tăng nhiều lần trong ngày. Khi dư năng lượng, tăng mỡ nội tạng và ít vận động kéo dài, tế bào đáp ứng kém hơn với insulin; lúc này đường huyết dễ tăng và nguy cơ tiền đái tháo đường cao hơn.</p>
-  <p>Khi đường huyết và insulin thường xuyên tăng cao, cơ thể dễ tích mỡ hơn và giảm cân cũng khó hơn. Gai đen có thể xuất hiện do kích thích tăng sinh tế bào da trong bối cảnh kháng insulin. Đây là dấu hiệu nên đi khám và làm xét nghiệm chuyển hóa, không nên chỉ xem là vấn đề thẩm mỹ.</p>
-</section>
-
-<!-- 4️⃣ Giải pháp -->
-<section class="section grid two">
-  <div class="card">
-    <h2>✅ Cách cải thiện độ nhạy insulin</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>Nhịn ăn gián đoạn (Intermittent Fasting 16:8):</strong> Có thể giúp một số người giảm tổng năng lượng nạp vào và bớt ăn vặt. Không phù hợp với phụ nữ mang thai, người có tiền sử rối loạn ăn uống, hạ đường huyết hoặc đang dùng thuốc đường huyết nếu chưa hỏi bác sĩ.</li>
-      <li><strong>Tăng cường cơ bắp (tập sức mạnh):</strong> Cơ bắp là mô sử dụng nhiều glucose. Duy trì khối cơ và đi bộ sau bữa ăn 10-15 phút có thể giúp cải thiện đáp ứng đường huyết ở nhiều người.</li>
-      <li><strong>Giấm táo pha loãng:</strong> Có thể làm chậm hấp thu tinh bột ở một số bữa ăn, nhưng hiệu quả không thay thế giảm đường, tăng vận động và thuốc khi được chỉ định. Không dùng khi đau dạ dày nặng hoặc trào ngược nhiều.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>❌ Thói quen nên giảm</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>Ăn vặt liên tục:</strong> Bữa phụ nhiều đường hoặc tinh bột tinh chế làm đường huyết dao động nhiều hơn. Nếu cần bữa phụ, chọn sữa chua không đường, hạt vừa lượng, trứng hoặc trái cây nguyên quả.</li>
-      <li><strong>Đường lỏng:</strong> Nước ép, trà sữa, nước ngọt và sinh tố thêm đường dễ làm tăng đường huyết nhanh vì ít chất xơ và uống được nhiều trong thời gian ngắn.</li>
-    </ul>
-  </div>
-</section>
-
+  <section class="section card">
+    <p>Gai đen là vùng da sẫm màu, dày và mịn như nhung, thường ở cổ/nách/bẹn. Tình trạng này có thể đi cùng kháng insulin, nhưng <strong>không tự xác nhận tiền đái tháo đường hay đái tháo đường</strong>; cũng có nguyên nhân khác. Ở trẻ vị thành niên, đánh giá cần dựa vào chiều cao, đường tăng trưởng, giai đoạn dậy thì và sức khỏe tổng thể — không thể kết luận từ cân nặng đơn lẻ.</p>
+    <p>Nếu trẻ có gai đen, tăng cân nhanh, tiền sử gia đình đái tháo đường hoặc khát/tiểu nhiều, hãy hẹn bác sĩ nhi khoa/nội tiết để được đánh giá. Không chà xát mạnh vùng da và không tự mua xét nghiệm insulin để chẩn đoán.</p>
+  </section>
+  <section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+    <h2>Kháng insulin không phải lỗi của một món ăn</h2>
+    <p>Khả năng đáp ứng với insulin chịu ảnh hưởng bởi nhiều yếu tố như di truyền, tuổi dậy thì, phân bố mỡ, vận động, giấc ngủ, thuốc và sức khỏe chuyển hóa. Ăn cơm, ăn bữa phụ hoặc ăn nhiều lần trong ngày không tự nó “làm hỏng” tế bào. Hướng dẫn hiện hành không khuyến nghị nhịn ăn 16:8 hay giấm táo như cách điều trị kháng insulin.</p>
+  </section>
+  <section class="section card">
+    <h2>Bác sĩ có thể kiểm tra những gì?</h2>
+    <p>Ở trẻ em/thanh thiếu niên, bác sĩ xem BMI theo tuổi và giới, diễn tiến tăng trưởng, dấu hiệu lâm sàng và các yếu tố nguy cơ. Hướng dẫn ADA khuyến nghị cân nhắc sàng lọc rối loạn đường huyết ở thanh thiếu niên đã dậy thì hoặc từ 10 tuổi (mốc nào đến trước), nếu thừa cân/béo phì theo bách phân vị và có thêm yếu tố nguy cơ như gai đen hoặc tiền sử gia đình. Bác sĩ chọn xét nghiệm đường huyết phù hợp; một chỉ số insulin đơn lẻ không thay thế xét nghiệm chẩn đoán đái tháo đường.</p>
+    <p>Đái tháo đường được chẩn đoán bằng tiêu chuẩn đường huyết/A1C và thường cần xác nhận lại nếu chưa có tăng đường huyết rõ kèm triệu chứng. Không tự diễn giải kết quả xét nghiệm hay trì hoãn khám.</p>
+  </section>
+  <section class="section grid two">
+    <div class="card">
+      <h2>Thói quen gia đình có thể hỗ trợ</h2>
+      <ul>
+        <li>Ăn bữa gia đình đa dạng: cơm hoặc món tinh bột quen thuộc, rau, đậu, cá/trứng/thịt và trái cây phù hợp; không cần cắt sạch tinh bột.</li>
+        <li>Giảm dần nước ngọt, trà sữa và đồ uống thêm đường; để nước lọc là lựa chọn thường ngày.</li>
+        <li>Tăng vận động vui vẻ phù hợp lứa tuổi — đi bộ, đạp xe, chơi thể thao — và giảm thời gian ngồi liên tục.</li>
+        <li>Giữ giờ ngủ đều và hỗ trợ cả gia đình cùng thay đổi, không trêu chọc trẻ về cân nặng hoặc ép ăn kiêng.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Tránh mẹo tự điều trị</h2>
+      <ul>
+        <li>Không nhịn ăn, bỏ bữa, áp dụng chế độ giảm cân người lớn hoặc low-carb nghiêm ngặt cho trẻ nếu chưa có nhóm nhi khoa theo dõi.</li>
+        <li>Không dùng giấm táo, thực phẩm bổ sung hay thuốc “giảm insulin” thay cho thăm khám.</li>
+        <li>Không tự mua metformin hoặc ngưng thuốc đang kê. Điều trị phụ thuộc chẩn đoán và cần bác sĩ quyết định.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section card">
+    <p><strong>Cần khám khẩn</strong> nếu trẻ lơ mơ, nôn nhiều, thở bất thường, mất nước hoặc có khát/tiểu nhiều kèm mệt yếu rõ. Gai đen thường không phải cấp cứu, nhưng nên được đánh giá đúng nguyên nhân và điều trị da nếu gây khó chịu.</p>
+  </section>
 </ArticleLayout>

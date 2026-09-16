@@ -71,14 +71,14 @@ export const WATER_ACUTE_SAFETY_NOTE =
   "Không dùng công cụ này để xử trí cấp cứu mất nước, nôn ói, tiêu chảy nặng, rối loạn tri giác, khó thở hoặc phù tăng nhanh.";
 
 export const WATER_FOOD_NOTE =
-  "Tổng nước (total water) gồm nước uống, đồ uống và một phần nước từ thức ăn. V1 ước tính khoảng 80% từ đồ uống và 20% từ thức ăn; tỷ lệ thực tế thay đổi theo khẩu phần.";
+  "Tổng nước gồm nước uống, các đồ uống khác và nước có trong thức ăn. Công cụ ước tính phần đồ uống bằng một tỷ lệ chung; lượng nước thực tế từ thức ăn thay đổi theo khẩu phần.";
 
 export const WATER_RULES: Record<WaterMode, WaterRule> = {
   auto: {
     profileId: "healthy_adult",
     label: "Ước tính cho người trưởng thành tương đối khỏe mạnh",
     mode: "auto",
-    sourceLabel: "Heuristic 30-35 ml/kg/ngày, đối chiếu NASEM/EFSA total water AI.",
+    sourceLabel: "Ước tính 30–35 ml/kg/ngày, đối chiếu mức nước tổng tham khảo của NASEM/EFSA; không phải mục tiêu bắt buộc.",
     safetyMessage: "Khoảng này là ước tính ban đầu, không phải mức bắt buộc cho mọi người.",
     appliesTo: "Người trưởng thành tương đối khỏe mạnh, không được dặn hạn chế dịch và không có bệnh cấp.",
     notFor: "Trẻ em, suy tim, bệnh thận, lọc máu, xơ gan/cổ trướng, phù, hạ natri máu, đang hạn chế dịch hoặc bệnh cấp.",
@@ -88,7 +88,7 @@ export const WATER_RULES: Record<WaterMode, WaterRule> = {
     profileId: "caution_context",
     label: "Ước tính có cảnh báo",
     mode: "caution",
-    sourceLabel: "Heuristic 30-35 ml/kg/ngày; yếu tố nóng, vận động, thai kỳ/cho con bú, lợi tiểu cần cá thể hóa.",
+    sourceLabel: "Ước tính 30–35 ml/kg/ngày; nóng, vận động, thai kỳ/cho con bú và thuốc lợi tiểu cần cá thể hóa.",
     safetyMessage: "Có thể dùng khoảng tham khảo để trao đổi, nhưng không xem là mục tiêu cứng.",
     appliesTo: "Người trưởng thành không có red flag nặng nhưng có yếu tố cần thận trọng.",
     notFor: "Suy tim, CKD, lọc máu, xơ gan/cổ trướng, phù, hạ natri máu, hạn chế dịch, trẻ em hoặc bệnh cấp.",
@@ -98,7 +98,7 @@ export const WATER_RULES: Record<WaterMode, WaterRule> = {
     profileId: "clinical_no_auto",
     label: "Cần cá thể hóa lâm sàng",
     mode: "clinical_no_auto",
-    sourceLabel: "Safety gate theo source-lock v1: nhóm nguy cơ cần bác sĩ/dinh dưỡng viên cá thể hóa.",
+    sourceLabel: "Cổng an toàn: nhóm nguy cơ cần bác sĩ/dinh dưỡng viên cá thể hóa.",
     safetyMessage: "Không tự động tính mức nước cá nhân như người khỏe. Hãy theo chỉ định bác sĩ hoặc đơn vị điều trị.",
     appliesTo: "Người có bệnh lý/hoàn cảnh có thể cần hạn chế dịch hoặc xử trí y khoa.",
     notFor: "Không dùng công cụ tự phục vụ để quyết định lượng nước uống.",

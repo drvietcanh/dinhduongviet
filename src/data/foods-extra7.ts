@@ -542,16 +542,16 @@ export const extraFoods7 = [
     aliases: ["xuc xich ga", "chicken sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Xúc xích làm từ thịt gà; thành phần và lượng chất béo thay đổi theo công thức, nhãn hàng.",
-    nutrients: { energyKcal: 200, proteinG: 18, carbG: 3, fatG: 13, saturatedFatG: 3.5, cholesterolMg: 70, sodiumMg: 750, potassiumMg: 180 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
+    nutrients: { energyKcal: 176, proteinG: 19.44, carbG: 0, fatG: 10.35, saturatedFatG: 3.38, cholesterolMg: 71, sodiumMg: 72, potassiumMg: 211, calciumMg: 11, ironMg: 0.87 },
+    sourceId: "usda-fdc-172957", confidence: "medium", note: "USDA FoodData Central SR Legacy 172957, bratwurst gà đã nấu chín; dùng làm close match cho xúc xích gà bán tại Việt Nam, nhãn hàng có thể khác."
   },
   {
     id: "xuc-xich-heo", slug: "xuc-xich-heo", name: "Xúc xích heo",
     aliases: ["xuc xich heo", "xúc xích lợn", "xuc xich lon", "pork sausage"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Xúc xích làm từ thịt heo; thành phần và lượng natri thay đổi theo công thức, nhãn hàng.",
-    nutrients: { energyKcal: 270, proteinG: 14, carbG: 3, fatG: 23, saturatedFatG: 8, cholesterolMg: 65, sodiumMg: 750, potassiumMg: 170 },
-    sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
+    nutrients: { energyKcal: 392, proteinG: 13.46, carbG: 0.69, fatG: 37.25, saturatedFatG: 12.13, cholesterolMg: 74, sodiumMg: 810, potassiumMg: 211, calciumMg: 16, ironMg: 0.92 },
+    sourceId: "usda-fdc-173876", confidence: "medium", note: "USDA FoodData Central SR Legacy 173876, xúc xích heo dạng viên/thanh đã nấu chín; dùng làm close match, sản phẩm Việt Nam và cách chiên có thể khác."
   },
   {
     id: "pate-gan", slug: "pate-gan", name: "Patê gan",

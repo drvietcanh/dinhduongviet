@@ -463,11 +463,17 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       if (emptyEl) emptyEl.style.display = "none";
 
       const result = calculateCarbMeal(selected);
-      carbEl.textContent = `${formatNumber(result.totalCarbGrams)} g`;
-      if (mobileTotalCarb) mobileTotalCarb.textContent = `${formatNumber(result.totalCarbGrams)} g carb`;
+      carbEl.textContent = result.totalCarbComplete
+        ? `${formatNumber(result.totalCarbGrams)} g`
+        : "Chưa đủ dữ liệu";
+      if (mobileTotalCarb) mobileTotalCarb.textContent = result.totalCarbComplete
+        ? `${formatNumber(result.totalCarbGrams)} g carb`
+        : "Carb chưa đủ dữ liệu";
       if (mobileItemCount) mobileItemCount.textContent = `${selected.length} món`;
       if (mobileBar) mobileBar.style.display = window.innerWidth <= 720 ? "block" : "none";
-      servingEl.textContent = `${formatNumber(result.carbServings)} phần carb (${result.carbServingGrams} g/phần)`;
+      servingEl.textContent = result.carbServings == null
+        ? "Chưa đủ dữ liệu"
+        : `${formatNumber(result.carbServings)} phần carb (${result.carbServingGrams} g/phần)`;
 
       itemsEl.innerHTML = result.items.map((item, index) => {
         const row = selected[index];
@@ -498,8 +504,15 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         });
       }
 
-      fillEl.style.width = `${Math.min(Math.round((result.totalCarbGrams / 60) * 100), 100)}%`;
-      if (result.totalCarbGrams >= 45 && result.totalCarbGrams <= 60) {
+      fillEl.style.width = result.totalCarbComplete
+        ? `${Math.min(Math.round((result.totalCarbGrams / 60) * 100), 100)}%`
+        : "0%";
+      if (!result.totalCarbComplete) {
+        const knownSubtotal = result.totalCarbGrams > 0
+          ? ` Phần carb đã có dữ liệu là ${formatNumber(result.totalCarbGrams)} g, chưa phải tổng bữa ăn.`
+          : "";
+        noteEl.textContent = `Chưa thể đối chiếu mốc ví dụ 45-60 g vì có thực phẩm thiếu dữ liệu carb.${knownSubtotal}`;
+      } else if (result.totalCarbGrams >= 45 && result.totalCarbGrams <= 60) {
         noteEl.textContent = "Tổng carb đang nằm trong mốc 45-60 g thường dùng làm ví dụ giáo dục cho một bữa chính ở nhiều người lớn; mục tiêu cá nhân có thể khác.";
       } else if (result.totalCarbGrams > 60) {
         noteEl.textContent = "Tổng carb cao hơn mốc ví dụ 45-60 g. Đây không tự động là sai, nhưng nên xem lại khẩu phần và kế hoạch cá nhân nếu bạn cần kiểm soát đường huyết.";

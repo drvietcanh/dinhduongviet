@@ -159,6 +159,7 @@ result = calculateVietnameseMealAssessment(baseInput({
   ],
 }));
 assert.equal(result.ok, true);
+assert.equal(result.totals.carbG, null, "unknown carbohydrate should not be reported as a zero or partial total");
 assert.ok(result.warnings.some((warning) => /chưa có dữ liệu/.test(warning)));
 
 result = calculateVietnameseMealAssessment(baseInput({

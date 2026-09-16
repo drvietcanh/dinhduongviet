@@ -140,7 +140,6 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
         <option value="all">Không áp dụng</option>
         <option value="diabetes">ĐTĐ: ưu tiên GI/GL thấp</option>
         <option value="hypertension">Tăng HA: ưu tiên ít natri</option>
-        <option value="gout">Gout: ưu tiên ít purin</option>
         <option value="ckd">Bệnh thận: natri/kali thấp</option>
         <option value="weight">Kiểm soát cân nặng</option>
       </select>
@@ -161,11 +160,10 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
         <button class="tag-filter" type="button" data-filter="high-protein" aria-pressed="false">💪 Nhiều đạm</button>
         <button class="tag-filter" type="button" data-filter="low-fat" aria-pressed="false">🌿 Ít béo</button>
         <button class="tag-filter" type="button" data-filter="glycemic-index-low" aria-pressed="false">GI thấp</button>
-        <button class="tag-filter" type="button" data-filter="low-purine" aria-pressed="false">Ít purin</button>
         <button class="tag-filter" type="button" data-filter="low-sodium" aria-pressed="false">Ít natri</button>
         <button class="tag-filter" type="button" data-filter="high-fiber" aria-pressed="false">Giàu xơ</button>
       </div>
-      <p class="advanced-filter-note">Dữ liệu dùng để sàng nhanh theo 100g phần ăn được. Bệnh thận hoặc chế độ điều trị cần cá thể hóa theo xét nghiệm và tư vấn chuyên môn.</p>
+      <p class="advanced-filter-note">Dữ liệu dùng để sàng nhanh theo 100g phần ăn được. Kho hiện chưa có số liệu purin đo trực tiếp nên không xếp hạng thực phẩm cho gout. Bệnh thận hoặc chế độ điều trị cần cá thể hóa theo xét nghiệm và tư vấn chuyên môn.</p>
     </div>
   </details>
 
@@ -329,10 +327,10 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     var reset = document.getElementById('reset-library-filters');
     var activeFilterChips = document.getElementById('active-filter-chips');
     var params = new URLSearchParams(window.location.search);
-    var tagLabels = { vegan: 'Thuần chay', 'high-protein': 'Nhiều đạm', 'low-fat': 'Ít béo', 'glycemic-index-low': 'GI thấp', 'glycemic-index-high': 'GI cao', 'low-purine': 'Ít purin', 'high-purine': 'Nhiều purin', 'low-sodium': 'Ít natri', 'high-sodium': 'Nhiều natri', 'high-fiber': 'Giàu xơ', 'high-calcium': 'Nhiều canxi' };
+    var tagLabels = { vegan: 'Thuần chay', 'high-protein': 'Nhiều đạm', 'low-fat': 'Ít béo', 'glycemic-index-low': 'GI thấp', 'glycemic-index-high': 'GI cao', 'low-sodium': 'Ít natri', 'high-sodium': 'Nhiều natri', 'high-fiber': 'Giàu xơ', 'high-calcium': 'Nhiều canxi' };
     var categoryIcons = { 'Tinh bột': '🍚', 'Rau xanh': '🥬', 'Củ quả': '🥕', 'Rau gia vị': '🌿', 'Trái cây': '🍊', 'Thịt': '🥩', 'Thịt chế biến': '🍖', 'Cá': '🐟', 'Hải sản': '🦐', 'Trứng sữa': '🥚', 'Đậu': '🫘', 'Hạt': '🥜', 'Dầu mỡ': '🫒', 'Gia vị': '🧂', 'Đồ uống': '🥤', 'Bánh kẹo': '🍪', 'Nước dùng': '🍲', 'Nấm': '🍄' };
     var stateLabels = { raw: 'Tươi/sống', cooked: 'Đã nấu', processed: 'Chế biến', dried: 'Sấy/khô', roasted: 'Rang/nướng' };
-    var profileLabels = { diabetes: 'Mục tiêu: đái tháo đường', hypertension: 'Mục tiêu: huyết áp', gout: 'Mục tiêu: gout', ckd: 'Mục tiêu: bệnh thận', weight: 'Mục tiêu: cân nặng' };
+    var profileLabels = { diabetes: 'Mục tiêu: đái tháo đường', hypertension: 'Mục tiêu: huyết áp', ckd: 'Mục tiêu: bệnh thận', weight: 'Mục tiêu: cân nặng' };
     var reviewedStatuses = { source_verified: true, reviewed_keep_current: true };
 
     function normalize(value) {
@@ -340,19 +338,28 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
     }
     function numberValue(element) { if (!element || element.value === '') return null; var value = Number(element.value); return Number.isFinite(value) ? value : null; }
     function tagsOf(item) { return String(item[10] || '').split(' ').filter(Boolean); }
+    function knownNumber(item, index) { return typeof item[index] === 'number' && Number.isFinite(item[index]) ? item[index] : null; }
     function hasTag(item, tag) { return tagsOf(item).indexOf(tag) >= 0; }
     function matchesTag(item, tag) {
-      if (tag === 'high-protein') return Number(item[4] || 0) >= 20 || hasTag(item, tag);
-      if (tag === 'high-fiber') return Number(item[7] || 0) >= 3 || hasTag(item, tag);
+      if (tag === 'high-protein') {
+        var protein = knownNumber(item, 4);
+        return (protein !== null && protein >= 20) || hasTag(item, tag);
+      }
+      if (tag === 'high-fiber') {
+        var fiber = knownNumber(item, 7);
+        return (fiber !== null && fiber >= 3) || hasTag(item, tag);
+      }
       return hasTag(item, tag);
     }
     function matchesProfile(item, profile) {
-      var kcal = Number(item[3] || 0), fiber = Number(item[7] || 0), sodium = Number(item[8] || 0), potassium = Number(item[9] || 0);
-      if (profile === 'diabetes') return hasTag(item, 'glycemic-load-low') || hasTag(item, 'glycemic-index-low');
-      if (profile === 'hypertension') return sodium <= 100 || hasTag(item, 'low-sodium');
-      if (profile === 'gout') return hasTag(item, 'low-purine');
-      if (profile === 'ckd') return sodium <= 100 && potassium <= 150;
-      if (profile === 'weight') return kcal <= 150 && (fiber >= 2 || hasTag(item, 'low-fat'));
+      var kcal = knownNumber(item, 3), fiber = knownNumber(item, 7), sodium = knownNumber(item, 8), potassium = knownNumber(item, 9);
+      var status = item[16] || '';
+      var sourceQuality = item[15] || '';
+      var clinicallyReviewed = reviewedStatuses[status] && sourceQuality === 'source_backed';
+      if (profile === 'diabetes') return clinicallyReviewed && (hasTag(item, 'glycemic-load-low') || hasTag(item, 'glycemic-index-low'));
+      if (profile === 'hypertension') return clinicallyReviewed && sodium !== null && sodium <= 100;
+      if (profile === 'ckd') return clinicallyReviewed && sodium !== null && potassium !== null && sodium <= 100 && potassium <= 150;
+      if (profile === 'weight') return kcal !== null && kcal <= 150 && ((fiber !== null && fiber >= 2) || hasTag(item, 'low-fat'));
       return true;
     }
     function escapeHtml(value) { return String(value || '').replace(/[&<>'"]/g, function(character) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]; }); }
@@ -432,19 +439,29 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
         if (query && queryOf(item).indexOf(query) === -1) return false;
         if (category !== 'all' && item[2] !== category) return false;
         if (activeTag !== 'all' && !matchesTag(item, activeTag)) return false;
-        if (maxKcalValue !== null && Number(item[3] || 0) > maxKcalValue) return false;
-        if (minProteinValue !== null && Number(item[4] || 0) < minProteinValue) return false;
-        if (maxCarbValue !== null && Number(item[5] || 0) > maxCarbValue) return false;
-        if (maxSodiumValue !== null && Number(item[8] || 0) > maxSodiumValue) return false;
+        var kcal = knownNumber(item, 3), protein = knownNumber(item, 4), carb = knownNumber(item, 5);
+        if (maxKcalValue !== null && (kcal === null || kcal > maxKcalValue)) return false;
+        if (minProteinValue !== null && (protein === null || protein < minProteinValue)) return false;
+        if (maxCarbValue !== null && (carb === null || carb > maxCarbValue)) return false;
+        var sodium = knownNumber(item, 8);
+        if (maxSodiumValue !== null && (sodium === null || sodium > maxSodiumValue)) return false;
         return matchesProfile(item, profile);
       });
       var sort = sortSelect && sortSelect.value || 'name-asc';
       return matched.sort(function(a, b) {
-        if (sort === 'calo-asc') return Number(a[3] || 0) - Number(b[3] || 0);
-        if (sort === 'calo-desc') return Number(b[3] || 0) - Number(a[3] || 0);
-        if (sort === 'protein-desc') return Number(b[4] || 0) - Number(a[4] || 0);
-        if (sort === 'fiber-desc') return Number(b[7] || 0) - Number(a[7] || 0);
-        if (sort === 'sodium-asc') return Number(a[8] || 0) - Number(b[8] || 0);
+        if (sort === 'calo-asc' || sort === 'calo-desc' || sort === 'protein-desc' || sort === 'fiber-desc') {
+          var sortIndex = sort === 'calo-asc' || sort === 'calo-desc' ? 3 : sort === 'protein-desc' ? 4 : 7;
+          var valueA = knownNumber(a, sortIndex), valueB = knownNumber(b, sortIndex);
+          if (valueA === null) return valueB === null ? 0 : 1;
+          if (valueB === null) return -1;
+          return (sort === 'calo-desc' || sort === 'protein-desc' || sort === 'fiber-desc') ? valueB - valueA : valueA - valueB;
+        }
+        if (sort === 'sodium-asc') {
+          var sodiumA = knownNumber(a, 8), sodiumB = knownNumber(b, 8);
+          if (sodiumA === null) return sodiumB === null ? 0 : 1;
+          if (sodiumB === null) return -1;
+          return sodiumA - sodiumB;
+        }
         return String(a[1] || '').localeCompare(String(b[1] || ''), 'vi');
       });
     }

@@ -345,7 +345,6 @@ const recipeSeedText = `
 Cơm gà Hội An
 Cơm niêu cá kho
 Cơm bò lúc lắc
-Cơm sườn bì chả
 Cơm chiên dương châu
 Cơm chiên hải sản
 Cơm chiên cá mặn
@@ -800,6 +799,7 @@ function pickProtein(name: string) {
   if (n.includes("ca nuc")) return "ca-nuc";
   if (n.includes("ca thu")) return "ca-thu";
   if (n.includes("ca dieu hong")) return "ca-dieu-hong";
+  if (n.includes("ca ro dong")) return "ca-ro-dong";
   if (n.includes("ca keo")) return "ca-keo";
   if (n.includes("ca chep")) return "ca-chep";
   if (n.includes("ca hoi")) return "ca-hoi";
@@ -817,6 +817,465 @@ function pickProtein(name: string) {
 function recipeItems(name: string): Recipe["items"] {
   const n = normalize(name);
   const protein = pickProtein(name);
+  if (n.includes("com rang dua bo")) {
+    return [
+      { foodId: "com-trang", amountG: 180, note: "Cơm nguội" },
+      { foodId: "thit-bo-nac", amountG: 70, note: "Thịt bò xào" },
+      { foodId: "dua-cai", amountG: 45, note: "Dưa cải muối" },
+      { foodId: "trung-ga", amountG: 40, note: "Trứng rang" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu rang" }
+    ];
+  }
+  if (n.includes("cha com")) {
+    return [
+      { foodId: "gao-nep", amountG: 80, note: "Cốm/nếp" },
+      { foodId: "thit-heo-bam", amountG: 55, note: "Thịt xay" },
+      { foodId: "trung-ga", amountG: 20, note: "Trứng kết dính" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu chiên" }
+    ];
+  }
+  if (n.includes("com am phu")) {
+    return [
+      { foodId: "com-trang", amountG: 180, note: "Cơm" },
+      { foodId: "thit-heo-nac", amountG: 45, note: "Thịt" },
+      { foodId: "trung-ga", amountG: 40, note: "Trứng thái sợi" },
+      { foodId: "dua-leo", amountG: 40, note: "Dưa leo" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước mắm" }
+    ];
+  }
+  if (n.includes("com chien ca man")) {
+    return [
+      { foodId: "com-trang", amountG: 180, note: "Cơm nguội" },
+      { foodId: "kho-ca-loc", amountG: 45, note: "Cá mặn xé" },
+      { foodId: "ca-rot", amountG: 25, note: "Cà rốt" },
+      { foodId: "dau-que", amountG: 25, note: "Rau củ" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu rang" }
+    ];
+  }
+  if (n.includes("bo la lot")) {
+    return [
+      { foodId: "thit-bo-nac", amountG: 120, note: "Thịt bò xay" },
+      { foodId: "la-lot", amountG: 20, note: "Lá lốt cuốn" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu nướng" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("bo ne op la")) {
+    return [
+      { foodId: "thit-bo-nac", amountG: 120, note: "Thịt bò" },
+      { foodId: "trung-ga", amountG: 55, note: "Trứng ốp la" },
+      { foodId: "ca-chua", amountG: 30, note: "Cà chua" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu áp chảo" }
+    ];
+  }
+  if (n.includes("bo xao bong cai")) {
+    return [
+      { foodId: "thit-bo-nac", amountG: 90, note: "Thịt bò" },
+      { foodId: "sup-lo", amountG: 150, note: "Bông cải" },
+      { foodId: "toi", amountG: 5, note: "Tỏi" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("bong cai xao toi")) {
+    return [
+      { foodId: "sup-lo", amountG: 150, note: "Bông cải" },
+      { foodId: "toi", amountG: 8, note: "Tỏi" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("ga kho gung")) {
+    return [
+      { foodId: "uc-ga", amountG: 120, note: "Thịt gà" },
+      { foodId: "gung-tuoi", amountG: 10, note: "Gừng" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước mắm" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu kho" }
+    ];
+  }
+  if (n.includes("ga rang muoi")) {
+    return [
+      { foodId: "uc-ga", amountG: 120, note: "Thịt gà" },
+      { foodId: "muoi-tieu", amountG: 5, note: "Muối tiêu" },
+      { foodId: "dau-an", amountG: 10, note: "Dầu chiên" }
+    ];
+  }
+  if (n.includes("ga xao sa ot") || n.includes("ga nuong muoi ot")) {
+    return [
+      { foodId: "uc-ga", amountG: 120, note: "Thịt gà" },
+      { foodId: "sa", amountG: 10, note: "Sả" },
+      { foodId: "ot-tuoi", amountG: 5, note: "Ớt" },
+      { foodId: "dau-an", amountG: n.includes("nuong") ? 5 : 8, note: "Dầu chế biến" }
+    ];
+  }
+  if (n.includes("vit om sau")) {
+    return [
+      { foodId: "thit-vit", amountG: 120, note: "Thịt vịt" },
+      { foodId: "qua-sau", amountG: 35, note: "Quả sấu" },
+      { foodId: "hanh-la", amountG: 5, note: "Hành" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu" }
+    ];
+  }
+  if (n.includes("vit kho gung")) {
+    return [
+      { foodId: "thit-vit", amountG: 120, note: "Thịt vịt" },
+      { foodId: "gung-tuoi", amountG: 10, note: "Gừng" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước mắm" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu kho" }
+    ];
+  }
+  if (n.includes("dau hu sot nam")) {
+    return [
+      { foodId: "dau-phu", amountG: 150, note: "Đậu hũ" },
+      { foodId: "nam-huong", amountG: 70, note: "Nấm hương" },
+      { foodId: "nuoc-tuong", amountG: 6, note: "Nước tương sốt" },
+      { foodId: "dau-an", amountG: 5, note: "Dầu" }
+    ];
+  }
+  if (n.includes("dau hu kho nam")) {
+    return [
+      { foodId: "dau-phu", amountG: 150, note: "Đậu hũ" },
+      { foodId: "nam-rom", amountG: 70, note: "Nấm rơm" },
+      { foodId: "nuoc-tuong", amountG: 6, note: "Nước kho" },
+      { foodId: "dau-an", amountG: 5, note: "Dầu" }
+    ];
+  }
+  if (n.includes("bo kho") && !n.includes("banh mi")) {
+    return [
+      { foodId: "thit-bo-nac", amountG: 110, note: "Thịt bò" },
+      { foodId: "ca-rot", amountG: 45, note: "Cà rốt" },
+      { foodId: "khoai-tay", amountG: 50, note: "Khoai tây" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Gia vị" }
+    ];
+  }
+  if (n.includes("dau hu xao sa ot")) {
+    return [
+      { foodId: "dau-phu", amountG: 150, note: "Đậu hũ" },
+      { foodId: "sa", amountG: 10, note: "Sả" },
+      { foodId: "ot-tuoi", amountG: 5, note: "Ớt" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("ca keo kho rau ram")) {
+    return [
+      { foodId: "ca-keo", amountG: 120, note: "Cá kèo" },
+      { foodId: "rau-ram", amountG: 15, note: "Rau răm" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước mắm" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu kho" }
+    ];
+  }
+  if (n.includes("ca ro kho tieu")) {
+    return [
+      { foodId: "ca-ro-dong", amountG: 120, note: "Cá rô" },
+      { foodId: "hat-tieu", amountG: 2, note: "Tiêu" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước mắm" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu kho" }
+    ];
+  }
+  if (n.includes("cha ca la vong")) {
+    return [
+      { foodId: "cha-ca", amountG: 120, note: "Chả cá" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Thì là, hành" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu áp chảo" },
+      { foodId: "mam-tom", amountG: 8, note: "Mắm tôm" }
+    ];
+  }
+  if (n.includes("ghe hap bia")) {
+    return [
+      { foodId: "ghe-xanh", amountG: 150, note: "Ghẹ" },
+      { foodId: "bia", amountG: 30, note: "Bia hấp" },
+      { foodId: "sa", amountG: 10, note: "Sả" },
+      { foodId: "hanh-la", amountG: 5, note: "Hành" }
+    ];
+  }
+  if (n.includes("cang ghe rang muoi")) {
+    return [
+      { foodId: "ghe-xanh", amountG: 150, note: "Càng ghẹ" },
+      { foodId: "muoi-tieu", amountG: 6, note: "Muối rang" },
+      { foodId: "ot-tuoi", amountG: 4, note: "Ớt" },
+      { foodId: "dau-an", amountG: 5, note: "Dầu rang" }
+    ];
+  }
+  if (n.includes("oc mong tay xao rau muong")) {
+    return [
+      { foodId: "oc-mong-tay", amountG: 120, note: "Ốc móng tay" },
+      { foodId: "rau-muong", amountG: 100, note: "Rau muống" },
+      { foodId: "toi", amountG: 5, note: "Tỏi" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("ca chep om dua")) {
+    return [
+      { foodId: "ca-chep", amountG: 120, note: "Cá chép" },
+      { foodId: "dua-cai", amountG: 80, note: "Dưa cải" },
+      { foodId: "ca-chua", amountG: 30, note: "Cà chua" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu" }
+    ];
+  }
+  if (n.includes("thit bo xao can tay")) {
+    return [
+      { foodId: "thit-bo-nac", amountG: 90, note: "Thịt bò" },
+      { foodId: "rau-can-tay", amountG: 80, note: "Cần tây" },
+      { foodId: "toi", amountG: 5, note: "Tỏi" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("canh rau ma")) {
+    return [
+      { foodId: "rau-ma", amountG: 110, note: "Rau má" },
+      { foodId: "thit-heo-nac", amountG: 50, note: "Thịt bằm" },
+      { foodId: "nuoc-dung-ca", amountG: 220, note: "Nước canh" },
+      { foodId: "hanh-la", amountG: 5, note: "Hành lá" },
+      { foodId: "nuoc-mam", amountG: 4, note: "Gia vị" }
+    ];
+  }
+  if (n.includes("bun vit mang")) {
+    return [
+      { foodId: "bun-tuoi", amountG: 180, note: "Bún tươi" },
+      { foodId: "thit-vit", amountG: 75, note: "Thịt vịt" },
+      { foodId: "mang-bo", amountG: 80, note: "Măng" },
+      { foodId: "nuoc-dung-bo", amountG: 260, note: "Nước dùng" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau thơm" }
+    ];
+  }
+  if (n.includes("tom rang me")) {
+    return [
+      { foodId: "tom-tuoi", amountG: 120, note: "Tôm" },
+      { foodId: "me-chin", amountG: 15, note: "Me chua" },
+      { foodId: "duong-trang", amountG: 8, note: "Đường" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu rang" }
+    ];
+  }
+  if (n.includes("pho xao bo")) {
+    return [
+      { foodId: "banh-pho-chin", amountG: 180, note: "Bánh phở xào" },
+      { foodId: "thit-bo-nac", amountG: 75, note: "Thịt bò" },
+      { foodId: "rau-cai-ngot", amountG: 60, note: "Rau xào" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("pho sot vang")) {
+    return [
+      { foodId: "banh-pho-chin", amountG: 180, note: "Bánh phở" },
+      { foodId: "thit-bo-nam", amountG: 75, note: "Thịt bò sốt vang" },
+      { foodId: "ca-rot", amountG: 35, note: "Cà rốt" },
+      { foodId: "nuoc-dung-bo", amountG: 300, note: "Nước sốt vang" }
+    ];
+  }
+  if (n.includes("pho cuon")) {
+    return [
+      { foodId: "banh-pho-chin", amountG: 180, note: "Bánh phở cuốn" },
+      { foodId: "thit-bo-nac", amountG: 75, note: "Thịt bò" },
+      { foodId: "xa-lach", amountG: 40, note: "Rau sống" },
+      { foodId: "nuoc-mam", amountG: 8, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("bun suon chua")) {
+    return [
+      { foodId: "bun-tuoi", amountG: 180, note: "Bún tươi" },
+      { foodId: "suon-non-heo", amountG: 75, note: "Sườn non" },
+      { foodId: "ca-chua", amountG: 35, note: "Cà chua" },
+      { foodId: "nuoc-dung-bo", amountG: 260, note: "Nước dùng chua" }
+    ];
+  }
+  if (n.includes("bun thit xao")) {
+    return [
+      { foodId: "bun-tuoi", amountG: 180, note: "Bún tươi" },
+      { foodId: "thit-heo-nac", amountG: 75, note: "Thịt heo xào" },
+      { foodId: "rau-cai-ngot", amountG: 60, note: "Rau xào" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("bun nem nuong")) {
+    return [
+      { foodId: "bun-tuoi", amountG: 180, note: "Bún tươi" },
+      { foodId: "nem-nuong", amountG: 75, note: "Nem nướng" },
+      { foodId: "rau-thom-hanh", amountG: 35, note: "Rau sống" },
+      { foodId: "nuoc-mam", amountG: 8, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("bun long")) {
+    return [
+      { foodId: "bun-tuoi", amountG: 180, note: "Bún tươi" },
+      { foodId: "long-heo", amountG: 75, note: "Lòng heo" },
+      { foodId: "nuoc-dung-bo", amountG: 260, note: "Nước dùng" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau thơm" }
+    ];
+  }
+  if (n.includes("mi quang")) {
+    const topping = n.includes("ga") ? "uc-ga" : n.includes("tom") ? "tom-tuoi" : "thit-heo-nac";
+    return [
+      { foodId: "mi-soi-kho-vdd", amountG: 180, note: "Sợi mì Quảng" },
+      { foodId: topping, amountG: 75, note: "Đạm chính" },
+      ...(n.includes("tom") ? [{ foodId: "thit-heo-nac", amountG: 35, note: "Thịt heo" }] : []),
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau sống" },
+      { foodId: "banh-trang", amountG: 15, note: "Bánh tráng mè" }
+    ];
+  }
+  if (n.includes("mi hoanh thanh")) {
+    return [
+      { foodId: "mi-soi-kho-vdd", amountG: 180, note: "Mì" },
+      { foodId: "tom-tuoi", amountG: 40, note: "Nhân hoành thánh" },
+      { foodId: "thit-heo-nac", amountG: 40, note: "Nhân thịt" },
+      { foodId: "nuoc-dung-bo", amountG: 260, note: "Nước dùng" }
+    ];
+  }
+  if (n.includes("bun cha ha noi")) {
+    return [
+      { foodId: "bun-tuoi", amountG: 180, note: "Bún tươi" },
+      { foodId: "thit-heo-bam", amountG: 70, note: "Chả viên" },
+      { foodId: "thit-heo-ba-roi-luoc", amountG: 45, note: "Thịt nướng" },
+      { foodId: "nuoc-mam", amountG: 12, note: "Nước chấm" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau sống" }
+    ];
+  }
+  if (n.includes("hu tieu my tho") || n.includes("hu tieu sa dec")) {
+    const regionalProtein = n.includes("sa dec") ? "thit-heo-vai" : "tom-tuoi";
+    return [
+      { foodId: "hu-tieu-kho", amountG: 180, note: "Hủ tiếu" },
+      { foodId: regionalProtein, amountG: 45, note: n.includes("sa dec") ? "Thịt heo" : "Tôm" },
+      { foodId: "thit-heo-nac", amountG: 55, note: "Thịt heo" },
+      { foodId: "nuoc-dung-tom", amountG: 280, note: "Nước dùng" }
+    ];
+  }
+  if (n.includes("muc nhoi thit")) {
+    return [
+      { foodId: "muc-tuoi", amountG: 120, note: "Mực" },
+      { foodId: "thit-heo-bam", amountG: 55, note: "Nhân thịt" },
+      { foodId: "hanh-la", amountG: 8, note: "Hành" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu chế biến" }
+    ];
+  }
+  if (n.includes("muc nuong sa te")) {
+    return [
+      { foodId: "muc-tuoi", amountG: 120, note: "Mực" },
+      { foodId: "sa-te-tom", amountG: 12, note: "Sa tế" },
+      { foodId: "ot-tuoi", amountG: 4, note: "Ớt" },
+      { foodId: "dau-an", amountG: 5, note: "Dầu nướng" }
+    ];
+  }
+  if (n.includes("cha muc ha long")) {
+    return [
+      { foodId: "cha-muc-ha-long", amountG: 120, note: "Chả mực" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu chiên" },
+      { foodId: "rau-thom-hanh", amountG: 20, note: "Rau ăn kèm" }
+    ];
+  }
+  if (n.includes("hu tieu xao")) {
+    return [
+      { foodId: "hu-tieu-kho", amountG: 180, note: "Hủ tiếu xào" },
+      { foodId: "thit-heo-nac", amountG: 70, note: "Thịt heo" },
+      { foodId: "rau-cai-ngot", amountG: 60, note: "Rau xào" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("hu tieu go")) {
+    return [
+      { foodId: "hu-tieu-kho", amountG: 180, note: "Hủ tiếu" },
+      { foodId: "thit-heo-nac", amountG: 55, note: "Thịt heo" },
+      { foodId: "nuoc-xuong-heo", amountG: 280, note: "Nước xương" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau thơm" }
+    ];
+  }
+  if (n.includes("chao dau xanh")) {
+    return [
+      { foodId: "gao-te", amountG: 55, note: "Gạo nấu cháo" },
+      { foodId: "dau-xanh", amountG: 35, note: "Đậu xanh" },
+      { foodId: "thit-heo-nac", amountG: 55, note: "Thịt bằm" },
+      { foodId: "nuoc-dung-bo", amountG: 260, note: "Nước cháo" }
+    ];
+  }
+  if (n.includes("banh chung ran")) {
+    return [
+      { foodId: "banh-chung", amountG: 120, note: "Bánh chưng" },
+      { foodId: "dau-an", amountG: 10, note: "Dầu rán" }
+    ];
+  }
+  if (n.includes("banh tet")) {
+    return [
+      { foodId: "gao-nep", amountG: 80, note: "Gạo nếp" },
+      { foodId: "dau-xanh-hat", amountG: 25, note: "Đậu xanh" },
+      { foodId: "thit-heo-ba-roi-luoc", amountG: 20, note: "Nhân thịt" },
+      { foodId: "banh-tet-la-cam", amountG: 10, note: "Biến thể bánh tét" }
+    ];
+  }
+  if (n.includes("banh chung") || n.includes("banh tet")) {
+    return [
+      { foodId: "gao-nep", amountG: 80, note: "Gạo nếp" },
+      { foodId: "dau-xanh-hat", amountG: 25, note: "Đậu xanh" },
+      { foodId: "thit-heo-ba-roi-luoc", amountG: 20, note: "Nhân thịt" }
+    ];
+  }
+  if (n.includes("banh hoi")) {
+    return [
+      { foodId: "banh-hoi", amountG: 120, note: "Bánh hỏi" },
+      { foodId: n.includes("heo quay") ? "thit-heo-quay" : "thit-heo-nac", amountG: 70, note: "Thịt ăn kèm" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau thơm" },
+      { foodId: "nuoc-mam", amountG: 8, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("banh uot")) {
+    return [
+      { foodId: "banh-uot", amountG: 150, note: "Bánh ướt" },
+      { foodId: n.includes("cha lua") ? "cha-lua" : "thit-heo-nac", amountG: 45, note: "Nhân ăn kèm" },
+      { foodId: "hanh-la", amountG: 8, note: "Hành phi" },
+      { foodId: "nuoc-mam", amountG: 8, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("banh nam")) {
+    return [
+      { foodId: "bot-gao", amountG: 80, note: "Bột gạo" },
+      { foodId: "tom-kho", amountG: 12, note: "Tôm chấy" },
+      { foodId: "thit-heo-bam", amountG: 30, note: "Nhân thịt" },
+      { foodId: "dau-an", amountG: 5, note: "Dầu hành" }
+    ];
+  }
+  if (n.includes("banh ram it")) {
+    return [
+      { foodId: "bot-gao-nep-vdd", amountG: 80, note: "Bột nếp" },
+      { foodId: "tom-kho", amountG: 10, note: "Nhân tôm" },
+      { foodId: "thit-heo-bam", amountG: 25, note: "Nhân thịt" },
+      { foodId: "dau-an", amountG: 8, note: "Dầu chiên" }
+    ];
+  }
+  if (n.includes("banh it tran")) {
+    return [
+      { foodId: "bot-gao-nep-vdd", amountG: 80, note: "Bột nếp" },
+      { foodId: "thit-heo-bam", amountG: 35, note: "Nhân thịt" },
+      { foodId: "tom-kho", amountG: 8, note: "Tôm khô" },
+      { foodId: "hanh-la", amountG: 6, note: "Hành" }
+    ];
+  }
+  if (n.includes("banh duc nong")) {
+    return [
+      { foodId: "banh-duc", amountG: 180, note: "Bánh đúc" },
+      { foodId: "thit-heo-bam", amountG: 30, note: "Thịt băm" },
+      { foodId: "tom-kho", amountG: 8, note: "Tôm chấy" },
+      { foodId: "tuong-den", amountG: 6, note: "Tương" }
+    ];
+  }
+  if (n.includes("banh tam bi")) {
+    return [
+      { foodId: "banh-uot", amountG: 150, note: "Sợi bánh tằm" },
+      { foodId: "da-heo", amountG: 45, note: "Bì" },
+      { foodId: "thit-heo-nac", amountG: 40, note: "Thịt" },
+      { foodId: "nuoc-cot-dua-dac", amountG: 25, note: "Nước cốt dừa" }
+    ];
+  }
+  if (n.includes("banh trang tron")) {
+    return [
+      { foodId: "banh-trang", amountG: 80, note: "Bánh tráng" },
+      { foodId: "xoai-xanh", amountG: 35, note: "Xoài xanh" },
+      { foodId: "trung-cut", amountG: 30, note: "Trứng cút" },
+      { foodId: "sa-te-tom", amountG: 8, note: "Sa tế" }
+    ];
+  }
+  if (n.includes("banh trang nuong")) {
+    return [
+      { foodId: "banh-trang", amountG: 70, note: "Bánh tráng" },
+      { foodId: "trung-ga", amountG: 35, note: "Trứng" },
+      { foodId: "cha-lua", amountG: 25, note: "Chả" },
+      { foodId: "dau-hanh-phi", amountG: 8, note: "Mỡ hành" }
+    ];
+  }
   if (n.includes("chay")) {
     if (n.includes("bun") || n.includes("pho") || n.includes("hu tieu") || n.includes("mi ") || n.includes("mien")) {
       return [
@@ -900,8 +1359,14 @@ function recipeItems(name: string): Recipe["items"] {
     if (n.includes("xoi")) {
       return [
         { foodId: "gao-nep", amountG: 170, note: "Xôi nếp chín" },
+        ...(n.includes("gac") ? [{ foodId: "gac", amountG: 25, note: "Gấc tạo màu và vị" }] : []),
+        ...(n.includes("bap") ? [{ foodId: "ngo-tuoi-ca-bap-vdd", amountG: 45, note: "Bắp/ngô" }] : []),
         ...(n.includes("dau xanh") ? [{ foodId: "dau-xanh", amountG: 35, note: "Đậu xanh" }] : []),
+        ...(n.includes("xeo") || n.includes("vo") ? [{ foodId: "dau-xanh", amountG: 35, note: "Đậu xanh" }] : []),
+        ...(n.includes("xeo") ? [{ foodId: "dau-hanh-phi", amountG: 12, note: "Hành phi" }] : []),
+        ...(n.includes("vo") ? [{ foodId: "me-trang", amountG: 12, note: "Mè rang" }] : []),
         ...(n.includes("dau phong") ? [{ foodId: "dau-phong-song", amountG: 20, note: "Đậu phộng" }] : []),
+        ...(n.includes("thap cam") ? [{ foodId: "lap-xuong", amountG: 25, note: "Lạp xưởng/thập cẩm" }] : []),
         { foodId: "hanh-la", amountG: 5, note: "Hành phi hoặc gia vị" }
       ];
     }
@@ -940,7 +1405,7 @@ function recipeItems(name: string): Recipe["items"] {
     return [
       { foodId: "ca-loc", amountG: 150, note: "Cá hấp" },
       { foodId: "gung-tuoi", amountG: 8, note: "Gừng" },
-      { foodId: "hanh-la", amountG: 8, note: "Hành lá" },
+      ...(n.includes("hanh gung") ? [{ foodId: "hanh-la", amountG: 8, note: "Hành lá" }] : []),
       { foodId: "nuoc-mam", amountG: 4, note: "Nước mắm" }
     ];
   }
@@ -1056,9 +1521,10 @@ function recipeItems(name: string): Recipe["items"] {
   if (n.includes("bun ") || n.includes("pho") || n.includes("hu tieu") || n.includes("mi ") || n.includes("mien")) {
     const noodle = n.includes("pho") ? "banh-pho-chin" : n.includes("mien") ? "mien-dong" : n.includes("hu tieu") ? "hu-tieu-kho" : "bun-tuoi";
     const broth = n.includes("ca") ? "nuoc-dung-ca" : n.includes("tom") ? "nuoc-dung-tom" : n.includes("ga") ? "nuoc-dung-ga" : n.includes("chay") ? "nuoc-dung-nam" : "nuoc-dung-bo";
+    const noodleProtein = n.includes("nam") ? "thit-bo-nam" : n.includes("tai") ? "thit-bo-nac" : n.includes("hai san") ? "tom-tuoi" : n.includes("cha ca") ? "cha-ca" : protein;
     return [
       { foodId: noodle, amountG: 180, note: "Sợi chính" },
-      { foodId: protein, amountG: 75, note: "Đạm chính" },
+      { foodId: noodleProtein, amountG: 75, note: "Đạm chính" },
       { foodId: broth, amountG: 300, note: "Nước dùng" },
       { foodId: "rau-thom-hanh", amountG: 25, note: "Rau thơm" }
     ];
@@ -1137,6 +1603,65 @@ function recipeItems(name: string): Recipe["items"] {
       { foodId: "toi", amountG: 5, note: "Tỏi" },
       { foodId: "dau-an", amountG: 6, note: "Dầu xào" },
       { foodId: "nuoc-mam", amountG: 4, note: "Gia vị" }
+    ];
+  }
+  if (n.includes("ga luoc la chanh")) {
+    return [
+      { foodId: "thit-ga-rui", amountG: 120, note: "Thịt gà luộc" },
+      { foodId: "la-chanh", amountG: 4, note: "Lá chanh" },
+      { foodId: "muoi-tieu", amountG: 4, note: "Muối tiêu" }
+    ];
+  }
+  if (n.includes("oc len xao dua")) {
+    return [
+      { foodId: "oc-len", amountG: 150, note: "Ốc len" },
+      { foodId: "nuoc-cot-dua-dac", amountG: 45, note: "Nước cốt dừa" },
+      { foodId: "sa", amountG: 10, note: "Sả" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu xào" }
+    ];
+  }
+  if (n.includes("thit kho mam ruoc")) {
+    return [
+      { foodId: "thit-heo-nac", amountG: 120, note: "Thịt heo" },
+      { foodId: "mam-ruoc", amountG: 12, note: "Mắm ruốc" },
+      { foodId: "sa", amountG: 10, note: "Sả" },
+      { foodId: "dau-an", amountG: 6, note: "Dầu kho" }
+    ];
+  }
+  if (n.includes("thit heo quay")) {
+    return [
+      { foodId: "thit-heo-quay", amountG: 120, note: "Thịt heo quay" },
+      { foodId: "dua-leo", amountG: 30, note: "Dưa leo" },
+      { foodId: "nuoc-mam", amountG: 6, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("nem nuong nha trang")) {
+    return [
+      { foodId: "nem-nuong", amountG: 120, note: "Nem nướng" },
+      { foodId: "rau-thom-hanh", amountG: 25, note: "Rau sống" },
+      { foodId: "nuoc-mam", amountG: 8, note: "Nước chấm" }
+    ];
+  }
+  if (n.includes("gio heo ham")) {
+    return [
+      { foodId: "gio-heo", amountG: 140, note: "Giò heo" },
+      { foodId: "nuoc-dung-bo", amountG: 180, note: "Nước hầm" },
+      { foodId: "hanh-la", amountG: 5, note: "Hành" }
+    ];
+  }
+  if (n.includes("bi cuon")) {
+    return [
+      { foodId: "da-heo", amountG: 50, note: "Bì heo" },
+      { foodId: "thit-heo-nac", amountG: 55, note: "Thịt heo" },
+      { foodId: "rau-thom-hanh", amountG: 30, note: "Rau cuốn" },
+      { foodId: "banh-trang", amountG: 30, note: "Bánh tráng" }
+    ];
+  }
+  if (n.includes("suon heo nuong")) {
+    return [
+      { foodId: "suon-heo-nuong", amountG: 120, note: "Sườn nướng" },
+      { foodId: "mat-ong", amountG: 8, note: "Mật ong ướp" },
+      { foodId: "dau-an", amountG: 5, note: "Dầu nướng" }
     ];
   }
   if (n.includes("oc") || n.includes("ngheu") || n.includes("so") || n.includes("ghe") || n.includes("hau")) {

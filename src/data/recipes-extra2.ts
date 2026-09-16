@@ -2,22 +2,6 @@ import type { Recipe } from "./nutrition";
 
 export const extraRecipes2: Recipe[] = [
   {
-    id: "banh-duc-noi-tuong", slug: "banh-duc-noi-tuong", name: "Bánh đúc nóng (nồi tường)",
-    aliases: ["banh duc nong"],
-    servingName: "1 bát", servingWeightG: 280,
-    tags: ["vietnamese"],
-    portionNote: "Bánh đúc nóng ăn với thịt băm, tôm chấy, nước tương/nấm.",
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
-    items: [
-      { foodId: "banh-duc", amountG: 180, note: "Bánh đúc" },
-      { foodId: "thit-heo-xay", amountG: 30, note: "Thịt băm" },
-      { foodId: "tom-kho", amountG: 8, note: "Tôm khô/ruốc" },
-      { foodId: "dau-an", amountG: 5, note: "Dầu/hành" },
-      { foodId: "tuong-den", amountG: 6, note: "Tương" }
-    ]
-  },
-  {
     id: "banh-can-nuong", slug: "banh-can-nuong", name: "Bánh căn trứng cút",
     aliases: ["banh can trung cut"],
     servingName: "5 cái", servingWeightG: 200,
@@ -49,23 +33,6 @@ export const extraRecipes2: Recipe[] = [
     ]
   },
   {
-    id: "ech-xao-sa-ot-phan", slug: "ech-xao-sa-ot-phan", name: "Ếch xào sả ớt (phần nhỏ)",
-    aliases: ["ech xao sa ot phan"],
-    servingName: "1 đĩa", servingWeightG: 200,
-    tags: ["vietnamese", "high-protein"],
-    portionNote: "Đĩa ếch xào sả ớt với lạc rang.",
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; thịt ếch proxy dùng thịt gà.",
-    items: [
-      { foodId: "thit-ga-rui", amountG: 120, note: "Proxy thịt ếch" },
-      { foodId: "sa", amountG: 10, note: "Sả băm" },
-      { foodId: "ot-tuoi", amountG: 5, note: "Ớt tươi" },
-      { foodId: "dau-an", amountG: 8, note: "Dầu xào" },
-      { foodId: "nuoc-mam", amountG: 8, note: "Gia vị" },
-      { foodId: "toi", amountG: 5, note: "Tỏi" }
-    ]
-  },
-  {
     id: "ca-pheo-rim-man", slug: "ca-pheo-rim-man", name: "Cá phèo rim mặn",
     aliases: ["ca pheo rim"],
     servingName: "1 phần", servingWeightG: 150,
@@ -78,20 +45,6 @@ export const extraRecipes2: Recipe[] = [
       { foodId: "nuoc-mam", amountG: 10, note: "Nước mắm" },
       { foodId: "hat-tieu", amountG: 1, note: "Tiêu" },
       { foodId: "dau-an", amountG: 5, note: "Dầu rim" }
-    ]
-  },
-  {
-    id: "ngheu-hap-sa-phan", slug: "ngheu-hap-sa-phan", name: "Nghêu hấp sả (phần nhỏ)",
-    aliases: ["ngheu hap sa phan"],
-    servingName: "1 đĩa", servingWeightG: 350,
-    tags: ["vietnamese", "seafood"],
-    portionNote: "Nghêu hấp sả, thêm lá chanh và ớt.",
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; nghêu chưa có foodId riêng, dùng proxy tôm gán weight.",
-    items: [
-      { foodId: "ca-ngat", amountG: 300, note: "Proxy nghêu ~50% thịt" },
-      { foodId: "sa", amountG: 10, note: "Sả đập dập" },
-      { foodId: "rau-ram", amountG: 8, note: "Lá chanh xé" }
     ]
   },
   {
@@ -172,8 +125,8 @@ export const extraRecipes2: Recipe[] = [
     ]
   },
   {
-    id: "xoi-ma-pha", slug: "xoi-ma-pha", name: "Xôi mặn (xôi mỡ hành)",
-    aliases: ["xoi man", "xoi mo hanh"],
+    id: "xoi-ma-pha", slug: "xoi-ma-pha", name: "Xôi mặn lạp xưởng mỡ hành",
+    aliases: ["xoi man mo hanh", "xoi lap xuong", "xoi mo hanh"],
     servingName: "1 đĩa", servingWeightG: 240,
     tags: ["vietnamese"],
     portionNote: "Xôi nếp/gao nếp với mỡ hành, ruốc, lạp xưởng.",

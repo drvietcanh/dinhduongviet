@@ -30,7 +30,7 @@ const heroMetrics = [
   { label: "Năng lượng", value: `${Math.round(nutrients.energyKcal ?? 0)} kcal` },
   { label: "Protein", value: `${Math.round(nutrients.proteinG ?? 0)} g` },
   { label: "Carb", value: `${Math.round(nutrients.carbG ?? 0)} g` },
-  { label: "Natri", value: `${Math.round(nutrients.sodiumMg ?? 0)} mg` }
+  { label: "Natri", value: nutrients.sodiumMg == null ? "Chưa có dữ liệu" : `${Math.round(nutrients.sodiumMg)} mg` }
 ];
 const heroTags = allTags({ tags: recipe.tags, nutrients }).slice(0, 3);
 const detailMeta = [
@@ -70,8 +70,8 @@ const recipeSchema = {
     "proteinContent": Math.round(nutrients.proteinG ?? 0) + " g",
     "fatContent": Math.round(nutrients.fatG ?? 0) + " g",
     "carbohydrateContent": Math.round(nutrients.carbG ?? 0) + " g",
-    "fiberContent": Math.round(nutrients.fiberG ?? 0) + " g",
-    "sodiumContent": Math.round(nutrients.sodiumMg ?? 0) + " mg"
+    ...(nutrients.fiberG == null ? {} : { "fiberContent": Math.round(nutrients.fiberG) + " g" }),
+    ...(nutrients.sodiumMg == null ? {} : { "sodiumContent": Math.round(nutrients.sodiumMg) + " mg" })
   },
   "recipeIngredient": recipe.items.map(function(item) {
     var food = foodById(item.foodId);

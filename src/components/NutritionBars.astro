@@ -24,16 +24,18 @@ bars.push({ label: "Năng lượng", value: n.energyKcal, unit: "kcal", pct: Mat
 bars.push({ label: "Chất đạm", value: n.proteinG ?? 0, unit: "g", pct: Math.min((n.proteinG ?? 0) / 65 * 100, 100), color: "#e0875a" });
 bars.push({ label: "Chất béo", value: n.fatG ?? 0, unit: "g", pct: Math.min((n.fatG ?? 0) / 65 * 100, 100), color: "#f0c050" });
 bars.push({ label: "Carb", value: n.carbG ?? 0, unit: "g", pct: Math.min((n.carbG ?? 0) / 275 * 100, 100), color: "#41b87a" });
-bars.push({ label: "Chất xơ", value: n.fiberG ?? 0, unit: "g", pct: Math.min((n.fiberG ?? 0) / 30 * 100, 100), color: "#7b9f6e" });
+if (n.fiberG != null) {
+  bars.push({ label: "Chất xơ", value: n.fiberG, unit: "g", pct: Math.min(n.fiberG / 30 * 100, 100), color: "#7b9f6e" });
+}
 
 // Highlight minerals if present
-if (n.sodiumMg !== undefined) {
+if (n.sodiumMg != null) {
   bars.push({ label: "Natri", value: n.sodiumMg, unit: "mg", pct: Math.min((n.sodiumMg) / 2300 * 100, 100), color: "#8b8b9e" });
 }
-if (n.potassiumMg !== undefined) {
+if (n.potassiumMg != null) {
   bars.push({ label: "Kali", value: n.potassiumMg, unit: "mg", pct: Math.min((n.potassiumMg) / 4700 * 100, 100), color: "#b088c8" });
 }
-if (n.phosphorusMg !== undefined) {
+if (n.phosphorusMg != null) {
   bars.push({ label: "Phốt-pho", value: n.phosphorusMg, unit: "mg", pct: Math.min((n.phosphorusMg) / 700 * 100, 100), color: "#6ba3b8" });
 }
 ---

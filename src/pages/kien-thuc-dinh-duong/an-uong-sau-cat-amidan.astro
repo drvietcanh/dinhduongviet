@@ -1,0 +1,62 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["an-uong-sau-cat-amidan"];
+if (!art) throw new Error("Article not found: an-uong-sau-cat-amidan");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>Điều quan trọng sau cắt amidan</h2>
+      <ul>
+        <li>Uống đủ theo khả năng và theo dõi để tránh mất nước; đau họng có thể làm người bệnh ngại uống.</li>
+        <li>Hướng dẫn thức ăn khác nhau giữa bệnh viện: có nơi khuyến khích sớm ăn chế độ bình thường, nơi khác gợi ý thức ăn mềm/mát trong vài ngày. Ưu tiên giấy dặn dò của phẫu thuật viên.</li>
+        <li>Dùng thuốc giảm đau đúng đơn; hỏi đội ngũ điều trị cách sắp giờ thuốc quanh bữa ăn nếu đau làm ăn uống khó.</li>
+        <li>Chảy máu đỏ tươi, khạc/ói ra máu sau khi về nhà là dấu hiệu cần cấp cứu, không xử trí bằng đồ ăn hay nước uống.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Không có một thực đơn áp dụng cho mọi ca:</strong> thời điểm bắt đầu ăn/uống, loại thức ăn và giới hạn vận động tùy kỹ thuật mổ, tuổi và chỉ định của bệnh viện. Hãy làm theo giấy ra viện của chính người bệnh.</p>
+
+    <h2>Chọn thức ăn theo mức đau và hướng dẫn của bệnh viện</h2>
+    <p>Sau mổ, họng thường đau khi nuốt; đau có thể thay đổi trong quá trình hồi phục. Một số bệnh viện hướng dẫn ăn thức ăn mềm, mát cho dễ chịu; một số khác khuyên trở lại chế độ ăn bình thường sớm nếu người bệnh chịu được. Vì các phác đồ hậu phẫu có khác biệt, không ép người bệnh theo một danh sách món cố định trên mạng.</p>
+    <p>Nếu bệnh viện cho phép và thức ăn mềm dễ nuốt hơn, có thể thử từng ít một: cháo đặc hoặc súp ấm vừa, khoai nghiền, trứng mềm, sữa/chế phẩm sữa nếu hợp, đậu phụ non, sinh tố không hạt cứng. Thức ăn quá nóng, cay, chua hoặc khô ráp có thể làm đau ở một số người; dừng món gây khó chịu và hỏi lại nếu không uống/ăn được.</p>
+
+    <h2>Giữ đủ nước và năng lượng</h2>
+    <ul>
+      <li>Để nước trong tầm tay, cho uống từng ngụm nhỏ thường xuyên khi đã được phép uống sau mổ.</li>
+      <li>Nếu nhanh mệt hoặc đau, chia thành nhiều lần nhỏ; có thể chọn món mềm có năng lượng và đạm thay vì chỉ dùng nước lọc/cháo loãng cả ngày.</li>
+      <li>Quan sát lượng nước tiểu, môi miệng khô, chóng mặt, lừ đừ hoặc không uống được; liên hệ bệnh viện nếu nghi mất nước.</li>
+      <li>Với trẻ em, người cao tuổi hoặc người có bệnh nền, người chăm sóc cần theo dõi sát hơn và gọi nơi phẫu thuật khi băn khoăn.</li>
+    </ul>
+
+    <h2>Thuốc giảm đau và bữa ăn</h2>
+    <p>Đau không kiểm soát có thể khiến người bệnh bỏ ăn/uống. Dùng đúng thuốc, liều và khoảng cách trên đơn; không tự thêm aspirin, thuốc giảm đau khác hoặc thuốc nam. Nếu giấy ra viện cho phép dùng thuốc giảm đau trước bữa, hỏi bác sĩ/dược sĩ thời điểm phù hợp và chống chỉ định cá nhân. Không trì hoãn khám khi đau tăng rõ, nôn lặp lại hoặc không thể uống.</p>
+
+    <div class="warning-box">
+      <h2>Đi cấp cứu khi có máu đỏ tươi</h2>
+      <p>Bất kỳ chảy máu đỏ tươi từ miệng/mũi, khạc hoặc nôn ra máu/cục máu đông sau cắt amidan đều cần liên hệ cấp cứu hoặc đến bệnh viện ngay. Không cho ăn/uống trong lúc chờ hướng dẫn nếu có chảy máu, vì người bệnh có thể cần được đánh giá/phẫu thuật lại.</p>
+    </div>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://my.clevelandclinic.org/health/treatments/15605-tonsillectomy" rel="noopener noreferrer">Cleveland Clinic — Tonsillectomy: Procedure Details &amp; Recovery</a>: ưu tiên nước và gợi ý thức ăn mềm/mát theo khả năng chịu đựng.</li>
+      <li><a href="https://www.cuh.nhs.uk/patient-information/tonsillectomy/" rel="noopener noreferrer">Cambridge University Hospitals NHS — Tonsillectomy</a>: hướng dẫn hậu phẫu, ăn uống theo dung nạp và dấu hiệu chảy máu cần đi viện.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note, .warning-box { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .summary-box ul { margin-bottom: 0; padding-left: 1.2rem; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .warning-box { background: rgba(239, 68, 68, .08); border: 1px solid rgba(239, 68, 68, .25); }
+  .warning-box h2 { margin-top: 0; }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

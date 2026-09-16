@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const title = "Tương tác thuốc - thực phẩm | Dinh dưỡng Việt";
 const description =
-  "Nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ khi dùng thuốc cùng thực phẩm.";
+  "Tra cứu một số cặp thuốc - thực phẩm thường gặp, nguồn tham khảo và lưu ý cần hỏi bác sĩ hoặc dược sĩ.";
 
 const riskGroups = [
   "Đang dùng thuốc theo toa hoặc thuốc dùng dài ngày cho bệnh mạn tính",
@@ -25,11 +25,12 @@ const interactionCards = [
   {
     id: "warfarin-vitamin-k",
     index: "01",
-    title: "Warfarin (Sintrom) × rau giàu vitamin K",
-    medicines: "Warfarin/acenocoumarol",
+    title: "Warfarin × rau giàu vitamin K",
+    medicines: "Warfarin (thuốc kháng vitamin K)",
     foods: "Rau muống, rau ngót, cải xanh, bông cải và các rau lá xanh",
     action: "Không tự kiêng hoàn toàn. Cố gắng giữ lượng rau xanh tương đối ổn định giữa các ngày và báo nơi theo dõi chống đông nếu thay đổi nhiều; INR cần được kiểm tra theo lịch.",
     caution: "Không tự tăng/giảm liều chỉ vì một bữa ăn.",
+    sources: [{ label: "MedlinePlus — Warfarin", url: "https://medlineplus.gov/druginfo/meds/a682277.html" }],
   },
   {
     id: "statin-grapefruit",
@@ -39,6 +40,7 @@ const interactionCards = [
     foods: "Bưởi chùm/grapefruit và nước ép grapefruit",
     action: "Kiểm tra đúng tên statin và tờ hướng dẫn. Không suy ra rằng mọi loại statin đều phải tránh; rosuvastatin có hướng dẫn khác.",
     caution: "Bưởi Việt Nam không mặc nhiên đồng nhất với grapefruit; nếu không chắc loại quả, hỏi dược sĩ.",
+    sources: [{ label: "MedlinePlus — Statins", url: "https://medlineplus.gov/statins.html" }],
   },
   {
     id: "levothyroxine-minerals",
@@ -48,6 +50,7 @@ const interactionCards = [
     foods: "Viên canxi/sắt, multivitamin, thuốc kháng acid; cà phê, đậu nành hoặc chất xơ cao",
     action: "Uống theo đúng hướng dẫn, thường là lúc đói. Canxi và sắt thường cần cách ít nhất 4 giờ; kiểm tra lại với nhãn thuốc và dược sĩ vì chế phẩm có thể khác nhau.",
     caution: "Không tự đổi giờ uống hoặc nghiền thuốc trộn vào sữa/công thức đậu nành.",
+    sources: [{ label: "MedlinePlus — Levothyroxine", url: "https://medlineplus.gov/druginfo/meds/a682461.html" }],
   },
   {
     id: "ciprofloxacin-minerals",
@@ -57,6 +60,7 @@ const interactionCards = [
     foods: "Sữa/sữa chua dùng riêng, nước tăng cường canxi; viên sắt, kẽm, magiê hoặc nhôm",
     action: "Không uống ciprofloxacin cùng một ly sữa hoặc đồ uống bổ sung canxi. Khoảng cách với khoáng chất phụ thuộc nhãn chế phẩm; dược sĩ cần xác nhận lịch dùng cụ thể.",
     caution: "Không tự áp dụng một khoảng cách cho mọi kháng sinh hoặc mọi dạng thuốc.",
+    sources: [{ label: "MedlinePlus — Ciprofloxacin", url: "https://medlineplus.gov/druginfo/meds/a688016.html" }],
   },
   {
     id: "acei-potassium",
@@ -66,6 +70,7 @@ const interactionCards = [
     foods: "Muối thay thế chứa kali, viên kali và sản phẩm bổ sung điện giải",
     action: "Không tự dùng muối kali hay viên kali, nhất là khi có bệnh thận. Việc ăn chuối/cà chua không nên bị cấm máy móc; cần dựa vào xét nghiệm và toa thuốc.",
     caution: "Hỏi bác sĩ về kali máu, eGFR và mọi sản phẩm có chữ potassium/kali trên nhãn.",
+    sources: [{ label: "NIDDK — Ăn uống và bệnh thận mạn", url: "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-healthy-eating" }],
   },
   {
     id: "diabetes-alcohol",
@@ -73,8 +78,12 @@ const interactionCards = [
     title: "Insulin/thuốc hạ đường huyết × rượu bia hoặc bỏ bữa",
     medicines: "Insulin và một số thuốc hạ đường huyết",
     foods: "Rượu bia, đặc biệt khi uống lúc đói hoặc bỏ bữa",
-    action: "Rượu có thể làm đường huyết hạ hoặc tăng tùy tình huống. Không uống lúc đói; trao đổi kế hoạch an toàn với người đang theo dõi, nhất là khi dùng insulin.",
+    action: "Rượu có thể làm tăng nguy cơ hạ đường huyết ở người dùng insulin hoặc một số thuốc, nhất là khi uống lúc đói/bỏ bữa. Hãy trao đổi kế hoạch an toàn với người đang theo dõi.",
     caution: "Run, vã mồ hôi, lú lẫn hoặc ngất cần được xử trí y tế khẩn cấp.",
+    sources: [
+      { label: "NIDDK — Rượu và bệnh đái tháo đường", url: "https://www.niddk.nih.gov/health-information/diabetes/overview/healthy-living-with-diabetes" },
+      { label: "NIDDK — Hạ đường huyết", url: "https://www.niddk.nih.gov/health-information/diabetes/overview/preventing-problems/low-blood-glucose-hypoglycemia" },
+    ],
   },
   {
     id: "tacrolimus-grapefruit",
@@ -84,15 +93,23 @@ const interactionCards = [
     foods: "Bưởi chùm/grapefruit và nước ép grapefruit",
     action: "Tránh grapefruit nếu đội ghép tạng đã dặn như vậy và uống thuốc theo cùng một cách với hoặc không cùng thức ăn mỗi ngày. Mọi thay đổi phải báo đội ghép.",
     caution: "Không tự đổi nhãn hiệu, dạng bào chế hoặc thực phẩm bổ sung.",
+    sources: [
+      { label: "MedlinePlus — Tacrolimus", url: "https://medlineplus.gov/druginfo/meds/a601117.html" },
+      { label: "MedlinePlus — Cyclosporine", url: "https://medlineplus.gov/druginfo/meds/a601207.html" },
+    ],
   },
   {
     id: "maoi-tyramine",
     index: "08",
-    title: "MAOI/linezolid × thực phẩm giàu tyramine",
+    title: "Linezolid/MAOI × thực phẩm giàu tyramine",
     medicines: "Thuốc ức chế monoamine oxidase (MAOI) hoặc linezolid",
     foods: "Một số thực phẩm lên men/ủ lâu, phô mai già, thịt cá lên men hoặc quá chín",
     action: "Chỉ dùng danh sách hạn chế do bác sĩ/dược sĩ cung cấp cho đúng thuốc. Không tự áp dụng danh sách chung cho mọi thuốc chống trầm cảm.",
     caution: "Đau đầu dữ dội, đau ngực, hồi hộp hoặc huyết áp tăng đột ngột cần cấp cứu.",
+    sources: [
+      { label: "MedlinePlus — Linezolid", url: "https://medlineplus.gov/druginfo/meds/a602004.html" },
+      { label: "NHS — Hướng dẫn ăn uống với MAOI", url: "https://www.wsh.nhs.uk/CMS-Documents/Patient-leaflets/NutritionandDieteticService/MAOI-Monoamine-Oxidase-Inhibitors-Diet-Sheet.pdf" },
+    ],
   },
   {
     id: "iron-calcium-tea",
@@ -102,6 +119,7 @@ const interactionCards = [
     foods: "Sữa/canxi, trà, cà phê và bữa rất giàu chất xơ",
     action: "Không dùng cùng thời điểm với sữa/canxi hoặc thuốc kháng acid; thường cần cách khoảng 2 giờ theo hướng dẫn. Hỏi dược sĩ nếu đang dùng nhiều thuốc.",
     caution: "Không tự tăng liều sắt khi chưa xác định nguyên nhân thiếu máu.",
+    sources: [{ label: "NIH ODS — Iron: Health Professional Fact Sheet", url: "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/" }],
   },
   {
     id: "metformin-alcohol",
@@ -111,6 +129,7 @@ const interactionCards = [
     foods: "Rượu bia, đặc biệt uống nhiều hoặc kèm bỏ bữa",
     action: "Rượu làm tăng nguy cơ tác dụng phụ nghiêm trọng ở một số người. Trao đổi với bác sĩ, nhất là khi có bệnh thận, gan, tim hoặc đang mất nước.",
     caution: "Không tự ngừng metformin để uống rượu; hãy hỏi người kê đơn.",
+    sources: [{ label: "DailyMed — Metformin hydrochloride", url: "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=273d86b0-9d30-48c9-8918-c5e1ececa951" }],
   },
 ] as const;
 ---
@@ -189,6 +208,12 @@ const interactionCards = [
             </dl>
             <p class="action-copy"><strong>Nên làm:</strong> {item.action}</p>
             <p class="caution-copy"><strong>Cần nhớ:</strong> {item.caution}</p>
+            <div class="card-sources" aria-label="Nguồn tham khảo">
+              <strong>Nguồn tham khảo</strong>
+              {item.sources.map((source) => (
+                <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
+              ))}
+            </div>
           </article>
         ))}
       </div>
@@ -547,6 +572,22 @@ const interactionCards = [
 
     .caution-copy strong {
       color: #9a3412;
+    }
+
+    .card-sources {
+      padding-top: 10px;
+      border-top: 1px solid var(--card-border);
+      color: var(--ink-tertiary);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .card-sources a {
+      display: block;
+      margin-top: 3px;
+      color: var(--brand-dark);
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
     .no-results {

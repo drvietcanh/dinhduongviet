@@ -299,8 +299,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "buong-trung-da-nang-pcos",
-    title: "Buồng trứng đa nang (PCOS): Ăn Low-GI để hỗ trợ kiểm soát",
-    description: "Tìm hiểu mối liên hệ giữa PCOS và kháng insulin, cùng cách chọn tinh bột, bữa ăn và lối sống phù hợp hơn.",
+    title: "PCOS: dinh dưỡng linh hoạt, chuyển hóa và khi nào cần khám",
+    description: "Hướng dẫn dinh dưỡng không áp kiểu ăn Low-GI hay thực phẩm bổ sung cho tất cả; hiểu vai trò của lối sống và chăm sóc y khoa.",
     emoji: "🌸",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -309,8 +309,11 @@ export const articles: ArticleMeta[] = [
     date: "2026-07-08",
     readTime: 7,
     featured: true,
-    sources: [{ name: "WHO", url: "https://www.who.int" }],
-    keywords: ["pcos", "buồng trứng đa nang", "kháng insulin", "inositol", "low gi", "vô sinh"]
+    sources: [
+      { name: "2023 International Evidence-based PCOS Guideline — Monash/ASRM/ESHRE", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10477934/" },
+      { name: "Monash University — International PCOS Guideline", url: "https://www.monash.edu/medicine/mchri/pcos/guideline" }
+    ],
+    keywords: ["PCOS", "buồng trứng đa nang", "kháng insulin", "inositol", "dinh dưỡng linh hoạt", "kinh nguyệt thưa", "mong con"]
   },
   {
     slug: "cao-huyet-ap-dash-diet",
@@ -337,32 +340,40 @@ export const articles: ArticleMeta[] = [
     categoryName: "Đối tượng đặc biệt",
     displayCategory: "bai-viet",
     specialty: "huyet-hoc",
-    date: "2026-07-08",
+    date: "2026-09-15",
     readTime: 7,
     featured: true,
-    sources: [{ name: "ESC", url: "https://www.escardio.org" }],
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "MedlinePlus", title: "Warfarin patient instructions", url: "https://medlineplus.gov/ency/patientinstructions/000292.htm" },
+      { name: "NHS", title: "Warfarin", url: "https://www.nhs.uk/medicines/warfarin/" }
+    ],
     keywords: ["warfarin", "sintrom", "chống đông máu", "vitamin k", "rau xanh", "inr"]
   },
   {
     slug: "tuong-tac-thuoc-thuc-pham-thuong-gap",
-    title: "Thuốc và thực phẩm: 10 tương tác thường gặp người Việt cần nhớ",
-    description: "Hướng dẫn đọc các tương tác thuốc - thực phẩm thường gặp trong đái tháo đường, tim mạch, bệnh thận, tuyến giáp và các bệnh mạn tính khác.",
+    title: "Thuốc và thực phẩm: 11 tương tác thường gặp người Việt cần biết",
+    description: "Tra cứu 11 tình huống thuốc–thực phẩm thường gặp ở người dùng thuốc mạn tính, từ warfarin, tuyến giáp, loãng xương đến bệnh thận.",
     emoji: "💊",
     category: "special",
     categoryName: "Đối tượng đặc biệt",
     displayCategory: "bai-viet",
-    date: "2026-09-12",
+    date: "2026-09-15",
     readTime: 8,
     featured: false,
     specialty: "dinh-duong-tong-quat",
-    reviewedAt: "2026-09-12",
     evidenceLevel: "clinical-review",
     sources: [
       { name: "MedlinePlus", title: "Warfarin patient instructions", url: "https://medlineplus.gov/ency/patientinstructions/000292.htm" },
       { name: "NHS", title: "Statins", url: "https://www.nhs.uk/medicines/statins/" },
       { name: "MedlinePlus", title: "Levothyroxine", url: "https://medlineplus.gov/druginfo/meds/a682461.html" },
       { name: "MedlinePlus", title: "Ciprofloxacin", url: "https://medlineplus.gov/druginfo/meds/a688016.html" },
+      { name: "DailyMed", title: "Ciprofloxacin tablets: food and mineral timing", url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6b5fe0aa-c74f-42f3-a84a-1cb16009aa80" },
+      { name: "DailyMed", title: "Levothyroxine tablets: calcium and iron separation", url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=42a26f8a-dc67-42e4-abb0-d2602afb1b7d" },
       { name: "MedlinePlus", title: "Tacrolimus", url: "https://medlineplus.gov/druginfo/meds/a601117.html" },
+      { name: "MedlinePlus", title: "Alendronate", url: "https://medlineplus.gov/druginfo/meds/a601011.html" },
+      { name: "DailyMed", title: "Alendronate tablets: administration instructions", url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c4358ba7-1bf8-4b0a-9407-5ac279d04555" },
+      { name: "DailyMed", title: "Linezolid tablets: tyramine precautions", url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=374af2a7-d994-40bd-a86a-cd9038d0b72c" },
       { name: "MedlinePlus", title: "Hypothyroidism and levothyroxine timing", url: "https://medlineplus.gov/ency/article/000353.htm" },
       { name: "MedlinePlus", title: "Iron supplements", url: "https://medlineplus.gov/ency/article/007478.htm" },
       { name: "MedlinePlus", title: "Metformin", url: "https://medlineplus.gov/druginfo/meds/a696005.html" },
@@ -370,7 +381,7 @@ export const articles: ArticleMeta[] = [
       { name: "FDA", title: "Potassium chloride food labeling", url: "https://www.fda.gov/food/hfp-constituent-updates/fda-issues-final-guidance-potassium-chloride-food-labeling" },
       { name: "MedlinePlus", title: "Medicines and interactions", url: "https://medlineplus.gov/medicines.html" },
     ],
-    keywords: ["tương tác thuốc", "thuốc và thực phẩm", "warfarin", "bưởi chùm", "levothyroxine", "ciprofloxacin", "kali", "đái tháo đường", "bệnh thận"]
+    keywords: ["tương tác thuốc", "thuốc và thực phẩm", "warfarin", "acenocoumarol", "bưởi chùm", "levothyroxine", "ciprofloxacin", "alendronate", "kali", "đái tháo đường", "bệnh thận"]
   },
   {
     slug: "dinh-duong-vay-nen-psoriasis",
@@ -503,7 +514,7 @@ export const articles: ArticleMeta[] = [
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
-    specialty: "nhi-khoa",
+    specialty: "san-khoa",
     date: "2026-07-08",
     readTime: 6,
     featured: true,
@@ -542,8 +553,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "khang-insulin-resistance",
-    title: "Kháng insulin (gai đen): Căn nguyên của béo phì và đái tháo đường",
-    description: "Giải thích kháng insulin, gai đen, béo bụng và các cách cải thiện bữa ăn, vận động, thói quen ăn vặt.",
+    title: "Gai đen và kháng insulin ở thanh thiếu niên: khi nào cần khám?",
+    description: "Gai đen có thể liên quan kháng insulin nhưng không tự chẩn đoán đái tháo đường; hiểu cách bác sĩ đánh giá và hỗ trợ trẻ không kỳ thị.",
     emoji: "🔑",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -552,13 +563,16 @@ export const articles: ArticleMeta[] = [
     date: "2026-07-08",
     readTime: 7,
     featured: true,
-    sources: [{ name: "ADA", url: "https://diabetes.org" }],
-    keywords: ["kháng insulin", "gai đen", "béo phì", "tiểu đường tuýp 2", "nhịn ăn gián đoạn", "insulin"]
+    sources: [
+      { name: "ADA Standards of Care in Diabetes—2026, Diagnosis and Classification", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S27/163926/2-Diagnosis-and-Classification-of-Diabetes" },
+      { name: "American Academy of Pediatrics — Evaluation and Treatment of Children and Adolescents With Obesity", url: "https://publications.aap.org/pediatrics/article/151/2/e2022060640/190443/Clinical-Practice-Guideline-for-the-Evaluation-and" }
+    ],
+    keywords: ["kháng insulin", "gai đen", "thanh thiếu niên", "tiền đái tháo đường", "đái tháo đường típ 2", "xét nghiệm đường huyết"]
   },
   {
     slug: "gan-nhiem-mo-nafld-fructose",
-    title: "Gan nhiễm mỡ — Đồ uống ngọt và đường lỏng cần lưu ý gì?",
-    description: "Giải thích vai trò của tổng năng lượng, đường tự do, fructose, rượu và chất béo trong nguy cơ gan nhiễm mỡ.",
+    title: "Gan nhiễm mỡ — đồ uống ngọt và fructose cần hiểu thế nào?",
+    description: "Phân biệt đường tự do trong đồ uống với đường tự nhiên trong trái cây nguyên quả; không quy nguy cơ MASLD cho một chất hay món ăn duy nhất.",
     emoji: "🧋",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -567,8 +581,12 @@ export const articles: ArticleMeta[] = [
     date: "2026-07-08",
     readTime: 6,
     featured: true,
-    sources: [{ name: "Harvard T.H. Chan", url: "https://nutritionsource.hsph.harvard.edu" }],
-    keywords: ["gan nhiễm mỡ", "nafld", "fructose", "trà sữa", "nước ép trái cây", "omega-3"]
+    sources: [
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "WHO — Guideline: Sugars Intake", url: "https://www.who.int/publications/i/item/9789241549028" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
+    ],
+    keywords: ["gan nhiễm mỡ", "MASLD", "NAFLD", "fructose", "trà sữa", "nước ép trái cây"]
   },
   {
     slug: "viem-xoang-di-ung-histamine",
@@ -654,7 +672,9 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: true,
     sources: [
-      { name: "National Kidney Foundation", url: "https://www.kidney.org" }
+      { name: "National Kidney Foundation — KDOQI Nutrition in CKD", url: "https://www.kidney.org/professionals/kdoqi/guidelines-and-commentaries/nutrition-ckd" },
+      { name: "NIDDK — Hemodialysis", url: "https://www.niddk.nih.gov/health-information/kidney-disease/kidney-failure/hemodialysis" },
+      { name: "KDIGO — Key Takeaways for People Living with CKD", url: "https://kdigo.org/wp-content/uploads/2025/01/Key-Takeaways_KDIGO-2024-CKD-Guideline_People-Living-with-CKD.pdf" }
     ],
     keywords: ["chạy thận nhân tạo", "suy thận", "lọc máu", "kiêng đạm", "photpho", "albumin"],
   },
@@ -967,7 +987,9 @@ export const articles: ArticleMeta[] = [
     readTime: 6,
     featured: true,
     sources: [
-      { name: "National Kidney Foundation", url: "https://www.kidney.org" }
+      { name: "KDIGO 2024 CKD Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
+      { name: "KDIGO — Key Takeaways for People Living with CKD", url: "https://kdigo.org/wp-content/uploads/2025/01/Key-Takeaways_KDIGO-2024-CKD-Guideline_People-Living-with-CKD.pdf" },
+      { name: "National Kidney Foundation — KDOQI Nutrition in CKD", url: "https://www.kidney.org/professionals/kdoqi/guidelines-and-commentaries/nutrition-ckd" }
     ],
     keywords: ["suy thận", "chạy thận", "kali", "photpho", "đạm", "kiêng ăn gì"],
   },
@@ -1087,7 +1109,9 @@ export const articles: ArticleMeta[] = [
     readTime: 6,
     featured: true,
     sources: [
-      { name: "WHO", url: "https://www.who.int" }
+      { name: "Bộ Y tế Việt Nam", title: "Hướng dẫn chẩn đoán, điều trị sốt xuất huyết Dengue — Quyết định 2760/QĐ-BYT", url: "https://soyte.hatinh.gov.vn/upload/1000030/20230816/QD-2760-BYT_cebb36b02b.pdf" },
+      { name: "CDC", title: "Clinical Care of Dengue", url: "https://www.cdc.gov/dengue/hcp/clinical-care/index.html" },
+      { name: "WHO", title: "Dengue and severe dengue", url: "https://www.who.int/news-room/questions-and-answers/item/dengue-and-severe-dengue" }
     ],
     keywords: ["sốt xuất huyết", "dengue", "tiểu cầu giảm", "xuất huyết dạ dày", "oresol"],
   },
@@ -2092,19 +2116,23 @@ export const articles: ArticleMeta[] = [
 
   {
     slug: "gout",
-    title: "Gout — Chế độ ăn cho người bệnh Gout",
-    description: "Hạn chế purin, đạm động vật. Thực đơn và nguyên tắc dinh dưỡng cho người gout.",
+    title: "Gout: ăn uống hỗ trợ điều trị mà không kiêng khem quá mức",
+    description: "Những nhóm purin, bia rượu, nước ngọt nên điều chỉnh; lưu ý lượng nước phụ thuộc bệnh thận, tim và kế hoạch điều trị.",
     emoji: "🦶",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
     specialty: "noi-tiet",
-    date: "2026-02-10",
+    date: "2026-09-15",
     readTime: 7,
     featured: false,
     tags: ["new-diagnosis"],
     audience: ["gout"],
-    sources: [{ name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }, { name: "Viện Dinh dưỡng — Gout", url: "https://viendinhduong.vn" }],
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "American College of Rheumatology", title: "2020 Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" },
+      { name: "American College of Rheumatology", title: "Gout — patient information", url: "https://rheumatology.org/patients/gout" }
+    ],
     keywords: ["ăn cơm", "đậu hũ", "thịt chó", "hải sản", "nội tạng", "rượu bia", "gout ăn đậu hũ", "gout kiêng ăn gì", "gout uống nước gì"],
   },
   {
@@ -2164,7 +2192,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "suy-than",
     title: "Bệnh thận mạn (CKD) — Ăn thế nào trước khi cần lọc máu?",
-    description: "Bài nền cho bệnh thận mạn chưa lọc máu: cách nhìn muối, đạm, kali và phốt pho theo giai đoạn bệnh, xét nghiệm và chỉ định điều trị.",
+    description: "Bài nền về dinh dưỡng bệnh thận mạn: tham chiếu KDIGO về đạm/natri và cách cá thể hóa kali, phốt pho, dịch theo xét nghiệm, thuốc, tình trạng dinh dưỡng và lọc máu.",
     emoji: "🫘",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -2176,7 +2204,11 @@ export const articles: ArticleMeta[] = [
     tags: ["new-diagnosis", "ask-doctor"],
     keywords: ["bệnh thận mạn", "CKD", "chế độ ăn bệnh thận mạn", "kiêng kali", "kiêng đạm"],
     audience: ["kidney"],
-    sources: [{ name: "KDIGO — CKD Nutrition", url: "https://kdigo.org/guidelines/" }, { name: "Viện Dinh dưỡng — Suy thận", url: "https://viendinhduong.vn" }],
+    sources: [
+      { name: "KDIGO 2024 CKD Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
+      { name: "KDIGO — Key Takeaways for People Living with CKD", url: "https://kdigo.org/wp-content/uploads/2025/01/Key-Takeaways_KDIGO-2024-CKD-Guideline_People-Living-with-CKD.pdf" },
+      { name: "NIDDK — Healthy Eating for Adults with CKD", url: "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/healthy-eating-adults-chronic-kidney-disease" }
+    ],
   },
   {
     slug: "ckd-kali-phot-pho-muoi-thuc-hanh",
@@ -2200,8 +2232,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "gan-nhiem-mo",
-    title: "Gan nhiễm mỡ — Ăn gì, kiêng gì?",
-    description: "Bài nền về gan nhiễm mỡ: hiểu đúng nguyên nhân chuyển hóa, nguyên tắc ăn uống chung và các dấu hiệu cần theo dõi thêm.",
+    title: "Gan nhiễm mỡ (MASLD) — nguyên tắc ăn uống và theo dõi",
+    description: "Bài nền về MASLD: hiểu nguyên nhân chuyển hóa, ăn uống cân đối, đánh giá nguy cơ xơ hóa và khi nào cần khám.",
     emoji: "🫁",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -2211,9 +2243,14 @@ export const articles: ArticleMeta[] = [
     readTime: 6,
     featured: false,
     tags: ["new-diagnosis"],
-    keywords: ["gan nhiễm mỡ", "mỡ gan", "men gan cao", "cải thiện gan nhiễm mỡ", "chế độ ăn gan nhiễm mỡ"],
+    keywords: ["gan nhiễm mỡ", "MASLD", "MASH", "mỡ gan", "men gan cao", "chế độ ăn gan nhiễm mỡ"],
     audience: ["fatty-liver", "metabolic-risk"],
-    sources: [{ name: "ESPEN — Liver Disease Guidelines", url: "https://www.espen.org/guidelines" }, { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }],
+    sources: [
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "EASL-EASD-EASO — 2024 MASLD Clinical Practice Guidelines", url: "https://easl.eu/publication/easl-easd-easo-clinical-practice-guidelines-managment-of-metabolic-dysfunction-associated-steatotic-liver-disease/" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
+      { name: "WHO — Sugars intake guideline", url: "https://www.who.int/publications/i/item/9789241549028" }
+    ],
   },
   {
     slug: "gan-nhiem-mo-giam-can-vong-eo",
@@ -2231,7 +2268,8 @@ export const articles: ArticleMeta[] = [
     keywords: ["gan nhiễm mỡ", "giảm cân", "vòng eo", "mỡ gan", "MASLD", "NAFLD"],
     audience: ["fatty-liver", "metabolic-risk"],
     sources: [
-      { name: "AASLD — Clinical Assessment and Management of MASLD", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "AASLD — Clinical Assessment and Management of MASLD", url: "https://pmc.ncbi.nlm.nih.gov/articles/10735173/" },
+      { name: "EASL-EASD-EASO — 2024 MASLD Clinical Practice Guidelines", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11299976/" },
       { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
     ],
   },
@@ -2528,7 +2566,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "giam-can-khoa-hoc",
     title: "Giảm cân khoa học — Hướng dẫn toàn diện",
-    description: "Thâm hụt calo, phương pháp (CICO, Keto, IF), thực đơn 1500kcal, 8 sai lầm thường gặp.",
+    description: "Cách chọn mục tiêu và kế hoạch giảm cân thực tế, phù hợp bệnh nền, thuốc đang dùng, khẩu vị và khả năng duy trì.",
     emoji: "⚖️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -2538,9 +2576,9 @@ export const articles: ArticleMeta[] = [
     readTime: 10,
     featured: true,
     sources: [
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
-      { name: "USDA — Dietary Guidelines", url: "https://www.dietaryguidelines.gov" }
+      { name: "NIDDK", title: "Choosing a Safe & Successful Weight-loss Program", url: "https://www.niddk.nih.gov/health-information/weight-management/choosing-a-safe-successful-weight-loss-program" },
+      { name: "CDC", title: "Steps for Losing Weight", url: "https://www.cdc.gov/healthy-weight-growth/losing-weight/index.html" },
+      { name: "NIDDK", title: "Prescription Medications to Treat Overweight & Obesity", url: "https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity" }
     ],
     keywords: ["giam can khoa hoc"],
   },
@@ -2636,9 +2674,8 @@ export const articles: ArticleMeta[] = [
     readTime: 8,
     featured: false,
     sources: [
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
-      { name: "USDA — Dietary Guidelines", url: "https://www.dietaryguidelines.gov" }
+      { name: "International Society of Sports Nutrition", title: "Position Stand: Protein and Exercise", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5477153/" },
+      { name: "American College of Sports Medicine", title: "Position Stands", url: "https://acsm.org/education-resources/pronouncements-scientific-communications/position-stands/" }
     ],
     keywords: ["tang co gym"],
   },
@@ -2991,8 +3028,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "gan-nhiem-mo-nguoi-gay",
-    title: "Gan nhiễm mỡ ở người gầy — Vì sao vẫn bị?",
-    description: "10-20% người BMI bình thường có gan nhiễm mỡ. Nguyên nhân, thực đơn, tập kháng lực.",
+    title: "Gan nhiễm mỡ ở người cân nặng bình thường — cần biết gì?",
+    description: "BMI bình thường không loại trừ mỡ gan; tìm hiểu nguyên nhân cần đánh giá và vì sao không nên tự giảm cân hay áp thực đơn chung.",
     emoji: "🤔",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3004,33 +3041,33 @@ export const articles: ArticleMeta[] = [
     tags: ["new-diagnosis"],
     audience: ["fatty-liver"],
     sources: [
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
-      { name: "MedlinePlus — U.S. National Library of Medicine", url: "https://medlineplus.gov" }
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "EASL-EASD-EASO — 2024 MASLD Clinical Practice Guidelines", url: "https://easl.eu/publication/easl-easd-easo-clinical-practice-guidelines-managment-of-metabolic-dysfunction-associated-steatotic-liver-disease/" }
     ],
     keywords: ["gan nhiem mo nguoi gay"],
   },
   {
     slug: "thuoc-chi-dinh-vitamin-k",
-    title: "Người dùng thuốc chống đông — Ăn rau xanh thế nào?",
-    description: "Không kiêng rau — quan trọng là NHẤT QUÁN. Warfarin, vitamin K, INR.",
+    title: "Thuốc chống đông và thức ăn: phân biệt warfarin với apixaban, rivaroxaban",
+    description: "Phân biệt thuốc kháng vitamin K với thuốc chống đông đường uống khác; biết khi nào cần ổn định rau xanh và uống thuốc cùng bữa ăn.",
     emoji: "💊",
     category: "disease",
-    categoryName: "Dinh dưỡng & Bệnh lý",
+    categoryName: "Thuốc chống đông / Huyết học",
     displayCategory: "bai-viet",
-    specialty: "tieu-hoa",
-    date: "2026-06-02",
+    specialty: "huyet-hoc",
+    date: "2026-09-15",
     readTime: 7,
     featured: false,
     tags: ["new-diagnosis", "ask-doctor"],
-    audience: ["elderly", "hypertension"],
+    audience: ["anticoagulant", "medication-safety", "elderly"],
+    evidenceLevel: "clinical-review",
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
-      { name: "World Health Organization (WHO)", url: "https://www.who.int" }
+      { name: "MedlinePlus", title: "Warfarin patient instructions", url: "https://medlineplus.gov/ency/patientinstructions/000292.htm" },
+      { name: "MedlinePlus", title: "Apixaban Drug Information", url: "https://www.medlineplus.gov/druginfo/meds/a613032.html" },
+      { name: "DailyMed", title: "Rivaroxaban prescribing information", url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=10db92f9-2300-4a80-836b-673e1ae91610" },
+      { name: "NHS", title: "Anticoagulant medicines", url: "https://www.nhs.uk/medicines/anticoagulants/" }
     ],
-    keywords: ["thuoc chi dinh vitamin k"],
+    keywords: ["warfarin", "vitamin K", "thuốc chống đông", "acenocoumarol", "sintrom", "apixaban", "rivaroxaban", "rau xanh", "INR"],
   },
   {
     slug: "day-bung-sau-an",
@@ -3183,7 +3220,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "sua-ai-nen-uong",
     title: "Sữa — Ai nên uống, ai cần cẩn thận?",
-    description: "Ai nên uống sữa, ai không dung nạp lactose? Các loại sữa so sánh. Sữa hạt không thay thế được sữa bò.",
+    description: "So sánh sữa bò, sữa không lactose và đồ uống thực vật; phân biệt bất dung nạp lactose với dị ứng sữa và đọc nhãn đúng cách.",
     emoji: "🥛",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3195,9 +3232,9 @@ export const articles: ArticleMeta[] = [
     tags: ["before-supplement"],
     audience: ["children", "elderly", "pregnancy"],
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "USDA — Dietary Guidelines", url: "https://www.dietaryguidelines.gov" }
+      { name: "USDA MyPlate", title: "Dairy and fortified soy alternatives", url: "https://www.myplate.gov/web/eat-healthy/dairy" },
+      { name: "NIDDK", title: "Symptoms & Causes of Lactose Intolerance", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/symptoms-causes" },
+      { name: "WHO", title: "Sugars intake and free sugars", url: "https://www.who.int/news/item/04-03-2015-who-calls-on-countries-to-reduce-sugars-intake-among-adults-and-children" }
     ],
     keywords: ["sua ai nen uong"],
   },
@@ -3288,7 +3325,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "noi-tang-dong-vat",
     title: "Nội tạng động vật — Bổ hay hại?",
-    description: "Giá trị dinh dưỡng. Ai nên ăn, ai nên tránh. Cách chế biến lành mạnh.",
+    description: "Thành phần dinh dưỡng, an toàn chế biến và lưu ý cho người gout, bệnh thận hoặc mang thai; nội tạng không thay thế điều trị thiếu máu.",
     emoji: "🥩",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3300,9 +3337,10 @@ export const articles: ArticleMeta[] = [
     tags: ["before-supplement"],
     audience: ["gout", "fatty-liver"],
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "USDA — Dietary Guidelines", url: "https://www.dietaryguidelines.gov" }
+      { name: "NHS — Foods to avoid in pregnancy", url: "https://www.nhs.uk/pregnancy/keeping-well/foods-to-avoid/" },
+      { name: "NIH Office of Dietary Supplements — Vitamin A", url: "https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/" },
+      { name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" },
+      { name: "NIDDK — Healthy Eating for Adults with CKD", url: "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/healthy-eating-adults-chronic-kidney-disease" }
     ],
     keywords: ["noi tang dong vat"],
   },
@@ -3497,8 +3535,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "sai-lam-gan-nhiem-mo-an-mo",
-    title: "Gan nhiễm mỡ không chỉ do ăn mỡ",
-    description: "Đường và tinh bột mới là thủ phạm chính. Cách ăn đúng cho gan nhiễm mỡ.",
+    title: "Gan nhiễm mỡ không chỉ do ăn mỡ — tránh kiêng cực đoan",
+    description: "Vai trò của tổng thể chế độ ăn, chuyển hóa, đồ uống có đường và chất béo; những nhóm thực phẩm không cần tự cấm.",
     emoji: "🫁",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3510,9 +3548,9 @@ export const articles: ArticleMeta[] = [
     tags: ["new-diagnosis"],
     audience: ["fatty-liver"],
     sources: [
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" },
-      { name: "MedlinePlus — U.S. National Library of Medicine", url: "https://medlineplus.gov" }
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "EASL-EASD-EASO — 2024 MASLD Clinical Practice Guidelines", url: "https://easl.eu/publication/easl-easd-easo-clinical-practice-guidelines-managment-of-metabolic-dysfunction-associated-steatotic-liver-disease/" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
     ],
     keywords: ["sai lam gan nhiem mo an mo"],
   },
@@ -3623,7 +3661,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "thuc-don-tieu-duong-binh-dan",
     title: "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản bình dân",
-    description: "Bữa cơm gia đình tiết kiệm, quen miệng. Không cần bỏ cơm, chỉ cần kiểm soát lượng và phối hợp món hợp lý.",
+    description: "Gợi ý bữa cơm gia đình tiết kiệm cho người đái tháo đường; khẩu phần tinh bột cần cá thể hóa theo thuốc, bệnh kèm và kế hoạch điều trị.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3633,16 +3671,16 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American Diabetes Association — Meal Planning", url: "https://diabetes.org/food-nutrition/meal-planning" },
+      { name: "American Diabetes Association — Eating for Diabetes Management", url: "https://diabetes.org/food-nutrition/eating-for-diabetes-management" },
+      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" }
     ],
     keywords: ["thuc don tieu duong binh dan"],
   },
   {
     slug: "thuc-don-tieu-duong-ban-ron",
     title: "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản đi làm bận rộn",
-    description: "Gợi ý cho người đi làm ít thời gian nấu, với mẹo ăn sáng nhanh, gọi món ngoài và giữ đường huyết ổn định hơn.",
+    description: "Lựa chọn bữa ăn nhanh và gọi món khi đi làm; khẩu phần và thời điểm ăn cần khớp với thuốc và mục tiêu điều trị cá nhân.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3652,16 +3690,16 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American Diabetes Association — Meal Planning", url: "https://diabetes.org/food-nutrition/meal-planning" },
+      { name: "American Diabetes Association — Eating for Diabetes Management", url: "https://diabetes.org/food-nutrition/eating-for-diabetes-management" },
+      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" }
     ],
     keywords: ["thuc don tieu duong ban ron"],
   },
   {
     slug: "thuc-don-tieu-duong-nguoi-gia",
     title: "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản người lớn tuổi",
-    description: "Thực đơn mềm, dễ nhai cho người lớn tuổi bị đái tháo đường, vẫn bảo đảm đạm và kiểm soát đường huyết.",
+    description: "Gợi ý món mềm cho người lớn tuổi mắc đái tháo đường; nhu cầu dinh dưỡng, kết cấu món và lịch ăn cần cá thể hóa.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3673,16 +3711,16 @@ export const articles: ArticleMeta[] = [
     tags: ["caregiver"],
     audience: ["diabetes", "elderly"],
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American Diabetes Association — Meal Planning", url: "https://diabetes.org/food-nutrition/meal-planning" },
+      { name: "American Diabetes Association — Hypoglycemia: Symptoms and Treatment", url: "https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose/symptoms-treatment" },
+      { name: "American Diabetes Association — Standards of Care in Diabetes", url: "https://professional.diabetes.org/standards-of-care" }
     ],
     keywords: ["thuc don tieu duong nguoi gia"],
   },
   {
     slug: "thuc-don-huyet-ap-binh-dan",
     title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân",
-    description: "Thực đơn giảm muối kiểu cơm nhà. Pha loãng nước mắm, kho nhạt, dùng gia vị thơm. Dưới 2g muối.",
+    description: "Gợi ý bữa cơm gia đình giảm natri; lượng natri mục tiêu và dịch cần cá thể hóa theo bệnh kèm và điều trị.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3692,16 +3730,15 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "WHO — Sodium reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" },
+      { name: "WHO — Sodium intake for adults and children", url: "https://www.who.int/tools/elena/interventions/sodium-cvd-adults" }
     ],
     keywords: ["thuc don huyet ap binh dan"],
   },
   {
     slug: "thuc-don-huyet-ap-ban-ron",
     title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm",
-    description: "Thực đơn giảm muối cho người bận rộn. Mẹo gọi món ngoài, đọc nhãn đồ đóng gói.",
+    description: "Gợi ý ăn ngoài và chọn thực phẩm đóng gói ít natri hơn; mục tiêu cá nhân cần theo điều trị và bệnh kèm.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3711,16 +3748,15 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "WHO — Sodium reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" },
+      { name: "WHO — Sodium intake for adults and children", url: "https://www.who.int/tools/elena/interventions/sodium-cvd-adults" }
     ],
     keywords: ["thuc don huyet ap ban ron"],
   },
   {
     slug: "thuc-don-huyet-ap-nguoi-gia",
     title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản người lớn tuổi",
-    description: "Thực đơn mềm, ít muối, dễ ăn cho người lớn tuổi bị tăng huyết áp, dùng gia vị thơm để bữa ăn vẫn ngon miệng.",
+    description: "Gợi ý món mềm cho người lớn tuổi bị tăng huyết áp; khẩu phần và kết cấu món ăn cần cá thể hóa theo sức khỏe.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3732,75 +3768,71 @@ export const articles: ArticleMeta[] = [
     tags: ["caregiver"],
     audience: ["hypertension", "elderly"],
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "WHO — Sodium reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" },
+      { name: "WHO — Sodium intake for adults and children", url: "https://www.who.int/tools/elena/interventions/sodium-cvd-adults" }
     ],
     keywords: ["thuc don huyet ap nguoi gia"],
   },
   {
     slug: "thuc-don-gout-binh-dan",
     title: "Thực đơn 1 ngày cho người gout — Phiên bản bình dân",
-    description: "Bữa cơm gia đình cho người gout. Purin dưới 170mg, trứng, đậu hũ, rau. Uống 2 lít nước.",
+    description: "Gợi ý bữa cơm gia đình cho người gout; khẩu phần purin và nước uống không áp theo một ngưỡng chung.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "thuc-don",
-    specialty: "noi-tiet",
+    specialty: "co-xuong-khop",
     date: "2026-06-02",
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://rheumatology.org/gout-guideline" },
+      { name: "2020 ACR Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" }
     ],
     keywords: ["thuc don gout binh dan"],
   },
   {
     slug: "thuc-don-gout-ban-ron",
     title: "Thực đơn 1 ngày cho người gout — Phiên bản đi làm",
-    description: "Thực đơn cho người gout bận rộn. Ăn ngoài được — chỉ biết tránh nội tạng, hải sản, bia.",
+    description: "Gợi ý chọn món khi đi làm cho người gout; tránh kiêng mọi loại hải sản hoặc đặt mục tiêu nước/purin chung.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "thuc-don",
-    specialty: "noi-tiet",
+    specialty: "co-xuong-khop",
     date: "2026-06-02",
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://rheumatology.org/gout-guideline" },
+      { name: "2020 ACR Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" }
     ],
     keywords: ["thuc don gout ban ron"],
   },
   {
     slug: "thuc-don-gout-nguoi-gia",
     title: "Thực đơn 1 ngày cho người gout — Phiên bản người lớn tuổi",
-    description: "Thực đơn mềm, ít purin cho người già bị gout. Cháo yến mạch, trứng, đậu phụ, rau củ.",
+    description: "Gợi ý món mềm cho người lớn tuổi mắc gout; lượng dịch, đạm và kết cấu thức ăn cần cá thể hóa theo bệnh kèm.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "thuc-don",
-    specialty: "noi-tiet",
+    specialty: "co-xuong-khop",
     date: "2026-06-02",
     readTime: 7,
     featured: false,
     tags: ["caregiver"],
     audience: ["gout", "elderly"],
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://rheumatology.org/gout-guideline" },
+      { name: "2020 ACR Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" }
     ],
     keywords: ["thuc don gout nguoi gia"],
   },
   {
     slug: "thuc-don-gan-nhiem-mo-binh-dan",
-    title: "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản bình dân",
-    description: "Bữa cơm gia đình ít đường, ít béo bão hòa. Cá hồi omega-3, gạo lứt, nhiều rau.",
+    title: "Gợi ý bữa cơm gia đình bình dân khi gan nhiễm mỡ",
+    description: "Ví dụ bữa ăn Việt linh hoạt, không áp khẩu phần hay mức năng lượng giống nhau cho mọi người bị MASLD.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3810,16 +3842,15 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
     ],
     keywords: ["thuc don gan nhiem mo binh dan"],
   },
   {
     slug: "thuc-don-gan-nhiem-mo-ban-ron",
-    title: "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản đi làm",
-    description: "Người đi làm bị gan nhiễm mỡ. Tránh cám dỗ đồ ngọt văn phòng, cơm phần nhiều dầu.",
+    title: "Gợi ý ăn ngoài khi bận và được chẩn đoán gan nhiễm mỡ",
+    description: "Cách chọn bữa ăn ngoài thực tế khi có MASLD, tập trung giảm đồ uống có đường và khẩu phần dư năng lượng.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3829,16 +3860,15 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
     ],
     keywords: ["thuc don gan nhiem mo ban ron"],
   },
   {
     slug: "thuc-don-gan-nhiem-mo-nguoi-gia",
-    title: "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản người lớn tuổi",
-    description: "Thực đơn nhẹ, dễ tiêu cho người già gan nhiễm mỡ. Tránh suy dinh dưỡng đi kèm.",
+    title: "Gợi ý bữa ăn cho người lớn tuổi bị gan nhiễm mỡ",
+    description: "Ưu tiên đủ chất, duy trì cơ và điều chỉnh theo sức khỏe thay vì áp mức kcal hay giờ ăn chung.",
     emoji: "🍽️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -3850,9 +3880,8 @@ export const articles: ArticleMeta[] = [
     tags: ["caregiver"],
     audience: ["fatty-liver", "elderly"],
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
     ],
     keywords: ["thuc don gan nhiem mo nguoi gia"],
   },
@@ -3916,7 +3945,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "thuc-don-tieu-duong",
     title: "Thực đơn 1 ngày cho người đái tháo đường type 2",
-    description: "Thực đơn khoảng 1500-1600 kcal cho người đái tháo đường type 2, kèm lựa chọn thay món và mẹo ăn ngoài.",
+    description: "Ví dụ bữa ăn kiểu Việt cho người đái tháo đường type 2; khẩu phần và lịch ăn cần cá thể hóa theo thuốc, bệnh kèm và mục tiêu điều trị.",
     emoji: "🍚",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3926,16 +3955,16 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American Diabetes Association — Meal Planning", url: "https://diabetes.org/food-nutrition/meal-planning" },
+      { name: "American Diabetes Association — Eating for Diabetes Management", url: "https://diabetes.org/food-nutrition/eating-for-diabetes-management" },
+      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" }
     ],
     keywords: ["thuc don tieu duong"],
   },
   {
     slug: "thuc-don-tang-huyet-ap",
-    title: "Thực đơn 1 ngày cho người tăng huyết áp — dưới 2g muối",
-    description: "Thực đơn 1500 kcal, muối dưới 2g. Mẹo giảm muối không giảm ngon.",
+    title: "Thực đơn mẫu giảm natri cho người tăng huyết áp",
+    description: "Gợi ý bữa ăn kiểu Việt và cách giảm natri từ nước chấm, gia vị, nước dùng; không áp một ngưỡng điều trị cho mọi người.",
     emoji: "🧂",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3945,35 +3974,35 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "WHO — Sodium reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" },
+      { name: "WHO — Sodium intake for adults and children", url: "https://www.who.int/tools/elena/interventions/sodium-cvd-adults" },
+      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" }
     ],
     keywords: ["thuc don tang huyet ap"],
   },
   {
     slug: "thuc-don-gout",
-    title: "Thực đơn 1 ngày cho người gout — purin dưới 200mg",
-    description: "Thực đơn 1600 kcal cho gout. Trứng, sữa, đậu hũ thay thịt. Uống 2-2.5L nước.",
+    title: "Thực đơn mẫu kiểu Việt cho người bệnh gout",
+    description: "Gợi ý bữa ăn đa dạng, hạn chế kiêng cực đoan; khẩu phần, nước uống và điều trị cần điều chỉnh theo bệnh kèm và chỉ định.",
     emoji: "🥩",
     category: "education",
     categoryName: "Bài viết giáo dục",
     displayCategory: "thuc-don",
-    specialty: "noi-tiet",
+    specialty: "co-xuong-khop",
     date: "2026-06-02",
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://rheumatology.org/gout-guideline" },
+      { name: "FitzGerald et al. — 2020 ACR Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" },
+      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" }
     ],
     keywords: ["thuc don gout"],
   },
   {
     slug: "thuc-don-gan-nhiem-mo",
-    title: "Thực đơn 1 ngày cho người gan nhiễm mỡ",
-    description: "Thực đơn 1500 kcal cho gan nhiễm mỡ. Giảm đường, tăng xơ, chất béo lành mạnh.",
+    title: "Thực đơn tham khảo linh hoạt khi gan nhiễm mỡ",
+    description: "Ví dụ bữa ăn cân đối cho người có gan nhiễm mỡ; không thay thế khẩu phần cá thể hóa theo bệnh đi kèm.",
     emoji: "🫁",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -3983,9 +4012,8 @@ export const articles: ArticleMeta[] = [
     readTime: 7,
     featured: false,
     sources: [
-      { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "AASLD — MASLD Clinical Practice Guidance", url: "https://www.aasld.org/practice-guidelines/clinical-assessment-and-management-metabolic-dysfunction-associated-steatotic" },
+      { name: "WHO — Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" }
     ],
     keywords: ["thuc don gan nhiem mo"],
   },
@@ -4392,7 +4420,7 @@ export const articles: ArticleMeta[] = [
     sources: [
       { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" },
       { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "USDA — Dietary Guidelines", url: "https://www.dietaryguidelines.gov" }
+      { name: "American College of Rheumatology", title: "2020 Guideline for the Management of Gout", url: "https://rheumatology.org/Portals/0/Files/Gout-Guideline-Final-2020.pdf" }
     ],
     keywords: ["goi mon tiec cuoi"],
   },
@@ -4715,22 +4743,22 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-suy-tim",
-    title: "Dinh dưỡng cho người suy tim — Ăn gì để tim khỏe?",
-    description: "Hạn chế muối, kiểm soát dịch, cân nặng hàng ngày. Thực đơn cho suy tim.",
+    title: "Dinh dưỡng khi suy tim: giảm natri vừa sức, theo dõi dịch theo kế hoạch",
+    description: "Cách chọn món Việt, hạn chế natri dư và theo dõi triệu chứng mà không áp một mức muối, nước, đạm hoặc kali cho mọi người.",
     emoji: "❤️",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
     specialty: "tim-mach",
-    date: "2026-06-02",
+    date: "2026-09-15",
     readTime: 8,
     featured: true,
     tags: ["new-diagnosis", "ask-doctor"],
     audience: ["cardio", "hypertension", "elderly"],
+    evidenceLevel: "guideline",
     sources: [
-      { name: "American Heart Association (AHA)", url: "https://www.heart.org" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "AHA/ACC/HFSA", title: "2022 Guideline for the Management of Heart Failure", url: "https://professional.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf" },
+      { name: "American Heart Association", title: "Lifestyle Changes for Heart Failure", url: "https://www.heart.org/en/health-topics/heart-failure/treatment-options-for-heart-failure/lifestyle-changes-for-heart-failure" }
     ],
     keywords: ["dinh duong suy tim"],
   },
@@ -4756,8 +4784,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-viem-gan",
-    title: "Dinh dưỡng bảo vệ gan — Viêm gan & Gan nhiễm mỡ",
-    description: "Đủ đạm, nghệ, trà xanh. Tránh rượu, mỡ xấu, đường. Dinh dưỡng theo giai đoạn bệnh.",
+    title: "Dinh dưỡng hỗ trợ trong viêm gan và gan nhiễm mỡ",
+    description: "Hướng dẫn tổng quan cho viêm gan và gan nhiễm mỡ: dinh dưỡng hỗ trợ sức khỏe chuyển hóa, không thay thuốc; xơ gan cần kế hoạch riêng.",
     emoji: "🫁",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -4769,9 +4797,10 @@ export const articles: ArticleMeta[] = [
     tags: ["new-diagnosis", "ask-doctor"],
     audience: ["fatty-liver"],
     sources: [
-      { name: "WHO Tây Thái Bình Dương (tiếng Việt)", url: "https://www.who.int/vietnam/vi" },
-      { name: "Harvard T.H. Chan — Nutrition Source", url: "https://nutritionsource.hsph.harvard.edu" },
-      { name: "NHS (UK) — Eat Well", url: "https://www.nhs.uk/live-well/eat-well" }
+      { name: "NIDDK — Hepatitis B", url: "https://www.niddk.nih.gov/health-information/liver-disease/viral-hepatitis/hepatitis-b" },
+      { name: "AASLD — Malnutrition, Frailty, and Sarcopenia in Cirrhosis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9134787/" },
+      { name: "AASLD — Outpatient Management of Cirrhosis", url: "https://www.aasld.org/liver-fellow-network/core-series/back-basics/back-basics-outpatient-management-cirrhosis" },
+      { name: "EASL — Clinical Practice Guidelines on Nutrition in Chronic Liver Disease", url: "https://easl.eu/wp-content/uploads/2018/10/EASL-CPG-nutrition-in-chronic-liver-disease.pdf" }
     ],
     keywords: ["dinh duong viem gan"],
   },
@@ -4956,7 +4985,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-com-tieu-duong",
     title: "Cảnh báo hiểu lầm: Người đái tháo đường không cần bỏ hoàn toàn cơm",
-    description: "Người đái tháo đường vẫn ăn cơm được. Cách kiểm soát lượng, chọn gạo phù hợp và sắp xếp thứ tự ăn.",
+    description: "Không cần bỏ hẳn cơm; lượng carbohydrate nên phù hợp khẩu phần, đường huyết, thuốc và kế hoạch điều trị.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -4977,7 +5006,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-gout-dam",
     title: "Cảnh báo hiểu lầm: Người gout không cần kiêng tất cả đạm",
-    description: "Gout không phải chỉ do ăn thịt. Đậu hũ, trứng, sữa là nguồn đạm an toàn.",
+    description: "Không cần kiêng mọi nguồn đạm; điều chỉnh ăn uống có thể hỗ trợ nhưng không thay thuốc hạ acid uric khi được chỉ định.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -4999,7 +5028,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-suy-than-kieng",
     title: "Cảnh báo hiểu lầm: Người bệnh thận mạn không được tự ý kiêng quá mức kali, đạm, phốt pho",
-    description: "Kiêng chưa có chỉ định bisa gây suy dinh dưỡng. Cần xét nghiệm và hướng dẫn bác sĩ.",
+    description: "Kiêng khi chưa có chỉ định có thể làm khẩu phần mất cân đối; kali, đạm và phốt pho cần được điều chỉnh theo xét nghiệm và giai đoạn bệnh.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -5021,7 +5050,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-gan-bo-gan",
     title: "Cảnh báo hiểu lầm: Gan nhiễm mỡ không phải cứ uống thuốc bổ gan là khỏi",
-    description: "Thuốc bổ gan không thay đổi được ăn uống, tập luyện. Cần giảm đường, tinh bột, tăng omega-3.",
+    description: "Thận trọng với thực phẩm bổ sung và thảo dược; gan nhiễm mỡ cần được đánh giá nguy cơ chuyển hóa và quản lý theo từng người.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -5043,7 +5072,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-nuoc-ep-trai-cay",
     title: "Cảnh báo hiểu lầm: Nước ép trái cây không giống trái cây nguyên quả",
-    description: "Nước ép thiếu xơ, cô đặc đường, GI cao hơn. Cách uống ít hại: nguyên quả, ép vặt, không thêm đường.",
+    description: "Nước ép thường ít chất xơ hơn quả nguyên; ảnh hưởng đường huyết còn tùy loại, cách chế biến và khẩu phần.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -5087,7 +5116,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-sua-hat-dam",
     title: "Cảnh báo hiểu lầm: Sữa hạt không phải lúc nào cũng giàu đạm",
-    description: "Sữa hạt thường có ít đạm và canxi nếu không được bổ sung. Sữa bò là nguồn đạm tốt nhất.",
+    description: "Đồ uống thực vật khác nhau về đạm, canxi và đường bổ sung; so sánh nhãn thay vì mặc định mọi loại sữa hạt giống nhau.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -5153,7 +5182,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "canh-bao-hieu-lam-giam-can-nhanh",
     title: "Cảnh báo hiểu lầm: Giảm cân nhanh không đồng nghĩa giảm mỡ tốt",
-    description: "Giảm cân nhanh thường mất nước và cơ bắp. Giảm mỡ bền vững cần chế độ ăn vừa và tập luyện.",
+    description: "Cân giảm nhanh không đồng nghĩa giảm mỡ; ưu tiên thay đổi bền vững và đi khám nếu sụt cân không chủ ý.",
     emoji: "⚠️",
     category: "education",
     categoryName: "Bài viết giáo dục",
@@ -5398,12 +5427,17 @@ export const articles: ArticleMeta[] = [
     categoryName: "Dinh dưỡng & Bệnh lý",
     displayCategory: "bai-viet",
     specialty: "huyet-hoc",
-    date: "2026-06-03",
+    date: "2026-09-15",
     readTime: 6,
     featured: false,
     tags: ["vitamin B12", "thiếu máu", "thần kinh", "người già"],
     audience: ["người ăn chay", "người cao tuổi", "người thiếu máu"],
-    sources: [{ name: "NIH — Vitamin B12 Fact Sheet", url: "https://ods.od.nih.gov/factsheets/VitaminB12" }, { name: "Viện Dinh dưỡng Quốc gia", url: "https://viendinhduong.vn" }],
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "NIH Office of Dietary Supplements", title: "Vitamin B12 Fact Sheet for Consumers", url: "https://ods.od.nih.gov/factsheets/VitaminB12-Consumer/" },
+      { name: "American Diabetes Association", title: "Standards of Care in Diabetes—2026, Prevention or Delay of Diabetes", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S50/163924/3-Prevention-or-Delay-of-Diabetes-and-Associated" },
+      { name: "American Diabetes Association", title: "Standards of Care in Diabetes—2026, Retinopathy, Neuropathy, and Foot Care", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S261/163919/12-Retinopathy-Neuropathy-and-Foot-Care-Standards" }
+    ],
     keywords: ["vitamin B12", "thiếu B12", "thiếu máu", "B12 thực phẩm", "ăn chay B12"],
   },
   {
@@ -5531,7 +5565,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-benh-than-man-ckd",
     title: "Bệnh thận mạn (CKD) — Ăn gì để bảo vệ thận trước khi cần lọc máu?",
-    description: "Chế độ ăn cho người bệnh thận mạn giai đoạn 1–4: giảm đạm, giảm muối, kiểm soát kali/phốt pho, trước khi cần lọc máu.",
+    description: "Dinh dưỡng trong bệnh thận mạn trước và trong lọc máu: tham chiếu KDIGO, giảm natri phù hợp và cá thể hóa đạm, kali, phốt pho, dịch theo xét nghiệm.",
     emoji: "🫘",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5542,7 +5576,11 @@ export const articles: ArticleMeta[] = [
     featured: false,
     tags: ["thận mạn", "CKD", "chưa lọc máu", "lọc máu"],
     audience: ["người bệnh thận mạn", "người chăm sóc bệnh thận"],
-    sources: [{ name: "KDIGO — CKD Guidelines", url: "https://kdigo.org" }, { name: "National Kidney Foundation", url: "https://www.kidney.org" }],
+    sources: [
+      { name: "KDIGO 2024 CKD Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
+      { name: "KDIGO — Key Takeaways for People Living with CKD", url: "https://kdigo.org/wp-content/uploads/2025/01/Key-Takeaways_KDIGO-2024-CKD-Guideline_People-Living-with-CKD.pdf" },
+      { name: "National Kidney Foundation — KDOQI Nutrition in CKD", url: "https://www.kidney.org/professionals/kdoqi/guidelines-and-commentaries/nutrition-ckd" }
+    ],
     keywords: ["bệnh thận mạn", "CKD", "ăn cho người bệnh thận mạn", "giảm đạm", "kali máu cao"],
   },
   {
@@ -5564,8 +5602,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "dinh-duong-xo-gan",
-    title: "Xơ gan — dinh dưỡng giúp kéo dài thời gian bù trừ",
-    description: "Bài nền cho xơ gan còn bù và mất bù: cách giữ đủ năng lượng, đạm, nhịp bữa và khi nào mới cần siết muối theo biến chứng như cổ trướng.",
+    title: "Xơ gan — dinh dưỡng giúp duy trì thể trạng và khối cơ",
+    description: "Bài nền cho xơ gan còn bù/mất bù: đủ đạm, chia bữa, điều chỉnh natri và dịch theo biến chứng; không tự giảm protein khi có bệnh não gan.",
     emoji: "🫁",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5576,7 +5614,13 @@ export const articles: ArticleMeta[] = [
     featured: false,
     tags: ["cirrhosis", "liver", "ascites", "hepatic-encephalopathy"],
     audience: ["elderly", "caregiver"],
-    sources: [{ name: "EASL — Clinical Practice Guidelines on Liver Cirrhosis", url: "https://easl.eu" }, { name: "NHS — Cirrhosis diet", url: "https://www.nhs.uk" }],
+    sources: [
+      { name: "AASLD — Outpatient Management of Cirrhosis", url: "https://www.aasld.org/liver-fellow-network/core-series/back-basics/back-basics-outpatient-management-cirrhosis" },
+      { name: "AASLD — 2021 Malnutrition, Frailty, and Sarcopenia Guidance", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9134787/" },
+      { name: "AASLD — 2021 Ascites Practice Guidance", url: "https://aasldpubs.onlinelibrary.wiley.com/doi/full/10.1002/hep.31884" },
+      { name: "NIDDK — Eating, Diet, and Nutrition for Cirrhosis", url: "https://www.niddk.nih.gov/health-information/liver-disease/cirrhosis/eating-diet-nutrition" },
+      { name: "EASL — Nutrition in Chronic Liver Disease", url: "https://easl.eu/wp-content/uploads/2018/10/EASL-CPG-nutrition-in-chronic-liver-disease.pdf" }
+    ],
     keywords: ["xơ gan", "dinh dưỡng xơ gan", "cổ trướng", "não gan", "ăn cho người xơ gan"],
   },
   {
@@ -5767,7 +5811,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "benh-than-iga-dinh-duong",
     title: "Bệnh thận IgA (Berger) — Dinh dưỡng bảo vệ cầu thận",
-    description: "Viêm cầu thận IgA: giảm muối, kiểm soát đạm, thực phẩm chống viêm, tránh kích hoạt miễn dịch từ gluten và nhiễm trùng hô hấp.",
+    description: "Dinh dưỡng hỗ trợ sức khỏe thận và tim mạch ở người bệnh thận IgA: giảm natri phù hợp, tránh kiêng đạm/kali tùy tiện và theo dõi theo xét nghiệm.",
     emoji: "🫘",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5789,7 +5833,7 @@ export const articles: ArticleMeta[] = [
   {
     slug: "dinh-duong-ung-thu-vu",
     title: "Dinh dưỡng cho người ung thư vú — Trong và sau điều trị",
-    description: "Chế độ ăn cho bệnh nhân ung thư vú: giảm tái phát, kiểm soát cân nặng, hạn chế rượu, thực phẩm chống viêm.",
+    description: "Hướng dẫn an toàn dinh dưỡng trong điều trị và sau ung thư vú; làm rõ đậu nành, thực phẩm bổ sung và giới hạn bằng chứng về tái phát.",
     emoji: "🎀",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -5801,9 +5845,10 @@ export const articles: ArticleMeta[] = [
     audience: ["người ung thư vú", "người ung thư", "phụ nữ sau mãn kinh"],
     specialty: "ung-thu",
     sources: [
-      { name: "American Cancer Society — Nutrition for Breast Cancer", url: "https://www.cancer.org/cancer/breast-cancer.html" },
-      { name: "Harvard T.H. Chan — Breast Cancer Diet", url: "https://nutritionsource.hsph.harvard.edu/cancer/" },
-      { name: "Mayo Clinic — Breast Cancer Nutrition", url: "https://www.mayoclinic.org/breast-cancer" }
+      { name: "ASCO — Exercise, Diet, and Weight Management During Cancer Treatment", url: "https://ascopubs.org/doi/10.1200/JCO.22.00687" },
+      { name: "National Cancer Institute — Nutrition During Cancer Treatment", url: "https://www.cancer.gov/about-cancer/treatment/side-effects/nutrition" },
+      { name: "American Cancer Society — Breast Cancer Recurrence, Soy and Supplements", url: "https://www.cancer.org/cancer/types/breast-cancer/living-as-a-breast-cancer-survivor/can-i-lower-my-risk-of-breast-cancer-progressing-or-coming-back.html" },
+      { name: "American Cancer Society — Nutrition and Physical Activity Guideline for Survivors", url: "https://www.cancer.org/cancer/supportive-care/nutrition-activity-with-cancer/acs-nutrition-and-physical-activity-guideline-for-survivors.html" }
     ],
     keywords: ["ung thư vú", "tái phát", "xạ trị", "hoá trị", "tamoxifen", "thực phẩm chống ung thư"],
   },
@@ -6052,6 +6097,7 @@ export const articles: ArticleMeta[] = [
     specialty: "tieu-hoa",
     sources: [
       { name: "NIDDK — Hepatitis B", url: "https://www.niddk.nih.gov/health-information/liver-disease/viral-hepatitis/hepatitis-b" },
+      { name: "AASLD — Malnutrition, Frailty, and Sarcopenia in Cirrhosis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9134787/" },
       { name: "Hepatitis B Foundation — Diet FAQ", url: "https://www.hepb.org/what-is-hepatitis-b/faqs/is-there-any-special-diet-for-people-living-with-chronic-hepatitis-b-infection/" },
       { name: "WHO — Hepatitis B and C Fact Sheet", url: "https://www.afro.who.int/publications/hepatitis-b-and-c-fact-sheet" }
     ],
@@ -6184,8 +6230,8 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "tang-kali-mau-suy-than",
-    title: "Tăng kali máu ở người bệnh thận mạn — Ăn rau quả thế nào cho an toàn?",
-    description: "Tăng kali máu không có nghĩa phải bỏ hết rau trái. Điều quan trọng là chọn loại, lượng, cách sơ chế và đối chiếu với xét nghiệm thực tế.",
+    title: "Tăng kali máu ở người bệnh thận mạn — xét nghiệm, thuốc và chế độ ăn",
+    description: "Kali máu cao có thể ít triệu chứng; tìm nguyên nhân cùng bác sĩ, rà soát thuốc và chỉ điều chỉnh rau quả theo xét nghiệm, khẩu phần và kế hoạch chuyên môn.",
     emoji: "🍌",
     category: "disease",
     categoryName: "Dinh dưỡng & Bệnh lý",
@@ -6197,9 +6243,10 @@ export const articles: ArticleMeta[] = [
     audience: ["người bệnh thận mạn", "người tăng kali máu"],
     specialty: "than-tiet-nieu",
     sources: [
-      { name: "KDIGO 2024 CKD Guideline Executive Summary", url: "https://kdigo.org/wp-content/uploads/2017/02/KDIGO-2024-CKD-Guideline-Executive-Summary.pdf" },
+      { name: "KDIGO 2024 CKD Guideline", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
       { name: "KDIGO Key Takeaways for People Living With CKD", url: "https://kdigo.org/wp-content/uploads/2025/01/Key-Takeaways_KDIGO-2024-CKD-Guideline_People-Living-with-CKD.pdf" },
-      { name: "NIDDK — Potassium and Your CKD Diet", url: "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/eating-nutrition" }
+      { name: "National Kidney Foundation — Hyperkalemia", url: "https://www.kidney.org/kidney-topics/hyperkalemia-high-potassium" },
+      { name: "NIDDK — Healthy Eating for Adults with CKD", url: "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/healthy-eating-adults-chronic-kidney-disease" }
     ],
     keywords: ["tăng kali máu", "hyperkalemia", "suy thận", "chuối", "cam", "rau quả", "loạn nhịp"],
   },
@@ -6524,8 +6571,8 @@ export const articles: ArticleMeta[] = [
     readTime: 6,
     featured: false,
     sources: [
-      { name: "AASLD", title: "Practice Guidance on NAFLD/MASLD", url: "https://www.aasld.org/practice-guidelines" },
-      { name: "American Liver Foundation", title: "Fatty Liver Disease", url: "https://liverfoundation.org/liver-diseases/fatty-liver-disease/" },
+      { name: "AASLD", title: "MASLD Clinical Practice Guidance", url: "https://pmc.ncbi.nlm.nih.gov/articles/10735173/" },
+      { name: "EASL-EASD-EASO", title: "2024 MASLD Clinical Practice Guidelines", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11299976/" },
       { name: "Harvard T.H. Chan", title: "Healthy Eating Plate", url: "https://nutritionsource.hsph.harvard.edu/healthy-eating-plate/" }
     ],
     keywords: ["gan nhiễm mỡ", "MASLD", "NAFLD", "ăn ngoài", "cơm văn phòng", "trà sữa", "rượu bia"]
@@ -7225,6 +7272,153 @@ export const articles: ArticleMeta[] = [
       { name: "British Menopause Society", title: "Nutrition and weight gain", url: "https://thebms.org.uk/" }
     ],
     keywords: ["tiền mãn kinh", "mãn kinh", "tăng cân", "vòng eo", "canxi", "vitamin D"]
+  },
+  {
+    slug: "sau-dai-thao-duong-thai-ky-theo-doi",
+    title: "Sau đái tháo đường thai kỳ: khi nào cần kiểm tra đường huyết lại?",
+    description: "Lịch theo dõi sau sinh cho người từng mắc đái tháo đường thai kỳ: OGTT 4–12 tuần, tầm soát lâu dài và ăn uống hỗ trợ sức khỏe mẹ.",
+    emoji: "🤱",
+    category: "disease",
+    categoryName: "Sản khoa / Sau sinh",
+    displayCategory: "bai-viet",
+    specialty: "san-khoa",
+    audience: ["pregnancy", "postpartum", "diabetes"],
+    date: "2026-09-15",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "American Diabetes Association", title: "Standards of Care in Diabetes—2026, Management of Diabetes in Pregnancy", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S321/163918/15-Management-of-Diabetes-in-Pregnancy-Standards" },
+      { name: "American Diabetes Association", title: "Standards of Care in Diabetes—2026, Diagnosis and Classification of Diabetes", url: "https://diabetesjournals.org/care/article/49/Supplement_1/S27/163926/2-Diagnosis-and-Classification-of-Diabetes" }
+    ],
+    keywords: ["đái tháo đường thai kỳ sau sinh", "OGTT sau sinh", "đường huyết sau sinh", "tiền sử GDM", "phòng đái tháo đường type 2"]
+  },
+  {
+    slug: "lao-phoi-an-uong-khi-dung-thuoc",
+    title: "Lao phổi: ăn uống và lưu ý khi dùng thuốc điều trị",
+    description: "Thông tin thực hành về thời điểm dùng thuốc lao, tương tác rifampicin, nguy cơ thiếu B6, sụt cân và dấu hiệu cần báo cơ sở điều trị.",
+    emoji: "🫁",
+    category: "disease",
+    categoryName: "Truyền nhiễm / Lao phổi",
+    displayCategory: "bai-viet",
+    specialty: "truyen-nhiem",
+    audience: ["infection", "tuberculosis", "malnutrition", "caregiver"],
+    date: "2026-09-15",
+    readTime: 8,
+    featured: false,
+    evidenceLevel: "guideline",
+    sources: [
+      { name: "World Health Organization", title: "Consolidated guidelines on tuberculosis, module 6 (2025)", url: "https://www.who.int/publications/i/item/9789240111967" },
+      { name: "CDC", title: "Adverse Events During TB Treatment", url: "https://www.cdc.gov/tb/hcp/treatment/adverse-events.html" },
+      { name: "CDC", title: "Treatment for Drug-Susceptible Tuberculosis Disease", url: "https://www.cdc.gov/tb/hcp/treatment/tuberculosis-disease.html" }
+    ],
+    keywords: ["lao phổi", "thuốc lao", "rifampicin", "isoniazid", "vitamin B6", "lao suy dinh dưỡng", "tương tác thuốc lao"]
+  },
+  {
+    slug: "thuoc-loang-xuong-alendronate-uong-the-nao",
+    title: "Uống alendronate thế nào để thuốc loãng xương hấp thu đúng?",
+    description: "Thời điểm uống alendronate với nước lọc, khoảng cách với thức ăn/canxi và tư thế sau uống để hạn chế giảm hấp thu, kích ứng thực quản.",
+    emoji: "🦴",
+    category: "disease",
+    categoryName: "Cơ xương khớp / Loãng xương",
+    displayCategory: "bai-viet",
+    specialty: "co-xuong-khop",
+    audience: ["osteoporosis", "elderly", "medication-safety"],
+    date: "2026-09-15",
+    readTime: 6,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "MedlinePlus", title: "Alendronate Drug Information", url: "https://medlineplus.gov/druginfo/meds/a601011.html" },
+      { name: "NHS", title: "Alendronic acid", url: "https://www.nhs.uk/medicines/alendronic-acid/" }
+    ],
+    keywords: ["alendronate", "alendronic acid", "thuốc loãng xương", "uống canxi cách alendronate", "thuốc bisphosphonate", "tương tác thức ăn"]
+  },
+  {
+    slug: "di-ung-thuc-pham-nguoi-lon-an-uong-an-toan",
+    title: "Dị ứng thực phẩm ở người lớn: tránh đúng món, vẫn ăn đủ chất",
+    description: "Phân biệt dị ứng thật với khó chịu sau ăn, cách xác nhận an toàn, phòng lẫn chéo và thay thế dinh dưỡng khi phải loại trừ thực phẩm.",
+    emoji: "🌿",
+    category: "disease",
+    categoryName: "Dị ứng / Miễn dịch",
+    displayCategory: "bai-viet",
+    specialty: "di-ung",
+    audience: ["food-allergy", "adult", "medication-safety"],
+    date: "2026-09-15",
+    readTime: 8,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "American College of Allergy, Asthma & Immunology", title: "Food Allergy Testing and Diagnosis", url: "https://acaai.org/allergies/testing-diagnosis/food-allergy-testing-and-diagnosis/" },
+      { name: "U.S. Food and Drug Administration", title: "Food Allergies", url: "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies" }
+    ],
+    keywords: ["dị ứng thức ăn người lớn", "dị ứng thực phẩm", "lẫn chéo dị ứng", "kiêng thức ăn", "phản vệ", "test IgG thực phẩm"]
+  },
+  {
+    slug: "an-uong-sau-cat-amidan",
+    title: "Sau cắt amidan ăn uống thế nào? Giữ đủ nước và nhận biết chảy máu",
+    description: "Hướng dẫn dinh dưỡng thực tế sau cắt amidan: làm theo chỉ định riêng của bệnh viện, ăn uống theo khả năng, phòng mất nước và biết dấu hiệu cấp cứu.",
+    emoji: "🗣️",
+    category: "special",
+    categoryName: "Tai Mũi Họng / Hậu phẫu",
+    displayCategory: "bai-viet",
+    specialty: "tai-mui-hong",
+    audience: ["post-surgery", "caregiver", "children", "adult"],
+    date: "2026-09-15",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "Cleveland Clinic", title: "Tonsillectomy: Procedure Details & Recovery", url: "https://my.clevelandclinic.org/health/treatments/15605-tonsillectomy" },
+      { name: "Cambridge University Hospitals NHS", title: "Tonsillectomy", url: "https://www.cuh.nhs.uk/patient-information/tonsillectomy/" },
+      { name: "East Kent Hospitals University NHS Foundation Trust", title: "Tonsillectomy aftercare advice", url: "https://leaflets.ekhuft.nhs.uk/s3/leaflets/tonsillectomy-aftercare-advice-adults/1cc62ebd-36bb-42e8-96ce-122bdb8c149e.p1727340699.pdf" }
+    ],
+    keywords: ["sau cắt amidan ăn gì", "ăn uống sau cắt amidan", "hậu phẫu tai mũi họng", "đau họng sau mổ", "chảy máu sau cắt amidan", "mất nước"]
+  },
+  {
+    slug: "dinh-duong-khi-dung-corticoid-dai-ngay",
+    title: "Dùng corticoid dài ngày: lưu ý bữa ăn, đường huyết và xương",
+    description: "Cách ăn uống và theo dõi an toàn khi điều trị corticoid đường uống kéo dài; không tự kiêng cực đoan, bổ sung vi chất hay đổi/ngừng thuốc.",
+    emoji: "💊",
+    category: "education",
+    categoryName: "Dùng thuốc an toàn",
+    displayCategory: "bai-viet",
+    specialty: "dinh-duong-tong-quat",
+    audience: ["chronic-disease", "medication-safety", "caregiver"],
+    tags: ["corticoid", "prednisolone", "đường huyết", "loãng xương", "dùng thuốc dài ngày"],
+    date: "2026-09-15",
+    readTime: 7,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "NHS", title: "Common questions about prednisolone tablets and liquid", url: "https://www.nhs.uk/medicines/prednisolone/common-questions-about-prednisolone-tablets-and-liquid/" },
+      { name: "NHS Specialist Pharmacy Service", title: "Corticosteroids monitoring", url: "https://sps.nhs.uk/monitorings/corticosteroids-monitoring/" },
+      { name: "University College London Hospitals NHS Foundation Trust", title: "Steroid induced diabetes", url: "https://www.uclh.nhs.uk/patients-and-visitors/patient-information-pages/steroid-induced-diabetes" }
+    ],
+    keywords: ["corticoid ăn gì", "prednisolone và thức ăn", "corticoid tăng đường huyết", "corticoid loãng xương", "dùng steroid lâu dài", "tác dụng phụ corticoid dinh dưỡng"]
+  },
+  {
+    slug: "methotrexate-va-dinh-duong-viem-khop-dang-thap",
+    title: "Methotrexate trong viêm khớp: folate, rượu bia và ăn uống an toàn",
+    description: "Lưu ý thực tế cho người dùng methotrexate liều thấp hằng tuần điều trị bệnh viêm; phân biệt lịch folic acid và giảm nguy cơ sai liều.",
+    emoji: "🦴",
+    category: "disease",
+    categoryName: "Viêm khớp dạng thấp / Dùng thuốc",
+    displayCategory: "bai-viet",
+    specialty: "co-xuong-khop",
+    audience: ["rheumatoid-arthritis", "chronic-disease", "medication-safety"],
+    tags: ["methotrexate", "folic acid", "viêm khớp dạng thấp", "rượu bia", "thuốc chống thấp khớp"],
+    date: "2026-09-15",
+    readTime: 8,
+    featured: false,
+    evidenceLevel: "clinical-review",
+    sources: [
+      { name: "NHS", title: "About methotrexate", url: "https://www.nhs.uk/medicines/methotrexate/about-methotrexate/" },
+      { name: "NHS", title: "Common questions about methotrexate", url: "https://www.nhs.uk/medicines/methotrexate/common-questions-about-methotrexate/" },
+      { name: "NHS", title: "How and when to take methotrexate", url: "https://www.nhs.uk/medicines/methotrexate/how-and-when-to-take-methotrexate/" },
+      { name: "NHS", title: "Rheumatoid arthritis — treatment", url: "https://www.nhs.uk/conditions/rheumatoid-arthritis/treatment/" }
+    ],
+    keywords: ["methotrexate viêm khớp dạng thấp", "methotrexate uống hằng tuần", "folic acid methotrexate", "ăn uống khi dùng methotrexate", "rượu bia methotrexate", "thuốc thấp khớp"]
   }
 ];
 
@@ -7243,6 +7437,67 @@ export function getFeaturedArticles(): ArticleMeta[] {
 }
 
 const RELATED_ARTICLE_OVERRIDES: Record<string, string[]> = {
+  "an-uong-sau-cat-amidan": [
+    "viem-hong-amidan-an-gi",
+    "viem-hong-amidan-tai-phat",
+    "dinh-duong-phau-thuat",
+  ],
+  "di-ung-thuc-pham-nguoi-lon-an-uong-an-toan": [
+    "di-ung-hai-san",
+    "di-ung-dau-phong-hat-cay",
+    "bat-dung-nap-lactose",
+  ],
+  "dinh-duong-thieu-vitamin-b12": [
+    "thieu-mau",
+    "tuong-tac-thuoc-thuc-pham-thuong-gap",
+    "dai-thao-duong",
+  ],
+  "dinh-duong-thuoc-chong-dong-mau-warfarin": [
+    "thuoc-chi-dinh-vitamin-k",
+    "tuong-tac-thuoc-thuc-pham-thuong-gap",
+    "dot-quy-dinh-duong",
+  ],
+  "thuoc-chi-dinh-vitamin-k": [
+    "dinh-duong-thuoc-chong-dong-mau-warfarin",
+    "tuong-tac-thuoc-thuc-pham-thuong-gap",
+  ],
+  "tuong-tac-thuoc-thuc-pham-thuong-gap": [
+    "dinh-duong-thuoc-chong-dong-mau-warfarin",
+    "thuoc-chi-dinh-vitamin-k",
+    "thuoc-loang-xuong-alendronate-uong-the-nao",
+  ],
+  "sau-dai-thao-duong-thai-ky-theo-doi": [
+    "tieu-duong-thai-ky-gestational",
+    "dai-thao-duong",
+    "tieu-duong-an-com-duoc-khong",
+  ],
+  "tieu-duong-thai-ky-gestational": [
+    "sau-dai-thao-duong-thai-ky-theo-doi",
+    "buong-trung-da-nang-pcos",
+  ],
+  "lao-phoi-an-uong-khi-dung-thuoc": [
+    "hiv-lao-phoi-suy-dinh-duong",
+    "an-toan-thuc-pham",
+  ],
+  "hiv-lao-phoi-suy-dinh-duong": [
+    "lao-phoi-an-uong-khi-dung-thuoc",
+    "an-toan-thuc-pham",
+  ],
+  "thuoc-loang-xuong-alendronate-uong-the-nao": [
+    "loang-xuong",
+    "phong-chong-loang-xuong",
+    "canxi-xuong-chac-khoe",
+  ],
+  "dinh-duong-khi-dung-corticoid-dai-ngay": [
+    "lupus-ban-do-he-thong",
+    "dinh-duong-thieu-vitamin-b12",
+    "dai-thao-duong",
+  ],
+  "methotrexate-va-dinh-duong-viem-khop-dang-thap": [
+    "viem-khop-dang-thap",
+    "tuong-tac-thuoc-thuc-pham-thuong-gap",
+    "canxi-xuong-chac-khoe",
+  ],
   "ung-thu": [
     "chuan-bi-dinh-duong-truoc-dieu-tri-ung-thu",
     "ung-thu-phoi",

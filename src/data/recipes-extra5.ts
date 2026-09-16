@@ -442,20 +442,6 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "banh-bong-lan-don-gian", slug: "banh-bong-lan-don-gian", name: "Bánh bông lan",
-    aliases: ["banh bong lan", "bánh kem"],
-    servingName: "1 miếng", servingWeightG: 80,
-    tags: ["vietnamese", "cake"],
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Bánh bông lan trứng, bột mì.",
-    items: [
-      { foodId: "trung-ga", amountG: 50, note: "Trứng" },
-      { foodId: "bot-mi-da", amountG: 30, note: "Bột mì" },
-      { foodId: "duong-trang", amountG: 20, note: "Đường" },
-      { foodId: "dau-an", amountG: 5, note: "Dầu" }
-    ]
-  },
-  {
     id: "banh-tieu-ran", slug: "banh-tieu-ran", name: "Bánh tiêu chiên giòn",
     aliases: ["banh tieu"],
     servingName: "1 cái", servingWeightG: 40,

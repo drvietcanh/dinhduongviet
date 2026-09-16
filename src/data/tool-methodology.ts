@@ -19,7 +19,7 @@ export type ToolMethodology = {
 export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   bmi: {
     slug: "bmi",
-    status: "Đã bổ sung phương pháp v1",
+    status: "BMI người lớn · có nguồn",
     summary:
       "BMI là chỉ số sàng lọc cho người lớn, dùng để đọc cùng vòng eo, thành phần cơ thể và bối cảnh lâm sàng, không dùng như chẩn đoán độc lập.",
     formulas: [
@@ -46,9 +46,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "chi-so-gi": {
     slug: "chi-so-gi",
-    status: "Trang khái niệm v1 có nguồn",
+    status: "Tra cứu GI · có nguồn",
     summary:
       "Trang này giải thích GI như một chỉ dấu tham khảo cho thực phẩm chứa carbohydrate. Nó không phải công cụ chấm điểm cá nhân hay thay thế tư vấn điều trị.",
+    formulas: [
+      {
+        label: "Logic tra cứu",
+        value: "GI được đọc từ giá trị đã có trong hồ sơ thực phẩm; không tự suy ra GI từ calo, carb hoặc màu sắc món ăn.",
+      },
+    ],
     guidance: [
       "GI chỉ nên được đọc cùng khẩu phần, lượng carb, cách chế biến và bối cảnh ăn uống thực tế.",
       "Với trẻ em, thai kỳ, bệnh nền hoặc đang dùng thuốc hạ đường huyết, cần ưu tiên câu hỏi lâm sàng hơn là con số GI đơn lẻ.",
@@ -63,7 +69,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tinh-carb": {
     slug: "tinh-carb",
-    status: "Tính carb giáo dục v1",
+    status: "Tính carbohydrate · có nguồn",
     summary:
       "Trang này cộng carbohydrate theo thực phẩm/món ăn từ dữ liệu hiện có để hỗ trợ học đếm carb. Nó không đổi thành chế độ điều trị và không dùng như mốc bắt buộc cho mọi bữa ăn.",
     formulas: [
@@ -90,22 +96,23 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tinh-gl-bua-an": {
     slug: "tinh-gl-bua-an",
-    status: "Tải lượng đường huyết v1",
+    status: "Công thức tham khảo",
     summary:
-      "Trang này ước tính GL từ GI và lượng carbohydrate trong bữa ăn. Đây là chỉ số học thuật để so sánh tương đối, không phải dự báo chắc chắn đường huyết cá nhân.",
+      "Công cụ ước tính tải lượng đường huyết từ GI và carbohydrate khả dụng trong khẩu phần. Kết quả dùng để đọc và so sánh tương đối, không dự báo đường huyết cá nhân.",
     formulas: [
       {
-        label: "Công thức đang dùng",
-        value: "GL = GI x carb (g) / 100",
+        label: "Công thức",
+        value: "GL = GI × carbohydrate khả dụng trong khẩu phần (g) ÷ 100",
       },
       {
         label: "Phân loại giáo dục",
-        value: "GL thấp ≤ 10, trung bình 11-19, cao ≥ 20",
+        value: "GL thấp ≤ 10, trung bình > 10 đến < 20, cao ≥ 20",
       },
     ],
     guidance: [
-      "GL chỉ có ý nghĩa khi GI và lượng carb cùng được đọc đúng bối cảnh khẩu phần.",
-      "Nếu một món không có GI curated, kết quả chỉ nên hiểu là tham khảo rất thận trọng.",
+      "Chỉ tính từ GI và carbohydrate khả dụng khi quy ước của nguồn dữ liệu được xác định; nguồn chưa công bố rõ quy ước sẽ được báo thiếu thay vì tự suy đoán.",
+      "Tổng GL của bữa chỉ hiện khi các thành phần có carbohydrate đều đủ dữ liệu cần thiết.",
+      "Cách nấu, khẩu phần, chất béo, chất đạm và đáp ứng cá nhân có thể làm đường huyết thực tế khác với ước tính.",
     ],
     notFor: [
       "Không dùng GL để tự đổi thuốc, tự tính ăn bù hoặc thay thế đo đường huyết cá nhân.",
@@ -113,11 +120,14 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     sources: [
       { label: "NIDDK - Diabetes and Carb Counting", url: "https://www.niddk.nih.gov/health-information/diabetes/overview/eating-diet-nutrition" },
       { label: "Harvard T.H. Chan - Glycemic Index and Glycemic Load", url: "https://nutritionsource.hsph.harvard.edu/carbohydrates/glycemic-index/" },
+      { label: "FAO - Food Composition Data: carbohydrate and fibre", url: "https://www.fao.org/4/y4705e/y4705e14.htm" },
+      { label: "Bảng thành phần thực phẩm Việt Nam 2007", url: "https://www.fao.org/fileadmin/templates/food_composition/documents/pdf/VTN_FCT_2007.pdf" },
+      { label: "International Tables of GI and GL Values 2021", url: "https://ajcn.nutrition.org/article/S0002-9165%2822%2900494-4/fulltext" },
     ],
   },
   "tinh-nhu-cau-dam": {
     slug: "tinh-nhu-cau-dam",
-    status: "Nhu cầu đạm tham khảo v1",
+    status: "Ước tính đạm · có nguồn",
     summary:
       "Trang này ước tính nhu cầu protein ban đầu theo cân nặng và tình huống phổ thông. Nó chỉ là mốc giáo dục, chưa thay thế chỉ định theo bệnh nền hoặc mục tiêu điều trị.",
     formulas: [
@@ -140,7 +150,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "doi-don-vi": {
     slug: "doi-don-vi",
-    status: "Bộ đổi đơn vị v1 có nguồn",
+    status: "Quy đổi đơn vị · có nguồn",
     summary:
       "Trang này quy đổi các đơn vị thông dụng theo giá trị chuẩn tham khảo. Nó hữu ích để đổi nhanh, nhưng không thay thế việc cân đo thực phẩm thật khi cần độ chính xác cao.",
     formulas: [
@@ -163,7 +173,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "nuoc-uong": {
     slug: "nuoc-uong",
-    status: "Nhu cầu nước tham khảo v1",
+    status: "Ước tính nước · có nguồn",
     summary:
       "Trang này ước tính nhu cầu nước uống cho người lớn tương đối ổn định, rồi tự dừng lại khi gặp nhóm cần cá thể hóa. Đây không phải chỉ định dịch hay mục tiêu điều trị.",
     formulas: [
@@ -186,21 +196,21 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tinh-nang-luong": {
     slug: "tinh-nang-luong",
-    status: "Đã bổ sung phương pháp v1",
+    status: "Ước tính năng lượng · có công thức",
     summary:
-      "Trang này đang ước tính BMR theo Mifflin-St Jeor rồi nhân hệ số hoạt động để ra TDEE tham khảo ban đầu; cần theo dõi cân nặng và mức vận động thực để hiệu chỉnh.",
+      "Trang ước tính năng lượng nghỉ theo Mifflin-St Jeor rồi nhân hệ số hoạt động để tham khảo tổng tiêu hao mỗi ngày; đây không phải phép đo chuyển hóa.",
     formulas: [
       {
-        label: "BMR nam",
+        label: "Năng lượng nghỉ nam",
         value: "10 x cân nặng (kg) + 6.25 x chiều cao (cm) - 5 x tuổi + 5",
       },
       {
-        label: "BMR nữ",
+        label: "Năng lượng nghỉ nữ",
         value: "10 x cân nặng (kg) + 6.25 x chiều cao (cm) - 5 x tuổi - 161",
       },
       {
         label: "TDEE",
-        value: "BMR x hệ số hoạt động",
+        value: "Năng lượng nghỉ ước tính × hệ số hoạt động",
       },
     ],
     guidance: [
@@ -211,13 +221,14 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       "Không dùng để tự kê mức ăn điều trị cho thai kỳ, bệnh cấp, ICU, rối loạn ăn uống, suy dinh dưỡng nặng hoặc vận động viên chuyên biệt.",
     ],
     sources: [
-      { label: "NIDDK - Body Weight Planner", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
+      { label: "Mifflin et al. - Phương trình ước tính năng lượng nghỉ", url: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+      { label: "NIDDK - Body Weight Planner (phạm vi người lớn)", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
       { label: "Dietary Guidelines for Americans 2020-2025", url: "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf" },
     ],
   },
   "tinh-macro": {
     slug: "tinh-macro",
-    status: "Đã bổ sung phương pháp v1",
+    status: "Tính macro · có công thức",
     summary:
       "Macro ở đây là bước quy đổi giáo dục từ tổng kcal sang gram đạm, tinh bột và béo theo các preset phổ thông, không phải toa điều trị cá nhân.",
     formulas: [
@@ -244,7 +255,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tinh-calo-tieu-thu": {
     slug: "tinh-calo-tieu-thu",
-    status: "Đã bổ sung phương pháp v1",
+    status: "Ước tính calo vận động · có công thức",
     summary:
       "Kcal vận động đang được ước tính theo mức MET tham khảo của từng hoạt động và cân nặng cơ thể; sai số tăng khi cường độ thực tế khác mô tả trong danh sách.",
     formulas: [
@@ -271,7 +282,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "so-sanh-thuc-pham": {
     slug: "so-sanh-thuc-pham",
-    status: "So sánh thực phẩm v1",
+    status: "So sánh theo khẩu phần",
     summary:
       "Trang này đặt 2-4 thực phẩm cạnh nhau theo 100 g để xem khác biệt dinh dưỡng. Nó giúp đọc dữ liệu chứ không xếp hạng tốt-xấu tuyệt đối cho mọi người.",
     formulas: [
@@ -302,7 +313,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "so-sanh-bua-an": {
     slug: "so-sanh-bua-an",
-    status: "So sánh bữa ăn v1",
+    status: "So sánh thành phần bữa ăn",
     summary:
       "Trang này so các bữa ăn/món ăn theo khẩu phần đã chọn để nhìn nhanh khác biệt về năng lượng và macro. Nó hỗ trợ lựa chọn thực đơn, không thay thế tư vấn dinh dưỡng cá thể.",
     formulas: [
@@ -329,9 +340,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "khau-phan-don-gian": {
     slug: "khau-phan-don-gian",
-    status: "Khẩu phần tham khảo v1",
+    status: "Khẩu phần tham khảo",
     summary:
       "Trang này chỉ minh họa cách gọi khẩu phần bằng chén, muỗng, lát, miếng hoặc ly để người đọc hình dung nhanh. Nó không phải bảng khẩu phần điều trị và không đủ để cá thể hóa.",
+    formulas: [
+      {
+        label: "Logic quy đổi",
+        value: "Một đơn vị gia dụng chỉ là mô tả hình dung; khi tính dinh dưỡng phải dùng khối lượng gram thực tế của khẩu phần.",
+      },
+    ],
     guidance: [
       "Cùng một tên khẩu phần có thể khác nhau giữa gia đình, quán ăn và nhãn sản phẩm.",
       "Các ví dụ nên được đọc như ngôn ngữ giao tiếp nhanh, không phải mốc tuyệt đối.",
@@ -346,7 +363,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "khau-phan-viet-clinical": {
     slug: "khau-phan-viet-clinical",
-    status: "Đánh giá khẩu phần v1",
+    status: "Đánh giá khẩu phần",
     summary:
       "Trang này so khẩu phần món Việt theo dữ liệu có sẵn để xem năng lượng và macro ở mức giáo dục. Nó vẫn cần đọc cùng cờ an toàn vì không thay thế đánh giá lâm sàng.",
     formulas: [
@@ -369,7 +386,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "nhat-ky": {
     slug: "nhat-ky",
-    status: "Nhật ký ăn uống v1",
+    status: "Ghi nhật ký ăn uống",
     summary:
       "Trang này chỉ ghi lại bữa ăn và tổng hợp dữ liệu đã nhập theo ngày để người dùng mang đi đối chiếu hoặc trao đổi chuyên môn. Nó không tự diễn giải thành mục tiêu hay phác đồ.",
     formulas: [
@@ -396,9 +413,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "loc-thuc-pham": {
     slug: "loc-thuc-pham",
-    status: "Lọc dữ liệu thực phẩm v1",
+    status: "Lọc dữ liệu thực phẩm",
     summary:
       "Trang này lọc thực phẩm theo nhóm, trạng thái và chỉ số dinh dưỡng để người dùng tìm dữ liệu nhanh hơn. Nó là công cụ tra cứu, không phải công cụ kết luận phù hợp bệnh lý.",
+    formulas: [
+      {
+        label: "Logic lọc",
+        value: "Mỗi điều kiện chỉ áp dụng khi bản ghi có số liệu tương ứng; giá trị thiếu không được coi là 0 hoặc đạt ngưỡng.",
+      },
+    ],
     guidance: [
       "Nên dùng bộ lọc như một cách thu hẹp danh sách, sau đó mở trang chi tiết nếu cần đọc kỹ hơn.",
       "Các ngưỡng nhập vào chỉ là điều kiện lọc dữ liệu chứ không phải ngưỡng khuyến cáo lâm sàng.",
@@ -413,7 +436,7 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tim-mon-tu-nguyen-lieu": {
     slug: "tim-mon-tu-nguyen-lieu",
-    status: "Gợi ý món từ nguyên liệu v1",
+    status: "Tìm món theo nguyên liệu",
     summary:
       "Trang này gợi ý ý tưởng món ăn từ nguyên liệu đã chọn để hỗ trợ lên bữa ăn tại nhà. Kết quả chỉ là độ khớp nguyên liệu, không phải thực đơn điều trị hay công thức hoàn chỉnh.",
     formulas: [
@@ -464,24 +487,25 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "muc-tieu-can-nang",
     status: "Bộ lọc an toàn và ước tính tham khảo",
     summary:
-      "Tool phân tầng an toàn, sau đó hiện BMR/Mức duy trì và khoảng carbohydrate/chất béo theo AMDR cho người lớn tương đối khỏe; deficit và surplus vẫn không tự động tạo.",
+      "Công cụ phân tầng an toàn, sau đó hiện năng lượng nghỉ/mức duy trì và khoảng carbohydrate/chất béo theo AMDR cho người lớn tương đối khỏe; không tự tạo mức thâm hụt hoặc dư năng lượng.",
     formulas: [
-      { label: "BMR Mifflin-St Jeor nam", value: "10 × kg + 6,25 × cm − 5 × tuổi + 5" },
-      { label: "BMR Mifflin-St Jeor nữ", value: "10 × kg + 6,25 × cm − 5 × tuổi − 161" },
-      { label: "Mức duy trì", value: "BMR × hệ số hoạt động (thấp 1,20; vừa 1,55)" },
+      { label: "REE Mifflin-St Jeor nam", value: "10 × kg + 6,25 × cm − 5 × tuổi + 5" },
+      { label: "REE Mifflin-St Jeor nữ", value: "10 × kg + 6,25 × cm − 5 × tuổi − 161" },
+      { label: "Mức duy trì", value: "REE × hệ số hoạt động (thấp 1,20; vừa 1,55)" },
       { label: "Carbohydrate AMDR", value: "45–65% năng lượng ÷ 4 kcal/g" },
       { label: "Chất béo AMDR", value: "20–35% năng lượng ÷ 9 kcal/g" },
     ],
     guidance: [
       "BMI và các cờ lâm sàng chỉ dùng để sàng lọc xem có nên dừng tự dùng công cụ hay không.",
-      "Chỉ người lớn không có cờ nguy cơ và không có mục tiêu giảm/tăng cân mới nhận BMR, mức duy trì và AMDR; khoảng đạm vẫn là khoảng giáo dục.",
+      "Chỉ người lớn không có cờ nguy cơ và không có mục tiêu giảm/tăng cân mới nhận năng lượng nghỉ, mức duy trì và AMDR; khoảng đạm vẫn là khoảng giáo dục.",
     ],
     notFor: [
       "Không dùng tool này để tự đặt tốc độ giảm cân, tự chỉnh thuốc hoặc tự xây chế độ điều trị cho bệnh nền phức tạp.",
     ],
     sources: [
       { label: "CDC - Adult BMI Categories", url: "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" },
-      { label: "NIDDK - Body Weight Planner", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
+      { label: "Mifflin et al. - Phương trình ước tính năng lượng nghỉ", url: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+      { label: "NIDDK - Body Weight Planner (phạm vi người lớn)", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
       { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
     ],
   },
@@ -489,11 +513,11 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "muc-tieu-dinh-duong",
     status: "Bộ lọc an toàn và ước tính tham khảo",
     summary:
-      "Tool ưu tiên phân tầng an toàn, rồi hiện BMR/mức duy trì và khoảng carbohydrate/chất béo AMDR chỉ trong bối cảnh người lớn tương đối khỏe.",
+      "Công cụ ưu tiên phân tầng an toàn, rồi hiện năng lượng nghỉ/mức duy trì và khoảng carbohydrate/chất béo AMDR chỉ trong bối cảnh người lớn tương đối khỏe.",
     formulas: [
-      { label: "BMR Mifflin-St Jeor nam", value: "10 × kg + 6,25 × cm − 5 × tuổi + 5" },
-      { label: "BMR Mifflin-St Jeor nữ", value: "10 × kg + 6,25 × cm − 5 × tuổi − 161" },
-      { label: "Mức duy trì", value: "BMR × hệ số hoạt động (thấp 1,20; vừa 1,55)" },
+      { label: "REE Mifflin-St Jeor nam", value: "10 × kg + 6,25 × cm − 5 × tuổi + 5" },
+      { label: "REE Mifflin-St Jeor nữ", value: "10 × kg + 6,25 × cm − 5 × tuổi − 161" },
+      { label: "Mức duy trì", value: "REE × hệ số hoạt động (thấp 1,20; vừa 1,55)" },
       { label: "Carbohydrate/chất béo", value: "AMDR: 45–65% và 20–35% năng lượng" },
     ],
     guidance: [
@@ -504,14 +528,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       "Không dùng tool này như hệ thống kê đơn kcal, macro, dịch hay muối cho người bệnh.",
     ],
     sources: [
-      { label: "NIH/NCBI - Dietary Reference Intakes", url: "https://www.ncbi.nlm.nih.gov/books/NBK610333/" },
+      { label: "Mifflin et al. - Phương trình ước tính năng lượng nghỉ", url: "https://pubmed.ncbi.nlm.nih.gov/2305711/" },
+      { label: "National Academies - AMDR", url: "https://www.nationalacademies.org/read/10872/chapter/12" },
       { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
       { label: "NIDDK - Body Weight Planner", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
     ],
   },
   "nuoc-muoi-mon-an": {
     slug: "nuoc-muoi-mon-an",
-    status: "Tra nhanh món ăn v1 có nguồn",
+    status: "Tra cứu món ăn · có nguồn",
     summary:
       "Các con số trên trang là khoảng muối ước tính theo món, nước dùng, nước chấm và khẩu phần phổ biến. Trang không thay thế nhật ký natri cá nhân hoặc tư vấn bệnh lý.",
     formulas: [
@@ -534,9 +559,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "duong-do-uong": {
     slug: "duong-do-uong",
-    status: "Tra cứu đồ uống v1 có nguồn",
+    status: "Tra cứu đồ uống · có nguồn",
     summary:
       "Trang này dùng dữ liệu khẩu phần hiển thị để giúp đọc nhãn và so sánh gram đường trong đồ uống phổ biến. Không phải mọi gram đường ở đây đều là added sugar chính xác theo từng hãng.",
+    formulas: [
+      {
+        label: "Quy đổi đường",
+        value: "Đường theo khẩu phần = đường/100 ml × thể tích đồ uống (ml) / 100; nếu thiếu thể tích hoặc đường thì không tính tổng.",
+      },
+    ],
     guidance: [
       "Ưu tiên đọc cùng dung tích thật, topping, đá, mức đường chọn thêm và Nutrition Facts khi có.",
       "Hữu ích nhất khi dùng để so sánh cùng một nhóm đồ uống, ví dụ trà sữa với nước ngọt hoặc cà phê sữa.",
@@ -630,9 +661,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "theo-doi-suc-khoe": {
     slug: "theo-doi-suc-khoe",
-    status: "Nhật ký an toàn v1 có nguồn",
+    status: "Ghi và xuất dữ liệu",
     summary:
-      "Trang này là nơi ghi và xuất lại số liệu do người dùng nhập. V1 không phân tầng nguy cơ và không diễn giải chỉ số thay cho bác sĩ.",
+      "Trang ghi và xuất lại số liệu do người dùng nhập; không phân tầng nguy cơ hoặc diễn giải chỉ số thay cho bác sĩ.",
+    formulas: [
+      {
+        label: "Logic ghi nhận",
+        value: "Mỗi bản ghi = thời điểm + chỉ số + đơn vị + ghi chú; dữ liệu được giữ nguyên để theo dõi xu hướng, không tự suy diễn chẩn đoán.",
+      },
+    ],
     guidance: [
       "Phù hợp để gom dữ liệu trước buổi khám hoặc theo dõi xu hướng cá nhân theo hướng dẫn sẵn có.",
       "Khi chỉ số bất thường lặp lại hoặc kèm triệu chứng, nên liên hệ cơ sở y tế thay vì chờ đủ nhiều lần nhập.",
@@ -647,9 +684,15 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   },
   "tuong-tac-thuoc": {
     slug: "tuong-tac-thuoc",
-    status: "Công cụ an toàn v1 có nguồn",
+    status: "Hướng dẫn an toàn · có nguồn",
     summary:
-      "Trang tương tác thuốc hiện chỉ là khung sàng lọc câu hỏi cần mang đi khám hoặc hỏi dược sĩ; v1 không chấm mức độ tương tác cá nhân.",
+      "Trang giúp chuẩn bị câu hỏi cần trao đổi với bác sĩ hoặc dược sĩ; không chấm mức độ tương tác cho một đơn thuốc cá nhân.",
+    formulas: [
+      {
+        label: "Logic an toàn",
+        value: "Tra cứu theo cặp thuốc–thực phẩm và mức cảnh báo đã biên tập; không suy diễn tương tác cho tên thuốc chưa khớp.",
+      },
+    ],
     guidance: [
       "Ưu tiên mang đủ tên thuốc, hàm lượng, giờ uống, thực phẩm bổ sung và bệnh nền khi cần kiểm tra tương tác.",
       "Nếu có chóng mặt, chảy máu, khó thở, mẩn nặng hoặc lơ mơ sau khi dùng thuốc, cần liên hệ y tế ngay.",
@@ -716,6 +759,12 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "checklist-an-uong",
     status: "Checklist hành vi tự theo dõi",
     summary: "Trang ghi lại các lựa chọn ăn uống trong ngày để hỗ trợ tự quan sát; không dùng công thức điểm hóa sức khỏe hay chấm điểm bệnh lý.",
+    formulas: [
+      {
+        label: "Logic ghi nhận",
+        value: "Mỗi mục được đánh dấu có/không theo ngày; kết quả là nhật ký hành vi, không cộng thành điểm nguy cơ.",
+      },
+    ],
     guidance: ["Nên xem xu hướng nhiều ngày và điều chỉnh từng thói quen nhỏ thay vì suy diễn từ một ngày đơn lẻ."],
     notFor: ["Không dùng checklist để chẩn đoán, thay thế nhật ký điều trị hoặc tự thay đổi thuốc."],
     sources: [
@@ -726,6 +775,12 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "danh-gia-bua-an",
     status: "Trang chọn công cụ",
     summary: "Đây là hub dẫn tới công cụ tính carb, GL, đạm, nước và đánh giá khẩu phần; bản thân trang không tính chỉ số dinh dưỡng.",
+    formulas: [
+      {
+        label: "Logic điều hướng",
+        value: "Trang chỉ chuyển lựa chọn của người dùng sang công cụ chuyên biệt; không tự cộng hoặc xếp hạng dữ liệu tại hub.",
+      },
+    ],
     guidance: ["Mỗi công cụ con có công thức, nguồn và giới hạn riêng; cần đọc đúng phạm vi của công cụ đã chọn."],
     notFor: ["Không xem hub như một máy tính tổng hợp hay khuyến nghị điều trị."],
     sources: [
@@ -752,6 +807,12 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "dia-an-lanh-manh",
     status: "Khung bữa ăn giáo dục",
     summary: "Trang minh họa cách cân đối nhóm thực phẩm trong bữa ăn; không tạo tỷ lệ macro hoặc khẩu phần bắt buộc theo bệnh lý.",
+    formulas: [
+      {
+        label: "Logic mô hình đĩa",
+        value: "Bữa ăn được mô tả theo nhóm thực phẩm và tỷ lệ minh họa; không quy đổi thành gram hoặc mục tiêu năng lượng cá nhân.",
+      },
+    ],
     guidance: ["Nên điều chỉnh món, lượng ăn, văn hóa ẩm thực và tình trạng sức khỏe theo từng người."],
     notFor: ["Không dùng sơ đồ đĩa ăn như đơn điều trị cho bệnh thận, đái tháo đường, thai kỳ hoặc trẻ em."],
     sources: [
@@ -761,25 +822,22 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
   "ke-hoach-bua-an": {
     slug: "ke-hoach-bua-an",
     status: "Gợi ý kế hoạch bữa ăn",
-    summary: "Trang ghép món để người dùng lên ý tưởng bữa ăn; giá trị dinh dưỡng, nếu có, được lấy từ dữ liệu món/thực phẩm chứ không tạo mục tiêu điều trị mới.",
+    summary: "Trang gợi ý ba món theo thời điểm ăn từ thư viện công thức; năng lượng và đa lượng được cộng từ dữ liệu của từng món mẫu, không đặt mục tiêu cá nhân.",
     formulas: [
       {
-        label: "BMR và TDEE",
-        value: "BMR Mifflin-St Jeor; TDEE = BMR × hệ số hoạt động",
-      },
-      {
-        label: "Mục tiêu năng lượng",
-        value: "giảm cân ≈ TDEE × 0,80; duy trì = TDEE; tăng cân ≈ TDEE × 1,15",
-      },
-      {
-        label: "Phân bổ bữa",
-        value: "sáng 25%, trưa 35%, tối 30%, phụ 10% mục tiêu kcal/ngày",
+        label: "Tổng dinh dưỡng hiển thị",
+        value: "Tổng mỗi chất = tổng giá trị của ba khẩu phần món mẫu được gợi ý",
       },
     ],
-    guidance: ["Kiểm tra lại khẩu phần, thành phần phụ, dị ứng và cách nấu trước khi dùng trong thực tế."],
+    guidance: [
+      "Lựa chọn bệnh nền chỉ bật lời nhắc an toàn; công cụ không cá thể hóa món theo chẩn đoán hoặc thuốc.",
+      "Giá trị bữa ăn lấy từ thư viện công thức và thay đổi theo khẩu phần, nguyên liệu, nước dùng, gia vị và cách chế biến thực tế.",
+      "Tùy chọn món chay dựa trên nhãn phân loại của công thức; vẫn cần kiểm tra nguyên liệu thực tế.",
+    ],
     notFor: ["Không dùng kế hoạch này thay cho thực đơn cá thể hóa cho bệnh nền hoặc điều trị."],
     sources: [
-      { label: "NIDDK - Body Weight Planner", url: "https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner" },
+      { label: "Viện Dinh dưỡng - Tra cứu giá trị dinh dưỡng thực phẩm", url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/gia-tri-dinh-duong-thuc-pham" },
+      { label: "Bảng thành phần thực phẩm Việt Nam 2007", url: "https://www.fao.org/fileadmin/templates/food_composition/documents/pdf/VTN_FCT_2007.pdf" },
       { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
     ],
   },
@@ -817,6 +875,12 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
     slug: "them-thuc-pham-dong-goi",
     status: "Nhập nhãn thực phẩm có kiểm soát",
     summary: "Trang hỗ trợ ghi thực phẩm đóng gói từ nhãn; không thay đổi số liệu dinh dưỡng bằng công thức suy diễn.",
+    formulas: [
+      {
+        label: "Quy đổi theo nhãn",
+        value: "Dưỡng chất khẩu phần = giá trị trên nhãn × số khẩu phần người dùng nhập; không nội suy trường bị bỏ trống.",
+      },
+    ],
     guidance: ["Cần ưu tiên thông tin trên nhãn, khẩu phần ghi bởi nhà sản xuất và ngày cập nhật sản phẩm."],
     notFor: ["Không dùng dữ liệu tự nhập thay cho thông tin sản phẩm khi nhãn đã thay đổi hoặc có yêu cầu dị ứng."],
     sources: [

@@ -1,80 +1,28 @@
-﻿---
+---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
-const article = { slug: "thuc-don-gan-nhiem-mo-binh-dan", title: "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản bình dân", description: "Thực đơn giảm mỡ gan kiểu cơm nhà Việt Nam. Hạn chế đường, tinh bột tinh chế, dầu chiên đi chiên lại.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
+const article = { slug: "thuc-don-gan-nhiem-mo-binh-dan", title: "Gợi ý bữa cơm gia đình bình dân khi gan nhiễm mỡ", description: "Ví dụ bữa ăn Việt linh hoạt, không áp khẩu phần hay mức năng lượng giống nhau cho mọi người bị MASLD.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 5, featured: false };
 ---
 
 <ArticleLayout article={article as any}>
-<div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
-  <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình, ít đường, ít béo bão hòa (~1500 kcal)</p>
-</div>
-
-## 🍜 Bữa sáng
-
-🍜 Sáng (6:30-7:30): 1 chén yến mạch nấu với nước hoặc sữa không đường + 1 quả trứng luộc. Hoặc 1 ổ bánh mì nguyên cám + trứng ốp la + 1 ly sữa không đường.
-
-**Ghi chú:** Không ăn xôi, bánh mì trắng, bánh ngọt.
-
----
-
-## 🥪 Bữa trưa
-
-🍚 Trưa (11:30): 1.5 chén cơm gạo lứt (hoặc gạo lứt trộn gạo trắng) + 1 miếng cá hồi nướng (hoặc cá thu) + rau xào dầu olive + canh rau ngót.
-
-**Ghi chú:** Cá béo giàu omega-3, có thể là nguồn đạm và chất béo tốt hơn thịt mỡ hoặc đồ chiên.
-
----
-
-## 🥜 Bữa xế (phụ)
-
-🥛 Xế (14:30): 1 hộp sữa chua không đường + 1/2 quả táo. Hoặc 1 ly trà xanh không đường + 1 nắm hạt hạnh nhân.
-
----
-
-## 🌙 Bữa tối
-
-🌙 Tối (18:00-19:00): 1 chén cơm gạo lứt + đậu phụ sốt cà + bông cải xanh luộc + canh bí đỏ.
-
-**Ghi chú:** Tránh ăn sau 20h — tránh tích tụ mỡ ban đêm.
-
----
-
-## 💡 Thay thế món
-
-<table>
-<thead>
-<tr>
-<th>Nếu không có</th>
-<th>Thay bằng</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cơm</td>
-<td>Cơm gạo lứt, cơm gạo lứt trộn trắng</td>
-</tr>
-<tr>
-<td>Cá</td>
-<td>Gà bỏ da, tôm, đậu phụ, trứng</td>
-</tr>
-<tr>
-<td>Rau luộc</td>
-<td>Rau xào ít dầu, salad dầu dấm</td>
-</tr>
-<tr>
-<td>Canh</td>
-<td>Canh rau củ, canh thịt băm nhạt</td>
-</tr>
-<tr>
-<td>Trái cây ít ngọt</td>
-<td>Ổi, thanh long, táo, bưởi, lê</td>
-</tr>
-<tr>
-<td>Sữa</td>
-<td>Sữa chua không đường, sữa đậu nành</td>
-</tr>
-</tbody>
-</table>
-## ⚠️ Lưu ý
-
-Nên giảm mạnh nước ngọt, trà sữa, bánh ngọt và rượu bia; nếu có viêm gan do rượu hoặc bác sĩ yêu cầu thì cần tránh rượu. Hạn chế tinh bột trắng (cơm trắng, bánh mì trắng, xôi), thịt đỏ và món chiên béo; trứng có thể dùng khẩu phần vừa phải tùy mỡ máu và tổng khẩu phần. Tăng cá, chất xơ, rau xanh và chất béo không bão hòa.
+  <section class="section card">
+    <p>Gợi ý dưới đây dùng món quen thuộc và nguyên liệu dễ tìm; đây không phải đơn ăn giảm cân hay thực đơn điều trị. Khẩu phần thay đổi theo tuổi, thể trạng, vận động, bệnh đi kèm và mục tiêu. Nếu có xơ gan, bệnh thận, đái tháo đường hoặc sụt cân, cần cá thể hóa.</p>
+  </section>
+  <section class="section card">
+    <h2>Một ngày tham khảo</h2>
+    <ul>
+      <li><strong>Sáng:</strong> bánh mì với trứng và dưa leo/cà chua, hoặc một tô phở/bún có thịt nạc và rau. Chọn đồ uống ít/không đường.</li>
+      <li><strong>Trưa:</strong> cơm theo nhu cầu, cá nục/cá basa hoặc trứng/đậu phụ; rau luộc hay xào ít dầu; canh nêm vừa.</li>
+      <li><strong>Bữa phụ nếu cần:</strong> chuối, ổi, cam hoặc sữa chua không đường; không bắt buộc ăn nếu không đói.</li>
+      <li><strong>Tối:</strong> cơm, đậu phụ sốt cà hoặc thịt gà/cá, rau theo mùa và canh. Không cần kiêng ăn tối sau một giờ cố định.</li>
+    </ul>
+  </section>
+  <section class="section card">
+    <h2>Đổi món mà không làm bữa ăn đắt hơn</h2>
+    <p>Có thể thay cá hồi bằng cá nục, cá bạc má, cá basa; hạt đắt tiền bằng đậu phộng lượng vừa; gạo lứt bằng cơm trắng hoặc trộn hai loại nếu hợp khẩu vị. Không có bằng chứng rằng phải dùng thực phẩm “siêu tốt” mới cải thiện được gan.</p>
+    <p>Việc dễ áp dụng thường là giảm nước ngọt/trà sữa, bớt món chiên và thịt chế biến, giữ bữa ăn đa dạng. Trái cây nguyên quả không cần loại bỏ hoàn toàn; chú ý phần ăn và đường huyết nếu có đái tháo đường.</p>
+  </section>
+  <section class="section card">
+    <h2>Lưu ý theo bệnh đi kèm</h2>
+    <p>Nếu đang dùng insulin/thuốc hạ đường huyết, thuốc lợi tiểu, có bệnh thận hoặc cổ trướng, không tự bỏ bữa, cắt tinh bột, tăng kali hay hạn chế nước theo thực đơn chung. Hỏi bác sĩ/dinh dưỡng viên về khẩu phần và tương tác với thuốc.</p>
+  </section>
 </ArticleLayout>

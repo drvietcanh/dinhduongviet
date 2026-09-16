@@ -91,8 +91,8 @@ function assertNoRestrictedNumericTargets(result) {
       `restricted output must not include numeric reference key ${forbiddenKey}`,
     );
   }
-  assert.equal(result.energyEstimateStatus, "not_enabled_v1");
-  assert.equal(result.macroTargetStatus, "not_enabled_v1");
+  assert.equal(result.energyEstimateStatus, "withheld_for_clinical_context");
+  assert.equal(result.macroTargetStatus, "withheld_for_clinical_context");
 }
 
 function assertNoForbiddenWording(result) {
@@ -126,7 +126,7 @@ try {
     bmrKcal: 1295,
     maintenanceKcal: 2007,
     activityFactor: 1.55,
-    label: "Ước tính BMR và mức duy trì cho người lớn tương đối khỏe; không phải mức ăn bắt buộc.",
+    label: "Ước tính năng lượng nghỉ và mức duy trì cho người lớn tương đối khỏe; không phải mức ăn bắt buộc.",
     sourceLabel: "Mifflin-St Jeor; hệ số hoạt động chỉ là quy ước tham khảo (thấp 1,20; vừa 1,55).",
   });
   assert.deepEqual(maintain.macroReference, {
@@ -135,6 +135,12 @@ try {
     label: "Khoảng phân bố năng lượng đa lượng (AMDR), không phải macro tối ưu hoặc kế hoạch điều trị cá nhân.",
     sourceLabel: "National Academies DRI (AMDR cho người lớn): carbohydrate 45–65%, chất béo 20–35% năng lượng.",
   });
+
+  const ageEighteen = plan({ age: 18 });
+  expectMode(ageEighteen, "caution");
+  assert.ok(ageEighteen.reasons.includes("outside_mifflin_reference_age"));
+  assert.equal(ageEighteen.energyReference, undefined, "do not extend the original Mifflin age range to age 18");
+  assert.equal(ageEighteen.macroReference, undefined, "do not derive macro gram ranges from withheld energy estimates");
 
   const healthyEating = plan({ goal: "healthy_eating" });
   expectMode(healthyEating, "auto");

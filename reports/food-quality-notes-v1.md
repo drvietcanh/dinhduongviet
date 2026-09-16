@@ -11,13 +11,13 @@ This report summarizes current food quality metadata and the remaining review ba
 - Items still missing required review metadata: 0.
 - Items requiring external source: 0.
 - Items marked needs_better_source: 2.
-- Source-backed items still pending dietitian review: 2.
+- Source-backed items still pending dietitian review: 4.
 - Items requiring dietitian review: 8.
 
 Data quality counts:
 
-- source_backed: 9
-- recipe_estimate: 16
+- source_backed: 11
+- recipe_estimate: 14
 
 Source review status counts:
 
@@ -49,6 +49,8 @@ QA food-data counters:
 
 - `la-sach-bo`: Lá sách bò - USDA FDC SR Legacy 170599: Beef, variety meats and by-products, tripe, raw (close match).
 - `thit-xong-khoi`: Thịt hun khói - USDA FDC SR Legacy 174611: Ham, honey, smoked, cooked - close_match.
+- `xuc-xich-ga`: Xúc xích gà - USDA FDC SR Legacy 172957: Bratwurst, chicken, cooked - close_match.
+- `xuc-xich-heo`: Xúc xích heo - USDA FDC SR Legacy 173876: Pork sausage, link/patty, fully cooked, unheated - close_match.
 
 ## Chờ Dietitian Review
 
@@ -94,5 +96,5 @@ QA food-data counters:
 | xuc-xich-duc | Xúc xích Đức (bratwurst) | 333 | usda-fdc-171620 | high | source_backed | source_verified | - | - | 100g xúc xích Đức/bratwurst thành phẩm. | Đã thay số ước tính bằng hồ sơ USDA cho bratwurst heo đã nấu chín. | USDA FDC SR Legacy 171620: Bratwurst, pork, cooked. |
 | xuc-xich-my | Xúc xích Mỹ (hot dog) | 302 | usda-fdc-171634 | high | source_backed | source_verified | - | - | 100g xúc xích Mỹ/hot dog thành phẩm. | Đã thay số ước tính bằng hồ sơ USDA cho frankfurter thịt và gia cầm đã nướng chín. | USDA FDC SR Legacy 171634: Frankfurter, meat and poultry, cooked, grilled. |
 | xuc-xich-bo | Xúc xích bò | 332 | usda-fdc-174618 | high | source_backed | source_verified | - | - | 100g xúc xích bò thành phẩm. | Đã thay số ước tính bằng hồ sơ USDA cho xúc xích bò tươi đã nấu chín. | USDA FDC SR Legacy 174618: Beef sausage, fresh, cooked. |
-| xuc-xich-ga | Xúc xích gà | 200 | recipe-estimate-v1 | low | recipe_estimate | candidate_pending_dietitian_review | - | yes | 100g xúc xích gà thành phẩm. | Có candidate xúc xích generic VN 2007 nhưng chưa thay số; cần duyệt vì không phân biệt loại thịt. | VN 2007: 7077 Xúc xích - close_match. |
-| xuc-xich-heo | Xúc xích heo | 270 | recipe-estimate-v1 | low | recipe_estimate | candidate_pending_dietitian_review | - | yes | 100g xúc xích heo thành phẩm. | Có candidate xúc xích generic VN 2007 nhưng chưa thay số; cần duyệt vì không phân biệt loại/thương phẩm. | VN 2007: 7077 Xúc xích - close_match. |
+| xuc-xich-ga | Xúc xích gà | 176 | usda-fdc-172957 | medium | source_backed | candidate_pending_dietitian_review | - | yes | 100g xúc xích gà thành phẩm. | Đã bổ sung hồ sơ USDA bratwurst gà đã nấu chín làm close match; vẫn cần chuyên gia duyệt vì xúc xích gà tại Việt Nam khác nhau theo công thức và nhãn hàng. | USDA FDC SR Legacy 172957: Bratwurst, chicken, cooked - close_match. |
+| xuc-xich-heo | Xúc xích heo | 392 | usda-fdc-173876 | medium | source_backed | candidate_pending_dietitian_review | - | yes | 100g xúc xích heo thành phẩm. | Đã bổ sung hồ sơ USDA xúc xích heo đã nấu chín làm close match; vẫn cần chuyên gia duyệt vì tỷ lệ mỡ, muối và phụ gia của sản phẩm Việt Nam khác nhau. | USDA FDC SR Legacy 173876: Pork sausage, link/patty, fully cooked, unheated - close_match. |

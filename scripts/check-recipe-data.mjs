@@ -29,6 +29,7 @@ const errors = [];
 const duplicateNames = [];
 const nameIndex = new Map();
 const slugIndex = new Map();
+const ingredientSignatureIndex = new Map();
 let ingredientTotalMismatches = 0;
 let documentedWeightMismatches = 0;
 
@@ -42,6 +43,12 @@ for (const recipe of recipes) {
   nameIndex.get(normalizedName).push(recipe.id);
   if (!slugIndex.has(recipe.slug)) slugIndex.set(recipe.slug, []);
   slugIndex.get(recipe.slug).push(recipe.id);
+  const ingredientSignature = (recipe.ingredients ?? [])
+    .map((ingredient) => `${ingredient.foodId}:${Number(ingredient.amountG)}`)
+    .sort()
+    .join("|");
+  if (!ingredientSignatureIndex.has(ingredientSignature)) ingredientSignatureIndex.set(ingredientSignature, []);
+  ingredientSignatureIndex.get(ingredientSignature).push({ id: recipe.id, name: recipe.name });
 
   let ingredientTotal = 0;
   for (const ingredient of recipe.ingredients ?? []) {
@@ -65,10 +72,14 @@ for (const [name, ids] of nameIndex) {
 for (const [slug, ids] of slugIndex) {
   if (ids.length > 1) errors.push(`slug trùng: ${slug} (${ids.join(", ")})`);
 }
+const duplicateIngredientSignatures = [...ingredientSignatureIndex.values()].filter((items) => items.length > 1);
 
 console.log(`[qa:recipes] ${recipes.length} món, ${foods.length} thực phẩm tham chiếu`);
 console.log(`[qa:recipes] ${ingredientTotalMismatches} món có chênh lệch khối lượng thành phẩm/nguyên liệu; ${documentedWeightMismatches} món đã có ghi chú giải thích nước, độ ẩm hoặc hao hụt`);
 if (duplicateNames.length) console.log(`[qa:recipes] Trùng tên chuẩn hóa: ${duplicateNames.map((item) => `${item.name} [${item.ids.join(", ")}]`).join("; ")}`);
+if (duplicateIngredientSignatures.length) {
+  console.log(`[qa:recipes] Cần rà soát thủ công ${duplicateIngredientSignatures.length} nhóm món có cùng chữ ký thành phần/khối lượng; các biến thể tên vẫn được giữ nếu khác cách chế biến hoặc cần bổ sung thành phần riêng.`);
+}
 
 if (duplicateNames.length || errors.length) {
   if (errors.length) console.error(errors.map((error) => `[qa:recipes] ${error}`).join("\n"));

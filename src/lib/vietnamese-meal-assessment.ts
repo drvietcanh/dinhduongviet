@@ -63,7 +63,7 @@ export interface MealAssessmentInput {
 
 export interface MealAssessmentTotals {
   energyKcal: number;
-  carbG: number;
+  carbG: number | null;
   proteinG: number;
   fatG: number;
   fiberG: number | null;
@@ -264,7 +264,7 @@ export function calculateVietnameseMealAssessment(input: MealAssessmentInput): M
 
   const totals: MealAssessmentTotals = {
     energyKcal: round0(sumKnown(items, "energyKcal") ?? 0),
-    carbG: carbResult.totalCarbGrams,
+    carbG: carbResult.totalCarbComplete ? carbResult.totalCarbGrams : null,
     proteinG: round1(sumKnown(items, "proteinG") ?? 0),
     fatG: round1(sumKnown(items, "fatG") ?? 0),
     fiberG: sumKnown(items, "fiberG"),

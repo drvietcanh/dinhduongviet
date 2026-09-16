@@ -8,29 +8,28 @@ const article = articleBySlug["benh-than-iga-dinh-duong"];
 <ArticleLayout article={article as any}>
   <section class="article-section" data-section="summary">
     <h2>Tóm tắt</h2>
-    <p>Bệnh thận IgA (IgA nephropathy, bệnh Berger) là viêm cầu thận do lắng đọng phức hợp miễn dịch IgA ở cầu thận. Đây là nguyên nhân hàng đầu gây viêm cầu thận nguyên phát trên thế giới. Bệnh tiến triển chậm, có thể dẫn đến suy thận giai đoạn cuối sau 10–20 năm.</p>
-    <p>Mục tiêu dinh dưỡng: <strong>giảm gánh nặng lên thận</strong>, kiểm soát huyết áp, giảm đạm niệu, và tránh các yếu tố kích hoạt miễn dịch.</p>
+    <p>Bệnh thận IgA (IgA nephropathy, bệnh Berger) là bệnh cầu thận liên quan đến lắng đọng IgA. Diễn tiến rất khác nhau: có người ổn định lâu dài, một số người giảm chức năng thận theo thời gian nên cần theo dõi huyết áp, eGFR và protein niệu.</p>
+    <p>Dinh dưỡng hỗ trợ sức khỏe thận và tim mạch, nhưng không loại bỏ lắng đọng IgA, không thay thế thuốc và không có chế độ ăn riêng được chứng minh chữa khỏi bệnh.</p>
   </section>
 
   <section class="article-section" data-section="diet-principles">
     <h2>Nguyên tắc dinh dưỡng</h2>
     <ul>
-      <li><strong>Giảm muối:</strong> &lt;2g natri/ngày (&lt;5g muối). Muối làm tăng huyết áp và tăng đạm niệu.</li>
-      <li><strong>Kiểm soát đạm (protein):</strong> 0.8g/kg/ngày nếu chức năng thận suy giảm (GFR &lt;60). Không thừa, không thiếu.</li>
-      <li><strong>Bổ sung omega-3:</strong> Cá béo (cá hồi, cá thu) giúp tăng chất lượng chất béo trong khẩu phần. Một số nghiên cứu cho thấy dầu cá có thể hỗ trợ giảm đạm niệu ở một số người, nhưng cần trao đổi bác sĩ trước khi dùng viên liều cao.</li>
+      <li><strong>Natri:</strong> Giảm món mặn thường có ích khi có tăng huyết áp/phù. KDIGO nêu mức tham khảo dưới 2 g natri/ngày (dưới 5 g muối) cho nhiều người lớn CKD; bác sĩ sẽ cân nhắc tình trạng riêng.</li>
+      <li><strong>Đạm:</strong> Không tự tăng cao để “bồi bổ” cũng không tự ăn kiêng. KDIGO 2024 gợi ý khoảng 0,8 g/kg/ngày cho nhiều người lớn CKD G3–G5; đây không phải toa cá nhân và không áp dụng máy móc cho lọc máu, thai kỳ, trẻ em, suy dinh dưỡng hay bệnh cấp.</li>
+      <li><strong>Cá và omega-3:</strong> Có thể dùng cá như một phần của chế độ ăn đa dạng. Bằng chứng về viên dầu cá liều cao trong điều trị bệnh thận IgA chưa đủ để tự dùng; hãy hỏi bác sĩ về lợi ích, tương tác và nguy cơ chảy máu.</li>
       <li><strong>Gluten:</strong> Không có khuyến cáo kiêng gluten thường quy cho bệnh thận IgA. Chỉ nên loại trừ gluten khi có bệnh celiac, dị ứng lúa mì, triệu chứng tiêu hóa rõ hoặc bác sĩ chuyên khoa chỉ định.</li>
-      <li><strong>Kiểm soát đường huyết và mỡ máu:</strong> Bệnh thận IgA có nguy cơ tim mạch cao.</li>
+      <li><strong>Kiểm soát nguy cơ tim mạch:</strong> Duy trì chế độ ăn cân bằng, vận động phù hợp và theo dõi bệnh đi kèm theo hướng dẫn của bác sĩ.</li>
     </ul>
   </section>
 
   <section class="article-section" data-section="foods-to-eat">
-    <h2>Thực phẩm nên ăn</h2>
+    <h2>Thực phẩm có thể phối hợp đa dạng</h2>
     <div class="food-table">
-      <div class="food-row"><span class="food-cat">🐟 Cá béo</span><span>Cá hồi, cá thu, cá trích — nguồn omega-3 trong khẩu phần</span></div>
-      <div class="food-row"><span class="food-cat">🥬 Rau xanh</span><span>Rau cải, bông cải, rau muống, cần tây — ít kali hơn rau lá đậm</span></div>
-      <div class="food-row"><span class="food-cat">🍎 Trái cây</span><span>Táo, lê, nho, dưa hấu, thanh long — ít kali hơn chuối, cam</span></div>
-      <div class="food-row"><span class="food-cat">🫘 Đạm thực vật</span><span>Đậu hũ, đậu lăng, đậu xanh — thay thế một phần thịt để giảm gánh thận</span></div>
-      <div class="food-row"><span class="food-cat">🫒 Dầu lành</span><span>Dầu olive, dầu hạt cải — thay thế mỡ động vật</span></div>
+      <div class="food-row"><span class="food-cat">🐟 Đạm</span><span>Cá, trứng, thịt, sữa và đậu có thể góp phần vào khẩu phần; tổng lượng tùy chức năng thận và tình trạng dinh dưỡng.</span></div>
+      <div class="food-row"><span class="food-cat">🥬 Rau và trái cây</span><span>Không có danh sách ít/cao kali áp dụng cho tất cả; lựa chọn khẩu phần theo xét nghiệm nếu nhóm điều trị yêu cầu.</span></div>
+      <div class="food-row"><span class="food-cat">🍚 Tinh bột</span><span>Cơm, bún, khoai, bánh mì và ngũ cốc có thể phối hợp theo nhu cầu năng lượng và bệnh đi kèm.</span></div>
+      <div class="food-row"><span class="food-cat">🫒 Chất béo</span><span>Ưu tiên nguồn chất béo không bão hòa thay cho nhiều mỡ động vật; cân đối tổng thể khẩu phần.</span></div>
     </div>
   </section>
 
@@ -38,15 +37,16 @@ const article = articleBySlug["benh-than-iga-dinh-duong"];
     <h2>Thực phẩm cần hạn chế</h2>
     <ul>
       <li><strong>Muối & thực phẩm mặn:</strong> Nước mắm, đồ hộp, xúc xích, chả lụa, snack mặn</li>
-      <li><strong>Đạm dư thừa:</strong> Không ăn quá nhiều thịt đỏ, không dùng bột đạm (whey, casein) nếu không có chỉ định</li>
-      <li><strong>Thực phẩm chế biến sẵn:</strong> Giàu natri, phốt pho vô cơ, phụ gia có hại cho thận</li>
-      <li><strong>Rượu bia:</strong> Làm tăng huyết áp và gánh nặng cho thận</li>
-      <li><strong>Thực phẩm giàu kali</strong> (nếu suy thận giai đoạn 3–4): chuối, cam, khoai tây, cà chua, rau bina</li>
+      <li><strong>Đạm quá mức:</strong> Tránh tự theo chế độ giàu đạm hoặc dùng bột đạm khi chưa được chuyên gia đánh giá.</li>
+      <li><strong>Thực phẩm chế biến sẵn:</strong> Hạn chế loại nhiều natri; nếu cần điều chỉnh phốt pho, đọc nhãn để nhận diện phụ gia phosphate theo tư vấn.</li>
+      <li><strong>Rượu bia:</strong> Hạn chế, đặc biệt nếu làm tăng huyết áp, ảnh hưởng thuốc hoặc bệnh đi kèm.</li>
+      <li><strong>Kali/phốt pho:</strong> Không hạn chế chỉ theo tên món ăn hoặc giai đoạn; chỉ điều chỉnh khi xét nghiệm, thuốc và đánh giá chuyên môn cho thấy cần thiết.</li>
     </ul>
   </section>
 
   <section class="article-section" data-section="meal-plan">
-    <h2>Thực đơn gợi ý 1 ngày</h2>
+    <h2>Ví dụ ghép bữa (cần điều chỉnh khẩu phần)</h2>
+    <p>Ví dụ dưới đây chỉ minh họa cách thay đổi món, không bảo đảm phù hợp với mọi người mắc bệnh thận IgA. Khẩu phần và lựa chọn rau quả cần cá thể hóa nếu có tăng kali/phốt pho hoặc suy dinh dưỡng.</p>
     <div class="meal-table">
       <div class="meal-row"><span class="meal-time">🍳 Sáng</span><span>Bánh mì nguyên cám (ít muối) + trứng ốp la + 1 quả lê</span></div>
       <div class="meal-row"><span class="meal-time">🌰 Phụ sáng</span><span>1 hũ sữa chua + ít hạt óc chó</span></div>
@@ -60,8 +60,8 @@ const article = articleBySlug["benh-than-iga-dinh-duong"];
     <h2>Sống chung với bệnh thận IgA</h2>
     <ul>
       <li><strong>Khám định kỳ:</strong> Đo huyết áp, xét nghiệm đạm niệu, creatinin máu, GFR. Theo dõi sát tiến triển.</li>
-      <li><strong>Kiểm soát huyết áp nghiêm ngặt:</strong> Mục tiêu &lt;130/80 mmHg. Dùng thuốc ức chế men chuyển (ACEi) hoặc ức chế thụ thể (ARB) nếu có đạm niệu.</li>
-      <li><strong>Giảm nguy cơ nhiễm trùng:</strong> Nhiễm trùng hô hấp và tiêu hóa có thể liên quan đến đợt bùng phát ở một số người — rửa tay, tiêm vắc-xin phòng cúm theo khuyến nghị.</li>
+      <li><strong>Kiểm soát huyết áp:</strong> Mục tiêu và thuốc (kể cả ACEi/ARB khi phù hợp) do bác sĩ cá thể hóa theo protein niệu, tuổi, nguy cơ và bệnh đi kèm.</li>
+      <li><strong>Phòng nhiễm trùng thường quy:</strong> Vệ sinh tay và tiêm chủng theo khuyến nghị chung/điều trị; không có chế độ ăn đặc biệt được chứng minh ngăn bệnh bùng phát.</li>
       <li><strong>Không tự ý dùng thảo dược:</strong> Nhiều thảo dược độc thận, đặc biệt ở người đã suy giảm chức năng thận.</li>
     </ul>
   </section>
@@ -76,19 +76,19 @@ const article = articleBySlug["benh-than-iga-dinh-duong"];
 
     <details class="faq-item">
       <summary>Ăn đậu hũ có hại thận không?</summary>
-      <p>Đậu hũ là nguồn đạm thực vật tốt, ít phốt pho hơn thịt. Một lượng vừa phải (100–150g/ngày) là an toàn và có lợi hơn thịt đỏ cho người bệnh thận.</p>
+      <p>Không cần kiêng đậu hũ chỉ vì mắc bệnh thận IgA. Đậu hũ có thể là một nguồn đạm thực vật; khẩu phần phù hợp tùy chức năng thận, kali/phốt pho máu, tổng lượng đạm và tình trạng dinh dưỡng. Không có mức gram/ngày an toàn chung cho tất cả.</p>
     </details>
 
     <details class="faq-item">
       <summary>Bệnh có khỏi hoàn toàn không?</summary>
-      <p>Hiện chưa có thuốc làm bệnh khỏi hoàn toàn, nhưng kiểm soát huyết áp, giảm đạm niệu và dinh dưỡng phù hợp giúp làm chậm tiến triển. Nhiều người sống ổn định hàng chục năm mà không tiến đến suy thận giai đoạn cuối.</p>
+      <p>Diễn tiến khác nhau giữa mỗi người. Theo dõi eGFR và protein niệu, tuân thủ điều trị và trao đổi sớm khi chỉ số thay đổi giúp bác sĩ đánh giá nguy cơ và điều chỉnh kế hoạch.</p>
     </details>
   </section>
 
   <section class="article-section" data-section="summary-reminder">
     <h2>💡 Nhớ chính</h2>
     <div class="key-takeaway">
-      <p><strong>3 ưu tiên hàng đầu:</strong> (1) Giảm muối — huyết áp là yếu tố quyết định tiến triển bệnh, (2) Kiểm soát đạm — không thừa, không thiếu, (3) Khám định kỳ — theo dõi đạm niệu và GFR. Dinh dưỡng + thuốc kiểm soát huyết áp là chiến lược dài hạn.</p>
+      <p><strong>3 ưu tiên:</strong> (1) theo dõi huyết áp, eGFR và protein niệu; (2) ăn cân bằng, giảm natri nếu phù hợp và không tự kiêng kali/đạm; (3) dùng thuốc đúng chỉ định, tái khám và hỏi nhóm thận học về mục tiêu cá nhân.</p>
     </div>
   </section>
 </ArticleLayout>

@@ -1,0 +1,73 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["lao-phoi-an-uong-khi-dung-thuoc"];
+if (!art) throw new Error("Article not found: lao-phoi-an-uong-khi-dung-thuoc");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>Điều người bệnh lao cần nhớ</h2>
+      <ul>
+        <li>Dùng thuốc lao đúng phác đồ và đúng thời điểm ghi trên đơn/phiếu hướng dẫn. Cách dùng lúc đói hay cùng thức ăn tùy thuốc và cách xử trí tác dụng phụ; không tự đổi giờ uống.</li>
+        <li>Rifampicin/rifapentine có thể tương tác với nhiều thuốc, gồm một số thuốc tránh thai, chống đông, điều trị HIV và thuốc đái tháo đường. Luôn báo đủ thuốc và thực phẩm bổ sung đang dùng.</li>
+        <li>Sụt cân/suy dinh dưỡng cần được đánh giá và hỗ trợ dinh dưỡng song song với điều trị lao; thực phẩm bổ sung không thay thuốc kháng lao.</li>
+        <li>Chán ăn, nôn, đau bụng, nước tiểu nâu kèm vàng mắt/da hoặc tê bì kéo dài cần báo cơ sở điều trị sớm.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Quan trọng:</strong> Phác đồ và hướng dẫn dùng thuốc lao tại Việt Nam do cơ sở quản lý lao quyết định. Tài liệu quốc tế dưới đây chỉ để tham khảo, không thay thế phiếu hướng dẫn của bác sĩ/điều dưỡng chương trình chống lao.</p>
+
+    <h2>Thuốc lao có cần uống cùng bữa ăn không?</h2>
+    <p>Một số thuốc lao hấp thu tốt hơn khi dùng lúc đói, nhưng buồn nôn hoặc khó chịu đường tiêu hóa có thể khiến người bệnh không uống đủ thuốc. CDC lưu ý nhóm chăm sóc có thể cân nhắc điều chỉnh thời điểm hoặc dùng cùng thức ăn để xử trí một số tác dụng phụ nhẹ. Vì phác đồ phối hợp và hướng dẫn từng nơi khác nhau, hãy gọi cơ sở điều trị trước khi chuyển thuốc từ lúc đói sang cùng bữa ăn, tách viên thuốc hoặc bỏ liều.</p>
+    <p>Nếu toa dặn uống trước ăn hoặc cách bữa ăn, ghi rõ giờ dùng vào điện thoại/lịch và hỏi điều dưỡng cách xử trí khi lỡ ăn, nôn sau uống hoặc quên liều. Không uống bù gấp đôi.</p>
+
+    <h2>Kiểm tra tương tác trước khi thêm thuốc hay thực phẩm bổ sung</h2>
+    <p>Rifampicin và rifapentine có thể làm giảm nồng độ của nhiều thuốc khác; mức tương tác phụ thuộc từng hoạt chất. Hãy đưa cả đơn thuốc, thuốc không kê đơn, thuốc tránh thai, thuốc tiểu đường, thuốc chống đông, thuốc HIV, vitamin, thảo dược và sản phẩm “bổ gan” cho bác sĩ/dược sĩ kiểm tra. Không tự ngừng thuốc mạn tính vì lo tương tác.</p>
+    <p>Rifampicin/rifapentine có thể làm nước tiểu, mồ hôi và nước mắt chuyển màu cam. Đây có thể là hiện tượng dự kiến. Tuy nhiên, nước tiểu nâu sẫm kèm chán ăn, buồn nôn, đau bụng hoặc vàng da/vàng mắt có thể là dấu hiệu tổn thương gan và cần báo ngay cho cơ sở điều trị.</p>
+
+    <h2>Vitamin B6 và cảm giác tê bì</h2>
+    <p>Isoniazid có thể gây bệnh lý thần kinh ngoại biên ở một số người. Bác sĩ có thể kê pyridoxine (vitamin B6) cho nhóm nguy cơ như người suy dinh dưỡng, đái tháo đường, HIV, bệnh thận, người mang thai hoặc lớn tuổi, tùy phác đồ và đánh giá lâm sàng. Không tự mua B6 liều cao hoặc uống kéo dài; quá nhiều B6 cũng có thể gây tổn thương thần kinh. Hãy báo nếu thấy tê, châm chích hoặc nóng rát ở bàn tay/bàn chân.</p>
+
+    <h2>Ăn uống khi sụt cân hoặc chán ăn</h2>
+    <ul>
+      <li>Chọn bữa nhỏ, dễ ăn và có nguồn đạm như trứng chín, cá, thịt, đậu phụ hoặc sữa phù hợp khả năng dung nạp.</li>
+      <li>Tăng năng lượng bằng khẩu phần quen thuộc: cơm/cháo đặc, khoai, dầu thực vật, sữa hoặc món phụ; ưu tiên cách người bệnh ăn được hơn là ép một thực đơn “đặc trị”.</li>
+      <li>Cân định kỳ và báo nhân viên y tế nếu cân tiếp tục giảm, ăn uống rất kém hoặc tiêu chảy/nôn kéo dài. Có thể cần đánh giá suy dinh dưỡng và hỗ trợ chuyên môn.</li>
+      <li>Không dùng rượu bia trong khi điều trị nếu chưa được bác sĩ cho phép; thuốc lao có thể ảnh hưởng gan và rượu làm việc đánh giá tác dụng phụ phức tạp hơn.</li>
+    </ul>
+    <p>WHO khuyến nghị lồng ghép đánh giá và chăm sóc dinh dưỡng vào quản lý người bệnh lao, đặc biệt khi có suy dinh dưỡng. Điều đó không có nghĩa là ai mắc lao cũng cần uống sữa y học hay viên bổ sung; hỗ trợ nên dựa vào tình trạng dinh dưỡng, khẩu phần và bệnh đi kèm.</p>
+
+    <h2>Khi nào cần liên hệ cơ sở điều trị ngay?</h2>
+    <div class="warning-box">
+      <ul>
+        <li>Vàng mắt/vàng da, nước tiểu nâu sẫm, nôn kéo dài, đau vùng bụng trên hoặc mất cảm giác ngon miệng rõ rệt.</li>
+        <li>Tê bì/nóng rát kéo dài, nhìn mờ hoặc thay đổi khả năng phân biệt màu khi đang dùng ethambutol.</li>
+        <li>Phát ban lan rộng, khó thở, phù môi/lưỡi, chảy máu bất thường hoặc tình trạng yếu đi nhanh.</li>
+      </ul>
+      <p>Liên hệ phòng khám/chương trình chống lao để được hướng dẫn liều tiếp theo; nếu có khó thở, ngất hoặc phản ứng dị ứng nặng, đi cấp cứu.</p>
+    </div>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://www.who.int/publications/i/item/9789240111967" rel="noopener noreferrer">WHO — Consolidated guidelines on tuberculosis, module 6 (2025)</a>: cập nhật về lao, bệnh đồng mắc và chăm sóc người suy dinh dưỡng.</li>
+      <li><a href="https://www.cdc.gov/tb/hcp/treatment/adverse-events.html" rel="noopener noreferrer">CDC — Adverse Events During TB Treatment</a>: tác dụng phụ cần báo, B6 ở nhóm nguy cơ, tương tác rifamycin và đổi màu dịch cơ thể.</li>
+      <li><a href="https://www.cdc.gov/tb/hcp/treatment/tuberculosis-disease.html" rel="noopener noreferrer">CDC — Treatment for Drug-Susceptible Tuberculosis Disease</a>: thông tin điều trị và thời điểm dùng thuốc theo phác đồ.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note, .warning-box { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .summary-box ul { margin-bottom: 0; padding-left: 1.2rem; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .warning-box { background: rgba(239, 68, 68, .08); border: 1px solid rgba(239, 68, 68, .25); }
+  .warning-box p { margin-bottom: 0; }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

@@ -25,6 +25,7 @@ function single(carbPer100g, grams) {
 
 let result = single(28, 100);
 assert.equal(result.ok, true);
+assert.equal(result.totalCarbComplete, true);
 assert.equal(result.totalCarbGrams, 28);
 assert.equal(result.items[0].carbGrams, 28);
 
@@ -49,10 +50,20 @@ assert.equal(result.carbServings, 2);
 
 result = calculateCarbMeal([{ name: "Thiếu carb", grams: 100, carbPer100g: null }]);
 assert.equal(result.ok, true);
+assert.equal(result.totalCarbComplete, false);
 assert.equal(result.totalCarbGrams, 0);
+assert.equal(result.carbServings, null);
 assert.equal(result.items[0].carbGrams, null);
 assert.deepEqual(result.items[0].warningCodes, ["missing_carb"]);
 assert.match(result.warnings[0], /chưa có dữ liệu carbohydrate/);
+
+result = calculateCarbMeal([
+  { name: "Đã biết carb", grams: 100, carbPer100g: 20 },
+  { name: "Thiếu carb", grams: 100, carbPer100g: null },
+]);
+assert.equal(result.totalCarbComplete, false);
+assert.equal(result.totalCarbGrams, 20, "internal subtotal should preserve the known item's contribution");
+assert.equal(result.carbServings, null, "an incomplete subtotal must not be presented as meal carb servings");
 
 for (const badGrams of [0, -1, Number.NaN, Infinity, 2001]) {
   result = calculateCarbMeal([{ name: "Gram lỗi", grams: badGrams, carbPer100g: 20 }]);

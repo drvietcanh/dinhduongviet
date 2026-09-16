@@ -1,122 +1,64 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
-import DietMealPlan from "../../components/DietMealPlan.astro";
 const art = articleBySlug["gan-nhiem-mo"];
 if (!art) throw new Error("Article not found: gan-nhiem-mo");
 ---
 
 <ArticleLayout article={art}>
+  <section class="section card">
+    <p><strong>Gan nhiễm mỡ</strong> là cách gọi quen thuộc. Thuật ngữ y khoa đang được cập nhật: <strong>MASLD</strong> (bệnh gan nhiễm mỡ liên quan rối loạn chuyển hóa); một số trường hợp có viêm gan nhiễm mỡ gọi là <strong>MASH</strong>. Không phải mọi trường hợp gan nhiễm mỡ đều do ăn nhiều đường, và siêu âm không tự cho biết mức độ viêm/xơ hóa.</p>
+    <p>Bài này cung cấp nguyên tắc chung. Nếu bạn cần hướng dẫn cụ thể về <a href="/kien-thuc-dinh-duong/masld-mash-gan-nhiem-mo-chuyen-hoa">MASLD/MASH và phân tầng nguy cơ</a>, <a href="/kien-thuc-dinh-duong/gan-nhiem-mo-giam-can-vong-eo">giảm cân, giảm vòng eo</a>, hoặc <a href="/kien-thuc-dinh-duong/gan-nhiem-mo-an-ngoai-di-lam">ăn ngoài khi đi làm</a>, xem các bài liên quan. Người có xơ gan, đái tháo đường, bệnh thận, đang mang thai hoặc suy dinh dưỡng cần kế hoạch riêng với nhân viên y tế.</p>
+  </section>
 
-<!-- 1️⃣ Tình huống -->
-<section class="section card">
-  <p><strong>Bài này là bài nền của cụm gan nhiễm mỡ:</strong> dùng khi bạn muốn hiểu toàn cảnh nguyên nhân, nguyên tắc ăn uống chung và các dấu hiệu cần theo dõi thêm. Nếu câu hỏi chính là <a href="/kien-thuc-dinh-duong/gan-nhiem-mo-giam-can-vong-eo">giảm cân, giảm vòng eo thế nào mới đúng hướng</a> hoặc <a href="/kien-thuc-dinh-duong/gan-nhiem-mo-an-ngoai-di-lam">ăn ngoài khi đi làm nên sửa bữa nào trước</a>, hãy chuyển sang các bài thực hành tương ứng.</p>
-</section>
+  <section class="section card" style="background:var(--bg-info);border:1px solid var(--accent-light);">
+    <h2>Điều quan trọng nhất</h2>
+    <p>Không có một món ăn, loại nước uống hay thực phẩm bổ sung nào “làm sạch” gan. Hãy hướng tới kiểu ăn cân đối, giảm đồ uống có đường và thực phẩm dư năng lượng, vận động đều; nếu thừa cân thì giảm cân từ từ, có hỗ trợ khi cần. Không cần tự bỏ cơm, trái cây nguyên quả hay toàn bộ chất béo.</p>
+  </section>
 
-<section class="section card">
-  <p>Chị Mai, 34 tuổi, nhân viên văn phòng. Sức khỏe bình thường, không uống rượu bia, nhưng đi khám tổng quát bác sĩ bảo <strong>gan nhiễm mỡ</strong>. Chị sốc: "Em không uống rượu, sao lại bị nhiễm mỡ gan?"</p>
-  <p>Thực tế, gan nhiễm mỡ không chỉ do rượu — mà chủ yếu do <strong>thừa năng lượng, lười vận động, ăn nhiều đường và tinh bột tinh chế</strong>. Chị Mai thuộc nhóm NAFLD (non-alcoholic fatty liver disease) — đang gia tăng nhanh ở người Việt trẻ, đặc biệt nhân viên văn phòng và người béo bụng.</p>
-</section>
+  <section class="section card">
+    <h2>Gan nhiễm mỡ có nghĩa là gì?</h2>
+    <p>Mỡ trong gan có thể đi kèm thừa cân/vòng eo lớn, đái tháo đường típ 2, rối loạn mỡ máu hoặc tăng huyết áp; rượu bia và một số bệnh/thuốc cũng có thể góp phần. Bác sĩ sẽ xem xét tiền sử, thuốc đang dùng và xét nghiệm để tìm nguyên nhân, đánh giá nguy cơ xơ hóa; không thể kết luận mức độ nặng chỉ từ cảm giác hay men gan.</p>
+    <p>Đa số người có gan nhiễm mỡ không có triệu chứng đặc hiệu. Men gan bình thường không loại trừ hoàn toàn xơ hóa; ngược lại, men gan tăng cũng không tự xác định nguyên nhân. Hãy theo dõi theo lịch được đề xuất thay vì tự xét nghiệm hoặc tự uống thuốc “bổ gan”.</p>
+  </section>
 
-<!-- 2️⃣ TL;DR -->
-<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
-  <p style="font-size:1.05rem;margin:0;">
-    <strong>👉 Gan nhiễm mỡ <u>có thể cải thiện rõ</u> khi thay đổi lối sống — giảm đường tinh luyện, giảm tinh bột trắng,
-    tăng rau xanh và chất xơ. Nếu đang thừa cân, <u>giảm cân từ từ</u> là mục tiêu rất quan trọng.</strong>
-  </p>
-</section>
-
-<!-- 3️⃣ Vì sao lại thế? -->
-<section class="section card">
-  <h2>🔬 Vì sao mỡ tích ở gan?</h2>
-  <p>Gan là cơ quan chuyển hóa trung tâm. Khi bạn ăn quá nhiều đường và tinh bột, gan không kịp xử lý, phải "cất" chúng dưới dạng mỡ (triglycerid) — gọi là nhiễm mỡ gan. Fructose (đường trong trái cây ngọt, nước ngọt) đặc biệt có hại vì chỉ được chuyển hóa ở gan và dễ tạo mỡ nhất.</p>
-  <p>Nếu không kiểm soát, 20–30% trường hợp NAFLD tiến triển thành viêm gan nhiễm mỡ (NASH) → xơ gan → ung thư gan.</p>
-</section>
-
-<!-- 4️⃣ Ăn gì? -->
-<section class="section grid two">
-  <div class="card">
-    <h2>✅ Thực phẩm nên ăn</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>Rau xanh:</strong> Rau muống, bắp cải, cải xanh, <a href="/thuc-pham/rau-ngot">rau ngót</a>, mồng tơi — ăn không giới hạn</li>
-      <li><strong>Chất xơ hòa tan:</strong> Yến mạch, lúa mạch, <a href="/thuc-pham/dau-xanh">đậu xanh</a>, <a href="/thuc-pham/khoai-lang">khoai lang</a></li>
-      <li><strong>Đạm thực vật:</strong> <a href="/thuc-pham/dau-phu">Đậu phụ</a>, <a href="/thuc-pham/dau-nanh">đậu nành</a>, <a href="/thuc-pham/nam">nấm</a></li>
-      <li><strong>Cá béo:</strong> <a href="/thuc-pham/ca-hoi">Cá hồi</a>, cá trích, <a href="/thuc-pham/ca-thu">cá thu</a> — nguồn omega-3 tốt cho khẩu phần</li>
-      <li><strong>Dầu thực vật:</strong> Dầu oliu, dầu mè, dầu hướng dương</li>
-      <li><strong>Trái cây ít ngọt:</strong> <a href="/thuc-pham/bo-trai">Bơ</a>, <a href="/thuc-pham/tao">táo</a>, <a href="/thuc-pham/oi">ổi</a>, <a href="/thuc-pham/buoi">bưởi</a></li>
-    </ul>
-  </div>
-
-  <!-- 5️⃣ Kiêng gì? -->
-  <div class="card">
-    <h2>❌ Thực phẩm cần hạn chế</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>⛔ Đường tinh luyện:</strong> Bánh kẹo, nước ngọt, trà sữa, siro, mứt</li>
-      <li><strong>⛔ Tinh bột tinh chế:</strong> Cơm trắng (giảm ½), bánh mì trắng, mì gói</li>
-      <li><strong>⛔ Đồ chiên rán:</strong> Khoai tây chiên, gà rán, nem rán</li>
-      <li><strong>⛔ Nội tạng, thịt mỡ:</strong> Mỡ heo, da gà/vịt, lòng heo</li>
-      <li><strong>⛔ Bia rượu:</strong> Nên tránh hoặc hạn chế nghiêm ngặt nếu đã có viêm gan nhiễm mỡ, theo tư vấn bác sĩ</li>
-      <li><strong>⛔ Trái cây ngọt:</strong> Sầu riêng, mít, vải, nhãn — hạn chế tối đa</li>
-    </ul>
-  </div>
-</section>
-
-<!-- 6️⃣ Ăn bao nhiêu? -->
-<section class="section card">
-  <h2>📏 Ăn bao nhiêu là đủ?</h2>
-  <table class="table" style="margin-top:10px;">
-    <thead><tr><th>Nhóm</th><th>Khuyến nghị</th><th>Ghi chú</th></tr></thead>
-    <tbody>
-      <tr><td>Năng lượng</td><td>Giảm vừa phải nếu thừa cân</td><td>Mục tiêu giảm cân từ từ, tránh ăn kiêng cực đoan</td></tr>
-      <tr><td>Tinh bột</td><td>½ bát cơm/bữa, ưu tiên gạo lứt</td><td>Chỉ 1 bữa có tinh bột trắng/ngày</td></tr>
-      <tr><td>Rau xanh</td><td>Không giới hạn (tối thiểu 300g/ngày)</td><td>Luộc, xào nhẹ, ăn sống</td></tr>
-      <tr><td>Đạm</td><td>100–150g thịt/cá/ngày hoặc đậu phụ</td><td>Ưu tiên đạm thực vật ½ thời gian</td></tr>
-      <tr><td>Dầu</td><td>2–3 muỗng cafe dầu thực vật/ngày</td><td>Oliu, mè, hướng dương</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- 7️⃣ Thực đơn 1 ngày -->
-<section class="section card">
-  <h2>🍽️ Thực đơn gợi ý 1 ngày</h2>
-  <table class="table" style="margin-top:10px;">
-    <thead><tr><th>Bữa</th><th>Món</th><th>Ghi chú</th></tr></thead>
-    <tbody>
-      <tr><td>🌅 Sáng</td><td>Cháo yến mạch + sữa hạt + 1 quả táo</td><td>Không đường, no lâu</td></tr>
-      <tr><td>🍎 Phụ sáng</td><td>Ổi hoặc bưởi 1 phần</td><td>Ít ngọt, nhiều xơ</td></tr>
-      <tr><td>🌞 Trưa</td><td>Cơm gạo lứt ½ chén + cá hồi áp chảo + bông cải luộc</td><td>Omega-3 + chất xơ</td></tr>
-      <tr><td>🌆 Phụ chiều</td><td>1 nắm hạt điều/óc chó + trà xanh</td><td>Chất béo tốt</td></tr>
-      <tr><td>🌙 Tối</td><td>Đậu phụ sốt cà + rau muống luộc + ½ bát cơm</td><td>Nhẹ, tiêu hóa nhanh</td></tr>
-    </tbody>
-  </table>
-  <p class="muted" style="margin-top:10px;font-size:0.85rem;">💡 Tập thể dục 30 phút/ngày giúp giảm mỡ gan nhanh gấp đôi chỉ ăn kiêng.</p>
-</section>
-
-<!-- 8️⃣ Mẹo thực tế -->
-<section class="section card">
-  <h2>💡 Mẹo thực tế & Khi nào cần khám</h2>
-  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div>
-      <h4>✅ Mẹo áp dụng</h4>
-      <ul style="line-height:1.8;padding-left:16px;">
-        <li>Cắt hẳn nước ngọt, trà sữa, bánh kẹo — đây là nguyên nhân số 1.</li>
-        <li>Thay cơm trắng bằng gạo lứt hoặc giảm ½ lượng cơm.</li>
-        <li>Uống cà phê đen (2–3 tách/ngày) — có thể giảm men gan.</li>
-        <li>Không bỏ bữa — chia nhỏ 4–5 bữa/ngày.</li>
-        <li>Đi bộ 30 phút sau ăn tối — giảm đường huyết và mỡ gan.</li>
+  <section class="section grid two">
+    <div class="card">
+      <h2>Ăn uống theo hướng nào?</h2>
+      <ul>
+        <li>Ăn đa dạng theo khả năng và văn hóa bữa cơm: rau, đậu, trái cây nguyên quả, ngũ cốc phù hợp, cá/trứng/thịt nạc/đậu phụ và lượng chất béo vừa phải.</li>
+        <li>Giảm dần nước ngọt, trà sữa, nước tăng lực, nước ép có đường, bánh kẹo và món chế biến nhiều năng lượng. Ưu tiên giảm <em>đường tự do</em>; đường tự nhiên trong trái cây nguyên quả không được xem giống nước ngọt.</li>
+        <li>Cơm trắng, bún, phở và bánh mì không bị cấm tuyệt đối. Điều chỉnh lượng theo nhu cầu, mức vận động, đường huyết và các món ăn kèm; có thể chọn ngũ cốc nguyên hạt nếu hợp khẩu vị và tiêu hóa.</li>
+        <li>Không cần loại bỏ trái cây ngọt hoàn toàn. Ăn trái cây nguyên quả với khẩu phần phù hợp; hạn chế nước ép và trái cây/ngũ cốc chế biến thêm đường.</li>
+        <li>Chọn cách nấu vừa lượng dầu, hạn chế chiên ngập dầu và đồ chế biến sẵn thường xuyên; không có yêu cầu bắt buộc dùng dầu ô liu hay cá hồi.</li>
       </ul>
     </div>
-    <div>
-      <h4>🚨 Khi nào cần đi khám ngay</h4>
-      <ul style="line-height:1.8;padding-left:16px;">
-        <li>Đau hạ sườn phải kéo dài.</li>
-        <li>Men gan (ALT/AST) tăng cao &gt; 2 lần ngưỡng bình thường.</li>
-        <li>Vàng da, vàng mắt.</li>
-        <li>Mệt mỏi kéo dài, chán ăn, sụt cân.</li>
-        <li>Phù chân, bụng báng (dấu hiệu nặng).</li>
+    <div class="card">
+      <h2>Thay đổi lối sống bền vững</h2>
+      <ul>
+        <li>Nếu đang thừa cân, đặt mục tiêu giảm cân từ từ, khả thi; hướng dẫn chuyên môn thường xem xét mức giảm khoảng 5–10% tùy tình trạng và mục tiêu, không phải con số bắt buộc cho mọi người.</li>
+        <li>Vận động aerobic và tăng sức mạnh phù hợp thể trạng; bắt đầu từ mức làm được, tăng dần. Vận động có lợi kể cả khi cân nặng chưa giảm.</li>
+        <li>Ngủ đủ, không hút thuốc và kiểm soát đường huyết, huyết áp, mỡ máu theo kế hoạch chung.</li>
+        <li>Rượu bia có thể làm tăng nguy cơ tổn thương gan. Nếu đã có xơ hóa/xơ gan, nên tránh rượu; trường hợp khác hãy trao đổi với bác sĩ về mức phù hợp, nhất là khi dùng thuốc.</li>
+        <li>Không tự dùng thảo dược, thuốc “mát gan”, detox hoặc thực phẩm bổ sung để thay khám và điều trị; một số sản phẩm có thể gây tổn thương gan hoặc tương tác thuốc.</li>
       </ul>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section class="section card">
+    <h2>Gợi ý một ngày ăn — không phải khẩu phần điều trị</h2>
+    <p>Đây chỉ là ví dụ để phối hợp món quen thuộc; lượng ăn cần thay theo tuổi, vóc dáng, hoạt động, bệnh đi kèm, thuốc và mục tiêu dinh dưỡng. Không dùng mẫu này nếu bác sĩ đã dặn chế độ riêng.</p>
+    <ul>
+      <li><strong>Sáng:</strong> phở/bún với thịt nạc hoặc đậu phụ, thêm rau; giảm nước dùng mặn nếu cần kiểm soát huyết áp.</li>
+      <li><strong>Trưa:</strong> cơm theo nhu cầu, cá hoặc thịt nạc/đậu, rau và canh; hạn chế nước sốt nhiều đường, muối hoặc dầu.</li>
+      <li><strong>Bữa phụ (nếu đói/cần):</strong> trái cây nguyên quả, sữa không đường hoặc sữa chua tùy dung nạp và bệnh nền.</li>
+      <li><strong>Tối:</strong> bữa cơm gia đình cân đối; không cần bỏ tinh bột hay ăn trước một giờ cố định.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào cần khám?</h2>
+    <p>Đặt lịch khám để đánh giá nếu phát hiện gan nhiễm mỡ, men gan bất thường kéo dài, có đái tháo đường/rối loạn chuyển hóa, uống rượu thường xuyên, hoặc có tiền sử viêm gan. Bác sĩ có thể đánh giá nguy cơ xơ hóa và nguyên nhân khác, kể cả khi bạn thấy khỏe.</p>
+    <p><strong>Đi khám khẩn cấp</strong> khi vàng da tăng nhanh, bụng to nhanh/phù nhiều, nôn ra máu hoặc đi cầu phân đen, lú lẫn hoặc lơ mơ. Đau bụng hay mệt mỏi đơn độc không xác định được gan nhiễm mỡ nặng, nhưng triệu chứng kéo dài vẫn nên được đánh giá.</p>
+  </section>
 </ArticleLayout>

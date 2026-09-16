@@ -1,26 +1,24 @@
 ﻿---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
-const article = { slug: "thuc-don-gout-nguoi-gia", title: "Thực đơn 1 ngày cho người gout — Phiên bản người lớn tuổi", description: "Người già bị gout thường kết hợp với suy thận, tăng huyết áp. Thực đơn mềm, ít purin, dễ nhai.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
+const article = { slug: "thuc-don-gout-nguoi-gia", title: "Thực đơn 1 ngày cho người gout — Phiên bản người lớn tuổi", description: "Gợi ý món mềm cho người lớn tuổi mắc gout; khẩu phần, dịch và kết cấu món ăn cần cá thể hóa theo chức năng thận/tim và khả năng nuốt.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false, sources: [{ name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://rheumatology.org/gout-guideline" }, { name: "2020 ACR Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" }] };
 ---
 
 <ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
-  <p style="margin:0;font-size:1.1rem;font-weight:600;">Mềm, dễ tiêu, ít purin, đủ đạm</p>
+  <p style="margin:0;font-size:1.1rem;font-weight:600;">Món mềm — điều chỉnh theo người ăn</p>
 </div>
+
+Đây là gợi ý món ăn, không phải giới hạn purin hay lượng đạm/nước cố định. Người lớn tuổi có thể đồng thời mắc bệnh thận, suy tim, tăng huyết áp, suy dinh dưỡng hoặc khó nuốt; khẩu phần, dịch và kết cấu thức ăn nên được điều chỉnh theo đánh giá chuyên môn. Chế độ ăn không thay thuốc hạ acid uric khi đã được chỉ định.
 
 ## 🍜 Bữa sáng
 
-🍜 Sáng (7:00): 1 tô cháo yến mạch + sữa + 1/4 quả chuối nghiền. Sữa giúp hạ acid uric. Hoặc 1 ly sữa + 1 miếng bánh mì nướng mềm.
-
-**Purin:** ~20mg.
+🍜 Sáng: Có thể chọn cháo yến mạch nấu mềm với sữa nếu dung nạp, hoặc sữa kèm bánh mì mềm. Sữa là lựa chọn thực phẩm, không được xem như thuốc hạ acid uric.
 
 ---
 
 ## 🥪 Bữa trưa
 
-🍚 Trưa (11:30): Cơm mềm + trứng hấp nấm + bí đỏ hấp dầm + canh cải thảo (nấu với tép khô ít).
-
-**Purin:** ~45mg.
+🍚 Trưa: Cơm mềm, trứng hấp nấm, bí đỏ và canh rau; điều chỉnh độ mềm và gia vị theo khả năng ăn, bệnh kèm.
 
 ---
 
@@ -28,15 +26,12 @@ const article = { slug: "thuc-don-gout-nguoi-gia", title: "Thực đơn 1 ngày 
 
 🍓 Xế (14:30): 1 ly sữa tươi không đường + 1/2 quả thanh long. Trái cây giúp bổ sung vitamin, chất xơ và nước cho khẩu phần.
 
-**Purin:** ~3mg.
 
 ---
 
 ## 🌙 Bữa tối
 
-🌙 Tối (17:30): Cháo gạo lứt + đậu phụ non tán + rau củ nghiền + 1/2 ly sữa.
-
-**Purin:** ~35mg.
+🌙 Tối: Cháo hoặc món tinh bột mềm kèm đậu phụ/trứng và rau nấu chín; số bữa tùy khẩu vị và tình trạng dinh dưỡng.
 
 ---
 
@@ -78,5 +73,5 @@ const article = { slug: "thuc-don-gout-nguoi-gia", title: "Thực đơn 1 ngày 
 </table>
 ## ⚠️ Lưu ý
 
-Thực đơn này được thiết kế theo hướng purin thấp hơn, nhưng mức phù hợp còn tùy acid uric, chức năng thận, thuốc và khẩu phần cả ngày. Uống nước theo tình trạng tim thận; nhiều người cần khoảng 1.5-2 lít/ngày nếu không bị hạn chế dịch. Nên tránh hoặc giảm mạnh bia rượu, nội tạng, nước hầm xương; theo dõi chức năng thận để điều chỉnh đạm theo chỉ định.
+Tránh mất nước nhưng không ép uống một lượng chung; người suy tim, bệnh thận, phù hoặc đang hạn chế dịch cần theo đúng chỉ định. Có thể hạn chế bia rượu, đồ uống nhiều đường, nội tạng và khẩu phần thường xuyên lớn của một số thực phẩm giàu purin, nhưng không cần kiêng toàn bộ hải sản/đậu/rau. Đạm nên đủ và được cá thể hóa, đặc biệt khi có bệnh thận hoặc nguy cơ suy dinh dưỡng.
 </ArticleLayout>

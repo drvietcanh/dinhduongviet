@@ -1,42 +1,36 @@
 ﻿---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
-const article = { slug: "thuc-don-huyet-ap-binh-dan", title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân", description: "Thực đơn giảm muối kiểu cơm nhà Việt Nam, dùng gia vị thơm để bữa ăn nhạt hơn mà vẫn dễ ăn.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
+const article = { slug: "thuc-don-huyet-ap-binh-dan", title: "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân", description: "Gợi ý bữa cơm gia đình giảm natri; lượng natri mục tiêu và dịch cần cá thể hóa theo bệnh kèm và điều trị.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false, sources: [{ name: "WHO — Sodium reduction", url: "https://www.who.int/news-room/fact-sheets/detail/sodium-reduction" }] };
 ---
 
 <ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
-  <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình, giảm muối/natri (~1500 kcal)</p>
+  <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình — gợi ý giảm natri</p>
 </div>
+
+Đây là ví dụ món ăn, không phải thực đơn có mức năng lượng hay lượng muối ấn định. WHO khuyến nghị người trưởng thành nói chung dùng dưới 2.000 mg natri/ngày (tương đương dưới 5 g muối từ mọi nguồn); mục tiêu điều trị riêng cần theo bác sĩ, nhất là khi có bệnh thận/suy tim, dùng thuốc ảnh hưởng kali hoặc được hạn chế dịch. Không tự dùng muối thay thế chứa kali.
 
 ## 🍜 Bữa sáng
 
-🍜 Sáng (6:30-7:30): 1 ổ bánh mì không muối bơ (hoặc bánh mì nguyên cám) + 1 quả trứng ốp la (không muối, chỉ tiêu) + 1 ly sữa tươi không đường.
-
-**Muối:** 0.3g.
+🍜 Sáng: Bánh mì kèm trứng và sữa không đường; so sánh nhãn sản phẩm nếu có vì bánh mì vẫn có thể chứa natri.
 
 ---
 
 ## 🥪 Bữa trưa
 
-🍚 Trưa (11:30): 1.5 chén cơm + cá thu hấp gừng sả (không muối, chấm nước mắm pha 1:4) + rau muống luộc + canh bí đao nấu tôm (nêm nhạt).
-
-**Muối:** 0.8-1g.
+🍚 Trưa: Cơm với cá hấp gừng sả, rau muống và canh bí đao nấu tôm. Nêm lượng nước mắm/nước chấm vừa phải; pha loãng làm nhạt vị nhưng không làm giảm natri của phần nước mắm đã dùng.
 
 ---
 
 ## 🥜 Bữa xế (phụ)
 
-🍌 Xế (14:30): 1 quả chuối hoặc 1 hộp sữa chua không đường + 1 nắm hạt điều (không muối).
-
-**Muối:** 0.05g.
+🍌 Bữa phụ nếu phù hợp nhu cầu: trái cây, sữa chua hoặc hạt không tẩm muối; điều chỉnh theo bệnh kèm và kế hoạch ăn.
 
 ---
 
 ## 🌙 Bữa tối
 
-🌙 Tối (18:00-19:00): 1.5 chén cơm + thịt gà luộc (bỏ da) + đậu que luộc + canh rau ngót (nêm nhạt).
-
-**Muối:** 0.6-0.8g.
+🌙 Tối: Cơm theo nhu cầu, thịt gà, đậu que và canh rau ngót; dùng gia vị thơm và tính cả natri từ nước chấm/nước dùng.
 
 ---
 
@@ -78,5 +72,5 @@ const article = { slug: "thuc-don-huyet-ap-binh-dan", title: "Thực đơn 1 ng�
 </table>
 ## ⚠️ Lưu ý
 
-Mục tiêu muối/natri nên cá thể hóa theo huyết áp, thuốc và bệnh tim-thận. Bí quyết: pha nước mắm ăn kèm riêng (1 mắm + 3-4 nước + chanh), không kho mặn cả nồi. Dùng hành tỏi sả gừng thay muối. Nước lọc thường khoảng 1.5-2 lít/ngày nếu không bị hạn chế dịch.
+Giảm natri bằng cách nêm vừa, đong nước chấm và kiểm tra cả bột nêm, nước dùng, đồ muối chua, thực phẩm đóng gói. Pha nước chấm riêng giúp chủ động lượng dùng nhưng chỉ pha loãng không làm giảm natri tổng. Nhu cầu nước uống phụ thuộc sức khỏe, thời tiết, thuốc và chỉ định; người suy tim/bệnh thận hoặc được hạn chế dịch cần theo hướng dẫn riêng.
 </ArticleLayout>

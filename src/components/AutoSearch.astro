@@ -258,6 +258,7 @@
   .ac-search-wrapper { position: relative; z-index: 50; }
   .ac-search-row {
     display: flex; align-items: center;
+    width: 100%; min-width: 0;
     border: 1px solid color-mix(in srgb, var(--card-border) 70%, transparent);
     border-radius: 24px;
     background: color-mix(in srgb, var(--card) 88%, transparent);
@@ -297,6 +298,7 @@
   }
   .ac-input {
     flex: 1;
+    width: 100%; min-width: 0;
     border: none;
     min-height: 52px;
     padding: 0 16px;
@@ -389,5 +391,10 @@
     border-color: var(--brand);
     color: var(--brand);
     background: var(--brand-light);
+  }
+  @media (max-width: 480px) {
+    .ac-search-icon { padding-inline: 8px; }
+    .ac-input { padding-inline: 8px; }
+    .ac-hotkey { display: none; }
   }
 </style>

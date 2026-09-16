@@ -1,0 +1,61 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["dinh-duong-khi-dung-corticoid-dai-ngay"];
+if (!art) throw new Error("Article not found: dinh-duong-khi-dung-corticoid-dai-ngay");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>Điều quan trọng khi dùng corticoid dài ngày</h2>
+      <ul>
+        <li>Ăn uống không làm mất tác dụng phụ của thuốc; mục tiêu là giảm nguy cơ có thể điều chỉnh và phát hiện sớm vấn đề.</li>
+        <li>Thuốc có thể ảnh hưởng đường huyết, huyết áp, cảm giác thèm ăn, cân nặng và sức khỏe xương; kế hoạch theo dõi phụ thuộc liều, thời gian dùng và bệnh nền.</li>
+        <li>Không tự ngừng, giảm liều, thêm canxi/vitamin liều cao hoặc kiêng muối/tinh bột cực đoan.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Phạm vi:</strong> Bài này nói chung về corticoid dạng uống dùng kéo dài, thường gặp như prednisolone hoặc prednisone. Dexamethasone, methylprednisolone, hydrocortisone, thuốc tiêm/hít/bôi và các phác đồ khác có chỉ định riêng; ưu tiên đơn, nhãn thuốc và hướng dẫn của đội ngũ đang điều trị.</p>
+
+    <h2>Bữa ăn và thời điểm uống thuốc</h2>
+    <p>Một số chế phẩm prednisolone được hướng dẫn uống cùng hoặc sau bữa ăn để giảm khó chịu dạ dày; dạng bao tan trong ruột có thể có cách dùng khác. Hãy đọc đúng tờ hướng dẫn của thuốc mình đang có và không tự đổi giờ uống, nghiền viên hay uống kèm thuốc kháng acid khi chưa hỏi dược sĩ.</p>
+    <p>Corticoid có thể làm tăng cảm giác đói và đường huyết ở một số người. Không cần bỏ cơm hoặc cắt hẳn trái cây: ưu tiên bữa ăn đều, có rau, nguồn đạm phù hợp và lượng tinh bột vừa với kế hoạch điều trị; hạn chế đồ uống có đường và món ăn vặt nhiều năng lượng nếu chúng làm khó kiểm soát cân nặng/đường huyết.</p>
+
+    <h2>Theo dõi đường huyết, huyết áp và cân nặng</h2>
+    <ul>
+      <li>Nếu đã mắc đái tháo đường, tiền đái tháo đường hoặc từng tăng đường huyết khi dùng steroid, hỏi bác sĩ về lịch đo phù hợp. Đường huyết có thể tăng trong thời gian điều trị dù trước đó chưa được chẩn đoán đái tháo đường.</li>
+      <li>Báo nhân viên y tế nếu khát nhiều, tiểu nhiều, mờ mắt hoặc mệt bất thường; không tự tăng/giảm thuốc tiểu đường để bù cho corticoid.</li>
+      <li>Theo dõi cân nặng và huyết áp theo kế hoạch. Giảm thực phẩm nhiều muối có thể hữu ích với một số người, nhưng không tự áp dụng chế độ ăn rất nhạt hoặc hạn chế dịch nếu có bệnh thận/tim hay chỉ định khác.</li>
+    </ul>
+
+    <h2>Bảo vệ xương mà không tự bổ sung quá mức</h2>
+    <p>Dùng corticoid toàn thân kéo dài có thể ảnh hưởng mật độ xương. Ăn đa dạng với nguồn canxi từ thực phẩm phù hợp, đủ đạm và vận động chịu lực theo khả năng là nền tảng hỗ trợ. Nhu cầu vitamin D, viên canxi, thuốc bảo vệ xương hay đo mật độ xương cần được bác sĩ đánh giá riêng theo tuổi, nguy cơ gãy xương, chức năng thận, khẩu phần và kế hoạch điều trị.</p>
+    <p>Hãy hỏi đội ngũ điều trị những kiểm tra cần làm về đường huyết, huyết áp, cân nặng, mắt và xương trong suốt liệu trình. Không áp dụng một lịch xét nghiệm cố định cho mọi người.</p>
+
+    <h2>Thảo dược, cam thảo và thực phẩm bổ sung</h2>
+    <p>Báo với bác sĩ/dược sĩ mọi thuốc, trà thảo mộc và thực phẩm bổ sung đang dùng. Cam thảo thật có thể làm thay đổi tác dụng của prednisolone và tăng nguy cơ hạ kali máu theo thông tin thuốc của NHS; tránh dùng thường xuyên như thuốc hoặc dạng cô đặc nếu chưa được tư vấn. Không dùng sản phẩm quảng cáo chức năng tuyến thượng thận hoặc tự điều chỉnh thuốc.</p>
+
+    <h2>Không tự ngừng thuốc sau liệu trình dài</h2>
+    <p>Ngừng corticoid đột ngột sau khi dùng kéo dài hoặc liều cao có thể nguy hiểm. Việc giảm liều phải theo kế hoạch của người kê đơn; nếu quên thuốc, nôn sau uống, bị nhiễm trùng hoặc sắp phẫu thuật, hãy liên hệ cơ sở điều trị để được hướng dẫn thay vì tự bù hay tự ngừng.</p>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://www.nhs.uk/medicines/prednisolone/common-questions-about-prednisolone-tablets-and-liquid/" rel="noopener noreferrer">NHS — Prednisolone: common questions</a>: tác dụng lên xương/đường huyết và lưu ý về cam thảo.</li>
+      <li><a href="https://www.nhs.uk/medicines/prednisolone/how-and-when-to-take-prednisolone-tablets-and-liquid/" rel="noopener noreferrer">NHS — How and when to take prednisolone</a>: dùng theo dạng thuốc và cảnh báo không ngừng đột ngột.</li>
+      <li><a href="https://sps.nhs.uk/monitorings/corticosteroids-monitoring/" rel="noopener noreferrer">NHS Specialist Pharmacy Service — Corticosteroids monitoring</a>: các khía cạnh cần cá thể hóa khi theo dõi liệu trình dài hạn.</li>
+      <li><a href="https://www.uclh.nhs.uk/patients-and-visitors/patient-information-pages/steroid-induced-diabetes" rel="noopener noreferrer">University College London Hospitals NHS — Steroid-induced diabetes</a>: tăng đường huyết và lựa chọn bữa ăn khi dùng steroid.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

@@ -223,6 +223,7 @@ const vnMicronutrientOverrideSlugs = await readVnMicronutrientOverrideSlugs();
 const fullFoods = fullRows.map(fullToFood);
 const searchFoods = searchIndex.filter((item) => item.type === "food");
 const sourceBySlug = new Map(sourceFoods.map((item) => [item.slug, item]));
+const fullRowBySlug = new Map(fullRows.map((item) => [item[0], item]));
 const slimBySlug = new Map(slim.map((item) => [item.slug, item]));
 const compatAliasTargets = new Map(compatAliases.map(({ from, to }) => [from, to]));
 const decisionTableSlugs = [
@@ -338,6 +339,52 @@ const missingCoreNutrients = fullFoods
   .filter((food) => mainFoodCategories.has(food.category))
   .filter((food) => [food.kcal, food.protein, food.lipid, food.glucid].some((value) => value === null || value === undefined || value === ""))
   .map((food) => issue("error", { slug: food.slug, name: food.name, category: food.category, kcal: food.kcal, protein: food.protein, lipid: food.lipid, glucid: food.glucid }));
+
+// Missing values must survive compact API generation as null, never as zero.
+// This protects clinical filters from treating unmeasured minerals as safe.
+const nutrientNullabilityErrors = sourceFoods.flatMap((food) => {
+  const row = fullRowBySlug.get(food.slug);
+  if (!row) return [];
+  const nutrients = food.nutrients || {};
+  const checks = [
+    ["fiberG", 7, null],
+    ["sodiumMg", 8, "low-sodium"],
+    ["potassiumMg", 9, "low-potassium"],
+  ];
+  return checks.flatMap(([key, index, unsafeTag]) => {
+    const issues = [];
+    if (nutrients[key] == null && row[index] !== null) {
+      issues.push(issue("error", { type: "nutrient-nullability", slug: food.slug, name: food.name, nutrient: key, compactValue: row[index], suggestion: "preserve_missing_as_null" }));
+    }
+    if (nutrients[key] == null && unsafeTag && String(row[10] || "").split(" ").includes(unsafeTag)) {
+      issues.push(issue("error", { type: "nutrient-nullability", slug: food.slug, name: food.name, nutrient: key, unsafeTag, suggestion: "omit_safety_tag_when_nutrient_is_unknown" }));
+    }
+    return issues;
+  });
+});
+const unsupportedNutrientTagErrors = sourceFoods.flatMap((food) => {
+  const row = fullRowBySlug.get(food.slug);
+  if (!row) return [];
+  const nutrients = food.nutrients || {};
+  const tags = new Set(String(row[10] || "").split(" ").filter(Boolean));
+  const issues = [];
+  const giTags = ["glycemic-index-low", "glycemic-index-medium", "glycemic-index-high", "glycemic-load-low", "glycemic-load-medium", "glycemic-load-high"];
+  if (nutrients.glycemicIndex == null && giTags.some((tag) => tags.has(tag))) {
+    issues.push(issue("error", { type: "nutrient-nullability", slug: food.slug, name: food.name, nutrient: "glycemicIndex", unsafeTags: giTags.filter((tag) => tags.has(tag)), suggestion: "do_not_infer_gi_or_gl_without_measured_gi" }));
+  }
+  if (nutrients.glycemicIndex != null && nutrients.carbG == null && giTags.slice(3).some((tag) => tags.has(tag))) {
+    issues.push(issue("error", { type: "nutrient-nullability", slug: food.slug, name: food.name, nutrient: "carbG", unsafeTags: giTags.slice(3).filter((tag) => tags.has(tag)), suggestion: "do_not_compute_glycemic_load_when_carbohydrate_is_unknown" }));
+  }
+  if (nutrients.fatG == null && tags.has("low-fat")) {
+    issues.push(issue("error", { type: "nutrient-nullability", slug: food.slug, name: food.name, nutrient: "fatG", unsafeTag: "low-fat", suggestion: "do_not_treat_missing_fat_as_zero" }));
+  }
+  const purineTags = ["low-purine", "moderate-purine", "high-purine"].filter((tag) => tags.has(tag));
+  if (purineTags.length) {
+    issues.push(issue("error", { type: "nutrient-nullability", slug: food.slug, name: food.name, nutrient: "purineMg", unsupportedPurineTags: purineTags, suggestion: "do_not_use_protein_as_a_purine_measurement" }));
+  }
+  return issues;
+});
+nutrientNullabilityErrors.push(...unsupportedNutrientTagErrors);
 
 const aliasWarnings = findAliasWarnings(fullFoods, searchFoods).map((warning) => issue("info", warning));
 const aliasCollisions = aliasWarnings.filter((warning) => warning.type === "ambiguous-alias");
@@ -621,6 +668,7 @@ const allIssues = [
   ...rawCookedAmbiguity,
   ...categoryNameMismatches,
   ...missingCoreNutrients,
+  ...nutrientNullabilityErrors,
   ...aliasWarnings,
   ...compatAliasStatus,
   ...cookedHighEnergyReview,
@@ -650,6 +698,7 @@ const report = {
     rawCookedAmbiguity: rawCookedAmbiguity.length,
     categoryNameMismatches: categoryNameMismatches.length,
     missingCoreNutrients: missingCoreNutrients.length,
+    nutrientNullabilityErrors: nutrientNullabilityErrors.length,
     aliasWarnings: aliasWarnings.length,
     aliasCollisions: aliasCollisions.length,
     compatAliases: compatAliasStatus.length,
@@ -703,6 +752,7 @@ const report = {
   vnCrossrefInvalid,
   vnCrossrefSuspicious: vnCrossrefSuspicious.slice(0, 200),
   missingCoreNutrients,
+  nutrientNullabilityErrors,
   aliasWarnings: aliasWarnings.slice(0, 200),
   aliasCollisions,
 };

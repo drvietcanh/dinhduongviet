@@ -41,8 +41,8 @@ const situations = [
 <BaseLayout title={title} description={description} canonical="/cong-cu/tuong-tac-thuoc" robots="noindex,follow">
   <main class="drug-safety" aria-labelledby="page-title">
     <section class="hero-panel">
-      <p class="eyebrow">Công cụ an toàn v1</p>
-      <h1 id="page-title">Tương tác thuốc</h1>
+      <p class="eyebrow">Hướng dẫn an toàn</p>
+      <h1 id="page-title">An toàn khi dùng thuốc</h1>
       <p>
         Công cụ này chỉ giúp nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ.
         Không dùng để tự thay đổi thuốc, liều dùng, lịch dùng thuốc hoặc tự
@@ -66,8 +66,8 @@ const situations = [
         <p class="eyebrow">Định hướng an toàn</p>
         <h2 id="check-title">Chọn tình huống gần nhất</h2>
         <p>
-          V1 không tra cứu tương tác cá nhân, không phân mức nguy cơ và không
-          đưa hướng xử trí riêng cho từng thuốc. Kết quả chỉ là lời nhắc để
+          Trang này không tra cứu theo hoạt chất hoặc phân mức nguy cơ cá nhân.
+          Kết quả chỉ là lời nhắc để
           chuẩn bị thông tin trước khi hỏi người phụ trách chuyên môn.
         </p>
       </div>
@@ -84,7 +84,7 @@ const situations = [
         <p class="result-label">Định hướng</p>
         <h3>Cần hỏi bác sĩ hoặc dược sĩ</h3>
         <p>
-          Không đủ điều kiện đưa kết luận cá nhân ở v1. Hãy mang danh sách thuốc,
+          Trang này không đưa kết luận cá nhân. Hãy mang danh sách thuốc,
           thực phẩm bổ sung và thói quen ăn uống để hỏi người phụ trách chuyên môn.
         </p>
         <ul>
@@ -116,6 +116,10 @@ const situations = [
       <p>
         Trang này không thay thế tư vấn chuyên môn và không tạo khuyến nghị
         riêng cho thuốc đang dùng.
+      </p>
+      <p>
+        Muốn tra nhanh các cặp thường gặp như warfarin–vitamin K, statin–grapefruit,
+        ciprofloxacin–sữa/khoáng chất? Mở <a href="/cong-cu/tuong-tac-thuoc-thuc-pham">bảng tra cứu tương tác thuốc - thực phẩm có nguồn</a>.
       </p>
     </section>
   </main>
@@ -153,7 +157,7 @@ const situations = [
           <h3>Cần hỏi bác sĩ hoặc dược sĩ</h3>
           <p>${message}</p>
           <ul>
-            <li>Không đủ điều kiện đưa kết luận cá nhân ở v1.</li>
+            <li>Trang không thay thế tra cứu theo đúng hoạt chất và dạng bào chế.</li>
             <li>Không tự thay đổi cách dùng thuốc hoặc liều dùng dựa trên trang này.</li>
           </ul>
         `;

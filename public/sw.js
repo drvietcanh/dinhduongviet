@@ -1,9 +1,9 @@
-// Dinh dưỡng Việt - Service Worker v1
-const CACHE = "ddv-v1";
+// Dinh dưỡng Việt - Service Worker v2
+const CACHE = "ddv-v2";
 const FALLBACK = "/404.html";
 
-// Assets to pre-cache on install
-const PRECACHE = [
+// Core pages cached on install; other pages are cached after a successful visit.
+const PRECACHE_PAGES = [
   "/",
   "/thuc-pham",
   "/mon-an",
@@ -12,15 +12,35 @@ const PRECACHE = [
   "/cong-cu/nhat-ky",
   "/cong-cu/theo-doi-suc-khoe",
   "/cong-cu/tuong-tac-thuoc",
+];
+
+// Small shared assets and offline search/fallback data.
+const PRECACHE = [
+  ...PRECACHE_PAGES,
   "/manifest.json",
+  "/404.html",
+  "/api/search-index.json",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
 ];
 
 self.addEventListener("install", function(event) {
   event.waitUntil(
-    caches.open(CACHE).then(function(cache) {
-      return cache.addAll(PRECACHE);
+    caches.open(CACHE).then(async function(cache) {
+      await cache.addAll(PRECACHE);
+
+      // The Astro build hashes CSS/JS paths. Read the cached core pages to discover
+      // their current assets so the offline shell stays complete across deployments.
+      const assets = new Set();
+      const assetPattern = /(?:href|src)=["'](\/_astro\/[^"']+\.(?:css|js))["']/g;
+      for (const page of PRECACHE_PAGES) {
+        const response = await cache.match(page);
+        if (!response) continue;
+        const html = await response.text();
+        for (const match of html.matchAll(assetPattern)) assets.add(match[1]);
+      }
+
+      if (assets.size) await cache.addAll([...assets]);
     }).then(function() {
       return self.skipWaiting();
     })

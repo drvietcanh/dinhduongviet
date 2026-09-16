@@ -1,188 +1,44 @@
-﻿---
+---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
 const article = articleBySlug["thuc-don-gan-nhiem-mo"];
+if (!article) throw new Error("Article not found: thuc-don-gan-nhiem-mo");
 ---
 
-<ArticleLayout article={article as any}>
-
-Thực đơn cho người gan nhiễm mỡ (cả do uống rượu và không do rượu). Nguyên tắc chính: **giảm đường & tinh bột, tăng chất xơ, chất béo lành mạnh**, tổng ~1500 kcal/ngày.
-
----
-
-## 🥗 Bữa sáng (~350 kcal)
-
-<table>
-<thead>
-<tr>
-<th>Món</th>
-<th>Lượng</th>
-<th>Ghi chú</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cháo yến mạch</td>
-<td>40g yến mạch + 200ml sữa tươi không đường</td>
-<td>Chất xơ hòa tan beta-glucan</td>
-</tr>
-<tr>
-<td>1 quả chuối</td>
-<td>1 quả vừa</td>
-<td>Thay đường bằng vị ngọt tự nhiên</td>
-</tr>
-<tr>
-<td>Hạt chia</td>
-<td>10g rắc lên cháo</td>
-<td>Omega-3, chất xơ</td>
-</tr>
-</tbody>
-</table>
-**🔄 Thay thế:**
-- Bánh mì nguyên cám 2 lát + trứng luộc + 1/2 quả bơ
-- 1 tô phở gạo lứt (nếu có)
-
----
-
-## 🥗 Bữa trưa (~500 kcal)
-
-<table>
-<thead>
-<tr>
-<th>Món</th>
-<th>Lượng</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cơm gạo lứt</td>
-<td>3/4 chén (100g)</td>
-</tr>
-<tr>
-<td>Cá hồi nướng hoặc cá thu nướng</td>
-<td>100g</td>
-</tr>
-<tr>
-<td>Rau xanh luộc (bông cải, cải xoăn)</td>
-<td>200g</td>
-</tr>
-<tr>
-<td>Salad dầu olive</td>
-<td>100g rau trộn + 1 muỗng dầu olive</td>
-</tr>
-</tbody>
-</table>
-**Cách làm:** Cá nướng với tiêu, gừng, ớt, rưới dầu olive. Rau luộc chín tới. Salad: xà lách, cà chua, dưa leo trộn dầu olive + giấm.
-
-**🔄 Thay thế:**
-- Cá hồi → cá basa nướng / ức gà nướng / đậu hũ nướng
-- Cơm gạo lứt → khoai lang luộc / bắp luộc (1 trái vừa)
-- Rau họ cải → rau muống, rau ngót, mướp đắng
-
----
-
-## 🥗 Bữa phụ chiều (~150 kcal)
-
-<table>
-<thead>
-<tr>
-<th>Món</th>
-<th>Lượng</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1 quả táo xanh</td>
-<td>1 quả</td>
-</tr>
-<tr>
-<td>Hạt hạnh nhân hoặc óc chó</td>
-<td>15g</td>
-</tr>
-<tr>
-<td>Trà xanh không đường</td>
-<td>1 tách</td>
-</tr>
-</tbody>
-</table>
-**🔄 Thay thế:**
-- Sữa chua không đường + 1/4 quả bơ
-- 1 ly cà phê đen không đường (sáng/trưa)
-
----
-
-## 🥗 Bữa tối (~450 kcal)
-
-<table>
-<thead>
-<tr>
-<th>Món</th>
-<th>Lượng</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cơm gạo lứt</td>
-<td>1/2 chén (70g)</td>
-</tr>
-<tr>
-<td>Đậu phụ nướng</td>
-<td>150g</td>
-</tr>
-<tr>
-<td>Rau luộc (mồng tơi, rau đền, cải)</td>
-<td>200g</td>
-</tr>
-<tr>
-<td>Canh rau củ (cà rốt, bí đỏ, su hào)</td>
-<td>1 bát</td>
-</tr>
-</tbody>
-</table>
-**Cách làm:** Đậu phụ nướng than, chấm nước mắm pha loãng + ớt tỏi. Canh không đường, không muối — vị ngọt tự nhiên từ rau củ.
-
-**🔄 Thay thế:**
-- Đậu phụ → nấm đông cô xào / cá basa nướng / ức gà xào nấm
-- Nên ăn tối nhẹ, trước 19h
-
----
-
-## ✅ Nên và tránh
-
-<table>
-<thead>
-<tr>
-<th>NÊN ĂN</th>
-<th>TRÁNH / HẠN CHẾ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cá béo (cá hồi, cá thu, cá trích)</td>
-<td>Nước ngọt, trà sữa, đồ uống có đường</td>
-</tr>
-<tr>
-<td>Dầu olive, dầu lạc, dầu hướng dương</td>
-<td>Cơm trắng, bún phở, bánh mì trắng</td>
-</tr>
-<tr>
-<td>Rau xanh mỗi bữa 200g+</td>
-<td>Đồ chiên, xào nhiều dầu tái dùng</td>
-</tr>
-<tr>
-<td>Chất xơ hòa tan (yến mạch, đậu, táo, bơ)</td>
-<td>Trái cây ngọt nhiều (vải, nhãn, sầu riêng)</td>
-</tr>
-<tr>
-<td>Đậu phụ, nấm, hạt các loại</td>
-<td>Rượu bia — ngay cả lượng nhỏ</td>
-</tr>
-<tr>
-<td>Trà xanh, cà phê đen (không đường)</td>
-<td>Thịt chế biến sẵn (xúc xích, thịt nguội)</td>
-</tr>
-</tbody>
-</table>
-> **Mẹo:** Giảm tinh bột trắng dần dần, có thể trộn một phần gạo lứt nếu dung nạp tốt. Giảm mạnh nước ngọt/trà sữa; nếu thèm ngọt, chọn trái cây ít ngọt với khẩu phần phù hợp. Vận động đều đặn, như đi bộ nhanh nếu sức khỏe cho phép, sẽ hỗ trợ cải thiện gan nhiễm mỡ.
-
+<ArticleLayout article={article}>
+  <section class="section card">
+    <p>Đây là <strong>một ví dụ bữa ăn gia đình</strong>, không phải thực đơn điều trị hay mức năng lượng phù hợp cho tất cả. Người có xơ gan, đái tháo đường, bệnh thận, suy dinh dưỡng, đang mang thai hoặc dùng thuốc ảnh hưởng kali/dịch cần cá thể hóa với nhân viên y tế.</p>
+    <p>Với MASLD/gan nhiễm mỡ, trọng tâm là kiểu ăn cân đối và bền vững; giảm đồ uống có đường và năng lượng dư, không cần cấm cơm trắng, trái cây nguyên quả hay bắt buộc dùng gạo lứt, dầu ô liu, cá hồi.</p>
+  </section>
+  <section class="section card">
+    <h2>Ví dụ một ngày linh hoạt</h2>
+    <ul>
+      <li><strong>Bữa sáng:</strong> phở/bún với thịt nạc hoặc đậu phụ, thêm rau; hoặc bánh mì với trứng và rau. Chọn nước lọc, cà phê/trà ít hoặc không đường nếu phù hợp.</li>
+      <li><strong>Bữa trưa:</strong> cơm theo khẩu phần thường dùng; cá, thịt nạc, trứng hoặc đậu; rau và canh. Hạn chế chan nhiều nước sốt, nước kho mặn/ngọt.</li>
+      <li><strong>Bữa phụ nếu đói:</strong> trái cây nguyên quả, sữa chua không đường hoặc một lựa chọn phù hợp bệnh nền. Không bắt buộc phải ăn phụ.</li>
+      <li><strong>Bữa tối:</strong> cơm hoặc nguồn tinh bột quen thuộc, đậu phụ/cá/thịt nạc và rau; điều chỉnh lượng theo đói-no, hoạt động và mục tiêu sức khỏe.</li>
+    </ul>
+  </section>
+  <section class="section grid two">
+    <div class="card">
+      <h2>Chọn món thực tế</h2>
+      <ul>
+        <li>Có thể dùng cơm trắng, cơm trộn gạo lứt, khoai, bún hoặc bánh mì; chọn loại bạn ăn được và phối hợp với đạm, rau.</li>
+        <li>Ưu tiên món luộc, hấp, kho vừa vị, áp chảo ít dầu; thay đổi nguồn đạm giữa cá, trứng, thịt nạc và đậu.</li>
+        <li>Ăn đa dạng rau và trái cây nguyên quả. Không có nhóm “trái cây ngọt” phải cấm đồng loạt; lưu ý khẩu phần và đường huyết cá nhân.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Giảm những gì thường tạo khác biệt</h2>
+      <ul>
+        <li>Nước ngọt, trà sữa, cà phê nhiều sữa đặc, nước tăng lực và nước ép thêm đường.</li>
+        <li>Bánh kẹo, món chiên thường xuyên, thịt chế biến sẵn và khẩu phần ăn ngoài quá lớn.</li>
+        <li>Rượu bia: hạn chế; nếu đã có xơ hóa/xơ gan thì tránh và trao đổi với bác sĩ. Không dùng sản phẩm “detox/mát gan” thay điều trị.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section card">
+    <h2>Điều chỉnh theo người ăn</h2>
+    <p>Nếu mục tiêu là giảm cân, giảm tổng năng lượng từ từ và tăng hoạt động thường bền vững hơn bỏ hẳn cơm hoặc nhịn bữa. Nếu là người lớn tuổi, đang sụt cân hoặc ăn kém, tránh tự giảm khẩu phần vì nguy cơ mất cơ/suy dinh dưỡng. Thực đơn này không thay thế chỉ định riêng cho bệnh thận, cổ trướng, đái tháo đường hoặc dị ứng thực phẩm.</p>
+  </section>
 </ArticleLayout>

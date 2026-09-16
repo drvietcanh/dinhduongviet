@@ -15,10 +15,10 @@ const recipeData = recipes.map(r => {
     protein: n.proteinG || 0,
     fat: n.fatG || 0,
     carb: n.carbG || 0,
-    fiber: n.fiberG || 0,
-    sodium: n.sodiumMg || 0,
-    satFat: n.saturatedFatG || 0,
-    sugar: n.sugarG || 0,
+    fiber: n.fiberG ?? null,
+    sodium: n.sodiumMg ?? null,
+    satFat: n.saturatedFatG ?? null,
+    sugar: n.sugarG ?? null,
     servingName: r.servingName || "",
   };
 });
@@ -136,6 +136,7 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
 
   <!-- Embedded recipe data for client script -->
   <div id="recipe-data-store" style="display:none" data-recipes={JSON.stringify(recipeData || [])} data-meal-map={JSON.stringify(Object.fromEntries(MEAL_KEYS.map(k => [k, MEAL_MAP[k].map(r => r.slug)])))}></div>
+</BaseLayout>
 
   <script is:inline>
 (function() {
@@ -157,10 +158,10 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
   };
 
   var DIET_FILTERS = {
-    "it-natri": function(r) { return r.sodium < 300; },
-    "it-mo": function(r) { return r.satFat < 6; },
-    "nhieu-xo": function(r) { return r.fiber >= 3; },
-    "it-do-ngot": function(r) { return r.sugar < 10; },
+    "it-natri": function(r) { return Number.isFinite(r.sodium) && r.sodium < 300; },
+    "it-mo": function(r) { return Number.isFinite(r.satFat) && r.satFat < 6; },
+    "nhieu-xo": function(r) { return Number.isFinite(r.fiber) && r.fiber >= 3; },
+    "it-do-ngot": function(r) { return Number.isFinite(r.sugar) && r.sugar < 10; },
   };
 
   function isDinnerFriendly(r) {
@@ -221,9 +222,10 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
 
       // Build meal pools
       var mealPools = {};
+      var eligibleSlugs = new Set(pool.map(function(r) { return r.slug; }));
       MEAL_KEYS.forEach(function(k) {
         var slugs = MEAL_MAP[k] || [];
-        mealPools[k] = slugs.map(function(s) { return RECIPES.find(function(r){return r.slug===s;}) }).filter(Boolean);
+        mealPools[k] = slugs.map(function(s) { return RECIPES.find(function(r){return r.slug===s;}) }).filter(function(r) { return r && eligibleSlugs.has(r.slug); });
       });
       var originalDinnerPool = mealPools.toi.slice();
       mealPools.toi = mealPools.toi.filter(isDinnerFriendly);

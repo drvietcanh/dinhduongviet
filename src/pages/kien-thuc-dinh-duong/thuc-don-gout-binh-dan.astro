@@ -1,42 +1,36 @@
 ﻿---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
-const article = { slug: "thuc-don-gout-binh-dan", title: "Thực đơn 1 ngày cho người gout — Phiên bản bình dân", description: "Thực đơn gout kiểu cơm nhà. Hạn chế purin nhưng không cần bỏ đạm hoàn toàn. Uống nhiều nước.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false };
+const article = { slug: "thuc-don-gout-binh-dan", title: "Thực đơn 1 ngày cho người gout — Phiên bản bình dân", description: "Gợi ý bữa cơm gia đình cho người gout; khẩu phần nước và thực phẩm cần cân nhắc theo bệnh kèm, không áp ngưỡng purin cố định.", emoji: "🍽️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", date: "2026-06-02", readTime: 7, featured: false, sources: [{ name: "American College of Rheumatology — 2020 Gout Guideline", url: "https://rheumatology.org/gout-guideline" }, { name: "2020 ACR Guideline for the Management of Gout", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10563586/" }] };
 ---
 
 <ArticleLayout article={article as any}>
 <div style="background:var(--primary-bg);padding:1rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;text-align:center;">
-  <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình, purin dưới 200mg (~1600 kcal)</p>
+  <p style="margin:0;font-size:1.1rem;font-weight:600;">Bữa cơm gia đình — khẩu phần linh hoạt</p>
 </div>
+
+Đây là gợi ý món ăn, không phải mục tiêu kcal hay giới hạn purin cố định. Có thể hạn chế rượu bia, đồ uống nhiều đường và khẩu phần thường xuyên quá nhiều thực phẩm giàu purin; ăn uống là phần hỗ trợ, còn thuốc hạ acid uric đã được chỉ định cần tiếp tục dùng theo đơn. Người bệnh thận, suy tim, phù hoặc đang hạn chế dịch cần theo hướng dẫn riêng.
 
 ## 🍜 Bữa sáng
 
-🍜 Sáng (6:30-7:30): 1 tô phở tái (ít thịt, nhiều rau thơm, giá đỗ) + 1 ly trà đá không đường. Không ăn nội tạng (lòng, gan).
-
-**Purin:** ~40mg. **Nước:** 300ml.
+🍜 Sáng: Có thể chọn phở với khẩu phần bánh phở và thịt phù hợp, thêm rau thơm; ưu tiên trà không đường. Nội tạng là nhóm nên tránh ăn thường xuyên hoặc khẩu phần lớn.
 
 ---
 
 ## 🥪 Bữa trưa
 
-🍚 Trưa (11:30): 1.5 chén cơm + trứng chiên cà chua (1 quả trứng) + rau muống luộc + canh bí đao tôm khô.
-
-**Purin:** ~55mg.
+🍚 Trưa: Cơm với trứng/cá/thịt hoặc đậu phụ, rau và canh bí đao. Lượng purin món hỗn hợp phụ thuộc nguyên liệu và khẩu phần nên không gán số ước tính ở đây.
 
 ---
 
 ## 🥜 Bữa xế (phụ)
 
-🥛 Xế (14:30): 1 ly sữa tươi không đường + 1 quả quýt. Sữa giúp giảm acid uric nhờ casein.
-
-**Purin:** ~5mg.
+🥛 Bữa phụ nếu phù hợp nhu cầu: sữa không đường hoặc sữa chua và một phần trái cây. Sữa có thể là lựa chọn thực phẩm, không phải thuốc hạ acid uric.
 
 ---
 
 ## 🌙 Bữa tối
 
-🌙 Tối (18:00-19:00): 1.5 chén cơm + đậu phụ sốt cà chua + bông cải luộc + canh rau ngót (thịt heo nạc băm — 20g, rất ít).
-
-**Purin:** ~55mg.
+🌙 Tối: Cơm theo khẩu phần cá nhân, đậu phụ sốt cà chua, rau luộc và canh; điều chỉnh lượng đạm và gia vị theo bệnh kèm.
 
 ---
 
@@ -78,5 +72,5 @@ const article = { slug: "thuc-don-gout-binh-dan", title: "Thực đơn 1 ngày c
 </table>
 ## ⚠️ Lưu ý
 
-Tổng purin: dưới 170mg. Uống 2-2.5 lít nước/ngày. Tránh: nội tạng, nước hầm xương, hải sản có vỏ, bia rượu. Đậu hũ, trứng, rau, sữa — những thứ thân thiện với người gout.
+Không cần đặt ngưỡng purin/ngày hoặc lượng nước giống nhau cho mọi người. Tránh mất nước nhưng không ép uống; không cần kiêng toàn bộ hải sản, rau hay đậu. Cân nhắc hạn chế nội tạng, một số thực phẩm giàu purin, bia rượu và đồ uống nhiều đường; nếu đang dùng thuốc, tiếp tục theo đơn và không tự chỉnh liều.
 </ArticleLayout>

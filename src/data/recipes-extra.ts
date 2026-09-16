@@ -376,17 +376,6 @@ export const extraRecipes: Recipe[] = [
     ]
   },
   {
-    id: "cha-muc-ha-long-phan", slug: "cha-muc-ha-long-phan", name: "Chả mực Hạ Long (phần)", aliases: ["cha muc ha long"],
-    servingName: "3 miếng", servingWeightG: 120,
-    tags: ["northern-vietnam", "seafood"],
-    portionNote: "Ba miếng chả mực chiên ăn kèm xôi/bánh cuốn.",
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; loại chiên lại sẽ nhiều chất béo hơn.",
-    items: [
-      { foodId: "cha-muc-ha-long", amountG: 120, note: "Chả mực" }
-    ]
-  },
-  {
     id: "cao-lau-hoi-an", slug: "cao-lau-hoi-an", name: "Cao lầu Hội An", aliases: ["cao lau", "cao lầu"],
     servingName: "1 tô", servingWeightG: 430,
     tags: ["central-vietnam"],

@@ -527,7 +527,7 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "sinh-to-dua", slug: "sinh-to-dua", name: "Sinh tố dưa hấu tươi",
+    id: "sinh-to-dua", slug: "sinh-to-dua", name: "Sinh tố dưa hấu có đường",
     aliases: ["sinh to dua hau"],
     servingName: "1 ly 300ml", servingWeightG: 350,
     tags: ["vietnamese", "drink", "smoothie"],

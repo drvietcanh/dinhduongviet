@@ -170,6 +170,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       mild_weight_loss: "Giảm cân nhẹ được xếp vào nhóm cần thận trọng; công cụ không hứa tốc độ thay đổi cân nặng.",
       mild_weight_gain: "Tăng cân nhẹ được xếp vào nhóm cần thận trọng; công cụ không đưa mức tăng năng lượng dạng số.",
       age_65_or_older: "Từ 65 tuổi trở lên: nhu cầu nên cá thể hóa theo sức khỏe, khối cơ và khả năng ăn uống.",
+      outside_mifflin_reference_age: "Dưới 19 tuổi: không hiện ước tính năng lượng theo phương trình được xây dựng trên người trưởng thành.",
       high_activity: "Mức hoạt động cao: nhu cầu thay đổi nhiều theo cường độ và thời lượng vận động.",
       vegetarian_pattern: "Ăn chay hoặc chủ yếu thực vật: cần chú ý chất lượng nguồn đạm và vi chất.",
       bmi_25_or_higher: "BMI từ 25 trở lên: chỉ là tín hiệu sàng lọc, không tự động tạo kế hoạch giảm cân.",
@@ -238,7 +239,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
 
     const warningText = {
-      auto: "BMR, mức duy trì và macro đều là khoảng tham khảo; không tạo kế hoạch giảm hay tăng cân.",
+      auto: "Năng lượng nghỉ, mức duy trì và macro đều là khoảng tham khảo; không tạo kế hoạch giảm hay tăng cân.",
       caution: "Có yếu tố cần thận trọng nên công cụ không hiển thị năng lượng và macro dạng số.",
       clinical_no_auto: "Nhóm này cần cá thể hóa với bác sĩ hoặc chuyên gia dinh dưỡng.",
     };
@@ -301,7 +302,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       if (result.energyReference) {
         energyBlock.hidden = false;
         energyValue.textContent = `${result.energyReference.maintenanceKcal} kcal/ngày`;
-        energyDetail.textContent = `BMR ước tính: ${result.energyReference.bmrKcal} kcal/ngày · hệ số hoạt động: ${result.energyReference.activityFactor.toFixed(2).replace(".", ",")}. ${result.energyReference.label}`;
+        energyDetail.textContent = `Năng lượng nghỉ ước tính: ${result.energyReference.bmrKcal} kcal/ngày · hệ số hoạt động: ${result.energyReference.activityFactor.toFixed(2).replace(".", ",")}. ${result.energyReference.label}`;
         energySource.textContent = result.energyReference.sourceLabel;
       } else {
         energyBlock.hidden = true;

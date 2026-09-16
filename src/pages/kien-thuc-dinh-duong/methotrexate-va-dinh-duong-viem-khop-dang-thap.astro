@@ -1,0 +1,63 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+
+const art = articleBySlug["methotrexate-va-dinh-duong-viem-khop-dang-thap"];
+if (!art) throw new Error("Article not found: methotrexate-va-dinh-duong-viem-khop-dang-thap");
+---
+
+<ArticleLayout article={art}>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>5 điểm an toàn cần nhớ</h2>
+      <ul>
+        <li>Trong điều trị viêm khớp dạng thấp, methotrexate liều thấp thường dùng <strong>mỗi tuần một lần</strong>, vào cùng ngày; tuyệt đối không tự chuyển thành thuốc uống hằng ngày.</li>
+        <li>Folic acid (vitamin B9) thường được kê cùng, nhưng lịch uống khác nhau. Dùng theo đơn của chính bạn, không sao chép lịch hoặc liều của người khác.</li>
+        <li>Không có “thực đơn chữa viêm khớp”; không tự loại bỏ nhiều nhóm thức ăn. Hỏi đội ngũ điều trị về rượu bia, thuốc mới và thực phẩm bổ sung.</li>
+        <li>Giữ lịch xét nghiệm theo dõi máu, gan và thận; báo sớm dấu hiệu bất thường.</li>
+      </ul>
+    </div>
+
+    <p class="medical-note"><strong>Phạm vi:</strong> Bài này nói về methotrexate liều thấp dùng dài hạn cho bệnh viêm như viêm khớp dạng thấp. Methotrexate dùng trong ung thư hoặc liều cao có phác đồ và hướng dẫn riêng; không áp dụng nội dung này cho điều trị ung thư.</p>
+
+    <h2>Điều đầu tiên: kiểm tra ngày uống trên toa</h2>
+    <p>Với bệnh viêm, thuốc thường được kê theo lịch một lần mỗi tuần, không phải mỗi ngày. Ghi ngày uống vào lịch, để thuốc tách khỏi các thuốc dùng hằng ngày và xác nhận lại nếu nhãn thuốc/đơn không rõ. Uống nhầm hằng ngày hoặc quá liều cần liên hệ cấp cứu/cơ sở y tế ngay, kể cả khi chưa có triệu chứng.</p>
+    <p>Liều, dạng viên hay tiêm và ngày uống được bác sĩ điều chỉnh theo bệnh và xét nghiệm. Không tự uống bù gấp đôi khi quên liều; gọi nơi kê đơn để được hướng dẫn.</p>
+
+    <h2>Folic acid là thuốc hỗ trợ, không chỉ là thực phẩm</h2>
+    <p>Folic acid có thể được kê để giảm một số tác dụng phụ của methotrexate. Ngày uống và số lần dùng không giống nhau ở mọi phác đồ. Làm theo lịch ghi trên toa hoặc thẻ theo dõi; không tự bỏ folic acid, tự tăng liều hay đổi ngày vì nghĩ rau xanh/viên vitamin có thể thay thế.</p>
+    <p>Rau lá xanh, đậu và một số thực phẩm khác cung cấp folate tự nhiên và vẫn có thể nằm trong khẩu phần cân bằng. Nhưng chúng không thay thế thuốc folic acid đã kê để phối hợp điều trị.</p>
+
+    <h2>Có phải kiêng nhiều món?</h2>
+    <ul>
+      <li>Không tự loại bỏ nhiều nhóm thực phẩm khi bắt đầu thuốc. Ăn đa dạng, đủ chất và giữ cân nặng phù hợp; nếu một món làm nặng buồn nôn, ghi nhận và trao đổi với đội ngũ điều trị.</li>
+      <li>Methotrexate có thể ảnh hưởng gan. Hãy trao đổi riêng về rượu bia, nhất là khi có gan nhiễm mỡ, viêm gan, xét nghiệm gan bất thường hoặc dùng thuốc khác ảnh hưởng gan; đừng dựa vào một ngưỡng chung trên mạng.</li>
+      <li>Vì thuốc có thể làm giảm khả năng chống nhiễm trùng, ưu tiên thực phẩm an toàn, nấu chín và sản phẩm sữa đã tiệt trùng. Không tự theo chế độ “giảm bạch cầu” cực đoan nếu chưa được hướng dẫn.</li>
+      <li>Báo bác sĩ/dược sĩ trước khi dùng thuốc mới, kháng sinh, giảm đau không kê đơn, thuốc nam hoặc thực phẩm bổ sung; tương tác phụ thuộc hoạt chất và chức năng thận/gan.</li>
+    </ul>
+
+    <h2>Ăn uống có làm khỏi viêm khớp không?</h2>
+    <p>Chế độ ăn lành mạnh hỗ trợ sức khỏe tim mạch, cân nặng và tình trạng dinh dưỡng, nhưng không thay thế thuốc kiểm soát bệnh. Không có căn cứ để tuyên bố một món ăn, nước ép hay thực phẩm chức năng có thể thay methotrexate. Nếu nghi ngờ món ăn gây triệu chứng, chỉ thử thay đổi từng yếu tố trong thời gian ngắn và bảo đảm vẫn đủ chất.</p>
+
+    <h2>Khi nào cần liên hệ bác sĩ sớm?</h2>
+    <p>Sốt hoặc dấu hiệu nhiễm trùng; loét miệng; bầm/chảy máu bất thường; buồn nôn/nôn kéo dài; khó thở; vàng da/vàng mắt hoặc nước tiểu sẫm cần được đánh giá. Không tự bỏ qua xét nghiệm định kỳ và không tự ngừng thuốc để “nghỉ gan”.</p>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://www.nhs.uk/medicines/methotrexate/about-methotrexate/" rel="noopener noreferrer">NHS — About methotrexate</a>: chỉ định, lịch hằng tuần và lưu ý về nhiễm trùng.</li>
+      <li><a href="https://www.nhs.uk/medicines/methotrexate/how-and-when-to-take-methotrexate/" rel="noopener noreferrer">NHS — How and when to take methotrexate</a>: folic acid, lịch dùng và theo dõi xét nghiệm.</li>
+      <li><a href="https://www.nhs.uk/medicines/methotrexate/common-questions-about-methotrexate/" rel="noopener noreferrer">NHS — Common questions about methotrexate</a>: thức ăn, đồ uống và lưu ý an toàn.</li>
+      <li><a href="https://www.nhs.uk/conditions/rheumatoid-arthritis/treatment/" rel="noopener noreferrer">NHS — Rheumatoid arthritis treatment</a>: thuốc kiểm soát bệnh và vai trò hỗ trợ của chế độ ăn.</li>
+    </ul>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

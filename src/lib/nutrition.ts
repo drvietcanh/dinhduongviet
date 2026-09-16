@@ -56,6 +56,19 @@ export function calculateRecipe(recipe: Recipe): NutrientValues {
     return addNutrients(total, scaleNutrients(food.nutrients, item.amountG));
   }, emptyNutrients());
 
+  // An aggregate total is only reportable when every ingredient has that
+  // nutrient. Missing ingredient values are unknown, not zero.
+  const ingredientFoods = recipe.items.map((item) => foodById(item.foodId)).filter((food): food is Food => Boolean(food));
+  const optionalNutrients: (keyof NutrientValues)[] = [
+    "fiberG", "sugarG", "cholesterolMg", "saturatedFatG", "calciumMg", "ironMg",
+    "zincMg", "sodiumMg", "potassiumMg", "magnesiumMg", "seleniumMcg", "iodineMcg",
+    "vitaminAUg", "vitaminCMg", "vitaminDMcg", "vitaminEMg", "vitaminMg",
+    "vitaminB12Mcg", "folateUg", "phosphorusMg",
+  ];
+  optionalNutrients.forEach((key) => {
+    if (ingredientFoods.some((food) => food.nutrients[key] == null)) delete sum[key];
+  });
+
   // Second pass: calculate glycemicIndex as weighted average by carb contribution
   // GI is NOT additive — must be weighted by each ingredient's carb share
   const totalCarb = sum.carbG;
@@ -202,9 +215,6 @@ const tagLabels: Record<string, string> = {
   "glycemic-load-low": "GL thấp",
   "glycemic-load-medium": "GL trung bình",
   "glycemic-load-high": "GL cao",
-  "low-purine": "Ít purin",
-  "moderate-purine": "Purin vừa",
-  "high-purine": "Nhiều purin",
   "low-sodium": "Ít natri",
   "moderate-sodium": "Natri vừa",
   "high-sodium": "Nhiều natri",
@@ -224,46 +234,42 @@ export function computeNutrientTags(n: NutrientValues): string[] {
   
   // ── Glycemic Index (GI) & Glycemic Load (GL) ──
   const gi = n.glycemicIndex;
-  const carb = n.carbG ?? 0;
-  if (gi !== undefined) {
-    // GL = GI × carbs(g) / 100
-    const gl = (gi * carb) / 100;
+  if (gi != null) {
     if (gi <= 55) tags.push("glycemic-index-low");
     else if (gi <= 69) tags.push("glycemic-index-medium");
     else tags.push("glycemic-index-high");
-    if (gl <= 10) tags.push("glycemic-load-low");
-    else if (gl <= 19) tags.push("glycemic-load-medium");
-    else tags.push("glycemic-load-high");
-  } else {
-    // Fallback proxy (no GI data)
-    const netCarb = carb - (n.fiberG ?? 0);
-    const sugar = n.sugarG ?? 0;
-    if (netCarb <= 5 && carb <= 10) tags.push("glycemic-index-low");
-    else if (netCarb > 20 || sugar > 10) tags.push("glycemic-index-high");
-    else tags.push("glycemic-index-medium");
+    // GL = GI × available carbohydrate per serving / 100. Do not treat
+    // missing carbohydrate as zero; that would create a false "low GL" tag.
+    if (n.carbG != null) {
+      const gl = (gi * n.carbG) / 100;
+      if (gl <= 10) tags.push("glycemic-load-low");
+      else if (gl <= 19) tags.push("glycemic-load-medium");
+      else tags.push("glycemic-load-high");
+    }
   }
 
-  // Purin (proxy by protein content)
-  if ((n.proteinG ?? 0) >= 20) tags.push("high-purine");
-  else if ((n.proteinG ?? 0) >= 10) tags.push("moderate-purine");
-  else tags.push("low-purine");
+  // Protein is not a reliable substitute for measured purine content. Do not
+  // generate low/moderate/high-purine tags without a purine value.
 
   // Sodium
-  const sodium = n.sodiumMg ?? 0;
-  if (sodium > 400) tags.push("high-sodium");
-  else if (sodium > 100) tags.push("moderate-sodium");
-  else tags.push("low-sodium");
+  if (n.sodiumMg != null) {
+    if (n.sodiumMg > 400) tags.push("high-sodium");
+    else if (n.sodiumMg > 100) tags.push("moderate-sodium");
+    else tags.push("low-sodium");
+  }
 
   // Potassium
-  const potassium = n.potassiumMg ?? 0;
-  if (potassium > 400) tags.push("high-potassium");
-  else if (potassium > 150) tags.push("moderate-potassium");
-  else tags.push("low-potassium");
+  if (n.potassiumMg != null) {
+    if (n.potassiumMg > 400) tags.push("high-potassium");
+    else if (n.potassiumMg > 150) tags.push("moderate-potassium");
+    else tags.push("low-potassium");
+  }
 
   // Fat class
-  const fat = n.fatG ?? 0;
-  if (fat > 20) tags.push("high-fat");
-  else if (fat <= 5) tags.push("low-fat");
+  if (n.fatG != null) {
+    if (n.fatG > 20) tags.push("high-fat");
+    else if (n.fatG <= 5) tags.push("low-fat");
+  }
 
   return tags;
 }

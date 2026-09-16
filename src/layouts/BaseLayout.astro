@@ -146,10 +146,11 @@ if (isArticle) {
     {robots && <meta name="robots" content={robots} />}
     <meta name="theme-color" content="#1b5e20" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="DD Việt" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="DD Việt" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- OG / Facebook -->
     <meta property="og:title" content={title} />
@@ -656,6 +657,7 @@ if (isArticle) {
       .nav-search .search-icon { font-size: 0.85rem; opacity: 0.7; flex-shrink: 0; }
 
       .hamburger {
+        display: none;
         color: var(--ink);
         font-size: 1.5rem;
         line-height: 1;
@@ -692,8 +694,91 @@ if (isArticle) {
         min-height: 44px;
         color: var(--ink-secondary);
       }
+      .footer {
+        margin-top: 56px;
+        padding: 32px 20px 16px;
+        border-top: 1px solid var(--line);
+        background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+      }
+      .footer .wrapper {
+        width: min(100%, 1160px);
+        margin-inline: auto;
+      }
+      .footer-desktop {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 26px 32px;
+      }
+      .footer-col {
+        min-width: 0;
+      }
+      .footer-col h4 {
+        margin: 0 0 8px;
+        color: var(--ink);
+        font-size: 0.92rem;
+        font-weight: 750;
+      }
+      .footer-col p {
+        color: var(--ink-secondary);
+        line-height: 1.6;
+      }
+      .footer-col a {
+        min-height: 36px;
+        line-height: 1.4;
+        transition: color 0.18s ease;
+      }
+      .footer-col a:hover {
+        color: var(--brand);
+        text-decoration: none;
+      }
       .footer-mobile {
         display: none;
+      }
+      .footer-site-disclaimer {
+        width: min(100%, 900px);
+        margin: 24px auto 0;
+        padding: 14px 16px;
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-lg);
+        background: var(--bg-warning);
+        color: var(--ink-secondary);
+        font-size: 0.84rem;
+        line-height: 1.6;
+      }
+      .footer-data-badge {
+        display: flex;
+        justify-content: center;
+        margin-top: 14px;
+      }
+      .footer-data-badge-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 5px 8px;
+        padding: 9px 12px;
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        background: var(--card);
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        text-align: center;
+      }
+      .footer-data-badge-inner span {
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .footer-bottom {
+        width: min(100%, 1160px);
+        margin: 22px auto 0;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        color: var(--ink-tertiary);
+        font-size: 0.78rem;
+        text-align: center;
+      }
+      .footer-bottom p {
+        margin: 0;
       }
 
       /* Mobile styles override */
@@ -710,12 +795,12 @@ if (isArticle) {
         }
         .top-bar .wrapper {
           display: grid;
-          grid-template-columns: 1fr auto auto;
+          grid-template-columns: 36px minmax(0, 1fr) 36px;
           align-items: center;
           gap: 8px 8px;
         }
         .top-bar .logo {
-          grid-column: 1;
+          grid-column: 2;
           grid-row: 1;
           min-width: 0;
           font-size: 0.98rem;
@@ -723,7 +808,7 @@ if (isArticle) {
           gap: 7px;
         }
         .theme-toggle {
-          grid-column: 2;
+          grid-column: 3;
           grid-row: 1;
           min-width: 34px;
           min-height: 34px;
@@ -769,28 +854,53 @@ if (isArticle) {
           padding-top: 8px;
         }
         .nav-group {
-          border-top: 1px solid var(--line-light);
-          padding-top: 2px;
+          overflow: hidden;
+          border: 1px solid var(--line);
+          border-radius: 12px;
+          padding: 0 10px;
+          background: var(--card);
         }
         .nav-group summary {
-          padding: 10px 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          min-height: 44px;
+          padding: 8px 0;
           font-size: 0.92rem;
+        }
+        .nav-group summary::after {
+          content: "+";
+          color: var(--ink-tertiary);
+          font-size: 1.1rem;
+          line-height: 1;
+        }
+        .nav-group[open] summary::after {
+          content: "−";
         }
         .nav-group-menu {
           position: static;
           min-width: 0;
-          margin: 0 0 4px 8px;
+          max-height: min(46vh, 360px);
+          margin: 0 0 8px;
           box-shadow: none;
           background: transparent;
           border: 0;
-          border-left: 2px solid var(--line);
           border-radius: 0;
-          padding: 0 0 0 8px;
+          padding: 0;
           gap: 2px;
+          overflow-y: auto;
+          overscroll-behavior: contain;
         }
         .nav-group-menu a {
-          padding: 8px 0;
+          min-height: 40px;
+          padding: 8px 10px;
           font-size: 0.88rem;
+          border-radius: 8px;
+        }
+        .nav-group-menu a:hover,
+        .nav-group-menu a:focus-visible {
+          background: var(--brand-light);
+          color: var(--brand-dark);
         }
         .wrapper.nav-open .nav-links {
           display: flex;
@@ -802,9 +912,9 @@ if (isArticle) {
           white-space: normal;
         }
         .hamburger {
-          grid-column: 3;
+          grid-column: 1;
           grid-row: 1;
-          background: var(--bg-soft);
+          background: var(--brand-light);
           border: 1px solid var(--line);
           color: var(--ink);
           width: 34px;
@@ -812,7 +922,7 @@ if (isArticle) {
           border-radius: 50%;
           font-size: 1rem;
           cursor: pointer;
-          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+          box-shadow: none;
           z-index: 999;
           display: flex;
           align-items: center;
@@ -825,6 +935,11 @@ if (isArticle) {
           display: grid;
           grid-template-columns: 1fr;
           gap: 14px;
+          width: min(100%, 760px);
+        }
+        .footer {
+          margin-top: 40px;
+          padding: 24px 14px 14px;
         }
         .footer-desktop {
           display: none;
@@ -885,6 +1000,9 @@ if (isArticle) {
         .footer-data-badge {
           max-width: 900px;
           margin-inline: auto;
+        }
+        .footer-site-disclaimer {
+          margin-top: 18px;
         }
         .footer-compact-note,
         .footer-compact-author {
@@ -998,14 +1116,14 @@ if (isArticle) {
     <!-- NAV -->
     <nav class="top-bar">
       <div class="wrapper">
-        <a href="/" class="logo">
+      <button class="hamburger" id="hamburger-btn" aria-label="Mở menu điều hướng" aria-controls="main-nav-links" aria-expanded="false">☰</button>
+      <a href="/" class="logo">
         <img src="/logo.svg" alt="Dinh dưỡng Việt" class="logo-svg" width="26" height="26" />
         <span>Dinh dưỡng Việt</span>
       </a>
-      <button class="hamburger" id="hamburger-btn" aria-label="Mở menu điều hướng" aria-controls="main-nav-links" aria-expanded="false">☰</button>
       <div class="nav-search" role="search">
         <span class="search-icon">🔍</span>
-        <input type="search" id="nav-search-input" aria-label="Tìm món, thực phẩm, bệnh hoặc công cụ trên website" placeholder="Tìm món, thực phẩm, bệnh hoặc công cụ…" autocomplete="off" />
+        <input type="search" id="nav-search-input" aria-label="Tìm món, thực phẩm, bệnh hoặc công cụ trên website" placeholder="Tìm món, thực phẩm, bệnh…" autocomplete="off" />
       </div>
         <div class="nav-links" id="main-nav-links" aria-label="Điều hướng chính">
           <details class="nav-group">
@@ -1015,7 +1133,7 @@ if (isArticle) {
               <a href="/mon-an">Món ăn</a>
               <a href="/thuc-don">Thực đơn</a>
               <a href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
-              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Bảng TP thực phẩm Việt</a>
+              <a href="/cong-cu/tra-cuu-thuc-pham-viet">Bảng thành phần thực phẩm Việt</a>
               <a href="/kien-thuc-dinh-duong">Kiến thức dinh dưỡng</a>
               <a href="/dung-tin-ngay">Kiểm chứng hiểu lầm</a>
             </div>
@@ -1061,7 +1179,7 @@ if (isArticle) {
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" aria-label="Liên kết và thông tin Dinh dưỡng Việt">
       <div class="wrapper footer-desktop">
         <div class="footer-col">
           <h4>Dinh dưỡng Việt</h4>
@@ -1072,7 +1190,7 @@ if (isArticle) {
           <a href="/thuc-pham">🥬 Thực phẩm</a>
           <a href="/mon-an">🍽️ Món ăn</a>
           <a href="/cong-cu/so-sanh-thuc-pham">⚖️ So sánh thực phẩm</a>
-          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Bảng TP thực phẩm Việt</a>
+          <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Bảng thành phần thực phẩm Việt</a>
         </div>
         <div class="footer-col">
           <h4>Theo bệnh</h4>
@@ -1139,7 +1257,7 @@ if (isArticle) {
             <a href="/thuc-pham">🥬 Thực phẩm</a>
             <a href="/mon-an">🍽️ Món ăn</a>
             <a href="/cong-cu/so-sanh-thuc-pham">⚖️ So sánh thực phẩm</a>
-            <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Bảng TP thực phẩm Việt</a>
+            <a href="/cong-cu/tra-cuu-thuc-pham-viet">🇻🇳 Bảng thành phần thực phẩm Việt</a>
           </div>
         </details>
         <details class="footer-accordion">

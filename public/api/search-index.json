@@ -203,9 +203,9 @@
   {
     "type": "article",
     "slug": "buong-trung-da-nang-pcos",
-    "name": "Buồng trứng đa nang (PCOS): Ăn Low-GI để hỗ trợ kiểm soát",
+    "name": "PCOS: dinh dưỡng linh hoạt, chuyển hóa và khi nào cần khám",
     "aliases": [],
-    "description": "Tìm hiểu mối liên hệ giữa PCOS và kháng insulin, cùng cách chọn tinh bột, bữa ăn và lối sống phù hợp hơn.",
+    "description": "Hướng dẫn dinh dưỡng không áp kiểu ăn Low-GI hay thực phẩm bổ sung cho tất cả; hiểu vai trò của lối sống và chăm sóc y khoa.",
     "category": "Bai viet"
   },
   {
@@ -227,9 +227,9 @@
   {
     "type": "article",
     "slug": "tuong-tac-thuoc-thuc-pham-thuong-gap",
-    "name": "Thuốc và thực phẩm: 10 tương tác thường gặp người Việt cần nhớ",
+    "name": "Thuốc và thực phẩm: 11 tương tác thường gặp người Việt cần biết",
     "aliases": [],
-    "description": "Hướng dẫn đọc các tương tác thuốc - thực phẩm thường gặp trong đái tháo đường, tim mạch, bệnh thận, tuyến giáp và các bệnh mạn tính khác.",
+    "description": "Tra cứu 11 tình huống thuốc–thực phẩm thường gặp ở người dùng thuốc mạn tính, từ warfarin, tuyến giáp, loãng xương đến bệnh thận.",
     "category": "Bai viet"
   },
   {
@@ -323,17 +323,17 @@
   {
     "type": "article",
     "slug": "khang-insulin-resistance",
-    "name": "Kháng insulin (gai đen): Căn nguyên của béo phì và đái tháo đường",
+    "name": "Gai đen và kháng insulin ở thanh thiếu niên: khi nào cần khám?",
     "aliases": [],
-    "description": "Giải thích kháng insulin, gai đen, béo bụng và các cách cải thiện bữa ăn, vận động, thói quen ăn vặt.",
+    "description": "Gai đen có thể liên quan kháng insulin nhưng không tự chẩn đoán đái tháo đường; hiểu cách bác sĩ đánh giá và hỗ trợ trẻ không kỳ thị.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "gan-nhiem-mo-nafld-fructose",
-    "name": "Gan nhiễm mỡ — Đồ uống ngọt và đường lỏng cần lưu ý gì?",
+    "name": "Gan nhiễm mỡ — đồ uống ngọt và fructose cần hiểu thế nào?",
     "aliases": [],
-    "description": "Giải thích vai trò của tổng năng lượng, đường tự do, fructose, rượu và chất béo trong nguy cơ gan nhiễm mỡ.",
+    "description": "Phân biệt đường tự do trong đồ uống với đường tự nhiên trong trái cây nguyên quả; không quy nguy cơ MASLD cho một chất hay món ăn duy nhất.",
     "category": "Bai viet"
   },
   {
@@ -995,9 +995,9 @@
   {
     "type": "article",
     "slug": "gout",
-    "name": "Gout — Chế độ ăn cho người bệnh Gout",
+    "name": "Gout: ăn uống hỗ trợ điều trị mà không kiêng khem quá mức",
     "aliases": [],
-    "description": "Hạn chế purin, đạm động vật. Thực đơn và nguyên tắc dinh dưỡng cho người gout.",
+    "description": "Những nhóm purin, bia rượu, nước ngọt nên điều chỉnh; lưu ý lượng nước phụ thuộc bệnh thận, tim và kế hoạch điều trị.",
     "category": "Bai viet"
   },
   {
@@ -1029,7 +1029,7 @@
     "slug": "suy-than",
     "name": "Bệnh thận mạn (CKD) — Ăn thế nào trước khi cần lọc máu?",
     "aliases": [],
-    "description": "Bài nền cho bệnh thận mạn chưa lọc máu: cách nhìn muối, đạm, kali và phốt pho theo giai đoạn bệnh, xét nghiệm và chỉ định điều trị.",
+    "description": "Bài nền về dinh dưỡng bệnh thận mạn: tham chiếu KDIGO về đạm/natri và cách cá thể hóa kali, phốt pho, dịch theo xét nghiệm, thuốc, tình trạng dinh dưỡng và lọc máu.",
     "category": "Bai viet"
   },
   {
@@ -1043,9 +1043,9 @@
   {
     "type": "article",
     "slug": "gan-nhiem-mo",
-    "name": "Gan nhiễm mỡ — Ăn gì, kiêng gì?",
+    "name": "Gan nhiễm mỡ (MASLD) — nguyên tắc ăn uống và theo dõi",
     "aliases": [],
-    "description": "Bài nền về gan nhiễm mỡ: hiểu đúng nguyên nhân chuyển hóa, nguyên tắc ăn uống chung và các dấu hiệu cần theo dõi thêm.",
+    "description": "Bài nền về MASLD: hiểu nguyên nhân chuyển hóa, ăn uống cân đối, đánh giá nguy cơ xơ hóa và khi nào cần khám.",
     "category": "Bai viet"
   },
   {
@@ -1173,7 +1173,7 @@
     "slug": "giam-can-khoa-hoc",
     "name": "Giảm cân khoa học — Hướng dẫn toàn diện",
     "aliases": [],
-    "description": "Thâm hụt calo, phương pháp (CICO, Keto, IF), thực đơn 1500kcal, 8 sai lầm thường gặp.",
+    "description": "Cách chọn mục tiêu và kế hoạch giảm cân thực tế, phù hợp bệnh nền, thuốc đang dùng, khẩu vị và khả năng duy trì.",
     "category": "Bai viet"
   },
   {
@@ -1355,17 +1355,17 @@
   {
     "type": "article",
     "slug": "gan-nhiem-mo-nguoi-gay",
-    "name": "Gan nhiễm mỡ ở người gầy — Vì sao vẫn bị?",
+    "name": "Gan nhiễm mỡ ở người cân nặng bình thường — cần biết gì?",
     "aliases": [],
-    "description": "10-20% người BMI bình thường có gan nhiễm mỡ. Nguyên nhân, thực đơn, tập kháng lực.",
+    "description": "BMI bình thường không loại trừ mỡ gan; tìm hiểu nguyên nhân cần đánh giá và vì sao không nên tự giảm cân hay áp thực đơn chung.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuoc-chi-dinh-vitamin-k",
-    "name": "Người dùng thuốc chống đông — Ăn rau xanh thế nào?",
+    "name": "Thuốc chống đông và thức ăn: phân biệt warfarin với apixaban, rivaroxaban",
     "aliases": [],
-    "description": "Không kiêng rau — quan trọng là NHẤT QUÁN. Warfarin, vitamin K, INR.",
+    "description": "Phân biệt thuốc kháng vitamin K với thuốc chống đông đường uống khác; biết khi nào cần ổn định rau xanh và uống thuốc cùng bữa ăn.",
     "category": "Bai viet"
   },
   {
@@ -1429,7 +1429,7 @@
     "slug": "sua-ai-nen-uong",
     "name": "Sữa — Ai nên uống, ai cần cẩn thận?",
     "aliases": [],
-    "description": "Ai nên uống sữa, ai không dung nạp lactose? Các loại sữa so sánh. Sữa hạt không thay thế được sữa bò.",
+    "description": "So sánh sữa bò, sữa không lactose và đồ uống thực vật; phân biệt bất dung nạp lactose với dị ứng sữa và đọc nhãn đúng cách.",
     "category": "Bai viet"
   },
   {
@@ -1469,7 +1469,7 @@
     "slug": "noi-tang-dong-vat",
     "name": "Nội tạng động vật — Bổ hay hại?",
     "aliases": [],
-    "description": "Giá trị dinh dưỡng. Ai nên ăn, ai nên tránh. Cách chế biến lành mạnh.",
+    "description": "Thành phần dinh dưỡng, an toàn chế biến và lưu ý cho người gout, bệnh thận hoặc mang thai; nội tạng không thay thế điều trị thiếu máu.",
     "category": "Bai viet"
   },
   {
@@ -1547,9 +1547,9 @@
   {
     "type": "article",
     "slug": "sai-lam-gan-nhiem-mo-an-mo",
-    "name": "Gan nhiễm mỡ không chỉ do ăn mỡ",
+    "name": "Gan nhiễm mỡ không chỉ do ăn mỡ — tránh kiêng cực đoan",
     "aliases": [],
-    "description": "Đường và tinh bột mới là thủ phạm chính. Cách ăn đúng cho gan nhiễm mỡ.",
+    "description": "Vai trò của tổng thể chế độ ăn, chuyển hóa, đồ uống có đường và chất béo; những nhóm thực phẩm không cần tự cấm.",
     "category": "Bai viet"
   },
   {
@@ -1597,7 +1597,7 @@
     "slug": "thuc-don-tieu-duong-binh-dan",
     "name": "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản bình dân",
     "aliases": [],
-    "description": "Bữa cơm gia đình tiết kiệm, quen miệng. Không cần bỏ cơm, chỉ cần kiểm soát lượng và phối hợp món hợp lý.",
+    "description": "Gợi ý bữa cơm gia đình tiết kiệm cho người đái tháo đường; khẩu phần tinh bột cần cá thể hóa theo thuốc, bệnh kèm và kế hoạch điều trị.",
     "category": "Bai viet"
   },
   {
@@ -1605,7 +1605,7 @@
     "slug": "thuc-don-tieu-duong-ban-ron",
     "name": "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản đi làm bận rộn",
     "aliases": [],
-    "description": "Gợi ý cho người đi làm ít thời gian nấu, với mẹo ăn sáng nhanh, gọi món ngoài và giữ đường huyết ổn định hơn.",
+    "description": "Lựa chọn bữa ăn nhanh và gọi món khi đi làm; khẩu phần và thời điểm ăn cần khớp với thuốc và mục tiêu điều trị cá nhân.",
     "category": "Bai viet"
   },
   {
@@ -1613,7 +1613,7 @@
     "slug": "thuc-don-tieu-duong-nguoi-gia",
     "name": "Thực đơn 1 ngày cho người đái tháo đường — Phiên bản người lớn tuổi",
     "aliases": [],
-    "description": "Thực đơn mềm, dễ nhai cho người lớn tuổi bị đái tháo đường, vẫn bảo đảm đạm và kiểm soát đường huyết.",
+    "description": "Gợi ý món mềm cho người lớn tuổi mắc đái tháo đường; nhu cầu dinh dưỡng, kết cấu món và lịch ăn cần cá thể hóa.",
     "category": "Bai viet"
   },
   {
@@ -1621,7 +1621,7 @@
     "slug": "thuc-don-huyet-ap-binh-dan",
     "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản bình dân",
     "aliases": [],
-    "description": "Thực đơn giảm muối kiểu cơm nhà. Pha loãng nước mắm, kho nhạt, dùng gia vị thơm. Dưới 2g muối.",
+    "description": "Gợi ý bữa cơm gia đình giảm natri; lượng natri mục tiêu và dịch cần cá thể hóa theo bệnh kèm và điều trị.",
     "category": "Bai viet"
   },
   {
@@ -1629,7 +1629,7 @@
     "slug": "thuc-don-huyet-ap-ban-ron",
     "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản đi làm",
     "aliases": [],
-    "description": "Thực đơn giảm muối cho người bận rộn. Mẹo gọi món ngoài, đọc nhãn đồ đóng gói.",
+    "description": "Gợi ý ăn ngoài và chọn thực phẩm đóng gói ít natri hơn; mục tiêu cá nhân cần theo điều trị và bệnh kèm.",
     "category": "Bai viet"
   },
   {
@@ -1637,7 +1637,7 @@
     "slug": "thuc-don-huyet-ap-nguoi-gia",
     "name": "Thực đơn 1 ngày cho người tăng huyết áp — Phiên bản người lớn tuổi",
     "aliases": [],
-    "description": "Thực đơn mềm, ít muối, dễ ăn cho người lớn tuổi bị tăng huyết áp, dùng gia vị thơm để bữa ăn vẫn ngon miệng.",
+    "description": "Gợi ý món mềm cho người lớn tuổi bị tăng huyết áp; khẩu phần và kết cấu món ăn cần cá thể hóa theo sức khỏe.",
     "category": "Bai viet"
   },
   {
@@ -1645,7 +1645,7 @@
     "slug": "thuc-don-gout-binh-dan",
     "name": "Thực đơn 1 ngày cho người gout — Phiên bản bình dân",
     "aliases": [],
-    "description": "Bữa cơm gia đình cho người gout. Purin dưới 170mg, trứng, đậu hũ, rau. Uống 2 lít nước.",
+    "description": "Gợi ý bữa cơm gia đình cho người gout; khẩu phần purin và nước uống không áp theo một ngưỡng chung.",
     "category": "Bai viet"
   },
   {
@@ -1653,7 +1653,7 @@
     "slug": "thuc-don-gout-ban-ron",
     "name": "Thực đơn 1 ngày cho người gout — Phiên bản đi làm",
     "aliases": [],
-    "description": "Thực đơn cho người gout bận rộn. Ăn ngoài được — chỉ biết tránh nội tạng, hải sản, bia.",
+    "description": "Gợi ý chọn món khi đi làm cho người gout; tránh kiêng mọi loại hải sản hoặc đặt mục tiêu nước/purin chung.",
     "category": "Bai viet"
   },
   {
@@ -1661,31 +1661,31 @@
     "slug": "thuc-don-gout-nguoi-gia",
     "name": "Thực đơn 1 ngày cho người gout — Phiên bản người lớn tuổi",
     "aliases": [],
-    "description": "Thực đơn mềm, ít purin cho người già bị gout. Cháo yến mạch, trứng, đậu phụ, rau củ.",
+    "description": "Gợi ý món mềm cho người lớn tuổi mắc gout; lượng dịch, đạm và kết cấu thức ăn cần cá thể hóa theo bệnh kèm.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-gan-nhiem-mo-binh-dan",
-    "name": "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản bình dân",
+    "name": "Gợi ý bữa cơm gia đình bình dân khi gan nhiễm mỡ",
     "aliases": [],
-    "description": "Bữa cơm gia đình ít đường, ít béo bão hòa. Cá hồi omega-3, gạo lứt, nhiều rau.",
+    "description": "Ví dụ bữa ăn Việt linh hoạt, không áp khẩu phần hay mức năng lượng giống nhau cho mọi người bị MASLD.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-gan-nhiem-mo-ban-ron",
-    "name": "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản đi làm",
+    "name": "Gợi ý ăn ngoài khi bận và được chẩn đoán gan nhiễm mỡ",
     "aliases": [],
-    "description": "Người đi làm bị gan nhiễm mỡ. Tránh cám dỗ đồ ngọt văn phòng, cơm phần nhiều dầu.",
+    "description": "Cách chọn bữa ăn ngoài thực tế khi có MASLD, tập trung giảm đồ uống có đường và khẩu phần dư năng lượng.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-gan-nhiem-mo-nguoi-gia",
-    "name": "Thực đơn 1 ngày cho người gan nhiễm mỡ & mỡ máu — Phiên bản người lớn tuổi",
+    "name": "Gợi ý bữa ăn cho người lớn tuổi bị gan nhiễm mỡ",
     "aliases": [],
-    "description": "Thực đơn nhẹ, dễ tiêu cho người già gan nhiễm mỡ. Tránh suy dinh dưỡng đi kèm.",
+    "description": "Ưu tiên đủ chất, duy trì cơ và điều chỉnh theo sức khỏe thay vì áp mức kcal hay giờ ăn chung.",
     "category": "Bai viet"
   },
   {
@@ -1717,31 +1717,31 @@
     "slug": "thuc-don-tieu-duong",
     "name": "Thực đơn 1 ngày cho người đái tháo đường type 2",
     "aliases": [],
-    "description": "Thực đơn khoảng 1500-1600 kcal cho người đái tháo đường type 2, kèm lựa chọn thay món và mẹo ăn ngoài.",
+    "description": "Ví dụ bữa ăn kiểu Việt cho người đái tháo đường type 2; khẩu phần và lịch ăn cần cá thể hóa theo thuốc, bệnh kèm và mục tiêu điều trị.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-tang-huyet-ap",
-    "name": "Thực đơn 1 ngày cho người tăng huyết áp — dưới 2g muối",
+    "name": "Thực đơn mẫu giảm natri cho người tăng huyết áp",
     "aliases": [],
-    "description": "Thực đơn 1500 kcal, muối dưới 2g. Mẹo giảm muối không giảm ngon.",
+    "description": "Gợi ý bữa ăn kiểu Việt và cách giảm natri từ nước chấm, gia vị, nước dùng; không áp một ngưỡng điều trị cho mọi người.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-gout",
-    "name": "Thực đơn 1 ngày cho người gout — purin dưới 200mg",
+    "name": "Thực đơn mẫu kiểu Việt cho người bệnh gout",
     "aliases": [],
-    "description": "Thực đơn 1600 kcal cho gout. Trứng, sữa, đậu hũ thay thịt. Uống 2-2.5L nước.",
+    "description": "Gợi ý bữa ăn đa dạng, hạn chế kiêng cực đoan; khẩu phần, nước uống và điều trị cần điều chỉnh theo bệnh kèm và chỉ định.",
     "category": "Bai viet"
   },
   {
     "type": "article",
     "slug": "thuc-don-gan-nhiem-mo",
-    "name": "Thực đơn 1 ngày cho người gan nhiễm mỡ",
+    "name": "Thực đơn tham khảo linh hoạt khi gan nhiễm mỡ",
     "aliases": [],
-    "description": "Thực đơn 1500 kcal cho gan nhiễm mỡ. Giảm đường, tăng xơ, chất béo lành mạnh.",
+    "description": "Ví dụ bữa ăn cân đối cho người có gan nhiễm mỡ; không thay thế khẩu phần cá thể hóa theo bệnh đi kèm.",
     "category": "Bai viet"
   },
   {
@@ -2027,9 +2027,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-suy-tim",
-    "name": "Dinh dưỡng cho người suy tim — Ăn gì để tim khỏe?",
+    "name": "Dinh dưỡng khi suy tim: giảm natri vừa sức, theo dõi dịch theo kế hoạch",
     "aliases": [],
-    "description": "Hạn chế muối, kiểm soát dịch, cân nặng hàng ngày. Thực đơn cho suy tim.",
+    "description": "Cách chọn món Việt, hạn chế natri dư và theo dõi triệu chứng mà không áp một mức muối, nước, đạm hoặc kali cho mọi người.",
     "category": "Bai viet"
   },
   {
@@ -2043,9 +2043,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-viem-gan",
-    "name": "Dinh dưỡng bảo vệ gan — Viêm gan & Gan nhiễm mỡ",
+    "name": "Dinh dưỡng hỗ trợ trong viêm gan và gan nhiễm mỡ",
     "aliases": [],
-    "description": "Đủ đạm, nghệ, trà xanh. Tránh rượu, mỡ xấu, đường. Dinh dưỡng theo giai đoạn bệnh.",
+    "description": "Hướng dẫn tổng quan cho viêm gan và gan nhiễm mỡ: dinh dưỡng hỗ trợ sức khỏe chuyển hóa, không thay thuốc; xơ gan cần kế hoạch riêng.",
     "category": "Bai viet"
   },
   {
@@ -2125,7 +2125,7 @@
     "slug": "canh-bao-hieu-lam-com-tieu-duong",
     "name": "Cảnh báo hiểu lầm: Người đái tháo đường không cần bỏ hoàn toàn cơm",
     "aliases": [],
-    "description": "Người đái tháo đường vẫn ăn cơm được. Cách kiểm soát lượng, chọn gạo phù hợp và sắp xếp thứ tự ăn.",
+    "description": "Không cần bỏ hẳn cơm; lượng carbohydrate nên phù hợp khẩu phần, đường huyết, thuốc và kế hoạch điều trị.",
     "category": "Bai viet"
   },
   {
@@ -2133,7 +2133,7 @@
     "slug": "canh-bao-hieu-lam-gout-dam",
     "name": "Cảnh báo hiểu lầm: Người gout không cần kiêng tất cả đạm",
     "aliases": [],
-    "description": "Gout không phải chỉ do ăn thịt. Đậu hũ, trứng, sữa là nguồn đạm an toàn.",
+    "description": "Không cần kiêng mọi nguồn đạm; điều chỉnh ăn uống có thể hỗ trợ nhưng không thay thuốc hạ acid uric khi được chỉ định.",
     "category": "Bai viet"
   },
   {
@@ -2141,7 +2141,7 @@
     "slug": "canh-bao-hieu-lam-suy-than-kieng",
     "name": "Cảnh báo hiểu lầm: Người bệnh thận mạn không được tự ý kiêng quá mức kali, đạm, phốt pho",
     "aliases": [],
-    "description": "Kiêng chưa có chỉ định bisa gây suy dinh dưỡng. Cần xét nghiệm và hướng dẫn bác sĩ.",
+    "description": "Kiêng khi chưa có chỉ định có thể làm khẩu phần mất cân đối; kali, đạm và phốt pho cần được điều chỉnh theo xét nghiệm và giai đoạn bệnh.",
     "category": "Bai viet"
   },
   {
@@ -2149,7 +2149,7 @@
     "slug": "canh-bao-hieu-lam-gan-bo-gan",
     "name": "Cảnh báo hiểu lầm: Gan nhiễm mỡ không phải cứ uống thuốc bổ gan là khỏi",
     "aliases": [],
-    "description": "Thuốc bổ gan không thay đổi được ăn uống, tập luyện. Cần giảm đường, tinh bột, tăng omega-3.",
+    "description": "Thận trọng với thực phẩm bổ sung và thảo dược; gan nhiễm mỡ cần được đánh giá nguy cơ chuyển hóa và quản lý theo từng người.",
     "category": "Bai viet"
   },
   {
@@ -2157,7 +2157,7 @@
     "slug": "canh-bao-hieu-lam-nuoc-ep-trai-cay",
     "name": "Cảnh báo hiểu lầm: Nước ép trái cây không giống trái cây nguyên quả",
     "aliases": [],
-    "description": "Nước ép thiếu xơ, cô đặc đường, GI cao hơn. Cách uống ít hại: nguyên quả, ép vặt, không thêm đường.",
+    "description": "Nước ép thường ít chất xơ hơn quả nguyên; ảnh hưởng đường huyết còn tùy loại, cách chế biến và khẩu phần.",
     "category": "Bai viet"
   },
   {
@@ -2173,7 +2173,7 @@
     "slug": "canh-bao-hieu-lam-sua-hat-dam",
     "name": "Cảnh báo hiểu lầm: Sữa hạt không phải lúc nào cũng giàu đạm",
     "aliases": [],
-    "description": "Sữa hạt thường có ít đạm và canxi nếu không được bổ sung. Sữa bò là nguồn đạm tốt nhất.",
+    "description": "Đồ uống thực vật khác nhau về đạm, canxi và đường bổ sung; so sánh nhãn thay vì mặc định mọi loại sữa hạt giống nhau.",
     "category": "Bai viet"
   },
   {
@@ -2197,7 +2197,7 @@
     "slug": "canh-bao-hieu-lam-giam-can-nhanh",
     "name": "Cảnh báo hiểu lầm: Giảm cân nhanh không đồng nghĩa giảm mỡ tốt",
     "aliases": [],
-    "description": "Giảm cân nhanh thường mất nước và cơ bắp. Giảm mỡ bền vững cần chế độ ăn vừa và tập luyện.",
+    "description": "Cân giảm nhanh không đồng nghĩa giảm mỡ; ưu tiên thay đổi bền vững và đi khám nếu sụt cân không chủ ý.",
     "category": "Bai viet"
   },
   {
@@ -2357,7 +2357,7 @@
     "slug": "dinh-duong-benh-than-man-ckd",
     "name": "Bệnh thận mạn (CKD) — Ăn gì để bảo vệ thận trước khi cần lọc máu?",
     "aliases": [],
-    "description": "Chế độ ăn cho người bệnh thận mạn giai đoạn 1–4: giảm đạm, giảm muối, kiểm soát kali/phốt pho, trước khi cần lọc máu.",
+    "description": "Dinh dưỡng trong bệnh thận mạn trước và trong lọc máu: tham chiếu KDIGO, giảm natri phù hợp và cá thể hóa đạm, kali, phốt pho, dịch theo xét nghiệm.",
     "category": "Bai viet"
   },
   {
@@ -2371,9 +2371,9 @@
   {
     "type": "article",
     "slug": "dinh-duong-xo-gan",
-    "name": "Xơ gan — dinh dưỡng giúp kéo dài thời gian bù trừ",
+    "name": "Xơ gan — dinh dưỡng giúp duy trì thể trạng và khối cơ",
     "aliases": [],
-    "description": "Bài nền cho xơ gan còn bù và mất bù: cách giữ đủ năng lượng, đạm, nhịp bữa và khi nào mới cần siết muối theo biến chứng như cổ trướng.",
+    "description": "Bài nền cho xơ gan còn bù/mất bù: đủ đạm, chia bữa, điều chỉnh natri và dịch theo biến chứng; không tự giảm protein khi có bệnh não gan.",
     "category": "Bai viet"
   },
   {
@@ -2453,7 +2453,7 @@
     "slug": "benh-than-iga-dinh-duong",
     "name": "Bệnh thận IgA (Berger) — Dinh dưỡng bảo vệ cầu thận",
     "aliases": [],
-    "description": "Viêm cầu thận IgA: giảm muối, kiểm soát đạm, thực phẩm chống viêm, tránh kích hoạt miễn dịch từ gluten và nhiễm trùng hô hấp.",
+    "description": "Dinh dưỡng hỗ trợ sức khỏe thận và tim mạch ở người bệnh thận IgA: giảm natri phù hợp, tránh kiêng đạm/kali tùy tiện và theo dõi theo xét nghiệm.",
     "category": "Bai viet"
   },
   {
@@ -2461,7 +2461,7 @@
     "slug": "dinh-duong-ung-thu-vu",
     "name": "Dinh dưỡng cho người ung thư vú — Trong và sau điều trị",
     "aliases": [],
-    "description": "Chế độ ăn cho bệnh nhân ung thư vú: giảm tái phát, kiểm soát cân nặng, hạn chế rượu, thực phẩm chống viêm.",
+    "description": "Hướng dẫn an toàn dinh dưỡng trong điều trị và sau ung thư vú; làm rõ đậu nành, thực phẩm bổ sung và giới hạn bằng chứng về tái phát.",
     "category": "Bai viet"
   },
   {
@@ -2611,9 +2611,9 @@
   {
     "type": "article",
     "slug": "tang-kali-mau-suy-than",
-    "name": "Tăng kali máu ở người bệnh thận mạn — Ăn rau quả thế nào cho an toàn?",
+    "name": "Tăng kali máu ở người bệnh thận mạn — xét nghiệm, thuốc và chế độ ăn",
     "aliases": [],
-    "description": "Tăng kali máu không có nghĩa phải bỏ hết rau trái. Điều quan trọng là chọn loại, lượng, cách sơ chế và đối chiếu với xét nghiệm thực tế.",
+    "description": "Kali máu cao có thể ít triệu chứng; tìm nguyên nhân cùng bác sĩ, rà soát thuốc và chỉ điều chỉnh rau quả theo xét nghiệm, khẩu phần và kế hoạch chuyên môn.",
     "category": "Bai viet"
   },
   {
@@ -3030,6 +3030,62 @@
     "name": "Tiền mãn kinh, mãn kinh và tăng cân: giữ cơ, giữ xương, giảm vòng eo thế nào?",
     "aliases": [],
     "description": "Ăn uống thực tế cho phụ nữ tiền mãn kinh/mãn kinh: đạm, chất xơ, canxi-vitamin D, vận động sức mạnh và tránh nhịn ăn cực đoan.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sau-dai-thao-duong-thai-ky-theo-doi",
+    "name": "Sau đái tháo đường thai kỳ: khi nào cần kiểm tra đường huyết lại?",
+    "aliases": [],
+    "description": "Lịch theo dõi sau sinh cho người từng mắc đái tháo đường thai kỳ: OGTT 4–12 tuần, tầm soát lâu dài và ăn uống hỗ trợ sức khỏe mẹ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "lao-phoi-an-uong-khi-dung-thuoc",
+    "name": "Lao phổi: ăn uống và lưu ý khi dùng thuốc điều trị",
+    "aliases": [],
+    "description": "Thông tin thực hành về thời điểm dùng thuốc lao, tương tác rifampicin, nguy cơ thiếu B6, sụt cân và dấu hiệu cần báo cơ sở điều trị.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thuoc-loang-xuong-alendronate-uong-the-nao",
+    "name": "Uống alendronate thế nào để thuốc loãng xương hấp thu đúng?",
+    "aliases": [],
+    "description": "Thời điểm uống alendronate với nước lọc, khoảng cách với thức ăn/canxi và tư thế sau uống để hạn chế giảm hấp thu, kích ứng thực quản.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-nguoi-lon-an-uong-an-toan",
+    "name": "Dị ứng thực phẩm ở người lớn: tránh đúng món, vẫn ăn đủ chất",
+    "aliases": [],
+    "description": "Phân biệt dị ứng thật với khó chịu sau ăn, cách xác nhận an toàn, phòng lẫn chéo và thay thế dinh dưỡng khi phải loại trừ thực phẩm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-sau-cat-amidan",
+    "name": "Sau cắt amidan ăn uống thế nào? Giữ đủ nước và nhận biết chảy máu",
+    "aliases": [],
+    "description": "Hướng dẫn dinh dưỡng thực tế sau cắt amidan: làm theo chỉ định riêng của bệnh viện, ăn uống theo khả năng, phòng mất nước và biết dấu hiệu cấp cứu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-khi-dung-corticoid-dai-ngay",
+    "name": "Dùng corticoid dài ngày: lưu ý bữa ăn, đường huyết và xương",
+    "aliases": [],
+    "description": "Cách ăn uống và theo dõi an toàn khi điều trị corticoid đường uống kéo dài; không tự kiêng cực đoan, bổ sung vi chất hay đổi/ngừng thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "methotrexate-va-dinh-duong-viem-khop-dang-thap",
+    "name": "Methotrexate trong viêm khớp: folate, rượu bia và ăn uống an toàn",
+    "aliases": [],
+    "description": "Lưu ý thực tế cho người dùng methotrexate liều thấp hằng tuần điều trị bệnh viêm; phân biệt lịch folic acid và giảm nguy cơ sai liều.",
     "category": "Bai viet"
   },
   {
@@ -3644,16 +3700,6 @@
   },
   {
     "type": "recipe",
-    "slug": "cha-muc-ha-long-phan",
-    "name": "Chả mực Hạ Long (phần)",
-    "aliases": [
-      "cha muc ha long"
-    ],
-    "description": "3 miếng: Ba miếng chả mực chiên ăn kèm xôi/bánh cuốn.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "cao-lau-hoi-an",
     "name": "Cao lầu Hội An",
     "aliases": [
@@ -3830,16 +3876,6 @@
   },
   {
     "type": "recipe",
-    "slug": "banh-duc-noi-tuong",
-    "name": "Bánh đúc nóng (nồi tường)",
-    "aliases": [
-      "banh duc nong"
-    ],
-    "description": "1 bát: Bánh đúc nóng ăn với thịt băm, tôm chấy, nước tương/nấm.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "banh-can-nuong",
     "name": "Bánh căn trứng cút",
     "aliases": [
@@ -3861,32 +3897,12 @@
   },
   {
     "type": "recipe",
-    "slug": "ech-xao-sa-ot-phan",
-    "name": "Ếch xào sả ớt (phần nhỏ)",
-    "aliases": [
-      "ech xao sa ot phan"
-    ],
-    "description": "1 đĩa: Đĩa ếch xào sả ớt với lạc rang.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "ca-pheo-rim-man",
     "name": "Cá phèo rim mặn",
     "aliases": [
       "ca pheo rim"
     ],
     "description": "1 phần: Cá phèo rim nước mắm và tiêu.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
-    "slug": "ngheu-hap-sa-phan",
-    "name": "Nghêu hấp sả (phần nhỏ)",
-    "aliases": [
-      "ngheu hap sa phan"
-    ],
-    "description": "1 đĩa: Nghêu hấp sả, thêm lá chanh và ớt.",
     "category": "Mon an"
   },
   {
@@ -3942,9 +3958,10 @@
   {
     "type": "recipe",
     "slug": "xoi-ma-pha",
-    "name": "Xôi mặn (xôi mỡ hành)",
+    "name": "Xôi mặn lạp xưởng mỡ hành",
     "aliases": [
-      "xoi man",
+      "xoi man mo hanh",
+      "xoi lap xuong",
       "xoi mo hanh"
     ],
     "description": "1 đĩa: Xôi nếp/gao nếp với mỡ hành, ruốc, lạp xưởng.",
@@ -4574,8 +4591,10 @@
   {
     "type": "recipe",
     "slug": "banh-bo",
-    "name": "Bánh bò (bánh bò hấp)",
+    "name": "Bánh bò hấp",
     "aliases": [
+      "banh bo",
+      "bánh bò",
       "banh bo hap",
       "bánh bò hấp"
     ],
@@ -5163,17 +5182,6 @@
   },
   {
     "type": "recipe",
-    "slug": "banh-bong-lan-don-gian",
-    "name": "Bánh bông lan",
-    "aliases": [
-      "banh bong lan",
-      "bánh kem"
-    ],
-    "description": "Tra cứu dinh dưỡng Bánh bông lan theo khẩu phần 1 miếng.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "banh-tieu-ran",
     "name": "Bánh tiêu chiên giòn",
     "aliases": [
@@ -5727,11 +5735,11 @@
   {
     "type": "recipe",
     "slug": "sinh-to-dua",
-    "name": "Sinh tố dưa hấu tươi",
+    "name": "Sinh tố dưa hấu có đường",
     "aliases": [
       "sinh to dua hau"
     ],
-    "description": "Tra cứu dinh dưỡng Sinh tố dưa hấu tươi theo khẩu phần 1 ly 300ml.",
+    "description": "Tra cứu dinh dưỡng Sinh tố dưa hấu có đường theo khẩu phần 1 ly 300ml.",
     "category": "Mon an"
   },
   {
@@ -5782,16 +5790,6 @@
     "name": "Cơm bò lúc lắc",
     "aliases": [
       "com bo luc lac"
-    ],
-    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
-    "slug": "com-suon-bi-cha",
-    "name": "Cơm sườn bì chả",
-    "aliases": [
-      "com suon bi cha"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
@@ -7711,7 +7709,7 @@
     "slug": "ke-hoach-bua-an",
     "name": "🥗 Kế hoạch bữa ăn tham khảo",
     "aliases": [],
-    "description": "Lập khung bữa ăn tham khảo từ thông tin cơ bản và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.",
+    "description": "Gợi ý bữa ăn Việt từ thư viện món ăn và thành phần dinh dưỡng tham khảo; không đặt mục tiêu điều trị cá nhân.",
     "category": "Công cụ"
   },
   {
@@ -7871,7 +7869,7 @@
     "slug": "tinh-gl-bua-an",
     "name": "⚖️ Tính GL bữa ăn",
     "aliases": [],
-    "description": "Ước tính glycemic load dựa trên GI và tổng carbohydrate của khẩu phần, dùng cho giáo dục dinh dưỡng.",
+    "description": "Ước tính tải lượng đường huyết từ GI và carbohydrate khả dụng trong khẩu phần.",
     "category": "Công cụ"
   },
   {
@@ -7885,9 +7883,9 @@
   {
     "type": "tool",
     "slug": "tinh-nang-luong",
-    "name": "Tính năng lượng tham khảo (BMR & TDEE)",
+    "name": "Ước tính năng lượng nghỉ và TDEE",
     "aliases": [],
-    "description": "Công cụ này ước tính năng lượng nền theo Mifflin-St Jeor rồi nhân hệ số hoạt động để cho ra BMR và TDEE tham khảo ban đầu. Đây là mốc giáo dục cho người lớn, không phải toa năng lượng điều trị cá thể.",
+    "description": "Công cụ ước tính năng lượng nghỉ (REE) theo Mifflin-St Jeor rồi nhân hệ số hoạt động để tham khảo tổng tiêu hao mỗi ngày (TDEE). Đây là mốc giáo dục, không phải toa năng lượng điều trị cá thể.",
     "category": "Công cụ"
   },
   {
@@ -7919,13 +7917,13 @@
     "slug": "tuong-tac-thuoc-thuc-pham",
     "name": "Tương tác thuốc - thực phẩm",
     "aliases": [],
-    "description": "Nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ khi dùng thuốc cùng thực phẩm.",
+    "description": "Tra cứu một số cặp thuốc - thực phẩm thường gặp, nguồn tham khảo và lưu ý cần hỏi bác sĩ hoặc dược sĩ.",
     "category": "Công cụ"
   },
   {
     "type": "tool",
     "slug": "tuong-tac-thuoc",
-    "name": "Tương tác thuốc",
+    "name": "An toàn khi dùng thuốc",
     "aliases": [],
     "description": "Nhắc các tình huống cần hỏi bác sĩ hoặc dược sĩ khi đang dùng thuốc, thực phẩm bổ sung hoặc thay đổi chế độ ăn.",
     "category": "Công cụ"
@@ -13264,9 +13262,9 @@
       "xuc xich ga",
       "chicken sausage"
     ],
-    "description": "Tra cứu Xúc xích gà: khoảng 200 kcal/100g, nhóm Thịt chế biến.",
+    "description": "Tra cứu Xúc xích gà: khoảng 176 kcal/100g, nhóm Thịt chế biến.",
     "category": "Thịt chế biến",
-    "kcal": 200
+    "kcal": 176
   },
   {
     "type": "food",
@@ -13278,9 +13276,9 @@
       "xuc xich lon",
       "pork sausage"
     ],
-    "description": "Tra cứu Xúc xích heo: khoảng 270 kcal/100g, nhóm Thịt chế biến.",
+    "description": "Tra cứu Xúc xích heo: khoảng 392 kcal/100g, nhóm Thịt chế biến.",
     "category": "Thịt chế biến",
-    "kcal": 270
+    "kcal": 392
   },
   {
     "type": "food",

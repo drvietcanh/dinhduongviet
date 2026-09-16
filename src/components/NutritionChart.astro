@@ -4,10 +4,10 @@ const kcal = nutrients.energyKcal || 0;
 const protein = nutrients.proteinG || 0;
 const fat = nutrients.fatG || 0;
 const carb = nutrients.carbG || 0;
-const fiber = nutrients.fiberG || 0;
-const sugar = nutrients.sugarG || 0;
-const satFat = nutrients.saturatedFatG || 0;
-const sodium = nutrients.sodiumMg || 0;
+const fiber = nutrients.fiberG;
+const sugar = nutrients.sugarG;
+const satFat = nutrients.saturatedFatG;
+const sodium = nutrients.sodiumMg;
 
 // Calorie contribution: protein 4 kcal/g, carb 4 kcal/g, fat 9 kcal/g
 const proteinKcal = protein * 4;
@@ -63,19 +63,20 @@ const barHeight = 18;
   <div class="chart-block">
     <h3>So với mốc đọc nhanh*</h3>
     {bars.map(b => {
-      const pct = Math.min(100, (b.val / b.max * 100));
-      const displayVal = b.val < 10 ? b.val.toFixed(1) : Math.round(b.val);
+      const hasValue = typeof b.val === "number" && Number.isFinite(b.val);
+      const pct = hasValue ? Math.min(100, (b.val / b.max * 100)) : 0;
+      const displayVal = !hasValue ? "Chưa có dữ liệu" : b.val < 10 ? b.val.toFixed(1) : Math.round(b.val);
       return (
         <div class="nutri-bar-row">
           <div class="nutri-label">
             <span>{b.label}</span>
-            <strong>{displayVal}<span class="unit">{b.unit}</span></strong>
+            <strong>{displayVal}{hasValue && <span class="unit">{b.unit}</span>}</strong>
           </div>
-          <div class="nutri-track">
+          {hasValue ? <div class="nutri-track">
             <div class="nutri-fill" style={`width:${Math.max(2, pct)}%;background:${b.color}`}></div>
             {pct < 100 && <span class="nutri-end">{Math.round(pct)}%</span>}
             {pct >= 100 && <span class="nutri-end nutri-over">≥100%</span>}
-          </div>
+          </div> : <span class="muted">Chỉ số này chưa có trong dữ liệu nguồn.</span>}
         </div>
       );
     })}

@@ -3,10 +3,24 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { foods, recipes } from "../../data/nutrition";
 import { findGlycemicIndexMapping } from "../../data/glycemic-index";
 import { calculateRecipe } from "../../lib/nutrition";
-import { GL_CLINICAL_CONTEXT_NOTE, GL_GLOBAL_SAFETY_NOTE, GL_TOTAL_CARB_NOTE } from "../../lib/glycemic-load-calculator";
+import { availableCarbohydratePer100g } from "../../lib/available-carbohydrate";
+import { GL_CLINICAL_CONTEXT_NOTE, GL_GLOBAL_SAFETY_NOTE, GL_METHOD_NOTE } from "../../lib/glycemic-load-calculator";
 
 const title = "Tính GL (tải lượng đường huyết) bữa ăn";
-const desc = "Ước tính glycemic load dựa trên GI và tổng carbohydrate của khẩu phần, dùng cho giáo dục dinh dưỡng.";
+const desc = "Ước tính tải lượng đường huyết từ GI và carbohydrate khả dụng trong khẩu phần.";
+
+function recipeAvailableCarbPer100g(recipe: (typeof recipes)[number], servingWeightG: number) {
+  if (!Number.isFinite(servingWeightG) || servingWeightG <= 0) return null;
+  let availableCarbInRecipe = 0;
+  for (const item of recipe.items) {
+    const food = foods.find((candidate) => candidate.id === item.foodId);
+    if (!food) return null;
+    const availablePer100g = availableCarbohydratePer100g(food);
+    if (availablePer100g == null) return null;
+    availableCarbInRecipe += availablePer100g * item.amountG / 100;
+  }
+  return (availableCarbInRecipe * 100) / servingWeightG;
+}
 
 function groupFor(category: string, name: string) {
   const text = `${category} ${name}`.toLowerCase();
@@ -35,7 +49,7 @@ function giPayload(slug: string, name: string) {
       matchQuality: "no_gi" as const,
       sourceLabel: "",
       sourceUrl: "",
-      note: "Chưa có GI phù hợp trong bảng curated v1.",
+      note: "Chưa có GI phù hợp trong bảng tham khảo.",
     };
   }
 
@@ -63,6 +77,7 @@ const foodOptions = foods.map((food) => {
     group,
     icon: iconFor(group, "food"),
     carbPer100g: food.nutrients.carbG,
+    availableCarbPer100g: availableCarbohydratePer100g(food),
     glycemicIndex: giPayload(food.slug, food.name),
     defaultGrams: 100,
     defaultLabel: "100 g",
@@ -91,6 +106,7 @@ const recipeOptions = recipes.map((recipe) => {
     group,
     icon: iconFor(group, "recipe"),
     carbPer100g,
+    availableCarbPer100g: recipeAvailableCarbPer100g(recipe, servingWeight),
     glycemicIndex: giPayload(recipe.slug, recipe.name),
     defaultGrams: servingWeight,
     defaultLabel: recipe.servingName ? `${recipe.servingName} (${servingWeight} g)` : `${servingWeight} g`,
@@ -137,7 +153,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         <div class="gl-desc">phân loại giáo dục theo từng món/khẩu phần</div>
       </div>
       <div class="gl-card mid">
-        <div class="gl-range">11-19</div>
+        <div class="gl-range">&gt; 10 đến &lt; 20</div>
         <div class="gl-label">GL trung bình</div>
         <div class="gl-desc">cần xem cùng lượng carb và bối cảnh cá nhân</div>
       </div>
@@ -149,9 +165,9 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     </div>
 
     <div class="info-note">
-      <strong>V1 dùng total carbohydrate.</strong> {GL_TOTAL_CARB_NOTE}
+      <strong>Cách hiểu GL.</strong> {GL_METHOD_NOTE}
       <br />
-      <span>Nguồn dữ liệu và cách diễn giải GL tham khảo <a href="https://nutritionsource.hsph.harvard.edu/carbohydrates/glycemic-index/" target="_blank" rel="noopener noreferrer">Harvard T.H. Chan School of Public Health</a>; GI từng thực phẩm có thể khác theo giống, cách nấu và khẩu phần.</span>
+      <span>GL bữa ăn được tính bằng cách cộng GL từng món. Cách chế biến, thành phần bữa ăn và cơ địa có thể khiến đáp ứng thực tế khác với con số này. Tham khảo <a href="https://nutritionsource.hsph.harvard.edu/carbohydrates/glycemic-index/" target="_blank" rel="noopener noreferrer">Harvard T.H. Chan School of Public Health</a> và <a href="https://ajcn.nutrition.org/article/S0002-9165%2822%2900494-4/fulltext" target="_blank" rel="noopener noreferrer">bảng GI/GL quốc tế 2021</a>.</span>
     </div>
 
     <div class="builder-layout">
@@ -188,7 +204,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
               <span class="total-gl" id="total-gl">0</span>
             </div>
             <div class="total-row">
-              <span>Tổng carb đã dùng để tính</span>
+              <span>Carbohydrate khả dụng</span>
               <span id="total-carb">0 g</span>
             </div>
             <div class="reference-band">
@@ -214,11 +230,11 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     </button>
 
     <details class="quick-ref">
-      <summary>Bảng GI curated v1 đang dùng</summary>
+      <summary>Bảng GI tham khảo đang dùng</summary>
       <div class="table-wrap">
         <table class="ref-table">
           <thead>
-            <tr><th>Mục</th><th>Carb/100g</th><th>GI</th><th>Match</th><th>Ghi chú</th></tr>
+            <tr><th>Mục</th><th>Carb khả dụng/100g</th><th>GI</th><th>Mức khớp</th><th>Ghi chú</th></tr>
           </thead>
           <tbody id="quick-ref-body"></tbody>
         </table>
@@ -290,6 +306,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     :global(.badge.close) { color:#00796b; border-color:#80cbc4; }
     :global(.badge.generic) { color:#e65100; border-color:#ffcc80; }
     :global(.badge.no_gi), :global(.badge.estimated) { color:#6d4c41; border-color:#bcaaa4; }
+    :global(.gi-source-link) { color:var(--brand); text-decoration:underline; text-underline-offset:2px; }
     :global(.gram-wrap) { display:flex; align-items:center; gap:6px; border:1px solid var(--card-border); border-radius:var(--radius); padding:0 9px; background:var(--bg); transition: border-color var(--transition), box-shadow var(--transition); }
     :global(.gram-wrap:focus-within) { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15); }
     :global(.gram-input) { width:74px; min-height:38px; border:none; background:transparent; color:var(--ink); font-size:0.9rem; outline:none; text-align:right; }
@@ -445,6 +462,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         slug: food.slug,
         grams,
         carbPer100g: food.carbPer100g,
+        availableCarbPer100g: food.availableCarbPer100g,
         glycemicIndex: food.glycemicIndex,
       }]);
       return result.items[0];
@@ -481,12 +499,17 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
             <div class="food-info">
               <div class="food-name">${escapeHtml(food.name)}</div>
               <div class="food-detail">
-                ${formatNumber(food.carbPer100g)} g carb/100g
+                ${food.availableCarbPer100g == null
+                  ? "Chưa đủ dữ liệu carb khả dụng"
+                  : `${formatNumber(food.availableCarbPer100g)} g carb khả dụng/100g`}
                 <span class="food-meta">· ${escapeHtml(food.category)} · ${escapeHtml(food.basis || "100g phần ăn được")}</span>
               </div>
               <div class="badge-row">
                 <span class="badge ${escapeHtml(gi.matchQuality || "no_gi")}">${escapeHtml(matchQualityLabel(gi.matchQuality || "no_gi"))}</span>
                 <span class="badge">${gi.gi == null ? "Chưa có GI" : `GI ${formatNumber(gi.gi)} · ${categoryLabel(gi.giCategory)}`}</span>
+                ${gi.gi != null && gi.sourceUrl
+                  ? `<a class="badge gi-source-link" href="${escapeHtml(gi.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn GI cho ${escapeHtml(food.name)}" title="${escapeHtml(gi.sourceLabel || "Nguồn dữ liệu GI")}">Nguồn GI</a>`
+                  : ""}
               </div>
             </div>
             <label class="gram-wrap">
@@ -519,6 +542,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
             name: food.name,
             grams,
             carbPer100g: food.carbPer100g,
+            availableCarbPer100g: food.availableCarbPer100g,
             glycemicIndex: food.glycemicIndex,
             sourceConfidence: food.sourceConfidence,
             dataQuality: food.dataQuality,
@@ -553,20 +577,23 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       if (emptyEl) emptyEl.style.display = "none";
 
       const result = calculateGlycemicLoadMeal(selected);
-      glEl.textContent = formatNumber(result.totalGL);
-      carbEl.textContent = `${formatNumber(result.totalCarbGrams)} g`;
-      if (mobileTotalGl) mobileTotalGl.textContent = `GL ${formatNumber(result.totalGL)}`;
+      glEl.textContent = result.totalGL == null ? "—" : formatNumber(result.totalGL);
+      carbEl.textContent = result.totalAvailableCarbGrams == null ? "Chưa đủ dữ liệu" : `${formatNumber(result.totalAvailableCarbGrams)} g`;
+      if (mobileTotalGl) mobileTotalGl.textContent = result.totalGL == null ? "GL —" : `GL ${formatNumber(result.totalGL)}`;
       if (mobileItemCount) mobileItemCount.textContent = `${selected.length} món`;
       if (mobileBar) mobileBar.style.display = window.innerWidth <= 720 ? "block" : "none";
 
       itemsEl.innerHTML = result.items.map((item, index) => {
         const row = selected[index];
+        const sourceLink = item.sourceUrl?.startsWith("https://")
+          ? `<a class="gi-source-link" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn GI cho ${escapeHtml(item.name)}" title="${escapeHtml(item.sourceLabel || "Nguồn dữ liệu GI")}">Nguồn</a>`
+          : "";
         return `
           <div class="total-item">
             <button class="ti-del" type="button" data-id="${row.rowId}" aria-label="Xóa ${escapeHtml(item.name)}">×</button>
             <span class="ti-name">
               ${escapeHtml(row.icon || "")} ${escapeHtml(item.name)}
-              <span class="ti-sub">${formatNumber(item.grams)} g · carb ${item.carbGrams == null ? "-" : `${formatNumber(item.carbGrams)} g`} · GI ${item.gi == null ? "-" : formatNumber(item.gi)} · ${escapeHtml(matchQualityLabel(item.matchQuality))} · ${glCategoryText(item.glCategory)}</span>
+              <span class="ti-sub">${formatNumber(item.grams)} g · carb khả dụng ${item.availableCarbGrams == null ? "—" : `${formatNumber(item.availableCarbGrams)} g`} · GI ${item.gi == null ? "-" : formatNumber(item.gi)} · ${escapeHtml(matchQualityLabel(item.matchQuality))} ${sourceLink ? `· ${sourceLink}` : ""} · ${glCategoryText(item.glCategory)}</span>
             </span>
             <span class="ti-share">${item.contributionPercent == null ? "" : `${formatNumber(item.contributionPercent)}%`}</span>
             <span class="ti-gl">${item.gl == null ? "-" : `GL ${formatNumber(item.gl)}`}</span>
@@ -588,11 +615,13 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         });
       }
 
-      fillEl.style.width = `${Math.min(Math.round((result.totalGL / 30) * 100), 100)}%`;
-      if (result.totalGLCategory === "low") {
+      fillEl.style.width = `${result.totalGL == null ? 0 : Math.min(Math.round((result.totalGL / 30) * 100), 100)}%`;
+      if (!result.totalGLComplete) {
+        noteEl.textContent = "Chưa thể tính tổng GL vì có thành phần thiếu GI, carbohydrate khả dụng hoặc dữ liệu khẩu phần.";
+      } else if (result.totalGLCategory === "low") {
         noteEl.textContent = "Tổng GL đang ở nhóm thấp theo phân loại giáo dục, nhưng đáp ứng đường huyết cá nhân vẫn có thể khác.";
       } else if (result.totalGLCategory === "medium") {
-        noteEl.textContent = "Tổng GL đang ở nhóm trung bình theo phân loại giáo dục. Hãy xem cùng tổng carb, khẩu phần và kế hoạch cá nhân.";
+        noteEl.textContent = "Tổng GL đang ở nhóm trung bình theo phân loại tham khảo. Hãy đọc cùng khẩu phần và bối cảnh sức khỏe của bạn.";
       } else if (result.totalGLCategory === "high") {
         noteEl.textContent = "Tổng GL đang ở nhóm cao theo phân loại giáo dục. Đây là tín hiệu để rà khẩu phần, không phải căn cứ tự thay đổi thuốc.";
       } else {
@@ -632,7 +661,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         return `
           <tr>
             <td>${escapeHtml(food.name)}</td>
-            <td>${formatNumber(food.carbPer100g)} g</td>
+            <td>${formatNumber(food.availableCarbPer100g)} g</td>
             <td>${gi.gi == null ? "-" : formatNumber(gi.gi)}</td>
             <td>${escapeHtml(matchQualityLabel(gi.matchQuality || "no_gi"))}</td>
             <td>${escapeHtml(gi.note || "")}</td>

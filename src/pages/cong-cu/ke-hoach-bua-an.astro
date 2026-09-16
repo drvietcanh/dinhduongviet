@@ -1,8 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { recipes } from "../../data/nutrition";
+import { calculateRecipe } from "../../lib/nutrition";
 const siteTitle = "Kế hoạch bữa ăn tham khảo | Dinh dưỡng Việt";
-const siteDesc = "Lập khung bữa ăn tham khảo từ thông tin cơ bản và nhắc các trường hợp cần hỏi bác sĩ hoặc chuyên gia.";
+const siteDesc = "Gợi ý bữa ăn Việt từ thư viện món ăn và thành phần dinh dưỡng tham khảo; không đặt mục tiêu điều trị cá nhân.";
 const domain = "dinhduongviet.vn";
+const mealPlanRecipes = recipes.map((recipe) => {
+  const nutrients = calculateRecipe(recipe);
+  return {
+    slug: recipe.slug,
+    name: recipe.name,
+    tags: recipe.tags ?? [],
+    mealContexts: recipe.mealContexts ?? [],
+    servingName: recipe.servingName,
+    confidence: recipe.confidence,
+    kcal: Math.round(nutrients.energyKcal),
+    protein: Math.round(nutrients.proteinG * 10) / 10,
+    fat: Math.round(nutrients.fatG * 10) / 10,
+    carb: Math.round(nutrients.carbG * 10) / 10,
+  };
+});
 ---
 <BaseLayout title={siteTitle} description={siteDesc} canonical={"https://" + domain + "/cong-cu/ke-hoach-bua-an"}>
   <style is:global>
@@ -15,6 +32,7 @@ const domain = "dinhduongviet.vn";
     .sidebar-card h2 { font-size: 1rem; margin-bottom: 12px; }
     .form-group { margin-bottom: 10px; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink-secondary); margin-bottom: 3px; }
+    .form-help { display: block; margin-top: 5px; color: var(--ink-secondary); font-size: 0.78rem; line-height: 1.5; }
     .form-group select, .form-group input { width: 100%; min-height: 40px; border: 1px solid var(--card-border); border-radius: var(--radius); padding: 0 10px; font-size: 0.88rem; background: var(--bg-elevated); color: var(--ink); transition: border-color var(--transition), box-shadow var(--transition); }
     .form-group select:focus, .form-group input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -76,51 +94,17 @@ const domain = "dinhduongviet.vn";
   <div class="mealplanner-layout">
     <!-- Sidebar: Profile Form -->
     <aside class="sidebar-card">
-      <h2>📋 Thông tin tham khảo</h2>
+      <h2>📋 Tùy chọn gợi ý</h2>
       <form id="profile-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Tuổi</label>
-            <input type="number" id="age" min="10" max="100" value="35" />
-          </div>
-          <div class="form-group">
-            <label>Giới tính</label>
-            <select id="sex">
-              <option value="male">Nam</option>
-              <option value="female">Nữ</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Cân nặng (kg)</label>
-            <input type="number" id="weight" min="25" max="250" step="0.1" value="65" />
-          </div>
-          <div class="form-group">
-            <label>Chiều cao (cm)</label>
-            <input type="number" id="height" min="100" max="230" value="170" />
-          </div>
-        </div>
         <div class="form-group">
-          <label>Mức vận động</label>
-          <select id="activity">
-            <option value="1.2">Ít vận động</option>
-            <option value="1.375">Nhẹ (1-3 buổi/tuần)</option>
-            <option value="1.55" selected>Vừa (3-5 buổi/tuần)</option>
-            <option value="1.725">Nhiều (6-7 buổi/tuần)</option>
-            <option value="1.9">Rất nhiều / lao động nặng</option>
+          <label>Ưu tiên món ăn</label>
+          <select id="preference">
+            <option value="varied" selected>Đa dạng món Việt</option>
+            <option value="vegetarian">Ưu tiên món chay</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Mục đích tham khảo</label>
-          <select id="goal">
-            <option value="lose">Giảm cân</option>
-            <option value="maintain" selected>Duy trì</option>
-            <option value="gain">Tăng cân / Tăng cơ</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Trường hợp cần hỏi chuyên môn</label>
+          <label>Bối cảnh sức khỏe cần lưu ý</label>
           <select id="condition">
             <option value="">Không có / chưa rõ</option>
             <option value="diabetes">Đái tháo đường</option>
@@ -128,10 +112,10 @@ const domain = "dinhduongviet.vn";
             <option value="dyslipidemia">Rối loạn mỡ máu</option>
             <option value="gout">Gout</option>
             <option value="ckd">Bệnh thận mạn</option>
-            <option value="vegetarian">Ăn chay</option>
           </select>
+          <small class="form-help">Lựa chọn này chỉ hiện lời nhắc an toàn, không cá thể hóa món ăn theo bệnh.</small>
         </div>
-        <button class="gen-btn" type="submit">🎲 Tạo khung bữa ăn tham khảo</button>
+        <button class="gen-btn" type="submit">🎲 Gợi ý bữa ăn</button>
       </form>
     </aside>
 
@@ -139,92 +123,13 @@ const domain = "dinhduongviet.vn";
     <div class="result-area" id="result-area">
       <div class="placeholder-text" id="placeholder">
         <div class="big-icon">🍳</div>
-        <p>Điền thông tin bên cạnh và nhấn <strong>"Tạo khung bữa ăn tham khảo"</strong></p>
+        <p>Chọn ưu tiên món ăn bên cạnh để xem gợi ý cho ba bữa chính.</p>
         <p style="font-size:0.85rem;">Nếu có bệnh nền, đang dùng thuốc, đang mang thai, là trẻ em hoặc người cao tuổi, hãy xem kết quả như thông tin tham khảo và hỏi bác sĩ hoặc chuyên gia trước khi đổi chế độ ăn.</p>
       </div>
     </div>
   </div>
 
-  <script>
-    // Extended recipe pool for the planner - references to existing recipes
-    // Organized by meal type with nutrition estimates
-    const MEAL_POOL = {
-      breakfast: [
-        { name: "Phở bò", slug: "pho-bo", cal: 450, pro: 22, fat: 12, carb: 62, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Phở gà", slug: "pho-ga", cal: 400, pro: 20, fat: 10, carb: 58, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Bún thịt nướng", slug: "bun-thit-nuong", cal: 480, pro: 18, fat: 14, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Bún bò Huế", slug: "bun-bo-hue", cal: 460, pro: 22, fat: 12, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Bánh mì thịt", slug: "banh-mi-thit", cal: 350, pro: 16, fat: 12, carb: 46, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Bánh cuốn", slug: "banh-cuon-nhan-thit", cal: 300, pro: 14, fat: 8, carb: 44, tags: ["vietnamese"] },
-        { name: "Cháo gà", slug: "chao-ga", cal: 280, pro: 15, fat: 6, carb: 44, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Hủ tiếu Nam Vang", slug: "hu-tieu-nam-vang", cal: 380, pro: 18, fat: 10, carb: 54, tags: ["vietnamese"] },
-        { name: "Bánh khọt", slug: "banh-khot-vung-tau", cal: 320, pro: 12, fat: 14, carb: 38, tags: ["vietnamese"] },
-        { name: "Bánh tiêu", slug: "banh-tieu-chien", cal: 180, pro: 4, fat: 8, carb: 24, tags: ["vietnamese"] },
-        { name: "Xôi mặn", slug: "xoi-man", cal: 380, pro: 10, fat: 10, carb: 64, tags: ["vietnamese"] },
-        { name: "Bún riêu cua", slug: "bun-rieu-cua", cal: 400, pro: 20, fat: 12, carb: 54, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Mì gõ trứng", slug: "mi-goi-trung", cal: 380, pro: 14, fat: 16, carb: 48, tags: ["vietnamese"] },
-        { name: "Cơm tấm sườn", slug: "com-tam-suon", cal: 520, pro: 24, fat: 16, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Miến lòng", slug: "mien-lon", cal: 340, pro: 16, fat: 10, carb: 48, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-      ],
-      lunch: [
-        { name: "Cơm gà", slug: "com-ga-uc-ga", cal: 500, pro: 28, fat: 14, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Cơm sườn", slug: "com-tam-suon", cal: 520, pro: 24, fat: 16, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Phở bò", slug: "pho-bo", cal: 450, pro: 22, fat: 12, carb: 62, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Bún chả", slug: "bun-cha", cal: 480, pro: 20, fat: 14, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Bún thịt nướng", slug: "bun-thit-nuong", cal: 480, pro: 18, fat: 14, carb: 68, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Bánh tráng trộn", slug: "banh-trang-tron", cal: 320, pro: 8, fat: 14, carb: 42, tags: ["vietnamese"] },
-        { name: "Cơm rang dưa bò", slug: "com-rang-bo", cal: 460, pro: 20, fat: 16, carb: 58, tags: ["vietnamese"] },
-        { name: "Bún bò Huế", slug: "bun-bo-hue", cal: 460, pro: 22, fat: 12, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Mì Quảng", slug: "mi-quang", cal: 440, pro: 18, fat: 14, carb: 58, tags: ["vietnamese"] },
-        { name: "Cơm gạo lứt thịt luộc", slug: "com-gao-lut-luoc", cal: 400, pro: 22, fat: 10, carb: 56, tags: ["healthy"] },
-        { name: "Bún mọc", slug: "bun-moc", cal: 360, pro: 16, fat: 8, carb: 56, tags: ["vietnamese"] },
-        { name: "Bánh đa cua", slug: "banh-da-cua", cal: 420, pro: 20, fat: 12, carb: 56, tags: ["vietnamese"] },
-        { name: "Cơm cà ri gà", slug: "com-ca-ri-ga", cal: 540, pro: 26, fat: 18, carb: 64, tags: ["vietnamese"] },
-        { name: "Bánh mì thịt", slug: "banh-mi-thit", cal: 350, pro: 16, fat: 12, carb: 46, tags: ["vietnamese"], mealContexts: ["dinner-light"] },
-        { name: "Cơm mực xào", slug: "muc-xao", cal: 420, pro: 24, fat: 14, carb: 48, tags: ["seafood"] },
-      ],
-      dinner: [
-        { name: "Cơm trắng + Thịt kho trứng", slug: "thit-kho-trung", cal: 550, pro: 26, fat: 18, carb: 66, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Cá kho tộ", slug: "ca-kho-to", cal: 480, pro: 28, fat: 14, carb: 58, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Cơm trắng + Bò xào cần", slug: "thit-bo-xao-can", cal: 460, pro: 26, fat: 14, carb: 54, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Sườn kho", slug: "suon-kho", cal: 520, pro: 24, fat: 18, carb: 60, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Cá chép kho tương", slug: "ca-chep-kho-tuong", cal: 460, pro: 26, fat: 12, carb: 58, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Bò nướng lá lốt", slug: "thit-bo-nuong-la-lot", cal: 480, pro: 28, fat: 16, carb: 52, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Gà nướng mật ong", slug: "ga-nuong-mat-ong", cal: 520, pro: 30, fat: 16, carb: 56, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Tôm hấp sả", slug: "tom-hap-sa", cal: 400, pro: 26, fat: 8, carb: 54, tags: ["seafood"], mealContexts: ["dinner-light"] },
-        { name: "Cơm trắng + Cá lóc hấp bầu", slug: "ca-loc-hap", cal: 420, pro: 28, fat: 8, carb: 56, tags: ["fish"], mealContexts: ["dinner-light"] },
-        { name: "Cơm trắng + Thịt heo luộc", slug: "thit-heo-luoc", cal: 480, pro: 22, fat: 18, carb: 54, tags: ["vietnamese"] },
-        { name: "Cơm trắng + Rau muống xào + Tàu hủ", slug: "com-rau-muong-dau-huy", cal: 420, pro: 18, fat: 12, carb: 60, tags: ["light"] },
-        { name: "Cơm gạo lứt + Ức gà xào nấm", slug: "com-gao-lut-nam", cal: 380, pro: 28, fat: 8, carb: 48, tags: ["healthy"], mealContexts: ["dinner-light"] },
-        { name: "Cơm trắng + Canh chua cá", slug: "canh-chua-ca", cal: 440, pro: 24, fat: 10, carb: 60, tags: ["vietnamese","soup"], mealContexts: ["dinner-light"] },
-        { name: "Cơm trắng + Đậu phụ sốt cà", slug: "dau-phu-sot-ca-chua", cal: 380, pro: 18, fat: 12, carb: 52, tags: ["vegetarian"], mealContexts: ["dinner-light"] },
-        { name: "Bún chả", slug: "bun-cha", cal: 480, pro: 20, fat: 14, carb: 64, tags: ["vietnamese"], mealContexts: ["dinner-heavy"] },
-        { name: "Cơm trắng + Canh rau ngót", slug: "canh-rau-ngot-thit-bam", cal: 400, pro: 20, fat: 10, carb: 58, tags: ["vietnamese","soup"], mealContexts: ["dinner-light"] },
-        { name: "Cơm trắng + Canh bí đỏ thịt băm", slug: "canh-bi-do-thit-bam", cal: 420, pro: 20, fat: 12, carb: 56, tags: ["vietnamese","soup"], mealContexts: ["dinner-light"] },
-        { name: "Cơm trắng + Nem rán", slug: "nem-ran", cal: 500, pro: 22, fat: 20, carb: 58, tags: ["vietnamese"] },
-      ],
-      soup: [
-        { name: "Canh rau ngót thịt băm", slug: "canh-rau-ngot-thit-bam", cal: 80, pro: 6, fat: 3, carb: 8, tags: ["soup"] },
-        { name: "Canh bí đỏ thịt băm", slug: "canh-bi-do-thit-bam", cal: 90, pro: 5, fat: 3, carb: 12, tags: ["soup"] },
-        { name: "Canh chua cá", slug: "canh-chua-ca", cal: 120, pro: 10, fat: 4, carb: 12, tags: ["soup"] },
-        { name: "Canh rau đền thịt băm", slug: "canh-rau-den-thit-bam", cal: 70, pro: 5, fat: 2, carb: 8, tags: ["soup"] },
-        { name: "Canh mồng tơi cua", slug: "canh-mong-toi-cua", cal: 80, pro: 6, fat: 2, carb: 10, tags: ["soup"] },
-        { name: "Canh mướp tôm", slug: "canh-muop-huong-tom", cal: 60, pro: 4, fat: 1, carb: 8, tags: ["soup"] },
-        { name: "Canh bí xanh tôm khô", slug: "canh-bi-xanh-tom-kho", cal: 65, pro: 5, fat: 1, carb: 9, tags: ["soup"] },
-        { name: "Canh tôm rong biển", slug: "canh-tom-rong-bien", cal: 70, pro: 6, fat: 1, carb: 8, tags: ["soup"] },
-        { name: "Canh chay rau củ", slug: "canh-chay-rau-cu", cal: 50, pro: 2, fat: 1, carb: 9, tags: ["soup","vegetarian"] },
-      ],
-      dessert: [
-        { name: "Chè đậu xanh", slug: "che-dau-xanh", cal: 180, pro: 4, fat: 2, carb: 38, tags: ["dessert"] },
-        { name: "Chè ba ba", slug: "che-ba-ba-moi", cal: 220, pro: 3, fat: 6, carb: 40, tags: ["dessert"] },
-        { name: "Chè đậu đen", slug: "che-dau-den-moi", cal: 200, pro: 5, fat: 3, carb: 38, tags: ["dessert"] },
-        { name: "Sinh tố bơ", slug: "sinh-to-bo-v2", cal: 200, pro: 3, fat: 12, carb: 22, tags: ["drink"] },
-        { name: "Sinh tố dưa hấu", slug: "sinh-to-dua", cal: 120, pro: 1, fat: 0, carb: 28, tags: ["drink"] },
-        { name: "Trái cây tươi", slug: "trai-cay-tuoi", cal: 80, pro: 1, fat: 0, carb: 20, tags: ["fruit"] },
-      ]
-    };
-
-    // Safety notes only. These flags no longer personalize disease treatment output.
+  <script is:inline define:vars={{ mealPlanRecipes }}>
     const CONDITION_NOTES = {
       diabetes: {
         title: "Có đái tháo đường hoặc rối loạn đường huyết",
@@ -248,111 +153,60 @@ const domain = "dinhduongviet.vn";
       },
       vegetarian: {
         title: "Ăn chay hoặc hạn chế thịt cá",
-        advice: "Nên kiểm tra lại nguồn đạm, vitamin và khoáng chất nếu bạn theo chế độ ăn này lâu dài."
+        advice: "Danh sách ưu tiên các món được gắn nhãn chay trong thư viện; hãy kiểm tra nguyên liệu, nước dùng và gia vị thực tế."
       }
     };
 
-    // Only keep preference-style filtering for vegetarian. Disease flags show safety notes only.
-    function filterMeal(pool, condition) {
-      if (condition === "vegetarian") {
-        return pool.filter(m => !["pho-bo","banh-mi-thit","bun-cha","thit-kho-trung","ca-kho-to",
-          "thit-bo-xao-can","suon-kho","ca-chep-kho-tuong","thit-bo-nuong-la-lot",
-          "ga-nuong-mat-ong","thit-heo-luoc","com-rau-muong-dau-huy","com-gao-lut-luoc",
-          "canh-rau-ngot-thit-bam","canh-bi-do-thit-bam","bun-rieu-cua","com-hen",
-          "chao-long","canh-chua-ca","tom-hap-sa","ca-loc-hap","muc-xao",
-          "canh-rau-den-thit-bam","canh-mong-toi-cua","canh-muop-huong-tom",
-          "canh-bi-xanh-tom-kho","canh-tom-rong-bien","bun-bo-hue","pho-ga","bun-moc","banh-da-cua",
-          "com-tam-suon","banh-trang-tron","bun-rieu-cua","banh-cuon"].includes(m.slug));
-      }
-      return pool;
+    function classifyMeal(recipe) {
+      const name = `${recipe.name} ${(recipe.tags || []).join(" ")}`.toLocaleLowerCase("vi");
+      if (["chè", "sinh tố", "tráng miệng", "trái cây", "sữa chua", "yaourt"].some((term) => name.includes(term))) return "snack";
+      if (["phở", "bún", "cháo", "bánh mì", "xôi", "bánh cuốn", "bánh ướt", "bánh bao", "hủ tiếu"].some((term) => name.includes(term))) return "breakfast";
+      if ((recipe.mealContexts || []).includes("dinner-heavy") || (recipe.mealContexts || []).includes("communal")) return "lunch";
+      if ((recipe.mealContexts || []).includes("dinner-light") || ["canh", "súp", "lẩu"].some((term) => name.includes(term))) return "dinner";
+      return "lunch";
     }
 
-    function isDinnerPreferred(meal) {
-      if (!meal) return false;
-      const mealContexts = meal.mealContexts || [];
-      if (mealContexts.includes("communal") || mealContexts.includes("dinner-heavy")) return false;
-      if (mealContexts.includes("dinner-light")) return true;
-      if (meal.cal > 500) return false;
-      if (meal.fat > 16) return false;
-      if (["nem-ran", "bun-cha", "suon-kho", "ga-nuong-mat-ong"].includes(meal.slug)) return false;
-      return true;
+    function filterMeal(pool, preference) {
+      if (preference !== "vegetarian") return pool;
+      return pool.filter((recipe) => (recipe.tags || []).some((tag) => tag === "vegan" || tag === "vegetarian"));
     }
 
-    // Generate meal plan
+    const mealTypes = [
+      { type: "breakfast", label: "🍳 Bữa sáng" },
+      { type: "lunch", label: "🍚 Bữa trưa" },
+      { type: "dinner", label: "🍜 Bữa tối" },
+    ];
+
+    function pickMeal(pool, usedSlugs) {
+      const available = pool.filter((recipe) => !usedSlugs.has(recipe.slug));
+      if (!available.length) return null;
+      return available[Math.floor(Math.random() * available.length)];
+    }
+
     function generatePlan(data) {
-      const { age, sex, weight, height, activity, goal, condition } = data;
-      const actVal = parseFloat(activity);
-
-      // BMR (Mifflin-St Jeor)
-      let bmr;
-      if (sex === "male") {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-      } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-      }
-      let tdee = Math.round(bmr * actVal);
-
-      // Calorie target based on goal
-      let calTarget;
-      if (goal === "lose") calTarget = Math.round(tdee * 0.8);
-      else if (goal === "gain") calTarget = Math.round(tdee * 1.15);
-      else calTarget = tdee;
-
-      // Macro split
-      let proteinPct = 0.25, fatPct = 0.25, carbPct = 0.50;
-      if (goal === "gain") { proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45; }
-      else if (goal === "lose") { proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45; }
-      const proteinG = Math.round((calTarget * proteinPct) / 4);
-      const fatG = Math.round((calTarget * fatPct) / 9);
-      const carbG = Math.round((calTarget * carbPct) / 4);
-
-      // Distribute calories across meals
-      const mealRatio = { breakfast: 0.25, lunch: 0.35, dinner: 0.30, snack: 0.10 };
-      const target = (meal, calTarget) => Math.round(calTarget * mealRatio[meal]);
-
-      // Pick meals
-      const breakfastPool = filterMeal(MEAL_POOL.breakfast, condition);
-      const lunchPool = filterMeal(MEAL_POOL.lunch, condition);
-      const dinnerBasePool = filterMeal(MEAL_POOL.dinner, condition);
-      const dinnerPool = dinnerBasePool.filter(isDinnerPreferred).length >= 6
-        ? dinnerBasePool.filter(isDinnerPreferred)
-        : dinnerBasePool;
-      const soupPool = filterMeal(MEAL_POOL.soup, condition);
-      const dessertPool = filterMeal(MEAL_POOL.dessert, condition);
-
-      const bTarget = target("breakfast", calTarget);
-      const lTarget = target("lunch", calTarget);
-      const dTarget = target("dinner", calTarget);
-
-      // Pick closest match for calories
-      function pickClosest(pool, targetCal, excludeSlug) {
-        if (pool.length === 0) return null;
-        let sorted = [...pool].sort((a, b) => Math.abs(a.cal - targetCal) - Math.abs(b.cal - targetCal));
-        if (excludeSlug) sorted = sorted.filter(m => m.slug !== excludeSlug);
-        return sorted[0] || sorted.length > 0 ? sorted[0] : null;
-      }
-
-      const breakfast = pickClosest(breakfastPool, bTarget);
-      const lunch = pickClosest(lunchPool, lTarget);
-      // For dinner, if condition, recommend a soup too
-      let dinner = pickClosest(dinnerPool, dTarget);
-      const soup = condition && condition !== "" && soupPool.length > 0 ? pickClosest(soupPool, 80) : null;
-      const dessert = goal === "maintain" ? pickClosest(dessertPool, 150) : null;
-
-      // Recalculate actual totals
-      let actualCal = 0, actualPro = 0, actualFat = 0, actualCarb = 0;
-      const meals = [];
-      if (breakfast) { meals.push({ type: "breakfast", label: "🍳 Bữa sáng", meal: breakfast }); actualCal += breakfast.cal; actualPro += breakfast.pro; actualFat += breakfast.fat; actualCarb += breakfast.carb; }
-      if (lunch) { meals.push({ type: "lunch", label: "🍚 Bữa trưa", meal: lunch }); actualCal += lunch.cal; actualPro += lunch.pro; actualFat += lunch.fat; actualCarb += lunch.carb; }
-      if (dinner) { meals.push({ type: "dinner", label: "🍜 Bữa tối", meal: dinner }); actualCal += dinner.cal; actualPro += dinner.pro; actualFat += dinner.fat; actualCarb += dinner.carb; }
-      if (soup) { meals.push({ type: "soup", label: "🥣 Canh kèm", meal: soup }); actualCal += soup.cal; actualPro += soup.pro; actualFat += soup.fat; actualCarb += soup.carb; }
-      if (dessert) { meals.push({ type: "dessert", label: "🍨 Tráng miệng", meal: dessert }); actualCal += dessert.cal; actualPro += dessert.pro; actualFat += dessert.fat; actualCarb += dessert.carb; }
+      const { preference, condition } = data;
+      const usedSlugs = new Set();
+      const vegetarianPool = mealPlanRecipes.filter((recipe) =>
+        (recipe.tags || []).some((tag) => tag === "vegan" || tag === "vegetarian"),
+      );
+      const meals = mealTypes.flatMap(({ type, label }) => {
+        let pool = filterMeal(mealPlanRecipes.filter((recipe) => classifyMeal(recipe) === type), preference);
+        if (preference === "vegetarian" && pool.length === 0) pool = vegetarianPool;
+        const meal = pickMeal(pool, usedSlugs);
+        if (!meal) return [];
+        usedSlugs.add(meal.slug);
+        return [{ type, label, meal }];
+      });
 
       return {
-        meta: { calTarget, tdee, bmr, proteinG, fatG, carbG, condition },
         meals,
-        actualCal, actualPro, actualFat, actualCarb,
-        conditionInfo: condition && condition !== "" ? CONDITION_NOTES[condition] || null : null
+        actualCal: meals.reduce((sum, item) => sum + item.meal.kcal, 0),
+        actualPro: Math.round(meals.reduce((sum, item) => sum + item.meal.protein, 0) * 10) / 10,
+        actualFat: Math.round(meals.reduce((sum, item) => sum + item.meal.fat, 0) * 10) / 10,
+        actualCarb: Math.round(meals.reduce((sum, item) => sum + item.meal.carb, 0) * 10) / 10,
+        conditionInfo: condition
+          ? CONDITION_NOTES[condition] || null
+          : preference === "vegetarian" ? CONDITION_NOTES.vegetarian : null,
       };
     }
 
@@ -362,7 +216,7 @@ const domain = "dinhduongviet.vn";
       const proteinPct = plan.actualCal > 0 ? Math.round((plan.actualPro * 4 / plan.actualCal) * 100) : 0;
       const fatPct = plan.actualCal > 0 ? Math.round((plan.actualFat * 9 / plan.actualCal) * 100) : 0;
       const carbPct = plan.actualCal > 0 ? Math.round((plan.actualCarb * 4 / plan.actualCal) * 100) : 0;
-      const mealTagLabels = { breakfast: "Sáng", lunch: "Trưa", dinner: "Tối", soup: "Canh", dessert: "Tráng miệng" };
+      const mealTagLabels = { breakfast: "Sáng", lunch: "Trưa", dinner: "Tối" };
       const frag = document.createDocumentFragment();
 
       function make(tag, className, text) {
@@ -370,6 +224,13 @@ const domain = "dinhduongviet.vn";
         if (className) node.className = className;
         if (text != null) node.textContent = text;
         return node;
+      }
+
+      if (!plan.meals.length) {
+        const empty = make("div", "meal-plan-card", "Chưa có đủ món trong thư viện phù hợp với lựa chọn này. Hãy thử chế độ món đa dạng.");
+        empty.setAttribute("role", "status");
+        area.replaceChildren(empty);
+        return;
       }
 
       if (plan.conditionInfo) {
@@ -402,16 +263,17 @@ const domain = "dinhduongviet.vn";
         title.appendChild(link);
         left.appendChild(badge);
         left.appendChild(title);
-        const cal = make("div", "cal-summary", `~${m.meal.cal} kcal tham khảo`);
+        const sourceQuality = m.meal.confidence === "high" ? "giá trị tham khảo" : "công thức ước tính";
+        const cal = make("div", "cal-summary", `~${m.meal.kcal} kcal · ${sourceQuality}`);
         header.appendChild(left);
         header.appendChild(cal);
         card.appendChild(header);
 
         const list = make("ul", "meal-items");
         [
-          ["Đạm", `${m.meal.pro}g`],
-          ["Chất béo", `${m.meal.fat}g`],
-          ["Carb", `${m.meal.carb}g`],
+          ["Đạm", `${m.meal.protein} g`],
+          ["Chất béo", `${m.meal.fat} g`],
+          ["Carbohydrate", `${m.meal.carb} g`],
         ].forEach(([label, value]) => {
           const li = make("li", "");
           li.appendChild(make("span", "", label));
@@ -424,11 +286,12 @@ const domain = "dinhduongviet.vn";
 
       const summaryCard = make("div", "meal-plan-card");
       summaryCard.appendChild(make("h3", "", "📊 Tổng kết tham khảo"));
+      summaryCard.appendChild(make("p", "", "Tỷ lệ năng lượng ước tính từ các món được gợi ý (không phải mục tiêu cá nhân):"));
       const disclaimer = make("p", "");
       disclaimer.style.fontSize = "0.85rem";
       disclaimer.style.color = "var(--ink-secondary)";
       disclaimer.style.marginTop = "0";
-      disclaimer.textContent = "Các con số dưới đây chỉ để tham khảo từ thông tin bạn nhập. Không dùng như chỉ tiêu cá nhân để tự quyết định việc dùng thuốc hoặc chế độ theo dõi hiện tại.";
+      disclaimer.textContent = "Đây là tổng giá trị của các khẩu phần mẫu được chọn từ thư viện món ăn; lượng ăn, nguyên liệu và cách nấu thực tế có thể khác. Không phải mục tiêu kcal hoặc macro cá nhân.";
       summaryCard.appendChild(disclaimer);
 
       const summaryRow = make("div", "summary-row");
@@ -474,7 +337,7 @@ const domain = "dinhduongviet.vn";
       est.style.marginTop = "10px";
       est.style.fontSize = "0.82rem";
       est.style.color = "var(--ink-secondary)";
-      est.textContent = `Ước tính tham khảo từ thông tin đã nhập: khoảng ${plan.meta.calTarget} kcal/ngày, đạm ${plan.meta.proteinG}g, béo ${plan.meta.fatG}g, carb ${plan.meta.carbG}g.`;
+      est.textContent = "Bạn có thể tạo lại để xem các gợi ý món khác; hãy kiểm tra dị ứng, khẩu phần và cách chế biến trước khi áp dụng.";
       summaryCard.appendChild(est);
 
       const safetyTitle = make("h3", "");
@@ -514,12 +377,7 @@ const domain = "dinhduongviet.vn";
     document.getElementById("profile-form").addEventListener("submit", function(e) {
       e.preventDefault();
       const data = {
-        age: parseInt(document.getElementById("age").value),
-        sex: document.getElementById("sex").value,
-        weight: parseFloat(document.getElementById("weight").value),
-        height: parseFloat(document.getElementById("height").value),
-        activity: document.getElementById("activity").value,
-        goal: document.getElementById("goal").value,
+        preference: document.getElementById("preference").value,
         condition: document.getElementById("condition").value,
       };
       const plan = generatePlan(data);
@@ -531,18 +389,9 @@ const domain = "dinhduongviet.vn";
       // Parse URL params (from Khẩu Phần Việt Clinical link)
       var p = new URLSearchParams(window.location.search);
       var initData = {
-        age: parseInt(document.getElementById("age").value),
-        sex: document.getElementById("sex").value,
-        weight: parseFloat(document.getElementById("weight").value),
-        height: parseFloat(document.getElementById("height").value),
-        activity: document.getElementById("activity").value,
-        goal: document.getElementById("goal").value,
+        preference: document.getElementById("preference").value,
         condition: document.getElementById("condition").value,
       };
-      if (p.get('w')) { initData.weight = parseFloat(p.get('w')); document.getElementById('weight').value = initData.weight; }
-      if (p.get('age')) { initData.age = parseInt(p.get('age')); document.getElementById('age').value = initData.age; }
-      if (p.get('sex')) { initData.sex = p.get('sex'); document.getElementById('sex').value = initData.sex; }
-      if (p.get('act')) { initData.activity = p.get('act'); document.getElementById('activity').value = initData.activity; }
       if (p.get('dis')) {
         var disMap = { tieuDuong:'diabetes', tangHuyetAp:'hypertension', gout:'gout', thanMan:'ckd', ganNhiemMo:'dyslipidemia' };
         var dis = p.get('dis').split(',')[0];

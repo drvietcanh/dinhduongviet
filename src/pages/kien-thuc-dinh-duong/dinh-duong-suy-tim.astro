@@ -1,95 +1,59 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
+
 const art = articleBySlug["dinh-duong-suy-tim"];
 if (!art) throw new Error("Article not found: dinh-duong-suy-tim");
 ---
 
 <ArticleLayout article={art}>
-
-<section class="section card">
-  <p>Bác Đạo, 65 tuổi, từng nhồi máu cơ tim, giờ bị suy tim độ II. Bác thường xuyên phù chân, khó thở khi đi bộ, nhất là những hôm ăn mặn. Bác bảo: "Tôi biết phải ăn nhạt, nhưng không biết bao nhiêu là vừa."</p>
-  <p>Suy tim là bệnh mạn tính, tim bơm máu yếu dần. Dinh dưỡng đúng giúp giảm triệu chứng, giảm nhập viện, cải thiện chất lượng sống. 3 điều quan trọng nhất: hạn chế muối, hạn chế dịch, theo dõi cân nặng hàng ngày.</p>
-</section>
-
-<section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
-  <p style="font-size:1.05rem;margin:0;">
-    <strong>👉 Người suy tim cần <u>giảm muối (&lt;4g, nếu nặng &lt;2g)</u>, <u>hạn chế dịch 1.5–2 lít/ngày</u>,
-    <u>cân nặng mỗi sáng</u> (tăng &gt;2kg trong 2–3 ngày = dư dịch — báo bác sĩ ngay),
-    <u>không tự ý bổ sung kali</u> nếu đang dùng thuốc ức chế men chuyển (ACE).</strong>
-  </p>
-</section>
-
-<section class="section card">
-  <h2>🔬 Vì sao muối nguy hiểm với suy tim?</h2>
-  <p>Muối giữ nước trong cơ thể. Khi tim yếu, nước tích tụ gây phù chân, phù phổi — khó thở. Mỗi gram muối giữ thêm ~200ml nước. Giảm muối từ 9g xuống 4g/ngày có thể giảm tới 1 lít dịch thừa trong cơ thể — tương đương tác dụng của thuốc lợi tiểu liều nhẹ.</p>
-</section>
-
-<section class="section grid two">
-  <div class="card">
-    <h2>✅ Thực phẩm nên ăn</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li>Rau trái tươi — ít muối, giàu kali/magie</li>
-      <li>Thịt nạc, cá hấp/luộc, ức gà — đạm 1–1.2g/kg</li>
-      <li>Khoai lang, bí đao, chuối — giàu kali (nếu không dùng ACE)</li>
-      <li>Hành, tỏi, ớt, tiêu, chanh — tạo vị thay muối</li>
-      <li>Ngũ cốc nguyên hạt: yến mạch, gạo lứt</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h2>❌ Thực phẩm cần tránh</h2>
-    <ul style="line-height:1.8;padding-left:18px;">
-      <li>⛔ Nước mắm, muối chấm, bột canh, hạt nêm</li>
-      <li>⛔ Đồ hộp, thực phẩm chế biến sẵn, snack mặn</li>
-      <li>⛔ Bánh mì (nhiều muối), nước tương, mì gói</li>
-      <li>⛔ Rượu bia — nên tránh nếu suy tim liên quan rượu hoặc bác sĩ đã dặn kiêng</li>
-      <li>⚠️ Cà phê &gt;2 tách/ngày</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section card">
-  <h2>📏 Hướng dẫn muối & dịch</h2>
-  <table class="table"><thead><tr><th>Mức độ suy tim</th><th>Muối/ngày</th><th>Dịch/ngày</th><th>Giám sát</th></tr></thead><tbody>
-    <tr><td>Suy tim nhẹ (NYHA I–II)</td><td>&lt;4g</td><td>2 lít</td><td>Cân mỗi sáng</td></tr>
-    <tr><td>Suy tim nặng (NYHA III–IV)</td><td>&lt;2g</td><td>1.5 lít</td><td>Cân mỗi sáng + báo BS nếu tăng &gt;1.5kg/ngày</td></tr>
-  </tbody></table>
-  <p class="muted" style="margin-top:8px;">💡 Mẹo: Tổng dịch bao gồm cả nước, canh, cháo, sữa, trái cây nhiều nước. Ghi chép lại nếu khó nhớ.</p>
-</section>
-
-<section class="section card">
-  <h2>🍽️ Thực đơn gợi ý 1 ngày (~1.5 lít, 2g muối)</h2>
-  <table class="table"><thead><tr><th>Bữa</th><th>Món</th></tr></thead><tbody>
-    <tr><td>🌅 Sáng</td><td>Cháo yến mạch nấm rơm + sữa tách béo 100ml</td></tr>
-    <tr><td>🌞 Phụ</td><td>1 quả táo hoặc lê</td></tr>
-    <tr><td>🌞 Trưa</td><td>Cơm vừa + cá hấp + canh bí đao nấm rơm (không muối) + 1 chuối</td></tr>
-    <tr><td>🌆 Phụ</td><td>1 lát đu đủ chín</td></tr>
-    <tr><td>🌙 Tối</td><td>Cơm vừa + ức gà luộc xé + rau cải luộc</td></tr>
-  </tbody></table>
-</section>
-
-<section class="section card">
-  <h2>💡 Mẹo & Khi nào cần khám</h2>
-  <div class="grid two" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div>
-      <h4>✅ Mẹo</h4>
-      <ul style="line-height:1.8;padding-left:18px;">
-        <li>Cân mỗi sáng sau đi vệ sinh — ghi vào sổ.</li>
-        <li>Không thêm mắm muối khi ăn, chỉ dùng 1 thìa nước mắm nhạt/cả bữa.</li>
-        <li>Hành tỏi ớt tiêu chanh — gia vị thay muối.</li>
-        <li>Không tự ý bỏ hoặc thay đổi liều thuốc lợi tiểu.</li>
+  <div class="article-content">
+    <div class="summary-box">
+      <h2>Điều quan trọng trong ăn uống khi suy tim</h2>
+      <ul>
+        <li>Hạn chế natri dư thừa từ nước chấm, món chế biến sẵn và bữa ăn ngoài; mức mục tiêu nên theo kế hoạch của nhóm điều trị, không tự ép thật nhạt.</li>
+        <li>Không phải ai suy tim cũng cần hạn chế dịch. Chỉ đặt giới hạn khi bác sĩ/dược sĩ điều trị hướng dẫn; đừng tự uống thật ít hoặc tự truyền dịch.</li>
+        <li>Theo dõi cân nặng và triệu chứng theo kế hoạch cá nhân; không tự tăng/giảm thuốc lợi tiểu hay thuốc tim mạch vì phù hoặc cân tăng.</li>
       </ul>
     </div>
-    <div>
-      <h4>🚨 Khám ngay</h4>
-      <ul style="line-height:1.8;padding-left:18px;">
-        <li>Tăng &gt;2kg trong 2–3 ngày — dư dịch nặng.</li>
-        <li>Khó thở khi nằm, phải ngồi mới thở được.</li>
-        <li>Phù chân lên tới đùi, bụng to.</li>
-        <li>Tim đập nhanh, huyết áp thấp.</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
+    <p class="medical-note"><strong>Lưu ý:</strong> Suy tim có nhiều mức độ và bệnh đi kèm. Khẩu phần natri, lượng dịch, kali, đạm và năng lượng có thể khác nhau theo triệu chứng, xét nghiệm, chức năng thận và thuốc. Hướng dẫn của bác sĩ đang điều trị được ưu tiên hơn một bảng thực đơn chung.</p>
+
+    <h2>Chọn món thế nào cho bữa cơm Việt?</h2>
+    <ul>
+      <li>Ăn đa dạng rau/củ, trái cây nguyên quả, ngũ cốc, cá, trứng, thịt nạc, đậu và sữa phù hợp sức khỏe; không tự loại bỏ cả nhóm thực phẩm.</li>
+      <li>Giảm natri dư bằng cách nêm nhạt dần, để nước mắm/nước tương riêng, bớt nước chan và so sánh nhãn mì gói, đồ hộp, xúc xích, chả, dưa muối, thức ăn chế biến sẵn.</li>
+      <li>Không cần cấm tuyệt đối một món như bánh mì, nước mắm hay cà phê cho mọi người. Quan tâm khẩu phần, lượng natri thực tế và tác động của món ăn lên triệu chứng/cân nặng.</li>
+      <li>Không tự dùng muối “ăn kiêng” chứa kali hoặc viên kali. Một số thuốc tim/thận làm thay đổi kali máu; chỉ bổ sung hay hạn chế khi được hướng dẫn dựa trên thuốc và xét nghiệm.</li>
+      <li>Ăn đủ năng lượng và đạm theo tình trạng dinh dưỡng. Người suy tim kèm suy thận, sụt cân hoặc mất cơ cần được chuyên gia dinh dưỡng/bác sĩ lập kế hoạch riêng, không áp một mức g/kg cho tất cả.</li>
+    </ul>
+
+    <h2>Muối và dịch: đừng tự lấy mức của người khác</h2>
+    <p>Hướng dẫn AHA/ACC/HFSA khuyên người suy tim có triệu chứng tránh ăn natri quá nhiều để giảm sung huyết; hướng dẫn đó không đưa ra một ngưỡng natri cứng duy nhất áp dụng cho mọi người. Việc có cần giới hạn nước hay không phụ thuộc vào triệu chứng, natri máu, chức năng thận, thuốc lợi tiểu và kế hoạch điều trị.</p>
+    <p>Nếu được dặn theo dõi lượng dịch, hỏi rõ những gì phải tính vào tổng ngày — thường gồm nước uống và các thức uống lỏng như canh, sữa, cháo loãng; cách tính thực phẩm nhiều nước có thể khác giữa các kế hoạch. Trời nóng, sốt, nôn hoặc tiêu chảy cần báo đội ngũ điều trị nếu bạn đang bị giới hạn dịch.</p>
+
+    <h2>Theo dõi cân nặng và biết khi nào cần gọi</h2>
+    <p>Nếu được hướng dẫn, cân mỗi sáng sau khi đi tiểu, trước ăn sáng, cùng một cân và điều kiện quần áo tương tự; ghi cả phù chân, khó thở khi nằm và lượng tiểu bất thường. Dùng ngưỡng báo tăng cân mà phòng khám đã thống nhất — không tự đổi liều lợi tiểu.</p>
+    <p>Gọi cơ sở điều trị khi cân tăng nhanh theo ngưỡng cá nhân, phù/khó thở tăng hoặc phải kê thêm gối để ngủ. Khó thở dữ dội lúc nghỉ, đau ngực, ngất, tím tái hoặc lú lẫn cần cấp cứu.</p>
+
+    <h2>Gợi ý bữa ăn — không ấn định gam muối hoặc lít nước</h2>
+    <p>Có thể chọn cháo/yến mạch, trứng hoặc sữa phù hợp vào buổi sáng; cơm vừa, cá/thịt/đậu và rau ở bữa chính; trái cây nguyên quả hoặc sữa chua làm bữa phụ. Nêm món theo mức natri của kế hoạch riêng, đồng thời điều chỉnh lượng canh/thức uống nếu đội ngũ điều trị đã dặn giới hạn dịch.</p>
+    <p>Đọc thêm: <a href="/kien-thuc-dinh-duong/suy-tim-can-nang-muoi-dich">Suy tim bị phù hoặc tăng cân nhanh: theo dõi natri, dịch và dấu hiệu cần gọi bác sĩ</a>.</p>
+
+    <h2>Nguồn tham khảo</h2>
+    <ul class="source-list">
+      <li><a href="https://professional.heart.org/-/media/832EA0F4E73948848612F228F7FA2D35.pdf" rel="noopener noreferrer">AHA/ACC/HFSA — 2022 Guideline for the Management of Heart Failure</a>: khuyến nghị tránh lượng natri quá mức ở suy tim có triệu chứng; không ấn định một ngưỡng duy nhất cho mọi người.</li>
+      <li><a href="https://www.heart.org/en/health-topics/heart-failure/treatment-options-for-heart-failure/lifestyle-changes-for-heart-failure" rel="noopener noreferrer">American Heart Association — Lifestyle Changes for Heart Failure</a>: cân hằng ngày, trao đổi về lượng dịch phù hợp và lựa chọn ăn uống có lợi cho tim.</li>
+    </ul>
+  </div>
 </ArticleLayout>
+
+<style>
+  .article-content { color: var(--text-color); line-height: 1.8; }
+  .article-content h2 { margin-top: 2rem; color: var(--primary); }
+  .summary-box, .medical-note { margin: 1.25rem 0; padding: 1rem 1.2rem; border-radius: 12px; }
+  .summary-box { background: var(--bg-soft); border: 1px solid var(--border-color); }
+  .summary-box h2 { margin-top: 0; }
+  .medical-note { border-left: 4px solid var(--primary); background: var(--bg-soft); }
+  .source-list a { color: var(--primary); font-weight: 650; }
+</style>

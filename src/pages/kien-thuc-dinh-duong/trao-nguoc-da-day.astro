@@ -6,6 +6,7 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
 ---
 
 <ArticleLayout article={art}>
+<div class="article-wrapper">
 <section class="section intro-card">
       <p><strong>Bài này phù hợp khi:</strong> bạn nổi bật các triệu chứng ợ nóng, ợ chua, nóng rát sau xương ức hoặc khó chịu tăng lên sau bữa tối và khi nằm xuống.</p>
       <p><strong>Đây là bài nền đầy đủ của cụm trào ngược:</strong> nếu bạn chỉ cần bản rút gọn vài phút, xem <a href="/kien-thuc-dinh-duong/dinh-duong-da-day-trao-nguoc">tóm tắt nhanh GERD</a>. Nếu triệu chứng chủ yếu xảy ra về đêm, xem thêm <a href="/kien-thuc-dinh-duong/trao-nguoc-ban-dem">checklist ban đêm</a> và <a href="/kien-thuc-dinh-duong/trao-nguoc-da-day-ban-dem-an-gi">gợi ý bữa tối</a>.</p>
@@ -136,7 +137,7 @@ if (!art) throw new Error("Article not found: trao-nguoc-da-day");
       <a href="/thuc-pham" class="cta-btn cta-alt">🥬 Tra thực phẩm</a>
     </div>
   </div>
-</BaseLayout>
+</ArticleLayout>
 
 <style>
 .article-wrapper { max-width: 740px; margin: 0 auto; }
@@ -171,4 +172,3 @@ p, li { line-height:1.7; }
 @media (max-width:700px) { .two-col { grid-template-columns:1fr; } .avoid-grid { grid-template-columns:1fr 1fr; } }
 @media (max-width:500px) { .avoid-grid { grid-template-columns:1fr; } }
 </style>
-</ArticleLayout>

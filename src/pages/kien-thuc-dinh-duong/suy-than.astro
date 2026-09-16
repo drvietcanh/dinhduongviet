@@ -1,7 +1,6 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import { articleBySlug } from "../../data/articles";
-import DietMealPlan from "../../components/DietMealPlan.astro";
 const art = articleBySlug["suy-than"];
 if (!art) throw new Error("Article not found: suy-than");
 ---
@@ -10,81 +9,75 @@ if (!art) throw new Error("Article not found: suy-than");
 
 <!-- 1️⃣ Tình huống -->
 <section class="section card">
-  <p>Ông Đức, 62 tuổi, phát hiện bệnh thận mạn giai đoạn 3 cách đây 2 năm. Từ đó ông kiêng gần như mọi thứ: sợ ăn thịt vì sợ đạm, sợ ăn cam vì sợ kali, cơm cũng chỉ dám ăn nửa bát. Kết quả là ông sụt 8kg trong 3 tháng, người lúc nào cũng mệt. Bác sĩ nói: "Chế độ ăn của bác đang hại thận hơn là giúp thận".</p>
-  <p>Chuyện của ông Đức không hiếm. Người bệnh thận mạn chưa lọc máu thường rơi vào hai thái cực: hoặc kiêng quá mức dẫn tới suy dinh dưỡng, hoặc ăn uống vô tội vạ làm bệnh nặng thêm. Bài này giúp bạn tìm được điểm cân bằng.</p>
+  <p>Ông Đức, 62 tuổi, mắc bệnh thận mạn giai đoạn 3 và đã tự bỏ nhiều món vì lo đạm, kali, phốt pho. Sau vài tháng, ông sụt cân và yếu hơn. Đây là tình huống minh họa: sụt cân không chủ ý cần được đánh giá, còn kế hoạch ăn phải cân bằng giữa chức năng thận, xét nghiệm, bệnh đi kèm và nguy cơ suy dinh dưỡng.</p>
+  <p>Người bệnh thận mạn chưa lọc máu không cần tự áp một danh sách cấm chung. Mục tiêu là khẩu phần đủ năng lượng, có chất lượng và được điều chỉnh có căn cứ.</p>
 </section>
 
 <!-- 2️⃣ TL;DR -->
 <section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
   <p style="font-size:1.05rem;margin:0;">
-    <strong>👉 Người bệnh thận mạn chưa lọc máu cần <u>ăn đạm vừa đủ</u> chứ không phải bỏ đạm, <u>kiểm soát kali và phốt pho</u> theo xét nghiệm máu,
-    và có thể áp dụng <u>ngâm, luộc bỏ nước</u> cho một số rau củ khi được dặn hạn chế kali. Chế độ ăn cần được cá thể hóa theo giai đoạn bệnh.</strong>
+    <strong>👉 Đừng tự cắt đạm, rau quả hoặc sữa chỉ vì mắc CKD. Natri, đạm, kali, phốt pho và dịch cần được xem theo xét nghiệm, thuốc, tình trạng dinh dưỡng và việc có lọc máu hay không; eGFR một mình không quyết định danh sách món ăn.</strong>
   </p>
 </section>
 
 <!-- 3️⃣ Vì sao lại thế? -->
 <section class="section card">
   <h2>🔬 Vì sao bệnh thận mạn phải thay đổi cách ăn?</h2>
-  <p>Thận khỏe có nhiệm vụ lọc máu, loại bỏ chất thải như ure, creatinin và điều chỉnh nước, kali, natri, phốt pho. Khi chức năng thận giảm kéo dài trong bệnh thận mạn, các chất này có thể tích tụ trong máu. Ăn quá nhiều đạm, kali hoặc phốt pho so với giai đoạn bệnh và xét nghiệm có thể làm kiểm soát bệnh khó hơn, vì vậy khẩu phần cần cá thể hóa.</p>
-  <p>Nhưng nếu ăn quá ít — đặc biệt là kiêng đạm thái quá — cơ thể sẽ tự "ăn" cơ bắp để lấy năng lượng, dẫn tới suy mòn, yếu ớt, dễ nhiễm trùng.</p>
+  <p>Thận tham gia cân bằng dịch và các chất điện giải, nhưng rối loạn kali/phốt pho không xảy ra giống nhau ở mọi người. Thuốc, bệnh đi kèm, lượng nước tiểu, thức ăn, xét nghiệm và giai đoạn lọc máu đều có thể ảnh hưởng. Vì vậy, không thể suy ra rằng một món ăn phải kiêng chỉ từ eGFR.</p>
+  <p>Ăn thiếu năng lượng hoặc đạm kéo dài có thể làm giảm khối cơ và tình trạng dinh dưỡng. Với người lớn CKD G3–G5 chưa lọc máu, KDIGO 2024 đưa ra mức đạm tham khảo khoảng 0,8 g/kg/ngày; không tự áp dụng cho trẻ em, thai kỳ, người suy dinh dưỡng/bệnh cấp hoặc người đang lọc máu.</p>
 </section>
 
 <!-- 4️⃣ Ăn gì? -->
 <section class="section grid two">
   <div class="card">
-    <h2>✅ Thực phẩm nên ăn</h2>
+    <h2>✅ Xây bữa ăn đa dạng</h2>
     <ul style="line-height:1.8;padding-left:18px;">
-      <li><strong>Tinh bột ít đạm:</strong> <a href="/thuc-pham/com-trang">Cơm trắng</a>, <a href="/thuc-pham/bun-tuoi">bún</a>, <a href="/thuc-pham/mien-dong">miến</a>, <a href="/thuc-pham/banh-pho-chin">phở</a>, bánh mì, <a href="/thuc-pham/khoai-lang">khoai lang</a> (luộc bỏ nước)</li>
-      <li><strong>Rau củ ít kali:</strong> Bắp cải, su hào, cải thìa, bí xanh — luộc <strong>bỏ nước</strong></li>
-      <li><strong>Đạm chất lượng cao (lượng vừa):</strong> <a href="/thuc-pham/trung-ga">Trứng</a> (lòng trắng), <a href="/thuc-pham/ca-loc">cá lóc nạc</a>, <a href="/thuc-pham/uc-ga">ức gà</a>, <a href="/thuc-pham/dau-phu">đậu phụ</a> (lượng nhỏ)</li>
-      <li><strong>Chất béo:</strong> Dầu thực vật (oliu, mè, hướng dương), mỡ động vật lượng vừa</li>
-      <li><strong>Trái cây ít kali:</strong> <a href="/thuc-pham/tao">Táo</a>, <a href="/thuc-pham/cam">cam</a>, <a href="/thuc-pham/dua-hau">dưa hấu</a>, <a href="/thuc-pham/le">lê</a>, <a href="/thuc-pham/oi">ổi</a>, <a href="/thuc-pham/nho">nho</a> (1 phần nhỏ/ngày)</li>
-      <li><strong>Đồ uống:</strong> Nước lọc tinh khiết, nước đun sôi để nguội</li>
+      <li><strong>Tinh bột:</strong> Cơm, bún, miến, phở, bánh mì hoặc khoai có thể phối hợp theo nhu cầu năng lượng và bệnh đi kèm.</li>
+      <li><strong>Rau và trái cây:</strong> Đa dạng theo khẩu phần. Chỉ điều chỉnh loại/lượng khi xét nghiệm và nhóm điều trị cho thấy cần thiết; không có danh sách chung “ít kali/an toàn”.</li>
+      <li><strong>Nguồn đạm:</strong> Trứng, cá, thịt, sữa và đậu có thể đóng góp vào khẩu phần; tổng lượng được cá thể hóa theo dinh dưỡng, chức năng thận và lọc máu.</li>
+      <li><strong>Chất béo:</strong> Ưu tiên nguồn không bão hòa trong chế độ ăn cân bằng.</li>
+      <li><strong>Đồ uống:</strong> Dùng nước uống an toàn; tổng lượng chỉ cần giới hạn theo phù, lượng nước tiểu, bệnh tim hoặc chỉ định điều trị.</li>
     </ul>
   </div>
 
   <!-- 5️⃣ Kiêng gì? -->
   <div class="card">
-    <h2>❌ Thực phẩm cần hạn chế</h2>
+    <h2>⚠️ Những điểm cần rà soát</h2>
     <ul style="line-height:1.8;padding-left:18px;">
-      <li>Thịt đỏ, nội tạng (gan, lòng, tim), hải sản (đạm cao + phốt pho cao)</li>
-      <li>Chuối, bơ, khoai tây, cà chua, rau ngót, mồng tơi, rau dền (kali cao)</li>
-      <li>Nước ngọt có gas, nước khoáng, trà sữa (phốt pho vô cơ)</li>
-      <li>Đậu đỗ khô (đậu nành, đậu xanh), lạc, hạt điều, hạt dưa</li>
-      <li>Sữa tươi, sữa chua, phô mai (phốt pho + kali cao)</li>
-      <li>Muối, nước mắm, bột ngọt, thực phẩm chế biến sẵn (xúc xích, đồ hộp)</li>
-      <li>Nước dừa, nước ép trái cây (kali cao)</li>
+      <li><strong>Natri:</strong> Giảm món mặn và thực phẩm chế biến nhiều natri; mức tham khảo KDIGO cho nhiều người lớn CKD là dưới 2.000 mg natri/ngày (dưới 5 g muối), trừ khi có chỉ định khác.</li>
+      <li><strong>Kali:</strong> Nếu kali máu cao dai dẳng, chuyên gia sẽ xem cả xét nghiệm, thuốc/chất bổ sung, chất thay muối, khẩu phần và nguyên nhân khác trước khi điều chỉnh món ăn.</li>
+      <li><strong>Phốt pho:</strong> Nếu phốt pho máu cao, chú ý phụ gia phosphate trong một số thực phẩm chế biến; không tự loại bỏ toàn bộ sữa, đậu, hạt hay nguồn đạm.</li>
+      <li><strong>Đạm và thực phẩm bổ sung:</strong> Tránh tự theo chế độ rất giàu đạm hoặc dùng bột đạm/thảo dược “bổ thận” khi chưa hỏi nhóm điều trị.</li>
+      <li><strong>Muối thay thế:</strong> Không tự dùng sản phẩm chứa potassium chloride nếu có CKD hoặc dùng thuốc ảnh hưởng kali; hỏi bác sĩ/dược sĩ.</li>
     </ul>
   </div>
 </section>
 
 <!-- 6️⃣ Ăn bao nhiêu? -->
 <section class="section card">
-  <h2>📏 Ăn bao nhiêu là đủ?</h2>
+  <h2>📏 Mức tham khảo cho người lớn</h2>
   <table class="table" style="margin-top:10px;">
     <thead><tr><th>Chất</th><th>Khuyến nghị</th><th>Hình dung</th></tr></thead>
     <tbody>
-      <tr><td>Đạm (protein)</td><td>Khoảng 0.6–0.8g/kg/ngày ở CKD G3–G5 chưa lọc máu</td><td>Một phần thịt/cá thường cỡ lòng bàn tay, lượng cụ thể cần cá thể hóa</td></tr>
-      <tr><td>Muối (natri)</td><td>&lt; 3g muối/ngày (~1200mg natri)</td><td>Hạn chế nước mắm, không chấm muối</td></tr>
-      <tr><td>Kali</td><td>Theo xét nghiệm máu</td><td>Trái cây: tối đa 1 phần nhỏ/ngày</td></tr>
-      <tr><td>Nước</td><td>500ml + lượng nước tiểu/ngày</td><td>Không uống quá nhiều nếu có phù</td></tr>
-      <tr><td>Tinh bột</td><td>3–4 phần/ngày</td><td>1 phần = 1 bát cơm hoặc tô bún</td></tr>
+      <tr><td>Đạm</td><td>KDIGO 2024 gợi ý khoảng 0,8 g/kg/ngày cho nhiều người lớn CKD G3–G5; tránh lượng rất cao (&gt;1,3 g/kg/ngày) nếu có nguy cơ tiến triển.</td><td>Không tự giảm đạm. Người lọc máu thường cần mức khác; suy dinh dưỡng, bệnh cấp, thai kỳ và trẻ em cần kế hoạch riêng.</td></tr>
+      <tr><td>Natri / muối</td><td>Tham khảo dưới 2.000 mg natri/ngày (dưới 5 g muối).</td><td>Tính cả nước mắm, nước tương, gia vị nêm và thực phẩm đóng gói; hỏi bác sĩ nếu có mất muối qua thận hoặc chỉ định riêng.</td></tr>
+      <tr><td>Kali và phốt pho</td><td>Không có mức giới hạn chung cho mọi người bệnh CKD.</td><td>Điều chỉnh theo xét nghiệm, thuốc, khẩu phần, nguồn khoáng chất và hướng dẫn chuyên môn.</td></tr>
+      <tr><td>Dịch</td><td>Không dùng công thức 500 ml + nước tiểu như chỉ định chung.</td><td>Theo lượng nước tiểu, phù, huyết áp, bệnh tim và kế hoạch lọc máu.</td></tr>
     </tbody>
   </table>
-  <p class="muted" style="margin-top:10px;font-size:0.85rem;">Các con số này chỉ là hướng dẫn chung. Căn cứ vào xét nghiệm máu của bạn để điều chỉnh.</p>
+  <p class="muted" style="margin-top:10px;font-size:0.85rem;">Đây là khung tham khảo từ hướng dẫn, không phải mục tiêu kê đơn cho cá nhân. Chuyên gia dinh dưỡng thận cần xem cân nặng phù hợp, tuổi, tình trạng dinh dưỡng, thuốc và xét nghiệm.</p>
 </section>
 
 <!-- 7️⃣ Thực đơn 1 ngày -->
 <section class="section card">
-  <h2>🍽️ Thực đơn gợi ý 1 ngày (~40g đạm)</h2>
+  <h2>🍽️ Ví dụ ghép món trong ngày</h2>
+  <p>Ví dụ không ấn định gram đạm/năng lượng và không mặc định phù hợp với tất cả người bệnh thận. Điều chỉnh lượng ăn theo kế hoạch cá nhân; nếu đang có kali hoặc phốt pho cao, hỏi chuyên gia về loại và khẩu phần.</p>
   <table class="table" style="margin-top:10px;">
-    <thead><tr><th>Bữa</th><th>Món</th><th>Đạm (g)</th><th>Ghi chú</th></tr></thead>
+    <thead><tr><th>Bữa</th><th>Ví dụ lựa chọn</th><th>Ghi chú</th></tr></thead>
     <tbody>
-      <tr><td>🌅 Sáng</td><td>Bánh mì 1 lát + mứt/mật ong + trà gừng</td><td>~4g</td><td>Không bơ, không sữa</td></tr>
-      <tr><td>🍎 Phụ sáng</td><td>1 quả táo hoặc lê</td><td>~0g</td><td>Trái cây ít kali</td></tr>
-      <tr><td>🌞 Trưa</td><td>Cơm 1 chén vừa + trứng luộc (1 quả) + rau luộc bỏ nước</td><td>~12g</td><td>Không nước mắm mặn</td></tr>
-      <tr><td>🌆 Phụ chiều</td><td>Chè đường (đậu xanh ít) hoặc dưa hấu 1 miếng</td><td>~2g</td><td>Nếu kali máu bình thường</td></tr>
-      <tr><td>🌙 Tối</td><td>Cơm 1 chén + đậu phụ luộc (miếng nhỏ) + canh rau bỏ nước</td><td>~10g</td><td>Đậu phụ là đạm thực vật tốt</td></tr>
+      <tr><td>🌅 Sáng</td><td>Cháo hoặc bánh mì; phối hợp nguồn đạm và rau/trái cây nếu phù hợp.</td><td>Khẩu phần theo nhu cầu năng lượng và kế hoạch điều trị.</td></tr>
+      <tr><td>🌞 Trưa</td><td>Cơm/bún, cá hoặc đậu phụ, rau và món canh nêm vừa.</td><td>Chú ý tổng natri trong nước chấm, nước dùng và gia vị.</td></tr>
+      <tr><td>🌙 Tối</td><td>Đổi nguồn đạm và rau so với bữa trưa; thêm món ăn phù hợp khẩu vị.</td><td>Không cần kiêng một nhóm thực phẩm nếu chưa được chỉ định.</td></tr>
     </tbody>
   </table>
   <p class="muted" style="margin-top:10px;font-size:0.85rem;">⚠️ Thực đơn mẫu — không áp dụng cho tất cả. Cần điều chỉnh theo giai đoạn bệnh và xét nghiệm.</p>
@@ -97,22 +90,17 @@ if (!art) throw new Error("Article not found: suy-than");
     <div>
       <h4>✅ Mẹo áp dụng</h4>
       <ul style="line-height:1.8;padding-left:16px;">
-        <li>Luộc rau bỏ nước có thể giúp giảm một phần kali, nhưng mức giảm tùy loại rau và cách chế biến.</li>
-        <li>Ngâm rau củ thái lát trong nước 1–2 giờ trước khi nấu giúp giảm kali thêm.</li>
-        <li>Đọc nhãn: tránh phụ gia phốt pho (E338–E341, E450–E452).</li>
-        <li>Uống nước lọc tinh khiết — tránh nước khoáng, nước ion kiềm.</li>
-        <li>Chia đạm đều cả ngày, không dồn vào một bữa.</li>
+        <li>Nếu nhóm điều trị yêu cầu giảm kali, hỏi cách sơ chế. Ngâm/luộc có thể giảm một phần kali nhưng hiệu quả tùy món, không thay cho khẩu phần cá thể hóa.</li>
+        <li>Đọc danh sách thành phần để nhận ra phụ gia phosphate (ví dụ phosphoric acid hoặc các chất có chữ phosphate); điều chỉnh khi được tư vấn.</li>
+        <li>Không tự đổi sang muối kali, nước kiềm hoặc chế độ “thải độc”.</li>
+        <li>Phân bố nguồn đạm trong ngày theo kế hoạch, không tự đặt mục tiêu quá thấp hoặc quá cao.</li>
       </ul>
     </div>
     <div>
       <h4>🚨 Khi nào cần đi khám ngay</h4>
       <ul style="line-height:1.8;padding-left:16px;">
-        <li>Phù chân, phù mặt, khó thở.</li>
-        <li>Tiểu ít (dưới 400ml/ngày).</li>
-        <li>Mệt lả, chóng mặt, tụt huyết áp.</li>
-        <li>Buồn nôn, nôn, chán ăn kéo dài.</li>
-        <li>Ngứa toàn thân, chuột rút nhiều.</li>
-        <li>Sụt cân không chủ ý &gt;3kg/tháng.</li>
+        <li>Khó thở, đau ngực, ngất, hồi hộp bất thường hoặc yếu cơ rõ: cần đánh giá y tế khẩn cấp; không tự suy đoán nguyên nhân từ triệu chứng.</li>
+        <li>Lượng nước tiểu giảm rõ, phù tăng nhanh, nôn/chán ăn kéo dài hoặc sụt cân không chủ ý: liên hệ cơ sở điều trị sớm để được đánh giá.</li>
       </ul>
     </div>
   </div>

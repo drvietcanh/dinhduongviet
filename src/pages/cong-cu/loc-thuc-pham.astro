@@ -16,7 +16,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   <section class="section card safety-shell">
     <p>
-      Dữ liệu trong v1 chủ yếu hiển thị theo <strong>100g phần ăn được</strong>. Không dùng công cụ này để kết luận thực phẩm
+      Dữ liệu chủ yếu hiển thị theo <strong>100g phần ăn được</strong>. Không dùng công cụ này để kết luận thực phẩm
       nào “an toàn”, “phù hợp”, hay “nên/không nên ăn” cho bệnh nền. Nếu bạn có đái tháo đường, bệnh thận, tăng huyết áp,
       gout, suy tim, đang dùng thuốc, đang mang thai, là trẻ em hoặc người cao tuổi, hãy hỏi bác sĩ hoặc chuyên gia dinh dưỡng
       khi cần cá thể hóa.
@@ -140,8 +140,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-sodium" /> 🧂 Ít natri (&lt;120mg)</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-fat" /> 🥩 Ít béo (&lt;3g)</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-potassium" /> 🥔 Nhiều kali (&gt;250mg)</label>
-          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="low-purine" /> 🫘 Ít purin</label>
-          <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-purine" /> ⚠️ Nhiều purin</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-low" /> 🟢 GI thấp</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="glycemic-index-high" /> 🔴 GI cao</label>
           <label class="tag-chip"><input type="checkbox" class="tag-cb" data-tag="high-fat" /> 🔺 Nhiều béo</label>
@@ -364,7 +362,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   function inRange(val, min, max) {
-    if (val == null) return true;
+    if (min === undefined && max === undefined) return true;
+    if (val == null) return false;
     if (min !== undefined && val < min) return false;
     if (max !== undefined && val > max) return false;
     return true;

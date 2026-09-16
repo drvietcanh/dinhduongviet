@@ -16,11 +16,13 @@ OUTPUT = ROOT / "public" / "api" / "foods-full.json"
 
 def num(value):
     if value is None:
-        return 0
+        # Keep "not measured" distinct from a measured zero. Converting a
+        # missing mineral value to zero makes downstream filters unsafe.
+        return None
     try:
         return int(round(float(value)))
     except (TypeError, ValueError):
-        return 0
+        return None
 
 
 with INPUT.open("r", encoding="utf-8") as f:

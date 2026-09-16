@@ -33,8 +33,8 @@ export type NutritionGoalResult = {
   bmiCategory?: string;
   isPersonalPrescription: false;
   shouldShowTargets: boolean;
-  energyEstimateStatus: "available_adult_reference" | "not_enabled_v1" | "needs_source_lock";
-  macroTargetStatus: "available_adult_reference" | "not_enabled_v1" | "needs_source_lock";
+  energyEstimateStatus: "available_adult_reference" | "withheld_for_clinical_context" | "needs_source_review";
+  macroTargetStatus: "available_adult_reference" | "withheld_for_clinical_context" | "needs_source_review";
   energyReference?: {
     bmrKcal: number;
     maintenanceKcal: number;
@@ -68,8 +68,8 @@ const VALID_WEIGHT_MAX_KG = 300;
 const VALID_HEIGHT_MIN_CM = 100;
 const VALID_HEIGHT_MAX_CM = 250;
 
-const ENERGY_STATUS: NutritionGoalResult["energyEstimateStatus"] = "not_enabled_v1";
-const MACRO_STATUS: NutritionGoalResult["macroTargetStatus"] = "not_enabled_v1";
+const ENERGY_STATUS: NutritionGoalResult["energyEstimateStatus"] = "withheld_for_clinical_context";
+const MACRO_STATUS: NutritionGoalResult["macroTargetStatus"] = "withheld_for_clinical_context";
 const AVAILABLE_STATUS: NutritionGoalResult["energyEstimateStatus"] = "available_adult_reference";
 
 const GUARD_TEXT = "Wording guard passed: output uses estimate, reference, uncertainty, individualization, and no medication-adjustment language.";
@@ -78,7 +78,8 @@ const CLINICAL_MESSAGE =
   "Nhóm này cần cá thể hóa với bác sĩ hoặc dinh dưỡng viên; công cụ không hiển thị mục tiêu kcal, macro hoặc protein cá nhân.";
 
 const SOURCE_LABELS = [
-  "NIDDK Body Weight Planner: phạm vi người lớn, không áp dụng cho thai kỳ hoặc cho con bú; BMR là ước tính theo Mifflin-St Jeor.",
+  "Mifflin-St Jeor ước tính năng lượng nghỉ; nghiên cứu gốc gồm người khỏe mạnh 19–78 tuổi.",
+  "NIDDK Body Weight Planner: thông tin tham khảo dành cho người lớn, không áp dụng cho thai kỳ hoặc cho con bú.",
   "National Academies DRI: AMDR carbohydrate 45–65% và chất béo 20–35% năng lượng cho người lớn.",
   "protein-requirement.ts: khoảng đạm chỉ được hiện khi bộ lọc an toàn cho phép.",
 ];
@@ -131,7 +132,7 @@ function getEnergyReference(input: NutritionGoalInput): NutritionGoalResult["ene
     bmrKcal,
     maintenanceKcal: roundKcal(bmrKcal * activityFactor),
     activityFactor,
-    label: "Ước tính BMR và mức duy trì cho người lớn tương đối khỏe; không phải mức ăn bắt buộc.",
+    label: "Ước tính năng lượng nghỉ và mức duy trì cho người lớn tương đối khỏe; không phải mức ăn bắt buộc.",
     sourceLabel: "Mifflin-St Jeor; hệ số hoạt động chỉ là quy ước tham khảo (thấp 1,20; vừa 1,55).",
   };
 }
@@ -186,6 +187,7 @@ function getCautionReasons(input: NutritionGoalInput, bmi: number): string[] {
   if (input.goal === "mild_weight_loss") reasons.push("mild_weight_loss");
   if (input.goal === "mild_weight_gain") reasons.push("mild_weight_gain");
   if (input.age >= 65) reasons.push("age_65_or_older");
+  if (input.age < 19) reasons.push("outside_mifflin_reference_age");
   if (input.activityLevel === "high") reasons.push("high_activity");
   if (input.vegetarianPattern) reasons.push("vegetarian_pattern");
   if (bmi >= 25) reasons.push("bmi_25_or_higher");
