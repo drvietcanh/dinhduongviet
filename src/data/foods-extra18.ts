@@ -152,12 +152,30 @@ function aliasesFor(name: string) {
   return aliases;
 }
 
+// Canonicalize source labels that only add a redundant freshness qualifier.
+// The catalogue keeps one searchable record per ingredient; the original
+// source wording remains in candidateSource/review metadata and as an alias.
+const canonicalSlugBySourceName: Record<string, string> = {
+  "Chanh, tươi": "chanh",
+  "Đào, tươi": "dao",
+  "Lê, tươi": "le",
+  "Lựu, tươi": "luu",
+  "Mơ, tươi": "mo-trai",
+  "Na, tươi": "na",
+  "Rau đay, tươi": "rau-day",
+  "Vải, tươi": "vai",
+  "Xoài chín, tươi": "xoai",
+  "Hẹ lá, tươi": "he-la",
+  "Nước cam tươi": "nuoc-cam",
+  "Nước dừa tươi": "nuoc-dua",
+};
+
 export const extraFoods18: Food[] = sourceRows.map((row) => {
   const state = stateFor(row.name);
   const category = categoryFor(row.sourceCategory, row.name);
   return {
-    id: `vdd-${row.code}`,
-    slug: `${slugify(row.name)}-vdd-${row.code}`,
+    id: canonicalSlugBySourceName[row.name] ?? `vdd-${row.code}`,
+    slug: canonicalSlugBySourceName[row.name] ?? `${slugify(row.name)}-vdd-${row.code}`,
     name: row.name,
     aliases: aliasesFor(row.name),
     category,

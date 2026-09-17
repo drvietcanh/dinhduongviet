@@ -6,12 +6,13 @@ interface Props {
 }
 
 const { foods } = Astro.props;
-const groupMap = foods.reduce<Record<string, Food[]>>((groups, food) => {
+const lookupFoods = foods.filter((food) => !["candidate_pending_dietitian_review", "recipe_estimate_only"].includes(food.sourceReviewStatus ?? ""));
+const groupMap = lookupFoods.reduce<Record<string, Food[]>>((groups, food) => {
   groups[food.category] ??= [];
   groups[food.category].push(food);
   return groups;
 }, {});
-const totalFoods = foods.length;
+const totalFoods = lookupFoods.length;
 const categoryMeta: Record<string, { icon: string; description: string }> = {
   "Tinh bột": { icon: "🍚", description: "Cơm, bún, mì, ngũ cốc và củ giàu tinh bột" },
   "Rau xanh": { icon: "🥬", description: "Rau lá, rau ăn ngọn và rau theo mùa" },
@@ -40,8 +41,8 @@ const categoryStats = Object.entries(groupMap)
     ...(categoryMeta[name] ?? { icon: "🍽️", description: "Thực phẩm theo nhóm" }),
   }))
   .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "vi"));
-const sourceBackedFoods = foods.filter((food) => food.dataQuality === "source_backed").length;
-const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length || 0), 0);
+const sourceBackedFoods = lookupFoods.filter((food) => food.dataQuality === "source_backed").length;
+const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.length || 0), 0);
 ---
 
 <section class="library-hero" aria-labelledby="food-library-title">
@@ -536,7 +537,14 @@ const aliasesCount = foods.reduce((count, food) => count + (food.aliases?.length
       [maxKcal, minProtein, maxCarb, maxSodium].forEach(function(input) { if (input) input.value = ''; });
       activeTag = 'all'; hideSuggestions(); refresh(true, true);
     }
-    function start(data) { foods = Array.isArray(data) ? data : []; applyUrlState(); render(); }
+    function start(data) {
+      foods = (Array.isArray(data) ? data : []).filter(function(item) {
+        var status = item[16] || '';
+        return status !== 'candidate_pending_dietitian_review' && status !== 'recipe_estimate_only';
+      });
+      applyUrlState();
+      render();
+    }
 
     foodSearch && foodSearch.addEventListener('input', function() { renderSuggestions(); refresh(true, true); });
     clearSearch && clearSearch.addEventListener('click', function() { if (foodSearch) { foodSearch.value = ''; foodSearch.focus(); } hideSuggestions(); refresh(true, true); });

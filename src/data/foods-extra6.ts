@@ -109,8 +109,8 @@ export const extraFoods6: Food[] = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "ngo-sen-tuoi", slug: "ngo-sen-tuoi", name: "Ngó sen tươi",
-    aliases: [],
+    id: "ngo-sen", slug: "ngo-sen", name: "Ngó sen",
+    aliases: ["ngó sen tươi", "ngo sen tuoi"],
     category: "Rau xanh", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Ngó sen tươi, thường làm gỏi.",
     nutrients: { energyKcal: 20, proteinG: 1.5, carbG: 4.2, fatG: 0.1, fiberG: 2.0, calciumMg: 16, ironMg: 0.5, sodiumMg: 6, potassiumMg: 150, vitaminCMg: 15, glycemicIndex: 20 },

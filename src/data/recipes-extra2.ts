@@ -350,7 +350,7 @@ export const extraRecipes2: Recipe[] = [
     ]
   },
   {
-    id: "banh-buoi-sen", slug: "banh-buoi-sen", name: "Bánh bò nướng",
+    id: "banh-bo-nuong", slug: "banh-bo-nuong", name: "Bánh bò nướng",
     aliases: ["banh bo nuong"],
     servingName: "1 phần", servingWeightG: 100,
     tags: ["vietnamese", "dessert"],

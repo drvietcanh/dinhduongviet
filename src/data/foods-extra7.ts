@@ -491,7 +491,7 @@ export const extraFoods7 = [
   },
   {
     id: "thit-xong-khoi", slug: "thit-xong-khoi", name: "Thịt hun khói",
-    aliases: ["thit xong khoi", "smoked pork", "smoked ham"],
+    aliases: ["thit xong khoi", "thit hun khoi", "smoked pork", "smoked ham"],
     category: "Thịt chế biến", state: "processed", basis: "100g",
     edibleNote: "Thịt heo/ham hun khói ăn liền; thành phần thay đổi nhiều theo sản phẩm.",
     nutrients: { energyKcal: 122, proteinG: 18, carbG: 7.3, fatG: 2.4, saturatedFatG: 0.87, fiberG: 0, sugarG: 0, cholesterolMg: 22, sodiumMg: 900, potassiumMg: 165 },

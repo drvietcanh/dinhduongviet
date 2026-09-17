@@ -122,7 +122,16 @@ function duplicateSeverity(action) {
 }
 
 function findAliasWarnings(foods, searchFoods) {
-  const bySlug = new Map(searchFoods.map((item) => [item.slug, item]));
+  // Review aliases against the canonical/full catalog. The public search index
+  // intentionally excludes foods awaiting specialist review, so using it here
+  // would create false "missing alias" warnings for those hidden records.
+  const bySlug = new Map();
+  for (const item of foods) bySlug.set(item.slug, { ...item, aliases: Array.isArray(item.aliases) ? item.aliases : [] });
+  for (const item of searchFoods) {
+    const current = bySlug.get(item.slug) || { ...item, aliases: [] };
+    current.aliases = [...new Set([...(current.aliases || []), ...(item.aliases || [])])];
+    bySlug.set(item.slug, current);
+  }
   // “Gạo lật” is retained on the raw VDD entry. The cooked entry already
   // carries an explicit “cơm gạo lứt” descriptor so the alias is intentionally
   // not duplicated across raw/cooked states in the search index.
@@ -231,11 +240,9 @@ const slimBySlug = new Map(slim.map((item) => [item.slug, item]));
 const compatAliasTargets = new Map(compatAliases.map(({ from, to }) => [from, to]));
 const decisionTableSlugs = [
   "tai-heo",
-  "la-sach-bo",
   "com-nep",
   "suon-heo-nuong",
   "nem-lui",
-  "thit-heo-quay",
   "banh-chung",
   "banh-troi",
   "banh-chay",
@@ -244,15 +251,11 @@ const decisionTableSlugs = [
   "banh-mi-cha-ca",
   "banh-mi-cha-lua",
   "nem-nuong",
-  "lap-xuong-nuong",
-  "thit-xong-khoi",
   "thit-bacon",
   "thit-bacon-chien",
   "xuc-xich-duc",
   "xuc-xich-my",
   "xuc-xich-bo",
-  "xuc-xich-ga",
-  "xuc-xich-heo",
 ];
 
 const duplicateSlugs = groupBy(slim, (item) => item.slug).map(([slug, entries]) => ({
@@ -387,7 +390,7 @@ const unsupportedNutrientTagErrors = sourceFoods.flatMap((food) => {
 });
 nutrientNullabilityErrors.push(...unsupportedNutrientTagErrors);
 
-const aliasWarnings = findAliasWarnings(fullFoods, searchFoods).map((warning) => issue("info", warning));
+const aliasWarnings = findAliasWarnings(sourceFoods, searchFoods).map((warning) => issue("info", warning));
 const aliasCollisions = aliasWarnings.filter((warning) => warning.type === "ambiguous-alias");
 const aliasWarningsByType = aliasWarnings.reduce((totals, item) => {
   totals[item.type] = (totals[item.type] || 0) + 1;
@@ -402,6 +405,9 @@ const compatAliasStatus = compatAliases.map(({ from, to }) => issue("info", {
 }));
 const cookedHighEnergyReview = sourceFoods
   .filter((food) => food.state === "cooked" && Number(food.nutrients?.energyKcal) > 180)
+  // A direct, documented cooked-100g source is already resolved. Keep the
+  // queue focused on records whose basis/source still needs a decision.
+  .filter((food) => !["source_verified", "reviewed_keep_current"].includes(food.sourceReviewStatus) || !food.reviewNote)
   .map((food) => issue("info", {
     slug: food.slug,
     name: food.name,

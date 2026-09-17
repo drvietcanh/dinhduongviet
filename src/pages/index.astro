@@ -11,6 +11,7 @@ import { calculateRecipe, foodBySlug } from "../lib/nutrition";
 const phoRecipe = recipes.find((recipe) => recipe.slug === "pho-bo")!;
 const phoNutrients = calculateRecipe(phoRecipe);
 const categories = [...new Set(foods.map((f) => f.category))];
+const publicFoods = foods.filter((food) => food.sourceReviewStatus !== "candidate_pending_dietitian_review" && food.sourceReviewStatus !== "recipe_estimate_only");
 const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
 const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
 const toolPageModules = import.meta.glob("./cong-cu/*.astro");
@@ -53,7 +54,7 @@ const quickJourneys = [
       </div>
       <div class="hero-trust animate-fade-in-up" style="animation-delay: 0.38s;" aria-label="Thông tin độ tin cậy">
         <span>📚 {articles.length} bài viết</span>
-        <span>🥬 {foods.length} thực phẩm</span>
+        <span>🥬 {publicFoods.length} thực phẩm tra cứu</span>
         <span>🍜 {recipes.length} món ăn</span>
         <span>🛠️ {toolCount} công cụ</span>
       </div>

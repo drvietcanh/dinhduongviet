@@ -549,6 +549,10 @@ if (isArticle) {
         gap: 16px;
         align-items: center;
       }
+      .nav-menu-intro { display: none; }
+      @media (max-width: 1024px) {
+        body.menu-is-open { overflow: hidden; }
+      }
       .nav-group { position: relative; }
       .nav-group summary {
         color: var(--ink-secondary);
@@ -852,7 +856,22 @@ if (isArticle) {
           align-items: stretch;
           gap: 6px;
           padding-top: 8px;
+          max-height: min(calc(100vh - 148px), 620px);
+          overflow-y: auto;
+          overscroll-behavior: contain;
+          scrollbar-width: thin;
         }
+        .nav-menu-intro {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 2px 4px 6px;
+          color: var(--ink);
+          font-size: .82rem;
+        }
+        .nav-menu-intro strong { font-weight: 800; }
+        .nav-menu-intro span { color: var(--ink-tertiary); font-size: .76rem; }
         .nav-group {
           overflow: hidden;
           border: 1px solid var(--line);
@@ -1126,6 +1145,10 @@ if (isArticle) {
         <input type="search" id="nav-search-input" aria-label="Tìm món, thực phẩm, bệnh hoặc công cụ trên website" placeholder="Tìm món, thực phẩm, bệnh…" autocomplete="off" />
       </div>
         <div class="nav-links" id="main-nav-links" aria-label="Điều hướng chính">
+          <div class="nav-menu-intro" aria-hidden="true">
+            <strong>Điều hướng nhanh</strong>
+            <span>Chọn một nhóm để bắt đầu</span>
+          </div>
           <details class="nav-group">
             <summary>Tra cứu</summary>
             <div class="nav-group-menu">
@@ -1365,10 +1388,12 @@ if (isArticle) {
             var isOpen = wrapper.classList.toggle('nav-open');
             ham.setAttribute('aria-expanded', String(isOpen));
             ham.setAttribute('aria-label', isOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng');
+            document.body.classList.toggle('menu-is-open', isOpen);
           });
           ham.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
               wrapper.classList.remove('nav-open');
+              document.body.classList.remove('menu-is-open');
               ham.setAttribute('aria-expanded', 'false');
               ham.focus();
             }
@@ -1392,6 +1417,7 @@ if (isArticle) {
           link.addEventListener('click', function() {
             if (!wrapper) return;
             wrapper.classList.remove('nav-open');
+            document.body.classList.remove('menu-is-open');
             if (ham) {
               ham.setAttribute('aria-expanded', 'false');
               ham.setAttribute('aria-label', 'Mở menu điều hướng');
@@ -1401,6 +1427,7 @@ if (isArticle) {
         document.addEventListener('click', function(e) {
           if (!wrapper || wrapper.contains(e.target)) return;
           wrapper.classList.remove('nav-open');
+          document.body.classList.remove('menu-is-open');
           if (ham) {
             ham.setAttribute('aria-expanded', 'false');
             ham.setAttribute('aria-label', 'Mở menu điều hướng');
@@ -1410,7 +1437,10 @@ if (isArticle) {
           });
         });
         window.addEventListener('resize', function() {
-          if (window.innerWidth > 1024 && wrapper) wrapper.classList.remove('nav-open');
+          if (window.innerWidth > 1024 && wrapper) {
+            wrapper.classList.remove('nav-open');
+            document.body.classList.remove('menu-is-open');
+          }
         });
         var searchInput = document.getElementById('nav-search-input');
         if (searchInput) {

@@ -37,7 +37,8 @@ const slim = foods.map((food) => ({
   category: food.category,
   kcal: kcalOf(food),
   state: food.state,
-  basis: food.basis
+  basis: food.basis,
+  sourceReviewStatus: food.sourceReviewStatus || ""
 }));
 
 await mkdir(path.dirname(outputPath), { recursive: true });

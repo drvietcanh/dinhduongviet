@@ -128,7 +128,6 @@ Mận cơm
 Cam sành
 Quýt
 Chanh
-Chanh dây tươi
 Me chín
 Hồng xiêm
 Sapoche
@@ -234,7 +233,6 @@ Chao trắng
 Chao đỏ
 Đậu lăng
 Đậu cô ve hạt
-Đậu phộng sống
 Hạt điều
 Hạnh nhân
 Óc chó
@@ -311,7 +309,6 @@ Trà mãng cầu
 Trà dâu
 Nước mận
 Nước ép lựu
-Nước dừa tươi
 Quả sấu
 Me non
 Bắp chuối bào
@@ -1277,7 +1274,7 @@ function recipeItems(name: string): Recipe["items"] {
     }
     if (n.includes("goi") || n.includes("nom")) {
       return [
-        { foodId: n.includes("ngo sen") ? "ngo-sen-tuoi" : "bap-cai", amountG: 110, note: "Rau trộn" },
+        { foodId: n.includes("ngo sen") ? "ngo-sen" : "bap-cai", amountG: 110, note: "Rau trộn" },
         { foodId: "dau-phu", amountG: 60, note: "Đậu phụ" },
         { foodId: "nuoc-tuong", amountG: 5, note: "Nước tương trộn chay" },
         { foodId: "duong-trang", amountG: 4, note: "Đường pha nước trộn" },
@@ -1345,7 +1342,7 @@ function recipeItems(name: string): Recipe["items"] {
         ...(n.includes("xeo") || n.includes("vo") ? [{ foodId: "dau-xanh", amountG: 35, note: "Đậu xanh" }] : []),
         ...(n.includes("xeo") ? [{ foodId: "dau-hanh-phi", amountG: 12, note: "Hành phi" }] : []),
         ...(n.includes("vo") ? [{ foodId: "me-trang", amountG: 12, note: "Mè rang" }] : []),
-        ...(n.includes("dau phong") ? [{ foodId: "dau-phong-song", amountG: 20, note: "Đậu phộng" }] : []),
+        ...(n.includes("dau phong") ? [{ foodId: "dau-phap", amountG: 20, note: "Đậu phộng" }] : []),
         ...(n.includes("thap cam") ? [{ foodId: "lap-xuong", amountG: 25, note: "Lạp xưởng/thập cẩm" }] : []),
         { foodId: "hanh-la", amountG: 5, note: "Hành phi hoặc gia vị" }
       ];
@@ -1521,7 +1518,7 @@ function recipeItems(name: string): Recipe["items"] {
     ];
   }
   if (n.includes("goi") || n.includes("nom")) {
-    const vegetable = n.includes("ngo sen") ? "ngo-sen-tuoi" : n.includes("xoai") ? "xoai-xanh" : n.includes("du du") ? "dua-gang" : n.includes("hoa chuoi") ? "bap-chuoi-bao" : n.includes("rau muong") ? "rau-muong" : "bap-cai";
+    const vegetable = n.includes("ngo sen") ? "ngo-sen" : n.includes("xoai") ? "xoai-xanh" : n.includes("du du") ? "dua-gang" : n.includes("hoa chuoi") ? "bap-chuoi-bao" : n.includes("rau muong") ? "rau-muong" : "bap-cai";
     return [
       { foodId: vegetable, amountG: 100, note: "Rau/quả trộn" },
       { foodId: protein, amountG: 55, note: "Đạm" },

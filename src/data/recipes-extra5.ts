@@ -389,12 +389,12 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "bap-nep-luoc", slug: "bap-nep-luoc", name: "Bắp nếp luộc",
-    aliases: ["bap nep luoc", "ngô luộc"],
+    id: "bap-nep-luoc-muoi-tieu", slug: "bap-nep-luoc-muoi-tieu", name: "Bắp nếp luộc chấm muối tiêu",
+    aliases: ["bap nep luoc muoi tieu", "ngô nếp luộc chấm muối tiêu", "bắp luộc muối tiêu"],
     servingName: "1 trái", servingWeightG: 200,
     tags: ["vietnamese", "snack"],
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Bắp nếp luộc, món ăn vặt dân dã.",
+    note: "Bắp nếp luộc dùng kèm 1 g muối tiêu; khác với bản thực phẩm nền tính trên 100 g.",
     items: [
       { foodId: "bap-nep-luoc", amountG: 180, note: "Bắp nếp" },
       { foodId: "muoi-tieu", amountG: 1, note: "Muối tiêu" }

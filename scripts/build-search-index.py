@@ -141,7 +141,12 @@ try:
 except:
     xref = {}
 foods = []
+excluded_review_foods = []
 for item in food_slim:
+    review_status = item.get('sourceReviewStatus') or ''
+    if review_status in ('candidate_pending_dietitian_review', 'recipe_estimate_only'):
+        excluded_review_foods.append(item.get('slug', ''))
+        continue
     slug = item['slug']
     food = {
         'type': 'food',
@@ -157,7 +162,7 @@ for item in food_slim:
     if item.get('fiber'):
         food['fiber'] = item['fiber']
     foods.append(food)
-print(f'Foods: {len(foods)}')
+print(f'Foods: {len(foods)} (excluded pending review: {len(excluded_review_foods)})')
 
 # --- Combine ---
 combined = hubs + articles + all_recipes + tools + foods

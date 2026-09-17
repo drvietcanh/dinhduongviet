@@ -18,6 +18,8 @@ import { extraFoods17 } from "./foods-extra17";
 import { extraFoods18 } from "./foods-extra18";
 import { extraFoods19 } from "./foods-extra19";
 import { extraFoods20 } from "./foods-extra20";
+import { extraFoods21 } from "./foods-extra21";
+import { extraFoods22 } from "./foods-extra22";
 import { foodSearchAliasIndex } from "./food-search-alias-index";
 import { vnMicronutrientOverrides } from "./food-vn-micronutrient-overrides";
 import { vddSourceReplacements } from "./food-vdd-source-replacements";
@@ -1941,7 +1943,29 @@ recipes.push(
 function uniqueFoodAdditionsBySlug(additions: Food[]) {
   const seen = new Set(foods.map((food) => food.slug));
   return additions.filter((food) => {
-    if (seen.has(food.slug)) return false;
+    if (seen.has(food.slug)) {
+      // A verified VDD row may intentionally canonicalize a bulk/legacy row
+      // (for example “Chanh” vs “Chanh, tươi”). Merge its measurements and
+      // provenance into the existing canonical slug without changing the
+      // public name or route used by recipes and saved meal logs.
+      const existing = foods.find((item) => item.slug === food.slug);
+      if (existing && food.sourceId === "vdd-food-portal-2026" && existing.sourceId === "recipe-estimate-v1") {
+        existing.nutrients = food.nutrients;
+        existing.state = food.state;
+        existing.basis = food.basis;
+        existing.edibleNote = food.edibleNote;
+        existing.sourceId = food.sourceId;
+        existing.confidence = food.confidence;
+        existing.dataQuality = food.dataQuality;
+        existing.sourceConfidence = food.sourceConfidence;
+        existing.sourceReviewStatus = food.sourceReviewStatus;
+        existing.candidateSource = food.candidateSource;
+        existing.reviewNote = food.reviewNote;
+        existing.note = food.note;
+        existing.aliases = [...new Set([...existing.aliases, ...food.aliases, food.name])];
+      }
+      return false;
+    }
     seen.add(food.slug);
     return true;
   });
@@ -1969,13 +1993,15 @@ foods.push(
     ...extraFoods18,
     ...extraFoods19,
     ...extraFoods20,
+    ...extraFoods21,
+    ...extraFoods22,
     ...bulkFoods
   ] as Food[])
 );
 
 // Các slug này là bản ghi cũ trùng cùng thực phẩm với mục chuẩn hơn theo tên,
 // trạng thái và/hoặc nguồn. Chúng được thay bằng `extraFoods19` để thư viện
-// vẫn có đúng 1.000 mục nhưng không công bố nhiều bản ghi cho cùng một thực phẩm.
+// Duy trì một bản ghi chuẩn cho mỗi thực phẩm, không công bố nhiều bản ghi trùng.
 const duplicateFoodSlugsExcludedFromLibrary = new Set([
   "ba-chi-heo",
   "thit-ba-chi",
@@ -2035,7 +2061,26 @@ for (const food of foods) {
     food.reviewNote ??= "Một số vi chất được bổ sung từ Bảng thành phần thực phẩm Việt Nam 2007 khi tên đối chiếu đủ gần; macro hiện tại được giữ nguyên nếu đã có.";
   }
 }
+
+// Các bản ghi chưa có nguồn đủ chắc chắn được loại hoàn toàn khỏi thư viện
+// công khai và API chi tiết theo chính sách dữ liệu; không để recipe tham chiếu
+// tới một foodId đã bị xóa.
+const foodsRemovedForInsufficientEvidence = new Set([
+  "la-sach-bo",
+  "lap-xuong-nuong",
+  "thit-heo-quay",
+  "thit-xong-khoi",
+  "xuc-xich-ga",
+  "xuc-xich-heo",
+]);
+for (let index = foods.length - 1; index >= 0; index -= 1) {
+  if (foodsRemovedForInsufficientEvidence.has(foods[index].slug)) foods.splice(index, 1);
+}
+
 recipes.push(...extraRecipes, ...extraRecipes2, ...extraRecipes3, ...extraRecipes4, ...extraRecipes5, ...extraRecipes6, ...bulkRecipes);
+for (let index = recipes.length - 1; index >= 0; index -= 1) {
+  if (recipes[index].items.some((item) => foodsRemovedForInsufficientEvidence.has(item.foodId))) recipes.splice(index, 1);
+}
 
 // Cân lại khối lượng thành phẩm sau khi gộp các công thức cũ và công thức mở rộng.
 // Nhiều món canh/đồ uống ghi khẩu phần đã pha loãng nhưng chưa ghi nước/đá trong

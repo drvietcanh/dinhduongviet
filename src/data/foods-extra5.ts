@@ -175,7 +175,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "thit-heo-quay", slug: "thit-heo-quay", name: "Thịt heo quay",
-    aliases: ["roasted pork", "heo quay", "lợn quay", "thit quay"],
+    aliases: ["roasted pork", "heo quay", "lợn quay", "thịt lợn quay", "thit lon quay", "thit quay"],
     category: "Thịt chế biến", state: "cooked", basis: "100g",
     edibleNote: "Thịt heo quay da giòn, loại bỏ xương.",
     nutrients: { energyKcal: 310, proteinG: 20.0, carbG: 1.5, fatG: 25.0, saturatedFatG: 9.0, cholesterolMg: 65, sodiumMg: 780, potassiumMg: 240 },

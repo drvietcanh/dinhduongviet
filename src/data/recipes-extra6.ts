@@ -61,7 +61,7 @@ export const extraRecipes6: Recipe[] = [
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Ngó sen tươi trộn tôm thịt, rắc lạc, ăn mát và giòn.",
     items: [
-      { foodId: "ngo-sen-tuoi", amountG: 80, note: "Ngó sen" },
+      { foodId: "ngo-sen", amountG: 80, note: "Ngó sen" },
       { foodId: "tom-tuoi", amountG: 30, note: "Tôm luộc" },
       { foodId: "thit-heo-nac", amountG: 30, note: "Thịt heo luộc thái mỏng" },
       { foodId: "ca-rot", amountG: 20, note: "Cà rốt bào sợi" },
@@ -554,7 +554,7 @@ export const extraRecipes6: Recipe[] = [
   },
   {
     id: "tra-chanh-tuoi", slug: "tra-chanh-tuoi", name: "Trà chanh tươi",
-    aliases: ["tra chanh"],
+    aliases: ["tra chanh tuoi", "trà chanh đá"],
     servingName: "1 ly 300ml", servingWeightG: 320,
     tags: ["vietnamese", "drink"],
     sourceId: "recipe-estimate-v1", confidence: "low",
