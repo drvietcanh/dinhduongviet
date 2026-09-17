@@ -2401,6 +2401,11 @@ for (const food of foods) {
   if (/^(?:Xà lách|Giá đỗ)(?:\s|$)/i.test(food.name)) food.category = "Rau xanh";
   if (/^(?:Phúc bồn tử|Quả sấu|Me non)(?:\s|$)/i.test(food.name)) food.category = "Trái cây";
 
+  // Rice-flour cakes and savory dough dishes are staple starches, not sweets.
+  if (/^(?:Bánh hỏi|Bánh ướt|Bánh đa đỏ|Bánh khoái|Bánh khúc|Bánh tẻ|Bánh quẩy|Bánh bao nhân thịt trứng cút|Bánh chay)(?:\s|$)/i.test(food.name)) {
+    food.category = "Tinh bột";
+  }
+
   // Processed fish, cephalopod and shrimp products remain in Hải sản so
   // search facets reflect their biological source rather than preparation.
   if (

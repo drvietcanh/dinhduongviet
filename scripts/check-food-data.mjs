@@ -357,6 +357,11 @@ const categoryNameRules = [
     reason: "Dưa gang non là quả dùng như rau; không được nhận nhầm vào nhóm Thịt do khớp chuỗi 'gan'.",
   },
   {
+    pattern: /^(?:bánh hỏi|bánh ướt|bánh đa đỏ|bánh khoái|bánh khúc|bánh tẻ|bánh quẩy|bánh bao nhân thịt trứng cút|bánh chay)(?:\s|$)/i,
+    expectedCategories: new Set(["Tinh bột"]),
+    reason: "Bánh từ gạo/bột và món bột mặn là thực phẩm giàu tinh bột, không phải nhóm bánh kẹo.",
+  },
+  {
     pattern: /^(?:cá viên|chả mực|chả cá|tôm viên)(?:\s|$)/i,
     expectedCategories: new Set(["Hải sản"]),
     reason: "Sản phẩm chế biến từ cá/mực/tôm cần nằm trong nhóm Hải sản, không phải Thịt chế biến.",

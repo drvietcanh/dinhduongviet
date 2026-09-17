@@ -12964,8 +12964,8 @@
       "banh chay nuong",
       "banh chay"
     ],
-    "description": "Tra cứu Bánh chay: khoảng 210 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh chay: khoảng 210 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 210
   },
   {
@@ -17629,8 +17629,8 @@
       "banh khoai",
       "bánh khoái Huế"
     ],
-    "description": "Tra cứu Bánh khoái: khoảng 159 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh khoái: khoảng 159 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 159
   },
   {
@@ -17640,8 +17640,8 @@
     "aliases": [
       "banh khuc"
     ],
-    "description": "Tra cứu Bánh khúc: khoảng 249 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh khúc: khoảng 249 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 249
   },
   {
@@ -17652,8 +17652,8 @@
       "banh te",
       "bánh răng bừa"
     ],
-    "description": "Tra cứu Bánh tẻ: khoảng 104 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh tẻ: khoảng 104 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 104
   },
   {
@@ -17701,8 +17701,8 @@
       "dầu cháo quẩy",
       "youtiao"
     ],
-    "description": "Tra cứu Bánh quẩy: khoảng 200 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh quẩy: khoảng 200 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 200
   },
   {
@@ -19033,8 +19033,8 @@
     "aliases": [
       "banh hoi"
     ],
-    "description": "Tra cứu Bánh hỏi: khoảng 422 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh hỏi: khoảng 422 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 422
   },
   {
@@ -19044,8 +19044,8 @@
     "aliases": [
       "banh uot"
     ],
-    "description": "Tra cứu Bánh ướt: khoảng 437 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh ướt: khoảng 437 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 437
   },
   {
@@ -19055,8 +19055,8 @@
     "aliases": [
       "banh da do"
     ],
-    "description": "Tra cứu Bánh đa đỏ: khoảng 452 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh đa đỏ: khoảng 452 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 452
   },
   {
@@ -20779,8 +20779,8 @@
     "aliases": [
       "banh bao nhan thit trung cut"
     ],
-    "description": "Tra cứu Bánh bao nhân thịt trứng cút: khoảng 378 kcal/100g, nhóm Bánh kẹo.",
-    "category": "Bánh kẹo",
+    "description": "Tra cứu Bánh bao nhân thịt trứng cút: khoảng 378 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 378
   },
   {
