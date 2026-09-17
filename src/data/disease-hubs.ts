@@ -273,7 +273,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     id: "xo-gan",
     name: "Xơ gan và dinh dưỡng",
     shortName: "Xơ gan",
-    emoji: "🫀",
+    emoji: "🧬",
     specialty: "tieu-hoa",
     audience: ["liver", "adult", "caregiver"],
     description: "Lộ trình ăn uống cho xơ gan, cổ trướng, suy mòn cơ và giai đoạn chuẩn bị ghép gan.",

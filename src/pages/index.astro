@@ -19,13 +19,13 @@ const toolCount = Object.keys(toolPageModules).filter((path) => !path.endsWith("
 const toolCards = [
   { href: "/cong-cu/nhat-ky", icon: "📓", name: "Nhật ký ăn uống", desc: "Ghi bữa ăn và xem tổng hợp theo ngày, tuần" },
   { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu và chọn mục tiêu phù hợp" },
-  { href: "/cong-cu/bmi", icon: "⚖️", name: "BMI", desc: "Đánh giá nhanh cân nặng theo ngưỡng châu Á" },
-  { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", name: "So sánh thực phẩm", desc: "Đặt nhiều thực phẩm cạnh nhau để chọn nhanh" },
+  { href: "/cong-cu/bmi", icon: "📏", name: "BMI", desc: "Đánh giá nhanh cân nặng theo ngưỡng châu Á" },
+  { href: "/cong-cu/so-sanh-thuc-pham", icon: "⚖️", name: "So sánh thực phẩm", desc: "Đặt nhiều thực phẩm cạnh nhau để chọn nhanh" },
   { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI của cơm, bún, phở và trái cây Việt" },
-  { href: "/cong-cu/tinh-gl-bua-an", icon: "⚖️", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của cả bữa ăn" },
+  { href: "/cong-cu/tinh-gl-bua-an", icon: "📈", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của cả bữa ăn" },
   { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Theo dõi huyết áp, đường huyết và mỡ máu" },
   { href: "/cong-cu/ke-hoach-bua-an", icon: "📋", name: "Kế hoạch bữa ăn", desc: "Gợi ý khung bữa ăn dễ áp dụng mỗi ngày" },
-  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🧮", name: "Dinh dưỡng thai kỳ", desc: "Nhắc các chỉ số nên theo dõi trong thai kỳ" },
+  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🤰", name: "Dinh dưỡng thai kỳ", desc: "Nhắc các chỉ số nên theo dõi trong thai kỳ" },
   { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Xem mốc nhu cầu dinh dưỡng theo nhóm tuổi" },
   { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "Ước tính calo tiêu hao theo từng môn tập" },
 ];
@@ -67,7 +67,7 @@ const quickJourneys = [
       <div class="journey-list">
         {quickJourneys.map((item) => (
           <a href={item.href} class="journey-item">
-            <span class="journey-icon">{item.icon}</span>
+            <span class="journey-icon" aria-hidden="true">{item.icon}</span>
             <span>
               <strong>{item.label}</strong>
               <small>{item.desc}</small>
@@ -91,22 +91,22 @@ const quickJourneys = [
     </div>
     <div class="entry-cards">
       <a href="/kien-thuc-dinh-duong" class="entry-card card-healthy">
-        <div class="entry-icon">🥗</div>
+        <div class="entry-icon" aria-hidden="true">🥗</div>
         <div class="entry-title">Tôi muốn ăn lành mạnh hơn</div>
         <div class="entry-desc">Tháp dinh dưỡng, đĩa ăn, giảm muối, giảm đường, đọc nhãn thực phẩm</div>
       </a>
       <a href="/ban-do-benh" class="entry-card card-medical">
-        <div class="entry-icon">🩺</div>
+        <div class="entry-icon" aria-hidden="true">🩺</div>
         <div class="entry-title">Tôi đang có bệnh</div>
         <div class="entry-desc">Đái tháo đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu</div>
       </a>
       <a href="/cong-cu/muc-tieu-can-nang" class="entry-card card-weight">
-        <div class="entry-icon">⚖️</div>
+        <div class="entry-icon" aria-hidden="true">⚖️</div>
         <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
         <div class="entry-desc">Ước tính nhu cầu năng lượng và chọn hướng theo dõi phù hợp</div>
       </a>
       <a href="/cong-cu/nhat-ky" class="entry-card card-diet">
-        <div class="entry-icon">📓</div>
+        <div class="entry-icon" aria-hidden="true">📓</div>
         <div class="entry-title">Tôi muốn ghi lại bữa ăn</div>
         <div class="entry-desc">Ghi thực phẩm và món ăn theo từng bữa, rồi xem tổng hợp ngày và tuần</div>
       </a>
@@ -149,18 +149,18 @@ const quickJourneys = [
         var alerts = [];
 
         // BP
-        if(l.sys && l.sys >= 140) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm thu cao",msg:"<strong>"+l.sys+"</strong> mmHg — nguy cơ tăng huyết áp. Giảm muối &lt;5g/ngày.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Giảm muối, hạn chế rượu bia, tập thể dục."});
-        else if(l.sys && l.sys >= 130) alerts.push({severity:"vua",icon:"🫀",title:"Huyết áp tâm thu cao nhẹ",msg:"<strong>"+l.sys+"</strong> mmHg — tiền tăng huyết áp.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Theo dõi thường xuyên, giảm muối."});
+        if(l.sys && l.sys >= 140) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm thu đang cao",msg:"<strong>"+l.sys+"</strong> mmHg — nên đo lại đúng kỹ thuật và trao đổi với nhân viên y tế. Giảm muối &lt;5g/ngày nếu phù hợp.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Không tự chẩn đoán từ một lần đo; theo dõi nhiều ngày."});
+        else if(l.sys && l.sys >= 130) alerts.push({severity:"vua",icon:"🫀",title:"Huyết áp tâm thu cần theo dõi",msg:"<strong>"+l.sys+"</strong> mmHg — diễn giải còn tùy tuổi, bệnh nền và nhiều lần đo.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Đo lại khi nghỉ đủ, ghi nhật ký và hỏi bác sĩ nếu lặp lại."});
 
         if(l.dia && l.dia >= 90) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm trương cao",msg:"<strong>"+l.dia+"</strong> mmHg.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Giảm muối &lt;5g, tăng rau xanh, hạn chế rượu."});
         else if(l.dia && l.dia >= 80) alerts.push({severity:"vua",icon:"🫀",title:"HA tâm trương cao nhẹ",msg:"<strong>"+l.dia+"</strong> mmHg.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Theo dõi và giảm muối."});
 
         // Blood glucose
-        if(l.glucose && l.glucose > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"Đường huyết cao",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — nguy cơ đái tháo đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Hạn chế tinh bột tinh chế, tăng chất xơ, khám bác sĩ."});
-        else if(l.glucose && l.glucose >= 5.6 && l.glucose <= 7.0) alerts.push({severity:"vua",icon:"🩸",title:"Đường huyết cao nhẹ",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — tiền đái tháo đường.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Giảm đường, tăng chất xơ, tập thể dục."});
+        if(l.glucose && l.glucose > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"Đường huyết đang cao",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — cần biết thời điểm đo và xác nhận theo hướng dẫn y tế.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Không tự kết luận từ một lần đo; ghi thời điểm ăn/đo và trao đổi với bác sĩ."});
+        else if(l.glucose && l.glucose >= 5.6 && l.glucose <= 7.0) alerts.push({severity:"vua",icon:"🩸",title:"Đường huyết cần theo dõi",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — ý nghĩa tùy đói/no và bối cảnh xét nghiệm.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Theo dõi lặp lại đúng thời điểm, không tự đổi thuốc."});
 
         // HbA1c
-        if(l.a1c && l.a1c > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"HbA1c > mục tiêu",msg:"<strong>"+l.a1c.toFixed(1)+"%</strong> — cần kiểm soát đường huyết tốt hơn.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Chế độ ăn GI thấp, theo dõi đường huyết hàng ngày."});
+        if(l.a1c && l.a1c > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"HbA1c cao hơn mục tiêu đang đặt",msg:"<strong>"+l.a1c.toFixed(1)+"%</strong> — mục tiêu cá nhân cần do nhóm điều trị xác định.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Không tự tăng/giảm thuốc; xem lại bữa ăn và kế hoạch cùng bác sĩ."});
 
         // Waist
         if(l.waist) {
@@ -222,7 +222,7 @@ const quickJourneys = [
       <a href="/ban-do-benh" class="view-all">Xem tất cả →</a>
     </div>
     <div class="health-grid health-grid-featured">
-      <a class="card health-card" href="/theo-benh/tieu-duong"><span class="health-icon">🩸</span><div><h3>Đái tháo đường</h3><p class="muted">Chế độ ăn, thực đơn, hiểu lầm</p></div></a>
+      <a class="card health-card" href="/theo-benh/tieu-duong"><span class="health-icon" aria-hidden="true">🩸</span><div><h3>Đái tháo đường</h3><p class="muted">Chế độ ăn, thực đơn, hiểu lầm</p></div></a>
       <a class="card health-card" href="/theo-benh/cao-huyet-ap"><span class="health-icon">🫀</span><div><h3>Tăng huyết áp</h3><p class="muted">Giảm muối, DASH, thực đơn</p></div></a>
       <a class="card health-card" href="/theo-benh/gout-axit-uric"><span class="health-icon">🦶</span><div><h3>Gout</h3><p class="muted">Purin, đạm, thực đơn mẫu</p></div></a>
       <a class="card health-card" href="/theo-benh/mo-mau-tim-mach"><span class="health-icon">❤️</span><div><h3>Mỡ máu, tim mạch</h3><p class="muted">Giảm mỡ máu, bảo vệ tim mạch</p></div></a>
@@ -234,6 +234,8 @@ const quickJourneys = [
       <a class="card health-card" href="/ban-do-benh#nguoi-gia"><span class="health-icon">👴</span><div><h3>Người cao tuổi</h3><p class="muted">Dinh dưỡng, thêm đạm, chán ăn</p></div></a>
       <a class="card health-card" href="/ban-do-benh#dot-quy"><span class="health-icon">🧠</span><div><h3>Đột quỵ • Alzheimer</h3><p class="muted">Phòng ngừa & phục hồi</p></div></a>
       <a class="card health-card" href="/theo-benh/ho-hap-man"><span class="health-icon">🫁</span><div><h3>Hô hấp mạn tính</h3><p class="muted">COPD, hen suyễn, dinh dưỡng hô hấp</p></div></a>
+      <a class="card health-card" href="/theo-benh/ung-thu"><span class="health-icon">🎗️</span><div><h3>Ung thư</h3><p class="muted">Đủ đạm, triệu chứng, an toàn khi điều trị</p></div></a>
+      <a class="card health-card" href="/theo-benh/xo-gan"><span class="health-icon">🧬</span><div><h3>Xơ gan, cổ trướng</h3><p class="muted">Mất cơ, muối, đạm và an toàn thực phẩm</p></div></a>
     </div>
   </section>
 
@@ -248,7 +250,7 @@ const quickJourneys = [
     <div class="tool-grid">
       {toolCards.map(t => (
         <a class="card tool-card" href={t.href}>
-          <div class="tool-icon">{t.icon}</div>
+          <div class="tool-icon" aria-hidden="true">{t.icon}</div>
           <h3>{t.name}</h3>
           <p class="muted">{t.desc}</p>
         </a>
@@ -920,6 +922,37 @@ const quickJourneys = [
 .category-card {
   border-radius: 18px;
 }
+.health-grid .health-card { position: relative; overflow: hidden; }
+.health-grid .health-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--brand);
+  opacity: .72;
+}
+.health-grid .health-card:nth-child(2)::after { background: #ef4444; }
+.health-grid .health-card:nth-child(3)::after { background: #f59e0b; }
+.health-grid .health-card:nth-child(4)::after { background: #3b82f6; }
+.health-grid .health-card:nth-child(5)::after { background: #8b5cf6; }
+.health-grid .health-card:nth-child(6)::after { background: #0ea5e9; }
+.health-grid .health-card:nth-child(7)::after { background: #f97316; }
+.health-grid .health-card:nth-child(8)::after { background: #64748b; }
+.health-grid .health-card:nth-child(9)::after { background: #14b8a6; }
+.health-grid .health-card:nth-child(10)::after { background: #e11d48; }
+.health-grid .health-card:nth-child(11)::after { background: #a855f7; }
+.health-grid .health-card:nth-child(12)::after { background: #0891b2; }
+.tool-grid .tool-card { position: relative; }
+.tool-grid .tool-card:nth-child(2) .tool-icon { background: rgba(245, 158, 11, .14); }
+.tool-grid .tool-card:nth-child(3) .tool-icon { background: rgba(59, 130, 246, .14); }
+.tool-grid .tool-card:nth-child(4) .tool-icon { background: rgba(139, 92, 246, .14); }
+.tool-grid .tool-card:nth-child(5) .tool-icon { background: rgba(14, 165, 233, .14); }
+.tool-grid .tool-card:nth-child(6) .tool-icon { background: rgba(239, 68, 68, .12); }
+.tool-grid .tool-card:nth-child(7) .tool-icon { background: rgba(20, 184, 166, .14); }
+.tool-grid .tool-card:nth-child(8) .tool-icon { background: rgba(249, 115, 22, .14); }
+.tool-grid .tool-card:nth-child(9) .tool-icon { background: rgba(236, 72, 153, .14); }
+.tool-grid .tool-card:nth-child(10) .tool-icon { background: rgba(132, 204, 22, .15); }
+.tool-grid .tool-card:nth-child(11) .tool-icon { background: rgba(99, 102, 241, .14); }
 @media (max-width: 980px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
