@@ -1,0 +1,23 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["who-an-toan-thuc-pham-2026-bua-an-viet"];
+if (!article) throw new Error("Article not found: who-an-toan-thuc-pham-2026-bua-an-viet");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>Vì sao chủ đề này đang được nhắc lại?</h2>
+    <p>Cập nhật của WHO năm 2026 nhấn mạnh thực phẩm không an toàn liên quan đến vi khuẩn, virus, ký sinh trùng và hóa chất. Trẻ nhỏ, người cao tuổi, phụ nữ mang thai và người bệnh mạn tính hoặc suy giảm miễn dịch có thể dễ bị biến chứng hơn.</p>
+  </section>
+
+  <section class="section card" style="background:#ecfdf5;border:1px solid #a7f3d0;"><p style="margin:0;font-size:1.04rem;"><strong>6 việc thực tế trong bữa ăn Việt:</strong> rửa tay, tách sống–chín, nấu chín kỹ, giữ lạnh đúng, dùng nước an toàn và bỏ thực phẩm có dấu hiệu hỏng.</p></section>
+
+  <section class="section grid two">
+    <div class="card"><h2>Từ chợ về bếp</h2><ul><li>Chọn thực phẩm còn tươi, bao bì nguyên vẹn, hạn dùng rõ; tránh đồ phồng, rò rỉ hoặc không rõ nguồn.</li><li>Tách thịt/cá/trứng sống khỏi rau ăn ngay và thực phẩm đã nấu.</li><li>Rửa tay trước khi nấu, sau khi xử lý thực phẩm sống và sau khi đi vệ sinh.</li></ul></div>
+    <div class="card"><h2>Từ bếp đến bàn ăn</h2><ul><li>Nấu chín kỹ thịt, trứng, hải sản; không dùng tiết canh, thịt tái hay sữa chưa tiệt trùng cho nhóm nguy cơ.</li><li>Không để món chín ở nhiệt độ phòng quá lâu; làm nguội nhanh và bảo quản lạnh khi cần.</li><li>Không dùng chung dao/thớt cho đồ sống và đồ ăn ngay nếu chưa rửa sạch.</li></ul></div>
+  </section>
+
+  <section class="section card"><h2>Khi nào cần đi khám?</h2><p>Tiêu chảy hoặc nôn nhiều, sốt cao, đau bụng dữ dội, phân máu, khát nhiều/tiểu ít, lơ mơ hoặc không uống được nước cần được đánh giá. Trẻ nhỏ, người già, phụ nữ mang thai và người suy giảm miễn dịch nên đi khám sớm hơn.</p></section>
+  <section class="section card"><h2>Không hoảng sợ, cũng không chủ quan</h2><p>An toàn thực phẩm không có nghĩa là phải bỏ mọi món ăn đường phố hay chỉ ăn đồ đóng gói. Hãy giảm nguy cơ bằng vệ sinh tay, tách sống–chín, nấu chín và bảo quản hợp lý; khi có thông báo thu hồi chính thức, làm theo cơ quan y tế địa phương.</p></section>
+</ArticleLayout>

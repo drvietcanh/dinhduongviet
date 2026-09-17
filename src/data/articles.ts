@@ -9420,6 +9420,51 @@ export const articles: ArticleMeta[] = [
     ],
     keywords: ["checklist mua thuốc giảm cân", "cách nhận biết thuốc giảm cân giả", "thực phẩm bổ sung giảm cân", "quảng cáo giảm cân lừa đảo", "mua thuốc giảm cân an toàn"],
   },
+  {
+    slug: "orlistat-canh-bao-than-2026",
+    title: "Orlistat cập nhật cảnh báo thận: người nào cần hỏi bác sĩ trước?",
+    description: "Cập nhật an toàn năm 2026 về orlistat không kê đơn: nguy cơ tổn thương thận hiếm gặp, dấu hiệu cần ngừng thuốc và cách dùng đúng nhãn.",
+    emoji: "🫘", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", displayCategory: "bai-viet",
+    date: "2026-09-17", readTime: 7, featured: false,
+    tags: ["orlistat", "thuốc giảm cân", "bệnh thận", "an toàn thuốc"],
+    audience: ["người dùng orlistat", "người có bệnh thận", "người thừa cân"], specialty: "than-tiet-nieu", careStage: "treatment",
+    riskFlags: ["tổn thương thận", "sỏi thận", "tương tác thuốc"], sourceTier: "clinical-reference",
+    sources: [
+      { name: "FDA", title: "OTC alli (orlistat) labeling changes for kidney injury", url: "https://www.fda.gov/drugs/drug-safety-communications/fda-approves-labeling-changes-over-counter-otc-weight-loss-drug-alli-orlistat-warn-risk-kidney" },
+      { name: "NIDDK", title: "Prescription Medications to Treat Overweight & Obesity", url: "https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity" }
+    ],
+    keywords: ["orlistat có hại thận không", "alli cảnh báo thận 2026", "orlistat sỏi thận", "thuốc giảm cân bệnh thận", "dấu hiệu tổn thương thận"],
+  },
+  {
+    slug: "canh-bao-giam-can-doc-chat-thuc-vat-2026",
+    title: "Cảnh báo 2026: sản phẩm giảm cân gắn mác thảo dược có thể chứa độc chất",
+    description: "Tóm tắt cảnh báo FDA về một số sản phẩm giảm cân chứa cây trúc đào vàng hoặc chất không ghi trên nhãn; hướng dẫn xử trí an toàn, không suy diễn sang mọi thảo dược.",
+    emoji: "⚠️", category: "education", categoryName: "Bài viết giáo dục", displayCategory: "dung-tin-ngay",
+    date: "2026-09-17", readTime: 6, featured: true,
+    tags: ["giảm cân", "thảo dược", "độc chất", "FDA", "cảnh báo"],
+    audience: ["người mua trà giảm cân", "người dùng thực phẩm bổ sung", "người chăm sóc"], specialty: "dinh-duong-tong-quat", careStage: "prevention",
+    riskFlags: ["độc tim", "ngộ độc", "chất ẩn"], sourceTier: "public-health",
+    sources: [
+      { name: "FDA", title: "Warning about products containing toxic yellow oleander", url: "https://www.fda.gov/food/alerts-advisories-safety-information/fda-issues-warning-about-certain-products-containing-toxic-yellow-oleander" },
+      { name: "FDA", title: "Weight Loss Product Notifications", url: "https://www.fda.gov/drugs/medication-health-fraud-notifications/weight-loss-product-notifications" }
+    ],
+    keywords: ["cảnh báo thuốc giảm cân 2026", "trúc đào vàng giảm cân", "yellow oleander", "thảo dược giảm cân độc", "sản phẩm giảm cân FDA"],
+  },
+  {
+    slug: "who-an-toan-thuc-pham-2026-bua-an-viet",
+    title: "WHO cập nhật gánh nặng thực phẩm không an toàn: 6 việc cần làm trong bữa ăn Việt",
+    description: "Từ cập nhật WHO năm 2026 về bệnh do thực phẩm, chuyển thành hướng dẫn thực hành về nước sạch, nấu chín, bảo quản và phòng nhiễm chéo.",
+    emoji: "🧼", category: "guidelines", categoryName: "Khuyến nghị sức khỏe cộng đồng", displayCategory: "bai-viet",
+    date: "2026-09-17", readTime: 8, featured: false,
+    tags: ["an toàn thực phẩm", "WHO", "ngộ độc", "bữa ăn gia đình"],
+    audience: ["gia đình", "trẻ nhỏ", "người cao tuổi", "người bệnh mạn tính"], specialty: "truyen-nhiem", careStage: "prevention",
+    riskFlags: ["tiêu chảy", "mất nước", "trẻ nhỏ", "người suy giảm miễn dịch"], sourceTier: "public-health",
+    sources: [
+      { name: "WHO", title: "Food safety", url: "https://www.who.int/news-room/fact-sheets/detail/food-safety" },
+      { name: "WHO", title: "World Food Safety Day 2026", url: "https://www.who.int/campaigns/world-food-safety-day/2026" }
+    ],
+    keywords: ["WHO an toàn thực phẩm 2026", "bữa ăn Việt an toàn", "phòng ngộ độc thực phẩm", "nấu chín bảo quản thức ăn", "nhiễm chéo thực phẩm"],
+  },
 ];
 
 /**

@@ -1,0 +1,44 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["orlistat-canh-bao-than-2026"];
+if (!article) throw new Error("Article not found: orlistat-canh-bao-than-2026");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>Cập nhật an toàn không có nghĩa là tự ngừng thuốc</h2>
+    <p>Tháng 6/2026, FDA cập nhật nhãn cảnh báo cho orlistat không kê đơn (alli) về nguy cơ tổn thương thận cấp, một biến cố hiếm gặp. Đây là thông tin để người dùng biết khi nào cần hỏi bác sĩ, không phải lý do để tự đổi sang một sản phẩm giảm cân khác.</p>
+  </section>
+
+  <section class="section card" style="background:#fff7ed;border:1px solid #fed7aa;">
+    <p style="margin:0;font-size:1.04rem;"><strong>Hỏi bác sĩ trước khi dùng</strong> nếu từng bị bệnh thận, sỏi thận, kém hấp thu, ứ mật hoặc đang dùng nhiều thuốc. Orlistat cũng có thể ảnh hưởng hấp thu một số vitamin và thuốc.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Dấu hiệu cần ngừng và liên hệ bác sĩ</h2>
+      <ul>
+        <li>Đau vùng lưng hoặc hông, đau lan xuống bẹn.</li>
+        <li>Tiểu buốt, tiểu máu hoặc tiểu ít hơn rõ rệt.</li>
+        <li>Phù chân, mệt bất thường hoặc tăng cân nhanh do giữ nước.</li>
+        <li>Buồn nôn kéo dài, vàng da hoặc đau bụng bất thường.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Dùng đúng cách hơn</h2>
+      <ul>
+        <li>Chỉ dùng theo nhãn hoặc đơn kê; không tăng số viên để giảm nhanh.</li>
+        <li>Thuốc đi kèm chế độ giảm năng lượng và ít chất béo vừa phải, không thay bữa ăn.</li>
+        <li>Báo cho bác sĩ/dược sĩ tất cả thuốc, vitamin và thực phẩm bổ sung đang dùng.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Đừng nhầm tác dụng phụ với “thuốc đang thải mỡ”</h2>
+    <p>Phân lỏng, són phân hoặc đau quặn có thể xảy ra khi ăn nhiều chất béo, nhưng không nên cố chịu đựng hoặc tự nhịn ăn. Nếu tiêu chảy kéo dài, mất nước, chóng mặt hoặc không ăn uống được, cần được đánh giá. Người bệnh thận không nên tự dùng thuốc giảm cân chỉ vì thấy bán không cần đơn.</p>
+  </section>
+
+  <section class="section card"><h2>Nhớ</h2><p>Kiểm tra bệnh nền và mục tiêu điều trị trước khi mua orlistat. Tên thuốc, hàm lượng và quy định bán thuốc có thể khác giữa các quốc gia; hãy hỏi nhân viên y tế tại Việt Nam.</p></section>
+</ArticleLayout>

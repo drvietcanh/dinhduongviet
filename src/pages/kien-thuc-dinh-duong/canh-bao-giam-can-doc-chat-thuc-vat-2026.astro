@@ -1,0 +1,39 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["canh-bao-giam-can-doc-chat-thuc-vat-2026"];
+if (!article) throw new Error("Article not found: canh-bao-giam-can-doc-chat-thuc-vat-2026");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>Cảnh báo mới từ FDA</h2>
+    <p>Tháng 8/2026, FDA cảnh báo một số sản phẩm quảng bá giảm cân có chứa cây trúc đào vàng (yellow oleander) hoặc các chất không ghi trên nhãn. Các chất này có thể gây triệu chứng tiêu hóa, thần kinh và tim mạch nghiêm trọng, thậm chí đe dọa tính mạng.</p>
+  </section>
+
+  <section class="section card" style="background:#fef2f2;border:1px solid #fecaca;">
+    <p style="margin:0;font-size:1.04rem;"><strong>Không suy diễn rằng mọi thảo dược đều độc.</strong> Vấn đề là sản phẩm không được kiểm soát, ghi sai thành phần hoặc bị pha tạp. Không mua sản phẩm giảm cân chỉ vì nhãn ghi “100% tự nhiên”.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Dấu hiệu ngộ độc cần cấp cứu</h2>
+      <ul>
+        <li>Đánh trống ngực, mạch bất thường, đau ngực, khó thở hoặc ngất.</li>
+        <li>Nôn nhiều, đau bụng dữ dội, lú lẫn, yếu liệt hoặc co giật.</li>
+        <li>Không chờ sản phẩm “hết tác dụng”; gọi cấp cứu và mang theo vỏ hộp/chai.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Cách giảm rủi ro</h2>
+      <ul>
+        <li>Không dùng sản phẩm chỉ bán qua livestream hoặc tin nhắn cá nhân, thiếu nhãn phụ và đơn vị chịu trách nhiệm.</li>
+        <li>Không phối hợp trà, viên “đốt mỡ”, thuốc kê đơn hoặc thuốc lợi tiểu.</li>
+        <li>Đọc cảnh báo thu hồi của cơ quan quản lý; sản phẩm không có tên trong danh sách vẫn chưa chắc an toàn.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card"><h2>Nếu đã sử dụng</h2><p>Dừng mua thêm, giữ mẫu sản phẩm và ghi thời điểm dùng, lượng dùng, triệu chứng, thuốc kèm. Liên hệ bác sĩ/dược sĩ hoặc cơ sở chống độc; không tự gây nôn hay uống “giải độc”.</p></section>
+  <section class="section card"><h2>Thông tin có thời hạn</h2><p>Danh sách cảnh báo thay đổi theo từng lô và từng quốc gia. Bài này tóm tắt cảnh báo FDA tháng 8–9/2026, không thay thế thông báo thu hồi chính thức tại Việt Nam.</p></section>
+</ArticleLayout>
