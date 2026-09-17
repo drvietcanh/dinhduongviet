@@ -2407,6 +2407,12 @@ for (const food of foods) {
     food.category = "Rau xanh";
   }
 
+  // Fresh legume pods and soybean sprouts are vegetables; only the dried or
+  // shelled seeds remain in the Đậu group.
+  if (/^(?:Đậu đũa|Đậu rồng|Giá đậu tương tươi)$/i.test(food.name)) {
+    food.category = "Rau xanh";
+  }
+
   // Pickling brine is a concentrated seasoning used in small quantities,
   // rather than a stock consumed as a bowl of soup.
   if (/^Nước dưa chua(?:\s|$)/i.test(food.name)) {

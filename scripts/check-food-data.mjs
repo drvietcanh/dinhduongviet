@@ -367,6 +367,11 @@ const categoryNameRules = [
     reason: "Rau cải và măng vẫn thuộc nhóm rau dù đã muối/chua; cách bảo quản không đổi nhóm nguyên liệu.",
   },
   {
+    pattern: /^(?:đậu đũa|đậu rồng|giá đậu tương tươi)$/i,
+    expectedCategories: new Set(["Rau xanh"]),
+    reason: "Quả đậu non và giá đậu là rau tươi; chỉ hạt khô/tách hạt mới thuộc nhóm Đậu.",
+  },
+  {
     pattern: /^nước dưa chua(?:\s|$)/i,
     expectedCategories: new Set(["Gia vị"]),
     reason: "Nước muối dưa là nước ngâm đậm natri dùng như gia vị/nền nấu, không phải nước dùng độc lập.",
