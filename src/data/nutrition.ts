@@ -2413,6 +2413,12 @@ for (const food of foods) {
     food.category = "Gia vị";
   }
 
+  // Marinated ready-to-eat chicken feet are a processed meat product, not
+  // an unprepared poultry cut.
+  if (/^Chân gà sả tắc(?:\s|$)/i.test(food.name)) {
+    food.category = "Thịt chế biến";
+  }
+
   // Rice-flour cakes and savory dough dishes are staple starches, not sweets.
   if (/^(?:Bánh hỏi|Bánh ướt|Bánh đa đỏ|Bánh khoái|Bánh khúc|Bánh tẻ|Bánh quẩy|Bánh bao nhân thịt trứng cút|Bánh chay)(?:\s|$)/i.test(food.name)) {
     food.category = "Tinh bột";
