@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['bua-an-gia-dinh-khong-ap-luc'];
+---
+
+<ArticleLayout article={article}>
+  <p>Bữa ăn gia đình có thể có nhiều nhu cầu khác nhau. Mục tiêu là tạo món chung lành mạnh, sau đó điều chỉnh khẩu phần và cách chế biến cho từng người, thay vì ép tất cả ăn giống nhau.</p>
+  <h2>Cách tổ chức đơn giản</h2>
+  <ul>
+    <li>Đặt rau và món đạm trên bàn trước, để mỗi người tự chọn lượng phù hợp.</li>
+    <li>Không dùng phần thưởng, mắng mỏ hoặc bình luận cân nặng để ép trẻ hay người lớn tuổi ăn.</li>
+    <li>Người bệnh có thể dùng cùng món nhưng giảm nước chấm, tách phần ít muối hoặc thay nguyên liệu theo hướng dẫn.</li>
+  </ul>
+  <h2>Quan sát thay vì phán xét</h2>
+  <p>Trẻ sụt cân, người cao tuổi ăn kém, ho sặc khi ăn hoặc người bệnh bỏ bữa lặp lại cần được đánh giá. Bữa ăn thân thiện giúp gia đình nhận biết vấn đề sớm hơn.</p>
+</ArticleLayout>

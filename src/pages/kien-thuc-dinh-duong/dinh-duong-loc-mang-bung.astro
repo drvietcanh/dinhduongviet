@@ -1,0 +1,46 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["dinh-duong-loc-mang-bung"];
+if (!article) throw new Error("Article not found");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <p>Lọc màng bụng có thể làm mất một phần protein qua dịch lọc và đưa thêm năng lượng từ glucose trong dịch vào cơ thể. Vì vậy khẩu phần cần được điều chỉnh theo xét nghiệm, cân nặng, lượng dịch siêu lọc, đường huyết và tình trạng dinh dưỡng — không dùng một danh sách kiêng chung cho mọi người.</p>
+  </section>
+
+  <section class="section card" style="background:#e3f2fd;border:1px solid #90caf9;">
+    <p style="margin:0;"><strong>Trao đổi với bác sĩ thận và chuyên gia dinh dưỡng trước khi đổi lượng đạm, kali, phốt pho, nước hoặc vitamin.</strong> Cả kali quá cao và quá thấp đều có thể nguy hiểm.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>🍳 Đạm và năng lượng</h2>
+      <ul>
+        <li>Ăn đủ năng lượng và nguồn đạm chất lượng để bù phần mất qua dịch lọc và giữ khối cơ.</li>
+        <li>Chọn cá, trứng, thịt, thịt gia cầm hoặc nguồn đạm khác theo khẩu phần được kê; không tự tăng đạm vì đọc một con số trên mạng.</li>
+        <li>Tính cả năng lượng từ dịch lọc khi đánh giá cân nặng và đường huyết.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>🧂 Muối, kali, phốt pho và dịch</h2>
+      <ul>
+        <li>Giảm thực phẩm nhiều natri giúp bớt khát và hỗ trợ kiểm soát huyết áp, dịch.</li>
+        <li>Kali phụ thuộc xét nghiệm, thuốc và lượng siêu lọc; không tự cấm toàn bộ rau quả hoặc dùng muối thay thế chứa kali.</li>
+        <li>Phốt pho cần xem cả phụ gia trong thực phẩm chế biến; thuốc gắn phosphate chỉ dùng cùng bữa theo toa.</li>
+        <li>Lượng nước phụ thuộc nước tiểu, phù, huyết áp, suy tim và kế hoạch lọc; không có một mức cố định cho tất cả.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>📝 Cách theo dõi thực tế</h2>
+    <ol>
+      <li>Ghi cân nặng, huyết áp, lượng nước uống, lượng nước tiểu và thông số dịch lọc theo hướng dẫn.</li>
+      <li>Đọc nhãn natri và phụ gia phosphate; hạn chế thịt chế biến, đồ hộp, mì ăn liền và nước chấm mặn.</li>
+      <li>Đem danh sách thuốc, vitamin và thực phẩm bổ sung khi tái khám.</li>
+    </ol>
+    <p class="muted">Phù tăng, khó thở, đau ngực, sốt/đau bụng hoặc dịch tháo ra đục cần liên hệ cơ sở lọc màng bụng ngay.</p>
+  </section>
+</ArticleLayout>

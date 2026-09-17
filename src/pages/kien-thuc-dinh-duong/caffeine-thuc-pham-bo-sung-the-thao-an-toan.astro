@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['caffeine-thuc-pham-bo-sung-the-thao-an-toan'];
+---
+<ArticleLayout article={article}><p>Caffeine có thể ảnh hưởng giấc ngủ, tim mạch và lo âu; nước tăng lực không đồng nghĩa với bù nước an toàn.</p><ul><li>Đọc nhãn tổng lượng caffeine, tránh dùng nhiều nguồn cùng ngày hoặc gần giờ ngủ.</li><li>Người mang thai, tăng huyết áp, rối loạn nhịp hoặc đang dùng thuốc nên hỏi bác sĩ.</li><li>Thực phẩm bổ sung có thể nhiễm tạp chất; ưu tiên bữa ăn và sản phẩm có kiểm định rõ.</li></ul></ArticleLayout>

@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['hoi-chung-di-ung-mieng-phan-hoa-thuc-pham'];
+---
+
+<ArticleLayout article={article}>
+  <p>Hội chứng dị ứng miệng (pollen–food allergy syndrome) có thể gây ngứa hoặc râm ran miệng sau một số trái cây, rau sống hay hạt ở người dị ứng phấn hoa. Đây không phải lý do để tự loại bỏ mọi loại rau quả.</p>
+  <h2>Cách theo dõi an toàn</h2>
+  <ul>
+    <li>Ghi lại thực phẩm, dạng sống/chín, thời điểm và triệu chứng; không tự thử lại nếu lần trước có sưng họng hoặc khó thở.</li>
+    <li>Một số người dung nạp dạng nấu chín, nhưng không nên coi đây là quy tắc chắc chắn cho mọi thực phẩm hay mọi người.</li>
+    <li>Khám dị ứng nếu phản ứng lặp lại, ảnh hưởng khẩu phần hoặc có hen, mề đay hay tiền sử phản vệ.</li>
+    <li>Sưng môi/lưỡi, khàn tiếng, khó thở, chóng mặt hoặc triệu chứng lan rộng là cấp cứu; thực hiện kế hoạch phản vệ đã được kê.</li>
+  </ul>
+</ArticleLayout>

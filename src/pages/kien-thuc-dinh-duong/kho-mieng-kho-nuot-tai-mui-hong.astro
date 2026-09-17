@@ -1,0 +1,15 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['kho-mieng-kho-nuot-tai-mui-hong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Khô miệng hoặc khó nuốt có thể khiến người bệnh ăn ít, sặc hoặc mất nước. Kết cấu món và tư thế ăn cần được đánh giá riêng, nhất là ở người lớn tuổi.</p>
+  <h2>Nguyên tắc tạm thời</h2>
+  <ul>
+    <li>Ngồi thẳng, ăn chậm, chọn món mềm ẩm và chia nhỏ miếng; không vừa ăn vừa nói.</li>
+    <li>Uống từng ngụm nhỏ nếu nuốt an toàn; không tự làm đặc/lỏng đồ uống khi chưa được hướng dẫn.</li>
+    <li>Báo nhân viên y tế khi ho sặc, giọng ướt sau nuốt, sốt tái diễn, sụt cân hoặc không uống đủ.</li>
+  </ul>
+</ArticleLayout>

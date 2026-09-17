@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-phuc-hoi-sau-mo-lon-ke-hoach-xuat-vien'];
+---
+
+<ArticleLayout article={article}>
+  <p>Trước khi về nhà sau ca mổ lớn, gia đình nên có kế hoạch rõ về bữa ăn, thuốc, dịch uống, vận động và lịch tái khám. Hướng dẫn chung không thay thế giấy xuất viện.</p>
+  <h2>Danh sách cần bàn giao</h2>
+  <ul>
+    <li>Biết kết cấu món ăn, lượng ăn thử, giới hạn dịch và dấu hiệu không dung nạp cần dừng để gọi hỏi.</li>
+    <li>Ghi cân nặng, lượng ăn uống, đi tiêu/tiểu và tình trạng vết mổ nếu nhóm điều trị yêu cầu.</li>
+    <li>Đối chiếu thuốc với bữa ăn; không tự thêm thuốc giảm đau, thảo dược hoặc thực phẩm bổ sung.</li>
+    <li>Sốt, đau tăng, vết mổ chảy mủ, nôn kéo dài, khó thở hoặc tiểu ít là lý do liên hệ sớm.</li>
+  </ul>
+</ArticleLayout>

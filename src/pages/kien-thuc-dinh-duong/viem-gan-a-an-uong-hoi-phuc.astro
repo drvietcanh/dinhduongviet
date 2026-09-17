@@ -1,0 +1,15 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['viem-gan-a-an-uong-hoi-phuc'];
+---
+
+<ArticleLayout article={article}>
+  <p>Viêm gan A thường cần nghỉ ngơi và theo dõi, không có thuốc đặc hiệu để tự mua dùng. Khi buồn nôn, chia bữa nhỏ và uống từng ngụm; ăn theo khả năng thay vì ép.</p>
+  <h2>Điểm cần tránh</h2>
+  <ul>
+    <li>Tránh rượu bia và hỏi bác sĩ trước khi dùng thuốc giảm đau, thuốc nam hoặc thực phẩm bổ sung.</li>
+    <li>Giữ vệ sinh tay, dùng nước an toàn và không chuẩn bị thức ăn cho người khác khi đang có nguy cơ lây.</li>
+    <li>Vàng da tăng nhanh, lơ mơ, chảy máu, nôn không giữ được nước hoặc đau bụng nhiều cần khám ngay.</li>
+  </ul>
+</ArticleLayout>

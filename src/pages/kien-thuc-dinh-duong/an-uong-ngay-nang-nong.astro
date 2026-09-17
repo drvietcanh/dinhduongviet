@@ -1,0 +1,18 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-ngay-nang-nong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Ngày nóng làm tăng mất nước qua mồ hôi, nhưng không phải ai cũng nên ép uống thật nhiều. Mục tiêu là uống đều theo khát và tình trạng sức khỏe, tránh để đến khi choáng hoặc tiểu rất ít mới bù.</p>
+  <h2>Lựa chọn thực tế</h2>
+  <ul>
+    <li>Ưu tiên nước lọc; canh, sữa hoặc trái cây cũng góp phần vào lượng dịch. Hạn chế nước ngọt, bia rượu và đồ uống năng lượng.</li>
+    <li>Ăn bữa nhỏ có rau, trái cây, đạm và tinh bột; không để thực phẩm chín ở nhiệt độ phòng quá lâu.</li>
+    <li>Mặc thoáng, nghỉ nơi mát và giảm vận động nặng vào thời điểm nóng nhất.</li>
+  </ul>
+  <h2>Ai cần hỏi bác sĩ về lượng nước?</h2>
+  <p>Người suy tim, bệnh thận, xơ gan hoặc đang được giới hạn dịch không tự áp dụng mục tiêu uống chung. Người lớn tuổi, trẻ nhỏ và người đang sốt/tiêu chảy cần được theo dõi sát dấu hiệu mất nước.</p>
+  <p class="mt-6 text-sm text-slate-600">Lú lẫn, ngất, khó thở, da nóng khô hoặc không uống được là dấu hiệu cần trợ giúp y tế khẩn cấp.</p>
+</ArticleLayout>

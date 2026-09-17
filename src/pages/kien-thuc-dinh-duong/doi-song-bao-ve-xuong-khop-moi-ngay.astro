@@ -1,0 +1,29 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+
+const article = articleBySlug['doi-song-bao-ve-xuong-khop-moi-ngay'];
+---
+
+<ArticleLayout article={article}>
+  <p>Bảo vệ xương khớp là một thói quen hằng ngày, không chỉ là uống thêm một viên bổ sung. Checklist dưới đây phù hợp để trao đổi với gia đình, nhất là người lớn tuổi hoặc có nguy cơ loãng xương.</p>
+
+  <h2>Checklist mỗi ngày</h2>
+  <ul>
+    <li><strong>Bữa ăn:</strong> có nguồn đạm trong các bữa chính, thêm rau quả và thực phẩm giàu canxi phù hợp; vitamin D và thuốc bổ sung chỉ dùng theo nhu cầu đã được đánh giá.</li>
+    <li><strong>Vận động:</strong> duy trì đi bộ hoặc hoạt động chịu trọng lượng vừa sức, bài tăng cơ và thăng bằng; bắt đầu thấp rồi tăng từ từ.</li>
+    <li><strong>An toàn:</strong> giữ lối đi đủ sáng, bỏ thảm trơn, dùng tay vịn cầu thang và mang giày vừa chân. Kiểm tra thị lực và thính lực định kỳ.</li>
+    <li><strong>Thói quen:</strong> không hút thuốc, hạn chế rượu bia, ngủ đủ và tránh ngồi bất động quá lâu.</li>
+  </ul>
+
+  <h2>Rà soát thuốc và nguy cơ loãng xương</h2>
+  <p>Một số thuốc dùng kéo dài, chẳng hạn corticosteroid, có thể ảnh hưởng đến xương. Không tự ngừng thuốc; hãy hỏi bác sĩ về nhu cầu đo mật độ xương, canxi–vitamin D, bài tập và biện pháp phòng ngã phù hợp.</p>
+
+  <h2>Đừng tự bổ sung liều cao</h2>
+  <p>Canxi, vitamin D hoặc sản phẩm “bổ khớp” không phải đều an toàn cho mọi người. Người bệnh thận, sỏi thận, bệnh tim hoặc đang dùng nhiều thuốc cần được kiểm tra trước khi bổ sung; liều và mục tiêu phải dựa trên khẩu phần, xét nghiệm và nguy cơ gãy xương.</p>
+
+  <h2>Khi có đau hoặc ngã</h2>
+  <p>Đau mới xuất hiện, biến dạng, bầm tím lớn, đau hông/lưng sau ngã hoặc không thể đứng lên cần được đánh giá sớm. Không cố xoa bóp mạnh hay tự nắn chỉnh vùng nghi gãy.</p>
+
+  <p class="mt-6 text-sm text-slate-600">Mỗi người có mức vận động và nhu cầu vi chất khác nhau. Hãy đưa danh sách thuốc, bệnh nền và khẩu phần thực tế khi đi khám hoặc gặp chuyên gia dinh dưỡng.</p>
+</ArticleLayout>

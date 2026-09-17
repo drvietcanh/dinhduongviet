@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['di-ung-thuc-pham-an-ngoai-doc-nhan'];
+---
+
+<ArticleLayout article={article}>
+  <p>Người dị ứng cần báo rõ dị nguyên trước khi gọi món, không chỉ nói “ăn kiêng”. Hỏi cả thành phần, cách chế biến và nguy cơ dùng chung chảo, dầu hoặc dụng cụ.</p>
+  <h2>Checklist khi ăn ngoài</h2>
+  <ul>
+    <li>Kiểm tra menu/nhãn, gọi điện trước nếu cần và nhắc lại với nhân viên khi nhận món.</li>
+    <li>Mang thuốc hoặc bút adrenaline theo kế hoạch; không thử món mới khi chỉ có một người đi cùng.</li>
+    <li>Nếu sưng môi/lưỡi, khó thở, khò khè, choáng hoặc nổi mề đay lan nhanh, dùng thuốc cấp cứu đã được kê và gọi trợ giúp ngay.</li>
+  </ul>
+  <p>Không tự loại bỏ nhiều nhóm thực phẩm nếu chưa được đánh giá, vì có thể gây thiếu chất.</p>
+</ArticleLayout>

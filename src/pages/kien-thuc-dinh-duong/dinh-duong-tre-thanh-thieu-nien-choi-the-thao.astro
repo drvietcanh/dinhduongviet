@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-tre-thanh-thieu-nien-choi-the-thao'];
+---
+
+<ArticleLayout article={article}>
+  <p>Trẻ chơi thể thao cần đủ năng lượng cho tăng trưởng, học tập và vận động. Phần lớn trẻ không cần bột đạm hay sản phẩm tăng cơ nếu ăn đa dạng và ngủ đủ.</p>
+  <h2>Khung bữa đơn giản</h2>
+  <ul>
+    <li>Trước tập: bữa nhỏ quen thuộc có tinh bột và đạm, tránh thử món lạ sát giờ vận động.</li>
+    <li>Trong tập: ưu tiên nước; buổi kéo dài, nóng hoặc thi đấu liên tục cần kế hoạch do người lớn/chuyên gia hướng dẫn.</li>
+    <li>Sau tập: ăn lại bữa cân bằng có cơm, khoai, bún hoặc bánh mì cùng trứng, cá, thịt, sữa hoặc đậu phụ.</li>
+    <li>Không dùng nước tăng lực, thuốc giảm cân hoặc chất kích thích để cải thiện thành tích.</li>
+  </ul>
+  <p>Sụt cân nhanh, chóng mặt, ngất, đau ngực, mệt kéo dài hoặc rối loạn kinh nguyệt cần được khám.</p>
+</ArticleLayout>

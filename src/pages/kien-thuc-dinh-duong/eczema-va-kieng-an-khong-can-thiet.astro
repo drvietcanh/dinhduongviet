@@ -1,0 +1,14 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['eczema-va-kieng-an-khong-can-thiet'];
+---
+<ArticleLayout article={article}>
+  <p>Viêm da cơ địa/chàm không tự động có nghĩa là trẻ dị ứng thức ăn. Điều trị da và chăm sóc hàng rào da vẫn là nền tảng.</p>
+  <ul>
+    <li>Không dùng các bộ xét nghiệm dị ứng không được thẩm định hoặc tự kiêng theo lời truyền miệng.</li>
+    <li>Nếu có mối liên quan rõ ràng giữa một món và phản ứng tức thì, ghi nhật ký và hẹn khám dị ứng.</li>
+    <li>Chế độ loại bỏ chỉ nên có mục tiêu, thời hạn và kế hoạch bù dinh dưỡng; không kéo dài nếu không có lợi ích rõ.</li>
+    <li>Khám sớm khi chàm nặng, nhiễm trùng da, chậm tăng trưởng hoặc có phản ứng toàn thân sau ăn.</li>
+  </ul>
+</ArticleLayout>

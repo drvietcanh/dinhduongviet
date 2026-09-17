@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['di-ung-thuc-pham-khi-du-lich-an-ngoai'];
+---
+
+<ArticleLayout article={article}>
+  <p>Đi du lịch không làm dị ứng thực phẩm “nhẹ đi”. Chuẩn bị trước giúp giảm nhầm lẫn khi gọi món, nhất là với nước sốt, món chiên chung dầu và gia vị không ghi rõ.</p>
+  <h2>Checklist trước và trong chuyến đi</h2>
+  <ul>
+    <li>Mang danh sách dị nguyên bằng tiếng Việt và ngôn ngữ nơi đến; hỏi rõ thành phần, dụng cụ và dầu chiên có dùng chung không.</li>
+    <li>Để thuốc cấp cứu đã được kê trong hành lý xách tay, kiểm tra hạn dùng và báo cho người đi cùng cách thực hiện kế hoạch phản vệ.</li>
+    <li>Chuẩn bị vài món dự phòng an toàn; không thử món mới khi đang ở xa cơ sở y tế hoặc khi chỉ có mô tả thành phần mơ hồ.</li>
+    <li>Không chủ quan với phản ứng lần trước nhẹ; mức độ phản ứng lần sau không thể dự đoán chắc chắn.</li>
+  </ul>
+  <p>Khó thở, sưng họng, lơ mơ hoặc nhiều triệu chứng cùng lúc cần dùng thuốc theo kế hoạch và gọi cấp cứu ngay.</p>
+</ArticleLayout>

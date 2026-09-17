@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-van-dong-vien-nu-red-s'];
+---
+
+<ArticleLayout article={article}>
+  <p>Thiếu năng lượng tương đối trong thể thao (RED-S) xảy ra khi năng lượng ăn vào không đáp ứng tập luyện và nhu cầu cơ thể. Kinh nguyệt thưa/mất, mệt kéo dài, chấn thương xương lặp lại hoặc thành tích giảm là dấu hiệu cần đánh giá, không phải mục tiêu để “siết cân”.</p>
+  <h2>Hỗ trợ an toàn</h2>
+  <ul>
+    <li>Duy trì bữa chính, bữa phụ và nguồn carbohydrate quanh buổi tập; không bỏ chất béo hoặc tinh bột chỉ vì sợ tăng cân.</li>
+    <li>Đảm bảo nguồn đạm, canxi và vitamin D từ khẩu phần phù hợp; bổ sung chỉ khi được đánh giá.</li>
+    <li>Báo bác sĩ thể thao hoặc phụ khoa khi kinh nguyệt thay đổi, đau xương hoặc gãy xương do va chạm nhẹ.</li>
+    <li>Không tự dùng thuốc nội tiết, thuốc giảm cân hoặc thực phẩm bổ sung để che dấu triệu chứng.</li>
+  </ul>
+</ArticleLayout>

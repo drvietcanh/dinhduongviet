@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['goi-do-an-truc-tuyen-lanh-manh'];
+---
+
+<ArticleLayout article={article}>
+  <p>Đặt đồ ăn tiện lợi nhưng tên món và khẩu phần có thể không rõ. Hãy xem toàn bộ lựa chọn trước khi đặt, ưu tiên món có rau và nguồn đạm, đồng thời kiểm soát phần sốt và đồ uống.</p>
+  <h2>Ba thao tác nhanh</h2>
+  <ul>
+    <li>Chọn một món chính, thêm rau hoặc canh; tránh gọi nhiều món chiên chỉ vì khuyến mãi.</li>
+    <li>Xin ít sốt/nước chấm, chọn nước lọc hoặc đồ uống không đường.</li>
+    <li>Chia phần nếu khẩu phần lớn; bảo quản phần còn lại an toàn thay vì ăn quá no.</li>
+  </ul>
+  <p>Người bệnh thận, tim, tăng huyết áp hoặc đái tháo đường nên kiểm soát muối, đường và lượng tinh bột theo kế hoạch cá nhân.</p>
+</ArticleLayout>

@@ -1,0 +1,15 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['u-tai-va-caffeine-muoi-thoi-quen-an-uong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Ù tai có nhiều nguyên nhân như ráy tai, giảm thính lực, thuốc hoặc bệnh mạch máu. Không nên quy kết ngay cho cà phê hay muối; hãy ghi nhật ký và khám nếu triệu chứng kéo dài.</p>
+  <ul>
+    <li>Ghi thời điểm ù tai, giấc ngủ, caffeine, rượu, thuốc và mức độ căng thẳng để nhận ra yếu tố liên quan.</li>
+    <li>Giảm dần caffeine hoặc rượu nếu thấy kích hoạt triệu chứng; tránh ngừng đột ngột nếu đang dùng nhiều.</li>
+    <li>Ăn nhạt vừa phải tốt cho sức khỏe chung, nhưng không tự áp chế độ cực thấp nếu không có chỉ định.</li>
+    <li>Ù tai một bên đột ngột kèm giảm thính lực, chóng mặt dữ dội hoặc yếu liệt cần được đánh giá khẩn.</li>
+  </ul>
+</ArticleLayout>

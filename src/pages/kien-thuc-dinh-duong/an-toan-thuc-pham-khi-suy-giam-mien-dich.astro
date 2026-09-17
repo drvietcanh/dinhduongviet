@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-toan-thuc-pham-khi-suy-giam-mien-dich'];
+---
+
+<ArticleLayout article={article}>
+  <p>Người suy giảm miễn dịch dễ bị bệnh nặng hơn từ thực phẩm nhiễm khuẩn. Mức hạn chế cụ thể phụ thuộc bệnh và điều trị; hãy xin hướng dẫn của nhóm điều trị thay vì tự kiêng mọi rau quả.</p>
+  <h2>Bốn bước an toàn</h2>
+  <ul>
+    <li>Rửa tay, dụng cụ và bề mặt; tách thực phẩm sống khỏi món đã nấu.</li>
+    <li>Nấu chín kỹ thịt, trứng, hải sản; tránh sữa/phô mai chưa tiệt trùng và món sống khi được khuyến cáo.</li>
+    <li>Rửa rau quả dưới vòi nước sạch, bảo quản lạnh đúng cách và bỏ món để ngoài quá lâu.</li>
+    <li>Đọc hướng dẫn riêng khi hóa trị, ghép tạng, HIV, bệnh gan/thận hoặc dùng thuốc ức chế miễn dịch.</li>
+  </ul>
+  <p>Sốt, nôn, tiêu chảy hoặc đau bụng sau món nghi nhiễm cần liên hệ cơ sở điều trị sớm.</p>
+</ArticleLayout>

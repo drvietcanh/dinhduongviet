@@ -1,0 +1,29 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['cham-soc-ban-chan-dai-thao-duong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Bàn chân ở người đái tháo đường có thể bị giảm cảm giác hoặc tuần hoàn kém, nên một vết xước nhỏ cũng cần được phát hiện sớm. Chăm sóc tại nhà không thay thế khám bàn chân định kỳ.</p>
+
+  <h2>Việc nên làm mỗi ngày</h2>
+  <ul>
+    <li>Quan sát mu bàn chân, lòng bàn chân và kẽ ngón: tìm phồng rộp, nứt da, đỏ, sưng, chai dày hoặc dịch.</li>
+    <li>Rửa bằng nước ấm vừa phải, lau khô kỹ, nhất là kẽ ngón; không ngâm chân lâu.</li>
+    <li>Dưỡng ẩm vùng da khô nhưng tránh bôi kem vào kẽ ngón.</li>
+    <li>Mang tất sạch, giày vừa chân; kiểm tra bên trong giày trước khi mang.</li>
+  </ul>
+
+  <h2>Không nên tự làm</h2>
+  <ul>
+    <li>Không tự cắt chai chân, chọc phồng rộp hoặc dùng thuốc tẩy chai có tính ăn mòn.</li>
+    <li>Không đi chân đất, dùng túi chườm nóng hoặc ngâm chân nước nóng khi giảm cảm giác.</li>
+    <li>Không tự trì hoãn khám chỉ vì vết thương không đau.</li>
+  </ul>
+
+  <h2>Khi nào cần khám sớm?</h2>
+  <p>Liên hệ cơ sở y tế khi có vết loét, đỏ nóng lan rộng, sưng, mủ, mùi bất thường, đổi màu da, sốt hoặc vết thương không cải thiện. Nếu bàn chân lạnh tái đột ngột, đau dữ dội hoặc có dấu hiệu nhiễm trùng nặng, cần đi cấp cứu.</p>
+
+  <aside class="article-callout warning"><strong>Lưu ý:</strong> Kiểm soát đường huyết, bỏ thuốc lá và khám bàn chân định kỳ theo lịch điều trị giúp giảm nguy cơ biến chứng; không tự đổi thuốc dựa trên một vết thương.</aside>
+</ArticleLayout>

@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tieu-chay-man-kem-hap-thu-can-danh-gia-gi'];
+---
+<ArticleLayout article={article}><p>Tiêu chảy kéo dài có thể do thuốc, nhiễm trùng, bệnh ruột hoặc phẫu thuật; cần tìm nguyên nhân thay vì kiêng nhiều nhóm thực phẩm.</p><ul><li>Ghi số lần đi ngoài, phân mỡ/máu, món ăn, thuốc và cân nặng để đưa bác sĩ.</li><li>Bù dịch phù hợp; người bệnh thận/tim cần hỏi giới hạn dịch và điện giải.</li><li>Sốt, máu trong phân, đau dữ dội, mất nước hoặc sụt cân cần khám sớm.</li></ul></ArticleLayout>

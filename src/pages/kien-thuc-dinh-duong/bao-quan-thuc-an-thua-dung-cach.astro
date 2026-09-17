@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['bao-quan-thuc-an-thua-dung-cach'];
+---
+
+<ArticleLayout article={article}>
+  <p>Thức ăn thừa an toàn phụ thuộc vào thời gian, nhiệt độ và cách xử lý. Đừng để món đã nấu trên bàn quá lâu rồi mới cho vào tủ lạnh; chia hộp nông giúp nguội nhanh hơn.</p>
+  <h2>Ba bước cơ bản</h2>
+  <ol>
+    <li>Rửa tay, dùng hộp sạch và tách món sống với món chín.</li>
+    <li>Đậy kín, ghi ngày và bảo quản lạnh; chỉ lấy phần cần ăn.</li>
+    <li>Hâm nóng đều trước khi dùng; bỏ món có mùi, màu, bọt hoặc kết cấu bất thường.</li>
+  </ol>
+  <h2>Ai cần thận trọng hơn?</h2>
+  <p>Trẻ nhỏ, người lớn tuổi, phụ nữ mang thai và người suy giảm miễn dịch nên tránh món để lâu hoặc không rõ cách bảo quản. Đau bụng dữ dội, nôn nhiều, tiêu chảy kèm mất nước cần được khám.</p>
+</ArticleLayout>

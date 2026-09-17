@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nuot-kho-nguoi-cao-tuoi-danh-gia-va-an-toan'];
+---
+
+<ArticleLayout article={article}>
+  <p>Ho, sặc, giọng ướt sau ăn, sụt cân hoặc viêm phổi tái diễn có thể là dấu hiệu nuốt khó. Người cao tuổi cần được đánh giá bởi bác sĩ/chuyên gia ngôn ngữ trị liệu hoặc dinh dưỡng, không tự xay mọi món.</p>
+  <h2>Trong khi chờ đánh giá</h2>
+  <ul>
+    <li>Cho ăn khi tỉnh, ngồi thẳng, từng miếng nhỏ và không vừa ăn vừa nói; dừng nếu ho sặc.</li>
+    <li>Không tự làm đặc nước hoặc đổi kết cấu theo mẹo truyền miệng vì độ đặc không phù hợp cũng có thể gây sặc.</li>
+    <li>Ghi lượng ăn, nước uống, cân nặng và triệu chứng để trao đổi khi khám.</li>
+    <li>Khó thở, tím tái, không nuốt được nước hoặc lơ mơ cần cấp cứu.</li>
+  </ul>
+</ArticleLayout>

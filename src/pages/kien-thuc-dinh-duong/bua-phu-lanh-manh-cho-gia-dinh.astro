@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['bua-phu-lanh-manh-cho-gia-dinh'];
+---
+
+<ArticleLayout article={article}>
+  <p>Bữa phụ phù hợp khi khoảng cách giữa hai bữa chính dài, người lớn tuổi ăn ít hoặc trẻ cần thêm năng lượng. Không phải ai cũng cần ăn phụ; hãy dựa vào đói, lịch sinh hoạt và bệnh nền.</p>
+  <h2>Gợi ý dễ chuẩn bị</h2>
+  <ul>
+    <li>Sữa chua không đường kèm quả, trứng luộc, khoai lang, bánh mì nhỏ kèm đậu phụ hoặc một nắm hạt không muối.</li>
+    <li>Chia phần trước, ăn ngồi tại bàn và tránh vừa xem màn hình vừa ăn.</li>
+    <li>Người đái tháo đường hoặc bệnh thận cần điều chỉnh loại và lượng theo kế hoạch riêng.</li>
+  </ul>
+  <h2>Nhận biết bữa phụ đang quá nhiều</h2>
+  <p>Ăn phụ liên tục, uống nhiều đồ ngọt hoặc không còn đói ở bữa chính là dấu hiệu nên xem lại giờ và khẩu phần, không cần cấm tuyệt đối một món riêng lẻ.</p>
+</ArticleLayout>

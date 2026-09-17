@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nguyen-tac-che-do-an-lanh-manh-who'];
+---
+
+<ArticleLayout article={article}>
+  <p>WHO mô tả chế độ ăn lành mạnh dựa trên đủ chất, cân bằng, điều độ và đa dạng. Đây là khung suy nghĩ, không phải thực đơn cứng; tuổi, bệnh nền, văn hóa và thực phẩm sẵn có đều cần được tính đến.</p>
+  <h2>Chuyển thành bữa cơm Việt</h2>
+  <ul>
+    <li><strong>Đủ chất:</strong> có năng lượng, đạm, chất béo, chất xơ và vi chất phù hợp.</li>
+    <li><strong>Cân bằng:</strong> không để một nhóm như tinh bột, nước ép hoặc thực phẩm bổ sung chiếm toàn bộ khẩu phần.</li>
+    <li><strong>Điều độ:</strong> giảm món nhiều đường, muối, chất béo bão hòa và đồ uống có cồn.</li>
+    <li><strong>Đa dạng:</strong> thay đổi rau, quả, đậu, cá, trứng, thịt và nguồn tinh bột.</li>
+  </ul>
+  <p>Người bệnh thận, tim, đái tháo đường hoặc đang điều trị đặc biệt cần cá thể hóa, không áp dụng một khung chung máy móc.</p>
+</ArticleLayout>

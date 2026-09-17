@@ -1,0 +1,18 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['xay-thoi-quen-an-uong-ben-vung'];
+---
+
+<ArticleLayout article={article}>
+  <p>Thói quen bền vững thường bắt đầu từ một thay đổi nhỏ có thể lặp lại, không phải một kế hoạch hoàn hảo. Chọn một việc cho mỗi tuần và ghi lại điều gì giúp bạn làm được.</p>
+  <h2>Chọn mục tiêu đủ nhỏ</h2>
+  <ul>
+    <li>Thêm rau vào một bữa cố định, thay một lần nước ngọt bằng nước lọc hoặc đứng dậy đi lại sau mỗi khoảng ngồi dài.</li>
+    <li>Chuẩn bị phương án dự phòng cho ngày bận: trứng, đậu phụ, cá, rau đông lạnh hoặc món ít chế biến.</li>
+    <li>Dùng nhật ký ngắn về bữa ăn, giấc ngủ và mức đói; không cần đếm mọi thứ nếu điều đó làm bạn căng thẳng.</li>
+  </ul>
+  <h2>Nếu có một ngày ăn lệch nhịp</h2>
+  <p>Đừng nhịn ăn hoặc tự phạt bằng tập quá sức. Hãy uống nước, ngủ đủ và quay lại bữa kế tiếp với khẩu phần quen thuộc. Nếu ăn uống mất kiểm soát, sụt tăng cân nhanh hoặc lo âu quanh thức ăn kéo dài, nên tìm chuyên gia.</p>
+  <p class="mt-6 text-sm text-slate-600">Người có bệnh mạn tính cần đặt mục tiêu cùng bác sĩ hoặc chuyên gia dinh dưỡng để tránh thay đổi gây hạ đường huyết, quá tải dịch hoặc thiếu chất.</p>
+</ArticleLayout>

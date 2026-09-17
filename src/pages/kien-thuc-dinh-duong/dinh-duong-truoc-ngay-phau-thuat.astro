@@ -1,0 +1,18 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-truoc-ngay-phau-thuat'];
+---
+
+<ArticleLayout article={article}>
+  <p>Chuẩn bị dinh dưỡng trước mổ nhằm giảm nguy cơ suy kiệt và giúp người bệnh hồi phục thuận lợi. Kế hoạch cụ thể phụ thuộc loại phẫu thuật, bệnh nền và chỉ định của bác sĩ gây mê–phẫu thuật.</p>
+  <h2>Những việc nên làm</h2>
+  <ul>
+    <li>Báo cho ê-kíp nếu sụt cân không chủ ý, ăn kém, khó nuốt hoặc đã nhịn ăn kéo dài; đây là thông tin cần đánh giá trước mổ.</li>
+    <li>Duy trì các bữa có đạm như cá, trứng, thịt nạc, sữa hoặc đậu phụ và đủ năng lượng theo khả năng, thay vì tự giảm cân cấp tốc.</li>
+    <li>Hỏi rõ thời điểm ngừng ăn, uống và thuốc. Không tự kéo dài thời gian nhịn hoặc tự uống sữa/nước khi bệnh viện đã dặn khác.</li>
+    <li>Nếu có đái tháo đường, bệnh thận, suy tim hoặc bệnh gan, hãy để bác sĩ/dinh dưỡng điều chỉnh khẩu phần riêng.</li>
+  </ul>
+  <h2>Khi cần liên hệ sớm</h2>
+  <p>Không ăn uống được, nôn nhiều, chóng mặt, đường huyết bất thường hoặc sụt cân nhanh trước ngày mổ cần được báo cho cơ sở điều trị, không tự dùng thực phẩm bổ sung liều cao.</p>
+</ArticleLayout>

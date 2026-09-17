@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['aha-mo-hinh-an-tot-cho-tim'];
+---
+
+<ArticleLayout article={article}>
+  <p>AHA nhấn mạnh mô hình ăn uống tổng thể thay vì một “siêu thực phẩm”. Với bữa cơm Việt, có thể bắt đầu từ rau quả đa dạng, cá/đậu/trứng, tinh bột ít tinh chế và dầu thực vật dùng vừa phải.</p>
+  <h2>Những thay đổi dễ thấy</h2>
+  <ul>
+    <li>Giảm nước mắm, muối, đồ chế biến sẵn và nước ngọt; nêm nhạt dần để vị giác thích nghi.</li>
+    <li>Thay một phần thịt đỏ hoặc thịt chế biến bằng cá, đậu phụ, đậu đỗ; chọn món luộc, hấp, kho ít dầu.</li>
+    <li>Đọc nhãn natri, đường bổ sung và chất béo bão hòa khi mua đồ đóng gói.</li>
+  </ul>
+  <p>Người suy tim, bệnh thận hoặc đang hạn chế dịch/kali cần hỏi bác sĩ trước khi tăng mạnh rau quả hay chất lỏng.</p>
+</ArticleLayout>

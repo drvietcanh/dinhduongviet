@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-khi-lai-xe-duong-dai'];
+---
+
+<ArticleLayout article={article}>
+  <p>Lái xe nhiều giờ cần ưu tiên tỉnh táo hơn việc “chống đói” bằng cà phê hoặc nước tăng lực. Một bữa vừa phải, nước và điểm nghỉ an toàn giúp giảm nguy cơ buồn ngủ.</p>
+  <h2>Chuẩn bị trước chuyến đi</h2>
+  <ul>
+    <li>Ngủ đủ trước khi khởi hành; mang nước, trái cây, bánh mì kèm trứng hoặc hạt không muối.</li>
+    <li>Ăn vừa đủ, tránh bữa quá nhiều dầu mỡ khiến buồn ngủ hoặc khó chịu dạ dày.</li>
+    <li>Người bệnh mạn tính mang thuốc trong túi dễ lấy và không lái xe nếu thuốc gây buồn ngủ.</li>
+  </ul>
+  <h2>Không cố lái khi buồn ngủ</h2>
+  <p>Dừng xe ở nơi an toàn, nghỉ hoặc đổi tài xế. Cà phê không thay thế giấc ngủ; nếu ngáp liên tục, mất tập trung hoặc chớp mắt nhiều, không tiếp tục lái.</p>
+</ArticleLayout>

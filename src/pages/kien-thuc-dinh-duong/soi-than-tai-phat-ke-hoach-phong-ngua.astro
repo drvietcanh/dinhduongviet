@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['soi-than-tai-phat-ke-hoach-phong-ngua'];
+---
+<ArticleLayout article={article}><p>Phòng sỏi tái phát cần dựa vào phân tích viên sỏi, xét nghiệm nước tiểu và bệnh nền.</p><ul><li>Uống dịch đều theo chỉ định, giảm muối và duy trì canxi từ thực phẩm phù hợp.</li><li>Không tự cắt sữa hoặc dùng vitamin C/thuốc bổ liều cao khi chưa hỏi bác sĩ.</li><li>Đau quặn kèm sốt, rét run, tiểu máu nhiều hoặc bí tiểu cần khám khẩn.</li></ul></ArticleLayout>

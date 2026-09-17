@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['thieu-sat-tre-nho-thuc-pham-va-bo-sung'];
+---
+<ArticleLayout article={article}><p>Thiếu sắt cần được xác nhận và tìm nguyên nhân, không chỉ dựa vào biểu hiện xanh xao hoặc biếng ăn.</p><ul><li>Đưa vào khẩu phần thịt/cá/trứng hoặc đậu phù hợp tuổi, kết hợp rau quả giàu vitamin C.</li><li>Không tự dùng sắt liều cao; quá liều có thể nguy hiểm và gây rối loạn tiêu hóa.</li><li>Trẻ mệt, khó thở, tim nhanh, tăng trưởng kém hoặc ăn đất cần được khám.</li></ul></ArticleLayout>

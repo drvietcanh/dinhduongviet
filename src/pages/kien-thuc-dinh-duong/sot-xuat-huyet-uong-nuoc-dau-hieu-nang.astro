@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['sot-xuat-huyet-uong-nuoc-dau-hieu-nang'];
+---
+<ArticleLayout article={article}><p>Sốt xuất huyết không có món ăn chữa khỏi. Nghỉ ngơi, uống dịch theo hướng dẫn và tái khám đúng hẹn là trọng tâm.</p><ul><li>Uống từng ngụm nhỏ nếu buồn nôn; trẻ nhỏ, người già và người bệnh nền cần được hướng dẫn riêng.</li><li>Không tự dùng aspirin hoặc ibuprofen vì có thể tăng nguy cơ chảy máu.</li><li>Đau bụng nhiều, nôn liên tục, chảy máu, lừ đừ, tay chân lạnh hoặc khát nhiều cần đến viện ngay.</li></ul></ArticleLayout>

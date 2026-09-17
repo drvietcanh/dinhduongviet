@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['che-do-an-lanh-manh-khi-mang-thai'];
+---
+<ArticleLayout article={article}><p>Thai kỳ cần khẩu phần đa dạng, không cần “ăn cho hai người”.</p><ul><li>Mỗi ngày phối hợp rau quả, tinh bột, đạm, sữa hoặc thay thế phù hợp và chất béo lành mạnh.</li><li>Ăn chín uống sôi, tránh thực phẩm sống/tái, sữa chưa tiệt trùng và rượu bia.</li><li>Theo dõi tăng cân theo mốc thai và bệnh nền cùng bác sĩ.</li></ul></ArticleLayout>

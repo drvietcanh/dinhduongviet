@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tre-an-chon-loc-va-cach-mo-rong-thuc-pham'];
+---
+<ArticleLayout article={article}><p>Ăn chọn lọc thường cần nhiều lần tiếp xúc và cách tiếp cận bình tĩnh, không phải ép trẻ ăn thật nhiều trong một bữa.</p><ul><li>Giữ giờ ăn, cho trẻ chọn giữa hai món phù hợp và để trẻ quyết định lượng ăn.</li><li>Giới thiệu món mới cạnh món quen, bắt đầu lượng nhỏ và không phạt khi trẻ từ chối.</li><li>Sụt cân, táo bón kéo dài, mệt hoặc chỉ ăn vài nhóm thực phẩm cần khám dinh dưỡng.</li></ul></ArticleLayout>

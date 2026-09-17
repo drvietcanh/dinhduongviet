@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['lam-viec-ngoai-troi-an-uong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Lao động ngoài trời làm cơ thể mất nhiệt và nước nhanh hơn, nhất là khi mặc đồ bảo hộ hoặc làm việc vào buổi trưa. Kế hoạch nghỉ mát và uống đều quan trọng không kém bữa ăn.</p>
+  <h2>Trước và trong ca</h2>
+  <ul>
+    <li>Ăn bữa có tinh bột, đạm và rau trước ca; chuẩn bị nước sạch trong bình cá nhân và uống từng ngụm đều.</li>
+    <li>Nghỉ ở nơi râm mát, đội mũ và giảm cường độ khi thấy đau đầu, chuột rút, buồn nôn hoặc yếu bất thường.</li>
+    <li>Không dùng bia rượu hoặc nước tăng lực để thay nước; người bệnh tim/thận cần hỏi bác sĩ về giới hạn dịch.</li>
+  </ul>
+  <h2>Dấu hiệu nguy hiểm</h2>
+  <p>Lú lẫn, ngất, da nóng, thở nhanh, nôn liên tục hoặc không thể uống là tình huống cần đưa ra khỏi nơi nóng và gọi trợ giúp y tế ngay.</p>
+</ArticleLayout>

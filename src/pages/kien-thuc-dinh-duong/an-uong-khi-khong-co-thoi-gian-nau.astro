@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-khi-khong-co-thoi-gian-nau'];
+---
+
+<ArticleLayout article={article}>
+  <p>Khi quá bận, hãy nghĩ theo cấu trúc “một rau hoặc quả + một đạm + một tinh bột” thay vì tìm món hoàn hảo. Một bữa đơn giản vẫn tốt hơn bỏ bữa rồi ăn bù quá nhiều.</p>
+  <h2>Các lựa chọn 5–10 phút</h2>
+  <ul>
+    <li>Cơm hoặc bánh mì kèm trứng/đậu phụ, thêm rau luộc hoặc rau trộn.</li>
+    <li>Phở, bún hoặc cơm ngoài: chọn phần vừa, thêm rau, xin ít nước sốt và hạn chế món chiên.</li>
+    <li>Để sẵn thực phẩm dự phòng an toàn như trứng, sữa chua, cá hộp ít muối hoặc rau đông lạnh.</li>
+  </ul>
+  <p>Người bệnh thận, tim, đái tháo đường hoặc đang giảm cân cần chỉnh loại và khẩu phần theo hướng dẫn cá nhân.</p>
+</ArticleLayout>

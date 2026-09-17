@@ -378,6 +378,7 @@ const searchIntents = [
             return;
           }
         }
+        recordNoResult(query);
         $results.innerHTML = renderEmpty();
         return;
       }
@@ -469,6 +470,24 @@ const searchIntents = [
 
       html += '</div>';
       return html;
+    }
+
+    function recordNoResult(rawQuery) {
+      var value = (rawQuery || '').trim().toLowerCase();
+      if (!value || value.length < 2) return;
+      try {
+        var key = 'dv_no_result_queries';
+        var items = JSON.parse(localStorage.getItem(key) || '[]');
+        var existing = items.find(function(item) { return item && item.query === value; });
+        if (existing) {
+          existing.count = (existing.count || 1) + 1;
+          existing.lastSeen = new Date().toISOString();
+          items = [existing].concat(items.filter(function(item) { return item !== existing; }));
+        } else {
+          items.unshift({ query: value, lastSeen: new Date().toISOString(), count: 1 });
+        }
+        localStorage.setItem(key, JSON.stringify(items.slice(0, 100)));
+      } catch (e) {}
     }
 
     // Lazy load search index — fetch only when user focuses the input or page is idle

@@ -1,0 +1,18 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nguoi-cham-soc-an-uong-khong-kiet-suc'];
+---
+
+<ArticleLayout article={article}>
+  <p>Người chăm sóc thường ưu tiên người bệnh hoặc trẻ nhỏ đến mức quên ăn, uống và nghỉ. Bỏ bữa kéo dài làm mệt hơn và khiến việc chăm sóc khó duy trì, vì vậy chăm sóc bản thân là một phần của kế hoạch gia đình.</p>
+  <h2>Chuẩn bị “bộ bữa nhanh”</h2>
+  <ul>
+    <li>Để sẵn món có đạm và năng lượng vừa phải: trứng, sữa chua, đậu phụ, cá hoặc thịt nạc đã chia phần.</li>
+    <li>Đặt bình nước ở nơi dễ thấy; dùng báo thức cho bữa chính nếu lịch chăm sóc thường xuyên bị gián đoạn.</li>
+    <li>Nhờ người thân thay ca để có ít nhất một bữa ngồi ăn bình tĩnh mỗi ngày.</li>
+  </ul>
+  <h2>Dấu hiệu cần hỗ trợ</h2>
+  <p>Sụt cân không chủ ý, chóng mặt, mất ngủ kéo dài, cáu gắt hoặc cảm giác không thể tiếp tục chăm sóc là lý do để trao đổi với gia đình và nhân viên y tế. Không nên tự dùng nước tăng lực, thuốc an thần hoặc thực phẩm bổ sung để “cố sức”.</p>
+  <p class="mt-6 text-sm text-slate-600">Nếu người được chăm sóc có bệnh thận, đái tháo đường hoặc nuốt khó, món ăn nhanh vẫn cần theo kế hoạch riêng.</p>
+</ArticleLayout>

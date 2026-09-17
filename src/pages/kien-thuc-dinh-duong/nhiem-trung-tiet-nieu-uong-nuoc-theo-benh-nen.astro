@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nhiem-trung-tiet-nieu-uong-nuoc-theo-benh-nen'];
+---
+
+<ArticleLayout article={article}>
+  <p>Nhiễm trùng tiết niệu cần được chẩn đoán và điều trị đúng; nước uống không thay thế kháng sinh khi bác sĩ đã kê. Lượng dịch phù hợp phụ thuộc tuổi, sốt, chức năng thận, tim và thuốc đang dùng.</p>
+  <h2>Điều chỉnh an toàn</h2>
+  <ul>
+    <li>Uống đều theo khát và hướng dẫn, không cố uống quá nhiều để “rửa sạch” vi khuẩn.</li>
+    <li>Người suy tim, bệnh thận, đang lọc máu hoặc bị hạn chế dịch cần hỏi bác sĩ trước khi tăng nước.</li>
+    <li>Nước ép nam việt quất không thay điều trị nhiễm trùng và có thể không phù hợp với một số thuốc/bệnh nền.</li>
+    <li>Sốt cao, đau hông lưng, nôn, rét run, lú lẫn hoặc đang mang thai cần khám sớm.</li>
+  </ul>
+</ArticleLayout>

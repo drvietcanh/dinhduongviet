@@ -1,0 +1,18 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-sau-xuat-vien-phau-thuat'];
+---
+
+<ArticleLayout article={article}>
+  <p>Sau xuất viện, mục tiêu là ăn đủ theo khả năng, uống theo chỉ định và theo dõi các dấu hiệu hồi phục. Tờ dặn dò của nhóm phẫu thuật luôn được ưu tiên hơn hướng dẫn chung.</p>
+  <h2>Kế hoạch đơn giản tại nhà</h2>
+  <ul>
+    <li>Chia thành nhiều bữa nhỏ nếu nhanh no; mỗi bữa cố gắng có một nguồn đạm và thực phẩm mềm, dễ dung nạp.</li>
+    <li>Ghi lại lượng ăn uống, nôn, đi tiêu, tiểu tiện và cân nặng khi được yêu cầu để báo trong lần tái khám.</li>
+    <li>Không tự kiêng thịt, trứng, sữa hoặc tự bổ sung vitamin/kẽm nếu chưa đánh giá bệnh thận, tương tác thuốc và nhu cầu thực tế.</li>
+    <li>Vận động nhẹ theo hướng dẫn, giữ vết mổ sạch và dùng thuốc đúng toa; không thay thuốc bằng thảo dược hoặc “detox”.</li>
+  </ul>
+  <h2>Dấu hiệu cần gọi cơ sở điều trị</h2>
+  <p>Sốt, vết mổ đỏ nóng/chảy mủ, đau tăng, nôn kéo dài, tiêu chảy nhiều, không uống được hoặc tiểu ít cần được tư vấn sớm.</p>
+</ArticleLayout>

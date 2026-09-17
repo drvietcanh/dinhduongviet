@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['cdc-giam-ngoi-lau-tang-van-dong'];
+---
+
+<ArticleLayout article={article}>
+  <p>CDC khuyến khích người lớn giảm thời gian ngồi và tăng vận động theo khả năng. Không cần bắt đầu bằng buổi tập dài; các đoạn đi bộ ngắn, leo cầu thang hoặc bài tăng cơ đều có thể ghép vào ngày.</p>
+  <h2>Lịch mẫu dễ làm</h2>
+  <ul>
+    <li>Đứng dậy đi lại sau mỗi khoảng ngồi dài, đi bộ khi nghe điện thoại hoặc làm việc nhà.</li>
+    <li>Chọn hai buổi mỗi tuần tập sức mạnh nhẹ; thêm bài thăng bằng nếu lớn tuổi.</li>
+    <li>Tăng dần thời lượng, dừng lại khi đau ngực, khó thở bất thường, choáng hoặc đau khớp tăng rõ.</li>
+  </ul>
+  <p>Người có bệnh tim phổi, bệnh thận, tiểu đường hoặc sau phẫu thuật nên hỏi nhóm điều trị về mức vận động an toàn.</p>
+</ArticleLayout>

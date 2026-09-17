@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['viem-hong-an-uong-khi-dau'];
+---
+
+<ArticleLayout article={article}>
+  <p>Đau họng thường tự cải thiện. Uống đủ theo khả năng, chọn món mềm/mát hoặc ấm vừa và tránh khói thuốc giúp dễ chịu hơn.</p>
+  <h2>Món dễ dùng</h2>
+  <ul>
+    <li>Cháo, súp, sữa chua, trứng mềm, mì/bún mềm và nước lọc; chia nhỏ nếu nuốt đau.</li>
+    <li>Tránh đồ quá nóng, cay hoặc cứng nếu làm tăng đau; không ép trẻ ăn khi đang khó chịu.</li>
+  </ul>
+  <h2>Khi cần khám</h2>
+  <p>Khó thở, không nuốt được nước bọt, mất nước, đau nặng một bên, sốt kéo dài hoặc triệu chứng không cải thiện cần được đánh giá. Không tự dùng kháng sinh.</p>
+</ArticleLayout>

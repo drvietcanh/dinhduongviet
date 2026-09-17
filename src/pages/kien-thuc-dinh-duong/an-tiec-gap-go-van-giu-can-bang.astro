@@ -1,0 +1,19 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-tiec-gap-go-van-giu-can-bang'];
+---
+
+<ArticleLayout article={article}>
+  <p>Một bữa tiệc không làm hỏng toàn bộ kế hoạch ăn uống. Cách dễ duy trì hơn là ăn bình thường trước đó, chọn món có chủ đích và quay lại lịch quen thuộc ở bữa sau.</p>
+  <h2>Trước khi đi</h2>
+  <p>Không nên nhịn đói cả ngày để “dành calo”. Hãy ăn một bữa nhẹ có đạm và rau/quả, uống nước và mang theo thuốc theo đúng chỉ định nếu đang điều trị bệnh mạn tính.</p>
+  <h2>Tại bàn tiệc</h2>
+  <ul>
+    <li>Nhìn toàn bộ món trước khi gắp; ưu tiên rau, món luộc/hấp/nướng và phần đạm vừa đủ.</li>
+    <li>Ăn chậm, chia nhỏ món chiên hoặc món tráng miệng; nước lọc là lựa chọn mặc định.</li>
+    <li>Người bệnh tim, gan, gout, tăng huyết áp hoặc đang dùng thuốc nên hạn chế rượu bia và hỏi bác sĩ nếu có quy định riêng.</li>
+  </ul>
+  <h2>Sau buổi gặp</h2>
+  <p>Không cần nhịn ăn hoặc tập bù cực đoan. Uống nước theo nhu cầu, đi bộ nhẹ nếu phù hợp và trở lại bữa ăn bình thường. Nếu có nôn nhiều, đau ngực, khó thở hoặc hạ đường huyết, cần xử trí theo kế hoạch bệnh nền và tìm trợ giúp.</p>
+</ArticleLayout>

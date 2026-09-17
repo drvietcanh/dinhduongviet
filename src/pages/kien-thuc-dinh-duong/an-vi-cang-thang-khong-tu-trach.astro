@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-vi-cang-thang-khong-tu-trach'];
+---
+
+<ArticleLayout article={article}>
+  <p>Ăn nhiều hơn khi căng thẳng là trải nghiệm phổ biến và không nên trở thành lý do tự trách. Hãy quan sát thời điểm, cảm xúc, giấc ngủ và món ăn trước khi quyết định thay đổi.</p>
+  <h2>Thử dừng lại vài phút</h2>
+  <ul>
+    <li>Tự hỏi mình đang đói thể chất, khát, thiếu ngủ hay cần một khoảng nghỉ.</li>
+    <li>Nếu vẫn muốn ăn, chia ra đĩa và ăn ngồi tại bàn thay vì ăn trực tiếp từ gói lớn.</li>
+    <li>Chuẩn bị lựa chọn khác như đi bộ ngắn, gọi người thân, tắm ấm hoặc thở chậm; không dùng các cách này để cấm ăn.</li>
+  </ul>
+  <h2>Khi cần hỗ trợ chuyên môn</h2>
+  <p>Các đợt ăn mất kiểm soát lặp lại, ăn rất nhanh đến khó chịu, giấu việc ăn hoặc cảm giác tội lỗi kéo dài cần được trao đổi với bác sĩ/tâm lý gia. Không tự nhịn ăn, dùng thuốc giảm cân hay gây nôn để bù.</p>
+</ArticleLayout>

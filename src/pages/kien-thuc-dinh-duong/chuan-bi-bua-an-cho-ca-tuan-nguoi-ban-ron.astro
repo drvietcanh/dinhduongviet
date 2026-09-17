@@ -1,0 +1,20 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['chuan-bi-bua-an-cho-ca-tuan-nguoi-ban-ron'];
+---
+
+<ArticleLayout article={article}>
+  <p>Chuẩn bị bữa ăn không có nghĩa là nấu một món cho cả tuần. Cách an toàn hơn là lập khung món, sơ chế nguyên liệu và thay đổi cách kết hợp để gia đình vẫn có bữa đa dạng.</p>
+  <h2>Danh sách mua sắm 15 phút</h2>
+  <ul>
+    <li>Chọn 2–3 nguồn đạm (cá, trứng, thịt nạc, đậu phụ), 3–4 loại rau và một nhóm tinh bột quen thuộc.</li>
+    <li>Ưu tiên thực phẩm tươi, đọc nhãn natri/đường với đồ đóng gói và tính khẩu phần cho số người thực tế.</li>
+    <li>Dự phòng món nhanh ít chế biến như trứng, cá hộp ít muối hoặc rau đông lạnh khi lịch thay đổi.</li>
+  </ul>
+  <h2>Sơ chế và bảo quản</h2>
+  <p>Rửa tay, tách thực phẩm sống–chín, làm nguội món vừa nấu nhanh rồi bảo quản trong hộp nông, có nhãn ngày. Chia phần để chỉ hâm lượng sẽ ăn; nếu có mùi, màu hoặc kết cấu bất thường thì bỏ, không nếm thử để kiểm tra.</p>
+  <h2>Giữ bữa ăn cân đối</h2>
+  <p>Mỗi bữa chính nên có rau, một nguồn đạm và phần tinh bột phù hợp. Người bệnh thận, đái tháo đường, suy tim hoặc trẻ nhỏ cần điều chỉnh nguyên liệu và khẩu phần theo hướng dẫn riêng, không áp dụng thực đơn gia đình một cách máy móc.</p>
+  <p class="mt-6 text-sm text-slate-600">Meal prep chỉ là công cụ tổ chức; an toàn thực phẩm và nhu cầu từng thành viên luôn được ưu tiên.</p>
+</ArticleLayout>

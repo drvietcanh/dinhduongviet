@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['vay-nen-an-uong-va-kiem-soat-can-nang'];
+---
+<ArticleLayout article={article}><p>Vảy nến là bệnh viêm mạn tính cần điều trị da liễu. Ăn uống chỉ hỗ trợ sức khỏe và bệnh kèm.</p><ul><li>Ưu tiên rau, đậu, cá, ngũ cốc nguyên hạt và chất béo không bão hòa.</li><li>Nếu thừa cân, giảm cân từ từ cùng chuyên gia có thể hỗ trợ đáp ứng điều trị.</li><li>Không tự kiêng gluten hoặc dùng thảo dược nếu chưa đánh giá bệnh celiac, tương tác thuốc và dinh dưỡng.</li></ul></ArticleLayout>

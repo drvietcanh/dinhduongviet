@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nuoi-an-qua-sonde-tai-nha-sau-phau-thuat'];
+---
+
+<ArticleLayout article={article}>
+  <p>Nuôi ăn qua sonde sau mổ chỉ nên thực hiện theo kế hoạch bằng văn bản của bác sĩ, điều dưỡng và chuyên gia dinh dưỡng. Không tự pha công thức đặc hoặc bơm nhanh vì có thể gây sặc, tắc sonde và rối loạn dịch.</p>
+  <h2>Checklist cho người chăm sóc</h2>
+  <ul>
+    <li>Rửa tay, giữ đầu cao khi cho ăn và theo dõi ho, khó thở, đau bụng, nôn hoặc chướng bụng.</li>
+    <li>Dùng đúng công thức, lượng, tốc độ và nước tráng sonde đã được hướng dẫn; không tự thêm thuốc, sữa hay bột dinh dưỡng.</li>
+    <li>Kiểm tra vị trí và tình trạng sonde theo hướng dẫn; không tự đẩy lại sonde nếu bị tuột.</li>
+    <li>Tắc sonde, sốt, tiêu chảy kéo dài, mất nước hoặc không dung nạp cần liên hệ nhóm điều trị.</li>
+  </ul>
+</ArticleLayout>

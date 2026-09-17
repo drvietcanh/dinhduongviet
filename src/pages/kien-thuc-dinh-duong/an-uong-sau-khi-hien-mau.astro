@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-sau-khi-hien-mau'];
+---
+
+<ArticleLayout article={article}>
+  <p>Sau hiến máu, ngồi nghỉ theo hướng dẫn, uống nước và ăn bữa bình thường là đủ với đa số người. Không cần tự uống sắt liều cao nếu chưa được đánh giá.</p>
+  <h2>Trong ngày hiến máu</h2>
+  <ul>
+    <li>Uống thêm nước, ăn món có đạm và thực phẩm giàu sắt như thịt nạc, cá, trứng, đậu; kết hợp rau quả đa dạng.</li>
+    <li>Tránh vận động nặng, nâng vật nặng hoặc uống rượu bia khi còn choáng.</li>
+    <li>Nếu chóng mặt, nằm hoặc ngồi xuống, báo nhân viên y tế và không tự lái xe.</li>
+  </ul>
+  <p>Ngất kéo dài, khó thở, đau ngực, chảy máu không cầm hoặc yếu bất thường cần được hỗ trợ y tế ngay.</p>
+</ArticleLayout>

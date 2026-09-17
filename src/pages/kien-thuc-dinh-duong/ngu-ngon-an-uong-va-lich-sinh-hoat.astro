@@ -1,0 +1,20 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['ngu-ngon-an-uong-va-lich-sinh-hoat'];
+---
+
+<ArticleLayout article={article}>
+  <p>Giấc ngủ chịu ảnh hưởng của lịch sinh hoạt, stress, thuốc và bệnh nền chứ không chỉ một loại thực phẩm. Hãy thử thay đổi từng điểm nhỏ trong một đến hai tuần và ghi lại tác động.</p>
+  <h2>Ba điểm nên thử trước</h2>
+  <ol>
+    <li>Giữ giờ thức dậy tương đối ổn định; ăn tối vừa phải và tránh nằm ngay sau một bữa lớn.</li>
+    <li>Giảm cà phê, trà đặc, nước tăng lực từ chiều muộn; không dùng rượu bia như “thuốc ngủ”.</li>
+    <li>Đi bộ hoặc vận động ban ngày, giảm ánh sáng màn hình trước giờ ngủ và giữ phòng ngủ yên, mát.</li>
+  </ol>
+  <h2>Không tự dùng thuốc ngủ hoặc thực phẩm bổ sung</h2>
+  <p>Melatonin, thảo dược và thuốc không kê đơn có thể tương tác với thuốc khác hoặc không phù hợp với bệnh nền. Hãy hỏi bác sĩ, đặc biệt khi mang thai, lớn tuổi, có bệnh gan thận hoặc đang dùng thuốc an thần.</p>
+  <h2>Khi cần đánh giá chuyên môn</h2>
+  <p>Mất ngủ kéo dài, ngủ gật khi lái xe, ngáy kèm ngưng thở, thức giấc vì khó thở hoặc tâm trạng suy sụp cần được trao đổi với nhân viên y tế.</p>
+  <p class="mt-6 text-sm text-slate-600">Một đêm ngủ kém không cần “bù” bằng nhịn ăn hay uống nhiều caffeine; quay lại nhịp sinh hoạt đều đặn thường hữu ích hơn.</p>
+</ArticleLayout>

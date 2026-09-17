@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-hoi-phuc-sau-nhiem-virus-keo-dai'];
+---
+
+<ArticleLayout article={article}>
+  <p>Mệt kéo dài sau nhiễm virus cần được theo dõi và loại trừ nguyên nhân khác nếu không cải thiện. Ăn uống hỗ trợ hồi phục nhưng không có “thực đơn giải độc” hay viên bổ sung thay thế đánh giá y tế.</p>
+  <h2>Nhịp hồi phục thực tế</h2>
+  <ul>
+    <li>Chia nhỏ bữa, ưu tiên món giàu đạm và năng lượng vừa sức; uống đều nếu không bị hạn chế dịch.</li>
+    <li>Tăng hoạt động từ từ theo triệu chứng, xen kẽ nghỉ; không cố tập bù khi mệt tăng sau vận động.</li>
+    <li>Không tự dùng liều cao vitamin, thuốc kháng virus hoặc thảo dược khi chưa hỏi bác sĩ.</li>
+    <li>Khó thở, đau ngực, ngất, sốt tái diễn, sụt cân hoặc không ăn uống được cần khám.</li>
+  </ul>
+</ArticleLayout>

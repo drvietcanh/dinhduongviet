@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-sau-phau-thuat-tieu-hoa'];
+---
+
+<ArticleLayout article={article}>
+  <p>Sau mổ dạ dày hoặc ruột, khả năng dung nạp thay đổi theo vị trí và phương pháp phẫu thuật. Hãy tiến triển khẩu phần theo kế hoạch của phẫu thuật viên và chuyên gia dinh dưỡng, không tự suy ra từ một ca bệnh khác.</p>
+  <h2>Nguyên tắc thường dùng</h2>
+  <ul>
+    <li>Ăn chậm, chia nhỏ bữa và tăng độ đặc từng bước khi không đầy bụng, đau hoặc nôn.</li>
+    <li>Theo dõi thực phẩm gây tiêu chảy, xì hơi hoặc đau; ghi nhật ký để trao đổi khi tái khám thay vì loại bỏ quá nhiều nhóm thực phẩm.</li>
+    <li>Uống đủ theo chỉ định. Người có hậu môn nhân tạo, tiêu chảy hoặc bệnh thận cần kế hoạch dịch và điện giải cá thể hóa.</li>
+    <li>Duy trì đạm và năng lượng phù hợp; nếu ăn không đủ, hỏi về sản phẩm dinh dưỡng y học thay vì tự mua loại nhiều đường hoặc nhiều kali.</li>
+  </ul>
+  <p>Đau tăng, bụng chướng, nôn xanh/nâu, sốt, tiêu chảy nhiều, chóng mặt hoặc tiểu ít là lý do liên hệ ngay nhóm điều trị.</p>
+</ArticleLayout>

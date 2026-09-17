@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['viem-da-co-dia-thuc-pham-bo-sung-va-kiem-chung'];
+---
+<ArticleLayout article={article}><p>Vitamin hoặc thảo dược không mặc nhiên an toàn và không thay thế dưỡng ẩm, thuốc bôi hay điều trị bác sĩ.</p><ul><li>Chỉ bổ sung khi có thiếu chất hoặc chỉ định rõ; xem nhãn và tương tác với thuốc.</li><li>Không dùng xét nghiệm thương mại không được thẩm định để tự loại bỏ nhiều thực phẩm.</li><li>Trẻ chậm tăng trưởng, chàm nặng hoặc phản ứng sau ăn cần đánh giá dị ứng và dinh dưỡng.</li></ul></ArticleLayout>

@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tieu-chay-sau-khang-sinh-an-uong-an-toan'];
+---
+
+<ArticleLayout article={article}>
+  <p>Tiêu chảy sau kháng sinh có thể nhẹ và tự giới hạn, nhưng cũng có thể liên quan nhiễm <em>C. difficile</em>. Không tự ngừng hoặc đổi kháng sinh; hãy liên hệ nơi kê thuốc nếu tiêu chảy xuất hiện hoặc tăng dần.</p>
+  <h2>Ăn uống và bù nước</h2>
+  <ul>
+    <li>Uống từng ngụm nhỏ, ăn các món dễ tiêu theo khả năng và trở lại khẩu phần bình thường dần khi đỡ.</li>
+    <li>Không cần nhịn ăn kéo dài; tránh rượu, món nhiều mỡ hoặc thực phẩm làm triệu chứng nặng hơn.</li>
+    <li>Probiotic chỉ nên cân nhắc theo tư vấn, đặc biệt ở người suy giảm miễn dịch hoặc có bệnh nặng.</li>
+    <li>Tiêu chảy nhiều, sốt, đau bụng, phân máu/đen, tiểu ít hoặc kéo dài cần được khám.</li>
+  </ul>
+</ArticleLayout>

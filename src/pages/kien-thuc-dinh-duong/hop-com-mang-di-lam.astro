@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['hop-com-mang-di-lam'];
+---
+
+<ArticleLayout article={article}>
+  <p>Một hộp cơm dễ duy trì thường chỉ cần ba phần: rau, nguồn đạm và tinh bột vừa khẩu phần. Món quen thuộc như cá kho ít mặn, trứng, đậu phụ, rau luộc và cơm đều có thể ghép linh hoạt.</p>
+  <h2>Chuẩn bị an toàn</h2>
+  <ul>
+    <li>Nấu chín kỹ, cho vào hộp sạch; làm nguội nhanh và giữ lạnh nếu chưa ăn ngay.</li>
+    <li>Mang riêng nước chấm/sốt, dùng hộp kín và hâm nóng đều trước khi ăn.</li>
+    <li>Không giữ lại món có mùi, màu hoặc kết cấu bất thường; người bệnh nên ưu tiên món ít muối, ít đường theo kế hoạch riêng.</li>
+  </ul>
+  <h2>Điều chỉnh theo bệnh nền</h2>
+  <p>Người đái tháo đường cần cân đối lượng tinh bột; người bệnh thận, tim hoặc tăng huyết áp có thể cần giới hạn natri, kali hay dịch. Không áp dụng một hộp cơm cho mọi người.</p>
+</ArticleLayout>

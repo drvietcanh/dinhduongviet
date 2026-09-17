@@ -1,0 +1,47 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["tieu-duong-ngay-om"];
+if (!article) throw new Error("Article not found");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <p>Khi bị sốt, cảm cúm, tiêu chảy hoặc nhiễm trùng, hormone stress có thể làm đường huyết tăng dù ăn ít hơn. Người đái tháo đường nên chuẩn bị một kế hoạch ngày ốm từ trước, gồm thuốc đang dùng, máy đo, que thử ketone nếu được chỉ định và số điện thoại cơ sở điều trị.</p>
+  </section>
+
+  <section class="section card" style="background:#fff4e5;border:1px solid #f2c078;">
+    <p style="margin:0;"><strong>Không tự ngừng insulin hoặc đổi liều thuốc chỉ vì đang ốm.</strong> Kế hoạch điều chỉnh thuốc phụ thuộc loại đái tháo đường, thuốc đang dùng, khả năng ăn uống và bệnh đi kèm; hãy gọi nhóm điều trị nếu không chắc.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>✅ Làm gì trong ngày ốm?</h2>
+      <ul>
+        <li>Đo đường huyết thường xuyên hơn theo kế hoạch cá nhân và ghi lại kết quả, nhiệt độ, thuốc và lượng uống.</li>
+        <li>Uống từng ngụm nhỏ thường xuyên; nếu nôn hoặc tiêu chảy, ưu tiên kế hoạch bù nước do nhân viên y tế hướng dẫn.</li>
+        <li>Nếu ăn được, chọn món mềm, dễ tiêu và chia nhỏ bữa; không cần bỏ hoàn toàn carbohydrate.</li>
+        <li>Nếu có nguy cơ hạ đường huyết, chuẩn bị nguồn carbohydrate tác dụng nhanh theo hướng dẫn xử trí hạ đường huyết.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>⚠️ Không nên làm</h2>
+      <ul>
+        <li>Không nhịn đói kéo dài để “hạ đường” và không tự dùng nước trái cây, nước điện giải nhiều đường nếu không có chỉ định.</li>
+        <li>Không tự mua thuốc cảm, thuốc chống viêm hoặc thảo dược mà chưa kiểm tra tương tác và đường trong chế phẩm.</li>
+        <li>Không cố uống thật nhiều nếu có suy tim, bệnh thận hoặc bác sĩ đã giới hạn dịch.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>🚨 Khi nào cần gọi bác sĩ hoặc đi cấp cứu?</h2>
+    <ul>
+      <li>Nôn nhiều, không giữ được nước, tiêu chảy kéo dài hoặc dấu mất nước như chóng mặt, lừ đừ, tiểu ít.</li>
+      <li>Đường huyết tăng dai dẳng theo ngưỡng đã được nhóm điều trị dặn, hoặc có ketone từ vừa đến nhiều.</li>
+      <li>Đau bụng, thở nhanh/sâu, hơi thở mùi trái cây, lú lẫn hoặc buồn ngủ bất thường — có thể là dấu hiệu nhiễm toan ceton.</li>
+      <li>Hạ đường huyết tái diễn, không nuốt an toàn hoặc người bệnh không đáp ứng.</li>
+    </ul>
+    <p class="muted">Ngưỡng gọi bác sĩ và cách dùng glucagon/insulin phải theo kế hoạch riêng. Bài viết không thay cho hướng dẫn cấp cứu.</p>
+  </section>
+</ArticleLayout>

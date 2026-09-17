@@ -1,0 +1,20 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['lam-viec-tai-nha-an-uong-khoa-hoc'];
+---
+
+<ArticleLayout article={article}>
+  <p>Làm việc tại nhà dễ khiến giờ ăn trôi theo cuộc họp, bữa trưa ăn trước màn hình và đồ ăn vặt luôn ở trong tầm tay. Một lịch đơn giản giúp giảm việc ăn theo cảm xúc mà không cần chế độ quá nghiêm ngặt.</p>
+  <h2>Chuẩn bị trước giờ làm</h2>
+  <ul>
+    <li>Để sẵn nước lọc, một phần trái cây và bữa trưa có rau, nguồn đạm, món tinh bột vừa khẩu phần.</li>
+    <li>Đặt giờ nghỉ ăn như một cuộc hẹn; rời màn hình để nhận biết no và thưởng thức món ăn.</li>
+    <li>Nếu cần ăn phụ, chia sẵn phần nhỏ như sữa chua không đường, trứng luộc hoặc hạt không tẩm muối.</li>
+  </ul>
+  <h2>Giảm thời gian ngồi liên tục</h2>
+  <p>Mỗi giờ hãy đứng dậy đi lại, duỗi người hoặc làm một việc nhà ngắn. Có thể dùng cầu thang, đi bộ quanh nhà hoặc bài tập nhẹ; người có bệnh tim phổi, đau khớp hay bệnh mạn tính nên tăng dần theo khả năng.</p>
+  <h2>Giữ nhịp ngủ</h2>
+  <p>Kết thúc công việc vào một mốc tương đối cố định, giảm caffeine từ chiều muộn và tránh bữa rất lớn hoặc rượu bia sát giờ ngủ. Nếu ngáy to, ngưng thở khi ngủ, buồn ngủ ban ngày hoặc mất ngủ kéo dài, nên đi khám.</p>
+  <p class="mt-6 text-sm text-slate-600">Đây là gợi ý sinh hoạt chung; bệnh đái tháo đường, thận, tim hoặc đang dùng thuốc có thể cần lịch ăn riêng.</p>
+</ArticleLayout>

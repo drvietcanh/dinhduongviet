@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['rung-nhi-chong-dong-va-thuc-pham'];
+---
+<ArticleLayout article={article}><p>Người bị rung nhĩ cần dùng thuốc đúng đơn để giảm nguy cơ đột quỵ; thức ăn không thay thế thuốc chống đông.</p><ul><li>Với warfarin, giữ lượng rau xanh/vitamin K tương đối ổn định, không cần loại bỏ hoàn toàn.</li><li>Hỏi bác sĩ trước khi dùng NSAID, rượu bia, thảo dược hoặc vitamin mới.</li><li>Chảy máu bất thường, phân đen, đau đầu dữ dội hoặc yếu liệt cần cấp cứu.</li></ul></ArticleLayout>

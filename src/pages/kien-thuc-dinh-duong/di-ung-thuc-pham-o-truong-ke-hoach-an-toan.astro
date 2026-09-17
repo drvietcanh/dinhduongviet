@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['di-ung-thuc-pham-o-truong-ke-hoach-an-toan'];
+---
+
+<ArticleLayout article={article}>
+  <p>Trẻ dị ứng thực phẩm cần một kế hoạch bằng văn bản, thống nhất giữa gia đình, giáo viên và người chăm sóc. Mục tiêu là tránh phơi nhiễm và xử trí nhanh, không phải bắt mọi trẻ ăn một thực đơn quá hạn chế.</p>
+  <h2>Kế hoạch nên có gì?</h2>
+  <ul>
+    <li>Ghi rõ thực phẩm gây dị ứng đã được xác nhận, tên gọi địa phương và nguy cơ lây nhiễm chéo; dạy trẻ không đổi đồ ăn tùy tiện.</li>
+    <li>Nhà trường cần biết dấu hiệu phản vệ và vị trí thuốc cấp cứu đã được kê, đồng thời gọi cấp cứu theo quy trình địa phương.</li>
+    <li>Gia đình chuẩn bị hộp thuốc còn hạn, hướng dẫn sử dụng và cập nhật khi trẻ đổi cân nặng hoặc bác sĩ thay toa.</li>
+    <li>Không tự thử lại thực phẩm nghi ngờ ở trường hay tại nhà; việc thử lại cần nơi và người có chuyên môn chỉ định.</li>
+  </ul>
+  <p>Khó thở, khàn tiếng, sưng lưỡi/họng, lơ mơ hoặc nhiều triệu chứng cùng lúc là cấp cứu. Thực hiện kế hoạch phản vệ đã được bác sĩ hướng dẫn và gọi cấp cứu ngay.</p>
+</ArticleLayout>

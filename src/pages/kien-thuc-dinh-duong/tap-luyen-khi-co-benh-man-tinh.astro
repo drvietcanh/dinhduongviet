@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tap-luyen-khi-co-benh-man-tinh'];
+---
+<ArticleLayout article={article}><p>Bệnh mạn tính cần kế hoạch vận động và ăn uống cá thể hóa, nhất là khi dùng insulin, thuốc tim mạch hoặc hạn chế dịch.</p><ul><li>Hỏi đội ngũ điều trị về mức gắng sức, thời điểm ăn và theo dõi đường huyết/huyết áp.</li><li>Mang nước và nguồn carbohydrate cấp cứu nếu được khuyến cáo; không tự thay đổi thuốc.</li><li>Dừng tập và đi khám khi đau ngực, khó thở bất thường, choáng, yếu liệt hoặc đường huyết bất thường kéo dài.</li></ul></ArticleLayout>

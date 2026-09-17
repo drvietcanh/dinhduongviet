@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-toan-thuc-pham-khi-mat-dien-mua-bao'];
+---
+
+<ArticleLayout article={article}>
+  <p>Khi mất điện, tủ lạnh không còn giữ nhiệt ổn định; nước và thực phẩm có thể nhiễm bẩn sau ngập. Ưu tiên an toàn hơn tiết kiệm: không nếm thử món đã để lâu để “kiểm tra”.</p>
+  <h2>Trong lúc mất điện</h2>
+  <ul>
+    <li>Hạn chế mở cửa tủ lạnh, chuyển thực phẩm dễ hỏng sang thùng đá nếu có và ghi lại thời điểm mất điện.</li>
+    <li>Dùng nước đóng chai hoặc nước đã xử lý; không dùng thực phẩm tiếp xúc nước ngập.</li>
+    <li>Bỏ món có mùi, màu hoặc bao bì phồng/rò rỉ; không rửa rồi dùng lại đồ đã nhiễm bẩn.</li>
+  </ul>
+  <p>Tiêu chảy nhiều, nôn, sốt, đau bụng dữ dội hoặc dấu mất nước sau ăn cần được khám.</p>
+</ArticleLayout>

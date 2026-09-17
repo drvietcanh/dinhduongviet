@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['hen-suyen-thuc-pham-kich-hoat-va-nhat-ky'];
+---
+<ArticleLayout article={article}><p>Hen suyễn cần thuốc kiểm soát và kế hoạch hành động; thực phẩm chỉ là một yếu tố ở một số người.</p><ul><li>Ghi món ăn, thời điểm, triệu chứng và thuốc để tìm mối liên quan có lặp lại.</li><li>Không tự kiêng nhiều nhóm thực phẩm hoặc thay thuốc hít bằng vitamin, thảo dược.</li><li>Khò khè tăng nhanh, khó nói, tím tái hoặc không đáp ứng thuốc cắt cơn cần cấp cứu.</li></ul></ArticleLayout>

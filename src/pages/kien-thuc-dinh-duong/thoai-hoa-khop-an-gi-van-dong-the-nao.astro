@@ -1,0 +1,28 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+
+const article = articleBySlug['thoai-hoa-khop-an-gi-van-dong-the-nao'];
+---
+
+<ArticleLayout article={article}>
+  <p>Thoái hóa khớp thường gây đau và cứng khớp, nhưng không có một món ăn hay thực phẩm bổ sung nào có thể “tái tạo sụn” ngay lập tức. Mục tiêu thực tế là giảm tải lên khớp, duy trì cơ và điều trị theo kế hoạch cá nhân.</p>
+
+  <h2>Ăn uống theo kiểu bữa cơm Việt</h2>
+  <ul>
+    <li>Ưu tiên rau, quả, đậu, cá, trứng, thịt nạc và ngũ cốc nguyên hạt; chia đủ đạm trong ngày để giữ cơ.</li>
+    <li>Nếu thừa cân, giảm từ từ khẩu phần năng lượng và đồ uống có đường; một mức giảm cân vừa phải có thể giúp giảm tải khớp gối.</li>
+    <li>Không cần kiêng tuyệt đối cà tím, thịt gà, hải sản hay “đồ nếp” nếu không có dị ứng hoặc chỉ định riêng. Tránh các sản phẩm quảng cáo chữa khỏi thoái hóa khớp.</li>
+  </ul>
+
+  <h2>Vận động vừa sức, đều đặn</h2>
+  <p>Bắt đầu bằng đi bộ ngắn, đạp xe tại chỗ, bơi hoặc bài tập dưới nước; thêm bài tăng sức mạnh cơ quanh khớp và bài thăng bằng theo hướng dẫn của bác sĩ hoặc chuyên viên vật lý trị liệu. Tăng dần thời lượng, không cố tập xuyên qua cơn đau tăng rõ.</p>
+
+  <h2>Giảm đau trong sinh hoạt</h2>
+  <p>Chia việc nhà thành đợt ngắn, nghỉ xen kẽ, dùng giày đế vững và dụng cụ hỗ trợ nếu được hướng dẫn. Thuốc giảm đau, gel bôi hoặc thực phẩm bổ sung cần được kiểm tra tương tác và bệnh kèm (đặc biệt bệnh thận, dạ dày, tim mạch) trước khi dùng.</p>
+
+  <h2>Khi nào cần khám sớm?</h2>
+  <p>Khớp sưng nóng đỏ, sốt, đau sau chấn thương, không chịu lực được, đau về đêm tăng nhanh hoặc cứng khớp kéo dài là những dấu hiệu không nên tự xử trí như thoái hóa khớp. Hãy liên hệ cơ sở y tế để được khám và chẩn đoán.</p>
+
+  <p class="mt-6 text-sm text-slate-600">Khuyến cáo vận động và giảm cân cần cá thể hóa theo tuổi, mức đau, bệnh tim phổi và bệnh thận. Bài viết không thay thế chẩn đoán hoặc đơn điều trị.</p>
+</ArticleLayout>

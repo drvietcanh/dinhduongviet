@@ -89,6 +89,28 @@
     "emoji": "🫁"
   },
   {
+    "type": "hub",
+    "slug": "ung-thu",
+    "name": "Ung thư và dinh dưỡng",
+    "aliases": [
+      "Ung thư"
+    ],
+    "description": "Lộ trình dinh dưỡng theo loại ung thư, giai đoạn điều trị và triệu chứng thường gặp.",
+    "category": "Theo bệnh",
+    "emoji": "🎗️"
+  },
+  {
+    "type": "hub",
+    "slug": "xo-gan",
+    "name": "Xơ gan và dinh dưỡng",
+    "aliases": [
+      "Xơ gan"
+    ],
+    "description": "Lộ trình ăn uống cho xơ gan, cổ trướng, suy mòn cơ và giai đoạn chuẩn bị ghép gan.",
+    "category": "Theo bệnh",
+    "emoji": "🫀"
+  },
+  {
     "type": "article",
     "slug": "tieu-duong-an-com-duoc-khong",
     "name": "Người đái tháo đường ăn cơm được không? Ăn bao nhiêu là vừa?",
@@ -3086,6 +3108,1014 @@
     "name": "Methotrexate trong viêm khớp: folate, rượu bia và ăn uống an toàn",
     "aliases": [],
     "description": "Lưu ý thực tế cho người dùng methotrexate liều thấp hằng tuần điều trị bệnh viêm; phân biệt lịch folic acid và giảm nguy cơ sai liều.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-duong-ngay-om",
+    "name": "Đái tháo đường khi bị ốm: ăn uống, nước và dấu hiệu cần gọi bác sĩ",
+    "aliases": [],
+    "description": "Kế hoạch ngày ốm an toàn cho người đái tháo đường: theo dõi đường huyết, bù nước, giữ carbohydrate phù hợp và không tự đổi thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-loc-mang-bung",
+    "name": "Dinh dưỡng khi lọc màng bụng: giữ đạm, kiểm soát muối, kali và dịch",
+    "aliases": [],
+    "description": "Những điểm cần theo dõi khi lọc màng bụng: mất đạm qua dịch lọc, năng lượng từ dịch lọc, natri, kali, phốt pho và thuốc gắn phosphate.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thoai-hoa-khop-an-gi-van-dong-the-nao",
+    "name": "Thoái hóa khớp: ăn gì và vận động thế nào trong đời sống hằng ngày?",
+    "aliases": [],
+    "description": "Hướng dẫn thực tế cho người thoái hóa khớp: kiểm soát cân nặng, ăn đủ chất, vận động phù hợp và nhận biết dấu hiệu cần khám.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "doi-song-bao-ve-xuong-khop-moi-ngay",
+    "name": "Checklist bảo vệ xương khớp mỗi ngày: ăn uống, vận động và phòng ngã",
+    "aliases": [],
+    "description": "Các thói quen đơn giản giúp duy trì cơ, xương và thăng bằng: bữa ăn đủ đạm, canxi–vitamin D theo nhu cầu, vận động an toàn và rà soát thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "lam-viec-tai-nha-an-uong-khoa-hoc",
+    "name": "Làm việc tại nhà: sắp xếp bữa ăn, vận động và nghỉ mắt thế nào?",
+    "aliases": [],
+    "description": "Một lịch sinh hoạt đơn giản cho người làm việc tại nhà: chuẩn bị bữa, giảm ăn vặt trước màn hình, đứng dậy vận động và giữ nhịp ngủ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "chuan-bi-bua-an-cho-ca-tuan-nguoi-ban-ron",
+    "name": "Chuẩn bị bữa ăn cho cả tuần: cách làm gọn, an toàn và đỡ lãng phí",
+    "aliases": [],
+    "description": "Cách lập danh sách mua sắm, sơ chế và chia khẩu phần cho gia đình bận rộn mà vẫn giữ bữa ăn đa dạng, an toàn thực phẩm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ngu-ngon-an-uong-va-lich-sinh-hoat",
+    "name": "Ăn uống và lịch sinh hoạt để ngủ tốt hơn: những thay đổi nhỏ dễ làm",
+    "aliases": [],
+    "description": "Gợi ý điều chỉnh giờ ăn, caffeine, rượu bia, màn hình và vận động để hỗ trợ giấc ngủ; không thay thế đánh giá khi mất ngủ kéo dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nguoi-cham-soc-an-uong-khong-kiet-suc",
+    "name": "Người chăm sóc cũng cần ăn: giữ sức khi chăm người bệnh hoặc trẻ nhỏ",
+    "aliases": [],
+    "description": "Gợi ý thực tế để người chăm sóc không bỏ bữa, chuẩn bị món nhanh và nhận biết lúc cần nhờ hỗ trợ thay vì cố gắng một mình.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-tiec-gap-go-van-giu-can-bang",
+    "name": "Dự tiệc và gặp gỡ: chọn món thế nào để vẫn giữ cân bằng?",
+    "aliases": [],
+    "description": "Cách ăn linh hoạt khi dự tiệc cưới, liên hoan hoặc gặp bạn bè mà không nhịn đói trước, không “bù” bằng nhịn ăn sau đó.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "xay-thoi-quen-an-uong-ben-vung",
+    "name": "Xây thói quen ăn uống bền vững: bắt đầu nhỏ và quay lại sau ngày lệch nhịp",
+    "aliases": [],
+    "description": "Một cách tiếp cận không cực đoan để duy trì bữa ăn, vận động và giấc ngủ: chọn mục tiêu nhỏ, theo dõi tiến bộ và không tự trách khi có ngày chưa tốt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-ngay-nang-nong",
+    "name": "Ngày nắng nóng: uống và ăn thế nào để đỡ mệt, không quá tải nước?",
+    "aliases": [],
+    "description": "Gợi ý chọn nước, bữa ăn nhẹ và cách bảo quản thực phẩm trong ngày nóng; lưu ý riêng cho người bệnh tim, thận và người lớn tuổi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "mua-thuc-pham-lanh-manh-tiet-kiem",
+    "name": "Ăn lành mạnh với ngân sách vừa phải: mua gì trước, nấu sao cho tiết kiệm?",
+    "aliases": [],
+    "description": "Cách lập danh sách mua sắm theo mùa, ưu tiên thực phẩm cơ bản và giảm đồ chế biến sẵn mà không biến dinh dưỡng thành gánh nặng chi phí.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-khi-di-cong-tac",
+    "name": "Đi công tác nhiều ngày: giữ bữa ăn và thuốc men thế nào?",
+    "aliases": [],
+    "description": "Checklist chuẩn bị đồ ăn, nước, thuốc và lịch nghỉ khi di chuyển; phù hợp cho người có bệnh mạn tính cần duy trì nếp sinh hoạt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "lam-viec-ngoai-troi-an-uong",
+    "name": "Làm việc ngoài trời: bù nước, ăn giữa ca và phòng kiệt sức vì nóng",
+    "aliases": [],
+    "description": "Hướng dẫn thực tế cho người làm xây dựng, giao hàng, nông nghiệp hoặc công việc ngoài trời: nghỉ mát, uống đều và chuẩn bị bữa an toàn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "song-mot-minh-an-uong-don-gian",
+    "name": "Sống một mình: tổ chức bữa ăn đơn giản mà vẫn đủ chất",
+    "aliases": [],
+    "description": "Cách mua lượng nhỏ, tận dụng đồ đông lạnh an toàn và ghép bữa nhanh cho người sống một mình, tránh bỏ bữa hoặc ăn quá nhiều đồ chế biến sẵn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-vi-cang-thang-khong-tu-trach",
+    "name": "Ăn vì căng thẳng: nhận biết tín hiệu và quay lại nhịp ăn bình thường",
+    "aliases": [],
+    "description": "Cách phân biệt đói thể chất với ăn do cảm xúc, tạo lựa chọn thay thế và tìm hỗ trợ khi việc ăn uống mất kiểm soát lặp lại.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hop-com-mang-di-lam",
+    "name": "Hộp cơm mang đi làm: ghép món nhanh, đủ chất và an toàn",
+    "aliases": [],
+    "description": "Cách chuẩn bị hộp cơm Việt gồm rau, đạm và tinh bột vừa đủ; mẹo giữ lạnh, hâm nóng và điều chỉnh cho bệnh nền.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-khi-giao-mua",
+    "name": "Giao mùa: giữ bữa ăn, nước uống và giấc ngủ ổn định",
+    "aliases": [],
+    "description": "Thói quen đơn giản khi thời tiết thay đổi: ăn đủ, uống phù hợp, bảo quản thực phẩm và nhận biết dấu hiệu bệnh cần khám.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-an-gia-dinh-khong-ap-luc",
+    "name": "Bữa ăn gia đình không áp lực: ăn cùng nhau và tôn trọng khác biệt",
+    "aliases": [],
+    "description": "Cách tổ chức bữa ăn nhiều thế hệ để trẻ, người lớn tuổi và người bệnh đều có lựa chọn phù hợp mà không ép ăn hoặc gắn nhãn món ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-khi-lai-xe-duong-dai",
+    "name": "Lái xe đường dài: ăn uống và nghỉ thế nào để tỉnh táo, an toàn?",
+    "aliases": [],
+    "description": "Gợi ý chuẩn bị nước, bữa nhẹ và điểm nghỉ khi lái xe nhiều giờ; tránh phụ thuộc vào cà phê, nước tăng lực hoặc ăn quá no.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-phu-lanh-manh-cho-gia-dinh",
+    "name": "Bữa phụ lành mạnh cho gia đình: chọn lượng vừa và đúng lúc",
+    "aliases": [],
+    "description": "Gợi ý bữa phụ đơn giản từ thực phẩm quen thuộc, phù hợp trẻ em, người lớn và người bệnh; tránh biến bữa phụ thành ăn vặt liên tục.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bao-quan-thuc-an-thua-dung-cach",
+    "name": "Thức ăn thừa: làm nguội, bảo quản và hâm lại an toàn",
+    "aliases": [],
+    "description": "Quy trình ngắn để xử lý cơm, canh, thịt cá và món đã nấu; biết lúc nào nên bỏ thay vì cố tận dụng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-khi-khong-co-thoi-gian-nau",
+    "name": "Không có thời gian nấu: ghép bữa nhanh mà vẫn đủ nhóm chất",
+    "aliases": [],
+    "description": "Cách chọn món tiện lợi và ghép rau–đạm–tinh bột khi lịch bận, hạn chế phụ thuộc vào đồ chiên, nước ngọt và khẩu phần quá lớn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-cho-cho-gia-dinh-o-cho-truyen-thong",
+    "name": "Đi chợ truyền thống: chọn thực phẩm tươi và mua vừa đủ",
+    "aliases": [],
+    "description": "Checklist đi chợ Việt Nam: hỏi nguồn gốc, chọn thực phẩm theo mùa, tách sống–chín và mua lượng phù hợp số người ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nhat-ky-an-uong-khong-ap-luc",
+    "name": "Ghi nhật ký ăn uống không áp lực: dùng để hiểu cơ thể, không để tự phạt",
+    "aliases": [],
+    "description": "Mẫu ghi ngắn về giờ ăn, đói–no, giấc ngủ và triệu chứng; tránh đếm ám ảnh hoặc tự loại bỏ nhiều nhóm thực phẩm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nau-an-cung-tre-an-toan",
+    "name": "Nấu ăn cùng trẻ: vừa học kỹ năng vừa giữ an toàn thực phẩm",
+    "aliases": [],
+    "description": "Cách giao việc bếp phù hợp tuổi, phòng bỏng và nhiễm chéo, đồng thời giúp trẻ làm quen với rau, đạm và món ăn gia đình.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-an-ngay-nghi-khong-an-bu",
+    "name": "Ngày nghỉ: ăn uống thư giãn mà không biến thành ăn bù",
+    "aliases": [],
+    "description": "Gợi ý giữ giờ ăn tương đối ổn định, linh hoạt khi gặp bạn bè và quay lại nếp thường ngày sau cuối tuần.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "giu-bua-an-khi-lich-cuoi-tuan-thay-doi",
+    "name": "Lịch cuối tuần thay đổi: giữ bữa ăn và giấc ngủ không bị đảo lộn",
+    "aliases": [],
+    "description": "Mẹo chuẩn bị khi có đám giỗ, đi chơi hoặc ngủ muộn: mang bữa dự phòng, uống đủ và tránh bỏ thuốc hoặc bỏ bữa kéo dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "goi-do-an-truc-tuyen-lanh-manh",
+    "name": "Gọi đồ ăn trực tuyến: chọn món và khẩu phần thế nào cho hợp lý?",
+    "aliases": [],
+    "description": "Mẹo đọc tên món, chọn phần nhỏ, thêm rau và kiểm soát nước sốt khi đặt đồ ăn qua ứng dụng; phù hợp người bận rộn và bệnh mạn tính.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-toan-thuc-pham-khi-mat-dien-mua-bao",
+    "name": "Mất điện, mưa bão: giữ an toàn nước uống và thực phẩm trong nhà",
+    "aliases": [],
+    "description": "Checklist xử lý tủ lạnh, nước uống và thực phẩm khi mất điện hoặc ngập lụt; biết món nào nên bỏ để tránh ngộ độc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-sau-khi-hien-mau",
+    "name": "Sau khi hiến máu: uống gì, ăn gì và khi nào cần nghỉ thêm?",
+    "aliases": [],
+    "description": "Hướng dẫn chăm sóc đơn giản sau hiến máu: uống nước, ăn bữa bình thường, tránh vận động nặng và nhận biết dấu hiệu bất thường.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-an-ngoai-doc-nhan",
+    "name": "Dị ứng thực phẩm khi ăn ngoài: hỏi gì và phòng nhiễm chéo ra sao?",
+    "aliases": [],
+    "description": "Checklist cho người dị ứng khi ăn nhà hàng hoặc gọi món: báo rõ dị nguyên, kiểm tra thành phần và chuẩn bị thuốc cấp cứu theo kế hoạch.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-hong-an-uong-khi-dau",
+    "name": "Đau họng: ăn uống thế nào để dễ chịu và khi nào cần khám?",
+    "aliases": [],
+    "description": "Gợi ý nước uống, món mềm mát và dấu hiệu báo động khi đau họng; không tự dùng kháng sinh hoặc ép ăn món gây đau.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-an-truoc-sau-tap-nguoi-moi",
+    "name": "Người mới tập thể dục: ăn trước và sau buổi tập thế nào?",
+    "aliases": [],
+    "description": "Nguyên tắc đơn giản cho người bắt đầu đi bộ, tập sức mạnh hoặc thể thao nhẹ: bữa ăn, nước và phục hồi mà không cần thực phẩm bổ sung đắt tiền.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tao-bon-sau-phau-thuat",
+    "name": "Táo bón sau phẫu thuật: ăn, uống và vận động thế nào an toàn?",
+    "aliases": [],
+    "description": "Các nguyên nhân thường gặp sau mổ và cách hỗ trợ bằng nước, chất xơ, vận động nhẹ; lưu ý không tự dùng thuốc xổ khi có dấu hiệu tắc ruột.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nguyen-tac-che-do-an-lanh-manh-who",
+    "name": "WHO: 4 nguyên tắc của một chế độ ăn lành mạnh",
+    "aliases": [],
+    "description": "Giải thích bốn nền tảng WHO: đủ chất, cân bằng, điều độ và đa dạng; chuyển thành lựa chọn gần gũi trong bữa cơm Việt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cdc-giam-ngoi-lau-tang-van-dong",
+    "name": "CDC: giảm ngồi lâu và tăng vận động trong ngày như thế nào?",
+    "aliases": [],
+    "description": "Cách chia nhỏ vận động, đi bộ và bài tăng cơ vào lịch bận rộn; điều chỉnh an toàn khi có bệnh mạn tính hoặc đau khớp.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "aha-mo-hinh-an-tot-cho-tim",
+    "name": "AHA: mô hình ăn uống tốt cho tim, áp dụng vào món Việt",
+    "aliases": [],
+    "description": "Chuyển khuyến nghị AHA thành nguyên tắc chọn rau quả, ngũ cốc nguyên hạt, đạm lành mạnh, chất béo không bão hòa và ít muối.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nhs-bua-an-can-bang-thuc-hanh",
+    "name": "NHS Eatwell: xây một bữa ăn cân bằng từ thực phẩm quen thuộc",
+    "aliases": [],
+    "description": "Cách dùng các nhóm thực phẩm của Eatwell để ghép bữa Việt linh hoạt, không áp dụng cứng một tỷ lệ cho mọi bệnh nền.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-ke-hoach-phan-ve-tai-nha",
+    "name": "Dị ứng thực phẩm: lập kế hoạch phòng phản vệ cho gia đình",
+    "aliases": [],
+    "description": "Cách ghi dị nguyên, nhận biết triệu chứng, báo cho người chăm sóc và dùng thuốc cấp cứu theo kế hoạch chuyên khoa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "kho-mieng-kho-nuot-tai-mui-hong",
+    "name": "Khô miệng, khó nuốt trong bệnh tai mũi họng: ăn uống an toàn hơn",
+    "aliases": [],
+    "description": "Gợi ý làm ẩm món, thay đổi kết cấu và tư thế ăn; nhận biết sặc, mất nước hoặc sụt cân cần được đánh giá.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-gan-a-an-uong-hoi-phuc",
+    "name": "Viêm gan A: ăn uống và nghỉ ngơi trong giai đoạn hồi phục",
+    "aliases": [],
+    "description": "Hướng dẫn hỗ trợ khi viêm gan A: ăn nhỏ bữa, đủ nước theo tình trạng, tránh rượu bia và nhận biết dấu hiệu nặng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-lanh-vet-thuong-sau-mo",
+    "name": "Dinh dưỡng giúp lành vết thương sau mổ: đủ đạm và theo dõi dấu hiệu nhiễm trùng",
+    "aliases": [],
+    "description": "Nguyên tắc ăn đủ năng lượng, đạm và vi chất khi hồi phục vết thương; không tự lạm dụng collagen hay thực phẩm bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-truoc-ngay-phau-thuat",
+    "name": "Dinh dưỡng trước ngày phẫu thuật: chuẩn bị an toàn",
+    "aliases": [],
+    "description": "Cách chuẩn bị dinh dưỡng trước mổ, nhận diện nguy cơ suy dinh dưỡng và phối hợp với ê-kíp điều trị.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-24-gio-dau-sau-mo",
+    "name": "Ăn uống trong 24–48 giờ đầu sau mổ",
+    "aliases": [],
+    "description": "Hiểu lộ trình ăn lại sau phẫu thuật, theo dõi buồn nôn và dấu hiệu cần báo ngay cho ê-kíp.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-sau-xuat-vien-phau-thuat",
+    "name": "Ăn uống sau xuất viện phẫu thuật: kế hoạch 7 ngày đầu",
+    "aliases": [],
+    "description": "Lập kế hoạch bữa ăn, nước uống và theo dõi vết mổ sau khi về nhà mà không tự ý kiêng khem quá mức.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-uong-sau-phau-thuat-tieu-hoa",
+    "name": "Dinh dưỡng sau phẫu thuật tiêu hóa",
+    "aliases": [],
+    "description": "Nguyên tắc ăn từng bước sau mổ dạ dày hoặc ruột, nhận biết tiêu chảy, đầy bụng và mất nước.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-mui-di-ung-an-uong-khi-nghet-mui",
+    "name": "Viêm mũi dị ứng: ăn uống và sinh hoạt khi nghẹt mũi",
+    "aliases": [],
+    "description": "Gợi ý uống nước, giữ ẩm và nhận diện dấu hiệu cần khám trong viêm mũi dị ứng; không tự kiêng khem vô căn cứ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-o-truong-ke-hoach-an-toan",
+    "name": "Dị ứng thực phẩm ở trường: kế hoạch ăn uống an toàn",
+    "aliases": [],
+    "description": "Cách lập kế hoạch phòng tránh và xử trí phản vệ ở trẻ đi học, phối hợp giữa gia đình, nhà trường và cơ sở y tế.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sot-xuat-huyet-bu-nuoc-an-uong-tai-nha",
+    "name": "Sốt xuất huyết: bù nước và ăn uống tại nhà an toàn",
+    "aliases": [],
+    "description": "Nguyên tắc uống từng ngụm nhỏ, theo dõi tiểu tiện và nhận biết dấu hiệu cảnh báo cần đến viện trong sốt xuất huyết.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-phuc-hoi-sau-tap-suc-manh",
+    "name": "Dinh dưỡng phục hồi sau buổi tập sức mạnh",
+    "aliases": [],
+    "description": "Cách ghép bữa sau tập với carbohydrate, protein và nước; phân biệt nhu cầu thực tế với quảng cáo thực phẩm bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "vay-nen-thua-can-dinh-duong-thuc-hanh",
+    "name": "Vảy nến và thừa cân: dinh dưỡng thực hành an toàn",
+    "aliases": [],
+    "description": "Cách cải thiện chất lượng khẩu phần và cân nặng khi vảy nến mà không tự bỏ thuốc hay theo chế độ loại trừ cực đoan.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-hoi-phuc-sau-mo-lay-thai",
+    "name": "Dinh dưỡng hồi phục sau mổ lấy thai",
+    "aliases": [],
+    "description": "Nguyên tắc ăn uống, vận động nhẹ và theo dõi táo bón, vết mổ sau sinh mổ; ưu tiên hướng dẫn riêng của sản khoa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thieu-mau-benh-man-dinh-duong-theo-xet-nghiem",
+    "name": "Thiếu máu do bệnh mạn: ăn uống theo xét nghiệm",
+    "aliases": [],
+    "description": "Phân biệt thiếu sắt với thiếu máu do viêm, bệnh thận hoặc bệnh mạn để tránh tự uống sắt không đúng chỉ định.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hoi-chung-di-ung-mieng-phan-hoa-thuc-pham",
+    "name": "Hội chứng dị ứng miệng: phấn hoa và thực phẩm",
+    "aliases": [],
+    "description": "Nhận biết ngứa miệng sau trái cây sống, cách ghi nhận tác nhân và dấu hiệu cần khám dị ứng thay vì tự kiêng rộng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-khi-du-lich-an-ngoai",
+    "name": "Dị ứng thực phẩm khi du lịch và ăn ngoài",
+    "aliases": [],
+    "description": "Chuẩn bị thông tin dị ứng, hỏi thành phần và phòng lây nhiễm chéo khi ăn nhà hàng hoặc đi xa.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-xoang-man-an-uong-va-cham-soc-tai-nha",
+    "name": "Viêm xoang mạn: ăn uống và chăm sóc tại nhà",
+    "aliases": [],
+    "description": "Những việc hỗ trợ như uống đủ theo bệnh nền, vệ sinh mũi đúng cách và nhận diện lúc cần khám tai mũi họng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "trao-nguoc-thanh-quan-an-uong-giam-kich-ung",
+    "name": "Trào ngược thanh quản: ăn uống giảm kích ứng họng",
+    "aliases": [],
+    "description": "Điều chỉnh thời điểm và lượng ăn để giảm khàn tiếng, vướng họng; không tự xem mọi đau họng là trào ngược.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bu-nuoc-tap-luyen-troi-nong",
+    "name": "Bù nước khi tập luyện trời nóng",
+    "aliases": [],
+    "description": "Nhận biết mất nước và quá nóng khi vận động, chọn nước hoặc điện giải theo thời gian tập và lượng mồ hôi.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-van-dong-vien-nu-red-s",
+    "name": "Dinh dưỡng cho vận động viên nữ và nguy cơ RED-S",
+    "aliases": [],
+    "description": "Nhận biết thiếu năng lượng tương đối trong thể thao, rối loạn kinh nguyệt và nguy cơ xương yếu ở nữ vận động viên.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-tre-thanh-thieu-nien-choi-the-thao",
+    "name": "Dinh dưỡng cho trẻ và thanh thiếu niên chơi thể thao",
+    "aliases": [],
+    "description": "Ghép bữa, nước uống và giấc ngủ cho trẻ chơi thể thao; tránh ép giảm cân hoặc lạm dụng bột đạm và nước tăng lực.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-khi-chan-thuong-nghi-tap",
+    "name": "Dinh dưỡng khi chấn thương và phải nghỉ tập",
+    "aliases": [],
+    "description": "Giữ đủ năng lượng, đạm và vi chất khi tạm nghỉ thể thao để hỗ trợ hồi phục mà không tự nhịn ăn hoặc tăng thực phẩm bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-chay-sau-khang-sinh-an-uong-an-toan",
+    "name": "Tiêu chảy sau kháng sinh: ăn uống và dấu hiệu cần khám",
+    "aliases": [],
+    "description": "Cách bù nước, ăn lại từng bước và nhận biết tiêu chảy liên quan kháng sinh cần đánh giá y tế.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nhiem-trung-tiet-nieu-uong-nuoc-theo-benh-nen",
+    "name": "Nhiễm trùng tiết niệu: uống nước theo bệnh nền",
+    "aliases": [],
+    "description": "Hiểu vai trò của dịch uống trong nhiễm trùng tiết niệu và vì sao không nên ép nước hoặc tự điều trị bằng nước ép.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-hoi-phuc-sau-nhiem-virus-keo-dai",
+    "name": "Dinh dưỡng hồi phục sau nhiễm virus kéo dài",
+    "aliases": [],
+    "description": "Ăn uống và phân bổ hoạt động khi còn mệt sau nhiễm virus; tránh nhịn ăn, thực phẩm chức năng và tăng vận động quá sớm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-toan-thuc-pham-khi-suy-giam-mien-dich",
+    "name": "An toàn thực phẩm khi suy giảm miễn dịch",
+    "aliases": [],
+    "description": "Chọn, bảo quản và nấu thực phẩm an toàn hơn khi hóa trị, ghép tạng, HIV hoặc có bệnh làm suy giảm miễn dịch.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nuoi-an-qua-sonde-tai-nha-sau-phau-thuat",
+    "name": "Nuôi ăn qua sonde tại nhà sau phẫu thuật",
+    "aliases": [],
+    "description": "Nguyên tắc an toàn khi chăm sóc sonde và công thức nuôi ăn tại nhà sau mổ, luôn theo kế hoạch của nhóm điều trị.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sau-cat-doan-ruot",
+    "name": "Dinh dưỡng sau cắt đoạn ruột",
+    "aliases": [],
+    "description": "Lộ trình ăn lại, theo dõi phân và mất nước sau phẫu thuật ruột; khẩu phần cần cá thể hóa theo vị trí đoạn ruột đã cắt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-phuc-hoi-sau-mo-lon-ke-hoach-xuat-vien",
+    "name": "Kế hoạch dinh dưỡng xuất viện sau ca mổ lớn",
+    "aliases": [],
+    "description": "Checklist bàn giao bữa ăn, thuốc, dịch uống, cân nặng và dấu hiệu cảnh báo trước khi người bệnh về nhà.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-tai-giua-an-uong-ho-tro-hoi-phuc",
+    "name": "Viêm tai giữa: ăn uống hỗ trợ hồi phục",
+    "aliases": [],
+    "description": "Chăm sóc ăn uống và dịch uống khi viêm tai giữa, đồng thời nhận biết dấu hiệu cần khám thay vì tự dùng thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "u-tai-va-caffeine-muoi-thoi-quen-an-uong",
+    "name": "Ù tai: caffeine, muối và thói quen ăn uống",
+    "aliases": [],
+    "description": "Cách ghi nhật ký triệu chứng và xem xét caffeine, muối, rượu mà không gán mọi trường hợp ù tai cho một món ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sau-can-thiep-tai-mui-hong",
+    "name": "Dinh dưỡng sau can thiệp tai–mũi–họng",
+    "aliases": [],
+    "description": "Nguyên tắc ăn uống và uống đủ sau thủ thuật tai mũi họng, theo dõi chảy máu, đau và khó nuốt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nuot-kho-nguoi-cao-tuoi-danh-gia-va-an-toan",
+    "name": "Nuốt khó ở người cao tuổi: ăn uống an toàn",
+    "aliases": [],
+    "description": "Nhận biết ho sặc, sụt cân và mất nước ở người cao tuổi; thay đổi kết cấu thức ăn chỉ sau đánh giá nuốt.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-doc-nhan-va-an-toan-khi-an-ngoai",
+    "name": "Dị ứng thực phẩm: đọc nhãn và ăn ngoài an toàn",
+    "aliases": [],
+    "description": "Cách xác nhận thành phần, báo dị ứng với quán ăn và chuẩn bị kế hoạch xử trí; không thử lại thực phẩm nghi gây dị ứng tại nhà.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phan-ve-do-an-xu-tri-khan-cap",
+    "name": "Phản vệ do thức ăn: nhận biết và xử trí khẩn cấp",
+    "aliases": [],
+    "description": "Nhận biết dấu hiệu phản vệ và hành động cấp cứu đúng; thuốc adrenaline chỉ dùng theo kế hoạch chuyên môn được kê.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "di-ung-thuc-pham-tre-nho-dua-thuc-pham-lai",
+    "name": "Dị ứng thực phẩm ở trẻ: loại bỏ và đưa lại thực phẩm đúng cách",
+    "aliases": [],
+    "description": "Khi nào cần bác sĩ dị ứng và chuyên gia dinh dưỡng; tránh tự kiêng kéo dài làm thiếu chất hoặc thử lại nguy hiểm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "eczema-va-kieng-an-khong-can-thiet",
+    "name": "Chàm và chế độ kiêng: tránh loại bỏ thực phẩm không có chỉ định",
+    "aliases": [],
+    "description": "Chàm không đồng nghĩa dị ứng thức ăn; kiêng khem rộng có thể gây thiếu chất, đặc biệt ở trẻ, nên cần đánh giá có mục tiêu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "che-do-an-lanh-manh-khi-mang-thai",
+    "name": "Chế độ ăn lành mạnh khi mang thai: đủ chất, không ăn cho hai người",
+    "aliases": [],
+    "description": "Gợi ý cân bằng nhóm thực phẩm, an toàn thực phẩm và kiểm soát khẩu phần trong thai kỳ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "vitamin-va-khoang-chat-thai-ky-folate-sat-vitamin-d",
+    "name": "Vitamin và khoáng chất thai kỳ: folate, sắt và vitamin D",
+    "aliases": [],
+    "description": "Phân biệt dinh dưỡng từ thực phẩm với bổ sung theo chỉ định; tránh vitamin A dạng retinol và tự dùng liều cao.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-duong-thai-ky-an-uong-theo-doi-duong-huyet",
+    "name": "Đái tháo đường thai kỳ: ăn uống và theo dõi đường huyết",
+    "aliases": [],
+    "description": "Nguyên tắc chia bữa, chọn carbohydrate và phối hợp vận động theo kế hoạch của đội ngũ sản–nội tiết.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "buon-non-non-nhieu-khi-mang-thai",
+    "name": "Buồn nôn, nôn nhiều khi mang thai: giữ nước và nhận biết nguy cơ",
+    "aliases": [],
+    "description": "Mẹo ăn từng ít một và dấu hiệu mất nước cần khám; không tự dùng thuốc hoặc thực phẩm bổ sung chống nôn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-an-truoc-tap-cho-nguoi-moi-bat-dau",
+    "name": "Bữa ăn trước tập cho người mới bắt đầu",
+    "aliases": [],
+    "description": "Chọn khẩu phần dễ tiêu, đủ năng lượng và phù hợp thời gian tập thay vì chạy theo sản phẩm bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-chay-va-tap-suc-manh-du-dam",
+    "name": "Ăn chay và tập sức mạnh: xây bữa đủ đạm",
+    "aliases": [],
+    "description": "Phân bổ nguồn đạm thực vật, năng lượng và vi chất để hỗ trợ tập sức mạnh mà không cực đoan.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "caffeine-thuc-pham-bo-sung-the-thao-an-toan",
+    "name": "Caffeine và thực phẩm bổ sung thể thao: dùng an toàn",
+    "aliases": [],
+    "description": "Đánh giá caffeine, nước tăng lực và sản phẩm bổ sung theo mục tiêu, bệnh nền và thuốc đang dùng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tap-luyen-khi-co-benh-man-tinh",
+    "name": "Tập luyện khi có bệnh mạn tính: ăn uống và dấu hiệu dừng",
+    "aliases": [],
+    "description": "Cách phối hợp bữa ăn, nước và thuốc theo kế hoạch khi vận động với đái tháo đường, tim mạch hoặc bệnh thận.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "vay-nen-an-uong-va-kiem-soat-can-nang",
+    "name": "Vảy nến: ăn uống và kiểm soát cân nặng",
+    "aliases": [],
+    "description": "Chế độ cân bằng và giảm cân nếu thừa cân có thể hỗ trợ sức khỏe tổng thể; không có thực đơn chữa khỏi vảy nến.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "mun-trung-ca-va-che-do-an-chi-so-duong-huyet-thap",
+    "name": "Mụn trứng cá và chế độ ăn: hiểu đúng bằng chứng",
+    "aliases": [],
+    "description": "Một số nghiên cứu nhỏ gợi ý giảm thực phẩm làm tăng đường huyết nhanh, nhưng ăn uống không thay thế điều trị da liễu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-da-co-dia-thuc-pham-bo-sung-va-kiem-chung",
+    "name": "Viêm da cơ địa: có nên tự uống vitamin và thực phẩm bổ sung?",
+    "aliases": [],
+    "description": "Không tự dùng vitamin, kẽm hay thảo dược để chữa chàm; đánh giá thiếu chất và tương tác thuốc trước khi bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-ho-tro-lanh-vet-thuong-da",
+    "name": "Dinh dưỡng hỗ trợ lành vết thương da",
+    "aliases": [],
+    "description": "Đủ năng lượng, đạm và nước giúp cơ thể hồi phục; vết thương nhiễm trùng hoặc lâu lành cần khám, không tự đắp thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hen-suyen-thuc-pham-kich-hoat-va-nhat-ky",
+    "name": "Hen suyễn: thực phẩm kích hoạt và cách ghi nhật ký",
+    "aliases": [],
+    "description": "Không có một chế độ ăn chữa hen; chỉ loại bỏ món liên quan rõ ràng sau đánh giá, đồng thời vẫn dùng thuốc kiểm soát.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "copd-kho-mieng-oxy-an-uong-de-de-chiu",
+    "name": "COPD và khô miệng: ăn uống dễ chịu hơn khi dùng oxy",
+    "aliases": [],
+    "description": "Gợi ý kết cấu món, vệ sinh miệng và thời điểm uống khi khô miệng hoặc mệt lúc ăn; không tự hạn chế dịch.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phuc-hoi-dinh-duong-sau-viem-phoi",
+    "name": "Phục hồi dinh dưỡng sau viêm phổi",
+    "aliases": [],
+    "description": "Ăn đủ năng lượng, đạm và nước trong giai đoạn hồi phục; nhận biết sụt cân, nuốt khó hoặc khó thở kéo dài cần tái khám.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "kho-tho-khi-an-chia-bua-va-tu-the",
+    "name": "Khó thở khi ăn: chia bữa và tư thế an toàn",
+    "aliases": [],
+    "description": "Kỹ thuật nghỉ trước bữa, ăn chậm, ngồi thẳng và chia nhỏ khẩu phần cho người bệnh phổi; không bỏ bữa kéo dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "sot-xuat-huyet-uong-nuoc-dau-hieu-nang",
+    "name": "Sốt xuất huyết: uống đủ và nhận biết dấu hiệu nặng",
+    "aliases": [],
+    "description": "Nghỉ ngơi, bù dịch theo hướng dẫn và theo dõi sát giai đoạn hạ sốt; không tự dùng aspirin hoặc ibuprofen.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "lao-phoi-thuoc-va-an-uong-ho-tro",
+    "name": "Lao phổi: ăn uống hỗ trợ trong thời gian dùng thuốc",
+    "aliases": [],
+    "description": "Duy trì năng lượng và đạm, xử trí buồn nôn theo hướng dẫn; không tự bỏ liều thuốc chống lao.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "viem-gan-virus-an-toan-thuc-pham-va-ruou-bia",
+    "name": "Viêm gan virus: an toàn thực phẩm và rượu bia",
+    "aliases": [],
+    "description": "Ăn chín uống sôi, tránh rượu bia và phối hợp theo bệnh gan; không tự dùng thảo dược hoặc thực phẩm chức năng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "hiv-an-toan-thuc-pham-va-tuong-tac-thuoc",
+    "name": "HIV: an toàn thực phẩm và tương tác thuốc–thực phẩm",
+    "aliases": [],
+    "description": "Phòng nhiễm khuẩn qua thực phẩm, duy trì bữa ăn đủ chất và hỏi bác sĩ trước khi dùng bưởi, thảo dược hoặc thực phẩm bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nuoi-con-bang-sua-me-va-dinh-duong-me-sau-sinh",
+    "name": "Nuôi con bằng sữa mẹ: dinh dưỡng và chăm sóc mẹ sau sinh",
+    "aliases": [],
+    "description": "Ăn đa dạng, uống theo khát và tìm hỗ trợ khi đau hoặc khó cho bú; không cần kiêng khem vô căn cứ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-dam-tu-6-thang-responsive-feeding",
+    "name": "Ăn dặm từ khoảng 6 tháng: đáp ứng tín hiệu của trẻ",
+    "aliases": [],
+    "description": "Bắt đầu thức ăn bổ sung đúng thời điểm, tăng dần độ đặc và đa dạng, giữ vệ sinh và tôn trọng dấu hiệu đói–no.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "an-dam-an-toan-phong-hoc-va-soc",
+    "name": "Ăn dặm an toàn: phòng hóc và nhiễm khuẩn",
+    "aliases": [],
+    "description": "Chuẩn bị thức ăn sạch, kết cấu phù hợp và luôn giám sát trẻ khi ăn; nhận biết dấu hiệu hóc cần cấp cứu.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "bua-an-hoc-duong-va-tang-truong-tre",
+    "name": "Bữa ăn học đường và theo dõi tăng trưởng trẻ",
+    "aliases": [],
+    "description": "Phối hợp bữa ở nhà, bữa học đường và vận động; dùng biểu đồ tăng trưởng thay vì ép trẻ ăn hoặc nhịn ăn giảm cân.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "rung-nhi-chong-dong-va-thuc-pham",
+    "name": "Rung nhĩ dùng thuốc chống đông: ăn uống và theo dõi an toàn",
+    "aliases": [],
+    "description": "Phân biệt warfarin với thuốc chống đông trực tiếp, giữ khẩu phần vitamin K ổn định và không tự đổi thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "benh-than-do-thuoc-giam-dau-nsaid",
+    "name": "Bệnh thận do thuốc giảm đau: phòng tổn thương và mất nước",
+    "aliases": [],
+    "description": "NSAID có thể gây hại thận ở người nguy cơ cao; cần rà soát thuốc, bệnh nền và tình trạng mất nước với bác sĩ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tieu-chay-man-kem-hap-thu-can-danh-gia-gi",
+    "name": "Tiêu chảy mạn và kém hấp thu: cần đánh giá gì?",
+    "aliases": [],
+    "description": "Tiêu chảy kéo dài có thể gây mất nước, thiếu chất và sụt cân; không tự kiêng khem rộng hoặc dùng thuốc cầm tiêu chảy kéo dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nuot-kho-sau-dot-quy-an-uong-an-toan",
+    "name": "Nuốt khó sau đột quỵ: ăn uống an toàn và phục hồi",
+    "aliases": [],
+    "description": "Đánh giá nuốt và điều chỉnh kết cấu thức ăn theo chuyên viên; không tự làm đặc nước hoặc ép ăn khi ho sặc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dai-thao-duong-bien-chung-mat-than-kinh-an-uong",
+    "name": "Đái tháo đường kèm biến chứng mắt hoặc thần kinh: ăn uống an toàn",
+    "aliases": [],
+    "description": "Giữ đường huyết ổn định, phòng hạ đường huyết và điều chỉnh bữa ăn khi giảm thị lực, tê chân hoặc rối loạn tiêu hóa do thần kinh.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dong-kinh-thuoc-va-thuc-pham-tuong-tac",
+    "name": "Động kinh: thuốc, bữa ăn và thực phẩm bổ sung",
+    "aliases": [],
+    "description": "Dùng thuốc đều, giữ cách dùng nhất quán với bữa ăn và hỏi dược sĩ trước khi dùng bưởi, thảo dược hoặc chế độ ketogenic.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "da-thuoc-nguoi-cao-tuoi-ra-soat-thuoc-va-bua-an",
+    "name": "Đa thuốc ở người cao tuổi: rà soát thuốc và bữa ăn",
+    "aliases": [],
+    "description": "Đem toàn bộ thuốc, vitamin và thực phẩm bổ sung đến buổi rà soát; không tự nghiền hoặc trộn thuốc vào thức ăn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sau-cat-ruot-non",
+    "name": "Dinh dưỡng sau cắt ruột non: theo dõi kém hấp thu",
+    "aliases": [],
+    "description": "Sau phẫu thuật ruột non, nhu cầu dịch và vi chất có thể thay đổi; cần kế hoạch theo chiều dài ruột còn lại và nguyên nhân mổ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tang-triglyceride-nang-an-uong-phong-viem-tuy",
+    "name": "Tăng triglyceride nặng: ăn uống để giảm nguy cơ viêm tụy",
+    "aliases": [],
+    "description": "Khi triglyceride rất cao, cần khám sớm, tránh rượu và đường thêm, đồng thời dùng thuốc theo chỉ định.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "soi-than-tai-phat-ke-hoach-phong-ngua",
+    "name": "Sỏi thận tái phát: lập kế hoạch phòng ngừa",
+    "aliases": [],
+    "description": "Phòng tái phát cần biết loại sỏi, uống đủ theo chỉ định, giảm muối và không tự cắt sạch canxi khẩu phần.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "nhiem-trung-tieu-tai-dien-phong-ngua",
+    "name": "Nhiễm trùng tiểu tái diễn: nước uống và thói quen an toàn",
+    "aliases": [],
+    "description": "Tìm nguyên nhân và điều trị theo cấy nước tiểu; không tự lạm dụng kháng sinh hoặc nước ép thay thuốc.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-truoc-hoa-tri-ke-hoach-bua-an",
+    "name": "Dinh dưỡng trước hóa trị: chuẩn bị bữa ăn và răng miệng",
+    "aliases": [],
+    "description": "Sàng lọc nguy cơ suy dinh dưỡng, chuẩn bị thực phẩm dễ ăn và xử lý bệnh răng miệng trước điều trị.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "ha-bach-cau-an-toan-thuc-pham-khi-hoa-tri",
+    "name": "Hạ bạch cầu khi hóa trị: an toàn thực phẩm đúng cách",
+    "aliases": [],
+    "description": "Tập trung vệ sinh, nấu chín và bảo quản an toàn; không tự áp dụng chế độ kiêng cực đoan thiếu bằng chứng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sau-xa-tri-vung-dau-co",
+    "name": "Dinh dưỡng sau xạ trị vùng đầu cổ: khô miệng và nuốt đau",
+    "aliases": [],
+    "description": "Xử trí đau miệng, khô miệng, thay đổi vị giác và nuốt khó bằng kết cấu phù hợp và hỗ trợ chuyên môn.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "dinh-duong-sau-ghep-than-tacrolimus-an-toan",
+    "name": "Sau ghép thận: tacrolimus, an toàn thực phẩm và bưởi",
+    "aliases": [],
+    "description": "Theo dõi thuốc ức chế miễn dịch, huyết áp, đường huyết và vệ sinh thực phẩm; không tự dùng thực phẩm bổ sung.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "trao-nguoc-thanh-quan-giong-noi-va-thoi-quen-an-uong",
+    "name": "Trào ngược thanh quản: ăn uống và bảo vệ giọng nói",
+    "aliases": [],
+    "description": "Điều chỉnh thời điểm ăn, caffeine, rượu bia và món kích thích theo triệu chứng; không tự dùng thuốc kéo dài.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "benh-meniere-giam-muoi-va-theo-doi-chong-mat",
+    "name": "Ménière và chóng mặt: muối, caffeine và theo dõi triệu chứng",
+    "aliases": [],
+    "description": "Giảm muối vừa phải, phân bổ nước và ghi nhật ký cơn; điều trị cần bác sĩ tai mũi họng, không tự nhịn uống.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cham-soc-giong-noi-khi-khan-tieng-keo-dai",
+    "name": "Khàn tiếng kéo dài: ăn uống và chăm sóc giọng nói",
+    "aliases": [],
+    "description": "Giữ ẩm, tránh khói thuốc và chất kích thích; khàn tiếng kéo dài cần khám để tìm nguyên nhân.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tre-an-chon-loc-va-cach-mo-rong-thuc-pham",
+    "name": "Trẻ ăn chọn lọc: mở rộng thực phẩm không ép buộc",
+    "aliases": [],
+    "description": "Tạo môi trường ăn tích cực, lặp lại tiếp xúc với món mới và theo dõi tăng trưởng thay vì ép hoặc phạt trẻ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thieu-sat-tre-nho-thuc-pham-va-bo-sung",
+    "name": "Thiếu sắt ở trẻ nhỏ: thực phẩm và bổ sung đúng chỉ định",
+    "aliases": [],
+    "description": "Nhận biết nguy cơ thiếu sắt, phối hợp thực phẩm giàu sắt với vitamin C và không tự dùng liều cao.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "tre-tu-ky-an-uong-cam-giac-va-an-toan",
+    "name": "Trẻ rối loạn phổ tự kỷ: cảm giác ăn uống và an toàn dinh dưỡng",
+    "aliases": [],
+    "description": "Giải quyết nhạy cảm mùi/vị/kết cấu từng bước, đánh giá thiếu chất và tránh chế độ loại bỏ không có chỉ định.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "may-day-man-va-nhat-ky-thuc-an",
+    "name": "Mày đay mạn: nhật ký thức ăn và tránh kiêng khem quá mức",
+    "aliases": [],
+    "description": "Ghi mức độ mày đay, thuốc và yếu tố kích hoạt; không mặc định mọi mày đay là dị ứng thực phẩm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "phan-ve-do-an-ket-hop-van-dong",
+    "name": "Phản vệ do thức ăn kết hợp vận động",
+    "aliases": [],
+    "description": "Một số người phản ứng khi ăn dị nguyên rồi vận động; cần kế hoạch dị ứng cá nhân và không tự thử lại.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thuc-pham-bo-sung-o-nguoi-co-di-ung",
+    "name": "Thực phẩm bổ sung ở người có cơ địa dị ứng",
+    "aliases": [],
+    "description": "Đọc thành phần, kiểm tra tá dược và hỏi dược sĩ trước khi dùng vitamin, thảo dược hoặc sản phẩm thể thao.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "cham-soc-ban-chan-dai-thao-duong",
+    "name": "Chăm sóc bàn chân ở người đái tháo đường: việc cần làm mỗi ngày",
+    "aliases": [],
+    "description": "Kiểm tra da và kẽ ngón, giữ chân sạch khô, chọn giày vừa chân và biết khi nào cần khám để giảm nguy cơ loét bàn chân.",
     "category": "Bai viet"
   },
   {

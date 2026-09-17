@@ -1,0 +1,14 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['di-ung-thuc-pham-doc-nhan-va-an-toan-khi-an-ngoai'];
+---
+<ArticleLayout article={article}>
+  <p>Với dị ứng thực phẩm đã được xác định, tránh đúng dị nguyên là biện pháp chính. Không nên thử một lượng nhỏ để “kiểm tra” tại nhà.</p>
+  <ul>
+    <li>Đọc toàn bộ nhãn, chú ý thành phần phụ và cảnh báo có thể chứa; hỏi lại khi nhãn không rõ.</li>
+    <li>Khi ăn ngoài, báo rõ dị ứng, hỏi về dụng cụ, dầu chiên và khu vực chế biến để giảm lây nhiễm chéo.</li>
+    <li>Mang theo kế hoạch xử trí và thuốc cấp cứu đã được kê; báo cho người thân, trường học hoặc đồng nghiệp.</li>
+    <li>Sưng môi/lưỡi, khó thở, khàn tiếng, choáng hoặc nôn nhiều sau ăn là cấp cứu, gọi 115 ngay.</li>
+  </ul>
+</ArticleLayout>

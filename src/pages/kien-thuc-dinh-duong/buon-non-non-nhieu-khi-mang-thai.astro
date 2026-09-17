@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['buon-non-non-nhieu-khi-mang-thai'];
+---
+<ArticleLayout article={article}><p>Ăn ít một, thường xuyên và chọn món dễ dung nạp có thể giúp giảm khó chịu, nhưng nôn nhiều cần được đánh giá.</p><ul><li>Nhấp từng ngụm nước hoặc dung dịch bù theo hướng dẫn; tránh để bụng quá đói.</li><li>Chọn món nguội/mềm nếu mùi thức ăn kích thích buồn nôn.</li><li>Không giữ được nước, tiểu ít/sẫm màu, chóng mặt, sụt cân hoặc nôn máu cần liên hệ cơ sở y tế.</li></ul></ArticleLayout>

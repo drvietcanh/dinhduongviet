@@ -1,0 +1,15 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tao-bon-sau-phau-thuat'];
+---
+
+<ArticleLayout article={article}>
+  <p>Táo bón sau mổ có thể liên quan thuốc giảm đau, ít vận động, nhịn ăn hoặc thay đổi khẩu phần. Hãy hỏi nhóm phẫu thuật trước khi tăng chất xơ nếu vừa mổ đường tiêu hóa.</p>
+  <h2>Hỗ trợ an toàn</h2>
+  <ul>
+    <li>Uống theo hướng dẫn, ăn rau/quả và chất xơ từ từ khi đã được phép.</li>
+    <li>Đi lại nhẹ theo kế hoạch phục hồi; không rặn mạnh hoặc tự dùng thuốc xổ kéo dài.</li>
+    <li>Báo bác sĩ nếu không trung tiện, bụng chướng, đau tăng, nôn hoặc sốt.</li>
+  </ul>
+</ArticleLayout>

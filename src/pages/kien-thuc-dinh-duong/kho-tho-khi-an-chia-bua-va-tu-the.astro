@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['kho-tho-khi-an-chia-bua-va-tu-the'];
+---
+<ArticleLayout article={article}><p>Người bệnh phổi thường dễ no và mệt khi ăn. Nghỉ trước bữa và chia nhỏ khẩu phần có thể giúp giảm gánh nặng.</p><ul><li>Ngồi thẳng, ăn chậm, miếng nhỏ; nghỉ giữa các miếng và thở theo kỹ thuật đã học.</li><li>Ăn bữa chính lúc còn nhiều năng lượng, tránh món gây đầy hơi nếu thấy làm khó thở hơn.</li><li>Sụt cân liên tục hoặc khó thở cả khi nghỉ cần liên hệ bác sĩ, không tự dùng ống uống bổ sung.</li></ul></ArticleLayout>

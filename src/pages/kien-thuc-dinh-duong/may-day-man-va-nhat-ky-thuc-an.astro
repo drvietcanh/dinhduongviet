@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['may-day-man-va-nhat-ky-thuc-an'];
+---
+<ArticleLayout article={article}><p>Mày đay mạn thường không do một món ăn duy nhất. Nhật ký giúp nhận biết thời điểm, thuốc và yếu tố kích hoạt mà không kiêng quá mức.</p><ul><li>Ghi số lượng nốt, ngứa, thức ăn, thuốc, nhiễm trùng và stress trong 7 ngày.</li><li>Không tự loại bỏ nhiều nhóm thực phẩm hoặc dùng xét nghiệm không được thẩm định.</li><li>Sưng môi/lưỡi, khó thở, choáng hoặc nôn kèm mày đay là cấp cứu.</li></ul></ArticleLayout>

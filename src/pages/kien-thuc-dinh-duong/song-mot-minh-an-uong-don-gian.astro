@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['song-mot-minh-an-uong-don-gian'];
+---
+
+<ArticleLayout article={article}>
+  <p>Khi chỉ nấu cho một người, nhiều người bỏ bữa hoặc gọi đồ ăn nhiều dầu muối vì ngại chuẩn bị. Có thể dùng công thức “một món đạm + một rau + một tinh bột” và nấu lượng nhỏ.</p>
+  <h2>Danh sách dự phòng</h2>
+  <ul>
+    <li>Trứng, đậu phụ, cá hoặc thịt nạc; rau theo mùa và một phần rau đông lạnh; gạo, khoai hoặc bánh mì.</li>
+    <li>Chia thịt cá sống thành phần nhỏ rồi cấp đông; rã đông trong ngăn mát, không để trên bàn bếp.</li>
+    <li>Đặt lịch mua thực phẩm và ngày dùng đồ còn lại để giảm lãng phí.</li>
+  </ul>
+  <h2>Khi không muốn nấu</h2>
+  <p>Chọn cơm/bún kèm rau và đạm, xin ít nước sốt; thêm trái cây hoặc sữa chua nếu phù hợp. Người lớn tuổi sống một mình cần nhờ người thân kiểm tra khi bỏ bữa, sụt cân hoặc mệt kéo dài.</p>
+</ArticleLayout>

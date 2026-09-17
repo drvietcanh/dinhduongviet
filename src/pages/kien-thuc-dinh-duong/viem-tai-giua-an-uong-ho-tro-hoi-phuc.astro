@@ -1,0 +1,15 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['viem-tai-giua-an-uong-ho-tro-hoi-phuc'];
+---
+
+<ArticleLayout article={article}>
+  <p>Viêm tai giữa không có món ăn chữa khỏi. Mục tiêu của ăn uống là giữ đủ nước và năng lượng trong lúc đau, sốt hoặc trẻ ăn kém; thuốc và theo dõi cần theo hướng dẫn cơ sở y tế.</p>
+  <ul>
+    <li>Cho trẻ ăn món mềm, quen thuộc, chia nhỏ nếu đau khi nhai hoặc sốt; không ép ăn.</li>
+    <li>Uống đều theo khát, theo dõi tiểu tiện; trẻ nhỏ, người bệnh thận hoặc tim cần hướng dẫn riêng.</li>
+    <li>Không tự nhỏ thuốc tai, dùng kháng sinh hoặc mẹo dân gian khi chưa được khám.</li>
+    <li>Sưng sau tai, sốt cao kéo dài, đau tăng, chảy dịch tai, lừ đừ hoặc khó uống cần khám sớm.</li>
+  </ul>
+</ArticleLayout>

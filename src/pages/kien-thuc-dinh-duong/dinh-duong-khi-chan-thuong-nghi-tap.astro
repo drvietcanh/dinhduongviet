@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-khi-chan-thuong-nghi-tap'];
+---
+
+<ArticleLayout article={article}>
+  <p>Khi chấn thương phải nghỉ tập, nhu cầu năng lượng có thể thay đổi nhưng cơ thể vẫn cần nguyên liệu để sửa chữa mô. Nhịn ăn mạnh hoặc chỉ uống thực phẩm bổ sung có thể làm mất cơ và chậm hồi phục.</p>
+  <h2>Ăn uống trong giai đoạn hồi phục</h2>
+  <ul>
+    <li>Giữ các bữa đều đặn, có đạm từ cá, trứng, thịt nạc, sữa hoặc đậu; thêm rau quả và tinh bột theo mức vận động mới.</li>
+    <li>Uống đủ theo khát và bệnh nền; không tự dùng liều cao collagen, vitamin C, kẽm hoặc thuốc chống viêm.</li>
+    <li>Phối hợp kế hoạch ăn với bác sĩ, vật lý trị liệu và chuyên gia dinh dưỡng nếu chấn thương nặng, phẫu thuật hoặc sụt cân.</li>
+    <li>Đau tăng, sưng nóng, tê yếu, sốt hoặc không thể chịu lực cần tái khám thay vì cố tập bù.</li>
+  </ul>
+</ArticleLayout>

@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nau-an-cung-tre-an-toan'];
+---
+
+<ArticleLayout article={article}>
+  <p>Nấu ăn cùng trẻ giúp trẻ tò mò về thực phẩm và học kỹ năng tự chăm sóc. Người lớn vẫn cần chịu trách nhiệm về dao, bếp nóng, thực phẩm sống và nguy cơ hóc.</p>
+  <h2>Giao việc theo tuổi</h2>
+  <ul>
+    <li>Trẻ nhỏ có thể rửa rau dưới giám sát, nhặt rau mềm hoặc xếp nguyên liệu.</li>
+    <li>Trẻ lớn hơn có thể đo nguyên liệu, trộn món nguội và dọn bàn; chỉ dùng dao/bếp khi có người lớn kèm.</li>
+    <li>Rửa tay trước khi nấu, tách dụng cụ sống–chín và dọn sạch bề mặt sau cùng.</li>
+  </ul>
+  <p>Cho trẻ nếm một lượng nhỏ, không ép ăn hoặc chê món. Trẻ có dị ứng, khó nuốt hoặc bệnh mạn tính cần kế hoạch riêng.</p>
+</ArticleLayout>

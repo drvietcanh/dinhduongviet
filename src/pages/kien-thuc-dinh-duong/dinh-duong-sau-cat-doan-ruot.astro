@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-sau-cat-doan-ruot'];
+---
+
+<ArticleLayout article={article}>
+  <p>Sau cắt đoạn ruột, khả năng dung nạp phụ thuộc vị trí và độ dài đoạn ruột đã cắt, tình trạng nối ruột và bệnh nền. Không có một thực đơn cố định cho mọi người.</p>
+  <h2>Tiến triển khẩu phần</h2>
+  <ul>
+    <li>Ăn từ lượng nhỏ, nhai kỹ và tăng độ đặc theo hướng dẫn; ghi lại món gây đau, đầy bụng hoặc tiêu chảy.</li>
+    <li>Duy trì đạm và năng lượng phù hợp; nếu ăn kém, hỏi về sản phẩm dinh dưỡng y học thay vì tự dùng bột đạm.</li>
+    <li>Theo dõi số lần đi tiêu, lượng nước tiểu và dấu hiệu khát/chóng mặt; người có hậu môn nhân tạo cần kế hoạch dịch riêng.</li>
+    <li>Đau tăng, bụng chướng, nôn, sốt, phân máu hoặc tiểu ít cần liên hệ ngay cơ sở phẫu thuật.</li>
+  </ul>
+</ArticleLayout>

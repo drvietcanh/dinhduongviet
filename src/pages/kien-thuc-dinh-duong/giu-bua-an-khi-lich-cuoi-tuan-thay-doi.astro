@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['giu-bua-an-khi-lich-cuoi-tuan-thay-doi'];
+---
+
+<ArticleLayout article={article}>
+  <p>Đám giỗ, chuyến đi ngắn hoặc ngủ muộn có thể làm lệch giờ ăn. Chuẩn bị trước một phương án nhỏ giúp bạn không bỏ bữa, quên thuốc hoặc ăn quá nhanh khi đến nơi.</p>
+  <h2>Checklist trước khi ra ngoài</h2>
+  <ul>
+    <li>Mang nước, bữa nhẹ phù hợp và thuốc trong túi dễ lấy; ghi lại giờ dùng thuốc nếu lịch thay đổi.</li>
+    <li>Ăn một phần nhỏ trước khi đi nếu biết bữa chính sẽ muộn.</li>
+    <li>Đặt giờ thức dậy gần với ngày thường và tránh ngủ bù quá dài.</li>
+  </ul>
+  <p>Nếu có hạ đường huyết, nôn, tiêu chảy, khó thở hoặc đau ngực, cần xử trí theo kế hoạch bệnh nền và tìm hỗ trợ y tế.</p>
+</ArticleLayout>

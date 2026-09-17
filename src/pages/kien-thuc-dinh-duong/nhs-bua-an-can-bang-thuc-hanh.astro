@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nhs-bua-an-can-bang-thuc-hanh'];
+---
+
+<ArticleLayout article={article}>
+  <p>Eatwell của NHS là khung giáo dục cho dân số chung: ăn đa dạng theo tỷ lệ phù hợp trong ngày hoặc cả tuần. Người có bệnh lý cần điều chỉnh với bác sĩ hoặc chuyên gia dinh dưỡng.</p>
+  <h2>Ghép một bữa Việt</h2>
+  <ul>
+    <li>Cơm/gạo, khoai hoặc bún là phần tinh bột; thêm rau hoặc canh và một món đạm như cá, trứng, thịt nạc hay đậu phụ.</li>
+    <li>Dùng trái cây nguyên miếng, sữa hoặc sản phẩm thay thế phù hợp; ưu tiên nước lọc.</li>
+    <li>Thay đổi nguyên liệu theo mùa, khẩu vị và ngân sách; không cần mua sản phẩm “ăn kiêng” đắt tiền.</li>
+  </ul>
+  <p>Khẩu phần và lượng dịch không giống nhau ở mọi người, nhất là khi có bệnh thận, tim, gan hoặc đái tháo đường.</p>
+</ArticleLayout>

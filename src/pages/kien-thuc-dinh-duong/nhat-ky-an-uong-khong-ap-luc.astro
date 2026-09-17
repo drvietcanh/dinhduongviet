@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['nhat-ky-an-uong-khong-ap-luc'];
+---
+
+<ArticleLayout article={article}>
+  <p>Nhật ký hữu ích nhất khi trả lời một câu hỏi cụ thể: vì sao hay đầy bụng, giờ nào dễ ăn vặt, hoặc lịch thuốc có ảnh hưởng bữa ăn không. Không cần ghi từng gam nếu điều đó làm bạn lo lắng.</p>
+  <h2>Mẫu ghi ngắn</h2>
+  <ul>
+    <li>Giờ ăn, món chính, mức đói trước và mức no sau.</li>
+    <li>Giấc ngủ, vận động, thuốc và triệu chứng đáng chú ý.</li>
+    <li>Một điều muốn thử ở ngày hôm sau, chẳng hạn thêm rau hoặc chuẩn bị bữa phụ.</li>
+  </ul>
+  <p>Nếu nhật ký làm tăng sợ hãi thức ăn, đếm ám ảnh hoặc thúc đẩy nhịn ăn, hãy dừng lại và trao đổi với chuyên gia. Người bệnh nên mang nhật ký đến buổi khám để cùng điều chỉnh.</p>
+</ArticleLayout>

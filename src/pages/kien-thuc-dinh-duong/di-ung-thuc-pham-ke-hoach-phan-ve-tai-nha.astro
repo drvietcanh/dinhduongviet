@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['di-ung-thuc-pham-ke-hoach-phan-ve-tai-nha'];
+---
+
+<ArticleLayout article={article}>
+  <p>Một kế hoạch viết sẵn giúp gia đình phản ứng nhanh hơn khi xảy ra dị ứng. Kế hoạch cần được bác sĩ hướng dẫn, cập nhật theo cân nặng và thuốc đã kê.</p>
+  <h2>Nội dung nên có</h2>
+  <ul>
+    <li>Tên dị nguyên, món thường chứa dị nguyên và cách tránh nhiễm chéo.</li>
+    <li>Triệu chứng nhẹ và nặng, số điện thoại cấp cứu, người được phép dùng thuốc.</li>
+    <li>Vị trí thuốc khẩn cấp, ngày hết hạn và cách báo cho trường học/người trông trẻ.</li>
+  </ul>
+  <p>Sưng lưỡi/họng, khó thở, khò khè, choáng hoặc triệu chứng nhiều cơ quan là cấp cứu; dùng thuốc đã được kê và gọi trợ giúp ngay.</p>
+</ArticleLayout>

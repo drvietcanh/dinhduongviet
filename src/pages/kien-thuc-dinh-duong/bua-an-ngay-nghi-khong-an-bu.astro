@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['bua-an-ngay-nghi-khong-an-bu'];
+---
+
+<ArticleLayout article={article}>
+  <p>Ngày nghỉ có thể linh hoạt hơn, nhưng nhịn cả ngày rồi ăn rất nhiều vào tối muộn thường khiến khó chịu và khó duy trì mục tiêu sức khỏe.</p>
+  <h2>Cách giữ cân bằng</h2>
+  <ul>
+    <li>Giữ ít nhất hai bữa chính tương đối đúng giờ, thêm bữa phụ nếu thực sự đói.</li>
+    <li>Chọn một món mình thích, ăn chậm và dùng nước lọc xen kẽ thay vì lấy tất cả món cùng lúc.</li>
+    <li>Đi bộ, chơi cùng trẻ hoặc làm việc nhà nhẹ; không cần tập bù để “đốt” bữa ăn.</li>
+  </ul>
+  <p>Người đái tháo đường, đang dùng insulin hoặc thuốc hạ đường huyết không nên tự bỏ bữa; hãy theo kế hoạch điều trị.</p>
+</ArticleLayout>

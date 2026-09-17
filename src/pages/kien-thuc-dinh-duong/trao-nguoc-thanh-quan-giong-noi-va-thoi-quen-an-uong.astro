@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['trao-nguoc-thanh-quan-giong-noi-va-thoi-quen-an-uong'];
+---
+<ArticleLayout article={article}><p>Khàn tiếng hoặc vướng họng có thể liên quan trào ngược nhưng cũng có nhiều nguyên nhân khác.</p><ul><li>Ăn tối sớm hơn, chia bữa vừa phải và tránh nằm ngay sau ăn.</li><li>Theo dõi caffeine, rượu bia, bạc hà, món cay/chua nếu thấy làm triệu chứng tăng.</li><li>Khó nuốt, ho ra máu, sụt cân hoặc khàn tiếng kéo dài cần khám tai mũi họng.</li></ul></ArticleLayout>

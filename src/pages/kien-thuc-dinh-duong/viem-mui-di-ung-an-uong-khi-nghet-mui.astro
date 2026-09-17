@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['viem-mui-di-ung-an-uong-khi-nghet-mui'];
+---
+
+<ArticleLayout article={article}>
+  <p>Viêm mũi dị ứng chủ yếu cần tránh tác nhân, rửa mũi và dùng thuốc theo kế hoạch chuyên môn; không có một nhóm thực phẩm nào chữa khỏi bệnh. Ăn uống chỉ hỗ trợ cảm giác dễ chịu và đủ nước.</p>
+  <h2>Thói quen có thể giúp dễ chịu hơn</h2>
+  <ul>
+    <li>Uống đều theo khát và tình trạng tim, thận; súp hoặc món có nước cũng góp phần vào tổng dịch.</li>
+    <li>Chọn món ấm, mềm nếu họng khô; tránh món từng gây ngứa miệng, khò khè hoặc phản ứng dị ứng rõ ràng.</li>
+    <li>Không tự loại bỏ sữa, trứng, hải sản hay nhiều nhóm thực phẩm chỉ vì nghẹt mũi nếu chưa có đánh giá dị ứng.</li>
+    <li>Giảm khói thuốc, bụi và mùi kích thích; thuốc xịt hoặc kháng histamine dùng đúng hướng dẫn.</li>
+  </ul>
+  <p>Khó thở, sưng môi/lưỡi, sốt kéo dài, đau mặt một bên hoặc triệu chứng ảnh hưởng giấc ngủ cần được khám; không tự tăng liều thuốc.</p>
+</ArticleLayout>

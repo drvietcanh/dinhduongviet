@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-khi-giao-mua'];
+---
+
+<ArticleLayout article={article}>
+  <p>Khi thời tiết chuyển nóng–lạnh hoặc mưa–khô, lịch ăn và ngủ dễ bị xáo trộn. Không cần tìm “món tăng đề kháng” đặc biệt; hãy giữ bữa ăn đa dạng, nước uống phù hợp và vệ sinh tay.</p>
+  <h2>Thói quen nên giữ</h2>
+  <ul>
+    <li>Ăn đủ rau, quả, đạm và tinh bột; uống theo khát, màu nước tiểu và bệnh nền.</li>
+    <li>Ngủ theo giờ tương đối ổn định, mặc phù hợp thời tiết và tránh bỏ bữa khi bận.</li>
+    <li>Rửa tay, tách sống–chín và bảo quản thức ăn đúng cách trong những ngày ẩm nóng.</li>
+  </ul>
+  <h2>Khi bị bệnh</h2>
+  <p>Nếu sốt kéo dài, khó thở, lơ mơ, mất nước hoặc triệu chứng nặng nhanh, cần khám. Vitamin hoặc kháng sinh không tự dùng để phòng cảm cúm.</p>
+</ArticleLayout>

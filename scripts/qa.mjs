@@ -395,6 +395,19 @@ function checkHighRiskRecipeNotes() {
   }
 }
 
+function checkDiseaseHubReferences() {
+  const articlesText = fs.readFileSync(path.join(root, "src", "data", "articles.ts"), "utf8");
+  const hubsText = fs.readFileSync(path.join(root, "src", "data", "disease-hubs.ts"), "utf8");
+  const articleSlugs = new Set([...articlesText.matchAll(/slug:\s*"([^"]+)"/g)].map((match) => match[1]));
+  const arrayPattern = /(?:foundationSlugs|menuSlugs|mythSlugs):\s*\[([^\]]*)\]/g;
+  for (const arrayMatch of hubsText.matchAll(arrayPattern)) {
+    for (const slugMatch of arrayMatch[1].matchAll(/"([^"]+)"/g)) {
+      const slug = slugMatch[1];
+      if (!articleSlugs.has(slug)) fail(`Disease hub references missing article slug: ${slug}`);
+    }
+  }
+}
+
 checkBrandConsistency();
 checkDuplicateDataKeys();
 checkPlaceholders();
@@ -404,6 +417,7 @@ checkSitemapFoodAliases();
 checkRecipeContentQuality();
 checkFoodContentQuality();
 checkHighRiskRecipeNotes();
+checkDiseaseHubReferences();
 
 if (failures.length > 0) {
   console.error("QA failed:");

@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['thieu-mau-benh-man-dinh-duong-theo-xet-nghiem'];
+---
+
+<ArticleLayout article={article}>
+  <p>Thiếu máu do bệnh mạn có thể liên quan viêm kéo dài, bệnh thận, nhiễm trùng hoặc bệnh nền khác; không phải trường hợp nào cũng do thiếu sắt. Cần xem xét nghiệm và nguyên nhân trước khi bổ sung.</p>
+  <h2>Ăn uống an toàn</h2>
+  <ul>
+    <li>Duy trì khẩu phần đa dạng với thịt cá, trứng, đậu và rau; nếu ăn chay hoặc ăn kém, hỏi chuyên gia về sắt, B12 và folate.</li>
+    <li>Không tự uống sắt chỉ vì mệt hoặc da xanh; sắt không cần thiết có thể gây tác dụng phụ và che lấp nguyên nhân chảy máu.</li>
+    <li>Người bệnh thận, viêm mạn hoặc đang dùng thuốc cần để bác sĩ giải thích Hb, ferritin và các chỉ số liên quan trước khi đổi khẩu phần.</li>
+    <li>Đi khám sớm khi khó thở, đau ngực, ngất, tim đập nhanh, đi ngoài phân đen hoặc sụt cân không rõ nguyên nhân.</li>
+  </ul>
+  <p>Dinh dưỡng hỗ trợ nhưng không thay thế điều trị bệnh nền, truyền máu hoặc thuốc tạo máu khi bác sĩ chỉ định.</p>
+</ArticleLayout>

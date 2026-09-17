@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['da-thuoc-nguoi-cao-tuoi-ra-soat-thuoc-va-bua-an'];
+---
+<ArticleLayout article={article}><p>Đa thuốc có thể phù hợp nếu được tối ưu, nhưng nguy cơ tương tác và nhầm liều tăng ở người cao tuổi.</p><ul><li>Mang danh sách tất cả thuốc, vitamin, thảo dược và thực phẩm bổ sung đến buổi rà soát định kỳ.</li><li>Không tự nghiền viên giải phóng chậm, trộn thuốc vào cháo hoặc đổi giờ uống.</li><li>Lú lẫn mới, ngã, buồn ngủ quá mức, chán ăn hoặc tiêu chảy sau đổi thuốc cần liên hệ nhân viên y tế.</li></ul></ArticleLayout>

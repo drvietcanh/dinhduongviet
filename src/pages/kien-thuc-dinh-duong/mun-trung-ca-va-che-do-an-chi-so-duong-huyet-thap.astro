@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['mun-trung-ca-va-che-do-an-chi-so-duong-huyet-thap'];
+---
+<ArticleLayout article={article}><p>Một số nghiên cứu nhỏ gợi ý khẩu phần ít thực phẩm làm tăng đường huyết nhanh có thể giảm mụn, nhưng bằng chứng chưa đủ để thay thế thuốc.</p><ul><li>Giảm nước ngọt, bánh kẹo và tinh bột tinh chế; thay bằng rau, đậu, trái cây nguyên quả và ngũ cốc phù hợp.</li><li>Không cần loại bỏ sữa hoặc mọi món chiên nếu chưa thấy mối liên quan rõ ràng.</li><li>Mụn viêm, sẹo hoặc kéo dài cần khám da liễu.</li></ul></ArticleLayout>

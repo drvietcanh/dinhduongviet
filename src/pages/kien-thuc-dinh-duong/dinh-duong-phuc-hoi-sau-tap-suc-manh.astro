@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-phuc-hoi-sau-tap-suc-manh'];
+---
+
+<ArticleLayout article={article}>
+  <p>Sau buổi tập sức mạnh, bữa ăn cân bằng và giấc ngủ thường quan trọng hơn một sản phẩm bổ sung đắt tiền. Nhu cầu thay đổi theo khối lượng tập, mục tiêu, bệnh nền và tổng khẩu phần trong ngày.</p>
+  <h2>Ghép bữa phục hồi</h2>
+  <ul>
+    <li>Chọn một nguồn carbohydrate quen thuộc như cơm, khoai, bún hoặc yến mạch cùng nguồn đạm như trứng, cá, thịt nạc, sữa hoặc đậu phụ.</li>
+    <li>Uống theo khát và lượng mồ hôi; buổi tập dài, nóng hoặc ra mồ hôi nhiều có thể cần tư vấn về điện giải.</li>
+    <li>Không cần uống bột đạm nếu bữa ăn đã đáp ứng nhu cầu; không dùng sản phẩm không rõ thành phần hoặc quảng cáo tăng cơ cấp tốc.</li>
+    <li>Người bệnh thận, gan, đái tháo đường, phụ nữ mang thai hoặc người dùng thuốc nên hỏi chuyên gia trước khi tăng đạm hay dùng thực phẩm bổ sung.</li>
+  </ul>
+  <p>Đau ngực, ngất, khó thở bất thường, nước tiểu rất sẫm hoặc yếu cơ kéo dài sau tập cần được đánh giá y tế.</p>
+</ArticleLayout>

@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-dam-an-toan-phong-hoc-va-soc'];
+---
+<ArticleLayout article={article}><p>Ăn dặm an toàn cần vệ sinh tay, dụng cụ sạch, thức ăn phù hợp khả năng nhai nuốt và người lớn giám sát.</p><ul><li>Không để trẻ vừa ăn vừa chạy, nằm hoặc cầm đồ chơi; không ép nhét thức ăn.</li><li>Điều chỉnh kích thước/kết cấu theo tuổi và kỹ năng; tránh thực phẩm nguy cơ hóc cao.</li><li>Trẻ không thở, tím tái hoặc ho yếu khi hóc cần gọi cấp cứu và sơ cứu theo hướng dẫn.</li></ul></ArticleLayout>

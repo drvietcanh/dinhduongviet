@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tre-tu-ky-an-uong-cam-giac-va-an-toan'];
+---
+<ArticleLayout article={article}><p>Nhạy cảm với mùi, màu hoặc kết cấu có thể làm trẻ ăn rất hẹp. Mục tiêu là an toàn và mở rộng dần, không áp chế.</p><ul><li>Giữ món quen an toàn, thay đổi từng yếu tố một và phối hợp chuyên viên hoạt động trị liệu/dinh dưỡng.</li><li>Đánh giá táo bón, thiếu sắt, vitamin D và tăng trưởng khi khẩu phần hạn chế.</li><li>Không tự loại bỏ gluten, sữa hoặc dùng “thải độc” nếu chưa có chỉ định.</li></ul></ArticleLayout>

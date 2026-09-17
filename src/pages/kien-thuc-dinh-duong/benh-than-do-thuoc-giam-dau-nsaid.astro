@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['benh-than-do-thuoc-giam-dau-nsaid'];
+---
+<ArticleLayout article={article}><p>Ibuprofen, naproxen và NSAID khác có thể làm tăng nguy cơ tổn thương thận, nhất là khi mất nước hoặc có bệnh thận.</p><ul><li>Không tự dùng kéo dài; báo tất cả thuốc không kê đơn cho bác sĩ/dược sĩ.</li><li>Khi sốt, nôn, tiêu chảy hoặc uống kém, hỏi cách xử trí thuốc thay vì tự tiếp tục.</li><li>Tiểu ít, phù, mệt lả hoặc đau hông lưng cần khám sớm.</li></ul></ArticleLayout>

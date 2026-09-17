@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['hiv-an-toan-thuc-pham-va-tuong-tac-thuoc'];
+---
+<ArticleLayout article={article}><p>Khi miễn dịch suy giảm, an toàn thực phẩm và uống thuốc đúng lịch giúp giảm biến chứng.</p><ul><li>Tránh thịt/trứng/hải sản sống hoặc chưa chín, sữa chưa tiệt trùng và thực phẩm để lâu ở nhiệt độ phòng.</li><li>Hỏi bác sĩ hoặc dược sĩ về bưởi, thảo dược, rượu bia và thực phẩm bổ sung trước khi dùng.</li><li>Tiêu chảy kéo dài, sụt cân, sốt hoặc không ăn uống được cần liên hệ cơ sở điều trị.</li></ul></ArticleLayout>

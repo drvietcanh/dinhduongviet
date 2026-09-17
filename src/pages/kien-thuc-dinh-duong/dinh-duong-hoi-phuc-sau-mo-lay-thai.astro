@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-hoi-phuc-sau-mo-lay-thai'];
+---
+
+<ArticleLayout article={article}>
+  <p>Sau mổ lấy thai, ăn uống cần hỗ trợ lành vết mổ, đi tiêu và chăm sóc em bé. Tờ dặn dò của sản khoa, đặc biệt về thuốc và bệnh nền, luôn được ưu tiên.</p>
+  <h2>Ghép bữa và chăm sóc</h2>
+  <ul>
+    <li>Ăn đủ bữa với đạm như trứng, cá, thịt nạc, sữa hoặc đậu phụ; thêm rau, trái cây và tinh bột phù hợp khả năng dung nạp.</li>
+    <li>Uống theo khát và hướng dẫn; chất xơ, vận động nhẹ và thuốc nhuận tràng chỉ dùng theo chỉ định để phòng táo bón.</li>
+    <li>Người cho con bú không cần “ăn gấp đôi”; nếu sụt cân, ăn kém hoặc có bệnh thận/đái tháo đường, nên được tư vấn riêng.</li>
+    <li>Không tự dùng thuốc nam, viên lợi sữa, vitamin liều cao hoặc rượu thuốc khi chưa kiểm tra tương tác với thuốc sau mổ.</li>
+  </ul>
+  <p>Sốt, đau tăng, vết mổ đỏ nóng/chảy dịch, chảy máu âm đạo nhiều, khó thở, đau chân hoặc không uống được cần liên hệ cơ sở y tế ngay.</p>
+</ArticleLayout>

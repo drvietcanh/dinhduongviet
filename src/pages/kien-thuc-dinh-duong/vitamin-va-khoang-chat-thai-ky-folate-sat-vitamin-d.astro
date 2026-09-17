@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['vitamin-va-khoang-chat-thai-ky-folate-sat-vitamin-d'];
+---
+<ArticleLayout article={article}><p>Thực phẩm đa dạng là nền tảng; folate, sắt và vitamin D cần dùng theo hướng dẫn thai sản.</p><ul><li>Folate trước và đầu thai kỳ giúp giảm nguy cơ dị tật ống thần kinh; liều cao chỉ khi bác sĩ chỉ định.</li><li>Sắt cần dựa trên xét nghiệm và khả năng dung nạp; không tự tăng liều.</li><li>Tránh viên chứa vitamin A dạng retinol và dầu gan cá khi mang thai.</li></ul></ArticleLayout>

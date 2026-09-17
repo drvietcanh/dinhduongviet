@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['bua-an-truoc-tap-cho-nguoi-moi-bat-dau'];
+---
+<ArticleLayout article={article}><p>Bữa trước tập phụ thuộc thời gian, cường độ và khả năng tiêu hóa; không cần sản phẩm đắt tiền.</p><ul><li>Trước tập vài giờ có thể dùng bữa quen thuộc gồm tinh bột, đạm vừa phải và ít chất béo.</li><li>Nếu chỉ còn ít thời gian, chọn món nhỏ dễ tiêu như chuối, bánh mì hoặc sữa chua nếu dung nạp.</li><li>Uống theo khát và điều kiện môi trường; tránh thử món mới ngay trước buổi tập quan trọng.</li></ul></ArticleLayout>

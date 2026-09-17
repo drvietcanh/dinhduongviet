@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['lao-phoi-thuoc-va-an-uong-ho-tro'];
+---
+<ArticleLayout article={article}><p>Điều trị lao cần dùng thuốc đủ liệu trình. Ăn uống giúp duy trì cân nặng và sức lực, không thay thế thuốc.</p><ul><li>Chia bữa nhỏ, thêm nguồn đạm và năng lượng nếu sụt cân; theo dõi cân nặng hằng tuần.</li><li>Buồn nôn, đau bụng, vàng da, nước tiểu sẫm hoặc nhìn mờ cần báo cơ sở điều trị.</li><li>Không tự ngưng thuốc, đổi giờ uống hoặc dùng thảo dược khi chưa hỏi bác sĩ.</li></ul></ArticleLayout>

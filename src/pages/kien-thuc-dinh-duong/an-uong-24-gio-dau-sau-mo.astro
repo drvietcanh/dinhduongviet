@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-24-gio-dau-sau-mo'];
+---
+
+<ArticleLayout article={article}>
+  <p>Thời điểm ăn lại sau mổ do ê-kíp quyết định dựa trên loại phẫu thuật, mức tỉnh táo, nhu động ruột và nguy cơ sặc. Không nên tự áp dụng một thực đơn giống nhau cho mọi ca mổ.</p>
+  <h2>Tiến từng bước theo dung nạp</h2>
+  <ul>
+    <li>Khi được cho phép, bắt đầu bằng lượng nhỏ theo hướng dẫn; tăng dần độ đặc và khẩu phần nếu không buồn nôn, đau tăng hoặc chướng bụng.</li>
+    <li>Ngồi thẳng khi uống/ăn và tiếp tục tư thế an toàn sau đó; người còn lơ mơ không nên tự ăn uống.</li>
+    <li>Báo ngay khi nôn lặp lại, bụng chướng tăng, đau dữ dội, không trung tiện theo hướng dẫn hoặc không giữ được nước.</li>
+    <li>Dịch truyền không thay thế kế hoạch ăn uống lâu dài; khi ăn chưa đủ, hỏi bác sĩ về hỗ trợ dinh dưỡng phù hợp.</li>
+  </ul>
+  <p>Chỉ dùng thức uống, thuốc chống nôn hoặc sản phẩm dinh dưỡng được bệnh viện chỉ định; không tự ép ăn khi có dấu hiệu bất thường.</p>
+</ArticleLayout>

@@ -1,0 +1,5 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'; import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['tieu-duong-thai-ky-an-uong-theo-doi-duong-huyet'];
+---
+<ArticleLayout article={article}><p>Đái tháo đường thai kỳ cần kế hoạch riêng với bác sĩ và chuyên gia dinh dưỡng, không nhịn ăn để hạ đường.</p><ul><li>Chia đều carbohydrate trong ngày, ưu tiên ngũ cốc ít tinh chế, rau và đạm nạc.</li><li>Ghi đường huyết theo lịch; không tự bỏ thuốc hoặc insulin.</li><li>Vận động nhẹ nếu đội ngũ thai sản cho phép và dừng khi có dấu hiệu bất thường.</li></ul></ArticleLayout>

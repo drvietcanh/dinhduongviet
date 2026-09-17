@@ -1,0 +1,17 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['di-cho-cho-gia-dinh-o-cho-truyen-thong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Đi chợ truyền thống giúp mua lượng nhỏ và thực phẩm theo mùa, nhưng cần chú ý vệ sinh, nhiệt độ và tách sống–chín.</p>
+  <h2>Checklist nhanh</h2>
+  <ul>
+    <li>Chọn rau quả nguyên vẹn, cá thịt không có mùi lạ; hỏi nguồn gốc khi mua đồ chế biến.</li>
+    <li>Mang túi riêng cho thịt cá sống; mua đồ đông lạnh sau cùng và đưa về nhà sớm.</li>
+    <li>Lập danh sách theo số người ăn để tránh mua quá nhiều rồi bảo quản kéo dài.</li>
+  </ul>
+  <h2>Về nhà</h2>
+  <p>Rửa tay, làm sạch bề mặt và cất thực phẩm đúng ngăn. Không rửa thịt sống bắn nước quanh bếp; nấu chín kỹ và dùng dụng cụ riêng cho món chín.</p>
+</ArticleLayout>

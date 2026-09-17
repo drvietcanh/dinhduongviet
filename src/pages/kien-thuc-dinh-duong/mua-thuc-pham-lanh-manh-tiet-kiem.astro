@@ -1,0 +1,18 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['mua-thuc-pham-lanh-manh-tiet-kiem'];
+---
+
+<ArticleLayout article={article}>
+  <p>Ăn lành mạnh không nhất thiết phải mua thực phẩm đắt tiền. Một danh sách ngắn, nấu tại nhà và tận dụng thực phẩm theo mùa thường giúp kiểm soát cả chi phí lẫn khẩu phần.</p>
+  <h2>Ưu tiên khi đi chợ</h2>
+  <ul>
+    <li>Chọn rau củ theo mùa, đậu phụ, trứng, cá nhỏ, thịt nạc và đậu đỗ; mua lượng vừa đủ số người ăn.</li>
+    <li>Dùng gạo, khoai hoặc bún quen thuộc với khẩu phần phù hợp thay vì chạy theo sản phẩm “healthy” đắt tiền.</li>
+    <li>So sánh nhãn natri, đường và khẩu phần của đồ đóng gói; giá rẻ không đồng nghĩa phải chọn gói lớn.</li>
+  </ul>
+  <h2>Nấu một nguyên liệu thành nhiều món</h2>
+  <p>Cá có thể hấp rồi dùng phần còn lại cho cháo; rau củ dùng cho canh và món xào ít dầu. Chia phần trước khi ăn giúp giảm lãng phí và dễ điều chỉnh cho người bệnh.</p>
+  <p class="mt-6 text-sm text-slate-600">Nếu gia đình có người bệnh thận, đái tháo đường hoặc dị ứng, hãy ưu tiên an toàn và kế hoạch điều trị thay vì chỉ chọn theo giá.</p>
+</ArticleLayout>

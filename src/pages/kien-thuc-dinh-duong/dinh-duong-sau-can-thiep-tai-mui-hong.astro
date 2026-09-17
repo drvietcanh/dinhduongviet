@@ -1,0 +1,15 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['dinh-duong-sau-can-thiep-tai-mui-hong'];
+---
+
+<ArticleLayout article={article}>
+  <p>Loại thủ thuật quyết định thời điểm và kết cấu ăn uống. Giấy dặn dò của phẫu thuật viên được ưu tiên; không tự chuyển sang chỉ uống nước hoặc chỉ ăn cháo nhiều ngày.</p>
+  <ul>
+    <li>Uống và ăn lại theo khả năng khi đã tỉnh, giữ đủ dịch và năng lượng nếu không bị hạn chế.</li>
+    <li>Dùng thuốc giảm đau theo toa để có thể uống/ăn; tránh rượu, thuốc lá và món làm kích ứng vùng can thiệp.</li>
+    <li>Không tự dùng aspirin, thuốc chống viêm hoặc thảo dược có thể tăng chảy máu.</li>
+    <li>Chảy máu tươi, khó thở, không nuốt được nước hoặc nôn kéo dài là lý do liên hệ cấp cứu.</li>
+  </ul>
+</ArticleLayout>

@@ -1,0 +1,14 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['phan-ve-do-an-xu-tri-khan-cap'];
+---
+<ArticleLayout article={article}>
+  <p>Phản vệ có thể tiến triển nhanh và không thể xử trí bằng đồ ăn, nước uống hay thuốc dân gian. Hãy làm theo kế hoạch cấp cứu cá nhân.</p>
+  <ul>
+    <li>Nếu có adrenaline tự tiêm hoặc thuốc cấp cứu được kê, dùng theo hướng dẫn ngay khi có dấu hiệu phản vệ.</li>
+    <li>Gọi 115, nói rõ nghi phản vệ; không để người bệnh tự đi lại hoặc tự lái xe.</li>
+    <li>Đặt nằm, nâng chân nếu phù hợp; nếu khó thở có thể ngồi tư thế dễ thở. Không cho ăn uống khi lơ mơ.</li>
+    <li>Dù đỡ triệu chứng vẫn cần theo dõi tại cơ sở y tế vì phản ứng có thể tái diễn.</li>
+  </ul>
+</ArticleLayout>

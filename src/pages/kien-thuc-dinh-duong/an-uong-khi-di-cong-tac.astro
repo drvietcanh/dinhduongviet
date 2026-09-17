@@ -1,0 +1,19 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['an-uong-khi-di-cong-tac'];
+---
+
+<ArticleLayout article={article}>
+  <p>Đi công tác dễ làm lệch giờ ăn, thiếu ngủ và quên thuốc. Chuẩn bị trước vài điểm nhỏ giúp người có bệnh mạn tính duy trì an toàn mà vẫn linh hoạt.</p>
+  <h2>Trước khi khởi hành</h2>
+  <ul>
+    <li>Mang thuốc trong hành lý xách tay, kèm danh sách hoạt chất, liều dùng và số liên lạc cơ sở điều trị; không tự đổi giờ hoặc bỏ thuốc vì lịch họp.</li>
+    <li>Chuẩn bị món ăn gọn, an toàn như hạt không muối, bánh mì kèm trứng hoặc sữa phù hợp; không để thực phẩm dễ hỏng trong xe quá lâu.</li>
+    <li>Kiểm tra nơi mua nước sạch và bữa ăn gần điểm đến.</li>
+  </ul>
+  <h2>Khi ăn ngoài</h2>
+  <p>Gọi món có rau, đạm và tinh bột vừa phần; xin ít nước sốt hoặc nước chấm. Hạn chế rượu bia nếu đang dùng thuốc hoặc có bệnh gan, tim, gout, tăng huyết áp.</p>
+  <h2>Khi cần trợ giúp</h2>
+  <p>Mang theo thông tin bệnh nền để đồng nghiệp hỗ trợ nếu hạ đường huyết, đau ngực, khó thở, nôn nhiều hoặc tiêu chảy. Không tự xử trí kéo dài khi triệu chứng bất thường.</p>
+</ArticleLayout>

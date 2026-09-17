@@ -1,0 +1,16 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleBySlug } from '../../data/articles';
+const article = articleBySlug['trao-nguoc-thanh-quan-an-uong-giam-kich-ung'];
+---
+
+<ArticleLayout article={article}>
+  <p>Trào ngược thanh quản có thể liên quan khàn tiếng, ho hoặc cảm giác vướng họng, nhưng các triệu chứng này cũng có nhiều nguyên nhân khác. Không tự chẩn đoán chỉ dựa vào việc ợ nóng hay đau họng.</p>
+  <h2>Điều chỉnh bữa ăn</h2>
+  <ul>
+    <li>Ăn khẩu phần vừa phải, chậm và tránh nằm ngay sau ăn; thử kết thúc bữa tối sớm hơn nếu triệu chứng thường xuất hiện ban đêm.</li>
+    <li>Ghi nhật ký để nhận diện món làm nặng triệu chứng như đồ nhiều mỡ, cay, cà phê, rượu hoặc nước có gas; không cần kiêng tất cả nếu không gây khó chịu.</li>
+    <li>Giữ cân nặng phù hợp, bỏ thuốc lá và dùng thuốc theo đánh giá của bác sĩ.</li>
+    <li>Nuốt đau, nuốt nghẹn, sụt cân, nôn máu, phân đen hoặc khàn tiếng kéo dài cần được khám.</li>
+  </ul>
+</ArticleLayout>
