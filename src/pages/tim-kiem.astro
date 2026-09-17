@@ -220,7 +220,7 @@ const searchIntents = [
 
     function getCategoryEmoji(cat) {
       var emojis = {
-        'Thịt':'🥩','Cá':'🐟','Hải sản':'🦐','Trứng sữa':'🥚','Đậu':'🫘','Hạt':'🥜',
+        'Thịt':'🥩','Cá':'🐟','Hải sản':'🦐','Trứng':'🥚','Sữa':'🥛','Trứng sữa':'🥚','Đậu':'🫘','Hạt':'🥜',
         'Rau xanh':'🥬','Củ quả':'🥕','Nấm':'🍄','Rau gia vị':'🌿','Tinh bột':'🍚',
         'Trái cây':'🍎','Dầu mỡ':'🫒','Gia vị':'🧂','Thịt chế biến':'🥓','Bánh kẹo':'🍪',
         'Nước dùng':'🥣','Đồ uống':'🧋','Món ăn':'🍽️','Bài viết':'📖'
@@ -453,7 +453,7 @@ const searchIntents = [
       if (query) html += '<div class="empty-sub">Thử gõ từ khóa khác hoặc bỏ bộ lọc</div>';
 
       // Show category links
-      var cats = ['Tinh bột','Thịt','Cá','Hải sản','Rau xanh','Củ quả','Trái cây','Đậu','Nấm'];
+        var cats = ['Tinh bột','Thịt','Cá','Hải sản','Rau xanh','Củ quả','Trái cây','Đậu','Hạt','Trứng','Sữa','Nấm'];
       html += '<div class="empty-cats"><div class="empty-cats-label">Hoặc duyệt theo danh mục:</div>';
       cats.forEach(function(c) {
         html += '<a class="chip" href="/thuc-pham?category=' + encodeURIComponent(c) + '#food-results">' + getCategoryEmoji(c) + ' ' + c + '</a>';

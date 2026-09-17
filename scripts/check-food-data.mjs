@@ -314,7 +314,7 @@ for (const food of fullFoods) {
   }
 }
 
-const mainFoodCategories = new Set(["Tinh bột", "Rau xanh", "Củ quả", "Trái cây", "Thịt", "Cá", "Hải sản", "Trứng sữa", "Sữa", "Đậu", "Hạt", "Nấm"]);
+const mainFoodCategories = new Set(["Tinh bột", "Rau xanh", "Củ quả", "Trái cây", "Thịt", "Cá", "Hải sản", "Trứng", "Sữa", "Trứng sữa", "Đậu", "Hạt", "Nấm"]);
 const categoryNameRules = [
   {
     names: new Set(["tai heo", "tai lon", "la sach bo", "sach bo"]),

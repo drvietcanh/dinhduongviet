@@ -2364,6 +2364,14 @@ for (const food of foods) {
     food.category = food.name.startsWith("Cá ") ? "Cá" : "Hải sản";
   } else if (food.category === "Hạt và đậu") {
     food.category = /^(Hạt|Mè)/i.test(food.name) ? "Hạt" : "Đậu";
+  } else if (food.category === "Trứng sữa") {
+    // Keep eggs and dairy as separate primary groups. “Mì trứng” is a
+    // cereal/noodle product, not an egg serving, so it remains Tinh bột.
+    food.category = /^Mì trứng(?:\s|$)/i.test(food.name)
+      ? "Tinh bột"
+      : /(?:^|\s)(?:trứng|lòng trắng|lòng đỏ|bột trứng)(?:\s|$)/i.test(food.name)
+        ? "Trứng"
+        : "Sữa";
   }
 
   // Canonicalize the public taxonomy so source variants do not create

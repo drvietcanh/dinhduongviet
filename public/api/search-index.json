@@ -9013,8 +9013,8 @@
       "egg",
       "trung ga"
     ],
-    "description": "Tra cứu Trứng gà: khoảng 166 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng gà: khoảng 166 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 166
   },
   {
@@ -9195,8 +9195,8 @@
       "milk",
       "sua tuoi"
     ],
-    "description": "Tra cứu Sữa tươi: khoảng 61 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa tươi: khoảng 61 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 61
   },
   {
@@ -9345,8 +9345,8 @@
       "condensed milk",
       "sua dac"
     ],
-    "description": "Tra cứu Sữa đặc: khoảng 336 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa đặc: khoảng 336 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 336
   },
   {
@@ -9707,8 +9707,8 @@
       "yogurt",
       "sua chua"
     ],
-    "description": "Tra cứu Sữa chua: khoảng 95 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua: khoảng 95 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 95
   },
   {
@@ -9758,8 +9758,8 @@
       "duck egg",
       "trung vit"
     ],
-    "description": "Tra cứu Trứng vịt: khoảng 185 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng vịt: khoảng 185 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 185
   },
   {
@@ -11570,8 +11570,8 @@
       "trung vit lon",
       "trứng vịt lộn"
     ],
-    "description": "Tra cứu Trứng vịt lộn: khoảng 182 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng vịt lộn: khoảng 182 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 182
   },
   {
@@ -11581,8 +11581,8 @@
     "aliases": [
       "trung cut"
     ],
-    "description": "Tra cứu Trứng cút: khoảng 157 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng cút: khoảng 157 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 157
   },
   {
@@ -11592,8 +11592,8 @@
     "aliases": [
       "long trang trung"
     ],
-    "description": "Tra cứu Lòng trắng trứng: khoảng 46 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Lòng trắng trứng: khoảng 46 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 46
   },
   {
@@ -11603,8 +11603,8 @@
     "aliases": [
       "long do trung"
     ],
-    "description": "Tra cứu Lòng đỏ trứng: khoảng 327 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Lòng đỏ trứng: khoảng 327 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 327
   },
   {
@@ -11614,8 +11614,8 @@
     "aliases": [
       "sua tuoi khong duong"
     ],
-    "description": "Tra cứu Sữa tươi không đường: khoảng 62 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa tươi không đường: khoảng 62 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 62
   },
   {
@@ -11625,8 +11625,8 @@
     "aliases": [
       "sua tuoi tach beo"
     ],
-    "description": "Tra cứu Sữa tươi tách béo: khoảng 35 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa tươi tách béo: khoảng 35 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 35
   },
   {
@@ -11636,8 +11636,8 @@
     "aliases": [
       "pho mai cheddar"
     ],
-    "description": "Tra cứu Phô mai cheddar: khoảng 403 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Phô mai cheddar: khoảng 403 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 403
   },
   {
@@ -11647,8 +11647,8 @@
     "aliases": [
       "pho mai tuoi"
     ],
-    "description": "Tra cứu Phô mai tươi: khoảng 98 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Phô mai tươi: khoảng 98 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 98
   },
   {
@@ -11658,8 +11658,8 @@
     "aliases": [
       "vang sua"
     ],
-    "description": "Tra cứu Váng sữa: khoảng 190 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Váng sữa: khoảng 190 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 190
   },
   {
@@ -11669,8 +11669,8 @@
     "aliases": [
       "kem sua"
     ],
-    "description": "Tra cứu Kem sữa: khoảng 207 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Kem sữa: khoảng 207 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 207
   },
   {
@@ -11680,8 +11680,8 @@
     "aliases": [
       "sua bot nguyen kem"
     ],
-    "description": "Tra cứu Sữa bột nguyên kem: khoảng 496 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa bột nguyên kem: khoảng 496 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 496
   },
   {
@@ -12503,8 +12503,8 @@
       "quail egg",
       "trung cut thuong"
     ],
-    "description": "Tra cứu Trứng cút (thường): khoảng 158 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng cút (thường): khoảng 158 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 158
   },
   {
@@ -13983,8 +13983,8 @@
       "sua bo nguyen chat",
       "whole milk"
     ],
-    "description": "Tra cứu Sữa bò nguyên chất: khoảng 61 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa bò nguyên chất: khoảng 61 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 61
   },
   {
@@ -13995,8 +13995,8 @@
       "sua bo tach beo",
       "skim milk"
     ],
-    "description": "Tra cứu Sữa bò tách béo: khoảng 34 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa bò tách béo: khoảng 34 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 34
   },
   {
@@ -14007,8 +14007,8 @@
       "sua chua uong",
       "drinkable yogurt"
     ],
-    "description": "Tra cứu Sữa chua uống: khoảng 60 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua uống: khoảng 60 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 60
   },
   {
@@ -14020,8 +14020,8 @@
       "kefir",
       "sua bo len men kefir"
     ],
-    "description": "Tra cứu Sữa bò lên men (kefir): khoảng 50 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa bò lên men (kefir): khoảng 50 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 50
   },
   {
@@ -14034,8 +14034,8 @@
       "heavy cream",
       "kem tuoi whipping"
     ],
-    "description": "Tra cứu Kem tươi whipping: khoảng 340 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Kem tươi whipping: khoảng 340 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 340
   },
   {
@@ -14047,8 +14047,8 @@
       "sour cream",
       "kem chua sour cream"
     ],
-    "description": "Tra cứu Kem chua (sour cream): khoảng 198 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Kem chua (sour cream): khoảng 198 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 198
   },
   {
@@ -14059,8 +14059,8 @@
       "trung ga luoc",
       "boiled egg"
     ],
-    "description": "Tra cứu Trứng gà luộc: khoảng 78 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng gà luộc: khoảng 78 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 78
   },
   {
@@ -14071,8 +14071,8 @@
       "trung ga chien",
       "fried egg"
     ],
-    "description": "Tra cứu Trứng gà chiên: khoảng 110 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng gà chiên: khoảng 110 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 110
   },
   {
@@ -14083,8 +14083,8 @@
       "long do trung ga",
       "egg yolk"
     ],
-    "description": "Tra cứu Lòng đỏ trứng gà: khoảng 327 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Lòng đỏ trứng gà: khoảng 327 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 327
   },
   {
@@ -14096,8 +14096,8 @@
       "young hen egg",
       "trung ga non trung to"
     ],
-    "description": "Tra cứu Trứng gà non (trứng tơ): khoảng 55 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng gà non (trứng tơ): khoảng 55 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 55
   },
   {
@@ -14949,8 +14949,8 @@
       "goat milk fresh",
       "milk goat fresh"
     ],
-    "description": "Tra cứu Sữa dê tươi: khoảng 69 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa dê tươi: khoảng 69 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 69
   },
   {
@@ -14963,8 +14963,8 @@
       "human milk",
       "breast milk"
     ],
-    "description": "Tra cứu Sữa mẹ: khoảng 61 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa mẹ: khoảng 61 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 61
   },
   {
@@ -14976,8 +14976,8 @@
       "sweetened yogurt",
       "yogurt sweetened"
     ],
-    "description": "Tra cứu Sữa chua đặc có đường: khoảng 65 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua đặc có đường: khoảng 65 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 65
   },
   {
@@ -14989,8 +14989,8 @@
       "plain yogurt",
       "unsweetened yogurt"
     ],
-    "description": "Tra cứu Sữa chua đặc không đường: khoảng 61 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua đặc không đường: khoảng 61 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 61
   },
   {
@@ -15002,8 +15002,8 @@
       "sweetened drinking yogurt",
       "yogurt drink"
     ],
-    "description": "Tra cứu Sữa chua uống có đường: khoảng 62 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua uống có đường: khoảng 62 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 62
   },
   {
@@ -16171,8 +16171,8 @@
       "long do trung vit",
       "duck egg yolk"
     ],
-    "description": "Tra cứu Lòng đỏ trứng vịt: khoảng 364 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Lòng đỏ trứng vịt: khoảng 364 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 364
   },
   {
@@ -16183,8 +16183,8 @@
       "long trang trung vit",
       "duck egg white"
     ],
-    "description": "Tra cứu Lòng trắng trứng vịt: khoảng 47 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Lòng trắng trứng vịt: khoảng 47 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 47
   },
   {
@@ -16209,8 +16209,8 @@
       "trung ga cong nghiep",
       "commercial chicken egg"
     ],
-    "description": "Tra cứu Trứng gà công nghiệp: khoảng 132 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Trứng gà công nghiệp: khoảng 132 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 132
   },
   {
@@ -16221,8 +16221,8 @@
       "bot trung",
       "egg powder"
     ],
-    "description": "Tra cứu Bột trứng: khoảng 563 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Bột trứng: khoảng 563 kcal/100g, nhóm Trứng.",
+    "category": "Trứng",
     "kcal": 563
   },
   {
@@ -17516,8 +17516,8 @@
     "aliases": [
       "sua bot toan phan"
     ],
-    "description": "Tra cứu Sữa bột toàn phần: khoảng 494 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa bột toàn phần: khoảng 494 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 494
   },
   {
@@ -17527,8 +17527,8 @@
     "aliases": [
       "sua bot tach beo"
     ],
-    "description": "Tra cứu Sữa bột tách béo: khoảng 357 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa bột tách béo: khoảng 357 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 357
   },
   {
@@ -17538,8 +17538,8 @@
     "aliases": [
       "sua bo tiet trung co duong toan phan trang"
     ],
-    "description": "Tra cứu Sữa, bò, tiệt trùng, có đường, toàn phần, trắng: khoảng 85 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa, bò, tiệt trùng, có đường, toàn phần, trắng: khoảng 85 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 85
   },
   {
@@ -17605,8 +17605,8 @@
     "aliases": [
       "sua hop milo"
     ],
-    "description": "Tra cứu Sữa hộp Milo: khoảng 55 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa hộp Milo: khoảng 55 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 55
   },
   {
@@ -19000,8 +19000,8 @@
     "aliases": [
       "mi trung tuoi"
     ],
-    "description": "Tra cứu Mì trứng tươi: khoảng 104 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Mì trứng tươi: khoảng 104 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 104
   },
   {
@@ -20447,8 +20447,8 @@
     "aliases": [
       "sua chua hy lap"
     ],
-    "description": "Tra cứu Sữa chua Hy Lạp: khoảng 108 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua Hy Lạp: khoảng 108 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 108
   },
   {
@@ -20458,8 +20458,8 @@
     "aliases": [
       "pho mai con bo cuoi"
     ],
-    "description": "Tra cứu Phô mai con bò cười: khoảng 112 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Phô mai con bò cười: khoảng 112 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 112
   },
   {
@@ -20469,8 +20469,8 @@
     "aliases": [
       "pho mai mozzarella"
     ],
-    "description": "Tra cứu Phô mai mozzarella: khoảng 116 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Phô mai mozzarella: khoảng 116 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 116
   },
   {
@@ -20858,8 +20858,8 @@
     "aliases": [
       "sua chua tran chau"
     ],
-    "description": "Tra cứu Sữa chua trân châu: khoảng 104 kcal/100g, nhóm Trứng sữa.",
-    "category": "Trứng sữa",
+    "description": "Tra cứu Sữa chua trân châu: khoảng 104 kcal/100g, nhóm Sữa.",
+    "category": "Sữa",
     "kcal": 104
   },
   {

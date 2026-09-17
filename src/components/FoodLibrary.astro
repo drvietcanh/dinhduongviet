@@ -24,6 +24,8 @@ const categoryMeta: Record<string, { icon: string; description: string }> = {
   "Cá": { icon: "🐟", description: "Cá nước ngọt, cá biển và sản phẩm từ cá" },
   "Hải sản": { icon: "🦐", description: "Tôm, cua, nhuyễn thể và hải sản khác" },
   "Trứng sữa": { icon: "🥚", description: "Trứng, sữa và các sản phẩm từ sữa" },
+  "Trứng": { icon: "🥚", description: "Trứng và các sản phẩm từ trứng" },
+  "Sữa": { icon: "🥛", description: "Sữa và các sản phẩm từ sữa" },
   "Đậu": { icon: "🫘", description: "Đậu đỗ, đậu phụ và sản phẩm từ đậu" },
   "Hạt": { icon: "🥜", description: "Các loại hạt, mè, lạc và hạt dinh dưỡng" },
   "Dầu mỡ": { icon: "🫒", description: "Dầu ăn, mỡ và chất béo dùng trong nấu nướng" },
@@ -344,7 +346,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
     var activeFilterChips = document.getElementById('active-filter-chips');
     var params = new URLSearchParams(window.location.search);
     var tagLabels = { vegan: 'Thuần chay', 'high-protein': 'Nhiều đạm', 'low-fat': 'Ít béo', 'glycemic-index-low': 'GI thấp', 'glycemic-index-high': 'GI cao', 'low-sodium': 'Ít natri', 'high-sodium': 'Nhiều natri', 'high-fiber': 'Giàu xơ', 'high-calcium': 'Nhiều canxi' };
-    var categoryIcons = { 'Tinh bột': '🍚', 'Rau xanh': '🥬', 'Củ quả': '🥕', 'Rau gia vị': '🌿', 'Trái cây': '🍊', 'Thịt': '🥩', 'Thịt chế biến': '🍖', 'Cá': '🐟', 'Hải sản': '🦐', 'Trứng sữa': '🥚', 'Đậu': '🫘', 'Hạt': '🥜', 'Dầu mỡ': '🫒', 'Gia vị': '🧂', 'Đồ uống': '🥤', 'Bánh kẹo': '🍪', 'Nước dùng': '🍲', 'Nấm': '🍄' };
+    var categoryIcons = { 'Tinh bột': '🍚', 'Rau xanh': '🥬', 'Củ quả': '🥕', 'Rau gia vị': '🌿', 'Trái cây': '🍊', 'Thịt': '🥩', 'Thịt chế biến': '🍖', 'Cá': '🐟', 'Hải sản': '🦐', 'Trứng': '🥚', 'Sữa': '🥛', 'Trứng sữa': '🥚', 'Đậu': '🫘', 'Hạt': '🥜', 'Dầu mỡ': '🫒', 'Gia vị': '🧂', 'Đồ uống': '🥤', 'Bánh kẹo': '🍪', 'Nước dùng': '🍲', 'Nấm': '🍄' };
     var stateLabels = { raw: 'Tươi/sống', cooked: 'Đã nấu', processed: 'Chế biến', dried: 'Sấy/khô', roasted: 'Rang/nướng' };
     var profileLabels = { diabetes: 'Mục tiêu: đái tháo đường', hypertension: 'Mục tiêu: huyết áp', ckd: 'Mục tiêu: bệnh thận', weight: 'Mục tiêu: cân nặng' };
     var reviewedStatuses = { source_verified: true, reviewed_keep_current: true };
