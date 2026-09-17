@@ -13964,12 +13964,14 @@
   {
     "type": "food",
     "slug": "tau-hu-dua",
-    "name": "Tàu hũ dừa",
+    "name": "Tàu hũ (đậu nành) nấu nước cốt dừa",
     "aliases": [
       "tau hu dua",
-      "tofu with coconut"
+      "tàu hũ dừa",
+      "tofu with coconut",
+      "tau hu dau nanh nau nuoc cot dua"
     ],
-    "description": "Tra cứu Tàu hũ dừa: khoảng 110 kcal/100g, nhóm Đậu.",
+    "description": "Tra cứu Tàu hũ (đậu nành) nấu nước cốt dừa: khoảng 110 kcal/100g, nhóm Đậu.",
     "category": "Đậu",
     "kcal": 110
   },

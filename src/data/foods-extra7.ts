@@ -335,8 +335,8 @@ export const extraFoods7 = [
     sourceId: "recipe-estimate-v1", confidence: "low", note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến."
   },
   {
-    id: "tau-hu-dua", slug: "tau-hu-dua", name: "Tàu hũ dừa",
-    aliases: ["tau hu dua", "tofu with coconut"],
+    id: "tau-hu-dua", slug: "tau-hu-dua", name: "Tàu hũ (đậu nành) nấu nước cốt dừa",
+    aliases: ["tau hu dua", "tàu hũ dừa", "tofu with coconut"],
     category: "Đậu", state: "cooked", basis: "100g",
     edibleNote: "Tàu hũ nấu với nước cốt dừa, béo ngậy.",
     nutrients: { energyKcal: 110, proteinG: 6, carbG: 5, fatG: 7, saturatedFatG: 4, fiberG: 0.5, sodiumMg: 200, potassiumMg: 130, calciumMg: 90 },
