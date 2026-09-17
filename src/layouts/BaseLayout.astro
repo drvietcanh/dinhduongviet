@@ -772,6 +772,36 @@ if (isArticle) {
         color: var(--ink);
         font-weight: 700;
       }
+      .footer-visit-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 10px;
+        color: var(--ink-tertiary);
+        font-size: 0.76rem;
+      }
+      .footer-visit-counter a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 20px;
+        border-radius: 6px;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+      .footer-visit-counter a:hover {
+        opacity: 0.86;
+        transform: translateY(-1px);
+      }
+      .footer-visit-counter a:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--brand) 42%, transparent);
+        outline-offset: 3px;
+      }
+      .footer-visit-counter img {
+        display: block;
+        width: auto;
+        height: 20px;
+        max-width: 100%;
+      }
       .footer-bottom {
         width: min(100%, 1160px);
         margin: 22px auto 0;
@@ -1361,6 +1391,12 @@ if (isArticle) {
           <span>Kho dữ liệu:</span>
           <strong>{libraryStats.foods.toLocaleString("vi-VN")} thực phẩm · {libraryStats.recipes.toLocaleString("vi-VN")} món ăn · {libraryStats.articles.toLocaleString("vi-VN")} bài viết</strong>
         </div>
+      </div>
+      <div class="footer-visit-counter" aria-label="Bộ đếm khách ghé thăm">
+        <span aria-hidden="true">👥</span>
+        <a href="https://visitor-badge.laobi.icu/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Xem dịch vụ bộ đếm khách ghé thăm">
+          <img src="https://visitor-badge.laobi.icu/badge?page_id=dinhduongviet.pages.dev&amp;left_text=Kh%C3%A1ch%20gh%C3%A9%20th%C4%83m" width="117" height="20" alt="Bộ đếm khách ghé thăm" loading="eager" decoding="async" />
+        </a>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Dinh dưỡng Việt — Dữ liệu chỉ mang tính tham khảo, không thay thế tư vấn y tế.</p>
