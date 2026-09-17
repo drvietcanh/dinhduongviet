@@ -2365,6 +2365,26 @@ for (const food of foods) {
   } else if (food.category === "Hạt và đậu") {
     food.category = /^(Hạt|Mè)/i.test(food.name) ? "Hạt" : "Đậu";
   }
+
+  // Canonicalize the public taxonomy so source variants do not create
+  // separate filters (for example "Củ, quả" vs "Củ quả").  Finfish and eel
+  // belong to the dedicated Cá group; Hải sản is reserved for crustaceans,
+  // mollusks, cephalopods and other non-fish aquatic foods.
+  if (food.category === "Củ, quả") food.category = "Củ quả";
+  if (/^(?:Cá|Khô cá)(?:\s|$)/i.test(food.name) || /^(?:Lươn|Ruốc cá)(?:\s|$)/i.test(food.name)) {
+    if (!/^Trứng cá\b/i.test(food.name)) food.category = "Cá";
+  }
+
+  // Khoai/sắn and their flours are starch staples in the Vietnamese food
+  // table; keep them with Tinh bột rather than scattering them in Củ quả.
+  if (/^(?:Khoai\s|Củ sắn(?:\s|$)|Sắn củ|Bột khoai|Bột sắn)/i.test(food.name)) {
+    food.category = "Tinh bột";
+  }
+
+  // Repair a few legacy bulk/source labels whose names are unambiguous.
+  if (/^Nấm(?:\s|$)/i.test(food.name)) food.category = "Nấm";
+  if (/^(?:Xà lách|Giá đỗ)(?:\s|$)/i.test(food.name)) food.category = "Rau xanh";
+  if (/^(?:Phúc bồn tử|Quả sấu|Me non)(?:\s|$)/i.test(food.name)) food.category = "Trái cây";
 }
 
 export const nutrientLabels: Record<keyof NutrientValues, { label: string; unit: string }> = {

@@ -9419,8 +9419,8 @@
       "salad",
       "xa lach"
     ],
-    "description": "Tra cứu Xà lách: khoảng 15 kcal/100g, nhóm Củ quả.",
-    "category": "Củ quả",
+    "description": "Tra cứu Xà lách: khoảng 15 kcal/100g, nhóm Rau xanh.",
+    "category": "Rau xanh",
     "kcal": 15
   },
   {
@@ -9833,8 +9833,8 @@
       "bean sprouts",
       "gia do"
     ],
-    "description": "Tra cứu Giá đỗ: khoảng 30 kcal/100g, nhóm Củ quả.",
-    "category": "Củ quả",
+    "description": "Tra cứu Giá đỗ: khoảng 30 kcal/100g, nhóm Rau xanh.",
+    "category": "Rau xanh",
     "kcal": 30
   },
   {
@@ -11202,8 +11202,8 @@
       "nam các loại",
       "nam hon hop"
     ],
-    "description": "Tra cứu Nấm (hỗn hợp): khoảng 22 kcal/100g, nhóm Củ quả.",
-    "category": "Củ quả",
+    "description": "Tra cứu Nấm (hỗn hợp): khoảng 22 kcal/100g, nhóm Nấm.",
+    "category": "Nấm",
     "kcal": 22
   },
   {
@@ -14856,8 +14856,8 @@
       "sardine canned",
       "ca sardine hop lon"
     ],
-    "description": "Tra cứu Cá sardine hộp (lon): khoảng 280 kcal/100g, nhóm Đồ hộp.",
-    "category": "Đồ hộp",
+    "description": "Tra cứu Cá sardine hộp (lon): khoảng 280 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 280
   },
   {
@@ -15878,8 +15878,8 @@
       "ruoc ca loc",
       "fish floss snakehead"
     ],
-    "description": "Tra cứu Ruốc cá quả: khoảng 312 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Ruốc cá quả: khoảng 312 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 312
   },
   {
@@ -16451,8 +16451,8 @@
       "canned herring",
       "ca trich hop"
     ],
-    "description": "Tra cứu Cá trích hộp: khoảng 233 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá trích hộp: khoảng 233 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 233
   },
   {
@@ -16464,8 +16464,8 @@
       "canned tuna",
       "ca ngu hop"
     ],
-    "description": "Tra cứu Cá ngừ hộp: khoảng 85 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá ngừ hộp: khoảng 85 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 85
   },
   {
@@ -16477,8 +16477,8 @@
       "canned mackerel",
       "ca nuc hop"
     ],
-    "description": "Tra cứu Cá nục hộp: khoảng 233 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá nục hộp: khoảng 233 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 233
   },
   {
@@ -17915,8 +17915,8 @@
     "aliases": [
       "khoai lang nghe"
     ],
-    "description": "Tra cứu Khoai lang nghệ: khoảng 116 kcal/100g, nhóm Củ, quả.",
-    "category": "Củ, quả",
+    "description": "Tra cứu Khoai lang nghệ: khoảng 116 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 116
   },
   {
@@ -18557,8 +18557,8 @@
       "sắn mì",
       "san mi"
     ],
-    "description": "Tra cứu Củ sắn: khoảng 152 kcal/100g, nhóm Củ quả.",
-    "category": "Củ quả",
+    "description": "Tra cứu Củ sắn: khoảng 152 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 152
   },
   {
@@ -19308,8 +19308,8 @@
     "aliases": [
       "phuc bon tu"
     ],
-    "description": "Tra cứu Phúc bồn tử: khoảng 27 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Phúc bồn tử: khoảng 27 kcal/100g, nhóm Trái cây.",
+    "category": "Trái cây",
     "kcal": 27
   },
   {
@@ -19761,8 +19761,8 @@
     "aliases": [
       "ca tram co"
     ],
-    "description": "Tra cứu Cá trắm cỏ: khoảng 92 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá trắm cỏ: khoảng 92 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 92
   },
   {
@@ -19772,8 +19772,8 @@
     "aliases": [
       "ca tram den"
     ],
-    "description": "Tra cứu Cá trắm đen: khoảng 95 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá trắm đen: khoảng 95 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 95
   },
   {
@@ -19783,8 +19783,8 @@
     "aliases": [
       "ca dieu hong"
     ],
-    "description": "Tra cứu Cá diêu hồng: khoảng 99 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá diêu hồng: khoảng 99 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 99
   },
   {
@@ -19794,8 +19794,8 @@
     "aliases": [
       "ca chim trang"
     ],
-    "description": "Tra cứu Cá chim trắng: khoảng 102 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá chim trắng: khoảng 102 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 102
   },
   {
@@ -19805,8 +19805,8 @@
     "aliases": [
       "ca chim den"
     ],
-    "description": "Tra cứu Cá chim đen: khoảng 105 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá chim đen: khoảng 105 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 105
   },
   {
@@ -19816,8 +19816,8 @@
     "aliases": [
       "ca basa phi le"
     ],
-    "description": "Tra cứu Cá basa phi lê: khoảng 86 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá basa phi lê: khoảng 86 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 86
   },
   {
@@ -19827,8 +19827,8 @@
     "aliases": [
       "ca hu"
     ],
-    "description": "Tra cứu Cá hú: khoảng 89 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá hú: khoảng 89 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 89
   },
   {
@@ -19838,8 +19838,8 @@
     "aliases": [
       "ca bong"
     ],
-    "description": "Tra cứu Cá bống: khoảng 92 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá bống: khoảng 92 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 92
   },
   {
@@ -19849,8 +19849,8 @@
     "aliases": [
       "ca linh"
     ],
-    "description": "Tra cứu Cá linh: khoảng 95 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá linh: khoảng 95 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 95
   },
   {
@@ -19860,8 +19860,8 @@
     "aliases": [
       "ca thac lac"
     ],
-    "description": "Tra cứu Cá thác lác: khoảng 99 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá thác lác: khoảng 99 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 99
   },
   {
@@ -19871,8 +19871,8 @@
     "aliases": [
       "ca chach"
     ],
-    "description": "Tra cứu Cá chạch: khoảng 102 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá chạch: khoảng 102 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 102
   },
   {
@@ -19882,8 +19882,8 @@
     "aliases": [
       "ca ro dong"
     ],
-    "description": "Tra cứu Cá rô đồng: khoảng 105 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá rô đồng: khoảng 105 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 105
   },
   {
@@ -19893,8 +19893,8 @@
     "aliases": [
       "ca sac"
     ],
-    "description": "Tra cứu Cá sặc: khoảng 86 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá sặc: khoảng 86 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 86
   },
   {
@@ -19904,8 +19904,8 @@
     "aliases": [
       "ca com tuoi"
     ],
-    "description": "Tra cứu Cá cơm tươi: khoảng 89 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá cơm tươi: khoảng 89 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 89
   },
   {
@@ -19915,8 +19915,8 @@
     "aliases": [
       "ca com kho"
     ],
-    "description": "Tra cứu Cá cơm khô: khoảng 92 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá cơm khô: khoảng 92 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 92
   },
   {
@@ -19926,8 +19926,8 @@
     "aliases": [
       "ca trich"
     ],
-    "description": "Tra cứu Cá trích: khoảng 95 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá trích: khoảng 95 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 95
   },
   {
@@ -19937,8 +19937,8 @@
     "aliases": [
       "ca doi"
     ],
-    "description": "Tra cứu Cá đối: khoảng 99 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá đối: khoảng 99 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 99
   },
   {
@@ -19948,8 +19948,8 @@
     "aliases": [
       "ca tuyet"
     ],
-    "description": "Tra cứu Cá tuyết: khoảng 102 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá tuyết: khoảng 102 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 102
   },
   {
@@ -19959,8 +19959,8 @@
     "aliases": [
       "ca bon"
     ],
-    "description": "Tra cứu Cá bơn: khoảng 105 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá bơn: khoảng 105 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 105
   },
   {
@@ -19970,8 +19970,8 @@
     "aliases": [
       "ca duoi"
     ],
-    "description": "Tra cứu Cá đuối: khoảng 86 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá đuối: khoảng 86 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 86
   },
   {
@@ -19981,8 +19981,8 @@
     "aliases": [
       "ca ngu dai duong"
     ],
-    "description": "Tra cứu Cá ngừ đại dương: khoảng 89 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá ngừ đại dương: khoảng 89 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 89
   },
   {
@@ -19992,8 +19992,8 @@
     "aliases": [
       "ca bac ma"
     ],
-    "description": "Tra cứu Cá bạc má: khoảng 92 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá bạc má: khoảng 92 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 92
   },
   {
@@ -20003,8 +20003,8 @@
     "aliases": [
       "ca thu ao"
     ],
-    "description": "Tra cứu Cá thu ảo: khoảng 95 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá thu ảo: khoảng 95 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 95
   },
   {
@@ -20014,8 +20014,8 @@
     "aliases": [
       "ca ngat"
     ],
-    "description": "Tra cứu Cá ngát: khoảng 99 kcal/100g, nhóm Hải sản.",
-    "category": "Hải sản",
+    "description": "Tra cứu Cá ngát: khoảng 99 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 99
   },
   {
@@ -20234,8 +20234,8 @@
     "aliases": [
       "ca vien"
     ],
-    "description": "Tra cứu Cá viên: khoảng 241 kcal/100g, nhóm Thịt chế biến.",
-    "category": "Thịt chế biến",
+    "description": "Tra cứu Cá viên: khoảng 241 kcal/100g, nhóm Cá.",
+    "category": "Cá",
     "kcal": 241
   },
   {
@@ -20923,8 +20923,8 @@
     "aliases": [
       "qua sau"
     ],
-    "description": "Tra cứu Quả sấu: khoảng 28 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Quả sấu: khoảng 28 kcal/100g, nhóm Trái cây.",
+    "category": "Trái cây",
     "kcal": 28
   },
   {
@@ -20934,8 +20934,8 @@
     "aliases": [
       "me non"
     ],
-    "description": "Tra cứu Me non: khoảng 23 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Me non: khoảng 23 kcal/100g, nhóm Trái cây.",
+    "category": "Trái cây",
     "kcal": 23
   },
   {
