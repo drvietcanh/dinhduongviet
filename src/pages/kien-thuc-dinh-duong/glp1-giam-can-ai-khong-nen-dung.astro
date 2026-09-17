@@ -1,0 +1,62 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["glp1-giam-can-ai-khong-nen-dung"];
+if (!article) throw new Error("Article not found: glp1-giam-can-ai-khong-nen-dung");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>GLP-1 là gì?</h2>
+    <p>Semaglutide, liraglutide và tirzepatide là các thuốc tác động lên hormon đường ruột, được dùng trong những chỉ định khác nhau tùy sản phẩm và quốc gia. Chúng có thể làm chậm tiêu hóa, tăng cảm giác no và giảm lượng ăn, nhưng không phải “mũi tiêm giảm cân” phù hợp cho tất cả mọi người.</p>
+  </section>
+
+  <section class="section card" style="background:#fff7ed;border:1px solid #fed7aa;">
+    <p style="margin:0;font-size:1.04rem;"><strong>Không mua thuốc qua mạng xã hội hoặc dùng bút của người khác.</strong> Tên thương mại, hàm lượng, nguồn gốc và chỉ định có thể khác nhau; thuốc giả hoặc thuốc pha chế không kiểm soát có thể gây hại.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Cần sàng lọc trước khi dùng</h2>
+      <ul>
+        <li>Thuốc nào đang dùng, đặc biệt insulin hoặc thuốc có nguy cơ hạ đường huyết.</li>
+        <li>Tiền sử viêm tụy, bệnh túi mật, bệnh thận, bệnh tiêu hóa nặng, bệnh võng mạc do đái tháo đường và dị ứng thuốc.</li>
+        <li>Tiền sử cá nhân hoặc gia đình ung thư tuyến giáp thể tủy hay hội chứng MEN2 cần được báo cho bác sĩ.</li>
+        <li>Đang mang thai, dự định mang thai hoặc cho con bú: không tự dùng thuốc giảm cân.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Tác dụng phụ thường gặp</h2>
+      <ul>
+        <li>Buồn nôn, nhanh no, đầy bụng, ợ hơi, tiêu chảy hoặc táo bón.</li>
+        <li>Ăn quá ít kéo dài có thể làm thiếu đạm, mất cơ, mất nước hoặc thiếu vi chất.</li>
+        <li>Ăn nhiều món rất béo, uống rượu bia hoặc tự tăng liều có thể làm triệu chứng tiêu hóa nặng hơn.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Cách ăn để giảm khó chịu và giữ cơ</h2>
+    <ul>
+      <li>Chia thành phần nhỏ, ăn chậm; ưu tiên một nguồn đạm dễ ăn như cá, trứng, đậu phụ, sữa hoặc thịt nạc theo bệnh nền.</li>
+      <li>Uống nước rải đều; tăng chất xơ từ từ và vận động nhẹ nếu bác sĩ cho phép.</li>
+      <li>Không nhịn ăn để “tăng tác dụng”. Nếu ăn rất ít, nôn kéo dài hoặc sụt cân quá nhanh, cần liên hệ nơi kê đơn.</li>
+      <li>Người đái tháo đường cần theo dõi đường huyết theo kế hoạch và không tự ngưng insulin hay thuốc khác.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Dấu hiệu cần khám ngay</h2>
+    <ul>
+      <li>Đau bụng dữ dội hoặc kéo dài, nhất là đau lan ra lưng, kèm nôn.</li>
+      <li>Không giữ được nước, tiểu ít, choáng hoặc lơ mơ.</li>
+      <li>Đau hạ sườn phải, sốt, vàng da hoặc vàng mắt.</li>
+      <li>Khó thở, sưng môi/lưỡi, phát ban toàn thân; đây có thể là phản ứng dị ứng cấp.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Điểm mấu chốt</h2>
+    <p>GLP-1 có thể là một lựa chọn điều trị cho một số người, nhưng cần chỉ định, nguồn thuốc hợp pháp, tăng liều theo kế hoạch và theo dõi định kỳ. Bài viết dinh dưỡng đi kèm không thay thế tư vấn kê đơn.</p>
+</section>
+</ArticleLayout>

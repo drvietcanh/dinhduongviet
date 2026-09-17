@@ -9360,6 +9360,66 @@ export const articles: ArticleMeta[] = [
     sources: [{ name: "American Diabetes Association", title: "Diabetes & Your Feet", url: "https://diabetes.org/diabetes-and-your-feet" }, { name: "American Diabetes Association", title: "8 Tips to Protect Your Feet with Diabetes", url: "https://diabetes.org/health-wellness/diabetes-and-your-feet/8-tips-protect-your-feet" }],
     keywords: ["chăm sóc bàn chân tiểu đường", "bàn chân đái tháo đường", "loét chân tiểu đường", "kiểm tra bàn chân", "giày cho người tiểu đường"],
   },
+  {
+    slug: "thuoc-giam-can-khi-nao-can",
+    title: "Thuốc giảm cân: khi nào có thể cân nhắc và cần theo dõi gì?",
+    description: "Giải thích vai trò của thuốc điều trị thừa cân, béo phì, tiêu chí đánh giá, kỳ vọng thực tế và các câu hỏi nên hỏi bác sĩ.",
+    emoji: "⚖️", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", displayCategory: "bai-viet",
+    date: "2026-09-17", readTime: 8, featured: false,
+    tags: ["giảm cân", "thuốc giảm cân", "béo phì", "an toàn thuốc"],
+    audience: ["người thừa cân", "người béo phì", "người có bệnh nền"], specialty: "noi-tiet", careStage: "treatment",
+    riskFlags: ["không tự mua thuốc", "thai kỳ", "tương tác thuốc"], sourceTier: "clinical-reference",
+    sources: [
+      { name: "NIDDK", title: "Prescription Medications to Treat Overweight & Obesity", url: "https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity" },
+      { name: "WHO", title: "Obesity and overweight", url: "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" }
+    ],
+    keywords: ["thuốc giảm cân có nên dùng", "khi nào dùng thuốc giảm cân", "thuốc điều trị béo phì", "BMI thuốc giảm cân", "giảm cân có giám sát"],
+  },
+  {
+    slug: "glp1-giam-can-ai-khong-nen-dung",
+    title: "GLP-1 giảm cân: ai không nên tự dùng và dấu hiệu cần khám?",
+    description: "Những điều cần biết về semaglutide, liraglutide và tirzepatide dùng cho kiểm soát cân nặng: sàng lọc, tác dụng phụ, thai kỳ và thuốc dùng kèm.",
+    emoji: "💉", category: "disease", categoryName: "Dinh dưỡng & Bệnh lý", displayCategory: "bai-viet",
+    date: "2026-09-17", readTime: 9, featured: false,
+    tags: ["GLP-1", "semaglutide", "tirzepatide", "thuốc giảm cân", "béo phì"],
+    audience: ["người béo phì", "người đái tháo đường", "người đang dùng GLP-1"], specialty: "noi-tiet", careStage: "treatment",
+    riskFlags: ["thai kỳ", "đau bụng cấp", "hạ đường huyết", "không tự tăng liều"], sourceTier: "clinical-reference",
+    sources: [
+      { name: "NIDDK", title: "Prescription Medications to Treat Overweight & Obesity", url: "https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity" },
+      { name: "WHO", title: "Obesity and overweight", url: "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" }
+    ],
+    keywords: ["GLP-1 giảm cân", "semaglutide ai không nên dùng", "liraglutide tác dụng phụ", "tirzepatide an toàn", "buồn nôn thuốc giảm cân"],
+  },
+  {
+    slug: "thuoc-giam-can-bi-cam-chat-an",
+    title: "Thuốc giảm cân bị cấm và chất ẩn: vì sao trà, viên ‘thảo dược’ vẫn nguy hiểm?",
+    description: "Phân biệt thuốc đã bị rút hoặc hạn chế với sản phẩm giảm cân trộn chất ẩn như sibutramine; hướng dẫn nhận diện quảng cáo và xử trí khi đã dùng.",
+    emoji: "🚨", category: "education", categoryName: "Bài viết giáo dục", displayCategory: "dung-tin-ngay",
+    date: "2026-09-17", readTime: 8, featured: true,
+    tags: ["thuốc bị cấm", "sibutramine", "trà giảm cân", "an toàn thực phẩm", "cảnh báo"],
+    audience: ["người mua thực phẩm bổ sung", "người dùng trà giảm cân", "người chăm sóc"], specialty: "dinh-duong-tong-quat", careStage: "prevention",
+    riskFlags: ["chất ẩn", "tăng huyết áp", "đánh trống ngực", "ngộ độc"], sourceTier: "public-health",
+    sources: [
+      { name: "FDA", title: "Avoiding Products Contaminated with Hidden Ingredients", url: "https://www.fda.gov/drugs/medication-health-fraud/avoiding-products-contaminated-hidden-ingredients" },
+      { name: "FDA", title: "Contaminated Weight Loss Products", url: "https://www.fda.gov/drugs/frequently-asked-questions-popular-topics/questions-and-answers-about-fdas-initiative-against-contaminated-weight-loss-products" }
+    ],
+    keywords: ["thuốc giảm cân bị cấm", "sibutramine", "trà giảm cân có chất cấm", "viên giảm cân trộn thuốc", "chất ẩn giảm cân", "ngộ độc thuốc giảm cân"],
+  },
+  {
+    slug: "kiem-tra-san-pham-giam-can-an-toan",
+    title: "Trước khi mua sản phẩm giảm cân: checklist an toàn cho người Việt",
+    description: "Checklist đọc nhãn, kiểm tra nguồn bán, nhận diện lời quảng cáo quá mức và biết khi nào cần ngừng sản phẩm để đi khám.",
+    emoji: "🔎", category: "education", categoryName: "Bài viết giáo dục", displayCategory: "bai-viet",
+    date: "2026-09-17", readTime: 7, featured: false,
+    tags: ["giảm cân", "thực phẩm bổ sung", "an toàn thuốc", "quảng cáo sức khỏe"],
+    audience: ["người muốn giảm cân", "người dùng thực phẩm bổ sung", "người cao tuổi"], specialty: "dinh-duong-tong-quat", careStage: "prevention",
+    riskFlags: ["tương tác thuốc", "thai kỳ", "chất ẩn"], sourceTier: "public-health",
+    sources: [
+      { name: "FDA", title: "Avoiding Products Contaminated with Hidden Ingredients", url: "https://www.fda.gov/drugs/medication-health-fraud/avoiding-products-contaminated-hidden-ingredients" },
+      { name: "NIDDK", title: "Choosing a Safe & Successful Weight-loss Program", url: "https://www.niddk.nih.gov/health-information/weight-management/choosing-a-safe-successful-weight-loss-program" }
+    ],
+    keywords: ["checklist mua thuốc giảm cân", "cách nhận biết thuốc giảm cân giả", "thực phẩm bổ sung giảm cân", "quảng cáo giảm cân lừa đảo", "mua thuốc giảm cân an toàn"],
+  },
 ];
 
 /**

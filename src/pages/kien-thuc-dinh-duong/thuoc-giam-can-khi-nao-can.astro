@@ -1,0 +1,57 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["thuoc-giam-can-khi-nao-can"];
+if (!article) throw new Error("Article not found: thuoc-giam-can-khi-nao-can");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>Thuốc không phải lựa chọn đầu tiên cho mọi người</h2>
+    <p>Thừa cân và béo phì là vấn đề sức khỏe mạn tính, không chỉ là chuyện ngoại hình. Một số người có thể được cân nhắc thuốc điều trị cân nặng khi thay đổi ăn uống, vận động và giấc ngủ chưa đủ, hoặc khi cân nặng đang làm nặng thêm bệnh nền. Quyết định cần dựa trên đánh giá của bác sĩ, không dựa vào quảng cáo hay lời rủ rê trên mạng.</p>
+  </section>
+
+  <section class="section card" style="background:#ecfdf5;border:1px solid #a7f3d0;">
+    <p style="margin:0;font-size:1.04rem;"><strong>Điểm quan trọng:</strong> thuốc chỉ hỗ trợ một chương trình điều trị toàn diện. Không tự mua, tự phối hợp nhiều sản phẩm hoặc tự tăng liều để giảm nhanh hơn.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Khi nào bác sĩ có thể cân nhắc?</h2>
+      <ul>
+        <li>Đánh giá tổng thể cân nặng, vòng eo, huyết áp, đường huyết, mỡ máu, bệnh nền và thuốc đang dùng.</li>
+        <li>Ở một số hướng dẫn quốc tế, thuốc có thể được cân nhắc ở người lớn có BMI từ 30, hoặc từ 27 kèm bệnh liên quan cân nặng. Đây là ngưỡng tham khảo, không phải đơn thuốc tự động và cần đặt trong bối cảnh người Việt.</li>
+        <li>Mục tiêu là cải thiện sức khỏe và duy trì được thay đổi, không phải đạt một cân nặng “chuẩn đẹp” trong thời gian ngắn.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Cần nói gì với bác sĩ?</h2>
+      <ul>
+        <li>Tất cả thuốc kê đơn, thuốc không kê đơn, vitamin, trà và sản phẩm bổ sung đang dùng.</li>
+        <li>Tiền sử bệnh tim mạch, tăng huyết áp, đái tháo đường, bệnh thận, gan, túi mật, rối loạn ăn uống và sức khỏe tâm thần.</li>
+        <li>Khả năng mang thai, đang mang thai hoặc cho con bú; nhiều thuốc giảm cân không phù hợp trong các giai đoạn này.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Đừng kỳ vọng “uống là tự giảm”</h2>
+    <p>Thuốc có thể giúp giảm cảm giác đói, tăng cảm giác no hoặc giảm hấp thu chất béo tùy cơ chế. Hiệu quả giữa từng người và từng thuốc khác nhau; tác dụng tốt nhất thường xuất hiện khi đi cùng kế hoạch ăn uống, vận động và theo dõi. Khi ngừng thuốc, một phần cân nặng có thể tăng lại, vì vậy kế hoạch duy trì cần được bàn từ đầu.</p>
+    <p>Nếu đang dùng đủ liều mà không đạt mục tiêu hoặc xuất hiện tác dụng phụ, không tự đổi thuốc. Bác sĩ có thể điều chỉnh kế hoạch, xem lại thuốc khác gây tăng cân hoặc cân nhắc lựa chọn điều trị khác.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Đi khám sớm khi có dấu hiệu bất thường</h2>
+    <ul>
+      <li>Đau ngực, khó thở, ngất, tim đập rất nhanh hoặc huyết áp tăng rõ.</li>
+      <li>Nôn nhiều, không uống được nước, đau bụng dữ dội hoặc vàng da.</li>
+      <li>Run, vã mồ hôi, lú lẫn hoặc dấu hiệu hạ đường huyết nếu có dùng thuốc đái tháo đường.</li>
+      <li>Thay đổi tâm trạng nghiêm trọng, ý nghĩ tự làm hại bản thân hoặc phản ứng dị ứng.</li>
+    </ul>
+  </section>
+
+  <section class="section card">
+    <h2>Ghi nhớ</h2>
+    <p>Thuốc giảm cân là một phần của điều trị béo phì có giám sát, không phải sản phẩm làm đẹp cấp tốc. Hãy chọn cơ sở khám và nhà thuốc hợp pháp, giữ danh sách thuốc đang dùng và hỏi rõ mục tiêu, tác dụng phụ, thời gian đánh giá lại trước khi bắt đầu.</p>
+  </section>
+</ArticleLayout>

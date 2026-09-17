@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["thuoc-giam-can-bi-cam-chat-an"];
+if (!article) throw new Error("Article not found: thuoc-giam-can-bi-cam-chat-an");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>“Tự nhiên” không đồng nghĩa với an toàn</h2>
+    <p>Một số viên, trà hoặc bột giảm cân được quảng cáo là thảo dược, không cần ăn kiêng và giảm vài kilogram trong thời gian ngắn. Cơ quan quản lý thuốc ở nhiều quốc gia đã phát hiện sản phẩm loại này chứa hoạt chất không khai báo. Nhãn không ghi chất cấm không có nghĩa là sản phẩm không chứa chúng.</p>
+  </section>
+
+  <section class="section card" style="background:#fef2f2;border:1px solid #fecaca;">
+    <p style="margin:0;font-size:1.04rem;"><strong>Cảnh báo:</strong> FDA ghi nhận các sản phẩm giảm cân bị pha sibutramine và nhiều hóa chất/thuốc khác. Sibutramine từng là thuốc kê đơn nhưng đã bị rút khỏi một số thị trường vì lo ngại biến cố tim mạch; thông tin cấp phép có thể khác theo từng quốc gia.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Những chất từng được phát hiện trong sản phẩm trộn</h2>
+    <p>Danh sách cảnh báo của FDA từng ghi nhận sibutramine, phenolphthalein, thuốc lợi tiểu, thuốc chống động kinh và các hoạt chất khác trong sản phẩm bán như thực phẩm bổ sung. Đây không phải danh sách để người đọc tự tìm mua hoặc tự điều trị; cùng một tên sản phẩm có thể có nhiều lô, nhiều nguồn và thành phần khác nhau.</p>
+    <ul>
+      <li>Chất kích thích hoặc sibutramine có thể gây hồi hộp, tăng huyết áp, rối loạn nhịp và tương tác thuốc.</li>
+      <li>Thuốc lợi tiểu chỉ làm thay đổi nước, không phải cách giảm mỡ; có thể làm rối loạn điện giải.</li>
+      <li>Thành phần không khai báo khiến bác sĩ khó đánh giá tương tác, đặc biệt ở người tim mạch, bệnh thận, đái tháo đường hoặc đang dùng thuốc tâm thần.</li>
+    </ul>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Dấu hiệu quảng cáo đáng ngờ</h2>
+      <ul>
+        <li>Hứa “giảm rất nhanh”, “không cần ăn uống/vận động”, “đào thải mỡ độc quyền”.</li>
+        <li>Chỉ bán qua livestream, tin nhắn cá nhân, không có nhãn phụ tiếng Việt, số công bố hoặc đơn vị chịu trách nhiệm rõ.</li>
+        <li>Dùng ảnh trước–sau, lời chứng thực thay cho dữ liệu thử nghiệm và cảnh báo nguy cơ.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Nếu đã lỡ dùng</h2>
+      <ul>
+        <li>Ngừng tự dùng thêm sản phẩm và giữ lại vỏ hộp, viên còn lại, hóa đơn hoặc ảnh quảng cáo.</li>
+        <li>Liên hệ bác sĩ/dược sĩ; không tự uống thuốc “giải độc” hay dùng sản phẩm khác để bù.</li>
+        <li>Đau ngực, khó thở, ngất, co giật, tim đập loạn, lú lẫn hoặc nôn nhiều: đi cấp cứu.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Ghi nhớ khi đọc chữ “bị cấm”</h2>
+    <p>“Bị cấm” có thể nói về hoạt chất bị rút khỏi một thị trường, sản phẩm không được phép lưu hành hoặc chất bị phát hiện ẩn trong một lô hàng. Không nên suy ra rằng mọi thuốc có tên tương tự đều bị cấm ở mọi nơi. Hãy kiểm tra thông báo của Bộ Y tế/cơ quan quản lý dược và hỏi nhân viên y tế thay vì tin danh sách lan truyền.</p>
+  </section>
+</ArticleLayout>

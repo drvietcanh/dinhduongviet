@@ -1,0 +1,51 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { articleBySlug } from "../../data/articles";
+const article = articleBySlug["kiem-tra-san-pham-giam-can-an-toan"];
+if (!article) throw new Error("Article not found: kiem-tra-san-pham-giam-can-an-toan");
+---
+
+<ArticleLayout article={article}>
+  <section class="section card">
+    <h2>Checklist 60 giây trước khi bấm mua</h2>
+    <ol>
+      <li>Sản phẩm là thuốc, thực phẩm bảo vệ sức khỏe hay thực phẩm thông thường? Ba nhóm này có quy định và bằng chứng khác nhau.</li>
+      <li>Nhãn có tên thành phần, hàm lượng, số lô, hạn dùng, đơn vị chịu trách nhiệm và hướng dẫn tiếng Việt rõ ràng không?</li>
+      <li>Người bán có nhà thuốc/cơ sở hợp pháp và cho phép tư vấn trực tiếp không?</li>
+      <li>Quảng cáo có hứa hẹn quá mức như “giảm mỡ không cần ăn kiêng”, “an toàn tuyệt đối” hoặc “không tác dụng phụ” không?</li>
+    </ol>
+  </section>
+
+  <section class="section card" style="background:#eff6ff;border:1px solid #bfdbfe;">
+    <p style="margin:0;font-size:1.04rem;"><strong>Không thấy tên trong danh sách cảnh báo không chứng minh sản phẩm an toàn.</strong> Cơ quan quản lý chỉ có thể kiểm nghiệm một phần sản phẩm trên thị trường; sản phẩm mới hoặc lô mới vẫn có thể chứa chất không khai báo.</p>
+  </section>
+
+  <section class="section grid two">
+    <div class="card">
+      <h2>Đặc biệt thận trọng nếu bạn…</h2>
+      <ul>
+        <li>Đang dùng thuốc huyết áp, tim mạch, đái tháo đường, chống đông, chống trầm cảm hoặc thuốc tuyến giáp.</li>
+        <li>Có bệnh thận, gan, túi mật, rối loạn nhịp, tăng huyết áp hoặc tiền sử rối loạn ăn uống.</li>
+        <li>Đang mang thai, cho con bú, là trẻ em hoặc người cao tuổi yếu.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Thay bằng bước an toàn hơn</h2>
+      <ul>
+        <li>Đánh giá mục tiêu và nguyên nhân tăng cân với bác sĩ hoặc chuyên gia dinh dưỡng.</li>
+        <li>Giữ bữa ăn quen thuộc nhưng điều chỉnh đồ uống có đường, khẩu phần, rau và nguồn đạm.</li>
+        <li>Dùng công cụ theo dõi cân nặng, vòng eo, vận động và giấc ngủ thay vì chỉ nhìn quảng cáo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Khi nào phải ngừng và đi khám?</h2>
+    <p>Ngừng sử dụng và tìm tư vấn khi xuất hiện đánh trống ngực, đau ngực, khó thở, choáng/ngất, nôn nhiều, đau bụng dữ dội, vàng da, phát ban lan rộng hoặc thay đổi tâm trạng nghiêm trọng. Mang theo sản phẩm và ảnh nhãn khi đi khám để nhân viên y tế nhận diện thành phần.</p>
+  </section>
+
+  <section class="section card">
+    <h2>Một câu hỏi nên nhớ</h2>
+    <p>“Nếu sản phẩm này thật sự là thuốc, ai chịu trách nhiệm kê đơn, theo dõi và xử trí tác dụng phụ cho tôi?” Nếu không có câu trả lời rõ ràng, đó là lý do đủ để không mua.</p>
+  </section>
+</ArticleLayout>

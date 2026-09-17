@@ -4119,6 +4119,38 @@
     "category": "Bai viet"
   },
   {
+    "type": "article",
+    "slug": "thuoc-giam-can-khi-nao-can",
+    "name": "Thuốc giảm cân: khi nào có thể cân nhắc và cần theo dõi gì?",
+    "aliases": [],
+    "description": "Giải thích vai trò của thuốc điều trị thừa cân, béo phì, tiêu chí đánh giá, kỳ vọng thực tế và các câu hỏi nên hỏi bác sĩ.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "glp1-giam-can-ai-khong-nen-dung",
+    "name": "GLP-1 giảm cân: ai không nên tự dùng và dấu hiệu cần khám?",
+    "aliases": [],
+    "description": "Những điều cần biết về semaglutide, liraglutide và tirzepatide dùng cho kiểm soát cân nặng: sàng lọc, tác dụng phụ, thai kỳ và thuốc dùng kèm.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "thuoc-giam-can-bi-cam-chat-an",
+    "name": "Thuốc giảm cân bị cấm và chất ẩn: vì sao trà, viên ‘thảo dược’ vẫn nguy hiểm?",
+    "aliases": [],
+    "description": "Phân biệt thuốc đã bị rút hoặc hạn chế với sản phẩm giảm cân trộn chất ẩn như sibutramine; hướng dẫn nhận diện quảng cáo và xử trí khi đã dùng.",
+    "category": "Bai viet"
+  },
+  {
+    "type": "article",
+    "slug": "kiem-tra-san-pham-giam-can-an-toan",
+    "name": "Trước khi mua sản phẩm giảm cân: checklist an toàn cho người Việt",
+    "aliases": [],
+    "description": "Checklist đọc nhãn, kiểm tra nguồn bán, nhận diện lời quảng cáo quá mức và biết khi nào cần ngừng sản phẩm để đi khám.",
+    "category": "Bai viet"
+  },
+  {
     "type": "recipe",
     "slug": "pho-bo",
     "name": "Phở bò",
