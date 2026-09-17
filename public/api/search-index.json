@@ -11911,8 +11911,8 @@
     "aliases": [
       "cha muc ha long"
     ],
-    "description": "Tra cứu Chả mực Hạ Long: khoảng 260 kcal/100g, nhóm Thịt chế biến.",
-    "category": "Thịt chế biến",
+    "description": "Tra cứu Chả mực Hạ Long: khoảng 260 kcal/100g, nhóm Hải sản.",
+    "category": "Hải sản",
     "kcal": 260
   },
   {
@@ -13416,8 +13416,8 @@
       "cha ca",
       "fish cake"
     ],
-    "description": "Tra cứu Chả cá: khoảng 160 kcal/100g, nhóm Thịt chế biến.",
-    "category": "Thịt chế biến",
+    "description": "Tra cứu Chả cá: khoảng 160 kcal/100g, nhóm Hải sản.",
+    "category": "Hải sản",
     "kcal": 160
   },
   {
@@ -20258,8 +20258,8 @@
     "aliases": [
       "tom vien"
     ],
-    "description": "Tra cứu Tôm viên: khoảng 258 kcal/100g, nhóm Thịt chế biến.",
-    "category": "Thịt chế biến",
+    "description": "Tra cứu Tôm viên: khoảng 258 kcal/100g, nhóm Hải sản.",
+    "category": "Hải sản",
     "kcal": 258
   },
   {

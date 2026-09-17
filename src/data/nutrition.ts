@@ -2400,6 +2400,15 @@ for (const food of foods) {
   if (/^Nấm(?:\s|$)/i.test(food.name)) food.category = "Nấm";
   if (/^(?:Xà lách|Giá đỗ)(?:\s|$)/i.test(food.name)) food.category = "Rau xanh";
   if (/^(?:Phúc bồn tử|Quả sấu|Me non)(?:\s|$)/i.test(food.name)) food.category = "Trái cây";
+
+  // Processed fish, cephalopod and shrimp products remain in Hải sản so
+  // search facets reflect their biological source rather than preparation.
+  if (
+    food.category === "Thịt chế biến" &&
+    /^(?:Chả mực|Chả cá|Tôm viên)(?:\s|$)/i.test(food.name)
+  ) {
+    food.category = "Hải sản";
+  }
 }
 
 export const nutrientLabels: Record<keyof NutrientValues, { label: string; unit: string }> = {
