@@ -322,7 +322,12 @@ const categoryNameRules = [
     reason: "Phụ phẩm động vật bị rơi vào nhóm rau do tên không có tiền tố thịt hoặc bắt đầu bằng 'lá'.",
   },
   {
-    pattern: /^(?:cá|khô cá|lươn|ruốc cá)(?:\s|$)/i,
+    pattern: /^cá viên(?:\s|$)/i,
+    expectedCategories: new Set(["Hải sản"]),
+    reason: "Cá viên là sản phẩm cá chế biến, được lập chỉ mục trong nhóm Hải sản.",
+  },
+  {
+    pattern: /^(?:cá(?! viên\b)|khô cá|lươn|ruốc cá)(?:\s|$)/i,
     expectedCategories: new Set(["Cá"]),
     reason: "Tên rõ ràng là cá/lươn hoặc sản phẩm cá nhưng bị rơi vào nhóm Hải sản chung.",
   },
@@ -352,7 +357,7 @@ const categoryNameRules = [
     reason: "Dưa gang non là quả dùng như rau; không được nhận nhầm vào nhóm Thịt do khớp chuỗi 'gan'.",
   },
   {
-    pattern: /^(?:chả mực|chả cá|tôm viên)(?:\s|$)/i,
+    pattern: /^(?:cá viên|chả mực|chả cá|tôm viên)(?:\s|$)/i,
     expectedCategories: new Set(["Hải sản"]),
     reason: "Sản phẩm chế biến từ cá/mực/tôm cần nằm trong nhóm Hải sản, không phải Thịt chế biến.",
   },

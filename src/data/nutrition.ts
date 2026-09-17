@@ -2404,8 +2404,8 @@ for (const food of foods) {
   // Processed fish, cephalopod and shrimp products remain in Hải sản so
   // search facets reflect their biological source rather than preparation.
   if (
-    food.category === "Thịt chế biến" &&
-    /^(?:Chả mực|Chả cá|Tôm viên)(?:\s|$)/i.test(food.name)
+    (food.category === "Thịt chế biến" || food.category === "Cá") &&
+    /^(?:Cá viên|Chả mực|Chả cá|Tôm viên)(?:\s|$)/i.test(food.name)
   ) {
     food.category = "Hải sản";
   }
