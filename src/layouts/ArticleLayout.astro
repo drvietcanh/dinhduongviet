@@ -1039,6 +1039,10 @@ const jsonLd = {
     .article-lead {
       font-size: 0.96rem;
     }
+    .article-body {
+      max-width: none;
+      padding-inline: 0;
+    }
     .editorial-meta {
       display: grid;
       gap: 6px;
@@ -1131,6 +1135,12 @@ const jsonLd = {
   .article-body {
     padding: 2px 4px 0;
     font-size: 1rem;
+    max-width: 760px;
+    margin-inline: auto;
+    color: var(--ink);
+  }
+  .article-body > :first-child {
+    margin-top: 0;
   }
 
   .article-body h2 {
@@ -1155,6 +1165,7 @@ const jsonLd = {
   .article-body h3 {
     color: var(--ink);
     letter-spacing: -0.015em;
+    line-height: 1.4;
   }
 
   .article-body p,
@@ -1166,6 +1177,15 @@ const jsonLd = {
     font-weight: 700;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+  }
+  .article-body a:focus-visible,
+  .article-toc-links a:focus-visible,
+  .related-card:focus-visible,
+  .back-link:focus-visible,
+  .art-btn:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
   .article-body table {
@@ -1191,6 +1211,21 @@ const jsonLd = {
   .article-body blockquote {
     font-style: normal;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  }
+
+  [data-theme="dark"] .highlight-box {
+    background: color-mix(in srgb, var(--brand) 18%, var(--card));
+    border-color: var(--brand-light2);
+  }
+  [data-theme="dark"] .warn-box {
+    background: #422006;
+    border-color: #d97706;
+    color: #fed7aa;
+  }
+  [data-theme="dark"] .tip-box {
+    background: #052e16;
+    border-color: #16a34a;
+    color: #bbf7d0;
   }
 
   .article-toc {
