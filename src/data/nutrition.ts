@@ -2407,6 +2407,12 @@ for (const food of foods) {
     food.category = "Rau xanh";
   }
 
+  // Pickling brine is a concentrated seasoning used in small quantities,
+  // rather than a stock consumed as a bowl of soup.
+  if (/^Nước dưa chua(?:\s|$)/i.test(food.name)) {
+    food.category = "Gia vị";
+  }
+
   // Rice-flour cakes and savory dough dishes are staple starches, not sweets.
   if (/^(?:Bánh hỏi|Bánh ướt|Bánh đa đỏ|Bánh khoái|Bánh khúc|Bánh tẻ|Bánh quẩy|Bánh bao nhân thịt trứng cút|Bánh chay)(?:\s|$)/i.test(food.name)) {
     food.category = "Tinh bột";
