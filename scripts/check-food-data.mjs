@@ -321,14 +321,34 @@ const categoryNameRules = [
     expectedCategories: new Set(["Thịt"]),
     reason: "Phụ phẩm động vật bị rơi vào nhóm rau do tên không có tiền tố thịt hoặc bắt đầu bằng 'lá'.",
   },
+  {
+    pattern: /^(?:cá|khô cá|lươn|ruốc cá)(?:\s|$)/i,
+    expectedCategories: new Set(["Cá"]),
+    reason: "Tên rõ ràng là cá/lươn hoặc sản phẩm cá nhưng bị rơi vào nhóm Hải sản chung.",
+  },
+  {
+    pattern: /^(?:khoai\s|củ sắn(?:\s|$)|sắn củ|bột khoai|bột sắn)/i,
+    expectedCategories: new Set(["Tinh bột"]),
+    reason: "Khoai/sắn và bột tương ứng là nhóm tinh bột, cần thống nhất khỏi Củ quả.",
+  },
+  {
+    pattern: /^nấm(?:\s|$)/i,
+    expectedCategories: new Set(["Nấm"]),
+    reason: "Tên bắt đầu bằng nấm phải được lập chỉ mục trong nhóm Nấm.",
+  },
 ];
 const categoryNameMismatches = fullFoods
   .filter((food) => {
     const normalizedName = normalize(food.name);
-    return categoryNameRules.some((rule) => rule.names.has(normalizedName) && !rule.expectedCategories.has(food.category));
+    return categoryNameRules.some((rule) => {
+      const matches = rule.pattern ? rule.pattern.test(food.name) : rule.names.has(normalizedName);
+      return matches && !rule.expectedCategories.has(food.category);
+    });
   })
   .map((food) => {
-    const rule = categoryNameRules.find((candidate) => candidate.names.has(normalize(food.name)));
+    const rule = categoryNameRules.find((candidate) => {
+      return candidate.pattern ? candidate.pattern.test(food.name) : candidate.names.has(normalize(food.name));
+    });
     return issue("error", {
       type: "category-name",
       slug: food.slug,
