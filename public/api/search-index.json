@@ -18021,6 +18021,123 @@
   },
   {
     "type": "food",
+    "slug": "ca-chay-vdd",
+    "name": "Cá chày",
+    "aliases": [
+      "ca chay"
+    ],
+    "description": "Tra cứu Cá chày: khoảng 113 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 113
+  },
+  {
+    "type": "food",
+    "slug": "ca-me-vdd",
+    "name": "Cá mè",
+    "aliases": [
+      "ca me",
+      "cá mè trắng"
+    ],
+    "description": "Tra cứu Cá mè: khoảng 144 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 144
+  },
+  {
+    "type": "food",
+    "slug": "ca-diec-vdd",
+    "name": "Cá diếc",
+    "aliases": [
+      "ca diec"
+    ],
+    "description": "Tra cứu Cá diếc: khoảng 87 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 87
+  },
+  {
+    "type": "food",
+    "slug": "ca-lac-vdd",
+    "name": "Cá lác",
+    "aliases": [
+      "ca lac",
+      "cá thác lác"
+    ],
+    "description": "Tra cứu Cá lác: khoảng 71 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 71
+  },
+  {
+    "type": "food",
+    "slug": "ca-phen-vdd",
+    "name": "Cá phèn",
+    "aliases": [
+      "ca phen",
+      "cá phèn hồng"
+    ],
+    "description": "Tra cứu Cá phèn: khoảng 104 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 104
+  },
+  {
+    "type": "food",
+    "slug": "ca-tre-vdd",
+    "name": "Cá trê",
+    "aliases": [
+      "ca tre",
+      "cá trê đồng"
+    ],
+    "description": "Tra cứu Cá trê: khoảng 173 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 173
+  },
+  {
+    "type": "food",
+    "slug": "cua-ghe-vdd",
+    "name": "Cua ghẹ",
+    "aliases": [
+      "cua ghe",
+      "ghẹ tươi"
+    ],
+    "description": "Tra cứu Cua ghẹ: khoảng 54 kcal/100g, nhóm Hải sản.",
+    "category": "Hải sản",
+    "kcal": 54
+  },
+  {
+    "type": "food",
+    "slug": "ca-trach-vdd",
+    "name": "Cá trạch",
+    "aliases": [
+      "ca trach",
+      "lươn trạch"
+    ],
+    "description": "Tra cứu Cá trạch: khoảng 110 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 110
+  },
+  {
+    "type": "food",
+    "slug": "ca-troi-vdd",
+    "name": "Cá trôi",
+    "aliases": [
+      "ca troi"
+    ],
+    "description": "Tra cứu Cá trôi: khoảng 127 kcal/100g, nhóm Cá.",
+    "category": "Cá",
+    "kcal": 127
+  },
+  {
+    "type": "food",
+    "slug": "ram-tuoi-vdd",
+    "name": "Rạm tươi",
+    "aliases": [
+      "ram tuoi",
+      "cua rạm tươi"
+    ],
+    "description": "Tra cứu Rạm tươi: khoảng 77 kcal/100g, nhóm Hải sản.",
+    "category": "Hải sản",
+    "kcal": 77
+  },
+  {
+    "type": "food",
     "slug": "rau-cai-xoong",
     "name": "Rau cải xoong",
     "aliases": [

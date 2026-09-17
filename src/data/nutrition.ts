@@ -20,6 +20,7 @@ import { extraFoods19 } from "./foods-extra19";
 import { extraFoods20 } from "./foods-extra20";
 import { extraFoods21 } from "./foods-extra21";
 import { extraFoods22 } from "./foods-extra22";
+import { extraFoods23 } from "./foods-extra23";
 import { foodSearchAliasIndex } from "./food-search-alias-index";
 import { vnMicronutrientOverrides } from "./food-vn-micronutrient-overrides";
 import { vddSourceReplacements } from "./food-vdd-source-replacements";
@@ -1995,6 +1996,7 @@ foods.push(
     ...extraFoods20,
     ...extraFoods21,
     ...extraFoods22,
+    ...extraFoods23,
     ...bulkFoods
   ] as Food[])
 );
