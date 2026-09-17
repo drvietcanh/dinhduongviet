@@ -386,6 +386,14 @@ var foodSchema = {
     font-weight: 700;
     cursor: pointer;
   }
+  .action-chip:focus-visible,
+  .back-link:focus-visible,
+  .next-step-link:focus-visible,
+  .source-actions a:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent);
+    outline-offset: 3px;
+    border-radius: 7px;
+  }
 
   .detail-image {
     width: 100%;
@@ -430,6 +438,8 @@ var foodSchema = {
   }
 
   .metric-card {
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: var(--card);
@@ -446,6 +456,16 @@ var foodSchema = {
   .metric-card strong {
     font-size: 1rem;
   }
+  .metric-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand), var(--accent));
+  }
+  .detail-metrics .metric-card:nth-child(2)::before { background: linear-gradient(90deg, #2563eb, #06b6d4); }
+  .detail-metrics .metric-card:nth-child(3)::before { background: linear-gradient(90deg, #f59e0b, #f97316); }
+  .detail-metrics .metric-card:nth-child(4)::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
 
   .detail-tags {
     display: flex;
@@ -561,6 +581,16 @@ var foodSchema = {
 
   .food-review-alert.is-specialist .food-review-alert-icon {
     background: #b91c1c;
+  }
+  [data-theme="dark"] .food-review-alert {
+    border-color: #92400e;
+    background: #431407;
+    color: #fed7aa;
+  }
+  [data-theme="dark"] .food-review-alert.is-specialist {
+    border-color: #991b1b;
+    background: #450a0a;
+    color: #fecaca;
   }
 
   .food-review-alert strong {
