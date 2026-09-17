@@ -362,6 +362,11 @@ const categoryNameRules = [
     reason: "Bánh từ gạo/bột và món bột mặn là thực phẩm giàu tinh bột, không phải nhóm bánh kẹo.",
   },
   {
+    pattern: /^(?:dưa cải muối|măng chua)(?:\s|$)/i,
+    expectedCategories: new Set(["Rau xanh"]),
+    reason: "Rau cải và măng vẫn thuộc nhóm rau dù đã muối/chua; cách bảo quản không đổi nhóm nguyên liệu.",
+  },
+  {
     pattern: /^(?:cá viên|chả mực|chả cá|tôm viên)(?:\s|$)/i,
     expectedCategories: new Set(["Hải sản"]),
     reason: "Sản phẩm chế biến từ cá/mực/tôm cần nằm trong nhóm Hải sản, không phải Thịt chế biến.",

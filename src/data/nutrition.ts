@@ -2401,6 +2401,12 @@ for (const food of foods) {
   if (/^(?:Xà lách|Giá đỗ)(?:\s|$)/i.test(food.name)) food.category = "Rau xanh";
   if (/^(?:Phúc bồn tử|Quả sấu|Me non)(?:\s|$)/i.test(food.name)) food.category = "Trái cây";
 
+  // Pickled cabbage and bamboo shoots remain vegetables; their preservation
+  // method should not move them into the root/fruit-oriented Củ quả facet.
+  if (/^(?:Dưa cải muối|Măng chua)(?:\s|$)/i.test(food.name)) {
+    food.category = "Rau xanh";
+  }
+
   // Rice-flour cakes and savory dough dishes are staple starches, not sweets.
   if (/^(?:Bánh hỏi|Bánh ướt|Bánh đa đỏ|Bánh khoái|Bánh khúc|Bánh tẻ|Bánh quẩy|Bánh bao nhân thịt trứng cút|Bánh chay)(?:\s|$)/i.test(food.name)) {
     food.category = "Tinh bột";
