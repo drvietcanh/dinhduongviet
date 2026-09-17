@@ -336,6 +336,16 @@ const categoryNameRules = [
     expectedCategories: new Set(["Nấm"]),
     reason: "Tên bắt đầu bằng nấm phải được lập chỉ mục trong nhóm Nấm.",
   },
+  {
+    pattern: /^hạt đậu(?:\s|$)/i,
+    expectedCategories: new Set(["Đậu"]),
+    reason: "Hạt của các loại đậu cần thống nhất trong nhóm Đậu, không tách thành Hạt.",
+  },
+  {
+    pattern: /^cùi dừa(?:\s|$)/i,
+    expectedCategories: new Set(["Hạt"]),
+    reason: "Cùi dừa tươi/khô được lập chỉ mục cùng nhóm Hạt và dừa, không để ở nhóm Hạt, đậu.",
+  },
 ];
 const categoryNameMismatches = fullFoods
   .filter((food) => {

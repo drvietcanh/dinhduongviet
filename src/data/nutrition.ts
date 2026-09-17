@@ -2371,6 +2371,13 @@ for (const food of foods) {
   // belong to the dedicated Cá group; Hải sản is reserved for crustaceans,
   // mollusks, cephalopods and other non-fish aquatic foods.
   if (food.category === "Củ, quả") food.category = "Củ quả";
+  if (food.category === "Hạt, đậu") {
+    food.category = /^(?:Đậu|Bột đậu|Sữa bột đậu|Tào phớ|Tàu hũ)/i.test(food.name) ? "Đậu" : "Hạt";
+  }
+  // Legume seeds should remain searchable with Đậu even when the source
+  // display name starts with “Hạt đậu …”; coconut flesh is grouped with Hạt.
+  if (/^Hạt đậu(?:\s|$)/i.test(food.name)) food.category = "Đậu";
+  if (/^Cùi dừa(?:\s|$)/i.test(food.name)) food.category = "Hạt";
   if (/^(?:Cá|Khô cá)(?:\s|$)/i.test(food.name) || /^(?:Lươn|Ruốc cá)(?:\s|$)/i.test(food.name)) {
     if (!/^Trứng cá\b/i.test(food.name)) food.category = "Cá";
   }

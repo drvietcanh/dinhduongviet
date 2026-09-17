@@ -13872,8 +13872,8 @@
       "hat dau xanh kho",
       "mung bean dry"
     ],
-    "description": "Tra cứu Hạt đậu xanh (khô): khoảng 347 kcal/100g, nhóm Hạt.",
-    "category": "Hạt",
+    "description": "Tra cứu Hạt đậu xanh (khô): khoảng 347 kcal/100g, nhóm Đậu.",
+    "category": "Đậu",
     "kcal": 347
   },
   {
@@ -13884,8 +13884,8 @@
       "hat dau trang kho",
       "white bean dry"
     ],
-    "description": "Tra cứu Hạt đậu trắng (khô): khoảng 337 kcal/100g, nhóm Hạt.",
-    "category": "Hạt",
+    "description": "Tra cứu Hạt đậu trắng (khô): khoảng 337 kcal/100g, nhóm Đậu.",
+    "category": "Đậu",
     "kcal": 337
   },
   {
@@ -17904,8 +17904,8 @@
     "aliases": [
       "dau dua hat"
     ],
-    "description": "Tra cứu Đậu đũa (hạt): khoảng 320 kcal/100g, nhóm Hạt, đậu.",
-    "category": "Hạt, đậu",
+    "description": "Tra cứu Đậu đũa (hạt): khoảng 320 kcal/100g, nhóm Đậu.",
+    "category": "Đậu",
     "kcal": 320
   },
   {
@@ -17926,8 +17926,8 @@
     "aliases": [
       "cui dua non"
     ],
-    "description": "Tra cứu Cùi dừa non: khoảng 40 kcal/100g, nhóm Hạt, đậu.",
-    "category": "Hạt, đậu",
+    "description": "Tra cứu Cùi dừa non: khoảng 40 kcal/100g, nhóm Hạt.",
+    "category": "Hạt",
     "kcal": 40
   },
   {
