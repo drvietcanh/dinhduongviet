@@ -653,6 +653,9 @@ function guessCategory(name: string): string {
   if (has("sinh tố", "sữa bắp", "sữa đậu", "sữa hạt", "trà sữa", "nước mía") || n.startsWith("trà ") || n.startsWith("nước ép") || n.startsWith("nước dừa") || n.startsWith("nước sâm") || n.startsWith("nước rau má") || n.startsWith("nước mận")) return "Đồ uống";
   if (has("chè", "kem", "bánh", "kẹo", "mứt", "quy linh cao", "sương sáo")) return "Bánh kẹo";
   if (has("vú sữa")) return "Trái cây";
+  // “Dưa gang non” is a fruiting vegetable; prevent the substring “gan”
+  // from being mistaken for the animal-organ keyword used below.
+  if (has("dưa gang")) return "Củ quả";
   if (has("thịt", "sườn", "chân", "đuôi", "gan", "gân", "lá sách", "tim", "lưỡi", "mề", "cật", "dạ dày", "phổi", "ức vịt", "đùi vịt", "cánh gà", "đùi gà")) return "Thịt";
   if (hasWord("cá", "tôm", "mực", "hàu", "sò", "ốc", "ghẹ", "cua", "tép", "ruốc") || has("bạch tuộc", "cù kỳ")) return "Hải sản";
   if (has("sữa", "phô mai", "sữa chua", "trứng")) return "Trứng sữa";

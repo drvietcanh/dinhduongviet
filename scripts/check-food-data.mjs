@@ -346,6 +346,11 @@ const categoryNameRules = [
     expectedCategories: new Set(["Hạt"]),
     reason: "Cùi dừa tươi/khô được lập chỉ mục cùng nhóm Hạt và dừa, không để ở nhóm Hạt, đậu.",
   },
+  {
+    pattern: /^dưa gang(?:\s|$)/i,
+    expectedCategories: new Set(["Củ quả"]),
+    reason: "Dưa gang non là quả dùng như rau; không được nhận nhầm vào nhóm Thịt do khớp chuỗi 'gan'.",
+  },
 ];
 const categoryNameMismatches = fullFoods
   .filter((food) => {
