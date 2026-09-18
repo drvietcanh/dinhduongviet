@@ -8945,6 +8945,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-phuc-hoi-sau-dot-quy",
+    "name": "🧠 Checklist dinh dưỡng sau đột quỵ",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, nuốt và phục hồi sau đột quỵ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-rung-nhi-chong-dong",
     "name": "💓 Checklist rung nhĩ và chống đông",
     "aliases": [],
