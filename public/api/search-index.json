@@ -8705,6 +8705,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-cham-soc-giam-nhe",
+    "name": "🕊️ Checklist dinh dưỡng chăm sóc giảm nhẹ",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và kiểm soát triệu chứng theo mục tiêu chăm sóc giảm nhẹ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ckd-chua-loc-mau",
     "name": "🫘 Checklist CKD chưa lọc máu",
     "aliases": [],
