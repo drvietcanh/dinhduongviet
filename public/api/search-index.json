@@ -9057,6 +9057,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-viem-tuy-cap",
+    "name": "🩻 Checklist sau viêm tụy cấp",
+    "aliases": [],
+    "description": "Bảng kiểm theo dõi ăn lại, rượu bia, chất béo và dấu hiệu cảnh báo sau viêm tụy cấp.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-xa-tri-dau-co",
     "name": "🦷 Checklist dinh dưỡng sau xạ trị đầu–cổ",
     "aliases": [],
