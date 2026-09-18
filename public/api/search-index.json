@@ -8753,6 +8753,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-thai-ky",
+    "name": "🤰 Checklist dinh dưỡng thai kỳ",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen ăn uống, vi chất và an toàn thực phẩm trong thai kỳ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-than-kali-phot-pho",
     "name": "🫘 Checklist kali–phốt pho",
     "aliases": [],
