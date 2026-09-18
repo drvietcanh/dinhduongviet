@@ -77,6 +77,23 @@ const relatedTools = [
       </article>
     </section>
 
+    <section class="plate-checker" aria-labelledby="plate-checker-title">
+      <div class="checker-head">
+        <div>
+          <h2 id="plate-checker-title">Kiểm tra nhanh một bữa</h2>
+          <p>Đánh dấu những nhóm đang có trong bữa ăn. Đây là checklist giáo dục, không phải tỷ lệ bắt buộc.</p>
+        </div>
+        <span class="checker-status" id="checker-status">0/4 nhóm</span>
+      </div>
+      <div class="checker-grid">
+        <label class="checker-item"><input type="checkbox" data-plate="vegetable" /> <span>🥬 Rau không tinh bột</span><small>Rau lá, rau quả, món luộc/xào ít dầu</small></label>
+        <label class="checker-item"><input type="checkbox" data-plate="protein" /> <span>🍗 Đạm</span><small>Cá, thịt nạc, trứng, đậu phụ, đậu</small></label>
+        <label class="checker-item"><input type="checkbox" data-plate="starch" /> <span>🍚 Tinh bột</span><small>Cơm, bún, phở, bánh mì, khoai</small></label>
+        <label class="checker-item"><input type="checkbox" data-plate="drink" /> <span>💧 Nước/đồ uống phù hợp</span><small>Ưu tiên nước; hạn chế đồ uống có đường</small></label>
+      </div>
+      <p class="checker-result" id="checker-result" aria-live="polite">Bắt đầu bằng cách chọn các nhóm có trong bữa.</p>
+    </section>
+
     <section class="check-panel" aria-label="Tình huống cần cá thể hóa">
       <h2>Khi nào cần hỏi chuyên gia?</h2>
       <ul>
@@ -177,6 +194,77 @@ const relatedTools = [
       margin-bottom: 16px;
     }
 
+    .plate-checker {
+      margin-bottom: 16px;
+      padding: 20px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .checker-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .checker-head p {
+      margin-bottom: 0;
+    }
+
+    .checker-status {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--brand-light);
+      color: var(--brand);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .checker-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .checker-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 8px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      cursor: pointer;
+    }
+
+    .checker-item input {
+      margin-top: 3px;
+      accent-color: var(--brand);
+    }
+
+    .checker-item span {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .checker-item small {
+      grid-column: 2;
+      color: var(--ink-secondary);
+      line-height: 1.4;
+    }
+
+    .checker-result {
+      margin: 14px 0 0;
+      color: var(--brand);
+      font-weight: 700;
+    }
+
     .check-panel ul {
       margin: 0;
       padding-left: 1.2rem;
@@ -246,9 +334,35 @@ const relatedTools = [
       }
 
       .grid-two,
-      .related-grid {
+      .related-grid,
+      .checker-grid {
         grid-template-columns: 1fr;
+      }
+
+      .checker-head {
+        flex-direction: column;
       }
     }
   </style>
 </BaseLayout>
+
+<script is:inline>
+  const plateChecks = [...document.querySelectorAll("[data-plate]")];
+  const plateStatus = document.getElementById("checker-status");
+  const plateResult = document.getElementById("checker-result");
+  function updatePlateChecker() {
+    const count = plateChecks.filter((item) => item.checked).length;
+    const hasVegetable = document.querySelector('[data-plate="vegetable"]')?.checked;
+    const hasProtein = document.querySelector('[data-plate="protein"]')?.checked;
+    const hasStarch = document.querySelector('[data-plate="starch"]')?.checked;
+    if (plateStatus) plateStatus.textContent = `${count}/4 nhóm`;
+    if (!plateResult) return;
+    if (!count) plateResult.textContent = "Bắt đầu bằng cách chọn các nhóm có trong bữa.";
+    else if (hasVegetable && hasProtein && hasStarch) plateResult.textContent = "Bữa đã có đủ ba nhóm chính. Có thể điều chỉnh lượng theo mục tiêu, bệnh nền và khẩu vị.";
+    else if (!hasVegetable) plateResult.textContent = "Có thể bổ sung rau không tinh bột nếu phù hợp với bệnh nền và khả năng tiêu hóa.";
+    else if (!hasProtein) plateResult.textContent = "Bữa chưa có nguồn đạm rõ ràng; cân nhắc cá, thịt nạc, trứng hoặc đậu phụ.";
+    else if (!hasStarch) plateResult.textContent = "Bữa chưa có nguồn tinh bột; nhu cầu cụ thể tùy mục tiêu và kế hoạch điều trị.";
+    else if (!document.querySelector('[data-plate="drink"]')?.checked) plateResult.textContent = "Có thể chọn nước lọc hoặc đồ uống không đường thay cho nước ngọt.";
+  }
+  plateChecks.forEach((item) => item.addEventListener("change", updatePlateChecker));
+</script>
