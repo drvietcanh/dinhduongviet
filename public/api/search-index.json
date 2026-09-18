@@ -8841,6 +8841,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-hiv-arv",
+    "name": "🧬 Checklist dinh dưỡng khi điều trị HIV/ARV",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, tương tác thuốc và an toàn thực phẩm khi điều trị HIV.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-hoa-tri",
     "name": "🎗️ Checklist dinh dưỡng khi hóa trị",
     "aliases": [],
