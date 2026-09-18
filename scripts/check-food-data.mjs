@@ -372,6 +372,11 @@ const categoryNameRules = [
     reason: "Rau cải và măng vẫn thuộc nhóm rau dù đã muối/chua; cách bảo quản không đổi nhóm nguyên liệu.",
   },
   {
+    pattern: /^(?:mướp hương|mướp|bí xanh)(?:\s|$)/i,
+    expectedCategories: new Set(["Củ quả"]),
+    reason: "Mướp và bí xanh là quả họ bầu bí, cần đồng bộ với các biến thể mướp luộc/bí đao.",
+  },
+  {
     pattern: /^măng (?:tươi|khô)(?:\s|$)/i,
     expectedCategories: new Set(["Rau xanh"]),
     reason: "Măng là chồi rau; trạng thái tươi hay khô không làm thay đổi nhóm nguyên liệu.",

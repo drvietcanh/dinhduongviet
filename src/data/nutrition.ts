@@ -2409,6 +2409,9 @@ for (const food of foods) {
   if (/^(?:Dưa cải muối|Măng chua)(?:\s|$)/i.test(food.name)) {
     food.category = "Rau xanh";
   }
+  if (/^(?:Mướp hương|Mướp|Bí xanh)(?:\s|$)/i.test(food.name)) {
+    food.category = "Củ quả";
+  }
   if (/^Măng (?:tươi|khô)(?:\s|$)/i.test(food.name)) {
     food.category = "Rau xanh";
   }
