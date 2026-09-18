@@ -8657,6 +8657,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-copd",
+    "name": "🫁 Checklist dinh dưỡng COPD",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và theo dõi dinh dưỡng cho người bệnh phổi tắc nghẽn mạn tính.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-dai-thao-duong-ngay-om",
     "name": "🩸 Checklist ngày ốm",
     "aliases": [],
