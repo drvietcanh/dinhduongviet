@@ -8697,6 +8697,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-celiac-gluten",
+    "name": "🌾 Checklist celiac và không gluten",
+    "aliases": [],
+    "description": "Bảng kiểm chẩn đoán, đọc nhãn và dinh dưỡng khi cần chế độ không gluten.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ckd-chua-loc-mau",
     "name": "🫘 Checklist CKD chưa lọc máu",
     "aliases": [],
