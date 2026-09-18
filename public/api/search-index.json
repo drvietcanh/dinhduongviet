@@ -8729,6 +8729,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-dai-thao-duong-thai-ky",
+    "name": "🤰 Checklist đái tháo đường thai kỳ",
+    "aliases": [],
+    "description": "Bảng kiểm bữa ăn, đường huyết và tăng cân an toàn trong thai kỳ có đái tháo đường.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-dash",
     "name": "❤️ Checklist kiểu ăn DASH",
     "aliases": [],
