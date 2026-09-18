@@ -8713,6 +8713,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-giam-bach-cau",
+    "name": "🧤 Checklist giảm bạch cầu",
+    "aliases": [],
+    "description": "Bảng kiểm vệ sinh thực phẩm cho người điều trị ung thư có nguy cơ giảm bạch cầu.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-gout",
     "name": "🦶 Checklist dinh dưỡng gout",
     "aliases": [],
