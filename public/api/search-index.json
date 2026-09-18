@@ -8777,6 +8777,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-trao-nguoc",
+    "name": "🔥 Checklist trào ngược dạ dày",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen ăn uống và sinh hoạt giúp nhận diện yếu tố làm nặng trào ngược.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-tre-em",
     "name": "👶 Checklist dinh dưỡng trẻ em",
     "aliases": [],
