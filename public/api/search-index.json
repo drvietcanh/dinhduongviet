@@ -8657,6 +8657,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-dash",
+    "name": "❤️ Checklist kiểu ăn DASH",
+    "aliases": [],
+    "description": "Tự kiểm tra nhanh các thói quen chính của kiểu ăn DASH hỗ trợ tim mạch và huyết áp.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "chi-so-gi",
     "name": "Chỉ số GI thực phẩm Việt",
     "aliases": [],
