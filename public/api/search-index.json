@@ -8857,6 +8857,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-suy-mon-co-suy-tim",
+    "name": "💗 Checklist suy tim và nguy cơ suy mòn cơ",
+    "aliases": [],
+    "description": "Bảng kiểm theo dõi ăn uống, cân nặng và vận động khi suy tim có nguy cơ mất cơ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-suy-tim",
     "name": "❤️ Checklist dinh dưỡng suy tim",
     "aliases": [],
