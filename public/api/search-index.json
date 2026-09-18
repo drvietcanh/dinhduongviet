@@ -8665,6 +8665,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-benh-than-dai-thao-duong",
+    "name": "🫘 Checklist bệnh thận do đái tháo đường",
+    "aliases": [],
+    "description": "Bảng kiểm phối hợp theo dõi đường huyết, thận và dinh dưỡng ở người đái tháo đường.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-bien-chung-mat-than-kinh",
     "name": "👁️ Checklist mắt và thần kinh",
     "aliases": [],
