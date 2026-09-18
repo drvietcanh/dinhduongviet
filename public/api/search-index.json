@@ -8793,6 +8793,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-thieu-mau",
+    "name": "🩸 Checklist thiếu máu thiếu sắt",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và theo dõi khi có thiếu máu hoặc nguy cơ thiếu sắt.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-trao-nguoc",
     "name": "🔥 Checklist trào ngược dạ dày",
     "aliases": [],
