@@ -412,6 +412,11 @@ const categoryNameRules = [
     reason: "Cơm cháy chà bông có nền cơm/gạo là thành phần chính, nên thuộc nhóm Tinh bột.",
   },
   {
+    pattern: /^thịt lợn hộp(?:\s|$)/i,
+    expectedCategories: new Set(["Đồ hộp"]),
+    reason: "Thịt lợn hộp là sản phẩm đóng hộp, cần đồng bộ với nhóm Đồ hộp.",
+  },
+  {
     pattern: /^(?:cá viên|chả mực|chả cá|tôm viên)(?:\s|$)/i,
     expectedCategories: new Set(["Hải sản"]),
     reason: "Sản phẩm chế biến từ cá/mực/tôm cần nằm trong nhóm Hải sản, không phải Thịt chế biến.",

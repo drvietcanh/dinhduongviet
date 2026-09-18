@@ -2443,6 +2443,7 @@ for (const food of foods) {
   // snack whose staple base is cereal; classify by the primary food matrix.
   if (/^Tóp mỡ(?:\s|$)/i.test(food.name)) food.category = "Dầu mỡ";
   if (/^Cơm cháy chà bông(?:\s|$)/i.test(food.name)) food.category = "Tinh bột";
+  if (/^Thịt lợn hộp(?:\s|$)/i.test(food.name)) food.category = "Đồ hộp";
 
   // Rice-flour cakes and savory dough dishes are staple starches, not sweets.
   if (/^(?:Bánh hỏi|Bánh ướt|Bánh đa đỏ|Bánh khoái|Bánh khúc|Bánh tẻ|Bánh quẩy|Bánh bao nhân thịt trứng cút|Bánh chay)(?:\s|$)/i.test(food.name)) {
