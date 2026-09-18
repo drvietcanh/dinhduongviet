@@ -8985,6 +8985,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-thoai-hoa-khop",
+    "name": "🦴 Checklist thoái hóa khớp",
+    "aliases": [],
+    "description": "Bảng kiểm cân nặng, vận động và dinh dưỡng hỗ trợ người bệnh thoái hóa khớp.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-tieu-chay",
     "name": "💧 Checklist dinh dưỡng khi tiêu chảy",
     "aliases": [],
