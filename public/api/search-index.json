@@ -8737,6 +8737,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ghep-gan",
+    "name": "🫁 Checklist dinh dưỡng sau ghép gan",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, an toàn thực phẩm và thuốc sau ghép gan.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ghep-than",
     "name": "🫁 Checklist dinh dưỡng sau ghép thận",
     "aliases": [],
