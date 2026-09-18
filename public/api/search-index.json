@@ -8753,6 +8753,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-loet-mieng-ung-thu",
+    "name": "👄 Checklist loét miệng khi điều trị ung thư",
+    "aliases": [],
+    "description": "Bảng kiểm chăm sóc miệng và ăn uống khi loét miệng, khô miệng sau hóa trị hoặc xạ trị.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-mo-mau",
     "name": "🫀 Checklist mỡ máu",
     "aliases": [],
