@@ -8769,6 +8769,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-soi-than",
+    "name": "🪨 Checklist dinh dưỡng sỏi thận",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen hỗ trợ phòng sỏi thận tái phát theo loại sỏi và xét nghiệm.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-suy-tim",
     "name": "❤️ Checklist dinh dưỡng suy tim",
     "aliases": [],
