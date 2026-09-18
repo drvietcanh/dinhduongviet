@@ -8825,6 +8825,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-tieu-chay",
+    "name": "💧 Checklist dinh dưỡng khi tiêu chảy",
+    "aliases": [],
+    "description": "Bảng kiểm bù nước, ăn uống và an toàn thực phẩm khi tiêu chảy cấp hoặc kéo dài.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-trao-nguoc",
     "name": "🔥 Checklist trào ngược dạ dày",
     "aliases": [],
