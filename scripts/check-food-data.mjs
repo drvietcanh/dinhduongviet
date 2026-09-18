@@ -352,6 +352,11 @@ const categoryNameRules = [
     reason: "Cùi dừa tươi/khô được lập chỉ mục cùng nhóm Hạt và dừa, không để ở nhóm Hạt, đậu.",
   },
   {
+    pattern: /^(?:cơm dừa nạo|dừa cơm non|dừa cơm già)(?:\s|$)/i,
+    expectedCategories: new Set(["Hạt"]),
+    reason: "Cơm/thịt dừa là phần giàu chất béo tương đương cùi dừa, cần đồng bộ trong nhóm Hạt.",
+  },
+  {
     pattern: /^dưa gang(?:\s|$)/i,
     expectedCategories: new Set(["Củ quả"]),
     reason: "Dưa gang non là quả dùng như rau; không được nhận nhầm vào nhóm Thịt do khớp chuỗi 'gan'.",

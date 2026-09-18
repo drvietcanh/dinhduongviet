@@ -2386,6 +2386,9 @@ for (const food of foods) {
   // display name starts with “Hạt đậu …”; coconut flesh is grouped with Hạt.
   if (/^Hạt đậu(?:\s|$)/i.test(food.name)) food.category = "Đậu";
   if (/^Cùi dừa(?:\s|$)/i.test(food.name)) food.category = "Hạt";
+  if (/^(?:Cơm dừa nạo|Dừa cơm non|Dừa cơm già)(?:\s|$)/i.test(food.name)) {
+    food.category = "Hạt";
+  }
   if (/^(?:Cá|Khô cá)(?:\s|$)/i.test(food.name) || /^(?:Lươn|Ruốc cá)(?:\s|$)/i.test(food.name)) {
     if (!/^Trứng cá\b/i.test(food.name)) food.category = "Cá";
   }
