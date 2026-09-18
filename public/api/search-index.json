@@ -8977,6 +8977,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-xo-gan-mat-bu",
+    "name": "🫀 Checklist xơ gan mất bù",
+    "aliases": [],
+    "description": "Bảng kiểm dinh dưỡng và theo dõi cổ trướng, bệnh não gan khi xơ gan mất bù.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-xo-gan",
     "name": "🧬 Checklist xơ gan và cổ trướng",
     "aliases": [],
