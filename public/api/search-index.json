@@ -8657,6 +8657,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-dai-thao-duong-ngay-om",
+    "name": "🩸 Checklist ngày ốm",
+    "aliases": [],
+    "description": "Bảng kiểm chuẩn bị theo dõi đường huyết, ăn uống, nước và thuốc khi người bệnh đái tháo đường bị ốm.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-dash",
     "name": "❤️ Checklist kiểu ăn DASH",
     "aliases": [],
