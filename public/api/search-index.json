@@ -8785,6 +8785,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-viem-ruot",
+    "name": "🧻 Checklist dinh dưỡng bệnh viêm ruột",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và theo dõi triệu chứng cho Crohn hoặc viêm loét đại tràng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-xo-gan",
     "name": "🧬 Checklist xơ gan và cổ trướng",
     "aliases": [],
