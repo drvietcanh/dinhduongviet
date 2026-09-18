@@ -8681,6 +8681,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-di-ung-thuc-pham",
+    "name": "⚠️ Checklist dị ứng thực phẩm",
+    "aliases": [],
+    "description": "Bảng kiểm phòng tránh dị nguyên, đọc nhãn và chuẩn bị kế hoạch an toàn khi ăn uống.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-gan-nhiem-mo",
     "name": "🧡 Checklist gan nhiễm mỡ",
     "aliases": [],
