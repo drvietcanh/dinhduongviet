@@ -8761,6 +8761,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ruot-kich-thich",
+    "name": "🌀 Checklist hội chứng ruột kích thích",
+    "aliases": [],
+    "description": "Bảng kiểm theo dõi triệu chứng và thói quen ăn uống khi nghi IBS.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-suy-tim",
     "name": "❤️ Checklist dinh dưỡng suy tim",
     "aliases": [],
