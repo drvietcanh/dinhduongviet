@@ -18603,8 +18603,8 @@
     "aliases": [
       "gung tuoi"
     ],
-    "description": "Tra cứu Gừng tươi: khoảng 28 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Gừng tươi: khoảng 28 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 28
   },
   {
@@ -18614,8 +18614,8 @@
     "aliases": [
       "nghe tuoi"
     ],
-    "description": "Tra cứu Nghệ tươi: khoảng 23 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Nghệ tươi: khoảng 23 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 23
   },
   {
@@ -18625,8 +18625,8 @@
     "aliases": [
       "rieng"
     ],
-    "description": "Tra cứu Riềng: khoảng 23 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Riềng: khoảng 23 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 23
   },
   {
@@ -18636,8 +18636,8 @@
     "aliases": [
       "sa cay"
     ],
-    "description": "Tra cứu Sả cây: khoảng 24 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Sả cây: khoảng 24 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 24
   },
   {
@@ -18647,8 +18647,8 @@
     "aliases": [
       "ot hiem"
     ],
-    "description": "Tra cứu Ớt hiểm: khoảng 25 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Ớt hiểm: khoảng 25 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 25
   },
   {
@@ -18658,8 +18658,8 @@
     "aliases": [
       "ot sung"
     ],
-    "description": "Tra cứu Ớt sừng: khoảng 26 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Ớt sừng: khoảng 26 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 26
   },
   {
@@ -18669,8 +18669,8 @@
     "aliases": [
       "hanh tim"
     ],
-    "description": "Tra cứu Hành tím: khoảng 27 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
+    "description": "Tra cứu Hành tím: khoảng 27 kcal/100g, nhóm Rau gia vị.",
+    "category": "Rau gia vị",
     "kcal": 27
   },
   {

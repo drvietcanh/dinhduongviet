@@ -372,6 +372,11 @@ const categoryNameRules = [
     reason: "Quả đậu non và giá đậu là rau tươi; chỉ hạt khô/tách hạt mới thuộc nhóm Đậu.",
   },
   {
+    pattern: /^(?:gừng tươi|nghệ tươi|riềng|sả cây|ớt hiểm|ớt sừng|hành tím)(?:\s|$)/i,
+    expectedCategories: new Set(["Rau gia vị"]),
+    reason: "Rễ, củ thơm và ớt cay được dùng chủ yếu để nêm, nên thuộc nhóm Rau gia vị.",
+  },
+  {
     pattern: /^nước dưa chua(?:\s|$)/i,
     expectedCategories: new Set(["Gia vị"]),
     reason: "Nước muối dưa là nước ngâm đậm natri dùng như gia vị/nền nấu, không phải nước dùng độc lập.",

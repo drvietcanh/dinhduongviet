@@ -2413,6 +2413,12 @@ for (const food of foods) {
     food.category = "Rau xanh";
   }
 
+  // Aromatic roots, bulbs and hot peppers are used primarily as seasonings;
+  // keep them discoverable in Rau gia vị rather than the bulk vegetable list.
+  if (/^(?:Gừng tươi|Nghệ tươi|Riềng|Sả cây|Ớt hiểm|Ớt sừng|Hành tím)(?:\s|$)/i.test(food.name)) {
+    food.category = "Rau gia vị";
+  }
+
   // Pickling brine is a concentrated seasoning used in small quantities,
   // rather than a stock consumed as a bowl of soup.
   if (/^Nước dưa chua(?:\s|$)/i.test(food.name)) {
