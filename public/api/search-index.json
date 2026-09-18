@@ -8961,6 +8961,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-truoc-hoa-tri",
+    "name": "🧬 Checklist dinh dưỡng trước hóa trị",
+    "aliases": [],
+    "description": "Bảng kiểm chuẩn bị dinh dưỡng và an toàn thực phẩm trước đợt hóa trị.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ung-thu-dai-truc-trang",
     "name": "🧻 Checklist ung thư đại trực tràng",
     "aliases": [],
