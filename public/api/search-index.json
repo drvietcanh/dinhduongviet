@@ -8897,6 +8897,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-than-thuoc-giam-dau",
+    "name": "💊 Checklist thận và thuốc giảm đau",
+    "aliases": [],
+    "description": "Bảng kiểm rà soát thuốc giảm đau, mất nước và xét nghiệm khi có nguy cơ tổn thương thận.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-thieu-mau",
     "name": "🩸 Checklist thiếu máu thiếu sắt",
     "aliases": [],
