@@ -8937,6 +8937,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-suy-giap-thuoc",
+    "name": "🦋 Checklist suy giáp và tương tác thuốc",
+    "aliases": [],
+    "description": "Bảng kiểm dùng levothyroxine, khoảng cách với thực phẩm bổ sung và theo dõi suy giáp.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-suy-mon-co-suy-tim",
     "name": "💗 Checklist suy tim và nguy cơ suy mòn cơ",
     "aliases": [],
