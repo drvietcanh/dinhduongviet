@@ -9065,6 +9065,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-tieu-chay-khang-sinh",
+    "name": "🦠 Checklist tiêu chảy do kháng sinh",
+    "aliases": [],
+    "description": "Bảng kiểm bù dịch, vệ sinh và theo dõi tiêu chảy sau dùng kháng sinh.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-tieu-chay",
     "name": "💧 Checklist dinh dưỡng khi tiêu chảy",
     "aliases": [],
