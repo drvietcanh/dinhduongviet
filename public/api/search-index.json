@@ -8657,6 +8657,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ban-chan-dai-thao-duong",
+    "name": "🦶 Checklist chăm sóc bàn chân",
+    "aliases": [],
+    "description": "Bảng kiểm dinh dưỡng–tự chăm sóc giúp giảm nguy cơ loét bàn chân ở người đái tháo đường.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-cachexia-ung-thu",
     "name": "🎗️ Checklist suy mòn cơ/cachexia",
     "aliases": [],
