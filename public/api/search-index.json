@@ -8745,6 +8745,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-dieu-tri-lao",
+    "name": "🫁 Checklist dinh dưỡng khi điều trị lao",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, thuốc và theo dõi an toàn trong điều trị bệnh lao.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-dong-kinh-tuong-tac",
     "name": "⚡ Checklist động kinh và tương tác thuốc",
     "aliases": [],
