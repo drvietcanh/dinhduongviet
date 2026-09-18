@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Checklist ăn uống khi nuốt khó sau đột quỵ";
+const desc = "Bảng kiểm an toàn bữa ăn cho người nuốt khó sau đột quỵ hoặc bệnh thần kinh.";
+const items = [
+  "Người bệnh đã được đánh giá nuốt hoặc có hướng dẫn rõ từ chuyên viên",
+  "Tư thế ăn được giữ đúng: ngồi thẳng, tỉnh táo và có người quan sát",
+  "Độ đặc thức ăn và đồ uống đúng hướng dẫn, không tự pha loãng/tăng đặc",
+  "Miếng ăn nhỏ, tốc độ chậm; kiểm tra miệng đã sạch trước khi cho miếng tiếp",
+  "Không vừa ăn vừa nói, nằm hoặc dùng ống hút nếu chưa được dặn",
+  "Tôi biết dấu hiệu sặc và nơi liên hệ khi ho sặc, sốt hoặc khó thở",
+];
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/checklist-nuot-kho-dot-quy">
+  <main class="swallow-page">
+    <header class="page-header">
+      <p class="eyebrow">Bảng kiểm thần kinh</p>
+      <h1>🧠 Checklist nuốt khó sau đột quỵ</h1>
+      <p>{desc} Bảng kiểm chỉ nhắc an toàn; cần đánh giá trực tiếp nếu có nghi ngờ rối loạn nuốt.</p>
+    </header>
+    <form id="swallow-form" class="card">
+      <p class="hint">Đánh dấu những điều đã được chuẩn bị:</p>
+      {items.map((item) => <label class="check"><input type="checkbox" data-swallow /> <span>{item}</span></label>)}
+      <button type="submit">Xem tổng hợp</button>
+    </form>
+    <section id="result" class="card result" aria-live="polite" hidden></section>
+    <section class="card warning-card">
+      <h2>Dấu hiệu cần dừng bữa và liên hệ</h2>
+      <p>Ho sặc lặp lại, giọng ướt sau nuốt, tím tái, khó thở, sốt không rõ nguyên nhân, thức ăn còn nhiều trong miệng hoặc sụt cân/mất nước.</p>
+      <p class="warning">Không cố ép ăn/uống khi người bệnh lơ mơ hoặc sặc liên tục; gọi hỗ trợ y tế.</p>
+    </section>
+  </main>
+  <script is:inline define:vars={{ total: items.length }}>
+    const form = document.getElementById("swallow-form");
+    const result = document.getElementById("result");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const done = document.querySelectorAll("[data-swallow]:checked").length;
+      const missing = total - done;
+      result.hidden = false;
+      result.innerHTML = missing === 0
+        ? `<h2>Đã rà đủ ${total} mục</h2><p>Tiếp tục ghi nhận ho sặc, lượng ăn và cân nặng để trao đổi khi tái khám.</p>`
+        : `<h2>Còn ${missing} mục cần làm rõ</h2><p>Hãy hỏi chuyên viên âm ngữ trị liệu, điều dưỡng hoặc bác sĩ trước khi thay đổi thức ăn/đồ uống.</p>`;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+  <style>
+    .swallow-page { max-width: 760px; margin: 0 auto; padding: 32px 18px 52px; }
+    .page-header { text-align: center; margin-bottom: 22px; }
+    .eyebrow { margin: 0 0 8px; color: var(--brand); font-weight: 800; font-size: .8rem; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font-size: 1.75rem; } h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    p { color: var(--ink-secondary); line-height: 1.6; }
+    .card { padding: 20px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); box-shadow: var(--shadow-sm); }
+    .hint { margin-top: 0; font-weight: 700; }
+    .check { display: flex; align-items: flex-start; gap: 10px; margin: 13px 0; color: var(--ink); line-height: 1.5; }
+    .check input { margin-top: 4px; accent-color: var(--brand); }
+    button { width: 100%; min-height: 46px; margin-top: 8px; border: 0; border-radius: var(--radius); background: var(--brand); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+    .result, .warning-card { margin-top: 16px; } .result h2 { color: var(--brand); }
+    .warning { color: #a3432d; font-weight: 700; }
+    @media (max-width: 650px) { .swallow-page { padding: 22px 14px 42px; } h1 { font-size: 1.45rem; } }
+  </style>
+</BaseLayout>
