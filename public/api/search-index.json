@@ -8937,6 +8937,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-triglyceride-cao",
+    "name": "🧪 Checklist triglyceride rất cao",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và thuốc khi triglyceride tăng cao, giúp giảm nguy cơ viêm tụy.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ung-thu-dai-truc-trang",
     "name": "🧻 Checklist ung thư đại trực tràng",
     "aliases": [],
