@@ -8665,6 +8665,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ckd-chua-loc-mau",
+    "name": "🫘 Checklist CKD chưa lọc máu",
+    "aliases": [],
+    "description": "Bảng kiểm chuẩn bị xét nghiệm và câu hỏi dinh dưỡng theo giai đoạn bệnh thận mạn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-copd",
     "name": "🫁 Checklist dinh dưỡng COPD",
     "aliases": [],
