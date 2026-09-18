@@ -755,22 +755,6 @@ export const TOOL_METHODOLOGY_BY_SLUG: Record<string, ToolMethodology> = {
       { label: "Viện Dinh dưỡng - Giá trị dinh dưỡng thực phẩm", url: "https://viendinhduong.vn/vi/cong-cu-va-tien-ich/gia-tri-dinh-duong-thuc-pham" },
     ],
   },
-  "checklist-an-uong": {
-    slug: "checklist-an-uong",
-    status: "Checklist hành vi tự theo dõi",
-    summary: "Trang ghi lại các lựa chọn ăn uống trong ngày để hỗ trợ tự quan sát; không dùng công thức điểm hóa sức khỏe hay chấm điểm bệnh lý.",
-    formulas: [
-      {
-        label: "Logic ghi nhận",
-        value: "Mỗi mục được đánh dấu có/không theo ngày; kết quả là nhật ký hành vi, không cộng thành điểm nguy cơ.",
-      },
-    ],
-    guidance: ["Nên xem xu hướng nhiều ngày và điều chỉnh từng thói quen nhỏ thay vì suy diễn từ một ngày đơn lẻ."],
-    notFor: ["Không dùng checklist để chẩn đoán, thay thế nhật ký điều trị hoặc tự thay đổi thuốc."],
-    sources: [
-      { label: "WHO - Healthy Diet", url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
-    ],
-  },
   "danh-gia-bua-an": {
     slug: "danh-gia-bua-an",
     status: "Trang chọn công cụ",

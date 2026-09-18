@@ -162,7 +162,7 @@ export const diseaseHubs: DiseaseHubConfig[] = [
     mythDescription: "Nếu triệu chứng thiên về ợ nóng, trào ngược ban đêm, cà phê, thuốc giảm đau hoặc bữa tối muộn, hãy bắt đầu từ các bài thực hành này.",
     toolLinks: [
       { href: "/cong-cu/ke-hoach-bua-an", label: "Lập kế hoạch bữa ăn" },
-      { href: "/cong-cu/checklist-an-uong", label: "Checklist ăn uống" },
+      { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
       { href: "/cong-cu/tim-mon-tu-nguyen-lieu", label: "Tìm món từ nguyên liệu" },
       { href: "/cong-cu/danh-gia-bua-an", label: "Đánh giá bữa ăn" },
     ],
@@ -348,3 +348,4 @@ export function getHubSections(hub: DiseaseHubConfig) {
 
   return { foundation, menus, myths, more };
 }
+
