@@ -8809,6 +8809,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ha-duong-huyet-thuoc",
+    "name": "🩸 Checklist hạ đường huyết do thuốc",
+    "aliases": [],
+    "description": "Bảng kiểm phòng và xử trí hạ đường huyết liên quan insulin hoặc thuốc kích thích tiết insulin.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-hau-phau",
     "name": "🩹 Checklist dinh dưỡng sau phẫu thuật",
     "aliases": [],
