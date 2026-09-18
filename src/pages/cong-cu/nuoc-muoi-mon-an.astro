@@ -78,6 +78,28 @@ const prepareItems = [
       </ul>
     </section>
 
+    <section class="converter-card" aria-labelledby="converter-title">
+      <div class="section-head">
+        <div>
+          <h2 id="converter-title">Quy đổi natri ↔ muối</h2>
+          <p>Công thức quy đổi nhãn thực phẩm, không phải mục tiêu điều trị cá thể.</p>
+        </div>
+        <span class="badge">WHO: &lt;2.000 mg natri/ngày</span>
+      </div>
+      <div class="converter-grid">
+        <label>
+          Natri (mg)
+          <input id="sodium-input" type="number" min="0" step="1" inputmode="decimal" placeholder="Ví dụ: 800" />
+        </label>
+        <label>
+          Muối tương đương (g)
+          <input id="salt-input" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ví dụ: 2" />
+        </label>
+      </div>
+      <p id="converter-result" class="converter-result" aria-live="polite">Nhập một giá trị để xem quy đổi.</p>
+      <p class="formula-note">1 g muối ≈ 400 mg natri; muối tương đương = natri × 2,5 ÷ 1.000.</p>
+    </section>
+
     <section class="lookup-card" aria-labelledby="lookup-title">
       <div class="section-head">
         <div>
@@ -117,6 +139,28 @@ const prepareItems = [
   const foods = JSON.parse(root?.dataset.foods || "[]");
   const searchInput = document.getElementById("search-input");
   const resultsDiv = document.getElementById("results");
+  const sodiumInput = document.getElementById("sodium-input");
+  const saltInput = document.getElementById("salt-input");
+  const converterResult = document.getElementById("converter-result");
+
+  function updateConverter(source) {
+    const sodium = Number(sodiumInput?.value || 0);
+    const salt = Number(saltInput?.value || 0);
+    if (source === "sodium" && sodium > 0) {
+      const equivalent = (sodium * 2.5) / 1000;
+      if (saltInput) saltInput.value = equivalent.toFixed(2);
+      if (converterResult) converterResult.textContent = `${sodium.toFixed(0)} mg natri ≈ ${equivalent.toFixed(2)} g muối.`;
+    } else if (source === "salt" && salt > 0) {
+      const equivalent = salt * 400;
+      if (sodiumInput) sodiumInput.value = equivalent.toFixed(0);
+      if (converterResult) converterResult.textContent = `${salt.toFixed(2)} g muối ≈ ${equivalent.toFixed(0)} mg natri.`;
+    } else if (converterResult) {
+      converterResult.textContent = "Nhập một giá trị để xem quy đổi.";
+    }
+  }
+
+  sodiumInput?.addEventListener("input", () => updateConverter("sodium"));
+  saltInput?.addEventListener("input", () => updateConverter("salt"));
 
   function createRow(food) {
     const row = document.createElement("article");
@@ -198,6 +242,7 @@ const prepareItems = [
   }
 
   .safety-card,
+  .converter-card,
   .lookup-card,
   .info-panel {
     border: 1px solid var(--line);
@@ -209,6 +254,47 @@ const prepareItems = [
   .safety-card {
     margin-bottom: 16px;
     background: var(--brand-light);
+  }
+
+  .converter-card {
+    margin-bottom: 16px;
+    background: var(--card);
+  }
+
+  .converter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .converter-grid label {
+    display: grid;
+    gap: 6px;
+    font-weight: 700;
+  }
+
+  .converter-grid input {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 1rem;
+    padding: 9px 11px;
+  }
+
+  .converter-result {
+    margin: 14px 0 4px;
+    color: var(--brand);
+    font-size: 1.05rem;
+    font-weight: 800;
+  }
+
+  .formula-note {
+    margin: 0;
+    color: var(--ink-tertiary);
+    font-size: 0.84rem;
   }
 
   ul {
@@ -324,6 +410,10 @@ const prepareItems = [
     .section-head,
     .food-row {
       flex-direction: column;
+    }
+
+    .converter-grid {
+      grid-template-columns: 1fr;
     }
 
     .salt-amount {
