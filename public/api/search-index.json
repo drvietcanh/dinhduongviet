@@ -8889,6 +8889,14 @@
   },
   {
     "type": "tool",
+    "slug": "tinh-duong-tu-do",
+    "name": "🍬 Tính tỷ lệ đường tự do",
+    "aliases": [],
+    "description": "Quy đổi lượng đường tự do thành tỷ lệ năng lượng để đọc nhanh khẩu phần đồ uống và món ngọt.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "tinh-gl-bua-an",
     "name": "⚖️ Tính GL bữa ăn",
     "aliases": [],

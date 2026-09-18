@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Tính tỷ lệ đường tự do trong ngày";
+const desc = "Quy đổi lượng đường tự do thành tỷ lệ năng lượng để đọc nhanh khẩu phần đồ uống và món ngọt.";
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/tinh-duong-tu-do">
+  <main class="sugar-page">
+    <header class="page-header">
+      <p class="eyebrow">Công cụ dinh dưỡng</p>
+      <h1>🍬 Tính tỷ lệ đường tự do</h1>
+      <p>{desc} WHO khuyến nghị giữ dưới 10% năng lượng/ngày; mức dưới 5% có thể đem lại thêm lợi ích.</p>
+    </header>
+
+    <form id="sugar-form" class="form-card">
+      <label>Năng lượng mục tiêu/ngày (kcal)
+        <input id="energy" type="number" min="800" max="6000" value="2000" step="50" required />
+      </label>
+      <label>Đường tự do đã dùng (g/ngày)
+        <input id="sugar" type="number" min="0" max="500" value="25" step="0.5" required />
+      </label>
+      <button type="submit">Tính tỷ lệ</button>
+    </form>
+
+    <section id="result" class="result-card" aria-live="polite" hidden></section>
+
+    <section class="info-card">
+      <h2>Đường tự do là gì?</h2>
+      <p>Là đường được thêm vào thực phẩm/đồ uống và đường tự nhiên trong mật ong, si-rô, nước ép và nước ép cô đặc. Công cụ không cộng toàn bộ đường tự nhiên trong trái cây nguyên quả hoặc sữa chưa thêm đường.</p>
+      <p class="warning">Người bệnh đái tháo đường, trẻ nhỏ, người suy dinh dưỡng hoặc đang điều trị bệnh cần trao đổi riêng với bác sĩ/chuyên gia dinh dưỡng.</p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("sugar-form");
+    const result = document.getElementById("result");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const energy = Number(document.getElementById("energy")?.value);
+      const sugar = Number(document.getElementById("sugar")?.value);
+      const calories = sugar * 4;
+      const percent = (calories / energy) * 100;
+      const limit10 = energy * 0.10 / 4;
+      const limit5 = energy * 0.05 / 4;
+      const status = percent < 5 ? "Thấp hơn mốc 5%" : percent < 10 ? "Dưới ngưỡng 10%" : "Đã đạt hoặc vượt ngưỡng 10%";
+      result.hidden = false;
+      result.className = `result-card ${percent >= 10 ? "high" : percent >= 5 ? "watch" : "good"}`;
+      result.innerHTML = `<h2>${status}</h2><div class="metrics"><span>Đường: <strong>${sugar.toFixed(1)} g</strong></span><span>Năng lượng từ đường: <strong>${calories.toFixed(0)} kcal</strong></span><span>Tỷ lệ: <strong>${percent.toFixed(1)}%</strong></span></div><p>Với mức năng lượng này, mốc 10% tương đương khoảng <strong>${limit10.toFixed(0)} g/ngày</strong>; mốc 5% khoảng <strong>${limit5.toFixed(0)} g/ngày</strong>.</p><small>Đây là phép tính tham khảo theo năng lượng nhập vào, không phải mục tiêu cá nhân bắt buộc.</small>`;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+
+  <style>
+    .sugar-page { max-width: 760px; margin: 0 auto; padding: 32px 18px 52px; }
+    .page-header { text-align: center; margin-bottom: 22px; }
+    .eyebrow { margin: 0 0 8px; color: var(--brand); font-weight: 800; font-size: .8rem; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font-size: 1.75rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    p { color: var(--ink-secondary); line-height: 1.6; }
+    .form-card, .result-card, .info-card { display: grid; gap: 14px; padding: 20px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); box-shadow: var(--shadow-sm); }
+    label { display: grid; gap: 6px; color: var(--ink); font-weight: 700; }
+    input { min-height: 42px; padding: 9px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg); color: var(--ink); font: inherit; }
+    button { min-height: 46px; border: 0; border-radius: var(--radius); background: var(--brand); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+    .result-card { margin-top: 16px; }
+    .result-card h2 { color: var(--brand); }
+    .result-card.watch { border-color: #d6a84f; background: #fffaf0; }
+    .result-card.high { border-color: #e07a5f; background: #fff7f3; }
+    .metrics { display: flex; flex-wrap: wrap; gap: 14px; color: var(--ink-secondary); }
+    small { color: var(--ink-tertiary); }
+    .info-card { margin-top: 16px; }
+    .warning { color: #a3432d; font-weight: 700; }
+    @media (max-width: 650px) { .sugar-page { padding: 22px 14px 42px; } h1 { font-size: 1.45rem; } }
+  </style>
+</BaseLayout>
