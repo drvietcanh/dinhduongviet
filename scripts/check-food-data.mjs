@@ -377,6 +377,11 @@ const categoryNameRules = [
     reason: "Măng là chồi rau; trạng thái tươi hay khô không làm thay đổi nhóm nguyên liệu.",
   },
   {
+    pattern: /^bắp non(?:\s|$)/i,
+    expectedCategories: new Set(["Rau xanh"]),
+    reason: "Ngô non được dùng như rau, đồng bộ với biến thể trái bắp non baby.",
+  },
+  {
     pattern: /^(?:đậu đũa|đậu rồng|giá đậu tương tươi)$/i,
     expectedCategories: new Set(["Rau xanh"]),
     reason: "Quả đậu non và giá đậu là rau tươi; chỉ hạt khô/tách hạt mới thuộc nhóm Đậu.",
