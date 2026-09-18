@@ -2428,6 +2428,11 @@ for (const food of foods) {
     food.category = "Gia vị";
   }
 
+  // Salted eggplant is a preserved vegetable side, not a seasoning sauce.
+  if (/^Cà pháo muối(?:\s|$)/i.test(food.name)) {
+    food.category = "Củ quả";
+  }
+
   // Marinated ready-to-eat chicken feet are a processed meat product, not
   // an unprepared poultry cut.
   if (/^Chân gà sả tắc(?:\s|$)/i.test(food.name)) {

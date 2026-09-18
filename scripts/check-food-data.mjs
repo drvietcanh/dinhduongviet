@@ -392,6 +392,11 @@ const categoryNameRules = [
     reason: "Nước muối dưa là nước ngâm đậm natri dùng như gia vị/nền nấu, không phải nước dùng độc lập.",
   },
   {
+    pattern: /^cà pháo muối(?:\s|$)/i,
+    expectedCategories: new Set(["Củ quả"]),
+    reason: "Cà pháo muối vẫn là quả cà được bảo quản, không phải gia vị cô đặc.",
+  },
+  {
     pattern: /^chân gà sả tắc(?:\s|$)/i,
     expectedCategories: new Set(["Thịt chế biến"]),
     reason: "Chân gà sả tắc là món gà đã tẩm ướp/chế biến sẵn, cần tách khỏi nhóm thịt tươi.",
