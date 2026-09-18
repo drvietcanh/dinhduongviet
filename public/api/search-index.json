@@ -8849,6 +8849,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-nhiem-trung-tieu-tai-dien",
+    "name": "🚻 Checklist nhiễm trùng tiểu tái diễn",
+    "aliases": [],
+    "description": "Bảng kiểm uống nước, thuốc và dấu hiệu cảnh báo khi nhiễm trùng tiểu tái diễn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-nuot-kho-dot-quy",
     "name": "🧠 Checklist nuốt khó sau đột quỵ",
     "aliases": [],
