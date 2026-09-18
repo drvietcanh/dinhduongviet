@@ -8753,6 +8753,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-gan-do-ruou",
+    "name": "🍺 Checklist bệnh gan do rượu",
+    "aliases": [],
+    "description": "Bảng kiểm ngừng rượu, dinh dưỡng và theo dõi an toàn ở người bệnh gan do rượu.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-gan-nhiem-mo",
     "name": "🧡 Checklist gan nhiễm mỡ",
     "aliases": [],
