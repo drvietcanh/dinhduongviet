@@ -9049,6 +9049,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-viem-gan-virus-man",
+    "name": "🧫 Checklist viêm gan virus mạn",
+    "aliases": [],
+    "description": "Bảng kiểm dinh dưỡng, thuốc và theo dõi an toàn ở người bệnh viêm gan B/C mạn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-viem-ruot",
     "name": "🧻 Checklist dinh dưỡng bệnh viêm ruột",
     "aliases": [],
