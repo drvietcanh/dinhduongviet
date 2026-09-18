@@ -8809,6 +8809,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ibd-dot-cap",
+    "name": "🧻 Checklist đợt cấp viêm ruột",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và theo dõi khi viêm loét đại tràng hoặc Crohn bùng phát.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-loang-xuong",
     "name": "🦴 Checklist loãng xương",
     "aliases": [],
