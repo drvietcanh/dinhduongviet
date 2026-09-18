@@ -8657,6 +8657,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-cachexia-ung-thu",
+    "name": "🎗️ Checklist suy mòn cơ/cachexia",
+    "aliases": [],
+    "description": "Bảng kiểm nhận diện sụt cân, giảm ăn và mất cơ để trao đổi sớm với đội điều trị ung thư.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-copd",
     "name": "🫁 Checklist dinh dưỡng COPD",
     "aliases": [],

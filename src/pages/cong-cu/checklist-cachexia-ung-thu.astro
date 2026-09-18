@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Checklist suy mòn cơ trong ung thư";
+const desc = "Bảng kiểm nhận diện sụt cân, giảm ăn và mất cơ để trao đổi sớm với đội điều trị ung thư.";
+const items = [
+  "Tôi ghi cân nặng, lượng ăn và khả năng vận động theo tuần",
+  "Tôi báo đội điều trị khi sụt cân không chủ ý hoặc quần áo rộng nhanh",
+  "Tôi nhận diện triệu chứng cản trở ăn: đau, buồn nôn, táo bón, tiêu chảy, loét miệng hoặc nuốt khó",
+  "Mỗi bữa có nguồn đạm/năng lượng phù hợp và được chia nhỏ khi nhanh no",
+  "Tôi vận động nhẹ hoặc tập sức mạnh theo khả năng và hướng dẫn",
+  "Tôi đã hỏi bác sĩ/dinh dưỡng viên về hỗ trợ triệu chứng và sản phẩm bổ sung",
+];
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/checklist-cachexia-ung-thu">
+  <main class="cachexia-page">
+    <header class="page-header">
+      <p class="eyebrow">Bảng kiểm ung bướu</p>
+      <h1>🎗️ Checklist suy mòn cơ/cachexia</h1>
+      <p>{desc} Suy mòn cơ liên quan bệnh và viêm; không phải chỉ do “ăn chưa đủ”.</p>
+    </header>
+    <form id="cachexia-form" class="card">
+      <p class="hint">Đánh dấu những điều đã chuẩn bị:</p>
+      {items.map((item) => <label class="check"><input type="checkbox" data-cachexia /> <span>{item}</span></label>)}
+      <button type="submit">Xem tổng hợp</button>
+    </form>
+    <section id="result" class="card result" aria-live="polite" hidden></section>
+    <section class="card warning-card">
+      <h2>Cần báo đội điều trị sớm</h2>
+      <p>Sụt cân nhanh, yếu đến mức khó đứng/đi, không ăn uống được, nôn kéo dài, khó nuốt, lú lẫn hoặc mất nước.</p>
+      <p class="warning">Không tự dùng steroid, thuốc kích thích ăn, hormone hoặc ép ăn khi người bệnh đau/sặc.</p>
+    </section>
+  </main>
+  <script is:inline define:vars={{ total: items.length }}>
+    const form = document.getElementById("cachexia-form");
+    const result = document.getElementById("result");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const done = document.querySelectorAll("[data-cachexia]:checked").length;
+      const missing = total - done;
+      result.hidden = false;
+      result.innerHTML = missing === 0
+        ? `<h2>Đã rà đủ ${total} mục</h2><p>Tiếp tục ghi cân nặng, lượng ăn và triệu chứng để trao đổi ở lần khám kế tiếp.</p>`
+        : `<h2>Còn ${missing} mục cần làm rõ</h2><p>Hỏi bác sĩ ung bướu hoặc chuyên gia dinh dưỡng về phần còn thiếu.</p>`;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+  <style>
+    .cachexia-page { max-width: 760px; margin: 0 auto; padding: 32px 18px 52px; }
+    .page-header { text-align: center; margin-bottom: 22px; }
+    .eyebrow { margin: 0 0 8px; color: var(--brand); font-weight: 800; font-size: .8rem; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font-size: 1.75rem; } h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    p { color: var(--ink-secondary); line-height: 1.6; }
+    .card { padding: 20px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); box-shadow: var(--shadow-sm); }
+    .hint { margin-top: 0; font-weight: 700; }
+    .check { display: flex; align-items: flex-start; gap: 10px; margin: 13px 0; color: var(--ink); line-height: 1.5; }
+    .check input { margin-top: 4px; accent-color: var(--brand); }
+    button { width: 100%; min-height: 46px; margin-top: 8px; border: 0; border-radius: var(--radius); background: var(--brand); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+    .result, .warning-card { margin-top: 16px; } .result h2 { color: var(--brand); }
+    .warning { color: #a3432d; font-weight: 700; }
+    @media (max-width: 650px) { .cachexia-page { padding: 22px 14px 42px; } h1 { font-size: 1.45rem; } }
+  </style>
+</BaseLayout>
