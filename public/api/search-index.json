@@ -8705,6 +8705,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-loc-mau",
+    "name": "🩺 Checklist dinh dưỡng khi lọc máu",
+    "aliases": [],
+    "description": "Bảng kiểm chuẩn bị ăn uống, thuốc và xét nghiệm cho người đang chạy thận nhân tạo hoặc lọc màng bụng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-mo-mau",
     "name": "🫀 Checklist mỡ máu",
     "aliases": [],
