@@ -8713,6 +8713,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-da-thuoc-nguoi-cao-tuoi",
+    "name": "💊 Checklist đa thuốc ở người cao tuổi",
+    "aliases": [],
+    "description": "Bảng kiểm rà soát thuốc, thực phẩm và nguy cơ suy dinh dưỡng ở người cao tuổi.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-dai-thao-duong-ngay-om",
     "name": "🩸 Checklist ngày ốm",
     "aliases": [],
