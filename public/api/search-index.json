@@ -8905,6 +8905,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-sau-cat-da-day",
+    "name": "🍽️ Checklist sau cắt dạ dày",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, dumping và vi chất sau phẫu thuật cắt một phần hoặc toàn bộ dạ dày.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-sau-nhoi-mau-co-tim",
     "name": "❤️ Checklist sau nhồi máu cơ tim",
     "aliases": [],
