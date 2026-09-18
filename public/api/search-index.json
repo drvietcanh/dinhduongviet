@@ -8673,6 +8673,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-ghep-than",
+    "name": "🫁 Checklist dinh dưỡng sau ghép thận",
+    "aliases": [],
+    "description": "Bảng kiểm an toàn thực phẩm, thuốc và theo dõi chuyển hóa sau ghép thận.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-gout",
     "name": "🦶 Checklist dinh dưỡng gout",
     "aliases": [],
