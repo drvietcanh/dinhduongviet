@@ -8673,6 +8673,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-gout",
+    "name": "🦶 Checklist dinh dưỡng gout",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen hỗ trợ kiểm soát cơn gout và acid uric.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-hau-phau",
     "name": "🩹 Checklist dinh dưỡng sau phẫu thuật",
     "aliases": [],
