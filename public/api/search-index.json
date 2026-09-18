@@ -8865,6 +8865,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-sa-sut-tri-tue",
+    "name": "🧠 Checklist dinh dưỡng khi sa sút trí tuệ sớm",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, an toàn và hỗ trợ người bệnh sa sút trí tuệ giai đoạn sớm.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-sau-nhoi-mau-co-tim",
     "name": "❤️ Checklist sau nhồi máu cơ tim",
     "aliases": [],
