@@ -2409,6 +2409,9 @@ for (const food of foods) {
   if (/^(?:Dưa cải muối|Măng chua)(?:\s|$)/i.test(food.name)) {
     food.category = "Rau xanh";
   }
+  if (/^Măng (?:tươi|khô)(?:\s|$)/i.test(food.name)) {
+    food.category = "Rau xanh";
+  }
 
   // Fresh legume pods and soybean sprouts are vegetables; only the dried or
   // shelled seeds remain in the Đậu group.

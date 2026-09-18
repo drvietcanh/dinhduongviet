@@ -372,6 +372,11 @@ const categoryNameRules = [
     reason: "Rau cải và măng vẫn thuộc nhóm rau dù đã muối/chua; cách bảo quản không đổi nhóm nguyên liệu.",
   },
   {
+    pattern: /^măng (?:tươi|khô)(?:\s|$)/i,
+    expectedCategories: new Set(["Rau xanh"]),
+    reason: "Măng là chồi rau; trạng thái tươi hay khô không làm thay đổi nhóm nguyên liệu.",
+  },
+  {
     pattern: /^(?:đậu đũa|đậu rồng|giá đậu tương tươi)$/i,
     expectedCategories: new Set(["Rau xanh"]),
     reason: "Quả đậu non và giá đậu là rau tươi; chỉ hạt khô/tách hạt mới thuộc nhóm Đậu.",
