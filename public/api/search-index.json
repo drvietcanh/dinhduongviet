@@ -8665,6 +8665,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-hau-phau",
+    "name": "🩹 Checklist dinh dưỡng sau phẫu thuật",
+    "aliases": [],
+    "description": "Bảng kiểm cho người bệnh và người chăm sóc khi bắt đầu ăn uống, theo dõi tiêu hóa và hồi phục sau mổ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-than-kali-phot-pho",
     "name": "🫘 Checklist kali–phốt pho",
     "aliases": [],
