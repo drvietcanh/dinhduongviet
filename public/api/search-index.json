@@ -8833,6 +8833,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-sau-nhoi-mau-co-tim",
+    "name": "❤️ Checklist sau nhồi máu cơ tim",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, thuốc và phục hồi sau nhồi máu cơ tim.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-soi-than",
     "name": "🪨 Checklist dinh dưỡng sỏi thận",
     "aliases": [],
