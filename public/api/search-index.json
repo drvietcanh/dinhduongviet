@@ -8681,6 +8681,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-suy-tim",
+    "name": "❤️ Checklist dinh dưỡng suy tim",
+    "aliases": [],
+    "description": "Bảng kiểm chuẩn bị và theo dõi ăn uống cho người suy tim hoặc sau nhồi máu cơ tim.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-than-kali-phot-pho",
     "name": "🫘 Checklist kali–phốt pho",
     "aliases": [],
