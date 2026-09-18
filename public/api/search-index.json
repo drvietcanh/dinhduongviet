@@ -8977,6 +8977,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-sau-sinh-cho-con-bu",
+    "name": "🤱 Checklist sau sinh và cho con bú",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, vi chất, thuốc và an toàn khi chăm sóc mẹ sau sinh.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-soi-than",
     "name": "🪨 Checklist dinh dưỡng sỏi thận",
     "aliases": [],
