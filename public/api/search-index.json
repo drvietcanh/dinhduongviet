@@ -8737,6 +8737,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-dong-kinh-tuong-tac",
+    "name": "⚡ Checklist động kinh và tương tác thuốc",
+    "aliases": [],
+    "description": "Bảng kiểm dùng thuốc, ăn uống và an toàn cho người bệnh động kinh.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-gan-nhiem-mo",
     "name": "🧡 Checklist gan nhiễm mỡ",
     "aliases": [],
