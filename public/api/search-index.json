@@ -8801,6 +8801,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-gout-acid-uric",
+    "name": "🦶 Checklist gout và acid uric",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống, thuốc và theo dõi acid uric ở người bệnh gout.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-gout",
     "name": "🦶 Checklist dinh dưỡng gout",
     "aliases": [],
