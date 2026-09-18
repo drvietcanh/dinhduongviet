@@ -9065,6 +9065,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-tang-kali-mau",
+    "name": "⚡ Checklist tăng kali máu",
+    "aliases": [],
+    "description": "Bảng kiểm thuốc, thực phẩm và an toàn khi kali máu tăng.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-tao-bon",
     "name": "🚽 Checklist táo bón",
     "aliases": [],
