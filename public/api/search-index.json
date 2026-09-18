@@ -8841,6 +8841,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-loc-mang-bung",
+    "name": "🧴 Checklist lọc màng bụng tại nhà",
+    "aliases": [],
+    "description": "Bảng kiểm dinh dưỡng, vô khuẩn và theo dõi dịch lọc màng bụng tại nhà.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-loc-mau",
     "name": "🩺 Checklist dinh dưỡng khi lọc máu",
     "aliases": [],

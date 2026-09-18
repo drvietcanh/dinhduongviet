@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Checklist lọc màng bụng tại nhà";
+const desc = "Bảng kiểm dinh dưỡng, vô khuẩn và theo dõi dịch lọc màng bụng tại nhà.";
+const items = [
+  "Tôi rửa tay, đeo khẩu trang và thực hiện trao đổi dịch ở nơi sạch theo đúng đào tạo",
+  "Tôi ghi lượng dịch vào–ra, màu dịch, cân nặng, huyết áp và phù mỗi ngày",
+  "Tôi ăn đủ đạm theo đội thận, kiểm soát muối, đường và kali/phốt pho theo xét nghiệm",
+  "Tôi dùng thuốc, vitamin và thuốc gắn phosphate đúng giờ; báo khi táo bón hoặc tiêu chảy",
+  "Tôi giữ vị trí catheter sạch, khô và kiểm tra đỏ, đau, rỉ dịch hoặc hở băng",
+  "Tôi biết dấu hiệu viêm phúc mạc: dịch đục, đau bụng, sốt, nôn hoặc rét run",
+];
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/checklist-loc-mang-bung">
+  <main class="pd-page">
+    <header class="page-header">
+      <p class="eyebrow">Bảng kiểm thận</p>
+      <h1>🧴 Checklist lọc màng bụng tại nhà</h1>
+      <p>{desc} Bảng kiểm hỗ trợ tự quản lý, không thay thế đào tạo của đơn vị lọc màng bụng.</p>
+    </header>
+    <form id="pd-form" class="card">
+      <p class="hint">Đánh dấu những việc đã chuẩn bị:</p>
+      {items.map((item) => <label class="check"><input type="checkbox" data-pd /> <span>{item}</span></label>)}
+      <button type="submit">Xem tổng hợp</button>
+    </form>
+    <section id="result" class="card result" aria-live="polite" hidden></section>
+    <section class="card warning-card">
+      <h2>Cần liên hệ đơn vị lọc ngay khi</h2>
+      <p>Dịch tháo ra đục, đau bụng, sốt, nôn, rét run, catheter đỏ đau hoặc không vào/ra được dịch.</p>
+      <p class="warning">Không tự bỏ một lần trao đổi, tự thêm kháng sinh vào túi dịch hoặc tiếp tục chờ khi nghi viêm phúc mạc.</p>
+    </section>
+  </main>
+  <script is:inline define:vars={{ total: items.length }}>
+    const form = document.getElementById("pd-form");
+    const result = document.getElementById("result");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const done = document.querySelectorAll("[data-pd]:checked").length;
+      const missing = total - done;
+      result.hidden = false;
+      result.innerHTML = missing === 0
+        ? `<h2>Đã rà đủ ${total} mục</h2><p>Mang nhật ký dịch vào–ra, cân nặng, huyết áp và thuốc khi tái khám.</p>`
+        : `<h2>Còn ${missing} mục cần làm rõ</h2><p>Liên hệ điều dưỡng lọc màng bụng hoặc chuyên gia dinh dưỡng về phần còn thiếu.</p>`;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+  <style>
+    .pd-page { max-width: 760px; margin: 0 auto; padding: 32px 18px 52px; }
+    .page-header { text-align: center; margin-bottom: 22px; }
+    .eyebrow { margin: 0 0 8px; color: var(--brand); font-weight: 800; font-size: .8rem; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font-size: 1.75rem; } h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    p { color: var(--ink-secondary); line-height: 1.6; }
+    .card { padding: 20px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); box-shadow: var(--shadow-sm); }
+    .hint { margin-top: 0; font-weight: 700; }
+    .check { display: flex; align-items: flex-start; gap: 10px; margin: 13px 0; color: var(--ink); line-height: 1.5; }
+    .check input { margin-top: 4px; accent-color: var(--brand); }
+    button { width: 100%; min-height: 46px; margin-top: 8px; border: 0; border-radius: var(--radius); background: var(--brand); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+    .result, .warning-card { margin-top: 16px; } .result h2 { color: var(--brand); }
+    .warning { color: #a3432d; font-weight: 700; }
+    @media (max-width: 650px) { .pd-page { padding: 22px 14px 42px; } h1 { font-size: 1.45rem; } }
+  </style>
+</BaseLayout>
