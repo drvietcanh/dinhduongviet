@@ -8673,6 +8673,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-hoa-tri",
+    "name": "🎗️ Checklist dinh dưỡng khi hóa trị",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và an toàn thực phẩm cho người đang hóa trị hoặc có nguy cơ giảm bạch cầu.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-than-kali-phot-pho",
     "name": "🫘 Checklist kali–phốt pho",
     "aliases": [],
