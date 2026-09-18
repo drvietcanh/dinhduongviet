@@ -8697,6 +8697,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-mo-mau",
+    "name": "🫀 Checklist mỡ máu",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen hỗ trợ kiểm soát cholesterol và triglyceride cao.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-nuot-kho-dot-quy",
     "name": "🧠 Checklist nuốt khó sau đột quỵ",
     "aliases": [],
