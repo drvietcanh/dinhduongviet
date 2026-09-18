@@ -9041,6 +9041,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-thieu-mau-vi-chat",
+    "name": "🩸 Checklist thiếu máu và vi chất",
+    "aliases": [],
+    "description": "Bảng kiểm dinh dưỡng, xét nghiệm và dùng sắt/B12/folate an toàn khi thiếu máu.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-thieu-mau",
     "name": "🩸 Checklist thiếu máu thiếu sắt",
     "aliases": [],
