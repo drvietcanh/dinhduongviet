@@ -8681,6 +8681,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-gan-nhiem-mo",
+    "name": "🧡 Checklist gan nhiễm mỡ",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen hỗ trợ cải thiện gan nhiễm mỡ do chuyển hóa hoặc liên quan rượu bia.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ghep-than",
     "name": "🫁 Checklist dinh dưỡng sau ghép thận",
     "aliases": [],
