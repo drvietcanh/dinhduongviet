@@ -8689,6 +8689,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-cat-ruot-non",
+    "name": "🩺 Checklist dinh dưỡng sau cắt ruột non",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và theo dõi kém hấp thu sau phẫu thuật cắt ruột non.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ckd-chua-loc-mau",
     "name": "🫘 Checklist CKD chưa lọc máu",
     "aliases": [],
