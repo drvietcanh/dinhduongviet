@@ -8769,6 +8769,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-tre-em",
+    "name": "👶 Checklist dinh dưỡng trẻ em",
+    "aliases": [],
+    "description": "Bảng kiểm ăn bổ sung, tăng trưởng và an toàn bữa ăn cho trẻ nhỏ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-xo-gan",
     "name": "🧬 Checklist xơ gan và cổ trướng",
     "aliases": [],
