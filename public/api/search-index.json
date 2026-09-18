@@ -8689,6 +8689,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-loang-xuong",
+    "name": "🦴 Checklist loãng xương",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen hỗ trợ xương và giảm nguy cơ té ngã ở người lớn tuổi.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-nuot-kho-dot-quy",
     "name": "🧠 Checklist nuốt khó sau đột quỵ",
     "aliases": [],
