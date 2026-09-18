@@ -8817,6 +8817,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-rung-nhi-chong-dong",
+    "name": "💓 Checklist rung nhĩ và chống đông",
+    "aliases": [],
+    "description": "Bảng kiểm dùng thuốc an toàn, tương tác thực phẩm và dấu hiệu chảy máu ở người rung nhĩ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ruot-kich-thich",
     "name": "🌀 Checklist hội chứng ruột kích thích",
     "aliases": [],
