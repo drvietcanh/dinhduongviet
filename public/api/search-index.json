@@ -8665,6 +8665,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-than-kali-phot-pho",
+    "name": "🫘 Checklist kali–phốt pho",
+    "aliases": [],
+    "description": "Bảng kiểm chuẩn bị trao đổi về kali, phốt pho và nhãn thực phẩm khi có bệnh thận.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "chi-so-gi",
     "name": "Chỉ số GI thực phẩm Việt",
     "aliases": [],
