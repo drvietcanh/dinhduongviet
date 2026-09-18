@@ -1,0 +1,146 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { foods } from "../../data/nutrition";
+
+const title = "Tính chất xơ trong ngày";
+const desc = "Ước tính lượng chất xơ từ thực phẩm Việt Nam theo khẩu phần bạn nhập.";
+const fiberFoods = foods
+  .filter((food) => typeof food.nutrients.fiberG === "number" && food.nutrients.fiberG >= 0)
+  .map((food) => ({
+    id: food.id,
+    name: food.name,
+    category: food.category,
+    aliases: food.aliases,
+    fiberPer100g: food.nutrients.fiberG,
+    basis: food.basis,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name, "vi"));
+const data = JSON.stringify(fiberFoods).replace(/</g, "\\u003c");
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/tinh-chat-xo">
+  <main class="content-page fiber-page">
+    <div class="page-header">
+      <h1><span class="h-icon">🌾</span><span class="h-text">Tính chất xơ trong ngày</span></h1>
+      <p class="page-desc">{desc} Mốc giáo dục mặc định là <strong>25 g/ngày</strong> cho người lớn.</p>
+    </div>
+
+    <section class="target-card" aria-labelledby="target-title">
+      <div>
+        <h2 id="target-title">Mục tiêu tham khảo</h2>
+        <p>WHO dùng mốc ít nhất 25 g chất xơ tự nhiên/ngày cho người trên 10 tuổi; nhu cầu cá nhân có thể khác.</p>
+      </div>
+      <label class="target-field">Mục tiêu (g/ngày)
+        <input id="target-input" type="number" min="1" max="100" step="1" value="25" inputmode="decimal" />
+      </label>
+    </section>
+
+    <section class="builder-layout" aria-label="Chọn thực phẩm và xem tổng chất xơ">
+      <div>
+        <div class="section-label"><span class="sl-num">1</span> Chọn thực phẩm</div>
+        <input id="food-search" class="search-input" type="search" placeholder="Tìm rau, đậu, trái cây, hạt..." autocomplete="off" />
+        <div id="food-list" class="food-list"></div>
+      </div>
+      <aside>
+        <div class="section-label"><span class="sl-num">2</span> Tổng trong ngày</div>
+        <section class="total-card" aria-live="polite">
+          <div class="total-number" id="total-fiber">0 g</div>
+          <div class="total-label">chất xơ đã chọn</div>
+          <div class="progress"><span id="progress-fill"></span></div>
+          <p id="progress-note">Thêm thực phẩm để xem tiến độ.</p>
+          <button id="reset-btn" type="button">Làm lại</button>
+        </section>
+      </aside>
+    </section>
+
+    <section class="safety-note">
+      <strong>⚠️ Lưu ý an toàn:</strong>
+      <span>Tăng chất xơ từ từ và uống đủ nước. Nếu đang tắc ruột, hẹp ruột, tiêu chảy cấp/đợt cấp bệnh ruột hoặc được dặn hạn chế chất xơ, hãy hỏi bác sĩ/chuyên gia trước khi dùng mục tiêu này. Công cụ không chẩn đoán bệnh.</span>
+    </section>
+  </main>
+
+  <script is:inline id="fiber-data" type="application/json" set:html={data}></script>
+  <script>
+    const foods = JSON.parse(document.getElementById("fiber-data")?.textContent || "[]");
+    const selected = [];
+    const list = document.getElementById("food-list");
+    const search = document.getElementById("food-search");
+    const target = document.getElementById("target-input");
+    const total = document.getElementById("total-fiber");
+    const fill = document.getElementById("progress-fill");
+    const note = document.getElementById("progress-note");
+
+    const normalize = (value) => String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
+    const format = (value) => Number(value).toFixed(1).replace(/\.0$/, "");
+
+    function renderFoods() {
+      const query = normalize(search?.value || "");
+      const matches = foods.filter((food) => normalize([food.name, food.category, ...(food.aliases || [])].join(" ")).includes(query)).slice(0, 60);
+      if (!list) return;
+      list.innerHTML = matches.map((food) => `
+        <div class="food-row" data-id="${food.id}">
+          <div><strong>${food.name}</strong><small>${food.category} · ${format(food.fiberPer100g)} g chất xơ/100 g</small></div>
+          <label><input class="grams" type="number" min="1" max="2000" step="1" value="100" aria-label="Khối lượng ${food.name}"> g</label>
+          <button class="add-btn" type="button">Thêm</button>
+        </div>`).join("") || '<p class="empty">Không tìm thấy thực phẩm có dữ liệu chất xơ.</p>';
+      list.querySelectorAll(".add-btn").forEach((button) => button.addEventListener("click", () => {
+        const row = button.closest(".food-row");
+        const food = foods.find((item) => item.id === row?.dataset.id);
+        const grams = Number(row?.querySelector(".grams")?.value || 0);
+        if (food && grams > 0) selected.push({ food, grams });
+        renderTotal();
+      }));
+    }
+
+    function renderTotal() {
+      const sum = selected.reduce((value, item) => value + (item.food.fiberPer100g * item.grams) / 100, 0);
+      const goal = Math.max(1, Number(target?.value || 25));
+      const percent = Math.min(100, (sum / goal) * 100);
+      if (total) total.textContent = `${format(sum)} g`;
+      if (fill) fill.style.width = `${percent}%`;
+      if (note) note.textContent = selected.length === 0 ? "Thêm thực phẩm để xem tiến độ." : `${format(percent)}% mục tiêu tham khảo · ${selected.length} mục đã chọn.`;
+    }
+
+    search?.addEventListener("input", renderFoods);
+    target?.addEventListener("input", renderTotal);
+    document.getElementById("reset-btn")?.addEventListener("click", () => { selected.splice(0); renderTotal(); });
+    renderFoods();
+    renderTotal();
+  </script>
+
+  <style>
+    .content-page { max-width: 900px; margin: 0 auto; padding: 32px 20px 52px; }
+    .page-header { text-align: center; margin-bottom: 24px; }
+    .page-header h1 { display:flex; justify-content:center; gap:10px; margin:0 0 10px; }
+    .h-icon { font-size:1.8rem; }
+    .h-text { font-size:1.65rem; }
+    .page-desc { color:var(--ink-secondary); line-height:1.6; }
+    .target-card, .total-card, .safety-note { border:1px solid var(--card-border); border-radius:var(--radius-lg); background:var(--card); padding:18px; }
+    .target-card { display:flex; justify-content:space-between; gap:18px; align-items:center; background:var(--brand-light); }
+    h2 { margin:0 0 6px; font-size:1.1rem; }
+    p { line-height:1.55; }
+    .target-field { display:grid; gap:6px; min-width:150px; font-weight:700; }
+    input { border:1px solid var(--card-border); border-radius:var(--radius); background:var(--bg); color:var(--ink); padding:10px; min-height:42px; font:inherit; }
+    .builder-layout { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(260px,.8fr); gap:18px; margin-top:20px; align-items:start; }
+    .section-label { display:flex; align-items:center; gap:9px; font-weight:700; margin:0 0 10px; }
+    .sl-num { width:26px; height:26px; border-radius:50%; display:grid; place-items:center; background:var(--brand-light); color:var(--brand); font-size:.8rem; }
+    .search-input { width:100%; margin-bottom:12px; }
+    .food-list { display:grid; gap:8px; }
+    .food-row { display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:10px; border:1px solid var(--card-border); border-radius:var(--radius); padding:11px 12px; background:var(--card); }
+    .food-row strong { display:block; font-size:.9rem; }
+    .food-row small { display:block; color:var(--ink-secondary); margin-top:4px; }
+    .food-row label { display:flex; align-items:center; gap:4px; color:var(--ink-secondary); font-size:.82rem; }
+    .grams { width:70px; min-height:36px; padding:6px; }
+    button { min-height:38px; border:0; border-radius:var(--radius); background:var(--brand); color:white; padding:8px 13px; font-weight:700; cursor:pointer; }
+    .total-card { position:sticky; top:88px; text-align:center; }
+    .total-number { color:var(--brand); font-size:2.2rem; font-weight:800; }
+    .total-label { color:var(--ink-secondary); }
+    .progress { height:12px; background:var(--card-border); border-radius:8px; overflow:hidden; margin:18px 0 8px; }
+    .progress span { display:block; height:100%; width:0; background:var(--brand); transition:width .25s; }
+    .total-card p { color:var(--ink-secondary); font-size:.85rem; min-height:40px; }
+    .total-card button { background:transparent; color:var(--brand); border:1px solid var(--brand); }
+    .safety-note { display:flex; gap:8px; margin-top:18px; color:var(--ink-secondary); font-size:.88rem; }
+    .empty { color:var(--ink-secondary); }
+    @media (max-width:700px) { .target-card, .builder-layout { grid-template-columns:1fr; display:grid; } .total-card { position:static; } .food-row { grid-template-columns:1fr; } .food-row label, .food-row button { width:100%; } .h-text { font-size:1.35rem; } }
+  </style>
+</BaseLayout>
