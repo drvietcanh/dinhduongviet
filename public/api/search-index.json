@@ -8665,6 +8665,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-bien-chung-mat-than-kinh",
+    "name": "👁️ Checklist mắt và thần kinh",
+    "aliases": [],
+    "description": "Bảng kiểm theo dõi mắt, cảm giác, an toàn đi lại và chăm sóc hằng ngày ở người đái tháo đường.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-cachexia-ung-thu",
     "name": "🎗️ Checklist suy mòn cơ/cachexia",
     "aliases": [],
