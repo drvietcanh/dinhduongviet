@@ -8705,6 +8705,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-xo-gan",
+    "name": "🧬 Checklist xơ gan và cổ trướng",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và theo dõi an toàn cho người xơ gan, cổ trướng hoặc bệnh gan tiến triển.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "chi-so-gi",
     "name": "Chỉ số GI thực phẩm Việt",
     "aliases": [],
