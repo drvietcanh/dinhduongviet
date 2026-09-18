@@ -8777,6 +8777,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-tao-bon",
+    "name": "🚽 Checklist táo bón",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen ăn uống và sinh hoạt hỗ trợ cải thiện táo bón.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-thai-ky",
     "name": "🤰 Checklist dinh dưỡng thai kỳ",
     "aliases": [],
