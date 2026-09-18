@@ -2418,7 +2418,7 @@ for (const food of foods) {
 
   // Aromatic roots, bulbs and hot peppers are used primarily as seasonings;
   // keep them discoverable in Rau gia vị rather than the bulk vegetable list.
-  if (/^(?:Gừng tươi|Nghệ tươi|Riềng|Sả cây|Ớt hiểm|Ớt sừng|Hành tím)(?:\s|$)/i.test(food.name)) {
+  if (/^(?:Gừng tươi|Nghệ tươi|Riềng|Sả cây|Ớt hiểm|Ớt sừng|Ớt đỏ to, tươi|Ớt xanh to, tươi|Hành tím|Củ nén)(?:\s|$)/i.test(food.name)) {
     food.category = "Rau gia vị";
   }
 

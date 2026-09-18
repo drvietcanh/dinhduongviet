@@ -377,7 +377,7 @@ const categoryNameRules = [
     reason: "Quả đậu non và giá đậu là rau tươi; chỉ hạt khô/tách hạt mới thuộc nhóm Đậu.",
   },
   {
-    pattern: /^(?:gừng tươi|nghệ tươi|riềng|sả cây|ớt hiểm|ớt sừng|hành tím)(?:\s|$)/i,
+    pattern: /^(?:gừng tươi|nghệ tươi|riềng|sả cây|ớt hiểm|ớt sừng|ớt đỏ to, tươi|ớt xanh to, tươi|hành tím|củ nén)(?:\s|$)/i,
     expectedCategories: new Set(["Rau gia vị"]),
     reason: "Rễ, củ thơm và ớt cay được dùng chủ yếu để nêm, nên thuộc nhóm Rau gia vị.",
   },
