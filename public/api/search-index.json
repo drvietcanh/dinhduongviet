@@ -12613,8 +12613,8 @@
       "tóp mỡ lợn",
       "top mo"
     ],
-    "description": "Tra cứu Tóp mỡ: khoảng 480 kcal/100g, nhóm Thịt chế biến.",
-    "category": "Thịt chế biến",
+    "description": "Tra cứu Tóp mỡ: khoảng 480 kcal/100g, nhóm Dầu mỡ.",
+    "category": "Dầu mỡ",
     "kcal": 480
   },
   {
@@ -20768,8 +20768,8 @@
     "aliases": [
       "com chay cha bong"
     ],
-    "description": "Tra cứu Cơm cháy chà bông: khoảng 266 kcal/100g, nhóm Thịt chế biến.",
-    "category": "Thịt chế biến",
+    "description": "Tra cứu Cơm cháy chà bông: khoảng 266 kcal/100g, nhóm Tinh bột.",
+    "category": "Tinh bột",
     "kcal": 266
   },
   {

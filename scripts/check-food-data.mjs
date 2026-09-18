@@ -387,6 +387,16 @@ const categoryNameRules = [
     reason: "Chân gà sả tắc là món gà đã tẩm ướp/chế biến sẵn, cần tách khỏi nhóm thịt tươi.",
   },
   {
+    pattern: /^tóp mỡ(?:\s|$)/i,
+    expectedCategories: new Set(["Dầu mỡ"]),
+    reason: "Tóp mỡ là phần mỡ heo đã rán, thuộc nhóm chất béo thay vì thịt chế biến.",
+  },
+  {
+    pattern: /^cơm cháy chà bông(?:\s|$)/i,
+    expectedCategories: new Set(["Tinh bột"]),
+    reason: "Cơm cháy chà bông có nền cơm/gạo là thành phần chính, nên thuộc nhóm Tinh bột.",
+  },
+  {
     pattern: /^(?:cá viên|chả mực|chả cá|tôm viên)(?:\s|$)/i,
     expectedCategories: new Set(["Hải sản"]),
     reason: "Sản phẩm chế biến từ cá/mực/tôm cần nằm trong nhóm Hải sản, không phải Thịt chế biến.",
