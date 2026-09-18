@@ -8761,6 +8761,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-tang-huyet-ap",
+    "name": "💓 Checklist tăng huyết áp",
+    "aliases": [],
+    "description": "Bảng kiểm thói quen ăn uống và theo dõi giúp kiểm soát huyết áp.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-thai-ky",
     "name": "🤰 Checklist dinh dưỡng thai kỳ",
     "aliases": [],

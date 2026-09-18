@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Checklist dinh dưỡng tăng huyết áp";
+const desc = "Bảng kiểm thói quen ăn uống và theo dõi giúp kiểm soát huyết áp.";
+const items = [
+  "Tôi đo huyết áp đúng tư thế, ghi ngày/giờ và mang kết quả khi tái khám",
+  "Tôi đọc nhãn natri, giảm món chế biến sẵn, đồ muối và nước chấm nhiều muối",
+  "Bữa ăn có rau, trái cây phù hợp, đậu/ngũ cốc nguyên hạt và đạm lành mạnh",
+  "Tôi hạn chế rượu bia, đồ uống có đường và không hút thuốc",
+  "Tôi vận động phù hợp và ngủ đủ theo khả năng",
+  "Tôi dùng thuốc đúng giờ, đã hỏi trước khi dùng thuốc cảm/thuốc bổ hoặc muối thay thế",
+];
+---
+
+<BaseLayout title={title} description={desc} canonical="/cong-cu/checklist-tang-huyet-ap">
+  <main class="bp-page">
+    <header class="page-header">
+      <p class="eyebrow">Bảng kiểm tim mạch</p>
+      <h1>💓 Checklist tăng huyết áp</h1>
+      <p>{desc} Mức natri, kali, nước và thuốc phải cá thể hóa nếu có bệnh thận/tim hoặc thai kỳ.</p>
+    </header>
+    <form id="bp-form" class="card">
+      <p class="hint">Đánh dấu những điều đã chuẩn bị:</p>
+      {items.map((item) => <label class="check"><input type="checkbox" data-bp /> <span>{item}</span></label>)}
+      <button type="submit">Xem tổng hợp</button>
+    </form>
+    <section id="result" class="card result" aria-live="polite" hidden></section>
+    <section class="card warning-card">
+      <h2>Dấu hiệu cấp cứu</h2>
+      <p>Huyết áp rất cao kèm đau ngực, khó thở, yếu liệt, méo miệng, nói khó, lú lẫn hoặc đau đầu dữ dội cần gọi cấp cứu.</p>
+      <p class="warning">Không tự ngừng thuốc hạ áp hoặc uống thêm liều để “hạ nhanh” nếu chưa có kế hoạch của bác sĩ.</p>
+    </section>
+  </main>
+  <script is:inline define:vars={{ total: items.length }}>
+    const form = document.getElementById("bp-form");
+    const result = document.getElementById("result");
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const done = document.querySelectorAll("[data-bp]:checked").length;
+      const missing = total - done;
+      result.hidden = false;
+      result.innerHTML = missing === 0
+        ? `<h2>Đã rà đủ ${total} mục</h2><p>Tiếp tục ghi huyết áp, thuốc và bữa ăn để trao đổi khi tái khám.</p>`
+        : `<h2>Còn ${missing} mục cần làm rõ</h2><p>Chọn một thay đổi nhỏ và hỏi bác sĩ/dinh dưỡng viên về phần còn thiếu.</p>`;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+  <style>
+    .bp-page { max-width: 760px; margin: 0 auto; padding: 32px 18px 52px; }
+    .page-header { text-align: center; margin-bottom: 22px; }
+    .eyebrow { margin: 0 0 8px; color: var(--brand); font-weight: 800; font-size: .8rem; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font-size: 1.75rem; } h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    p { color: var(--ink-secondary); line-height: 1.6; }
+    .card { padding: 20px; border: 1px solid var(--card-border); border-radius: var(--radius-lg); background: var(--card); box-shadow: var(--shadow-sm); }
+    .hint { margin-top: 0; font-weight: 700; }
+    .check { display: flex; align-items: flex-start; gap: 10px; margin: 13px 0; color: var(--ink); line-height: 1.5; }
+    .check input { margin-top: 4px; accent-color: var(--brand); }
+    button { width: 100%; min-height: 46px; margin-top: 8px; border: 0; border-radius: var(--radius); background: var(--brand); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+    .result, .warning-card { margin-top: 16px; } .result h2 { color: var(--brand); }
+    .warning { color: #a3432d; font-weight: 700; }
+    @media (max-width: 650px) { .bp-page { padding: 22px 14px 42px; } h1 { font-size: 1.45rem; } }
+  </style>
+</BaseLayout>
