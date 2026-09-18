@@ -8993,6 +8993,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-xa-tri-dau-co",
+    "name": "🦷 Checklist dinh dưỡng sau xạ trị đầu–cổ",
+    "aliases": [],
+    "description": "Bảng kiểm ăn uống và chăm sóc miệng khi xạ trị vùng đầu cổ.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-xo-gan-mat-bu",
     "name": "🫀 Checklist xơ gan mất bù",
     "aliases": [],
