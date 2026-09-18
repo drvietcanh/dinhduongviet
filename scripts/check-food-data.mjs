@@ -377,6 +377,11 @@ const categoryNameRules = [
     reason: "Rễ, củ thơm và ớt cay được dùng chủ yếu để nêm, nên thuộc nhóm Rau gia vị.",
   },
   {
+    pattern: /^tỏi tây(?:\s|$)/i,
+    expectedCategories: new Set(["Rau xanh"]),
+    reason: "Tỏi tây là rau ăn thân/lá; không áp dụng quy tắc gia vị dành cho hành tím và củ thơm.",
+  },
+  {
     pattern: /^nước dưa chua(?:\s|$)/i,
     expectedCategories: new Set(["Gia vị"]),
     reason: "Nước muối dưa là nước ngâm đậm natri dùng như gia vị/nền nấu, không phải nước dùng độc lập.",
