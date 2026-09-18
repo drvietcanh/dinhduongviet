@@ -417,6 +417,11 @@ const categoryNameRules = [
     reason: "Thịt lợn hộp là sản phẩm đóng hộp, cần đồng bộ với nhóm Đồ hộp.",
   },
   {
+    pattern: /^(?:thịt kho hộp \(lon\)|paté sông)(?:\s|$)/i,
+    expectedCategories: new Set(["Đồ hộp"]),
+    reason: "Tên sản phẩm chỉ rõ dạng thịt/patê đóng hộp, cần giữ trong nhóm Đồ hộp.",
+  },
+  {
     pattern: /^(?:cá viên|chả mực|chả cá|tôm viên)(?:\s|$)/i,
     expectedCategories: new Set(["Hải sản"]),
     reason: "Sản phẩm chế biến từ cá/mực/tôm cần nằm trong nhóm Hải sản, không phải Thịt chế biến.",
