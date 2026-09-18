@@ -8801,6 +8801,14 @@
   },
   {
     "type": "tool",
+    "slug": "sang-loc-suy-dinh-duong",
+    "name": "🔎 Sàng lọc nguy cơ suy dinh dưỡng",
+    "aliases": [],
+    "description": "Công cụ giáo dục giúp nhận diện khi nào người lớn nên được đánh giá dinh dưỡng chuyên môn.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "so-sanh-bua-an",
     "name": "🍽️ So sánh bữa ăn",
     "aliases": [],
@@ -8869,6 +8877,14 @@
     "name": "🔢 Tính carbohydrate trong bữa ăn",
     "aliases": [],
     "description": "Ước tính tổng carbohydrate từ thực phẩm và món ăn trong dữ liệu Dinh dưỡng Việt.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
+    "slug": "tinh-chat-xo",
+    "name": "🌾 Tính chất xơ trong ngày",
+    "aliases": [],
+    "description": "Ước tính lượng chất xơ từ thực phẩm Việt Nam theo khẩu phần bạn nhập.",
     "category": "Công cụ"
   },
   {
