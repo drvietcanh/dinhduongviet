@@ -8873,6 +8873,14 @@
   },
   {
     "type": "tool",
+    "slug": "checklist-hp-da-day",
+    "name": "🫃 Checklist viêm loét dạ dày và H. pylori",
+    "aliases": [],
+    "description": "Bảng kiểm thuốc, ăn uống và theo dõi an toàn khi viêm loét dạ dày hoặc điều trị H. pylori.",
+    "category": "Công cụ"
+  },
+  {
+    "type": "tool",
     "slug": "checklist-ibd-dot-cap",
     "name": "🧻 Checklist đợt cấp viêm ruột",
     "aliases": [],
