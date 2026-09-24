@@ -665,11 +665,12 @@ const searchIntents = [
 .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; pointer-events: none; }
 .search-clear {
   position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--bg-soft);
+  width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--bg-soft);
   cursor: pointer; font-size: 0.85rem; display: none; color: var(--ink-tertiary);
-  line-height: 36px; text-align: center; transition: all var(--transition);
+  line-height: 44px; text-align: center; transition: all var(--transition);
 }
 .search-clear:hover { background: var(--line-light); color: var(--ink); }
+.search-clear:focus-visible { outline: 3px solid color-mix(in srgb,var(--brand) 45%,transparent); outline-offset: 2px; }
 
 /* Suggestions dropdown */
 .suggestions-dropdown {
