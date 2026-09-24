@@ -246,7 +246,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   .category-tile-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-light2), var(--brand)); }
   .catalog-section { scroll-margin-top: 92px; padding-top: 4px; }
   .catalog-summary { min-height: 22px; }
-  .reset-library-filters { min-height: 36px; padding: 6px 10px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font: inherit; font-size: .76rem; font-weight: 750; }
+  .reset-library-filters { min-height: 44px; padding: 6px 12px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font: inherit; font-size: .76rem; font-weight: 750; }
   .reset-library-filters:hover { border-color: var(--brand-light2); color: var(--brand-dark); }
   .catalog-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; padding: 12px; border: 1px solid var(--card-border); border-radius: 18px; background: var(--bg-soft); }
   .control-field, .numeric-controls label { display: grid; gap: 5px; }
@@ -260,7 +260,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   .advanced-filter-body { padding: 0 14px 14px; border-top: 1px solid var(--line); }
   .numeric-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-top: 13px; }
   .tag-filter-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
-  .tag-filter { min-height: 32px; padding: 4px 9px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font: inherit; font-size: .74rem; font-weight: 700; }
+  .tag-filter { min-height: 44px; padding: 6px 11px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); color: var(--ink-secondary); cursor: pointer; font: inherit; font-size: .74rem; font-weight: 700; }
   .tag-filter:hover { border-color: var(--brand-light2); color: var(--brand-dark); }
   .tag-filter.active { border-color: var(--brand); background: var(--brand); color: white; }
   .advanced-filter-note { margin: 11px 0 0; color: var(--ink-tertiary); font-size: .75rem; line-height: 1.5; }
@@ -310,6 +310,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   .tag-filter:focus-visible,
   .load-more-button:focus-visible,
   .show-all-button:focus-visible,
+  .reset-library-filters:focus-visible,
   .control-field select:focus-visible,
   .numeric-controls input:focus-visible,
   .advanced-filter-panel summary:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 3px; }
