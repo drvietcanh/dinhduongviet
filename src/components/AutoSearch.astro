@@ -1,25 +1,29 @@
+---
+import HomeIcon from "./HomeIcon.astro";
+---
+
 <autocomplete-search>
   <div class="ac-backdrop" style="display: none;"></div>
   <div class="ac-search-wrapper">
     <div class="ac-search-row">
-      <span class="ac-search-icon">🔍</span>
+      <span class="ac-search-icon" aria-hidden="true"><HomeIcon name="search" size={20} /></span>
       <input type="text" class="ac-input" placeholder="Tìm thực phẩm, món ăn, bệnh, công cụ..." aria-label="Tìm kiếm" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="home-search-suggestions" aria-expanded="false" />
       <div class="ac-actions">
         <button class="ac-clear" style="display: none;" aria-label="Xóa">✕</button>
         <div class="ac-hotkey">Ctrl K</div>
-        <button class="ac-submit" style="display: none;">🔍</button>
+        <button class="ac-submit" style="display: none;" aria-label="Tìm kiếm"><HomeIcon name="search" size={19} /></button>
       </div>
     </div>
     <div class="ac-dropdown" id="home-search-suggestions" role="listbox" aria-label="Gợi ý tìm kiếm" style="display: none;"></div>
   </div>
   <div class="ac-suggestions">
     <span class="ac-suggestion-label">Gợi ý nhanh:</span>
-    <button class="ac-chip" data-q="bmi">⚖️ BMI</button>
-    <button class="ac-chip" data-q="đái tháo đường">🩸 đái tháo đường</button>
-    <button class="ac-chip" data-q="đạm">🥩 nhu cầu đạm</button>
-    <button class="ac-chip" data-q="phở bò">🍜 phở bò</button>
-    <button class="ac-chip" data-q="trứng">🥚 trứng</button>
-    <button class="ac-chip" data-q="bún">🍜 bún</button>
+    <button class="ac-chip" data-q="bmi">BMI</button>
+    <button class="ac-chip" data-q="đái tháo đường">Đái tháo đường</button>
+    <button class="ac-chip" data-q="đạm">Nhu cầu đạm</button>
+    <button class="ac-chip" data-q="phở bò">Phở bò</button>
+    <button class="ac-chip" data-q="trứng">Trứng</button>
+    <button class="ac-chip" data-q="bún">Bún</button>
   </div>
 </autocomplete-search>
 
@@ -272,7 +276,7 @@
     box-shadow: var(--shadow), 0 0 0 3px var(--brand-light2);
     transform: translateY(-2px);
   }
-  .ac-search-icon { padding: 0 12px; font-size: 1.2rem; color: var(--ink-tertiary); }
+  .ac-search-icon { display: inline-flex; align-items: center; padding: 0 12px; color: var(--ink-tertiary); }
   .ac-actions { display: flex; align-items: center; gap: 8px; padding-right: 8px; }
   .ac-hotkey {
     background: var(--bg-soft); border: 1px solid var(--line); border-radius: 6px;
@@ -281,7 +285,7 @@
   }
   .ac-clear {
     background: var(--bg-soft); border: none; border-radius: 50%;
-    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
     font-size: 0.8rem; color: var(--ink-tertiary); cursor: pointer; transition: background 0.2s;
   }
   .ac-clear:hover { background: var(--line-light); color: var(--ink); }
@@ -308,6 +312,8 @@
   }
   .ac-input:focus { outline: none; box-shadow: none; }
   .ac-submit {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; min-width: 48px; min-height: 48px;
     background: var(--brand);
     color: white;
     border: none;
@@ -317,6 +323,7 @@
     transition: background 0.2s;
   }
   .ac-submit:hover { background: var(--brand-dark); }
+  .ac-submit:focus-visible,.ac-clear:focus-visible,.ac-chip:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 2px; }
   .ac-dropdown {
     position: absolute;
     top: calc(100% + 6px);
