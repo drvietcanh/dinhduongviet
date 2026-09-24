@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "project": {
+    "name": "dinh-duong-viet",
+    "productType": "Vietnamese nutrition knowledge and self-management reference",
+    "stack": [
+      "astro"
+    ]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light and dark",
+    "colors": {
+      "primary": "existing --brand green tokens",
+      "surface": "existing --card and --bg-soft tokens",
+      "semantic": "restrained health status colors with text labels"
+    },
+    "typography": {
+      "family": "existing self-hosted sans-serif",
+      "bodyMinimum": "16px on mobile"
+    },
+    "spacing": { "system": "4px and 8px rhythm" },
+    "radius": { "system": "12px controls, 18-22px sections" },
+    "shadows": { "system": "existing subtle project shadow tokens" },
+    "motion": { "system": "functional 180-250ms transitions with reduced-motion support" },
+    "density": "comfortable"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Use existing Astro components and semantic design tokens",
+      "Keep health guidance calm, explicit, and non-diagnostic",
+      "Maintain visible keyboard focus and 44px touch targets",
+      "Support 360px through large desktop without horizontal overflow"
+    ],
+    "avoid": [
+      "Decorative glassmorphism and excessive gradients",
+      "Emoji as primary structural icons",
+      "Dense walls of equal-priority cards",
+      "Medical claims inferred from a single locally stored measurement"
+    ]
+  },
+  "decisions": [
+    {
+      "date": "2026-09-24",
+      "scope": "homepage",
+      "choice": "Clinical editorial direction: search-first hero, restrained surfaces, SVG icon language, progressive disclosure, and fewer high-priority choices on mobile."
+    },
+    {
+      "date": "2026-09-24",
+      "scope": "site-wide shell, article template, food library and forms",
+      "choice": "Extend the clinical editorial direction across the site: flat token-driven surfaces, stable hover states, SVG controls, skip navigation, explicit control state, 44px mobile targets, 16px mobile form text, and global reduced-motion handling."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "project.stack:astro",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-09-24T12:40:14.821Z"
+}

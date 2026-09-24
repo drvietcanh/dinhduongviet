@@ -36,7 +36,8 @@ const recipeData = recipes.map(r => {
     <div class="mt-nav">
       <button class="mt-btn mt-btn-icon" onclick="MT.changeDate(-1)" title="Ngày trước">◀</button>
       <div style="flex:1;text-align:center;">
-        <input type="date" id="mt-date" onchange="MT.goDate(this.value)" />
+        <label class="sr-only" for="mt-date">Ngày ghi nhật ký</label>
+        <input type="date" id="mt-date" aria-label="Ngày ghi nhật ký" onchange="MT.goDate(this.value)" />
       </div>
       <button class="mt-btn mt-btn-icon" onclick="MT.changeDate(1)" title="Ngày sau">▶</button>
       <button class="mt-btn" onclick="MT.goToday()">Hôm nay</button>

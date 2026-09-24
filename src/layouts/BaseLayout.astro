@@ -1,6 +1,7 @@
 ---
 import Fonts from "../components/Fonts.astro";
 import ToolMethodologyCard from "../components/ToolMethodologyCard.astro";
+import SiteIcon from "../components/SiteIcon.astro";
 import { getToolMethodology } from "../data/tool-methodology";
 import { foods, recipes } from "../data/nutrition";
 import { articles } from "../data/articles";
@@ -178,6 +179,12 @@ if (isArticle) {
     <!-- Self-hosted fonts (replaces Google Fonts CDN) -->
     <Fonts />
 
+    <script is:inline>
+      try {
+        document.documentElement.setAttribute("data-theme", localStorage.getItem("ddv-theme") === "dark" ? "dark" : "light");
+      } catch (_) {}
+    </script>
+
     <title>{title}</title>
 
     <style is:global>
@@ -186,14 +193,10 @@ if (isArticle) {
       html { scroll-behavior: smooth; }
       body {
         font-family: 'Inter', 'Noto Sans', system-ui, -apple-system, sans-serif;
-        background:
-          radial-gradient(circle at 10% -4%, rgba(16, 185, 129, 0.12), transparent 30rem),
-          radial-gradient(circle at 92% 4%, rgba(14, 165, 233, 0.10), transparent 26rem),
-          radial-gradient(circle at 54% 38rem, rgba(245, 158, 11, 0.05), transparent 22rem),
-          linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 34rem);
+        background: var(--bg);
         color: var(--ink);
         line-height: 1.6;
-        min-height: 100vh;
+        min-height: 100dvh;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
       }
@@ -212,6 +215,32 @@ if (isArticle) {
       img { max-width: 100%; height: auto; display: block; }
       ul { list-style: none; }
       table { border-collapse: collapse; width: 100%; }
+      button, input, select, textarea { font: inherit; }
+      .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .skip-link {
+        position: fixed;
+        top: 8px;
+        left: 12px;
+        z-index: 1000;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: var(--ink);
+        color: var(--bg);
+        font-weight: 800;
+        transform: translateY(-160%);
+        transition: transform 0.16s ease;
+      }
+      .skip-link:focus { transform: translateY(0); }
 
       /* ===================== CSS CUSTOM PROPERTIES ===================== */
       :root {
@@ -344,37 +373,30 @@ if (isArticle) {
         --truth-text: #81c784;
       }
 
-      /* ===================== UI OVERHAUL (GLASSMORPHISM) ===================== */
+      /* ===================== SHARED SURFACES ===================== */
       .card {
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.62)),
-          var(--card);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(148, 163, 184, 0.20);
-        border-radius: var(--radius-lg);
-        box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.055);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
         padding: 24px;
         margin-bottom: 24px;
-        transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+        transition: box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
       }
       [data-theme="dark"] .card {
-        background:
-          linear-gradient(180deg, rgba(30, 41, 59, 0.74), rgba(15, 23, 42, 0.58)),
-          var(--card);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--card);
+        border-color: var(--line);
       }
       .card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(16, 185, 129, 0.34);
-        box-shadow: 0 16px 42px -18px rgba(15, 23, 42, 0.22);
+        border-color: var(--brand-light2);
+        box-shadow: var(--shadow);
       }
       .cc-input {
         width: 100%;
         padding: 12px 16px;
         border: 1px solid var(--card-border);
         border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.5);
+        background: var(--card);
         color: var(--ink);
         font-family: inherit;
         font-size: 1rem;
@@ -382,7 +404,7 @@ if (isArticle) {
         box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
       }
       [data-theme="dark"] .cc-input {
-        background: rgba(15, 23, 42, 0.5);
+        background: var(--card);
       }
       .cc-input:focus {
         outline: none;
@@ -392,14 +414,14 @@ if (isArticle) {
       }
       .cc-btn {
         padding: 14px 28px;
-        background: var(--brand-gradient);
+        background: var(--brand);
         color: white;
         border: none;
         border-radius: var(--radius);
         font-size: 1.05rem;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 0.18s ease, box-shadow 0.18s ease;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -407,11 +429,8 @@ if (isArticle) {
         box-shadow: 0 4px 14px 0 rgba(5, 150, 105, 0.39);
       }
       .cc-btn:hover {
-        transform: translateY(-2px);
+        background: var(--brand-dark);
         box-shadow: 0 6px 20px rgba(5, 150, 105, 0.23);
-      }
-      .cc-btn:active {
-        transform: translateY(1px);
       }
 
       @keyframes slideUpFade {
@@ -473,21 +492,17 @@ if (isArticle) {
       .usage-step,
       .ki-start-card,
       .ki-section-title {
-        box-shadow: 0 10px 30px -22px rgba(15, 23, 42, 0.28);
+        box-shadow: var(--shadow-sm);
       }
       .filter-panel,
       .quick-start-panel,
       .ki-start-card {
-        background:
-          linear-gradient(135deg, rgba(236, 253, 245, 0.62), rgba(255, 255, 255, 0.72) 42%, rgba(224, 242, 254, 0.36)),
-          var(--card);
+        background: var(--card);
       }
       [data-theme="dark"] .filter-panel,
       [data-theme="dark"] .quick-start-panel,
       [data-theme="dark"] .ki-start-card {
-        background:
-          linear-gradient(135deg, rgba(6, 78, 59, 0.34), rgba(15, 23, 42, 0.70) 46%, rgba(12, 74, 110, 0.24)),
-          var(--card);
+        background: var(--card);
       }
       .filter-row label span {
         color: var(--ink-secondary);
@@ -505,9 +520,9 @@ if (isArticle) {
       }
        /* ===================== NAV ===================== */
       .top-bar {
-        background: rgba(255, 255, 255, 0.82);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: color-mix(in srgb, var(--card) 96%, transparent);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         color: var(--ink);
         padding: 10px 24px;
         position: sticky;
@@ -515,15 +530,15 @@ if (isArticle) {
         z-index: 100;
         max-width: 1160px;
         margin: 0 auto 32px;
-        border-radius: 50px;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        box-shadow: 0 16px 42px -22px rgba(15, 23, 42, 0.28);
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-sm);
         transition: background 0.3s, border-color 0.3s;
       }
       [data-theme="dark"] .top-bar {
-        background: rgba(30, 41, 59, 0.75);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        background: color-mix(in srgb, var(--card) 96%, transparent);
+        border-color: var(--line);
+        box-shadow: var(--shadow-sm);
       }
       .top-bar .wrapper {
         display: flex;
@@ -633,7 +648,7 @@ if (isArticle) {
         border-radius: 20px;
         padding: 0 14px;
         gap: 8px;
-        min-height: 38px;
+        min-height: 44px;
         flex-grow: 1;
         min-width: 0;
         max-width: 260px;
@@ -651,47 +666,47 @@ if (isArticle) {
         border: 0;
         background: transparent;
         color: var(--ink);
-        font-size: 0.85rem;
+        font-size: 1rem;
         padding: 6px 0;
         width: 100%;
         outline: none;
         font-family: inherit;
       }
       .nav-search input::placeholder { color: var(--ink-tertiary); }
-      .nav-search .search-icon { font-size: 0.85rem; opacity: 0.7; flex-shrink: 0; }
+      .nav-search .search-icon { color: var(--ink-secondary); flex-shrink: 0; }
 
       .hamburger {
         display: none;
         color: var(--ink);
-        font-size: 1.5rem;
         line-height: 1;
         flex-shrink: 0;
       }
+      .hamburger .icon-close { display: none; }
+      .wrapper.nav-open .hamburger .icon-menu { display: none; }
+      .wrapper.nav-open .hamburger .icon-close { display: block; }
       .theme-toggle {
         background: var(--bg-soft);
         border: 1px solid var(--line);
         color: var(--ink);
-        min-width: 38px;
-        min-height: 38px;
-        width: 38px;
-        height: 38px;
+        min-width: 44px;
+        min-height: 44px;
+        width: 44px;
+        height: 44px;
         padding: 0;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 0.9rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.2s, transform 0.2s;
+        transition: background-color 0.18s ease, border-color 0.18s ease;
         flex-shrink: 0;
       }
       .theme-toggle:hover {
         background: var(--line-light);
-        transform: scale(1.05);
       }
-      .theme-toggle:active {
-        transform: scale(0.95);
-      }
+      .theme-toggle .icon-sun { display: none; }
+      [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+      [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
       .footer-col a {
         display: flex;
         align-items: center;
@@ -727,7 +742,7 @@ if (isArticle) {
         line-height: 1.6;
       }
       .footer-col a {
-        min-height: 36px;
+        min-height: 44px;
         line-height: 1.4;
         transition: color 0.18s ease;
       }
@@ -749,6 +764,7 @@ if (isArticle) {
         font-size: 0.84rem;
         line-height: 1.6;
       }
+      .footer-site-disclaimer strong { color: var(--text-danger); }
       .footer-data-badge {
         display: flex;
         justify-content: center;
@@ -784,7 +800,7 @@ if (isArticle) {
       .footer-visit-counter a {
         display: inline-flex;
         align-items: center;
-        min-height: 20px;
+        min-height: 44px;
         border-radius: 6px;
         transition: opacity 0.18s ease, transform 0.18s ease;
       }
@@ -817,6 +833,15 @@ if (isArticle) {
 
       /* Mobile styles override */
       @media (max-width: 1024px) {
+        button { min-width: 44px; }
+        button,
+        input:not([type="checkbox"]):not([type="radio"]),
+        select,
+        textarea,
+        summary { min-height: 44px; }
+        input:not([type="checkbox"]):not([type="radio"]),
+        select,
+        textarea { font-size: 1rem !important; }
         .content-wrapper {
           width: min(100% - 20px, 1180px);
         }
@@ -829,7 +854,7 @@ if (isArticle) {
         }
         .top-bar .wrapper {
           display: grid;
-          grid-template-columns: 36px minmax(0, 1fr) 36px;
+          grid-template-columns: 44px minmax(0, 1fr) 44px;
           align-items: center;
           gap: 8px 8px;
         }
@@ -844,11 +869,10 @@ if (isArticle) {
         .theme-toggle {
           grid-column: 3;
           grid-row: 1;
-          min-width: 34px;
-          min-height: 34px;
-          width: 34px;
-          height: 34px;
-          font-size: 0.82rem;
+          min-width: 44px;
+          min-height: 44px;
+          width: 44px;
+          height: 44px;
         }
         .top-bar .logo span {
           min-width: 0;
@@ -863,7 +887,7 @@ if (isArticle) {
           width: 100%;
           max-width: none;
           min-width: 0;
-          min-height: 36px;
+          min-height: 44px;
           padding: 0 11px;
           gap: 6px;
           border-radius: 16px;
@@ -872,7 +896,7 @@ if (isArticle) {
           max-width: none;
         }
         .nav-search input {
-          font-size: 0.84rem;
+          font-size: 1rem;
           padding: 5px 0;
         }
         .nav-search .search-icon {
@@ -966,17 +990,16 @@ if (isArticle) {
           background: var(--brand-light);
           border: 1px solid var(--line);
           color: var(--ink);
-          width: 34px;
-          height: 34px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
-          font-size: 1rem;
           cursor: pointer;
           box-shadow: none;
           z-index: 999;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: opacity 0.3s, background 0.2s, transform 0.2s;
+          transition: background-color 0.18s ease, border-color 0.18s ease;
           line-height: 1;
           text-align: center;
         }
@@ -1041,7 +1064,7 @@ if (isArticle) {
         .footer-accordion-links a {
           display: flex;
           align-items: center;
-          min-height: 38px;
+          min-height: 44px;
           color: var(--ink-secondary);
           font-size: 0.9rem;
         }
@@ -1126,18 +1149,18 @@ if (isArticle) {
           padding-inline: 10px;
         }
         .nav-search input {
-          font-size: 0.82rem;
+          font-size: 1rem;
         }
         .footer-accordion {
           padding: 0 10px;
         }
         .footer-accordion summary {
-          min-height: 42px;
+          min-height: 44px;
           font-size: 0.9rem;
         }
         .footer-accordion-links a {
-          min-height: 36px;
-          font-size: 0.84rem;
+          min-height: 44px;
+          font-size: 0.9rem;
         }
         .footer-compact-note,
         .footer-compact-author,
@@ -1159,19 +1182,29 @@ if (isArticle) {
       /* ===================== SKELETON ===================== */
       .skeleton { background: var(--line-light); border-radius: var(--radius); animation: pulse 1.5s ease-in-out infinite; }
       @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
     <!-- NAV -->
     <nav class="top-bar">
       <div class="wrapper">
-      <button class="hamburger" id="hamburger-btn" aria-label="Mở menu điều hướng" aria-controls="main-nav-links" aria-expanded="false">☰</button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Mở menu điều hướng" aria-controls="main-nav-links" aria-expanded="false"><SiteIcon name="menu" size={21} class="icon-menu" /><SiteIcon name="close" size={21} class="icon-close" /></button>
       <a href="/" class="logo">
         <img src="/logo.svg" alt="Dinh dưỡng Việt" class="logo-svg" width="26" height="26" />
         <span>Dinh dưỡng Việt</span>
       </a>
       <div class="nav-search" role="search">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"><SiteIcon name="search" size={18} /></span>
         <input type="search" id="nav-search-input" aria-label="Tìm món, thực phẩm, bệnh hoặc công cụ trên website" placeholder="Tìm món, thực phẩm, bệnh…" autocomplete="off" />
       </div>
         <div class="nav-links" id="main-nav-links" aria-label="Điều hướng chính">
@@ -1224,12 +1257,12 @@ if (isArticle) {
             </div>
           </details>
         </div>
-        <button class="theme-toggle" id="theme-toggle" title="Chuyển giao diện sáng/tối">🌓</button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Bật giao diện tối" aria-pressed="false"><SiteIcon name="moon" size={19} class="icon-moon" /><SiteIcon name="sun" size={19} class="icon-sun" /></button>
       </div>
     </nav>
 
     <!-- MAIN CONTENT -->
-    <main>
+    <main id="main-content" tabindex="-1">
       <div class="content-wrapper">
         <slot />
         {toolMethodology && <ToolMethodologyCard methodology={toolMethodology} />}
@@ -1390,7 +1423,7 @@ if (isArticle) {
         </div>
       </div>
       <div class="footer-site-disclaimer">
-        <strong style="color: #c53030;">Tuyên bố Miễn trừ Trách nhiệm Y khoa:</strong> Các thông tin và bài viết trên website <em>Dinh dưỡng Việt</em> chỉ mang tính chất tham khảo, không nhằm mục đích thay thế cho chẩn đoán, điều trị hay lời khuyên từ bác sĩ. Bạn cần luôn tham vấn ý kiến bác sĩ chuyên khoa hoặc chuyên gia dinh dưỡng trước khi áp dụng bất kỳ chế độ ăn kiêng nào, đặc biệt khi đang điều trị bệnh lý nền.
+        <strong>Tuyên bố Miễn trừ Trách nhiệm Y khoa:</strong> Các thông tin và bài viết trên website <em>Dinh dưỡng Việt</em> chỉ mang tính chất tham khảo, không nhằm mục đích thay thế cho chẩn đoán, điều trị hay lời khuyên từ bác sĩ. Bạn cần luôn tham vấn ý kiến bác sĩ chuyên khoa hoặc chuyên gia dinh dưỡng trước khi áp dụng bất kỳ chế độ ăn kiêng nào, đặc biệt khi đang điều trị bệnh lý nền.
       </div>
       <div class="footer-data-badge">
         <div class="footer-data-badge-inner">
@@ -1410,7 +1443,7 @@ if (isArticle) {
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang">&#8593;</button>
+    <button id="scroll-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang"><SiteIcon name="arrow-up" size={20} /></button>
 
     <script is:inline>
       (function() {
@@ -1420,7 +1453,8 @@ if (isArticle) {
             btn.style.display = window.scrollY > 300 ? 'block' : 'none';
           });
           btn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
           });
         }
       })();
@@ -1438,11 +1472,12 @@ if (isArticle) {
             ham.setAttribute('aria-label', isOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng');
             document.body.classList.toggle('menu-is-open', isOpen);
           });
-          ham.addEventListener('keydown', function(e) {
+          document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
               wrapper.classList.remove('nav-open');
               document.body.classList.remove('menu-is-open');
               ham.setAttribute('aria-expanded', 'false');
+              ham.setAttribute('aria-label', 'Mở menu điều hướng');
               ham.focus();
             }
           });
@@ -1524,6 +1559,11 @@ if (isArticle) {
 
         function apply(theme) {
           document.documentElement.setAttribute('data-theme', theme);
+          var toggle = document.getElementById('theme-toggle');
+          var isDark = theme === 'dark';
+          toggle?.setAttribute('aria-pressed', String(isDark));
+          toggle?.setAttribute('aria-label', isDark ? 'Bật giao diện sáng' : 'Bật giao diện tối');
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#0f172a' : '#1b5e20');
         }
 
         apply(stored === 'dark' ? 'dark' : 'light');

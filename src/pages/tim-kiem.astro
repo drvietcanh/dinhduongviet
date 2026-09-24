@@ -19,7 +19,8 @@ const searchIntents = [
       <h1>🔍 Tìm kiếm</h1>
       <div class="search-box">
         <span class="search-icon">🔎</span>
-        <input type="search" id="searchInput" placeholder="Tìm thực phẩm, món ăn, bệnh, công cụ..." autocomplete="off" value={query} role="combobox" aria-autocomplete="list" aria-controls="suggestionsDropdown" aria-expanded="false" />
+        <label class="sr-only" for="searchInput">Từ khóa tìm kiếm</label>
+        <input type="search" id="searchInput" aria-label="Từ khóa tìm kiếm" placeholder="Tìm thực phẩm, món ăn, bệnh, công cụ..." autocomplete="off" value={query} role="combobox" aria-autocomplete="list" aria-controls="suggestionsDropdown" aria-expanded="false" />
         <button class="search-clear" id="searchClear" aria-label="Xóa">✕</button>
         <div class="suggestions-dropdown" id="suggestionsDropdown" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
       </div>

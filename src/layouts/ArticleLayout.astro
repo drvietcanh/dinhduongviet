@@ -86,6 +86,7 @@ const specialtyCTA = {
 const cta = article.specialty && article.specialty in specialtyCTA
   ? specialtyCTA[article.specialty as keyof typeof specialtyCTA]
   : null;
+const renderedCta = cta ? cta.replace(/^[^A-Za-zÀ-ỹ]+/u, "") : null;
 
 const toolLinks = article.specialty && article.specialty in toolMap
   ? toolMap[article.specialty as keyof typeof toolMap]
@@ -243,18 +244,18 @@ const jsonLd = {
   <div class="article-shell">
     <!-- Breadcrumb -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">🏠 Trang chủ</a>
+      <a href="/">Trang chủ</a>
       <span class="bc-sep">/</span>
       {seriesInfo ? (
-        <a href={"/" + article.series}>{seriesInfo.emoji} {seriesInfo.name}</a>
+        <a href={"/" + article.series}>{seriesInfo.name}</a>
       ) : (
-        <a href="/kien-thuc-dinh-duong">📚 Kiến thức</a>
+        <a href="/kien-thuc-dinh-duong">Kiến thức</a>
       )}
       {article.specialty && SPECIALTIES[article.specialty] && (
         <div style="display:inline">
           <span class="bc-sep">/</span>
           <a href="/kien-thuc-dinh-duong">
-            {SPECIALTIES[article.specialty].emoji} {SPECIALTIES[article.specialty].name}
+            {SPECIALTIES[article.specialty].name}
           </a>
         </div>
       )}
@@ -266,12 +267,12 @@ const jsonLd = {
     <div class="article-header">
       <a href={backLink} class="back-link">{backLabel}</a>
       <div class="article-header-meta">
-        <span class="badge article-kind-badge">{article.emoji} {article.categoryName}</span>
+        <span class="badge article-kind-badge">{article.categoryName}</span>
         <span>{dateStr}</span>
         <span class="article-meta-sep">·</span>
         <span>{article.readTime} phút đọc</span>
       </div>
-      <h1 class="article-title">{article.emoji} {article.title}</h1>
+      <h1 class="article-title">{article.title}</h1>
       {lead && <p class="article-lead">{lead}</p>}
       <div class="editorial-meta" aria-label="Thông tin biên tập">
         <span>Phụ trách nội dung: <a href="/tac-gia">{reviewer}</a></span>
@@ -281,9 +282,9 @@ const jsonLd = {
         <a href="/chinh-sach-bien-tap">Chính sách biên tập</a>
       </div>
       <div class="trust-strip" aria-label="Thông tin độ tin cậy của bài viết">
-        <span>🩺 Nội dung tham khảo, không thay thế khám bệnh</span>
-        {effectiveSources.length > 0 && <span>📚 {effectiveSources.length} nguồn tham khảo</span>}
-        {evidenceLabel && <span>🔎 {evidenceLabel}</span>}
+        <span>Nội dung tham khảo, không thay thế khám bệnh</span>
+        {effectiveSources.length > 0 && <span>{effectiveSources.length} nguồn tham khảo</span>}
+        {evidenceLabel && <span>{evidenceLabel}</span>}
         <a href="/phuong-phap">Phương pháp dữ liệu →</a>
       </div>
       <!-- Priority tags -->
@@ -291,11 +292,11 @@ const jsonLd = {
         <div class="article-priority-tags">
           {article.tags.map(t => {
             const info = {
-              'new-diagnosis': { label: '🆕 Mới chẩn đoán — nên đọc', color: '#2e86de', bg: '#ebf5ff' },
-              'before-shopping': { label: '🛒 Đọc trước khi đi chợ', color: '#27ae60', bg: '#eafaf1' },
-              'before-supplement': { label: '🏷️ Đọc trước khi mua', color: '#e67e22', bg: '#fef5e7' },
-              'caregiver': { label: '👨‍👩‍👧‍👦 Dành cho người nhà chăm sóc', color: '#8e44ad', bg: '#f4ecf7' },
-              'ask-doctor': { label: '⚕️ Cần hỏi bác sĩ trước khi áp dụng', color: '#e74c3c', bg: '#fdedec' },
+              'new-diagnosis': { label: 'Mới chẩn đoán — nên đọc', color: '#2e86de', bg: '#ebf5ff' },
+              'before-shopping': { label: 'Đọc trước khi đi chợ', color: '#27ae60', bg: '#eafaf1' },
+              'before-supplement': { label: 'Đọc trước khi mua', color: '#e67e22', bg: '#fef5e7' },
+              'caregiver': { label: 'Dành cho người nhà chăm sóc', color: '#8e44ad', bg: '#f4ecf7' },
+              'ask-doctor': { label: 'Cần hỏi bác sĩ trước khi áp dụng', color: '#e74c3c', bg: '#fdedec' },
             }[t] || { label: t, color: '#718093', bg: '#f1f2f6' };
             return <span class="article-priority-tag" style={`background:${info.bg};color:${info.color};`}>{info.label}</span>;
           })}
@@ -304,7 +305,6 @@ const jsonLd = {
       <!-- Series badge -->
       {seriesInfo && (
         <a href={"/" + article.series} class="series-badge">
-          <span>{seriesInfo.emoji}</span>
           <span>Series: {seriesInfo.name}</span>
           <span class="series-badge-arrow">→</span>
         </a>
@@ -325,7 +325,6 @@ const jsonLd = {
     <!-- Tóm tắt nhanh -->
     <div class="article-summary-box">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-        <span style="font-size: 1.3rem;">📌</span>
         <strong style="font-size: 1rem;">Tóm tắt nhanh</strong>
       </div>
       <ul style="margin: 0; padding-left: 1.4rem; font-size: 0.88rem; line-height: 1.7;">
@@ -370,7 +369,7 @@ const jsonLd = {
         </div>
         <div class="decision-footer">
           {toolLinks.slice(0, 3).map((t) => (
-            <a href={t.h} class="decision-chip">🔧 {t.l}</a>
+            <a href={t.h} class="decision-chip">{t.l}</a>
           ))}
         </div>
       </section>
@@ -382,16 +381,15 @@ const jsonLd = {
     <!-- Practical Q&A box -->
     
     <!-- Specialty CTA -->
-    {cta && (
+    {renderedCta && (
       <div style="margin-top: 32px; padding: 16px 20px; background: var(--brand-light); border: 1px solid var(--brand-light2); border-radius: 12px; font-size: 0.92rem; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px;">
-        <span style="font-size: 1.1rem; flex-shrink: 0;">💡</span>
-        <span set:html={cta}></span>
+        <span set:html={renderedCta}></span>
       </div>
     )}
 
 {qa && (
       <div style="margin-top: 36px; background: linear-gradient(135deg, var(--primary-bg) 0%, var(--card) 100%); border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem;">
-        <h3 style="margin: 0 0 16px; font-size: 1.1rem;">📋 Câu trả lời nhanh</h3>
+        <h3 style="margin: 0 0 16px; font-size: 1.1rem;">Câu trả lời nhanh</h3>
         {qa.summary && (
           <div style="background: var(--brand); color: white; padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; font-size: 0.95rem; font-weight: 500;">
             {qa.summary}
@@ -400,25 +398,25 @@ const jsonLd = {
         <div style="display: grid; gap: 12px;">
           {qa.canEat && (
             <div style="background: var(--card); border-left: 4px solid #27ae60; padding: 12px 14px; border-radius: 8px;">
-              <div style="font-weight: 600; font-size: 0.9rem; color: #27ae60; margin-bottom: 4px;">✅ Ăn được không?</div>
+              <div style="font-weight: 600; font-size: 0.9rem; color: #17733c; margin-bottom: 4px;">Ăn được không?</div>
               <div style="font-size: 0.92rem; line-height: 1.6;">{qa.canEat}</div>
             </div>
           )}
           {qa.howMuch && (
             <div style="background: var(--card); border-left: 4px solid #f39c12; padding: 12px 14px; border-radius: 8px;">
-              <div style="font-weight: 600; font-size: 0.9rem; color: #f39c12; margin-bottom: 4px;">📏 Ăn bao nhiêu là vừa?</div>
+              <div style="font-weight: 600; font-size: 0.9rem; color: #9a5b00; margin-bottom: 4px;">Ăn bao nhiêu là vừa?</div>
               <div style="font-size: 0.92rem; line-height: 1.6;">{qa.howMuch}</div>
             </div>
           )}
           {qa.swapWith && (
             <div style="background: var(--card); border-left: 4px solid #3498db; padding: 12px 14px; border-radius: 8px;">
-              <div style="font-weight: 600; font-size: 0.9rem; color: #3498db; margin-bottom: 4px;">🔄 Nên thay bằng gì?</div>
+              <div style="font-weight: 600; font-size: 0.9rem; color: #1769aa; margin-bottom: 4px;">Nên thay bằng gì?</div>
               <div style="font-size: 0.92rem; line-height: 1.6;">{qa.swapWith}</div>
             </div>
           )}
           {qa.whenDoctor && (
             <div style="background: var(--card); border-left: 4px solid #e74c3c; padding: 12px 14px; border-radius: 8px;">
-              <div style="font-weight: 600; font-size: 0.9rem; color: #e74c3c; margin-bottom: 4px;">⚕️ Khi nào cần hỏi bác sĩ?</div>
+              <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-danger); margin-bottom: 4px;">Khi nào cần hỏi bác sĩ?</div>
               <div style="font-size: 0.92rem; line-height: 1.6;">{qa.whenDoctor}</div>
             </div>
           )}
@@ -1279,5 +1277,30 @@ const jsonLd = {
   .article-body table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; }
   .article-body td, .article-body th { white-space: nowrap; }
   .article-body th, .article-body td { padding: 8px 12px; border: 1px solid var(--line-light); }
+
+  /* Project-wide clinical editorial direction: quiet surfaces and stable interactions. */
+  .article-header,
+  .article-toc,
+  .article-summary-box,
+  .decision-box,
+  .article-safety-box,
+  .related-card,
+  details {
+    background: var(--card);
+    box-shadow: var(--shadow-sm);
+  }
+  .article-header::after { display: none; }
+  .article-summary-box { background: var(--surface-info); }
+  .article-safety-box { background: var(--surface-danger); }
+  .related-card { background: var(--card); }
+  .related-card::before { background: var(--related-accent); }
+  .related-card:hover { transform: none; }
+  @media (max-width: 600px) {
+    .trust-strip span,
+    .trust-strip a,
+    .article-toc-links a,
+    .decision-chip,
+    .art-btn { min-height: 44px; }
+  }
 </style>
 

@@ -2,1017 +2,281 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AutoSearch from "../components/AutoSearch.astro";
 import FoodIcon from "../components/FoodIcon.astro";
-import DataSummary from "../components/DataSummary.astro";
-import NutrientStats from "../components/NutrientStats.astro";
+import HomeIcon from "../components/HomeIcon.astro";
 import { articles } from "../data/articles";
 import { foods, recipes } from "../data/nutrition";
 import { calculateRecipe, foodBySlug } from "../lib/nutrition";
 
-const phoRecipe = recipes.find((recipe) => recipe.slug === "pho-bo")!;
-const phoNutrients = calculateRecipe(phoRecipe);
-const categories = [...new Set(foods.map((f) => f.category))];
-const publicFoods = foods.filter((food) => food.sourceReviewStatus !== "candidate_pending_dietitian_review" && food.sourceReviewStatus !== "recipe_estimate_only");
-const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
-const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
+const publicFoods = foods.filter((food) =>
+  food.sourceReviewStatus !== "candidate_pending_dietitian_review"
+  && food.sourceReviewStatus !== "recipe_estimate_only"
+);
 const toolPageModules = import.meta.glob("./cong-cu/*.astro");
 const toolCount = Object.keys(toolPageModules).filter((path) => !path.endsWith("/index.astro")).length;
-const toolCards = [
-  { href: "/cong-cu/nhat-ky", icon: "📓", name: "Nhật ký ăn uống", desc: "Ghi bữa ăn và xem tổng hợp theo ngày, tuần" },
-  { href: "/cong-cu/muc-tieu-can-nang", icon: "🎯", name: "Mục tiêu cân nặng", desc: "Ước tính nhu cầu và chọn mục tiêu phù hợp" },
-  { href: "/cong-cu/bmi", icon: "📏", name: "BMI", desc: "Đánh giá nhanh cân nặng theo ngưỡng châu Á" },
-  { href: "/cong-cu/so-sanh-thuc-pham", icon: "⚖️", name: "So sánh thực phẩm", desc: "Đặt nhiều thực phẩm cạnh nhau để chọn nhanh" },
-  { href: "/cong-cu/chi-so-gi", icon: "🌾", name: "Chỉ số GI thực phẩm", desc: "Tra GI của cơm, bún, phở và trái cây Việt" },
-  { href: "/cong-cu/tinh-gl-bua-an", icon: "📈", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của cả bữa ăn" },
-  { href: "/cong-cu/theo-doi-suc-khoe", icon: "📊", name: "Theo dõi sức khỏe", desc: "Theo dõi huyết áp, đường huyết và mỡ máu" },
-  { href: "/cong-cu/ke-hoach-bua-an", icon: "📋", name: "Kế hoạch bữa ăn", desc: "Gợi ý khung bữa ăn dễ áp dụng mỗi ngày" },
-  { href: "/cong-cu/dinh-duong-thai-ky", icon: "🤰", name: "Dinh dưỡng thai kỳ", desc: "Nhắc các chỉ số nên theo dõi trong thai kỳ" },
-  { href: "/cong-cu/nhu-cau-dinh-duong-tre-em", icon: "👶", name: "Nhu cầu trẻ em", desc: "Xem mốc nhu cầu dinh dưỡng theo nhóm tuổi" },
-  { href: "/cong-cu/tinh-calo-tieu-thu", icon: "🔥", name: "Calo tiêu thụ khi tập", desc: "Ước tính calo tiêu hao theo từng môn tập" },
-];
+const popularSlugs = ["com-trang", "thit-bo-nac", "trung-ga", "rau-muong", "ca-thu", "chuoi"];
+const popularFoods = popularSlugs.map((slug) => foodBySlug(slug)).filter(Boolean) as typeof foods;
+const categories = [...new Set(foods.map((food) => food.category))].slice(0, 8);
+const phoRecipe = recipes.find((recipe) => recipe.slug === "pho-bo")!;
+const phoNutrients = calculateRecipe(phoRecipe);
+
 const quickJourneys = [
-  { href: "/theo-benh/tieu-duong", icon: "🩸", label: "Đái tháo đường", desc: "carb · GI/GL · thực đơn" },
-  { href: "/theo-benh/cao-huyet-ap", icon: "🫀", label: "Tăng huyết áp", desc: "muối · DASH · món Việt" },
-  { href: "/theo-benh/benh-than", icon: "🫘", label: "Bệnh thận", desc: "đạm · kali · phốt pho" },
-  { href: "/cong-cu/so-sanh-thuc-pham", icon: "🔬", label: "So sánh nhanh", desc: "18 chỉ số dinh dưỡng" },
-];
+  { href: "/theo-benh/tieu-duong", icon: "activity", label: "Đái tháo đường", desc: "Carb, GI/GL và thực đơn" },
+  { href: "/theo-benh/cao-huyet-ap", icon: "heart", label: "Tăng huyết áp", desc: "Muối, DASH và món Việt" },
+  { href: "/theo-benh/benh-than", icon: "leaf", label: "Bệnh thận", desc: "Đạm, kali và phốt pho" },
+  { href: "/cong-cu/so-sanh-thuc-pham", icon: "scale", label: "So sánh thực phẩm", desc: "Đặt các lựa chọn cạnh nhau" },
+] as const;
+const entryCards = [
+  { href: "/thuc-pham", icon: "search", title: "Tra thực phẩm", desc: "Xem năng lượng, đạm, carb, chất béo và vi chất theo 100 g." },
+  { href: "/theo-benh", icon: "heart", title: "Đọc theo bệnh", desc: "Đi từ bài nền tảng đến thực đơn và công cụ phù hợp bệnh cảnh." },
+  { href: "/cong-cu", icon: "calculator", title: "Dùng công cụ", desc: "Tính khẩu phần, carb, GL, đạm, nước và các chỉ số tham khảo." },
+  { href: "/cong-cu/nhat-ky", icon: "journal", title: "Ghi bữa ăn", desc: "Lưu bữa ăn trên thiết bị và xem lại theo ngày hoặc tuần." },
+] as const;
+const diseaseCards = [
+  { href: "/theo-benh/tieu-duong", label: "Đái tháo đường", desc: "Carb, đường huyết, thực đơn" },
+  { href: "/theo-benh/cao-huyet-ap", label: "Tăng huyết áp", desc: "Giảm muối, DASH, theo dõi" },
+  { href: "/theo-benh/gout-axit-uric", label: "Gout", desc: "Purin, đồ uống, cân nặng" },
+  { href: "/theo-benh/mo-mau-tim-mach", label: "Mỡ máu, tim mạch", desc: "Chất béo, chất xơ, món Việt" },
+  { href: "/theo-benh/da-day-trao-nguoc", label: "Dạ dày, trào ngược", desc: "Khẩu phần, thời điểm ăn" },
+  { href: "/theo-benh/benh-than", label: "Bệnh thận", desc: "Đạm, kali, phốt pho" },
+] as const;
+const toolCards = [
+  { href: "/cong-cu/tinh-carb", icon: "calculator", name: "Tính carb bữa ăn", desc: "Cộng lượng carb theo món và khẩu phần." },
+  { href: "/cong-cu/tinh-gl-bua-an", icon: "activity", name: "Tính GL bữa ăn", desc: "Ước tính tải đường huyết của cả bữa." },
+  { href: "/cong-cu/tinh-nhu-cau-dam", icon: "scale", name: "Nhu cầu đạm", desc: "Xem khoảng đạm theo cân nặng và bối cảnh." },
+  { href: "/cong-cu/ke-hoach-bua-an", icon: "clipboard", name: "Kế hoạch bữa ăn", desc: "Biến mục tiêu thành một khung ăn dễ làm." },
+  { href: "/cong-cu/sang-loc-suy-dinh-duong", icon: "shield", name: "Sàng lọc suy dinh dưỡng", desc: "Nhận biết nguy cơ để đi khám đúng lúc." },
+  { href: "/cong-cu/tra-cuu-nhu-cau-dinh-duong", icon: "book", name: "Nhu cầu dinh dưỡng", desc: "Tra cứu theo tuổi, giới và sinh lý." },
+] as const;
+const featuredArticles = articles.filter((article) => article.featured && article.series !== "dung-tin-ngay").slice(0, 3);
 ---
 
-<BaseLayout
-  title="Dinh dưỡng Việt - Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam"
-  description="Tra cứu calo, protein, carb, chất béo của thực phẩm và món ăn Việt Nam; đồng thời đọc bài dinh dưỡng theo bệnh và dùng các công cụ theo dõi sức khỏe tham khảo."
-  canonical="/"
->
-  <section class="hero">
-    <div class="hero-copy">
-      <span class="hero-badge animate-fade-in">🇻🇳 Dữ liệu thực phẩm Việt · Biên tập theo bệnh · Không cổ vũ mẹo cực đoan</span>
-      <h1 class="animate-fade-in-up">Ăn uống dễ hiểu hơn, <span class="brand-text">quyết định an toàn hơn</span></h1>
-      <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.1s;">Một bản đồ dinh dưỡng cho bữa ăn Việt: tra số liệu khi cần, đọc theo bệnh khi cần an toàn, và đổi lời khuyên thành khẩu phần có thể làm ngay.</p>
-      <div class="hero-search animate-fade-in-up" style="animation-delay: 0.2s;"><AutoSearch /></div>
-      <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
-        <a class="cta-btn" href="/ban-do-benh">🩺 Xem theo bệnh</a>
-        <a class="cta-btn cta-outline" href="/cong-cu/nhat-ky">📓 Ghi bữa ăn</a>
+<BaseLayout title="Dinh dưỡng Việt - Tra cứu dinh dưỡng thực phẩm và món ăn Việt Nam" description="Tra cứu calo, protein, carb, chất béo của thực phẩm và món ăn Việt Nam; đồng thời đọc bài dinh dưỡng theo bệnh và dùng các công cụ theo dõi sức khỏe tham khảo." canonical="/">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="hero-main">
+      <div class="hero-eyebrow"><HomeIcon name="shield" size={18} /> Dữ liệu Việt Nam · Biên tập có nguồn</div>
+      <h1 id="home-title">Hiểu bữa ăn Việt.<br /><span>Chọn điều phù hợp hơn.</span></h1>
+      <p class="hero-lead">Tra số liệu thực phẩm, đọc hướng dẫn theo bệnh và dùng công cụ để biến lời khuyên dinh dưỡng thành việc có thể làm hôm nay.</p>
+      <div class="hero-search" aria-label="Tìm kiếm trong Dinh dưỡng Việt"><AutoSearch /></div>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/thuc-pham"><HomeIcon name="search" size={19} /> Tra thực phẩm</a>
+        <a class="button button-secondary" href="/theo-benh"><HomeIcon name="heart" size={19} /> Xem theo bệnh</a>
       </div>
-      <div class="hero-trust animate-fade-in-up" style="animation-delay: 0.38s;" aria-label="Thông tin độ tin cậy">
-        <span>📚 {articles.length} bài viết</span>
-        <span>🥬 {publicFoods.length} thực phẩm tra cứu</span>
-        <span>🍜 {recipes.length} món ăn</span>
-        <span>🛠️ {toolCount} công cụ</span>
+      <div class="trust-row" aria-label="Quy mô thư viện">
+        <span><strong>{publicFoods.length.toLocaleString("vi-VN")}</strong> thực phẩm</span>
+        <span><strong>{recipes.length.toLocaleString("vi-VN")}</strong> món ăn</span>
+        <span><strong>{articles.length.toLocaleString("vi-VN")}</strong> bài viết</span>
+        <span><strong>{toolCount}</strong> công cụ</span>
       </div>
     </div>
-    <aside class="hero-panel animate-fade-in-up" style="animation-delay: 0.16s;" aria-label="Điều hướng nhanh">
-      <div class="hero-panel-head">
-        <span>Sổ tay hôm nay</span>
-        <strong>Chọn một việc nhỏ</strong>
-      </div>
-      <div class="journey-list">
+    <aside class="hero-guide" aria-labelledby="guide-title">
+      <div class="guide-heading"><span class="icon-box"><HomeIcon name="sparkles" size={21} /></span><div><span class="overline">Bắt đầu nhanh</span><h2 id="guide-title">Bạn đang quan tâm điều gì?</h2></div></div>
+      <div class="guide-list">
         {quickJourneys.map((item) => (
-          <a href={item.href} class="journey-item">
-            <span class="journey-icon" aria-hidden="true">{item.icon}</span>
-            <span>
-              <strong>{item.label}</strong>
-              <small>{item.desc}</small>
-            </span>
-          </a>
+          <a href={item.href} class="guide-link"><span class="guide-icon"><HomeIcon name={item.icon} size={20} /></span><span class="guide-copy"><strong>{item.label}</strong><small>{item.desc}</small></span><HomeIcon name="arrow" size={18} /></a>
         ))}
       </div>
-      <div class="hero-panel-note">
-        <span>✨</span>
-        <p>Thiết kế theo hướng phòng khám đời thường: ít khẩu hiệu, nhiều “nên ăn gì, tránh gì, khi nào cần hỏi bác sĩ”.</p>
-      </div>
+      <p class="guide-note"><HomeIcon name="shield" size={17} /> Nội dung tham khảo, không thay thế tư vấn y tế cá nhân.</p>
     </aside>
   </section>
 
-  <section class="section entry-grid">
-    <div class="section-header">
-      <div>
-        <span class="section-kicker">Chọn đúng lối vào</span>
-        <h2>Bạn đang cần gì hôm nay?</h2>
-      </div>
-    </div>
-    <div class="entry-cards">
-      <a href="/kien-thuc-dinh-duong" class="entry-card card-healthy">
-        <div class="entry-icon" aria-hidden="true">🥗</div>
-        <div class="entry-title">Tôi muốn ăn lành mạnh hơn</div>
-        <div class="entry-desc">Tháp dinh dưỡng, đĩa ăn, giảm muối, giảm đường, đọc nhãn thực phẩm</div>
-      </a>
-      <a href="/ban-do-benh" class="entry-card card-medical">
-        <div class="entry-icon" aria-hidden="true">🩺</div>
-        <div class="entry-title">Tôi đang có bệnh</div>
-        <div class="entry-desc">Đái tháo đường, tăng huyết áp, gout, thận, gan, dạ dày, mỡ máu</div>
-      </a>
-      <a href="/cong-cu/muc-tieu-can-nang" class="entry-card card-weight">
-        <div class="entry-icon" aria-hidden="true">⚖️</div>
-        <div class="entry-title">Tôi muốn giảm cân / tăng cân</div>
-        <div class="entry-desc">Ước tính nhu cầu năng lượng và chọn hướng theo dõi phù hợp</div>
-      </a>
-      <a href="/cong-cu/nhat-ky" class="entry-card card-diet">
-        <div class="entry-icon" aria-hidden="true">📓</div>
-        <div class="entry-title">Tôi muốn ghi lại bữa ăn</div>
-        <div class="entry-desc">Ghi thực phẩm và món ăn theo từng bữa, rồi xem tổng hợp ngày và tuần</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Dashboard health alerts -->
-  <section class="section" id="ha-root" style="display:none;">
-    <div class="section-header"><h2>🩺 Cảnh báo sức khỏe</h2><a href="/cong-cu/theo-doi-suc-khoe" class="view-all">📊 Xem chi tiết →</a></div>
-    <div id="ha-alerts"></div>
-    <div id="ha-good" style="display:none;text-align:center;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);">
-      <div style="font-size:2rem;margin-bottom:6px;">✅</div>
-      <div style="font-weight:600;font-size:0.95rem;">Các chỉ số gần đây trong ngưỡng an toàn</div>
-      <div style="font-size:0.82rem;color:var(--ink-tertiary);margin-top:4px;">Tiếp tục theo dõi định kỳ tại <a href="/cong-cu/theo-doi-suc-khoe">📊 Theo dõi sức khỏe</a></div>
-    </div>
-  </section>
-
-  <script>
-(function() {
-  // Dashboard health alerts from health-track-v1
-  try {
-    var ra = localStorage.getItem("health-track-v1");
-    if(ra) {
-      var data = JSON.parse(ra);
-      if(data && data.length > 0) {
-        data.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
-        var l = data[0];
-
-        // Load goals
-        var goals = null;
-        try { var gs = localStorage.getItem("health-goals-v1"); if(gs) goals=JSON.parse(gs); } catch(e){}
-
-        // Load weight/height from meal tracker targets
-        var mtWeight = 65, mtHeight = 168;
-        try {
-          var mt = localStorage.getItem("mt-target-v2");
-          if(mt) { var mtp = JSON.parse(mt); if(mtp.weight) mtWeight=mtp.weight; if(mtp.height) mtHeight=mtp.height; }
-        } catch(e){}
-
-        var alerts = [];
-
-        // BP
-        if(l.sys && l.sys >= 140) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm thu đang cao",msg:"<strong>"+l.sys+"</strong> mmHg — nên đo lại đúng kỹ thuật và trao đổi với nhân viên y tế. Giảm muối &lt;5g/ngày nếu phù hợp.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Không tự chẩn đoán từ một lần đo; theo dõi nhiều ngày."});
-        else if(l.sys && l.sys >= 130) alerts.push({severity:"vua",icon:"🫀",title:"Huyết áp tâm thu cần theo dõi",msg:"<strong>"+l.sys+"</strong> mmHg — diễn giải còn tùy tuổi, bệnh nền và nhiều lần đo.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Đo lại khi nghỉ đủ, ghi nhật ký và hỏi bác sĩ nếu lặp lại."});
-
-        if(l.dia && l.dia >= 90) alerts.push({severity:"cao",icon:"🫀",title:"Huyết áp tâm trương cao",msg:"<strong>"+l.dia+"</strong> mmHg.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Giảm muối &lt;5g, tăng rau xanh, hạn chế rượu."});
-        else if(l.dia && l.dia >= 80) alerts.push({severity:"vua",icon:"🫀",title:"HA tâm trương cao nhẹ",msg:"<strong>"+l.dia+"</strong> mmHg.",link:"/kien-thuc-dinh-duong/benh-tim-mach",tip:"Theo dõi và giảm muối."});
-
-        // Blood glucose
-        if(l.glucose && l.glucose > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"Đường huyết đang cao",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — cần biết thời điểm đo và xác nhận theo hướng dẫn y tế.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Không tự kết luận từ một lần đo; ghi thời điểm ăn/đo và trao đổi với bác sĩ."});
-        else if(l.glucose && l.glucose >= 5.6 && l.glucose <= 7.0) alerts.push({severity:"vua",icon:"🩸",title:"Đường huyết cần theo dõi",msg:"<strong>"+l.glucose.toFixed(1)+"</strong> mmol/L — ý nghĩa tùy đói/no và bối cảnh xét nghiệm.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Theo dõi lặp lại đúng thời điểm, không tự đổi thuốc."});
-
-        // HbA1c
-        if(l.a1c && l.a1c > 7.0) alerts.push({severity:"cao",icon:"🩸",title:"HbA1c cao hơn mục tiêu đang đặt",msg:"<strong>"+l.a1c.toFixed(1)+"%</strong> — mục tiêu cá nhân cần do nhóm điều trị xác định.",link:"/kien-thuc-dinh-duong/dai-thao-duong",tip:"Không tự tăng/giảm thuốc; xem lại bữa ăn và kế hoạch cùng bác sĩ."});
-
-        // Waist
-        if(l.waist) {
-          if(l.waist > 90) alerts.push({severity:"cao",icon:"📏",title:"Vòng eo lớn",msg:"<strong>"+l.waist+" cm</strong> — nguy cơ béo bụng, mỡ nội tạng.",link:"/cong-cu/bmi",tip:"Giảm calo, tăng vận động, hạn chế đường."});
-          else if(l.waist > 80) alerts.push({severity:"vua",icon:"📏",title:"Vòng eo lớn nhẹ",msg:"<strong>"+l.waist+" cm</strong> — theo dõi.",link:"/cong-cu/bmi",tip:"Duy trì chế độ ăn lành mạnh."});
-        }
-
-        // BMI from mt weight
-        if(mtWeight && mtHeight) {
-          var bmi = mtWeight / ((mtHeight/100)*(mtHeight/100));
-          if(bmi >= 30) alerts.push({severity:"cao",icon:"⚖️",title:"Béo phì (BMI "+bmi.toFixed(1)+")",msg:"BMI <strong>"+bmi.toFixed(1)+"</strong> — &ge;30: béo phì độ I.",link:"/cong-cu/bmi",tip:"Giảm 300-500 kcal/ngày, tăng vận động."});
-          else if(bmi >= 25) alerts.push({severity:"vua",icon:"⚖️",title:"Béo phì nhẹ (BMI "+bmi.toFixed(1)+")",msg:"BMI <strong>"+bmi.toFixed(1)+"</strong> — &ge;25 (châu Á): thừa cân.",link:"/cong-cu/bmi",tip:"Giảm tinh bột tinh chế, tăng rau xanh."});
-        }
-
-        // LDL
-        if(l.ldl && l.ldl > 3.4) alerts.push({severity:"cao",icon:"🧪",title:"LDL cholesterol cao",msg:"<strong>"+l.ldl.toFixed(2)+"</strong> mmol/L — nguy cơ xơ vữa mạch.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Giảm mỡ bão hòa, đồ chiên. Tăng chất xơ hòa tan."});
-        else if(l.ldl && l.ldl >= 2.6) alerts.push({severity:"vua",icon:"🧪",title:"LDL cao nhẹ",msg:"<strong>"+l.ldl.toFixed(2)+"</strong> mmol/L.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Theo dõi chế độ ăn, hạn chế mỡ bão hòa."});
-
-        // Triglyceride
-        if(l.tg && l.tg > 2.3) alerts.push({severity:"cao",icon:"🧪",title:"Triglyceride cao",msg:"<strong>"+l.tg.toFixed(2)+"</strong> mmol/L — nguy cơ viêm tụy.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Giảm đường, tinh bột tinh chế, rượu bia."});
-        else if(l.tg && l.tg >= 1.7) alerts.push({severity:"vua",icon:"🧪",title:"Triglyceride cao nhẹ",msg:"<strong>"+l.tg.toFixed(2)+"</strong> mmol/L.",link:"/kien-thuc-dinh-duong/roi-loan-mo-mau",tip:"Hạn chế đường và rượu."});
-
-        var root = document.getElementById("ha-root");
-        var al = document.getElementById("ha-alerts");
-        var good = document.getElementById("ha-good");
-        if(!root || !al) return;
-
-        if(alerts.length > 0) {
-          root.style.display="";
-          al.innerHTML = '<div class="health-alert-grid">'+
-            alerts.map(function(a) {
-              return '<div class="card ha-card ha-'+a.severity+'">'+
-                '<div class="ha-icon">'+a.icon+'</div>'+
-                '<div class="ha-body">'+
-                  '<div class="ha-title">'+a.title+'</div>'+
-                  '<div class="ha-msg">'+a.msg+'</div>'+
-                  '<div class="ha-tip">💡 '+a.tip+'</div>'+
-                  '<a href="'+a.link+'" class="ha-link">Xem hướng dẫn →</a>'+
-                '</div>'+
-              '</div>';
-            }).join("")+
-          '</div>';
-        } else {
-          root.style.display="";
-          good.style.display="";
-        }
-      }
-    }
-  } catch(e) {}
-})();
-</script>
-
-  <section class="section">
-    <div class="section-header">
-      <div>
-        <span class="section-kicker">Thư viện bệnh lý</span>
-        <h2>🩺 Lối tắt theo mục tiêu sức khỏe</h2>
-      </div>
-      <a href="/ban-do-benh" class="view-all">Xem tất cả →</a>
-    </div>
-    <div class="health-grid health-grid-featured">
-      <a class="card health-card" href="/theo-benh/tieu-duong"><span class="health-icon" aria-hidden="true">🩸</span><div><h3>Đái tháo đường</h3><p class="muted">Chế độ ăn, thực đơn, hiểu lầm</p></div></a>
-      <a class="card health-card" href="/theo-benh/cao-huyet-ap"><span class="health-icon">🫀</span><div><h3>Tăng huyết áp</h3><p class="muted">Giảm muối, DASH, thực đơn</p></div></a>
-      <a class="card health-card" href="/theo-benh/gout-axit-uric"><span class="health-icon">🦶</span><div><h3>Gout</h3><p class="muted">Purin, đạm, thực đơn mẫu</p></div></a>
-      <a class="card health-card" href="/theo-benh/mo-mau-tim-mach"><span class="health-icon">❤️</span><div><h3>Mỡ máu, tim mạch</h3><p class="muted">Giảm mỡ máu, bảo vệ tim mạch</p></div></a>
-      <a class="card health-card" href="/theo-benh/da-day-trao-nguoc"><span class="health-icon">😣</span><div><h3>Dạ dày • Tá tràng</h3><p class="muted">Thực đơn mềm, tránh đồ quá chua cay</p></div></a>
-      <a class="card health-card" href="/theo-benh/benh-than"><span class="health-icon">🫘</span><div><h3>Bệnh thận</h3><p class="muted">Kiểm soát kali, phốt pho, đạm</p></div></a>
-    </div>
-    <div class="health-grid" style="margin-top:10px;">
-      <a class="card health-card" href="/theo-benh/beo-phi-chuyen-hoa"><span class="health-icon">⚖️</span><div><h3>Béo phì, chuyển hóa</h3><p class="muted">Calo, BMI, giảm cân bền vững</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#nguoi-gia"><span class="health-icon">👴</span><div><h3>Người cao tuổi</h3><p class="muted">Dinh dưỡng, thêm đạm, chán ăn</p></div></a>
-      <a class="card health-card" href="/ban-do-benh#dot-quy"><span class="health-icon">🧠</span><div><h3>Đột quỵ • Alzheimer</h3><p class="muted">Phòng ngừa & phục hồi</p></div></a>
-      <a class="card health-card" href="/theo-benh/ho-hap-man"><span class="health-icon">🫁</span><div><h3>Hô hấp mạn tính</h3><p class="muted">COPD, hen suyễn, dinh dưỡng hô hấp</p></div></a>
-      <a class="card health-card" href="/theo-benh/ung-thu"><span class="health-icon">🎗️</span><div><h3>Ung thư</h3><p class="muted">Đủ đạm, triệu chứng, an toàn khi điều trị</p></div></a>
-      <a class="card health-card" href="/theo-benh/xo-gan"><span class="health-icon">🧬</span><div><h3>Xơ gan, cổ trướng</h3><p class="muted">Mất cơ, muối, đạm và an toàn thực phẩm</p></div></a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-header">
-      <div>
-        <span class="section-kicker">Từ đọc sang làm</span>
-        <h2>🔧 Công cụ dinh dưỡng</h2>
-      </div>
-      <a href="/cong-cu" class="view-all">Xem tất cả →</a>
-    </div>
-    <div class="tool-grid">
-      {toolCards.map(t => (
-        <a class="card tool-card" href={t.href}>
-          <div class="tool-icon" aria-hidden="true">{t.icon}</div>
-          <h3>{t.name}</h3>
-          <p class="muted">{t.desc}</p>
-        </a>
+  <section class="home-section" aria-labelledby="entry-title">
+    <div class="section-heading"><div><span class="overline">Chọn đúng lối vào</span><h2 id="entry-title">Bạn muốn làm gì?</h2></div></div>
+    <div class="entry-grid">
+      {entryCards.map((item) => (
+        <a href={item.href} class="entry-card"><span class="entry-icon"><HomeIcon name={item.icon} size={25} /></span><span class="entry-copy"><strong>{item.title}</strong><small>{item.desc}</small></span><span class="card-arrow"><HomeIcon name="arrow" size={19} /></span></a>
       ))}
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-header">
-      <div>
-        <span class="section-kicker">Tra nhanh dữ liệu</span>
-        <h2>🔥 Thực phẩm phổ biến</h2>
-      </div>
-      <a href="/thuc-pham" class="view-all">Xem tất cả →</a>
+  <section class="continue-card" id="continue-panel" hidden aria-labelledby="continue-title">
+    <span class="icon-box"><HomeIcon name="activity" size={22} /></span>
+    <div><span class="overline">Dữ liệu trên thiết bị</span><h2 id="continue-title">Tiếp tục theo dõi sức khỏe</h2><p>Bạn đã có dữ liệu đã lưu. Hãy mở nhật ký để xem lại diễn biến và chuẩn bị câu hỏi khi đi khám.</p></div>
+    <a class="button button-secondary" href="/cong-cu/theo-doi-suc-khoe">Mở theo dõi <HomeIcon name="arrow" size={18} /></a>
+  </section>
+
+  <section class="home-section" aria-labelledby="disease-title">
+    <div class="section-heading"><div><span class="overline">Thư viện theo bệnh</span><h2 id="disease-title">Đi thẳng tới bệnh cảnh cần tìm</h2></div><a class="section-link" href="/theo-benh">Xem tất cả bệnh <HomeIcon name="arrow" size={18} /></a></div>
+    <div class="disease-grid">
+      {diseaseCards.map((item, index) => (
+        <a class="disease-card" href={item.href}><span class="disease-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span><strong>{item.label}</strong><small>{item.desc}</small></span><HomeIcon name="arrow" size={18} /></a>
+      ))}
     </div>
+  </section>
+
+  <section class="home-section split-section" aria-labelledby="tools-title">
+    <div class="section-heading split-heading"><div><span class="overline">Từ đọc sang làm</span><h2 id="tools-title">Công cụ thiết thực cho bữa ăn</h2><p>Ưu tiên công cụ có mục đích rõ, công thức minh bạch và giới hạn sử dụng được giải thích ngay trên trang.</p></div><a class="section-link" href="/cong-cu">Xem {toolCount} công cụ <HomeIcon name="arrow" size={18} /></a></div>
+    <div class="tool-grid">
+      {toolCards.map((item) => (
+        <a class="tool-card" href={item.href}><span class="tool-icon"><HomeIcon name={item.icon} size={22} /></span><span><strong>{item.name}</strong><small>{item.desc}</small></span><HomeIcon name="arrow" size={17} /></a>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="food-title">
+    <div class="section-heading"><div><span class="overline">Tra nhanh dữ liệu</span><h2 id="food-title">Thực phẩm quen thuộc</h2></div><a class="section-link" href="/thuc-pham">Mở thư viện thực phẩm <HomeIcon name="arrow" size={18} /></a></div>
     <div class="food-grid">
       {popularFoods.map((food) => (
-        <a class="card food-card" href={`/thuc-pham/${food.slug}`}>
-          <div class="food-icon"><FoodIcon category={food.category} /></div>
-          <div>
-            <span class="mini-tag">{food.category}</span>
-            <h3>{food.name}</h3>
-            <span class="food-cal">{food.nutrients.energyKcal} kcal/100g · Đạm {food.nutrients.proteinG}g</span>
-          </div>
-        </a>
+        <a class="food-card" href={`/thuc-pham/${food.slug}`}><span class="food-icon"><FoodIcon category={food.category} /></span><span class="food-copy"><small>{food.category}</small><strong>{food.name}</strong><span>{food.nutrients.energyKcal} kcal · {food.nutrients.proteinG} g đạm / 100 g</span></span><HomeIcon name="arrow" size={17} /></a>
       ))}
     </div>
-  </section>
-
-  <section class="section featured-recipe">
-    <div class="section-header">
-      <div>
-        <span class="section-kicker">Theo khẩu phần Việt</span>
-        <h2>🍜 Món ăn nổi bật</h2>
-      </div>
-      <a href="/mon-an" class="view-all">Xem tất cả →</a>
-    </div>
-    <a class="card recipe-card" href="/mon-an/pho-bo">
-      <div class="recipe-info">
-        <span class="mini-tag">Món ăn</span>
-        <h2>Phở bò — 1 tô có gì?</h2>
-        <div class="stats-row">
-          <span class="stat-chip">🔥 {Math.round(phoNutrients.energyKcal)} kcal</span>
-          <span class="stat-chip">🥩 {phoNutrients.proteinG.toFixed(1)}g đạm</span>
-          <span class="stat-chip">🍚 {phoNutrients.carbG.toFixed(1)}g carb</span>
-          <span class="stat-chip">🧈 {phoNutrients.fatG.toFixed(1)}g béo</span>
-        </div>
-        <p class="muted">180g bánh phở + 70g thịt bò + 400g nước dùng + 30g rau</p>
-        <span class="view-link">Xem chi tiết →</span>
-      </div>
-      <div class="recipe-nutrition">
-        <h3>Thành phần</h3>
-        <NutrientStats nutrients={phoNutrients} compact />
-      </div>
-    </a>
-  </section>
-
-  <section class="section">
-    <div class="section-header">
-      <div>
-        <span class="section-kicker">Duyệt theo nhóm</span>
-        <h2>📂 Danh mục thực phẩm</h2>
-      </div>
-      <a href="/thuc-pham" class="view-all">Xem tất cả →</a>
-    </div>
-    <div class="category-grid">
-      {categories.slice(0, 10).map((cat) => {
-        const items = foods.filter((f) => f.category === cat);
-        return (
-          <a class="card category-card" href={`/thuc-pham?category=${encodeURIComponent(cat)}#food-results`}>
-            <h3>{cat}</h3>
-            <span class="count-badge">{items.length}</span>
-          </a>
-        );
-      })}
+    <div class="category-row" aria-label="Nhóm thực phẩm phổ biến">
+      {categories.map((category) => { const count = foods.filter((food) => food.category === category).length; return <a href={`/thuc-pham?category=${encodeURIComponent(category)}#food-results`}>{category}<span>{count}</span></a>; })}
     </div>
   </section>
 
-  <DataSummary />
+  <section class="home-section editorial-grid" aria-labelledby="reading-title">
+    <div class="recipe-feature">
+      <span class="overline">Món ăn theo khẩu phần</span><h2>Phở bò — một tô có gì?</h2><p>Ước tính từ bánh phở, thịt bò, nước dùng và rau trong một khẩu phần tham khảo.</p>
+      <dl class="nutrition-summary">
+        <div><dt>Năng lượng</dt><dd>{Math.round(phoNutrients.energyKcal)} kcal</dd></div><div><dt>Đạm</dt><dd>{phoNutrients.proteinG.toFixed(1)} g</dd></div><div><dt>Carb</dt><dd>{phoNutrients.carbG.toFixed(1)} g</dd></div><div><dt>Natri</dt><dd>{Math.round(phoNutrients.sodiumMg ?? 0).toLocaleString("vi-VN")} mg</dd></div>
+      </dl>
+      <a class="text-link" href="/mon-an/pho-bo">Xem cách tính và đổi khẩu phần <HomeIcon name="arrow" size={18} /></a>
+    </div>
+    <div class="reading-panel">
+      <div class="section-heading compact-heading"><div><span class="overline">Đọc có định hướng</span><h2 id="reading-title">Bài viết nổi bật</h2></div></div>
+      <div class="article-list">
+        {featuredArticles.map((article) => (
+          <a href={`/kien-thuc-dinh-duong/${article.slug}`}><span><small>{article.categoryName}</small><strong>{article.title}</strong><span>{article.readTime} phút đọc</span></span><HomeIcon name="arrow" size={18} /></a>
+        ))}
+      </div>
+      <a class="text-link" href="/kien-thuc-dinh-duong">Xem toàn bộ bài viết <HomeIcon name="arrow" size={18} /></a>
+    </div>
+  </section>
+
+  <section class="method-strip" aria-label="Cam kết nội dung">
+    <span class="icon-box"><HomeIcon name="check" size={21} /></span><div><strong>Đọc nguồn và giới hạn trước khi áp dụng</strong><p>Mỗi công cụ và bài viết đều nêu mục đích, cách tính hoặc nguồn tham khảo; trường hợp có bệnh nền cần được cá thể hóa.</p></div><a href="/phuong-phap">Phương pháp dữ liệu <HomeIcon name="arrow" size={18} /></a>
+  </section>
 </BaseLayout>
 
+<script>
+  try {
+    const saved = localStorage.getItem("health-track-v1");
+    const panel = document.getElementById("continue-panel");
+    if (saved && JSON.parse(saved)?.length && panel) panel.hidden = false;
+  } catch {}
+</script>
+
 <style>
-.section-header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px; }
-@media (max-width: 768px) {
-  .section-header { gap:10px; flex-direction:column; align-items:flex-start; }
-}
-.view-all { display:inline-flex; align-items:center; min-height:44px; font-size:0.88rem; color:var(--brand-dark); font-weight:700; transition:opacity var(--transition); }
-.view-all:hover { opacity:0.7; }
-.brand-text { color:var(--brand); }
-
-/* Hero */
-.hero {
-  padding: 80px 24px 70px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--brand-light2) 0%, var(--bg-soft) 100%);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8), var(--shadow-sm); margin-bottom: 24px; }
-[data-theme="dark"] .hero {
-  background: linear-gradient(135deg, rgba(6, 78, 59, 0.4) 0%, var(--bg) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), var(--shadow-sm);
-}
-.hero-badge { display:inline-block; padding:6px 18px; border-radius:999px; background:var(--brand-light2); color:var(--brand-dark); font-size:0.85rem; font-weight:600; margin-bottom:18px; letter-spacing:0.3px; border: 1px solid rgba(5, 150, 105, 0.15); }
-[data-theme="dark"] .hero-badge { background:var(--brand-light); color:var(--brand); border-color: rgba(52, 211, 153, 0.15); }
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem); line-height:1.2; color:var(--ink); font-weight: 800; }
-.hero-desc { margin:14px auto 24px; max-width:520px; color:var(--ink-secondary); font-size:1.02rem; line-height:1.6; }
-.hero-search { max-width:540px; margin:0 auto; }
-.hero-actions { display:flex; gap:10px; justify-content:center; margin-top:24px; flex-wrap:wrap; }
-
-@keyframes hero-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes hero-fade-in-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in { animation: hero-fade-in 0.45s ease-out both; }
-.animate-fade-in-up { animation: hero-fade-in-up 0.5s ease-out both; }
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-in,
-  .animate-fade-in-up { animation: none; opacity: 1; transform: none; }
-}
-
-.entry-grid { padding-top:0; }
-.entry-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.entry-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 32px 24px;
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border-bottom: 5px solid var(--card-border);
-  box-shadow: var(--shadow-sm);
-}
-.entry-card:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
-}
-.entry-icon { font-size:2.4rem; margin-bottom:12px; display:block; }
-.entry-title { font-weight:700; font-size:1.02rem; margin-bottom:8px; color:var(--brand-dark); }
-.entry-desc { font-size:0.82rem; color:var(--ink-secondary); line-height:1.5; max-width:220px; }
-
-/* Entry Card Accent Colors */
-.entry-card.card-healthy { border-bottom-color: #10b981; }
-.entry-card.card-healthy:hover { border-color: #10b981; background: linear-gradient(180deg, rgba(16, 185, 129, 0.02) 0%, rgba(16, 185, 129, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.15); }
-.entry-card.card-medical { border-bottom-color: #ef4444; }
-.entry-card.card-medical:hover { border-color: #ef4444; background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, rgba(239, 68, 68, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.15); }
-.entry-card.card-weight { border-bottom-color: #f59e0b; }
-.entry-card.card-weight:hover { border-color: #f59e0b; background: linear-gradient(180deg, rgba(245, 158, 11, 0.02) 0%, rgba(245, 158, 11, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.15); }
-.entry-card.card-diet { border-bottom-color: #3b82f6; }
-.entry-card.card-diet:hover { border-color: #3b82f6; background: linear-gradient(180deg, rgba(59, 130, 246, 0.02) 0%, rgba(59, 130, 246, 0.06) 100%); transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.15); }
-
-@media(max-width:700px){ .entry-cards { grid-template-columns:repeat(2,1fr); } }
-@media(max-width:480px){ .entry-cards { grid-template-columns:1fr; } }
-
-.cta-btn {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 1rem;
-  background: var(--brand-gradient);
-  color: white;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 15px -3px rgba(5, 150, 105, 0.3);
-}
-.cta-btn:hover {
-  opacity: 1;
-  transform: translateY(-3px);
-  text-decoration: none;
-  box-shadow: 0 12px 25px -5px rgba(5, 150, 105, 0.4);
-}
-.cta-outline { background:transparent; color:var(--ink-secondary); border:1.5px solid var(--line); font-weight:500; font-size:0.9rem; padding:10.5px 20px; }
-.cta-outline:hover { border-color:var(--brand); color:var(--brand); background:var(--brand-light); opacity:1; transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.06); }
-
-/* Health alert cards */
-.ha-card { display:flex; gap:10px; padding:14px; align-items:flex-start; border-left:4px solid; }
-.ha-cao { border-left-color:#dc3545; }
-.ha-vua { border-left-color:#ffc107; }
-.ha-icon { font-size:1.4rem; line-height:1; }
-.ha-body { flex:1; }
-.ha-title { font-weight:600; font-size:0.88rem; margin-bottom:2px; }
-.ha-msg { font-size:0.82rem; color:var(--ink-secondary); line-height:1.4; }
-.ha-tip { font-size:0.78rem; color:var(--ink-tertiary); margin-top:4px; }
-.ha-link { font-size:0.78rem; color:var(--brand); font-weight:600; display:inline-block; margin-top:4px; }
-.health-alert-grid { display:flex; flex-direction:column; gap:8px; }
-.mt-banner-ring { flex-shrink:0; }
-
-.health-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-.health-card { display:flex; align-items:flex-start; gap:10px; padding:14px; color:var(--ink); }
-.health-card:hover { border-color:var(--brand); transform:translateY(-2px); }
-.health-card h3 { font-size:0.88rem; margin:0 0 2px; color:var(--ink); }
-.health-card p { font-size:0.82rem; margin:0; }
-.health-icon { width:36px; height:36px; border-radius:10px; background:var(--brand-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.2rem; }
-
-/* Ribbon banners */
-.dtn-ribbon, .map-ribbon {
-  padding: 0 0 12px;
-}
-.dtn-ribbon-link, .map-ribbon-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 18px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.dtn-ribbon-link:hover, .map-ribbon-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.dtn-ribbon-link {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-}
-[data-theme="dark"] .dtn-ribbon-link {
-  background: linear-gradient(135deg, #2a2a4e 0%, #263150 100%);
-}
-.map-ribbon-link {
-  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
-}
-[data-theme="dark"] .map-ribbon-link {
-  background: linear-gradient(135deg, #1a3d1a 0%, #2a5a2a 100%);
-}
-.dtn-ribbon-icon, .map-ribbon-icon {
-  font-size: 1.6rem;
-  flex-shrink: 0;
-}
-.dtn-ribbon-text, .map-ribbon-text {
-  flex: 1;
-  font-size: 0.9rem;
-}
-.dtn-ribbon-text strong {
-  color: #ffb74d;
-}
-.map-ribbon-text strong {
-  color: #81c784;
-}
-.dtn-ribbon-action, .map-ribbon-action {
-  font-size: 0.82rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.dtn-ribbon-action {
-  color: #ffb74d;
-}
-.map-ribbon-action {
-  color: #81c784;
-}
-
-/* Tool grid */
-.tool-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-.tool-card { text-align:center; padding:18px 10px; color:var(--ink); }
-.tool-card:hover { border-color:var(--brand); transform:translateY(-3px); }
-.tool-card h3 { font-size:0.88rem; margin:8px 0 4px; color:var(--ink); }
-.tool-card p { font-size:0.78rem; color:var(--ink-secondary); }
-.tool-icon { font-size:1.6rem; }
-
-/* Food grid */
-.food-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-.food-card { display:flex; gap:12px; align-items:center; padding:12px 14px; }
-.food-card h3 { font-size:0.88rem; margin:2px 0; }
-.food-cal { font-size:0.82rem; color:var(--ink-secondary); }
-.food-icon { width:44px; height:44px; flex-shrink:0; border-radius:10px; background:var(--bg-elevated); display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
-
-/* Recipe card */
-.recipe-card { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; padding:20px; }
-.recipe-info { flex:2; min-width:240px; }
-.recipe-info h2 { margin:8px 0; font-size:1.1rem; }
-.recipe-nutrition { flex:1; min-width:180px; }
-.recipe-nutrition h3 { font-size:0.9rem; margin-bottom:12px; }
-.stats-row { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
-.stat-chip { display:inline-block; padding:5px 12px; background:var(--brand-light); border-radius:999px; font-size:0.85rem; font-weight:600; color:var(--brand); }
-.view-link { display:inline-block; margin-top:8px; font-weight:600; font-size:0.9rem; color:var(--brand); }
-
-/* Categories */
-.category-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
-.category-card { display:flex; justify-content:space-between; align-items:center; padding:14px; }
-.category-card:hover { border-color:var(--brand); }
-.category-card h3 { font-size:0.88rem; margin:0; }
-.count-badge { background:var(--brand-light); padding:2px 10px; border-radius:999px; font-size:0.8rem; color:var(--brand); font-weight:600; }
-
-/* Health grid */
-.health-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-.health-card { display:flex; align-items:flex-start; gap:10px; padding:16px; color:var(--ink); }
-.health-card:hover { border-color:var(--brand); transform:translateY(-2px); }
-.health-card h3 { font-size:0.88rem; margin:0 0 2px; color:var(--ink); }
-.health-card p { font-size:0.82rem; margin:0; }
-.health-icon { width:36px; height:36px; border-radius:10px; background:var(--brand-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.2rem; }
-
-@media (max-width:820px) {
-  .entry-cards { grid-template-columns:repeat(2,1fr); }
-  .tool-grid { grid-template-columns:repeat(2,1fr); }
-  .health-grid { grid-template-columns:repeat(2,1fr); }
-  .food-grid { grid-template-columns:repeat(2,1fr); }
-}
-@media (max-width:620px) {
-  .entry-cards { grid-template-columns:1fr; }
-  .tool-grid { grid-template-columns:1fr 1fr; }
-  .health-grid { grid-template-columns:1fr; }
-  .food-grid { grid-template-columns:1fr; }
-  .hero-actions { gap:6px; }
-  .cta-btn { font-size:0.85rem; padding:8px 16px; }
-  .cta-outline { font-size:0.82rem; padding:7px 14px; }
-}
-@media (max-width:480px) {
-  .hero { padding:32px 0 24px; }
-  .hero h1 { font-size:1.3rem; }
-  .hero-actions { flex-direction:column; align-items:center; }
-  .cta-btn { width:100%; max-width:260px; }
-  .cta-outline { width:100%; max-width:260px; }
-  .dtn-ribbon-link, .map-ribbon-link { flex-wrap:wrap; justify-content:center; text-align:center; }
-  .dtn-ribbon-icon, .map-ribbon-icon { font-size:1.2rem; }
-}
-
-/* Modern homepage pass: clearer hierarchy, scientific calm, faster scanning */
-.section { margin-top: 30px; }
-.section-header {
-  align-items: flex-end;
-  gap: 16px;
-}
-.section-header h2 {
-  margin: 2px 0 0;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-}
-.section-kicker {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  color: var(--brand-dark);
-  font-size: .76rem;
-  font-weight: 850;
-  letter-spacing: .065em;
-  text-transform: uppercase;
-}
-.view-all {
-  min-height: 38px;
-  padding: 0 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--card);
-  font-weight: 800;
-  transition: all var(--transition);
-  white-space: nowrap;
-}
-.view-all:hover {
-  opacity: 1;
-  background: var(--brand-light);
-  border-color: var(--brand-light2);
-  text-decoration: none;
-  transform: translateY(-1px);
-}
-.hero {
-  padding: clamp(42px, 7vw, 82px) 24px clamp(34px, 6vw, 70px);
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 18% 12%, rgba(16, 185, 129, .24), transparent 18rem),
-    radial-gradient(circle at 82% 22%, rgba(14, 165, 233, .14), transparent 18rem),
-    linear-gradient(135deg, var(--card) 0%, var(--brand-light) 55%, var(--bg-soft) 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8), var(--shadow);
-  margin-bottom: 16px;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px solid rgba(5, 150, 105, .08);
-  border-radius: 22px;
-  pointer-events: none;
-}
-.hero > * { position: relative; z-index: 1; }
-[data-theme="dark"] .hero {
-  background:
-    radial-gradient(circle at 18% 12%, rgba(52, 211, 153, .18), transparent 18rem),
-    radial-gradient(circle at 82% 22%, rgba(14, 165, 233, .12), transparent 18rem),
-    linear-gradient(135deg, rgba(6, 78, 59, .46) 0%, var(--bg) 100%);
-}
-.hero-badge {
-  padding: 7px 18px;
-  background: rgba(255,255,255,.72);
-  font-weight: 800;
-  letter-spacing: .2px;
-  box-shadow: var(--shadow-sm);
-}
-.hero h1 {
-  max-width: 840px;
-  margin: 0 auto;
-  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
-  line-height: 1.04;
-  font-weight: 900;
-  letter-spacing: -0.055em;
-}
-.hero-desc {
-  max-width: 680px;
-  margin: 18px auto 26px;
-  font-size: clamp(1rem, 2vw, 1.18rem);
-  line-height: 1.7;
-}
-.hero-search { max-width: 680px; }
-.hero-trust {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px auto 0;
-}
-.hero-trust span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  padding: 6px 12px;
-  border: 1px solid rgba(5,150,105,.12);
-  border-radius: 999px;
-  background: rgba(255,255,255,.62);
-  color: var(--ink-secondary);
-  font-size: .84rem;
-  font-weight: 750;
-  box-shadow: var(--shadow-sm);
-}
-[data-theme="dark"] .hero-trust span { background: rgba(15,23,42,.44); }
-.entry-card {
-  position: relative;
-  overflow: hidden;
-}
-.entry-card::after {
-  content: "→";
-  position: absolute;
-  right: 18px;
-  bottom: 14px;
-  color: var(--ink-tertiary);
-  font-weight: 900;
-  opacity: .7;
-}
-.entry-icon {
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  border-radius: 18px;
-  background: var(--bg-soft);
-  font-size: 2rem;
-  margin-bottom: 14px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
-}
-.tool-grid,
-.health-grid { gap: 12px; }
-.tool-card {
-  text-align: left;
-  padding: 18px;
-}
-.tool-card:hover,
-.health-card:hover,
-.food-card:hover,
-.category-card:hover,
-.recipe-card:hover {
-  border-color: var(--brand-light2);
-  box-shadow: var(--shadow);
-  text-decoration: none;
-}
-.tool-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--brand-light);
-  font-size: 1.35rem;
-}
-.health-card {
-  gap: 12px;
-  padding: 16px;
-}
-.health-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-}
-.entry-card,
-.health-card,
-.tool-card,
-.food-card,
-.category-card,
-.recipe-card {
-  border-color: rgba(148, 163, 184, .28);
-}
-@media (max-width: 480px) {
-  .hero {
-    padding: 34px 14px 26px;
-    border-radius: 20px;
+  :global(.home-icon) { display:block; flex:0 0 auto; }
+  .home-hero,.home-section,.continue-card,.method-strip { max-width:1120px; margin-inline:auto; }
+  .home-hero { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr); gap:clamp(28px,5vw,64px); align-items:center; padding:clamp(40px,7vw,76px) clamp(22px,5vw,64px); border:1px solid var(--line); border-radius:28px; background:linear-gradient(145deg,var(--card),color-mix(in srgb,var(--brand) 7%,var(--card))); box-shadow:var(--shadow-sm); }
+  .hero-main { min-width:0; }
+  .hero-eyebrow,.overline { color:var(--brand-dark); font-size:.78rem; font-weight:800; letter-spacing:.055em; text-transform:uppercase; }
+  .hero-eyebrow { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
+  .home-hero h1 { max-width:780px; margin:0; color:var(--ink); font-size:clamp(2.35rem,5vw,4.5rem); line-height:1.02; letter-spacing:-.055em; text-wrap:balance; }
+  .home-hero h1 span { color:var(--brand-dark); }
+  .hero-lead { max-width:680px; margin:22px 0 26px; color:var(--ink-secondary); font-size:clamp(1rem,1.8vw,1.15rem); line-height:1.7; text-wrap:pretty; }
+  .hero-search { max-width:680px; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  .button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; padding:10px 18px; border:1px solid transparent; border-radius:12px; font-size:.94rem; font-weight:800; text-decoration:none; transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease; }
+  .button:hover { text-decoration:none; }
+  .button-primary { background:var(--brand); color:#fff; box-shadow:0 8px 20px -14px var(--brand); }
+  .button-primary:hover { background:var(--brand-dark); color:#fff; }
+  .button-secondary { border-color:var(--line); background:var(--card); color:var(--ink); }
+  .button-secondary:hover { border-color:var(--brand-light2); background:var(--brand-light); color:var(--brand-dark); }
+  .trust-row { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:20px; color:var(--ink-secondary); font-size:.82rem; }
+  .trust-row span { display:inline-flex; gap:4px; white-space:nowrap; }
+  .trust-row strong { color:var(--ink); font-variant-numeric:tabular-nums; }
+  .hero-guide { padding:22px; border:1px solid var(--line); border-radius:20px; background:var(--card); box-shadow:var(--shadow-sm); }
+  .guide-heading { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .guide-heading h2 { margin:3px 0 0; font-size:1.05rem; }
+  .icon-box,.guide-icon,.entry-icon,.tool-icon { display:grid; place-items:center; flex:0 0 auto; color:var(--brand-dark); background:var(--brand-light); }
+  .icon-box { width:42px; height:42px; border-radius:12px; }
+  .guide-list { display:grid; gap:8px; }
+  .guide-link { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:11px; min-height:64px; padding:9px 10px; border:1px solid transparent; border-radius:13px; color:var(--ink); text-decoration:none; transition:background-color .18s ease,border-color .18s ease; }
+  .guide-link:hover { border-color:var(--line); background:var(--bg-soft); text-decoration:none; }
+  .guide-icon { width:38px; height:38px; border-radius:11px; }
+  .guide-copy,.entry-copy,.tool-card>span:nth-child(2),.food-copy,.disease-card>span:nth-child(2) { min-width:0; display:grid; gap:3px; }
+  .guide-copy strong,.entry-copy strong,.tool-card strong,.food-copy strong,.disease-card strong { color:var(--ink); font-size:.91rem; line-height:1.35; }
+  .guide-copy small,.entry-copy small,.tool-card small,.disease-card small { color:var(--ink-secondary); font-size:.79rem; line-height:1.45; }
+  .guide-note { display:flex; align-items:flex-start; gap:8px; margin:16px 0 0; padding-top:14px; border-top:1px solid var(--line); color:var(--ink-tertiary); font-size:.76rem; line-height:1.45; }
+  .home-section { margin-top:clamp(42px,7vw,72px); }
+  .section-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:20px; }
+  .section-heading h2 { margin:4px 0 0; font-size:clamp(1.45rem,2.6vw,2rem); line-height:1.2; letter-spacing:-.03em; }
+  .section-heading p { max-width:700px; margin:8px 0 0; color:var(--ink-secondary); line-height:1.6; }
+  .section-link,.text-link,.method-strip>a { display:inline-flex; align-items:center; gap:7px; min-height:44px; color:var(--brand-dark); font-size:.86rem; font-weight:800; text-decoration:none; white-space:nowrap; }
+  .section-link:hover,.text-link:hover,.method-strip>a:hover { color:var(--brand); text-decoration:underline; text-underline-offset:4px; }
+  .entry-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+  .entry-card { position:relative; display:grid; grid-template-columns:auto minmax(0,1fr); align-items:start; gap:13px; min-height:178px; padding:20px; border:1px solid var(--line); border-radius:18px; background:var(--card); color:var(--ink); text-decoration:none; transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease; }
+  .entry-card:hover { border-color:var(--brand-light2); background:color-mix(in srgb,var(--brand) 3%,var(--card)); box-shadow:var(--shadow-sm); text-decoration:none; }
+  .entry-icon { width:44px; height:44px; border-radius:13px; }
+  .entry-copy strong { font-size:1rem; }
+  .card-arrow { position:absolute; right:18px; bottom:17px; color:var(--brand); }
+  .continue-card { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:16px; margin-top:32px; padding:18px 20px; border:1px solid var(--brand-light2); border-radius:18px; background:var(--brand-light); }
+  .continue-card[hidden] { display:none; }
+  .continue-card h2 { margin:2px 0 3px; font-size:1.05rem; }
+  .continue-card p { margin:0; color:var(--ink-secondary); font-size:.84rem; line-height:1.5; }
+  .disease-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--card); }
+  .disease-card { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:13px; min-height:92px; padding:16px 18px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; transition:background-color .18s ease; }
+  .disease-card:nth-child(3n) { border-right:0; }
+  .disease-card:nth-last-child(-n+3) { border-bottom:0; }
+  .disease-card:hover { background:var(--bg-soft); text-decoration:none; }
+  .disease-number { color:var(--brand); font-size:.76rem; font-weight:900; font-variant-numeric:tabular-nums; }
+  .split-section { padding:clamp(24px,4vw,38px); border-radius:22px; background:var(--bg-soft); }
+  .split-heading { align-items:flex-start; }
+  .tool-grid,.food-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  .tool-card,.food-card { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:12px; min-height:96px; padding:15px; border:1px solid var(--line); border-radius:15px; background:var(--card); color:var(--ink); text-decoration:none; transition:border-color .18s ease,box-shadow .18s ease; }
+  .tool-card:hover,.food-card:hover { border-color:var(--brand-light2); box-shadow:var(--shadow-sm); text-decoration:none; }
+  .tool-icon { width:40px; height:40px; border-radius:12px; }
+  .food-icon { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:var(--bg-soft); }
+  .food-copy small { color:var(--brand-dark); font-size:.71rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
+  .food-copy span { color:var(--ink-secondary); font-size:.77rem; line-height:1.4; }
+  .category-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .category-row a { display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:7px 11px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-secondary); font-size:.78rem; font-weight:700; text-decoration:none; }
+  .category-row a:hover { border-color:var(--brand-light2); color:var(--brand-dark); text-decoration:none; }
+  .category-row span { color:var(--brand); font-variant-numeric:tabular-nums; }
+  .editorial-grid { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:18px; }
+  .recipe-feature,.reading-panel { padding:clamp(22px,4vw,34px); border:1px solid var(--line); border-radius:20px; background:var(--card); }
+  .recipe-feature { background:linear-gradient(145deg,var(--card),color-mix(in srgb,var(--brand) 6%,var(--card))); }
+  .recipe-feature h2,.reading-panel h2 { margin:6px 0 10px; font-size:clamp(1.35rem,2.4vw,1.8rem); letter-spacing:-.03em; }
+  .recipe-feature>p { max-width:560px; margin:0; color:var(--ink-secondary); line-height:1.65; }
+  .nutrition-summary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin:22px 0 12px; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  .nutrition-summary div { padding:13px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .nutrition-summary div:nth-child(2n) { border-right:0; }
+  .nutrition-summary div:nth-last-child(-n+2) { border-bottom:0; }
+  .nutrition-summary dt { color:var(--ink-tertiary); font-size:.74rem; }
+  .nutrition-summary dd { margin:4px 0 0; color:var(--ink); font-size:1.05rem; font-weight:850; font-variant-numeric:tabular-nums; }
+  .compact-heading { margin-bottom:10px; }
+  .article-list { display:grid; margin-bottom:10px; }
+  .article-list a { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:14px; padding:15px 0; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; }
+  .article-list a>span { min-width:0; display:grid; gap:4px; }
+  .article-list small { color:var(--brand-dark); font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
+  .article-list strong { font-size:.94rem; line-height:1.4; }
+  .article-list span span { color:var(--ink-tertiary); font-size:.76rem; }
+  .method-strip { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:16px; margin-top:clamp(42px,7vw,72px); padding:20px 22px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .method-strip strong { color:var(--ink); }
+  .method-strip p { margin:3px 0 0; color:var(--ink-secondary); font-size:.82rem; line-height:1.5; }
+  .home-hero a:focus-visible,.home-section a:focus-visible,.continue-card a:focus-visible,.method-strip a:focus-visible { outline:3px solid color-mix(in srgb,var(--brand) 45%,transparent); outline-offset:3px; }
+  @media (prefers-reduced-motion:reduce) { .button,.guide-link,.entry-card,.tool-card,.food-card { transition:none; } }
+  @media (max-width:960px) {
+    .home-hero { grid-template-columns:1fr; }
+    .hero-guide { max-width:720px; }
+    .entry-grid,.disease-grid,.tool-grid,.food-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .disease-card:nth-child(3n) { border-right:1px solid var(--line); }
+    .disease-card:nth-child(2n) { border-right:0; }
+    .disease-card:nth-last-child(-n+3) { border-bottom:1px solid var(--line); }
+    .disease-card:nth-last-child(-n+2) { border-bottom:0; }
+    .editorial-grid { grid-template-columns:1fr; }
   }
-  .hero::before {
-    inset: 10px;
-    border-radius: 16px;
+  @media (max-width:640px) {
+    .home-hero { padding:30px 16px 18px; border-radius:20px; }
+    .home-hero h1 { font-size:clamp(2rem,11vw,2.7rem); }
+    .hero-actions { display:grid; grid-template-columns:1fr; }
+    .button { width:100%; }
+    .trust-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+    .trust-row span { min-height:36px; align-items:center; padding:7px 9px; border:1px solid var(--line); border-radius:10px; background:var(--card); white-space:normal; }
+    .hero-guide { padding:16px; border-radius:16px; }
+    .home-section { margin-top:42px; }
+    .section-heading,.split-heading { align-items:flex-start; flex-direction:column; gap:8px; }
+    .section-link { white-space:normal; }
+    .entry-grid,.disease-grid,.tool-grid,.food-grid { grid-template-columns:1fr; }
+    .entry-card { min-height:128px; }
+    .continue-card,.method-strip { grid-template-columns:auto minmax(0,1fr); }
+    .continue-card .button,.method-strip>a { grid-column:1/-1; }
+    .disease-card,.disease-card:nth-child(n) { border-right:0; border-bottom:1px solid var(--line); }
+    .disease-card:last-child { border-bottom:0; }
+    .split-section { padding:22px 14px; border-radius:18px; }
+    .recipe-feature,.reading-panel { padding:20px 16px; }
+    .method-strip { padding-inline:4px; }
   }
-  .hero h1 { font-size: 2rem; }
-  .hero-trust { justify-content: flex-start; }
-  .hero-trust span {
-    flex: 1 1 calc(50% - 8px);
-    justify-content: center;
-  }
-}
-
-/* Inspired by modern healthcare landing pages: search-first, calm dashboard, clearer paths */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
-  min-width: 0;
-  gap: clamp(22px, 4vw, 42px);
-  align-items: center;
-  text-align: left;
-  isolation: isolate;
-  overflow: hidden;
-}
-.hero-copy {
-  max-width: 760px;
-  min-width: 0;
-}
-.hero h1,
-.hero-desc,
-.hero-search {
-  margin-left: 0;
-  margin-right: 0;
-}
-.hero-actions,
-.hero-trust {
-  justify-content: flex-start;
-}
-.hero-panel {
-  position: relative;
-  z-index: 1;
-  padding: 18px;
-  border: 1px solid rgba(148, 163, 184, .26);
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62)),
-    var(--card);
-  box-shadow: 0 24px 60px -30px rgba(15, 23, 42, .35);
-  backdrop-filter: blur(14px);
-}
-.hero-panel::before {
-  content: "";
-  position: absolute;
-  inset: auto 22px -24px 22px;
-  height: 42px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--brand) 16%, transparent);
-  filter: blur(22px);
-  z-index: -1;
-}
-[data-theme="dark"] .hero-panel {
-  background:
-    linear-gradient(180deg, rgba(15, 23, 42, .82), rgba(15, 23, 42, .56)),
-    var(--card);
-  box-shadow: 0 24px 70px -34px rgba(0, 0, 0, .7);
-}
-.hero-panel-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  padding: 2px 2px 14px;
-  border-bottom: 1px solid rgba(148, 163, 184, .22);
-}
-.hero-panel-head span {
-  color: var(--ink-secondary);
-  font-size: .82rem;
-  font-weight: 750;
-}
-.hero-panel-head strong {
-  color: var(--brand-dark);
-  font-size: .86rem;
-}
-.journey-list {
-  display: grid;
-  gap: 10px;
-  margin-top: 14px;
-}
-.journey-item {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 12px;
-  border: 1px solid rgba(148, 163, 184, .22);
-  border-radius: 16px;
-  background: rgba(255,255,255,.58);
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-[data-theme="dark"] .journey-item {
-  background: rgba(15, 23, 42, .38);
-}
-.journey-item:hover {
-  transform: translateX(3px);
-  border-color: var(--brand-light2);
-  background: color-mix(in srgb, var(--brand) 5%, var(--card));
-  box-shadow: var(--shadow-sm);
-  text-decoration: none;
-}
-.journey-icon {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  border-radius: 14px;
-  background: var(--brand-light);
-  font-size: 1.25rem;
-}
-.journey-item span:last-child {
-  display: grid;
-  gap: 2px;
-}
-.journey-item strong {
-  font-size: .92rem;
-}
-.journey-item small {
-  color: var(--ink-tertiary);
-  font-size: .79rem;
-}
-.hero-panel-note {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin-top: 14px;
-  padding: 12px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(16, 185, 129, .12), rgba(14, 165, 233, .1));
-  color: var(--ink-secondary);
-}
-.hero-panel-note p {
-  margin: 0;
-  font-size: .82rem;
-  line-height: 1.55;
-}
-.entry-cards {
-  align-items: stretch;
-}
-.entry-card {
-  min-height: 210px;
-  justify-content: flex-start;
-  border-radius: 24px;
-  text-align: left;
-  box-shadow: var(--shadow-sm);
-}
-.entry-card:hover {
-  box-shadow: 0 24px 55px -36px rgba(15, 23, 42, .55);
-}
-.food-card,
-.health-card,
-.tool-card,
-.category-card {
-  border-radius: 18px;
-}
-.health-grid .health-card { position: relative; overflow: hidden; }
-.health-grid .health-card::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 3px;
-  background: var(--brand);
-  opacity: .72;
-}
-.health-grid .health-card:nth-child(2)::after { background: #ef4444; }
-.health-grid .health-card:nth-child(3)::after { background: #f59e0b; }
-.health-grid .health-card:nth-child(4)::after { background: #3b82f6; }
-.health-grid .health-card:nth-child(5)::after { background: #8b5cf6; }
-.health-grid .health-card:nth-child(6)::after { background: #0ea5e9; }
-.health-grid .health-card:nth-child(7)::after { background: #f97316; }
-.health-grid .health-card:nth-child(8)::after { background: #64748b; }
-.health-grid .health-card:nth-child(9)::after { background: #14b8a6; }
-.health-grid .health-card:nth-child(10)::after { background: #e11d48; }
-.health-grid .health-card:nth-child(11)::after { background: #a855f7; }
-.health-grid .health-card:nth-child(12)::after { background: #0891b2; }
-.tool-grid .tool-card { position: relative; }
-.tool-grid .tool-card:nth-child(2) .tool-icon { background: rgba(245, 158, 11, .14); }
-.tool-grid .tool-card:nth-child(3) .tool-icon { background: rgba(59, 130, 246, .14); }
-.tool-grid .tool-card:nth-child(4) .tool-icon { background: rgba(139, 92, 246, .14); }
-.tool-grid .tool-card:nth-child(5) .tool-icon { background: rgba(14, 165, 233, .14); }
-.tool-grid .tool-card:nth-child(6) .tool-icon { background: rgba(239, 68, 68, .12); }
-.tool-grid .tool-card:nth-child(7) .tool-icon { background: rgba(20, 184, 166, .14); }
-.tool-grid .tool-card:nth-child(8) .tool-icon { background: rgba(249, 115, 22, .14); }
-.tool-grid .tool-card:nth-child(9) .tool-icon { background: rgba(236, 72, 153, .14); }
-.tool-grid .tool-card:nth-child(10) .tool-icon { background: rgba(132, 204, 22, .15); }
-.tool-grid .tool-card:nth-child(11) .tool-icon { background: rgba(99, 102, 241, .14); }
-@media (max-width: 980px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    text-align: center;
-  }
-  .hero-copy {
-    max-width: none;
-  }
-  .hero h1,
-  .hero-desc,
-  .hero-search {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-actions,
-  .hero-trust {
-    justify-content: center;
-  }
-  .hero-panel {
-    max-width: 680px;
-    width: 100%;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 520px) {
-  .hero {
-    text-align: left;
-    grid-template-columns: minmax(0, 1fr);
-    min-width: 0;
-  }
-  .hero-copy,
-  .hero-panel,
-  .hero-search,
-  .hero-desc { min-width: 0; max-width: 100%; }
-  .hero-search { width: 100%; }
-  .hero-badge {
-    display: block;
-    max-width: 100%;
-    line-height: 1.5;
-    white-space: normal;
-  }
-  .hero h1 {
-    font-size: clamp(1.65rem, 7.4vw, 2rem);
-    overflow-wrap: break-word;
-  }
-  .hero-actions,
-  .hero-trust {
-    justify-content: flex-start;
-  }
-  .hero-panel {
-    padding: 14px;
-    border-radius: 20px;
-  }
-  .hero-panel-head {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .journey-item:hover {
-    transform: translateY(-1px);
-  }
-}
 </style>
