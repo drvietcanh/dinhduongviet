@@ -70,7 +70,7 @@ const { value = "", mobilePlaceholder = "Tìm món ăn, thực phẩm..." } = As
   .search-suggestions a {
     display: inline-flex;
     align-items: center;
-    min-height: 30px;
+    min-height: 44px;
     padding: 4px 10px;
     border: 1px solid var(--line);
     border-radius: 999px;
@@ -85,13 +85,14 @@ const { value = "", mobilePlaceholder = "Tìm món ăn, thực phẩm..." } = As
     color: var(--brand-dark);
     text-decoration: none;
   }
+  .search-suggestions a:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 2px; }
 
   @media (max-width: 560px) {
     .search-row {
       gap: 8px;
     }
     .search-row input {
-      min-height: 42px;
+      min-height: 44px;
       padding: 9px 12px;
       font-size: 0.95rem;
       border-radius: 9px;
@@ -101,7 +102,7 @@ const { value = "", mobilePlaceholder = "Tìm món ăn, thực phẩm..." } = As
     }
     .search-row .button {
       width: 100%;
-      min-height: 42px;
+      min-height: 44px;
       font-size: 0.92rem;
       padding: 9px 12px;
     }
