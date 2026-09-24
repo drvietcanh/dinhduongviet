@@ -56,12 +56,13 @@ const config = [
 
     .rank-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; max-width: 100%; }
     .rank-nav button {
-      padding: 8px 14px; border: 1px solid var(--card-border); border-radius: var(--radius);
+      min-height: 44px; padding: 8px 14px; border: 1px solid var(--card-border); border-radius: var(--radius);
       background: var(--card); cursor: pointer; font-size: 0.88rem; transition: all var(--transition);
       color: var(--ink); font-weight: 600;
     }
     .rank-nav button:hover { border-color: var(--brand); background: var(--bg-soft); transform: translateY(-1px); }
     .rank-nav button:active { transform: translateY(0); }
+    .rank-nav button:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 2px; }
     .rank-nav button.active { background: var(--brand); color: white; border-color: var(--brand); }
 
     .rank-card { display: none; }
@@ -115,7 +116,7 @@ const config = [
       .safety-shell p,
       .rank-card .rank-note,
       .legend { overflow-wrap: anywhere; }
-      .rank-nav button { font-size: 0.8rem; padding: 7px 10px; max-width: 100%; }
+      .rank-nav button { font-size: 0.8rem; padding: 8px 11px; max-width: 100%; }
       .rank-item { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; }
       .rank-val { grid-column: 2; text-align: left; font-size: 0.95rem; }
     }
