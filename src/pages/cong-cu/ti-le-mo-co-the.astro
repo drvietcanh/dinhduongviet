@@ -194,7 +194,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   .whtr-form input {
     width: 100%;
-    min-height: 40px;
+    min-height: 44px;
     box-sizing: border-box;
     padding: 0 10px;
     border: 1px solid var(--card-border);
@@ -204,7 +204,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   .whtr-form button {
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 16px;
     border: 0;
     border-radius: 8px;
@@ -213,6 +213,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     font-weight: 700;
     cursor: pointer;
   }
+  .whtr-form button:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 2px; }
 
   .whtr-result {
     margin-top: 14px;
