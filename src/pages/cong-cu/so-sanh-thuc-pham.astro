@@ -41,7 +41,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .slot .food-name { font-weight: 700; font-size: 1.05rem; color: var(--brand-dark); }
     .slot .remove-btn {
       position: absolute; top: 6px; right: 8px; background: none; border: none;
-      color: #ef4444; cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 2px 6px;
+      color: #ef4444; cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 8px 10px; min-width: 44px; min-height: 44px;
       transition: color var(--transition);
     }
     .slot .remove-btn:hover { color: #b91c1c; }
@@ -104,7 +104,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .add-more { display: inline-block; margin-top: 8px; }
     .add-btn {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 20px; background: var(--brand-light); color: var(--brand-dark); border: 1px solid var(--brand-light2);
+      min-height: 44px; padding: 8px 20px; background: var(--brand-light); color: var(--brand-dark); border: 1px solid var(--brand-light2);
       border-radius: var(--radius); cursor: pointer; font-weight: 600; font-size: 0.9rem;
       transition: all var(--transition);
     }
