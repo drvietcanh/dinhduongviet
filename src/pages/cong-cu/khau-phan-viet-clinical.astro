@@ -261,7 +261,7 @@ const quickJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .flags legend { margin-bottom: 8px; font-weight: 800; font-size: 0.86rem; }
     .flags label { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-elevated); font-size: 0.82rem; cursor: pointer; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
-    .chip, .ghost-btn { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink-secondary); padding: 7px 11px; font: inherit; font-size: 0.82rem; cursor: pointer; }
+    .chip, .ghost-btn { min-height: 44px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink-secondary); padding: 8px 12px; font: inherit; font-size: 0.82rem; cursor: pointer; }
     .chip.active { background: var(--brand-light); color: var(--brand); border-color: var(--brand-light2); font-weight: 800; }
     .item-list, .selected-list { display: grid; gap: 8px; }
     :global(.meal-item), :global(.selected-item) { display: grid; grid-template-columns: auto minmax(0,1fr) auto auto; align-items: center; gap: 10px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-elevated); }
@@ -269,7 +269,7 @@ const quickJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     :global(.item-name) { font-weight: 800; font-size: 0.92rem; }
     :global(.item-detail) { color: var(--ink-secondary); font-size: 0.76rem; line-height: 1.45; }
     :global(.grams) { width: 76px; min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); padding: 0 8px; font: inherit; }
-    :global(.add-btn), :global(.remove-btn) { min-height: 38px; border: 0; border-radius: 8px; padding: 7px 11px; background: var(--brand); color: white; font: inherit; font-weight: 800; cursor: pointer; }
+    :global(.add-btn), :global(.remove-btn) { min-height: 44px; border: 0; border-radius: 8px; padding: 8px 12px; background: var(--brand); color: white; font: inherit; font-weight: 800; cursor: pointer; }
     :global(.remove-btn) { background: #d9534f; }
     .result-panel { grid-column: 1 / -1; }
     .result-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
