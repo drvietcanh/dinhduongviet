@@ -70,7 +70,7 @@ const specialtyBadge = specialty ? specialtyLabels[specialty] : null;
 ---
 
 <a href={href} class="ac-card" data-specialty={specialty || "general"}>
-  {specialtyBadge && <span class="ac-specialty">{specialtyBadge.emoji} {specialtyBadge.label}</span>}
+  {specialtyBadge && <span class="ac-specialty">{specialtyBadge.label}</span>}
   <div class="ac-top">
     <span class="ac-emoji" aria-hidden="true">{emoji}</span>
     <div class="ac-info">
@@ -81,8 +81,8 @@ const specialtyBadge = specialty ? specialtyLabels[specialty] : null;
   <div class="ac-bottom">
     {(primaryTag || primaryAudience) && (
       <div class="ac-tags">
-        {primaryTag && <span class="ac-prio-tag">{primaryTag.emoji} {primaryTag.label}</span>}
-        {primaryAudience && <span class="ac-aud-tag" title={primaryAudience.label}>{primaryAudience.emoji} {primaryAudience.label}</span>}
+        {primaryTag && <span class="ac-prio-tag">{primaryTag.label}</span>}
+        {primaryAudience && <span class="ac-aud-tag" title={primaryAudience.label}>{primaryAudience.label}</span>}
       </div>
     )}
     <div class="ac-meta">
