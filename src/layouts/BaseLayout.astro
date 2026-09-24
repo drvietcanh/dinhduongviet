@@ -1182,6 +1182,26 @@ if (isArticle) {
       /* ===================== SKELETON ===================== */
       .skeleton { background: var(--line-light); border-radius: var(--radius); animation: pulse 1.5s ease-in-out infinite; }
       @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+      #scroll-top-btn {
+        position: fixed;
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+        z-index: 80;
+        display: none;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--card);
+        color: var(--brand-dark);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        transition: transform .18s ease, background-color .18s ease, border-color .18s ease;
+      }
+      #scroll-top-btn:hover { transform: translateY(-2px); background: var(--brand-light); border-color: var(--brand-light2); }
+      #scroll-top-btn:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 3px; }
+
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         *, *::before, *::after {
