@@ -6176,18 +6176,6 @@
   },
   {
     "type": "recipe",
-    "slug": "bap-nep-luoc-muoi-tieu",
-    "name": "Bắp nếp luộc chấm muối tiêu",
-    "aliases": [
-      "bap nep luoc muoi tieu",
-      "ngô nếp luộc chấm muối tiêu",
-      "bắp luộc muối tiêu"
-    ],
-    "description": "Tra cứu dinh dưỡng Bắp nếp luộc chấm muối tiêu theo khẩu phần 1 trái.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "khoai-lang-luoc-mon-an",
     "name": "Khoai lang luộc nguyên củ",
     "aliases": [
