@@ -4828,16 +4828,6 @@
   },
   {
     "type": "recipe",
-    "slug": "com-ga-tam-ky",
-    "name": "Cơm gà Tam Kỳ",
-    "aliases": [
-      "com ga tam ky"
-    ],
-    "description": "1 đĩa: Cơm vàng nấu nước gà, thịt gà xé và rau răm.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "ca-bong-song-tra-kho-tieu",
     "name": "Cá bống sông Trà kho tiêu",
     "aliases": [
@@ -6365,12 +6355,14 @@
   },
   {
     "type": "recipe",
-    "slug": "com-ga-ta",
-    "name": "Cơm gà ta luộc",
+    "slug": "com-ga",
+    "name": "Cơm gà",
     "aliases": [
-      "com ga ta luoc"
+      "com ga",
+      "cơm gà ta",
+      "cơm gà luộc"
     ],
-    "description": "Tra cứu dinh dưỡng Cơm gà ta luộc theo khẩu phần 1 suất.",
+    "description": "Tra cứu dinh dưỡng Cơm gà theo khẩu phần 1 suất.",
     "category": "Mon an"
   },
   {
@@ -6775,16 +6767,6 @@
       "trà chanh đá"
     ],
     "description": "Tra cứu dinh dưỡng Trà chanh tươi theo khẩu phần 1 ly 300ml.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
-    "slug": "com-ga-hoi-an",
-    "name": "Cơm gà Hội An",
-    "aliases": [
-      "com ga hoi an"
-    ],
-    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"
   },
   {
