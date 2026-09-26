@@ -7921,16 +7921,6 @@
   },
   {
     "type": "recipe",
-    "slug": "bong-cai-xao-toi",
-    "name": "Bông cải xào tỏi",
-    "aliases": [
-      "bong cai xao toi"
-    ],
-    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "dau-que-xao-thit-bo",
     "name": "Đậu que xào thịt bò",
     "aliases": [

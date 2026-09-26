@@ -464,7 +464,6 @@ Nộm rau muống
 Rau muống luộc
 Rau muống xào bò
 Cải thìa xào nấm
-Bông cải xào tỏi
 Đậu que xào thịt bò
 Khổ qua xào trứng
 Canh bí xanh thịt bằm
