@@ -4573,8 +4573,7 @@
     "slug": "banh-beo",
     "name": "Bánh bèo",
     "aliases": [
-      "banh beo hue",
-      "banh beo"
+      "banh beo hue"
     ],
     "description": "10 cái: Bánh bèo Huế chén nhỏ, mỗi chén ~20g.",
     "category": "Mon an"
@@ -5940,7 +5939,7 @@
     "aliases": [
       "canh bi xanh tom kho"
     ],
-    "description": "1 bát: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Canh bí xanh tôm khô theo khẩu phần 1 bát.",
     "category": "Mon an"
   },
   {
@@ -5950,7 +5949,7 @@
     "aliases": [
       "canh chua bong dien dien"
     ],
-    "description": "1 tô: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Canh chua bông điên điển theo khẩu phần 1 tô.",
     "category": "Mon an"
   },
   {
@@ -6271,7 +6270,7 @@
     "aliases": [
       "che dau do"
     ],
-    "description": "1 chén: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Chè đậu đỏ theo khẩu phần 1 chén.",
     "category": "Mon an"
   },
   {
@@ -6281,7 +6280,7 @@
     "aliases": [
       "ca hoi ap chao"
     ],
-    "description": "1 suất: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Cá hồi áp chảo theo khẩu phần 1 suất.",
     "category": "Mon an"
   },
   {
@@ -6331,7 +6330,7 @@
     "aliases": [
       "chao suon"
     ],
-    "description": "1 tô: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Cháo sườn theo khẩu phần 1 tô.",
     "category": "Mon an"
   },
   {
@@ -6341,7 +6340,7 @@
     "aliases": [
       "chao ca loc"
     ],
-    "description": "1 tô: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Cháo cá lóc theo khẩu phần 1 tô.",
     "category": "Mon an"
   },
   {
@@ -6381,7 +6380,7 @@
     "aliases": [
       "com chien hai san"
     ],
-    "description": "1 đĩa: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Cơm chiên hải sản theo khẩu phần 1 đĩa.",
     "category": "Mon an"
   },
   {
@@ -6391,7 +6390,7 @@
     "aliases": [
       "canh chua chay"
     ],
-    "description": "1 tô: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Canh chua chay theo khẩu phần 1 tô.",
     "category": "Mon an"
   },
   {
@@ -6402,7 +6401,7 @@
       "nom du du",
       "đu đủ trộn"
     ],
-    "description": "1 đĩa nhỏ: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Nộm đu đủ theo khẩu phần 1 đĩa nhỏ.",
     "category": "Mon an"
   },
   {
@@ -6597,7 +6596,7 @@
       "ga nuong mat ong",
       "cánh gà nướng"
     ],
-    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Gà nướng mật ong theo khẩu phần 1 phần.",
     "category": "Mon an"
   },
   {
@@ -6660,7 +6659,7 @@
     "aliases": [
       "che thap cam"
     ],
-    "description": "1 bát: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Chè thập cẩm theo khẩu phần 1 bát.",
     "category": "Mon an"
   },
   {
@@ -6688,10 +6687,9 @@
     "slug": "banh-cuon-nhan-thit",
     "name": "Bánh cuốn nhân thịt",
     "aliases": [
-      "banh cuon",
-      "banh cuon nhan thit"
+      "banh cuon"
     ],
-    "description": "1 đĩa: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
+    "description": "Tra cứu dinh dưỡng Bánh cuốn nhân thịt theo khẩu phần 1 đĩa.",
     "category": "Mon an"
   },
   {
@@ -8445,16 +8443,6 @@
     "name": "Cá hấp hành gừng",
     "aliases": [
       "ca hap hanh gung"
-    ],
-    "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
-    "slug": "suon-heo-nuong",
-    "name": "Sườn heo nướng",
-    "aliases": [
-      "suon heo nuong"
     ],
     "description": "1 phần: Khẩu phần phổ biến ước tính, thay đổi theo quán và vùng miền.",
     "category": "Mon an"

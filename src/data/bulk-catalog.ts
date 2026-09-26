@@ -341,7 +341,6 @@ Cơm gà Hội An
 Cơm niêu cá kho
 Cơm bò lúc lắc
 Cơm chiên dương châu
-Cơm chiên hải sản
 Cơm chiên cá mặn
 Cơm nắm muối mè
 Thịt băm rang cháy cạnh
@@ -350,14 +349,10 @@ Phở tái
 Phở nạm
 Phở sốt vang
 Phở cuốn
-Bánh xèo
 Bún đậu mắm tôm
-Bánh cuốn
-Bún thịt nướng
 Bò kho
 Cơm rang dưa bò
 Miến lươn
-Chè trôi nước
 Bánh chưng
 Bánh tét
 Xôi xéo
@@ -394,8 +389,6 @@ Miến ngan
 Miến xào cua
 Miến trộn
 Cháo trắng hột vịt muối
-Cháo sườn
-Cháo cá lóc
 Cháo hàu
 Cháo tôm
 Cháo đậu xanh thịt bằm
@@ -405,9 +398,7 @@ Canh cua rau đay
 Canh mướp mồng tơi
 Canh chua tôm
 Canh cải thịt bằm
-Canh bí xanh tôm khô
 Canh khoai mỡ
-Canh chua bông điên điển
 Canh rau má thịt bằm
 Canh hến nấu chua
 Cá lóc kho tộ
@@ -419,7 +410,6 @@ Cá rô kho tiêu
 Cá kèo kho rau răm
 Cá hấp gừng
 Cá chép om dưa
-Cá hồi áp chảo
 Tôm rim thịt
 Tôm rang me
 Tôm hấp nước dừa
@@ -441,7 +431,6 @@ Bò xào bông cải
 Gà kho gừng
 Gà rang muối
 Gà xào sả ớt
-Gà nướng mật ong
 Gà luộc lá chanh
 Vịt kho gừng
 Vịt nấu chao
@@ -459,7 +448,6 @@ Gỏi xoài cá khô
 Gỏi gà bắp cải
 Gỏi bò bóp thấu
 Nộm hoa chuối
-Nộm đu đủ
 Nộm rau muống
 Rau muống luộc
 Rau muống xào bò
@@ -500,19 +488,14 @@ Xôi mặn
 Xôi bắp
 Xôi vò
 Chè bắp
-Chè đậu đỏ
-Chè đậu đen
 Đậu hũ sốt nấm
 Chè khúc bạch
 Chè hạt sen
-Chè chuối
 Sâm bổ lượng
 Rau câu dừa
 Bánh mì thịt chả
 Cơm tấm sườn bì chả
 Bún chả Hà Nội
-Bún bò Huế
-Hủ tiếu Nam Vang
 Lẩu Thái tôm mực
 Bò né ốp la
 Bì cuốn
@@ -524,7 +507,6 @@ Lẩu riêu cua bắp bò
 Lẩu cá kèo lá giang
 Lẩu dê
 Cá hấp hành gừng
-Sườn heo nướng
 Vú heo nướng chao
 Gà nướng muối ớt
 Ốc hương rang muối trứng muối
@@ -534,18 +516,11 @@ Hàu nướng phô mai
 Bún nấm chay
 Cơm chiên dương châu chay
 Đậu hũ xào sả ớt
-Canh chua chay
 Gỏi ngó sen chay
-Bánh cuốn nhân thịt
 Bánh ướt chả lụa
 Bánh canh chả cá
-Bánh bèo
-Bánh khọt
-Bánh flan
 Tàu hũ nước đường
 Sữa chua nếp cẩm
-Chè thập cẩm
-Chè bưởi
 `;
 
 function normalize(value: string) {
