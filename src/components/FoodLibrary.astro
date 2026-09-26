@@ -117,7 +117,10 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
       <h2 id="catalog-title">Khám phá thực phẩm</h2>
       <p id="food-results-summary" class="catalog-summary" role="status" aria-live="polite">Đang chuẩn bị thư viện thực phẩm…</p>
     </div>
-    <button id="reset-library-filters" class="reset-library-filters" type="button" hidden>Xóa toàn bộ lọc</button>
+    <div class="catalog-heading-actions">
+      <a class="compare-library-link" href="/cong-cu/so-sanh-thuc-pham">So sánh thực phẩm</a>
+      <button id="reset-library-filters" class="reset-library-filters" type="button" hidden>Xóa toàn bộ lọc</button>
+    </div>
   </div>
 
   <div class="catalog-controls" aria-label="Bộ lọc danh sách thực phẩm">
@@ -225,6 +228,9 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   .search-presets button:hover { border-color: var(--brand-light2); background: var(--brand-light); color: var(--brand-dark); }
   .library-overview, .catalog-section { margin-top: 26px; }
   .overview-heading, .catalog-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+  .catalog-heading-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+  .compare-library-link { display: inline-flex; align-items: center; min-height: 44px; padding: 7px 11px; border: 1px solid var(--brand-light2); border-radius: 999px; background: var(--brand-light); color: var(--brand-dark); font-size: .78rem; font-weight: 800; text-decoration: none; }
+  .compare-library-link:hover { border-color: var(--brand); text-decoration: none; }
   .overview-heading h2, .catalog-heading h2 { margin: 0; font-size: clamp(1.35rem, 2.3vw, 1.8rem); letter-spacing: -.025em; }
   .overview-heading p:not(.section-kicker), .catalog-heading p { margin: 7px 0 0; color: var(--ink-secondary); font-size: .88rem; line-height: 1.55; }
   .data-status { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 6px; min-height: 36px; padding: 6px 10px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--bg-soft); color: var(--ink-secondary); font-size: .76rem; white-space: nowrap; }
@@ -314,7 +320,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   .numeric-controls input:focus-visible,
   .advanced-filter-panel summary:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 45%, transparent); outline-offset: 3px; }
   @media (max-width: 900px) { .category-directory, .food-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .numeric-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 680px) { .library-hero { padding: 22px 16px; border-radius: 20px; } .library-hero h1 { font-size: 2rem; } .library-lead { font-size: .9rem; } .library-search-panel { top: 8px; margin: -18px 8px 0; padding: 12px; } .overview-heading, .catalog-heading { align-items: flex-start; flex-direction: column; gap: 10px; } .catalog-controls { grid-template-columns: 1fr; } .data-status { white-space: normal; } }
+  @media (max-width: 680px) { .library-hero { padding: 22px 16px; border-radius: 20px; } .library-hero h1 { font-size: 2rem; } .library-lead { font-size: .9rem; } .library-search-panel { top: 8px; margin: -18px 8px 0; padding: 12px; } .overview-heading, .catalog-heading { align-items: flex-start; flex-direction: column; gap: 10px; } .catalog-heading-actions { width: 100%; justify-content: flex-start; } .catalog-controls { grid-template-columns: 1fr; } .data-status { white-space: normal; } }
   @media (max-width: 520px) { .hero-facts { gap: 6px; } .hero-facts span { min-height: 36px; padding: 6px 9px; font-size: .76rem; } .search-presets { gap: 6px; } .search-presets button { font-size: .8rem; } .category-directory, .food-library-grid { grid-template-columns: 1fr; } .category-tile { min-height: 76px; } .advanced-filter-panel summary small { display: none; } .numeric-controls { grid-template-columns: 1fr; } :global(.food-library-card) { min-height: 145px; } }
 </style>
 
