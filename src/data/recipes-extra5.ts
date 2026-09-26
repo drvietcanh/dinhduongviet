@@ -694,21 +694,6 @@ export const extraRecipes5: Recipe[] = [
   },
   // ─── Món chay ─────────────────────────────────────
   {
-    id: "dau-hu-sot-ca-chua", slug: "dau-hu-sot-ca-chua", name: "Đậu hũ sốt cà chua",
-    aliases: ["dau hu sot ca chua"],
-    servingName: "1 đĩa", servingWeightG: 250,
-    tags: ["vietnamese", "vegetarian", "tofu"],
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Đậu hũ chiên vàng, sốt cà chua, hành lá.",
-    items: [
-      { foodId: "dau-phu", amountG: 150, note: "Đậu hũ" },
-      { foodId: "ca-chua", amountG: 80, note: "Cà chua" },
-      { foodId: "dau-an", amountG: 8, note: "Dầu" },
-      { foodId: "hanh-la", amountG: 10, note: "Hành lá" },
-      { foodId: "nuoc-tuong", amountG: 5, note: "Nước tương" }
-    ]
-  },
-  {
     id: "canh-chua-chay", slug: "canh-chua-chay", name: "Canh chua chay",
     aliases: ["canh chua chay"],
     servingName: "1 tô", servingWeightG: 350,

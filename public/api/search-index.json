@@ -6386,16 +6386,6 @@
   },
   {
     "type": "recipe",
-    "slug": "dau-hu-sot-ca-chua",
-    "name": "Đậu hũ sốt cà chua",
-    "aliases": [
-      "dau hu sot ca chua"
-    ],
-    "description": "Tra cứu dinh dưỡng Đậu hũ sốt cà chua theo khẩu phần 1 đĩa.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "canh-chua-chay",
     "name": "Canh chua chay",
     "aliases": [
