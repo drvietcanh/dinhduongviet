@@ -489,7 +489,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       const el = document.getElementById("food-list");
       if (!el) return;
       if (list.length === 0) {
-        el.innerHTML = '<div class="empty-state">Không tìm thấy thực phẩm hoặc món ăn phù hợp.</div>';
+        el.innerHTML = '<div class="empty-state" role="status" aria-live="polite">Không tìm thấy thực phẩm hoặc món ăn phù hợp.</div>';
         return;
       }
       el.innerHTML = list.slice(0, 80).map((food, idx) => {
