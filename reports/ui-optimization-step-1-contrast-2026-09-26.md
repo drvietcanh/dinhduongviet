@@ -34,3 +34,12 @@ Audit usages of `--ink-tertiary` and `--brand` and split them into semantic role
 - `--brand` is used correctly for borders, focus rings, large numeric values, icons, and filled controls with white text.
 - `--brand` is not suitable as normal text on `--brand-light` in several active chips/badges. Those component-level text colors should use `--brand-dark` (light theme) or a dedicated semantic `--brand-text` token.
 - No global token was changed during Step 2; the next implementation step is component-scoped contrast correction followed by a rerun of the contrast table and runtime smoke test.
+
+## Step 3 implementation
+
+Updated active chips and the food lookup badge to use `--brand-dark` on the light theme and `--brand` on the dark theme. The measured ratios are:
+
+- Light `--brand-dark` / `--brand-light`: **5.21:1** — pass for normal text.
+- Dark `--brand` / dark `--brand-light`: **5.06:1** — pass for normal text.
+
+`npx astro check` passed after the component changes. The next step is a runtime light/dark smoke test on the affected routes.
