@@ -661,12 +661,12 @@ export const extraRecipes5: Recipe[] = [
   },
   // ─── Cơm ──────────────────────────────────────────
   {
-    id: "com-ga-ta", slug: "com-ga-ta", name: "Cơm gà ta luộc",
-    aliases: ["com ga ta luoc"],
+    id: "com-ga", slug: "com-ga", name: "Cơm gà",
+    aliases: ["com ga", "cơm gà ta", "cơm gà luộc"],
     servingName: "1 suất", servingWeightG: 400,
     tags: ["vietnamese", "rice"],
     sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Cơm gà ta luộc chấm muối tiêu chanh, rau xà lách.",
+    note: "Mục canonical cho cơm gà luộc. Cơm gà xé, xối mỡ hoặc chiên là các kỹ thuật khác, không dùng chung số liệu nếu chưa có công thức và khẩu phần riêng.",
     items: [
       { foodId: "com-trang", amountG: 200, note: "Cơm" },
       { foodId: "thit-ga-dui", amountG: 120, note: "Gà luộc" },

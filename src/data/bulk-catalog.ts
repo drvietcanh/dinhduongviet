@@ -337,7 +337,6 @@ Quy linh cao
 `;
 
 const recipeSeedText = `
-Cơm gà Hội An
 Cơm niêu cá kho
 Cơm bò lúc lắc
 Cơm chiên dương châu

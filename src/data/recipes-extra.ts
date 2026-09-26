@@ -435,21 +435,6 @@ export const extraRecipes: Recipe[] = [
     ]
   },
   {
-    id: "com-ga-tam-ky", slug: "com-ga-tam-ky", name: "Cơm gà Tam Kỳ", aliases: ["com ga tam ky"],
-    servingName: "1 đĩa", servingWeightG: 420,
-    tags: ["central-vietnam"],
-    portionNote: "Cơm vàng nấu nước gà, thịt gà xé và rau răm.",
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Giá trị tham khảo theo công thức; da gà và dầu nghệ làm thay đổi chất béo.",
-    items: [
-      { foodId: "com-trang", amountG: 230, note: "Cơm" },
-      { foodId: "thit-ga-dui", amountG: 90, note: "Gà xé" },
-      { foodId: "rau-thom-hanh", amountG: 20, note: "Rau răm/hành" },
-      { foodId: "dau-an", amountG: 8, note: "Dầu nghệ" },
-      { foodId: "nuoc-mam", amountG: 8, note: "Nước mắm" }
-    ]
-  },
-  {
     id: "ca-bong-song-tra-kho-tieu", slug: "ca-bong-song-tra-kho-tieu", name: "Cá bống sông Trà kho tiêu", aliases: ["ca bong kho tieu"],
     servingName: "1 phần", servingWeightG: 180,
     tags: ["central-vietnam", "low-carb"],
