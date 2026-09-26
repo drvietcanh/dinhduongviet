@@ -43,3 +43,16 @@ Updated active chips and the food lookup badge to use `--brand-dark` on the ligh
 - Dark `--brand` / dark `--brand-light`: **5.06:1** — pass for normal text.
 
 `npx astro check` passed after the component changes. The next step is a runtime light/dark smoke test on the affected routes.
+
+## Step 4 runtime verification
+
+Verified with Playwright at 390px on:
+
+- `/tim-kiem`
+- `/cong-cu/tinh-carb/`
+- `/cong-cu/tinh-gl-bua-an/`
+- `/cong-cu/tra-cuu-thuc-pham-viet/`
+
+All routes returned HTTP 200 with zero page errors. Light mode rendered the corrected `--brand-dark` text on `--brand-light`; dark mode rendered `--brand` text on the dark brand surface. Active states remained readable and stable.
+
+Next: move to the remaining contrast usages only where the text is normal-size readable content; leave metadata, placeholders, and decorative labels unchanged.
