@@ -223,7 +223,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
 
     <button class="mobile-summary-bar" id="mobile-summary-bar" type="button" style="display:none;" aria-label="Xem tổng GL của bữa ăn">
       <span class="msb-main">
-        <strong id="mobile-total-gl">0</strong>
+        <strong id="mobile-total-gl" aria-live="polite">0</strong>
         <span id="mobile-item-count">0 món</span>
       </span>
       <span class="msb-sub">Chạm để xem</span>
@@ -610,12 +610,6 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
           renderTotal();
         });
       });
-
-      if (window.innerWidth <= 720) {
-        requestAnimationFrame(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      }
 
       fillEl.style.width = `${result.totalGL == null ? 0 : Math.min(Math.round((result.totalGL / 30) * 100), 100)}%`;
       if (!result.totalGLComplete) {
