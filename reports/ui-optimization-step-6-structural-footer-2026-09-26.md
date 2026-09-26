@@ -19,6 +19,15 @@ Ngày: 2026-09-26
 - `npx astro check`: 658 files, 0 errors, 0 warnings, 0 hints.
 - `git diff --check`: không phát hiện lỗi whitespace.
 
+## Smoke test trình duyệt
+
+- Đã kiểm tra desktop 1440px và mobile 390px trên `/`, `/tim-kiem` và `/cong-cu/tinh-carb/`.
+- 6/6 trường hợp trả HTTP 200.
+- 0 lỗi console/page error.
+- 0 trường hợp tràn ngang (`body.scrollWidth` bằng `innerWidth`).
+- Footer hiển thị và 85 liên kết footer được render ổn định ở cả hai kích thước.
+- Các nhãn đầu nhóm được xác nhận không còn emoji: `Thực phẩm`, `Món ăn`, `So sánh thực phẩm`, `Bảng thành phần thực phẩm Việt`.
+
 ## Bước tiếp theo
 
-- Chạy smoke test trình duyệt desktop/mobile cho footer và kiểm tra không có overflow, lỗi console hoặc sai liên kết sau thay đổi nhãn.
+- Bước tiếp theo: rà soát các khu vực điều hướng còn lại (breadcrumb, chip lọc, accordion) để thống nhất icon/nhãn và tiếp tục kiểm thử tương tác.
