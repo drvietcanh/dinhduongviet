@@ -27,3 +27,10 @@ No token was changed in this step. The failing tokens are widely used for metada
 ## Next step
 
 Audit usages of `--ink-tertiary` and `--brand` and split them into semantic roles: readable secondary text, placeholder text, decorative labels, links, and non-text indicators. Then update only the normal-text roles and rerun the same contrast table.
+
+## Step 2 classification notes
+
+- `--ink-tertiary` is mostly used for metadata, helper text, placeholders, units, and decorative labels. These should not all inherit the same contrast requirement; normal-size helper text must be promoted to `--ink-secondary`, while placeholders and decorative labels may remain tertiary.
+- `--brand` is used correctly for borders, focus rings, large numeric values, icons, and filled controls with white text.
+- `--brand` is not suitable as normal text on `--brand-light` in several active chips/badges. Those component-level text colors should use `--brand-dark` (light theme) or a dedicated semantic `--brand-text` token.
+- No global token was changed during Step 2; the next implementation step is component-scoped contrast correction followed by a rerun of the contrast table and runtime smoke test.
