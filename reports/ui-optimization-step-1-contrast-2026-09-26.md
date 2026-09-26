@@ -56,3 +56,13 @@ Verified with Playwright at 390px on:
 All routes returned HTTP 200 with zero page errors. Light mode rendered the corrected `--brand-dark` text on `--brand-light`; dark mode rendered `--brand` text on the dark brand surface. Active states remained readable and stable.
 
 Next: move to the remaining contrast usages only where the text is normal-size readable content; leave metadata, placeholders, and decorative labels unchanged.
+
+## Step 5 implementation
+
+Promoted user-facing helper/status text from `--ink-tertiary` to `--ink-secondary` in:
+
+- Food library search hint.
+- FAQ search result summary.
+- Meal-plan search result summary.
+
+Metadata, placeholders, units, and decorative labels were intentionally left unchanged. `npx astro check` passed.
