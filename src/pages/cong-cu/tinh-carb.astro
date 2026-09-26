@@ -120,6 +120,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         <div class="section-label"><span class="sl-num">1</span> Chọn thực phẩm hoặc món ăn</div>
         <div class="builder">
           <div class="builder-top">
+            <label class="sr-only" for="food-search">Tìm thực phẩm hoặc món ăn để thêm vào bữa</label>
             <input id="food-search" type="search" placeholder="Tìm cơm, bún, phở, bánh mì, trái cây, sữa..." class="builder-search cc-input" autocomplete="off" />
             <div class="filter-chips" id="filter-chips">
               <button class="chip active" type="button" data-group="all">Tất cả</button>
@@ -325,7 +326,7 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
       .sl-num { width:26px; height:26px; font-size:0.74rem; }
       .builder-top { margin-bottom:10px; }
       .builder-search { min-height:44px; }
-      .chip { min-height:38px; padding:7px 13px; font-size:0.8rem; }
+      .chip { min-height:44px; padding:7px 13px; font-size:0.8rem; }
     }
   </style>
 
