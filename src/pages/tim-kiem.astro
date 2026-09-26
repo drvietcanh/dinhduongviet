@@ -157,7 +157,8 @@ const searchIntents = [
       var variants = queryVariants(q);
       for (var vi = 0; vi < variants.length; vi++) {
         for (var i = 0; i < fields.length; i++) {
-          best = Math.max(best, fieldScore(fields[i], variants[vi], rawQ) - (vi === 0 ? 0 : 12));
+          var fieldBonus = i === 0 ? 8 : (i === 1 ? 2 : 0);
+          best = Math.max(best, fieldScore(fields[i], variants[vi], rawQ) + fieldBonus - (vi === 0 ? 0 : 12));
         }
       }
       best += aliasIntentBonus(fields.join(' '), q, rawQ);

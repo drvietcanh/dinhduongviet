@@ -154,7 +154,8 @@ import HomeIcon from "./HomeIcon.astro";
     var fields = [item.n, item.s].concat(item.a || []);
     var best = 0;
     for (var i = 0; i < fields.length; i++) {
-      best = Math.max(best, fieldScore(fields[i], q, rawQ));
+      var fieldBonus = i === 0 ? 8 : (i === 1 ? 2 : 0);
+      best = Math.max(best, fieldScore(fields[i], q, rawQ) + fieldBonus);
     }
     var rawText = fields.join(' ');
     best += aliasIntentBonus(rawText, q, rawQ);
