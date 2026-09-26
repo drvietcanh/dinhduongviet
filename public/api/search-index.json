@@ -12216,7 +12216,9 @@
     "name": "Thì là",
     "aliases": [
       "thìa là",
+      "thia la",
       "dill",
+      "dill herb",
       "thi la"
     ],
     "description": "Tra cứu Thì là: khoảng 43 kcal/100g, nhóm Rau gia vị.",
@@ -13072,19 +13074,6 @@
     "description": "Tra cứu Giấm gạo: khoảng 18 kcal/100g, nhóm Gia vị.",
     "category": "Gia vị",
     "kcal": 18
-  },
-  {
-    "type": "food",
-    "slug": "thi-la-kho-x",
-    "name": "Thì là (rau)",
-    "aliases": [
-      "thia la",
-      "dill herb",
-      "thi la rau"
-    ],
-    "description": "Tra cứu Thì là (rau): khoảng 43 kcal/100g, nhóm Rau gia vị.",
-    "category": "Rau gia vị",
-    "kcal": 43
   },
   {
     "type": "food",

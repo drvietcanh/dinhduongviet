@@ -2016,6 +2016,7 @@ const duplicateFoodSlugsExcludedFromLibrary = new Set([
   "ngo-om",
   "gia-tuoi",
   "bong-cai-xanh",
+  "thi-la-kho-x",
   "thit-nguoi-thuong",
 ]);
 

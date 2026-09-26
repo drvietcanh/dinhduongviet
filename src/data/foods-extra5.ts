@@ -52,7 +52,7 @@ export const extraFoods5: Food[] = [
   },
   {
     id: "thi-la-kho", slug: "thi-la-kho", name: "Thì là",
-    aliases: ["thìa là", "dill"],
+    aliases: ["thìa là", "thia la", "dill", "dill herb"],
     category: "Rau gia vị", state: "raw", basis: "100g phần ăn được",
     edibleNote: "Lá thì là tươi, dùng tẩm ướp hoặc nấu canh cá.",
     nutrients: { energyKcal: 43, proteinG: 3.5, carbG: 7.0, fatG: 1.1, fiberG: 2.1, calciumMg: 208, ironMg: 6.6, sodiumMg: 61, potassiumMg: 738, vitaminCMg: 85, vitaminAUg: 771 },
