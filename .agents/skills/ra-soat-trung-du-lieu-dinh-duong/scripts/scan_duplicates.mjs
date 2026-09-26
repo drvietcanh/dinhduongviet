@@ -51,10 +51,18 @@ const duplicateAliases = [...aliasGroups.entries()].flatMap(([key, group]) => {
 const crossKindAliasCollisions = [...aliasGroups.entries()]
   .filter(([, group]) => new Set(group.map((row) => row.kind)).size > 1)
   .map(([key, group]) => [key, [...new Map(group.map((row) => [`${row.kind}:${row.id}`, row])).values()]]);
+const foodRowsByName = new Map(rows.filter((row) => row.kind === "food").map((row) => [row.key, row]));
+const freshNameCandidates = rows
+  .filter((row) => row.kind === "food" && row.key.endsWith(" tuoi"))
+  .flatMap((fresh) => {
+    const base = foodRowsByName.get(fresh.key.slice(0, -" tuoi".length));
+    return base && base.id !== fresh.id ? [{ base, fresh }] : [];
+  });
 
 console.log(JSON.stringify({
   duplicateSlugs: groupBy("slug"),
   duplicateNormalizedNames: groupBy("key"),
   duplicateAliases,
   crossKindAliasCollisions,
+  freshNameCandidates,
 }, null, 2));

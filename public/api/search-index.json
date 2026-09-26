@@ -15190,19 +15190,6 @@
   },
   {
     "type": "food",
-    "slug": "cai-bap-do-tuoi-vdd",
-    "name": "Cải bắp đỏ tươi",
-    "aliases": [
-      "cai bap do tuoi",
-      "bap cai tim tuoi",
-      "red cabbage fresh"
-    ],
-    "description": "Tra cứu Cải bắp đỏ tươi: khoảng 61 kcal/100g, nhóm Rau xanh.",
-    "category": "Rau xanh",
-    "kcal": 61
-  },
-  {
-    "type": "food",
     "slug": "cai-bap-do-luoc-vdd",
     "name": "Cải bắp đỏ luộc",
     "aliases": [
@@ -17742,8 +17729,13 @@
     "aliases": [
       "cải bắp tím",
       "bắp cải đỏ",
+      "cải bắp đỏ tươi",
+      "bắp cải tím tươi",
       "cai bap do",
-      "red cabbage"
+      "cai bap do tuoi",
+      "bap cai tim tuoi",
+      "red cabbage",
+      "red cabbage fresh"
     ],
     "description": "Tra cứu Cải bắp đỏ: khoảng 45 kcal/100g, nhóm Rau xanh.",
     "category": "Rau xanh",
