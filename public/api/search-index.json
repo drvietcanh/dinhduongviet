@@ -15177,19 +15177,6 @@
   },
   {
     "type": "food",
-    "slug": "khoai-lang-nghe-tuoi-vdd",
-    "name": "Khoai lang nghệ tươi",
-    "aliases": [
-      "khoai lang nghe tuoi",
-      "khoai lang ruot vang",
-      "yellow sweet potato fresh"
-    ],
-    "description": "Tra cứu Khoai lang nghệ tươi: khoảng 119 kcal/100g, nhóm Tinh bột.",
-    "category": "Tinh bột",
-    "kcal": 119
-  },
-  {
-    "type": "food",
     "slug": "cai-bap-do-luoc-vdd",
     "name": "Cải bắp đỏ luộc",
     "aliases": [
@@ -17840,7 +17827,11 @@
     "slug": "khoai-lang-nghe",
     "name": "Khoai lang nghệ",
     "aliases": [
-      "khoai lang nghe"
+      "khoai lang nghe",
+      "khoai lang nghe tuoi",
+      "khoai lang ruot vang",
+      "khoai lang ruột vàng",
+      "yellow sweet potato fresh"
     ],
     "description": "Tra cứu Khoai lang nghệ: khoảng 116 kcal/100g, nhóm Tinh bột.",
     "category": "Tinh bột",

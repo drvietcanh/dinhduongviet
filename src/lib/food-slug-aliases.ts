@@ -1,5 +1,6 @@
 export const foodSlugAliases: Record<string, string> = {
   "cai-bap-do-tuoi-vdd": "cai-bap-do-vdd",
+  "khoai-lang-nghe-tuoi-vdd": "khoai-lang-nghe",
   "ca-pha": "ca-phe-den",
   "ca-pha-sua-da": "ca-phe-sua-da-100ml",
   "tom-sudo": "tom-su",
