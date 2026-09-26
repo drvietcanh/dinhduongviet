@@ -500,12 +500,6 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
         });
       });
 
-      if (window.innerWidth <= 720) {
-        requestAnimationFrame(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      }
-
       fillEl.style.width = result.totalCarbComplete
         ? `${Math.min(Math.round((result.totalCarbGrams / 60) * 100), 100)}%`
         : "0%";
