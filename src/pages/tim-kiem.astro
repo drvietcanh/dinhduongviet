@@ -1,45 +1,45 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeIcon from "../components/HomeIcon.astro";
 const siteTitle = "Tìm kiếm thực phẩm và món ăn Việt Nam | Dinh dưỡng Việt";
 const siteDesc = "Tìm kiếm nhanh thực phẩm, món ăn Việt Nam theo tên, dinh dưỡng, hoặc danh mục.";
 const query = Astro.url.searchParams.get("q") ?? "";
 const searchIntents = [
-  { href: "/tim-kiem?q=tiểu đường ăn gì", icon: "🩸", title: "Tiểu đường ăn gì?", desc: "Cơm, bún phở, GI/GL, món nên ưu tiên" },
-  { href: "/tim-kiem?q=giảm muối huyết áp", icon: "🫀", title: "Ăn nhạt bớt mà vẫn ngon", desc: "Món ít natri hơn, DASH, mẹo đi chợ" },
-  { href: "/tim-kiem?q=giàu đạm", icon: "🥩", title: "Tăng đạm đúng cách", desc: "Thịt, cá, trứng, đậu và khẩu phần thực tế" },
-  { href: "/tim-kiem?q=giảm cân bữa sáng", icon: "⚖️", title: "Giảm cân không cực đoan", desc: "Bữa sáng, đồ uống, món nhẹ năng lượng" },
-  { href: "/tim-kiem?q=bệnh thận kali phốt pho", icon: "🫘", title: "Bệnh thận cần lưu ý", desc: "Đạm, kali, phốt pho, natri và xét nghiệm" },
-  { href: "/cong-cu/ke-hoach-bua-an", icon: "📋", title: "Lập kế hoạch bữa ăn", desc: "Chuyển từ đọc sang thực đơn trong ngày" },
+  { href: "/tim-kiem?q=tiểu đường ăn gì", title: "Tiểu đường ăn gì?", desc: "Cơm, bún phở, GI/GL, món nên ưu tiên" },
+  { href: "/tim-kiem?q=giảm muối huyết áp", title: "Ăn nhạt bớt mà vẫn ngon", desc: "Món ít natri hơn, DASH, mẹo đi chợ" },
+  { href: "/tim-kiem?q=giàu đạm", title: "Tăng đạm đúng cách", desc: "Thịt, cá, trứng, đậu và khẩu phần thực tế" },
+  { href: "/tim-kiem?q=giảm cân bữa sáng", title: "Giảm cân không cực đoan", desc: "Bữa sáng, đồ uống, món nhẹ năng lượng" },
+  { href: "/tim-kiem?q=bệnh thận kali phốt pho", title: "Bệnh thận cần lưu ý", desc: "Đạm, kali, phốt pho, natri và xét nghiệm" },
+  { href: "/cong-cu/ke-hoach-bua-an", title: "Lập kế hoạch bữa ăn", desc: "Chuyển từ đọc sang thực đơn trong ngày" },
 ];
 ---
 
 <BaseLayout title={query ? `"${query}" - Tìm kiếm | Dinh dưỡng Việt` : siteTitle} description={siteDesc}>
   <div class="search-page">
     <div class="search-hero">
-      <h1>🔍 Tìm kiếm</h1>
+      <h1>Tìm kiếm</h1>
       <div class="search-box">
-        <span class="search-icon">🔎</span>
+        <span class="search-icon" aria-hidden="true"><HomeIcon name="search" size={20} /></span>
         <label class="sr-only" for="searchInput">Từ khóa tìm kiếm</label>
         <input type="search" id="searchInput" aria-label="Từ khóa tìm kiếm" placeholder="Tìm thực phẩm, món ăn, bệnh, công cụ..." autocomplete="off" value={query} role="combobox" aria-autocomplete="list" aria-controls="suggestionsDropdown" aria-expanded="false" />
         <button class="search-clear" id="searchClear" aria-label="Xóa">✕</button>
         <div class="suggestions-dropdown" id="suggestionsDropdown" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
       </div>
       <div class="filter-row" id="filterRow">
-        <button class="chip active" data-filter="all">📋 Tất cả</button>
-        <button class="chip" data-filter="article">📖 Bài viết</button>
-        <button class="chip" data-filter="hub">🩺 Theo bệnh</button>
-        <button class="chip" data-filter="tool">🛠️ Công cụ</button>
-        <button class="chip" data-filter="food">🥬 Thực phẩm</button>
-        <button class="chip" data-filter="recipe">🍜 Món ăn</button>
-        <button class="chip" data-filter=">300">🔥 Nhiều calo</button>
-        <button class="chip" data-filter="<100">🥗 Ít calo</button>
-        <button class="chip" data-filter="protein>20">🥩 Giàu đạm</button>
-        <button class="chip" data-filter="fiber>5">🌾 Nhiều xơ</button>
+        <button class="chip active" data-filter="all">Tất cả</button>
+        <button class="chip" data-filter="article">Bài viết</button>
+        <button class="chip" data-filter="hub">Theo bệnh</button>
+        <button class="chip" data-filter="tool">Công cụ</button>
+        <button class="chip" data-filter="food">Thực phẩm</button>
+        <button class="chip" data-filter="recipe">Món ăn</button>
+        <button class="chip" data-filter=">300">Nhiều calo</button>
+        <button class="chip" data-filter="<100">Ít calo</button>
+        <button class="chip" data-filter="protein>20">Giàu đạm</button>
+        <button class="chip" data-filter="fiber>5">Nhiều xơ</button>
       </div>
       <div class="intent-strip" aria-label="Tìm nhanh theo nhu cầu">
         {searchIntents.map((item) => (
           <a class="intent-card" href={item.href}>
-            <span>{item.icon}</span>
             <strong>{item.title}</strong>
             <small>{item.desc}</small>
           </a>
@@ -702,10 +702,10 @@ const searchIntents = [
 .intent-card {
   position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "icon title"
-    "icon desc";
+    "title"
+    "desc";
   column-gap: 10px;
   row-gap: 2px;
   min-height: 86px;
@@ -731,16 +731,6 @@ const searchIntents = [
   background: color-mix(in srgb, var(--brand) 5%, var(--card));
   box-shadow: var(--shadow);
   text-decoration: none;
-}
-.intent-card span {
-  grid-area: icon;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--brand-light);
-  font-size: 1.25rem;
 }
 .intent-card strong {
   grid-area: title;
