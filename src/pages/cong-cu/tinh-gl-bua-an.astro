@@ -291,7 +291,8 @@ const quickRefJson = JSON.stringify(quickRefs).replace(/</g, "\\u003c");
     .filter-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
     .chip { min-height:44px; padding:8px 14px; border:1px solid var(--card-border); border-radius:var(--radius-lg); background:var(--card); color:var(--ink-secondary); font-size:0.84rem; cursor:pointer; transition:all var(--transition); font-family:inherit; }
     .chip:hover { border-color:var(--brand); }
-    .chip.active { background:var(--brand-light); color:var(--brand); border-color:var(--brand-light2); font-weight:600; }
+    .chip.active { background:var(--brand-light); color:var(--brand-dark); border-color:var(--brand-light2); font-weight:600; }
+    [data-theme="dark"] .chip.active { color:var(--brand); }
     .food-list { display:flex; flex-direction:column; gap:8px; }
     :global(.food-item) { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; align-items:center; gap:12px; padding:13px 16px; background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius-lg); transition:all var(--transition); box-shadow: var(--shadow-sm); }
     :global(.food-item:hover) { border-color:var(--brand-light2); transform: translateY(-2px); box-shadow: var(--shadow); }

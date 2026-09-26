@@ -10,7 +10,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 >
   <style>
     .app-container { max-width: 1100px; margin: 0 auto; padding: 0; }
-    .badge { display: inline-block; background: var(--brand-light); color: var(--brand); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    .badge { display: inline-block; background: var(--brand-light); color: var(--brand-dark); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    [data-theme="dark"] .badge { color: var(--brand); }
     h1 { font-size: 1.8rem; margin: 0 0 4px; }
     .subtitle { color: var(--ink-secondary); margin-bottom: 8px; font-size: 0.95rem; }
     .source-quality-note { color: var(--ink-tertiary); margin: 0 0 20px; font-size: 0.82rem; line-height: 1.5; }

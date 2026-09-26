@@ -691,7 +691,8 @@ const searchIntents = [
 .filter-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
 .chip { padding: 8px 14px; min-height: 40px; border-radius: var(--radius-lg); border: 1px solid var(--card-border); background: var(--card); color: var(--ink-secondary); font-size: 0.82rem; cursor: pointer; transition: all var(--transition); font-weight: 500; }
 .chip:hover { border-color: var(--brand); color: var(--brand); }
-.chip.active { background: var(--brand-light); color: var(--brand); border-color: var(--brand-light2); font-weight: 600; }
+.chip.active { background: var(--brand-light); color: var(--brand-dark); border-color: var(--brand-light2); font-weight: 600; }
+[data-theme="dark"] .chip.active { color: var(--brand); }
 .intent-strip {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
