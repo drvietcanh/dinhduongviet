@@ -412,23 +412,6 @@ export const extraRecipes6: Recipe[] = [
     ]
   },
   {
-    id: "banh-khot-vung-tau", slug: "banh-khot-vung-tau", name: "Bánh khọt Vũng Tàu",
-    aliases: ["banh khot"],
-    servingName: "1 phần 10 cái", servingWeightG: 200,
-    tags: ["vietnamese", "snack", "savory"],
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    weightNote: "Khối lượng phần gồm bột đã pha và phần rau/nước chấm; nước pha bột chưa được liệt kê như nguyên liệu tạo năng lượng.",
-    note: "Bánh khọt Vũng Tàu, đúc khuôn, nước chấm.",
-    items: [
-      { foodId: "bot-gao", amountG: 50, note: "Bột gạo" },
-      { foodId: "tom-tuoi", amountG: 50, note: "Tôm tươi" },
-      { foodId: "hanh-la", amountG: 5, note: "Hành lá" },
-      { foodId: "dau-an", amountG: 10, note: "Dầu" },
-      { foodId: "nuoc-mam", amountG: 5, note: "Nước mắm chấm" },
-      { foodId: "gia-do", amountG: 20, note: "Giá đỗ" },
-    ]
-  },
-  {
     id: "banh-cuon-nhan-thit", slug: "banh-cuon-nhan-thit", name: "Bánh cuốn nhân thịt",
     aliases: ["banh cuon"],
     servingName: "1 đĩa", servingWeightG: 220,

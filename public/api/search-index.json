@@ -6666,16 +6666,6 @@
   },
   {
     "type": "recipe",
-    "slug": "banh-khot-vung-tau",
-    "name": "Bánh khọt Vũng Tàu",
-    "aliases": [
-      "banh khot"
-    ],
-    "description": "Tra cứu dinh dưỡng Bánh khọt Vũng Tàu theo khẩu phần 1 phần 10 cái.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
     "slug": "banh-cuon-nhan-thit",
     "name": "Bánh cuốn nhân thịt",
     "aliases": [
