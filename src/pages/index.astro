@@ -261,6 +261,8 @@ const featuredArticles = articles.filter((article) => article.featured && articl
   @media (max-width:640px) {
     .home-hero { padding:30px 16px 18px; border-radius:20px; }
     .home-hero h1 { font-size:clamp(2rem,11vw,2.7rem); }
+    /* The sticky header search is the single mobile search entry point. */
+    .home-hero .hero-search { display:none; }
     .hero-actions { display:grid; grid-template-columns:1fr; }
     .button { width:100%; }
     .trust-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
