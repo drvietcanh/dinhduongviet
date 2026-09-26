@@ -79,6 +79,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
     <button type="button" data-search-tag="low-sodium">Ít natri</button>
     <button type="button" data-search-tag="high-protein">Giàu đạm</button>
   </div>
+  <div id="active-filter-chips" class="active-filter-chips" aria-label="Bộ lọc đang áp dụng" hidden></div>
 </div>
 
 <section class="library-overview" aria-labelledby="food-group-title">
@@ -170,8 +171,6 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
       <p class="advanced-filter-note">Dữ liệu dùng để sàng nhanh theo 100g phần ăn được. Kho hiện chưa có số liệu purin đo trực tiếp nên không xếp hạng thực phẩm cho gout. Bệnh thận hoặc chế độ điều trị cần cá thể hóa theo xét nghiệm và tư vấn chuyên môn.</p>
     </div>
   </details>
-
-  <div id="active-filter-chips" class="active-filter-chips" aria-label="Bộ lọc đang áp dụng" hidden></div>
 
   <div id="food-library-grid" class="food-library-grid" aria-live="off" aria-busy="true" aria-label="Danh sách thực phẩm">
     <div class="food-card-skeleton"></div><div class="food-card-skeleton"></div><div class="food-card-skeleton"></div>
