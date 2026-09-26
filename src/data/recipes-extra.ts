@@ -286,7 +286,7 @@ export const extraRecipes: Recipe[] = [
     id: "khoai-lang-luoc", slug: "khoai-lang-luoc", name: "Khoai lang luộc", aliases: ["khoai lang luoc"],
     servingName: "1 củ ~130g", servingWeightG: 130,
     tags: ["vegan", "gluten-free", "low-fat", "high-fiber"],
-    portionNote: "Khoai lang luộc ăn vỏ/không vỏ.",
+    portionNote: "Khoai lang luộc ăn vỏ/không vỏ; 1 củ thường khoảng 130g, củ lớn có thể khoảng 200g. Đổi khối lượng theo khẩu phần thực tế.",
     sourceId: "recipe-estimate-v1", confidence: "low",
     note: "Giá trị tham khảo theo công thức; thay đổi theo khẩu phần và cách chế biến.",
     items: [

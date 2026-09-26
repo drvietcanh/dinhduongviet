@@ -998,7 +998,7 @@ export const recipes: Recipe[] = [
     id: "com-ga-uc-ga",
     slug: "com-ga-uc-ga",
     name: "Cơm ức gà",
-    aliases: ["cơm gà", "com uc ga"],
+    aliases: ["cơm ức gà", "com uc ga"],
     servingName: "1 phần",
     servingWeightG: 320,
     mealContexts: ["dinner-light"],

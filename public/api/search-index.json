@@ -4190,7 +4190,7 @@
     "slug": "com-ga-uc-ga",
     "name": "Cơm ức gà",
     "aliases": [
-      "cơm gà",
+      "cơm ức gà",
       "com uc ga"
     ],
     "description": "Tra cứu dinh dưỡng Cơm ức gà theo khẩu phần 1 phần.",
@@ -4716,7 +4716,7 @@
     "aliases": [
       "khoai lang luoc"
     ],
-    "description": "1 củ ~130g: Khoai lang luộc ăn vỏ/không vỏ.",
+    "description": "1 củ ~130g: Khoai lang luộc ăn vỏ/không vỏ; 1 củ thường khoảng 130g, củ lớn có thể khoảng 200g. Đổi khối lượng theo khẩu phần thực tế.",
     "category": "Mon an"
   },
   {
@@ -6161,16 +6161,6 @@
       "bít tết bò"
     ],
     "description": "Tra cứu dinh dưỡng Bò bít tết kèm khoai tây theo khẩu phần 1 suất.",
-    "category": "Mon an"
-  },
-  {
-    "type": "recipe",
-    "slug": "khoai-lang-luoc-mon-an",
-    "name": "Khoai lang luộc nguyên củ",
-    "aliases": [
-      "khoai lang luoc"
-    ],
-    "description": "Tra cứu dinh dưỡng Khoai lang luộc nguyên củ theo khẩu phần 1 củ.",
     "category": "Mon an"
   },
   {

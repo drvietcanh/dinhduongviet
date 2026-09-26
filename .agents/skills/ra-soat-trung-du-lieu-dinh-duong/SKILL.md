@@ -17,6 +17,7 @@ Phát hiện các bản ghi trùng thật (slug, tên chuẩn hóa, alias hoặc
 4. Với hậu tố địa danh (Hội An, Huế, Tam Kỳ, Vũng Tàu, miền Tây...), bỏ địa danh để tìm mục nền. Chỉ gộp khi công thức, khẩu phần và mục đích tra cứu thực sự trùng; đặc sản có thành phần/kỹ thuật riêng phải giữ.
 5. Với hậu tố `tươi`, kiểm tra mục nền có thật sự là `raw` cùng cơ sở 100 g, giống/loại và phần ăn được hay không. Nếu cùng thực phẩm nhưng khác số liệu/nguồn, đối chiếu mã nguồn, cách tính năng lượng và carbohydrate; chênh carbohydrate bằng đúng lượng chất xơ chỉ là tín hiệu khác quy ước, không phải xác nhận. Chọn một bộ số liệu có thể truy nguyên cho mục công khai, giữ bản nguồn khác để rà soát và ghi rõ chênh lệch. Giữ mục luộc/nấu riêng.
 6. Không xóa chỉ vì tên gần giống. Không trộn số liệu khác basis, nguồn, trạng thái, thành phần hoặc khẩu phần. Khi gộp mục công khai, giữ alias tên gọi cũ và chuyển slug cũ về slug chuẩn nếu đã từng xuất bản.
+   Nếu hai recipe cùng nguyên liệu, kỹ thuật và chỉ khác lượng của cùng một khẩu phần có thể quy đổi trên trang, giữ một recipe chuẩn và ghi nhận cỡ phần còn lại; không áp dụng cho món có tỷ lệ thành phần khác. Alias của món cụ thể không được chiếm đúng tên món chung đã có mục chuẩn.
 7. Khi có thay đổi dữ liệu, chạy `npm run build`, kiểm tra slug trong `dist/api-foods.json` hoặc `dist/api-recipes.json` tùy loại dữ liệu, xác nhận `public/api/search-index.json` đã được cập nhật, ghi báo cáo trong `reports/`, rồi mới commit/push nếu người dùng đã yêu cầu.
 
 ## Nguyên tắc an toàn

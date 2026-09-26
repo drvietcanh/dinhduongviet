@@ -389,17 +389,6 @@ export const extraRecipes5: Recipe[] = [
     ]
   },
   {
-    id: "khoai-lang-luoc-mon-an", slug: "khoai-lang-luoc-mon-an", name: "Khoai lang luộc nguyên củ",
-    aliases: ["khoai lang luoc"],
-    servingName: "1 củ", servingWeightG: 200,
-    tags: ["vietnamese", "snack"],
-    sourceId: "recipe-estimate-v1", confidence: "low",
-    note: "Khoai lang luộc ăn sáng hoặc ăn vặt.",
-    items: [
-      { foodId: "khoai-lang", amountG: 200, note: "Khoai lang" }
-    ]
-  },
-  {
     id: "khoai-lang-chien-gion", slug: "khoai-lang-chien-gion", name: "Khoai lang chiên giòn",
     aliases: ["khoai lang chien"],
     servingName: "1 đĩa", servingWeightG: 150,
