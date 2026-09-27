@@ -388,7 +388,7 @@ const jsonLd = {
     )}
 
 {qa && (
-      <div style="margin-top: 36px; background: linear-gradient(135deg, var(--primary-bg) 0%, var(--card) 100%); border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem;">
+      <div style="margin-top: 36px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem;">
         <h3 style="margin: 0 0 16px; font-size: 1.1rem;">Câu trả lời nhanh</h3>
         {qa.summary && (
           <div style="background: var(--brand); color: white; padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; font-size: 0.95rem; font-weight: 500;">
@@ -603,7 +603,7 @@ const jsonLd = {
     border-left: 4px solid var(--brand);
     margin: 20px 0;
     padding: 12px 18px;
-    background: linear-gradient(135deg, var(--brand-light), var(--bg-soft));
+    background: var(--brand-light);
     border-radius: 0 var(--radius) var(--radius) 0;
     color: var(--ink-secondary);
     font-style: italic;
@@ -648,9 +648,7 @@ const jsonLd = {
     padding: 22px 24px;
     border: 1px solid var(--line);
     border-radius: 22px;
-    background:
-      radial-gradient(circle at top left, rgba(16, 185, 129, 0.16), transparent 34%),
-      linear-gradient(180deg, var(--card), var(--bg-soft));
+    background: var(--card);
     box-shadow: var(--shadow-sm);
   }
   .article-header-meta {
@@ -721,7 +719,7 @@ const jsonLd = {
     gap: 6px;
     margin-top: 10px;
     padding: 6px 12px;
-    background: linear-gradient(135deg,#1a1a2e,#16213e);
+    background: #1e293b;
     border-radius: 999px;
     text-decoration: none;
     color: #ffb74d;
@@ -816,7 +814,7 @@ const jsonLd = {
     padding: 18px 20px;
     border: 1px solid var(--line);
     border-radius: 16px;
-    background: linear-gradient(180deg, var(--bg-soft) 0%, var(--card) 100%);
+    background: var(--card);
   }
   .decision-head {
     display: flex;
@@ -915,9 +913,7 @@ const jsonLd = {
     align-items: center;
     text-align: center;
     padding: 16px 12px;
-    background:
-      linear-gradient(135deg, color-mix(in srgb, var(--related-accent) 11%, var(--card)), transparent 60%),
-      var(--card);
+    background: var(--card);
     border: 1px solid color-mix(in srgb, var(--related-accent) 24%, var(--line));
     border-radius: var(--radius);
     text-decoration: none;
@@ -927,7 +923,7 @@ const jsonLd = {
   .related-card:hover {
     box-shadow: var(--shadow);
     border-color: color-mix(in srgb, var(--related-accent) 52%, var(--brand-light2));
-    transform: translateY(-2px);
+    transform: none;
     text-decoration: none;
   }
   .related-card strong { display: block; }
@@ -938,7 +934,7 @@ const jsonLd = {
     height: 4px;
     border-radius: 999px;
     margin: -4px auto 8px;
-    background: linear-gradient(90deg, var(--related-accent), var(--related-accent-2));
+    background: var(--related-accent);
   }
   .related-card[data-specialty="ung-thu"] { --related-accent: #8b5cf6; --related-accent-2: #ec4899; }
   .related-card[data-specialty="tim-mach"] { --related-accent: #ef4444; --related-accent-2: #f97316; }
@@ -1162,7 +1158,7 @@ const jsonLd = {
     width: 10px;
     height: 28px;
     border-radius: 999px;
-    background: linear-gradient(180deg, var(--brand), var(--brand-dark));
+    background: var(--brand);
     box-shadow: 0 8px 18px -10px var(--brand);
     flex-shrink: 0;
   }
@@ -1199,8 +1195,7 @@ const jsonLd = {
   }
 
   .article-body th {
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--brand) 13%, var(--card)), var(--brand-light));
+    background: color-mix(in srgb, var(--brand) 10%, var(--card));
     color: var(--brand-dark);
   }
 
@@ -1234,15 +1229,7 @@ const jsonLd = {
   }
 
   .article-toc {
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.42)),
-      var(--card);
-  }
-
-  [data-theme="dark"] .article-toc {
-    background:
-      linear-gradient(180deg, rgba(15,23,42,.56), rgba(15,23,42,.28)),
-      var(--card);
+    background: var(--card);
   }
 
   .article-toc-links a::before {
@@ -1257,16 +1244,11 @@ const jsonLd = {
 
   .related-card {
     border-radius: 18px;
-    background:
-      linear-gradient(135deg, color-mix(in srgb, var(--related-accent) 12%, transparent), transparent 60%),
-      linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.34)),
-      var(--card);
+    background: var(--card);
   }
 
   [data-theme="dark"] .related-card {
-    background:
-      linear-gradient(180deg, rgba(15,23,42,.46), rgba(15,23,42,.18)),
-      var(--card);
+    background: var(--card);
   }
 
   details {

@@ -53,10 +53,8 @@ const gi = food.nutrients.glycemicIndex ?? "";
     padding: 14px 16px;
     border: 1px solid var(--card-border);
     border-radius: var(--radius-lg);
-    background:
-      linear-gradient(135deg, rgba(236, 253, 245, 0.52), rgba(255, 255, 255, 0.86) 46%, rgba(224, 242, 254, 0.28)),
-      var(--card);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    background: var(--card);
+    transition: box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
@@ -67,14 +65,13 @@ const gi = food.nutrients.glycemicIndex ?? "";
     inset: 12px auto 12px 0;
     width: 4px;
     border-radius: 999px;
-    background: linear-gradient(180deg, var(--brand), var(--accent));
+    background: var(--brand);
     opacity: 0;
     transition: opacity 0.2s ease;
   }
   .food-card:hover {
     border-color: var(--brand-light2);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow);
     text-decoration: none;
   }
   .food-card:focus-visible {
@@ -89,15 +86,12 @@ const gi = food.nutrients.glycemicIndex ?? "";
     width: 56px;
     height: 56px;
     border-radius: 18px;
-    background:
-      radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.92), transparent 36%),
-      var(--bg-elevated);
+    background: var(--bg-elevated);
     border: 1px solid rgba(148, 163, 184, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.54);
   }
   .food-card-body { flex: 1; min-width: 0; }
   .food-card-body h3 {
@@ -125,11 +119,6 @@ const gi = food.nutrients.glycemicIndex ?? "";
     font-size: 0.68rem; padding: 1px 8px;
     border-radius: 999px; background: var(--brand-light);
     color: var(--brand); font-weight: 500;
-  }
-  [data-theme="dark"] .food-card {
-    background:
-      linear-gradient(135deg, rgba(6, 78, 59, 0.28), rgba(15, 23, 42, 0.78) 48%, rgba(12, 74, 110, 0.22)),
-      var(--card);
   }
   [data-theme="dark"] .mini-tag {
     background: var(--brand-light2);

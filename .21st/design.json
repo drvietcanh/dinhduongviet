@@ -59,6 +59,11 @@
       "date": "2026-09-24",
       "scope": "site-wide shell, article template, food library and forms",
       "choice": "Extend the clinical editorial direction across the site: flat token-driven surfaces, stable hover states, SVG controls, skip navigation, explicit control state, 44px mobile targets, 16px mobile form text, and global reduced-motion handling."
+    },
+    {
+      "date": "2026-09-27",
+      "scope": "global navigation, homepage and tool library",
+      "choice": "Use a flat editorial shell: full-width sticky header with a constrained inner row, opaque menu surfaces, restrained borders and shadows, and no decorative gradients, glass blur, scale-on-hover or floating-pill navigation."
     }
   ],
   "evidence": [
