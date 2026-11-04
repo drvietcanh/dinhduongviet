@@ -65,10 +65,10 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
         </div>
       </div>
       <div id="form-feedback" class="form-feedback" hidden></div>
-      <button class="btn-calc" onclick="calculate()">🔥 Tính kcal ước tính</button>
+      <button type="button" class="btn-calc" id="calculateBtn">🔥 Tính kcal ước tính</button>
     </div>
 
-    <div id="result" class="result-shell" style="display:none;">
+    <div id="result" class="result-shell" tabindex="-1" aria-live="polite" style="display:none;">
       <div class="section-label"><span class="sl-num">2</span> Kết quả</div>
       <div class="card-plain result-card">
         <div class="burned-value" id="cal-burned">0</div>
@@ -172,6 +172,7 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
 
     function showFeedback(message) {
       var feedback = document.getElementById('form-feedback');
+      feedback.setAttribute('role', 'alert');
       feedback.textContent = message;
       feedback.hidden = false;
     }
@@ -188,20 +189,28 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
       var act = document.getElementById('activity').value;
       var met = METS[act] || 3.0;
       var result = document.getElementById('result');
+      var weightInput = document.getElementById('weight');
+      var durationInput = document.getElementById('duration');
 
       if (!Number.isFinite(w) || !Number.isFinite(dur) || w <= 0 || dur <= 0) {
         result.style.display = 'none';
+        weightInput.setAttribute('aria-invalid', String(!Number.isFinite(w) || w <= 0));
+        durationInput.setAttribute('aria-invalid', String(!Number.isFinite(dur) || dur <= 0));
         showFeedback('Vui lòng nhập cân nặng và thời gian hợp lệ để xem ước tính tham khảo.');
         return;
       }
 
       if (w > 500 || dur > 1440) {
         result.style.display = 'none';
+        weightInput.setAttribute('aria-invalid', String(w > 500));
+        durationInput.setAttribute('aria-invalid', String(dur > 1440));
         showFeedback('Giá trị đang vượt ngoài phạm vi kiểm tra nhanh của công cụ. Hãy kiểm tra lại đơn vị và số đã nhập.');
         return;
       }
 
       clearFeedback();
+      weightInput.setAttribute('aria-invalid', 'false');
+      durationInput.setAttribute('aria-invalid', 'false');
 
       var cal = Math.round((met * 3.5 * w / 200 * dur) * 10) / 10;
       var calH = Math.round((met * 3.5 * w / 200 * 60) * 10) / 10;
@@ -227,9 +236,11 @@ const desc = "Ước tính kcal tiêu hao từ cân nặng, thời gian và ho�
       document.getElementById('cal-fill').style.width = fill + '%';
 
       result.style.display = 'block';
+      result.focus({ preventScroll: true });
     }
 
     window.calculate = calculate;
+    document.getElementById('calculateBtn')?.addEventListener('click', calculate);
   })();
   </script>
 </BaseLayout>

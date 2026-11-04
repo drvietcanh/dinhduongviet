@@ -484,7 +484,8 @@ const jsonLd = {
     <!-- Article actions -->
     <div style="margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
       <a href="/tim-kiem" class="art-btn art-btn-secondary">🔍 Tìm trên site</a>
-      <button class="art-btn art-btn-primary" id="art-share" onclick="navigator.share?navigator.share({title:document.title,url:location.href}):(navigator.clipboard.writeText(location.href),alert('Đã copy link'))">📤 Chia sẻ</button>
+      <button type="button" class="art-btn art-btn-primary" id="art-share" aria-describedby="art-share-status">📤 Chia sẻ</button>
+      <span id="art-share-status" class="sr-only" role="status" aria-live="polite"></span>
     </div>
   </div>
 </BaseLayout>
@@ -1295,6 +1296,22 @@ const jsonLd = {
 
 <script is:inline>
   (() => {
+    const shareButton = document.getElementById('art-share');
+    const shareStatus = document.getElementById('art-share-status');
+    shareButton?.addEventListener('click', async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: document.title, url: location.href });
+          if (shareStatus) shareStatus.textContent = 'Đã mở bảng chia sẻ.';
+          return;
+        }
+        await navigator.clipboard.writeText(location.href);
+        if (shareStatus) shareStatus.textContent = 'Đã sao chép liên kết bài viết.';
+      } catch {
+        if (shareStatus) shareStatus.textContent = 'Chưa thể chia sẻ lúc này.';
+      }
+    });
+
     const toc = document.querySelector('.article-toc-links');
     if (!toc || !('IntersectionObserver' in window)) return;
     const links = Array.from(toc.querySelectorAll('a[href^="#"]'));

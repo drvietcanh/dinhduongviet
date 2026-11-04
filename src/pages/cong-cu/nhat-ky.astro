@@ -34,17 +34,17 @@ const recipeData = recipes.map(r => {
     </div>
 
     <div class="mt-nav">
-      <button class="mt-btn mt-btn-icon" onclick="MT.changeDate(-1)" title="Ngày trước">◀</button>
+      <button type="button" class="mt-btn mt-btn-icon" id="mt-prev-date" title="Ngày trước">◀</button>
       <div style="flex:1;text-align:center;">
         <label class="sr-only" for="mt-date">Ngày ghi nhật ký</label>
-        <input type="date" id="mt-date" aria-label="Ngày ghi nhật ký" onchange="MT.goDate(this.value)" />
+        <input type="date" id="mt-date" aria-label="Ngày ghi nhật ký" />
       </div>
-      <button class="mt-btn mt-btn-icon" onclick="MT.changeDate(1)" title="Ngày sau">▶</button>
-      <button class="mt-btn" onclick="MT.goToday()">Hôm nay</button>
-      <button class="mt-btn" id="mt-copy-btn" onclick="MT.copyFromYesterday()" title="Sao chép từ hôm qua" style="display:none;">📋 Hôm qua</button>
-      <button class="mt-btn" onclick="MT.exportCSV()" title="Xuất CSV tất cả nhật ký">📤 CSV</button>
-      <button class="mt-btn" onclick="MT.exportPDF()" title="Xuất PDF ngày hiện tại">🖨️ PDF</button>
-      <button class="mt-btn" onclick="MT.clearAllData()" title="Xóa toàn bộ nhật ký đang lưu trên thiết bị">🗑️ Xóa dữ liệu</button>
+      <button type="button" class="mt-btn mt-btn-icon" id="mt-next-date" title="Ngày sau">▶</button>
+      <button type="button" class="mt-btn" id="mt-today-btn">Hôm nay</button>
+      <button type="button" class="mt-btn" id="mt-copy-btn" title="Sao chép từ hôm qua" style="display:none;">📋 Hôm qua</button>
+      <button type="button" class="mt-btn" id="mt-export-csv" title="Xuất CSV tất cả nhật ký">📤 CSV</button>
+      <button type="button" class="mt-btn" id="mt-export-pdf" title="Xuất PDF ngày hiện tại">🖨️ PDF</button>
+      <button type="button" class="mt-btn" id="mt-clear-data" title="Xóa toàn bộ nhật ký đang lưu trên thiết bị">🗑️ Xóa dữ liệu</button>
     </div>
 
     <div class="mt-summary" id="mt-summary"></div>
@@ -52,37 +52,37 @@ const recipeData = recipes.map(r => {
     <div id="mt-meals"></div>
 
     <div style="text-align:center;margin:20px 0;">
-      <button class="mt-btn mt-add-btn" onclick="MT.showAddDialog()">+ Thêm thực phẩm / món ăn</button>
+      <button type="button" class="mt-btn mt-add-btn" id="mt-add-btn">+ Thêm thực phẩm / món ăn</button>
     </div>
 
   </div>
 
-  <div id="mt-overlay" class="mt-overlay" onclick="if(event.target===this)MT.hideAddDialog()">
-    <div class="mt-dialog" onclick="event.stopPropagation()">
+  <div id="mt-overlay" class="mt-overlay" role="presentation">
+    <div class="mt-dialog" role="dialog" aria-modal="true" aria-labelledby="mt-add-title">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <strong>➕ Thêm thực phẩm / món ăn</strong>
-        <button class="mt-btn-close" onclick="MT.hideAddDialog()">✕</button>
+        <strong id="mt-add-title">➕ Thêm thực phẩm / món ăn</strong>
+        <button type="button" class="mt-btn-close" id="mt-close-add" aria-label="Đóng hộp thoại thêm thực phẩm">✕</button>
       </div>
-      <input type="text" id="mt-search" class="mt-search-input" placeholder="Gõ tên thực phẩm hoặc món ăn..." oninput="MT.search(this.value)" autocomplete="off" />
+      <input type="text" id="mt-search" class="mt-search-input" placeholder="Gõ tên thực phẩm hoặc món ăn..." autocomplete="off" />
       <div class="mt-search-results" id="mt-search-results"><div class="mt-hint">Gõ tên để tìm kiếm...</div></div>
     </div>
   </div>
 
-  <div id="mt-overlay-port" class="mt-overlay" onclick="if(event.target===this)MT.hidePortionDialog()">
-    <div class="mt-dialog" onclick="event.stopPropagation()">
+  <div id="mt-overlay-port" class="mt-overlay" role="presentation">
+    <div class="mt-dialog" role="dialog" aria-modal="true" aria-labelledby="mt-port-title">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
         <strong id="mt-port-title">⚖️ Chọn khẩu phần</strong>
-        <button class="mt-btn-close" onclick="MT.hidePortionDialog()">✕</button>
+        <button type="button" class="mt-btn-close" id="mt-close-port" aria-label="Đóng hộp thoại khẩu phần">✕</button>
       </div>
       <div id="mt-port-body"></div>
     </div>
   </div>
 
-  <div id="mt-overlay-edit" class="mt-overlay" onclick="if(event.target===this)MT.hideEditDialog()">
-    <div class="mt-dialog" onclick="event.stopPropagation()">
+  <div id="mt-overlay-edit" class="mt-overlay" role="presentation">
+    <div class="mt-dialog" role="dialog" aria-modal="true" aria-labelledby="mt-edit-title">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
         <strong id="mt-edit-title">✏️ Sửa khẩu phần</strong>
-        <button class="mt-btn-close" onclick="MT.hideEditDialog()">✕</button>
+        <button type="button" class="mt-btn-close" id="mt-close-edit" aria-label="Đóng hộp thoại sửa khẩu phần">✕</button>
       </div>
       <div id="mt-edit-body"></div>
     </div>
@@ -981,6 +981,30 @@ const recipeData = recipes.map(r => {
     exportCSV: exportCSV,
     exportPDF: exportPDF,
   };
+
+  document.getElementById('mt-prev-date')?.addEventListener('click', function() { MT.changeDate(-1); });
+  document.getElementById('mt-next-date')?.addEventListener('click', function() { MT.changeDate(1); });
+  document.getElementById('mt-date')?.addEventListener('change', function() { MT.goDate(this.value); });
+  document.getElementById('mt-today-btn')?.addEventListener('click', MT.goToday);
+  document.getElementById('mt-copy-btn')?.addEventListener('click', MT.copyFromYesterday);
+  document.getElementById('mt-export-csv')?.addEventListener('click', MT.exportCSV);
+  document.getElementById('mt-export-pdf')?.addEventListener('click', MT.exportPDF);
+  document.getElementById('mt-clear-data')?.addEventListener('click', MT.clearAllData);
+  document.getElementById('mt-add-btn')?.addEventListener('click', MT.showAddDialog);
+  document.getElementById('mt-search')?.addEventListener('input', function() { MT.search(this.value); });
+  document.getElementById('mt-close-add')?.addEventListener('click', MT.hideAddDialog);
+  document.getElementById('mt-close-port')?.addEventListener('click', MT.hidePortionDialog);
+  document.getElementById('mt-close-edit')?.addEventListener('click', MT.hideEditDialog);
+  document.getElementById('mt-overlay')?.addEventListener('click', function(event) { if (event.target === this) MT.hideAddDialog(); });
+  document.getElementById('mt-overlay-port')?.addEventListener('click', function(event) { if (event.target === this) MT.hidePortionDialog(); });
+  document.getElementById('mt-overlay-edit')?.addEventListener('click', function(event) { if (event.target === this) MT.hideEditDialog(); });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key !== "Escape") return;
+    if (document.getElementById("mt-overlay-edit").style.display === "flex") return hideEditDialog();
+    if (document.getElementById("mt-overlay-port").style.display === "flex") return hidePortionDialog();
+    if (document.getElementById("mt-overlay").style.display === "flex") return hideAddDialog();
+  });
 
   document.addEventListener("DOMContentLoaded", function() {
     load();

@@ -123,9 +123,9 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
     </div>
 
     <div class="gen-row">
-      <button class="btn-gen" onclick="generatePlan()">✨ Tạo thực đơn tuần</button>
-      <button class="btn-outline" onclick="exportPlan()" id="exportBtn" style="display:none;">📤 Xuất văn bản</button>
-      <button class="btn-outline" onclick="openShoppingFromPlan()" id="shoppingBtn" style="display:none;">🛒 Tạo danh sách đi chợ</button>
+      <button type="button" class="btn-gen" id="generatePlanBtn">✨ Tạo thực đơn tuần</button>
+      <button type="button" class="btn-outline" id="exportBtn" style="display:none;">📤 Xuất văn bản</button>
+      <button type="button" class="btn-outline" id="shoppingBtn" style="display:none;">🛒 Tạo danh sách đi chợ</button>
     </div>
   </section>
 
@@ -592,6 +592,10 @@ const ALL_SAFETY_KEYS = Object.keys(SAFETY_GROUPS);
     }
     window.location.href = '/cong-cu/danh-sach-di-cho?from=week-plan';
   };
+
+  document.getElementById('generatePlanBtn')?.addEventListener('click', window.generatePlan);
+  document.getElementById('exportBtn')?.addEventListener('click', window.exportPlan);
+  document.getElementById('shoppingBtn')?.addEventListener('click', window.openShoppingFromPlan);
 })();
 </script>
 

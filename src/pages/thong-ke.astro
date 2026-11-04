@@ -11,7 +11,7 @@ const pageDescription = "Biểu đồ theo dõi quá trình dinh dưỡng, lư�
       <span class="badge" style="background: linear-gradient(135deg, #10b981, #059669); color: white;">📈 Analytics Dashboard</span>
       <h1 style="margin-top: 10px;">Báo Cáo Dinh Dưỡng</h1>
       <p class="lead">Dữ liệu tổng quan 7 ngày gần nhất dựa trên Sổ Tay Nhật Ký của bạn.</p>
-      <button onclick="window.print()" class="btn btn-primary btn-print" style="margin-top: 16px; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 10px 20px; font-weight: 600; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(16,185,129,0.3);">🖨️ Xuất Báo Cáo (PDF)</button>
+      <button type="button" id="printReportBtn" class="btn btn-primary btn-print" style="margin-top: 16px; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 10px 20px; font-weight: 600; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(16,185,129,0.3);">🖨️ Xuất Báo Cáo (PDF)</button>
     </div>
 
     <!-- Summary Cards -->
@@ -92,6 +92,7 @@ const pageDescription = "Biểu đồ theo dõi quá trình dinh dưỡng, lư�
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('printReportBtn')?.addEventListener('click', () => window.print());
     // 1. Get Dates (Last 7 Days)
     const dates = [];
     const labels = [];

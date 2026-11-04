@@ -155,8 +155,9 @@ var foodSchema = {
         <h1>100g {food.name}</h1>
         <p class="lead">{food.edibleNote}</p>
         <div class="detail-actions">
-          <button class="action-chip" onclick="shareRecipe()" title="Chia sẻ">Chia sẻ</button>
-          <button class="action-chip" onclick="window.print()" title="In / Xuất PDF">In / PDF</button>
+          <button type="button" class="action-chip" id="shareRecipeBtn" title="Chia sẻ">Chia sẻ</button>
+          <button type="button" class="action-chip" id="printRecipeBtn" title="In / Xuất PDF">In / PDF</button>
+          <span id="shareRecipeStatus" class="sr-only" role="status" aria-live="polite"></span>
         </div>
       </div>
       <div class="detail-media">
@@ -318,10 +319,13 @@ var foodSchema = {
         navigator.share({ title: title, url: url }).catch(function(){});
       } else {
         navigator.clipboard.writeText(url).then(function() {
-          alert('Đã sao chép đường dẫn!');
+          var status = document.getElementById('shareRecipeStatus');
+          if (status) status.textContent = 'Đã sao chép đường dẫn.';
         }).catch(function(){});
       }
     }
+    document.getElementById('shareRecipeBtn')?.addEventListener('click', shareRecipe);
+    document.getElementById('printRecipeBtn')?.addEventListener('click', function() { window.print(); });
   </script>
 </BaseLayout>
 

@@ -29,8 +29,8 @@ const dataValues = Object.fromEntries(
     Dựa trên 100g <strong>{name || 'thực phẩm'}</strong> — Chọn giới tính để xem %:
   </div>
   <div class="dri-gender-row">
-    <button class="dri-gen-btn active" data-gen="female" onclick="switchDRIGender('female')">👩 Nữ</button>
-    <button class="dri-gen-btn" data-gen="male" onclick="switchDRIGender('male')">👨 Nam</button>
+    <button type="button" class="dri-gen-btn active" data-gen="female" aria-pressed="true">👩 Nữ</button>
+    <button type="button" class="dri-gen-btn" data-gen="male" aria-pressed="false">👨 Nam</button>
   </div>
   <div id="driBars" class="dri-bars"></div>
   <div class="dri-footnote">
@@ -76,13 +76,14 @@ const dataValues = Object.fromEntries(
     const order = ['proteinG', 'fiberG', 'calciumMg', 'ironMg', 'vitaminCMg', 'vitaminAIu', 'sodiumMg', 'potassiumMg'];
     let currentGender = 'female';
 
-    window.switchDRIGender = function(gen) {
+    function switchDRIGender(gen) {
       currentGender = gen;
       document.querySelectorAll('.dri-gen-btn').forEach(function(b) {
         b.classList.toggle('active', b.dataset.gen === gen);
+        b.setAttribute('aria-pressed', String(b.dataset.gen === gen));
       });
       renderDRI();
-    };
+    }
 
     function renderDRI() {
       const dri = DRI[currentGender];
@@ -106,6 +107,11 @@ const dataValues = Object.fromEntries(
     }
 
     renderDRI();
+    document.querySelectorAll('.dri-gen-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        switchDRIGender(button.dataset.gen || 'female');
+      });
+    });
   })();
 </script>
 

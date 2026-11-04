@@ -120,9 +120,9 @@ const quickStarts = [
 
     <!-- Specialty Tabs (quick filters) -->
     <div class="ki-tabs">
-      <button class="sp-tab sp-active" data-sp="all" onclick="filterSpecialty('all')">📋 Tất cả</button>
+      <button type="button" class="sp-tab sp-active" data-sp="all" aria-pressed="true">📋 Tất cả</button>
       {grouped.map(g => (
-        <button class="sp-tab" data-sp={g.key} onclick={`filterSpecialty('${g.key}')`}>
+        <button type="button" class="sp-tab" data-sp={g.key} aria-pressed="false">
           {g.meta.emoji} {g.meta.name} <span class="sp-count">{g.items.length}</span>
         </button>
       ))}
@@ -132,9 +132,9 @@ const quickStarts = [
     <details class="ki-aud-filter">
       <summary>🎯 Lọc theo đối tượng</summary>
       <div class="aud-btns">
-        <button class="aud-btn aud-active" data-filter="all" onclick="filterAudience('all')">📋 Tất cả</button>
+        <button type="button" class="aud-btn aud-active" data-filter="all" aria-pressed="true">📋 Tất cả</button>
         {audiences.map(a => (
-          <button class="aud-btn" data-filter={a.id} onclick={`filterAudience('${a.id}')`}>{a.label}</button>
+          <button type="button" class="aud-btn" data-filter={a.id} aria-pressed="false">{a.label}</button>
         ))}
       </div>
     </details>
@@ -624,20 +624,33 @@ const quickStarts = [
     }
 
     function filterSpecialty(sp) {
-      document.querySelectorAll('.sp-tab').forEach(b => b.classList.remove('sp-active'));
+      document.querySelectorAll('.sp-tab').forEach(b => {
+        var active = b.getAttribute('data-sp') === sp;
+        b.classList.toggle('sp-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
       var btn = document.querySelector('.sp-tab[data-sp="' + sp + '"]');
-      if (btn) btn.classList.add('sp-active');
       activeSpecialty = sp;
       applyArticleFilters();
     }
 
     function filterAudience(aud) {
-      document.querySelectorAll('.aud-btn').forEach(b => b.classList.remove('aud-active'));
+      document.querySelectorAll('.aud-btn').forEach(b => {
+        var active = b.getAttribute('data-filter') === aud;
+        b.classList.toggle('aud-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
       var btn = document.querySelector('.aud-btn[data-filter="' + aud + '"]');
-      if (btn) btn.classList.add('aud-active');
       activeAudience = aud;
       applyArticleFilters();
     }
+
+    document.querySelectorAll('.sp-tab').forEach(function(button) {
+      button.addEventListener('click', function() { filterSpecialty(button.getAttribute('data-sp') || 'all'); });
+    });
+    document.querySelectorAll('.aud-btn').forEach(function(button) {
+      button.addEventListener('click', function() { filterAudience(button.getAttribute('data-filter') || 'all'); });
+    });
 
     articleSearchInput && articleSearchInput.addEventListener('input', applyArticleFilters);
     articleSearchClear && articleSearchClear.addEventListener('click', function() {

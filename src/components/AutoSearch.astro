@@ -37,6 +37,7 @@ import HomeIcon from "./HomeIcon.astro";
   var dropdown = el.querySelector('.ac-dropdown');
   var backdrop = el.querySelector('.ac-backdrop');
   var clearBtn = el.querySelector('.ac-clear');
+  var activeIndex = -1;
 
   function itemUrl(item) {
     if (item.type === 'food') return '/thuc-pham/' + item.slug;
@@ -183,6 +184,8 @@ import HomeIcon from "./HomeIcon.astro";
   }
 
   function showDropdown(results) {
+    activeIndex = -1;
+    input.removeAttribute('aria-activedescendant');
     if (results.length === 0) {
       dropdown.style.display = 'none';
       input.setAttribute('aria-expanded', 'false');
@@ -193,7 +196,7 @@ import HomeIcon from "./HomeIcon.astro";
       var r = results[i];
       var kcalHtml = r.k > 0 ? '<span class="ac-item-kcal">' + r.k + ' kcal</span>' : '';
       var emojiHtml = r.e ? '<span class="ac-item-emoji">' + r.e + '</span>' : '';
-      html += '<a class="ac-item" role="option" href="' + escapeHtml(r.u) + '">' +
+      html += '<a class="ac-item" id="ac-option-' + i + '" role="option" aria-selected="false" href="' + escapeHtml(r.u) + '">' +
         '<span class="ac-item-name">' + emojiHtml + highlightHtml(r.n, input.value.trim()) + '</span>' +
         '<span class="ac-item-meta">' +
           '<span class="ac-item-type ' + (r.t === 'bài viết' ? 'bai-viet' : r.t === 'công cụ' ? 'cong-cu' : '') + '">' + escapeHtml(r.t) + '</span>' +
@@ -205,6 +208,19 @@ import HomeIcon from "./HomeIcon.astro";
     dropdown.style.display = 'block';
     input.setAttribute('aria-expanded', 'true');
     if (backdrop) backdrop.style.display = 'block';
+  }
+
+  function setActiveOption(index) {
+    var options = Array.from(dropdown.querySelectorAll('[role="option"]'));
+    if (!options.length) return;
+    activeIndex = (index + options.length) % options.length;
+    options.forEach(function(option, optionIndex) {
+      var selected = optionIndex === activeIndex;
+      option.setAttribute('aria-selected', String(selected));
+      option.classList.toggle('is-active', selected);
+    });
+    input.setAttribute('aria-activedescendant', options[activeIndex].id);
+    options[activeIndex].scrollIntoView({ block: 'nearest' });
   }
 
   input.addEventListener('focus', loadPayload, { once: true });
@@ -221,12 +237,25 @@ import HomeIcon from "./HomeIcon.astro";
   });
 
   input.addEventListener('keydown', function(e) {
+    var options = dropdown.querySelectorAll('[role="option"]');
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && options.length) {
+      e.preventDefault();
+      setActiveOption(activeIndex + (e.key === 'ArrowDown' ? 1 : -1));
+      return;
+    }
     if (e.key === 'Escape') {
       dropdown.style.display = 'none';
       input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
+      activeIndex = -1;
       this.blur();
     }
     if (e.key === 'Enter') {
+      if (activeIndex >= 0 && options[activeIndex]) {
+        e.preventDefault();
+        options[activeIndex].click();
+        return;
+      }
       dropdown.style.display = 'none';
       input.setAttribute('aria-expanded', 'false');
       window.location.href = '/tim-kiem?q=' + encodeURIComponent(this.value);
@@ -238,6 +267,14 @@ import HomeIcon from "./HomeIcon.astro";
       dropdown.style.display = 'none';
       if (backdrop) backdrop.style.display = 'none';
     }
+  });
+
+  backdrop && backdrop.addEventListener('click', function() {
+    dropdown.style.display = 'none';
+    backdrop.style.display = 'none';
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-activedescendant');
+    activeIndex = -1;
   });
 
   el.querySelectorAll('.ac-chip').forEach(function(chip) {
@@ -347,6 +384,7 @@ import HomeIcon from "./HomeIcon.astro";
   }
   .ac-item:last-child { border-bottom: none; }
   .ac-item:hover { background: var(--line-light); }
+  .ac-item.is-active { background: var(--line-light); outline: 2px solid color-mix(in srgb, var(--brand) 35%, transparent); outline-offset: -2px; }
   .ac-item-name { font-weight: 600; font-size: 0.92rem; display: flex; align-items: center; gap: 6px; }
   .ac-item-emoji { font-size: 1rem; flex-shrink: 0; }
   .ac-item-meta { display: flex; gap: 8px; align-items: center; }

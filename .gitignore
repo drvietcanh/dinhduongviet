@@ -8,6 +8,7 @@ dist/
 # Local test/browser output
 test-results/
 .playwright-cli/
+.playwright-mcp/
 playwright-report/
 .codex-mobile-audit/
 

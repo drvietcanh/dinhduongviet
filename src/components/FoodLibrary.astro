@@ -110,7 +110,7 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   </div>
 </section>
 
-<section id="food-results" class="catalog-section" aria-labelledby="catalog-title">
+<section id="food-results" class="catalog-section" tabindex="-1" aria-labelledby="catalog-title">
   <div class="catalog-heading">
     <div>
       <p class="section-kicker">DANH SÁCH ĐẦY ĐỦ</p>
@@ -178,12 +178,12 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
   <div id="food-library-grid" class="food-library-grid" aria-live="off" aria-busy="true" aria-label="Danh sách thực phẩm">
     <div class="food-card-skeleton"></div><div class="food-card-skeleton"></div><div class="food-card-skeleton"></div>
   </div>
-  <div id="food-library-empty" class="library-empty-state" hidden>
+  <div id="food-library-empty" class="library-empty-state" role="status" hidden>
     <span aria-hidden="true"><HomeIcon name="search" size={24} /></span>
     <strong>Chưa tìm thấy thực phẩm phù hợp</strong>
     <p>Thử tên gọi khác, bỏ bớt một điều kiện hoặc xem toàn bộ nhóm thực phẩm.</p>
   </div>
-  <div id="food-library-error" class="library-empty-state library-error-state" hidden>
+  <div id="food-library-error" class="library-empty-state library-error-state" role="alert" hidden>
     <span aria-hidden="true"><HomeIcon name="refresh" size={24} /></span>
     <strong>Chưa tải được thư viện thực phẩm</strong>
     <p>Kiểm tra kết nối rồi thử lại. Các bộ lọc sẽ được giữ nguyên.</p>
@@ -438,7 +438,10 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
         option.setAttribute('aria-selected', String(index === suggestionIndex));
       });
       var active = options[suggestionIndex];
-      if (foodSearch && active) foodSearch.setAttribute('aria-activedescendant', active.id);
+      if (foodSearch && active) {
+        foodSearch.setAttribute('aria-activedescendant', active.id);
+        active.scrollIntoView({ block: 'nearest' });
+      }
     }
     function selectSuggestion(button) {
       if (!button || !foodSearch) return;
@@ -560,7 +563,12 @@ const aliasesCount = lookupFoods.reduce((count, food) => count + (food.aliases?.
       if (params.get('tag') && document.querySelector('.tag-filter[data-filter="' + CSS.escape(params.get('tag')) + '"]')) activeTag = params.get('tag');
       [['maxKcal', maxKcal], ['minProtein', minProtein], ['maxCarb', maxCarb], ['maxSodium', maxSodium]].forEach(function(pair) { if (pair[1] && params.get(pair[0])) pair[1].value = params.get(pair[0]); });
     }
-    function focusResults() { document.getElementById('food-results').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    function focusResults() {
+      var results = document.getElementById('food-results');
+      if (!results) return;
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      results.focus({ preventScroll: true });
+    }
     function resetAll() {
       if (foodSearch) foodSearch.value = '';
       if (categoryFilter) categoryFilter.value = 'all';

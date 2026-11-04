@@ -43,10 +43,10 @@ if (!art) throw new Error("Article not found: nhu-cau-dinh-duong-khuyen-nghi");
   </div>
 
   <div class="tabs" id="tabContainer">
-    <button class="tab active" onclick="switchTab('energy')">⚡ Năng lượng</button>
-    <button class="tab" onclick="switchTab('macro')">🥩 Đạm & Béo</button>
-    <button class="tab" onclick="switchTab('vitamins')">🍊 Vitamin</button>
-    <button class="tab" onclick="switchTab('minerals')">🧂 Khoáng chất</button>
+    <button type="button" class="tab active" data-tab="energy" aria-selected="true">⚡ Năng lượng</button>
+    <button type="button" class="tab" data-tab="macro" aria-selected="false">🥩 Đạm & Béo</button>
+    <button type="button" class="tab" data-tab="vitamins" aria-selected="false">🍊 Vitamin</button>
+    <button type="button" class="tab" data-tab="minerals" aria-selected="false">🧂 Khoáng chất</button>
   </div>
 
   <div class="dri-table-wrap" id="table-energy">
@@ -150,9 +150,13 @@ if (!art) throw new Error("Article not found: nhu-cau-dinh-duong-khuyen-nghi");
       });
       // Simpler: find by onclick attribute
       document.querySelectorAll('.tab').forEach(el => {
-        el.classList.remove('active');
-        if (el.getAttribute('onclick') === "switchTab('" + tab + "')") el.classList.add('active');
+        const isActive = el.dataset.tab === tab;
+        el.classList.toggle('active', isActive);
+        el.setAttribute('aria-selected', String(isActive));
       });
     }
+    document.querySelectorAll('.tab').forEach(tabButton => {
+      tabButton.addEventListener('click', () => switchTab(tabButton.dataset.tab));
+    });
   </script>
 </ArticleLayout>

@@ -53,25 +53,25 @@ if (!art) throw new Error("Article not found: thap-dinh-duong-viet-nam");
   </div>
 
   <div class="pyramid-layout">
-    <button class="tier tier-1" data-tier="1" onclick="showTier(1)">
+    <button type="button" class="tier tier-1" data-tier="1">
       <span class="emoji">🧂</span> <span>Ăn hạn chế</span> <span class="count-tag" id="count-1"></span>
     </button>
-    <button class="tier tier-2" data-tier="2" onclick="showTier(2)">
+    <button type="button" class="tier tier-2" data-tier="2">
       <span class="emoji">🥛</span> <span>Sữa &amp; chế phẩm</span> <span class="count-tag" id="count-2"></span>
     </button>
-    <button class="tier tier-3" data-tier="3" onclick="showTier(3)">
+    <button type="button" class="tier tier-3" data-tier="3">
       <span class="emoji">🥩</span> <span>Đạm (thịt, cá, trứng, đậu)</span> <span class="count-tag" id="count-3"></span>
     </button>
-    <button class="tier tier-4" data-tier="4" onclick="showTier(4)">
+    <button type="button" class="tier tier-4" data-tier="4">
       <span class="emoji">🍎</span> <span>Trái cây</span> <span class="count-tag" id="count-4"></span>
     </button>
-    <button class="tier tier-5" data-tier="5" onclick="showTier(5)">
+    <button type="button" class="tier tier-5" data-tier="5">
       <span class="emoji">🥬</span> <span>Rau xanh</span> <span class="count-tag" id="count-5"></span>
     </button>
-    <button class="tier tier-6" data-tier="6" onclick="showTier(6)">
+    <button type="button" class="tier tier-6" data-tier="6">
       <span class="emoji">🌾</span> <span>Tinh bột (gạo, bún, bánh mì)</span> <span class="count-tag" id="count-6"></span>
     </button>
-    <button class="tier tier-7" data-tier="7" onclick="showTier(7)">
+    <button type="button" class="tier tier-7" data-tier="7">
       <span class="emoji">💧</span> <span>Nước (&ge; 8 ly/ngày)</span> <span class="count-tag" id="count-7"></span>
     </button>
   </div>
@@ -235,6 +235,9 @@ if (!art) throw new Error("Article not found: thap-dinh-duong-viet-nam");
       if (category.includes('Hải sản')) return '🦐';
       return '🥗';
     }
+    document.querySelectorAll('.tier[data-tier]').forEach(tierButton => {
+      tierButton.addEventListener('click', () => window.showTier(Number(tierButton.dataset.tier)));
+    });
   })();
   </script>
 </ArticleLayout>

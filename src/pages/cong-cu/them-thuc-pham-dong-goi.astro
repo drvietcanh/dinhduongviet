@@ -87,16 +87,16 @@ const domain = "dinhduongviet.vn";
    <div class="card">
     <h2>📋 Thực phẩm của tôi <span class="badge" id="foodCount">0</span></h2>
     <div class="search-bar">
-     <input type="text" id="listSearch" placeholder="Tìm trong thực phẩm của tôi..." oninput="renderList()" />
+     <input type="text" id="listSearch" placeholder="Tìm trong thực phẩm của tôi..." />
     </div>
     <div id="foodListContainer" class="food-list">
      <div class="empty-state">Chưa có thực phẩm nào. Nhập bên phải để bắt đầu! 👉</div>
     </div>
     <div class="actions">
-     <button class="btn-secondary" onclick="exportAll()">📤 Xuất JSON</button>
-     <button class="btn-secondary" onclick="document.getElementById('importInput').click()">📥 Nhập JSON</button>
-     <button class="btn-danger" onclick="clearAllFoods()">🧹 Xóa dữ liệu local</button>
-     <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)" />
+     <button type="button" class="btn-secondary" id="exportAllBtn">📤 Xuất JSON</button>
+     <button type="button" class="btn-secondary" id="importTriggerBtn">📥 Nhập JSON</button>
+     <button type="button" class="btn-danger" id="clearAllBtn">🧹 Xóa dữ liệu local</button>
+     <input type="file" id="importInput" accept=".json" style="display:none" />
     </div>
    </div>
 
@@ -218,14 +218,14 @@ const domain = "dinhduongviet.vn";
     </div>
 
     <div class="actions">
-     <button class="btn-primary" id="saveBtn" onclick="saveFood()">💾 Lưu</button>
-     <button class="btn-secondary" onclick="resetForm()">↩️ Làm lại</button>
+     <button type="button" class="btn-primary" id="saveBtn">💾 Lưu</button>
+     <button type="button" class="btn-secondary" id="resetFormBtn">↩️ Làm lại</button>
      <input type="hidden" id="editId" value="" />
     </div>
    </div>
   </div>
  </div>
- <div id="toast" class="toast"></div>
+ <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
  <script is:inline>
  (() => {
@@ -697,6 +697,14 @@ const domain = "dinhduongviet.vn";
    localStorage.setItem(diaryKey, JSON.stringify(diary));
    showToast('✅ Đã ghi vào nhật ký hôm nay: ' + food.name);
   };
+
+  document.getElementById('exportAllBtn')?.addEventListener('click', window.exportAll);
+  document.getElementById('importTriggerBtn')?.addEventListener('click', () => document.getElementById('importInput')?.click());
+  document.getElementById('clearAllBtn')?.addEventListener('click', window.clearAllFoods);
+  document.getElementById('importInput')?.addEventListener('change', window.importJSON);
+  document.getElementById('saveBtn')?.addEventListener('click', window.saveFood);
+  document.getElementById('resetFormBtn')?.addEventListener('click', window.resetForm);
+  document.getElementById('listSearch')?.addEventListener('input', renderList);
 
   // Initial render
   document.getElementById('fLabelDate').value = new Date().toISOString().slice(0, 10);

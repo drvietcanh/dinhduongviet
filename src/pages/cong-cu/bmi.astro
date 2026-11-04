@@ -39,6 +39,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           inputmode="decimal"
           autocomplete="off"
           placeholder="Ví dụ: 65 hoặc 65,5"
+          aria-describedby="form-message"
         />
       </div>
       <div>
@@ -50,6 +51,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           inputmode="decimal"
           autocomplete="off"
           placeholder="Ví dụ: 170 hoặc 170,5"
+          aria-describedby="form-message"
         />
       </div>
     </div>
@@ -62,10 +64,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       Tính BMI tham khảo
     </button>
 
-    <p id="form-message" class="form-message" hidden></p>
+    <p id="form-message" class="form-message" role="alert" hidden></p>
   </section>
 
-  <section id="result-section" class="section card animate-result result-card" style="display:none;">
+  <section id="result-section" class="section card animate-result result-card" tabindex="-1" aria-live="polite" style="display:none;">
     <h2>Kết quả tham khảo</h2>
     <div class="grid two">
       <div class="stat">
@@ -214,6 +216,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   function setMessage(message) {
     formMessage.textContent = message;
     formMessage.hidden = !message;
+    [weightInput, heightInput].forEach((input) => {
+      input?.setAttribute("aria-invalid", message ? "true" : "false");
+    });
   }
 
   function clearResult() {
@@ -298,5 +303,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       top: resultSection.offsetTop - 20,
       behavior: "smooth",
     });
+    resultSection.focus({ preventScroll: true });
   });
 </script>

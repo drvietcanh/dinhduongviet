@@ -729,12 +729,12 @@ const groups = [
 
     <!-- Specialty tabs -->
     <div id="spec-tabs" class="spec-tabs">
-      <button class="st-btn st-active" data-spec="all" onclick="filterSpec('all')">📋 Tất cả ({groups.length})</button>
+      <button type="button" class="st-btn st-active" data-spec="all" aria-pressed="true">📋 Tất cả ({groups.length})</button>
       {specialties.map(sp => {
         const count = groups.filter(g => g.specialty === sp.key).length;
         if (!count) return null;
         return (
-          <button class="st-btn" data-spec={sp.key} onclick={`filterSpec('${sp.key}')`}>
+          <button type="button" class="st-btn" data-spec={sp.key} aria-pressed="false">
             {sp.emoji} {sp.name} <span class="tab-count">({count})</span>
           </button>
         );
@@ -1276,11 +1276,19 @@ const groups = [
     }
     function filterSpec(spec) {
       selectedSpec = spec;
-      document.querySelectorAll('.st-btn').forEach(b => b.classList.remove('st-active'));
+      document.querySelectorAll('.st-btn').forEach(b => {
+        var active = b.getAttribute('data-spec') === spec;
+        b.classList.toggle('st-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
       var btn = document.querySelector('.st-btn[data-spec="' + spec + '"]');
-      if (btn) btn.classList.add('st-active');
       updateDiseaseFilter();
     }
+    document.querySelectorAll('.st-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        filterSpec(button.getAttribute('data-spec') || 'all');
+      });
+    });
     if (diseaseInput) diseaseInput.addEventListener('input', updateDiseaseFilter);
     if (diseaseClear) diseaseClear.addEventListener('click', function() {
       if (diseaseInput) diseaseInput.value = '';
